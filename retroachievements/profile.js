@@ -53,17 +53,13 @@ const transformData = (data) => {
   const refTimeMs = new Date(refTime).getTime();
   const totalUnlocked = data.gameAwardsAndProgress.results.reduce((acc, game) => acc + game.numAwarded, 0);
   const totalHardcoreUnlocked = data.gameAwardsAndProgress.results.reduce((acc, game) => acc + (game.numAwardedHardcore || 0), 0);
-  
-  const mostRecentGameRaw = data.recentlyPlayedGames && data.recentlyPlayedGames.length > 0 
-    ? data.recentlyPlayedGames[0] 
-    : null;
     
-  const mostRecentGame = mostRecentGameRaw ? {
-    id: mostRecentGameRaw.gameId,
-    title: mostRecentGameRaw.title,
-    console: mostRecentGameRaw.consoleName,
-    icon: getMediaUrl(mostRecentGameRaw.imageIcon),
-    timeAgo: formatTimeAgo(mostRecentGameRaw.lastPlayed, refTime)
+  const mostRecentGame = data.mostRecentGame ? {
+    id: data.mostRecentGame.gameId,
+    title: data.mostRecentGame.title,
+    console: data.mostRecentGame.consoleName,
+    icon: getMediaUrl(data.mostRecentGame.imageIcon),
+    timeAgo: formatTimeAgo(data.mostRecentGame.lastPlayed, refTime)
   } : null;
 
   const gameMap = new Map();
@@ -260,9 +256,8 @@ const transformData = (data) => {
       avatar: getMediaUrl(data.coreProfile.userPic),
       mostRecentGame: mostRecentGame,
       mostRecentAchievement: (() => {
-        if (!Array.isArray(data.recentAchievements) || data.recentAchievements.length === 0) return null;
-        const sorted = [...data.recentAchievements].sort((a, b) => new Date(b.date) - new Date(a.date));
-        const ach = sorted[0];
+        if (!data.mostRecentAchievement) return null;
+        const ach = data.mostRecentAchievement;
         return {
           id: ach.achievementId,
           title: ach.title,

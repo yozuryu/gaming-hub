@@ -23,13 +23,13 @@ const admin = require('firebase-admin');
 
 const log = {
     section: (title) => console.log(`\n${'─'.repeat(60)}\n  ${title}\n${'─'.repeat(60)}`),
-    step:    (msg)   => process.stdout.write(`  ${msg}`),
-    ok:      (msg)   => console.log(`  ✓  ${msg}`),
-    skip:    (msg)   => console.log(`  →  ${msg}`),
-    fail:    (msg)   => console.error(`  ✗  ${msg}`),
-    info:    (msg)   => console.log(`     ${msg}`),
-    done:    (msg)   => console.log(` ✓  (${msg})`),
-    err:     (msg)   => console.log(` ✗  (${msg})`),
+    step: (msg) => process.stdout.write(`  ${msg}`),
+    ok: (msg) => console.log(`  ✓  ${msg}`),
+    skip: (msg) => console.log(`  →  ${msg}`),
+    fail: (msg) => console.error(`  ✗  ${msg}`),
+    info: (msg) => console.log(`     ${msg}`),
+    done: (msg) => console.log(` ✓  (${msg})`),
+    err: (msg) => console.log(` ✗  (${msg})`),
 };
 
 // =========================================================
@@ -43,7 +43,7 @@ console.log(' ✓');
 log.section('Phase 1 — Authentication');
 
 const RA_USERNAME = process.env.RA_USERNAME;
-const RA_API_KEY  = process.env.RA_API_KEY;
+const RA_API_KEY = process.env.RA_API_KEY;
 
 if (!RA_USERNAME || !RA_API_KEY) {
     log.fail('RetroAchievements credentials missing. Set RA_USERNAME and RA_API_KEY in .env');
@@ -57,8 +57,8 @@ if (!admin.apps.length) {
 }
 const db = admin.firestore();
 
-const sleep   = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-const fmtDate = (d)  => d.toISOString().substring(0, 10);
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+const fmtDate = (d) => d.toISOString().substring(0, 10);
 
 log.ok(`RetroAchievements authenticated as: ${RA_USERNAME}`);
 log.ok('Firebase Admin SDK initialized');
@@ -71,17 +71,19 @@ async function executeProfileExtraction(targetUser) {
     log.section(`Phase 2 — Profile Extraction  [ ${targetUser} ]`);
 
     const profilePayload = {
-        metadata:              { extractionTimestamp: new Date().toISOString() },
-        username:              targetUser,
-        coreProfile:           null,
-        userSummary:           null,
-        points:                null,
-        pageAwards:            null,
-        recentAchievements:    null,
-        recentlyPlayedGames:   null,
-        wantToPlayList:        null,
+        metadata: { extractionTimestamp: new Date().toISOString() },
+        username: targetUser,
+        coreProfile: null,
+        userSummary: null,
+        points: null,
+        pageAwards: null,
+        recentAchievements: null,
+        recentlyPlayedGames: null,
+        wantToPlayList: null,
         gameAwardsAndProgress: null,
-        detailedGameProgress:  {},
+        detailedGameProgress: {},
+        mostRecentAchievement: null,
+        mostRecentGame: null,
     };
 
     try {
@@ -116,14 +118,14 @@ async function executeProfileExtraction(targetUser) {
 
         // ── Achievements: 4 × 3-month chunks spanning 1 year ──────────────
         console.log('\n  Fetching 1 year of achievements in 4 × 3-month chunks...');
-        const CHUNK_DAYS  = 91;
-        const NUM_CHUNKS  = 4;
-        const MS_PER_DAY  = 24 * 60 * 60 * 1000;
-        const now         = new Date();
+        const CHUNK_DAYS = 91;
+        const NUM_CHUNKS = 4;
+        const MS_PER_DAY = 24 * 60 * 60 * 1000;
+        const now = new Date();
         const allAchievements = [];
 
         for (let i = 0; i < NUM_CHUNKS; i++) {
-            const toDate   = new Date(now.getTime() - (i * CHUNK_DAYS * MS_PER_DAY));
+            const toDate = new Date(now.getTime() - (i * CHUNK_DAYS * MS_PER_DAY));
             const fromDate = new Date(toDate.getTime() - (CHUNK_DAYS * MS_PER_DAY));
 
             process.stdout.write(`     Chunk ${i + 1}/${NUM_CHUNKS}  ${fmtDate(fromDate)} → ${fmtDate(toDate)}...`);
@@ -153,10 +155,36 @@ async function executeProfileExtraction(targetUser) {
         log.ok(`Total unique achievements collected: ${profilePayload.recentAchievements.length}`);
         await sleep(1500);
 
+        log.step('Fetching most recent achievement...');
+        profilePayload.mostRecentAchievement = (() => {
+            if (!Array.isArray(profilePayload.recentAchievements) || profilePayload.recentAchievements.length === 0) return null;
+            const sorted = [...profilePayload.recentAchievements].sort((a, b) => new Date(b.date) - new Date(a.date));
+            return sorted[0];
+        })();
+        if (profilePayload.mostRecentAchievement) {
+            log.done(profilePayload.mostRecentAchievement.title);
+        } else {
+            log.done('no recently unlocked achievements found');
+        }
+
+
         log.step('Fetching recently played games...');
         profilePayload.recentlyPlayedGames = await getUserRecentlyPlayedGames(authorization, { username: targetUser, count: 15 });
         log.done(`${profilePayload.recentlyPlayedGames.length} games`);
         await sleep(1500);
+
+        log.step('Fetching most recently played games...');
+        profilePayload.mostRecentGame = (() => {
+            if (!Array.isArray(profilePayload.recentlyPlayedGames) || profilePayload.recentlyPlayedGames.length === 0) return null;
+            const sorted = [...profilePayload.recentlyPlayedGames].sort((a, b) => new Date(b.lastPlayed) - new Date(a.lastPlayed));
+            return sorted[0];
+        })();
+        if (profilePayload.mostRecentGame) {
+            log.done(profilePayload.mostRecentGame.title);
+        } else {
+            log.done('no recently played games found');
+        }
+
 
         log.step('Fetching want-to-play list...');
         profilePayload.wantToPlayList = await getUserWantToPlayList(authorization, { username: targetUser, count: 500 });
@@ -183,7 +211,7 @@ async function executeProfileExtraction(targetUser) {
             try {
                 profilePayload.detailedGameProgress[game.gameId] = await getGameInfoAndUserProgress(authorization, {
                     username: targetUser,
-                    gameId:   game.gameId,
+                    gameId: game.gameId,
                 });
                 console.log(' ✓');
             } catch (e) {
@@ -207,7 +235,7 @@ async function executeProfileExtraction(targetUser) {
             try {
                 profilePayload.detailedGameProgress[game.gameId] = await getGameInfoAndUserProgress(authorization, {
                     username: targetUser,
-                    gameId:   game.gameId,
+                    gameId: game.gameId,
                 });
                 console.log(' ✓');
             } catch (e) {
@@ -239,23 +267,25 @@ function serializeLocally(payload) {
 
     const write = (filename, data) => {
         const filePath = path.join(OUTPUT_DIR, filename);
-        const json     = JSON.stringify(data, null, 4);
-        const sizeKb   = (Buffer.byteLength(json, 'utf8') / 1024).toFixed(1);
+        const json = JSON.stringify(data, null, 4);
+        const sizeKb = (Buffer.byteLength(json, 'utf8') / 1024).toFixed(1);
         fs.writeFileSync(filePath, json, 'utf8');
         log.ok(`${filename.padEnd(24)} ${sizeKb} KB  →  ${filePath}`);
     };
 
     // profile.json — everything needed to render above the fold
     write('profile.json', {
-        metadata:              payload.metadata,
-        username:              payload.username,
-        coreProfile:           payload.coreProfile,
-        userSummary:           payload.userSummary,
-        points:                payload.points,
-        pageAwards:            payload.pageAwards,
-        recentlyPlayedGames:   payload.recentlyPlayedGames,
+        metadata: payload.metadata,
+        username: payload.username,
+        coreProfile: payload.coreProfile,
+        userSummary: payload.userSummary,
+        points: payload.points,
+        pageAwards: payload.pageAwards,
+        recentlyPlayedGames: payload.recentlyPlayedGames,
         gameAwardsAndProgress: payload.gameAwardsAndProgress,
-        wantToPlayList:        payload.wantToPlayList,
+        wantToPlayList: payload.wantToPlayList,
+        mostRecentAchievement: payload.mostRecentAchievement,
+        mostRecentGame: payload.mostRecentGame,
     });
 
     // achievements.json — 1 year of unlocks, loaded only for Activity tab
@@ -285,15 +315,15 @@ async function synchronizeWithFirestore(enabled, data) {
     const userDocRef = db.collection('retro_profiles').doc(data.username);
 
     const rootPayload = {
-        metadata:              data.metadata,
-        username:              data.username,
-        coreProfile:           data.coreProfile,
-        userSummary:           data.userSummary,
-        points:                data.points,
-        pageAwards:            data.pageAwards,
-        recentAchievements:    data.recentAchievements,
-        recentlyPlayedGames:   data.recentlyPlayedGames,
-        wantToPlayList:        data.wantToPlayList,
+        metadata: data.metadata,
+        username: data.username,
+        coreProfile: data.coreProfile,
+        userSummary: data.userSummary,
+        points: data.points,
+        pageAwards: data.pageAwards,
+        recentAchievements: data.recentAchievements,
+        recentlyPlayedGames: data.recentlyPlayedGames,
+        wantToPlayList: data.wantToPlayList,
         gameAwardsAndProgress: data.gameAwardsAndProgress,
     };
 
