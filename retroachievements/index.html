@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievement Dashboard</title>
+    
+    <!-- 1. Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. Import Map: Tells the browser where to find 'react' and other imports -->
+    <script type="importmap">
+    {
+        "imports": {
+            "react": "https://esm.sh/react@18.2.0",
+            "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+            "lucide-react": "https://esm.sh/lucide-react@0.263.1"
+        }
+    }
+    </script>
+    
+    <!-- 3. Babel: Translates JSX (React code) into JavaScript the browser understands -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-[#171a21]">
+    <div id="root"></div>
+
+    <!-- 4. Load your dashboard. Data-type="module" tells Babel to process imports inside it -->
+    <script type="text/babel" data-type="module" src="./profile.js"></script>
+</body>
+</html>

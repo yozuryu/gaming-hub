@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yozuryu · Gaming Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { background-color: #1b2838; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; }
+
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .card-link {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: transform 0.15s;
+    }
+    .card-link:hover { transform: translateY(-2px); }
+    .card-link:hover .card-shell { border-color: #4c9be8; }
+    .card-link:hover .card-arrow { color: #66c0f4; }
+
+    .card-shell {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background: #1b2838;
+      border: 1px solid #2a475e;
+      border-radius: 2px;
+      overflow: hidden;
+      transition: border-color 0.15s;
+    }
+
+    .card-stats { flex: 1; }
+
+    .stat-val { font-size: 17px; font-weight: 500; line-height: 1.2; }
+    .stat-lbl { font-size: 8px; text-transform: uppercase; letter-spacing: 0.08em; color: #546270; margin-top: 1px; }
+
+    .live-dot { width: 7px; height: 7px; border-radius: 50%; background: #57cbde; flex-shrink: 0; }
+
+    .card-soon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #1b2838;
+      border: 1px dashed #2a475e;
+      border-radius: 2px;
+      opacity: 0.5;
+      min-height: 175px;
+      user-select: none;
+    }
+
+    .platform-icon-img {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      image-rendering: crisp-edges;
+    }
+
+    @keyframes shimmer {
+      0%   { background-position: -400px 0; }
+      100% { background-position:  400px 0; }
+    }
+    .skeleton {
+      background: linear-gradient(90deg, #202d39 25%, #2a3f52 50%, #202d39 75%);
+      background-size: 800px 100%;
+      animation: shimmer 1.5s infinite linear;
+      border-radius: 2px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body class="bg-[#171a21] text-[#c6d4df] min-h-screen flex flex-col">
+
+  <!-- Topbar -->
+  <div class="bg-[#131a22] border-b border-[#101214] px-4 md:px-8 py-1.5 flex items-center gap-2 text-[10px]">
+    <span class="text-[#546270] font-bold tracking-[0.15em] uppercase">Yozuryu</span>
+    <span class="text-[#2a475e]">›</span>
+    <span class="text-[#8f98a0]">Gaming Profile</span>
+  </div>
+
+  <!-- Header -->
+  <header class="bg-[#1b2838] border-b border-[#2a475e] px-4 md:px-8 py-7">
+    <div class="max-w-5xl mx-auto flex items-center gap-5">
+      <img
+        src="./assets/avatar.png"
+        alt="Yozuryu"
+        class="w-24 h-24 rounded-[2px] border border-[#4c9be8] shadow-[0_2px_12px_rgba(0,0,0,0.5)] flex-shrink-0 bg-[#101214] object-cover"
+      />
+      <div class="flex flex-col gap-1.5">
+        <h1 class="text-[22px] text-white font-medium tracking-wide leading-none">Yozuryu</h1>
+        <p class="text-[10px] text-[#546270]">
+          Last updated <span id="hub-updated" class="text-[#8f98a0]">loading…</span>
+          <span class="mx-1.5 text-[#2a475e]">·</span>
+          <span class="text-[#66c0f4] font-semibold">1</span>
+          <span> active</span>
+          <span class="mx-1 text-[#2a475e]">·</span>
+          <span class="text-[#546270] font-semibold">2</span>
+          <span> coming soon</span>
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="max-w-5xl mx-auto px-4 md:px-8 py-6 flex-1 w-full">
+
+    <div class="flex items-center gap-2 border-b border-[#2a475e] pb-[7px] mb-5">
+      <span class="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] flex-shrink-0"></span>
+      <span class="text-[11px] text-white uppercase tracking-[0.1em] font-semibold">Platforms</span>
+    </div>
+
+    <div class="platform-grid">
+
+      <!-- RetroAchievements -->
+      <a class="card-link" href="./retroachievements/">
+        <div class="card-shell">
+          <div class="flex items-center gap-3 px-3.5 py-3 border-b border-[#2a475e] bg-[#172333]">
+            <div class="w-8 h-8 rounded-[2px] bg-[rgba(229,177,67,0.1)] border border-[rgba(229,177,67,0.3)] flex items-center justify-center flex-shrink-0">
+              <img src="./assets/icon-ra.png" alt="RA" class="platform-icon-img" onerror="this.style.display='none'" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="text-[12px] text-white font-semibold leading-tight">RetroAchievements</div>
+              <div class="text-[8px] text-[#546270] uppercase tracking-[0.08em]">Retro Gaming</div>
+            </div>
+            <div class="live-dot" title="Data available"></div>
+          </div>
+          <div id="ra-stats" class="card-stats grid grid-cols-2 gap-x-3 gap-y-3 px-3.5 py-3">
+            <div><div class="stat-val text-[#e5b143] skeleton w-16 h-5 mb-1">&nbsp;</div><div class="stat-lbl">Points</div></div>
+            <div><div class="stat-val skeleton w-14 h-5 mb-1">&nbsp;</div><div class="stat-lbl">Site Rank</div></div>
+            <div><div class="stat-val skeleton w-14 h-5 mb-1">&nbsp;</div><div class="stat-lbl">Achievements</div></div>
+            <div><div class="stat-val skeleton w-10 h-5 mb-1">&nbsp;</div><div class="stat-lbl">Games Beaten</div></div>
+          </div>
+          <div class="flex items-center justify-between px-3.5 py-1.5 bg-[#172333] border-t border-[#2a475e]">
+            <span class="text-[9px] text-[#546270]">View full dashboard</span>
+            <span class="card-arrow text-[9px] text-[#2a475e] transition-colors">→</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Steam -->
+      <div class="card-soon">
+        <div class="w-8 h-8 rounded-[2px] bg-[#101214] border border-[#2a475e] flex items-center justify-center">
+          <img src="./assets/icon-steam.png" alt="Steam" class="platform-icon-img" onerror="this.style.display='none'" />
+        </div>
+        <span class="text-[12px] text-[#8f98a0] font-medium">Steam</span>
+        <span class="text-[8px] font-bold uppercase tracking-[0.08em] text-[#546270] border border-[#323f4c] px-1.5 py-[1px] rounded-[2px]">Coming Soon</span>
+      </div>
+
+      <!-- Xbox -->
+      <div class="card-soon">
+        <div class="w-8 h-8 rounded-[2px] bg-[#101214] border border-[#2a475e] flex items-center justify-center">
+          <img src="./assets/icon-xbox.png" alt="Xbox" class="platform-icon-img" onerror="this.style.display='none'" />
+        </div>
+        <span class="text-[12px] text-[#8f98a0] font-medium">Xbox</span>
+        <span class="text-[8px] font-bold uppercase tracking-[0.08em] text-[#546270] border border-[#323f4c] px-1.5 py-[1px] rounded-[2px]">Coming Soon</span>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#1b2838] border-t-2 border-[#2a475e] px-4 md:px-8 py-2.5 flex items-center gap-3 mt-auto">
+    <div class="w-[3px] h-[18px] rounded-[1px] bg-[#66c0f4] opacity-50 flex-shrink-0"></div>
+    <p class="text-[10px] text-[#546270]">
+      Personal gaming profile ·
+      <span class="text-[#8f98a0]">yozuryu.github.io/gaming-profile</span>
+    </p>
+    <a href="https://retroachievements.org" target="_blank" rel="noreferrer"
+      class="ml-auto text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">
+      retroachievements.org ↗
+    </a>
+  </footer>
+
+  <script>
+    async function loadRAStats() {
+      try {
+        const res = await fetch('./retroachievements/data.json');
+        if (!res.ok) throw new Error('not found');
+        const d = await res.json();
+
+        const ts = d.metadata?.extractionTimestamp;
+        if (ts) {
+          document.getElementById('hub-updated').textContent =
+            new Date(ts).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+        }
+
+        const totalPoints   = d.coreProfile?.totalPoints ?? 0;
+        const rank          = d.userSummary?.rank;
+        const totalUnlocked = (d.gameAwardsAndProgress?.results ?? [])
+          .reduce((s, g) => s + (g.numAwarded ?? 0), 0);
+        const beaten = (d.pageAwards?.visibleUserAwards ?? [])
+          .filter(a => a.awardType === 'Game Beaten' || a.awardType === 'Mastery/Completion').length;
+
+        document.getElementById('ra-stats').innerHTML = `
+          <div>
+            <div class="stat-val" style="color:#e5b143;">${totalPoints.toLocaleString()}</div>
+            <div class="stat-lbl">Points</div>
+          </div>
+          <div>
+            <div class="stat-val" style="color:#c6d4df;">${rank ? '#' + Number(rank).toLocaleString() : '—'}</div>
+            <div class="stat-lbl">Site Rank</div>
+          </div>
+          <div>
+            <div class="stat-val" style="color:#66c0f4;">${totalUnlocked.toLocaleString()}</div>
+            <div class="stat-lbl">Achievements</div>
+          </div>
+          <div>
+            <div class="stat-val" style="color:#c6d4df;">${beaten}</div>
+            <div class="stat-lbl">Games Beaten</div>
+          </div>
+        `;
+      } catch (e) {
+        document.getElementById('hub-updated').textContent = 'unavailable';
+        document.getElementById('ra-stats').innerHTML =
+          '<div style="grid-column:span 2;text-align:center;font-size:10px;color:#546270;padding:12px 0;">Could not load stats</div>';
+      }
+    }
+
+    loadRAStats();
+  </script>
+
+</body>
+</html>
