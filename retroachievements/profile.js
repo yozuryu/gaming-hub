@@ -1387,7 +1387,7 @@ export default function App() {
                   </div>
                 </div>
               ) : (
-                <div className="text-[#8f98a0] text-[11px] py-2 italic">No achievements unlocked in the last 180 days.</div>
+                <div className="text-[#8f98a0] text-[11px] py-2 italic">No achievements unlocked in the last 1 year.</div>
               )}
             </div>
 
