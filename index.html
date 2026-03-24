@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yozuryu · Gaming Profile</title>
+  <title id="page-title">Gaming Profile</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html, body { background-color: #171a21; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
@@ -87,7 +87,7 @@
 
   <!-- Topbar -->
   <div class="bg-[#131a22] border-b border-[#101214] px-4 md:px-8 py-1.5 flex items-center gap-2 text-[10px]">
-    <span class="text-[#546270] font-bold tracking-[0.15em] uppercase">Yozuryu</span>
+    <span id="topbar-username" class="text-[#546270] font-bold tracking-[0.15em] uppercase"></span>
     <span class="text-[#2a475e]">›</span>
     <span class="text-[#c6d4df]">Gaming Profile</span>
   </div>
@@ -96,27 +96,19 @@
   <header class="bg-[#1b2838] border-b border-[#2a475e] px-4 md:px-8 py-5 shadow-md">
     <div class="max-w-5xl mx-auto flex items-center gap-5">
       <div class="w-20 h-20 md:w-24 md:h-24 rounded-[2px] border border-[#4c9be8] shadow-[0_2px_12px_rgba(0,0,0,0.5)] flex-shrink-0 bg-[#101214] overflow-hidden">
-        <img src="./assets/avatar.png" alt="Yozuryu" class="w-full h-full object-cover" />
+        <img id="avatar-img" src="./assets/avatar.png" alt="" class="w-full h-full object-cover" />
       </div>
       <div class="flex flex-col gap-2">
-        <h1 class="text-2xl md:text-[26px] text-white font-medium tracking-wide leading-none">Yozuryu</h1>
-        <p class="text-[10px] text-[#8f98a0] italic border-l-2 border-[#2a475e] pl-2 leading-snug">
-          "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!"
-        </p>
+        <h1 id="header-username" class="text-2xl md:text-[26px] text-white font-medium tracking-wide leading-none"></h1>
+        <p id="header-motto" class="text-[10px] text-[#8f98a0] italic border-l-2 border-[#2a475e] pl-2 leading-snug"></p>
         <!-- Genre tags -->
-        <div class="flex flex-wrap gap-1.5">
-          <span class="tag tag-blue">Turn-Based RPG</span>
-          <span class="tag tag-blue">Action RPG</span>
-          <span class="tag tag-blue">Survival Horror</span>
-          <span class="tag tag-grey">Retro</span>
-          <span class="tag tag-grey">Pixel Art</span>
-        </div>
+        <div id="header-tags" class="flex flex-wrap gap-1.5"></div>
         <p class="text-[9px] text-[#546270]">
           Last updated <span id="hub-updated" class="text-[#8f98a0]">loading…</span>
           <span class="mx-1.5 text-[#2a475e]">·</span>
-          <span class="text-[#66c0f4] font-semibold">1</span> active
+          <span id="hub-active" class="text-[#66c0f4] font-semibold"></span> active
           <span class="mx-1 text-[#2a475e]">·</span>
-          <span class="text-[#546270] font-semibold">2</span> coming soon
+          <span id="hub-coming-soon" class="text-[#546270] font-semibold"></span> coming soon
         </p>
       </div>
     </div>
@@ -242,7 +234,7 @@
     <div class="w-[3px] h-[18px] rounded-[1px] bg-[#66c0f4] opacity-50 flex-shrink-0"></div>
     <p class="text-[10px] text-[#546270]">
       Personal gaming profile ·
-      <span class="text-[#8f98a0]">yozuryu.github.io/gaming-profile</span>
+      <span id="footer-site-url" class="text-[#8f98a0]"></span>
     </p>
     <a href="https://retroachievements.org" target="_blank" rel="noreferrer"
       class="ml-auto text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">
@@ -251,6 +243,32 @@
   </footer>
 
   <script>
+    async function loadHubProfile() {
+      try {
+        const res = await fetch('./data/hub/profile.json');
+        if (!res.ok) throw new Error('not found');
+        const p = await res.json();
+
+        const username = p.username ?? '';
+        document.title = `${username} · Gaming Profile`;
+        document.getElementById('topbar-username').textContent  = username;
+        document.getElementById('header-username').textContent  = username;
+        document.getElementById('avatar-img').alt               = username;
+        document.getElementById('header-motto').textContent     = `"${p.motto ?? ''}"`;
+
+        const tagsEl = document.getElementById('header-tags');
+        const genreTags = (p.tags?.genre ?? []).map(t => `<span class="tag tag-blue">${t}</span>`);
+        const styleTags = (p.tags?.style ?? []).map(t => `<span class="tag tag-grey">${t}</span>`);
+        tagsEl.innerHTML = [...genreTags, ...styleTags].join('');
+
+        document.getElementById('hub-active').textContent      = p.platforms?.active    ?? '';
+        document.getElementById('hub-coming-soon').textContent = p.platforms?.comingSoon ?? '';
+        document.getElementById('footer-site-url').textContent = p.siteUrl ?? '';
+      } catch (e) {
+        console.warn('Could not load hub profile:', e);
+      }
+    }
+
     async function loadRAStats() {
       try {
         const res = await fetch('./data/retroachievements/profile.json');
@@ -369,6 +387,7 @@
       }
     }
 
+    loadHubProfile();
     loadRAStats();
   </script>
 

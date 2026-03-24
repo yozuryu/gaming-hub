@@ -211,8 +211,21 @@ async function executeProfileExtraction(targetUser) {
 
 
         log.step('Fetching want-to-play list...');
-        profilePayload.wantToPlayList = await getUserWantToPlayList(authorization, { username: targetUser, count: 500 });
-        log.done(`${profilePayload.wantToPlayList.total} total, ${profilePayload.wantToPlayList.results?.length} fetched`);
+        const PAGE_SIZE = 500;
+        const firstPage = await getUserWantToPlayList(authorization, { username: targetUser, count: PAGE_SIZE, offset: 0 });
+        const allWantToPlay = [...(firstPage.results || [])];
+        const totalWantToPlay = firstPage.total ?? allWantToPlay.length;
+        let offset = PAGE_SIZE;
+        while (allWantToPlay.length < totalWantToPlay) {
+            await sleep(1500);
+            const page = await getUserWantToPlayList(authorization, { username: targetUser, count: PAGE_SIZE, offset });
+            const batch = page.results || [];
+            if (batch.length === 0) break;
+            allWantToPlay.push(...batch);
+            offset += PAGE_SIZE;
+        }
+        profilePayload.wantToPlayList = { total: totalWantToPlay, results: allWantToPlay };
+        log.done(`${totalWantToPlay} total, ${allWantToPlay.length} fetched`);
         await sleep(1500);
 
         log.step('Fetching completion progress...');
