@@ -2,10 +2,10 @@
 
 ## 2026-03-24
 
-- Hub profile data (`username`, `motto`, `tags`, `platforms`) moved to `data/hub/profile.json`; `index.html` renders it dynamically
-- Want-to-play list now paginates to fetch all items beyond the 500-item API limit
-- `profile.js` refactored: non-JSX code extracted into `utils/constants.js`, `utils/helpers.js`, and `utils/transform.js`
-- Stats pills: points shown in gold to improve visual hierarchy
+- Hub profile data (`username`, `motto`, `tags`, `platforms`) moved to `data/hub/profile.json`; `index.html` renders it dynamically — [`80f2be1`](https://github.com/yozuryu/gaming-profile/commit/80f2be123104a26fffcd36407b7d0282edb5ae8e)
+- Want-to-play list now paginates to fetch all items beyond the 500-item API limit — [`80f2be1`](https://github.com/yozuryu/gaming-profile/commit/80f2be123104a26fffcd36407b7d0282edb5ae8e)
+- `profile.js` refactored: non-JSX code extracted into `utils/constants.js`, `utils/helpers.js`, and `utils/transform.js` — [`80f2be1`](https://github.com/yozuryu/gaming-profile/commit/80f2be123104a26fffcd36407b7d0282edb5ae8e)
+- Stats pills: points shown in gold to improve visual hierarchy — [`80f2be1`](https://github.com/yozuryu/gaming-profile/commit/80f2be123104a26fffcd36407b7d0282edb5ae8e)
 - Activity tab now lazy-loads achievements in 3-month chunks; heatmap stays complete using precomputed data from `profile.json` — [`425a2a2`](https://github.com/yozuryu/gaming-profile/commit/425a2a29d314684ffa1d49c42158a0fa436efbea)
 - Game title tilde tags (`~Homebrew~`, `~Hack~`, etc.) displayed as badges across dashboard and hub — [`425a2a2`](https://github.com/yozuryu/gaming-profile/commit/425a2a29d314684ffa1d49c42158a0fa436efbea)
 - Pipeline supports incremental mode (skips cached games) and splits achievement data into quarterly files — [`425a2a2`](https://github.com/yozuryu/gaming-profile/commit/425a2a29d314684ffa1d49c42158a0fa436efbea)
