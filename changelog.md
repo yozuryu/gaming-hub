@@ -2,22 +2,11 @@
 
 ## 2026-03-24
 
-### RA Dashboard
-- **Activity tab: lazy load by quarter** — timeline loads 3 months at a time via scroll (IntersectionObserver); clicking a heatmap day auto-loads the relevant chunk
-- **Heatmap always complete** — moved heatmap data (`activityHeatmap`) into `profile.json` so the full 365-day view is available immediately, independent of lazy-loaded timeline data
-- **Tilde tag support** — `~Homebrew~`, `~Demo~`, `~Prototype~`, `~Hack~` tags parsed from game titles and shown as colour-coded badges in game cards, recently played, and watchlist
-- **Watchlist search** — now searches subset name and tilde tags in addition to title
-
-### Hub
-- **Stats card** — replaced "Member since" with "Mastered" count; fixed beaten count logic
-- **Recently played** — shows subset and tilde tag badges; extracted title parsing helpers
-- Updated genre tags
-
-### Pipeline
-- **Incremental mode** — default run skips already-cached games; `--refresh-games` forces full re-fetch
-- **Quarterly achievement chunks** — writes `achievements_1.json` → `achievements_4.json` instead of a single `achievements.json`
-- **`activityHeatmap` added to `profile.json`** — precomputed day→{points, count} map for the full year
-- **`points7Days` / `points30Days` precomputed** — stored in `profile.json`, no longer calculated client-side
+- Activity tab now lazy-loads achievements in 3-month chunks; heatmap stays complete using precomputed data from `profile.json`
+- Game title tilde tags (`~Homebrew~`, `~Hack~`, etc.) displayed as badges across dashboard and hub
+- Pipeline supports incremental mode (skips cached games) and splits achievement data into quarterly files
+- Automated GitHub Actions workflow — fetches data every 3 hours and does a full refresh at midnight, commits results to main
+- Scripts reorganized into `scripts/` folder; `package.json` at root with `npm run` commands for all tasks
 
 ---
 

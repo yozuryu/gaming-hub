@@ -28,7 +28,7 @@ const log = {
 // Setup
 // =========================================================
 
-const ASSETS_DIR = path.join(__dirname, 'assets');
+const ASSETS_DIR = path.join(__dirname, '..', 'assets');
 
 log.section('Download Assets');
 log.step(`Process started at:  ${new Date().toISOString()}`);

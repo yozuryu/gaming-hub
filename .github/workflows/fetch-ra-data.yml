@@ -1,0 +1,59 @@
+name: Fetch RA Data
+
+run-name: >-
+  ${{ github.event_name == 'workflow_dispatch' && format('RA Data — manual ({0})', inputs.refresh_games == true && 'full refresh' || 'incremental') ||
+      github.event.schedule == '0 0 * * *'     && 'RA Data — midnight full refresh' ||
+      'RA Data — 3h incremental' }}
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'  # every 3 hours — incremental
+    - cron: '0 0 * * *'    # midnight UTC — full game refresh
+  workflow_dispatch:
+    inputs:
+      refresh_games:
+        description: 'Full game refresh (--refresh-games)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run pipeline
+        env:
+          RA_USERNAME: ${{ secrets.RA_USERNAME }}
+          RA_API_KEY: ${{ secrets.RA_API_KEY }}
+        run: |
+          if [ "${{ github.event.schedule }}" = "0 0 * * *" ] || [ "${{ inputs.refresh_games }}" = "true" ]; then
+            echo "Mode: full game refresh"
+            npm run ra-fetch:full
+          else
+            echo "Mode: incremental"
+            npm run ra-fetch
+          fi
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/retroachievements/
+          git diff --staged --quiet && echo "No changes to commit" || \
+            git commit -m "chore: update ra data $(date -u '+%Y-%m-%d %H:%M UTC')" && git push
