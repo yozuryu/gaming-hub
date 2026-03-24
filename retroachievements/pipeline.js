@@ -60,8 +60,14 @@ const db = admin.firestore();
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 const fmtDate = (d) => d.toISOString().substring(0, 10);
 
+// ── CLI Flags ──────────────────────────────────────────────
+// --refresh-games  : re-fetch all game details (full refresh)
+// (default)        : load existing games.json, only fetch new games
+const REFRESH_GAMES = process.argv.includes('--refresh-games');
+
 log.ok(`RetroAchievements authenticated as: ${RA_USERNAME}`);
 log.ok('Firebase Admin SDK initialized');
+log.ok(`Game details mode        : ${REFRESH_GAMES ? 'Full refresh  (--refresh-games)' : 'Incremental   (new games only)'}`);
 
 // =========================================================
 // Phase 2: Profile Data & Detailed Game Extraction
@@ -167,6 +173,24 @@ async function executeProfileExtraction(targetUser) {
             log.done('no recently unlocked achievements found');
         }
 
+        log.step('Computing points earned (7d / 30d)...');
+        (() => {
+            const now        = Date.now();
+            const ms7d       = 7  * 24 * 60 * 60 * 1000;
+            const ms30d      = 30 * 24 * 60 * 60 * 1000;
+            let points7d  = 0;
+            let points30d = 0;
+            (profilePayload.recentAchievements || []).forEach(a => {
+                const ts  = new Date(a.date || 0).getTime();
+                const pts = a.points || 0;
+                if (now - ts <= ms30d) { points30d += pts; }
+                if (now - ts <= ms7d)  { points7d  += pts; }
+            });
+            profilePayload.points7Days  = points7d;
+            profilePayload.points30Days = points30d;
+            log.done(`7d: ${points7d} pts  /  30d: ${points30d} pts`);
+        })();
+
 
         log.step('Fetching recently played games...');
         profilePayload.recentlyPlayedGames = await getUserRecentlyPlayedGames(authorization, { username: targetUser, count: 15 });
@@ -198,6 +222,28 @@ async function executeProfileExtraction(targetUser) {
 
         // ── Detailed game progress ────────────────────────────────────────
         const progressGames = profilePayload.gameAwardsAndProgress?.results || [];
+
+        // Incremental mode: seed cache from existing games.json so only new
+        // games are fetched. Full refresh skips this and fetches everything.
+        if (!REFRESH_GAMES) {
+            const gamesJsonPath = path.join(__dirname, '..', 'data', 'retroachievements', 'games.json');
+            if (fs.existsSync(gamesJsonPath)) {
+                try {
+                    const existing = JSON.parse(fs.readFileSync(gamesJsonPath, 'utf8'));
+                    const cached = existing.detailedGameProgress || {};
+                    const cachedCount = Object.keys(cached).length;
+                    Object.assign(profilePayload.detailedGameProgress, cached);
+                    log.ok(`Loaded ${cachedCount} cached game(s) from games.json`);
+                } catch (e) {
+                    log.fail(`Could not read games.json — will fetch all: ${e.message}`);
+                }
+            } else {
+                log.skip('No existing games.json found — will fetch all games');
+            }
+        } else {
+            log.ok('Full refresh — skipping cache, all games will be fetched');
+        }
+
         log.section(`Phase 2a — Completion Progress Details  [ ${progressGames.length} games ]`);
 
         let progressIdx = 0;
@@ -286,12 +332,35 @@ function serializeLocally(payload) {
         wantToPlayList: payload.wantToPlayList,
         mostRecentAchievement: payload.mostRecentAchievement,
         mostRecentGame: payload.mostRecentGame,
+        points7Days: payload.points7Days,
+        points30Days: payload.points30Days,
+        // Compact day→points map for the Activity heatmap (full 365 days, always available)
+        activityHeatmap: (() => {
+            const map = {};
+            (payload.recentAchievements || []).forEach(a => {
+                if (!a.date) return;
+                const day = a.date.substring(0, 10);
+                if (!map[day]) map[day] = { points: 0, count: 0 };
+                map[day].points += a.points || 0;
+                map[day].count++;
+            });
+            return map;
+        })(),
     });
 
-    // achievements.json — 1 year of unlocks, loaded only for Activity tab
-    write('achievements.json', {
-        recentAchievements: payload.recentAchievements,
-    });
+    // achievements_N.json — 1 year of unlocks split into 4 quarterly chunks
+    // Chunk 1 = most recent (0–91 days), Chunk 4 = oldest (273–364 days)
+    const CHUNK_MS = 91 * 24 * 60 * 60 * 1000;
+    const extractionTime = new Date(payload.metadata.extractionTimestamp).getTime();
+    for (let i = 0; i < 4; i++) {
+        const toMs   = extractionTime - (i * CHUNK_MS);
+        const fromMs = extractionTime - ((i + 1) * CHUNK_MS);
+        const chunk  = (payload.recentAchievements || []).filter(a => {
+            const t = new Date(a.date).getTime();
+            return t > fromMs && t <= toMs;
+        });
+        write(`achievements_${i + 1}.json`, { recentAchievements: chunk });
+    }
 
     // games.json — detailed per-game data, loaded for Recent/Progress tabs
     write('games.json', {
@@ -365,11 +434,15 @@ async function runPipeline() {
         serializeLocally(payload);
         await synchronizeWithFirestore(false, payload);
 
+        const totalGames   = Object.keys(payload.detailedGameProgress).length;
+        const cachedGames  = REFRESH_GAMES ? 0 : totalGames; // approximate — exact count logged during fetch
+
         log.section('Pipeline Complete');
         log.ok(`Extraction timestamp  : ${payload.metadata.extractionTimestamp}`);
         log.ok(`Achievements fetched  : ${payload.recentAchievements?.length ?? 0}`);
-        log.ok(`Games tracked         : ${Object.keys(payload.detailedGameProgress).length}`);
+        log.ok(`Games tracked         : ${totalGames}${REFRESH_GAMES ? ' (full refresh)' : ' (incremental)'}`);
         log.ok(`Watchlist entries     : ${payload.wantToPlayList?.total ?? 0}`);
+        log.ok(`Points (7d / 30d)     : ${payload.points7Days} / ${payload.points30Days}`);
         console.log();
         process.exit(0);
     } catch (error) {

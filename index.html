@@ -53,7 +53,7 @@
 
     /* Stats grid */
     .stat-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px 8px; padding: 11px 14px 9px; border-bottom: 1px solid #2a475e; }
-    .stat-val { font-size: 17px; font-weight: 500; line-height: 1.2; }
+    .stat-val { font-size: 16px; font-weight: 500; line-height: 1.2; }
     .stat-lbl { font-size: 8px; text-transform: uppercase; letter-spacing: 0.07em; color: #546270; margin-top: 2px; }
 
     /* Recent rows */
@@ -105,9 +105,10 @@
         </p>
         <!-- Genre tags -->
         <div class="flex flex-wrap gap-1.5">
-          <span class="tag tag-blue">JRPG</span>
-          <span class="tag tag-blue">Side Scrolling</span>
-          <span class="tag tag-grey">Cel-Shaded</span>
+          <span class="tag tag-blue">Turn-Based RPG</span>
+          <span class="tag tag-blue">Action RPG</span>
+          <span class="tag tag-blue">Survival Horror</span>
+          <span class="tag tag-grey">Retro</span>
           <span class="tag tag-grey">Pixel Art</span>
         </div>
         <p class="text-[9px] text-[#546270]">
@@ -264,68 +265,101 @@
         }
 
         // Stats
-        const totalPoints   = d.coreProfile?.totalPoints ?? 0;
-        const rank          = d.userSummary?.rank;
-        const results       = d.gameAwardsAndProgress?.results ?? [];
-        const totalGames    = results.length;
-        const beaten        = (d.pageAwards?.visibleUserAwards ?? [])
-          .filter(a => a.awardType === 'Game Beaten' || a.awardType === 'Mastery/Completion').length;
-        const memberSince   = d.coreProfile?.memberSince
-          ? new Date(d.coreProfile.memberSince).toLocaleDateString('en-GB', { month: 'short', year: '2-digit' })
-          : '—';
-        const wishlist      = d.wantToPlayList?.total ?? 0;
+        const totalPoints = d.coreProfile?.totalPoints ?? 0;
+        const rank        = d.userSummary?.rank;
+        const results     = d.gameAwardsAndProgress?.results ?? [];
+        const totalGames  = results.length;
+        const mastered    = results.filter(g => g.highestAwardKind === 'mastered').length;
+        const beaten      = results.filter(g => g.highestAwardKind === 'beaten-hardcore' || g.highestAwardKind === 'beaten-softcore').length;
+        const wishlist    = d.wantToPlayList?.total ?? 0;
 
         document.getElementById('ra-stats').innerHTML = `
-          <div><div class="stat-val" style="color:#e5b143;font-size:17px;">${totalPoints.toLocaleString()}</div><div class="stat-lbl">Points</div></div>
-          <div><div class="stat-val" style="font-size:17px;">${rank ? '#' + Number(rank).toLocaleString() : '—'}</div><div class="stat-lbl">Rank</div></div>
-          <div><div class="stat-val" style="color:#66c0f4;font-size:17px;">${totalGames}</div><div class="stat-lbl">Games</div></div>
-          <div><div class="stat-val" style="font-size:17px;">${beaten}</div><div class="stat-lbl">Beaten</div></div>
-          <div><div class="stat-val" style="font-size:13px;">${memberSince}</div><div class="stat-lbl">Member</div></div>
-          <div><div class="stat-val" style="font-size:13px;">${wishlist}</div><div class="stat-lbl">Wishlist</div></div>
+          <div><div class="stat-val" style="color:#e5b143;">${totalPoints.toLocaleString()}</div><div class="stat-lbl">Points</div></div>
+          <div><div class="stat-val">${rank ? '#' + Number(rank).toLocaleString() : '—'}</div><div class="stat-lbl">Rank</div></div>
+          <div><div class="stat-val" style="color:#66c0f4;">${totalGames}</div><div class="stat-lbl">Games</div></div>
+          <div><div class="stat-val">${beaten}</div><div class="stat-lbl">Beaten</div></div>
+          <div><div class="stat-val">${mastered}</div><div class="stat-lbl">Mastered</div></div>
+          <div><div class="stat-val">${wishlist}</div><div class="stat-lbl">Wishlist</div></div>
         `;
 
-        // Recently played — top 3 from recentlyPlayedGames
+        // Title parser — mirrors profile.js parseTitle + TILDE_TAG_COLORS exactly
+        const TILDE_TAG_COLORS = {
+          'Homebrew':  { bg: 'rgba(102,192,244,0.08)', border: 'rgba(102,192,244,0.3)',  color: '#66c0f4' },
+          'Demo':      { bg: 'rgba(87,203,222,0.08)',  border: 'rgba(87,203,222,0.3)',   color: '#57cbde' },
+          'Prototype': { bg: 'rgba(143,152,160,0.08)', border: 'rgba(143,152,160,0.3)',  color: '#8f98a0' },
+          'Hack':      { bg: 'rgba(255,107,107,0.08)', border: 'rgba(255,107,107,0.3)',  color: '#ff6b6b' },
+        };
+
+        const parseTitle = (title) => {
+          if (!title) return { baseTitle: title, subsetName: null, isSubset: false, tags: [] };
+          const tags = [];
+          const withoutTags = title.replace(/~([^~]+)~\s*/g, (_, tag) => { tags.push(tag); return ''; }).trim();
+          const subsetMatch = withoutTags.match(/^(.+?)\s*\[Subset\s*[-–]\s*(.+?)\]$/);
+          if (subsetMatch) return { baseTitle: subsetMatch[1].trim(), subsetName: subsetMatch[2].trim(), isSubset: true, tags };
+          return { baseTitle: withoutTags, subsetName: null, isSubset: false, tags };
+        };
+
+        const BADGE_BASE = 'font-size:7px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;padding:1px 4px;border-radius:2px;flex-shrink:0;';
+        const subsetBadgeHtml = `<span style="${BADGE_BASE}border:1px solid rgba(229,177,67,0.3);background:rgba(229,177,67,0.08);color:#c8a84b;">Subset</span>`;
+
+        const tildeBadgesHtml = (tags) => tags.map(tag => {
+          const s = TILDE_TAG_COLORS[tag] || TILDE_TAG_COLORS['Prototype'];
+          return `<span style="${BADGE_BASE}border:1px solid ${s.border};background:${s.bg};color:${s.color};">${tag}</span>`;
+        }).join(' ');
+
+        // Recently played — pipeline pre-sorts recentlyPlayedGames, take top 3
+        const MEDIA = 'https://media.retroachievements.org';
+        const progressMap = {};
+        results.forEach(g => { progressMap[g.gameId] = g; });
+
+        const timeAgo = (dateStr) => {
+          if (!dateStr) return '';
+          const diff = Math.floor((Date.now() - new Date(dateStr)) / 86400000);
+          if (diff === 0) return 'Today';
+          if (diff === 1) return 'Yesterday';
+          if (diff < 7)  return `${diff}d ago`;
+          if (diff < 30) return `${Math.floor(diff / 7)}w ago`;
+          return `${Math.floor(diff / 30)}mo ago`;
+        };
+
+        const renderRecentRow = (g) => {
+          const prog       = progressMap[g.gameId];
+          const isMastered = prog?.highestAwardKind === 'mastered';
+          const pct        = prog?.maxPossible > 0 ? Math.floor((prog.numAwarded / prog.maxPossible) * 100) : null;
+          const badge      = isMastered
+            ? `<span class="pct-badge pct-gold">★</span>`
+            : pct !== null
+            ? `<span class="pct-badge pct-blue">${pct}%</span>`
+            : '';
+          const ago = timeAgo(g.lastPlayed);
+          const { baseTitle, subsetName, isSubset, tags } = parseTitle(g.title);
+
+          // Row 1: base title (always)
+          // Row 2: [Subset badge + name] OR [tilde badges] — only if applicable
+          // Row 3: console + time (always)
+          const hasTildeTags = tags.length > 0;
+          const row2 = isSubset
+            ? `<div class="game-sub" style="display:flex;align-items:center;gap:3px;">${subsetBadgeHtml}<span style="color:#c8a84b;">${subsetName}</span></div>`
+            : hasTildeTags
+            ? `<div class="game-sub" style="display:flex;align-items:center;gap:3px;">${tildeBadgesHtml(tags)}</div>`
+            : '';
+
+          return `
+            <div class="recent-row" style="align-items:center;">
+              <img src="${MEDIA}${g.imageIcon}" alt="" class="game-icon object-cover"
+                style="align-self:center;" onerror="this.style.background='#2a475e'" />
+              <div style="flex:1;min-width:0;">
+                <div class="game-title">${baseTitle}</div>
+                ${row2}
+                <div class="game-sub">${g.consoleName}${ago ? ' · ' + ago : ''}</div>
+              </div>
+              <div style="align-self:center;">${badge}</div>
+            </div>`;
+        };
+
         const recent = (d.recentlyPlayedGames ?? []).slice(0, 3);
         if (recent.length > 0) {
-          const MEDIA = 'https://media.retroachievements.org';
-          const SITE  = 'https://retroachievements.org';
-
-          // Look up progress % from gameAwardsAndProgress
-          const progressMap = {};
-          results.forEach(g => { progressMap[g.gameId] = g; });
-
-          document.getElementById('ra-recent').innerHTML = recent.map(g => {
-            const prog  = progressMap[g.gameId];
-            const pct   = prog && prog.maxPossible > 0
-              ? Math.floor((prog.numAwarded / prog.maxPossible) * 100)
-              : null;
-            const mastered = prog?.highestAwardKind === 'mastered';
-            const badge = mastered
-              ? `<span class="pct-badge pct-gold">★</span>`
-              : pct !== null
-              ? `<span class="pct-badge pct-blue">${pct}%</span>`
-              : '';
-
-            const lastPlayed = g.lastPlayed ? (() => {
-              const diff = Math.floor((Date.now() - new Date(g.lastPlayed)) / 86400000);
-              if (diff === 0) return 'Today';
-              if (diff === 1) return 'Yesterday';
-              if (diff < 7)  return `${diff}d ago`;
-              if (diff < 30) return `${Math.floor(diff/7)}w ago`;
-              return `${Math.floor(diff/30)}mo ago`;
-            })() : '';
-
-            return `
-              <div class="recent-row">
-                <img src="${MEDIA}${g.imageIcon}" alt="" class="game-icon object-cover"
-                  onerror="this.style.background='#2a475e'" />
-                <div style="flex:1;min-width:0;">
-                  <div class="game-title">${g.title}</div>
-                  <div class="game-sub">${g.consoleName}${lastPlayed ? ' · ' + lastPlayed : ''}</div>
-                </div>
-                ${badge}
-              </div>`;
-          }).join('');
+          document.getElementById('ra-recent').innerHTML = recent.map(renderRecentRow).join('');
         }
 
       } catch (e) {

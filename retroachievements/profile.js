@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, Trophy, Crown, Lock, Unlock, AlertTriangle, Flame, Feather, Medal, ShieldOff, CircleDashed } from 'lucide-react';
 
@@ -39,10 +39,42 @@ const getMediaUrl = (path) => {
   return `${MEDIA_URL}${path.startsWith('/') ? path : '/' + path}`;
 };
 
+const TILDE_TAG_COLORS = {
+  'Homebrew':  { bg: 'rgba(102,192,244,0.08)', border: 'rgba(102,192,244,0.3)', color: '#66c0f4' },
+  'Demo':      { bg: 'rgba(87,203,222,0.08)',  border: 'rgba(87,203,222,0.3)',  color: '#57cbde' },
+  'Prototype': { bg: 'rgba(143,152,160,0.08)', border: 'rgba(143,152,160,0.3)', color: '#8f98a0' },
+  'Hack':      { bg: 'rgba(255,107,107,0.08)', border: 'rgba(255,107,107,0.3)', color: '#ff6b6b' },
+};
+
 const parseTitle = (title) => {
-  const match = title?.match(/^(.+?)\s*\[Subset\s*[-–]\s*(.+?)\]$/);
-  if (match) return { baseTitle: match[1].trim(), subsetName: match[2].trim(), isSubset: true };
-  return { baseTitle: title, subsetName: null, isSubset: false };
+  if (!title) return { baseTitle: title, subsetName: null, isSubset: false, tags: [] };
+
+  // Extract ~Tag~ prefixes (supports multiple tags e.g. ~Homebrew~ ~Demo~)
+  const tags = [];
+  const withoutTags = title.replace(/~([^~]+)~\s*/g, (_, tag) => { tags.push(tag); return ''; }).trim();
+
+  // Check for subset suffix [Subset - Name]
+  const subsetMatch = withoutTags.match(/^(.+?)\s*\[Subset\s*[-–]\s*(.+?)\]$/);
+  if (subsetMatch) {
+    return { baseTitle: subsetMatch[1].trim(), subsetName: subsetMatch[2].trim(), isSubset: true, tags };
+  }
+
+  return { baseTitle: withoutTags, subsetName: null, isSubset: false, tags };
+};
+
+const renderTildeTags = (tags) => {
+  if (!tags || tags.length === 0) return null;
+  return tags.map(tag => {
+    const style = TILDE_TAG_COLORS[tag] || TILDE_TAG_COLORS['Prototype'];
+    return (
+      <span key={tag} style={{
+        fontSize: '7px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.07em',
+        padding: '1px 4px', borderRadius: '2px',
+        border: `1px solid ${style.border}`, background: style.bg, color: style.color,
+        flexShrink: 0,
+      }}>{tag}</span>
+    );
+  });
 };
 
 // --- Data Transformation Layer ---
@@ -57,6 +89,7 @@ const transformData = (data) => {
   const mostRecentGame = data.mostRecentGame ? {
     id: data.mostRecentGame.gameId,
     title: data.mostRecentGame.title,
+    ...parseTitle(data.mostRecentGame.title),
     console: data.mostRecentGame.consoleName,
     icon: getMediaUrl(data.mostRecentGame.imageIcon),
     timeAgo: formatTimeAgo(data.mostRecentGame.lastPlayed, refTime)
@@ -142,6 +175,7 @@ const transformData = (data) => {
         game.isSubset = !!details.parentGameId || parsed.isSubset;
         game.baseTitle = parsed.baseTitle;
         game.subsetName = parsed.subsetName;
+        game.tags = parsed.tags;
 
         // Game metadata
         game.genre = details.genre || null;
@@ -210,23 +244,20 @@ const transformData = (data) => {
     ? ((beatenGamesCount / startedGamesCount) * 100).toFixed(2) + "%" 
     : "0.00%";
 
-  // Time-based points calculation
-  let points7Days = 0;
-  let points30Days = 0;
-  
-  if (Array.isArray(data.recentAchievements)) {
-      const sevenDaysMs = 7 * 24 * 60 * 60 * 1000;
+  // Time-based points — pre-computed by pipeline and stored in profile.json
+  // Falls back to deriving from recentAchievements if old data.json format is used
+  let points7Days  = data.points7Days  ?? 0;
+  let points30Days = data.points30Days ?? 0;
+
+  if (!data.points7Days && Array.isArray(data.recentAchievements)) {
+      const sevenDaysMs  = 7  * 24 * 60 * 60 * 1000;
       const thirtyDaysMs = 30 * 24 * 60 * 60 * 1000;
-      
       data.recentAchievements.forEach(ach => {
           const achDate = new Date(ach.Date || ach.dateEarned || ach.date || 0).getTime();
           const pts = ach.Points || ach.points || 0;
-          
           if (refTimeMs - achDate <= thirtyDaysMs) {
               points30Days += pts;
-              if (refTimeMs - achDate <= sevenDaysMs) {
-                  points7Days += pts;
-              }
+              if (refTimeMs - achDate <= sevenDaysMs) points7Days += pts;
           }
       });
   }
@@ -407,6 +438,7 @@ const GameCard = ({ game }) => {
                   Subset
                 </span>
               )}
+              {renderTildeTags(game.tags)}
             </div>
             {game.isSubset && game.subsetName && (
               <span className="text-[10px] text-[#c8a84b] truncate">{game.subsetName}</span>
@@ -684,9 +716,28 @@ const GameCard = ({ game }) => {
 
 // ── ActivityTab Component ──────────────────────────────────────────────────
 
-const ActivityTab = ({ achievements, refTime }) => {
+const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalChunks, hasMore, loadingMore, onLoadMore }) => {
   const [selectedDay, setSelectedDay] = useState(null);
   const [collapsedDays, setCollapsedDays] = useState(new Set());
+
+  const sentinelRef = useRef(null);
+  const onLoadMoreRef = useRef(onLoadMore);
+  useEffect(() => { onLoadMoreRef.current = onLoadMore; }, [onLoadMore]);
+  useEffect(() => {
+    if (!sentinelRef.current || !hasMore || loadingMore) return;
+    const observer = new IntersectionObserver(
+      (entries) => { if (entries[0].isIntersecting) onLoadMoreRef.current(); },
+      { rootMargin: '300px' }
+    );
+    observer.observe(sentinelRef.current);
+    return () => observer.disconnect();
+  }, [hasMore, loadingMore, loadedChunks]);
+
+  // Auto-load chunk when a clicked heatmap day isn't in the loaded data yet
+  useEffect(() => {
+    if (!selectedDay || !heatmapData[selectedDay] || dayMap[selectedDay] || !hasMore || loadingMore) return;
+    onLoadMoreRef.current();
+  }, [selectedDay, dayMap, hasMore, loadingMore]);
 
   const toggleDay = (day) => setCollapsedDays(prev => {
     const next = new Set(prev);
@@ -707,7 +758,7 @@ const ActivityTab = ({ achievements, refTime }) => {
     return map;
   }, [achievements]);
 
-  const maxPoints = useMemo(() => Math.max(1, ...Object.values(dayMap).map(d => d.points)), [dayMap]);
+  const maxPoints = useMemo(() => Math.max(1, ...Object.values(heatmapData).map(d => d.points || 0)), [heatmapData]);
 
   // Build 365-day grid ending on ref date
   const refDate = refTime ? new Date(refTime) : new Date();
@@ -741,9 +792,9 @@ const ActivityTab = ({ achievements, refTime }) => {
   }, [weeks]);
 
   const getColor = (key) => {
-    const d = dayMap[key];
+    const d = heatmapData[key];
     if (!d) return '#101214';
-    const ratio = d.points / maxPoints;
+    const ratio = (d.points || 0) / maxPoints;
     if (ratio >= 0.8) return '#e5b143';
     if (ratio >= 0.5) return '#66c0f4';
     if (ratio >= 0.25) return '#2a6b9e';
@@ -796,7 +847,7 @@ const ActivityTab = ({ achievements, refTime }) => {
         <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 mb-3">
           <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0"></span>
           <span className="text-[13px] text-white tracking-wide uppercase font-medium flex items-center gap-2"><Activity size={15} className="text-[#66c0f4]" /> Activity</span>
-          <span className="text-[10px] text-[#546270] ml-auto hidden sm:block">1 year · {achievements.length} achievements · click a day to filter</span>
+          <span className="text-[10px] text-[#546270] ml-auto hidden sm:block">{loadedChunks < totalChunks ? `~${loadedChunks * 3} months` : '1 year'} · {achievements.length} achievements · click a day to filter</span>
           <span className="text-[10px] text-[#546270] ml-auto sm:hidden">{achievements.length} achievements</span>
         </div>
 
@@ -826,8 +877,8 @@ const ActivityTab = ({ achievements, refTime }) => {
                       <div
                         key={key}
                         onClick={() => setSelectedDay(selectedDay === key ? null : key)}
-                        title={`${key}${dayMap[key] ? ` · ${dayMap[key].count} achievements · ${dayMap[key].points} pts` : ''}`}
-                        style={{ height: '12px', borderRadius: '1px', background: getColor(key), cursor: dayMap[key] ? 'pointer' : 'default', outline: selectedDay === key ? '2px solid #66c0f4' : 'none' }}
+                        title={`${key}${heatmapData[key] ? ` · ${heatmapData[key].count} achievements · ${heatmapData[key].points} pts` : ''}`}
+                        style={{ height: '12px', borderRadius: '1px', background: getColor(key), cursor: heatmapData[key] ? 'pointer' : 'default', outline: selectedDay === key ? '2px solid #66c0f4' : 'none' }}
                       />
                     ))}
                   </div>
@@ -859,11 +910,27 @@ const ActivityTab = ({ achievements, refTime }) => {
           <span className="w-[3px] h-[14px] bg-[#e5b143] rounded-[1px] shrink-0"></span>
           <span className="text-[13px] text-white tracking-wide uppercase font-medium flex items-center gap-2"><Trophy size={15} className="text-[#e5b143]" /> Recent Unlocks</span>
           <span className="text-[10px] text-[#546270] ml-auto">
-            {selectedDay ? `${fmtDay(selectedDay)} · ${dayMap[selectedDay]?.count || 0} achievements` : `${achievements.length} total`}
+            {selectedDay
+              ? `${fmtDay(selectedDay)} · ${dayMap[selectedDay]?.count || 0} achievements`
+              : loadedChunks < totalChunks
+              ? `Last ~${loadedChunks * 3} months · ${achievements.length} loaded`
+              : `${achievements.length} total`}
           </span>
         </div>
 
-        {timelineGroups.length === 0 ? (
+        {selectedDay && heatmapData[selectedDay] && !dayMap[selectedDay] ? (
+          <div className="flex flex-col gap-2 py-2">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex items-center gap-2 p-2 rounded-[2px] border border-[#2a475e] bg-[#1b2838]">
+                <div className="shimmer w-8 h-8 rounded-[2px] flex-shrink-0" />
+                <div className="flex-1 flex flex-col gap-1.5">
+                  <div className="shimmer h-2.5 w-3/4 rounded" />
+                  <div className="shimmer h-2 w-1/2 rounded" />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : timelineGroups.length === 0 ? (
           <div className="text-[#8f98a0] text-[11px] py-4 italic text-center">No achievements unlocked in the last 180 days.</div>
         ) : (
           <div className="flex flex-col gap-0">
@@ -941,6 +1008,33 @@ const ActivityTab = ({ achievements, refTime }) => {
                                 <span className="text-[9px] font-bold text-[#66c0f4] bg-[#101214] border border-[#323f4c] px-1.5 py-[1px] rounded-sm shrink-0">{ach.points} pts</span>
                                 {ratio > 1 && rarityBadge}
                                 {ach.hardcoreMode && <span className="text-[9px] text-[#ff6b6b] border border-[#ff6b6b]/30 bg-[#101214]/60 px-1.5 py-[1px] rounded-sm font-semibold uppercase tracking-wider flex items-center gap-1 shrink-0"><Flame size={8} /> HC</span>}
+                                {ach.type === 'progression' && (
+                                  <span className="pop-wrap">
+                                    <Trophy size={11} className="text-[#e5b143]" />
+                                    <span className="pop-box">
+                                      <div className="pop-name" style={{color:'#e5b143'}}>Progression</div>
+                                      <div className="pop-sub">Required to complete the game</div>
+                                    </span>
+                                  </span>
+                                )}
+                                {ach.type === 'win_condition' && (
+                                  <span className="pop-wrap">
+                                    <Crown size={11} className="text-[#ff6b6b]" />
+                                    <span className="pop-box">
+                                      <div className="pop-name" style={{color:'#ff6b6b'}}>Win Condition</div>
+                                      <div className="pop-sub">Triggers game completion</div>
+                                    </span>
+                                  </span>
+                                )}
+                                {ach.type === 'missable' && (
+                                  <span className="pop-wrap">
+                                    <AlertTriangle size={11} className="text-[#ff9800]" />
+                                    <span className="pop-box">
+                                      <div className="pop-name" style={{color:'#ff9800'}}>Missable</div>
+                                      <div className="pop-sub">Can be permanently missed</div>
+                                    </span>
+                                  </span>
+                                )}
                               </div>
                               <p className="text-[9px] text-[#8f98a0] truncate">{ach.description}</p>
                             </div>
@@ -955,6 +1049,35 @@ const ActivityTab = ({ achievements, refTime }) => {
               );
             })}
           </div>
+        )}
+
+        {/* ── Load-more sentinel ── */}
+        {!selectedDay && (
+          hasMore ? (
+            <div ref={sentinelRef} className="flex flex-col gap-2 mt-4">
+              {loadingMore ? (
+                <>
+                  {[...Array(2)].map((_, i) => (
+                    <div key={i} className="flex items-center gap-2 p-2 rounded-[2px] border border-[#2a475e] bg-[#1b2838]">
+                      <div className="shimmer w-8 h-8 rounded-[2px] flex-shrink-0" />
+                      <div className="flex-1 flex flex-col gap-1.5">
+                        <div className="shimmer h-2.5 w-3/4 rounded" />
+                        <div className="shimmer h-2 w-1/2 rounded" />
+                      </div>
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <div className="text-center py-2 text-[9px] text-[#546270] uppercase tracking-wider">
+                  Showing ~{loadedChunks * 3} of 12 months — scroll to load more
+                </div>
+              )}
+            </div>
+          ) : achievements.length > 0 ? (
+            <div className="text-center py-3 mt-2 border-t border-[#1e2a35] text-[9px] text-[#546270] uppercase tracking-wider">
+              {achievements.length} achievements · all 12 months loaded
+            </div>
+          ) : null
         )}
       </div>
     </div>
@@ -1092,13 +1215,15 @@ const ActivitySkeleton = () => (
 
 export default function App() {
   // ── Split data state ─────────────────────────────────────
-  const [profileData,      setProfileData]      = useState(null); // profile.json
-  const [achievementsData, setAchievementsData] = useState(null); // achievements.json
-  const [gamesData,        setGamesData]        = useState(null); // games.json
+  const [profileData, setProfileData] = useState(null); // profile.json
+  const [gamesData,   setGamesData]   = useState(null); // games.json
 
-  const [loadingProfile,      setLoadingProfile]      = useState(true);
-  const [loadingAchievements, setLoadingAchievements] = useState(false);
-  const [loadingGames,        setLoadingGames]        = useState(false);
+  const TOTAL_ACH_CHUNKS = 4;
+  const [achievementChunks, setAchievementChunks] = useState(() => Array(TOTAL_ACH_CHUNKS).fill(null));
+  const [loadingChunkIdx,   setLoadingChunkIdx]   = useState(null);
+
+  const [loadingProfile, setLoadingProfile] = useState(true);
+  const [loadingGames,   setLoadingGames]   = useState(false);
   const [error, setError] = useState(null);
 
   const VALID_TABS = ['recent', 'progress', 'activity', 'backlog'];
@@ -1114,6 +1239,22 @@ export default function App() {
   const [watchlistStatusFilter, setWatchlistStatusFilter] = useState('all');
   const [watchlistGrouping, setWatchlistGrouping] = useState('none');
   const [collapsedGroups, setCollapsedGroups] = useState(new Set());
+
+  const loadNextChunk = () => {
+    const nextIdx = achievementChunks.findIndex(c => c === null);
+    if (nextIdx === -1 || loadingChunkIdx !== null) return;
+    setLoadingChunkIdx(nextIdx);
+    fetch(`../data/retroachievements/achievements_${nextIdx + 1}.json`)
+      .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+      .then(data => {
+        setAchievementChunks(prev => { const n = [...prev]; n[nextIdx] = data.recentAchievements || []; return n; });
+        setLoadingChunkIdx(null);
+      })
+      .catch(() => {
+        setAchievementChunks(prev => { const n = [...prev]; n[nextIdx] = []; return n; });
+        setLoadingChunkIdx(null);
+      });
+  };
 
   const setTab = (tab) => {
     setActiveTab(tab);
@@ -1134,14 +1275,10 @@ export default function App() {
       .catch(err => { setError(err.message); setLoadingProfile(false); });
   }, []);
 
-  // ── Fetch achievements.json when Activity tab is opened ───
+  // ── Load first achievement chunk when Activity tab is opened ──
   useEffect(() => {
-    if (activeTab === 'activity' && !achievementsData && !loadingAchievements) {
-      setLoadingAchievements(true);
-      fetch('../data/retroachievements/achievements.json')
-        .then(r => { if (!r.ok) throw new Error('Failed to load achievements.json'); return r.json(); })
-        .then(data => { setAchievementsData(data); setLoadingAchievements(false); })
-        .catch(err => { console.error(err); setLoadingAchievements(false); });
+    if (activeTab === 'activity' && achievementChunks[0] === null && loadingChunkIdx === null) {
+      loadNextChunk();
     }
   }, [activeTab]);
 
@@ -1156,17 +1293,27 @@ export default function App() {
     }
   }, [activeTab]);
 
-  // ── Merge all three into the shape transformData expects ──
+  // ── Merge loaded achievement chunks (newest first) ────────
+  const allLoadedAchievements = useMemo(() => {
+    return achievementChunks
+      .filter(c => c !== null)
+      .flat()
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
+  }, [achievementChunks]);
+
+  const loadedChunkCount = achievementChunks.filter(c => c !== null).length;
+
+  // ── Merge profile + games into the shape transformData expects ──
   const rawData = useMemo(() => {
     if (!profileData) return null;
     return {
       ...profileData,
-      recentAchievements:   achievementsData?.recentAchievements   ?? [],
-      detailedGameProgress: gamesData?.detailedGameProgress        ?? {},
+      recentAchievements:   [],  // loaded separately in chunks for Activity tab
+      detailedGameProgress: gamesData?.detailedGameProgress ?? {},
     };
-  }, [profileData, achievementsData, gamesData]);
+  }, [profileData, gamesData]);
 
-  const { profile: PROFILE_DATA, games: ALL_GAMES, backlog: BACKLOG, recentAchievements: RECENT_ACHIEVEMENTS } = useMemo(() => transformData(rawData), [rawData]);
+  const { profile: PROFILE_DATA, games: ALL_GAMES, backlog: BACKLOG } = useMemo(() => transformData(rawData), [rawData]);
 
   useEffect(() => {
     const onScroll = () => setShowScrollTop(window.scrollY > 400);
@@ -1304,11 +1451,18 @@ export default function App() {
                       <img src={PROFILE_DATA.mostRecentGame.icon} alt="Icon" className="w-full h-full object-cover"/>
                     </a>
                     <div className="flex-1 min-w-0 flex flex-col justify-center">
-                      <div className="flex justify-between items-start mb-0.5">
-                        <a href={`${SITE_URL}/game/${PROFILE_DATA.mostRecentGame.id}`} target="_blank" rel="noreferrer" className="text-[#c6d4df] hover:text-[#66c0f4] font-medium text-[14px] truncate leading-tight block">
-                          {PROFILE_DATA.mostRecentGame.title}
+                      <div className="flex items-center gap-1.5 mb-0.5 flex-wrap">
+                        <a href={`${SITE_URL}/game/${PROFILE_DATA.mostRecentGame.id}`} target="_blank" rel="noreferrer" className="text-[#c6d4df] hover:text-[#66c0f4] font-medium text-[14px] truncate leading-tight">
+                          {PROFILE_DATA.mostRecentGame.baseTitle}
                         </a>
+                        {PROFILE_DATA.mostRecentGame.isSubset && (
+                          <span className="text-[7px] font-bold uppercase tracking-[0.07em] px-1 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>
+                        )}
+                        {renderTildeTags(PROFILE_DATA.mostRecentGame.tags)}
                       </div>
+                      {PROFILE_DATA.mostRecentGame.isSubset && (
+                        <div className="text-[10px] text-[#c8a84b] mb-0.5 truncate">{PROFILE_DATA.mostRecentGame.subsetName}</div>
+                      )}
                       <div className="text-[10px] mb-1 flex items-center gap-1.5">
                          <span className="text-[#66c0f4]">{PROFILE_DATA.mostRecentGame.console}</span>
                          <span className="text-[#546270]">•</span>
@@ -1539,9 +1693,18 @@ export default function App() {
 
         <div className="flex flex-col gap-3">
           {activeTab === 'activity' ? (
-            loadingAchievements
+            loadedChunkCount === 0 && loadingChunkIdx !== null
               ? <ActivitySkeleton />
-              : <ActivityTab achievements={RECENT_ACHIEVEMENTS} refTime={rawData?.metadata?.extractionTimestamp} />
+              : <ActivityTab
+                  achievements={allLoadedAchievements}
+                  refTime={rawData?.metadata?.extractionTimestamp}
+                  heatmapData={rawData?.activityHeatmap ?? {}}
+                  loadedChunks={loadedChunkCount}
+                  totalChunks={TOTAL_ACH_CHUNKS}
+                  hasMore={loadedChunkCount < TOTAL_ACH_CHUNKS}
+                  loadingMore={loadingChunkIdx !== null}
+                  onLoadMore={loadNextChunk}
+                />
           ) : activeTab === 'backlog' ? (
             <>{(() => {
               // ── helpers ──────────────────────────────────────────────
@@ -1554,7 +1717,16 @@ export default function App() {
 
               const filtered = BACKLOG.games.filter(g => {
                 const status = getStatus(g);
-                if (watchlistSearch && !(g.baseTitle || g.title).toLowerCase().includes(watchlistSearch.toLowerCase())) return false;
+                if (watchlistSearch) {
+                  const q = watchlistSearch.toLowerCase();
+                  const searchable = [
+                    g.baseTitle || g.title,
+                    g.isSubset ? 'subset' : null,
+                    g.subsetName,
+                    ...(g.tags || []),
+                  ].filter(Boolean).join(' ').toLowerCase();
+                  if (!searchable.includes(q)) return false;
+                }
                 if (watchlistStatusFilter !== 'all' && status !== watchlistStatusFilter) return false;
                 return true;
               });
@@ -1606,6 +1778,7 @@ export default function App() {
                       <div className="flex items-center gap-1.5 flex-wrap">
                         <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer" className="text-[11px] text-[#c6d4df] font-medium hover:text-[#66c0f4] transition-colors truncate leading-tight">{game.baseTitle || game.title}</a>
                         {game.isSubset && <span className="text-[7px] font-bold uppercase tracking-[0.07em] px-1 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>}
+                        {renderTildeTags(game.tags)}
                       </div>
                       {game.isSubset && game.subsetName && <span className="text-[9px] text-[#c8a84b] truncate block">{game.subsetName}</span>}
                       {watchlistGrouping === 'status' && <span className="text-[9px] text-[#546270]">{game.console}</span>}

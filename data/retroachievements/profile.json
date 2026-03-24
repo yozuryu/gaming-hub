@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-03-23T15:48:12.305Z"
+        "extractionTimestamp": "2026-03-24T07:47:48.311Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,13 +8,13 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Playing Pokémon Emerald Version [Subset - Professor Oak Challenge]",
+        "richPresenceMsg": "Caught: 46/212 | Badges: 2/8",
         "lastGameId": 24186,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 1298,
+        "totalPoints": 1315,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 4353,
+        "totalTruePoints": 4420,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -33,31 +33,31 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Playing Pokémon Emerald Version [Subset - Professor Oak Challenge]",
-        "richPresenceMsgDate": "2026-03-23 15:47:22",
+        "richPresenceMsg": "Caught: 46/212 | Badges: 2/8",
+        "richPresenceMsgDate": "2026-03-24 00:58:50",
         "lastGameId": 24186,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 1298,
+        "totalPoints": 1315,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 4353,
+        "totalTruePoints": 4420,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 59867,
+        "rank": 59457,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 134997,
+        "totalRanked": 135151,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 1298,
+        "points": 1315,
         "softcorePoints": 1
     },
     "pageAwards": {
@@ -108,7 +108,7 @@
             "imageTitle": "/Images/072238.png",
             "imageIngame": "/Images/072240.png",
             "imageBoxArt": "/Images/072317.png",
-            "lastPlayed": "2026-03-23 15:47:22",
+            "lastPlayed": "2026-03-24 00:58:50",
             "achievementsTotal": 221,
             "numPossibleAchievements": 221,
             "possibleScore": 468,
@@ -116,6 +116,78 @@
             "scoreAchieved": 87,
             "numAchievedHardcore": 47,
             "scoreAchievedHardcore": 87
+        },
+        {
+            "gameId": 14716,
+            "consoleId": 24,
+            "consoleName": "Pokemon Mini",
+            "title": "Pokémon Race mini",
+            "imageIcon": "/Images/121547.png",
+            "imageTitle": "/Images/028026.png",
+            "imageIngame": "/Images/028027.png",
+            "imageBoxArt": "/Images/028028.png",
+            "lastPlayed": "2026-03-24 00:56:46",
+            "achievementsTotal": 39,
+            "numPossibleAchievements": 39,
+            "possibleScore": 539,
+            "numAchieved": 0,
+            "scoreAchieved": 0,
+            "numAchievedHardcore": 0,
+            "scoreAchievedHardcore": 0
+        },
+        {
+            "gameId": 11781,
+            "consoleId": 24,
+            "consoleName": "Pokemon Mini",
+            "title": "Pokémon Party mini",
+            "imageIcon": "/Images/122876.png",
+            "imageTitle": "/Images/110720.png",
+            "imageIngame": "/Images/110721.png",
+            "imageBoxArt": "/Images/110718.png",
+            "lastPlayed": "2026-03-24 00:50:39",
+            "achievementsTotal": 11,
+            "numPossibleAchievements": 11,
+            "possibleScore": 80,
+            "numAchieved": 0,
+            "scoreAchieved": 0,
+            "numAchievedHardcore": 0,
+            "scoreAchievedHardcore": 0
+        },
+        {
+            "gameId": 14717,
+            "consoleId": 24,
+            "consoleName": "Pokemon Mini",
+            "title": "Pokémon Shock Tetris",
+            "imageIcon": "/Images/035887.png",
+            "imageTitle": "/Images/035812.png",
+            "imageIngame": "/Images/035813.png",
+            "imageBoxArt": "/Images/035814.png",
+            "lastPlayed": "2026-03-24 00:41:38",
+            "achievementsTotal": 114,
+            "numPossibleAchievements": 114,
+            "possibleScore": 645,
+            "numAchieved": 0,
+            "scoreAchieved": 0,
+            "numAchievedHardcore": 0,
+            "scoreAchievedHardcore": 0
+        },
+        {
+            "gameId": 17393,
+            "consoleId": 24,
+            "consoleName": "Pokemon Mini",
+            "title": "~Homebrew~ ~Demo~ Pokémon Orange",
+            "imageIcon": "/Images/045230.png",
+            "imageTitle": "/Images/045227.png",
+            "imageIngame": "/Images/045228.png",
+            "imageBoxArt": "/Images/047400.png",
+            "lastPlayed": "2026-03-24 00:33:09",
+            "achievementsTotal": 6,
+            "numPossibleAchievements": 6,
+            "possibleScore": 6,
+            "numAchieved": 0,
+            "scoreAchieved": 0,
+            "numAchievedHardcore": 0,
+            "scoreAchievedHardcore": 0
         },
         {
             "gameId": 16452,
@@ -126,14 +198,14 @@
             "imageTitle": "/Images/110687.png",
             "imageIngame": "/Images/110689.png",
             "imageBoxArt": "/Images/110688.png",
-            "lastPlayed": "2026-03-23 15:46:25",
+            "lastPlayed": "2026-03-23 16:51:59",
             "achievementsTotal": 80,
             "numPossibleAchievements": 80,
             "possibleScore": 475,
-            "numAchieved": 15,
-            "scoreAchieved": 60,
-            "numAchievedHardcore": 15,
-            "scoreAchievedHardcore": 60
+            "numAchieved": 19,
+            "scoreAchieved": 77,
+            "numAchievedHardcore": 19,
+            "scoreAchievedHardcore": 77
         },
         {
             "gameId": 3572,
@@ -296,78 +368,6 @@
             "scoreAchieved": 0,
             "numAchievedHardcore": 0,
             "scoreAchievedHardcore": 0
-        },
-        {
-            "gameId": 11240,
-            "consoleId": 12,
-            "consoleName": "PlayStation",
-            "title": "Castlevania: Symphony of the Night",
-            "imageIcon": "/Images/085764.png",
-            "imageTitle": "/Images/072391.png",
-            "imageIngame": "/Images/072392.png",
-            "imageBoxArt": "/Images/072390.png",
-            "lastPlayed": "2026-03-08 02:00:50",
-            "achievementsTotal": 105,
-            "numPossibleAchievements": 105,
-            "possibleScore": 805,
-            "numAchieved": 0,
-            "scoreAchieved": 0,
-            "numAchievedHardcore": 0,
-            "scoreAchievedHardcore": 0
-        },
-        {
-            "gameId": 11340,
-            "consoleId": 12,
-            "consoleName": "PlayStation",
-            "title": "Threads of Fate",
-            "imageIcon": "/Images/097437.png",
-            "imageTitle": "/Images/035025.png",
-            "imageIngame": "/Images/035026.png",
-            "imageBoxArt": "/Images/073886.png",
-            "lastPlayed": "2026-03-08 01:44:26",
-            "achievementsTotal": 108,
-            "numPossibleAchievements": 108,
-            "possibleScore": 846,
-            "numAchieved": 1,
-            "scoreAchieved": 0,
-            "numAchievedHardcore": 1,
-            "scoreAchievedHardcore": 0
-        },
-        {
-            "gameId": 11334,
-            "consoleId": 12,
-            "consoleName": "PlayStation",
-            "title": "Rayman 2: The Great Escape",
-            "imageIcon": "/Images/082262.png",
-            "imageTitle": "/Images/091521.png",
-            "imageIngame": "/Images/091520.png",
-            "imageBoxArt": "/Images/091522.png",
-            "lastPlayed": "2026-03-08 01:41:24",
-            "achievementsTotal": 69,
-            "numPossibleAchievements": 69,
-            "possibleScore": 527,
-            "numAchieved": 0,
-            "scoreAchieved": 0,
-            "numAchievedHardcore": 0,
-            "scoreAchievedHardcore": 0
-        },
-        {
-            "gameId": 19021,
-            "consoleId": 21,
-            "consoleName": "PlayStation 2",
-            "title": ".hack//Infection",
-            "imageIcon": "/Images/061146.png",
-            "imageTitle": "/Images/055978.png",
-            "imageIngame": "/Images/055979.png",
-            "imageBoxArt": "/Images/055934.png",
-            "lastPlayed": "2026-03-01 07:26:12",
-            "achievementsTotal": 40,
-            "numPossibleAchievements": 40,
-            "possibleScore": 210,
-            "numAchieved": 1,
-            "scoreAchieved": 1,
-            "numAchievedHardcore": 0,
-            "scoreAchievedHardcore": 0
         }
     ],
     "gameAwardsAndProgress": {
@@ -381,9 +381,9 @@
                 "consoleId": 41,
                 "consoleName": "PlayStation Portable",
                 "maxPossible": 80,
-                "numAwarded": 15,
-                "numAwardedHardcore": 15,
-                "mostRecentAwardedDate": "2026-03-19T14:18:20+00:00",
+                "numAwarded": 19,
+                "numAwardedHardcore": 19,
+                "mostRecentAwardedDate": "2026-03-23T16:51:59+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -962,8 +962,8 @@
         ]
     },
     "wantToPlayList": {
-        "count": 401,
-        "total": 401,
+        "count": 413,
+        "total": 413,
         "results": [
             {
                 "id": 27,
@@ -2766,6 +2766,33 @@
                 "achievementsPublished": 66
             },
             {
+                "id": 10432,
+                "title": "Crash Bandicoot 2: Cortex Strikes Back",
+                "consoleId": 12,
+                "consoleName": "PlayStation",
+                "imageIcon": "/Images/081158.png",
+                "pointsTotal": 852,
+                "achievementsPublished": 80
+            },
+            {
+                "id": 10433,
+                "title": "Crash Bandicoot 3: Warped",
+                "consoleId": 12,
+                "consoleName": "PlayStation",
+                "imageIcon": "/Images/081159.png",
+                "pointsTotal": 762,
+                "achievementsPublished": 112
+            },
+            {
+                "id": 10434,
+                "title": "Crash Bandicoot",
+                "consoleId": 12,
+                "consoleName": "PlayStation",
+                "imageIcon": "/Images/081157.png",
+                "pointsTotal": 460,
+                "achievementsPublished": 46
+            },
+            {
                 "id": 10438,
                 "title": "Crash Team Racing",
                 "consoleId": 12,
@@ -2791,6 +2818,15 @@
                 "imageIcon": "/Images/103151.png",
                 "pointsTotal": 2000,
                 "achievementsPublished": 106
+            },
+            {
+                "id": 10536,
+                "title": "Suikoden [Subset - Bonus]",
+                "consoleId": 12,
+                "consoleName": "PlayStation",
+                "imageIcon": "/Images/098146.png",
+                "pointsTotal": 1245,
+                "achievementsPublished": 100
             },
             {
                 "id": 10569,
@@ -3747,6 +3783,15 @@
                 "achievementsPublished": 31
             },
             {
+                "id": 16209,
+                "title": "~Homebrew~ Celeste Classic",
+                "consoleId": 5,
+                "consoleName": "Game Boy Advance",
+                "imageIcon": "/Images/088036.png",
+                "pointsTotal": 155,
+                "achievementsPublished": 39
+            },
+            {
                 "id": 16211,
                 "title": "Pokémon White Version",
                 "consoleId": 18,
@@ -3909,6 +3954,15 @@
                 "achievementsPublished": 12
             },
             {
+                "id": 17393,
+                "title": "~Homebrew~ ~Demo~ Pokémon Orange",
+                "consoleId": 24,
+                "consoleName": "Pokemon Mini",
+                "imageIcon": "/Images/045230.png",
+                "pointsTotal": 6,
+                "achievementsPublished": 6
+            },
+            {
                 "id": 17411,
                 "title": "Atlantis: The Lost Empire",
                 "consoleId": 12,
@@ -4033,6 +4087,15 @@
                 "imageIcon": "/Images/123012.png",
                 "pointsTotal": 0,
                 "achievementsPublished": 0
+            },
+            {
+                "id": 18320,
+                "title": "~Prototype~ Suikoden II [E3 Preview]",
+                "consoleId": 12,
+                "consoleName": "PlayStation",
+                "imageIcon": "/Images/093869.png",
+                "pointsTotal": 40,
+                "achievementsPublished": 6
             },
             {
                 "id": 18472,
@@ -4395,6 +4458,15 @@
                 "achievementsPublished": 62
             },
             {
+                "id": 20352,
+                "title": "Suikoden II [Subset - Bonus]",
+                "consoleId": 12,
+                "consoleName": "PlayStation",
+                "imageIcon": "/Images/098145.png",
+                "pointsTotal": 1610,
+                "achievementsPublished": 175
+            },
+            {
                 "id": 20626,
                 "title": "Tales of Rebirth",
                 "consoleId": 21,
@@ -4440,6 +4512,15 @@
                 "achievementsPublished": 82
             },
             {
+                "id": 21740,
+                "title": "Crash Bandicoot 3: Warped [Subset - Developer Times]",
+                "consoleId": 12,
+                "consoleName": "PlayStation",
+                "imageIcon": "/Images/107336.png",
+                "pointsTotal": 855,
+                "achievementsPublished": 30
+            },
+            {
                 "id": 22488,
                 "title": "Sword Art Online: Infinity Moment",
                 "consoleId": 41,
@@ -4458,6 +4539,15 @@
                 "achievementsPublished": 221
             },
             {
+                "id": 24913,
+                "title": "~Homebrew~ Celeste Advance",
+                "consoleId": 5,
+                "consoleName": "Game Boy Advance",
+                "imageIcon": "/Images/117557.png",
+                "pointsTotal": 232,
+                "achievementsPublished": 20
+            },
+            {
                 "id": 25384,
                 "title": "Fate/stay night: Réalta Nua",
                 "consoleId": 21,
@@ -4474,6 +4564,15 @@
                 "imageIcon": "/Images/084497.png",
                 "pointsTotal": 0,
                 "achievementsPublished": 0
+            },
+            {
+                "id": 28162,
+                "title": "Mega Man Legends [Subset - Bonus]",
+                "consoleId": 12,
+                "consoleName": "PlayStation",
+                "imageIcon": "/Images/087597.png",
+                "pointsTotal": 150,
+                "achievementsPublished": 8
             },
             {
                 "id": 28265,
@@ -4573,18 +4672,27 @@
                 "imageIcon": "/Images/000001.png",
                 "pointsTotal": 0,
                 "achievementsPublished": 0
+            },
+            {
+                "id": 37787,
+                "title": "Threads of Fate [Subset - Monsters of Fate]",
+                "consoleId": 12,
+                "consoleName": "PlayStation",
+                "imageIcon": "/Images/123035.png",
+                "pointsTotal": 1305,
+                "achievementsPublished": 261
             }
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-03-19 14:18:20",
+        "date": "2026-03-23 16:51:59",
         "hardcoreMode": true,
-        "achievementId": 572194,
-        "title": "Cultivation Set 1",
-        "description": "Receive the reward for rescuing 15 people",
-        "badgeName": "649968",
-        "points": 5,
-        "trueRatio": 19,
+        "achievementId": 572172,
+        "title": "Quest: Yikes! Monster Mess",
+        "description": "Complete the Yikes! Monster Mess quest",
+        "badgeName": "649946",
+        "points": 3,
+        "trueRatio": 12,
         "type": null,
         "author": "Jamiras",
         "authorUlid": "01BJY8JSBTA7NVT0NYSVDCK5TY",
@@ -4592,8 +4700,8 @@
         "gameIcon": "/Images/123011.png",
         "gameId": 16452,
         "consoleName": "PlayStation Portable",
-        "cumulScore": 277,
-        "badgeUrl": "/Badge/649968.png",
+        "cumulScore": 294,
+        "badgeUrl": "/Badge/649946.png",
         "gameUrl": "/game/16452"
     },
     "mostRecentGame": {
@@ -4605,7 +4713,7 @@
         "imageTitle": "/Images/072238.png",
         "imageIngame": "/Images/072240.png",
         "imageBoxArt": "/Images/072317.png",
-        "lastPlayed": "2026-03-23 15:47:22",
+        "lastPlayed": "2026-03-24 00:58:50",
         "achievementsTotal": 221,
         "numPossibleAchievements": 221,
         "possibleScore": 468,
@@ -4613,5 +4721,369 @@
         "scoreAchieved": 87,
         "numAchievedHardcore": 47,
         "scoreAchievedHardcore": 87
+    },
+    "points7Days": 50,
+    "points30Days": 161,
+    "activityHeatmap": {
+        "2025-12-24": {
+            "points": 7,
+            "count": 3
+        },
+        "2025-12-27": {
+            "points": 5,
+            "count": 1
+        },
+        "2026-01-03": {
+            "points": 10,
+            "count": 2
+        },
+        "2026-01-10": {
+            "points": 5,
+            "count": 1
+        },
+        "2026-01-11": {
+            "points": 11,
+            "count": 3
+        },
+        "2026-01-14": {
+            "points": 7,
+            "count": 2
+        },
+        "2026-01-15": {
+            "points": 5,
+            "count": 1
+        },
+        "2026-01-17": {
+            "points": 2,
+            "count": 2
+        },
+        "2026-01-18": {
+            "points": 6,
+            "count": 6
+        },
+        "2026-01-20": {
+            "points": 7,
+            "count": 3
+        },
+        "2026-01-28": {
+            "points": 10,
+            "count": 8
+        },
+        "2026-01-29": {
+            "points": 14,
+            "count": 10
+        },
+        "2026-02-04": {
+            "points": 5,
+            "count": 5
+        },
+        "2026-02-14": {
+            "points": 2,
+            "count": 2
+        },
+        "2026-02-16": {
+            "points": 10,
+            "count": 5
+        },
+        "2026-02-18": {
+            "points": 2,
+            "count": 1
+        },
+        "2026-02-21": {
+            "points": 15,
+            "count": 7
+        },
+        "2026-02-22": {
+            "points": 10,
+            "count": 2
+        },
+        "2026-02-23": {
+            "points": 7,
+            "count": 4
+        },
+        "2026-02-24": {
+            "points": 2,
+            "count": 1
+        },
+        "2026-02-26": {
+            "points": 3,
+            "count": 1
+        },
+        "2026-02-27": {
+            "points": 5,
+            "count": 2
+        },
+        "2026-02-28": {
+            "points": 50,
+            "count": 18
+        },
+        "2026-03-01": {
+            "points": 39,
+            "count": 10
+        },
+        "2026-03-17": {
+            "points": 5,
+            "count": 2
+        },
+        "2026-03-19": {
+            "points": 33,
+            "count": 8
+        },
+        "2026-03-23": {
+            "points": 17,
+            "count": 4
+        },
+        "2025-09-26": {
+            "points": 37,
+            "count": 7
+        },
+        "2025-09-27": {
+            "points": 1,
+            "count": 1
+        },
+        "2025-09-28": {
+            "points": 20,
+            "count": 3
+        },
+        "2025-09-29": {
+            "points": 25,
+            "count": 4
+        },
+        "2025-10-08": {
+            "points": 1,
+            "count": 1
+        },
+        "2025-10-11": {
+            "points": 5,
+            "count": 1
+        },
+        "2025-10-12": {
+            "points": 9,
+            "count": 4
+        },
+        "2025-10-16": {
+            "points": 5,
+            "count": 1
+        },
+        "2025-10-17": {
+            "points": 3,
+            "count": 2
+        },
+        "2025-10-18": {
+            "points": 11,
+            "count": 5
+        },
+        "2025-10-20": {
+            "points": 4,
+            "count": 2
+        },
+        "2025-10-25": {
+            "points": 17,
+            "count": 4
+        },
+        "2025-11-02": {
+            "points": 5,
+            "count": 1
+        },
+        "2025-11-15": {
+            "points": 3,
+            "count": 2
+        },
+        "2025-11-16": {
+            "points": 4,
+            "count": 4
+        },
+        "2025-11-19": {
+            "points": 9,
+            "count": 4
+        },
+        "2025-11-23": {
+            "points": 2,
+            "count": 1
+        },
+        "2025-12-20": {
+            "points": 7,
+            "count": 2
+        },
+        "2025-06-29": {
+            "points": 10,
+            "count": 2
+        },
+        "2025-08-16": {
+            "points": 2,
+            "count": 1
+        },
+        "2025-08-17": {
+            "points": 11,
+            "count": 3
+        },
+        "2025-08-19": {
+            "points": 5,
+            "count": 1
+        },
+        "2025-08-20": {
+            "points": 11,
+            "count": 3
+        },
+        "2025-08-21": {
+            "points": 21,
+            "count": 4
+        },
+        "2025-08-22": {
+            "points": 30,
+            "count": 4
+        },
+        "2025-08-24": {
+            "points": 10,
+            "count": 1
+        },
+        "2025-08-31": {
+            "points": 22,
+            "count": 4
+        },
+        "2025-09-01": {
+            "points": 30,
+            "count": 8
+        },
+        "2025-09-08": {
+            "points": 10,
+            "count": 1
+        },
+        "2025-09-11": {
+            "points": 5,
+            "count": 1
+        },
+        "2025-09-12": {
+            "points": 10,
+            "count": 1
+        },
+        "2025-09-17": {
+            "points": 6,
+            "count": 2
+        },
+        "2025-09-18": {
+            "points": 16,
+            "count": 3
+        },
+        "2025-09-20": {
+            "points": 16,
+            "count": 3
+        },
+        "2025-09-22": {
+            "points": 55,
+            "count": 11
+        },
+        "2025-05-05": {
+            "points": 20,
+            "count": 3
+        },
+        "2025-05-07": {
+            "points": 1,
+            "count": 1
+        },
+        "2025-05-10": {
+            "points": 15,
+            "count": 2
+        },
+        "2025-05-11": {
+            "points": 5,
+            "count": 1
+        },
+        "2025-05-12": {
+            "points": 19,
+            "count": 4
+        },
+        "2025-05-18": {
+            "points": 18,
+            "count": 5
+        },
+        "2025-05-19": {
+            "points": 9,
+            "count": 5
+        },
+        "2025-05-20": {
+            "points": 2,
+            "count": 2
+        },
+        "2025-05-21": {
+            "points": 22,
+            "count": 7
+        },
+        "2025-05-22": {
+            "points": 2,
+            "count": 2
+        },
+        "2025-05-23": {
+            "points": 20,
+            "count": 3
+        },
+        "2025-05-24": {
+            "points": 8,
+            "count": 4
+        },
+        "2025-05-25": {
+            "points": 1,
+            "count": 1
+        },
+        "2025-05-30": {
+            "points": 3,
+            "count": 3
+        },
+        "2025-05-31": {
+            "points": 35,
+            "count": 10
+        },
+        "2025-06-01": {
+            "points": 23,
+            "count": 5
+        },
+        "2025-06-02": {
+            "points": 5,
+            "count": 5
+        },
+        "2025-06-03": {
+            "points": 1,
+            "count": 1
+        },
+        "2025-06-04": {
+            "points": 21,
+            "count": 5
+        },
+        "2025-06-05": {
+            "points": 11,
+            "count": 2
+        },
+        "2025-06-06": {
+            "points": 5,
+            "count": 1
+        },
+        "2025-06-07": {
+            "points": 35,
+            "count": 4
+        },
+        "2025-06-08": {
+            "points": 1,
+            "count": 1
+        },
+        "2025-06-09": {
+            "points": 10,
+            "count": 1
+        },
+        "2025-06-11": {
+            "points": 2,
+            "count": 1
+        },
+        "2025-06-18": {
+            "points": 8,
+            "count": 2
+        },
+        "2025-06-21": {
+            "points": 16,
+            "count": 6
+        },
+        "2025-06-23": {
+            "points": 8,
+            "count": 5
+        }
     }
 }
