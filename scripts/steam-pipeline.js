@@ -29,10 +29,10 @@ console.log(' ✓');
 log.section('Phase 1 — Authentication');
 
 const STEAM_API_KEY = process.env.STEAM_API_KEY;
-const STEAM_ID      = process.env.STEAM_ID;
+const STEAM_ID      = process.env.STEAM_USER_ID;
 
 if (!STEAM_API_KEY || !STEAM_ID) {
-    log.fail('Steam credentials missing. Set STEAM_API_KEY and STEAM_ID in .env');
+    log.fail('Steam credentials missing. Set STEAM_API_KEY and STEAM_USER_ID in .env');
     process.exit(1);
 }
 
