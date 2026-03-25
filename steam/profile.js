@@ -762,12 +762,19 @@ const App = () => {
         return VALID_TABS.includes(p) ? p : 'recent';
     })();
     const [activeTab, setActiveTab] = useState(initialTab);
+    const [showScrollTop, setShowScrollTop] = useState(false);
     const setTab = (tab) => {
         setActiveTab(tab);
         const url = new URL(window.location);
         url.searchParams.set('tab', tab);
         window.history.replaceState({}, '', url);
     };
+
+    useEffect(() => {
+        const onScroll = () => setShowScrollTop(window.scrollY > 400);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
 
     // Load profile + achievements on mount (both needed for overview)
     useEffect(() => {
@@ -1187,6 +1194,17 @@ const App = () => {
                     steampowered.com ↗
                 </a>
             </footer>
+
+            {/* Scroll-to-top button */}
+            {showScrollTop && (
+                <button
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    className="fixed bottom-14 right-5 z-50 w-9 h-9 bg-[#1b2838] border border-[#2a475e] hover:border-[#66c0f4] hover:text-[#66c0f4] text-[#8f98a0] rounded-[2px] flex items-center justify-center shadow-lg transition-all duration-200 hover:-translate-y-0.5"
+                    title="Scroll to top"
+                >
+                    <ChevronDown size={16} className="rotate-180" />
+                </button>
+            )}
 
         </div>
     );
