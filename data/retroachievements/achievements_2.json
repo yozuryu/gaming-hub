@@ -1,6 +1,46 @@
 {
     "recentAchievements": [
         {
+            "date": "2025-12-24 15:49:13",
+            "hardcoreMode": true,
+            "achievementId": 548938,
+            "title": "First Steps on the Battlefield",
+            "description": "Clear your first area. Every other achievement requires Normal difficulty or above",
+            "badgeName": "633759",
+            "points": 1,
+            "trueRatio": 1,
+            "type": "progression",
+            "author": "KiwiTaco",
+            "authorUlid": "01H8VJC4PTMB4FPV8CG6WPH0FS",
+            "gameTitle": "Odin Sphere",
+            "gameIcon": "/Images/077226.png",
+            "gameId": 2666,
+            "consoleName": "PlayStation 2",
+            "cumulScore": 1,
+            "badgeUrl": "/Badge/633759.png",
+            "gameUrl": "/game/2666"
+        },
+        {
+            "date": "2025-12-24 16:11:00",
+            "hardcoreMode": true,
+            "achievementId": 507171,
+            "title": "Saving Private Rayman",
+            "description": "Reach the end of the opening tunnel escape sequence.",
+            "badgeName": "585422",
+            "points": 1,
+            "trueRatio": 1,
+            "type": "progression",
+            "author": "MajinWamu",
+            "authorUlid": "01ATP7APRR1RYEP7ZCHQBHPD8Z",
+            "gameTitle": "Rayman 2: Revolution",
+            "gameIcon": "/Images/111819.png",
+            "gameId": 2995,
+            "consoleName": "PlayStation 2",
+            "cumulScore": 2,
+            "badgeUrl": "/Badge/585422.png",
+            "gameUrl": "/game/2995"
+        },
+        {
             "date": "2025-09-26 15:07:02",
             "hardcoreMode": true,
             "achievementId": 191686,
@@ -979,6 +1019,26 @@
             "cumulScore": 168,
             "badgeUrl": "/Badge/223284.png",
             "gameUrl": "/game/8376"
+        },
+        {
+            "date": "2025-12-24 13:37:06",
+            "hardcoreMode": true,
+            "achievementId": 450451,
+            "title": "You Truly Are Elite Reploids",
+            "description": "Complete Chapter 1",
+            "badgeName": "509925",
+            "points": 5,
+            "trueRatio": 6,
+            "type": "progression",
+            "author": "Yurana",
+            "authorUlid": "01GZC69PK12HNRTHY3ARWH4QHT",
+            "gameTitle": "Mega Man X: Command Mission",
+            "gameIcon": "/Images/099083.png",
+            "gameId": 30125,
+            "consoleName": "GameCube",
+            "cumulScore": 173,
+            "badgeUrl": "/Badge/509925.png",
+            "gameUrl": "/game/30125"
         }
     ]
 }

@@ -257,40 +257,27 @@ async function executeProfileExtraction(targetUser) {
             log.ok('Full refresh — skipping cache, all games will be fetched');
         }
 
-        log.section(`Phase 2a — Completion Progress Details  [ ${progressGames.length} games ]`);
+        const progressGameIds = new Set(progressGames.map(g => g.gameId));
+        const recentGameIds   = new Set((profilePayload.recentlyPlayedGames || []).map(g => g.gameId));
+
+        // Recently played games with 0 achievements earned won't appear in progressGames —
+        // add them separately so they still show up in the recently played section
+        const recentOnlyGames = (profilePayload.recentlyPlayedGames || [])
+            .filter(g => !progressGameIds.has(g.gameId))
+            .map(g => ({ gameId: g.gameId, title: g.title }));
+
+        const allGamesToFetch = [...progressGames, ...recentOnlyGames];
+
+        log.section(`Phase 2a — Completion Progress Details  [ ${progressGames.length} games + ${recentOnlyGames.length} recent-only ]`);
 
         let progressIdx = 0;
-        for (const game of progressGames) {
+        for (const game of allGamesToFetch) {
             progressIdx++;
-            if (profilePayload.detailedGameProgress[game.gameId]) {
-                log.skip(`[${progressIdx}/${progressGames.length}] [${game.gameId}] ${game.title} — already cached`);
+            if (profilePayload.detailedGameProgress[game.gameId] && !recentGameIds.has(game.gameId)) {
+                log.skip(`[${progressIdx}/${allGamesToFetch.length}] [${game.gameId}] ${game.title} — already cached`);
                 continue;
             }
-            process.stdout.write(`  [${progressIdx}/${progressGames.length}] [${game.gameId}] ${game.title}...`);
-            try {
-                profilePayload.detailedGameProgress[game.gameId] = await getGameInfoAndUserProgress(authorization, {
-                    username: targetUser,
-                    gameId: game.gameId,
-                });
-                console.log(' ✓');
-            } catch (e) {
-                console.log(` ✗  (${e.message})`);
-            }
-            await sleep(2000);
-        }
-
-        // ── Recently played games (skip if already cached) ─────────────────
-        const recentGames = profilePayload.recentlyPlayedGames || [];
-        log.section(`Phase 2b — Recent Game Details  [ ${recentGames.length} games ]`);
-
-        let recentIdx = 0;
-        for (const game of recentGames) {
-            recentIdx++;
-            if (profilePayload.detailedGameProgress[game.gameId]) {
-                log.skip(`[${recentIdx}/${recentGames.length}] [${game.gameId}] ${game.title} — already cached from progress`);
-                continue;
-            }
-            process.stdout.write(`  [${recentIdx}/${recentGames.length}] [${game.gameId}] ${game.title}...`);
+            process.stdout.write(`  [${progressIdx}/${allGamesToFetch.length}] [${game.gameId}] ${game.title}...`);
             try {
                 profilePayload.detailedGameProgress[game.gameId] = await getGameInfoAndUserProgress(authorization, {
                     username: targetUser,

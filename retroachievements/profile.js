@@ -1002,7 +1002,7 @@ export default function App() {
     <div className="min-h-screen bg-[#171a21] text-[#c6d4df] font-sans selection:bg-[#66c0f4] selection:text-[#171a21] flex flex-col">
       
       {/* Topbar */}
-      <div className="bg-[#131a22] border-b border-[#101214] px-4 md:px-8 py-1.5 flex items-center gap-2 text-[10px]">
+      <div className="sticky top-0 z-50 bg-[#131a22] border-b border-[#101214] px-4 md:px-8 py-1.5 flex items-center gap-2 text-[10px]">
         <a href="../" className="text-[#546270] font-bold tracking-[0.15em] uppercase hover:text-[#8f98a0] transition-colors">Yozuryu</a>
         <span className="text-[#2a475e]">›</span>
         <a href="../" className="text-[#546270] hover:text-[#8f98a0] transition-colors">Gaming Profile</a>
@@ -1178,9 +1178,9 @@ export default function App() {
                     </div>
                     <p className="text-[10px] text-[#8f98a0] leading-snug mb-1 truncate">{PROFILE_DATA.mostRecentAchievement.description}</p>
                     <div className="flex items-center gap-1.5 text-[10px]">
-                      <a href={`${SITE_URL}/game/${PROFILE_DATA.mostRecentAchievement.gameId}`} target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-[#66c0f4] transition-colors">
+                      <a href={`${SITE_URL}/game/${PROFILE_DATA.mostRecentAchievement.gameId}`} target="_blank" rel="noreferrer" className="flex items-center gap-1 group">
                         <img src={PROFILE_DATA.mostRecentAchievement.gameIcon} alt="" className="w-3.5 h-3.5 rounded-[1px] border border-[#101214]" />
-                        <span className="text-[#66c0f4]">{PROFILE_DATA.mostRecentAchievement.gameTitle}</span>
+                        <span className="text-[#66c0f4] group-hover:text-[#c6d4df] transition-colors">{PROFILE_DATA.mostRecentAchievement.gameTitle}</span>
                       </a>
                       <span className="text-[#546270]">•</span>
                       <span className="text-[#8f98a0]">{PROFILE_DATA.mostRecentAchievement.consoleName}</span>
@@ -1305,7 +1305,7 @@ export default function App() {
           </div>
         </div>
 
-        <div className="flex items-center gap-6 mb-4 border-b border-[#2a475e]">
+        <div className="sticky top-[26px] z-40 bg-[#171a21] -mx-4 md:-mx-8 px-4 md:px-8 flex items-center gap-6 mb-4 border-b border-[#2a475e]">
           <button 
             onClick={() => setTab('recent')}
             className={`pb-2 text-[14px] uppercase tracking-wide font-medium transition-colors relative ${activeTab === 'recent' ? 'text-white' : 'text-[#546270] hover:text-[#c6d4df]'}`}

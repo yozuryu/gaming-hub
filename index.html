@@ -86,7 +86,7 @@
 <body class="bg-[#171a21] text-[#c6d4df] min-h-screen flex flex-col">
 
   <!-- Topbar -->
-  <div class="bg-[#131a22] border-b border-[#101214] px-4 md:px-8 py-1.5 flex items-center gap-2 text-[10px]">
+  <div class="sticky top-0 z-50 bg-[#131a22] border-b border-[#101214] px-4 md:px-8 py-1.5 flex items-center gap-2 text-[10px]">
     <span id="topbar-username" class="text-[#546270] font-bold tracking-[0.15em] uppercase"></span>
     <span class="text-[#2a475e]">›</span>
     <span class="text-[#c6d4df]">Gaming Profile</span>
@@ -182,27 +182,60 @@
         </div>
       </a>
 
-      <!-- ── Steam coming soon ── -->
-      <div class="card-soon">
-        <div class="card-soon-hdr">
-          <div class="platform-icon pi-steam">
-            <img src="./assets/icon-steam.png" alt="Steam" class="platform-icon-img" onerror="this.style.display='none'" />
+      <!-- ── Steam ── -->
+      <a class="card-link" href="./steam/">
+        <div class="card-shell">
+          <div class="card-hdr">
+            <div class="platform-icon pi-steam">
+              <img src="./assets/icon-steam.png" alt="Steam" class="platform-icon-img" onerror="this.style.display='none'" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="text-[13px] text-white font-semibold leading-tight">Steam</div>
+              <div class="text-[9px] text-[#546270] uppercase tracking-[0.07em]">PC Gaming</div>
+            </div>
+            <div class="live-dot" title="Data available"></div>
           </div>
-          <div class="flex-1 min-w-0">
-            <div class="text-[13px] text-[#8f98a0] font-semibold leading-tight">Steam</div>
-            <div class="text-[9px] text-[#546270] uppercase tracking-[0.07em]">PC Gaming</div>
+
+          <div id="steam-stats" class="stat-grid">
+            <div><div class="stat-val text-[#66c0f4] skeleton w-14 h-5 mb-1">&nbsp;</div><div class="stat-lbl">Hours</div></div>
+            <div><div class="stat-val skeleton w-12 h-5 mb-1">&nbsp;</div><div class="stat-lbl">Games</div></div>
+            <div><div class="stat-val skeleton w-10 h-5 mb-1">&nbsp;</div><div class="stat-lbl">Played</div></div>
+            <div><div class="stat-val skeleton w-8 h-5 mb-1">&nbsp;</div><div class="stat-lbl">Achievements</div></div>
+            <div><div class="stat-val skeleton w-12 h-5 mb-1">&nbsp;</div><div class="stat-lbl">Unlocked</div></div>
+            <div><div class="stat-val skeleton w-10 h-5 mb-1">&nbsp;</div><div class="stat-lbl">Perfect</div></div>
           </div>
-          <span class="soon-badge">Coming Soon</span>
+
+          <div class="recent-label">Recently Played</div>
+          <div id="steam-recent">
+            <div class="recent-row">
+              <div class="game-icon skeleton"></div>
+              <div class="flex-1 min-w-0 flex flex-col gap-1">
+                <div class="skeleton h-2.5 w-3/4 rounded"></div>
+                <div class="skeleton h-2 w-1/2 rounded"></div>
+              </div>
+            </div>
+            <div class="recent-row">
+              <div class="game-icon skeleton"></div>
+              <div class="flex-1 min-w-0 flex flex-col gap-1">
+                <div class="skeleton h-2.5 w-4/5 rounded"></div>
+                <div class="skeleton h-2 w-2/5 rounded"></div>
+              </div>
+            </div>
+            <div class="recent-row">
+              <div class="game-icon skeleton"></div>
+              <div class="flex-1 min-w-0 flex flex-col gap-1">
+                <div class="skeleton h-2.5 w-2/3 rounded"></div>
+                <div class="skeleton h-2 w-1/3 rounded"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-ftr">
+            <span class="text-[10px] text-[#546270]">View full dashboard</span>
+            <span class="card-arrow text-[10px] text-[#2a475e] transition-colors">→</span>
+          </div>
         </div>
-        <div class="recent-label" style="color:#323f4c;">Recently Played</div>
-        <div class="cs-row"><div class="cs-icon"></div><div class="flex-1 flex flex-col gap-1.5"><div class="cs-line" style="width:72%"></div><div class="cs-line" style="width:44%"></div></div></div>
-        <div class="cs-row"><div class="cs-icon"></div><div class="flex-1 flex flex-col gap-1.5"><div class="cs-line" style="width:60%"></div><div class="cs-line" style="width:38%"></div></div></div>
-        <div class="cs-row"><div class="cs-icon"></div><div class="flex-1 flex flex-col gap-1.5"><div class="cs-line" style="width:80%"></div><div class="cs-line" style="width:32%"></div></div></div>
-        <div class="cs-ftr">
-          <span class="text-[10px] text-[#323f4c]">Not yet connected</span>
-          <span class="text-[10px] text-[#323f4c]">—</span>
-        </div>
-      </div>
+      </a>
 
       <!-- ── Xbox coming soon ── -->
       <div class="card-soon">
@@ -387,8 +420,78 @@
       }
     }
 
+    async function loadSteamStats() {
+      try {
+        const res = await fetch('./data/steam/profile.json');
+        if (!res.ok) throw new Error('not found');
+        const d = await res.json();
+
+        const fmtHrs = (min) => {
+          const h = Math.floor(min / 60);
+          return h >= 1000 ? `${(h/1000).toFixed(1)}k` : h.toLocaleString();
+        };
+        const timeAgo = (dateStr) => {
+          if (!dateStr) return '';
+          const diff = Math.floor((Date.now() - new Date(dateStr)) / 86400000);
+          if (diff === 0) return 'Today';
+          if (diff === 1) return 'Yesterday';
+          if (diff < 7)  return `${diff}d ago`;
+          if (diff < 30) return `${Math.floor(diff / 7)}w ago`;
+          return `${Math.floor(diff / 30)}mo ago`;
+        };
+
+        const s = d.stats ?? {};
+        document.getElementById('steam-stats').innerHTML = `
+          <div><div class="stat-val" style="color:#66c0f4;">${fmtHrs(s.totalPlaytimeMin ?? 0)}</div><div class="stat-lbl">Hours</div></div>
+          <div><div class="stat-val">${(s.totalGames ?? 0).toLocaleString()}</div><div class="stat-lbl">Games</div></div>
+          <div><div class="stat-val">${(s.gamesWithPlaytime ?? 0).toLocaleString()}</div><div class="stat-lbl">Played</div></div>
+          <div><div class="stat-val">${(s.unlockedAchievements ?? 0).toLocaleString()}</div><div class="stat-lbl">Achievements</div></div>
+          <div><div class="stat-val">${(s.gamesWithAchievements ?? 0).toLocaleString()}</div><div class="stat-lbl">w/ Unlocks</div></div>
+          <div><div class="stat-val" style="color:#e5b143;">${(s.perfectCount ?? 0).toLocaleString()}</div><div class="stat-lbl">Perfect</div></div>
+        `;
+
+        const headerUrl = (appId) =>
+          `https://cdn.akamai.steamstatic.com/steam/apps/${appId}/header.jpg`;
+
+        const renderSteamRow = (g) => {
+          const hrs       = Math.floor((g.playtimeForever ?? 0) / 60);
+          const hrsStr    = hrs > 0 ? `${hrs.toLocaleString()}h` : null;
+          const agoStr    = g.lastPlayedTs ? timeAgo(g.lastPlayedTs) : null;
+          const sub       = [hrsStr, agoStr].filter(Boolean).join(' · ') || 'No playtime recorded';
+          const icon      = g.iconUrl || '';
+          const isPerfect = g.achTotal > 0 && g.achUnlocked >= g.achTotal;
+          const pct       = g.achTotal > 0 ? Math.floor((g.achUnlocked / g.achTotal) * 100) : null;
+          const badge     = isPerfect
+            ? `<span class="pct-badge pct-gold">★</span>`
+            : pct !== null
+            ? `<span class="pct-badge pct-blue">${pct}%</span>`
+            : '';
+          return `
+            <div class="recent-row" style="align-items:center;">
+              <img src="${icon}" alt="${g.name}" class="game-icon object-cover"
+                style="align-self:center;" onerror="this.style.background='#2a475e';this.removeAttribute('src')" />
+              <div style="flex:1;min-width:0;">
+                <div class="game-title">${g.name}</div>
+                <div class="game-sub">${sub}</div>
+              </div>
+              <div style="align-self:center;">${badge}</div>
+            </div>`;
+        };
+
+        const recent = (d.recentlyPlayed ?? []).slice(0, 3);
+        if (recent.length > 0) {
+          document.getElementById('steam-recent').innerHTML = recent.map(renderSteamRow).join('');
+        }
+
+      } catch (e) {
+        document.getElementById('steam-stats').innerHTML =
+          '<div style="grid-column:span 3;text-align:center;font-size:10px;color:#546270;padding:12px 0;">Could not load stats</div>';
+      }
+    }
+
     loadHubProfile();
     loadRAStats();
+    loadSteamStats();
   </script>
 
 </body>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yozuryu · Steam</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        html, body { background-color: #171a21; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+
+        @keyframes shimmer {
+            0%   { background-position: -800px 0; }
+            100% { background-position:  800px 0; }
+        }
+        .shimmer {
+            background: linear-gradient(90deg, #1b2838 25%, #2a3f52 50%, #1b2838 75%);
+            background-size: 800px 100%;
+            animation: shimmer 1.6s infinite linear;
+            border-radius: 2px;
+        }
+        .mask-fade {
+            -webkit-mask-image: linear-gradient(to left, black 0%, transparent 100%);
+            mask-image: linear-gradient(to left, black 0%, transparent 100%);
+        }
+    </style>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "react": "https://esm.sh/react@18.2.0",
+            "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+            "lucide-react": "https://esm.sh/lucide-react@0.263.1"
+        }
+    }
+    </script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-[#171a21]">
+    <div id="root"></div>
+    <script type="text/babel" data-type="module" src="./profile.js"></script>
+</body>
+</html>

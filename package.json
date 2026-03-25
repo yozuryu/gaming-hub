@@ -18,6 +18,10 @@
     "start": "npx serve .",
     "ra-fetch": "node scripts/ra-pipeline.js",
     "ra-fetch:full": "node scripts/ra-pipeline.js --refresh-games",
+    "steam-fetch": "node scripts/steam-pipeline.js",
+    "steam-fetch:debug": "node scripts/steam-pipeline.js --debug",
+    "steam-fetch:unlocked": "node scripts/steam-pipeline.js --refresh-unlocked-games",
+    "steam-fetch:full": "node scripts/steam-pipeline.js --refresh-games",
     "assets": "node scripts/download-assets.js"
   },
   "dependencies": {
