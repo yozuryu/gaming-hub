@@ -62,5 +62,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/steam/
+          if [ "${{ inputs.mode }}" = "full-refresh" ]; then
+            MSG="chore: full refresh steam data $(date -u '+%Y-%m-%d %H:%M UTC')"
+          elif [ "${{ github.event.schedule }}" = "10 0 * * *" ] || [ "${{ inputs.mode }}" = "unlock-refresh" ]; then
+            MSG="chore: unlock refresh steam data $(date -u '+%Y-%m-%d %H:%M UTC')"
+          else
+            MSG="chore: update steam data $(date -u '+%Y-%m-%d %H:%M UTC')"
+          fi
           git diff --staged --quiet && echo "No changes to commit" || \
-            git commit -m "chore: update steam data $(date -u '+%Y-%m-%d %H:%M UTC')" && git push
+            git commit -m "$MSG" && git push

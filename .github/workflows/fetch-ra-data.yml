@@ -55,5 +55,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/retroachievements/
+          if [ "${{ github.event.schedule }}" = "0 0 * * *" ] || [ "${{ inputs.refresh_games }}" = "true" ]; then
+            MSG="chore: full refresh ra data $(date -u '+%Y-%m-%d %H:%M UTC')"
+          else
+            MSG="chore: update ra data $(date -u '+%Y-%m-%d %H:%M UTC')"
+          fi
           git diff --staged --quiet && echo "No changes to commit" || \
-            git commit -m "chore: update ra data $(date -u '+%Y-%m-%d %H:%M UTC')" && git push
+            git commit -m "$MSG" && git push
