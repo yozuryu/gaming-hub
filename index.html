@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title id="page-title">Gaming Profile</title>
+  <title id="page-title">Gaming Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html, body { background-color: #171a21; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
@@ -89,7 +89,7 @@
   <div class="sticky top-0 z-50 bg-[#131a22] border-b border-[#101214] px-4 md:px-8 py-1.5 flex items-center gap-2 text-[10px]">
     <span id="topbar-username" class="text-[#546270] font-bold tracking-[0.15em] uppercase"></span>
     <span class="text-[#2a475e]">›</span>
-    <span class="text-[#c6d4df]">Gaming Profile</span>
+    <span class="text-[#c6d4df]">Gaming Hub</span>
   </div>
 
   <!-- Header -->
@@ -297,7 +297,7 @@
   <footer class="bg-[#1b2838] border-t-2 border-[#2a475e] px-4 md:px-8 py-2.5 flex items-center gap-3 mt-auto">
     <div class="w-[3px] h-[18px] rounded-[1px] bg-[#66c0f4] opacity-50 flex-shrink-0"></div>
     <p class="text-[10px] text-[#546270]">
-      Personal gaming profile ·
+      Personal gaming hub ·
       <span id="footer-site-url" class="text-[#8f98a0]"></span>
     </p>
     <a href="https://retroachievements.org" target="_blank" rel="noreferrer"
@@ -314,7 +314,7 @@
         const p = await res.json();
 
         const username = p.username ?? '';
-        document.title = `${username} · Gaming Profile`;
+        document.title = `${username} · Gaming Hub`;
         document.getElementById('topbar-username').textContent  = username;
         document.getElementById('header-username').textContent  = username;
         document.getElementById('avatar-img').alt               = username;
@@ -574,12 +574,17 @@
         return 'Common';
       };
       const timeAgo = (iso) => {
-        const diff = Math.floor((Date.now() - new Date(iso)) / 86400000);
-        if (diff === 0) return 'today';
-        if (diff === 1) return 'yesterday';
-        if (diff < 7)  return `${diff}d ago`;
-        if (diff < 30) return `${Math.floor(diff / 7)}w ago`;
-        return `${Math.floor(diff / 30)}mo ago`;
+        const ms   = Date.now() - new Date(iso).getTime();
+        const mins = Math.floor(ms / 60000);
+        const hrs  = Math.floor(ms / 3600000);
+        const days = Math.floor(ms / 86400000);
+        if (mins < 1)   return 'just now';
+        if (hrs  < 1)   return `${mins}m ago`;
+        if (hrs  < 24)  return `${hrs}h ago`;
+        if (days === 1) return 'yesterday';
+        if (days < 7)   return `${days}d ago`;
+        if (days < 30)  return `${Math.floor(days / 7)}w ago`;
+        return `${Math.floor(days / 30)}mo ago`;
       };
 
       try {

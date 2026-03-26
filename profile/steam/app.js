@@ -1,82 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock } from 'lucide-react';
-
-// ── Constants ─────────────────────────────────────────────────────────────────
-
-const STEAM_STATUS = {
-    0: { label: 'Offline',          color: '#546270' },
-    1: { label: 'Online',           color: '#57cbde' },
-    2: { label: 'Busy',             color: '#e5b143' },
-    3: { label: 'Away',             color: '#8f98a0' },
-    4: { label: 'Snooze',           color: '#546270' },
-    5: { label: 'Looking to Trade', color: '#66c0f4' },
-    6: { label: 'Looking to Play',  color: '#57cbde' },
-};
-
-// ── Helpers ───────────────────────────────────────────────────────────────────
-
-const formatPlaytime = (minutes) => {
-    if (!minutes) return '0m';
-    const h = Math.floor(minutes / 60);
-    const m = minutes % 60;
-    if (h === 0) return `${m}m`;
-    return m > 0 ? `${h.toLocaleString()}h ${m}m` : `${h.toLocaleString()}h`;
-};
-
-const formatDate = (dateStr) => {
-    if (!dateStr) return '';
-    return new Date(dateStr).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
-};
-
-const formatTimeAgo = (dateStr) => {
-    if (!dateStr) return '';
-    const diff = Date.now() - new Date(dateStr).getTime();
-    const hrs  = Math.floor(diff / 3600000);
-    const days = Math.floor(diff / 86400000);
-    if (hrs < 1)    return 'Just now';
-    if (hrs < 24)   return `${hrs}h ago`;
-    if (days === 1) return 'Yesterday';
-    if (days < 7)   return `${days}d ago`;
-    if (days < 30)  return `${Math.floor(days / 7)}w ago`;
-    if (days < 90)  return `${Math.floor(days / 30)}mo ago`;
-    return formatDate(dateStr);
-};
-
-const fmtDay = (dateStr) => {
-    const d         = new Date(dateStr + 'T00:00:00');
-    const today     = new Date();
-    const yesterday = new Date(today);
-    yesterday.setDate(yesterday.getDate() - 1);
-    if (d.toDateString() === today.toDateString())     return 'Today';
-    if (d.toDateString() === yesterday.toDateString()) return 'Yesterday';
-    return d.toLocaleDateString('en-GB', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' });
-};
-
-const fmtTime = (str) =>
-    str ? new Date(str).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) : '';
-
-const capsuleUrl = (appId) =>
-    `https://cdn.akamai.steamstatic.com/steam/apps/${appId}/capsule_sm_120.jpg`;
-
-const headerUrl = (appId) =>
-    `https://cdn.akamai.steamstatic.com/steam/apps/${appId}/header.jpg`;
-
-
-const libraryPortraitUrl = (appId) =>
-    `https://cdn.akamai.steamstatic.com/steam/apps/${appId}/library_600x900.jpg`;
-
-const rarityLabel = (globalPct) => {
-    if (globalPct != null && globalPct < 10) return 'Very Rare';
-    if (globalPct != null && globalPct < 30) return 'Rare';
-    return 'Common';
-};
-
-const rarityBorderColor = (globalPct) => {
-    if (globalPct != null && globalPct < 10) return '#e5b143'; // Very Rare — gold
-    if (globalPct != null && globalPct < 30) return '#66c0f4'; // Rare      — blue
-    return '#8f98a0';                                           // Common    — gray
-};
+import { STEAM_STATUS, PROGRESS_SORTS } from './utils/constants.js';
+import { formatPlaytime, formatDate, formatTimeAgo, fmtDay, fmtTime, capsuleUrl, headerUrl, libraryPortraitUrl, rarityLabel, rarityBorderColor } from './utils/helpers.js';
 
 // ── SteamGameCard ─────────────────────────────────────────────────────────────
 
@@ -594,13 +520,6 @@ const ActivityTab = ({ achievements }) => {
 
 // ── ProgressTab ───────────────────────────────────────────────────────────────
 
-const PROGRESS_SORTS = [
-    { id: 'pct',       label: 'Completion'  },
-    { id: 'name',      label: 'Name'        },
-    { id: 'hours',     label: 'Hours Played'},
-    { id: 'lastPlayed',label: 'Last Played' },
-];
-
 const ProgressTab = ({ achievementProgress, recentlyPlayed }) => {
     const [sort, setSort] = useState('pct');
 
@@ -860,7 +779,7 @@ const App = () => {
             <div className="sticky top-0 z-50 bg-[#131a22] border-b border-[#101214] px-4 md:px-8 py-1.5 flex items-center gap-2 text-[10px]">
                 <a href="../../" className="text-[#546270] font-bold tracking-[0.15em] uppercase hover:text-[#8f98a0] transition-colors">Yozuryu</a>
                 <span className="text-[#2a475e]">›</span>
-                <a href="../../" className="text-[#546270] hover:text-[#8f98a0] transition-colors">Gaming Profile</a>
+                <a href="../../" className="text-[#546270] hover:text-[#8f98a0] transition-colors">Gaming Hub</a>
                 <span className="text-[#2a475e]">›</span>
                 <span className="text-[#c6d4df]">Steam</span>
             </div>
@@ -1186,7 +1105,7 @@ const App = () => {
             <footer className="bg-[#1b2838] border-t-2 border-[#2a475e] px-4 md:px-8 py-2.5 flex items-center gap-3 mt-auto">
                 <div className="w-[3px] h-[18px] rounded-[1px] bg-[#66c0f4] opacity-50 shrink-0" />
                 <p className="text-[10px] text-[#546270]">
-                    Personal gaming profile ·
+                    Personal gaming hub ·
                     <span className="text-[#8f98a0] ml-1">{profile.profileUrl}</span>
                 </p>
                 <a href="https://store.steampowered.com" target="_blank" rel="noreferrer"

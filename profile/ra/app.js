@@ -1005,7 +1005,7 @@ export default function App() {
       <div className="sticky top-0 z-50 bg-[#131a22] border-b border-[#101214] px-4 md:px-8 py-1.5 flex items-center gap-2 text-[10px]">
         <a href="../../" className="text-[#546270] font-bold tracking-[0.15em] uppercase hover:text-[#8f98a0] transition-colors">Yozuryu</a>
         <span className="text-[#2a475e]">›</span>
-        <a href="../../" className="text-[#546270] hover:text-[#8f98a0] transition-colors">Gaming Profile</a>
+        <a href="../../" className="text-[#546270] hover:text-[#8f98a0] transition-colors">Gaming Hub</a>
         <span className="text-[#2a475e]">›</span>
         <span className="text-[#c6d4df]">RetroAchievements</span>
       </div>

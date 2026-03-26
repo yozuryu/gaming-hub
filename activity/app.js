@@ -1,57 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Activity, ChevronDown } from 'lucide-react';
-
-const RA_MEDIA = 'https://media.retroachievements.org';
-
-// ── Normalizers ───────────────────────────────────────────────────────────────
-
-const normalizeRA = (a) => ({
-    platform: 'ra',
-    id: `ra-${a.achievementId}-${a.date}`,
-    achievementName: a.title,
-    description: a.description || a.title,
-    achievementIcon: `${RA_MEDIA}/Badge/${a.badgeName}.png`,
-    gameName: a.gameTitle,
-    gameId: a.gameId,
-    gameIcon: `${RA_MEDIA}${a.gameIcon}`,
-    gameUrl: `https://retroachievements.org/game/${a.gameId}`,
-    consoleName: a.consoleName,
-    unlockedAt: a.date.replace(' ', 'T') + 'Z',
-});
-
-const normalizeSteam = (a) => ({
-    platform: 'steam',
-    id: `steam-${a.appId}-${a.apiName}`,
-    achievementName: a.displayName,
-    description: a.description || a.displayName,
-    achievementIcon: a.iconUrl,
-    gameName: a.gameName,
-    gameId: a.appId,
-    gameIcon: `https://cdn.akamai.steamstatic.com/steam/apps/${a.appId}/capsule_184x69.jpg`,
-    gameUrl: `https://store.steampowered.com/app/${a.appId}`,
-    unlockedAt: a.unlockedAt,
-});
-
-// ── Helpers ───────────────────────────────────────────────────────────────────
-
-const fmtDay = (isoDay) =>
-    new Date(isoDay + 'T00:00:00Z').toLocaleDateString('en-GB', {
-        day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC',
-    });
-
-const fmtTime = (iso) =>
-    new Date(iso).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' });
-
-const parseTitle = (title) => {
-    if (!title) return { baseTitle: title, subsetName: null, isSubset: false };
-    const withoutTags = title.replace(/~([^~]+)~\s*/g, '').trim();
-    const subsetMatch = withoutTags.match(/^(.+?)\s*\[Subset\s*[-–]\s*(.+?)\]$/);
-    if (subsetMatch) return { baseTitle: subsetMatch[1].trim(), subsetName: subsetMatch[2].trim(), isSubset: true };
-    return { baseTitle: withoutTags, subsetName: null, isSubset: false };
-};
-
-const PLATFORM_COLOR = { ra: '#e5b143', steam: '#66c0f4' };
+import { PLATFORM_COLOR } from './utils/constants.js';
+import { fmtDay, fmtTime, parseTitle } from './utils/helpers.js';
+import { normalizeRA, normalizeSteam } from './utils/normalizers.js';
 
 // ── Heatmap ───────────────────────────────────────────────────────────────────
 
@@ -357,7 +309,7 @@ const App = () => {
             <div className="sticky top-0 z-50 bg-[#131a22] border-b border-[#101214] px-4 md:px-8 py-1.5 flex items-center gap-2 text-[10px]">
                 <a href="../" className="text-[#546270] font-bold tracking-[0.15em] uppercase hover:text-[#8f98a0] transition-colors">Yozuryu</a>
                 <span className="text-[#2a475e]">›</span>
-                <a href="../" className="text-[#546270] hover:text-[#8f98a0] transition-colors">Gaming Profile</a>
+                <a href="../" className="text-[#546270] hover:text-[#8f98a0] transition-colors">Gaming Hub</a>
                 <span className="text-[#2a475e]">›</span>
                 <span className="text-[#c6d4df]">Activity</span>
             </div>
@@ -478,7 +430,7 @@ const App = () => {
             {/* Footer */}
             <footer className="bg-[#1b2838] border-t-2 border-[#2a475e] px-4 md:px-8 py-2.5 flex items-center gap-3 mt-auto">
                 <div className="w-[3px] h-[18px] rounded-[1px] bg-[#66c0f4] opacity-50 shrink-0" />
-                <p className="text-[10px] text-[#546270]">Personal gaming profile · Combined activity</p>
+                <p className="text-[10px] text-[#546270]">Personal gaming hub · Combined activity</p>
                 <a href="../" className="ml-auto text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">← Back to hub</a>
             </footer>
 
