@@ -44,6 +44,7 @@ Achievement detail modals added to both platforms; game cards get an achievement
 
 ### RetroAchievements
 
+- `RAchievementModal` header now shows subset name as a subtext line (e.g. `Sonic the Hedgehog [Subset - Bonus]`) matching the `GameCard` display
 - `GameCard` now shows a preview strip of up to 6 achievement badge icons (unlocked first) with hover tooltips showing name, description, points, and HC badge; clicking opens the detail modal
 - `RAchievementModal`: full-screen achievement detail modal with game header (icon, console, status, progress bars), optional genre/developer/released meta row, Status (All/Unlocked/Locked) and Type (All/Progression/Missable) filter rows, and per-achievement rarity ratio badge (UR/VR/R/UC), type icons (Progression/Win Condition/Missable), HC/SC completion bars, and unlock date
 - Modal popovers (rarity badge, type icons) use `position: fixed` + `getBoundingClientRect` — escapes the scroll container so tooltips are never clipped regardless of scroll position

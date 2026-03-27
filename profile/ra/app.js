@@ -282,15 +282,20 @@ const RAchievementModal = ({ game, onClose }) => {
             <img src={game.icon} alt={game.title} className="w-full h-full object-cover" />
           </a>
           <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2 flex-wrap mb-1">
-              <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer"
-                className="text-[15px] font-medium text-white hover:text-[#66c0f4] transition-colors leading-tight truncate">
-                {game.baseTitle || game.title}
-              </a>
-              {game.isSubset && (
-                <span className="text-[8px] font-bold uppercase tracking-[0.07em] px-1.5 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>
+            <div className="flex flex-col mb-1">
+              <div className="flex items-center gap-2 flex-wrap">
+                <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer"
+                  className="text-[15px] font-medium text-white hover:text-[#66c0f4] transition-colors leading-tight truncate">
+                  {game.baseTitle || game.title}
+                </a>
+                {game.isSubset && (
+                  <span className="text-[8px] font-bold uppercase tracking-[0.07em] px-1.5 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>
+                )}
+                {renderTildeTags(game.tags)}
+              </div>
+              {game.isSubset && game.subsetName && (
+                <span className="text-[10px] text-[#c8a84b] truncate">{game.subsetName}</span>
               )}
-              {renderTildeTags(game.tags)}
             </div>
             <div className="flex items-center gap-2 flex-wrap mb-2 text-[10px]">
               <span className="text-[#66c0f4] flex items-center gap-1"><Gamepad2 size={10} />{game.console}</span>
