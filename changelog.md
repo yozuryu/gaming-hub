@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-03-27
+
+Achievement detail modals added to both platforms; game cards get an achievement preview strip.
+
+### RetroAchievements
+
+- `GameCard` now shows a preview strip of up to 6 achievement badge icons (unlocked first) with hover tooltips showing name, description, points, and HC badge; clicking opens the detail modal
+- `RAchievementModal`: full-screen achievement detail modal with game header (icon, console, status, progress bars), optional genre/developer/released meta row, Status (All/Unlocked/Locked) and Type (All/Progression/Missable) filter rows, and per-achievement rarity ratio badge (UR/VR/R/UC), type icons (Progression/Win Condition/Missable), HC/SC completion bars, and unlock date
+- Modal popovers (rarity badge, type icons) use `position: fixed` + `getBoundingClientRect` — escapes the scroll container so tooltips are never clipped regardless of scroll position
+- Progress percentage labels on `GameCard` now have text shadow to match Steam
+
+### Steam
+
+- `SteamGameCard` now shows the same achievement preview strip with hover tooltips showing name, description, and rarity gem + label + %; clicking opens the detail modal
+- `AchievementModal`: achievement detail modal with game header image, progress bar, Status filter, and per-achievement rarity bar + gem + label + % and unlock date
+
+---
+
 ## 2026-03-26
 
 Combined activity feed launched at `/activity/`, hub gets a recent activity snippet, project restructured under `/profile/` and renamed to `gaming-hub`. Changelog page added.

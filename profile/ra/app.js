@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, Trophy, Crown, Lock, Unlock, AlertTriangle, Flame, Feather, Medal, ShieldOff, CircleDashed } from 'lucide-react';
+import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, Trophy, Crown, Lock, Unlock, AlertTriangle, Flame, Feather, Medal, ShieldOff, CircleDashed, X } from 'lucide-react';
 import { MEDIA_URL, SITE_URL, TILDE_TAG_COLORS } from './utils/constants.js';
 import { getMediaUrl, parseTitle } from './utils/helpers.js';
 import { transformData } from './utils/transform.js';
@@ -23,14 +23,7 @@ const renderTildeTags = (tags) => {
 
 // --- Components ---
 
-const GameCard = ({ game }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [lockFilter, setLockFilter] = useState('all');       // 'all' | 'unlocked' | 'locked'
-  const [typeFilter, setTypeFilter] = useState('all');       // 'all' | 'progression' | 'missable'
-
-  let glowClass = "border-[#323f4c] shadow-md";
-
-  // Left accent stripe colour by status
+const GameCard = ({ game, onViewDetails }) => {
   const stripeColor = game.isMastered
     ? 'border-l-[#e5b143]'
     : game.isBeaten
@@ -40,28 +33,23 @@ const GameCard = ({ game }) => {
     : game.achievementsTotal > 0
     ? 'border-l-[#323f4c]'
     : 'border-l-[#1e2a35]';
-  
+
   const hasAchievements = game.achievementsTotal > 0;
 
-  // Filtered achievements derived from both filters
-  const filteredAchievements = useMemo(() => {
+  const previewAchs = useMemo(() => {
     if (!game.achievements) return [];
-    return game.achievements.filter(ach => {
-      // Lock filter
-      if (lockFilter === 'unlocked' && !ach.isUnlocked) return false;
-      if (lockFilter === 'locked' && ach.isUnlocked) return false;
-      // Type filter — 'progression' bucket covers progression + win_condition
-      if (typeFilter === 'progression' && ach.type !== 'progression' && ach.type !== 'win_condition') return false;
-      if (typeFilter === 'missable' && ach.type !== 'missable') return false;
-      return true;
-    });
-  }, [game.achievements, lockFilter, typeFilter]);
+    const unlocked = game.achievements
+      .filter(a => a.isUnlocked)
+      .sort((a, b) => new Date(b.unlockDate || 0) - new Date(a.unlockDate || 0));
+    const locked = game.achievements.filter(a => !a.isUnlocked);
+    return [...unlocked, ...locked].slice(0, 6);
+  }, [game.achievements]);
 
   return (
-    <div className={`flex flex-col bg-[#202d39] rounded-[3px] transition-transform duration-200 hover:-translate-y-0.5 border-l-[3px] border ${glowClass} ${stripeColor} relative overflow-hidden`}>
+    <div className={`flex flex-col bg-[#202d39] rounded-[3px] transition-transform duration-200 hover:-translate-y-0.5 border-l-[3px] border border-[#323f4c] shadow-md ${stripeColor}`}>
 
-      <div className="relative flex flex-row p-3 gap-3 md:gap-4 items-center min-h-[90px] z-10">
-        
+      <div className="relative flex flex-row p-3 gap-3 md:gap-4 items-center min-h-[90px] z-10 overflow-hidden rounded-t-[3px]">
+
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-t-[3px]">
           <img 
             src={game.background} 
@@ -75,9 +63,9 @@ const GameCard = ({ game }) => {
            <img src={game.icon} alt={game.title} className="w-full h-full object-cover" />
         </a>
 
-        <div className="relative z-10 flex-1 flex flex-col justify-center min-w-0 py-0.5">
-          
-          <div className="flex flex-col mb-0.5">
+        <div className="relative z-10 flex-1 flex flex-col justify-center min-w-0">
+
+          <div className="flex flex-col mb-1">
             <div className="flex items-center gap-2 flex-wrap">
               <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer" className="text-[15px] md:text-base text-white font-medium tracking-wide drop-shadow-sm hover:text-[#66c0f4] transition-colors">
                 {game.baseTitle || game.title}
@@ -146,26 +134,26 @@ const GameCard = ({ game }) => {
                 {progPct !== null && (
                   <div className="flex items-center gap-2">
                     <span className={`${labelW} text-[8px] text-[#546270] uppercase tracking-wider text-right`}>Progression</span>
-                    <div className="flex-1 bg-[#101214] h-[4px] rounded-sm overflow-hidden max-w-[220px]">
+                    <div className="flex-1 bg-[#101214] h-[4px] rounded-sm overflow-hidden max-w-full">
                       <div
                         className="h-full transition-all duration-1000 ease-out rounded-sm bg-[#e5b143]"
                         style={{ width: `${progPct}%` }}
                       ></div>
                     </div>
-                    <div className="text-[10px] text-[#e5b143] shrink-0 whitespace-nowrap">
+                    <div className="text-[10px] text-[#e5b143] shrink-0 whitespace-nowrap" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.9), 0 0 8px rgba(0,0,0,0.6)' }}>
                       <span>{progUnlocked}</span>/{progTotal} <span className="ml-0.5">({progPct.toFixed(2)}%)</span>
                     </div>
                   </div>
                 )}
                 <div className="flex items-center gap-2">
                   <span className={`${labelW} text-[8px] text-[#546270] uppercase tracking-wider text-right`}>Overall</span>
-                  <div className="flex-1 bg-[#101214] h-[4px] rounded-sm overflow-hidden max-w-[220px]">
+                  <div className="flex-1 bg-[#101214] h-[4px] rounded-sm overflow-hidden max-w-full">
                     <div
                       className={`h-full transition-all duration-1000 ease-out rounded-sm ${game.isMastered ? 'bg-[#e5b143]' : 'bg-[#66c0f4]'}`}
                       style={{ width: `${game.rawProgress}%` }}
                     ></div>
                   </div>
-                  <div className="text-[10px] text-[#8f98a0] shrink-0 whitespace-nowrap">
+                  <div className="text-[10px] text-[#8f98a0] shrink-0 whitespace-nowrap" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.9), 0 0 8px rgba(0,0,0,0.6)' }}>
                     <span className="text-[#c6d4df]">{game.achievementsUnlocked}</span>/{game.achievementsTotal} <span className="ml-0.5">({game.rawProgress.toFixed(2)}%)</span>
                   </div>
                 </div>
@@ -175,188 +163,306 @@ const GameCard = ({ game }) => {
         </div>
       </div>
 
-      {hasAchievements && (
-        <button 
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="w-full flex items-center justify-center py-1 bg-[#1b2838] hover:bg-[#2a475e] transition-colors text-[#8f98a0] hover:text-[#c6d4df] border-t border-[#323f4c] text-[9px] uppercase tracking-widest outline-none z-10 relative"
+      {/* Achievement preview strip */}
+      {hasAchievements && onViewDetails && (
+        <button
+          onClick={() => onViewDetails(game)}
+          className="w-full flex items-center gap-2.5 px-3 py-2 bg-[#171a21] hover:bg-[#1b2838] transition-colors border-t border-[#323f4c] outline-none z-10 relative group rounded-b-[3px]"
         >
-          <span className="mr-1">{isExpanded ? 'Hide Details' : 'View Details'}</span>
-          <ChevronDown size={12} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
-        </button>
-      )}
-
-      {hasAchievements && isExpanded && (
-        <div className="bg-[#171a21] border-t border-[#101214] z-10 relative">
-
-          {/* ── Game Meta Row ── */}
-          {(game.genre || game.developer || game.released) && (
-            <div className="flex items-center gap-2 px-3 py-1.5 border-b border-[#1b2838] flex-wrap">
-              {game.genre && <span className="text-[9px] text-[#8f98a0] flex items-center gap-1"><Gamepad2 size={9} className="text-[#546270]" />{game.genre}</span>}
-              {game.genre && (game.developer || game.released) && <span className="text-[#323f4c] text-[9px]">·</span>}
-              {game.developer && <span className="text-[9px] text-[#8f98a0] flex items-center gap-1"><BarChart2 size={9} className="text-[#546270]" />{game.developer}</span>}
-              {game.developer && game.released && <span className="text-[#323f4c] text-[9px]">·</span>}
-              {game.released && <span className="text-[9px] text-[#8f98a0]">{game.released}</span>}
-            </div>
-          )}
-
-          {/* ── Filter Bar ── */}
-          <div className="flex flex-wrap items-center gap-2 px-3 py-2 border-b border-[#1b2838] bg-[#171a21]">
-
-            {/* Lock filter */}
-            <div className="flex items-center gap-1">
-              {[
-                { value: 'all',      label: 'All',      icon: null },
-                { value: 'unlocked', label: 'Unlocked', icon: <Unlock size={9} /> },
-                { value: 'locked',   label: 'Locked',   icon: <Lock size={9} /> },
-              ].map(opt => (
-                <button
-                  key={opt.value}
-                  onClick={() => setLockFilter(opt.value)}
-                  className={`text-[9px] font-semibold uppercase tracking-wider px-2 py-[3px] rounded-sm border transition-colors flex items-center gap-1 ${
-                    lockFilter === opt.value
-                      ? 'bg-[#66c0f4] text-[#101214] border-[#66c0f4]'
-                      : 'bg-[#101214] text-[#8f98a0] border-[#323f4c] hover:text-[#c6d4df] hover:border-[#546270]'
-                  }`}
-                >
-                  {opt.icon}{opt.label}
-                </button>
-              ))}
-            </div>
-
-            <span className="text-[#323f4c] text-[10px] select-none">|</span>
-
-            {/* Type filter */}
-            <div className="flex items-center gap-1">
-              {[
-                { value: 'all',         label: 'All Types',   icon: null },
-                { value: 'progression', label: 'Progression', icon: <Trophy size={9} /> },
-                { value: 'missable',    label: 'Missable',    icon: <AlertTriangle size={9} /> },
-              ].map(opt => (
-                <button
-                  key={opt.value}
-                  onClick={() => setTypeFilter(opt.value)}
-                  className={`text-[9px] font-semibold uppercase tracking-wider px-2 py-[3px] rounded-sm border transition-colors flex items-center gap-1 ${
-                    typeFilter === opt.value
-                      ? 'bg-[#e5b143] text-[#101214] border-[#e5b143]'
-                      : 'bg-[#101214] text-[#8f98a0] border-[#323f4c] hover:text-[#c6d4df] hover:border-[#546270]'
-                  }`}
-                >
-                  {opt.icon}{opt.label}
-                </button>
-              ))}
-            </div>
-
-            {/* Result count */}
-            <span className="ml-auto text-[9px] text-[#546270] font-medium shrink-0">
-              {filteredAchievements.length} / {game.achievements?.length ?? 0}
-            </span>
-          </div>
-
-          {/* ── Achievement List ── */}
-          <div className="p-2 overflow-y-auto max-h-[350px] space-y-1.5 custom-scrollbar">
-            {filteredAchievements.length > 0 ? (
-              filteredAchievements.map((ach) => {
-                const casualPct = Math.min(100, (ach.numAwardedCasual / game.totalPlayers) * 100).toFixed(2);
-                const hardcorePct = Math.min(100, (ach.numAwardedHardcore / game.totalPlayers) * 100).toFixed(2);
-
-                return (
-                  <div key={ach.id} className={`flex items-start md:items-center gap-3 p-2 rounded-[2px] border border-transparent border-l-[3px] transition-colors ${ach.isUnlocked ? 'bg-[#202d39] hover:bg-[#2a475e]' : 'bg-[#1b2838] opacity-75'} ${ach.isHardcore ? 'border-l-[#e5b143]' : ach.isUnlocked ? 'border-l-[#8f98a0]' : 'border-l-[#323f4c]'}`}>
-                    
-                    <a href={`${SITE_URL}/achievement/${ach.id}`} target="_blank" rel="noreferrer" className="relative shrink-0 w-10 h-10 rounded-[2px] border border-[#101214] overflow-hidden shadow-sm bg-black hover:scale-105 transition-transform block mt-1 md:mt-0">
-                      <img src={`${MEDIA_URL}/Badge/${ach.badgeName || '00001'}.png`} alt={ach.title} className={`w-full h-full object-cover ${!ach.isUnlocked ? 'grayscale brightness-40' : ''}`} />
-                      {!ach.isUnlocked && <Lock size={14} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/50" />}
-                    </a>
-
-                    <div className="flex-1 min-w-0 flex flex-col justify-center">
-                      <div className="flex items-center gap-2 mb-0.5">
-                        <a href={`${SITE_URL}/achievement/${ach.id}`} target="_blank" rel="noreferrer" className={`text-[12px] font-medium tracking-wide leading-tight hover:underline flex items-center gap-1.5 ${ach.isUnlocked ? 'text-[#e5b143]' : 'text-[#8f98a0]'}`}>
-                          {ach.title}
-                        </a>
-                        <span className="text-[9px] font-bold text-[#66c0f4] bg-[#101214] border border-[#323f4c] px-1.5 py-[1px] rounded-sm">{ach.points} pts</span>
-                        {ach.trueRatio > ach.points && (() => {
-                          const ratio = ach.trueRatio / ach.points;
-                          if (ratio < 5) return null;
-                          const [label, style, name, pct] = ratio >= 30
-                            ? ['UR', 'text-[#ff6b6b] border-[#ff6b6b]/35 bg-[rgba(255,107,107,0.08)]', 'Ultra Rare', '~1%']
-                            : ratio >= 20
-                            ? ['VR', 'text-[#e5b143] border-[#e5b143]/35 bg-[rgba(229,177,67,0.08)]',  'Very Rare',  '~2.5%']
-                            : ratio >= 10
-                            ? ['R',  'text-[#66c0f4] border-[#66c0f4]/35 bg-[rgba(102,192,244,0.08)]', 'Rare',       '~15%']
-                            : ['UC', 'text-[#8f98a0] border-[#8f98a0]/35 bg-[rgba(143,152,160,0.08)]', 'Uncommon',   '~24%'];
-                          return (
-                            <span className="pop-wrap">
-                              <span className={`text-[9px] font-bold px-1.5 py-[1px] rounded-sm border ${style}`}>{label}</span>
-                              <span className="pop-box">
-                                <div className="pop-name">{name}</div>
-                                <div className="pop-sub">Top {pct} of players</div>
-                                <div className="pop-val" style={{color: style.includes('ff6b6b') ? '#ff6b6b' : style.includes('e5b143') ? '#e5b143' : style.includes('66c0f4') ? '#66c0f4' : '#8f98a0'}}>×{ratio.toFixed(1)} ratio</div>
-                              </span>
-                            </span>
-                          );
-                        })()}
-
-                        {ach.type === 'progression' && (
-                          <span className="pop-wrap">
-                            <Trophy size={11} className="text-[#e5b143]" />
-                            <span className="pop-box">
-                              <div className="pop-name" style={{color:'#e5b143'}}>Progression</div>
-                              <div className="pop-sub">Required to complete the game</div>
-                            </span>
-                          </span>
-                        )}
-                        {ach.type === 'win_condition' && (
-                          <span className="pop-wrap">
-                            <Crown size={11} className="text-[#ff6b6b]" />
-                            <span className="pop-box">
-                              <div className="pop-name" style={{color:'#ff6b6b'}}>Win Condition</div>
-                              <div className="pop-sub">Triggers game completion</div>
-                            </span>
-                          </span>
-                        )}
-                        {ach.type === 'missable' && (
-                          <span className="pop-wrap">
-                            <AlertTriangle size={11} className="text-[#ff9800]" />
-                            <span className="pop-box">
-                              <div className="pop-name" style={{color:'#ff9800'}}>Missable</div>
-                              <div className="pop-sub">Can be permanently missed</div>
-                            </span>
-                          </span>
-                        )}
-                      </div>
-                      
-                      <p className="text-[10px] text-[#8f98a0] leading-snug mb-1.5">{ach.description}</p>
-                      
-                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mt-auto">
-                        <div className="w-full max-w-[200px] flex flex-col gap-0.5">
-                          <div className="relative h-1.5 bg-[#101214] rounded-full overflow-hidden w-full">
-                            <div className="absolute top-0 left-0 h-full bg-[#546270]" style={{ width: `${casualPct}%` }}></div>
-                            <div className="absolute top-0 left-0 h-full bg-[#ff6b6b]" style={{ width: `${hardcorePct}%` }}></div>
-                          </div>
-                          <div className="flex justify-between text-[8px] text-[#546270] font-medium uppercase tracking-wider">
-                            <span>HC: {hardcorePct}% ({ach.numAwardedHardcore})</span>
-                            <span>SC: {casualPct}% ({ach.numAwardedCasual})</span>
-                          </div>
-                        </div>
-
-                        {ach.isUnlocked && (
-                          <div className="flex items-center gap-1.5 shrink-0">
-                            {ach.isHardcore && (
-                              <span className="text-[9px] text-[#ff6b6b] border border-[#ff6b6b]/30 bg-[#101214]/60 px-1.5 py-[1px] rounded-sm font-semibold uppercase tracking-wider flex items-center gap-1">
-                                <Flame size={9} /> HC
-                              </span>
-                            )}
-                            <p className="text-[9px] text-[#66c0f4]">Unlocked: {new Date(ach.unlockDate).toLocaleDateString()}</p>
-                          </div>
-                        )}
-                      </div>
-                    </div>
+          {/* Badge icon previews */}
+          <div className="flex items-center gap-1 shrink-0">
+            {previewAchs.map((ach, i) => {
+              const isFirst  = i === 0;
+              const isLast   = i === previewAchs.length - 1;
+              const tipPos   = isFirst ? 'left-0' : isLast ? 'right-0' : 'left-1/2 -translate-x-1/2';
+              const caretPos = isFirst ? 'ml-[7px]' : isLast ? 'mr-[7px] ml-auto' : 'mx-auto';
+              const borderCls = ach.isHardcore ? 'border-[#e5b143]' : ach.isUnlocked ? 'border-[#8f98a0]' : 'border-[#1e2a35] opacity-40';
+              return (
+                <div key={ach.id} className="relative shrink-0" style={{ zIndex: previewAchs.length - i }}>
+                  <div className={`w-8 h-8 rounded-[2px] overflow-hidden border bg-black peer ${borderCls}`}>
+                    <img
+                      src={`${MEDIA_URL}/Badge/${ach.badgeName || '00001'}.png`}
+                      alt={ach.title}
+                      className={`w-full h-full object-cover ${!ach.isUnlocked ? 'grayscale' : ''}`}
+                    />
                   </div>
-                );
-              })
-            ) : (
-              <div className="text-center py-4 text-[#546270] text-[11px]">No achievements match the current filters.</div>
+                  {/* Tooltip */}
+                  <div className={`pointer-events-none absolute bottom-full ${tipPos} mb-1.5 opacity-0 peer-hover:opacity-100 transition-opacity duration-150 z-50 w-max max-w-[160px]`}>
+                    <div className="bg-[#101214] border border-[#2a475e] rounded-[3px] px-2 py-1.5 shadow-lg">
+                      <div className={`text-[10px] font-medium leading-tight text-left ${ach.isUnlocked ? 'text-[#e5b143]' : 'text-[#8f98a0]'}`}>
+                        {ach.title}
+                      </div>
+                      <div className="text-[9px] text-[#8f98a0] mt-0.5 text-left leading-snug">
+                        {ach.description || ach.title}
+                      </div>
+                      {ach.isUnlocked ? (
+                        <div className="flex items-center gap-1 mt-1 flex-wrap">
+                          <span className="text-[8px] font-bold text-[#66c0f4] bg-[#101214] border border-[#323f4c] px-1 py-px rounded-sm">{ach.points}pts</span>
+                          {ach.isHardcore && <span className="text-[8px] text-[#ff6b6b] border border-[#ff6b6b]/30 px-1 py-px rounded-sm font-semibold">HC</span>}
+                        </div>
+                      ) : (
+                        <div className="text-[8px] text-[#546270] mt-1 text-left">Locked</div>
+                      )}
+                    </div>
+                    <div className={`w-1.5 h-1.5 bg-[#101214] border-r border-b border-[#2a475e] rotate-45 -mt-[5px] ${caretPos}`} />
+                  </div>
+                </div>
+              );
+            })}
+            {game.achievementsTotal > previewAchs.length && (
+              <span className="text-[9px] text-[#546270] group-hover:text-[#8f98a0] transition-colors ml-0.5">
+                +{game.achievementsTotal - previewAchs.length}
+              </span>
             )}
           </div>
+
+          {/* Arrow */}
+          <div className="ml-auto flex items-center shrink-0">
+            <ChevronDown size={10} className="-rotate-90 text-[#546270] group-hover:text-[#66c0f4] transition-colors" />
+          </div>
+        </button>
+      )}
+    </div>
+  );
+};
+
+// ── RAchievementModal ─────────────────────────────────────────────────────────
+
+const RAchievementModal = ({ game, onClose }) => {
+  const [lockFilter, setLockFilter] = useState('all');
+  const [typeFilter, setTypeFilter] = useState('all');
+  const [tooltip,    setTooltip]    = useState(null); // { content, rect }
+
+  const showTip = (e, content) => setTooltip({ content, rect: e.currentTarget.getBoundingClientRect() });
+  const hideTip = () => setTooltip(null);
+
+  const filteredAchs = useMemo(() => {
+    if (!game.achievements) return [];
+    return game.achievements.filter(ach => {
+      if (lockFilter === 'unlocked' && !ach.isUnlocked) return false;
+      if (lockFilter === 'locked'   &&  ach.isUnlocked) return false;
+      if (typeFilter === 'progression' && ach.type !== 'progression' && ach.type !== 'win_condition') return false;
+      if (typeFilter === 'missable'    && ach.type !== 'missable') return false;
+      return true;
+    });
+  }, [game.achievements, lockFilter, typeFilter]);
+
+  const progAchs     = game.achievements?.filter(a => a.type === 'progression' || a.type === 'win_condition') ?? [];
+  const progUnlocked = progAchs.filter(a => a.isUnlocked).length;
+  const progPct      = progAchs.length > 0 ? (progUnlocked / progAchs.length) * 100 : null;
+
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = ''; };
+  }, []);
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
+
+      <div
+        className="relative z-10 w-full max-w-xl bg-[#1b2838] border border-[#2a475e] rounded-[4px] shadow-2xl flex flex-col max-h-[90vh]"
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Close button */}
+        <button onClick={onClose} className="absolute top-2 right-2 z-10 text-[#546270] hover:text-[#c6d4df] transition-colors outline-none">
+          <X size={15} />
+        </button>
+
+        {/* Header */}
+        <div className="flex items-center gap-4 px-4 py-4 border-b border-[#2a475e] shrink-0">
+          <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer"
+            className="shrink-0 w-16 h-16 rounded-[2px] overflow-hidden border border-[#101214] bg-[#101214] hover:scale-105 transition-transform">
+            <img src={game.icon} alt={game.title} className="w-full h-full object-cover" />
+          </a>
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 flex-wrap mb-1">
+              <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer"
+                className="text-[15px] font-medium text-white hover:text-[#66c0f4] transition-colors leading-tight truncate">
+                {game.baseTitle || game.title}
+              </a>
+              {game.isSubset && (
+                <span className="text-[8px] font-bold uppercase tracking-[0.07em] px-1.5 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>
+              )}
+              {renderTildeTags(game.tags)}
+            </div>
+            <div className="flex items-center gap-2 flex-wrap mb-2 text-[10px]">
+              <span className="text-[#66c0f4] flex items-center gap-1"><Gamepad2 size={10} />{game.console}</span>
+              <span className="text-[#546270]">·</span>
+              {game.isMastered ? (
+                <span className="text-[#e5b143] flex items-center gap-1"><Trophy size={9} /> Mastered</span>
+              ) : game.isBeaten ? (
+                <span className="text-[#8f98a0] flex items-center gap-1"><Medal size={9} /> Beaten</span>
+              ) : game.hardcore ? (
+                <span className="text-[#ff6b6b] flex items-center gap-1"><Flame size={9} /> Hardcore</span>
+              ) : game.achievementsUnlocked > 0 ? (
+                <span className="text-[#8f98a0] flex items-center gap-1"><Feather size={9} /> Softcore</span>
+              ) : null}
+            </div>
+            {/* Progress bars */}
+            <div className="flex flex-col gap-1">
+              {progPct !== null && (
+                <div className="flex items-center gap-2">
+                  <span className="w-[64px] shrink-0 text-[8px] text-[#546270] uppercase tracking-wider text-right">Progression</span>
+                  <div className="flex-1 bg-[#101214] h-[3px] rounded-sm overflow-hidden">
+                    <div className="h-full rounded-sm bg-[#e5b143]" style={{ width: `${progPct}%` }} />
+                  </div>
+                  <span className="text-[9px] text-[#e5b143] shrink-0">{progUnlocked}/{progAchs.length}</span>
+                </div>
+              )}
+              <div className="flex items-center gap-2">
+                <span className="w-[64px] shrink-0 text-[8px] text-[#546270] uppercase tracking-wider text-right">Overall</span>
+                <div className="flex-1 bg-[#101214] h-[3px] rounded-sm overflow-hidden">
+                  <div className={`h-full rounded-sm ${game.isMastered ? 'bg-[#e5b143]' : 'bg-[#66c0f4]'}`} style={{ width: `${game.rawProgress}%` }} />
+                </div>
+                <span className="text-[9px] text-[#8f98a0] shrink-0">
+                  <span className="text-[#c6d4df]">{game.achievementsUnlocked}</span>/{game.achievementsTotal}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Game meta row */}
+        {(game.genre || game.developer || game.released) && (
+          <div className="flex items-center gap-2 px-4 py-1.5 border-b border-[#101214] flex-wrap shrink-0">
+            {game.genre    && <span className="text-[9px] text-[#8f98a0] flex items-center gap-1"><Gamepad2 size={9} className="text-[#546270]" />{game.genre}</span>}
+            {game.genre    && (game.developer || game.released) && <span className="text-[#323f4c] text-[9px]">·</span>}
+            {game.developer && <span className="text-[9px] text-[#8f98a0] flex items-center gap-1"><BarChart2 size={9} className="text-[#546270]" />{game.developer}</span>}
+            {game.developer && game.released && <span className="text-[#323f4c] text-[9px]">·</span>}
+            {game.released  && <span className="text-[9px] text-[#8f98a0]">{game.released}</span>}
+          </div>
+        )}
+
+        {/* Filter bar — two rows */}
+        <div className="flex flex-col px-4 py-2 border-b border-[#101214] gap-1.5 shrink-0">
+          <div className="flex items-center gap-1.5">
+            <span className="text-[8px] uppercase tracking-wider text-[#546270] w-[44px] shrink-0">Status</span>
+            {[
+              { value: 'all',      label: 'All',      icon: null },
+              { value: 'unlocked', label: 'Unlocked', icon: <Unlock size={9} /> },
+              { value: 'locked',   label: 'Locked',   icon: <Lock size={9} /> },
+            ].map(opt => (
+              <button key={opt.value} onClick={() => setLockFilter(opt.value)}
+                className={`text-[9px] font-semibold uppercase tracking-wider px-2 py-[3px] rounded-sm border transition-colors flex items-center gap-1 ${
+                  lockFilter === opt.value
+                    ? 'bg-[#66c0f4] text-[#101214] border-[#66c0f4]'
+                    : 'bg-[#101214] text-[#8f98a0] border-[#323f4c] hover:text-[#c6d4df] hover:border-[#546270]'
+                }`}>{opt.icon}{opt.label}</button>
+            ))}
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className="text-[8px] uppercase tracking-wider text-[#546270] w-[44px] shrink-0">Type</span>
+            {[
+              { value: 'all',         label: 'All',         icon: null },
+              { value: 'progression', label: 'Progression', icon: <Trophy size={9} /> },
+              { value: 'missable',    label: 'Missable',    icon: <AlertTriangle size={9} /> },
+            ].map(opt => (
+              <button key={opt.value} onClick={() => setTypeFilter(opt.value)}
+                className={`text-[9px] font-semibold uppercase tracking-wider px-2 py-[3px] rounded-sm border transition-colors flex items-center gap-1 ${
+                  typeFilter === opt.value
+                    ? 'bg-[#e5b143] text-[#101214] border-[#e5b143]'
+                    : 'bg-[#101214] text-[#8f98a0] border-[#323f4c] hover:text-[#c6d4df] hover:border-[#546270]'
+                }`}>{opt.icon}{opt.label}</button>
+            ))}
+            <span className="ml-auto text-[9px] text-[#546270]">{filteredAchs.length} / {game.achievements?.length ?? 0}</span>
+          </div>
+        </div>
+
+        {/* Achievement list */}
+        <div className="overflow-y-auto overscroll-contain flex-1 px-4 py-3 space-y-1.5">
+          {filteredAchs.length > 0 ? filteredAchs.map(ach => {
+            const casualPct   = Math.min(100, (ach.numAwardedCasual   / game.totalPlayers) * 100).toFixed(2);
+            const hardcorePct = Math.min(100, (ach.numAwardedHardcore / game.totalPlayers) * 100).toFixed(2);
+            return (
+              <div key={ach.id}
+                className={`flex items-center gap-3 p-2 rounded-[2px] border border-transparent border-l-[3px] transition-colors ${ach.isUnlocked ? 'bg-[#202d39] hover:bg-[#253444]' : 'bg-[#171a21] opacity-75 border-l-[#323f4c]'} ${ach.isHardcore ? 'border-l-[#e5b143]' : ach.isUnlocked ? 'border-l-[#8f98a0]' : ''}`}
+              >
+                <a href={`${SITE_URL}/achievement/${ach.id}`} target="_blank" rel="noreferrer"
+                  className="relative shrink-0 w-10 h-10 rounded-[2px] border border-[#101214] overflow-hidden bg-black hover:scale-105 transition-transform block">
+                  <img src={`${MEDIA_URL}/Badge/${ach.badgeName || '00001'}.png`} alt={ach.title}
+                    className={`w-full h-full object-cover ${!ach.isUnlocked ? 'grayscale brightness-40' : ''}`} />
+                  {!ach.isUnlocked && <Lock size={14} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/50" />}
+                </a>
+
+                <div className="flex-1 min-w-0 flex flex-col justify-center">
+                  <div className="flex items-center gap-2 mb-1 flex-wrap">
+                    <a href={`${SITE_URL}/achievement/${ach.id}`} target="_blank" rel="noreferrer"
+                      className={`text-[12px] font-medium tracking-wide leading-tight hover:underline ${ach.isUnlocked ? 'text-[#e5b143]' : 'text-[#8f98a0]'}`}>
+                      {ach.title}
+                    </a>
+                    <span className="text-[9px] font-bold text-[#66c0f4] bg-[#101214] border border-[#323f4c] px-1.5 py-[1px] rounded-sm shrink-0">{ach.points} pts</span>
+                    {ach.trueRatio > ach.points && (() => {
+                      const ratio = ach.trueRatio / ach.points;
+                      if (ratio < 5) return null;
+                      const [label, style, name, pct, valColor] = ratio >= 30
+                        ? ['UR', 'text-[#ff6b6b] border-[#ff6b6b]/35 bg-[rgba(255,107,107,0.08)]', 'Ultra Rare', '~1%',  '#ff6b6b']
+                        : ratio >= 20
+                        ? ['VR', 'text-[#e5b143] border-[#e5b143]/35 bg-[rgba(229,177,67,0.08)]',  'Very Rare',  '~2.5%', '#e5b143']
+                        : ratio >= 10
+                        ? ['R',  'text-[#66c0f4] border-[#66c0f4]/35 bg-[rgba(102,192,244,0.08)]', 'Rare',       '~15%',  '#66c0f4']
+                        : ['UC', 'text-[#8f98a0] border-[#8f98a0]/35 bg-[rgba(143,152,160,0.08)]', 'Uncommon',   '~24%',  '#8f98a0'];
+                      return (
+                        <span className="shrink-0 cursor-help inline-flex items-center"
+                          onMouseEnter={e => showTip(e, <><div className="pop-name">{name}</div><div className="pop-sub">Top {pct} of players</div><div className="pop-val" style={{color: valColor}}>×{ratio.toFixed(1)} ratio</div></>)}
+                          onMouseLeave={hideTip}
+                        >
+                          <span className={`text-[9px] font-bold px-1.5 py-[1px] rounded-sm border ${style}`}>{label}</span>
+                        </span>
+                      );
+                    })()}
+                    {ach.type === 'progression' && <span className="shrink-0 cursor-help inline-flex items-center" onMouseEnter={e => showTip(e, <><div className="pop-name" style={{color:'#e5b143'}}>Progression</div><div className="pop-sub">Required to complete the game</div></>)} onMouseLeave={hideTip}><Trophy size={11} className="text-[#e5b143]" /></span>}
+                    {ach.type === 'win_condition' && <span className="shrink-0 cursor-help inline-flex items-center" onMouseEnter={e => showTip(e, <><div className="pop-name" style={{color:'#ff6b6b'}}>Win Condition</div><div className="pop-sub">Triggers game completion</div></>)} onMouseLeave={hideTip}><Crown size={11} className="text-[#ff6b6b]" /></span>}
+                    {ach.type === 'missable' && <span className="shrink-0 cursor-help inline-flex items-center" onMouseEnter={e => showTip(e, <><div className="pop-name" style={{color:'#ff9800'}}>Missable</div><div className="pop-sub">Can be permanently missed</div></>)} onMouseLeave={hideTip}><AlertTriangle size={11} className="text-[#ff9800]" /></span>}
+                  </div>
+
+                  <p className="text-[10px] text-[#8f98a0] leading-snug mb-1.5">{ach.description}</p>
+
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex flex-col gap-0.5 flex-1 min-w-0">
+                      <div className="relative h-1.5 bg-[#101214] rounded-full overflow-hidden w-full max-w-[180px]">
+                        <div className="absolute top-0 left-0 h-full bg-[#546270]" style={{ width: `${casualPct}%` }} />
+                        <div className="absolute top-0 left-0 h-full bg-[#ff6b6b]" style={{ width: `${hardcorePct}%` }} />
+                      </div>
+                      <div className="flex gap-2 text-[8px] text-[#546270] font-medium uppercase tracking-wider">
+                        <span>HC {hardcorePct}%</span>
+                        <span>SC {casualPct}%</span>
+                      </div>
+                    </div>
+                    {ach.isUnlocked && (
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        {ach.isHardcore && (
+                          <span className="text-[9px] text-[#ff6b6b] border border-[#ff6b6b]/30 px-1.5 py-[1px] rounded-sm font-semibold uppercase tracking-wider flex items-center gap-1">
+                            <Flame size={9} /> HC
+                          </span>
+                        )}
+                        <p className="text-[9px] text-[#66c0f4]">Unlocked: {new Date(ach.unlockDate).toLocaleDateString()}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          }) : (
+            <div className="text-center py-8 text-[#546270] text-[11px]">No achievements match the current filters.</div>
+          )}
+        </div>
+      </div>
+
+      {/* Fixed-position tooltip — escapes scroll container, always above hovered element */}
+      {tooltip && (
+        <div
+          className="pointer-events-none fixed z-[9999] bg-[#131a22] border border-[#2a475e] rounded-[2px] px-2 py-1.5 shadow-lg"
+          style={{ left: tooltip.rect.left + tooltip.rect.width / 2, top: tooltip.rect.top - 7, transform: 'translate(-50%, -100%)' }}
+        >
+          {tooltip.content}
+          <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0" style={{ borderLeft: '4px solid transparent', borderRight: '4px solid transparent', borderTop: '4px solid #2a475e' }} />
         </div>
       )}
     </div>
@@ -888,6 +994,7 @@ export default function App() {
   const [watchlistStatusFilter, setWatchlistStatusFilter] = useState('all');
   const [watchlistGrouping, setWatchlistGrouping] = useState('none');
   const [collapsedGroups, setCollapsedGroups] = useState(new Set());
+  const [selectedGame, setSelectedGame] = useState(null);
 
   const loadNextChunk = () => {
     const nextIdx = achievementChunks.findIndex(c => c === null);
@@ -1568,7 +1675,7 @@ export default function App() {
                 </div>
               )}
               {displayedGames.map(game => (
-                <GameCard key={game.id} game={game} />
+                <GameCard key={game.id} game={game} onViewDetails={setSelectedGame} />
               ))}
             </>
           )}
@@ -1653,6 +1760,8 @@ export default function App() {
 
 
       `}</style>
+
+      {selectedGame && <RAchievementModal game={selectedGame} onClose={() => setSelectedGame(null)} />}
     </div>
   );
 }

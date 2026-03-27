@@ -1,15 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock } from 'lucide-react';
+import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock, X } from 'lucide-react';
 import { STEAM_STATUS, PROGRESS_SORTS } from './utils/constants.js';
 import { formatPlaytime, formatDate, formatTimeAgo, fmtDay, fmtTime, capsuleUrl, headerUrl, libraryPortraitUrl, rarityLabel, rarityBorderColor } from './utils/helpers.js';
 
 // ── SteamGameCard ─────────────────────────────────────────────────────────────
 
-const SteamGameCard = ({ game, achievementData }) => {
-    const [expanded,   setExpanded]   = useState(false);
-    const [lockFilter, setLockFilter] = useState('all');
-
+const SteamGameCard = ({ game, achievementData, onViewDetails }) => {
     const hasAch = achievementData?.hasAchievements && achievementData?.achievements?.length > 0;
     const achs   = hasAch ? achievementData.achievements : [];
     const pct    = hasAch && achievementData.total > 0
@@ -25,16 +22,6 @@ const SteamGameCard = ({ game, achievementData }) => {
         ? 'border-l-[#323f4c]'
         : 'border-l-[#1e2a35]';
 
-    const filteredAchs = useMemo(() => {
-        const unl = achs
-            .filter(a => a.unlocked)
-            .sort((a, b) => new Date(b.unlockedAt || 0) - new Date(a.unlockedAt || 0));
-        const lck = achs.filter(a => !a.unlocked);
-        if (lockFilter === 'unlocked') return unl;
-        if (lockFilter === 'locked')   return lck;
-        return [...unl, ...lck];
-    }, [achs, lockFilter]);
-
     const lastUnlock = useMemo(() => {
         if (!hasAch) return null;
         const unlocked = achs.filter(a => a.unlocked && a.unlockedAt);
@@ -44,11 +31,20 @@ const SteamGameCard = ({ game, achievementData }) => {
         );
     }, [achs, hasAch]);
 
+    const previewAchs = useMemo(() => {
+        if (!hasAch) return [];
+        const unlocked = achs
+            .filter(a => a.unlocked)
+            .sort((a, b) => new Date(b.unlockedAt || 0) - new Date(a.unlockedAt || 0));
+        const locked = achs.filter(a => !a.unlocked);
+        return [...unlocked, ...locked].slice(0, 6);
+    }, [achs, hasAch]);
+
     return (
-        <div className={`flex flex-col bg-[#202d39] rounded-[3px] transition-transform duration-200 hover:-translate-y-0.5 border-l-[3px] border border-[#323f4c] shadow-md overflow-hidden ${stripeColor}`}>
+        <div className={`flex flex-col bg-[#202d39] rounded-[3px] transition-transform duration-200 hover:-translate-y-0.5 border-l-[3px] border border-[#323f4c] shadow-md ${stripeColor}`}>
 
             {/* Main row — background scoped here so it doesn't stretch when expanded */}
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden rounded-t-[3px]">
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     <img
                         src={libraryPortraitUrl(game.appId)}
@@ -64,7 +60,7 @@ const SteamGameCard = ({ game, achievementData }) => {
                     href={game.storeUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="shrink-0 w-[120px] h-[56px] rounded-[2px] border border-[#101214] overflow-hidden bg-[#2a475e] hover:scale-105 transition-transform"
+                    className="shrink-0 w-[140px] h-[66px] rounded-[2px] border border-[#101214] overflow-hidden bg-[#2a475e] hover:scale-105 transition-transform"
                 >
                     <img
                         src={headerUrl(game.appId)}
@@ -74,9 +70,9 @@ const SteamGameCard = ({ game, achievementData }) => {
                     />
                 </a>
 
-                <div className="flex-1 min-w-0 flex flex-col justify-center py-0.5">
+                <div className="flex-1 min-w-0 flex flex-col justify-center">
 
-                    <div className="flex items-center gap-2 mb-0.5 flex-wrap">
+                    <div className="flex items-center gap-2 mb-1 flex-wrap">
                         <a
                             href={game.storeUrl}
                             target="_blank"
@@ -122,13 +118,13 @@ const SteamGameCard = ({ game, achievementData }) => {
 
                     {pct !== null && (
                         <div className="flex items-center gap-2">
-                            <div className="flex-1 bg-[#101214] h-[4px] rounded-sm overflow-hidden max-w-[220px]">
+                            <div className="flex-1 bg-[#101214] h-[4px] rounded-sm overflow-hidden">
                                 <div
                                     className="h-full rounded-sm transition-all duration-700"
                                     style={{ width: `${pct}%`, background: isPerfect ? '#e5b143' : '#66c0f4' }}
                                 />
                             </div>
-                            <div className="text-[10px] shrink-0 whitespace-nowrap" style={{ color: isPerfect ? '#e5b143' : '#8f98a0' }}>
+                            <div className="text-[10px] shrink-0 whitespace-nowrap" style={{ color: isPerfect ? '#e5b143' : '#8f98a0', textShadow: '0 1px 4px rgba(0,0,0,0.9), 0 0 8px rgba(0,0,0,0.6)' }}>
                                 <span className="text-[#c6d4df]">{achievementData.unlocked}</span>/{achievementData.total}
                                 <span className="ml-0.5">({Math.floor(pct)}%)</span>
                             </div>
@@ -138,100 +134,244 @@ const SteamGameCard = ({ game, achievementData }) => {
             </div>
             </div>{/* end main-row background scope */}
 
-            {/* Expand button */}
-            {hasAch && (
+            {/* Achievement preview strip */}
+            {hasAch && onViewDetails && (
                 <button
-                    onClick={() => setExpanded(e => !e)}
-                    className="w-full flex items-center justify-center py-1 bg-[#1b2838] hover:bg-[#2a475e] transition-colors text-[#8f98a0] hover:text-[#c6d4df] border-t border-[#323f4c] text-[9px] uppercase tracking-widest outline-none z-10 relative"
+                    onClick={() => onViewDetails({ game, achievementData })}
+                    className="w-full flex items-center gap-2.5 px-3 py-2 bg-[#171a21] hover:bg-[#1b2838] transition-colors border-t border-[#323f4c] outline-none z-10 relative group rounded-b-[3px]"
                 >
-                    <span className="mr-1">{expanded ? 'Hide Details' : 'View Details'}</span>
-                    <ChevronDown size={12} className={`transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`} />
-                </button>
-            )}
-
-            {/* Expanded achievement list */}
-            {hasAch && expanded && (
-                <div className="bg-[#171a21] border-t border-[#101214] z-10 relative">
-
-                    {/* Filter bar */}
-                    <div className="flex items-center gap-2 px-3 py-2 border-b border-[#1b2838]">
-                        {[
-                            { value: 'all',      label: 'All',      icon: null },
-                            { value: 'unlocked', label: 'Unlocked', icon: <Unlock size={9} /> },
-                            { value: 'locked',   label: 'Locked',   icon: <Lock size={9} /> },
-                        ].map(opt => (
-                            <button
-                                key={opt.value}
-                                onClick={() => setLockFilter(opt.value)}
-                                className={`text-[9px] font-semibold uppercase tracking-wider px-2 py-[3px] rounded-sm border transition-colors flex items-center gap-1 ${
-                                    lockFilter === opt.value
-                                        ? 'bg-[#66c0f4] text-[#101214] border-[#66c0f4]'
-                                        : 'bg-[#101214] text-[#8f98a0] border-[#323f4c] hover:text-[#c6d4df] hover:border-[#546270]'
-                                }`}
-                            >
-                                {opt.icon}{opt.label}
-                            </button>
-                        ))}
-                        <span className="ml-auto text-[9px] text-[#546270]">
-                            {filteredAchs.length} / {achs.length}
-                        </span>
-                    </div>
-
-                    {/* Achievement list */}
-                    <div className="p-2 overflow-y-auto max-h-[350px] space-y-1.5">
-                        {filteredAchs.map(ach => (
-                            <div
-                                key={ach.apiName}
-                                className={`flex items-start md:items-center gap-3 p-2 rounded-[2px] border border-transparent border-l-[3px] transition-colors ${
-                                    ach.unlocked
-                                        ? 'bg-[#202d39] hover:bg-[#2a475e]'
-                                        : 'bg-[#1b2838] opacity-75 border-l-[#323f4c]'
-                                }`}
-                                style={ach.unlocked ? { borderLeftColor: rarityBorderColor(ach.globalPct) } : undefined}
-                            >
-                                <div className="relative shrink-0 w-10 h-10 rounded-[2px] border border-[#101214] overflow-hidden shadow-sm bg-black hover:scale-105 transition-transform mt-1 md:mt-0">
-                                    {ach.iconUrl
+                    {/* Achievement icon previews */}
+                    <div className="flex items-center gap-1 shrink-0">
+                        {previewAchs.map((ach, i) => {
+                            const isFirst = i === 0;
+                            const isLast  = i === previewAchs.length - 1;
+                            const tipPos  = isFirst ? 'left-0' : isLast ? 'right-0' : 'left-1/2 -translate-x-1/2';
+                            const caretPos = isFirst ? 'ml-[7px]' : isLast ? 'mr-[7px] ml-auto' : 'mx-auto';
+                            return (
+                            <div key={i} className="relative shrink-0" style={{ zIndex: previewAchs.length - i }}>
+                                {/* Icon */}
+                                <div className={`w-8 h-8 rounded-[2px] overflow-hidden border bg-black transition-all peer ${ach.unlocked ? 'border-[#2a475e]' : 'border-[#1e2a35] opacity-40'}`}>
+                                    {(ach.iconUrl || ach.iconGrayUrl)
                                         ? <img
                                             src={ach.unlocked ? ach.iconUrl : (ach.iconGrayUrl || ach.iconUrl)}
                                             alt={ach.displayName}
-                                            className={`w-full h-full object-cover ${!ach.unlocked ? 'grayscale brightness-40' : ''}`}
+                                            className={`w-full h-full object-cover ${!ach.unlocked ? 'grayscale' : ''}`}
                                           />
                                         : <div className="w-full h-full bg-[#2a475e]" />
                                     }
-                                    {!ach.unlocked && (
-                                        <Lock size={14} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/50" />
-                                    )}
                                 </div>
-                                <div className="flex-1 min-w-0 flex flex-col justify-center">
-                                    <div className={`text-[12px] font-medium tracking-wide leading-tight truncate mb-0.5 ${ach.unlocked ? 'text-[#e5b143]' : 'text-[#8f98a0]'}`}>
-                                        {ach.displayName}
-                                    </div>
-                                    <p className="text-[10px] text-[#8f98a0] leading-snug mb-1.5">{ach.description || ach.displayName}</p>
-                                    {ach.globalPct != null && (
-                                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mt-auto">
-                                            <div className="w-full max-w-[200px] flex flex-col gap-0.5">
-                                                <div className="relative h-1.5 bg-[#101214] rounded-full overflow-hidden w-full">
-                                                    <div className="absolute top-0 left-0 h-full rounded-full" style={{ width: `${Math.min(100, ach.globalPct)}%`, background: ach.unlocked ? rarityBorderColor(ach.globalPct) : '#323f4c' }} />
-                                                </div>
-                                                <div className="flex items-center gap-1 text-[8px] font-medium" style={{ color: ach.unlocked ? rarityBorderColor(ach.globalPct) : '#546270' }}>
-                                                    <Gem size={7} />
-                                                    {ach.unlocked ? `${rarityLabel(ach.globalPct)} · ${ach.globalPct}%` : `${ach.globalPct}%`}
-                                                </div>
-                                            </div>
-                                            {ach.unlocked && ach.unlockedAt && (
-                                                <p className="text-[9px] text-[#66c0f4] shrink-0">Unlocked: {formatDate(ach.unlockedAt)}</p>
-                                            )}
+                                {/* Tooltip */}
+                                <div className={`pointer-events-none absolute bottom-full ${tipPos} mb-1.5 opacity-0 peer-hover:opacity-100 transition-opacity duration-150 z-50 w-max max-w-[160px]`}>
+                                    <div className="bg-[#101214] border border-[#2a475e] rounded-[3px] px-2 py-1.5 shadow-lg">
+                                        <div className={`text-[10px] font-medium leading-tight text-left ${ach.unlocked ? 'text-[#e5b143]' : 'text-[#8f98a0]'}`}>
+                                            {ach.displayName}
                                         </div>
-                                    )}
-                                    {ach.globalPct == null && ach.unlocked && ach.unlockedAt && (
-                                        <p className="text-[9px] text-[#66c0f4]">Unlocked: {formatDate(ach.unlockedAt)}</p>
-                                    )}
+                                        <div className="text-[9px] mt-0.5 text-left leading-snug text-[#8f98a0]">
+                                            {ach.description || ach.displayName}
+                                        </div>
+                                        {ach.unlocked
+                                            ? <div className="flex items-center gap-1 mt-1">
+                                                <Gem size={7} style={{ color: rarityBorderColor(ach.globalPct), flexShrink: 0 }} />
+                                                <span className="text-[8px] font-medium text-left" style={{ color: rarityBorderColor(ach.globalPct) }}>
+                                                    {rarityLabel(ach.globalPct)}{ach.globalPct != null ? ` · ${ach.globalPct}%` : ''}
+                                                </span>
+                                              </div>
+                                            : <div className="text-[8px] text-[#546270] mt-1 text-left">Locked</div>
+                                        }
+                                    </div>
+                                    <div className={`w-1.5 h-1.5 bg-[#101214] border-r border-b border-[#2a475e] rotate-45 -mt-[5px] ${caretPos}`} />
                                 </div>
                             </div>
-                        ))}
+                            );
+                        })}
+                        {achievementData.total > previewAchs.length && (
+                            <span className="text-[9px] text-[#546270] group-hover:text-[#8f98a0] transition-colors ml-0.5">
+                                +{achievementData.total - previewAchs.length}
+                            </span>
+                        )}
+                    </div>
+
+                    {/* Arrow */}
+                    <div className="ml-auto flex items-center shrink-0">
+                        <ChevronDown size={10} className="-rotate-90 text-[#546270] group-hover:text-[#66c0f4] transition-colors" />
+                    </div>
+                </button>
+            )}
+        </div>
+    );
+};
+
+// ── AchievementModal ───────────────────────────────────────────────────────────
+
+const AchievementModal = ({ game, achievementData, onClose }) => {
+    const [lockFilter, setLockFilter] = useState('all');
+
+    const achs = achievementData?.achievements ?? [];
+    const pct  = achievementData.total > 0
+        ? (achievementData.unlocked / achievementData.total) * 100
+        : null;
+    const isPerfect = pct !== null && pct >= 100;
+
+    const filteredAchs = useMemo(() => {
+        const unl = achs
+            .filter(a => a.unlocked)
+            .sort((a, b) => new Date(b.unlockedAt || 0) - new Date(a.unlockedAt || 0));
+        const lck = achs.filter(a => !a.unlocked);
+        if (lockFilter === 'unlocked') return unl;
+        if (lockFilter === 'locked')   return lck;
+        return [...unl, ...lck];
+    }, [achs, lockFilter]);
+
+    // Close on Escape
+    useEffect(() => {
+        const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+        window.addEventListener('keydown', onKey);
+        return () => window.removeEventListener('keydown', onKey);
+    }, [onClose]);
+
+    // Lock body scroll
+    useEffect(() => {
+        document.body.style.overflow = 'hidden';
+        return () => { document.body.style.overflow = ''; };
+    }, []);
+
+    return (
+        <div
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+            onClick={onClose}
+        >
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
+
+            {/* Panel */}
+            <div
+                className="relative z-10 w-full max-w-xl bg-[#1b2838] border border-[#2a475e] rounded-[4px] shadow-2xl flex flex-col max-h-[90vh]"
+                onClick={e => e.stopPropagation()}
+            >
+                {/* Close button — absolute top-right */}
+                <button
+                    onClick={onClose}
+                    className="absolute top-2 right-2 z-10 text-[#546270] hover:text-[#c6d4df] transition-colors outline-none"
+                >
+                    <X size={15} />
+                </button>
+
+                {/* Modal header */}
+                <div className="flex items-center gap-4 px-4 py-4 border-b border-[#2a475e] shrink-0">
+                    <a
+                        href={game.storeUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="shrink-0 w-32 h-16 rounded-[2px] overflow-hidden border border-[#101214] bg-[#2a475e] hover:scale-105 transition-transform"
+                    >
+                        <img src={headerUrl(game.appId)} alt={game.name} className="w-full h-full object-cover" onError={e => { e.target.style.display = 'none'; }} />
+                    </a>
+                    <div className="flex-1 min-w-0">
+                        <a
+                            href={game.storeUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-[15px] font-medium text-white hover:text-[#66c0f4] transition-colors leading-tight truncate block"
+                        >
+                            {game.name}
+                        </a>
+                        {pct !== null && (
+                            <div className="flex items-center gap-2 mt-1">
+                                <div className="flex-1 bg-[#101214] h-[3px] rounded-sm overflow-hidden">
+                                    <div className="h-full rounded-sm" style={{ width: `${pct}%`, background: isPerfect ? '#e5b143' : '#66c0f4' }} />
+                                </div>
+                                <span className="text-[10px] shrink-0" style={{ color: isPerfect ? '#e5b143' : '#8f98a0' }}>
+                                    <span className="text-[#c6d4df]">{achievementData.unlocked}</span>/{achievementData.total}
+                                    <span className="ml-0.5">({Math.floor(pct)}%)</span>
+                                </span>
+                                {isPerfect && (
+                                    <span className="text-[8px] font-bold uppercase tracking-[0.07em] px-1.5 py-[1px] rounded-[2px] bg-[#e5b143] text-[#101214] flex items-center gap-1">
+                                        <Star size={7} /> Perfect
+                                    </span>
+                                )}
+                            </div>
+                        )}
                     </div>
                 </div>
-            )}
+
+                {/* Filter bar */}
+                <div className="flex items-center gap-2 px-4 py-2 border-b border-[#101214] shrink-0">
+                    {[
+                        { value: 'all',      label: 'All',      icon: null },
+                        { value: 'unlocked', label: 'Unlocked', icon: <Unlock size={9} /> },
+                        { value: 'locked',   label: 'Locked',   icon: <Lock size={9} /> },
+                    ].map(opt => (
+                        <button
+                            key={opt.value}
+                            onClick={() => setLockFilter(opt.value)}
+                            className={`text-[9px] font-semibold uppercase tracking-wider px-2 py-[3px] rounded-sm border transition-colors flex items-center gap-1 ${
+                                lockFilter === opt.value
+                                    ? 'bg-[#66c0f4] text-[#101214] border-[#66c0f4]'
+                                    : 'bg-[#101214] text-[#8f98a0] border-[#323f4c] hover:text-[#c6d4df] hover:border-[#546270]'
+                            }`}
+                        >
+                            {opt.icon}{opt.label}
+                        </button>
+                    ))}
+                    <span className="ml-auto text-[9px] text-[#546270]">
+                        {filteredAchs.length} / {achs.length}
+                    </span>
+                </div>
+
+                {/* Achievement list */}
+                <div className="overflow-y-auto overscroll-contain flex-1 px-4 py-3 space-y-1.5">
+                    {filteredAchs.map(ach => (
+                        <div
+                            key={ach.apiName}
+                            className={`flex items-center gap-3 p-2 rounded-[2px] border border-transparent border-l-[3px] transition-colors ${
+                                ach.unlocked
+                                    ? 'bg-[#202d39] hover:bg-[#253444]'
+                                    : 'bg-[#171a21] opacity-75 border-l-[#323f4c]'
+                            }`}
+                            style={ach.unlocked ? { borderLeftColor: rarityBorderColor(ach.globalPct) } : undefined}
+                        >
+                            <div className="relative shrink-0 w-10 h-10 rounded-[2px] border border-[#101214] overflow-hidden bg-black">
+                                {ach.iconUrl
+                                    ? <img
+                                        src={ach.unlocked ? ach.iconUrl : (ach.iconGrayUrl || ach.iconUrl)}
+                                        alt={ach.displayName}
+                                        className={`w-full h-full object-cover ${!ach.unlocked ? 'grayscale brightness-40' : ''}`}
+                                      />
+                                    : <div className="w-full h-full bg-[#2a475e]" />
+                                }
+                                {!ach.unlocked && (
+                                    <Lock size={14} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/50" />
+                                )}
+                            </div>
+                            <div className="flex-1 min-w-0 flex flex-col justify-center">
+                                <div className={`text-[12px] font-medium tracking-wide leading-tight truncate mb-1 ${ach.unlocked ? 'text-[#e5b143]' : 'text-[#8f98a0]'}`}>
+                                    {ach.displayName}
+                                </div>
+                                <p className="text-[10px] text-[#8f98a0] leading-snug mb-1.5">{ach.description || ach.displayName}</p>
+                                {ach.globalPct != null && (
+                                    <div className="flex items-center justify-between gap-2">
+                                        <div className="flex flex-col gap-0.5 flex-1 min-w-0">
+                                            <div className="relative h-1.5 bg-[#101214] rounded-full overflow-hidden w-full max-w-[180px]">
+                                                <div className="absolute top-0 left-0 h-full rounded-full" style={{ width: `${Math.min(100, ach.globalPct)}%`, background: ach.unlocked ? rarityBorderColor(ach.globalPct) : '#323f4c' }} />
+                                            </div>
+                                            <div className="flex items-center gap-1 text-[8px] font-medium" style={{ color: ach.unlocked ? rarityBorderColor(ach.globalPct) : '#546270' }}>
+                                                <Gem size={7} />
+                                                {ach.unlocked ? `${rarityLabel(ach.globalPct)} · ${ach.globalPct}%` : `${ach.globalPct}%`}
+                                            </div>
+                                        </div>
+                                        {ach.unlocked && ach.unlockedAt && (
+                                            <p className="text-[9px] text-[#66c0f4] shrink-0">Unlocked: {formatDate(ach.unlockedAt)}</p>
+                                        )}
+                                    </div>
+                                )}
+                                {ach.globalPct == null && ach.unlocked && ach.unlockedAt && (
+                                    <p className="text-[9px] text-[#66c0f4]">Unlocked: {formatDate(ach.unlockedAt)}</p>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 };
@@ -520,7 +660,7 @@ const ActivityTab = ({ achievements }) => {
 
 // ── ProgressTab ───────────────────────────────────────────────────────────────
 
-const ProgressTab = ({ achievementProgress, recentlyPlayed }) => {
+const ProgressTab = ({ achievementProgress, recentlyPlayed, onViewDetails }) => {
     const [sort, setSort] = useState('pct');
 
     const playtimeMap = useMemo(() => {
@@ -607,6 +747,7 @@ const ProgressTab = ({ achievementProgress, recentlyPlayed }) => {
                             lastPlayedTs:    g.lastPlayedTs,
                         }}
                         achievementData={achievementProgress[g.appId]}
+                        onViewDetails={onViewDetails}
                     />
                 ))}
             </div>
@@ -675,6 +816,7 @@ const App = () => {
     const [achievementsData, setAchievementsData] = useState(null);
     const [loading,          setLoading]          = useState(true);
     const [error,            setError]            = useState(null);
+    const [selectedGame,     setSelectedGame]     = useState(null);
     const VALID_TABS = ['recent', 'progress', 'activity'];
     const initialTab = (() => {
         const p = new URLSearchParams(window.location.search).get('tab');
@@ -1081,7 +1223,7 @@ const App = () => {
                         gamesData
                             ? <div className="flex flex-col gap-3">
                                 {recentlyPlayed.map(game => (
-                                    <SteamGameCard key={game.appId} game={game} achievementData={achProgress[game.appId]} />
+                                    <SteamGameCard key={game.appId} game={game} achievementData={achProgress[game.appId]} onViewDetails={setSelectedGame} />
                                 ))}
                               </div>
                             : <div className="flex items-center justify-center py-12 text-[#546270] text-[11px]">Loading games…</div>
@@ -1089,7 +1231,7 @@ const App = () => {
 
                     {activeTab === 'progress' && (
                         gamesData
-                            ? <ProgressTab achievementProgress={achProgress} recentlyPlayed={recentlyPlayed} />
+                            ? <ProgressTab achievementProgress={achProgress} recentlyPlayed={recentlyPlayed} onViewDetails={setSelectedGame} />
                             : <div className="flex items-center justify-center py-12 text-[#546270] text-[11px]">Loading games…</div>
                     )}
 
@@ -1123,6 +1265,15 @@ const App = () => {
                 >
                     <ChevronDown size={16} className="rotate-180" />
                 </button>
+            )}
+
+            {/* Achievement modal */}
+            {selectedGame && (
+                <AchievementModal
+                    game={selectedGame.game}
+                    achievementData={selectedGame.achievementData}
+                    onClose={() => setSelectedGame(null)}
+                />
             )}
 
         </div>
