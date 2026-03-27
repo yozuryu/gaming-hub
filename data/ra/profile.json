@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-03-27T11:04:12.221Z"
+        "extractionTimestamp": "2026-03-27T12:37:48.236Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 59570,
+        "rank": 59571,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 135717,
+        "totalRanked": 135719,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -962,7 +962,7 @@
         ]
     },
     "wantToPlayList": {
-        "total": 416,
+        "total": 431,
         "results": [
             {
                 "id": 27,
@@ -972,6 +972,15 @@
                 "imageIcon": "/Images/125221.png",
                 "pointsTotal": 800,
                 "achievementsPublished": 109
+            },
+            {
+                "id": 38,
+                "title": "Fire Emblem: Radiant Dawn",
+                "consoleId": 19,
+                "consoleName": "Wii",
+                "imageIcon": "/Images/120995.png",
+                "pointsTotal": 581,
+                "achievementsPublished": 83
             },
             {
                 "id": 50,
@@ -1001,6 +1010,15 @@
                 "achievementsPublished": 98
             },
             {
+                "id": 97,
+                "title": "Resident Evil: The Umbrella Chronicles",
+                "consoleId": 19,
+                "consoleName": "Wii",
+                "imageIcon": "/Images/123230.png",
+                "pointsTotal": 960,
+                "achievementsPublished": 107
+            },
+            {
                 "id": 100,
                 "title": "Xenoblade Chronicles",
                 "consoleId": 19,
@@ -1019,6 +1037,15 @@
                 "achievementsPublished": 0
             },
             {
+                "id": 131,
+                "title": "Fragile Dreams: Farewell Ruins of the Moon",
+                "consoleId": 19,
+                "consoleName": "Wii",
+                "imageIcon": "/Images/124070.png",
+                "pointsTotal": 340,
+                "achievementsPublished": 42
+            },
+            {
                 "id": 192,
                 "title": "Shining in the Darkness",
                 "consoleId": 1,
@@ -1026,6 +1053,33 @@
                 "imageIcon": "/Images/061515.png",
                 "pointsTotal": 235,
                 "achievementsPublished": 18
+            },
+            {
+                "id": 204,
+                "title": "The Legend of Zelda: Twilight Princess",
+                "consoleId": 19,
+                "consoleName": "Wii",
+                "imageIcon": "/Images/120792.png",
+                "pointsTotal": 743,
+                "achievementsPublished": 107
+            },
+            {
+                "id": 208,
+                "title": "Monster Hunter Tri",
+                "consoleId": 19,
+                "consoleName": "Wii",
+                "imageIcon": "/Images/120482.png",
+                "pointsTotal": 709,
+                "achievementsPublished": 60
+            },
+            {
+                "id": 213,
+                "title": "Klonoa",
+                "consoleId": 19,
+                "consoleName": "Wii",
+                "imageIcon": "/Images/083806.png",
+                "pointsTotal": 413,
+                "achievementsPublished": 43
             },
             {
                 "id": 319,
@@ -2630,6 +2684,15 @@
                 "achievementsPublished": 62
             },
             {
+                "id": 8413,
+                "title": "Rayman: Raving Rabbids",
+                "consoleId": 18,
+                "consoleName": "Nintendo DS",
+                "imageIcon": "/Images/114709.png",
+                "pointsTotal": 330,
+                "achievementsPublished": 38
+            },
+            {
                 "id": 8425,
                 "title": "Shadow Hearts: From the New World",
                 "consoleId": 21,
@@ -2718,6 +2781,15 @@
                 "imageIcon": "/Images/102520.png",
                 "pointsTotal": 680,
                 "achievementsPublished": 74
+            },
+            {
+                "id": 9594,
+                "title": "Animal Crossing: Wild World",
+                "consoleId": 18,
+                "consoleName": "Nintendo DS",
+                "imageIcon": "/Images/071904.png",
+                "pointsTotal": 1350,
+                "achievementsPublished": 157
             },
             {
                 "id": 9685,
@@ -3953,6 +4025,15 @@
                 "achievementsPublished": 12
             },
             {
+                "id": 16995,
+                "title": "Rayman Rush",
+                "consoleId": 12,
+                "consoleName": "PlayStation",
+                "imageIcon": "/Images/111300.png",
+                "pointsTotal": 503,
+                "achievementsPublished": 84
+            },
+            {
                 "id": 17005,
                 "title": "Clock Tower: The First Fear",
                 "consoleId": 12,
@@ -4655,6 +4736,15 @@
                 "achievementsPublished": 0
             },
             {
+                "id": 34566,
+                "title": "Animal Crossing: City Folk",
+                "consoleId": 19,
+                "consoleName": "Wii",
+                "imageIcon": "/Images/124719.png",
+                "pointsTotal": 1437,
+                "achievementsPublished": 189
+            },
+            {
                 "id": 34569,
                 "title": "Arc Rise Fantasia",
                 "consoleId": 19,
@@ -4662,6 +4752,24 @@
                 "imageIcon": "/Images/119676.png",
                 "pointsTotal": 0,
                 "achievementsPublished": 0
+            },
+            {
+                "id": 34679,
+                "title": "Final Fantasy Crystal Chronicles: The Crystal Bearers",
+                "consoleId": 19,
+                "consoleName": "Wii",
+                "imageIcon": "/Images/125984.png",
+                "pointsTotal": 1449,
+                "achievementsPublished": 193
+            },
+            {
+                "id": 34703,
+                "title": "Rayman Origins",
+                "consoleId": 19,
+                "consoleName": "Wii",
+                "imageIcon": "/Images/123081.png",
+                "pointsTotal": 1142,
+                "achievementsPublished": 111
             },
             {
                 "id": 34707,
@@ -4682,6 +4790,15 @@
                 "achievementsPublished": 0
             },
             {
+                "id": 34862,
+                "title": "Rayman: Raving Rabbids 2",
+                "consoleId": 19,
+                "consoleName": "Wii",
+                "imageIcon": "/Images/120031.png",
+                "pointsTotal": 452,
+                "achievementsPublished": 65
+            },
+            {
                 "id": 34874,
                 "title": "Fatal Frame: Mask of the Lunar Eclipse",
                 "consoleId": 19,
@@ -4689,6 +4806,15 @@
                 "imageIcon": "/Images/120695.png",
                 "pointsTotal": 0,
                 "achievementsPublished": 0
+            },
+            {
+                "id": 36547,
+                "title": "Monster Hunter Tri [Subset - Loc Lac]",
+                "consoleId": 19,
+                "consoleName": "Wii",
+                "imageIcon": "/Images/122636.png",
+                "pointsTotal": 3120,
+                "achievementsPublished": 141
             },
             {
                 "id": 36643,
@@ -4707,6 +4833,15 @@
                 "imageIcon": "/Images/123035.png",
                 "pointsTotal": 1305,
                 "achievementsPublished": 261
+            },
+            {
+                "id": 38074,
+                "title": "Animal Crossing: City Folk [Subset - Bellionaire]",
+                "consoleId": 19,
+                "consoleName": "Wii",
+                "imageIcon": "/Images/125033.png",
+                "pointsTotal": 376,
+                "achievementsPublished": 11
             }
         ]
     },
