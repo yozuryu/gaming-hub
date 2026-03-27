@@ -363,9 +363,29 @@ function serializeLocally(payload) {
     }
 
     // games.json — detailed per-game data, loaded for Recent/Progress tabs
-    write('games.json', {
-        detailedGameProgress: payload.detailedGameProgress,
-    });
+    // Strip fields unused by the frontend to reduce file size (~1MB saved).
+    const UNUSED_GAME_FIELDS = ['richPresencePatch', 'imageTitle', 'imageIngame', 'imageBoxArt',
+        'forumTopicId', 'flags', 'isFinal', 'releasedAtGranularity',
+        'numDistinctPlayers', 'numDistinctPlayersCasual', 'numDistinctPlayersHardcore',
+        'userCompletion', 'userCompletionHardcore'];
+    const UNUSED_ACH_FIELDS  = ['memAddr', 'authorUlid', 'dateCreated', 'dateModified', 'author'];
+
+    const cleanedProgress = {};
+    for (const [id, game] of Object.entries(payload.detailedGameProgress)) {
+        const cleanGame = { ...game };
+        UNUSED_GAME_FIELDS.forEach(f => delete cleanGame[f]);
+        if (cleanGame.achievements && typeof cleanGame.achievements === 'object') {
+            const cleanAchs = {};
+            for (const [achId, ach] of Object.entries(cleanGame.achievements)) {
+                const cleanAch = { ...ach };
+                UNUSED_ACH_FIELDS.forEach(f => delete cleanAch[f]);
+                cleanAchs[achId] = cleanAch;
+            }
+            cleanGame.achievements = cleanAchs;
+        }
+        cleanedProgress[id] = cleanGame;
+    }
+    write('games.json', { detailedGameProgress: cleanedProgress });
 }
 
 // =========================================================

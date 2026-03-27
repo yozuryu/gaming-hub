@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock, X } from 'lucide-react';
 import { STEAM_STATUS, PROGRESS_SORTS } from './utils/constants.js';
-import { formatPlaytime, formatDate, formatTimeAgo, fmtDay, fmtTime, capsuleUrl, headerUrl, libraryPortraitUrl, rarityLabel, rarityBorderColor } from './utils/helpers.js';
+import { formatPlaytime, formatDate, formatTimeAgo, fmtDay, fmtTime, achIconUrl, capsuleUrl, headerUrl, libraryPortraitUrl, rarityLabel, rarityBorderColor } from './utils/helpers.js';
 
 // ── SteamGameCard ─────────────────────────────────────────────────────────────
 
@@ -153,7 +153,7 @@ const SteamGameCard = ({ game, achievementData, onViewDetails }) => {
                                 <div className={`w-8 h-8 rounded-[2px] overflow-hidden border bg-black transition-all peer ${ach.unlocked ? 'border-[#2a475e]' : 'border-[#1e2a35] opacity-40'}`}>
                                     {(ach.iconUrl || ach.iconGrayUrl)
                                         ? <img
-                                            src={ach.unlocked ? ach.iconUrl : (ach.iconGrayUrl || ach.iconUrl)}
+                                            src={ach.unlocked ? achIconUrl(achievementData.appId, ach.iconUrl) : (achIconUrl(achievementData.appId, ach.iconGrayUrl) || achIconUrl(achievementData.appId, ach.iconUrl))}
                                             alt={ach.displayName}
                                             className={`w-full h-full object-cover ${!ach.unlocked ? 'grayscale' : ''}`}
                                           />
@@ -333,7 +333,7 @@ const AchievementModal = ({ game, achievementData, onClose }) => {
                             <div className="relative shrink-0 w-10 h-10 rounded-[2px] border border-[#101214] overflow-hidden bg-black">
                                 {ach.iconUrl
                                     ? <img
-                                        src={ach.unlocked ? ach.iconUrl : (ach.iconGrayUrl || ach.iconUrl)}
+                                        src={ach.unlocked ? achIconUrl(achievementData.appId, ach.iconUrl) : (achIconUrl(achievementData.appId, ach.iconGrayUrl) || achIconUrl(achievementData.appId, ach.iconUrl))}
                                         alt={ach.displayName}
                                         className={`w-full h-full object-cover ${!ach.unlocked ? 'grayscale brightness-40' : ''}`}
                                       />
@@ -627,7 +627,7 @@ const ActivityTab = ({ achievements }) => {
                                                     <div key={ai} className="flex items-center gap-2 p-2 rounded-[2px] border border-[#2a475e] border-l-[2px] bg-[#1b2838] hover:bg-[#2a475e] transition-colors" style={{ borderLeftColor: rarityBorderColor(ach.globalPct) }}>
                                                         <div className="shrink-0 w-8 h-8 rounded-[2px] overflow-hidden border border-[#101214] bg-black">
                                                             {ach.iconUrl
-                                                                ? <img src={ach.iconUrl} alt={ach.displayName} className="w-full h-full object-cover" />
+                                                                ? <img src={achIconUrl(ach.appId, ach.iconUrl)} alt={ach.displayName} className="w-full h-full object-cover" />
                                                                 : <div className="w-full h-full bg-[#2a475e]" />
                                                             }
                                                         </div>

@@ -27,6 +27,12 @@ Achievement detail modals added to both platforms; game cards get an achievement
 
 - Shimmer skeleton loading state added — heatmap grid, filter bar, day headers, session rows, and achievement rows all shimmer while data loads (previously just showed `Loading…`)
 
+### Pipelines
+
+- RA `games.json` strips unused fields before writing — removes `richPresencePatch`, `imageTitle`, `imageIngame`, `imageBoxArt`, `forumTopicId`, `flags`, `isFinal`, `releasedAtGranularity`, `numDistinctPlayers*`, `userCompletion*` from game objects and `memAddr`, `authorUlid`, `dateCreated`, `dateModified`, `author` from achievement objects (~1MB saved)
+- Steam achievement icon URLs stored as filename hash only in `games.json` and `achievements.json` instead of full CDN URLs (~1.4MB saved); `achIconUrl(appId, hash)` helper in `helpers.js` reconstructs full URLs at render time
+- `appId` now embedded in each Steam achievement progress object so the Activity tab can reconstruct icon URLs without a separate lookup
+
 ### RetroAchievements
 
 - `GameCard` now shows a preview strip of up to 6 achievement badge icons (unlocked first) with hover tooltips showing name, description, points, and HC badge; clicking opens the detail modal

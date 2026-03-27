@@ -38,6 +38,9 @@ export const fmtDay = (dateStr) => {
 export const fmtTime = (str) =>
     str ? new Date(str).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) : '';
 
+export const achIconUrl = (appId, hash) =>
+    hash ? `https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/${appId}/${hash}` : null;
+
 export const capsuleUrl = (appId) =>
     `https://cdn.akamai.steamstatic.com/steam/apps/${appId}/capsule_sm_120.jpg`;
 

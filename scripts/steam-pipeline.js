@@ -3,6 +3,11 @@ const fs    = require('fs');
 const path  = require('path');
 const https = require('https');
 
+// Extract just the filename from a Steam CDN achievement icon URL.
+// Full URL: https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/{appId}/{hash}.jpg
+// Stored as: {hash}.jpg  — saves ~72 chars per URL, ~1.4MB across all achievements in games.json.
+const achIconHash = url => (url ? url.split('/').pop() : null);
+
 // =========================================================
 // Logging Helpers
 // =========================================================
@@ -300,8 +305,8 @@ async function executeGameExtraction(recentlyPlayed, owned) {
                             unlockedAt:  null,
                             displayName: schema.displayName ?? a.apiname,
                             description: schema.description ?? '',
-                            iconUrl:     schema.icon        ?? null,
-                            iconGrayUrl: schema.icongray    ?? null,
+                            iconUrl:     achIconHash(schema.icon)     ?? null,
+                            iconGrayUrl: achIconHash(schema.icongray) ?? null,
                             hidden:      schema.hidden === 1,
                             globalPct:   globalPctMap[a.apiname] != null
                                 ? Math.round(globalPctMap[a.apiname] * 10) / 10
@@ -326,8 +331,8 @@ async function executeGameExtraction(recentlyPlayed, owned) {
                                 : null,
                             displayName: schema.displayName ?? a.apiname,
                             description: schema.description ?? '',
-                            iconUrl:     schema.icon        ?? null,
-                            iconGrayUrl: schema.icongray    ?? null,
+                            iconUrl:     achIconHash(schema.icon)     ?? null,
+                            iconGrayUrl: achIconHash(schema.icongray) ?? null,
                             hidden:      schema.hidden === 1,
                             globalPct:   globalPctMap[a.apiname] != null
                                 ? Math.round(globalPctMap[a.apiname] * 10) / 10
@@ -389,7 +394,9 @@ function serializeLocally(payload, achievementProgress, sentinelCache, owned) {
                 apiName:     ach.apiName,
                 displayName: ach.displayName,
                 description: ach.description,
-                iconUrl:     ach.iconUrl,
+                iconUrl:     ach.iconUrl
+                    ? `https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/${appId}/${ach.iconUrl}`
+                    : null,
                 unlockedAt:  ach.unlockedAt,
                 globalPct:   ach.globalPct ?? null,
             });
@@ -416,8 +423,8 @@ function serializeLocally(payload, achievementProgress, sentinelCache, owned) {
     for (const [appId, data] of Object.entries(achievementProgress)) {
         const om = ownedMap[Number(appId)];
         enrichedProgress[appId] = om
-            ? { ...data, playtimeForever: om.playtimeForever, lastPlayedTs: om.lastPlayedTs, iconUrl: om.iconUrl }
-            : data;
+            ? { appId: Number(appId), ...data, playtimeForever: om.playtimeForever, lastPlayedTs: om.lastPlayedTs, iconUrl: om.iconUrl }
+            : { appId: Number(appId), ...data };
     }
 
     // Pre-compute perfect games (100% completion) sorted by completion date desc
@@ -437,7 +444,9 @@ function serializeLocally(payload, achievementProgress, sentinelCache, owned) {
                 playtimeForever:    d.playtimeForever ?? 0,
                 completedAt:        lastAch?.unlockedAt ?? null,
                 lastAchName:        lastAch?.displayName ?? null,
-                lastAchIconUrl:     lastAch?.iconUrl ?? null,
+                lastAchIconUrl:     lastAch?.iconUrl
+                    ? `https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/${appId}/${lastAch.iconUrl}`
+                    : null,
                 lastAchGlobalPct:   lastAch?.globalPct ?? null,
                 iconUrl:            d.iconUrl ?? null,
             };
