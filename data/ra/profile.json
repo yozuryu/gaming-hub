@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-03-28T01:08:26.532Z"
+        "extractionTimestamp": "2026-03-28T01:50:14.515Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 59680,
+        "rank": 59685,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 135968,
+        "totalRanked": 135974,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -962,7 +962,7 @@
         ]
     },
     "wantToPlayList": {
-        "total": 431,
+        "total": 432,
         "results": [
             {
                 "id": 27,
@@ -3807,6 +3807,15 @@
                 "imageIcon": "/Images/121938.png",
                 "pointsTotal": 990,
                 "achievementsPublished": 90
+            },
+            {
+                "id": 15722,
+                "title": "~Homebrew~ ~Prototype~ PokeMaze",
+                "consoleId": 24,
+                "consoleName": "Pokemon Mini",
+                "imageIcon": "/Images/053899.png",
+                "pointsTotal": 20,
+                "achievementsPublished": 11
             },
             {
                 "id": 16080,
