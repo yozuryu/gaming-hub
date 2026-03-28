@@ -1,9 +1,21 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Activity, ChevronDown } from 'lucide-react';
-import { PLATFORM_COLOR } from './utils/constants.js';
+import { PLATFORM_COLOR, TILDE_TAG_COLORS } from './utils/constants.js';
 import { fmtDay, fmtTime, parseTitle } from './utils/helpers.js';
 import { normalizeRA, normalizeSteam } from './utils/normalizers.js';
+
+const renderTildeTags = (tags) => {
+    if (!tags?.length) return null;
+    return tags.map(tag => {
+        const s = TILDE_TAG_COLORS[tag] || TILDE_TAG_COLORS['Prototype'];
+        return (
+            <span key={tag} style={{ fontSize: '7px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.07em', padding: '1px 4px', borderRadius: '2px', flexShrink: 0, background: s.bg, border: `1px solid ${s.border}`, color: s.color }}>
+                {tag}
+            </span>
+        );
+    });
+};
 
 // ── Heatmap ───────────────────────────────────────────────────────────────────
 
@@ -155,7 +167,7 @@ const GameSession = ({ session }) => {
     const endT   = fmtTime(new Date(Math.max(...times)).toISOString());
     const timeStr = startT === endT ? startT : `${startT}–${endT}`;
 
-    const { baseTitle, subsetName, isSubset } = isRA ? parseTitle(session.gameName) : {};
+    const { baseTitle, subsetName, isSubset, tags } = isRA ? parseTitle(session.gameName) : {};
     const gameNameNode = isRA ? (
         <>
             <a href={session.gameUrl} target="_blank" rel="noreferrer"
@@ -168,6 +180,7 @@ const GameSession = ({ session }) => {
                     <span className="text-[8px] text-[#c8a84b] truncate">{subsetName}</span>
                 </>
             )}
+            {!isSubset && renderTildeTags(tags)}
         </>
     ) : (
         <a href={session.gameUrl} target="_blank" rel="noreferrer"

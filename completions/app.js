@@ -27,6 +27,32 @@ const fmtMonthYear = key => {
 const rarityLabel = pct => pct < 1 ? 'Ultra Rare' : pct < 10 ? 'Very Rare' : pct < 25 ? 'Rare' : pct < 50 ? 'Uncommon' : 'Common';
 const rarityColor = pct => pct < 1 ? '#ff6b6b' : pct < 10 ? '#e5b143' : pct < 25 ? '#66c0f4' : '#8f98a0';
 
+const parseTitle = title => {
+    if (!title) return { baseTitle: title, subsetName: null, isSubset: false, tags: [] };
+    const tags = [];
+    const withoutTags = title.replace(/~([^~]+)~\s*/g, (_, tag) => { tags.push(tag); return ''; }).trim();
+    const subsetMatch = withoutTags.match(/^(.+?)\s*\[Subset\s*[-–]\s*(.+?)\]$/);
+    if (subsetMatch) return { baseTitle: subsetMatch[1].trim(), subsetName: subsetMatch[2].trim(), isSubset: true, tags };
+    return { baseTitle: withoutTags, subsetName: null, isSubset: false, tags };
+};
+
+const TILDE_TAG_COLORS = {
+    'Homebrew':  { bg: 'rgba(102,192,244,0.08)', border: 'rgba(102,192,244,0.3)',  color: '#66c0f4' },
+    'Demo':      { bg: 'rgba(87,203,222,0.08)',  border: 'rgba(87,203,222,0.3)',   color: '#57cbde' },
+    'Prototype': { bg: 'rgba(143,152,160,0.08)', border: 'rgba(143,152,160,0.3)',  color: '#8f98a0' },
+    'Hack':      { bg: 'rgba(255,107,107,0.08)', border: 'rgba(255,107,107,0.3)',  color: '#ff6b6b' },
+};
+
+const TildeTags = ({ tags }) => tags.map(tag => {
+    const s = TILDE_TAG_COLORS[tag] || TILDE_TAG_COLORS['Prototype'];
+    return (
+        <span key={tag} className="text-[7px] font-bold uppercase tracking-[0.07em] px-1 py-[1px] rounded-[2px] shrink-0"
+            style={{ background: s.bg, border: `1px solid ${s.border}`, color: s.color }}>
+            {tag}
+        </span>
+    );
+});
+
 // ── Normalizers ───────────────────────────────────────────────────────────────
 
 const normalizeRA = (awards, showBeaten) =>
@@ -42,6 +68,7 @@ const normalizeRA = (awards, showBeaten) =>
             completedAt: a.awardedAt,
             gameId: a.awardData,
             gameName: a.title,
+            ...parseTitle(a.title),
             iconUrl: `${RA_MEDIA}${a.imageIcon}`,
             console: a.consoleName,
             gameUrl: `${RA_SITE}/game/${a.awardData}`,
@@ -105,8 +132,15 @@ const CompletionCard = ({ item }) => {
                 <div className="flex items-center gap-2 flex-wrap mb-0.5">
                     <a href={item.gameUrl} target="_blank" rel="noreferrer"
                         className="text-[13px] font-medium text-white hover:text-[#66c0f4] transition-colors leading-tight">
-                        {item.gameName}
+                        {item.baseTitle || item.gameName}
                     </a>
+                    {item.isSubset && (
+                        <span className="text-[7px] font-bold uppercase tracking-[0.07em] px-1 py-[1px] rounded-[2px] shrink-0"
+                            style={{ border: '1px solid rgba(229,177,67,0.3)', background: 'rgba(229,177,67,0.08)', color: '#c8a84b' }}>
+                            Subset
+                        </span>
+                    )}
+                    {!item.isSubset && item.tags?.length > 0 && <TildeTags tags={item.tags} />}
                     <span
                         className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px] shrink-0 flex items-center gap-1"
                         style={{ background: cfg.badgeBg, color: cfg.badgeText }}
@@ -120,6 +154,9 @@ const CompletionCard = ({ item }) => {
                         className="w-3 h-3 object-contain opacity-60 shrink-0"
                     />
                 </div>
+                {item.isSubset && item.subsetName && (
+                    <div className="text-[10px] mb-0.5" style={{ color: '#c8a84b' }}>{item.subsetName}</div>
+                )}
 
                 <div className="flex items-center gap-2 text-[10px] text-[#8f98a0] flex-wrap">
                     {item.console && (

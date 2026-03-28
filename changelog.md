@@ -2,7 +2,7 @@
 
 ## 2026-03-28
 
-RA profile bug fixes; scroll-based lazy loading across all activity pages; Steam progress tab hides perfect games by default; hub activity feed shows achievement description and unified game name styling; game awards popup parses tilde tags and subset names; game card playtime shown with clock icon and dot separator matching Steam style.
+RA bug fixes; lazy loading across all activity pages; Steam progress hides perfect games by default; tilde tag and subset parsing extended site-wide; game card playtime row redesigned with clock icon and dot separator.
 
 ### RetroAchievements
 
@@ -32,6 +32,13 @@ RA profile bug fixes; scroll-based lazy loading across all activity pages; Steam
 ### Completions
 
 - Hub breadcrumb links (`../../`) corrected to `../` — one level deep from root; was breaking on non-root domain deployments
+- Completions page (`/completions/`) now parses tilde tags and subset names — `CompletionCard` renders `baseTitle` with inline tilde tag badges or a `Subset` badge + subset name subline
+- Hub completions strip parses the latest RA completion title and renders `baseTitle` + badges + subset subline; shared `_parseTitle`/`_tildeBadgesHtml`/`_BADGE_BASE` helpers moved to script scope so they're accessible outside `loadHubProfile`
+
+### Activity
+
+- RA activity tab session headers now render tilde tag badges inline alongside the game name
+- Combined activity (`/activity/`) session headers now render tilde tag badges — `parseTitle` in `activity/utils/helpers.js` was discarding tags instead of collecting them; fixed to capture tags and return them alongside `baseTitle`/`isSubset`/`subsetName`; `TILDE_TAG_COLORS` added to `activity/utils/constants.js`
 
 ## 2026-03-27
 

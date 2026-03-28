@@ -716,15 +716,18 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
                         <img src={session.gameIcon} alt="" className="w-full h-full object-cover" />
                       </a>
                       <div className="flex items-center gap-1.5 flex-1 min-w-0">
-                        <a href={`${SITE_URL}/game/${session.gameId}`} target="_blank" rel="noreferrer" className="text-[9px] text-[#c6d4df] hover:text-[#66c0f4] transition-colors uppercase tracking-wider font-medium truncate">
-                          {parseTitle(session.gameTitle).baseTitle}
-                        </a>
-                        {parseTitle(session.gameTitle).isSubset && (
-                          <>
-                            <span className="text-[7px] font-bold uppercase tracking-[0.07em] px-1 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>
-                            <span className="text-[8px] text-[#c8a84b] truncate">{parseTitle(session.gameTitle).subsetName}</span>
-                          </>
-                        )}
+                        {(() => { const p = parseTitle(session.gameTitle); return (<>
+                          <a href={`${SITE_URL}/game/${session.gameId}`} target="_blank" rel="noreferrer" className="text-[9px] text-[#c6d4df] hover:text-[#66c0f4] transition-colors uppercase tracking-wider font-medium truncate">
+                            {p.baseTitle}
+                          </a>
+                          {p.isSubset && (
+                            <>
+                              <span className="text-[7px] font-bold uppercase tracking-[0.07em] px-1 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>
+                              <span className="text-[8px] text-[#c8a84b] truncate">{p.subsetName}</span>
+                            </>
+                          )}
+                          {!p.isSubset && renderTildeTags(p.tags)}
+                        </>); })()}
                         <span className="text-[8px] text-[#546270] shrink-0">· {session.consoleName}</span>
                       </div>
                       <span className="text-[8px] text-[#546270] shrink-0 ml-auto">{fmtTime(session.startTime)}{session.startTime !== session.endTime ? `–${fmtTime(session.endTime)}` : ''}</span>
