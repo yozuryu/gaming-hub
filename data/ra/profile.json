@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-03-28T06:44:20.269Z"
+        "extractionTimestamp": "2026-03-28T09:26:53.253Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Crash is Landing it in Level 1 (Score:910) (❤️3/3)",
-        "lastGameId": 33170,
+        "richPresenceMsg": "Mode:Standard - Rookie [Lines:0][Lv.0][Score:0][PkMn:0/249] [Total: Lines0 Time:0:00 PkMn:0]",
+        "lastGameId": 14717,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 1322,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Crash is Landing it in Level 1 (Score:910) (❤️3/3)",
-        "richPresenceMsgDate": "2026-03-28 06:36:57",
-        "lastGameId": 33170,
+        "richPresenceMsg": "Mode:Standard - Rookie [Lines:0][Lv.0][Score:0][PkMn:0/249] [Total: Lines0 Time:0:00 PkMn:0]",
+        "richPresenceMsgDate": "2026-03-28 09:25:13",
+        "lastGameId": 14717,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 1322,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 59645,
+        "rank": 59654,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 136014,
+        "totalRanked": 136028,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -99,6 +99,24 @@
         ]
     },
     "recentlyPlayedGames": [
+        {
+            "gameId": 14717,
+            "consoleId": 24,
+            "consoleName": "Pokemon Mini",
+            "title": "Pokémon Shock Tetris",
+            "imageIcon": "/Images/035887.png",
+            "imageTitle": "/Images/035812.png",
+            "imageIngame": "/Images/035813.png",
+            "imageBoxArt": "/Images/035814.png",
+            "lastPlayed": "2026-03-28 09:25:13",
+            "achievementsTotal": 114,
+            "numPossibleAchievements": 114,
+            "possibleScore": 645,
+            "numAchieved": 0,
+            "scoreAchieved": 0,
+            "numAchievedHardcore": 0,
+            "scoreAchievedHardcore": 0
+        },
         {
             "gameId": 33170,
             "consoleId": 18,
@@ -292,24 +310,6 @@
             "achievementsTotal": 39,
             "numPossibleAchievements": 39,
             "possibleScore": 539,
-            "numAchieved": 0,
-            "scoreAchieved": 0,
-            "numAchievedHardcore": 0,
-            "scoreAchievedHardcore": 0
-        },
-        {
-            "gameId": 14717,
-            "consoleId": 24,
-            "consoleName": "Pokemon Mini",
-            "title": "Pokémon Shock Tetris",
-            "imageIcon": "/Images/035887.png",
-            "imageTitle": "/Images/035812.png",
-            "imageIngame": "/Images/035813.png",
-            "imageBoxArt": "/Images/035814.png",
-            "lastPlayed": "2026-03-24 00:41:38",
-            "achievementsTotal": 114,
-            "numPossibleAchievements": 114,
-            "possibleScore": 645,
             "numAchieved": 0,
             "scoreAchieved": 0,
             "numAchievedHardcore": 0,
@@ -975,7 +975,7 @@
         ]
     },
     "wantToPlayList": {
-        "total": 435,
+        "total": 440,
         "results": [
             {
                 "id": 27,
@@ -2427,6 +2427,15 @@
                 "achievementsPublished": 0
             },
             {
+                "id": 4951,
+                "title": "Zoids Saga: Fuzors",
+                "consoleId": 5,
+                "consoleName": "Game Boy Advance",
+                "imageIcon": "/Images/000001.png",
+                "pointsTotal": 0,
+                "achievementsPublished": 0
+            },
+            {
                 "id": 4958,
                 "title": "Final Fantasy Tactics A2: Grimoire of the Rift",
                 "consoleId": 18,
@@ -2711,6 +2720,15 @@
                 "consoleId": 21,
                 "consoleName": "PlayStation 2",
                 "imageIcon": "/Images/076520.png",
+                "pointsTotal": 0,
+                "achievementsPublished": 0
+            },
+            {
+                "id": 8671,
+                "title": "Zoids Saga",
+                "consoleId": 5,
+                "consoleName": "Game Boy Advance",
+                "imageIcon": "/Images/122908.png",
                 "pointsTotal": 0,
                 "achievementsPublished": 0
             },
@@ -4101,6 +4119,15 @@
                 "achievementsPublished": 19
             },
             {
+                "id": 17462,
+                "title": "Tiny Toon Adventures: The Great Beanstalk",
+                "consoleId": 12,
+                "consoleName": "PlayStation",
+                "imageIcon": "/Images/117010.png",
+                "pointsTotal": 0,
+                "achievementsPublished": 0
+            },
+            {
                 "id": 17492,
                 "title": "Pokémon Mystery Dungeon: Blue Rescue Team",
                 "consoleId": 18,
@@ -4189,6 +4216,15 @@
                 "imageIcon": "/Images/087496.png",
                 "pointsTotal": 627,
                 "achievementsPublished": 90
+            },
+            {
+                "id": 18163,
+                "title": "Toy Story 3",
+                "consoleId": 41,
+                "consoleName": "PlayStation Portable",
+                "imageIcon": "/Images/082679.png",
+                "pointsTotal": 502,
+                "achievementsPublished": 97
             },
             {
                 "id": 18262,
@@ -4749,6 +4785,15 @@
                 "achievementsPublished": 88
             },
             {
+                "id": 30277,
+                "title": "Zoids: Battle Legends",
+                "consoleId": 16,
+                "consoleName": "GameCube",
+                "imageIcon": "/Images/118833.png",
+                "pointsTotal": 0,
+                "achievementsPublished": 0
+            },
+            {
                 "id": 32564,
                 "title": "Kingdom Hearts II",
                 "consoleId": 21,
@@ -4915,22 +4960,22 @@
         "gameUrl": "/game/33170"
     },
     "mostRecentGame": {
-        "gameId": 33170,
-        "consoleId": 18,
-        "consoleName": "Nintendo DS",
-        "title": "~Prototype~ Crash Landed",
-        "imageIcon": "/Images/112694.png",
-        "imageTitle": "/Images/121244.png",
-        "imageIngame": "/Images/116565.png",
-        "imageBoxArt": "/Images/118901.png",
-        "lastPlayed": "2026-03-28 06:36:57",
-        "achievementsTotal": 6,
-        "numPossibleAchievements": 6,
-        "possibleScore": 35,
-        "numAchieved": 1,
-        "scoreAchieved": 2,
-        "numAchievedHardcore": 1,
-        "scoreAchievedHardcore": 2
+        "gameId": 14717,
+        "consoleId": 24,
+        "consoleName": "Pokemon Mini",
+        "title": "Pokémon Shock Tetris",
+        "imageIcon": "/Images/035887.png",
+        "imageTitle": "/Images/035812.png",
+        "imageIngame": "/Images/035813.png",
+        "imageBoxArt": "/Images/035814.png",
+        "lastPlayed": "2026-03-28 09:25:13",
+        "achievementsTotal": 114,
+        "numPossibleAchievements": 114,
+        "possibleScore": 645,
+        "numAchieved": 0,
+        "scoreAchieved": 0,
+        "numAchievedHardcore": 0,
+        "scoreAchievedHardcore": 0
     },
     "points7Days": 24,
     "points30Days": 156
