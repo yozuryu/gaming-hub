@@ -1,6 +1,26 @@
 {
     "recentAchievements": [
         {
+            "date": "2025-12-27 16:25:56",
+            "hardcoreMode": true,
+            "achievementId": 502294,
+            "title": "Maiden of Aqua",
+            "description": "Escape Rakshek Resort with your VIP person",
+            "badgeName": "569759",
+            "points": 5,
+            "trueRatio": 18,
+            "type": "progression",
+            "author": "Altomar",
+            "authorUlid": "019346YCAQ6QSZFRH5JA2Z3M9P",
+            "gameTitle": "Ar tonelico II: Melody of Metafalica",
+            "gameIcon": "/Images/109921.png",
+            "gameId": 19038,
+            "consoleName": "PlayStation 2",
+            "cumulScore": 5,
+            "badgeUrl": "/Badge/569759.png",
+            "gameUrl": "/game/19038"
+        },
+        {
             "date": "2026-01-03 15:18:33",
             "hardcoreMode": true,
             "achievementId": 502295,
@@ -2238,6 +2258,26 @@
             "consoleName": "Nintendo DS",
             "cumulScore": 294,
             "badgeUrl": "/Badge/623279.png",
+            "gameUrl": "/game/33170"
+        },
+        {
+            "date": "2026-03-28 14:52:14",
+            "hardcoreMode": true,
+            "achievementId": 548201,
+            "title": "Don't Get Impaled!",
+            "description": "Finish Level 2",
+            "badgeName": "623281",
+            "points": 3,
+            "trueRatio": 4,
+            "type": "win_condition",
+            "author": "BEXUS",
+            "authorUlid": "01H1G8YX0338974WVESDBN0M8N",
+            "gameTitle": "~Prototype~ Crash Landed",
+            "gameIcon": "/Images/112694.png",
+            "gameId": 33170,
+            "consoleName": "Nintendo DS",
+            "cumulScore": 297,
+            "badgeUrl": "/Badge/623281.png",
             "gameUrl": "/game/33170"
         }
     ]
