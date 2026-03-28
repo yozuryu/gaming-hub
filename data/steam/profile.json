@@ -1,20 +1,20 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-03-28T09:51:17.080Z"
+        "extractionTimestamp": "2026-03-28T13:18:00.706Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 0,
+        "status": 1,
         "lastOnline": "2026-03-27T17:20:39.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1245,
-        "totalPlaytimeMin": 345145,
-        "totalPlaytimeHrs": 5752,
+        "totalPlaytimeMin": 345163,
+        "totalPlaytimeHrs": 5753,
         "gamesWithPlaytime": 815,
         "totalAchievements": 9975,
         "unlockedAchievements": 2786,
@@ -31,9 +31,20 @@
             "playtimeForever": 1937,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
             "storeUrl": "https://store.steampowered.com/app/578330",
-            "lastPlayedTs": "2026-03-27T13:18:15.000Z",
+            "lastPlayedTs": "2026-03-28T13:03:19.000Z",
             "achUnlocked": 4,
             "achTotal": 48
+        },
+        {
+            "appId": 996580,
+            "name": "Spyro™ Reignited Trilogy",
+            "playtime2Weeks": 17,
+            "playtimeForever": 1131,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/996580/58d9d5bb243382cdb00259733d71e7621f502a2d.jpg",
+            "storeUrl": "https://store.steampowered.com/app/996580",
+            "lastPlayedTs": "2026-03-28T13:02:56.000Z",
+            "achUnlocked": 6,
+            "achTotal": 105
         },
         {
             "appId": 2183900,
@@ -98,7 +109,7 @@
         "playtimeForever": 1937,
         "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
         "storeUrl": "https://store.steampowered.com/app/578330",
-        "lastPlayedTs": "2026-03-27T13:18:15.000Z"
+        "lastPlayedTs": "2026-03-28T13:03:19.000Z"
     },
     "mostRecentUnlock": {
         "appId": 2183900,
