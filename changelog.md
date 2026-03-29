@@ -2,7 +2,7 @@
 
 ## 2026-03-29
 
-Sticky headers fixed across all pages; combined activity heatmap respects platform filter; platform filter label unified to "RA"; RA pipeline debug mode added; concurrent queue added to both data pipelines; RA achievement modal simplified; Steam game images upgraded; data pipelines changed to hourly.
+RA achievement display simplified; Steam game images upgraded; sticky headers fixed; heatmap platform filter corrected; pipelines now hourly with concurrent queue and debug mode.
 
 ### RetroAchievements
 
@@ -25,6 +25,10 @@ Sticky headers fixed across all pages; combined activity heatmap respects platfo
 ### Pipelines
 
 - RA and Steam GitHub Actions schedules changed from every 3 hours to every 1 hour — public repo has no Actions minute limits
+
+### Hub
+
+- Completions strip latest game now only considers Mastered (RA) and Perfect (Steam) — Beaten games excluded from the latest slot
 
 ### Pipelines
 

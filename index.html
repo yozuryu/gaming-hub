@@ -726,11 +726,11 @@
 
         // Most recent completion across both platforms
         const RA_MEDIA_BASE = 'https://media.retroachievements.org';
-        const raLatest    = awards.filter(a => a.awardType === 'Mastery/Completion' || (a.awardType === 'Game Beaten' && a.awardDataExtra === 1))
+        const raLatest    = awards.filter(a => a.awardType === 'Mastery/Completion')
                                   .sort((a, b) => new Date(b.awardedAt) - new Date(a.awardedAt))[0];
         const steamLatest = (steam.perfectGames ?? []).sort((a, b) => new Date(b.completedAt) - new Date(a.completedAt))[0];
         const candidates  = [
-          raLatest    && { ..._parseTitle(raLatest.title), name: raLatest.title, date: raLatest.awardedAt, icon: RA_MEDIA_BASE + raLatest.imageIcon, type: raLatest.awardType === 'Mastery/Completion' ? 'Mastered' : 'Beaten' },
+          raLatest    && { ..._parseTitle(raLatest.title), name: raLatest.title, date: raLatest.awardedAt, icon: RA_MEDIA_BASE + raLatest.imageIcon, type: 'Mastered' },
           steamLatest && { name: steamLatest.gameName, date: steamLatest.completedAt, icon: steamLatest.lastAchIconUrl || steamLatest.iconUrl, type: 'Perfect' },
         ].filter(Boolean).sort((a, b) => new Date(b.date) - new Date(a.date));
         const latest = candidates[0];
