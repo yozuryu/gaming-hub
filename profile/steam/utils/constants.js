@@ -9,8 +9,7 @@ export const STEAM_STATUS = {
 };
 
 export const PROGRESS_SORTS = [
-    { id: 'pct',        label: 'Completion'   },
-    { id: 'name',       label: 'Name'         },
-    { id: 'hours',      label: 'Hours Played' },
-    { id: 'lastPlayed', label: 'Last Played'  },
+    { id: 'pct',        label: 'Completion'  },
+    { id: 'hours',      label: 'Hours'       },
+    { id: 'lastPlayed', label: 'Last Played' },
 ];

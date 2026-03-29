@@ -952,7 +952,8 @@ export default function App() {
   })();
 
   const [activeTab, setActiveTab] = useState(initialTab);
-  const [progressSort, setProgressSort] = useState('overall');
+  const [progressSort,   setProgressSort]   = useState('overall');
+  const [progressSearch, setProgressSearch] = useState('');
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [watchlistSearch, setWatchlistSearch] = useState('');
   const [watchlistStatusFilter, setWatchlistStatusFilter] = useState('all');
@@ -1063,7 +1064,7 @@ export default function App() {
     displayedGames = displayedGames.slice(0, 15);
   } else if (activeTab === 'progress') {
     displayedGames = displayedGames
-      .filter(g => g.achievementsUnlocked > 0 && g.achievementsTotal > 0)
+      .filter(g => g.achievementsUnlocked > 0 && g.achievementsTotal > 0 && (!progressSearch || (g.baseTitle || g.title || '').toLowerCase().includes(progressSearch.toLowerCase())))
       .sort((a, b) => {
         if (progressSort === 'progression') {
           const getProg = g => {
@@ -1608,27 +1609,40 @@ export default function App() {
               : <>
               {/* Sort bar — only for Completion Progress */}
               {activeTab === 'progress' && (
-                <div className="flex items-center gap-2">
-                  <span className="text-[9px] text-[#546270] uppercase tracking-wider">Sort</span>
-                  {[
-                    { value: 'overall',     label: 'Overall'     },
-                    { value: 'progression', label: 'Progression' },
-                  ].map(opt => (
-                    <button
-                      key={opt.value}
-                      onClick={() => setProgressSort(opt.value)}
-                      className={`text-[9px] font-semibold uppercase tracking-wider px-2 py-[3px] rounded-[2px] border transition-colors ${
-                        progressSort === opt.value
-                          ? opt.value === 'progression'
-                            ? 'bg-[#e5b143] text-[#101214] border-[#e5b143]'
-                            : 'bg-[#66c0f4] text-[#101214] border-[#66c0f4]'
-                          : 'bg-[#101214] text-[#8f98a0] border-[#323f4c] hover:text-[#c6d4df] hover:border-[#546270]'
-                      }`}
-                    >
-                      {opt.label}
-                    </button>
-                  ))}
-                </div>
+                <>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-[9px] text-[#546270] uppercase tracking-wider">Sort</span>
+                    {[
+                      { value: 'overall',     label: 'Overall'     },
+                      { value: 'progression', label: 'Progression' },
+                    ].map(opt => (
+                      <button
+                        key={opt.value}
+                        onClick={() => setProgressSort(opt.value)}
+                        className={`text-[9px] font-semibold uppercase tracking-wider px-2 py-[3px] rounded-[2px] border transition-colors ${
+                          progressSort === opt.value
+                            ? opt.value === 'progression'
+                              ? 'bg-[#e5b143] text-[#101214] border-[#e5b143]'
+                              : 'bg-[#66c0f4] text-[#101214] border-[#66c0f4]'
+                            : 'bg-[#101214] text-[#8f98a0] border-[#323f4c] hover:text-[#c6d4df] hover:border-[#546270]'
+                        }`}
+                      >
+                        {opt.label}
+                      </button>
+                    ))}
+                    <span className="ml-auto text-[9px] text-[#546270]">{displayedGames.length} games</span>
+                  </div>
+                  <div className="relative mb-4">
+                    <input
+                      type="text"
+                      value={progressSearch}
+                      onChange={e => setProgressSearch(e.target.value)}
+                      placeholder="Search games…"
+                      className="w-full bg-[#101214] border border-[#323f4c] rounded-[2px] px-2.5 py-1.5 text-[11px] text-[#c6d4df] placeholder-[#546270] outline-none focus:border-[#546270]"
+                    />
+                    {progressSearch && <button onClick={() => setProgressSearch('')} className="absolute right-2 top-1/2 -translate-y-1/2 text-[#546270] hover:text-[#c6d4df] text-[10px]">×</button>}
+                  </div>
+                </>
               )}
               {displayedGames.map(game => (
                 <GameCard key={game.id} game={game} onViewDetails={setSelectedGame} />

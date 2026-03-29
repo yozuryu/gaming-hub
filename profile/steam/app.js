@@ -700,6 +700,7 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
 const ProgressTab = ({ achievementProgress, recentlyPlayed, onViewDetails }) => {
     const [sort,        setSort]        = useState('pct');
     const [showPerfect, setShowPerfect] = useState(false);
+    const [search,      setSearch]      = useState('');
 
     const playtimeMap = useMemo(() => {
         const m = {};
@@ -708,7 +709,7 @@ const ProgressTab = ({ achievementProgress, recentlyPlayed, onViewDetails }) => 
     }, [recentlyPlayed]);
 
     const games = useMemo(() => Object.entries(achievementProgress)
-        .filter(([, d]) => d.hasAchievements && d.unlocked > 0 && (showPerfect || d.total === 0 || d.unlocked < d.total))
+        .filter(([, d]) => d.hasAchievements && d.unlocked > 0 && (showPerfect || d.total === 0 || d.unlocked < d.total) && (!search || (d.gameName ?? '').toLowerCase().includes(search.toLowerCase())))
         .map(([appId, d]) => {
             const pt = playtimeMap[Number(appId)];
             const lastUnlockedAt = (d.achievements ?? [])
@@ -742,19 +743,11 @@ const ProgressTab = ({ achievementProgress, recentlyPlayed, onViewDetails }) => 
             if (!b.lastUnlockedAt) return -1;
             return b.lastUnlockedAt.localeCompare(a.lastUnlockedAt);
         }),
-    [achievementProgress, sort, showPerfect]);
-
-    if (games.length === 0) {
-        return (
-            <div className="text-center py-12 text-[#546270] text-[12px]">
-                No achievement progress tracked yet
-            </div>
-        );
-    }
+    [achievementProgress, sort, showPerfect, search]);
 
     return (
         <div>
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-center gap-2 mb-3">
                 <span className="text-[9px] uppercase tracking-[0.07em] text-[#546270]">Sort</span>
                 {PROGRESS_SORTS.map(s => (
                     <button
@@ -775,8 +768,23 @@ const ProgressTab = ({ achievementProgress, recentlyPlayed, onViewDetails }) => 
                 </label>
                 <span className="text-[9px] text-[#546270]">{games.length} games</span>
             </div>
+            <div className="relative mb-4">
+                <input
+                    type="text"
+                    value={search}
+                    onChange={e => setSearch(e.target.value)}
+                    placeholder="Search games…"
+                    className="w-full bg-[#101214] border border-[#323f4c] rounded-[2px] px-2.5 py-1.5 text-[11px] text-[#c6d4df] placeholder-[#546270] outline-none focus:border-[#546270]"
+                />
+                {search && <button onClick={() => setSearch('')} className="absolute right-2 top-1/2 -translate-y-1/2 text-[#546270] hover:text-[#c6d4df] text-[10px]">×</button>}
+            </div>
 
             <div className="flex flex-col gap-3">
+                {games.length === 0 && (
+                    <div className="text-center py-12 text-[#546270] text-[12px]">
+                        {search ? 'No games match your search.' : 'No achievement progress tracked yet.'}
+                    </div>
+                )}
                 {games.map(g => (
                     <SteamGameCard
                         key={g.appId}
