@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-03-29T09:44:56.796Z"
+        "extractionTimestamp": "2026-03-29T10:40:36.547Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "[Ares] 🌍 Ruins Area 1 | ⭐ 1 | 💪 3 | 🧙 5 | 🛡️ 5",
-        "lastGameId": 14502,
+        "richPresenceMsg": "Avin continues his search for Eimelle | Level 0 | 0 Roze | 0 Pia | No Pet",
+        "lastGameId": 3562,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 1367,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "[Ares] 🌍 Ruins Area 1 | ⭐ 1 | 💪 3 | 🧙 5 | 🛡️ 5",
-        "richPresenceMsgDate": "2026-03-29 04:54:38",
-        "lastGameId": 14502,
+        "richPresenceMsg": "Avin continues his search for Eimelle | Level 0 | 0 Roze | 0 Pia | No Pet",
+        "richPresenceMsgDate": "2026-03-29 10:16:39",
+        "lastGameId": 3562,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 1367,
@@ -51,7 +51,7 @@
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 136239,
+        "totalRanked": 136242,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -112,6 +112,24 @@
         ]
     },
     "recentlyPlayedGames": [
+        {
+            "gameId": 3562,
+            "consoleId": 41,
+            "consoleName": "PlayStation Portable",
+            "title": "The Legend of Heroes: A Tear of Vermillion",
+            "imageIcon": "/Images/100541.png",
+            "imageTitle": "/Images/052529.png",
+            "imageIngame": "/Images/052530.png",
+            "imageBoxArt": "/Images/046659.png",
+            "lastPlayed": "2026-03-29 10:16:39",
+            "achievementsTotal": 76,
+            "numPossibleAchievements": 76,
+            "possibleScore": 436,
+            "numAchieved": 0,
+            "scoreAchieved": 0,
+            "numAchievedHardcore": 0,
+            "scoreAchievedHardcore": 0
+        },
         {
             "gameId": 14502,
             "consoleId": 41,
@@ -363,24 +381,6 @@
             "scoreAchieved": 87,
             "numAchievedHardcore": 47,
             "scoreAchievedHardcore": 87
-        },
-        {
-            "gameId": 14716,
-            "consoleId": 24,
-            "consoleName": "Pokemon Mini",
-            "title": "Pokémon Race mini",
-            "imageIcon": "/Images/121547.png",
-            "imageTitle": "/Images/028026.png",
-            "imageIngame": "/Images/028027.png",
-            "imageBoxArt": "/Images/028028.png",
-            "lastPlayed": "2026-03-24 00:56:46",
-            "achievementsTotal": 39,
-            "numPossibleAchievements": 39,
-            "possibleScore": 539,
-            "numAchieved": 0,
-            "scoreAchieved": 0,
-            "numAchievedHardcore": 0,
-            "scoreAchievedHardcore": 0
         }
     ],
     "gameAwardsAndProgress": {
@@ -1095,8 +1095,8 @@
                 "consoleId": 19,
                 "consoleName": "Wii",
                 "imageIcon": "/Images/120482.png",
-                "pointsTotal": 709,
-                "achievementsPublished": 60
+                "pointsTotal": 694,
+                "achievementsPublished": 57
             },
             {
                 "id": 213,
@@ -4973,18 +4973,18 @@
         "gameUrl": "/game/16452"
     },
     "mostRecentGame": {
-        "gameId": 14502,
+        "gameId": 3562,
         "consoleId": 41,
         "consoleName": "PlayStation Portable",
-        "title": "Brandish: The Dark Revenant",
-        "imageIcon": "/Images/088290.png",
-        "imageTitle": "/Images/088377.png",
-        "imageIngame": "/Images/055493.png",
-        "imageBoxArt": "/Images/055492.png",
-        "lastPlayed": "2026-03-29 04:54:38",
-        "achievementsTotal": 121,
-        "numPossibleAchievements": 121,
-        "possibleScore": 1120,
+        "title": "The Legend of Heroes: A Tear of Vermillion",
+        "imageIcon": "/Images/100541.png",
+        "imageTitle": "/Images/052529.png",
+        "imageIngame": "/Images/052530.png",
+        "imageBoxArt": "/Images/046659.png",
+        "lastPlayed": "2026-03-29 10:16:39",
+        "achievementsTotal": 76,
+        "numPossibleAchievements": 76,
+        "possibleScore": 436,
         "numAchieved": 0,
         "scoreAchieved": 0,
         "numAchievedHardcore": 0,
