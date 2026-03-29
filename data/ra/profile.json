@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-03-29T14:50:05.895Z"
+        "extractionTimestamp": "2026-03-29T15:38:10.458Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,13 +8,13 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Lv44 Samurai, Lv42 Psychic, and Lv42 Hacker | City Hall | Ch5: 16/33 quests | 23h51",
+        "richPresenceMsg": "Lv46 Samurai, Lv44 Psychic, and Lv44 Hacker | Shibuya Flowersea | Ch5: 19/33 quests | 26h24",
         "lastGameId": 16452,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 1387,
+        "totalPoints": 1399,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 4736,
+        "totalTruePoints": 4792,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -33,31 +33,31 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Lv44 Samurai, Lv42 Psychic, and Lv42 Hacker | City Hall | Ch5: 16/33 quests | 23h51",
-        "richPresenceMsgDate": "2026-03-29 14:50:02",
+        "richPresenceMsg": "Lv46 Samurai, Lv44 Psychic, and Lv44 Hacker | Shibuya Flowersea | Ch5: 19/33 quests | 26h24",
+        "richPresenceMsgDate": "2026-03-29 15:38:03",
         "lastGameId": 16452,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 1387,
+        "totalPoints": 1399,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 4736,
+        "totalTruePoints": 4792,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 58350,
+        "rank": 57783,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 136276,
+        "totalRanked": 136287,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 1387,
+        "points": 1399,
         "softcorePoints": 1
     },
     "pageAwards": {
@@ -121,14 +121,14 @@
             "imageTitle": "/Images/110687.png",
             "imageIngame": "/Images/110689.png",
             "imageBoxArt": "/Images/110688.png",
-            "lastPlayed": "2026-03-29 14:50:02",
+            "lastPlayed": "2026-03-29 15:38:03",
             "achievementsTotal": 80,
             "numPossibleAchievements": 80,
             "possibleScore": 475,
-            "numAchieved": 31,
-            "scoreAchieved": 144,
-            "numAchievedHardcore": 31,
-            "scoreAchievedHardcore": 144
+            "numAchieved": 35,
+            "scoreAchieved": 156,
+            "numAchievedHardcore": 35,
+            "scoreAchievedHardcore": 156
         },
         {
             "gameId": 3562,
@@ -394,9 +394,9 @@
                 "consoleId": 41,
                 "consoleName": "PlayStation Portable",
                 "maxPossible": 80,
-                "numAwarded": 31,
-                "numAwardedHardcore": 31,
-                "mostRecentAwardedDate": "2026-03-29T14:46:21+00:00",
+                "numAwarded": 35,
+                "numAwardedHardcore": 35,
+                "mostRecentAwardedDate": "2026-03-29T15:22:27+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -4962,23 +4962,23 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-03-29 14:46:21",
+        "date": "2026-03-29 15:22:27",
         "hardcoreMode": true,
-        "achievementId": 572149,
-        "title": "Molten Monstrosity",
-        "description": "Defeat Trinitro",
-        "badgeName": "649927",
-        "points": 10,
-        "trueRatio": 47,
-        "type": "progression",
+        "achievementId": 572179,
+        "title": "Quest: A New Hero Emerges",
+        "description": "Complete the A New Hero Emerges quest",
+        "badgeName": "649953",
+        "points": 3,
+        "trueRatio": 14,
+        "type": null,
         "author": "Jamiras",
         "authorUlid": "01BJY8JSBTA7NVT0NYSVDCK5TY",
         "gameTitle": "7th Dragon 2020",
         "gameIcon": "/Images/123011.png",
         "gameId": 16452,
         "consoleName": "PlayStation Portable",
-        "cumulScore": 354,
-        "badgeUrl": "/Badge/649927.png",
+        "cumulScore": 366,
+        "badgeUrl": "/Badge/649953.png",
         "gameUrl": "/game/16452"
     },
     "mostRecentGame": {
@@ -4990,15 +4990,15 @@
         "imageTitle": "/Images/110687.png",
         "imageIngame": "/Images/110689.png",
         "imageBoxArt": "/Images/110688.png",
-        "lastPlayed": "2026-03-29 14:50:02",
+        "lastPlayed": "2026-03-29 15:38:03",
         "achievementsTotal": 80,
         "numPossibleAchievements": 80,
         "possibleScore": 475,
-        "numAchieved": 31,
-        "scoreAchieved": 144,
-        "numAchievedHardcore": 31,
-        "scoreAchievedHardcore": 144
+        "numAchieved": 35,
+        "scoreAchieved": 156,
+        "numAchievedHardcore": 35,
+        "scoreAchievedHardcore": 156
     },
-    "points7Days": 89,
-    "points30Days": 219
+    "points7Days": 101,
+    "points30Days": 231
 }
