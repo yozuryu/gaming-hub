@@ -17,6 +17,7 @@
   "scripts": {
     "start": "npx serve .",
     "ra-fetch": "node scripts/ra-pipeline.js",
+    "ra-fetch:debug": "node scripts/ra-pipeline.js --debug",
     "ra-fetch:full": "node scripts/ra-pipeline.js --refresh-games",
     "steam-fetch": "node scripts/steam-pipeline.js",
     "steam-fetch:debug": "node scripts/steam-pipeline.js --debug",

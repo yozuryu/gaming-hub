@@ -21,6 +21,8 @@ const admin = require('firebase-admin');
 // Logging Helpers
 // =========================================================
 
+const DEBUG = process.argv.includes('--debug');
+
 const log = {
     section: (title) => console.log(`\n${'─'.repeat(60)}\n  ${title}\n${'─'.repeat(60)}`),
     step: (msg) => process.stdout.write(`  ${msg}`),
@@ -30,6 +32,11 @@ const log = {
     info: (msg) => console.log(`     ${msg}`),
     done: (msg) => console.log(` ✓  (${msg})`),
     err: (msg) => console.log(` ✗  (${msg})`),
+    debug: (msg, data) => {
+        if (!DEBUG) return;
+        console.log(`  [DBG] ${msg}`);
+        if (data !== undefined) console.log(JSON.stringify(data, null, 2));
+    },
 };
 
 // =========================================================
@@ -62,12 +69,14 @@ const fmtDate = (d) => d.toISOString().substring(0, 10);
 
 // ── CLI Flags ──────────────────────────────────────────────
 // --refresh-games  : re-fetch all game details (full refresh)
+// --debug          : verbose output; skips file writes (dry run)
 // (default)        : load existing games.json, only fetch new games
 const REFRESH_GAMES = process.argv.includes('--refresh-games');
 
 log.ok(`RetroAchievements authenticated as: ${RA_USERNAME}`);
 log.ok('Firebase Admin SDK initialized');
 log.ok(`Game details mode        : ${REFRESH_GAMES ? 'Full refresh  (--refresh-games)' : 'Incremental   (new games only)'}`);
+log.ok(`Debug mode               : ${DEBUG ? 'enabled  (--debug)' : 'disabled'}`);
 
 // =========================================================
 // Phase 2: Profile Data & Detailed Game Extraction
@@ -96,21 +105,25 @@ async function executeProfileExtraction(targetUser) {
         log.step('Fetching core profile...');
         profilePayload.coreProfile = await getUserProfile(authorization, { username: targetUser });
         log.done(`${profilePayload.coreProfile.user}`);
+        log.debug('coreProfile', profilePayload.coreProfile);
         await sleep(1500);
 
         log.step('Fetching user summary...');
         profilePayload.userSummary = await getUserSummary(authorization, { username: targetUser });
         log.done(`rank #${profilePayload.userSummary.rank}`);
+        log.debug('userSummary', profilePayload.userSummary);
         await sleep(1500);
 
         log.step('Fetching points...');
         profilePayload.points = await getUserPoints(authorization, { username: targetUser });
         log.done(`${profilePayload.points.points} pts`);
+        log.debug('points', profilePayload.points);
         await sleep(1500);
 
         log.step('Fetching awards...');
         profilePayload.pageAwards = await getUserAwards(authorization, { username: targetUser });
         log.done(`${profilePayload.pageAwards.visibleUserAwards?.length ?? 0} awards`);
+        log.debug('pageAwards', profilePayload.pageAwards);
 
         // Patreon icon override
         if (profilePayload.pageAwards?.visibleUserAwards) {
@@ -195,6 +208,7 @@ async function executeProfileExtraction(targetUser) {
         log.step('Fetching recently played games...');
         profilePayload.recentlyPlayedGames = await getUserRecentlyPlayedGames(authorization, { username: targetUser, count: 15 });
         log.done(`${profilePayload.recentlyPlayedGames.length} games`);
+        log.debug('recentlyPlayedGames', profilePayload.recentlyPlayedGames);
         await sleep(1500);
 
         log.step('Fetching most recently played games...');
@@ -231,6 +245,7 @@ async function executeProfileExtraction(targetUser) {
         log.step('Fetching completion progress...');
         profilePayload.gameAwardsAndProgress = await getUserCompletionProgress(authorization, { username: targetUser });
         log.done(`${profilePayload.gameAwardsAndProgress.results?.length} games`);
+        log.debug('gameAwardsAndProgress', profilePayload.gameAwardsAndProgress);
         await sleep(1500);
 
         // ── Detailed game progress ────────────────────────────────────────
@@ -284,6 +299,7 @@ async function executeProfileExtraction(targetUser) {
                     gameId: game.gameId,
                 });
                 console.log(' ✓');
+                log.debug(`game ${game.gameId} response`, profilePayload.detailedGameProgress[game.gameId]);
             } catch (e) {
                 console.log(` ✗  (${e.message})`);
             }
