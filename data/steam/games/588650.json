@@ -179,7 +179,7 @@
             "iconUrl": "60f87063c94de13e7791fb4e1c84a35405299f62.jpg",
             "iconGrayUrl": "8bad3d52107b3a22bb3a8ac83e2ae8294b1d746f.jpg",
             "hidden": false,
-            "globalPct": 72.5
+            "globalPct": 72.6
         },
         {
             "apiName": "FIGHT_BEAT_BEHOLDER",
@@ -201,7 +201,7 @@
             "iconUrl": "7defcc0b376a6230e3f9fe1b095dd2a41903b5e8.jpg",
             "iconGrayUrl": "1f86349e23ec4eaa37f0f6500e1d1516821b1ca0.jpg",
             "hidden": false,
-            "globalPct": 25.6
+            "globalPct": 25.7
         },
         {
             "apiName": "FIGHT_BEAT_BEHEMOTH_NODAMAGE",
@@ -289,7 +289,7 @@
             "iconUrl": "fd22f6fb9405725b020d7b7d206cd7b96989610c.jpg",
             "iconGrayUrl": "52083e68c509eb97c6c844ab1408b577bd20ae3c.jpg",
             "hidden": false,
-            "globalPct": 68.2
+            "globalPct": 68.3
         },
         {
             "apiName": "EXPLO_FIRST_TIMEDDOOR",
@@ -476,7 +476,7 @@
             "iconUrl": "6b9bd4007fc2d4e43b929f004f5a57fbc5d2835e.jpg",
             "iconGrayUrl": "7a81002947f029566e0385343686b24cc49890d3.jpg",
             "hidden": true,
-            "globalPct": 15
+            "globalPct": 15.1
         },
         {
             "apiName": "FEAT_ENDGAME_BOSSRUNE_1",
@@ -509,7 +509,7 @@
             "iconUrl": "754e88ddfb53cfe2bd274c264b248b7aa8da0540.jpg",
             "iconGrayUrl": "7a81002947f029566e0385343686b24cc49890d3.jpg",
             "hidden": true,
-            "globalPct": 10.4
+            "globalPct": 10.5
         },
         {
             "apiName": "FIGHT_BEAT_KINGSHAND",
@@ -905,7 +905,7 @@
             "iconUrl": "71bd41878c7dd665d95d10442717612062278d5a.jpg",
             "iconGrayUrl": "b4737ec608258f17f642934fff55f3e00f794e6c.jpg",
             "hidden": false,
-            "globalPct": 12.7
+            "globalPct": 12.8
         },
         {
             "apiName": "FEAT_FLYINGSWORD_JEALOUSY",
@@ -982,7 +982,7 @@
             "iconUrl": "5ff4a5f487f57aed679949f05c10372729b0b54a.jpg",
             "iconGrayUrl": "1744ba1bbbe4f706ff9b8c3016fce2391e69291b.jpg",
             "hidden": false,
-            "globalPct": 14.3
+            "globalPct": 14.4
         },
         {
             "apiName": "BIOME_REACHED_QUEENARENA",
@@ -1015,7 +1015,7 @@
             "iconUrl": "8cd334d5d5d3a8f684c78ebc70ecd733624e7f1d.jpg",
             "iconGrayUrl": "2dd886b9845f32ea9b47ca5bc4beb70a83e19b22.jpg",
             "hidden": false,
-            "globalPct": 2.5
+            "globalPct": 2.6
         },
         {
             "apiName": "FIGHT_BEAT_QUEEN_FALL",
@@ -1191,7 +1191,7 @@
             "iconUrl": "cac66cdbbd3a6cf72c91615df06a55e146d310e4.jpg",
             "iconGrayUrl": "555c56bdfd8ef8e852d91650a29a8c5b2cb24881.jpg",
             "hidden": true,
-            "globalPct": 13.4
+            "globalPct": 13.5
         },
         {
             "apiName": "BIOME_REACHED_PGARDEN",
@@ -1213,7 +1213,7 @@
             "iconUrl": "d6d8a26854d17f5c6be88dd5c1535cd73e613bd0.jpg",
             "iconGrayUrl": "a2e21e9272f8302aef9352beaddb28086a018916.jpg",
             "hidden": false,
-            "globalPct": 18.5
+            "globalPct": 18.6
         },
         {
             "apiName": "BIOME_REACHED_DEATH",
@@ -1334,7 +1334,7 @@
             "iconUrl": "a9035f3496a907ab7d5188d717fc47a56eae8652.jpg",
             "iconGrayUrl": "d9693356bc8df6002f5fd1ca65cbd0e5b6da751c.jpg",
             "hidden": false,
-            "globalPct": 1.3
+            "globalPct": 1.4
         }
     ],
     "playtimeForever": 491,
@@ -1377,7 +1377,7 @@
             "unlockedAt": "2019-04-20T01:56:00.000Z",
             "iconUrl": "60f87063c94de13e7791fb4e1c84a35405299f62.jpg",
             "iconGrayUrl": "8bad3d52107b3a22bb3a8ac83e2ae8294b1d746f.jpg",
-            "globalPct": 72.5
+            "globalPct": 72.6
         },
         {
             "apiName": "BIOME_REACHED_BRIDGE",
@@ -1395,7 +1395,7 @@
             "unlockedAt": "2019-04-20T01:34:46.000Z",
             "iconUrl": "fd22f6fb9405725b020d7b7d206cd7b96989610c.jpg",
             "iconGrayUrl": "52083e68c509eb97c6c844ab1408b577bd20ae3c.jpg",
-            "globalPct": 68.2
+            "globalPct": 68.3
         }
     ]
 }
