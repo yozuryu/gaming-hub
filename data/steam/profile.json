@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-05-09T06:25:04.724Z"
+        "extractionTimestamp": "2026-05-09T08:47:50.539Z"
     },
     "profile": {
         "steamId": "76561198188939413",
@@ -13,11 +13,11 @@
     },
     "stats": {
         "totalGames": 1257,
-        "totalPlaytimeMin": 346471,
-        "totalPlaytimeHrs": 5775,
+        "totalPlaytimeMin": 346603,
+        "totalPlaytimeHrs": 5777,
         "gamesWithPlaytime": 817,
         "totalAchievements": 10046,
-        "unlockedAchievements": 2795,
+        "unlockedAchievements": 2796,
         "gamesWithAchievements": 170,
         "perfectCount": 17,
         "completionPct": 27,
@@ -25,13 +25,24 @@
     },
     "recentlyPlayed": [
         {
+            "appId": 2515020,
+            "name": "FINAL FANTASY XVI",
+            "playtime2Weeks": 176,
+            "playtimeForever": 242,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2515020/0ce29700a22fea9eb270b276fa157b79511365e6.jpg",
+            "storeUrl": "https://store.steampowered.com/app/2515020",
+            "lastPlayedTs": "2026-05-09T08:37:15.000Z",
+            "achUnlocked": 5,
+            "achTotal": 69
+        },
+        {
             "appId": 3124540,
             "name": "Far Far West",
-            "playtime2Weeks": 30,
-            "playtimeForever": 30,
+            "playtime2Weeks": 42,
+            "playtimeForever": 42,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/3124540/a0a5e461c215c2a8916f42111ce41fa887cbec71.jpg",
             "storeUrl": "https://store.steampowered.com/app/3124540",
-            "lastPlayedTs": "2026-05-09T06:21:06.000Z",
+            "lastPlayedTs": "2026-05-09T06:33:44.000Z",
             "achUnlocked": null,
             "achTotal": null
         },
@@ -45,17 +56,6 @@
             "lastPlayedTs": "2026-05-05T15:24:24.000Z",
             "achUnlocked": 1,
             "achTotal": 1
-        },
-        {
-            "appId": 2515020,
-            "name": "FINAL FANTASY XVI",
-            "playtime2Weeks": 56,
-            "playtimeForever": 122,
-            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2515020/0ce29700a22fea9eb270b276fa157b79511365e6.jpg",
-            "storeUrl": "https://store.steampowered.com/app/2515020",
-            "lastPlayedTs": "2026-05-03T14:44:52.000Z",
-            "achUnlocked": 4,
-            "achTotal": 69
         },
         {
             "appId": 2235440,
@@ -114,23 +114,23 @@
         }
     ],
     "mostRecentGame": {
-        "appId": 3124540,
-        "name": "Far Far West",
-        "playtime2Weeks": 30,
-        "playtimeForever": 30,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/3124540/a0a5e461c215c2a8916f42111ce41fa887cbec71.jpg",
-        "storeUrl": "https://store.steampowered.com/app/3124540",
-        "lastPlayedTs": "2026-05-09T06:21:06.000Z"
+        "appId": 2515020,
+        "name": "FINAL FANTASY XVI",
+        "playtime2Weeks": 176,
+        "playtimeForever": 242,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2515020/0ce29700a22fea9eb270b276fa157b79511365e6.jpg",
+        "storeUrl": "https://store.steampowered.com/app/2515020",
+        "lastPlayedTs": "2026-05-09T08:37:15.000Z"
     },
     "mostRecentUnlock": {
-        "appId": 206440,
-        "gameName": "To the Moon",
-        "apiName": "ACH_DEBUG_MOON",
-        "displayName": "\"Wish Granted\"",
+        "appId": 2515020,
+        "gameName": "FINAL FANTASY XVI",
+        "apiName": "1002",
+        "displayName": "With Great Power",
         "description": "",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/206440/45f30af066061beda28b04d10400ea550416193c.jpg",
-        "unlockedAt": "2026-05-05T15:21:32.000Z",
-        "globalPct": 27.2
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/2515020/8289deab066f28263e8f73ba929fd68958b040a2.jpg",
+        "unlockedAt": "2026-05-09T08:38:38.000Z",
+        "globalPct": 74.4
     },
     "perfectGames": [
         {
