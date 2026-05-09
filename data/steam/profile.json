@@ -1,21 +1,21 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-05-09T03:52:58.232Z"
+        "extractionTimestamp": "2026-05-09T06:25:04.724Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 0,
+        "status": 1,
         "lastOnline": "2026-05-09T01:00:14.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1257,
-        "totalPlaytimeMin": 346441,
-        "totalPlaytimeHrs": 5774,
-        "gamesWithPlaytime": 816,
+        "totalPlaytimeMin": 346471,
+        "totalPlaytimeHrs": 5775,
+        "gamesWithPlaytime": 817,
         "totalAchievements": 10046,
         "unlockedAchievements": 2795,
         "gamesWithAchievements": 170,
@@ -24,6 +24,17 @@
         "avgPlaytimeMin": 424
     },
     "recentlyPlayed": [
+        {
+            "appId": 3124540,
+            "name": "Far Far West",
+            "playtime2Weeks": 30,
+            "playtimeForever": 30,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/3124540/a0a5e461c215c2a8916f42111ce41fa887cbec71.jpg",
+            "storeUrl": "https://store.steampowered.com/app/3124540",
+            "lastPlayedTs": "2026-05-09T06:21:06.000Z",
+            "achUnlocked": null,
+            "achTotal": null
+        },
         {
             "appId": 206440,
             "name": "To the Moon",
@@ -103,13 +114,13 @@
         }
     ],
     "mostRecentGame": {
-        "appId": 206440,
-        "name": "To the Moon",
-        "playtime2Weeks": 242,
-        "playtimeForever": 319,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/206440/6e29eb4076a6253fdbccb987a2a21746d2df54d7.jpg",
-        "storeUrl": "https://store.steampowered.com/app/206440",
-        "lastPlayedTs": "2026-05-05T15:24:24.000Z"
+        "appId": 3124540,
+        "name": "Far Far West",
+        "playtime2Weeks": 30,
+        "playtimeForever": 30,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/3124540/a0a5e461c215c2a8916f42111ce41fa887cbec71.jpg",
+        "storeUrl": "https://store.steampowered.com/app/3124540",
+        "lastPlayedTs": "2026-05-09T06:21:06.000Z"
     },
     "mostRecentUnlock": {
         "appId": 206440,
