@@ -1,20 +1,20 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-05-10T04:11:07.509Z"
+        "extractionTimestamp": "2026-05-10T06:40:35.694Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 0,
-        "lastOnline": "2026-05-09T16:21:20.000Z",
+        "status": 1,
+        "lastOnline": "2026-05-10T04:12:22.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1257,
-        "totalPlaytimeMin": 346816,
-        "totalPlaytimeHrs": 5780,
+        "totalPlaytimeMin": 346846,
+        "totalPlaytimeHrs": 5781,
         "gamesWithPlaytime": 817,
         "totalAchievements": 10046,
         "unlockedAchievements": 2796,
@@ -25,6 +25,17 @@
     },
     "recentlyPlayed": [
         {
+            "appId": 2515020,
+            "name": "FINAL FANTASY XVI",
+            "playtime2Weeks": 264,
+            "playtimeForever": 329,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2515020/0ce29700a22fea9eb270b276fa157b79511365e6.jpg",
+            "storeUrl": "https://store.steampowered.com/app/2515020",
+            "lastPlayedTs": "2026-05-10T06:12:57.000Z",
+            "achUnlocked": 5,
+            "achTotal": 69
+        },
+        {
             "appId": 3124540,
             "name": "Far Far West",
             "playtime2Weeks": 198,
@@ -34,17 +45,6 @@
             "lastPlayedTs": "2026-05-09T15:27:21.000Z",
             "achUnlocked": null,
             "achTotal": null
-        },
-        {
-            "appId": 2515020,
-            "name": "FINAL FANTASY XVI",
-            "playtime2Weeks": 234,
-            "playtimeForever": 299,
-            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2515020/0ce29700a22fea9eb270b276fa157b79511365e6.jpg",
-            "storeUrl": "https://store.steampowered.com/app/2515020",
-            "lastPlayedTs": "2026-05-09T09:34:30.000Z",
-            "achUnlocked": 5,
-            "achTotal": 69
         },
         {
             "appId": 206440,
@@ -103,13 +103,13 @@
         }
     ],
     "mostRecentGame": {
-        "appId": 3124540,
-        "name": "Far Far West",
-        "playtime2Weeks": 198,
-        "playtimeForever": 198,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/3124540/a0a5e461c215c2a8916f42111ce41fa887cbec71.jpg",
-        "storeUrl": "https://store.steampowered.com/app/3124540",
-        "lastPlayedTs": "2026-05-09T15:27:21.000Z"
+        "appId": 2515020,
+        "name": "FINAL FANTASY XVI",
+        "playtime2Weeks": 264,
+        "playtimeForever": 329,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2515020/0ce29700a22fea9eb270b276fa157b79511365e6.jpg",
+        "storeUrl": "https://store.steampowered.com/app/2515020",
+        "lastPlayedTs": "2026-05-10T06:12:57.000Z"
     },
     "mostRecentUnlock": {
         "appId": 2515020,
