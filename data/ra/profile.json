@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-05-11T16:04:53.792Z"
+        "extractionTimestamp": "2026-05-11T19:00:06.479Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Donald Duck is being chased in \"Main Street\"",
-        "lastGameId": 2873,
+        "richPresenceMsg": "Playing Pokémon Crystal Version [Subset - Professor Oak Challenge]",
+        "lastGameId": 24140,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 1978,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Donald Duck is being chased in \"Main Street\"",
-        "richPresenceMsgDate": "2026-05-11 14:41:14",
-        "lastGameId": 2873,
+        "richPresenceMsg": "Playing Pokémon Crystal Version [Subset - Professor Oak Challenge]",
+        "richPresenceMsgDate": "2026-05-11 16:22:02",
+        "lastGameId": 24140,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 1978,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 48781,
+        "rank": 48789,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 143575,
+        "totalRanked": 143600,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -138,6 +138,24 @@
         ]
     },
     "recentlyPlayedGames": [
+        {
+            "gameId": 810,
+            "consoleId": 6,
+            "consoleName": "Game Boy Color",
+            "title": "Pokémon Crystal Version",
+            "imageIcon": "/Images/105173.png",
+            "imageTitle": "/Images/007161.png",
+            "imageIngame": "/Images/014324.png",
+            "imageBoxArt": "/Images/024029.png",
+            "lastPlayed": "2026-05-11 16:07:11",
+            "achievementsTotal": 113,
+            "numPossibleAchievements": 113,
+            "possibleScore": 864,
+            "numAchieved": 10,
+            "scoreAchieved": 55,
+            "numAchievedHardcore": 10,
+            "scoreAchievedHardcore": 55
+        },
         {
             "gameId": 2873,
             "consoleId": 12,
@@ -389,24 +407,6 @@
             "scoreAchieved": 25,
             "numAchievedHardcore": 5,
             "scoreAchievedHardcore": 25
-        },
-        {
-            "gameId": 17890,
-            "consoleId": 18,
-            "consoleName": "Nintendo DS",
-            "title": "Mega Man Star Force: Dragon",
-            "imageIcon": "/Images/121894.png",
-            "imageTitle": "/Images/126247.png",
-            "imageIngame": "/Images/126248.png",
-            "imageBoxArt": "/Images/121877.png",
-            "lastPlayed": "2026-04-25 02:16:43",
-            "achievementsTotal": 76,
-            "numPossibleAchievements": 76,
-            "possibleScore": 800,
-            "numAchieved": 0,
-            "scoreAchieved": 0,
-            "numAchievedHardcore": 0,
-            "scoreAchievedHardcore": 0
         }
     ],
     "gameAwardsAndProgress": {
@@ -1177,22 +1177,22 @@
         "gameUrl": "/game/2873"
     },
     "mostRecentGame": {
-        "gameId": 2873,
-        "consoleId": 12,
-        "consoleName": "PlayStation",
-        "title": "Donald Duck: Goin' Quackers",
-        "imageIcon": "/Images/113907.png",
-        "imageTitle": "/Images/032748.png",
-        "imageIngame": "/Images/050578.png",
-        "imageBoxArt": "/Images/096299.png",
-        "lastPlayed": "2026-05-11 14:41:14",
-        "achievementsTotal": 65,
-        "numPossibleAchievements": 65,
-        "possibleScore": 278,
-        "numAchieved": 24,
-        "scoreAchieved": 73,
-        "numAchievedHardcore": 24,
-        "scoreAchievedHardcore": 73
+        "gameId": 810,
+        "consoleId": 6,
+        "consoleName": "Game Boy Color",
+        "title": "Pokémon Crystal Version",
+        "imageIcon": "/Images/105173.png",
+        "imageTitle": "/Images/007161.png",
+        "imageIngame": "/Images/014324.png",
+        "imageBoxArt": "/Images/024029.png",
+        "lastPlayed": "2026-05-11 16:07:11",
+        "achievementsTotal": 113,
+        "numPossibleAchievements": 113,
+        "possibleScore": 864,
+        "numAchieved": 10,
+        "scoreAchieved": 55,
+        "numAchievedHardcore": 10,
+        "scoreAchievedHardcore": 55
     },
     "points7Days": 84,
     "points30Days": 243
