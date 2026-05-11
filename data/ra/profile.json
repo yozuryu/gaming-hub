@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-05-10T23:57:31.100Z"
+        "extractionTimestamp": "2026-05-11T02:43:39.392Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Playing Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
-        "lastGameId": 22693,
+        "richPresenceMsg": "Playing Ragnarok DS",
+        "lastGameId": 9931,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 1963,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Playing Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
-        "richPresenceMsgDate": "2026-05-10 15:54:43",
-        "lastGameId": 22693,
+        "richPresenceMsg": "Playing Ragnarok DS",
+        "richPresenceMsgDate": "2026-05-11 01:26:11",
+        "lastGameId": 9931,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 1963,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 49003,
+        "rank": 49012,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 143483,
+        "totalRanked": 143511,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -139,6 +139,24 @@
     },
     "recentlyPlayedGames": [
         {
+            "gameId": 9931,
+            "consoleId": 18,
+            "consoleName": "Nintendo DS",
+            "title": "Ragnarok DS",
+            "imageIcon": "/Images/040295.png",
+            "imageTitle": "/Images/041112.png",
+            "imageIngame": "/Images/041113.png",
+            "imageBoxArt": "/Images/040294.png",
+            "lastPlayed": "2026-05-11 01:26:11",
+            "achievementsTotal": 43,
+            "numPossibleAchievements": 43,
+            "possibleScore": 399,
+            "numAchieved": 2,
+            "scoreAchieved": 6,
+            "numAchievedHardcore": 2,
+            "scoreAchievedHardcore": 6
+        },
+        {
             "gameId": 22693,
             "consoleId": 18,
             "consoleName": "Nintendo DS",
@@ -209,24 +227,6 @@
             "scoreAchieved": 10,
             "numAchievedHardcore": 2,
             "scoreAchievedHardcore": 10
-        },
-        {
-            "gameId": 9931,
-            "consoleId": 18,
-            "consoleName": "Nintendo DS",
-            "title": "Ragnarok DS",
-            "imageIcon": "/Images/040295.png",
-            "imageTitle": "/Images/041112.png",
-            "imageIngame": "/Images/041113.png",
-            "imageBoxArt": "/Images/040294.png",
-            "lastPlayed": "2026-05-06 01:16:01",
-            "achievementsTotal": 43,
-            "numPossibleAchievements": 43,
-            "possibleScore": 399,
-            "numAchieved": 2,
-            "scoreAchieved": 6,
-            "numAchievedHardcore": 2,
-            "scoreAchievedHardcore": 6
         },
         {
             "gameId": 18157,
@@ -1177,22 +1177,22 @@
         "gameUrl": "/game/22693"
     },
     "mostRecentGame": {
-        "gameId": 22693,
+        "gameId": 9931,
         "consoleId": 18,
         "consoleName": "Nintendo DS",
-        "title": "Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
-        "imageIcon": "/Images/069683.png",
-        "imageTitle": "/Images/069700.png",
-        "imageIngame": "/Images/069701.png",
-        "imageBoxArt": "/Images/069702.png",
-        "lastPlayed": "2026-05-10 15:54:43",
-        "achievementsTotal": 389,
-        "numPossibleAchievements": 389,
-        "possibleScore": 815,
-        "numAchieved": 3,
-        "scoreAchieved": 3,
-        "numAchievedHardcore": 3,
-        "scoreAchievedHardcore": 3
+        "title": "Ragnarok DS",
+        "imageIcon": "/Images/040295.png",
+        "imageTitle": "/Images/041112.png",
+        "imageIngame": "/Images/041113.png",
+        "imageBoxArt": "/Images/040294.png",
+        "lastPlayed": "2026-05-11 01:26:11",
+        "achievementsTotal": 43,
+        "numPossibleAchievements": 43,
+        "possibleScore": 399,
+        "numAchieved": 2,
+        "scoreAchieved": 6,
+        "numAchievedHardcore": 2,
+        "scoreAchievedHardcore": 6
     },
     "points7Days": 69,
     "points30Days": 238
