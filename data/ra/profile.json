@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-05-14T02:43:36.273Z"
+        "extractionTimestamp": "2026-05-14T04:49:58.892Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,13 +8,13 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Looking for a way to fix the bridge",
+        "richPresenceMsg": "Wood obtained!",
         "lastGameId": 27590,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2108,
+        "totalPoints": 2111,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 5936,
+        "totalTruePoints": 5940,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -33,31 +33,31 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Looking for a way to fix the bridge",
-        "richPresenceMsgDate": "2026-05-14 02:32:45",
+        "richPresenceMsg": "Wood obtained!",
+        "richPresenceMsgDate": "2026-05-14 03:14:22",
         "lastGameId": 27590,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2108,
+        "totalPoints": 2111,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 5936,
+        "totalTruePoints": 5940,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 46665,
+        "rank": 46618,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 143944,
+        "totalRanked": 143957,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 2108,
+        "points": 2111,
         "softcorePoints": 1
     },
     "pageAwards": {
@@ -186,14 +186,14 @@
             "imageTitle": "/Images/086230.png",
             "imageIngame": "/Images/086231.png",
             "imageBoxArt": "/Images/087384.png",
-            "lastPlayed": "2026-05-14 02:32:45",
+            "lastPlayed": "2026-05-14 03:14:22",
             "achievementsTotal": 7,
             "numPossibleAchievements": 7,
             "possibleScore": 28,
-            "numAchieved": 1,
-            "scoreAchieved": 1,
-            "numAchievedHardcore": 1,
-            "scoreAchievedHardcore": 1
+            "numAchieved": 2,
+            "scoreAchieved": 4,
+            "numAchievedHardcore": 2,
+            "scoreAchievedHardcore": 4
         },
         {
             "gameId": 724,
@@ -459,9 +459,9 @@
                 "consoleId": 5,
                 "consoleName": "Game Boy Advance",
                 "maxPossible": 7,
-                "numAwarded": 1,
-                "numAwardedHardcore": 1,
-                "mostRecentAwardedDate": "2026-05-14T02:32:45+00:00",
+                "numAwarded": 2,
+                "numAwardedHardcore": 2,
+                "mostRecentAwardedDate": "2026-05-14T03:12:49+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -1261,23 +1261,23 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-05-14 02:32:45",
+        "date": "2026-05-14 03:12:49",
         "hardcoreMode": true,
-        "achievementId": 377441,
-        "title": "It's a Secret",
-        "description": "Found an alternate way in/out of your home.",
-        "badgeName": "423735",
-        "points": 1,
-        "trueRatio": 1,
-        "type": null,
+        "achievementId": 377243,
+        "title": "Wood Like Some of that Wood",
+        "description": "Obtain some wood.",
+        "badgeName": "423698",
+        "points": 3,
+        "trueRatio": 4,
+        "type": "progression",
         "author": "LadyNadia",
         "authorUlid": "018X9V9VXRN7ZMNSXE06MB2HCY",
         "gameTitle": "~Homebrew~ Bridge Quest",
         "gameIcon": "/Images/093528.png",
         "gameId": 27590,
         "consoleName": "Game Boy Advance",
-        "cumulScore": 994,
-        "badgeUrl": "/Badge/423735.png",
+        "cumulScore": 997,
+        "badgeUrl": "/Badge/423698.png",
         "gameUrl": "/game/27590"
     },
     "mostRecentGame": {
@@ -1289,15 +1289,15 @@
         "imageTitle": "/Images/086230.png",
         "imageIngame": "/Images/086231.png",
         "imageBoxArt": "/Images/087384.png",
-        "lastPlayed": "2026-05-14 02:32:45",
+        "lastPlayed": "2026-05-14 03:14:22",
         "achievementsTotal": 7,
         "numPossibleAchievements": 7,
         "possibleScore": 28,
-        "numAchieved": 1,
-        "scoreAchieved": 1,
-        "numAchievedHardcore": 1,
-        "scoreAchievedHardcore": 1
+        "numAchieved": 2,
+        "scoreAchieved": 4,
+        "numAchievedHardcore": 2,
+        "scoreAchievedHardcore": 4
     },
-    "points7Days": 199,
-    "points30Days": 373
+    "points7Days": 202,
+    "points30Days": 376
 }
