@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-05-15T12:57:49.999Z"
+        "extractionTimestamp": "2026-05-15T15:23:15.640Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "On Route 2 [🎖️0/8] [👁️15/151] [🎱14/151]",
-        "lastGameId": 724,
+        "richPresenceMsg": "Solving puzzle #13 • Current Time: 1:59 • 12 Puzzles Completed",
+        "lastGameId": 38014,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2150,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "On Route 2 [🎖️0/8] [👁️15/151] [🎱14/151]",
-        "richPresenceMsgDate": "2026-05-15 01:27:50",
-        "lastGameId": 724,
+        "richPresenceMsg": "Solving puzzle #13 • Current Time: 1:59 • 12 Puzzles Completed",
+        "richPresenceMsgDate": "2026-05-15 15:14:35",
+        "lastGameId": 38014,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2150,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 46037,
+        "rank": 46039,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 144147,
+        "totalRanked": 144163,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -191,6 +191,24 @@
     },
     "recentlyPlayedGames": [
         {
+            "gameId": 38014,
+            "consoleId": 6,
+            "consoleName": "Game Boy Color",
+            "title": "~Homebrew~ Walfie's Nonograms",
+            "imageIcon": "/Images/124659.png",
+            "imageTitle": "/Images/124381.png",
+            "imageIngame": "/Images/124382.png",
+            "imageBoxArt": "/Images/124383.png",
+            "lastPlayed": "2026-05-15 15:14:35",
+            "achievementsTotal": 31,
+            "numPossibleAchievements": 31,
+            "possibleScore": 136,
+            "numAchieved": 2,
+            "scoreAchieved": 4,
+            "numAchievedHardcore": 2,
+            "scoreAchievedHardcore": 4
+        },
+        {
             "gameId": 724,
             "consoleId": 4,
             "consoleName": "Game Boy",
@@ -279,24 +297,6 @@
             "scoreAchieved": 17,
             "numAchievedHardcore": 6,
             "scoreAchievedHardcore": 17
-        },
-        {
-            "gameId": 38014,
-            "consoleId": 6,
-            "consoleName": "Game Boy Color",
-            "title": "~Homebrew~ Walfie's Nonograms",
-            "imageIcon": "/Images/124659.png",
-            "imageTitle": "/Images/124381.png",
-            "imageIngame": "/Images/124382.png",
-            "imageBoxArt": "/Images/124383.png",
-            "lastPlayed": "2026-05-14 14:02:46",
-            "achievementsTotal": 31,
-            "numPossibleAchievements": 31,
-            "possibleScore": 136,
-            "numAchieved": 2,
-            "scoreAchieved": 4,
-            "numAchievedHardcore": 2,
-            "scoreAchievedHardcore": 4
         },
         {
             "gameId": 16084,
@@ -1333,22 +1333,22 @@
         "gameUrl": "/game/11274"
     },
     "mostRecentGame": {
-        "gameId": 724,
-        "consoleId": 4,
-        "consoleName": "Game Boy",
-        "title": "Pokémon Red Version",
-        "imageIcon": "/Images/126545.png",
-        "imageTitle": "/Images/112645.png",
-        "imageIngame": "/Images/112646.png",
-        "imageBoxArt": "/Images/117104.png",
-        "lastPlayed": "2026-05-15 01:27:50",
-        "achievementsTotal": 91,
-        "numPossibleAchievements": 91,
-        "possibleScore": 755,
-        "numAchieved": 7,
-        "scoreAchieved": 28,
-        "numAchievedHardcore": 7,
-        "scoreAchievedHardcore": 28
+        "gameId": 38014,
+        "consoleId": 6,
+        "consoleName": "Game Boy Color",
+        "title": "~Homebrew~ Walfie's Nonograms",
+        "imageIcon": "/Images/124659.png",
+        "imageTitle": "/Images/124381.png",
+        "imageIngame": "/Images/124382.png",
+        "imageBoxArt": "/Images/124383.png",
+        "lastPlayed": "2026-05-15 15:14:35",
+        "achievementsTotal": 31,
+        "numPossibleAchievements": 31,
+        "possibleScore": 136,
+        "numAchieved": 2,
+        "scoreAchieved": 4,
+        "numAchievedHardcore": 2,
+        "scoreAchievedHardcore": 4
     },
     "points7Days": 242,
     "points30Days": 404
