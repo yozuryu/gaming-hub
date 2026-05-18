@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-05-17T22:03:15.442Z"
+        "extractionTimestamp": "2026-05-18T00:01:17.516Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,13 +8,13 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Tile 128",
+        "richPresenceMsg": "Tile 512",
         "lastGameId": 6070,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2188,
+        "totalPoints": 2198,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 6037,
+        "totalTruePoints": 6050,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -33,31 +33,31 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Tile 128",
-        "richPresenceMsgDate": "2026-05-17 22:03:13",
+        "richPresenceMsg": "Tile 512",
+        "richPresenceMsgDate": "2026-05-17 22:17:50",
         "lastGameId": 6070,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2188,
+        "totalPoints": 2198,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 6037,
+        "totalTruePoints": 6050,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 45444,
+        "rank": 45272,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 144548,
+        "totalRanked": 144564,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 2188,
+        "points": 2198,
         "softcorePoints": 1
     },
     "pageAwards": {
@@ -199,14 +199,14 @@
             "imageTitle": "/Images/008378.png",
             "imageIngame": "/Images/008379.png",
             "imageBoxArt": "/Images/008453.png",
-            "lastPlayed": "2026-05-17 22:03:13",
+            "lastPlayed": "2026-05-17 22:17:50",
             "achievementsTotal": 12,
             "numPossibleAchievements": 12,
             "possibleScore": 265,
-            "numAchieved": 7,
-            "scoreAchieved": 30,
-            "numAchievedHardcore": 7,
-            "scoreAchievedHardcore": 30
+            "numAchieved": 8,
+            "scoreAchieved": 40,
+            "numAchievedHardcore": 8,
+            "scoreAchievedHardcore": 40
         },
         {
             "gameId": 30725,
@@ -472,9 +472,9 @@
                 "consoleId": 7,
                 "consoleName": "NES/Famicom",
                 "maxPossible": 12,
-                "numAwarded": 7,
-                "numAwardedHardcore": 7,
-                "mostRecentAwardedDate": "2026-05-17T21:55:55+00:00",
+                "numAwarded": 8,
+                "numAwardedHardcore": 8,
+                "mostRecentAwardedDate": "2026-05-17T22:05:36+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -1352,14 +1352,14 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-05-17 21:55:55",
+        "date": "2026-05-17 22:05:36",
         "hardcoreMode": true,
-        "achievementId": 37124,
-        "title": "Two Hundred and Fifty-Six",
-        "description": "Get a 256! ",
-        "badgeName": "37917",
+        "achievementId": 37125,
+        "title": "Five Hundred and Twelve! ",
+        "description": "Get a 512!",
+        "badgeName": "37918",
         "points": 10,
-        "trueRatio": 11,
+        "trueRatio": 13,
         "type": "progression",
         "author": "Nomstuff",
         "authorUlid": "018TKKVD2BMP6PG1CCR5KW55K1",
@@ -1367,8 +1367,8 @@
         "gameIcon": "/Images/066649.png",
         "gameId": 6070,
         "consoleName": "NES/Famicom",
-        "cumulScore": 1073,
-        "badgeUrl": "/Badge/37917.png",
+        "cumulScore": 1083,
+        "badgeUrl": "/Badge/37918.png",
         "gameUrl": "/game/6070"
     },
     "mostRecentGame": {
@@ -1380,15 +1380,15 @@
         "imageTitle": "/Images/008378.png",
         "imageIngame": "/Images/008379.png",
         "imageBoxArt": "/Images/008453.png",
-        "lastPlayed": "2026-05-17 22:03:13",
+        "lastPlayed": "2026-05-17 22:17:50",
         "achievementsTotal": 12,
         "numPossibleAchievements": 12,
         "possibleScore": 265,
-        "numAchieved": 7,
-        "scoreAchieved": 30,
-        "numAchievedHardcore": 7,
-        "scoreAchievedHardcore": 30
+        "numAchieved": 8,
+        "scoreAchieved": 40,
+        "numAchievedHardcore": 8,
+        "scoreAchievedHardcore": 40
     },
-    "points7Days": 227,
-    "points30Days": 437
+    "points7Days": 237,
+    "points30Days": 447
 }
