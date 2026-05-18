@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-05-18T10:15:16.355Z"
+        "extractionTimestamp": "2026-05-18T14:33:25.283Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,13 +8,13 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Tile 64",
+        "richPresenceMsg": "Tile 2048",
         "lastGameId": 6070,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2203,
+        "totalPoints": 2278,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 6056,
+        "totalTruePoints": 7075,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -33,39 +33,39 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Tile 64",
-        "richPresenceMsgDate": "2026-05-18 10:14:16",
+        "richPresenceMsg": "Tile 2048",
+        "richPresenceMsgDate": "2026-05-18 10:39:19",
         "lastGameId": 6070,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2203,
+        "totalPoints": 2278,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 6056,
+        "totalTruePoints": 7075,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 45198,
+        "rank": 43921,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 144614,
+        "totalRanked": 144632,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 2203,
+        "points": 2278,
         "softcorePoints": 1
     },
     "pageAwards": {
-        "totalAwardsCount": 9,
+        "totalAwardsCount": 10,
         "hiddenAwardsCount": 0,
         "masteryAwardsCount": 2,
         "completionAwardsCount": 0,
-        "beatenHardcoreAwardsCount": 6,
+        "beatenHardcoreAwardsCount": 7,
         "beatenSoftcoreAwardsCount": 0,
         "eventAwardsCount": 0,
         "siteAwardsCount": 1,
@@ -186,6 +186,19 @@
                 "awardData": 32817,
                 "awardDataExtra": 1,
                 "displayOrder": 6
+            },
+            {
+                "awardedAt": "2026-05-18T10:33:26+00:00",
+                "title": "~Homebrew~ 2048",
+                "consoleId": 7,
+                "consoleName": "NES/Famicom",
+                "flags": null,
+                "imageIcon": "/Images/066649.png",
+                "display_award_tier": null,
+                "awardType": "Game Beaten",
+                "awardData": 6070,
+                "awardDataExtra": 1,
+                "displayOrder": 7
             }
         ]
     },
@@ -199,14 +212,14 @@
             "imageTitle": "/Images/008378.png",
             "imageIngame": "/Images/008379.png",
             "imageBoxArt": "/Images/008453.png",
-            "lastPlayed": "2026-05-18 10:14:16",
+            "lastPlayed": "2026-05-18 10:39:19",
             "achievementsTotal": 12,
             "numPossibleAchievements": 12,
             "possibleScore": 265,
-            "numAchieved": 8,
-            "scoreAchieved": 40,
-            "numAchievedHardcore": 8,
-            "scoreAchievedHardcore": 40
+            "numAchieved": 10,
+            "scoreAchieved": 115,
+            "numAchievedHardcore": 10,
+            "scoreAchievedHardcore": 115
         },
         {
             "gameId": 34313,
@@ -466,6 +479,19 @@
         "total": 68,
         "results": [
             {
+                "gameId": 6070,
+                "title": "~Homebrew~ 2048",
+                "imageIcon": "/Images/066649.png",
+                "consoleId": 7,
+                "consoleName": "NES/Famicom",
+                "maxPossible": 12,
+                "numAwarded": 10,
+                "numAwardedHardcore": 10,
+                "mostRecentAwardedDate": "2026-05-18T10:33:26+00:00",
+                "highestAwardKind": "beaten-hardcore",
+                "highestAwardDate": "2026-05-18T10:33:26+00:00"
+            },
+            {
                 "gameId": 34313,
                 "title": "~Homebrew~ Uma Musume Delish Derby",
                 "imageIcon": "/Images/115591.png",
@@ -475,19 +501,6 @@
                 "numAwarded": 3,
                 "numAwardedHardcore": 3,
                 "mostRecentAwardedDate": "2026-05-18T02:16:36+00:00",
-                "highestAwardKind": null,
-                "highestAwardDate": null
-            },
-            {
-                "gameId": 6070,
-                "title": "~Homebrew~ 2048",
-                "imageIcon": "/Images/066649.png",
-                "consoleId": 7,
-                "consoleName": "NES/Famicom",
-                "maxPossible": 12,
-                "numAwarded": 8,
-                "numAwardedHardcore": 8,
-                "mostRecentAwardedDate": "2026-05-17T22:05:36+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -1352,24 +1365,24 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-05-18 02:16:36",
+        "date": "2026-05-18 10:33:26",
         "hardcoreMode": true,
-        "achievementId": 544184,
-        "title": "Leaving Tracks",
-        "description": "Complete the Track course as Mejiro McQueen, Daiwa Scarlet, or Haru Urara",
-        "badgeName": "618838",
-        "points": 5,
-        "trueRatio": 6,
-        "type": null,
-        "author": "Hexadigital",
-        "authorUlid": "01GDBENQ6D76393JR9966KVH7K",
-        "gameTitle": "~Homebrew~ Uma Musume Delish Derby",
-        "gameIcon": "/Images/115591.png",
-        "gameId": 34313,
-        "consoleName": "Game Boy",
-        "cumulScore": 1087,
-        "badgeUrl": "/Badge/618838.png",
-        "gameUrl": "/game/34313"
+        "achievementId": 37127,
+        "title": "2048!",
+        "description": "Get a 2048!",
+        "badgeName": "37956",
+        "points": 50,
+        "trueRatio": 125,
+        "type": "win_condition",
+        "author": "Nomstuff",
+        "authorUlid": "018TKKVD2BMP6PG1CCR5KW55K1",
+        "gameTitle": "~Homebrew~ 2048",
+        "gameIcon": "/Images/066649.png",
+        "gameId": 6070,
+        "consoleName": "NES/Famicom",
+        "cumulScore": 1153,
+        "badgeUrl": "/Badge/37956.png",
+        "gameUrl": "/game/6070"
     },
     "mostRecentGame": {
         "gameId": 6070,
@@ -1380,15 +1393,15 @@
         "imageTitle": "/Images/008378.png",
         "imageIngame": "/Images/008379.png",
         "imageBoxArt": "/Images/008453.png",
-        "lastPlayed": "2026-05-18 10:14:16",
+        "lastPlayed": "2026-05-18 10:39:19",
         "achievementsTotal": 12,
         "numPossibleAchievements": 12,
         "possibleScore": 265,
-        "numAchieved": 8,
-        "scoreAchieved": 40,
-        "numAchievedHardcore": 8,
-        "scoreAchievedHardcore": 40
+        "numAchieved": 10,
+        "scoreAchieved": 115,
+        "numAchievedHardcore": 10,
+        "scoreAchievedHardcore": 115
     },
-    "points7Days": 242,
-    "points30Days": 452
+    "points7Days": 312,
+    "points30Days": 526
 }
