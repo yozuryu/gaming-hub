@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-05-18T05:09:15.608Z"
+        "extractionTimestamp": "2026-05-18T10:15:16.355Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Daiwa Scarlet • Track: Area 1 • Time: 0 • Points: 0",
-        "lastGameId": 34313,
+        "richPresenceMsg": "Tile 64",
+        "lastGameId": 6070,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2203,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Daiwa Scarlet • Track: Area 1 • Time: 0 • Points: 0",
-        "richPresenceMsgDate": "2026-05-18 02:16:37",
-        "lastGameId": 34313,
+        "richPresenceMsg": "Tile 64",
+        "richPresenceMsgDate": "2026-05-18 10:14:16",
+        "lastGameId": 6070,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2203,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 45193,
+        "rank": 45198,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 144594,
+        "totalRanked": 144614,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -191,6 +191,24 @@
     },
     "recentlyPlayedGames": [
         {
+            "gameId": 6070,
+            "consoleId": 7,
+            "consoleName": "NES/Famicom",
+            "title": "~Homebrew~ 2048",
+            "imageIcon": "/Images/066649.png",
+            "imageTitle": "/Images/008378.png",
+            "imageIngame": "/Images/008379.png",
+            "imageBoxArt": "/Images/008453.png",
+            "lastPlayed": "2026-05-18 10:14:16",
+            "achievementsTotal": 12,
+            "numPossibleAchievements": 12,
+            "possibleScore": 265,
+            "numAchieved": 8,
+            "scoreAchieved": 40,
+            "numAchievedHardcore": 8,
+            "scoreAchievedHardcore": 40
+        },
+        {
             "gameId": 34313,
             "consoleId": 4,
             "consoleName": "Game Boy",
@@ -207,24 +225,6 @@
             "scoreAchieved": 12,
             "numAchievedHardcore": 3,
             "scoreAchievedHardcore": 12
-        },
-        {
-            "gameId": 6070,
-            "consoleId": 7,
-            "consoleName": "NES/Famicom",
-            "title": "~Homebrew~ 2048",
-            "imageIcon": "/Images/066649.png",
-            "imageTitle": "/Images/008378.png",
-            "imageIngame": "/Images/008379.png",
-            "imageBoxArt": "/Images/008453.png",
-            "lastPlayed": "2026-05-17 22:17:50",
-            "achievementsTotal": 12,
-            "numPossibleAchievements": 12,
-            "possibleScore": 265,
-            "numAchieved": 8,
-            "scoreAchieved": 40,
-            "numAchievedHardcore": 8,
-            "scoreAchievedHardcore": 40
         },
         {
             "gameId": 30725,
@@ -1372,22 +1372,22 @@
         "gameUrl": "/game/34313"
     },
     "mostRecentGame": {
-        "gameId": 34313,
-        "consoleId": 4,
-        "consoleName": "Game Boy",
-        "title": "~Homebrew~ Uma Musume Delish Derby",
-        "imageIcon": "/Images/115591.png",
-        "imageTitle": "/Images/115592.png",
-        "imageIngame": "/Images/115593.png",
-        "imageBoxArt": "/Images/118029.png",
-        "lastPlayed": "2026-05-18 02:16:37",
-        "achievementsTotal": 11,
-        "numPossibleAchievements": 11,
-        "possibleScore": 50,
-        "numAchieved": 3,
-        "scoreAchieved": 12,
-        "numAchievedHardcore": 3,
-        "scoreAchievedHardcore": 12
+        "gameId": 6070,
+        "consoleId": 7,
+        "consoleName": "NES/Famicom",
+        "title": "~Homebrew~ 2048",
+        "imageIcon": "/Images/066649.png",
+        "imageTitle": "/Images/008378.png",
+        "imageIngame": "/Images/008379.png",
+        "imageBoxArt": "/Images/008453.png",
+        "lastPlayed": "2026-05-18 10:14:16",
+        "achievementsTotal": 12,
+        "numPossibleAchievements": 12,
+        "possibleScore": 265,
+        "numAchieved": 8,
+        "scoreAchieved": 40,
+        "numAchievedHardcore": 8,
+        "scoreAchievedHardcore": 40
     },
     "points7Days": 242,
     "points30Days": 452
