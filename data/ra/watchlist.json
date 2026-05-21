@@ -1,5 +1,5 @@
 {
-    "total": 739,
+    "total": 746,
     "results": [
         {
             "id": 27,
@@ -1359,6 +1359,15 @@
             "imageIcon": "/Images/122990.png",
             "pointsTotal": 3014,
             "achievementsPublished": 289
+        },
+        {
+            "id": 2791,
+            "title": "Devil May Cry",
+            "consoleId": 21,
+            "consoleName": "PlayStation 2",
+            "imageIcon": "/Images/077012.png",
+            "pointsTotal": 1023,
+            "achievementsPublished": 131
         },
         {
             "id": 2805,
@@ -2916,6 +2925,15 @@
             "imageIcon": "/Images/046731.png",
             "pointsTotal": 454,
             "achievementsPublished": 52
+        },
+        {
+            "id": 7153,
+            "title": "Devil May Cry 2",
+            "consoleId": 21,
+            "consoleName": "PlayStation 2",
+            "imageIcon": "/Images/112402.png",
+            "pointsTotal": 1161,
+            "achievementsPublished": 91
         },
         {
             "id": 7212,
@@ -5627,6 +5645,24 @@
             "achievementsPublished": 10
         },
         {
+            "id": 19297,
+            "title": "wasm4nia",
+            "consoleId": 72,
+            "consoleName": "WASM-4",
+            "imageIcon": "/Images/057426.png",
+            "pointsTotal": 344,
+            "achievementsPublished": 32
+        },
+        {
+            "id": 19334,
+            "title": "Watris",
+            "consoleId": 72,
+            "consoleName": "WASM-4",
+            "imageIcon": "/Images/057644.png",
+            "pointsTotal": 235,
+            "achievementsPublished": 26
+        },
+        {
             "id": 19363,
             "title": "Shining Force EXA",
             "consoleId": 21,
@@ -5996,6 +6032,15 @@
             "achievementsPublished": 44
         },
         {
+            "id": 23777,
+            "title": "Kemono Patrol",
+            "consoleId": 71,
+            "consoleName": "Arduboy",
+            "imageIcon": "/Images/108861.png",
+            "pointsTotal": 14,
+            "achievementsPublished": 6
+        },
+        {
             "id": 23905,
             "title": "Pokémon FireRed Version [Subset - Professor Oak Challenge]",
             "consoleId": 5,
@@ -6266,6 +6311,15 @@
             "achievementsPublished": 25
         },
         {
+            "id": 29924,
+            "title": "Blocks",
+            "consoleId": 71,
+            "consoleName": "Arduboy",
+            "imageIcon": "/Images/099362.png",
+            "pointsTotal": 31,
+            "achievementsPublished": 10
+        },
+        {
             "id": 30059,
             "title": "Mega Man Zero 2 [Subset - Bonus]",
             "consoleId": 5,
@@ -6372,6 +6426,15 @@
             "imageIcon": "/Images/105741.png",
             "pointsTotal": 469,
             "achievementsPublished": 32
+        },
+        {
+            "id": 32480,
+            "title": "Devil May Cry 3:  Dante's Awakening",
+            "consoleId": 21,
+            "consoleName": "PlayStation 2",
+            "imageIcon": "/Images/106191.png",
+            "pointsTotal": 807,
+            "achievementsPublished": 59
         },
         {
             "id": 32564,
