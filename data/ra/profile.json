@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-05-25T09:00:42.899Z"
+        "extractionTimestamp": "2026-05-25T13:32:33.227Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 42192,
+        "rank": 42198,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 145675,
+        "totalRanked": 145692,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -1090,6 +1090,19 @@
                 "highestAwardDate": null
             },
             {
+                "gameId": 1275,
+                "title": "Fatal Frame",
+                "imageIcon": "/Images/102948.png",
+                "consoleId": 21,
+                "consoleName": "PlayStation 2",
+                "maxPossible": 105,
+                "numAwarded": 13,
+                "numAwardedHardcore": 13,
+                "mostRecentAwardedDate": "2025-10-25T13:54:47+00:00",
+                "highestAwardKind": null,
+                "highestAwardDate": null
+            },
+            {
                 "gameId": 19070,
                 "title": "Star Ocean: Till the End of Time",
                 "imageIcon": "/Images/074616.png",
@@ -1103,15 +1116,15 @@
                 "highestAwardDate": null
             },
             {
-                "gameId": 1275,
-                "title": "Fatal Frame",
-                "imageIcon": "/Images/102948.png",
+                "gameId": 3298,
+                "title": "Tales of the Abyss",
+                "imageIcon": "/Images/056322.png",
                 "consoleId": 21,
                 "consoleName": "PlayStation 2",
-                "maxPossible": 105,
-                "numAwarded": 13,
-                "numAwardedHardcore": 13,
-                "mostRecentAwardedDate": "2025-10-20T14:53:12+00:00",
+                "maxPossible": 277,
+                "numAwarded": 1,
+                "numAwardedHardcore": 1,
+                "mostRecentAwardedDate": "2025-10-17T15:52:11+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -1426,19 +1439,6 @@
                 "mostRecentAwardedDate": "2024-04-20T15:01:47+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
-            },
-            {
-                "gameId": 3298,
-                "title": "Tales of the Abyss",
-                "imageIcon": "/Images/056322.png",
-                "consoleId": 21,
-                "consoleName": "PlayStation 2",
-                "maxPossible": 277,
-                "numAwarded": 1,
-                "numAwardedHardcore": 1,
-                "mostRecentAwardedDate": "2024-04-13T14:52:32+00:00",
-                "highestAwardKind": null,
-                "highestAwardDate": null
             }
         ]
     },
@@ -1458,7 +1458,7 @@
         "gameIcon": "/Images/120045.png",
         "gameId": 29892,
         "consoleName": "Arduboy",
-        "cumulScore": 1268,
+        "cumulScore": 1266,
         "badgeUrl": "/Badge/633156.png",
         "gameUrl": "/game/29892"
     },
@@ -1480,6 +1480,6 @@
         "numAchievedHardcore": 11,
         "scoreAchievedHardcore": 41
     },
-    "points7Days": 219,
+    "points7Days": 144,
     "points30Days": 646
 }
