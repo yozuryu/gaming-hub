@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-05-27T10:04:07.309Z"
+        "extractionTimestamp": "2026-05-27T14:29:36.834Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -12,9 +12,9 @@
         "lastGameId": 22862,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2422,
+        "totalPoints": 2426,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 7306,
+        "totalTruePoints": 7238,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -34,30 +34,30 @@
             "data2": null
         },
         "richPresenceMsg": "Playing Pokémon HeartGold Version [Subset - Professor Oak Challenge]",
-        "richPresenceMsgDate": "2026-05-27 02:10:41",
+        "richPresenceMsgDate": "2026-05-27 12:28:14",
         "lastGameId": 22862,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2422,
+        "totalPoints": 2426,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 7306,
+        "totalTruePoints": 7238,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 42322,
+        "rank": 42271,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 146002,
+        "totalRanked": 146022,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 2422,
+        "points": 2426,
         "softcorePoints": 1
     },
     "pageAwards": {
@@ -238,14 +238,14 @@
             "imageTitle": "/Images/069703.png",
             "imageIngame": "/Images/069790.png",
             "imageBoxArt": "/Images/069707.png",
-            "lastPlayed": "2026-05-27 02:10:41",
+            "lastPlayed": "2026-05-27 12:28:14",
             "achievementsTotal": 391,
             "numPossibleAchievements": 391,
             "possibleScore": 825,
-            "numAchieved": 1,
-            "scoreAchieved": 1,
-            "numAchievedHardcore": 1,
-            "scoreAchievedHardcore": 1
+            "numAchieved": 5,
+            "scoreAchieved": 5,
+            "numAchievedHardcore": 5,
+            "scoreAchievedHardcore": 5
         },
         {
             "gameId": 29892,
@@ -505,6 +505,19 @@
         "total": 72,
         "results": [
             {
+                "gameId": 22862,
+                "title": "Pokémon HeartGold Version [Subset - Professor Oak Challenge]",
+                "imageIcon": "/Images/069769.png",
+                "consoleId": 18,
+                "consoleName": "Nintendo DS",
+                "maxPossible": 391,
+                "numAwarded": 5,
+                "numAwardedHardcore": 5,
+                "mostRecentAwardedDate": "2026-05-27T11:55:57+00:00",
+                "highestAwardKind": null,
+                "highestAwardDate": null
+            },
+            {
                 "gameId": 29892,
                 "title": "2048",
                 "imageIcon": "/Images/120045.png",
@@ -542,19 +555,6 @@
                 "mostRecentAwardedDate": "2026-05-20T12:03:06+00:00",
                 "highestAwardKind": "mastered",
                 "highestAwardDate": "2026-05-20T12:03:06+00:00"
-            },
-            {
-                "gameId": 22862,
-                "title": "Pokémon HeartGold Version [Subset - Professor Oak Challenge]",
-                "imageIcon": "/Images/069769.png",
-                "consoleId": 18,
-                "consoleName": "Nintendo DS",
-                "maxPossible": 391,
-                "numAwarded": 1,
-                "numAwardedHardcore": 1,
-                "mostRecentAwardedDate": "2026-05-19T00:58:44+00:00",
-                "highestAwardKind": null,
-                "highestAwardDate": null
             },
             {
                 "gameId": 6070,
@@ -1443,24 +1443,24 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-05-21 11:18:47",
+        "date": "2026-05-27 11:55:57",
         "hardcoreMode": true,
-        "achievementId": 557217,
-        "title": "My Buttons Are Broken",
-        "description": "Get a 64 tile without using the right and down buttons.",
-        "badgeName": "633156",
-        "points": 5,
-        "trueRatio": 10,
+        "achievementId": 299248,
+        "title": "Bellsprout",
+        "description": "Register Bellsprout in your pokédex as obtained",
+        "badgeName": "334159",
+        "points": 1,
+        "trueRatio": 8,
         "type": null,
-        "author": "NovaIAlex",
-        "authorUlid": "01HE1NNP3GHCJ97737PDXF3KZX",
-        "gameTitle": "2048",
-        "gameIcon": "/Images/120045.png",
-        "gameId": 29892,
-        "consoleName": "Arduboy",
-        "cumulScore": 1261,
-        "badgeUrl": "/Badge/633156.png",
-        "gameUrl": "/game/29892"
+        "author": "ZamArch",
+        "authorUlid": "01GDQY1PEFJGKHZFHDSZRHMZGM",
+        "gameTitle": "Pokémon HeartGold Version [Subset - Professor Oak Challenge]",
+        "gameIcon": "/Images/069769.png",
+        "gameId": 22862,
+        "consoleName": "Nintendo DS",
+        "cumulScore": 1265,
+        "badgeUrl": "/Badge/334159.png",
+        "gameUrl": "/game/22862"
     },
     "mostRecentGame": {
         "gameId": 22862,
@@ -1471,15 +1471,15 @@
         "imageTitle": "/Images/069703.png",
         "imageIngame": "/Images/069790.png",
         "imageBoxArt": "/Images/069707.png",
-        "lastPlayed": "2026-05-27 02:10:41",
+        "lastPlayed": "2026-05-27 12:28:14",
         "achievementsTotal": 391,
         "numPossibleAchievements": 391,
         "possibleScore": 825,
-        "numAchieved": 1,
-        "scoreAchieved": 1,
-        "numAchievedHardcore": 1,
-        "scoreAchievedHardcore": 1
+        "numAchieved": 5,
+        "scoreAchieved": 5,
+        "numAchievedHardcore": 5,
+        "scoreAchievedHardcore": 5
     },
-    "points7Days": 112,
-    "points30Days": 631
+    "points7Days": 17,
+    "points30Days": 630
 }
