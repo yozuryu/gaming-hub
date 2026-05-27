@@ -1,20 +1,20 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-05-27T08:46:27.316Z"
+        "extractionTimestamp": "2026-05-27T12:29:29.695Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 0,
+        "status": 1,
         "lastOnline": "2026-05-27T05:42:11.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1257,
-        "totalPlaytimeMin": 347120,
-        "totalPlaytimeHrs": 5785,
+        "totalPlaytimeMin": 347191,
+        "totalPlaytimeHrs": 5787,
         "gamesWithPlaytime": 817,
         "totalAchievements": 10046,
         "unlockedAchievements": 2797,
@@ -25,6 +25,17 @@
     },
     "recentlyPlayed": [
         {
+            "appId": 578330,
+            "name": "LEGO® City Undercover",
+            "playtime2Weeks": 107,
+            "playtimeForever": 2604,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
+            "storeUrl": "https://store.steampowered.com/app/578330",
+            "lastPlayedTs": "2026-05-27T12:28:03.000Z",
+            "achUnlocked": 4,
+            "achTotal": 48
+        },
+        {
             "appId": 2486820,
             "name": "Sonic Racing: CrossWorlds",
             "playtime2Weeks": 50,
@@ -34,27 +45,16 @@
             "lastPlayedTs": "2026-05-21T12:44:54.000Z",
             "achUnlocked": 7,
             "achTotal": 44
-        },
-        {
-            "appId": 578330,
-            "name": "LEGO® City Undercover",
-            "playtime2Weeks": 36,
-            "playtimeForever": 2533,
-            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-            "storeUrl": "https://store.steampowered.com/app/578330",
-            "lastPlayedTs": "2026-05-19T13:02:47.000Z",
-            "achUnlocked": 4,
-            "achTotal": 48
         }
     ],
     "mostRecentGame": {
-        "appId": 2486820,
-        "name": "Sonic Racing: CrossWorlds",
-        "playtime2Weeks": 50,
-        "playtimeForever": 405,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2486820/b1ae28acb49215b4d5d94ecc752d377500c44057.jpg",
-        "storeUrl": "https://store.steampowered.com/app/2486820",
-        "lastPlayedTs": "2026-05-21T12:44:54.000Z"
+        "appId": 578330,
+        "name": "LEGO® City Undercover",
+        "playtime2Weeks": 107,
+        "playtimeForever": 2604,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
+        "storeUrl": "https://store.steampowered.com/app/578330",
+        "lastPlayedTs": "2026-05-27T12:28:03.000Z"
     },
     "mostRecentUnlock": {
         "appId": 2515020,
