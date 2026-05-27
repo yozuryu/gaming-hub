@@ -32948,14 +32948,32 @@
             "appId": 758730,
             "hasAchievements": true,
             "total": 14,
-            "unlocked": 6,
+            "unlocked": 8,
             "gameName": "Paw Patrol: On A Roll",
-            "playtimeForever": 131,
-            "lastPlayedTs": "2026-02-14T11:57:55.000Z",
+            "playtimeForever": 169,
+            "lastPlayedTs": "2026-05-27T13:09:08.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/758730/60f80ab9be49220d165ec78f27fe5311180e87ae.jpg",
-            "lastUnlockedAt": "2025-09-11T13:08:41.000Z",
-            "lastUnlockName": "No Job is too Big",
+            "lastUnlockedAt": "2026-05-27T13:07:00.000Z",
+            "lastUnlockName": "Pups to the Rescue",
             "preview": [
+                {
+                    "apiName": "Pups to the Rescue",
+                    "displayName": "Pups to the Rescue",
+                    "unlocked": true,
+                    "unlockedAt": "2026-05-27T13:07:00.000Z",
+                    "iconUrl": "48b9321c88d4415ce1a9c60c08519a8514fd5f54.jpg",
+                    "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+                    "globalPct": 57.4
+                },
+                {
+                    "apiName": "Go Pups Go",
+                    "displayName": "Go Pups Go",
+                    "unlocked": true,
+                    "unlockedAt": "2026-05-27T13:07:00.000Z",
+                    "iconUrl": "5014117e31a0fadd166611278f6fb9a672ba0e09.jpg",
+                    "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+                    "globalPct": 58.7
+                },
                 {
                     "apiName": "No Job is too Big",
                     "displayName": "No Job is too Big",
@@ -32991,24 +33009,6 @@
                     "iconUrl": "67b3a1fc02c0cfd1f3823a069407b9983e7af6e4.jpg",
                     "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
                     "globalPct": 90.7
-                },
-                {
-                    "apiName": "Bronze Pup Treat",
-                    "displayName": "Bronze Pup Treat",
-                    "unlocked": true,
-                    "unlockedAt": "2025-09-11T12:03:57.000Z",
-                    "iconUrl": "f16e198b619833cd87617c2cab9640f1ce98333f.jpg",
-                    "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
-                    "globalPct": 93.4
-                },
-                {
-                    "apiName": "Silver Pup Treat",
-                    "displayName": "Silver Pup Treat",
-                    "unlocked": true,
-                    "unlockedAt": "2025-09-11T12:03:57.000Z",
-                    "iconUrl": "3fbe2c2ef487fea7636f9958ec8db21d729552fc.jpg",
-                    "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
-                    "globalPct": 93.4
                 }
             ]
         },
