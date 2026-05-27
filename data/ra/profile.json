@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-05-27T14:29:36.834Z"
+        "extractionTimestamp": "2026-05-27T18:01:45.728Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -12,9 +12,9 @@
         "lastGameId": 22862,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2426,
+        "totalPoints": 2436,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 7238,
+        "totalTruePoints": 7331,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -34,30 +34,30 @@
             "data2": null
         },
         "richPresenceMsg": "Playing Pokémon HeartGold Version [Subset - Professor Oak Challenge]",
-        "richPresenceMsgDate": "2026-05-27 12:28:14",
+        "richPresenceMsgDate": "2026-05-27 16:27:07",
         "lastGameId": 22862,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2426,
+        "totalPoints": 2436,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 7238,
+        "totalTruePoints": 7331,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 42271,
+        "rank": 42151,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 146022,
+        "totalRanked": 146043,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 2426,
+        "points": 2436,
         "softcorePoints": 1
     },
     "pageAwards": {
@@ -238,14 +238,14 @@
             "imageTitle": "/Images/069703.png",
             "imageIngame": "/Images/069790.png",
             "imageBoxArt": "/Images/069707.png",
-            "lastPlayed": "2026-05-27 12:28:14",
+            "lastPlayed": "2026-05-27 16:27:07",
             "achievementsTotal": 391,
             "numPossibleAchievements": 391,
             "possibleScore": 825,
-            "numAchieved": 5,
-            "scoreAchieved": 5,
-            "numAchievedHardcore": 5,
-            "scoreAchievedHardcore": 5
+            "numAchieved": 14,
+            "scoreAchieved": 15,
+            "numAchievedHardcore": 14,
+            "scoreAchievedHardcore": 15
         },
         {
             "gameId": 29892,
@@ -511,9 +511,9 @@
                 "consoleId": 18,
                 "consoleName": "Nintendo DS",
                 "maxPossible": 391,
-                "numAwarded": 5,
-                "numAwardedHardcore": 5,
-                "mostRecentAwardedDate": "2026-05-27T11:55:57+00:00",
+                "numAwarded": 14,
+                "numAwardedHardcore": 14,
+                "mostRecentAwardedDate": "2026-05-27T16:26:48+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -1443,14 +1443,14 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-05-27 11:55:57",
+        "date": "2026-05-27 16:26:48",
         "hardcoreMode": true,
-        "achievementId": 299248,
-        "title": "Bellsprout",
-        "description": "Register Bellsprout in your pokédex as obtained",
-        "badgeName": "334159",
+        "achievementId": 299255,
+        "title": "Gastly",
+        "description": "Register Gastly in your pokédex as obtained",
+        "badgeName": "334166",
         "points": 1,
-        "trueRatio": 8,
+        "trueRatio": 10,
         "type": null,
         "author": "ZamArch",
         "authorUlid": "01GDQY1PEFJGKHZFHDSZRHMZGM",
@@ -1458,8 +1458,8 @@
         "gameIcon": "/Images/069769.png",
         "gameId": 22862,
         "consoleName": "Nintendo DS",
-        "cumulScore": 1265,
-        "badgeUrl": "/Badge/334159.png",
+        "cumulScore": 1275,
+        "badgeUrl": "/Badge/334166.png",
         "gameUrl": "/game/22862"
     },
     "mostRecentGame": {
@@ -1471,15 +1471,15 @@
         "imageTitle": "/Images/069703.png",
         "imageIngame": "/Images/069790.png",
         "imageBoxArt": "/Images/069707.png",
-        "lastPlayed": "2026-05-27 12:28:14",
+        "lastPlayed": "2026-05-27 16:27:07",
         "achievementsTotal": 391,
         "numPossibleAchievements": 391,
         "possibleScore": 825,
-        "numAchieved": 5,
-        "scoreAchieved": 5,
-        "numAchievedHardcore": 5,
-        "scoreAchievedHardcore": 5
+        "numAchieved": 14,
+        "scoreAchieved": 15,
+        "numAchievedHardcore": 14,
+        "scoreAchievedHardcore": 15
     },
-    "points7Days": 17,
-    "points30Days": 630
+    "points7Days": 27,
+    "points30Days": 640
 }
