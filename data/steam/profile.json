@@ -1,20 +1,20 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-05-28T12:40:15.311Z"
+        "extractionTimestamp": "2026-05-28T17:00:36.508Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 1,
-        "lastOnline": "2026-05-27T13:31:27.000Z",
+        "status": 0,
+        "lastOnline": "2026-05-28T13:05:07.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1257,
-        "totalPlaytimeMin": 347229,
-        "totalPlaytimeHrs": 5787,
+        "totalPlaytimeMin": 347265,
+        "totalPlaytimeHrs": 5788,
         "gamesWithPlaytime": 817,
         "totalAchievements": 10046,
         "unlockedAchievements": 2799,
@@ -24,6 +24,17 @@
         "avgPlaytimeMin": 425
     },
     "recentlyPlayed": [
+        {
+            "appId": 2078350,
+            "name": "Bluey: The Videogame",
+            "playtime2Weeks": 35,
+            "playtimeForever": 1003,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2078350/725ce61379c9e1d3e2edc56e1852cd779febd67b.jpg",
+            "storeUrl": "https://store.steampowered.com/app/2078350",
+            "lastPlayedTs": "2026-05-28T12:48:17.000Z",
+            "achUnlocked": 17,
+            "achTotal": 22
+        },
         {
             "appId": 758730,
             "name": "Paw Patrol: On A Roll",
@@ -59,13 +70,13 @@
         }
     ],
     "mostRecentGame": {
-        "appId": 758730,
-        "name": "Paw Patrol: On A Roll",
-        "playtime2Weeks": 38,
-        "playtimeForever": 169,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/758730/60f80ab9be49220d165ec78f27fe5311180e87ae.jpg",
-        "storeUrl": "https://store.steampowered.com/app/758730",
-        "lastPlayedTs": "2026-05-27T13:09:08.000Z"
+        "appId": 2078350,
+        "name": "Bluey: The Videogame",
+        "playtime2Weeks": 35,
+        "playtimeForever": 1003,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2078350/725ce61379c9e1d3e2edc56e1852cd779febd67b.jpg",
+        "storeUrl": "https://store.steampowered.com/app/2078350",
+        "lastPlayedTs": "2026-05-28T12:48:17.000Z"
     },
     "mostRecentUnlock": {
         "appId": 758730,
