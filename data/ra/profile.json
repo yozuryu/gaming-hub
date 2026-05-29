@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-05-29T08:44:51.500Z"
+        "extractionTimestamp": "2026-05-29T12:20:06.197Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,13 +8,13 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Standard | Line Clear | Level: 1 | Height: 0 |  Lines Remaining: 6 | Score: 5,040",
+        "richPresenceMsg": "Standard | Marathon | Score: 56,758 | Lines Cleared: 78",
         "lastGameId": 9878,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2448,
+        "totalPoints": 2470,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 7393,
+        "totalTruePoints": 7419,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -33,31 +33,31 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Standard | Line Clear | Level: 1 | Height: 0 |  Lines Remaining: 6 | Score: 5,040",
-        "richPresenceMsgDate": "2026-05-29 01:36:00",
+        "richPresenceMsg": "Standard | Marathon | Score: 56,758 | Lines Cleared: 78",
+        "richPresenceMsgDate": "2026-05-29 10:25:49",
         "lastGameId": 9878,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2448,
+        "totalPoints": 2470,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 7393,
+        "totalTruePoints": 7419,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 42079,
+        "rank": 41789,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 146281,
+        "totalRanked": 146296,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 2448,
+        "points": 2470,
         "softcorePoints": 1
     },
     "pageAwards": {
@@ -238,14 +238,14 @@
             "imageTitle": "/Images/043278.png",
             "imageIngame": "/Images/043277.png",
             "imageBoxArt": "/Images/043276.png",
-            "lastPlayed": "2026-05-29 01:36:00",
+            "lastPlayed": "2026-05-29 10:25:49",
             "achievementsTotal": 102,
             "numPossibleAchievements": 102,
             "possibleScore": 752,
-            "numAchieved": 1,
-            "scoreAchieved": 2,
-            "numAchievedHardcore": 1,
-            "scoreAchievedHardcore": 2
+            "numAchieved": 11,
+            "scoreAchieved": 24,
+            "numAchievedHardcore": 11,
+            "scoreAchievedHardcore": 24
         },
         {
             "gameId": 22693,
@@ -511,9 +511,9 @@
                 "consoleId": 18,
                 "consoleName": "Nintendo DS",
                 "maxPossible": 102,
-                "numAwarded": 1,
-                "numAwardedHardcore": 1,
-                "mostRecentAwardedDate": "2026-05-29T01:36:00+00:00",
+                "numAwarded": 11,
+                "numAwardedHardcore": 11,
+                "mostRecentAwardedDate": "2026-05-29T10:25:49+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -1469,23 +1469,23 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-05-29 01:36:00",
+        "date": "2026-05-29 10:25:49",
         "hardcoreMode": true,
-        "achievementId": 230268,
-        "title": "Super Mario's Clear",
-        "description": "[Standard - Line Clear] Beat Level 1 - Height 0",
-        "badgeName": "255839",
-        "points": 2,
-        "trueRatio": 3,
-        "type": null,
+        "achievementId": 230238,
+        "title": "Bowser Tetris",
+        "description": "[Standard - Marathon] Reach Level 10",
+        "badgeName": "255830",
+        "points": 5,
+        "trueRatio": 6,
+        "type": "progression",
         "author": "Brylefi",
         "authorUlid": "01EXJ1YZTVG06G51YQ86AQ7J4N",
         "gameTitle": "Tetris DS",
         "gameIcon": "/Images/059744.png",
         "gameId": 9878,
         "consoleName": "Nintendo DS",
-        "cumulScore": 1282,
-        "badgeUrl": "/Badge/255839.png",
+        "cumulScore": 1304,
+        "badgeUrl": "/Badge/255830.png",
         "gameUrl": "/game/9878"
     },
     "mostRecentGame": {
@@ -1497,15 +1497,15 @@
         "imageTitle": "/Images/043278.png",
         "imageIngame": "/Images/043277.png",
         "imageBoxArt": "/Images/043276.png",
-        "lastPlayed": "2026-05-29 01:36:00",
+        "lastPlayed": "2026-05-29 10:25:49",
         "achievementsTotal": 102,
         "numPossibleAchievements": 102,
         "possibleScore": 752,
-        "numAchieved": 1,
-        "scoreAchieved": 2,
-        "numAchievedHardcore": 1,
-        "scoreAchievedHardcore": 2
+        "numAchieved": 11,
+        "scoreAchieved": 24,
+        "numAchievedHardcore": 11,
+        "scoreAchievedHardcore": 24
     },
-    "points7Days": 26,
-    "points30Days": 617
+    "points7Days": 48,
+    "points30Days": 639
 }
