@@ -1128,7 +1128,7 @@
             "description": "Obtain a Loudred",
             "badgeName": "383513",
             "points": 2,
-            "trueRatio": 22,
+            "trueRatio": 23,
             "type": null,
             "author": "drisc",
             "authorUlid": "01F9P6T4BNASH7NR9YTG3Y8FBP",
@@ -1438,6 +1438,26 @@
             "consoleName": "Game Boy Advance",
             "cumulScore": 152,
             "badgeUrl": "/Badge/383523.png",
+            "gameUrl": "/game/24186"
+        },
+        {
+            "date": "2026-02-27 00:41:52",
+            "hardcoreMode": true,
+            "achievementId": 339821,
+            "title": "Vigoroth",
+            "description": "Obtain a Vigoroth",
+            "badgeName": "383505",
+            "points": 2,
+            "trueRatio": 22,
+            "type": null,
+            "author": "drisc",
+            "authorUlid": "01F9P6T4BNASH7NR9YTG3Y8FBP",
+            "gameTitle": "Pokémon Emerald Version [Subset - Professor Oak Challenge]",
+            "gameIcon": "/Images/107627.png",
+            "gameId": 24186,
+            "consoleName": "Game Boy Advance",
+            "cumulScore": 154,
+            "badgeUrl": "/Badge/383505.png",
             "gameUrl": "/game/24186"
         }
     ]
