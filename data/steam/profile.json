@@ -1,20 +1,20 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-05-30T11:43:02.280Z"
+        "extractionTimestamp": "2026-05-30T14:00:13.861Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 0,
-        "lastOnline": "2026-05-30T03:06:29.000Z",
+        "status": 3,
+        "lastOnline": "2026-05-30T13:45:14.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1258,
-        "totalPlaytimeMin": 347265,
-        "totalPlaytimeHrs": 5788,
+        "totalPlaytimeMin": 347313,
+        "totalPlaytimeHrs": 5789,
         "gamesWithPlaytime": 817,
         "totalAchievements": 10046,
         "unlockedAchievements": 2799,
@@ -24,6 +24,17 @@
         "avgPlaytimeMin": 425
     },
     "recentlyPlayed": [
+        {
+            "appId": 1952520,
+            "name": "PAW Patrol World",
+            "playtime2Weeks": 48,
+            "playtimeForever": 2090,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1952520/142c61fb8b234665494cd459d72000fd3642dc12.jpg",
+            "storeUrl": "https://store.steampowered.com/app/1952520",
+            "lastPlayedTs": "2026-05-30T13:06:55.000Z",
+            "achUnlocked": 18,
+            "achTotal": 21
+        },
         {
             "appId": 2078350,
             "name": "Bluey: The Videogame",
@@ -70,13 +81,13 @@
         }
     ],
     "mostRecentGame": {
-        "appId": 2078350,
-        "name": "Bluey: The Videogame",
-        "playtime2Weeks": 35,
-        "playtimeForever": 1003,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2078350/725ce61379c9e1d3e2edc56e1852cd779febd67b.jpg",
-        "storeUrl": "https://store.steampowered.com/app/2078350",
-        "lastPlayedTs": "2026-05-28T12:48:17.000Z"
+        "appId": 1952520,
+        "name": "PAW Patrol World",
+        "playtime2Weeks": 48,
+        "playtimeForever": 2090,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1952520/142c61fb8b234665494cd459d72000fd3642dc12.jpg",
+        "storeUrl": "https://store.steampowered.com/app/1952520",
+        "lastPlayedTs": "2026-05-30T13:06:55.000Z"
     },
     "mostRecentUnlock": {
         "appId": 758730,
