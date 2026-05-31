@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-05-31T08:17:47.141Z"
+        "extractionTimestamp": "2026-05-31T11:02:12.357Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Mission | Marathon | Mission: 5 | Score: 13,730",
-        "lastGameId": 9878,
+        "richPresenceMsg": "Raziel is exploring the Abyss",
+        "lastGameId": 11297,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2475,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Mission | Marathon | Mission: 5 | Score: 13,730",
-        "richPresenceMsgDate": "2026-05-31 07:41:06",
-        "lastGameId": 9878,
+        "richPresenceMsg": "Raziel is exploring the Abyss",
+        "richPresenceMsgDate": "2026-05-31 10:28:03",
+        "lastGameId": 11297,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2475,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 41832,
+        "rank": 41834,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 146571,
+        "totalRanked": 146589,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -229,6 +229,24 @@
         ]
     },
     "recentlyPlayedGames": [
+        {
+            "gameId": 11297,
+            "consoleId": 12,
+            "consoleName": "PlayStation",
+            "title": "Legacy of Kain: Soul Reaver",
+            "imageIcon": "/Images/033305.png",
+            "imageTitle": "/Images/033301.png",
+            "imageIngame": "/Images/033304.png",
+            "imageBoxArt": "/Images/052418.png",
+            "lastPlayed": "2026-05-31 10:28:03",
+            "achievementsTotal": 50,
+            "numPossibleAchievements": 50,
+            "possibleScore": 350,
+            "numAchieved": 0,
+            "scoreAchieved": 0,
+            "numAchievedHardcore": 0,
+            "scoreAchievedHardcore": 0
+        },
         {
             "gameId": 9878,
             "consoleId": 18,
@@ -480,24 +498,6 @@
             "scoreAchieved": 4,
             "numAchievedHardcore": 2,
             "scoreAchievedHardcore": 4
-        },
-        {
-            "gameId": 724,
-            "consoleId": 4,
-            "consoleName": "Game Boy",
-            "title": "Pokémon Red Version",
-            "imageIcon": "/Images/126545.png",
-            "imageTitle": "/Images/112645.png",
-            "imageIngame": "/Images/112646.png",
-            "imageBoxArt": "/Images/117104.png",
-            "lastPlayed": "2026-05-15 01:27:50",
-            "achievementsTotal": 91,
-            "numPossibleAchievements": 91,
-            "possibleScore": 755,
-            "numAchieved": 7,
-            "scoreAchieved": 28,
-            "numAchievedHardcore": 7,
-            "scoreAchievedHardcore": 28
         }
     ],
     "gameAwardsAndProgress": {
@@ -1489,22 +1489,22 @@
         "gameUrl": "/game/9878"
     },
     "mostRecentGame": {
-        "gameId": 9878,
-        "consoleId": 18,
-        "consoleName": "Nintendo DS",
-        "title": "Tetris DS",
-        "imageIcon": "/Images/059744.png",
-        "imageTitle": "/Images/043278.png",
-        "imageIngame": "/Images/043277.png",
-        "imageBoxArt": "/Images/043276.png",
-        "lastPlayed": "2026-05-31 07:41:06",
-        "achievementsTotal": 102,
-        "numPossibleAchievements": 102,
-        "possibleScore": 752,
-        "numAchieved": 12,
-        "scoreAchieved": 29,
-        "numAchievedHardcore": 12,
-        "scoreAchievedHardcore": 29
+        "gameId": 11297,
+        "consoleId": 12,
+        "consoleName": "PlayStation",
+        "title": "Legacy of Kain: Soul Reaver",
+        "imageIcon": "/Images/033305.png",
+        "imageTitle": "/Images/033301.png",
+        "imageIngame": "/Images/033304.png",
+        "imageBoxArt": "/Images/052418.png",
+        "lastPlayed": "2026-05-31 10:28:03",
+        "achievementsTotal": 50,
+        "numPossibleAchievements": 50,
+        "possibleScore": 350,
+        "numAchieved": 0,
+        "scoreAchieved": 0,
+        "numAchievedHardcore": 0,
+        "scoreAchievedHardcore": 0
     },
     "points7Days": 54,
     "points30Days": 595
