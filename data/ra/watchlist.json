@@ -1,5 +1,5 @@
 {
-    "total": 748,
+    "total": 764,
     "results": [
         {
             "id": 27,
@@ -317,6 +317,24 @@
             "achievementsPublished": 50
         },
         {
+            "id": 576,
+            "title": "Pokémon Gold Version",
+            "consoleId": 6,
+            "consoleName": "Game Boy Color",
+            "imageIcon": "/Images/105481.png",
+            "pointsTotal": 685,
+            "achievementsPublished": 72
+        },
+        {
+            "id": 586,
+            "title": "Pokémon Blue Version",
+            "consoleId": 4,
+            "consoleName": "Game Boy",
+            "imageIcon": "/Images/126547.png",
+            "pointsTotal": 678,
+            "achievementsPublished": 90
+        },
+        {
             "id": 624,
             "title": "Mega Man X3",
             "consoleId": 3,
@@ -416,6 +434,15 @@
             "achievementsPublished": 44
         },
         {
+            "id": 722,
+            "title": "Pokémon Silver Version",
+            "consoleId": 6,
+            "consoleName": "Game Boy Color",
+            "imageIcon": "/Images/105171.png",
+            "pointsTotal": 616,
+            "achievementsPublished": 75
+        },
+        {
             "id": 723,
             "title": "Pokémon Yellow Version: Special Pikachu Edition",
             "consoleId": 4,
@@ -432,6 +459,15 @@
             "imageIcon": "/Images/126545.png",
             "pointsTotal": 755,
             "achievementsPublished": 91
+        },
+        {
+            "id": 726,
+            "title": "Pokémon Puzzle Challenge",
+            "consoleId": 6,
+            "consoleName": "Game Boy Color",
+            "imageIcon": "/Images/070464.png",
+            "pointsTotal": 460,
+            "achievementsPublished": 62
         },
         {
             "id": 748,
@@ -605,6 +641,15 @@
             "achievementsPublished": 52
         },
         {
+            "id": 788,
+            "title": "Pokémon LeafGreen Version",
+            "consoleId": 5,
+            "consoleName": "Game Boy Advance",
+            "imageIcon": "/Images/104330.png",
+            "pointsTotal": 781,
+            "achievementsPublished": 128
+        },
+        {
             "id": 789,
             "title": "Pokémon Pinball: Ruby & Sapphire",
             "consoleId": 5,
@@ -612,6 +657,15 @@
             "imageIcon": "/Images/092736.png",
             "pointsTotal": 438,
             "achievementsPublished": 54
+        },
+        {
+            "id": 790,
+            "title": "Pokémon Ruby Version",
+            "consoleId": 5,
+            "consoleName": "Game Boy Advance",
+            "imageIcon": "/Images/104260.png",
+            "pointsTotal": 485,
+            "achievementsPublished": 49
         },
         {
             "id": 810,
@@ -2180,6 +2234,15 @@
             "achievementsPublished": 138
         },
         {
+            "id": 3887,
+            "title": "Pokémon Black Version",
+            "consoleId": 18,
+            "consoleName": "Nintendo DS",
+            "imageIcon": "/Images/104482.png",
+            "pointsTotal": 867,
+            "achievementsPublished": 118
+        },
+        {
             "id": 3890,
             "title": "Riviera: The Promised Land",
             "consoleId": 41,
@@ -3240,6 +3303,15 @@
             "imageIcon": "/Images/038156.png",
             "pointsTotal": 710,
             "achievementsPublished": 85
+        },
+        {
+            "id": 9852,
+            "title": "Pokémon Diamond Version",
+            "consoleId": 18,
+            "consoleName": "Nintendo DS",
+            "imageIcon": "/Images/104785.png",
+            "pointsTotal": 976,
+            "achievementsPublished": 121
         },
         {
             "id": 9878,
@@ -4565,6 +4637,15 @@
             "achievementsPublished": 127
         },
         {
+            "id": 14860,
+            "title": "Pokémon Conquest",
+            "consoleId": 18,
+            "consoleName": "Nintendo DS",
+            "imageIcon": "/Images/035990.png",
+            "pointsTotal": 910,
+            "achievementsPublished": 61
+        },
+        {
             "id": 14918,
             "title": "ClaDun x2",
             "consoleId": 41,
@@ -4691,6 +4772,15 @@
             "achievementsPublished": 118
         },
         {
+            "id": 16163,
+            "title": "Pokémon Ranger: Guardian Signs",
+            "consoleId": 18,
+            "consoleName": "Nintendo DS",
+            "imageIcon": "/Images/104475.png",
+            "pointsTotal": 690,
+            "achievementsPublished": 92
+        },
+        {
             "id": 16182,
             "title": "Lucifer Ring",
             "consoleId": 12,
@@ -4698,6 +4788,15 @@
             "imageIcon": "/Images/055854.png",
             "pointsTotal": 350,
             "achievementsPublished": 31
+        },
+        {
+            "id": 16197,
+            "title": "Pokémon White Version 2",
+            "consoleId": 18,
+            "consoleName": "Nintendo DS",
+            "imageIcon": "/Images/105970.png",
+            "pointsTotal": 1220,
+            "achievementsPublished": 151
         },
         {
             "id": 16209,
@@ -4752,6 +4851,42 @@
             "imageIcon": "/Images/047094.png",
             "pointsTotal": 1150,
             "achievementsPublished": 150
+        },
+        {
+            "id": 16292,
+            "title": "Pokémon Mystery Dungeon: Explorers of Time",
+            "consoleId": 18,
+            "consoleName": "Nintendo DS",
+            "imageIcon": "/Images/100101.png",
+            "pointsTotal": 0,
+            "achievementsPublished": 0
+        },
+        {
+            "id": 16293,
+            "title": "Pokémon Mystery Dungeon: Explorers of Darkness",
+            "consoleId": 18,
+            "consoleName": "Nintendo DS",
+            "imageIcon": "/Images/085204.png",
+            "pointsTotal": 0,
+            "achievementsPublished": 0
+        },
+        {
+            "id": 16295,
+            "title": "Pokémon Ranger",
+            "consoleId": 18,
+            "consoleName": "Nintendo DS",
+            "imageIcon": "/Images/077490.png",
+            "pointsTotal": 711,
+            "achievementsPublished": 58
+        },
+        {
+            "id": 16296,
+            "title": "Pokémon Ranger: Shadows of Almia",
+            "consoleId": 18,
+            "consoleName": "Nintendo DS",
+            "imageIcon": "/Images/044836.png",
+            "pointsTotal": 1117,
+            "achievementsPublished": 124
         },
         {
             "id": 16347,
@@ -6138,6 +6273,15 @@
             "imageIcon": "/Images/121383.png",
             "pointsTotal": 625,
             "achievementsPublished": 30
+        },
+        {
+            "id": 25369,
+            "title": "Pokémon Pearl Version",
+            "consoleId": 18,
+            "consoleName": "Nintendo DS",
+            "imageIcon": "/Images/104840.png",
+            "pointsTotal": 1336,
+            "achievementsPublished": 210
         },
         {
             "id": 25384,
