@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-06-06T07:51:36.985Z"
+        "extractionTimestamp": "2026-06-06T10:09:52.152Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Playing Final Fantasy VII",
-        "lastGameId": 11242,
+        "richPresenceMsg": "Currently Exploring:  Drive to the Heart | Sora's Level: 1 | Current Party: Sora ⏰ 10:29.55 | Standard",
+        "lastGameId": 2780,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2504,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Playing Final Fantasy VII",
-        "richPresenceMsgDate": "2026-06-06 06:36:22",
-        "lastGameId": 11242,
+        "richPresenceMsg": "Currently Exploring:  Drive to the Heart | Sora's Level: 1 | Current Party: Sora ⏰ 10:29.55 | Standard",
+        "richPresenceMsgDate": "2026-06-06 08:31:05",
+        "lastGameId": 2780,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2504,
@@ -51,7 +51,7 @@
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 147394,
+        "totalRanked": 147402,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -229,6 +229,24 @@
         ]
     },
     "recentlyPlayedGames": [
+        {
+            "gameId": 2780,
+            "consoleId": 21,
+            "consoleName": "PlayStation 2",
+            "title": "Kingdom Hearts: Final Mix",
+            "imageIcon": "/Images/112152.png",
+            "imageTitle": "/Images/130390.png",
+            "imageIngame": "/Images/130391.png",
+            "imageBoxArt": "/Images/056596.png",
+            "lastPlayed": "2026-06-06 08:31:05",
+            "achievementsTotal": 110,
+            "numPossibleAchievements": 110,
+            "possibleScore": 1052,
+            "numAchieved": 0,
+            "scoreAchieved": 0,
+            "numAchievedHardcore": 0,
+            "scoreAchievedHardcore": 0
+        },
         {
             "gameId": 11242,
             "consoleId": 12,
@@ -480,24 +498,6 @@
             "scoreAchieved": 0,
             "numAchievedHardcore": 0,
             "scoreAchievedHardcore": 0
-        },
-        {
-            "gameId": 34313,
-            "consoleId": 4,
-            "consoleName": "Game Boy",
-            "title": "~Homebrew~ Uma Musume Delish Derby",
-            "imageIcon": "/Images/115591.png",
-            "imageTitle": "/Images/115592.png",
-            "imageIngame": "/Images/115593.png",
-            "imageBoxArt": "/Images/118029.png",
-            "lastPlayed": "2026-05-18 02:16:37",
-            "achievementsTotal": 11,
-            "numPossibleAchievements": 11,
-            "possibleScore": 50,
-            "numAchieved": 3,
-            "scoreAchieved": 12,
-            "numAchievedHardcore": 3,
-            "scoreAchievedHardcore": 12
         }
     ],
     "gameAwardsAndProgress": {
@@ -1502,18 +1502,18 @@
         "gameUrl": "/game/9818"
     },
     "mostRecentGame": {
-        "gameId": 11242,
-        "consoleId": 12,
-        "consoleName": "PlayStation",
-        "title": "Final Fantasy VII",
-        "imageIcon": "/Images/070798.png",
-        "imageTitle": "/Images/015658.png",
-        "imageIngame": "/Images/015659.png",
-        "imageBoxArt": "/Images/046651.png",
-        "lastPlayed": "2026-06-06 06:36:22",
-        "achievementsTotal": 207,
-        "numPossibleAchievements": 207,
-        "possibleScore": 1700,
+        "gameId": 2780,
+        "consoleId": 21,
+        "consoleName": "PlayStation 2",
+        "title": "Kingdom Hearts: Final Mix",
+        "imageIcon": "/Images/112152.png",
+        "imageTitle": "/Images/130390.png",
+        "imageIngame": "/Images/130391.png",
+        "imageBoxArt": "/Images/056596.png",
+        "lastPlayed": "2026-06-06 08:31:05",
+        "achievementsTotal": 110,
+        "numPossibleAchievements": 110,
+        "possibleScore": 1052,
         "numAchieved": 0,
         "scoreAchieved": 0,
         "numAchievedHardcore": 0,
