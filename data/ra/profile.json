@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-06-06T04:57:12.146Z"
+        "extractionTimestamp": "2026-06-06T07:51:36.985Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Is currently in a restroom as a Human",
-        "lastGameId": 9818,
+        "richPresenceMsg": "Playing Final Fantasy VII",
+        "lastGameId": 11242,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2504,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Is currently in a restroom as a Human",
-        "richPresenceMsgDate": "2026-06-05 15:44:57",
-        "lastGameId": 9818,
+        "richPresenceMsg": "Playing Final Fantasy VII",
+        "richPresenceMsgDate": "2026-06-06 06:36:22",
+        "lastGameId": 11242,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2504,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 41794,
+        "rank": 41796,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 147383,
+        "totalRanked": 147394,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -229,6 +229,24 @@
         ]
     },
     "recentlyPlayedGames": [
+        {
+            "gameId": 11242,
+            "consoleId": 12,
+            "consoleName": "PlayStation",
+            "title": "Final Fantasy VII",
+            "imageIcon": "/Images/070798.png",
+            "imageTitle": "/Images/015658.png",
+            "imageIngame": "/Images/015659.png",
+            "imageBoxArt": "/Images/046651.png",
+            "lastPlayed": "2026-06-06 06:36:22",
+            "achievementsTotal": 207,
+            "numPossibleAchievements": 207,
+            "possibleScore": 1700,
+            "numAchieved": 0,
+            "scoreAchieved": 0,
+            "numAchievedHardcore": 0,
+            "scoreAchievedHardcore": 0
+        },
         {
             "gameId": 9818,
             "consoleId": 18,
@@ -480,24 +498,6 @@
             "scoreAchieved": 12,
             "numAchievedHardcore": 3,
             "scoreAchievedHardcore": 12
-        },
-        {
-            "gameId": 30725,
-            "consoleId": 6,
-            "consoleName": "Game Boy Color",
-            "title": "~Homebrew~ Hatsune Miku Bomb Squad",
-            "imageIcon": "/Images/101115.png",
-            "imageTitle": "/Images/101116.png",
-            "imageIngame": "/Images/101117.png",
-            "imageBoxArt": "/Images/101118.png",
-            "lastPlayed": "2026-05-17 15:01:25",
-            "achievementsTotal": 6,
-            "numPossibleAchievements": 6,
-            "possibleScore": 27,
-            "numAchieved": 1,
-            "scoreAchieved": 1,
-            "numAchievedHardcore": 1,
-            "scoreAchievedHardcore": 1
         }
     ],
     "gameAwardsAndProgress": {
@@ -1502,22 +1502,22 @@
         "gameUrl": "/game/9818"
     },
     "mostRecentGame": {
-        "gameId": 9818,
-        "consoleId": 18,
-        "consoleName": "Nintendo DS",
-        "title": "Mega Man ZX",
-        "imageIcon": "/Images/038156.png",
-        "imageTitle": "/Images/028565.png",
-        "imageIngame": "/Images/028566.png",
-        "imageBoxArt": "/Images/028568.png",
-        "lastPlayed": "2026-06-05 15:44:57",
-        "achievementsTotal": 85,
-        "numPossibleAchievements": 85,
-        "possibleScore": 710,
-        "numAchieved": 2,
-        "scoreAchieved": 10,
-        "numAchievedHardcore": 2,
-        "scoreAchievedHardcore": 10
+        "gameId": 11242,
+        "consoleId": 12,
+        "consoleName": "PlayStation",
+        "title": "Final Fantasy VII",
+        "imageIcon": "/Images/070798.png",
+        "imageTitle": "/Images/015658.png",
+        "imageIngame": "/Images/015659.png",
+        "imageBoxArt": "/Images/046651.png",
+        "lastPlayed": "2026-06-06 06:36:22",
+        "achievementsTotal": 207,
+        "numPossibleAchievements": 207,
+        "possibleScore": 1700,
+        "numAchieved": 0,
+        "scoreAchieved": 0,
+        "numAchievedHardcore": 0,
+        "scoreAchievedHardcore": 0
     },
     "points7Days": 29,
     "points30Days": 597
