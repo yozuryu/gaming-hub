@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-06-07T00:10:12.014Z"
+        "extractionTimestamp": "2026-06-07T03:26:29.848Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Playing as Cloud [334ʜᴘ] in 7th Heaven",
-        "lastGameId": 11242,
+        "richPresenceMsg": "You are in Home - Level: 1 - ⚔️: Gloves - Barehands   💰: 0",
+        "lastGameId": 11288,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2517,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Playing as Cloud [334ʜᴘ] in 7th Heaven",
-        "richPresenceMsgDate": "2026-06-06 15:00:35",
-        "lastGameId": 11242,
+        "richPresenceMsg": "You are in Home - Level: 1 - ⚔️: Gloves - Barehands   💰: 0",
+        "richPresenceMsgDate": "2026-06-07 00:13:55",
+        "lastGameId": 11288,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2517,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 41653,
+        "rank": 41661,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 147474,
+        "totalRanked": 147503,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -229,6 +229,24 @@
         ]
     },
     "recentlyPlayedGames": [
+        {
+            "gameId": 11288,
+            "consoleId": 12,
+            "consoleName": "PlayStation",
+            "title": "Legend of Mana",
+            "imageIcon": "/Images/074533.png",
+            "imageTitle": "/Images/015285.png",
+            "imageIngame": "/Images/015286.png",
+            "imageBoxArt": "/Images/015283.png",
+            "lastPlayed": "2026-06-07 00:13:55",
+            "achievementsTotal": 253,
+            "numPossibleAchievements": 253,
+            "possibleScore": 2145,
+            "numAchieved": 0,
+            "scoreAchieved": 0,
+            "numAchievedHardcore": 0,
+            "scoreAchievedHardcore": 0
+        },
         {
             "gameId": 11242,
             "consoleId": 12,
@@ -480,24 +498,6 @@
             "scoreAchieved": 99,
             "numAchievedHardcore": 10,
             "scoreAchievedHardcore": 99
-        },
-        {
-            "gameId": 6070,
-            "consoleId": 7,
-            "consoleName": "NES/Famicom",
-            "title": "~Homebrew~ 2048",
-            "imageIcon": "/Images/066649.png",
-            "imageTitle": "/Images/008378.png",
-            "imageIngame": "/Images/008379.png",
-            "imageBoxArt": "/Images/008453.png",
-            "lastPlayed": "2026-05-19 15:43:27",
-            "achievementsTotal": 12,
-            "numPossibleAchievements": 12,
-            "possibleScore": 265,
-            "numAchieved": 10,
-            "scoreAchieved": 115,
-            "numAchievedHardcore": 10,
-            "scoreAchievedHardcore": 115
         }
     ],
     "gameAwardsAndProgress": {
@@ -1515,22 +1515,22 @@
         "gameUrl": "/game/11242"
     },
     "mostRecentGame": {
-        "gameId": 11242,
+        "gameId": 11288,
         "consoleId": 12,
         "consoleName": "PlayStation",
-        "title": "Final Fantasy VII",
-        "imageIcon": "/Images/070798.png",
-        "imageTitle": "/Images/015658.png",
-        "imageIngame": "/Images/015659.png",
-        "imageBoxArt": "/Images/046651.png",
-        "lastPlayed": "2026-06-06 15:00:35",
-        "achievementsTotal": 207,
-        "numPossibleAchievements": 207,
-        "possibleScore": 1700,
-        "numAchieved": 3,
-        "scoreAchieved": 13,
-        "numAchievedHardcore": 3,
-        "scoreAchievedHardcore": 13
+        "title": "Legend of Mana",
+        "imageIcon": "/Images/074533.png",
+        "imageTitle": "/Images/015285.png",
+        "imageIngame": "/Images/015286.png",
+        "imageBoxArt": "/Images/015283.png",
+        "lastPlayed": "2026-06-07 00:13:55",
+        "achievementsTotal": 253,
+        "numPossibleAchievements": 253,
+        "possibleScore": 2145,
+        "numAchieved": 0,
+        "scoreAchieved": 0,
+        "numAchievedHardcore": 0,
+        "scoreAchievedHardcore": 0
     },
     "points7Days": 42,
     "points30Days": 610
