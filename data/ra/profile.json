@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-06-07T11:52:42.042Z"
+        "extractionTimestamp": "2026-06-07T14:05:11.132Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Playing Shin Megami Tensei: Devil Survivor 2",
-        "lastGameId": 9483,
+        "richPresenceMsg": "Playing Shin Megami Tensei: Strange Journey",
+        "lastGameId": 11644,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2522,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Playing Shin Megami Tensei: Devil Survivor 2",
-        "richPresenceMsgDate": "2026-06-07 11:22:54",
-        "lastGameId": 9483,
+        "richPresenceMsg": "Playing Shin Megami Tensei: Strange Journey",
+        "richPresenceMsgDate": "2026-06-07 12:21:31",
+        "lastGameId": 11644,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2522,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 41623,
+        "rank": 41625,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 147538,
+        "totalRanked": 147546,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -229,6 +229,24 @@
         ]
     },
     "recentlyPlayedGames": [
+        {
+            "gameId": 11644,
+            "consoleId": 18,
+            "consoleName": "Nintendo DS",
+            "title": "Shin Megami Tensei: Strange Journey",
+            "imageIcon": "/Images/067523.png",
+            "imageTitle": "/Images/084195.png",
+            "imageIngame": "/Images/084196.png",
+            "imageBoxArt": "/Images/033533.png",
+            "lastPlayed": "2026-06-07 12:21:31",
+            "achievementsTotal": 243,
+            "numPossibleAchievements": 243,
+            "possibleScore": 2220,
+            "numAchieved": 0,
+            "scoreAchieved": 0,
+            "numAchievedHardcore": 0,
+            "scoreAchievedHardcore": 0
+        },
         {
             "gameId": 9483,
             "consoleId": 18,
@@ -480,24 +498,6 @@
             "scoreAchieved": 0,
             "numAchievedHardcore": 0,
             "scoreAchievedHardcore": 0
-        },
-        {
-            "gameId": 9931,
-            "consoleId": 18,
-            "consoleName": "Nintendo DS",
-            "title": "Ragnarok DS",
-            "imageIcon": "/Images/040295.png",
-            "imageTitle": "/Images/041112.png",
-            "imageIngame": "/Images/041113.png",
-            "imageBoxArt": "/Images/040294.png",
-            "lastPlayed": "2026-05-30 14:35:37",
-            "achievementsTotal": 43,
-            "numPossibleAchievements": 43,
-            "possibleScore": 399,
-            "numAchieved": 2,
-            "scoreAchieved": 6,
-            "numAchievedHardcore": 2,
-            "scoreAchievedHardcore": 6
         }
     ],
     "gameAwardsAndProgress": {
@@ -1515,18 +1515,18 @@
         "gameUrl": "/game/9818"
     },
     "mostRecentGame": {
-        "gameId": 9483,
+        "gameId": 11644,
         "consoleId": 18,
         "consoleName": "Nintendo DS",
-        "title": "Shin Megami Tensei: Devil Survivor 2",
-        "imageIcon": "/Images/043375.png",
-        "imageTitle": "/Images/126276.png",
-        "imageIngame": "/Images/126277.png",
-        "imageBoxArt": "/Images/043376.png",
-        "lastPlayed": "2026-06-07 11:22:54",
-        "achievementsTotal": 156,
-        "numPossibleAchievements": 156,
-        "possibleScore": 1337,
+        "title": "Shin Megami Tensei: Strange Journey",
+        "imageIcon": "/Images/067523.png",
+        "imageTitle": "/Images/084195.png",
+        "imageIngame": "/Images/084196.png",
+        "imageBoxArt": "/Images/033533.png",
+        "lastPlayed": "2026-06-07 12:21:31",
+        "achievementsTotal": 243,
+        "numPossibleAchievements": 243,
+        "possibleScore": 2220,
         "numAchieved": 0,
         "scoreAchieved": 0,
         "numAchievedHardcore": 0,
