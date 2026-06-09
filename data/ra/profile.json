@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-06-09T12:08:21.049Z"
+        "extractionTimestamp": "2026-06-09T16:07:04.032Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Is currently meeting up with Prairie as Model X",
-        "lastGameId": 9818,
+        "richPresenceMsg": "Playing as Cloud [323ʜᴘ], Barret [294ʜᴘ] & Tifa [329ʜᴘ] in 4th Street Plate Int.",
+        "lastGameId": 11242,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2522,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Is currently meeting up with Prairie as Model X",
-        "richPresenceMsgDate": "2026-06-09 10:50:50",
-        "lastGameId": 9818,
+        "richPresenceMsg": "Playing as Cloud [323ʜᴘ], Barret [294ʜᴘ] & Tifa [329ʜᴘ] in 4th Street Plate Int.",
+        "richPresenceMsgDate": "2026-06-09 15:19:53",
+        "lastGameId": 11242,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2522,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 41715,
+        "rank": 41722,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 147871,
+        "totalRanked": 147890,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -230,6 +230,24 @@
     },
     "recentlyPlayedGames": [
         {
+            "gameId": 11242,
+            "consoleId": 12,
+            "consoleName": "PlayStation",
+            "title": "Final Fantasy VII",
+            "imageIcon": "/Images/070798.png",
+            "imageTitle": "/Images/015658.png",
+            "imageIngame": "/Images/015659.png",
+            "imageBoxArt": "/Images/046651.png",
+            "lastPlayed": "2026-06-09 15:19:53",
+            "achievementsTotal": 207,
+            "numPossibleAchievements": 207,
+            "possibleScore": 1700,
+            "numAchieved": 3,
+            "scoreAchieved": 13,
+            "numAchievedHardcore": 3,
+            "scoreAchievedHardcore": 13
+        },
+        {
             "gameId": 9818,
             "consoleId": 18,
             "consoleName": "Nintendo DS",
@@ -336,24 +354,6 @@
             "scoreAchieved": 0,
             "numAchievedHardcore": 0,
             "scoreAchievedHardcore": 0
-        },
-        {
-            "gameId": 11242,
-            "consoleId": 12,
-            "consoleName": "PlayStation",
-            "title": "Final Fantasy VII",
-            "imageIcon": "/Images/070798.png",
-            "imageTitle": "/Images/015658.png",
-            "imageIngame": "/Images/015659.png",
-            "imageBoxArt": "/Images/046651.png",
-            "lastPlayed": "2026-06-07 08:37:07",
-            "achievementsTotal": 207,
-            "numPossibleAchievements": 207,
-            "possibleScore": 1700,
-            "numAchieved": 3,
-            "scoreAchieved": 13,
-            "numAchievedHardcore": 3,
-            "scoreAchievedHardcore": 13
         },
         {
             "gameId": 11288,
@@ -1515,23 +1515,23 @@
         "gameUrl": "/game/9818"
     },
     "mostRecentGame": {
-        "gameId": 9818,
-        "consoleId": 18,
-        "consoleName": "Nintendo DS",
-        "title": "Mega Man ZX",
-        "imageIcon": "/Images/038156.png",
-        "imageTitle": "/Images/028565.png",
-        "imageIngame": "/Images/028566.png",
-        "imageBoxArt": "/Images/028568.png",
-        "lastPlayed": "2026-06-09 10:50:50",
-        "achievementsTotal": 85,
-        "numPossibleAchievements": 85,
-        "possibleScore": 710,
+        "gameId": 11242,
+        "consoleId": 12,
+        "consoleName": "PlayStation",
+        "title": "Final Fantasy VII",
+        "imageIcon": "/Images/070798.png",
+        "imageTitle": "/Images/015658.png",
+        "imageIngame": "/Images/015659.png",
+        "imageBoxArt": "/Images/046651.png",
+        "lastPlayed": "2026-06-09 15:19:53",
+        "achievementsTotal": 207,
+        "numPossibleAchievements": 207,
+        "possibleScore": 1700,
         "numAchieved": 3,
-        "scoreAchieved": 15,
+        "scoreAchieved": 13,
         "numAchievedHardcore": 3,
-        "scoreAchievedHardcore": 15
+        "scoreAchievedHardcore": 13
     },
-    "points7Days": 30,
-    "points30Days": 615
+    "points7Days": 26,
+    "points30Days": 562
 }
