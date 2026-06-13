@@ -1,5 +1,13 @@
 # Changelog
 
+## v26.06.13
+
+Fix mobile horizontal scroll and bottom nav on RA profile page.
+
+### RetroAchievements
+
+- Fixed horizontal scroll on mobile — added `overflow-x: clip` to `html, body` in `profile/ra/index.html`; the missing rule caused the heatmap's wide min-width to leak outside the viewport, which also broke the `position: fixed` bottom nav bar
+
 ## v26.05.02
 
 RA profile game awards update and beaten filter default.
