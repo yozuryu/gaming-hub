@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-06-15T11:20:11.501Z"
+        "extractionTimestamp": "2026-06-15T17:21:15.786Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,13 +8,13 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Alyssa is unraveling mysteries in Chapter 1 | 2F Hallway | 📜 - - - - - - - - I J - L M | 🔎 1 - 3 - - - - - | 🕓 1h23:52",
+        "richPresenceMsg": "Alyssa is unraveling mysteries in Chapter 1 | 1F Kitchen | 📜 - - - - - - - - I J - L M | 🔎 1 - 3 - - - - - | 🕓 10:07",
         "lastGameId": 12746,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2581,
+        "totalPoints": 2586,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 7829,
+        "totalTruePoints": 7851,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -33,31 +33,31 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Alyssa is unraveling mysteries in Chapter 1 | 2F Hallway | 📜 - - - - - - - - I J - L M | 🔎 1 - 3 - - - - - | 🕓 1h23:52",
-        "richPresenceMsgDate": "2026-06-14 06:52:13",
+        "richPresenceMsg": "Alyssa is unraveling mysteries in Chapter 1 | 1F Kitchen | 📜 - - - - - - - - I J - L M | 🔎 1 - 3 - - - - - | 🕓 10:07",
+        "richPresenceMsgDate": "2026-06-15 17:20:34",
         "lastGameId": 12746,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2581,
+        "totalPoints": 2586,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 7829,
+        "totalTruePoints": 7851,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 41244,
+        "rank": 41196,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 148807,
+        "totalRanked": 148837,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 2581,
+        "points": 2586,
         "softcorePoints": 1
     },
     "pageAwards": {
@@ -238,14 +238,14 @@
             "imageTitle": "/Images/098534.png",
             "imageIngame": "/Images/098643.png",
             "imageBoxArt": "/Images/047491.png",
-            "lastPlayed": "2026-06-14 06:52:13",
+            "lastPlayed": "2026-06-15 17:20:34",
             "achievementsTotal": 78,
             "numPossibleAchievements": 78,
             "possibleScore": 439,
-            "numAchieved": 21,
-            "scoreAchieved": 65,
-            "numAchievedHardcore": 21,
-            "scoreAchievedHardcore": 65
+            "numAchieved": 22,
+            "scoreAchieved": 70,
+            "numAchievedHardcore": 22,
+            "scoreAchievedHardcore": 70
         },
         {
             "gameId": 22693,
@@ -511,9 +511,9 @@
                 "consoleId": 12,
                 "consoleName": "PlayStation",
                 "maxPossible": 78,
-                "numAwarded": 21,
-                "numAwardedHardcore": 21,
-                "mostRecentAwardedDate": "2026-06-14T06:52:12+00:00",
+                "numAwarded": 22,
+                "numAwardedHardcore": 22,
+                "mostRecentAwardedDate": "2026-06-15T17:08:15+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -1495,23 +1495,23 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-06-14 06:52:12",
+        "date": "2026-06-15 17:08:15",
         "hardcoreMode": true,
-        "achievementId": 494721,
-        "title": "Burn it to the Ground",
-        "description": "Ward off the curse haunting the Tates and complete Chapter 1",
-        "badgeName": "560648",
+        "achievementId": 494771,
+        "title": "Keep Cooking",
+        "description": "Defend yourself with pots and pans in Chapter 1",
+        "badgeName": "560698",
         "points": 5,
-        "trueRatio": 14,
-        "type": "progression",
+        "trueRatio": 22,
+        "type": null,
         "author": "BacklogOddy",
         "authorUlid": "01GYTKQPN5TTPP4MSDDJ3KPJ36",
         "gameTitle": "Clock Tower: Ghost Head",
         "gameIcon": "/Images/098537.png",
         "gameId": 12746,
         "consoleName": "PlayStation",
-        "cumulScore": 1324,
-        "badgeUrl": "/Badge/560648.png",
+        "cumulScore": 1329,
+        "badgeUrl": "/Badge/560698.png",
         "gameUrl": "/game/12746"
     },
     "mostRecentGame": {
@@ -1523,15 +1523,15 @@
         "imageTitle": "/Images/098534.png",
         "imageIngame": "/Images/098643.png",
         "imageBoxArt": "/Images/047491.png",
-        "lastPlayed": "2026-06-14 06:52:13",
+        "lastPlayed": "2026-06-15 17:20:34",
         "achievementsTotal": 78,
         "numPossibleAchievements": 78,
         "possibleScore": 439,
-        "numAchieved": 21,
-        "scoreAchieved": 65,
-        "numAchievedHardcore": 21,
-        "scoreAchievedHardcore": 65
+        "numAchieved": 22,
+        "scoreAchieved": 70,
+        "numAchievedHardcore": 22,
+        "scoreAchievedHardcore": 70
     },
-    "points7Days": 59,
-    "points30Days": 432
+    "points7Days": 64,
+    "points30Days": 430
 }
