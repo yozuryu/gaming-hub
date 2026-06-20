@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-06-20T12:05:20.867Z"
+        "extractionTimestamp": "2026-06-20T14:26:05.955Z"
     },
     "profile": {
         "steamId": "76561198188939413",
@@ -23,39 +23,8 @@
         "completionPct": 27,
         "avgPlaytimeMin": 425
     },
-    "recentlyPlayed": [
-        {
-            "appId": 2515020,
-            "name": "FINAL FANTASY XVI",
-            "playtime2Weeks": 32,
-            "playtimeForever": 581,
-            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2515020/0ce29700a22fea9eb270b276fa157b79511365e6.jpg",
-            "storeUrl": "https://store.steampowered.com/app/2515020",
-            "lastPlayedTs": "2026-06-06T13:35:03.000Z",
-            "achUnlocked": 6,
-            "achTotal": 69
-        },
-        {
-            "appId": 578330,
-            "name": "LEGO® City Undercover",
-            "playtime2Weeks": 3,
-            "playtimeForever": 2635,
-            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-            "storeUrl": "https://store.steampowered.com/app/578330",
-            "lastPlayedTs": "2026-06-06T12:09:01.000Z",
-            "achUnlocked": 4,
-            "achTotal": 48
-        }
-    ],
-    "mostRecentGame": {
-        "appId": 2515020,
-        "name": "FINAL FANTASY XVI",
-        "playtime2Weeks": 32,
-        "playtimeForever": 581,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2515020/0ce29700a22fea9eb270b276fa157b79511365e6.jpg",
-        "storeUrl": "https://store.steampowered.com/app/2515020",
-        "lastPlayedTs": "2026-06-06T13:35:03.000Z"
-    },
+    "recentlyPlayed": [],
+    "mostRecentGame": null,
     "mostRecentUnlock": {
         "appId": 758730,
         "gameName": "Paw Patrol: On A Roll",
