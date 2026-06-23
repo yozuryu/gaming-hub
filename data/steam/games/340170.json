@@ -135,7 +135,7 @@
             "iconUrl": "665a56d07c9dc50c79a0c116fac55e27b1a85a63.jpg",
             "iconGrayUrl": "1149fc06323365fbd05def1a5571a7152c57935b.jpg",
             "hidden": true,
-            "globalPct": 25.3
+            "globalPct": 25.4
         },
         {
             "apiName": "ACH_MISSION_CLEAR_NO_DIE",
@@ -179,7 +179,7 @@
             "iconUrl": "dfa34adab31ea3ef28c5b35a6547b1f746988bb5.jpg",
             "iconGrayUrl": "afd8f424939ddfd95d72c3713edd5e6a293f897f.jpg",
             "hidden": true,
-            "globalPct": 27.4
+            "globalPct": 27.5
         },
         {
             "apiName": "ACH_EIDOLONE_UNLOCK_6",
@@ -234,7 +234,7 @@
             "iconUrl": "bdf750fc4318365a6175ca195110f70da1c83fb8.jpg",
             "iconGrayUrl": "a0f4c145a9f3ffd9175740a2452235a4dc2bc56e.jpg",
             "hidden": false,
-            "globalPct": 28.2
+            "globalPct": 28.3
         },
         {
             "apiName": "ACH_TROOPER_DEFEATED_20",
@@ -256,7 +256,7 @@
             "iconUrl": "041019ea3a7e709e217c2b2bf53d2bcfaa765d38.jpg",
             "iconGrayUrl": "9d9cb4069584d15150f73932ed64c4d200f5eff6.jpg",
             "hidden": false,
-            "globalPct": 37.5
+            "globalPct": 37.6
         },
         {
             "apiName": "ACH_SUCCESS_SPECIAL_ORDER",
@@ -476,7 +476,7 @@
             "iconUrl": "e35828427aa24fad89f0250df13da1f008356df7.jpg",
             "iconGrayUrl": "26d15641562d65f943dc4f4d51b6d90ca011c14a.jpg",
             "hidden": false,
-            "globalPct": 7.5
+            "globalPct": 7.6
         },
         {
             "apiName": "ACH_ACCEPT_CLASS_1",
@@ -498,7 +498,7 @@
             "iconUrl": "206d4f6684c5a1b27cd3b425557b5db0df85534c.jpg",
             "iconGrayUrl": "383828dca6e2f1e4afd1adea6cd28ca6ba80dd23.jpg",
             "hidden": false,
-            "globalPct": 11
+            "globalPct": 11.1
         },
         {
             "apiName": "ACH_MISSION_CLEAR_ALL_GOOD_CONDITION",
@@ -531,7 +531,7 @@
             "iconUrl": "92734814dd6202d3f5857a98e39ad24255929568.jpg",
             "iconGrayUrl": "91b2e21354b0ae41f9effbfee79a093200ee51ef.jpg",
             "hidden": false,
-            "globalPct": 31.5
+            "globalPct": 31.6
         },
         {
             "apiName": "ACH_TALK_SURRENDER_15",
@@ -542,7 +542,7 @@
             "iconUrl": "fe7d73857887de981d89fb9b6c33934220622a94.jpg",
             "iconGrayUrl": "966094a76be7aa885dd7722b0594fea5b016d839.jpg",
             "hidden": false,
-            "globalPct": 17.3
+            "globalPct": 17.4
         }
     ],
     "playtimeForever": 272,
@@ -585,7 +585,7 @@
             "unlockedAt": "2017-08-12T07:26:22.000Z",
             "iconUrl": "041019ea3a7e709e217c2b2bf53d2bcfaa765d38.jpg",
             "iconGrayUrl": "9d9cb4069584d15150f73932ed64c4d200f5eff6.jpg",
-            "globalPct": 37.5
+            "globalPct": 37.6
         },
         {
             "apiName": "ACH_ENEMY_DEFEATED_100",
@@ -603,7 +603,7 @@
             "unlockedAt": "2017-08-12T07:16:32.000Z",
             "iconUrl": "92734814dd6202d3f5857a98e39ad24255929568.jpg",
             "iconGrayUrl": "91b2e21354b0ae41f9effbfee79a093200ee51ef.jpg",
-            "globalPct": 31.5
+            "globalPct": 31.6
         }
     ]
 }
