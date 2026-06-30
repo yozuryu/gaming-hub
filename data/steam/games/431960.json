@@ -43,7 +43,7 @@
             "unlocked": false,
             "unlockedAt": null,
             "displayName": "Press any key",
-            "description": "Run or create an application-type wallpaper.",
+            "description": "Create a local application-type wallpaper.",
             "iconUrl": "72d89124d705f27fb7c4dca0cc7e534f1cc6396c.jpg",
             "iconGrayUrl": "a22f92a198829e7803d4fe1216ee9a174d81fa10.jpg",
             "hidden": false,
@@ -91,7 +91,7 @@
             "iconUrl": "1c2250cab3953159e542b9ff4bd5be9ec75c9f61.jpg",
             "iconGrayUrl": "fe22ac219153d4d40f1e68a0b505bafcdce967ee.jpg",
             "hidden": false,
-            "globalPct": 84
+            "globalPct": 83.9
         },
         {
             "apiName": "FAVORITE_10_WALLPAPERS",
@@ -113,7 +113,7 @@
             "iconUrl": "1f519ad16689ebdd4860d548f0979ada9e739ef5.jpg",
             "iconGrayUrl": "9d3197d3807c6714fe5c7d3ecc5ae45a779ec6d4.jpg",
             "hidden": false,
-            "globalPct": 33.3
+            "globalPct": 33.2
         },
         {
             "apiName": "KON_CODE",
@@ -135,7 +135,7 @@
             "iconUrl": "4f48b4262e14e6b25f09d7df1e00392b8c65d0f2.jpg",
             "iconGrayUrl": "54f4eea940cd7bf3fdf89b219d72067322c1306c.jpg",
             "hidden": false,
-            "globalPct": 69
+            "globalPct": 68.9
         },
         {
             "apiName": "SUBSCRIBE_50_WALLPAPERS",
@@ -146,7 +146,7 @@
             "iconUrl": "09f51531c6243518225293fcdc81c8894ba7def6.jpg",
             "iconGrayUrl": "9649e1a766570230f9bee944bce6f2eb4df50969.jpg",
             "hidden": false,
-            "globalPct": 55
+            "globalPct": 54.9
         },
         {
             "apiName": "SUBSCRIBE_100_WALLPAPERS",
@@ -157,7 +157,7 @@
             "iconUrl": "53c2189431308f46ef77d0c5eb1ecac697d703a6.jpg",
             "iconGrayUrl": "6c857181c311c81ee498c0281dbdf5837e9f03d0.jpg",
             "hidden": false,
-            "globalPct": 40.3
+            "globalPct": 40.2
         },
         {
             "apiName": "FAVORITE_25_WALLPAPERS",
@@ -206,7 +206,7 @@
             "unlockedAt": "2021-04-04T00:26:41.000Z",
             "iconUrl": "4f48b4262e14e6b25f09d7df1e00392b8c65d0f2.jpg",
             "iconGrayUrl": "54f4eea940cd7bf3fdf89b219d72067322c1306c.jpg",
-            "globalPct": 69
+            "globalPct": 68.9
         },
         {
             "apiName": "SUBSCRIBE_10_WALLPAPERS",
@@ -215,7 +215,7 @@
             "unlockedAt": "2021-03-12T16:35:15.000Z",
             "iconUrl": "1c2250cab3953159e542b9ff4bd5be9ec75c9f61.jpg",
             "iconGrayUrl": "fe22ac219153d4d40f1e68a0b505bafcdce967ee.jpg",
-            "globalPct": 84
+            "globalPct": 83.9
         },
         {
             "apiName": "POST_SCENE_WALLPAPER",
