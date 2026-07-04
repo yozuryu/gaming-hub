@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-07-04T13:44:53.041Z"
+        "extractionTimestamp": "2026-07-04T15:10:17.827Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Playing Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
-        "lastGameId": 22693,
+        "richPresenceMsg": "The Great Sea: Outset Island • 3 ❤️",
+        "lastGameId": 9190,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2694,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Playing Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
-        "richPresenceMsgDate": "2026-07-01 01:46:31",
-        "lastGameId": 22693,
+        "richPresenceMsg": "The Great Sea: Outset Island • 3 ❤️",
+        "richPresenceMsgDate": "2026-07-04 14:29:39",
+        "lastGameId": 9190,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2694,
@@ -51,7 +51,7 @@
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 151571,
+        "totalRanked": 151581,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -229,6 +229,24 @@
         ]
     },
     "recentlyPlayedGames": [
+        {
+            "gameId": 9190,
+            "consoleId": 16,
+            "consoleName": "GameCube",
+            "title": "The Legend of Zelda: The Wind Waker",
+            "imageIcon": "/Images/099022.png",
+            "imageTitle": "/Images/132020.png",
+            "imageIngame": "/Images/132021.png",
+            "imageBoxArt": "/Images/050398.png",
+            "lastPlayed": "2026-07-04 14:29:39",
+            "achievementsTotal": 126,
+            "numPossibleAchievements": 126,
+            "possibleScore": 1000,
+            "numAchieved": 0,
+            "scoreAchieved": 0,
+            "numAchievedHardcore": 0,
+            "scoreAchievedHardcore": 0
+        },
         {
             "gameId": 22693,
             "consoleId": 18,
@@ -476,24 +494,6 @@
             "achievementsTotal": 253,
             "numPossibleAchievements": 253,
             "possibleScore": 2145,
-            "numAchieved": 0,
-            "scoreAchieved": 0,
-            "numAchievedHardcore": 0,
-            "scoreAchievedHardcore": 0
-        },
-        {
-            "gameId": 14434,
-            "consoleId": 12,
-            "consoleName": "PlayStation",
-            "title": "Final Fantasy Anthology: Final Fantasy VI",
-            "imageIcon": "/Images/076139.png",
-            "imageTitle": "/Images/075099.png",
-            "imageIngame": "/Images/075098.png",
-            "imageBoxArt": "/Images/050457.png",
-            "lastPlayed": "2026-06-06 12:42:24",
-            "achievementsTotal": 83,
-            "numPossibleAchievements": 83,
-            "possibleScore": 735,
             "numAchieved": 0,
             "scoreAchieved": 0,
             "numAchievedHardcore": 0,
@@ -1541,22 +1541,22 @@
         "gameUrl": "/game/23905"
     },
     "mostRecentGame": {
-        "gameId": 22693,
-        "consoleId": 18,
-        "consoleName": "Nintendo DS",
-        "title": "Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
-        "imageIcon": "/Images/140076.png",
-        "imageTitle": "/Images/069700.png",
-        "imageIngame": "/Images/069701.png",
-        "imageBoxArt": "/Images/069702.png",
-        "lastPlayed": "2026-07-01 01:46:31",
-        "achievementsTotal": 389,
-        "numPossibleAchievements": 389,
-        "possibleScore": 815,
-        "numAchieved": 21,
-        "scoreAchieved": 26,
-        "numAchievedHardcore": 21,
-        "scoreAchievedHardcore": 26
+        "gameId": 9190,
+        "consoleId": 16,
+        "consoleName": "GameCube",
+        "title": "The Legend of Zelda: The Wind Waker",
+        "imageIcon": "/Images/099022.png",
+        "imageTitle": "/Images/132020.png",
+        "imageIngame": "/Images/132021.png",
+        "imageBoxArt": "/Images/050398.png",
+        "lastPlayed": "2026-07-04 14:29:39",
+        "achievementsTotal": 126,
+        "numPossibleAchievements": 126,
+        "possibleScore": 1000,
+        "numAchieved": 0,
+        "scoreAchieved": 0,
+        "numAchievedHardcore": 0,
+        "scoreAchievedHardcore": 0
     },
     "points7Days": 11,
     "points30Days": 195
