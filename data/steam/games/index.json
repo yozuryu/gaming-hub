@@ -34606,14 +34606,23 @@
             "appId": 921570,
             "hasAchievements": true,
             "total": 88,
-            "unlocked": 14,
+            "unlocked": 15,
             "gameName": "OCTOPATH TRAVELER",
-            "playtimeForever": 636,
-            "lastPlayedTs": "2026-05-01T14:58:51.000Z",
+            "playtimeForever": 646,
+            "lastPlayedTs": "2026-07-06T15:08:18.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
-            "lastUnlockedAt": "2024-03-27T15:18:36.000Z",
-            "lastUnlockName": "Setting Out – For Master",
+            "lastUnlockedAt": "2026-07-06T15:01:24.000Z",
+            "lastUnlockName": "Sticky-Fingered",
             "preview": [
+                {
+                    "apiName": "ACHIEVEMENT_086",
+                    "displayName": "Sticky-Fingered",
+                    "unlocked": true,
+                    "unlockedAt": "2026-07-06T15:01:24.000Z",
+                    "iconUrl": "e1897d5f7697cb758eb4da5a8fbb7127353d5a94.jpg",
+                    "iconGrayUrl": "77d692d63e75dfe7a3478d4d36b4fe6383fd6574.jpg",
+                    "globalPct": 63.1
+                },
                 {
                     "apiName": "ACHIEVEMENT_025",
                     "displayName": "Setting Out – For Master",
@@ -34658,15 +34667,6 @@
                     "iconUrl": "a430f4900894ba010c4589b650d65559bcb469ef.jpg",
                     "iconGrayUrl": "3bd8e1239d96f83d2e9a60482cce24835b6be988.jpg",
                     "globalPct": 62.7
-                },
-                {
-                    "apiName": "ACHIEVEMENT_073",
-                    "displayName": "Fighter",
-                    "unlocked": true,
-                    "unlockedAt": "2024-03-23T07:12:49.000Z",
-                    "iconUrl": "3df8e67c7caf58aac28c6ecb869ffe5536854492.jpg",
-                    "iconGrayUrl": "4f71e148c9b8d122a5fad004a8f4dd126543c48c.jpg",
-                    "globalPct": 55.7
                 }
             ]
         },

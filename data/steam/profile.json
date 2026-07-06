@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-07-06T12:56:17.394Z"
+        "extractionTimestamp": "2026-07-06T16:26:46.553Z"
     },
     "profile": {
         "steamId": "76561198188939413",
@@ -8,32 +8,52 @@
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
         "status": 0,
-        "lastOnline": "2026-07-05T04:27:31.000Z",
+        "lastOnline": "2026-07-06T15:10:00.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1270,
-        "totalPlaytimeMin": 347409,
+        "totalPlaytimeMin": 347419,
         "totalPlaytimeHrs": 5790,
         "gamesWithPlaytime": 817,
         "totalAchievements": 10046,
-        "unlockedAchievements": 2799,
+        "unlockedAchievements": 2800,
         "gamesWithAchievements": 170,
         "perfectCount": 17,
         "completionPct": 27,
         "avgPlaytimeMin": 425
     },
-    "recentlyPlayed": [],
-    "mostRecentGame": null,
+    "recentlyPlayed": [
+        {
+            "appId": 921570,
+            "name": "OCTOPATH TRAVELER",
+            "playtime2Weeks": 10,
+            "playtimeForever": 646,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
+            "storeUrl": "https://store.steampowered.com/app/921570",
+            "lastPlayedTs": "2026-07-06T15:08:18.000Z",
+            "achUnlocked": 15,
+            "achTotal": 88
+        }
+    ],
+    "mostRecentGame": {
+        "appId": 921570,
+        "name": "OCTOPATH TRAVELER",
+        "playtime2Weeks": 10,
+        "playtimeForever": 646,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
+        "storeUrl": "https://store.steampowered.com/app/921570",
+        "lastPlayedTs": "2026-07-06T15:08:18.000Z"
+    },
     "mostRecentUnlock": {
-        "appId": 758730,
-        "gameName": "Paw Patrol: On A Roll",
-        "apiName": "Pups to the Rescue",
-        "displayName": "Pups to the Rescue",
-        "description": "Complete ten rescue missions.",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/758730/48b9321c88d4415ce1a9c60c08519a8514fd5f54.jpg",
-        "unlockedAt": "2026-05-27T13:07:00.000Z",
-        "globalPct": 57.2
+        "appId": 921570,
+        "gameName": "OCTOPATH TRAVELER",
+        "apiName": "ACHIEVEMENT_086",
+        "displayName": "Sticky-Fingered",
+        "description": "Stole something for the first time.",
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/e1897d5f7697cb758eb4da5a8fbb7127353d5a94.jpg",
+        "unlockedAt": "2026-07-06T15:01:24.000Z",
+        "globalPct": 63.1
     },
     "perfectGames": [
         {
