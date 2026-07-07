@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-07-07T14:51:29.916Z"
+        "extractionTimestamp": "2026-07-07T17:21:36.837Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,13 +8,13 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "on Route 2 [🎖️0/8] [🎱7/170]",
+        "richPresenceMsg": "on Route 2 [🎖️0/8] [🎱9/170]",
         "lastGameId": 515,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2699,
+        "totalPoints": 2703,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 8306,
+        "totalTruePoints": 8332,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -33,31 +33,31 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "on Route 2 [🎖️0/8] [🎱7/170]",
-        "richPresenceMsgDate": "2026-07-07 05:45:08",
+        "richPresenceMsg": "on Route 2 [🎖️0/8] [🎱9/170]",
+        "richPresenceMsgDate": "2026-07-07 16:47:17",
         "lastGameId": 515,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2699,
+        "totalPoints": 2703,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 8306,
+        "totalTruePoints": 8332,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 40994,
+        "rank": 40934,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 152019,
+        "totalRanked": 152037,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 2699,
+        "points": 2703,
         "softcorePoints": 1
     },
     "pageAwards": {
@@ -238,7 +238,7 @@
             "imageTitle": "/Images/001917.png",
             "imageIngame": "/Images/111883.png",
             "imageBoxArt": "/Images/001918.png",
-            "lastPlayed": "2026-07-07 05:45:08",
+            "lastPlayed": "2026-07-07 16:47:17",
             "achievementsTotal": 61,
             "numPossibleAchievements": 61,
             "possibleScore": 453,
@@ -246,6 +246,24 @@
             "scoreAchieved": 1,
             "numAchievedHardcore": 1,
             "scoreAchievedHardcore": 1
+        },
+        {
+            "gameId": 23905,
+            "consoleId": 5,
+            "consoleName": "Game Boy Advance",
+            "title": "Pokémon FireRed Version [Subset - Professor Oak Challenge]",
+            "imageIcon": "/Images/107706.png",
+            "imageTitle": "/Images/070724.png",
+            "imageIngame": "/Images/070726.png",
+            "imageBoxArt": "/Images/070725.png",
+            "lastPlayed": "2026-07-07 16:42:11",
+            "achievementsTotal": 179,
+            "numPossibleAchievements": 179,
+            "possibleScore": 378,
+            "numAchieved": 9,
+            "scoreAchieved": 12,
+            "numAchievedHardcore": 9,
+            "scoreAchievedHardcore": 12
         },
         {
             "gameId": 9190,
@@ -318,24 +336,6 @@
             "scoreAchieved": 26,
             "numAchievedHardcore": 21,
             "scoreAchievedHardcore": 26
-        },
-        {
-            "gameId": 23905,
-            "consoleId": 5,
-            "consoleName": "Game Boy Advance",
-            "title": "Pokémon FireRed Version [Subset - Professor Oak Challenge]",
-            "imageIcon": "/Images/107706.png",
-            "imageTitle": "/Images/070724.png",
-            "imageIngame": "/Images/070726.png",
-            "imageBoxArt": "/Images/070725.png",
-            "lastPlayed": "2026-07-01 01:22:41",
-            "achievementsTotal": 179,
-            "numPossibleAchievements": 179,
-            "possibleScore": 378,
-            "numAchieved": 7,
-            "scoreAchieved": 8,
-            "numAchievedHardcore": 7,
-            "scoreAchievedHardcore": 8
         },
         {
             "gameId": 24186,
@@ -505,6 +505,19 @@
         "total": 79,
         "results": [
             {
+                "gameId": 23905,
+                "title": "Pokémon FireRed Version [Subset - Professor Oak Challenge]",
+                "imageIcon": "/Images/107706.png",
+                "consoleId": 5,
+                "consoleName": "Game Boy Advance",
+                "maxPossible": 179,
+                "numAwarded": 9,
+                "numAwardedHardcore": 9,
+                "mostRecentAwardedDate": "2026-07-07T16:42:11+00:00",
+                "highestAwardKind": null,
+                "highestAwardDate": null
+            },
+            {
                 "gameId": 9190,
                 "title": "The Legend of Zelda: The Wind Waker",
                 "imageIcon": "/Images/099022.png",
@@ -514,19 +527,6 @@
                 "numAwarded": 1,
                 "numAwardedHardcore": 1,
                 "mostRecentAwardedDate": "2026-07-05T04:20:11+00:00",
-                "highestAwardKind": null,
-                "highestAwardDate": null
-            },
-            {
-                "gameId": 23905,
-                "title": "Pokémon FireRed Version [Subset - Professor Oak Challenge]",
-                "imageIcon": "/Images/107706.png",
-                "consoleId": 5,
-                "consoleName": "Game Boy Advance",
-                "maxPossible": 179,
-                "numAwarded": 7,
-                "numAwardedHardcore": 7,
-                "mostRecentAwardedDate": "2026-07-01T01:22:41+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -1534,24 +1534,24 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-07-05 04:20:11",
+        "date": "2026-07-07 16:42:11",
         "hardcoreMode": true,
-        "achievementId": 399844,
-        "title": "Anchors Aweigh",
-        "description": "Set sail from Outset Island with new friends.",
-        "badgeName": "482088",
-        "points": 5,
-        "trueRatio": 5,
-        "type": "progression",
-        "author": "suspect15",
-        "authorUlid": "01FD65M6FJTRQNA2A6DTV873DT",
-        "gameTitle": "The Legend of Zelda: The Wind Waker",
-        "gameIcon": "/Images/099022.png",
-        "gameId": 9190,
-        "consoleName": "GameCube",
-        "cumulScore": 1042,
-        "badgeUrl": "/Badge/482088.png",
-        "gameUrl": "/game/9190"
+        "achievementId": 305739,
+        "title": "Metapod",
+        "description": "Register Metapod as obtained in your Pokédex before earning the Boulder Badge from Brock",
+        "badgeName": "338561",
+        "points": 2,
+        "trueRatio": 13,
+        "type": null,
+        "author": "ZamArch",
+        "authorUlid": "01GDQY1PEFJGKHZFHDSZRHMZGM",
+        "gameTitle": "Pokémon FireRed Version [Subset - Professor Oak Challenge]",
+        "gameIcon": "/Images/107706.png",
+        "gameId": 23905,
+        "consoleName": "Game Boy Advance",
+        "cumulScore": 1016,
+        "badgeUrl": "/Badge/338561.png",
+        "gameUrl": "/game/23905"
     },
     "mostRecentGame": {
         "gameId": 515,
@@ -1562,7 +1562,7 @@
         "imageTitle": "/Images/001917.png",
         "imageIngame": "/Images/111883.png",
         "imageBoxArt": "/Images/001918.png",
-        "lastPlayed": "2026-07-07 05:45:08",
+        "lastPlayed": "2026-07-07 16:47:17",
         "achievementsTotal": 61,
         "numPossibleAchievements": 61,
         "possibleScore": 453,
@@ -1571,6 +1571,6 @@
         "numAchievedHardcore": 1,
         "scoreAchievedHardcore": 1
     },
-    "points7Days": 8,
-    "points30Days": 177
+    "points7Days": 12,
+    "points30Days": 181
 }
