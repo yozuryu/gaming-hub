@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-07-07T04:56:43.660Z"
+        "extractionTimestamp": "2026-07-07T08:30:55.180Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Tetra's Ship, Below Deck • 3 ❤️",
-        "lastGameId": 9190,
+        "richPresenceMsg": "on Route 2 [🎖️0/8] [🎱7/170]",
+        "lastGameId": 515,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2699,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Tetra's Ship, Below Deck • 3 ❤️",
-        "richPresenceMsgDate": "2026-07-05 04:23:53",
-        "lastGameId": 9190,
+        "richPresenceMsg": "on Route 2 [🎖️0/8] [🎱7/170]",
+        "richPresenceMsgDate": "2026-07-07 05:45:08",
+        "lastGameId": 515,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2699,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 40979,
+        "rank": 40983,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 151982,
+        "totalRanked": 151996,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -230,6 +230,24 @@
     },
     "recentlyPlayedGames": [
         {
+            "gameId": 515,
+            "consoleId": 5,
+            "consoleName": "Game Boy Advance",
+            "title": "Pokémon FireRed Version",
+            "imageIcon": "/Images/105044.png",
+            "imageTitle": "/Images/001917.png",
+            "imageIngame": "/Images/111883.png",
+            "imageBoxArt": "/Images/001918.png",
+            "lastPlayed": "2026-07-07 05:45:08",
+            "achievementsTotal": 61,
+            "numPossibleAchievements": 61,
+            "possibleScore": 453,
+            "numAchieved": 1,
+            "scoreAchieved": 1,
+            "numAchievedHardcore": 1,
+            "scoreAchievedHardcore": 1
+        },
+        {
             "gameId": 9190,
             "consoleId": 16,
             "consoleName": "GameCube",
@@ -300,24 +318,6 @@
             "scoreAchieved": 26,
             "numAchievedHardcore": 21,
             "scoreAchievedHardcore": 26
-        },
-        {
-            "gameId": 515,
-            "consoleId": 5,
-            "consoleName": "Game Boy Advance",
-            "title": "Pokémon FireRed Version",
-            "imageIcon": "/Images/105044.png",
-            "imageTitle": "/Images/001917.png",
-            "imageIngame": "/Images/111883.png",
-            "imageBoxArt": "/Images/001918.png",
-            "lastPlayed": "2026-07-01 01:23:00",
-            "achievementsTotal": 61,
-            "numPossibleAchievements": 61,
-            "possibleScore": 453,
-            "numAchieved": 1,
-            "scoreAchieved": 1,
-            "numAchievedHardcore": 1,
-            "scoreAchievedHardcore": 1
         },
         {
             "gameId": 23905,
@@ -1554,22 +1554,22 @@
         "gameUrl": "/game/9190"
     },
     "mostRecentGame": {
-        "gameId": 9190,
-        "consoleId": 16,
-        "consoleName": "GameCube",
-        "title": "The Legend of Zelda: The Wind Waker",
-        "imageIcon": "/Images/099022.png",
-        "imageTitle": "/Images/132020.png",
-        "imageIngame": "/Images/132021.png",
-        "imageBoxArt": "/Images/050398.png",
-        "lastPlayed": "2026-07-05 04:23:53",
-        "achievementsTotal": 126,
-        "numPossibleAchievements": 126,
-        "possibleScore": 1000,
+        "gameId": 515,
+        "consoleId": 5,
+        "consoleName": "Game Boy Advance",
+        "title": "Pokémon FireRed Version",
+        "imageIcon": "/Images/105044.png",
+        "imageTitle": "/Images/001917.png",
+        "imageIngame": "/Images/111883.png",
+        "imageBoxArt": "/Images/001918.png",
+        "lastPlayed": "2026-07-07 05:45:08",
+        "achievementsTotal": 61,
+        "numPossibleAchievements": 61,
+        "possibleScore": 453,
         "numAchieved": 1,
-        "scoreAchieved": 5,
+        "scoreAchieved": 1,
         "numAchievedHardcore": 1,
-        "scoreAchievedHardcore": 5
+        "scoreAchievedHardcore": 1
     },
     "points7Days": 12,
     "points30Days": 182
