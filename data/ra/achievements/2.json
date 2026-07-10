@@ -2088,7 +2088,7 @@
             "description": "Defeat Jigowatt",
             "badgeName": "649924",
             "points": 10,
-            "trueRatio": 32,
+            "trueRatio": 31,
             "type": "progression",
             "author": "Jamiras",
             "authorUlid": "01BJY8JSBTA7NVT0NYSVDCK5TY",
@@ -3438,6 +3438,26 @@
             "consoleName": "PlayStation",
             "cumulScore": 672,
             "badgeUrl": "/Badge/114925.png",
+            "gameUrl": "/game/11382"
+        },
+        {
+            "date": "2026-04-09 23:19:52",
+            "hardcoreMode": true,
+            "achievementId": 85718,
+            "title": "The Cheated Copy",
+            "description": "Press L1, L1, L1, R2 on Game Start to activate Black Zero - this will block ALL other achievements!",
+            "badgeName": "114926",
+            "points": 0,
+            "trueRatio": 0,
+            "type": null,
+            "author": "jplima",
+            "authorUlid": "01BW7B8FK5DZS8YTQEDB0JXFSB",
+            "gameTitle": "Mega Man X6",
+            "gameIcon": "/Images/032736.png",
+            "gameId": 11382,
+            "consoleName": "PlayStation",
+            "cumulScore": 672,
+            "badgeUrl": "/Badge/114926.png",
             "gameUrl": "/game/11382"
         }
     ]
