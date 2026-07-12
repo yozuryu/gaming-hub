@@ -1359,6 +1359,46 @@
             "cumulScore": 349,
             "badgeUrl": "/Badge/552148.png",
             "gameUrl": "/game/3909"
+        },
+        {
+            "date": "2025-10-12 14:31:23",
+            "hardcoreMode": true,
+            "achievementId": 292710,
+            "title": "A Shining Light in the Dark",
+            "description": "Find the Type-14 Film and the 'Camera Controls 1' Tutorial Scrap",
+            "badgeName": "324801",
+            "points": 1,
+            "trueRatio": 1,
+            "type": null,
+            "author": "valts",
+            "authorUlid": "01B3EYRC3QH0NFAJTMNKFJR5DA",
+            "gameTitle": "Fatal Frame",
+            "gameIcon": "/Images/102948.png",
+            "gameId": 1275,
+            "consoleName": "PlayStation 2",
+            "cumulScore": 350,
+            "badgeUrl": "/Badge/324801.png",
+            "gameUrl": "/game/1275"
+        },
+        {
+            "date": "2025-10-12 14:40:01",
+            "hardcoreMode": true,
+            "achievementId": 292711,
+            "title": "My Brother's Disappearance",
+            "description": "Complete the chapter \"Intro: Himuro\"",
+            "badgeName": "324802",
+            "points": 3,
+            "trueRatio": 3,
+            "type": "progression",
+            "author": "valts",
+            "authorUlid": "01B3EYRC3QH0NFAJTMNKFJR5DA",
+            "gameTitle": "Fatal Frame",
+            "gameIcon": "/Images/102948.png",
+            "gameId": 1275,
+            "consoleName": "PlayStation 2",
+            "cumulScore": 353,
+            "badgeUrl": "/Badge/324802.png",
+            "gameUrl": "/game/1275"
         }
     ]
 }
