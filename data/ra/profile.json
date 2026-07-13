@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-07-13T08:19:36.476Z"
+        "extractionTimestamp": "2026-07-13T12:10:33.877Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -12,9 +12,9 @@
         "lastGameId": 22693,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2707,
+        "totalPoints": 2709,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 8367,
+        "totalTruePoints": 8406,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -34,30 +34,30 @@
             "data2": null
         },
         "richPresenceMsg": "Playing Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
-        "richPresenceMsgDate": "2026-07-13 06:57:15",
+        "richPresenceMsgDate": "2026-07-13 11:26:46",
         "lastGameId": 22693,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2707,
+        "totalPoints": 2709,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 8367,
+        "totalTruePoints": 8406,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 41177,
+        "rank": 41163,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 152873,
+        "totalRanked": 152878,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 2707,
+        "points": 2709,
         "softcorePoints": 1
     },
     "pageAwards": {
@@ -238,14 +238,14 @@
             "imageTitle": "/Images/069700.png",
             "imageIngame": "/Images/069701.png",
             "imageBoxArt": "/Images/069702.png",
-            "lastPlayed": "2026-07-13 06:57:15",
+            "lastPlayed": "2026-07-13 11:26:46",
             "achievementsTotal": 389,
             "numPossibleAchievements": 389,
             "possibleScore": 815,
-            "numAchieved": 23,
-            "scoreAchieved": 30,
-            "numAchievedHardcore": 23,
-            "scoreAchievedHardcore": 30
+            "numAchieved": 24,
+            "scoreAchieved": 32,
+            "numAchievedHardcore": 24,
+            "scoreAchievedHardcore": 32
         },
         {
             "gameId": 14837,
@@ -511,9 +511,9 @@
                 "consoleId": 18,
                 "consoleName": "Nintendo DS",
                 "maxPossible": 389,
-                "numAwarded": 23,
-                "numAwardedHardcore": 23,
-                "mostRecentAwardedDate": "2026-07-13T01:22:56+00:00",
+                "numAwarded": 24,
+                "numAwardedHardcore": 24,
+                "mostRecentAwardedDate": "2026-07-13T11:26:46+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -1534,14 +1534,14 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-07-13 01:22:56",
+        "date": "2026-07-13 11:26:46",
         "hardcoreMode": true,
-        "achievementId": 298773,
-        "title": "Noctowl",
-        "description": "Obtain Noctowl",
-        "badgeName": "331431",
+        "achievementId": 298801,
+        "title": "Weepinbell",
+        "description": "Obtain Weepinbell",
+        "badgeName": "331459",
         "points": 2,
-        "trueRatio": 37,
+        "trueRatio": 40,
         "type": null,
         "author": "SnowPin",
         "authorUlid": "019TVEANZS2MMVS809D58X76W6",
@@ -1549,8 +1549,8 @@
         "gameIcon": "/Images/140076.png",
         "gameId": 22693,
         "consoleName": "Nintendo DS",
-        "cumulScore": 975,
-        "badgeUrl": "/Badge/331431.png",
+        "cumulScore": 977,
+        "badgeUrl": "/Badge/331459.png",
         "gameUrl": "/game/22693"
     },
     "mostRecentGame": {
@@ -1562,15 +1562,15 @@
         "imageTitle": "/Images/069700.png",
         "imageIngame": "/Images/069701.png",
         "imageBoxArt": "/Images/069702.png",
-        "lastPlayed": "2026-07-13 06:57:15",
+        "lastPlayed": "2026-07-13 11:26:46",
         "achievementsTotal": 389,
         "numPossibleAchievements": 389,
         "possibleScore": 815,
-        "numAchieved": 23,
-        "scoreAchieved": 30,
-        "numAchievedHardcore": 23,
-        "scoreAchievedHardcore": 30
+        "numAchieved": 24,
+        "scoreAchieved": 32,
+        "numAchievedHardcore": 24,
+        "scoreAchievedHardcore": 32
     },
-    "points7Days": 8,
-    "points30Days": 181
+    "points7Days": 10,
+    "points30Days": 183
 }
