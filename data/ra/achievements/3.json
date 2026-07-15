@@ -759,6 +759,46 @@
             "cumulScore": 108,
             "badgeUrl": "/Badge/538036.png",
             "gameUrl": "/game/2198"
+        },
+        {
+            "date": "2026-01-14 15:16:59",
+            "hardcoreMode": true,
+            "achievementId": 572216,
+            "title": "A Good Show for Baby Murakumo",
+            "description": "Defeat the first dragon",
+            "badgeName": "649990",
+            "points": 2,
+            "trueRatio": 3,
+            "type": "progression",
+            "author": "Jamiras",
+            "authorUlid": "01BJY8JSBTA7NVT0NYSVDCK5TY",
+            "gameTitle": "7th Dragon 2020",
+            "gameIcon": "/Images/123011.png",
+            "gameId": 16452,
+            "consoleName": "PlayStation Portable",
+            "cumulScore": 110,
+            "badgeUrl": "/Badge/649990.png",
+            "gameUrl": "/game/16452"
+        },
+        {
+            "date": "2026-01-14 15:24:52",
+            "hardcoreMode": true,
+            "achievementId": 572138,
+            "title": "Training Interrupted",
+            "description": "Defeat the dragon on the roof of City Hall",
+            "badgeName": "649918",
+            "points": 5,
+            "trueRatio": 8,
+            "type": "progression",
+            "author": "Jamiras",
+            "authorUlid": "01BJY8JSBTA7NVT0NYSVDCK5TY",
+            "gameTitle": "7th Dragon 2020",
+            "gameIcon": "/Images/123011.png",
+            "gameId": 16452,
+            "consoleName": "PlayStation Portable",
+            "cumulScore": 115,
+            "badgeUrl": "/Badge/649918.png",
+            "gameUrl": "/game/16452"
         }
     ]
 }
