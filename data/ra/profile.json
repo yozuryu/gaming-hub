@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-07-18T14:58:30.620Z"
+        "extractionTimestamp": "2026-07-18T16:03:52.316Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 41305,
+        "rank": 41310,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 153588,
+        "totalRanked": 153593,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -229,6 +229,24 @@
         ]
     },
     "recentlyPlayedGames": [
+        {
+            "gameId": 9898,
+            "consoleId": 18,
+            "consoleName": "Nintendo DS",
+            "title": "The Legend of Zelda: Spirit Tracks",
+            "imageIcon": "/Images/046401.png",
+            "imageTitle": "/Images/034047.png",
+            "imageIngame": "/Images/034050.png",
+            "imageBoxArt": "/Images/067329.png",
+            "lastPlayed": "2026-07-18 16:04:02",
+            "achievementsTotal": 70,
+            "numPossibleAchievements": 70,
+            "possibleScore": 565,
+            "numAchieved": 0,
+            "scoreAchieved": 0,
+            "numAchievedHardcore": 0,
+            "scoreAchievedHardcore": 0
+        },
         {
             "gameId": 9931,
             "consoleId": 18,
@@ -480,24 +498,6 @@
             "scoreAchieved": 28,
             "numAchievedHardcore": 6,
             "scoreAchievedHardcore": 28
-        },
-        {
-            "gameId": 22862,
-            "consoleId": 18,
-            "consoleName": "Nintendo DS",
-            "title": "Pokémon HeartGold Version [Subset - Professor Oak Challenge]",
-            "imageIcon": "/Images/140075.png",
-            "imageTitle": "/Images/069703.png",
-            "imageIngame": "/Images/069790.png",
-            "imageBoxArt": "/Images/069707.png",
-            "lastPlayed": "2026-06-12 01:08:41",
-            "achievementsTotal": 391,
-            "numPossibleAchievements": 391,
-            "possibleScore": 825,
-            "numAchieved": 19,
-            "scoreAchieved": 22,
-            "numAchievedHardcore": 19,
-            "scoreAchievedHardcore": 22
         }
     ],
     "gameAwardsAndProgress": {
@@ -1567,23 +1567,23 @@
         "gameUrl": "/game/9931"
     },
     "mostRecentGame": {
-        "gameId": 9931,
+        "gameId": 9898,
         "consoleId": 18,
         "consoleName": "Nintendo DS",
-        "title": "Ragnarok DS",
-        "imageIcon": "/Images/040295.png",
-        "imageTitle": "/Images/041112.png",
-        "imageIngame": "/Images/041113.png",
-        "imageBoxArt": "/Images/040294.png",
-        "lastPlayed": "2026-07-18 14:11:03",
-        "achievementsTotal": 43,
-        "numPossibleAchievements": 43,
-        "possibleScore": 399,
-        "numAchieved": 3,
-        "scoreAchieved": 11,
-        "numAchievedHardcore": 3,
-        "scoreAchievedHardcore": 11
+        "title": "The Legend of Zelda: Spirit Tracks",
+        "imageIcon": "/Images/046401.png",
+        "imageTitle": "/Images/034047.png",
+        "imageIngame": "/Images/034050.png",
+        "imageBoxArt": "/Images/067329.png",
+        "lastPlayed": "2026-07-18 16:04:02",
+        "achievementsTotal": 70,
+        "numPossibleAchievements": 70,
+        "possibleScore": 565,
+        "numAchieved": 0,
+        "scoreAchieved": 0,
+        "numAchievedHardcore": 0,
+        "scoreAchievedHardcore": 0
     },
     "points7Days": 12,
-    "points30Days": 101
+    "points30Days": 94
 }
