@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-07-19T13:34:59.349Z"
+        "extractionTimestamp": "2026-07-19T15:01:54.603Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Lv.14/10 Teakwon",
-        "lastGameId": 9931,
+        "richPresenceMsg": "In the Titlescreen",
+        "lastGameId": 559,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2722,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Lv.14/10 Teakwon",
-        "richPresenceMsgDate": "2026-07-19 05:36:47",
-        "lastGameId": 9931,
+        "richPresenceMsg": "In the Titlescreen",
+        "richPresenceMsgDate": "2026-07-19 14:17:54",
+        "lastGameId": 559,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2722,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 41299,
+        "rank": 41304,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 153750,
+        "totalRanked": 153755,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -229,6 +229,24 @@
         ]
     },
     "recentlyPlayedGames": [
+        {
+            "gameId": 559,
+            "consoleId": 5,
+            "consoleName": "Game Boy Advance",
+            "title": "The Legend of Zelda: The Minish Cap",
+            "imageIcon": "/Images/113471.png",
+            "imageTitle": "/Images/033839.png",
+            "imageIngame": "/Images/000049.png",
+            "imageBoxArt": "/Images/000156.png",
+            "lastPlayed": "2026-07-19 14:17:54",
+            "achievementsTotal": 66,
+            "numPossibleAchievements": 66,
+            "possibleScore": 705,
+            "numAchieved": 7,
+            "scoreAchieved": 31,
+            "numAchievedHardcore": 7,
+            "scoreAchievedHardcore": 31
+        },
         {
             "gameId": 9931,
             "consoleId": 18,
@@ -480,24 +498,6 @@
             "scoreAchieved": 131,
             "numAchievedHardcore": 37,
             "scoreAchievedHardcore": 131
-        },
-        {
-            "gameId": 9818,
-            "consoleId": 18,
-            "consoleName": "Nintendo DS",
-            "title": "Mega Man ZX",
-            "imageIcon": "/Images/038156.png",
-            "imageTitle": "/Images/028565.png",
-            "imageIngame": "/Images/028566.png",
-            "imageBoxArt": "/Images/028568.png",
-            "lastPlayed": "2026-06-18 15:59:27",
-            "achievementsTotal": 85,
-            "numPossibleAchievements": 85,
-            "possibleScore": 710,
-            "numAchieved": 5,
-            "scoreAchieved": 22,
-            "numAchievedHardcore": 5,
-            "scoreAchievedHardcore": 22
         }
     ],
     "gameAwardsAndProgress": {
@@ -1562,27 +1562,27 @@
         "gameIcon": "/Images/040295.png",
         "gameId": 9931,
         "consoleName": "Nintendo DS",
-        "cumulScore": 967,
+        "cumulScore": 962,
         "badgeUrl": "/Badge/152254.png",
         "gameUrl": "/game/9931"
     },
     "mostRecentGame": {
-        "gameId": 9931,
-        "consoleId": 18,
-        "consoleName": "Nintendo DS",
-        "title": "Ragnarok DS",
-        "imageIcon": "/Images/040295.png",
-        "imageTitle": "/Images/041112.png",
-        "imageIngame": "/Images/041113.png",
-        "imageBoxArt": "/Images/040294.png",
-        "lastPlayed": "2026-07-19 05:36:47",
-        "achievementsTotal": 43,
-        "numPossibleAchievements": 43,
-        "possibleScore": 399,
-        "numAchieved": 4,
-        "scoreAchieved": 16,
-        "numAchievedHardcore": 4,
-        "scoreAchievedHardcore": 16
+        "gameId": 559,
+        "consoleId": 5,
+        "consoleName": "Game Boy Advance",
+        "title": "The Legend of Zelda: The Minish Cap",
+        "imageIcon": "/Images/113471.png",
+        "imageTitle": "/Images/033839.png",
+        "imageIngame": "/Images/000049.png",
+        "imageBoxArt": "/Images/000156.png",
+        "lastPlayed": "2026-07-19 14:17:54",
+        "achievementsTotal": 66,
+        "numPossibleAchievements": 66,
+        "possibleScore": 705,
+        "numAchieved": 7,
+        "scoreAchieved": 31,
+        "numAchievedHardcore": 7,
+        "scoreAchievedHardcore": 31
     },
     "points7Days": 17,
     "points30Days": 99
