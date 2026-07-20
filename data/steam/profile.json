@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-07-20T13:15:18.000Z"
+        "extractionTimestamp": "2026-07-20T15:58:32.318Z"
     },
     "profile": {
         "steamId": "76561198188939413",
@@ -8,13 +8,13 @@
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
         "status": 0,
-        "lastOnline": "2026-07-17T08:13:44.000Z",
+        "lastOnline": "2026-07-20T15:02:50.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1277,
-        "totalPlaytimeMin": 347419,
-        "totalPlaytimeHrs": 5790,
+        "totalPlaytimeMin": 347430,
+        "totalPlaytimeHrs": 5791,
         "gamesWithPlaytime": 817,
         "totalAchievements": 10046,
         "unlockedAchievements": 2800,
@@ -25,25 +25,36 @@
     },
     "recentlyPlayed": [
         {
+            "appId": 282900,
+            "name": "Hyperdimension Neptunia Re;Birth1",
+            "playtime2Weeks": 8,
+            "playtimeForever": 1062,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/282900/0cd228210df4f44ef8e77f62b18d1a9af81a72d4.jpg",
+            "storeUrl": "https://store.steampowered.com/app/282900",
+            "lastPlayedTs": "2026-07-20T15:01:07.000Z",
+            "achUnlocked": 15,
+            "achTotal": 45
+        },
+        {
             "appId": 921570,
             "name": "OCTOPATH TRAVELER",
-            "playtime2Weeks": 10,
-            "playtimeForever": 646,
+            "playtime2Weeks": 2,
+            "playtimeForever": 648,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
             "storeUrl": "https://store.steampowered.com/app/921570",
-            "lastPlayedTs": "2026-07-06T15:08:18.000Z",
+            "lastPlayedTs": "2026-07-20T14:43:29.000Z",
             "achUnlocked": 15,
             "achTotal": 88
         }
     ],
     "mostRecentGame": {
-        "appId": 921570,
-        "name": "OCTOPATH TRAVELER",
-        "playtime2Weeks": 10,
-        "playtimeForever": 646,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
-        "storeUrl": "https://store.steampowered.com/app/921570",
-        "lastPlayedTs": "2026-07-06T15:08:18.000Z"
+        "appId": 282900,
+        "name": "Hyperdimension Neptunia Re;Birth1",
+        "playtime2Weeks": 8,
+        "playtimeForever": 1062,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/282900/0cd228210df4f44ef8e77f62b18d1a9af81a72d4.jpg",
+        "storeUrl": "https://store.steampowered.com/app/282900",
+        "lastPlayedTs": "2026-07-20T15:01:07.000Z"
     },
     "mostRecentUnlock": {
         "appId": 921570,
