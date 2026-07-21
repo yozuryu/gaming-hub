@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-07-21T02:11:04.450Z"
+        "extractionTimestamp": "2026-07-21T04:17:25.830Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "🗺️: Shingo Forest | [Rena Lv.1] [------ Lv.2] [------ Lv.0] [------ Lv.0] | ⏰:0h44 | Pickpocketings 0 of 0 | Chests: 5 | 🧠:  As Rena on Earth Mode",
-        "lastGameId": 11253,
+        "richPresenceMsg": "Playing Thousand Arms",
+        "lastGameId": 11372,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2737,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "🗺️: Shingo Forest | [Rena Lv.1] [------ Lv.2] [------ Lv.0] [------ Lv.0] | ⏰:0h44 | Pickpocketings 0 of 0 | Chests: 5 | 🧠:  As Rena on Earth Mode",
-        "richPresenceMsgDate": "2026-07-21 01:32:03",
-        "lastGameId": 11253,
+        "richPresenceMsg": "Playing Thousand Arms",
+        "richPresenceMsgDate": "2026-07-21 03:57:55",
+        "lastGameId": 11372,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2737,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 41198,
+        "rank": 41203,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 154007,
+        "totalRanked": 154030,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -229,6 +229,24 @@
         ]
     },
     "recentlyPlayedGames": [
+        {
+            "gameId": 11372,
+            "consoleId": 12,
+            "consoleName": "PlayStation",
+            "title": "Thousand Arms",
+            "imageIcon": "/Images/072312.png",
+            "imageTitle": "/Images/046300.png",
+            "imageIngame": "/Images/046299.png",
+            "imageBoxArt": "/Images/052665.png",
+            "lastPlayed": "2026-07-21 03:57:55",
+            "achievementsTotal": 116,
+            "numPossibleAchievements": 116,
+            "possibleScore": 883,
+            "numAchieved": 0,
+            "scoreAchieved": 0,
+            "numAchievedHardcore": 0,
+            "scoreAchievedHardcore": 0
+        },
         {
             "gameId": 11253,
             "consoleId": 12,
@@ -480,24 +498,6 @@
             "scoreAchieved": 0,
             "numAchievedHardcore": 0,
             "scoreAchievedHardcore": 0
-        },
-        {
-            "gameId": 24186,
-            "consoleId": 5,
-            "consoleName": "Game Boy Advance",
-            "title": "Pokémon Emerald Version [Subset - Professor Oak Challenge]",
-            "imageIcon": "/Images/107627.png",
-            "imageTitle": "/Images/072238.png",
-            "imageIngame": "/Images/072240.png",
-            "imageBoxArt": "/Images/072317.png",
-            "lastPlayed": "2026-06-29 13:25:49",
-            "achievementsTotal": 221,
-            "numPossibleAchievements": 221,
-            "possibleScore": 468,
-            "numAchieved": 54,
-            "scoreAchieved": 96,
-            "numAchievedHardcore": 54,
-            "scoreAchievedHardcore": 96
         }
     ],
     "gameAwardsAndProgress": {
@@ -1580,23 +1580,23 @@
         "gameUrl": "/game/11253"
     },
     "mostRecentGame": {
-        "gameId": 11253,
+        "gameId": 11372,
         "consoleId": 12,
         "consoleName": "PlayStation",
-        "title": "Star Ocean: The Second Story",
-        "imageIcon": "/Images/094986.png",
-        "imageTitle": "/Images/031249.png",
-        "imageIngame": "/Images/031250.png",
-        "imageBoxArt": "/Images/046254.png",
-        "lastPlayed": "2026-07-21 01:32:03",
-        "achievementsTotal": 92,
-        "numPossibleAchievements": 92,
-        "possibleScore": 1070,
-        "numAchieved": 3,
-        "scoreAchieved": 15,
-        "numAchievedHardcore": 3,
-        "scoreAchievedHardcore": 15
+        "title": "Thousand Arms",
+        "imageIcon": "/Images/072312.png",
+        "imageTitle": "/Images/046300.png",
+        "imageIngame": "/Images/046299.png",
+        "imageBoxArt": "/Images/052665.png",
+        "lastPlayed": "2026-07-21 03:57:55",
+        "achievementsTotal": 116,
+        "numPossibleAchievements": 116,
+        "possibleScore": 883,
+        "numAchieved": 0,
+        "scoreAchieved": 0,
+        "numAchievedHardcore": 0,
+        "scoreAchievedHardcore": 0
     },
     "points7Days": 26,
-    "points30Days": 114
+    "points30Days": 112
 }
