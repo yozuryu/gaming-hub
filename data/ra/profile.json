@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-07-21T15:06:45.218Z"
+        "extractionTimestamp": "2026-07-21T17:25:47.223Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,13 +8,13 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "🗺️: Cross Cave | [Claude Lv.10] [Rena Lv.8] [Celine Lv.10] [------ Lv.0] | ⏰:2h06 | Pickpocketings 0 of 0 | Chests: 32 | 🧠:  As Claude on Earth Mode",
+        "richPresenceMsg": "🗺️: Exploring Expel | [Claude Lv.13] [Rena Lv.13] [Celine Lv.13] [------ Lv.0] | ⏰:3h21 | Pickpocketings 0 of 0 | Chests: 39 | 🧠:  As Claude on Earth Mode",
         "lastGameId": 11253,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2742,
+        "totalPoints": 2752,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 8493,
+        "totalTruePoints": 8515,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -33,31 +33,31 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "🗺️: Cross Cave | [Claude Lv.10] [Rena Lv.8] [Celine Lv.10] [------ Lv.0] | ⏰:2h06 | Pickpocketings 0 of 0 | Chests: 32 | 🧠:  As Claude on Earth Mode",
-        "richPresenceMsgDate": "2026-07-21 15:06:14",
+        "richPresenceMsg": "🗺️: Exploring Expel | [Claude Lv.13] [Rena Lv.13] [Celine Lv.13] [------ Lv.0] | ⏰:3h21 | Pickpocketings 0 of 0 | Chests: 39 | 🧠:  As Claude on Earth Mode",
+        "richPresenceMsgDate": "2026-07-21 15:46:32",
         "lastGameId": 11253,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2742,
+        "totalPoints": 2752,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 8493,
+        "totalTruePoints": 8515,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 41161,
+        "rank": 41046,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 154085,
+        "totalRanked": 154105,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 2742,
+        "points": 2752,
         "softcorePoints": 1
     },
     "pageAwards": {
@@ -238,14 +238,14 @@
             "imageTitle": "/Images/031249.png",
             "imageIngame": "/Images/031250.png",
             "imageBoxArt": "/Images/046254.png",
-            "lastPlayed": "2026-07-21 15:06:14",
+            "lastPlayed": "2026-07-21 15:46:32",
             "achievementsTotal": 92,
             "numPossibleAchievements": 92,
             "possibleScore": 1070,
-            "numAchieved": 4,
-            "scoreAchieved": 20,
-            "numAchievedHardcore": 4,
-            "scoreAchievedHardcore": 20
+            "numAchieved": 6,
+            "scoreAchieved": 30,
+            "numAchievedHardcore": 6,
+            "scoreAchievedHardcore": 30
         },
         {
             "gameId": 11372,
@@ -511,9 +511,9 @@
                 "consoleId": 12,
                 "consoleName": "PlayStation",
                 "maxPossible": 92,
-                "numAwarded": 4,
-                "numAwardedHardcore": 4,
-                "mostRecentAwardedDate": "2026-07-21T14:45:33+00:00",
+                "numAwarded": 6,
+                "numAwardedHardcore": 6,
+                "mostRecentAwardedDate": "2026-07-21T15:42:05+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -1560,23 +1560,23 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-07-21 14:45:33",
+        "date": "2026-07-21 15:42:05",
         "hardcoreMode": true,
-        "achievementId": 164491,
-        "title": "Wedding Crasher",
-        "description": "[Claude] Rescue a bride in distress",
-        "badgeName": "185082",
+        "achievementId": 164553,
+        "title": "Claude's Private Moments I",
+        "description": "Complete 5 private actions with Claude",
+        "badgeName": "17680",
         "points": 5,
-        "trueRatio": 8,
-        "type": "progression",
+        "trueRatio": 14,
+        "type": null,
         "author": "Altomar",
         "authorUlid": "019346YCAQ6QSZFRH5JA2Z3M9P",
         "gameTitle": "Star Ocean: The Second Story",
         "gameIcon": "/Images/094986.png",
         "gameId": 11253,
         "consoleName": "PlayStation",
-        "cumulScore": 977,
-        "badgeUrl": "/Badge/185082.png",
+        "cumulScore": 987,
+        "badgeUrl": "/Badge/17680.png",
         "gameUrl": "/game/11253"
     },
     "mostRecentGame": {
@@ -1588,15 +1588,15 @@
         "imageTitle": "/Images/031249.png",
         "imageIngame": "/Images/031250.png",
         "imageBoxArt": "/Images/046254.png",
-        "lastPlayed": "2026-07-21 15:06:14",
+        "lastPlayed": "2026-07-21 15:46:32",
         "achievementsTotal": 92,
         "numPossibleAchievements": 92,
         "possibleScore": 1070,
-        "numAchieved": 4,
-        "scoreAchieved": 20,
-        "numAchievedHardcore": 4,
-        "scoreAchievedHardcore": 20
+        "numAchieved": 6,
+        "scoreAchieved": 30,
+        "numAchievedHardcore": 6,
+        "scoreAchievedHardcore": 30
     },
-    "points7Days": 31,
-    "points30Days": 117
+    "points7Days": 41,
+    "points30Days": 127
 }

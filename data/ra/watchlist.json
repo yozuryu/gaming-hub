@@ -1,5 +1,5 @@
 {
-    "total": 795,
+    "total": 797,
     "results": [
         {
             "id": 27,
@@ -4250,6 +4250,15 @@
             "achievementsPublished": 65
         },
         {
+            "id": 11385,
+            "title": "Jade Cocoon: Story of the Tamamayu",
+            "consoleId": 12,
+            "consoleName": "PlayStation",
+            "imageIcon": "/Images/113111.png",
+            "pointsTotal": 295,
+            "achievementsPublished": 19
+        },
+        {
             "id": 11390,
             "title": "SaGa Frontier II",
             "consoleId": 12,
@@ -7155,6 +7164,15 @@
             "imageIcon": "/Images/125033.png",
             "pointsTotal": 376,
             "achievementsPublished": 11
+        },
+        {
+            "id": 41157,
+            "title": "Undertale",
+            "consoleId": 102,
+            "consoleName": "Standalone",
+            "imageIcon": "/Images/147631.png",
+            "pointsTotal": 0,
+            "achievementsPublished": 0
         }
     ]
 }
