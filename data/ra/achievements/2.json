@@ -2008,7 +2008,7 @@
             "description": "Defeat SKY in Kokubunji Searsand",
             "badgeName": "649926",
             "points": 10,
-            "trueRatio": 39,
+            "trueRatio": 38,
             "type": "progression",
             "author": "Jamiras",
             "authorUlid": "01BJY8JSBTA7NVT0NYSVDCK5TY",
@@ -2028,7 +2028,7 @@
             "description": "Defeat Trinitro",
             "badgeName": "649927",
             "points": 10,
-            "trueRatio": 39,
+            "trueRatio": 38,
             "type": "progression",
             "author": "Jamiras",
             "authorUlid": "01BJY8JSBTA7NVT0NYSVDCK5TY",
@@ -3499,6 +3499,26 @@
             "cumulScore": 682,
             "badgeUrl": "/Badge/373267.png",
             "gameUrl": "/game/11415"
+        },
+        {
+            "date": "2026-04-23 15:31:37",
+            "hardcoreMode": true,
+            "achievementId": 88942,
+            "title": "Uncapping Exhaust Pipes",
+            "description": "Defeat all the cappers.",
+            "badgeName": "102806",
+            "points": 5,
+            "trueRatio": 6,
+            "type": "progression",
+            "author": "Alfex",
+            "authorUlid": "0197V7CT1S4MM0HP5T3ECB6VY0",
+            "gameTitle": "Tomba! 2: The Evil Swine Return",
+            "gameIcon": "/Images/124477.png",
+            "gameId": 11306,
+            "consoleName": "PlayStation",
+            "cumulScore": 687,
+            "badgeUrl": "/Badge/102806.png",
+            "gameUrl": "/game/11306"
         }
     ]
 }
