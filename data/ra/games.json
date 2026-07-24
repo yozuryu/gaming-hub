@@ -1376,8 +1376,8 @@
             "consoleId": 5,
             "consoleName": "Game Boy Advance",
             "parentGameId": null,
-            "numDistinctPlayersCasual": 33823,
-            "numDistinctPlayersHardcore": 33823,
+            "numDistinctPlayersCasual": 33827,
+            "numDistinctPlayersHardcore": 33827,
             "numAchievements": 61,
             "numAwardedToUser": 1,
             "numAwardedToUserHardcore": 1,
@@ -1398,8 +1398,8 @@
                     "trueRatio": 1,
                     "type": "missable",
                     "badgeName": "237340",
-                    "numAwarded": 31036,
-                    "numAwardedHardcore": 18039,
+                    "numAwarded": 31040,
+                    "numAwardedHardcore": 18041,
                     "displayOrder": 1,
                     "dateEarned": "2026-06-29 15:30:26",
                     "dateEarnedHardcore": "2026-06-29 15:30:26"
@@ -1412,7 +1412,7 @@
                     "trueRatio": 6,
                     "type": "missable",
                     "badgeName": "237341",
-                    "numAwarded": 19227,
+                    "numAwarded": 19228,
                     "numAwardedHardcore": 12528,
                     "displayOrder": 2
                 },
@@ -1424,8 +1424,8 @@
                     "trueRatio": 6,
                     "type": null,
                     "badgeName": "237342",
-                    "numAwarded": 17643,
-                    "numAwardedHardcore": 11102,
+                    "numAwarded": 17647,
+                    "numAwardedHardcore": 11103,
                     "displayOrder": 6
                 },
                 "33595": {
@@ -1436,8 +1436,8 @@
                     "trueRatio": 6,
                     "type": null,
                     "badgeName": "237343",
-                    "numAwarded": 14966,
-                    "numAwardedHardcore": 9634,
+                    "numAwarded": 14967,
+                    "numAwardedHardcore": 9635,
                     "displayOrder": 9
                 },
                 "33596": {
@@ -1496,8 +1496,8 @@
                     "trueRatio": 17,
                     "type": null,
                     "badgeName": "237348",
-                    "numAwarded": 10251,
-                    "numAwardedHardcore": 6832,
+                    "numAwarded": 10252,
+                    "numAwardedHardcore": 6833,
                     "displayOrder": 19
                 },
                 "33601": {
@@ -1508,7 +1508,7 @@
                     "trueRatio": 5,
                     "type": "progression",
                     "badgeName": "237349",
-                    "numAwarded": 21781,
+                    "numAwarded": 21783,
                     "numAwardedHardcore": 13411,
                     "displayOrder": 3
                 },
@@ -1520,8 +1520,8 @@
                     "trueRatio": 6,
                     "type": "progression",
                     "badgeName": "237350",
-                    "numAwarded": 16724,
-                    "numAwardedHardcore": 10655,
+                    "numAwarded": 16727,
+                    "numAwardedHardcore": 10656,
                     "displayOrder": 7
                 },
                 "33603": {
@@ -1544,7 +1544,7 @@
                     "trueRatio": 7,
                     "type": "progression",
                     "badgeName": "237352",
-                    "numAwarded": 12317,
+                    "numAwarded": 12318,
                     "numAwardedHardcore": 8094,
                     "displayOrder": 13
                 },
@@ -1604,7 +1604,7 @@
                     "trueRatio": 48,
                     "type": "win_condition",
                     "badgeName": "237357",
-                    "numAwarded": 8061,
+                    "numAwarded": 8062,
                     "numAwardedHardcore": 5648,
                     "displayOrder": 28
                 },
@@ -1616,8 +1616,8 @@
                     "trueRatio": 62,
                     "type": null,
                     "badgeName": "237358",
-                    "numAwarded": 4927,
-                    "numAwardedHardcore": 4010,
+                    "numAwarded": 4930,
+                    "numAwardedHardcore": 4012,
                     "displayOrder": 33
                 },
                 "33619": {
@@ -1652,8 +1652,8 @@
                     "trueRatio": 9,
                     "type": "missable",
                     "badgeName": "237361",
-                    "numAwarded": 7697,
-                    "numAwardedHardcore": 5482,
+                    "numAwarded": 7698,
+                    "numAwardedHardcore": 5483,
                     "displayOrder": 42
                 },
                 "33622": {
@@ -1676,8 +1676,8 @@
                     "trueRatio": 23,
                     "type": "missable",
                     "badgeName": "237363",
-                    "numAwarded": 5598,
-                    "numAwardedHardcore": 4323,
+                    "numAwarded": 5600,
+                    "numAwardedHardcore": 4325,
                     "displayOrder": 35
                 },
                 "33624": {
@@ -1688,8 +1688,8 @@
                     "trueRatio": 26,
                     "type": "missable",
                     "badgeName": "237364",
-                    "numAwarded": 4495,
-                    "numAwardedHardcore": 3709,
+                    "numAwarded": 4496,
+                    "numAwardedHardcore": 3710,
                     "displayOrder": 44
                 },
                 "33625": {
@@ -1712,8 +1712,8 @@
                     "trueRatio": 9,
                     "type": null,
                     "badgeName": "237366",
-                    "numAwarded": 9152,
-                    "numAwardedHardcore": 6243,
+                    "numAwarded": 9153,
+                    "numAwardedHardcore": 6244,
                     "displayOrder": 24
                 },
                 "33627": {
@@ -1808,7 +1808,7 @@
                     "trueRatio": 15,
                     "type": "missable",
                     "badgeName": "237374",
-                    "numAwarded": 10163,
+                    "numAwarded": 10164,
                     "numAwardedHardcore": 8053,
                     "displayOrder": 5
                 },
@@ -1820,7 +1820,7 @@
                     "trueRatio": 4,
                     "type": null,
                     "badgeName": "237375",
-                    "numAwarded": 12062,
+                    "numAwarded": 12063,
                     "numAwardedHardcore": 8292,
                     "displayOrder": 45
                 },
@@ -1832,7 +1832,7 @@
                     "trueRatio": 3,
                     "type": null,
                     "badgeName": "237376",
-                    "numAwarded": 17111,
+                    "numAwarded": 17114,
                     "numAwardedHardcore": 10661,
                     "displayOrder": 46
                 },
@@ -1892,8 +1892,8 @@
                     "trueRatio": 5,
                     "type": null,
                     "badgeName": "237381",
-                    "numAwarded": 7884,
-                    "numAwardedHardcore": 5739,
+                    "numAwarded": 7886,
+                    "numAwardedHardcore": 5741,
                     "displayOrder": 48
                 },
                 "195151": {
@@ -1904,8 +1904,8 @@
                     "trueRatio": 5,
                     "type": null,
                     "badgeName": "237382",
-                    "numAwarded": 9533,
-                    "numAwardedHardcore": 6414,
+                    "numAwarded": 9534,
+                    "numAwardedHardcore": 6415,
                     "displayOrder": 49
                 },
                 "195152": {
@@ -1916,8 +1916,8 @@
                     "trueRatio": 5,
                     "type": null,
                     "badgeName": "237383",
-                    "numAwarded": 10578,
-                    "numAwardedHardcore": 7056,
+                    "numAwarded": 10579,
+                    "numAwardedHardcore": 7057,
                     "displayOrder": 50
                 },
                 "195153": {
@@ -1940,8 +1940,8 @@
                     "trueRatio": 8,
                     "type": "missable",
                     "badgeName": "237385",
-                    "numAwarded": 10170,
-                    "numAwardedHardcore": 6719,
+                    "numAwarded": 10171,
+                    "numAwardedHardcore": 6720,
                     "displayOrder": 51
                 },
                 "195155": {
@@ -1952,8 +1952,8 @@
                     "trueRatio": 6,
                     "type": null,
                     "badgeName": "237386",
-                    "numAwarded": 5664,
-                    "numAwardedHardcore": 4506,
+                    "numAwarded": 5665,
+                    "numAwardedHardcore": 4507,
                     "displayOrder": 52
                 },
                 "195156": {
@@ -1964,8 +1964,8 @@
                     "trueRatio": 9,
                     "type": null,
                     "badgeName": "237387",
-                    "numAwarded": 9631,
-                    "numAwardedHardcore": 6333,
+                    "numAwarded": 9632,
+                    "numAwardedHardcore": 6334,
                     "displayOrder": 53
                 },
                 "195157": {
@@ -2060,8 +2060,8 @@
                     "trueRatio": 6,
                     "type": null,
                     "badgeName": "237395",
-                    "numAwarded": 5635,
-                    "numAwardedHardcore": 4416,
+                    "numAwarded": 5636,
+                    "numAwardedHardcore": 4417,
                     "displayOrder": 56
                 },
                 "195165": {
@@ -2072,8 +2072,8 @@
                     "trueRatio": 7,
                     "type": null,
                     "badgeName": "237396",
-                    "numAwarded": 5335,
-                    "numAwardedHardcore": 4283,
+                    "numAwarded": 5336,
+                    "numAwardedHardcore": 4284,
                     "displayOrder": 57
                 },
                 "195166": {
@@ -2084,8 +2084,8 @@
                     "trueRatio": 69,
                     "type": null,
                     "badgeName": "237397",
-                    "numAwarded": 4094,
-                    "numAwardedHardcore": 3464,
+                    "numAwarded": 4096,
+                    "numAwardedHardcore": 3465,
                     "displayOrder": 34
                 },
                 "195167": {
@@ -2108,8 +2108,8 @@
                     "trueRatio": 7,
                     "type": null,
                     "badgeName": "237399",
-                    "numAwarded": 5011,
-                    "numAwardedHardcore": 4078,
+                    "numAwarded": 5012,
+                    "numAwardedHardcore": 4079,
                     "displayOrder": 59
                 },
                 "195169": {
@@ -3814,8 +3814,8 @@
             "consoleId": 5,
             "consoleName": "Game Boy Advance",
             "parentGameId": null,
-            "numDistinctPlayersCasual": 24899,
-            "numDistinctPlayersHardcore": 24899,
+            "numDistinctPlayersCasual": 24901,
+            "numDistinctPlayersHardcore": 24901,
             "numAchievements": 66,
             "numAwardedToUser": 7,
             "numAwardedToUserHardcore": 7,
@@ -3850,8 +3850,8 @@
                     "trueRatio": 6,
                     "type": null,
                     "badgeName": "155835",
-                    "numAwarded": 11359,
-                    "numAwardedHardcore": 5433,
+                    "numAwarded": 11360,
+                    "numAwardedHardcore": 5434,
                     "displayOrder": 201
                 },
                 "1475": {
@@ -3888,8 +3888,8 @@
                     "trueRatio": 5,
                     "type": "progression",
                     "badgeName": "155797",
-                    "numAwarded": 21966,
-                    "numAwardedHardcore": 10010,
+                    "numAwarded": 21968,
+                    "numAwardedHardcore": 10011,
                     "displayOrder": 1,
                     "dateEarned": "2025-05-31 16:09:42",
                     "dateEarnedHardcore": "2025-05-31 16:09:42"
@@ -3966,8 +3966,8 @@
                     "trueRatio": 6,
                     "type": "progression",
                     "badgeName": "155788",
-                    "numAwarded": 11698,
-                    "numAwardedHardcore": 5882,
+                    "numAwarded": 11699,
+                    "numAwardedHardcore": 5883,
                     "displayOrder": 15
                 },
                 "2039": {
@@ -4002,8 +4002,8 @@
                     "trueRatio": 6,
                     "type": "progression",
                     "badgeName": "155791",
-                    "numAwarded": 10811,
-                    "numAwardedHardcore": 5485,
+                    "numAwarded": 10812,
+                    "numAwardedHardcore": 5486,
                     "displayOrder": 18
                 },
                 "2042": {
@@ -4074,7 +4074,7 @@
                     "trueRatio": 19,
                     "type": "progression",
                     "badgeName": "155801",
-                    "numAwarded": 6568,
+                    "numAwarded": 6569,
                     "numAwardedHardcore": 3200,
                     "displayOrder": 50
                 },
@@ -4208,8 +4208,8 @@
                     "trueRatio": 7,
                     "type": "missable",
                     "badgeName": "155807",
-                    "numAwarded": 9705,
-                    "numAwardedHardcore": 4939,
+                    "numAwarded": 9706,
+                    "numAwardedHardcore": 4940,
                     "displayOrder": 13
                 },
                 "2059": {
@@ -4268,7 +4268,7 @@
                     "trueRatio": 5,
                     "type": "progression",
                     "badgeName": "155818",
-                    "numAwarded": 18477,
+                    "numAwarded": 18478,
                     "numAwardedHardcore": 8706,
                     "displayOrder": 2,
                     "dateEarned": "2025-05-31 16:30:39",
@@ -4558,7 +4558,7 @@
                     "trueRatio": 59,
                     "type": null,
                     "badgeName": "155841",
-                    "numAwarded": 3997,
+                    "numAwarded": 3998,
                     "numAwardedHardcore": 2399,
                     "displayOrder": 300
                 },
@@ -4603,7 +4603,7 @@
                     "title": "Minish Turned Mastermind",
                     "description": "Defeat Vaati without taking damage",
                     "points": 100,
-                    "trueRatio": 951,
+                    "trueRatio": 952,
                     "type": null,
                     "badgeName": "155853",
                     "numAwarded": 887,
@@ -45530,8 +45530,8 @@
             "consoleId": 16,
             "consoleName": "GameCube",
             "parentGameId": null,
-            "numDistinctPlayersCasual": 6565,
-            "numDistinctPlayersHardcore": 6565,
+            "numDistinctPlayersCasual": 6567,
+            "numDistinctPlayersHardcore": 6567,
             "numAchievements": 126,
             "numAwardedToUser": 1,
             "numAwardedToUserHardcore": 1,
@@ -45552,8 +45552,8 @@
                     "trueRatio": 2,
                     "type": null,
                     "badgeName": "482087",
-                    "numAwarded": 4521,
-                    "numAwardedHardcore": 3986,
+                    "numAwarded": 4523,
+                    "numAwardedHardcore": 3987,
                     "displayOrder": 1
                 },
                 "399844": {
@@ -45578,8 +45578,8 @@
                     "trueRatio": 3,
                     "type": "progression",
                     "badgeName": "495404",
-                    "numAwarded": 3960,
-                    "numAwardedHardcore": 3442,
+                    "numAwarded": 3961,
+                    "numAwardedHardcore": 3443,
                     "displayOrder": 22
                 },
                 "399846": {
@@ -45638,8 +45638,8 @@
                     "trueRatio": 1,
                     "type": "missable",
                     "badgeName": "500801",
-                    "numAwarded": 3545,
-                    "numAwardedHardcore": 3178,
+                    "numAwarded": 3547,
+                    "numAwardedHardcore": 3179,
                     "displayOrder": 2
                 },
                 "402393": {
@@ -45650,8 +45650,8 @@
                     "trueRatio": 6,
                     "type": "missable",
                     "badgeName": "500803",
-                    "numAwarded": 3270,
-                    "numAwardedHardcore": 2971,
+                    "numAwarded": 3272,
+                    "numAwardedHardcore": 2972,
                     "displayOrder": 3
                 },
                 "402394": {
@@ -45662,7 +45662,7 @@
                     "trueRatio": 36,
                     "type": "missable",
                     "badgeName": "500870",
-                    "numAwarded": 2755,
+                    "numAwarded": 2756,
                     "numAwardedHardcore": 2534,
                     "displayOrder": 4
                 },
@@ -45722,8 +45722,8 @@
                     "trueRatio": 18,
                     "type": "missable",
                     "badgeName": "495403",
-                    "numAwarded": 1932,
-                    "numAwardedHardcore": 1818,
+                    "numAwarded": 1933,
+                    "numAwardedHardcore": 1819,
                     "displayOrder": 30
                 },
                 "406873": {
@@ -45770,8 +45770,8 @@
                     "trueRatio": 15,
                     "type": null,
                     "badgeName": "497249",
-                    "numAwarded": 2525,
-                    "numAwardedHardcore": 2238,
+                    "numAwarded": 2526,
+                    "numAwardedHardcore": 2239,
                     "displayOrder": 11
                 },
                 "423365": {
@@ -45782,8 +45782,8 @@
                     "trueRatio": 6,
                     "type": "progression",
                     "badgeName": "501486",
-                    "numAwarded": 3153,
-                    "numAwardedHardcore": 2778,
+                    "numAwarded": 3154,
+                    "numAwardedHardcore": 2779,
                     "displayOrder": 31
                 },
                 "423366": {
@@ -45794,8 +45794,8 @@
                     "trueRatio": 6,
                     "type": "progression",
                     "badgeName": "495671",
-                    "numAwarded": 3797,
-                    "numAwardedHardcore": 3306,
+                    "numAwarded": 3798,
+                    "numAwardedHardcore": 3307,
                     "displayOrder": 19
                 },
                 "423382": {
@@ -45806,8 +45806,8 @@
                     "trueRatio": 21,
                     "type": null,
                     "badgeName": "496593",
-                    "numAwarded": 1606,
-                    "numAwardedHardcore": 1442,
+                    "numAwarded": 1607,
+                    "numAwardedHardcore": 1443,
                     "displayOrder": 102
                 },
                 "423383": {
@@ -45986,8 +45986,8 @@
                     "trueRatio": 12,
                     "type": null,
                     "badgeName": "497251",
-                    "numAwarded": 1326,
-                    "numAwardedHardcore": 1219,
+                    "numAwarded": 1327,
+                    "numAwardedHardcore": 1220,
                     "displayOrder": 69
                 },
                 "430054": {
@@ -46406,8 +46406,8 @@
                     "trueRatio": 6,
                     "type": "progression",
                     "badgeName": "502207",
-                    "numAwarded": 3745,
-                    "numAwardedHardcore": 3248,
+                    "numAwarded": 3746,
+                    "numAwardedHardcore": 3249,
                     "displayOrder": 21
                 },
                 "439028": {
@@ -46418,8 +46418,8 @@
                     "trueRatio": 31,
                     "type": null,
                     "badgeName": "500813",
-                    "numAwarded": 911,
-                    "numAwardedHardcore": 872,
+                    "numAwarded": 912,
+                    "numAwardedHardcore": 873,
                     "displayOrder": 107
                 },
                 "439029": {
@@ -46502,8 +46502,8 @@
                     "trueRatio": 18,
                     "type": null,
                     "badgeName": "500823",
-                    "numAwarded": 1932,
-                    "numAwardedHardcore": 1714,
+                    "numAwarded": 1934,
+                    "numAwardedHardcore": 1716,
                     "displayOrder": 36
                 },
                 "439036": {
@@ -46514,8 +46514,8 @@
                     "trueRatio": 5,
                     "type": "progression",
                     "badgeName": "500824",
-                    "numAwarded": 2307,
-                    "numAwardedHardcore": 2008,
+                    "numAwarded": 2308,
+                    "numAwardedHardcore": 2009,
                     "displayOrder": 50
                 },
                 "439037": {
@@ -46586,8 +46586,8 @@
                     "trueRatio": 5,
                     "type": null,
                     "badgeName": "500831",
-                    "numAwarded": 1777,
-                    "numAwardedHardcore": 1579,
+                    "numAwarded": 1778,
+                    "numAwardedHardcore": 1580,
                     "displayOrder": 78
                 },
                 "439043": {
@@ -72295,11 +72295,11 @@
                     "title": "I Wonder What's in Here",
                     "description": "Find every hidden Elemental Spirit in Fortress of Langoud (counter only work there)",
                     "points": 10,
-                    "trueRatio": 217,
+                    "trueRatio": 187,
                     "type": null,
                     "badgeName": "710827",
-                    "numAwarded": 6,
-                    "numAwardedHardcore": 6,
+                    "numAwarded": 7,
+                    "numAwardedHardcore": 7,
                     "displayOrder": 21
                 },
                 "625127": {
@@ -72379,11 +72379,11 @@
                     "title": "Worth Opening Up",
                     "description": "Collect every treasure in Volcanic Island",
                     "points": 5,
-                    "trueRatio": 130,
+                    "trueRatio": 108,
                     "type": null,
                     "badgeName": "710834",
-                    "numAwarded": 6,
-                    "numAwardedHardcore": 5,
+                    "numAwarded": 7,
+                    "numAwardedHardcore": 6,
                     "displayOrder": 24
                 },
                 "625134": {
@@ -72391,11 +72391,11 @@
                     "title": "Hammered",
                     "description": "Defeat Dark Master in Volcanic Island",
                     "points": 5,
-                    "trueRatio": 130,
+                    "trueRatio": 108,
                     "type": "progression",
                     "badgeName": "710835",
-                    "numAwarded": 6,
-                    "numAwardedHardcore": 5,
+                    "numAwarded": 7,
+                    "numAwardedHardcore": 6,
                     "displayOrder": 25
                 },
                 "625135": {
@@ -72403,11 +72403,11 @@
                     "title": "Bypass the Bodyguard",
                     "description": "Defeat Jeala before the Dark Master in Volcanic Island",
                     "points": 25,
-                    "trueRatio": 650,
+                    "trueRatio": 544,
                     "type": "missable",
                     "badgeName": "710836",
-                    "numAwarded": 6,
-                    "numAwardedHardcore": 5,
+                    "numAwarded": 7,
+                    "numAwardedHardcore": 6,
                     "displayOrder": 26
                 },
                 "625136": {
@@ -72418,7 +72418,7 @@
                     "trueRatio": 130,
                     "type": "progression",
                     "badgeName": "710837",
-                    "numAwarded": 5,
+                    "numAwarded": 6,
                     "numAwardedHardcore": 5,
                     "displayOrder": 27
                 },
@@ -72430,7 +72430,7 @@
                     "trueRatio": 260,
                     "type": "missable",
                     "badgeName": "710838",
-                    "numAwarded": 5,
+                    "numAwarded": 6,
                     "numAwardedHardcore": 5,
                     "displayOrder": 28
                 },
@@ -73099,11 +73099,11 @@
                     "title": "Heart of Gold",
                     "description": "Raise Wyna's intimacy to level 10",
                     "points": 10,
-                    "trueRatio": 1277,
+                    "trueRatio": 641,
                     "type": null,
                     "badgeName": "710894",
-                    "numAwarded": 1,
-                    "numAwardedHardcore": 1,
+                    "numAwarded": 2,
+                    "numAwardedHardcore": 2,
                     "displayOrder": 84
                 },
                 "625195": {
@@ -104428,11 +104428,11 @@
                     "title": "Badge IV",
                     "description": "Defeat Morty to obtain the Fog Badge while having all 139 available Pokemon",
                     "points": 10,
-                    "trueRatio": 486,
+                    "trueRatio": 477,
                     "type": null,
                     "badgeName": "331564",
-                    "numAwarded": 48,
-                    "numAwardedHardcore": 46,
+                    "numAwarded": 49,
+                    "numAwardedHardcore": 47,
                     "displayOrder": 0
                 },
                 "298907": {
@@ -104452,11 +104452,11 @@
                     "title": "Clefairy",
                     "description": "Obtain Clefairy",
                     "points": 2,
-                    "trueRatio": 99,
+                    "trueRatio": 97,
                     "type": null,
                     "badgeName": "331566",
-                    "numAwarded": 47,
-                    "numAwardedHardcore": 45,
+                    "numAwarded": 48,
+                    "numAwardedHardcore": 46,
                     "displayOrder": 0
                 },
                 "298909": {
@@ -104464,11 +104464,11 @@
                     "title": "Clefable",
                     "description": "Obtain Clefable",
                     "points": 3,
-                    "trueRatio": 155,
+                    "trueRatio": 152,
                     "type": null,
                     "badgeName": "331567",
-                    "numAwarded": 45,
-                    "numAwardedHardcore": 43,
+                    "numAwarded": 46,
+                    "numAwardedHardcore": 44,
                     "displayOrder": 0
                 },
                 "298910": {
@@ -104488,11 +104488,11 @@
                     "title": "Jigglypuff",
                     "description": "Obtain Jigglypuff",
                     "points": 2,
-                    "trueRatio": 99,
+                    "trueRatio": 97,
                     "type": null,
                     "badgeName": "331569",
-                    "numAwarded": 47,
-                    "numAwardedHardcore": 45,
+                    "numAwarded": 48,
+                    "numAwardedHardcore": 46,
                     "displayOrder": 0
                 },
                 "298912": {
@@ -104500,11 +104500,11 @@
                     "title": "Wigglytuff",
                     "description": "Obtain Wigglytuff",
                     "points": 3,
-                    "trueRatio": 155,
+                    "trueRatio": 152,
                     "type": null,
                     "badgeName": "331570",
-                    "numAwarded": 45,
-                    "numAwardedHardcore": 43,
+                    "numAwarded": 46,
+                    "numAwardedHardcore": 44,
                     "displayOrder": 0
                 },
                 "298913": {
@@ -104524,11 +104524,11 @@
                     "title": "Wobbuffet",
                     "description": "Obtain Wobbuffet",
                     "points": 1,
-                    "trueRatio": 49,
+                    "trueRatio": 48,
                     "type": null,
                     "badgeName": "331572",
-                    "numAwarded": 47,
-                    "numAwardedHardcore": 45,
+                    "numAwarded": 48,
+                    "numAwardedHardcore": 46,
                     "displayOrder": 0
                 },
                 "298915": {
@@ -104536,11 +104536,11 @@
                     "title": "Grimer",
                     "description": "Obtain Grimer",
                     "points": 1,
-                    "trueRatio": 50,
+                    "trueRatio": 49,
                     "type": null,
                     "badgeName": "331573",
-                    "numAwarded": 46,
-                    "numAwardedHardcore": 44,
+                    "numAwarded": 47,
+                    "numAwardedHardcore": 45,
                     "displayOrder": 0
                 },
                 "298916": {
@@ -104560,11 +104560,11 @@
                     "title": "Diglett",
                     "description": "Obtain Diglett",
                     "points": 1,
-                    "trueRatio": 50,
+                    "trueRatio": 49,
                     "type": null,
                     "badgeName": "331575",
-                    "numAwarded": 46,
-                    "numAwardedHardcore": 44,
+                    "numAwarded": 47,
+                    "numAwardedHardcore": 45,
                     "displayOrder": 0
                 },
                 "298918": {
@@ -104584,11 +104584,11 @@
                     "title": "Psyduck",
                     "description": "Obtain Psyduck",
                     "points": 1,
-                    "trueRatio": 50,
+                    "trueRatio": 49,
                     "type": null,
                     "badgeName": "331577",
-                    "numAwarded": 46,
-                    "numAwardedHardcore": 44,
+                    "numAwarded": 47,
+                    "numAwardedHardcore": 45,
                     "displayOrder": 0
                 },
                 "298920": {
@@ -104596,11 +104596,11 @@
                     "title": "Golduck",
                     "description": "Obtain Golduck",
                     "points": 2,
-                    "trueRatio": 99,
+                    "trueRatio": 97,
                     "type": null,
                     "badgeName": "331578",
-                    "numAwarded": 47,
-                    "numAwardedHardcore": 45,
+                    "numAwarded": 48,
+                    "numAwardedHardcore": 46,
                     "displayOrder": 0
                 },
                 "298921": {
@@ -104608,11 +104608,11 @@
                     "title": "Mr Mime",
                     "description": "Obtain Mr Mime",
                     "points": 2,
-                    "trueRatio": 101,
+                    "trueRatio": 99,
                     "type": null,
                     "badgeName": "331579",
-                    "numAwarded": 46,
-                    "numAwardedHardcore": 44,
+                    "numAwarded": 47,
+                    "numAwardedHardcore": 45,
                     "displayOrder": 0
                 },
                 "298922": {
@@ -104668,11 +104668,11 @@
                     "title": "Seel",
                     "description": "Obtain Seel",
                     "points": 1,
-                    "trueRatio": 49,
+                    "trueRatio": 48,
                     "type": null,
                     "badgeName": "331584",
-                    "numAwarded": 47,
-                    "numAwardedHardcore": 45,
+                    "numAwarded": 48,
+                    "numAwardedHardcore": 46,
                     "displayOrder": 0
                 },
                 "298927": {
@@ -104800,11 +104800,11 @@
                     "title": "Murkrow",
                     "description": "Obtain Murkrow",
                     "points": 1,
-                    "trueRatio": 49,
+                    "trueRatio": 48,
                     "type": null,
                     "badgeName": "331595",
-                    "numAwarded": 47,
-                    "numAwardedHardcore": 45,
+                    "numAwarded": 48,
+                    "numAwardedHardcore": 46,
                     "displayOrder": 0
                 },
                 "298938": {
@@ -104812,11 +104812,11 @@
                     "title": "Misdreavus",
                     "description": "Obtain Misdreavus",
                     "points": 1,
-                    "trueRatio": 49,
+                    "trueRatio": 48,
                     "type": null,
                     "badgeName": "331596",
-                    "numAwarded": 47,
-                    "numAwardedHardcore": 45,
+                    "numAwarded": 48,
+                    "numAwardedHardcore": 46,
                     "displayOrder": 0
                 },
                 "298939": {
@@ -112439,8 +112439,8 @@
                     "trueRatio": 28,
                     "type": "missable",
                     "badgeName": "338570",
-                    "numAwarded": 933,
-                    "numAwardedHardcore": 863,
+                    "numAwarded": 934,
+                    "numAwardedHardcore": 864,
                     "displayOrder": 0
                 },
                 "305749": {
@@ -112499,8 +112499,8 @@
                     "trueRatio": 18,
                     "type": "missable",
                     "badgeName": "338575",
-                    "numAwarded": 937,
-                    "numAwardedHardcore": 867,
+                    "numAwarded": 938,
+                    "numAwardedHardcore": 868,
                     "displayOrder": 0
                 },
                 "305754": {
@@ -112631,8 +112631,8 @@
                     "trueRatio": 8,
                     "type": null,
                     "badgeName": "338585",
-                    "numAwarded": 985,
-                    "numAwardedHardcore": 912,
+                    "numAwarded": 986,
+                    "numAwardedHardcore": 913,
                     "displayOrder": 0
                 },
                 "305765": {
@@ -113627,8 +113627,8 @@
                     "trueRatio": 11,
                     "type": null,
                     "badgeName": "338678",
-                    "numAwarded": 768,
-                    "numAwardedHardcore": 717,
+                    "numAwarded": 769,
+                    "numAwardedHardcore": 718,
                     "displayOrder": 0
                 },
                 "305848": {
