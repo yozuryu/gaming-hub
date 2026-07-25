@@ -3539,6 +3539,46 @@
             "cumulScore": 692,
             "badgeUrl": "/Badge/102814.png",
             "gameUrl": "/game/11306"
+        },
+        {
+            "date": "2026-04-25 15:08:47",
+            "hardcoreMode": true,
+            "achievementId": 17734,
+            "title": "Wake Up Warrior",
+            "description": "Complete the intro part of the game",
+            "badgeName": "248314",
+            "points": 5,
+            "trueRatio": 5,
+            "type": "progression",
+            "author": "Altomar",
+            "authorUlid": "019346YCAQ6QSZFRH5JA2Z3M9P",
+            "gameTitle": "Breath of Fire",
+            "gameIcon": "/Images/105046.png",
+            "gameId": 449,
+            "consoleName": "SNES/Super Famicom",
+            "cumulScore": 697,
+            "badgeUrl": "/Badge/248314.png",
+            "gameUrl": "/game/449"
+        },
+        {
+            "date": "2026-04-25 15:29:19",
+            "hardcoreMode": true,
+            "achievementId": 17735,
+            "title": "The Frog King",
+            "description": "Defeat the frog at Camlon castle",
+            "badgeName": "248284",
+            "points": 5,
+            "trueRatio": 5,
+            "type": "progression",
+            "author": "Altomar",
+            "authorUlid": "019346YCAQ6QSZFRH5JA2Z3M9P",
+            "gameTitle": "Breath of Fire",
+            "gameIcon": "/Images/105046.png",
+            "gameId": 449,
+            "consoleName": "SNES/Super Famicom",
+            "cumulScore": 702,
+            "badgeUrl": "/Badge/248284.png",
+            "gameUrl": "/game/449"
         }
     ]
 }
