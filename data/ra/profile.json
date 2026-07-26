@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-07-26T07:38:22.394Z"
+        "extractionTimestamp": "2026-07-26T10:04:23.127Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "🗺️: Traveling | Meis Lv.11 - 🗡️: M.Sword - 😎: 3 - 💋: 0 | <💖> Sod: 😭 - Wyn: 😭 - Kyl: 😭 - Nel: 😭 - Mar: 😭 - Pal: 😭 - Kyo: 😭 - Mil: 😭 - Met: 😭 <💖> | ⏰: 2h39:48 | Chapter 2",
-        "lastGameId": 11372,
+        "richPresenceMsg": "In Menus",
+        "lastGameId": 14372,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2803,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "🗺️: Traveling | Meis Lv.11 - 🗡️: M.Sword - 😎: 3 - 💋: 0 | <💖> Sod: 😭 - Wyn: 😭 - Kyl: 😭 - Nel: 😭 - Mar: 😭 - Pal: 😭 - Kyo: 😭 - Mil: 😭 - Met: 😭 <💖> | ⏰: 2h39:48 | Chapter 2",
-        "richPresenceMsgDate": "2026-07-26 07:10:19",
-        "lastGameId": 11372,
+        "richPresenceMsg": "In Menus",
+        "richPresenceMsgDate": "2026-07-26 09:40:14",
+        "lastGameId": 14372,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2803,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 40677,
+        "rank": 40676,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 154881,
+        "totalRanked": 154891,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -229,6 +229,24 @@
         ]
     },
     "recentlyPlayedGames": [
+        {
+            "gameId": 14372,
+            "consoleId": 12,
+            "consoleName": "PlayStation",
+            "title": "The Granstream Saga",
+            "imageIcon": "/Images/039272.png",
+            "imageTitle": "/Images/039270.png",
+            "imageIngame": "/Images/039271.png",
+            "imageBoxArt": "/Images/039273.png",
+            "lastPlayed": "2026-07-26 09:40:14",
+            "achievementsTotal": 83,
+            "numPossibleAchievements": 83,
+            "possibleScore": 287,
+            "numAchieved": 0,
+            "scoreAchieved": 0,
+            "numAchievedHardcore": 0,
+            "scoreAchievedHardcore": 0
+        },
         {
             "gameId": 11372,
             "consoleId": 12,
@@ -480,24 +498,6 @@
             "scoreAchieved": 5,
             "numAchievedHardcore": 1,
             "scoreAchievedHardcore": 5
-        },
-        {
-            "gameId": 17890,
-            "consoleId": 18,
-            "consoleName": "Nintendo DS",
-            "title": "Mega Man Star Force: Dragon",
-            "imageIcon": "/Images/121894.png",
-            "imageTitle": "/Images/126247.png",
-            "imageIngame": "/Images/126248.png",
-            "imageBoxArt": "/Images/121877.png",
-            "lastPlayed": "2026-07-05 01:06:34",
-            "achievementsTotal": 76,
-            "numPossibleAchievements": 76,
-            "possibleScore": 800,
-            "numAchieved": 0,
-            "scoreAchieved": 0,
-            "numAchievedHardcore": 0,
-            "scoreAchievedHardcore": 0
         }
     ],
     "gameAwardsAndProgress": {
@@ -1593,22 +1593,22 @@
         "gameUrl": "/game/11372"
     },
     "mostRecentGame": {
-        "gameId": 11372,
+        "gameId": 14372,
         "consoleId": 12,
         "consoleName": "PlayStation",
-        "title": "Thousand Arms",
-        "imageIcon": "/Images/072312.png",
-        "imageTitle": "/Images/046300.png",
-        "imageIngame": "/Images/046299.png",
-        "imageBoxArt": "/Images/052665.png",
-        "lastPlayed": "2026-07-26 07:10:19",
-        "achievementsTotal": 116,
-        "numPossibleAchievements": 116,
-        "possibleScore": 928,
-        "numAchieved": 9,
-        "scoreAchieved": 51,
-        "numAchievedHardcore": 9,
-        "scoreAchievedHardcore": 51
+        "title": "The Granstream Saga",
+        "imageIcon": "/Images/039272.png",
+        "imageTitle": "/Images/039270.png",
+        "imageIngame": "/Images/039271.png",
+        "imageBoxArt": "/Images/039273.png",
+        "lastPlayed": "2026-07-26 09:40:14",
+        "achievementsTotal": 83,
+        "numPossibleAchievements": 83,
+        "possibleScore": 287,
+        "numAchieved": 0,
+        "scoreAchieved": 0,
+        "numAchievedHardcore": 0,
+        "scoreAchievedHardcore": 0
     },
     "points7Days": 81,
     "points30Days": 120
