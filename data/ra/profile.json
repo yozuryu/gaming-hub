@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-07-26T14:39:26.490Z"
+        "extractionTimestamp": "2026-07-26T16:05:21.023Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,13 +8,13 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "🗺️: Boyzby  | Meis Lv.11 - 🗡️: M.Sword - 😎: 3 - 💋: 0 | <💖> Sod: 😭 - Wyn: 😭 - Kyl: 😭 - Nel: 😭 - Mar: 😭 - Pal: 😭 - Kyo: 😭 - Mil: 😭 - Met: 😭 <💖> | ⏰: 3h03:50 | Chapter 2",
+        "richPresenceMsg": "🗺️: Lucent Cave  | Meis Lv.21 - 🗡️: M.Sword - 😎: 5 - 💋: 0 | <💖> Sod: 😭 - Wyn: 😭 - Kyl: 😭 - Nel: 😭 - Mar: 😭 - Pal: 😭 - Kyo: 😭 - Mil: 😭 - Met: 😭 <💖> | ⏰: 6h38:01 | Chapter 4",
         "lastGameId": 11372,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2813,
+        "totalPoints": 2833,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 8930,
+        "totalTruePoints": 9098,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -33,31 +33,31 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "🗺️: Boyzby  | Meis Lv.11 - 🗡️: M.Sword - 😎: 3 - 💋: 0 | <💖> Sod: 😭 - Wyn: 😭 - Kyl: 😭 - Nel: 😭 - Mar: 😭 - Pal: 😭 - Kyo: 😭 - Mil: 😭 - Met: 😭 <💖> | ⏰: 3h03:50 | Chapter 2",
-        "richPresenceMsgDate": "2026-07-26 14:38:25",
+        "richPresenceMsg": "🗺️: Lucent Cave  | Meis Lv.21 - 🗡️: M.Sword - 😎: 5 - 💋: 0 | <💖> Sod: 😭 - Wyn: 😭 - Kyl: 😭 - Nel: 😭 - Mar: 😭 - Pal: 😭 - Kyo: 😭 - Mil: 😭 - Met: 😭 <💖> | ⏰: 6h38:01 | Chapter 4",
+        "richPresenceMsgDate": "2026-07-26 16:03:21",
         "lastGameId": 11372,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2813,
+        "totalPoints": 2833,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 8930,
+        "totalTruePoints": 9098,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 40569,
+        "rank": 40357,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 154919,
+        "totalRanked": 154925,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 2813,
+        "points": 2833,
         "softcorePoints": 1
     },
     "pageAwards": {
@@ -238,14 +238,14 @@
             "imageTitle": "/Images/046300.png",
             "imageIngame": "/Images/046299.png",
             "imageBoxArt": "/Images/052665.png",
-            "lastPlayed": "2026-07-26 14:38:25",
+            "lastPlayed": "2026-07-26 16:05:21",
             "achievementsTotal": 116,
             "numPossibleAchievements": 116,
             "possibleScore": 928,
-            "numAchieved": 11,
-            "scoreAchieved": 61,
-            "numAchievedHardcore": 11,
-            "scoreAchievedHardcore": 61
+            "numAchieved": 15,
+            "scoreAchieved": 81,
+            "numAchievedHardcore": 15,
+            "scoreAchievedHardcore": 81
         },
         {
             "gameId": 14372,
@@ -511,9 +511,9 @@
                 "consoleId": 12,
                 "consoleName": "PlayStation",
                 "maxPossible": 116,
-                "numAwarded": 11,
-                "numAwardedHardcore": 11,
-                "mostRecentAwardedDate": "2026-07-26T14:38:25+00:00",
+                "numAwarded": 15,
+                "numAwardedHardcore": 15,
+                "mostRecentAwardedDate": "2026-07-26T15:22:13+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -1573,23 +1573,23 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-07-26 14:38:25",
+        "date": "2026-07-26 15:22:13",
         "hardcoreMode": true,
-        "achievementId": 625112,
-        "title": "Homewrecker",
-        "description": "Accept the Glamorous Lady customer's invitation and overstay your welcome",
-        "badgeName": "710820",
+        "achievementId": 625120,
+        "title": "Passing the Hammer",
+        "description": "Now the responsibility is yours",
+        "badgeName": "710821",
         "points": 5,
-        "trueRatio": 39,
-        "type": "missable",
+        "trueRatio": 46,
+        "type": "progression",
         "author": "Altomar",
         "authorUlid": "019346YCAQ6QSZFRH5JA2Z3M9P",
         "gameTitle": "Thousand Arms",
         "gameIcon": "/Images/072312.png",
         "gameId": 11372,
         "consoleName": "PlayStation",
-        "cumulScore": 1023,
-        "badgeUrl": "/Badge/710820.png",
+        "cumulScore": 1043,
+        "badgeUrl": "/Badge/710821.png",
         "gameUrl": "/game/11372"
     },
     "mostRecentGame": {
@@ -1601,15 +1601,15 @@
         "imageTitle": "/Images/046300.png",
         "imageIngame": "/Images/046299.png",
         "imageBoxArt": "/Images/052665.png",
-        "lastPlayed": "2026-07-26 14:38:25",
+        "lastPlayed": "2026-07-26 16:05:21",
         "achievementsTotal": 116,
         "numPossibleAchievements": 116,
         "possibleScore": 928,
-        "numAchieved": 11,
-        "scoreAchieved": 61,
-        "numAchievedHardcore": 11,
-        "scoreAchievedHardcore": 61
+        "numAchieved": 15,
+        "scoreAchieved": 81,
+        "numAchievedHardcore": 15,
+        "scoreAchievedHardcore": 81
     },
-    "points7Days": 91,
-    "points30Days": 130
+    "points7Days": 111,
+    "points30Days": 150
 }
