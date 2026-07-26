@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-07-26T16:05:21.023Z"
+        "extractionTimestamp": "2026-07-26T18:03:40.660Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,13 +8,13 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "🗺️: Lucent Cave  | Meis Lv.21 - 🗡️: M.Sword - 😎: 5 - 💋: 0 | <💖> Sod: 😭 - Wyn: 😭 - Kyl: 😭 - Nel: 😭 - Mar: 😭 - Pal: 😭 - Kyo: 😭 - Mil: 😭 - Met: 😭 <💖> | ⏰: 6h38:01 | Chapter 4",
+        "richPresenceMsg": "🗺️: Traveling | Meis Lv.22 - 🗡️: M.Sword - 😎: 5 - 💋: 0 | <💖> Sod: 😭 - Wyn: 😭 - Kyl: 😭 - Nel: 😭 - Mar: 😭 - Pal: 😭 - Kyo: 😭 - Mil: 😭 - Met: 😭 <💖> | ⏰: 7h12:22 | Chapter 4",
         "lastGameId": 11372,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2833,
+        "totalPoints": 2843,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 9098,
+        "totalTruePoints": 9178,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -33,31 +33,31 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "🗺️: Lucent Cave  | Meis Lv.21 - 🗡️: M.Sword - 😎: 5 - 💋: 0 | <💖> Sod: 😭 - Wyn: 😭 - Kyl: 😭 - Nel: 😭 - Mar: 😭 - Pal: 😭 - Kyo: 😭 - Mil: 😭 - Met: 😭 <💖> | ⏰: 6h38:01 | Chapter 4",
-        "richPresenceMsgDate": "2026-07-26 16:03:21",
+        "richPresenceMsg": "🗺️: Traveling | Meis Lv.22 - 🗡️: M.Sword - 😎: 5 - 💋: 0 | <💖> Sod: 😭 - Wyn: 😭 - Kyl: 😭 - Nel: 😭 - Mar: 😭 - Pal: 😭 - Kyo: 😭 - Mil: 😭 - Met: 😭 <💖> | ⏰: 7h12:22 | Chapter 4",
+        "richPresenceMsgDate": "2026-07-26 16:19:21",
         "lastGameId": 11372,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2833,
+        "totalPoints": 2843,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 9098,
+        "totalTruePoints": 9178,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 40357,
+        "rank": 40250,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 154925,
+        "totalRanked": 154944,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 2833,
+        "points": 2843,
         "softcorePoints": 1
     },
     "pageAwards": {
@@ -238,14 +238,14 @@
             "imageTitle": "/Images/046300.png",
             "imageIngame": "/Images/046299.png",
             "imageBoxArt": "/Images/052665.png",
-            "lastPlayed": "2026-07-26 16:05:21",
+            "lastPlayed": "2026-07-26 16:19:21",
             "achievementsTotal": 116,
             "numPossibleAchievements": 116,
             "possibleScore": 928,
-            "numAchieved": 15,
-            "scoreAchieved": 81,
-            "numAchievedHardcore": 15,
-            "scoreAchievedHardcore": 81
+            "numAchieved": 17,
+            "scoreAchieved": 91,
+            "numAchievedHardcore": 17,
+            "scoreAchievedHardcore": 91
         },
         {
             "gameId": 14372,
@@ -511,9 +511,9 @@
                 "consoleId": 12,
                 "consoleName": "PlayStation",
                 "maxPossible": 116,
-                "numAwarded": 15,
-                "numAwardedHardcore": 15,
-                "mostRecentAwardedDate": "2026-07-26T15:22:13+00:00",
+                "numAwarded": 17,
+                "numAwardedHardcore": 17,
+                "mostRecentAwardedDate": "2026-07-26T16:18:04+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -871,7 +871,7 @@
             {
                 "gameId": 724,
                 "title": "Pokémon Red Version",
-                "imageIcon": "/Images/126545.png",
+                "imageIcon": "/Images/149658.png",
                 "consoleId": 4,
                 "consoleName": "Game Boy",
                 "maxPossible": 93,
@@ -1573,12 +1573,12 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-07-26 15:22:13",
+        "date": "2026-07-26 16:18:04",
         "hardcoreMode": true,
-        "achievementId": 625120,
-        "title": "Passing the Hammer",
-        "description": "Now the responsibility is yours",
-        "badgeName": "710821",
+        "achievementId": 625122,
+        "title": "A Sacred Bond",
+        "description": "Forge your first pact with an Elemental Beast",
+        "badgeName": "710823",
         "points": 5,
         "trueRatio": 46,
         "type": "progression",
@@ -1588,8 +1588,8 @@
         "gameIcon": "/Images/072312.png",
         "gameId": 11372,
         "consoleName": "PlayStation",
-        "cumulScore": 1043,
-        "badgeUrl": "/Badge/710821.png",
+        "cumulScore": 1053,
+        "badgeUrl": "/Badge/710823.png",
         "gameUrl": "/game/11372"
     },
     "mostRecentGame": {
@@ -1601,15 +1601,15 @@
         "imageTitle": "/Images/046300.png",
         "imageIngame": "/Images/046299.png",
         "imageBoxArt": "/Images/052665.png",
-        "lastPlayed": "2026-07-26 16:05:21",
+        "lastPlayed": "2026-07-26 16:19:21",
         "achievementsTotal": 116,
         "numPossibleAchievements": 116,
         "possibleScore": 928,
-        "numAchieved": 15,
-        "scoreAchieved": 81,
-        "numAchievedHardcore": 15,
-        "scoreAchievedHardcore": 81
+        "numAchieved": 17,
+        "scoreAchieved": 91,
+        "numAchievedHardcore": 17,
+        "scoreAchievedHardcore": 91
     },
-    "points7Days": 111,
-    "points30Days": 150
+    "points7Days": 121,
+    "points30Days": 160
 }
