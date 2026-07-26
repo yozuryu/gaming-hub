@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-07-26T18:03:40.660Z"
+        "extractionTimestamp": "2026-07-26T20:12:34.181Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 40250,
+        "rank": 40257,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 154944,
+        "totalRanked": 154960,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -396,7 +396,7 @@
             "consoleId": 18,
             "consoleName": "Nintendo DS",
             "title": "Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
-            "imageIcon": "/Images/140076.png",
+            "imageIcon": "/Images/149664.png",
             "imageTitle": "/Images/069700.png",
             "imageIngame": "/Images/069701.png",
             "imageBoxArt": "/Images/069702.png",
@@ -468,7 +468,7 @@
             "consoleId": 5,
             "consoleName": "Game Boy Advance",
             "title": "Pokémon FireRed Version [Subset - Professor Oak Challenge]",
-            "imageIcon": "/Images/107706.png",
+            "imageIcon": "/Images/149661.png",
             "imageTitle": "/Images/070724.png",
             "imageIngame": "/Images/070726.png",
             "imageBoxArt": "/Images/070725.png",
@@ -559,7 +559,7 @@
             {
                 "gameId": 22693,
                 "title": "Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
-                "imageIcon": "/Images/140076.png",
+                "imageIcon": "/Images/149664.png",
                 "consoleId": 18,
                 "consoleName": "Nintendo DS",
                 "maxPossible": 389,
@@ -572,7 +572,7 @@
             {
                 "gameId": 23905,
                 "title": "Pokémon FireRed Version [Subset - Professor Oak Challenge]",
-                "imageIcon": "/Images/107706.png",
+                "imageIcon": "/Images/149661.png",
                 "consoleId": 5,
                 "consoleName": "Game Boy Advance",
                 "maxPossible": 179,
@@ -663,7 +663,7 @@
             {
                 "gameId": 22862,
                 "title": "Pokémon HeartGold Version [Subset - Professor Oak Challenge]",
-                "imageIcon": "/Images/140075.png",
+                "imageIcon": "/Images/149663.png",
                 "consoleId": 18,
                 "consoleName": "Nintendo DS",
                 "maxPossible": 391,
@@ -1580,7 +1580,7 @@
         "description": "Forge your first pact with an Elemental Beast",
         "badgeName": "710823",
         "points": 5,
-        "trueRatio": 46,
+        "trueRatio": 43,
         "type": "progression",
         "author": "Altomar",
         "authorUlid": "019346YCAQ6QSZFRH5JA2Z3M9P",
