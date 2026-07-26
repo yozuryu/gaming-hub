@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-07-26T00:03:44.376Z"
+        "extractionTimestamp": "2026-07-26T02:22:10.581Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,13 +8,13 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "🗺️: Boyzby  | Meis Lv.1 - 🗡️: Broken Sword - 😎: 1 - 💋: 0 | <💖> Sod: 😭 - Wyn: 😭 - Kyl: 😭 - Nel: 😭 - Mar: 😭 - Pal: 😭 - Kyo: 😭 - Mil: 😭 - Met: 😭 <💖> | ⏰: 20:23 | Chapter 1",
+        "richPresenceMsg": "🗺️: Road to Boyzby | Meis Lv.1 - 🗡️: M.Sword - 😎: 1 - 💋: 0 | <💖> Sod: 😭 - Wyn: 😭 - Kyl: 😭 - Nel: 😭 - Mar: 😭 - Pal: 😭 - Kyo: 😭 - Mil: 😭 - Met: 😭 <💖> | ⏰: 6:51 | Chapter 1",
         "lastGameId": 11372,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2760,
+        "totalPoints": 2763,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 8570,
+        "totalTruePoints": 8580,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -33,31 +33,31 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "🗺️: Boyzby  | Meis Lv.1 - 🗡️: Broken Sword - 😎: 1 - 💋: 0 | <💖> Sod: 😭 - Wyn: 😭 - Kyl: 😭 - Nel: 😭 - Mar: 😭 - Pal: 😭 - Kyo: 😭 - Mil: 😭 - Met: 😭 <💖> | ⏰: 20:23 | Chapter 1",
-        "richPresenceMsgDate": "2026-07-23 15:23:14",
+        "richPresenceMsg": "🗺️: Road to Boyzby | Meis Lv.1 - 🗡️: M.Sword - 😎: 1 - 💋: 0 | <💖> Sod: 😭 - Wyn: 😭 - Kyl: 😭 - Nel: 😭 - Mar: 😭 - Pal: 😭 - Kyo: 😭 - Mil: 😭 - Met: 😭 <💖> | ⏰: 6:51 | Chapter 1",
+        "richPresenceMsgDate": "2026-07-26 01:01:50",
         "lastGameId": 11372,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2760,
+        "totalPoints": 2763,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 8570,
+        "totalTruePoints": 8580,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 41192,
+        "rank": 41164,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 154808,
+        "totalRanked": 154830,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 2760,
+        "points": 2763,
         "softcorePoints": 1
     },
     "pageAwards": {
@@ -238,14 +238,14 @@
             "imageTitle": "/Images/046300.png",
             "imageIngame": "/Images/046299.png",
             "imageBoxArt": "/Images/052665.png",
-            "lastPlayed": "2026-07-23 15:23:14",
+            "lastPlayed": "2026-07-26 01:01:50",
             "achievementsTotal": 116,
             "numPossibleAchievements": 116,
             "possibleScore": 928,
-            "numAchieved": 2,
-            "scoreAchieved": 8,
-            "numAchievedHardcore": 2,
-            "scoreAchievedHardcore": 8
+            "numAchieved": 3,
+            "scoreAchieved": 11,
+            "numAchievedHardcore": 3,
+            "scoreAchievedHardcore": 11
         },
         {
             "gameId": 11253,
@@ -511,9 +511,9 @@
                 "consoleId": 12,
                 "consoleName": "PlayStation",
                 "maxPossible": 116,
-                "numAwarded": 2,
-                "numAwardedHardcore": 2,
-                "mostRecentAwardedDate": "2026-07-23T15:19:30+00:00",
+                "numAwarded": 3,
+                "numAwardedHardcore": 3,
+                "mostRecentAwardedDate": "2026-07-26T01:01:26+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -1573,14 +1573,14 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-07-23 15:19:30",
+        "date": "2026-07-26 01:01:26",
         "hardcoreMode": true,
-        "achievementId": 625104,
-        "title": "Knight in Shining Armor",
-        "description": "Comfort the mysterious beauty and attract unexpected company",
-        "badgeName": "710812",
+        "achievementId": 625105,
+        "title": "Following the Family Recipe",
+        "description": "Put the family precepts into practice, what could possibly go wrong?",
+        "badgeName": "710813",
         "points": 3,
-        "trueRatio": 13,
+        "trueRatio": 12,
         "type": "missable",
         "author": "Altomar",
         "authorUlid": "019346YCAQ6QSZFRH5JA2Z3M9P",
@@ -1588,8 +1588,8 @@
         "gameIcon": "/Images/072312.png",
         "gameId": 11372,
         "consoleName": "PlayStation",
-        "cumulScore": 975,
-        "badgeUrl": "/Badge/710812.png",
+        "cumulScore": 978,
+        "badgeUrl": "/Badge/710813.png",
         "gameUrl": "/game/11372"
     },
     "mostRecentGame": {
@@ -1601,15 +1601,15 @@
         "imageTitle": "/Images/046300.png",
         "imageIngame": "/Images/046299.png",
         "imageBoxArt": "/Images/052665.png",
-        "lastPlayed": "2026-07-23 15:23:14",
+        "lastPlayed": "2026-07-26 01:01:50",
         "achievementsTotal": 116,
         "numPossibleAchievements": 116,
         "possibleScore": 928,
-        "numAchieved": 2,
-        "scoreAchieved": 8,
-        "numAchievedHardcore": 2,
-        "scoreAchievedHardcore": 8
+        "numAchieved": 3,
+        "scoreAchieved": 11,
+        "numAchievedHardcore": 3,
+        "scoreAchievedHardcore": 11
     },
-    "points7Days": 38,
-    "points30Days": 77
+    "points7Days": 41,
+    "points30Days": 80
 }
