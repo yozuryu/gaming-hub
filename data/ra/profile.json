@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-07-27T00:04:06.609Z"
+        "extractionTimestamp": "2026-07-27T02:29:26.060Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "🗺️: Traveling | Meis Lv.22 - 🗡️: M.Sword - 😎: 5 - 💋: 0 | <💖> Sod: 😭 - Wyn: 😭 - Kyl: 😭 - Nel: 😭 - Mar: 😭 - Pal: 😭 - Kyo: 😭 - Mil: 😭 - Met: 😭 <💖> | ⏰: 7h12:22 | Chapter 4",
-        "lastGameId": 11372,
+        "richPresenceMsg": "Merging Tiles • 🧩 Score=1,458 • Best=0",
+        "lastGameId": 29892,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2843,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "🗺️: Traveling | Meis Lv.22 - 🗡️: M.Sword - 😎: 5 - 💋: 0 | <💖> Sod: 😭 - Wyn: 😭 - Kyl: 😭 - Nel: 😭 - Mar: 😭 - Pal: 😭 - Kyo: 😭 - Mil: 😭 - Met: 😭 <💖> | ⏰: 7h12:22 | Chapter 4",
-        "richPresenceMsgDate": "2026-07-26 16:19:21",
-        "lastGameId": 11372,
+        "richPresenceMsg": "Merging Tiles • 🧩 Score=1,458 • Best=0",
+        "richPresenceMsgDate": "2026-07-27 01:28:37",
+        "lastGameId": 29892,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2843,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 40269,
+        "rank": 40270,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 154992,
+        "totalRanked": 155016,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -229,6 +229,24 @@
         ]
     },
     "recentlyPlayedGames": [
+        {
+            "gameId": 29892,
+            "consoleId": 71,
+            "consoleName": "Arduboy",
+            "title": "2048",
+            "imageIcon": "/Images/120045.png",
+            "imageTitle": "/Images/138679.png",
+            "imageIngame": "/Images/138680.png",
+            "imageBoxArt": "/Images/000002.png",
+            "lastPlayed": "2026-07-27 01:28:37",
+            "achievementsTotal": 13,
+            "numPossibleAchievements": 13,
+            "possibleScore": 91,
+            "numAchieved": 11,
+            "scoreAchieved": 41,
+            "numAchievedHardcore": 11,
+            "scoreAchievedHardcore": 41
+        },
         {
             "gameId": 11372,
             "consoleId": 12,
@@ -480,24 +498,6 @@
             "scoreAchieved": 12,
             "numAchievedHardcore": 9,
             "scoreAchievedHardcore": 12
-        },
-        {
-            "gameId": 9190,
-            "consoleId": 16,
-            "consoleName": "GameCube",
-            "title": "The Legend of Zelda: The Wind Waker",
-            "imageIcon": "/Images/099022.png",
-            "imageTitle": "/Images/132020.png",
-            "imageIngame": "/Images/132021.png",
-            "imageBoxArt": "/Images/050398.png",
-            "lastPlayed": "2026-07-05 04:23:53",
-            "achievementsTotal": 126,
-            "numPossibleAchievements": 126,
-            "possibleScore": 1000,
-            "numAchieved": 1,
-            "scoreAchieved": 5,
-            "numAchievedHardcore": 1,
-            "scoreAchievedHardcore": 5
         }
     ],
     "gameAwardsAndProgress": {
@@ -1593,23 +1593,23 @@
         "gameUrl": "/game/11372"
     },
     "mostRecentGame": {
-        "gameId": 11372,
-        "consoleId": 12,
-        "consoleName": "PlayStation",
-        "title": "Thousand Arms",
-        "imageIcon": "/Images/072312.png",
-        "imageTitle": "/Images/046300.png",
-        "imageIngame": "/Images/046299.png",
-        "imageBoxArt": "/Images/052665.png",
-        "lastPlayed": "2026-07-26 16:19:21",
-        "achievementsTotal": 116,
-        "numPossibleAchievements": 116,
-        "possibleScore": 928,
-        "numAchieved": 17,
-        "scoreAchieved": 91,
-        "numAchievedHardcore": 17,
-        "scoreAchievedHardcore": 91
+        "gameId": 29892,
+        "consoleId": 71,
+        "consoleName": "Arduboy",
+        "title": "2048",
+        "imageIcon": "/Images/120045.png",
+        "imageTitle": "/Images/138679.png",
+        "imageIngame": "/Images/138680.png",
+        "imageBoxArt": "/Images/000002.png",
+        "lastPlayed": "2026-07-27 01:28:37",
+        "achievementsTotal": 13,
+        "numPossibleAchievements": 13,
+        "possibleScore": 91,
+        "numAchieved": 11,
+        "scoreAchieved": 41,
+        "numAchievedHardcore": 11,
+        "scoreAchievedHardcore": 41
     },
-    "points7Days": 121,
+    "points7Days": 116,
     "points30Days": 160
 }
