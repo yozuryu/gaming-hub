@@ -1528,7 +1528,7 @@
             "description": "Complete the Look for Medicine quest",
             "badgeName": "649935",
             "points": 2,
-            "trueRatio": 5,
+            "trueRatio": 4,
             "type": null,
             "author": "Jamiras",
             "authorUlid": "01BJY8JSBTA7NVT0NYSVDCK5TY",
@@ -3599,6 +3599,26 @@
             "cumulScore": 707,
             "badgeUrl": "/Badge/248282.png",
             "gameUrl": "/game/449"
+        },
+        {
+            "date": "2026-04-27 14:22:18",
+            "hardcoreMode": true,
+            "achievementId": 46828,
+            "title": "Line 'Em Up",
+            "description": "Clear 50 lines in Game Type A",
+            "badgeName": "487253",
+            "points": 5,
+            "trueRatio": 5,
+            "type": null,
+            "author": "8BitValky",
+            "authorUlid": "019E7F4X0T7FFJ7F02602HEQ34",
+            "gameTitle": "Tetris",
+            "gameIcon": "/Images/109629.png",
+            "gameId": 508,
+            "consoleName": "Game Boy",
+            "cumulScore": 712,
+            "badgeUrl": "/Badge/487253.png",
+            "gameUrl": "/game/508"
         }
     ]
 }
