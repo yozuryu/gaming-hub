@@ -1,66 +1,6 @@
 {
     "recentAchievements": [
         {
-            "date": "2026-04-28 08:02:20",
-            "hardcoreMode": true,
-            "achievementId": 336905,
-            "title": "Clear 0-5+",
-            "description": "Clear Round 0, Stage 5-or-higher.",
-            "badgeName": "399404",
-            "points": 5,
-            "trueRatio": 7,
-            "type": null,
-            "author": "clymax",
-            "authorUlid": "01GTB4E4772RYPYCHHK6Z5Y6TX",
-            "gameTitle": "Tetris (BPS)",
-            "gameIcon": "/Images/077516.png",
-            "gameId": 2021,
-            "consoleName": "NES/Famicom",
-            "cumulScore": 5,
-            "badgeUrl": "/Badge/399404.png",
-            "gameUrl": "/game/2021"
-        },
-        {
-            "date": "2026-04-28 08:02:21",
-            "hardcoreMode": true,
-            "achievementId": 336906,
-            "title": "Clear 0-9",
-            "description": "Clear Round 0, Stage 9.",
-            "badgeName": "399405",
-            "points": 5,
-            "trueRatio": 7,
-            "type": null,
-            "author": "clymax",
-            "authorUlid": "01GTB4E4772RYPYCHHK6Z5Y6TX",
-            "gameTitle": "Tetris (BPS)",
-            "gameIcon": "/Images/077516.png",
-            "gameId": 2021,
-            "consoleName": "NES/Famicom",
-            "cumulScore": 10,
-            "badgeUrl": "/Badge/399405.png",
-            "gameUrl": "/game/2021"
-        },
-        {
-            "date": "2026-04-28 08:07:01",
-            "hardcoreMode": true,
-            "achievementId": 336910,
-            "title": "Clear 1-0+",
-            "description": "Clear Round 1, Stage 0-or-higher.",
-            "badgeName": "399406",
-            "points": 5,
-            "trueRatio": 8,
-            "type": null,
-            "author": "clymax",
-            "authorUlid": "01GTB4E4772RYPYCHHK6Z5Y6TX",
-            "gameTitle": "Tetris (BPS)",
-            "gameIcon": "/Images/077516.png",
-            "gameId": 2021,
-            "consoleName": "NES/Famicom",
-            "cumulScore": 15,
-            "badgeUrl": "/Badge/399406.png",
-            "gameUrl": "/game/2021"
-        },
-        {
             "date": "2026-04-29 15:31:23",
             "hardcoreMode": true,
             "achievementId": 336911,
@@ -76,7 +16,7 @@
             "gameIcon": "/Images/077516.png",
             "gameId": 2021,
             "consoleName": "NES/Famicom",
-            "cumulScore": 20,
+            "cumulScore": 5,
             "badgeUrl": "/Badge/399407.png",
             "gameUrl": "/game/2021"
         },
@@ -96,7 +36,7 @@
             "gameIcon": "/Images/077516.png",
             "gameId": 2021,
             "consoleName": "NES/Famicom",
-            "cumulScore": 25,
+            "cumulScore": 10,
             "badgeUrl": "/Badge/399409.png",
             "gameUrl": "/game/2021"
         },
@@ -116,7 +56,7 @@
             "gameIcon": "/Images/077516.png",
             "gameId": 2021,
             "consoleName": "NES/Famicom",
-            "cumulScore": 30,
+            "cumulScore": 15,
             "badgeUrl": "/Badge/399410.png",
             "gameUrl": "/game/2021"
         },
@@ -136,7 +76,7 @@
             "gameIcon": "/Images/077516.png",
             "gameId": 2021,
             "consoleName": "NES/Famicom",
-            "cumulScore": 35,
+            "cumulScore": 20,
             "badgeUrl": "/Badge/399413.png",
             "gameUrl": "/game/2021"
         },
@@ -156,7 +96,7 @@
             "gameIcon": "/Images/077516.png",
             "gameId": 2021,
             "consoleName": "NES/Famicom",
-            "cumulScore": 40,
+            "cumulScore": 25,
             "badgeUrl": "/Badge/399412.png",
             "gameUrl": "/game/2021"
         },
@@ -176,7 +116,7 @@
             "gameIcon": "/Images/077516.png",
             "gameId": 2021,
             "consoleName": "NES/Famicom",
-            "cumulScore": 45,
+            "cumulScore": 30,
             "badgeUrl": "/Badge/399415.png",
             "gameUrl": "/game/2021"
         },
@@ -196,28 +136,8 @@
             "gameIcon": "/Images/077516.png",
             "gameId": 2021,
             "consoleName": "NES/Famicom",
-            "cumulScore": 50,
+            "cumulScore": 35,
             "badgeUrl": "/Badge/399416.png",
-            "gameUrl": "/game/2021"
-        },
-        {
-            "date": "2026-04-30 14:44:00",
-            "hardcoreMode": true,
-            "achievementId": 336935,
-            "title": "Clear 5-5+",
-            "description": "Clear Round 5, Stage 5-or-higher.",
-            "badgeName": "399419",
-            "points": 10,
-            "trueRatio": 18,
-            "type": null,
-            "author": "clymax",
-            "authorUlid": "01GTB4E4772RYPYCHHK6Z5Y6TX",
-            "gameTitle": "Tetris (BPS)",
-            "gameIcon": "/Images/077516.png",
-            "gameId": 2021,
-            "consoleName": "NES/Famicom",
-            "cumulScore": 60,
-            "badgeUrl": "/Badge/399419.png",
             "gameUrl": "/game/2021"
         },
         {
@@ -236,8 +156,28 @@
             "gameIcon": "/Images/077516.png",
             "gameId": 2021,
             "consoleName": "NES/Famicom",
-            "cumulScore": 65,
+            "cumulScore": 40,
             "badgeUrl": "/Badge/399418.png",
+            "gameUrl": "/game/2021"
+        },
+        {
+            "date": "2026-04-30 14:44:00",
+            "hardcoreMode": true,
+            "achievementId": 336935,
+            "title": "Clear 5-5+",
+            "description": "Clear Round 5, Stage 5-or-higher.",
+            "badgeName": "399419",
+            "points": 10,
+            "trueRatio": 18,
+            "type": null,
+            "author": "clymax",
+            "authorUlid": "01GTB4E4772RYPYCHHK6Z5Y6TX",
+            "gameTitle": "Tetris (BPS)",
+            "gameIcon": "/Images/077516.png",
+            "gameId": 2021,
+            "consoleName": "NES/Famicom",
+            "cumulScore": 50,
+            "badgeUrl": "/Badge/399419.png",
             "gameUrl": "/game/2021"
         },
         {
@@ -256,7 +196,7 @@
             "gameIcon": "/Images/105046.png",
             "gameId": 449,
             "consoleName": "SNES/Super Famicom",
-            "cumulScore": 70,
+            "cumulScore": 55,
             "badgeUrl": "/Badge/248246.png",
             "gameUrl": "/game/449"
         },
@@ -276,7 +216,7 @@
             "gameIcon": "/Images/080862.png",
             "gameId": 18157,
             "consoleName": "PlayStation Portable",
-            "cumulScore": 71,
+            "cumulScore": 56,
             "badgeUrl": "/Badge/420782.png",
             "gameUrl": "/game/18157"
         },
@@ -296,7 +236,7 @@
             "gameIcon": "/Images/080862.png",
             "gameId": 18157,
             "consoleName": "PlayStation Portable",
-            "cumulScore": 72,
+            "cumulScore": 57,
             "badgeUrl": "/Badge/420771.png",
             "gameUrl": "/game/18157"
         },
@@ -316,7 +256,7 @@
             "gameIcon": "/Images/080862.png",
             "gameId": 18157,
             "consoleName": "PlayStation Portable",
-            "cumulScore": 74,
+            "cumulScore": 59,
             "badgeUrl": "/Badge/420791.png",
             "gameUrl": "/game/18157"
         },
@@ -336,7 +276,7 @@
             "gameIcon": "/Images/080862.png",
             "gameId": 18157,
             "consoleName": "PlayStation Portable",
-            "cumulScore": 76,
+            "cumulScore": 61,
             "badgeUrl": "/Badge/420761.png",
             "gameUrl": "/game/18157"
         },
@@ -356,7 +296,7 @@
             "gameIcon": "/Images/040295.png",
             "gameId": 9931,
             "consoleName": "Nintendo DS",
-            "cumulScore": 77,
+            "cumulScore": 62,
             "badgeUrl": "/Badge/152256.png",
             "gameUrl": "/game/9931"
         },
@@ -376,7 +316,7 @@
             "gameIcon": "/Images/040295.png",
             "gameId": 9931,
             "consoleName": "Nintendo DS",
-            "cumulScore": 82,
+            "cumulScore": 67,
             "badgeUrl": "/Badge/152251.png",
             "gameUrl": "/game/9931"
         },
@@ -396,7 +336,7 @@
             "gameIcon": "/Images/081159.png",
             "gameId": 10433,
             "consoleName": "PlayStation",
-            "cumulScore": 87,
+            "cumulScore": 72,
             "badgeUrl": "/Badge/324716.png",
             "gameUrl": "/game/10433"
         },
@@ -416,7 +356,7 @@
             "gameIcon": "/Images/081159.png",
             "gameId": 10433,
             "consoleName": "PlayStation",
-            "cumulScore": 92,
+            "cumulScore": 77,
             "badgeUrl": "/Badge/324952.png",
             "gameUrl": "/game/10433"
         },
@@ -436,7 +376,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 94,
+            "cumulScore": 79,
             "badgeUrl": "/Badge/405204.png",
             "gameUrl": "/game/2873"
         },
@@ -456,7 +396,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 97,
+            "cumulScore": 82,
             "badgeUrl": "/Badge/405205.png",
             "gameUrl": "/game/2873"
         },
@@ -476,7 +416,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 102,
+            "cumulScore": 87,
             "badgeUrl": "/Badge/405208.png",
             "gameUrl": "/game/2873"
         },
@@ -496,7 +436,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 107,
+            "cumulScore": 92,
             "badgeUrl": "/Badge/405207.png",
             "gameUrl": "/game/2873"
         },
@@ -516,7 +456,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 110,
+            "cumulScore": 95,
             "badgeUrl": "/Badge/405211.png",
             "gameUrl": "/game/2873"
         },
@@ -536,7 +476,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 112,
+            "cumulScore": 97,
             "badgeUrl": "/Badge/405210.png",
             "gameUrl": "/game/2873"
         },
@@ -556,7 +496,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 114,
+            "cumulScore": 99,
             "badgeUrl": "/Badge/405213.png",
             "gameUrl": "/game/2873"
         },
@@ -576,7 +516,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 124,
+            "cumulScore": 109,
             "badgeUrl": "/Badge/405194.png",
             "gameUrl": "/game/2873"
         },
@@ -596,7 +536,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 127,
+            "cumulScore": 112,
             "badgeUrl": "/Badge/405214.png",
             "gameUrl": "/game/2873"
         },
@@ -616,7 +556,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 129,
+            "cumulScore": 114,
             "badgeUrl": "/Badge/405216.png",
             "gameUrl": "/game/2873"
         },
@@ -636,7 +576,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 132,
+            "cumulScore": 117,
             "badgeUrl": "/Badge/405217.png",
             "gameUrl": "/game/2873"
         },
@@ -656,7 +596,7 @@
             "gameIcon": "/Images/077516.png",
             "gameId": 2021,
             "consoleName": "NES/Famicom",
-            "cumulScore": 142,
+            "cumulScore": 127,
             "badgeUrl": "/Badge/399420.png",
             "gameUrl": "/game/2021"
         },
@@ -676,7 +616,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 143,
+            "cumulScore": 128,
             "badgeUrl": "/Badge/331422.png",
             "gameUrl": "/game/22693"
         },
@@ -696,7 +636,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 144,
+            "cumulScore": 129,
             "badgeUrl": "/Badge/331430.png",
             "gameUrl": "/game/22693"
         },
@@ -716,7 +656,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 145,
+            "cumulScore": 130,
             "badgeUrl": "/Badge/331432.png",
             "gameUrl": "/game/22693"
         },
@@ -736,7 +676,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 148,
+            "cumulScore": 133,
             "badgeUrl": "/Badge/405220.png",
             "gameUrl": "/game/2873"
         },
@@ -756,7 +696,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 150,
+            "cumulScore": 135,
             "badgeUrl": "/Badge/405219.png",
             "gameUrl": "/game/2873"
         },
@@ -776,7 +716,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 155,
+            "cumulScore": 140,
             "badgeUrl": "/Badge/405223.png",
             "gameUrl": "/game/2873"
         },
@@ -796,7 +736,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 160,
+            "cumulScore": 145,
             "badgeUrl": "/Badge/405222.png",
             "gameUrl": "/game/2873"
         },
@@ -816,7 +756,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 161,
+            "cumulScore": 146,
             "badgeUrl": "/Badge/331434.png",
             "gameUrl": "/game/22693"
         },
@@ -836,7 +776,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 162,
+            "cumulScore": 147,
             "badgeUrl": "/Badge/331425.png",
             "gameUrl": "/game/22693"
         },
@@ -856,7 +796,7 @@
             "gameIcon": "/Images/107582.png",
             "gameId": 32928,
             "consoleName": "Game Boy",
-            "cumulScore": 163,
+            "cumulScore": 148,
             "badgeUrl": "/Badge/563755.png",
             "gameUrl": "/game/32928"
         },
@@ -876,8 +816,28 @@
             "gameIcon": "/Images/107582.png",
             "gameId": 32928,
             "consoleName": "Game Boy",
-            "cumulScore": 164,
+            "cumulScore": 149,
             "badgeUrl": "/Badge/563760.png",
+            "gameUrl": "/game/32928"
+        },
+        {
+            "date": "2026-05-12 01:37:32",
+            "hardcoreMode": true,
+            "achievementId": 498275,
+            "title": "I Wanna Be The Very Best",
+            "description": "Complete your Pokémon journey.",
+            "badgeName": "563753",
+            "points": 1,
+            "trueRatio": 1,
+            "type": "win_condition",
+            "author": "Rubicate",
+            "authorUlid": "01EC5YRKYGJWWYRK4RYHG697GY",
+            "gameTitle": "~Hack~ Pokémon Professor Oak Challenge",
+            "gameIcon": "/Images/107582.png",
+            "gameId": 32928,
+            "consoleName": "Game Boy",
+            "cumulScore": 150,
+            "badgeUrl": "/Badge/563753.png",
             "gameUrl": "/game/32928"
         },
         {
@@ -896,29 +856,9 @@
             "gameIcon": "/Images/113795.png",
             "gameId": 33627,
             "consoleName": "Events",
-            "cumulScore": 165,
+            "cumulScore": 151,
             "badgeUrl": "/Badge/563753.png",
             "gameUrl": "/game/33627"
-        },
-        {
-            "date": "2026-05-12 01:37:32",
-            "hardcoreMode": true,
-            "achievementId": 498275,
-            "title": "I Wanna Be The Very Best",
-            "description": "Complete your Pokémon journey.",
-            "badgeName": "563753",
-            "points": 1,
-            "trueRatio": 1,
-            "type": "win_condition",
-            "author": "Rubicate",
-            "authorUlid": "01EC5YRKYGJWWYRK4RYHG697GY",
-            "gameTitle": "~Hack~ Pokémon Professor Oak Challenge",
-            "gameIcon": "/Images/107582.png",
-            "gameId": 32928,
-            "consoleName": "Game Boy",
-            "cumulScore": 166,
-            "badgeUrl": "/Badge/563753.png",
-            "gameUrl": "/game/32928"
         },
         {
             "date": "2026-05-12 13:26:37",
@@ -936,7 +876,7 @@
             "gameIcon": "/Images/107582.png",
             "gameId": 32928,
             "consoleName": "Game Boy",
-            "cumulScore": 167,
+            "cumulScore": 152,
             "badgeUrl": "/Badge/563757.png",
             "gameUrl": "/game/32928"
         },
@@ -956,7 +896,7 @@
             "gameIcon": "/Images/107582.png",
             "gameId": 32928,
             "consoleName": "Game Boy",
-            "cumulScore": 168,
+            "cumulScore": 153,
             "badgeUrl": "/Badge/563754.png",
             "gameUrl": "/game/32928"
         },
@@ -976,7 +916,7 @@
             "gameIcon": "/Images/107582.png",
             "gameId": 32928,
             "consoleName": "Game Boy",
-            "cumulScore": 169,
+            "cumulScore": 154,
             "badgeUrl": "/Badge/563758.png",
             "gameUrl": "/game/32928"
         },
@@ -996,7 +936,7 @@
             "gameIcon": "/Images/107582.png",
             "gameId": 32928,
             "consoleName": "Game Boy",
-            "cumulScore": 170,
+            "cumulScore": 155,
             "badgeUrl": "/Badge/563756.png",
             "gameUrl": "/game/32928"
         },
@@ -1016,7 +956,7 @@
             "gameIcon": "/Images/107582.png",
             "gameId": 32928,
             "consoleName": "Game Boy",
-            "cumulScore": 171,
+            "cumulScore": 156,
             "badgeUrl": "/Badge/563759.png",
             "gameUrl": "/game/32928"
         },
@@ -1036,7 +976,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 173,
+            "cumulScore": 158,
             "badgeUrl": "/Badge/405225.png",
             "gameUrl": "/game/2873"
         },
@@ -1056,7 +996,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 176,
+            "cumulScore": 161,
             "badgeUrl": "/Badge/405226.png",
             "gameUrl": "/game/2873"
         },
@@ -1076,7 +1016,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 178,
+            "cumulScore": 163,
             "badgeUrl": "/Badge/405228.png",
             "gameUrl": "/game/2873"
         },
@@ -1096,7 +1036,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 181,
+            "cumulScore": 166,
             "badgeUrl": "/Badge/405229.png",
             "gameUrl": "/game/2873"
         },
@@ -1116,7 +1056,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 183,
+            "cumulScore": 168,
             "badgeUrl": "/Badge/405231.png",
             "gameUrl": "/game/2873"
         },
@@ -1136,7 +1076,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 186,
+            "cumulScore": 171,
             "badgeUrl": "/Badge/405232.png",
             "gameUrl": "/game/2873"
         },
@@ -1156,7 +1096,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 188,
+            "cumulScore": 173,
             "badgeUrl": "/Badge/405234.png",
             "gameUrl": "/game/2873"
         },
@@ -1176,7 +1116,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 191,
+            "cumulScore": 176,
             "badgeUrl": "/Badge/405235.png",
             "gameUrl": "/game/2873"
         },
@@ -1196,7 +1136,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 196,
+            "cumulScore": 181,
             "badgeUrl": "/Badge/405238.png",
             "gameUrl": "/game/2873"
         },
@@ -1216,7 +1156,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 201,
+            "cumulScore": 186,
             "badgeUrl": "/Badge/405237.png",
             "gameUrl": "/game/2873"
         },
@@ -1236,7 +1176,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 206,
+            "cumulScore": 191,
             "badgeUrl": "/Badge/405197.png",
             "gameUrl": "/game/2873"
         },
@@ -1256,7 +1196,7 @@
             "gameIcon": "/Images/148038.png",
             "gameId": 16084,
             "consoleName": "Game Boy",
-            "cumulScore": 207,
+            "cumulScore": 192,
             "badgeUrl": "/Badge/313530.png",
             "gameUrl": "/game/16084"
         },
@@ -1276,7 +1216,7 @@
             "gameIcon": "/Images/149658.png",
             "gameId": 724,
             "consoleName": "Game Boy",
-            "cumulScore": 212,
+            "cumulScore": 197,
             "badgeUrl": "/Badge/120736.png",
             "gameUrl": "/game/724"
         },
@@ -1296,7 +1236,7 @@
             "gameIcon": "/Images/149658.png",
             "gameId": 724,
             "consoleName": "Game Boy",
-            "cumulScore": 214,
+            "cumulScore": 199,
             "badgeUrl": "/Badge/120734.png",
             "gameUrl": "/game/724"
         },
@@ -1316,7 +1256,7 @@
             "gameIcon": "/Images/148038.png",
             "gameId": 16084,
             "consoleName": "Game Boy",
-            "cumulScore": 215,
+            "cumulScore": 200,
             "badgeUrl": "/Badge/313539.png",
             "gameUrl": "/game/16084"
         },
@@ -1336,7 +1276,7 @@
             "gameIcon": "/Images/148038.png",
             "gameId": 16084,
             "consoleName": "Game Boy",
-            "cumulScore": 216,
+            "cumulScore": 201,
             "badgeUrl": "/Badge/313542.png",
             "gameUrl": "/game/16084"
         },
@@ -1356,7 +1296,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 217,
+            "cumulScore": 202,
             "badgeUrl": "/Badge/331436.png",
             "gameUrl": "/game/22693"
         },
@@ -1376,7 +1316,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 218,
+            "cumulScore": 203,
             "badgeUrl": "/Badge/331439.png",
             "gameUrl": "/game/22693"
         },
@@ -1396,7 +1336,7 @@
             "gameIcon": "/Images/149658.png",
             "gameId": 724,
             "consoleName": "Game Boy",
-            "cumulScore": 219,
+            "cumulScore": 204,
             "badgeUrl": "/Badge/120732.png",
             "gameUrl": "/game/724"
         },
@@ -1416,7 +1356,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 221,
+            "cumulScore": 206,
             "badgeUrl": "/Badge/405240.png",
             "gameUrl": "/game/2873"
         },
@@ -1436,7 +1376,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 224,
+            "cumulScore": 209,
             "badgeUrl": "/Badge/405241.png",
             "gameUrl": "/game/2873"
         },
@@ -1456,7 +1396,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 227,
+            "cumulScore": 212,
             "badgeUrl": "/Badge/405244.png",
             "gameUrl": "/game/2873"
         },
@@ -1476,7 +1416,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 229,
+            "cumulScore": 214,
             "badgeUrl": "/Badge/405243.png",
             "gameUrl": "/game/2873"
         },
@@ -1496,7 +1436,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 232,
+            "cumulScore": 217,
             "badgeUrl": "/Badge/405247.png",
             "gameUrl": "/game/2873"
         },
@@ -1516,7 +1456,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 234,
+            "cumulScore": 219,
             "badgeUrl": "/Badge/405246.png",
             "gameUrl": "/game/2873"
         },
@@ -1536,7 +1476,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 236,
+            "cumulScore": 221,
             "badgeUrl": "/Badge/405249.png",
             "gameUrl": "/game/2873"
         },
@@ -1556,7 +1496,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 239,
+            "cumulScore": 224,
             "badgeUrl": "/Badge/405250.png",
             "gameUrl": "/game/2873"
         },
@@ -1576,7 +1516,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 244,
+            "cumulScore": 229,
             "badgeUrl": "/Badge/405253.png",
             "gameUrl": "/game/2873"
         },
@@ -1596,7 +1536,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 249,
+            "cumulScore": 234,
             "badgeUrl": "/Badge/405252.png",
             "gameUrl": "/game/2873"
         },
@@ -1616,7 +1556,7 @@
             "gameIcon": "/Images/113907.png",
             "gameId": 2873,
             "consoleName": "PlayStation",
-            "cumulScore": 254,
+            "cumulScore": 239,
             "badgeUrl": "/Badge/405200.png",
             "gameUrl": "/game/2873"
         },
@@ -1636,7 +1576,7 @@
             "gameIcon": "/Images/149658.png",
             "gameId": 724,
             "consoleName": "Game Boy",
-            "cumulScore": 259,
+            "cumulScore": 244,
             "badgeUrl": "/Badge/120735.png",
             "gameUrl": "/game/724"
         },
@@ -1656,7 +1596,7 @@
             "gameIcon": "/Images/148038.png",
             "gameId": 16084,
             "consoleName": "Game Boy",
-            "cumulScore": 260,
+            "cumulScore": 245,
             "badgeUrl": "/Badge/313544.png",
             "gameUrl": "/game/16084"
         },
@@ -1676,7 +1616,7 @@
             "gameIcon": "/Images/148038.png",
             "gameId": 16084,
             "consoleName": "Game Boy",
-            "cumulScore": 261,
+            "cumulScore": 246,
             "badgeUrl": "/Badge/313549.png",
             "gameUrl": "/game/16084"
         },
@@ -1696,7 +1636,7 @@
             "gameIcon": "/Images/148038.png",
             "gameId": 16084,
             "consoleName": "Game Boy",
-            "cumulScore": 262,
+            "cumulScore": 247,
             "badgeUrl": "/Badge/313547.png",
             "gameUrl": "/game/16084"
         },
@@ -1716,7 +1656,7 @@
             "gameIcon": "/Images/149658.png",
             "gameId": 724,
             "consoleName": "Game Boy",
-            "cumulScore": 267,
+            "cumulScore": 252,
             "badgeUrl": "/Badge/120905.png",
             "gameUrl": "/game/724"
         },
@@ -1736,7 +1676,7 @@
             "gameIcon": "/Images/148038.png",
             "gameId": 16084,
             "consoleName": "Game Boy",
-            "cumulScore": 268,
+            "cumulScore": 253,
             "badgeUrl": "/Badge/313536.png",
             "gameUrl": "/game/16084"
         },
@@ -1756,7 +1696,7 @@
             "gameIcon": "/Images/148038.png",
             "gameId": 16084,
             "consoleName": "Game Boy",
-            "cumulScore": 269,
+            "cumulScore": 254,
             "badgeUrl": "/Badge/313546.png",
             "gameUrl": "/game/16084"
         },
@@ -1776,7 +1716,7 @@
             "gameIcon": "/Images/149658.png",
             "gameId": 724,
             "consoleName": "Game Boy",
-            "cumulScore": 274,
+            "cumulScore": 259,
             "badgeUrl": "/Badge/120717.png",
             "gameUrl": "/game/724"
         },
@@ -1796,7 +1736,7 @@
             "gameIcon": "/Images/148038.png",
             "gameId": 16084,
             "consoleName": "Game Boy",
-            "cumulScore": 275,
+            "cumulScore": 260,
             "badgeUrl": "/Badge/313533.png",
             "gameUrl": "/game/16084"
         },
@@ -1816,7 +1756,7 @@
             "gameIcon": "/Images/148038.png",
             "gameId": 16084,
             "consoleName": "Game Boy",
-            "cumulScore": 277,
+            "cumulScore": 262,
             "badgeUrl": "/Badge/313531.png",
             "gameUrl": "/game/16084"
         },
@@ -1836,7 +1776,7 @@
             "gameIcon": "/Images/149658.png",
             "gameId": 724,
             "consoleName": "Game Boy",
-            "cumulScore": 282,
+            "cumulScore": 267,
             "badgeUrl": "/Badge/120752.png",
             "gameUrl": "/game/724"
         },
@@ -1856,7 +1796,7 @@
             "gameIcon": "/Images/148243.png",
             "gameId": 24140,
             "consoleName": "Game Boy Color",
-            "cumulScore": 283,
+            "cumulScore": 268,
             "badgeUrl": "/Badge/348944.png",
             "gameUrl": "/game/24140"
         },
@@ -1876,7 +1816,7 @@
             "gameIcon": "/Images/148038.png",
             "gameId": 16084,
             "consoleName": "Game Boy",
-            "cumulScore": 285,
+            "cumulScore": 270,
             "badgeUrl": "/Badge/313537.png",
             "gameUrl": "/game/16084"
         },
@@ -1896,7 +1836,7 @@
             "gameIcon": "/Images/148038.png",
             "gameId": 16084,
             "consoleName": "Game Boy",
-            "cumulScore": 288,
+            "cumulScore": 273,
             "badgeUrl": "/Badge/313538.png",
             "gameUrl": "/game/16084"
         },
@@ -1916,7 +1856,7 @@
             "gameIcon": "/Images/148038.png",
             "gameId": 16084,
             "consoleName": "Game Boy",
-            "cumulScore": 290,
+            "cumulScore": 275,
             "badgeUrl": "/Badge/313534.png",
             "gameUrl": "/game/16084"
         },
@@ -1936,7 +1876,7 @@
             "gameIcon": "/Images/093528.png",
             "gameId": 27590,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 291,
+            "cumulScore": 276,
             "badgeUrl": "/Badge/423735.png",
             "gameUrl": "/game/27590"
         },
@@ -1956,7 +1896,7 @@
             "gameIcon": "/Images/093528.png",
             "gameId": 27590,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 294,
+            "cumulScore": 279,
             "badgeUrl": "/Badge/423698.png",
             "gameUrl": "/game/27590"
         },
@@ -1976,7 +1916,7 @@
             "gameIcon": "/Images/148038.png",
             "gameId": 16084,
             "consoleName": "Game Boy",
-            "cumulScore": 297,
+            "cumulScore": 282,
             "badgeUrl": "/Badge/313535.png",
             "gameUrl": "/game/16084"
         },
@@ -1996,7 +1936,7 @@
             "gameIcon": "/Images/106550.png",
             "gameId": 32817,
             "consoleName": "Game Boy Color",
-            "cumulScore": 299,
+            "cumulScore": 284,
             "badgeUrl": "/Badge/558146.png",
             "gameUrl": "/game/32817"
         },
@@ -2016,7 +1956,7 @@
             "gameIcon": "/Images/106550.png",
             "gameId": 32817,
             "consoleName": "Game Boy Color",
-            "cumulScore": 301,
+            "cumulScore": 286,
             "badgeUrl": "/Badge/558147.png",
             "gameUrl": "/game/32817"
         },
@@ -2036,7 +1976,7 @@
             "gameIcon": "/Images/113795.png",
             "gameId": 33627,
             "consoleName": "Events",
-            "cumulScore": 302,
+            "cumulScore": 287,
             "badgeUrl": "/Badge/558148.png",
             "gameUrl": "/game/33627"
         },
@@ -2056,7 +1996,7 @@
             "gameIcon": "/Images/106550.png",
             "gameId": 32817,
             "consoleName": "Game Boy Color",
-            "cumulScore": 305,
+            "cumulScore": 290,
             "badgeUrl": "/Badge/558148.png",
             "gameUrl": "/game/32817"
         },
@@ -2076,7 +2016,7 @@
             "gameIcon": "/Images/106550.png",
             "gameId": 32817,
             "consoleName": "Game Boy Color",
-            "cumulScore": 307,
+            "cumulScore": 292,
             "badgeUrl": "/Badge/558149.png",
             "gameUrl": "/game/32817"
         },
@@ -2096,7 +2036,7 @@
             "gameIcon": "/Images/124659.png",
             "gameId": 38014,
             "consoleName": "Game Boy Color",
-            "cumulScore": 309,
+            "cumulScore": 294,
             "badgeUrl": "/Badge/662982.png",
             "gameUrl": "/game/38014"
         },
@@ -2116,7 +2056,7 @@
             "gameIcon": "/Images/124659.png",
             "gameId": 38014,
             "consoleName": "Game Boy Color",
-            "cumulScore": 311,
+            "cumulScore": 296,
             "badgeUrl": "/Badge/662983.png",
             "gameUrl": "/game/38014"
         },
@@ -2136,7 +2076,7 @@
             "gameIcon": "/Images/106550.png",
             "gameId": 32817,
             "consoleName": "Game Boy Color",
-            "cumulScore": 314,
+            "cumulScore": 299,
             "badgeUrl": "/Badge/558150.png",
             "gameUrl": "/game/32817"
         },
@@ -2156,7 +2096,7 @@
             "gameIcon": "/Images/106550.png",
             "gameId": 32817,
             "consoleName": "Game Boy Color",
-            "cumulScore": 319,
+            "cumulScore": 304,
             "badgeUrl": "/Badge/558151.png",
             "gameUrl": "/game/32817"
         },
@@ -2176,7 +2116,7 @@
             "gameIcon": "/Images/105046.png",
             "gameId": 449,
             "consoleName": "SNES/Super Famicom",
-            "cumulScore": 324,
+            "cumulScore": 309,
             "badgeUrl": "/Badge/248245.png",
             "gameUrl": "/game/449"
         },
@@ -2196,7 +2136,7 @@
             "gameIcon": "/Images/049638.png",
             "gameId": 11274,
             "consoleName": "PlayStation",
-            "cumulScore": 329,
+            "cumulScore": 314,
             "badgeUrl": "/Badge/364564.png",
             "gameUrl": "/game/11274"
         },
@@ -2216,7 +2156,7 @@
             "gameIcon": "/Images/049638.png",
             "gameId": 11274,
             "consoleName": "PlayStation",
-            "cumulScore": 334,
+            "cumulScore": 319,
             "badgeUrl": "/Badge/364557.png",
             "gameUrl": "/game/11274"
         },
@@ -2236,7 +2176,7 @@
             "gameIcon": "/Images/115591.png",
             "gameId": 34313,
             "consoleName": "Game Boy",
-            "cumulScore": 336,
+            "cumulScore": 321,
             "badgeUrl": "/Badge/618840.png",
             "gameUrl": "/game/34313"
         },
@@ -2256,7 +2196,7 @@
             "gameIcon": "/Images/115591.png",
             "gameId": 34313,
             "consoleName": "Game Boy",
-            "cumulScore": 341,
+            "cumulScore": 326,
             "badgeUrl": "/Badge/618834.png",
             "gameUrl": "/game/34313"
         },
@@ -2276,7 +2216,7 @@
             "gameIcon": "/Images/101115.png",
             "gameId": 30725,
             "consoleName": "Game Boy Color",
-            "cumulScore": 342,
+            "cumulScore": 327,
             "badgeUrl": "/Badge/522827.png",
             "gameUrl": "/game/30725"
         },
@@ -2296,7 +2236,7 @@
             "gameIcon": "/Images/066649.png",
             "gameId": 6070,
             "consoleName": "NES/Famicom",
-            "cumulScore": 343,
+            "cumulScore": 328,
             "badgeUrl": "/Badge/37911.png",
             "gameUrl": "/game/6070"
         },
@@ -2316,7 +2256,7 @@
             "gameIcon": "/Images/066649.png",
             "gameId": 6070,
             "consoleName": "NES/Famicom",
-            "cumulScore": 345,
+            "cumulScore": 330,
             "badgeUrl": "/Badge/37912.png",
             "gameUrl": "/game/6070"
         },
@@ -2336,7 +2276,7 @@
             "gameIcon": "/Images/066649.png",
             "gameId": 6070,
             "consoleName": "NES/Famicom",
-            "cumulScore": 348,
+            "cumulScore": 333,
             "badgeUrl": "/Badge/37913.png",
             "gameUrl": "/game/6070"
         },
@@ -2356,7 +2296,7 @@
             "gameIcon": "/Images/066649.png",
             "gameId": 6070,
             "consoleName": "NES/Famicom",
-            "cumulScore": 352,
+            "cumulScore": 337,
             "badgeUrl": "/Badge/37914.png",
             "gameUrl": "/game/6070"
         },
@@ -2376,7 +2316,7 @@
             "gameIcon": "/Images/066649.png",
             "gameId": 6070,
             "consoleName": "NES/Famicom",
-            "cumulScore": 357,
+            "cumulScore": 342,
             "badgeUrl": "/Badge/37915.png",
             "gameUrl": "/game/6070"
         },
@@ -2396,7 +2336,7 @@
             "gameIcon": "/Images/066649.png",
             "gameId": 6070,
             "consoleName": "NES/Famicom",
-            "cumulScore": 362,
+            "cumulScore": 347,
             "badgeUrl": "/Badge/37916.png",
             "gameUrl": "/game/6070"
         },
@@ -2416,7 +2356,7 @@
             "gameIcon": "/Images/066649.png",
             "gameId": 6070,
             "consoleName": "NES/Famicom",
-            "cumulScore": 372,
+            "cumulScore": 357,
             "badgeUrl": "/Badge/37917.png",
             "gameUrl": "/game/6070"
         },
@@ -2436,7 +2376,7 @@
             "gameIcon": "/Images/066649.png",
             "gameId": 6070,
             "consoleName": "NES/Famicom",
-            "cumulScore": 382,
+            "cumulScore": 367,
             "badgeUrl": "/Badge/37918.png",
             "gameUrl": "/game/6070"
         },
@@ -2456,7 +2396,7 @@
             "gameIcon": "/Images/115591.png",
             "gameId": 34313,
             "consoleName": "Game Boy",
-            "cumulScore": 387,
+            "cumulScore": 372,
             "badgeUrl": "/Badge/618838.png",
             "gameUrl": "/game/34313"
         },
@@ -2476,7 +2416,7 @@
             "gameIcon": "/Images/066649.png",
             "gameId": 6070,
             "consoleName": "NES/Famicom",
-            "cumulScore": 412,
+            "cumulScore": 397,
             "badgeUrl": "/Badge/37955.png",
             "gameUrl": "/game/6070"
         },
@@ -2496,7 +2436,7 @@
             "gameIcon": "/Images/066649.png",
             "gameId": 6070,
             "consoleName": "NES/Famicom",
-            "cumulScore": 462,
+            "cumulScore": 447,
             "badgeUrl": "/Badge/37956.png",
             "gameUrl": "/game/6070"
         },
@@ -2516,7 +2456,7 @@
             "gameIcon": "/Images/149663.png",
             "gameId": 22862,
             "consoleName": "Nintendo DS",
-            "cumulScore": 463,
+            "cumulScore": 448,
             "badgeUrl": "/Badge/334138.png",
             "gameUrl": "/game/22862"
         },
@@ -2536,7 +2476,7 @@
             "gameIcon": "/Images/120045.png",
             "gameId": 29892,
             "consoleName": "Arduboy",
-            "cumulScore": 464,
+            "cumulScore": 449,
             "badgeUrl": "/Badge/633144.png",
             "gameUrl": "/game/29892"
         },
@@ -2556,7 +2496,7 @@
             "gameIcon": "/Images/120045.png",
             "gameId": 29892,
             "consoleName": "Arduboy",
-            "cumulScore": 465,
+            "cumulScore": 450,
             "badgeUrl": "/Badge/633145.png",
             "gameUrl": "/game/29892"
         },
@@ -2576,7 +2516,7 @@
             "gameIcon": "/Images/120045.png",
             "gameId": 29892,
             "consoleName": "Arduboy",
-            "cumulScore": 467,
+            "cumulScore": 452,
             "badgeUrl": "/Badge/633146.png",
             "gameUrl": "/game/29892"
         },
@@ -2596,7 +2536,7 @@
             "gameIcon": "/Images/120045.png",
             "gameId": 29892,
             "consoleName": "Arduboy",
-            "cumulScore": 469,
+            "cumulScore": 454,
             "badgeUrl": "/Badge/633147.png",
             "gameUrl": "/game/29892"
         },
@@ -2616,7 +2556,7 @@
             "gameIcon": "/Images/120045.png",
             "gameId": 29892,
             "consoleName": "Arduboy",
-            "cumulScore": 472,
+            "cumulScore": 457,
             "badgeUrl": "/Badge/633148.png",
             "gameUrl": "/game/29892"
         },
@@ -2636,7 +2576,7 @@
             "gameIcon": "/Images/120045.png",
             "gameId": 29892,
             "consoleName": "Arduboy",
-            "cumulScore": 475,
+            "cumulScore": 460,
             "badgeUrl": "/Badge/633149.png",
             "gameUrl": "/game/29892"
         },
@@ -2656,7 +2596,7 @@
             "gameIcon": "/Images/120045.png",
             "gameId": 29892,
             "consoleName": "Arduboy",
-            "cumulScore": 479,
+            "cumulScore": 464,
             "badgeUrl": "/Badge/633150.png",
             "gameUrl": "/game/29892"
         },
@@ -2676,7 +2616,7 @@
             "gameIcon": "/Images/120045.png",
             "gameId": 29892,
             "consoleName": "Arduboy",
-            "cumulScore": 484,
+            "cumulScore": 469,
             "badgeUrl": "/Badge/633151.png",
             "gameUrl": "/game/29892"
         },
@@ -2696,7 +2636,7 @@
             "gameIcon": "/Images/120045.png",
             "gameId": 29892,
             "consoleName": "Arduboy",
-            "cumulScore": 494,
+            "cumulScore": 479,
             "badgeUrl": "/Badge/633152.png",
             "gameUrl": "/game/29892"
         },
@@ -2716,7 +2656,7 @@
             "gameIcon": "/Images/068075.png",
             "gameId": 19291,
             "consoleName": "WASM-4",
-            "cumulScore": 495,
+            "cumulScore": 480,
             "badgeUrl": "/Badge/321358.png",
             "gameUrl": "/game/19291"
         },
@@ -2736,7 +2676,7 @@
             "gameIcon": "/Images/068075.png",
             "gameId": 19291,
             "consoleName": "WASM-4",
-            "cumulScore": 496,
+            "cumulScore": 481,
             "badgeUrl": "/Badge/321359.png",
             "gameUrl": "/game/19291"
         },
@@ -2756,7 +2696,7 @@
             "gameIcon": "/Images/068075.png",
             "gameId": 19291,
             "consoleName": "WASM-4",
-            "cumulScore": 497,
+            "cumulScore": 482,
             "badgeUrl": "/Badge/321360.png",
             "gameUrl": "/game/19291"
         },
@@ -2776,7 +2716,7 @@
             "gameIcon": "/Images/068075.png",
             "gameId": 19291,
             "consoleName": "WASM-4",
-            "cumulScore": 498,
+            "cumulScore": 483,
             "badgeUrl": "/Badge/321361.png",
             "gameUrl": "/game/19291"
         },
@@ -2796,7 +2736,7 @@
             "gameIcon": "/Images/068075.png",
             "gameId": 19291,
             "consoleName": "WASM-4",
-            "cumulScore": 500,
+            "cumulScore": 485,
             "badgeUrl": "/Badge/321362.png",
             "gameUrl": "/game/19291"
         },
@@ -2816,7 +2756,7 @@
             "gameIcon": "/Images/068075.png",
             "gameId": 19291,
             "consoleName": "WASM-4",
-            "cumulScore": 503,
+            "cumulScore": 488,
             "badgeUrl": "/Badge/321363.png",
             "gameUrl": "/game/19291"
         },
@@ -2836,7 +2776,7 @@
             "gameIcon": "/Images/068075.png",
             "gameId": 19291,
             "consoleName": "WASM-4",
-            "cumulScore": 508,
+            "cumulScore": 493,
             "badgeUrl": "/Badge/321364.png",
             "gameUrl": "/game/19291"
         },
@@ -2856,7 +2796,7 @@
             "gameIcon": "/Images/068075.png",
             "gameId": 19291,
             "consoleName": "WASM-4",
-            "cumulScore": 518,
+            "cumulScore": 503,
             "badgeUrl": "/Badge/321365.png",
             "gameUrl": "/game/19291"
         },
@@ -2876,7 +2816,7 @@
             "gameIcon": "/Images/068075.png",
             "gameId": 19291,
             "consoleName": "WASM-4",
-            "cumulScore": 543,
+            "cumulScore": 528,
             "badgeUrl": "/Badge/321366.png",
             "gameUrl": "/game/19291"
         },
@@ -2896,7 +2836,7 @@
             "gameIcon": "/Images/068075.png",
             "gameId": 19291,
             "consoleName": "WASM-4",
-            "cumulScore": 593,
+            "cumulScore": 578,
             "badgeUrl": "/Badge/321367.png",
             "gameUrl": "/game/19291"
         },
@@ -2916,7 +2856,7 @@
             "gameIcon": "/Images/057644.png",
             "gameId": 19334,
             "consoleName": "WASM-4",
-            "cumulScore": 596,
+            "cumulScore": 581,
             "badgeUrl": "/Badge/240795.png",
             "gameUrl": "/game/19334"
         },
@@ -2936,7 +2876,7 @@
             "gameIcon": "/Images/120045.png",
             "gameId": 29892,
             "consoleName": "Arduboy",
-            "cumulScore": 601,
+            "cumulScore": 586,
             "badgeUrl": "/Badge/633155.png",
             "gameUrl": "/game/29892"
         },
@@ -2956,7 +2896,7 @@
             "gameIcon": "/Images/120045.png",
             "gameId": 29892,
             "consoleName": "Arduboy",
-            "cumulScore": 606,
+            "cumulScore": 591,
             "badgeUrl": "/Badge/633156.png",
             "gameUrl": "/game/29892"
         },
@@ -2976,7 +2916,7 @@
             "gameIcon": "/Images/149663.png",
             "gameId": 22862,
             "consoleName": "Nintendo DS",
-            "cumulScore": 607,
+            "cumulScore": 592,
             "badgeUrl": "/Badge/334141.png",
             "gameUrl": "/game/22862"
         },
@@ -2996,7 +2936,7 @@
             "gameIcon": "/Images/149663.png",
             "gameId": 22862,
             "consoleName": "Nintendo DS",
-            "cumulScore": 608,
+            "cumulScore": 593,
             "badgeUrl": "/Badge/334146.png",
             "gameUrl": "/game/22862"
         },
@@ -3016,7 +2956,7 @@
             "gameIcon": "/Images/149663.png",
             "gameId": 22862,
             "consoleName": "Nintendo DS",
-            "cumulScore": 609,
+            "cumulScore": 594,
             "badgeUrl": "/Badge/334154.png",
             "gameUrl": "/game/22862"
         },
@@ -3036,7 +2976,7 @@
             "gameIcon": "/Images/149663.png",
             "gameId": 22862,
             "consoleName": "Nintendo DS",
-            "cumulScore": 610,
+            "cumulScore": 595,
             "badgeUrl": "/Badge/334159.png",
             "gameUrl": "/game/22862"
         },
@@ -3056,7 +2996,7 @@
             "gameIcon": "/Images/149663.png",
             "gameId": 22862,
             "consoleName": "Nintendo DS",
-            "cumulScore": 611,
+            "cumulScore": 596,
             "badgeUrl": "/Badge/334144.png",
             "gameUrl": "/game/22862"
         },
@@ -3076,7 +3016,7 @@
             "gameIcon": "/Images/149663.png",
             "gameId": 22862,
             "consoleName": "Nintendo DS",
-            "cumulScore": 612,
+            "cumulScore": 597,
             "badgeUrl": "/Badge/334170.png",
             "gameUrl": "/game/22862"
         },
@@ -3096,7 +3036,7 @@
             "gameIcon": "/Images/149663.png",
             "gameId": 22862,
             "consoleName": "Nintendo DS",
-            "cumulScore": 613,
+            "cumulScore": 598,
             "badgeUrl": "/Badge/334174.png",
             "gameUrl": "/game/22862"
         },
@@ -3116,7 +3056,7 @@
             "gameIcon": "/Images/149663.png",
             "gameId": 22862,
             "consoleName": "Nintendo DS",
-            "cumulScore": 615,
+            "cumulScore": 600,
             "badgeUrl": "/Badge/334139.png",
             "gameUrl": "/game/22862"
         },
@@ -3136,7 +3076,7 @@
             "gameIcon": "/Images/149663.png",
             "gameId": 22862,
             "consoleName": "Nintendo DS",
-            "cumulScore": 616,
+            "cumulScore": 601,
             "badgeUrl": "/Badge/334150.png",
             "gameUrl": "/game/22862"
         },
@@ -3156,7 +3096,7 @@
             "gameIcon": "/Images/149663.png",
             "gameId": 22862,
             "consoleName": "Nintendo DS",
-            "cumulScore": 617,
+            "cumulScore": 602,
             "badgeUrl": "/Badge/334161.png",
             "gameUrl": "/game/22862"
         },
@@ -3176,7 +3116,7 @@
             "gameIcon": "/Images/149663.png",
             "gameId": 22862,
             "consoleName": "Nintendo DS",
-            "cumulScore": 618,
+            "cumulScore": 603,
             "badgeUrl": "/Badge/334157.png",
             "gameUrl": "/game/22862"
         },
@@ -3196,7 +3136,7 @@
             "gameIcon": "/Images/149663.png",
             "gameId": 22862,
             "consoleName": "Nintendo DS",
-            "cumulScore": 619,
+            "cumulScore": 604,
             "badgeUrl": "/Badge/334148.png",
             "gameUrl": "/game/22862"
         },
@@ -3216,7 +3156,7 @@
             "gameIcon": "/Images/149663.png",
             "gameId": 22862,
             "consoleName": "Nintendo DS",
-            "cumulScore": 620,
+            "cumulScore": 605,
             "badgeUrl": "/Badge/334166.png",
             "gameUrl": "/game/22862"
         },
@@ -3236,7 +3176,7 @@
             "gameIcon": "/Images/038156.png",
             "gameId": 9818,
             "consoleName": "Nintendo DS",
-            "cumulScore": 625,
+            "cumulScore": 610,
             "badgeUrl": "/Badge/132264.png",
             "gameUrl": "/game/9818"
         },
@@ -3256,7 +3196,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 626,
+            "cumulScore": 611,
             "badgeUrl": "/Badge/331458.png",
             "gameUrl": "/game/22693"
         },
@@ -3276,7 +3216,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 627,
+            "cumulScore": 612,
             "badgeUrl": "/Badge/331456.png",
             "gameUrl": "/game/22693"
         },
@@ -3296,7 +3236,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 628,
+            "cumulScore": 613,
             "badgeUrl": "/Badge/331446.png",
             "gameUrl": "/game/22693"
         },
@@ -3316,7 +3256,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 629,
+            "cumulScore": 614,
             "badgeUrl": "/Badge/331441.png",
             "gameUrl": "/game/22693"
         },
@@ -3336,7 +3276,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 630,
+            "cumulScore": 615,
             "badgeUrl": "/Badge/331443.png",
             "gameUrl": "/game/22693"
         },
@@ -3356,7 +3296,7 @@
             "gameIcon": "/Images/059744.png",
             "gameId": 9878,
             "consoleName": "Nintendo DS",
-            "cumulScore": 632,
+            "cumulScore": 617,
             "badgeUrl": "/Badge/255839.png",
             "gameUrl": "/game/9878"
         },
@@ -3376,7 +3316,7 @@
             "gameIcon": "/Images/059744.png",
             "gameId": 9878,
             "consoleName": "Nintendo DS",
-            "cumulScore": 633,
+            "cumulScore": 618,
             "badgeUrl": "/Badge/255740.png",
             "gameUrl": "/game/9878"
         },
@@ -3396,7 +3336,7 @@
             "gameIcon": "/Images/059744.png",
             "gameId": 9878,
             "consoleName": "Nintendo DS",
-            "cumulScore": 634,
+            "cumulScore": 619,
             "badgeUrl": "/Badge/255741.png",
             "gameUrl": "/game/9878"
         },
@@ -3416,7 +3356,7 @@
             "gameIcon": "/Images/059744.png",
             "gameId": 9878,
             "consoleName": "Nintendo DS",
-            "cumulScore": 636,
+            "cumulScore": 621,
             "badgeUrl": "/Badge/255736.png",
             "gameUrl": "/game/9878"
         },
@@ -3436,7 +3376,7 @@
             "gameIcon": "/Images/059744.png",
             "gameId": 9878,
             "consoleName": "Nintendo DS",
-            "cumulScore": 638,
+            "cumulScore": 623,
             "badgeUrl": "/Badge/255777.png",
             "gameUrl": "/game/9878"
         },
@@ -3456,7 +3396,7 @@
             "gameIcon": "/Images/059744.png",
             "gameId": 9878,
             "consoleName": "Nintendo DS",
-            "cumulScore": 639,
+            "cumulScore": 624,
             "badgeUrl": "/Badge/255734.png",
             "gameUrl": "/game/9878"
         },
@@ -3476,7 +3416,7 @@
             "gameIcon": "/Images/059744.png",
             "gameId": 9878,
             "consoleName": "Nintendo DS",
-            "cumulScore": 641,
+            "cumulScore": 626,
             "badgeUrl": "/Badge/255735.png",
             "gameUrl": "/game/9878"
         },
@@ -3496,7 +3436,7 @@
             "gameIcon": "/Images/059744.png",
             "gameId": 9878,
             "consoleName": "Nintendo DS",
-            "cumulScore": 643,
+            "cumulScore": 628,
             "badgeUrl": "/Badge/255828.png",
             "gameUrl": "/game/9878"
         },
@@ -3516,7 +3456,7 @@
             "gameIcon": "/Images/059744.png",
             "gameId": 9878,
             "consoleName": "Nintendo DS",
-            "cumulScore": 646,
+            "cumulScore": 631,
             "badgeUrl": "/Badge/255829.png",
             "gameUrl": "/game/9878"
         },
@@ -3536,7 +3476,7 @@
             "gameIcon": "/Images/059744.png",
             "gameId": 9878,
             "consoleName": "Nintendo DS",
-            "cumulScore": 649,
+            "cumulScore": 634,
             "badgeUrl": "/Badge/255737.png",
             "gameUrl": "/game/9878"
         },
@@ -3556,28 +3496,8 @@
             "gameIcon": "/Images/059744.png",
             "gameId": 9878,
             "consoleName": "Nintendo DS",
-            "cumulScore": 654,
+            "cumulScore": 639,
             "badgeUrl": "/Badge/255830.png",
-            "gameUrl": "/game/9878"
-        },
-        {
-            "date": "2026-05-30 01:29:18",
-            "hardcoreMode": true,
-            "achievementId": 230060,
-            "title": "Look Ma', One Hand",
-            "description": "[Standard - Marathon] Clear 5 lines on Marathon without rotating",
-            "badgeName": "255954",
-            "points": 5,
-            "trueRatio": 13,
-            "type": null,
-            "author": "Brylefi",
-            "authorUlid": "01EXJ1YZTVG06G51YQ86AQ7J4N",
-            "gameTitle": "Tetris DS",
-            "gameIcon": "/Images/059744.png",
-            "gameId": 9878,
-            "consoleName": "Nintendo DS",
-            "cumulScore": 659,
-            "badgeUrl": "/Badge/255954.png",
             "gameUrl": "/game/9878"
         },
         {
@@ -3596,9 +3516,29 @@
             "gameIcon": "/Images/121584.png",
             "gameId": 35914,
             "consoleName": "Events",
-            "cumulScore": 660,
+            "cumulScore": 640,
             "badgeUrl": "/Badge/255954.png",
             "gameUrl": "/game/35914"
+        },
+        {
+            "date": "2026-05-30 01:29:18",
+            "hardcoreMode": true,
+            "achievementId": 230060,
+            "title": "Look Ma', One Hand",
+            "description": "[Standard - Marathon] Clear 5 lines on Marathon without rotating",
+            "badgeName": "255954",
+            "points": 5,
+            "trueRatio": 13,
+            "type": null,
+            "author": "Brylefi",
+            "authorUlid": "01EXJ1YZTVG06G51YQ86AQ7J4N",
+            "gameTitle": "Tetris DS",
+            "gameIcon": "/Images/059744.png",
+            "gameId": 9878,
+            "consoleName": "Nintendo DS",
+            "cumulScore": 645,
+            "badgeUrl": "/Badge/255954.png",
+            "gameUrl": "/game/9878"
         },
         {
             "date": "2026-06-01 23:23:50",
@@ -3616,7 +3556,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 662,
+            "cumulScore": 647,
             "badgeUrl": "/Badge/331423.png",
             "gameUrl": "/game/22693"
         },
@@ -3636,7 +3576,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 663,
+            "cumulScore": 648,
             "badgeUrl": "/Badge/331449.png",
             "gameUrl": "/game/22693"
         },
@@ -3656,7 +3596,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 664,
+            "cumulScore": 649,
             "badgeUrl": "/Badge/331460.png",
             "gameUrl": "/game/22693"
         },
@@ -3676,7 +3616,7 @@
             "gameIcon": "/Images/059744.png",
             "gameId": 9878,
             "consoleName": "Nintendo DS",
-            "cumulScore": 667,
+            "cumulScore": 652,
             "badgeUrl": "/Badge/255840.png",
             "gameUrl": "/game/9878"
         },
@@ -3696,7 +3636,7 @@
             "gameIcon": "/Images/059744.png",
             "gameId": 9878,
             "consoleName": "Nintendo DS",
-            "cumulScore": 672,
+            "cumulScore": 657,
             "badgeUrl": "/Badge/255841.png",
             "gameUrl": "/game/9878"
         },
@@ -3716,7 +3656,7 @@
             "gameIcon": "/Images/059744.png",
             "gameId": 9878,
             "consoleName": "Nintendo DS",
-            "cumulScore": 677,
+            "cumulScore": 662,
             "badgeUrl": "/Badge/255842.png",
             "gameUrl": "/game/9878"
         },
@@ -3736,7 +3676,7 @@
             "gameIcon": "/Images/109837.png",
             "gameId": 503,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 678,
+            "cumulScore": 663,
             "badgeUrl": "/Badge/336835.png",
             "gameUrl": "/game/503"
         },
@@ -3756,7 +3696,7 @@
             "gameIcon": "/Images/109837.png",
             "gameId": 503,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 679,
+            "cumulScore": 664,
             "badgeUrl": "/Badge/336832.png",
             "gameUrl": "/game/503"
         },
@@ -3776,7 +3716,7 @@
             "gameIcon": "/Images/109837.png",
             "gameId": 503,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 680,
+            "cumulScore": 665,
             "badgeUrl": "/Badge/336833.png",
             "gameUrl": "/game/503"
         },
@@ -3796,7 +3736,7 @@
             "gameIcon": "/Images/109837.png",
             "gameId": 503,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 681,
+            "cumulScore": 666,
             "badgeUrl": "/Badge/336834.png",
             "gameUrl": "/game/503"
         },
@@ -3816,7 +3756,7 @@
             "gameIcon": "/Images/149663.png",
             "gameId": 22862,
             "consoleName": "Nintendo DS",
-            "cumulScore": 682,
+            "cumulScore": 667,
             "badgeUrl": "/Badge/334165.png",
             "gameUrl": "/game/22862"
         },
@@ -3836,7 +3776,7 @@
             "gameIcon": "/Images/149663.png",
             "gameId": 22862,
             "consoleName": "Nintendo DS",
-            "cumulScore": 684,
+            "cumulScore": 669,
             "badgeUrl": "/Badge/334142.png",
             "gameUrl": "/game/22862"
         },
@@ -3856,7 +3796,7 @@
             "gameIcon": "/Images/038156.png",
             "gameId": 9818,
             "consoleName": "Nintendo DS",
-            "cumulScore": 689,
+            "cumulScore": 674,
             "badgeUrl": "/Badge/132600.png",
             "gameUrl": "/game/9818"
         },
@@ -3868,7 +3808,7 @@
             "description": "Defeat the Guard Scorpion without triggering its counterattack",
             "badgeName": "526508",
             "points": 5,
-            "trueRatio": 7,
+            "trueRatio": 6,
             "type": "missable",
             "author": "Ghal416",
             "authorUlid": "01E8Q9ZPTAWY0GYA4DSF1S8BVS",
@@ -3876,7 +3816,7 @@
             "gameIcon": "/Images/070798.png",
             "gameId": 11242,
             "consoleName": "PlayStation",
-            "cumulScore": 694,
+            "cumulScore": 679,
             "badgeUrl": "/Badge/526508.png",
             "gameUrl": "/game/11242"
         },
@@ -3896,7 +3836,7 @@
             "gameIcon": "/Images/070798.png",
             "gameId": 11242,
             "consoleName": "PlayStation",
-            "cumulScore": 699,
+            "cumulScore": 684,
             "badgeUrl": "/Badge/526509.png",
             "gameUrl": "/game/11242"
         },
@@ -3916,7 +3856,7 @@
             "gameIcon": "/Images/070798.png",
             "gameId": 11242,
             "consoleName": "PlayStation",
-            "cumulScore": 702,
+            "cumulScore": 687,
             "badgeUrl": "/Badge/526511.png",
             "gameUrl": "/game/11242"
         },
@@ -3936,7 +3876,7 @@
             "gameIcon": "/Images/038156.png",
             "gameId": 9818,
             "consoleName": "Nintendo DS",
-            "cumulScore": 707,
+            "cumulScore": 692,
             "badgeUrl": "/Badge/133001.png",
             "gameUrl": "/game/9818"
         },
@@ -3956,7 +3896,7 @@
             "gameIcon": "/Images/149663.png",
             "gameId": 22862,
             "consoleName": "Nintendo DS",
-            "cumulScore": 709,
+            "cumulScore": 694,
             "badgeUrl": "/Badge/334155.png",
             "gameUrl": "/game/22862"
         },
@@ -3976,7 +3916,7 @@
             "gameIcon": "/Images/149663.png",
             "gameId": 22862,
             "consoleName": "Nintendo DS",
-            "cumulScore": 710,
+            "cumulScore": 695,
             "badgeUrl": "/Badge/334176.png",
             "gameUrl": "/game/22862"
         },
@@ -3996,7 +3936,7 @@
             "gameIcon": "/Images/149663.png",
             "gameId": 22862,
             "consoleName": "Nintendo DS",
-            "cumulScore": 711,
+            "cumulScore": 696,
             "badgeUrl": "/Badge/334171.png",
             "gameUrl": "/game/22862"
         },
@@ -4016,7 +3956,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 712,
+            "cumulScore": 697,
             "badgeUrl": "/Badge/331452.png",
             "gameUrl": "/game/22693"
         },
@@ -4036,7 +3976,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 714,
+            "cumulScore": 699,
             "badgeUrl": "/Badge/331437.png",
             "gameUrl": "/game/22693"
         },
@@ -4056,7 +3996,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 717,
+            "cumulScore": 702,
             "badgeUrl": "/Badge/560697.png",
             "gameUrl": "/game/12746"
         },
@@ -4076,7 +4016,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 719,
+            "cumulScore": 704,
             "badgeUrl": "/Badge/560696.png",
             "gameUrl": "/game/12746"
         },
@@ -4096,7 +4036,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 721,
+            "cumulScore": 706,
             "badgeUrl": "/Badge/560641.png",
             "gameUrl": "/game/12746"
         },
@@ -4116,7 +4056,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 724,
+            "cumulScore": 709,
             "badgeUrl": "/Badge/560695.png",
             "gameUrl": "/game/12746"
         },
@@ -4136,7 +4076,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 729,
+            "cumulScore": 714,
             "badgeUrl": "/Badge/560699.png",
             "gameUrl": "/game/12746"
         },
@@ -4156,7 +4096,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 731,
+            "cumulScore": 716,
             "badgeUrl": "/Badge/560642.png",
             "gameUrl": "/game/12746"
         },
@@ -4176,7 +4116,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 736,
+            "cumulScore": 721,
             "badgeUrl": "/Badge/560685.png",
             "gameUrl": "/game/12746"
         },
@@ -4196,7 +4136,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 741,
+            "cumulScore": 726,
             "badgeUrl": "/Badge/560684.png",
             "gameUrl": "/game/12746"
         },
@@ -4216,7 +4156,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 743,
+            "cumulScore": 728,
             "badgeUrl": "/Badge/560643.png",
             "gameUrl": "/game/12746"
         },
@@ -4236,7 +4176,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 745,
+            "cumulScore": 730,
             "badgeUrl": "/Badge/560644.png",
             "gameUrl": "/game/12746"
         },
@@ -4256,7 +4196,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 747,
+            "cumulScore": 732,
             "badgeUrl": "/Badge/560645.png",
             "gameUrl": "/game/12746"
         },
@@ -4276,7 +4216,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 752,
+            "cumulScore": 737,
             "badgeUrl": "/Badge/560682.png",
             "gameUrl": "/game/12746"
         },
@@ -4296,7 +4236,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 754,
+            "cumulScore": 739,
             "badgeUrl": "/Badge/560646.png",
             "gameUrl": "/game/12746"
         },
@@ -4316,7 +4256,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 756,
+            "cumulScore": 741,
             "badgeUrl": "/Badge/560647.png",
             "gameUrl": "/game/12746"
         },
@@ -4336,7 +4276,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 761,
+            "cumulScore": 746,
             "badgeUrl": "/Badge/560681.png",
             "gameUrl": "/game/12746"
         },
@@ -4356,7 +4296,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 766,
+            "cumulScore": 751,
             "badgeUrl": "/Badge/560648.png",
             "gameUrl": "/game/12746"
         },
@@ -4376,7 +4316,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 771,
+            "cumulScore": 756,
             "badgeUrl": "/Badge/560698.png",
             "gameUrl": "/game/12746"
         },
@@ -4396,7 +4336,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 776,
+            "cumulScore": 761,
             "badgeUrl": "/Badge/560687.png",
             "gameUrl": "/game/12746"
         },
@@ -4416,7 +4356,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 781,
+            "cumulScore": 766,
             "badgeUrl": "/Badge/560683.png",
             "gameUrl": "/game/12746"
         },
@@ -4436,7 +4376,7 @@
             "gameIcon": "/Images/070798.png",
             "gameId": 11242,
             "consoleName": "PlayStation",
-            "cumulScore": 786,
+            "cumulScore": 771,
             "badgeUrl": "/Badge/526513.png",
             "gameUrl": "/game/11242"
         },
@@ -4456,7 +4396,7 @@
             "gameIcon": "/Images/070798.png",
             "gameId": 11242,
             "consoleName": "PlayStation",
-            "cumulScore": 791,
+            "cumulScore": 776,
             "badgeUrl": "/Badge/526514.png",
             "gameUrl": "/game/11242"
         },
@@ -4476,7 +4416,7 @@
             "gameIcon": "/Images/070798.png",
             "gameId": 11242,
             "consoleName": "PlayStation",
-            "cumulScore": 796,
+            "cumulScore": 781,
             "badgeUrl": "/Badge/211236.png",
             "gameUrl": "/game/11242"
         },
@@ -4496,7 +4436,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 797,
+            "cumulScore": 782,
             "badgeUrl": "/Badge/331454.png",
             "gameUrl": "/game/22693"
         },
@@ -4516,7 +4456,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 798,
+            "cumulScore": 783,
             "badgeUrl": "/Badge/331457.png",
             "gameUrl": "/game/22693"
         },
@@ -4536,7 +4476,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 801,
+            "cumulScore": 786,
             "badgeUrl": "/Badge/331438.png",
             "gameUrl": "/game/22693"
         },
@@ -4556,7 +4496,7 @@
             "gameIcon": "/Images/038156.png",
             "gameId": 9818,
             "consoleName": "Nintendo DS",
-            "cumulScore": 806,
+            "cumulScore": 791,
             "badgeUrl": "/Badge/133003.png",
             "gameUrl": "/game/9818"
         },
@@ -4576,7 +4516,7 @@
             "gameIcon": "/Images/038156.png",
             "gameId": 9818,
             "consoleName": "Nintendo DS",
-            "cumulScore": 808,
+            "cumulScore": 793,
             "badgeUrl": "/Badge/136553.png",
             "gameUrl": "/game/9818"
         },
@@ -4596,7 +4536,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 810,
+            "cumulScore": 795,
             "badgeUrl": "/Badge/331426.png",
             "gameUrl": "/game/22693"
         },
@@ -4616,7 +4556,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 813,
+            "cumulScore": 798,
             "badgeUrl": "/Badge/560649.png",
             "gameUrl": "/game/12746"
         },
@@ -4636,7 +4576,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 818,
+            "cumulScore": 803,
             "badgeUrl": "/Badge/560702.png",
             "gameUrl": "/game/12746"
         },
@@ -4656,7 +4596,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 821,
+            "cumulScore": 806,
             "badgeUrl": "/Badge/560650.png",
             "gameUrl": "/game/12746"
         },
@@ -4676,7 +4616,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 824,
+            "cumulScore": 809,
             "badgeUrl": "/Badge/560651.png",
             "gameUrl": "/game/12746"
         },
@@ -4696,7 +4636,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 827,
+            "cumulScore": 812,
             "badgeUrl": "/Badge/560655.png",
             "gameUrl": "/game/12746"
         },
@@ -4716,7 +4656,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 830,
+            "cumulScore": 815,
             "badgeUrl": "/Badge/560652.png",
             "gameUrl": "/game/12746"
         },
@@ -4736,7 +4676,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 835,
+            "cumulScore": 820,
             "badgeUrl": "/Badge/560688.png",
             "gameUrl": "/game/12746"
         },
@@ -4756,7 +4696,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 838,
+            "cumulScore": 823,
             "badgeUrl": "/Badge/560653.png",
             "gameUrl": "/game/12746"
         },
@@ -4776,7 +4716,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 841,
+            "cumulScore": 826,
             "badgeUrl": "/Badge/560654.png",
             "gameUrl": "/game/12746"
         },
@@ -4796,7 +4736,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 844,
+            "cumulScore": 829,
             "badgeUrl": "/Badge/560656.png",
             "gameUrl": "/game/12746"
         },
@@ -4816,7 +4756,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 847,
+            "cumulScore": 832,
             "badgeUrl": "/Badge/560657.png",
             "gameUrl": "/game/12746"
         },
@@ -4836,7 +4776,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 857,
+            "cumulScore": 842,
             "badgeUrl": "/Badge/560658.png",
             "gameUrl": "/game/12746"
         },
@@ -4856,7 +4796,7 @@
             "gameIcon": "/Images/098537.png",
             "gameId": 12746,
             "consoleName": "PlayStation",
-            "cumulScore": 861,
+            "cumulScore": 846,
             "badgeUrl": "/Badge/560659.png",
             "gameUrl": "/game/12746"
         },
@@ -4876,7 +4816,7 @@
             "gameIcon": "/Images/148546.png",
             "gameId": 24186,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 862,
+            "cumulScore": 847,
             "badgeUrl": "/Badge/383545.png",
             "gameUrl": "/game/24186"
         },
@@ -4896,7 +4836,7 @@
             "gameIcon": "/Images/148546.png",
             "gameId": 24186,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 863,
+            "cumulScore": 848,
             "badgeUrl": "/Badge/383559.png",
             "gameUrl": "/game/24186"
         },
@@ -4916,7 +4856,7 @@
             "gameIcon": "/Images/148546.png",
             "gameId": 24186,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 864,
+            "cumulScore": 849,
             "badgeUrl": "/Badge/383542.png",
             "gameUrl": "/game/24186"
         },
@@ -4936,7 +4876,7 @@
             "gameIcon": "/Images/148546.png",
             "gameId": 24186,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 865,
+            "cumulScore": 850,
             "badgeUrl": "/Badge/383552.png",
             "gameUrl": "/game/24186"
         },
@@ -4956,7 +4896,7 @@
             "gameIcon": "/Images/148546.png",
             "gameId": 24186,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 866,
+            "cumulScore": 851,
             "badgeUrl": "/Badge/383544.png",
             "gameUrl": "/game/24186"
         },
@@ -4976,7 +4916,7 @@
             "gameIcon": "/Images/148546.png",
             "gameId": 24186,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 868,
+            "cumulScore": 853,
             "badgeUrl": "/Badge/383520.png",
             "gameUrl": "/game/24186"
         },
@@ -4996,7 +4936,7 @@
             "gameIcon": "/Images/148546.png",
             "gameId": 24186,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 870,
+            "cumulScore": 855,
             "badgeUrl": "/Badge/383530.png",
             "gameUrl": "/game/24186"
         },
@@ -5016,7 +4956,7 @@
             "gameIcon": "/Images/149661.png",
             "gameId": 23905,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 871,
+            "cumulScore": 856,
             "badgeUrl": "/Badge/338739.png",
             "gameUrl": "/game/23905"
         },
@@ -5036,7 +4976,7 @@
             "gameIcon": "/Images/105044.png",
             "gameId": 515,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 872,
+            "cumulScore": 857,
             "badgeUrl": "/Badge/237340.png",
             "gameUrl": "/game/515"
         },
@@ -5056,7 +4996,7 @@
             "gameIcon": "/Images/149661.png",
             "gameId": 23905,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 873,
+            "cumulScore": 858,
             "badgeUrl": "/Badge/338554.png",
             "gameUrl": "/game/23905"
         },
@@ -5076,7 +5016,7 @@
             "gameIcon": "/Images/149661.png",
             "gameId": 23905,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 874,
+            "cumulScore": 859,
             "badgeUrl": "/Badge/338551.png",
             "gameUrl": "/game/23905"
         },
@@ -5096,7 +5036,7 @@
             "gameIcon": "/Images/149661.png",
             "gameId": 23905,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 875,
+            "cumulScore": 860,
             "badgeUrl": "/Badge/338560.png",
             "gameUrl": "/game/23905"
         },
@@ -5116,7 +5056,7 @@
             "gameIcon": "/Images/149661.png",
             "gameId": 23905,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 876,
+            "cumulScore": 861,
             "badgeUrl": "/Badge/338563.png",
             "gameUrl": "/game/23905"
         },
@@ -5136,7 +5076,7 @@
             "gameIcon": "/Images/149661.png",
             "gameId": 23905,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 877,
+            "cumulScore": 862,
             "badgeUrl": "/Badge/338556.png",
             "gameUrl": "/game/23905"
         },
@@ -5156,7 +5096,7 @@
             "gameIcon": "/Images/149661.png",
             "gameId": 23905,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 879,
+            "cumulScore": 864,
             "badgeUrl": "/Badge/338734.png",
             "gameUrl": "/game/23905"
         },
@@ -5176,7 +5116,7 @@
             "gameIcon": "/Images/099022.png",
             "gameId": 9190,
             "consoleName": "GameCube",
-            "cumulScore": 884,
+            "cumulScore": 869,
             "badgeUrl": "/Badge/482088.png",
             "gameUrl": "/game/9190"
         },
@@ -5196,7 +5136,7 @@
             "gameIcon": "/Images/149661.png",
             "gameId": 23905,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 886,
+            "cumulScore": 871,
             "badgeUrl": "/Badge/338564.png",
             "gameUrl": "/game/23905"
         },
@@ -5216,7 +5156,7 @@
             "gameIcon": "/Images/149661.png",
             "gameId": 23905,
             "consoleName": "Game Boy Advance",
-            "cumulScore": 888,
+            "cumulScore": 873,
             "badgeUrl": "/Badge/338561.png",
             "gameUrl": "/game/23905"
         },
@@ -5236,7 +5176,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 890,
+            "cumulScore": 875,
             "badgeUrl": "/Badge/331435.png",
             "gameUrl": "/game/22693"
         },
@@ -5256,7 +5196,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 892,
+            "cumulScore": 877,
             "badgeUrl": "/Badge/331431.png",
             "gameUrl": "/game/22693"
         },
@@ -5276,7 +5216,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 894,
+            "cumulScore": 879,
             "badgeUrl": "/Badge/331459.png",
             "gameUrl": "/game/22693"
         },
@@ -5296,7 +5236,7 @@
             "gameIcon": "/Images/149664.png",
             "gameId": 22693,
             "consoleName": "Nintendo DS",
-            "cumulScore": 896,
+            "cumulScore": 881,
             "badgeUrl": "/Badge/331440.png",
             "gameUrl": "/game/22693"
         },
@@ -5316,7 +5256,7 @@
             "gameIcon": "/Images/116260.png",
             "gameId": 3894,
             "consoleName": "Nintendo DS",
-            "cumulScore": 897,
+            "cumulScore": 882,
             "badgeUrl": "/Badge/628983.png",
             "gameUrl": "/game/3894"
         },
@@ -5336,7 +5276,7 @@
             "gameIcon": "/Images/040295.png",
             "gameId": 9931,
             "consoleName": "Nintendo DS",
-            "cumulScore": 902,
+            "cumulScore": 887,
             "badgeUrl": "/Badge/152257.png",
             "gameUrl": "/game/9931"
         },
@@ -5356,7 +5296,7 @@
             "gameIcon": "/Images/040295.png",
             "gameId": 9931,
             "consoleName": "Nintendo DS",
-            "cumulScore": 907,
+            "cumulScore": 892,
             "badgeUrl": "/Badge/152254.png",
             "gameUrl": "/game/9931"
         },
@@ -5376,7 +5316,7 @@
             "gameIcon": "/Images/094986.png",
             "gameId": 11253,
             "consoleName": "PlayStation",
-            "cumulScore": 912,
+            "cumulScore": 897,
             "badgeUrl": "/Badge/185083.png",
             "gameUrl": "/game/11253"
         },
@@ -5396,7 +5336,7 @@
             "gameIcon": "/Images/094986.png",
             "gameId": 11253,
             "consoleName": "PlayStation",
-            "cumulScore": 917,
+            "cumulScore": 902,
             "badgeUrl": "/Badge/185077.png",
             "gameUrl": "/game/11253"
         },
@@ -5416,7 +5356,7 @@
             "gameIcon": "/Images/094986.png",
             "gameId": 11253,
             "consoleName": "PlayStation",
-            "cumulScore": 922,
+            "cumulScore": 907,
             "badgeUrl": "/Badge/185107.png",
             "gameUrl": "/game/11253"
         },
@@ -5436,7 +5376,7 @@
             "gameIcon": "/Images/094986.png",
             "gameId": 11253,
             "consoleName": "PlayStation",
-            "cumulScore": 927,
+            "cumulScore": 912,
             "badgeUrl": "/Badge/185082.png",
             "gameUrl": "/game/11253"
         },
@@ -5456,7 +5396,7 @@
             "gameIcon": "/Images/094986.png",
             "gameId": 11253,
             "consoleName": "PlayStation",
-            "cumulScore": 932,
+            "cumulScore": 917,
             "badgeUrl": "/Badge/185127.png",
             "gameUrl": "/game/11253"
         },
@@ -5476,7 +5416,7 @@
             "gameIcon": "/Images/094986.png",
             "gameId": 11253,
             "consoleName": "PlayStation",
-            "cumulScore": 937,
+            "cumulScore": 922,
             "badgeUrl": "/Badge/17680.png",
             "gameUrl": "/game/11253"
         },
@@ -5496,7 +5436,7 @@
             "gameIcon": "/Images/072312.png",
             "gameId": 11372,
             "consoleName": "PlayStation",
-            "cumulScore": 942,
+            "cumulScore": 927,
             "badgeUrl": "/Badge/710811.png",
             "gameUrl": "/game/11372"
         },
@@ -5516,7 +5456,7 @@
             "gameIcon": "/Images/072312.png",
             "gameId": 11372,
             "consoleName": "PlayStation",
-            "cumulScore": 945,
+            "cumulScore": 930,
             "badgeUrl": "/Badge/710812.png",
             "gameUrl": "/game/11372"
         },
@@ -5536,7 +5476,7 @@
             "gameIcon": "/Images/072312.png",
             "gameId": 11372,
             "consoleName": "PlayStation",
-            "cumulScore": 948,
+            "cumulScore": 933,
             "badgeUrl": "/Badge/710813.png",
             "gameUrl": "/game/11372"
         },
@@ -5556,7 +5496,7 @@
             "gameIcon": "/Images/072312.png",
             "gameId": 11372,
             "consoleName": "PlayStation",
-            "cumulScore": 958,
+            "cumulScore": 943,
             "badgeUrl": "/Badge/710814.png",
             "gameUrl": "/game/11372"
         },
@@ -5576,7 +5516,7 @@
             "gameIcon": "/Images/072312.png",
             "gameId": 11372,
             "consoleName": "PlayStation",
-            "cumulScore": 968,
+            "cumulScore": 953,
             "badgeUrl": "/Badge/710830.png",
             "gameUrl": "/game/11372"
         },
@@ -5596,28 +5536,8 @@
             "gameIcon": "/Images/072312.png",
             "gameId": 11372,
             "consoleName": "PlayStation",
-            "cumulScore": 973,
+            "cumulScore": 958,
             "badgeUrl": "/Badge/710815.png",
-            "gameUrl": "/game/11372"
-        },
-        {
-            "date": "2026-07-26 07:01:37",
-            "hardcoreMode": true,
-            "achievementId": 625108,
-            "title": "First of Many",
-            "description": "Defeat Scimitar Crab at the Ruins of the Spirits",
-            "badgeName": "710816",
-            "points": 5,
-            "trueRatio": 27,
-            "type": "progression",
-            "author": "Altomar",
-            "authorUlid": "019346YCAQ6QSZFRH5JA2Z3M9P",
-            "gameTitle": "Thousand Arms",
-            "gameIcon": "/Images/072312.png",
-            "gameId": 11372,
-            "consoleName": "PlayStation",
-            "cumulScore": 978,
-            "badgeUrl": "/Badge/710816.png",
             "gameUrl": "/game/11372"
         },
         {
@@ -5636,8 +5556,28 @@
             "gameIcon": "/Images/072312.png",
             "gameId": 11372,
             "consoleName": "PlayStation",
-            "cumulScore": 983,
+            "cumulScore": 963,
             "badgeUrl": "/Badge/710817.png",
+            "gameUrl": "/game/11372"
+        },
+        {
+            "date": "2026-07-26 07:01:37",
+            "hardcoreMode": true,
+            "achievementId": 625108,
+            "title": "First of Many",
+            "description": "Defeat Scimitar Crab at the Ruins of the Spirits",
+            "badgeName": "710816",
+            "points": 5,
+            "trueRatio": 27,
+            "type": "progression",
+            "author": "Altomar",
+            "authorUlid": "019346YCAQ6QSZFRH5JA2Z3M9P",
+            "gameTitle": "Thousand Arms",
+            "gameIcon": "/Images/072312.png",
+            "gameId": 11372,
+            "consoleName": "PlayStation",
+            "cumulScore": 968,
+            "badgeUrl": "/Badge/710816.png",
             "gameUrl": "/game/11372"
         },
         {
@@ -5656,7 +5596,7 @@
             "gameIcon": "/Images/072312.png",
             "gameId": 11372,
             "consoleName": "PlayStation",
-            "cumulScore": 988,
+            "cumulScore": 973,
             "badgeUrl": "/Badge/710818.png",
             "gameUrl": "/game/11372"
         },
@@ -5676,7 +5616,7 @@
             "gameIcon": "/Images/072312.png",
             "gameId": 11372,
             "consoleName": "PlayStation",
-            "cumulScore": 993,
+            "cumulScore": 978,
             "badgeUrl": "/Badge/710819.png",
             "gameUrl": "/game/11372"
         },
@@ -5696,7 +5636,7 @@
             "gameIcon": "/Images/072312.png",
             "gameId": 11372,
             "consoleName": "PlayStation",
-            "cumulScore": 998,
+            "cumulScore": 983,
             "badgeUrl": "/Badge/710820.png",
             "gameUrl": "/game/11372"
         },
@@ -5716,7 +5656,7 @@
             "gameIcon": "/Images/072312.png",
             "gameId": 11372,
             "consoleName": "PlayStation",
-            "cumulScore": 1003,
+            "cumulScore": 988,
             "badgeUrl": "/Badge/710831.png",
             "gameUrl": "/game/11372"
         },
@@ -5736,7 +5676,7 @@
             "gameIcon": "/Images/072312.png",
             "gameId": 11372,
             "consoleName": "PlayStation",
-            "cumulScore": 1008,
+            "cumulScore": 993,
             "badgeUrl": "/Badge/710832.png",
             "gameUrl": "/game/11372"
         },
@@ -5756,7 +5696,7 @@
             "gameIcon": "/Images/072312.png",
             "gameId": 11372,
             "consoleName": "PlayStation",
-            "cumulScore": 1013,
+            "cumulScore": 998,
             "badgeUrl": "/Badge/710833.png",
             "gameUrl": "/game/11372"
         },
@@ -5776,7 +5716,7 @@
             "gameIcon": "/Images/072312.png",
             "gameId": 11372,
             "consoleName": "PlayStation",
-            "cumulScore": 1018,
+            "cumulScore": 1003,
             "badgeUrl": "/Badge/710821.png",
             "gameUrl": "/game/11372"
         },
@@ -5796,7 +5736,7 @@
             "gameIcon": "/Images/072312.png",
             "gameId": 11372,
             "consoleName": "PlayStation",
-            "cumulScore": 1023,
+            "cumulScore": 1008,
             "badgeUrl": "/Badge/710822.png",
             "gameUrl": "/game/11372"
         },
@@ -5816,7 +5756,7 @@
             "gameIcon": "/Images/072312.png",
             "gameId": 11372,
             "consoleName": "PlayStation",
-            "cumulScore": 1028,
+            "cumulScore": 1013,
             "badgeUrl": "/Badge/710823.png",
             "gameUrl": "/game/11372"
         }
