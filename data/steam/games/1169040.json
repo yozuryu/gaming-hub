@@ -1,7 +1,7 @@
 {
     "appId": 1169040,
     "hasAchievements": true,
-    "total": 48,
+    "total": 51,
     "unlocked": 2,
     "gameName": "Necesse",
     "achievements": [
@@ -113,7 +113,7 @@
             "iconUrl": "c073e1bb0a5a0b833ff13906878e5be2a3640423.jpg",
             "iconGrayUrl": "f168a1e2d549bdf918f459854fb8ec88b74d643d.jpg",
             "hidden": false,
-            "globalPct": 46.7
+            "globalPct": 46.6
         },
         {
             "apiName": "play_24h",
@@ -136,17 +136,6 @@
             "iconGrayUrl": "5466f0013394ea0d8d3f7e4319215d2ebebbd015.jpg",
             "hidden": false,
             "globalPct": 38.5
-        },
-        {
-            "apiName": "village_helper",
-            "unlocked": false,
-            "unlockedAt": null,
-            "displayName": "Village Helper",
-            "description": "Complete a settlement quest tier",
-            "iconUrl": "7678f6280204248a89cc91ef96bc9b48d989ea77.jpg",
-            "iconGrayUrl": "dd39aabd39c85cd88aef7b6aa6f7041a8985e41e.jpg",
-            "hidden": false,
-            "globalPct": 54.1
         },
         {
             "apiName": "hoarder",
@@ -219,7 +208,7 @@
             "unlocked": false,
             "unlockedAt": null,
             "displayName": "Cloud Nine",
-            "description": "Have a settler reach 100% happiness",
+            "description": "Have a settler reach Unrivaled Quality of Life level",
             "iconUrl": "3240950721d8ae5b66232bff0afdbec54652a74a.jpg",
             "iconGrayUrl": "02ddcfbe23bd809e945403d2a45c8791d411a50c.jpg",
             "hidden": false,
@@ -406,7 +395,7 @@
             "unlocked": false,
             "unlockedAt": null,
             "displayName": "Adventure Begins!",
-            "description": "Accept your first quest from the Elder",
+            "description": "Reach the first major story objective",
             "iconUrl": "314fd84428cad2eb4b179f3f0cdbbe1de1baa1e9.jpg",
             "iconGrayUrl": "c9e894a56f2d159cf2cee28c857cc654d43a2fc9.jpg",
             "hidden": false,
@@ -532,6 +521,50 @@
             "iconGrayUrl": "71d3b8ec9ae5713d4d538b0e34c744b4447dcc88.jpg",
             "hidden": false,
             "globalPct": 2.1
+        },
+        {
+            "apiName": "cloud_ten",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cloud Ten",
+            "description": "Achieve Unrivaled Quality of Life on 10 settlers at the same time",
+            "iconUrl": "04181d120e08657ca5b0e5888336b2c7a74f4618.jpg",
+            "iconGrayUrl": "751830bbee77f28281740f8c9df109b6caf8463f.jpg",
+            "hidden": false,
+            "globalPct": null
+        },
+        {
+            "apiName": "rich_character",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Rich Character",
+            "description": "Recruit a Settler with 6 or more personalities",
+            "iconUrl": "bcb1c758133d3b3c64c1c3117944dc8c6e308cc9.jpg",
+            "iconGrayUrl": "aff7089c1cc4825992724cf8ad9fd10b8b17af5d.jpg",
+            "hidden": false,
+            "globalPct": null
+        },
+        {
+            "apiName": "true_love",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "True Love",
+            "description": "Become Life Partners with one of your Settlers",
+            "iconUrl": "e6dd75807d516b898bde45a880f1c50e32c8d1d7.jpg",
+            "iconGrayUrl": "a726de4e9025d5283a7eea2676490bfab84496ef.jpg",
+            "hidden": false,
+            "globalPct": null
+        },
+        {
+            "apiName": "speeding_ticket",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Speeding Ticket",
+            "description": "Achieve MAXIMUM speed while driving a Bumper Car",
+            "iconUrl": "bafe5d5325872658dbd4620bae282769b34c97c7.jpg",
+            "iconGrayUrl": "e720e4de93cfe1204174639c58c00cb2e7dd6e49.jpg",
+            "hidden": false,
+            "globalPct": null
         }
     ],
     "playtimeForever": 35,
