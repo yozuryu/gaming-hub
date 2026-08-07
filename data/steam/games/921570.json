@@ -2,7 +2,7 @@
     "appId": 921570,
     "hasAchievements": true,
     "total": 88,
-    "unlocked": 17,
+    "unlocked": 19,
     "gameName": "OCTOPATH TRAVELER",
     "achievements": [
         {
@@ -821,8 +821,8 @@
         },
         {
             "apiName": "ACHIEVEMENT_074",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-08-07T15:35:48.000Z",
             "displayName": "Brawler",
             "description": "Fought 200 battles.",
             "iconUrl": "593610d3dc357eb57acd06c3e6289908728193fe.jpg",
@@ -942,8 +942,8 @@
         },
         {
             "apiName": "ACHIEVEMENT_085",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-08-07T15:21:34.000Z",
             "displayName": "Tell Me More",
             "description": "Inquired about something for the first time.",
             "iconUrl": "f316ec85d277bfd7ffb8c7af85505a13e21fe1a7.jpg",
@@ -974,12 +974,30 @@
             "globalPct": 62
         }
     ],
-    "playtimeForever": 697,
-    "lastPlayedTs": "2026-08-07T14:45:07.000Z",
+    "playtimeForever": 764,
+    "lastPlayedTs": "2026-08-07T15:51:24.000Z",
     "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
-    "lastUnlockedAt": "2026-08-07T14:58:29.000Z",
-    "lastUnlockName": "Traveler",
+    "lastUnlockedAt": "2026-08-07T15:35:48.000Z",
+    "lastUnlockName": "Brawler",
     "preview": [
+        {
+            "apiName": "ACHIEVEMENT_074",
+            "displayName": "Brawler",
+            "unlocked": true,
+            "unlockedAt": "2026-08-07T15:35:48.000Z",
+            "iconUrl": "593610d3dc357eb57acd06c3e6289908728193fe.jpg",
+            "iconGrayUrl": "e8b26e2cb6d836d8b20c1a58be1a9086fadd32f4.jpg",
+            "globalPct": 40.5
+        },
+        {
+            "apiName": "ACHIEVEMENT_085",
+            "displayName": "Tell Me More",
+            "unlocked": true,
+            "unlockedAt": "2026-08-07T15:21:34.000Z",
+            "iconUrl": "f316ec85d277bfd7ffb8c7af85505a13e21fe1a7.jpg",
+            "iconGrayUrl": "dd62a8d8d44ebc1beadf32f87a3e1de9d3eb0336.jpg",
+            "globalPct": 55.5
+        },
         {
             "apiName": "ACHIEVEMENT_076",
             "displayName": "Traveler",
@@ -1015,24 +1033,6 @@
             "iconUrl": "da652b320be418992f62bbe6a68e4b18fe2dac8d.jpg",
             "iconGrayUrl": "8c8b9789a79efdfabd990d03b8f037eab4f7067f.jpg",
             "globalPct": 59
-        },
-        {
-            "apiName": "ACHIEVEMENT_071",
-            "displayName": "Better Safe Than Sorry",
-            "unlocked": true,
-            "unlockedAt": "2024-03-27T14:46:15.000Z",
-            "iconUrl": "63bb535714430b38cb33a943b92f4a9cd9aae5fa.jpg",
-            "iconGrayUrl": "513837e85a56886e9b6a1f3ea5257cea0b338ac3.jpg",
-            "globalPct": 65.2
-        },
-        {
-            "apiName": "ACHIEVEMENT_087",
-            "displayName": "Start Something",
-            "unlocked": true,
-            "unlockedAt": "2024-03-26T15:09:56.000Z",
-            "iconUrl": "d5cbcbce3684bdc2538c5a93e462201b57bd9080.jpg",
-            "iconGrayUrl": "a2a7a2be417d26903a6e6e13485fa3ad63571827.jpg",
-            "globalPct": 62
         }
     ]
 }

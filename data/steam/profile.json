@@ -1,23 +1,23 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-08-07T15:04:16.123Z"
+        "extractionTimestamp": "2026-08-07T16:04:04.905Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 1,
-        "lastOnline": "2026-08-07T12:51:20.000Z",
+        "status": 0,
+        "lastOnline": "2026-08-07T15:54:26.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1280,
-        "totalPlaytimeMin": 347479,
-        "totalPlaytimeHrs": 5791,
+        "totalPlaytimeMin": 347546,
+        "totalPlaytimeHrs": 5792,
         "gamesWithPlaytime": 817,
         "totalAchievements": 10049,
-        "unlockedAchievements": 2802,
+        "unlockedAchievements": 2804,
         "gamesWithAchievements": 170,
         "perfectCount": 17,
         "completionPct": 27,
@@ -27,33 +27,33 @@
         {
             "appId": 921570,
             "name": "OCTOPATH TRAVELER",
-            "playtime2Weeks": 48,
-            "playtimeForever": 697,
+            "playtime2Weeks": 115,
+            "playtimeForever": 764,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
             "storeUrl": "https://store.steampowered.com/app/921570",
-            "lastPlayedTs": "2026-08-07T14:45:07.000Z",
-            "achUnlocked": 17,
+            "lastPlayedTs": "2026-08-07T15:51:24.000Z",
+            "achUnlocked": 19,
             "achTotal": 88
         }
     ],
     "mostRecentGame": {
         "appId": 921570,
         "name": "OCTOPATH TRAVELER",
-        "playtime2Weeks": 48,
-        "playtimeForever": 697,
+        "playtime2Weeks": 115,
+        "playtimeForever": 764,
         "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
         "storeUrl": "https://store.steampowered.com/app/921570",
-        "lastPlayedTs": "2026-08-07T14:45:07.000Z"
+        "lastPlayedTs": "2026-08-07T15:51:24.000Z"
     },
     "mostRecentUnlock": {
         "appId": 921570,
         "gameName": "OCTOPATH TRAVELER",
-        "apiName": "ACHIEVEMENT_076",
-        "displayName": "Traveler",
-        "description": "Played more than 10 hours.",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/5e92cf0746527d9156a1225ce3c46896b1dfc22c.jpg",
-        "unlockedAt": "2026-08-07T14:58:29.000Z",
-        "globalPct": 49.6
+        "apiName": "ACHIEVEMENT_074",
+        "displayName": "Brawler",
+        "description": "Fought 200 battles.",
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/593610d3dc357eb57acd06c3e6289908728193fe.jpg",
+        "unlockedAt": "2026-08-07T15:35:48.000Z",
+        "globalPct": 40.5
     },
     "perfectGames": [
         {
