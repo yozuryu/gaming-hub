@@ -3,6 +3,26 @@
         {
             "appId": 921570,
             "gameName": "OCTOPATH TRAVELER",
+            "apiName": "ACHIEVEMENT_076",
+            "displayName": "Traveler",
+            "description": "Played more than 10 hours.",
+            "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/5e92cf0746527d9156a1225ce3c46896b1dfc22c.jpg",
+            "unlockedAt": "2026-08-07T14:58:29.000Z",
+            "globalPct": 49.6
+        },
+        {
+            "appId": 921570,
+            "gameName": "OCTOPATH TRAVELER",
+            "apiName": "ACHIEVEMENT_029",
+            "displayName": "Setting Out – Freedom",
+            "description": "Therion sets out to obtain the three dragonstones in a bargain that would see the fool's bangle marking him a criminal removed.",
+            "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/e7a1bb7144674c493ebd1c956947038dbb7e57e6.jpg",
+            "unlockedAt": "2026-08-07T14:54:39.000Z",
+            "globalPct": 59.6
+        },
+        {
+            "appId": 921570,
+            "gameName": "OCTOPATH TRAVELER",
             "apiName": "ACHIEVEMENT_086",
             "displayName": "Sticky-Fingered",
             "description": "Stole something for the first time.",

@@ -34606,14 +34606,32 @@
             "appId": 921570,
             "hasAchievements": true,
             "total": 88,
-            "unlocked": 15,
+            "unlocked": 17,
             "gameName": "OCTOPATH TRAVELER",
-            "playtimeForever": 667,
-            "lastPlayedTs": "2026-08-02T13:57:51.000Z",
+            "playtimeForever": 697,
+            "lastPlayedTs": "2026-08-07T14:45:07.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
-            "lastUnlockedAt": "2026-07-06T15:01:24.000Z",
-            "lastUnlockName": "Sticky-Fingered",
+            "lastUnlockedAt": "2026-08-07T14:58:29.000Z",
+            "lastUnlockName": "Traveler",
             "preview": [
+                {
+                    "apiName": "ACHIEVEMENT_076",
+                    "displayName": "Traveler",
+                    "unlocked": true,
+                    "unlockedAt": "2026-08-07T14:58:29.000Z",
+                    "iconUrl": "5e92cf0746527d9156a1225ce3c46896b1dfc22c.jpg",
+                    "iconGrayUrl": "e655d8301bbbe0e4352eb0f10181ab6274369436.jpg",
+                    "globalPct": 49.6
+                },
+                {
+                    "apiName": "ACHIEVEMENT_029",
+                    "displayName": "Setting Out – Freedom",
+                    "unlocked": true,
+                    "unlockedAt": "2026-08-07T14:54:39.000Z",
+                    "iconUrl": "e7a1bb7144674c493ebd1c956947038dbb7e57e6.jpg",
+                    "iconGrayUrl": "8a76db31acfadbfb010c638bfb25dad5a57bb9d1.jpg",
+                    "globalPct": 59.6
+                },
                 {
                     "apiName": "ACHIEVEMENT_086",
                     "displayName": "Sticky-Fingered",
@@ -34630,7 +34648,7 @@
                     "unlockedAt": "2024-03-27T15:18:36.000Z",
                     "iconUrl": "da652b320be418992f62bbe6a68e4b18fe2dac8d.jpg",
                     "iconGrayUrl": "8c8b9789a79efdfabd990d03b8f037eab4f7067f.jpg",
-                    "globalPct": 59.1
+                    "globalPct": 59
                 },
                 {
                     "apiName": "ACHIEVEMENT_071",
@@ -34649,24 +34667,6 @@
                     "iconUrl": "d5cbcbce3684bdc2538c5a93e462201b57bd9080.jpg",
                     "iconGrayUrl": "a2a7a2be417d26903a6e6e13485fa3ad63571827.jpg",
                     "globalPct": 62
-                },
-                {
-                    "apiName": "ACHIEVEMENT_001",
-                    "displayName": "Setting Out – The Kindling",
-                    "unlocked": true,
-                    "unlockedAt": "2024-03-23T15:32:35.000Z",
-                    "iconUrl": "ef238f022eed055a62d0615d6a3f466199a074de.jpg",
-                    "iconGrayUrl": "8b9b6c41a17a6ece3fa8903bf01cd986c618f416.jpg",
-                    "globalPct": 58.4
-                },
-                {
-                    "apiName": "ACHIEVEMENT_080",
-                    "displayName": "Lead the Way",
-                    "unlocked": true,
-                    "unlockedAt": "2024-03-23T14:52:21.000Z",
-                    "iconUrl": "a430f4900894ba010c4589b650d65559bcb469ef.jpg",
-                    "iconGrayUrl": "3bd8e1239d96f83d2e9a60482cce24835b6be988.jpg",
-                    "globalPct": 61.9
                 }
             ]
         },
