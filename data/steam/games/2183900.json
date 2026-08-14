@@ -58,7 +58,7 @@
             "iconUrl": "0d9c25e128f98833661009fb2d06ff27d735a9fd.jpg",
             "iconGrayUrl": "6a5e1545dbb43f58ed160ba66c1a8f571128661e.jpg",
             "hidden": true,
-            "globalPct": 64.7
+            "globalPct": 64.6
         },
         {
             "apiName": "STORY_RESCUE",
@@ -91,7 +91,7 @@
             "iconUrl": "513e527196b4c3dcdb0d77deef18fb1224ff3c43.jpg",
             "iconGrayUrl": "f5d9b630753886bda7b52dbf5960755175b8a6c4.jpg",
             "hidden": true,
-            "globalPct": 41.2
+            "globalPct": 41.1
         },
         {
             "apiName": "STORY_TOWER",
@@ -256,7 +256,7 @@
             "iconUrl": "36b6ca32db52a4341a9b61d02127dea10f42df08.jpg",
             "iconGrayUrl": "19f4612013c48a8b63dbc4c9faa409cdf698c421.jpg",
             "hidden": false,
-            "globalPct": 16.1
+            "globalPct": 16
         },
         {
             "apiName": "PVE_MAX_FIREARM",
@@ -278,7 +278,7 @@
             "iconUrl": "484fc66324ebca6de3ece60b8dc6086cfb097772.jpg",
             "iconGrayUrl": "bdff013d85e8ec321475417a24b10b09e21f1529.jpg",
             "hidden": false,
-            "globalPct": 24.7
+            "globalPct": 24.6
         },
         {
             "apiName": "PVE_PICKUPS",
@@ -289,7 +289,7 @@
             "iconUrl": "7f67709fa8ede5b1196875fbed792ca4dfa854ed.jpg",
             "iconGrayUrl": "515e33a65c96f94a548eba17ed36020deddec418.jpg",
             "hidden": false,
-            "globalPct": 25.2
+            "globalPct": 25.1
         },
         {
             "apiName": "TOTAL_KILLS_SILVER",
@@ -344,7 +344,7 @@
             "iconUrl": "4a9260db7c1d7afce7d7e7b692a56c49e59f5377.jpg",
             "iconGrayUrl": "a9c56b38459fb1d098c68c328595a2e60e625e40.jpg",
             "hidden": false,
-            "globalPct": 15.7
+            "globalPct": 15.6
         },
         {
             "apiName": "RAIDER_GROUNDPOUND",
@@ -410,7 +410,7 @@
             "iconUrl": "9a5b2d94642518ff45ce9de400eaf5b32d44bbb4.jpg",
             "iconGrayUrl": "131aaef161d4b3a27bec916b6951fe9fa315bb31.jpg",
             "hidden": false,
-            "globalPct": 25.4
+            "globalPct": 25.3
         },
         {
             "apiName": "PERFECT_PARRY",
@@ -421,7 +421,7 @@
             "iconUrl": "c318e349638fb27a94585209c343de3fd2df97af.jpg",
             "iconGrayUrl": "0d30a4d523ffb8ddacf648dfd6eea0c88e4a03e0.jpg",
             "hidden": false,
-            "globalPct": 15
+            "globalPct": 14.9
         },
         {
             "apiName": "KILLS_BY_TRAPS",
@@ -432,7 +432,7 @@
             "iconUrl": "b132ebdc3111477d4e483d4acdf26e59a5fdebca.jpg",
             "iconGrayUrl": "b38eb360b7954825552e1a22d34007e1bf2c266b.jpg",
             "hidden": false,
-            "globalPct": 64.2
+            "globalPct": 64.1
         },
         {
             "apiName": "KILLS_ALERT",
@@ -443,7 +443,7 @@
             "iconUrl": "8f46ab0c4b7098b96817221a6c645e3af0752008.jpg",
             "iconGrayUrl": "9bb74e43cec4ece144be2fcdf56be9c1cc3cf9bd.jpg",
             "hidden": false,
-            "globalPct": 41.1
+            "globalPct": 41
         },
         {
             "apiName": "PVE_TYRANID_KILLS",
@@ -465,7 +465,7 @@
             "iconUrl": "0343fe733f7835036e6002fc4b65e79f07775637.jpg",
             "iconGrayUrl": "0f36cc408c3df1b5a155dc829c9a8a6803f5787b.jpg",
             "hidden": false,
-            "globalPct": 26.2
+            "globalPct": 26.1
         },
         {
             "apiName": "TOTAL_KILLS",
@@ -614,7 +614,7 @@
             "unlockedAt": null,
             "iconUrl": "0d9c25e128f98833661009fb2d06ff27d735a9fd.jpg",
             "iconGrayUrl": "6a5e1545dbb43f58ed160ba66c1a8f571128661e.jpg",
-            "globalPct": 64.7
+            "globalPct": 64.6
         }
     ]
 }
