@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-08-20T00:56:27.689Z"
+        "extractionTimestamp": "2026-08-20T01:34:12.398Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -12,9 +12,9 @@
         "lastGameId": 22693,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2830,
+        "totalPoints": 2843,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 8693,
+        "totalTruePoints": 8703,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -38,26 +38,26 @@
         "lastGameId": 22693,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2830,
+        "totalPoints": 2843,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 8693,
+        "totalTruePoints": 8703,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 41599,
+        "rank": 41470,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 159223,
+        "totalRanked": 159298,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 2830,
+        "points": 2843,
         "softcorePoints": 1
     },
     "pageAwards": {
@@ -501,8 +501,8 @@
         }
     ],
     "gameAwardsAndProgress": {
-        "count": 81,
-        "total": 81,
+        "count": 82,
+        "total": 82,
         "results": [
             {
                 "gameId": 11372,
@@ -1220,6 +1220,19 @@
                 "highestAwardDate": null
             },
             {
+                "gameId": 19046,
+                "title": "Drakengard",
+                "imageIcon": "/Images/062357.png",
+                "consoleId": 21,
+                "consoleName": "PlayStation 2",
+                "maxPossible": 200,
+                "numAwarded": 8,
+                "numAwardedHardcore": 8,
+                "mostRecentAwardedDate": "2025-11-19T16:08:08+00:00",
+                "highestAwardKind": null,
+                "highestAwardDate": null
+            },
+            {
                 "gameId": 1275,
                 "title": "Fatal Frame",
                 "imageIcon": "/Images/150091.png",
@@ -1598,5 +1611,5 @@
         "scoreAchievedHardcore": 34
     },
     "points7Days": 0,
-    "points30Days": 116
+    "points30Days": 106
 }
