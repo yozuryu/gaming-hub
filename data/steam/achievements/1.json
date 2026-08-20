@@ -3,6 +3,26 @@
         {
             "appId": 921570,
             "gameName": "OCTOPATH TRAVELER",
+            "apiName": "ACHIEVEMENT_002",
+            "displayName": "Gentle Guidance",
+            "description": "Rite completed, Ophilia helps three quarreling children mend their friendship before setting out for her next destination.",
+            "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/7efec7fa79ad86588996eba32008fb4fe5eed59d.jpg",
+            "unlockedAt": "2026-08-20T14:32:58.000Z",
+            "globalPct": 31.8
+        },
+        {
+            "appId": 921570,
+            "gameName": "OCTOPATH TRAVELER",
+            "apiName": "ACHIEVEMENT_069",
+            "displayName": "Moneybags",
+            "description": "Obtained 80,000 leaves.",
+            "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/6dcf309c7db783d741d5b4d0b18a22b7e1690ccc.jpg",
+            "unlockedAt": "2026-08-20T14:21:55.000Z",
+            "globalPct": 42.4
+        },
+        {
+            "appId": 921570,
+            "gameName": "OCTOPATH TRAVELER",
             "apiName": "ACHIEVEMENT_017",
             "displayName": "Setting Out – Revenge",
             "description": "Primrose, finally in possession of the lead she needed, takes off in pursuit of the three men bearing the mark of the crow—the men against whom she swore revenge.",

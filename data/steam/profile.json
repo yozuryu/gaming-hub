@@ -1,23 +1,23 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-08-20T13:53:51.701Z"
+        "extractionTimestamp": "2026-08-20T14:48:21.180Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 0,
+        "status": 1,
         "lastOnline": "2026-08-19T17:11:06.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1285,
-        "totalPlaytimeMin": 347802,
+        "totalPlaytimeMin": 347833,
         "totalPlaytimeHrs": 5797,
         "gamesWithPlaytime": 817,
         "totalAchievements": 10049,
-        "unlockedAchievements": 2807,
+        "unlockedAchievements": 2809,
         "gamesWithAchievements": 170,
         "perfectCount": 17,
         "completionPct": 27,
@@ -27,33 +27,33 @@
         {
             "appId": 921570,
             "name": "OCTOPATH TRAVELER",
-            "playtime2Weeks": 352,
-            "playtimeForever": 1020,
+            "playtime2Weeks": 383,
+            "playtimeForever": 1051,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
             "storeUrl": "https://store.steampowered.com/app/921570",
-            "lastPlayedTs": "2026-08-17T15:49:45.000Z",
-            "achUnlocked": 22,
+            "lastPlayedTs": "2026-08-20T14:35:50.000Z",
+            "achUnlocked": 24,
             "achTotal": 88
         }
     ],
     "mostRecentGame": {
         "appId": 921570,
         "name": "OCTOPATH TRAVELER",
-        "playtime2Weeks": 352,
-        "playtimeForever": 1020,
+        "playtime2Weeks": 383,
+        "playtimeForever": 1051,
         "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
         "storeUrl": "https://store.steampowered.com/app/921570",
-        "lastPlayedTs": "2026-08-17T15:49:45.000Z"
+        "lastPlayedTs": "2026-08-20T14:35:50.000Z"
     },
     "mostRecentUnlock": {
         "appId": 921570,
         "gameName": "OCTOPATH TRAVELER",
-        "apiName": "ACHIEVEMENT_017",
-        "displayName": "Setting Out – Revenge",
-        "description": "Primrose, finally in possession of the lead she needed, takes off in pursuit of the three men bearing the mark of the crow—the men against whom she swore revenge.",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/f646c663ce78fde53ff3cf67c97791e29edebd4d.jpg",
-        "unlockedAt": "2026-08-09T13:00:52.000Z",
-        "globalPct": 56.8
+        "apiName": "ACHIEVEMENT_002",
+        "displayName": "Gentle Guidance",
+        "description": "Rite completed, Ophilia helps three quarreling children mend their friendship before setting out for her next destination.",
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/7efec7fa79ad86588996eba32008fb4fe5eed59d.jpg",
+        "unlockedAt": "2026-08-20T14:32:58.000Z",
+        "globalPct": 31.8
     },
     "perfectGames": [
         {
