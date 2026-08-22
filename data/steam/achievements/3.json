@@ -3,6 +3,36 @@
         {
             "appId": 373770,
             "gameName": "LiEat",
+            "apiName": "LETS_GO",
+            "displayName": "Let's Go Exploring!",
+            "description": "Good Ending",
+            "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/373770/a2e783ee4d8b6b3adafbcf9d5cc40f05d0903163.jpg",
+            "unlockedAt": "2026-02-21T06:07:21.000Z",
+            "globalPct": 19.5
+        },
+        {
+            "appId": 373770,
+            "gameName": "LiEat",
+            "apiName": "ALONE_AGAIN",
+            "displayName": "Alone Again, Naturally",
+            "description": "Neutral Ending",
+            "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/373770/1e87156b037ad8f9836383d4077eeadb5eba83f9.jpg",
+            "unlockedAt": "2026-02-21T05:54:47.000Z",
+            "globalPct": 17.6
+        },
+        {
+            "appId": 373770,
+            "gameName": "LiEat",
+            "apiName": "BONNIE_AND_CLYDE",
+            "displayName": "Bonnie and Clyde",
+            "description": "Bad Ending",
+            "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/373770/de6c76ae3f6c9d65c844f67e0ec20ff064f27111.jpg",
+            "unlockedAt": "2026-02-21T05:46:06.000Z",
+            "globalPct": 20.8
+        },
+        {
+            "appId": 373770,
+            "gameName": "LiEat",
             "apiName": "IRIS_UP",
             "displayName": "Iris Up Your Coffee?",
             "description": "Pair up with Iris",
