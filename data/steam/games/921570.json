@@ -2,7 +2,7 @@
     "appId": 921570,
     "hasAchievements": true,
     "total": 88,
-    "unlocked": 25,
+    "unlocked": 26,
     "gameName": "OCTOPATH TRAVELER",
     "achievements": [
         {
@@ -80,7 +80,7 @@
             "iconUrl": "5ff77eedd16a3184aca3320a453ab32e1db0f7d0.jpg",
             "iconGrayUrl": "986eba7fae0378315a7950b689885e284ab1d72a.jpg",
             "hidden": false,
-            "globalPct": 32.9
+            "globalPct": 32.8
         },
         {
             "apiName": "ACHIEVEMENT_007",
@@ -124,7 +124,7 @@
             "iconUrl": "6c079936280423185a3e2254ee66e57d289d3aaa.jpg",
             "iconGrayUrl": "97a7440bea0d89c0fc51ef128d1b2e4a8eeccb4d.jpg",
             "hidden": false,
-            "globalPct": 33
+            "globalPct": 32.9
         },
         {
             "apiName": "ACHIEVEMENT_011",
@@ -190,7 +190,7 @@
             "iconUrl": "ed3a0968d1a8da9d551b85352fb98a1474811f39.jpg",
             "iconGrayUrl": "272efb5b606726d58ac7768dae41a40434b631ad.jpg",
             "hidden": false,
-            "globalPct": 18.4
+            "globalPct": 18.3
         },
         {
             "apiName": "ACHIEVEMENT_017",
@@ -245,7 +245,7 @@
             "iconUrl": "381d412cfb5a90397decbcad6293df73fe506561.jpg",
             "iconGrayUrl": "bb70e47959aab573a015d3c119efea2924a7f618.jpg",
             "hidden": false,
-            "globalPct": 54.4
+            "globalPct": 54.3
         },
         {
             "apiName": "ACHIEVEMENT_022",
@@ -278,7 +278,7 @@
             "iconUrl": "f250f4169577a168b78b2905d928725f29692a92.jpg",
             "iconGrayUrl": "ff5acdf710263eb10888772a06ddb01bd2c6721f.jpg",
             "hidden": false,
-            "globalPct": 17.2
+            "globalPct": 17.1
         },
         {
             "apiName": "ACHIEVEMENT_025",
@@ -366,7 +366,7 @@
             "iconUrl": "b18077756d661826d84805814534afc53ab99b30.jpg",
             "iconGrayUrl": "d441e15903d8e46adc1b34c70fa4aada34eb1eb6.jpg",
             "hidden": false,
-            "globalPct": 18.8
+            "globalPct": 18.7
         },
         {
             "apiName": "ACHIEVEMENT_033",
@@ -447,8 +447,8 @@
         },
         {
             "apiName": "ACHIEVEMENT_040",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-08-25T07:28:19.000Z",
             "displayName": "Aeber's Wisdom",
             "description": "Obtained thief as a secondary job.",
             "iconUrl": "2f8cc5729efbf7e8cd240826447e6b83be591433.jpg",
@@ -476,7 +476,7 @@
             "iconUrl": "b26dff7a47c938d75396d3031f91abea6d5bc264.jpg",
             "iconGrayUrl": "7b5e718e019d6f7a09dc680fcf68e18f55129537.jpg",
             "hidden": false,
-            "globalPct": 17.9
+            "globalPct": 17.8
         },
         {
             "apiName": "ACHIEVEMENT_043",
@@ -498,7 +498,7 @@
             "iconUrl": "f8b85a19b274cb77e04adc8a65414eacaed500a5.jpg",
             "iconGrayUrl": "fe3e80e344acff57269d85bec6ce16c6934a32fc.jpg",
             "hidden": false,
-            "globalPct": 19.6
+            "globalPct": 19.5
         },
         {
             "apiName": "ACHIEVEMENT_045",
@@ -520,7 +520,7 @@
             "iconUrl": "d87af8aac05d6c773c4b7ef0807a910601cf0790.jpg",
             "iconGrayUrl": "d2016b3e25d3604a4305c742cd19af58b945ca32.jpg",
             "hidden": false,
-            "globalPct": 31.4
+            "globalPct": 31.3
         },
         {
             "apiName": "ACHIEVEMENT_047",
@@ -586,7 +586,7 @@
             "iconUrl": "736e5ba31f4349b6bf2ec53b353e94549082c4b5.jpg",
             "iconGrayUrl": "f48332f555a76831295668df4f61b7e51209c5e3.jpg",
             "hidden": false,
-            "globalPct": 29.8
+            "globalPct": 29.7
         },
         {
             "apiName": "ACHIEVEMENT_053",
@@ -630,7 +630,7 @@
             "iconUrl": "226cec398124866e27c00a0c38ee78e4526f3b34.jpg",
             "iconGrayUrl": "07cc53c54baef4306fed1476467fa797dc29f6f1.jpg",
             "hidden": false,
-            "globalPct": 17.8
+            "globalPct": 17.7
         },
         {
             "apiName": "ACHIEVEMENT_057",
@@ -974,12 +974,21 @@
             "globalPct": 62
         }
     ],
-    "playtimeForever": 1079,
-    "lastPlayedTs": "2026-08-20T15:04:16.000Z",
+    "playtimeForever": 1109,
+    "lastPlayedTs": "2026-08-25T07:44:06.000Z",
     "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
-    "lastUnlockedAt": "2026-08-20T14:53:46.000Z",
-    "lastUnlockName": "Dohter's Wisdom",
+    "lastUnlockedAt": "2026-08-25T07:28:19.000Z",
+    "lastUnlockName": "Aeber's Wisdom",
     "preview": [
+        {
+            "apiName": "ACHIEVEMENT_040",
+            "displayName": "Aeber's Wisdom",
+            "unlocked": true,
+            "unlockedAt": "2026-08-25T07:28:19.000Z",
+            "iconUrl": "2f8cc5729efbf7e8cd240826447e6b83be591433.jpg",
+            "iconGrayUrl": "95a8371acc677d7a7c64f58f92647e6e8d179a3e.jpg",
+            "globalPct": 35
+        },
         {
             "apiName": "ACHIEVEMENT_038",
             "displayName": "Dohter's Wisdom",
@@ -1024,15 +1033,6 @@
             "iconUrl": "0b4756e0942bf6d80945b629720263911140497b.jpg",
             "iconGrayUrl": "9f77882ebdac360ccd40c0dc46ff0ac98b7a5a0f.jpg",
             "globalPct": 57.5
-        },
-        {
-            "apiName": "ACHIEVEMENT_021",
-            "displayName": "Setting Out – Healing",
-            "unlocked": true,
-            "unlockedAt": "2026-08-09T07:13:50.000Z",
-            "iconUrl": "381d412cfb5a90397decbcad6293df73fe506561.jpg",
-            "iconGrayUrl": "bb70e47959aab573a015d3c119efea2924a7f618.jpg",
-            "globalPct": 54.4
         }
     ]
 }

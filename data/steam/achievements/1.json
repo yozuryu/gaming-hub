@@ -3,6 +3,16 @@
         {
             "appId": 921570,
             "gameName": "OCTOPATH TRAVELER",
+            "apiName": "ACHIEVEMENT_040",
+            "displayName": "Aeber's Wisdom",
+            "description": "Obtained thief as a secondary job.",
+            "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/2f8cc5729efbf7e8cd240826447e6b83be591433.jpg",
+            "unlockedAt": "2026-08-25T07:28:19.000Z",
+            "globalPct": 35
+        },
+        {
+            "appId": 921570,
+            "gameName": "OCTOPATH TRAVELER",
             "apiName": "ACHIEVEMENT_038",
             "displayName": "Dohter's Wisdom",
             "description": "Obtained apothecary as a secondary job.",
@@ -58,7 +68,7 @@
             "description": "With the encouragement of his dear friend Zeph, Alfyn embarks on a journey to heal Orsterra's sick and wounded.",
             "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/381d412cfb5a90397decbcad6293df73fe506561.jpg",
             "unlockedAt": "2026-08-09T07:13:50.000Z",
-            "globalPct": 54.4
+            "globalPct": 54.3
         },
         {
             "appId": 921570,

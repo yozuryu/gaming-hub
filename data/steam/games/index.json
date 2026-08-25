@@ -34606,14 +34606,23 @@
             "appId": 921570,
             "hasAchievements": true,
             "total": 88,
-            "unlocked": 25,
+            "unlocked": 26,
             "gameName": "OCTOPATH TRAVELER",
-            "playtimeForever": 1079,
-            "lastPlayedTs": "2026-08-20T15:04:16.000Z",
+            "playtimeForever": 1109,
+            "lastPlayedTs": "2026-08-25T07:44:06.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
-            "lastUnlockedAt": "2026-08-20T14:53:46.000Z",
-            "lastUnlockName": "Dohter's Wisdom",
+            "lastUnlockedAt": "2026-08-25T07:28:19.000Z",
+            "lastUnlockName": "Aeber's Wisdom",
             "preview": [
+                {
+                    "apiName": "ACHIEVEMENT_040",
+                    "displayName": "Aeber's Wisdom",
+                    "unlocked": true,
+                    "unlockedAt": "2026-08-25T07:28:19.000Z",
+                    "iconUrl": "2f8cc5729efbf7e8cd240826447e6b83be591433.jpg",
+                    "iconGrayUrl": "95a8371acc677d7a7c64f58f92647e6e8d179a3e.jpg",
+                    "globalPct": 35
+                },
                 {
                     "apiName": "ACHIEVEMENT_038",
                     "displayName": "Dohter's Wisdom",
@@ -34658,15 +34667,6 @@
                     "iconUrl": "0b4756e0942bf6d80945b629720263911140497b.jpg",
                     "iconGrayUrl": "9f77882ebdac360ccd40c0dc46ff0ac98b7a5a0f.jpg",
                     "globalPct": 57.5
-                },
-                {
-                    "apiName": "ACHIEVEMENT_021",
-                    "displayName": "Setting Out – Healing",
-                    "unlocked": true,
-                    "unlockedAt": "2026-08-09T07:13:50.000Z",
-                    "iconUrl": "381d412cfb5a90397decbcad6293df73fe506561.jpg",
-                    "iconGrayUrl": "bb70e47959aab573a015d3c119efea2924a7f618.jpg",
-                    "globalPct": 54.4
                 }
             ]
         },
