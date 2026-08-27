@@ -80,7 +80,7 @@
             "iconUrl": "7282d1ccb65c7bfe3530d895eae14e966d320e41.jpg",
             "iconGrayUrl": "f78f6bd02c211c10a88bec2abca1c665db9c07b2.jpg",
             "hidden": false,
-            "globalPct": 5.2
+            "globalPct": 5.1
         },
         {
             "apiName": "ACH_EXOTICS",
@@ -91,7 +91,7 @@
             "iconUrl": "c6edf7b1fd88c7888f407738a4f8616e014c36c5.jpg",
             "iconGrayUrl": "1f91fd2b69f605fcdc2e04a8c6ef3ca7469756d7.jpg",
             "hidden": false,
-            "globalPct": 1.8
+            "globalPct": 1.7
         },
         {
             "apiName": "ACH_T1_BLUEPRINTS",
@@ -102,7 +102,7 @@
             "iconUrl": "f0265a4cdf1a001901239b7a8fb95c770feac7f2.jpg",
             "iconGrayUrl": "5319ec370d777514bb56af69ec6608b22447c54c.jpg",
             "hidden": false,
-            "globalPct": 10.5
+            "globalPct": 10.4
         },
         {
             "apiName": "ACH_T2_BLUEPRINTS",
@@ -113,7 +113,7 @@
             "iconUrl": "42fe085f07cee3bbc0e2405acb35ce648c5aa593.jpg",
             "iconGrayUrl": "4aa7f56975e7b5c76a432ddfbcab45bc6ad367ef.jpg",
             "hidden": false,
-            "globalPct": 8.4
+            "globalPct": 8.3
         },
         {
             "apiName": "ACH_T3_BLUEPRINTS",
@@ -212,7 +212,7 @@
             "iconUrl": "3df3801175d7b9d52f0742e1c2efb7bf965296cb.jpg",
             "iconGrayUrl": "08d21b815f114318d3ada42928b8f1e3026dd52f.jpg",
             "hidden": false,
-            "globalPct": 36.6
+            "globalPct": 36.5
         },
         {
             "apiName": "ACH_KILL_ZEBRA",
@@ -234,7 +234,7 @@
             "iconUrl": "8622eeb3e8fd67d76d57d2b994e4b84a76a3c77b.jpg",
             "iconGrayUrl": "aa3bdffb7df57b57ff71644e10b6aaad447f8fe7.jpg",
             "hidden": false,
-            "globalPct": 22.5
+            "globalPct": 22.4
         },
         {
             "apiName": "ACH_GRENADE_CRATE",
@@ -344,7 +344,7 @@
             "iconUrl": "e9e6488a0be74019755e2409ab6c34e71c2284a6.jpg",
             "iconGrayUrl": "2155b25fc1ca107c44a2201d1a5f57988ccd3a02.jpg",
             "hidden": false,
-            "globalPct": 6
+            "globalPct": 5.9
         },
         {
             "apiName": "ACH_COLLECT_ORE",
@@ -388,7 +388,7 @@
             "iconUrl": "e72a92b3e3ce59af0057cc38066500f6c9b94a7f.jpg",
             "iconGrayUrl": "7dbbc67a024ac19a46326223bf5838a726e25d20.jpg",
             "hidden": false,
-            "globalPct": 78.9
+            "globalPct": 78.8
         },
         {
             "apiName": "ACH_FIRST_DEATH",
@@ -432,7 +432,7 @@
             "iconUrl": "b5145383d9c66e061c8b4c0c33587a3af572240f.jpg",
             "iconGrayUrl": "97536f6756c9f45a4473fcb56d62f1543d728aea.jpg",
             "hidden": false,
-            "globalPct": 71
+            "globalPct": 70.9
         },
         {
             "apiName": "ACH_KILLED_BY_BEAR",
@@ -465,7 +465,7 @@
             "iconUrl": "2e6291a33fbe73dad80efa1a77a72c184d503537.jpg",
             "iconGrayUrl": "fff155a9e70f6b5e61ce1d86987dbfbba8a73ef2.jpg",
             "hidden": false,
-            "globalPct": 0.8
+            "globalPct": 0.7
         },
         {
             "apiName": "ACH_KILL_APE_BOSS",
@@ -575,7 +575,7 @@
             "iconUrl": "57aa5cc275f2a2e358239fe7d447ca5156ae8c90.jpg",
             "iconGrayUrl": "9e23aa3e48bccc0db2d68f31e416705d1812f69f.jpg",
             "hidden": false,
-            "globalPct": 0.8
+            "globalPct": 0.7
         },
         {
             "apiName": "ACH_COMPLETE_APE_CAMPAIGN",
@@ -817,7 +817,7 @@
             "iconUrl": "23feb772828e059ecfe4f7d055803e1a22d9d331.jpg",
             "iconGrayUrl": "32c820f136fef0d6e77ad561e7362077801962da.jpg",
             "hidden": false,
-            "globalPct": 3.4
+            "globalPct": 3.3
         },
         {
             "apiName": "ACH_EQUIP_SANDWORM",
@@ -850,7 +850,7 @@
             "iconUrl": "3564e3710902ffa81f64fa5e6f6b3ff8fb0d22c9.jpg",
             "iconGrayUrl": "4962d0ba650394c4c290782e545e1f4889348085.jpg",
             "hidden": true,
-            "globalPct": 3.1
+            "globalPct": 3
         },
         {
             "apiName": "ACH_NULLSEC_RESPAWN",
@@ -916,7 +916,7 @@
             "iconUrl": "88a38f0f25503d09868476217ef594490f1a2f2c.jpg",
             "iconGrayUrl": "e9af1c71979a30213e9b825e42d6749d2063601b.jpg",
             "hidden": true,
-            "globalPct": 2.1
+            "globalPct": 2
         },
         {
             "apiName": "ACH_PROMETHEUS_3",
@@ -927,7 +927,7 @@
             "iconUrl": "8060084ea2ca843adcb3e146d1ffa4989eac419e.jpg",
             "iconGrayUrl": "88e02ba615324965435bc72345e236c706e4c424.jpg",
             "hidden": true,
-            "globalPct": 1.7
+            "globalPct": 1.6
         },
         {
             "apiName": "ACH_PROMETHEUS_4",
@@ -1015,7 +1015,7 @@
             "iconUrl": "1352a493c3c05c76af110c5968049401fd552634.jpg",
             "iconGrayUrl": "e90dda6905e1d79f5c547e47f8b23c742297cac1.jpg",
             "hidden": false,
-            "globalPct": 5
+            "globalPct": 4.9
         },
         {
             "apiName": "ACH_TAME_KILL",
@@ -1059,7 +1059,7 @@
             "iconUrl": "f8ae47e602618cb5afbf995067b4e093a850a9f0.jpg",
             "iconGrayUrl": "783b16b4102000bd4731a88a74c0138bf3f81ce7.jpg",
             "hidden": false,
-            "globalPct": 23.9
+            "globalPct": 23.8
         },
         {
             "apiName": "ACH_SWIM_IN_LAVA",
@@ -1081,7 +1081,7 @@
             "iconUrl": "5c884f74cfa231309452b4606591cc66f26b6ae3.jpg",
             "iconGrayUrl": "8bd1a21526d0222119599e63b4e45e6b3ae7f59e.jpg",
             "hidden": false,
-            "globalPct": 4.1
+            "globalPct": 4
         },
         {
             "apiName": "ACH_TAME_LEVEL50",
@@ -1092,7 +1092,7 @@
             "iconUrl": "1badd23f19e2495d3d1f81232a7b7bb323b6c690.jpg",
             "iconGrayUrl": "af050a3009ba44d0f19f389e9ca985fcca5190e3.jpg",
             "hidden": false,
-            "globalPct": 2.1
+            "globalPct": 2
         },
         {
             "apiName": "ACH_TAME_LEVEL25",
@@ -1136,7 +1136,7 @@
             "iconUrl": "1c3ec4be31456ba0f4956afb69c955f1397aeb10.jpg",
             "iconGrayUrl": "297e3921d7872dde055389ccd0845f6b469c74af.jpg",
             "hidden": false,
-            "globalPct": 6.6
+            "globalPct": 6.5
         },
         {
             "apiName": "ACH_ELECTROSHOCK",
@@ -1147,7 +1147,7 @@
             "iconUrl": "6fb96b726685da1a97f6f911d67664e5f83b2697.jpg",
             "iconGrayUrl": "e9c1b0202b62c63be5a1a1684b966158b4c5e9d5.jpg",
             "hidden": false,
-            "globalPct": 1.7
+            "globalPct": 1.6
         },
         {
             "apiName": "ACH_QUESTS_TOTAL",
@@ -1191,7 +1191,7 @@
             "iconUrl": "c7d8e2141ab65179c926bbb79ea69b135831d677.jpg",
             "iconGrayUrl": "c4915ab4a1bdc2c116e52f9a6be1bb9cd498fbbf.jpg",
             "hidden": false,
-            "globalPct": 12.8
+            "globalPct": 12.7
         },
         {
             "apiName": "ACH_METEOR_EVENT",
@@ -1246,7 +1246,7 @@
             "iconUrl": "9e0a902c243d0e99803ac3c02894d6e8c3f7f383.jpg",
             "iconGrayUrl": "e0d1352dfcfc0d0fefd08dd40e82960d43443b6e.jpg",
             "hidden": false,
-            "globalPct": 1.1
+            "globalPct": 1
         },
         {
             "apiName": "ACH_TAME_HOME",
@@ -1290,7 +1290,7 @@
             "iconUrl": "d2f684fa171f153a5dad5036de1dbe7e162e1a4c.jpg",
             "iconGrayUrl": "6ebe34cd0e3221e400b78766da4e23d680b3db54.jpg",
             "hidden": false,
-            "globalPct": 2.1
+            "globalPct": 2
         },
         {
             "apiName": "ACH_PLAY_FETCH",
@@ -1598,7 +1598,7 @@
             "iconUrl": "e01ecb6ef576e1f425a4bbeaf39133364f96914e.jpg",
             "iconGrayUrl": "816b7471b28f91e3366a7a955b6fbea6944567ab.jpg",
             "hidden": false,
-            "globalPct": 6.8
+            "globalPct": 6.7
         },
         {
             "apiName": "ACH_MUSHROOMS",
@@ -1741,7 +1741,7 @@
             "iconUrl": "f7fa504615ce0a381fa7e4f14b05f173ed14235e.jpg",
             "iconGrayUrl": "2385c638ac8c266fae82af58eab0fc8ade0e97c8.jpg",
             "hidden": false,
-            "globalPct": 1.2
+            "globalPct": 1.1
         },
         {
             "apiName": "ACH_ROCK_SOLID",
@@ -1774,7 +1774,7 @@
             "iconUrl": "c9db568ae1f609f06e71b4b3c5e73bbeba0517ea.jpg",
             "iconGrayUrl": "9808f84b7747a92390d385dead2184a236af9253.jpg",
             "hidden": false,
-            "globalPct": 1.2
+            "globalPct": 1.1
         },
         {
             "apiName": "ACH_SKULKING_AROUND",
@@ -1818,7 +1818,7 @@
             "iconUrl": "7b6b0b862d4a278195ae35201f17864de9fa02a9.jpg",
             "iconGrayUrl": "09272fd4d04ab35ec98f6a806a58b7e888cb61d5.jpg",
             "hidden": false,
-            "globalPct": 2.9
+            "globalPct": 2.8
         },
         {
             "apiName": "ACH_THE_PEOPLES_SYNDICATE",
@@ -1851,7 +1851,7 @@
             "iconUrl": "ca8e667aadca67974acea4e8876e8981579d4f18.jpg",
             "iconGrayUrl": "40c9a8c91868bbe4d030617add0fbb1e43498310.jpg",
             "hidden": false,
-            "globalPct": 0.6
+            "globalPct": 0.5
         },
         {
             "apiName": "ACH_WYRM_REAPER",
@@ -1884,7 +1884,7 @@
             "iconUrl": "1e63fb3dc287c0d89fbd45bf03250de5ea632a9e.jpg",
             "iconGrayUrl": "eaf67a17f73b3a59769b0acd4a631569f162d095.jpg",
             "hidden": false,
-            "globalPct": 0.5
+            "globalPct": 0.4
         }
     ],
     "playtimeForever": 59,
@@ -1900,7 +1900,7 @@
             "unlockedAt": "2025-12-26T14:17:43.000Z",
             "iconUrl": "e72a92b3e3ce59af0057cc38066500f6c9b94a7f.jpg",
             "iconGrayUrl": "7dbbc67a024ac19a46326223bf5838a726e25d20.jpg",
-            "globalPct": 78.9
+            "globalPct": 78.8
         },
         {
             "apiName": "ACH_WEAR_ARMOR",
@@ -1909,7 +1909,7 @@
             "unlockedAt": "2025-12-26T14:13:45.000Z",
             "iconUrl": "b5145383d9c66e061c8b4c0c33587a3af572240f.jpg",
             "iconGrayUrl": "97536f6756c9f45a4473fcb56d62f1543d728aea.jpg",
-            "globalPct": 71
+            "globalPct": 70.9
         },
         {
             "apiName": "ACH_KILL_SANDWORM_BOSS",
