@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-08-28T08:42:30.969Z"
+        "extractionTimestamp": "2026-08-28T17:13:36.573Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,7 +8,7 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Tomba is at Kujara Summit. 💯 257,200 🗒️35/53",
+        "richPresenceMsg": "Tomba is at Kujara Summit. 💯 292,700 🗒️37/58",
         "lastGameId": 11306,
         "contribCount": 0,
         "contribYield": 0,
@@ -33,8 +33,8 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Tomba is at Kujara Summit. 💯 257,200 🗒️35/53",
-        "richPresenceMsgDate": "2026-08-25 10:47:13",
+        "richPresenceMsg": "Tomba is at Kujara Summit. 💯 292,700 🗒️37/58",
+        "richPresenceMsgDate": "2026-08-28 15:14:31",
         "lastGameId": 11306,
         "contribCount": 0,
         "contribYield": 0,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 41826,
+        "rank": 41834,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 160786,
+        "totalRanked": 160826,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -238,7 +238,7 @@
             "imageTitle": "/Images/050910.png",
             "imageIngame": "/Images/050909.png",
             "imageBoxArt": "/Images/097460.png",
-            "lastPlayed": "2026-08-25 10:47:13",
+            "lastPlayed": "2026-08-28 15:14:31",
             "achievementsTotal": 45,
             "numPossibleAchievements": 45,
             "possibleScore": 604,
@@ -246,6 +246,24 @@
             "scoreAchieved": 30,
             "numAchievedHardcore": 6,
             "scoreAchievedHardcore": 30
+        },
+        {
+            "gameId": 11365,
+            "consoleId": 12,
+            "consoleName": "PlayStation",
+            "title": "Mega Man 8",
+            "imageIcon": "/Images/054970.png",
+            "imageTitle": "/Images/026464.png",
+            "imageIngame": "/Images/026465.png",
+            "imageBoxArt": "/Images/071141.png",
+            "lastPlayed": "2026-08-28 12:35:50",
+            "achievementsTotal": 31,
+            "numPossibleAchievements": 31,
+            "possibleScore": 362,
+            "numAchieved": 0,
+            "scoreAchieved": 0,
+            "numAchievedHardcore": 0,
+            "scoreAchievedHardcore": 0
         },
         {
             "gameId": 22693,
@@ -480,24 +498,6 @@
             "scoreAchieved": 357,
             "numAchievedHardcore": 75,
             "scoreAchievedHardcore": 357
-        },
-        {
-            "gameId": 515,
-            "consoleId": 5,
-            "consoleName": "Game Boy Advance",
-            "title": "Pokémon FireRed Version",
-            "imageIcon": "/Images/105044.png",
-            "imageTitle": "/Images/001917.png",
-            "imageIngame": "/Images/111883.png",
-            "imageBoxArt": "/Images/001918.png",
-            "lastPlayed": "2026-07-08 00:25:43",
-            "achievementsTotal": 61,
-            "numPossibleAchievements": 61,
-            "possibleScore": 453,
-            "numAchieved": 1,
-            "scoreAchieved": 1,
-            "numAchievedHardcore": 1,
-            "scoreAchievedHardcore": 1
         }
     ],
     "gameAwardsAndProgress": {
@@ -1588,7 +1588,7 @@
         "gameIcon": "/Images/124477.png",
         "gameId": 11306,
         "consoleName": "PlayStation",
-        "cumulScore": 401,
+        "cumulScore": 379,
         "badgeUrl": "/Badge/103286.png",
         "gameUrl": "/game/11306"
     },
@@ -1601,7 +1601,7 @@
         "imageTitle": "/Images/050910.png",
         "imageIngame": "/Images/050909.png",
         "imageBoxArt": "/Images/097460.png",
-        "lastPlayed": "2026-08-25 10:47:13",
+        "lastPlayed": "2026-08-28 15:14:31",
         "achievementsTotal": 45,
         "numPossibleAchievements": 45,
         "possibleScore": 604,
