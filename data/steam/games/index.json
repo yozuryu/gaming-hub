@@ -34606,14 +34606,32 @@
             "appId": 921570,
             "hasAchievements": true,
             "total": 88,
-            "unlocked": 26,
+            "unlocked": 28,
             "gameName": "OCTOPATH TRAVELER",
-            "playtimeForever": 1120,
-            "lastPlayedTs": "2026-08-29T08:56:30.000Z",
+            "playtimeForever": 1214,
+            "lastPlayedTs": "2026-08-29T14:20:22.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
-            "lastUnlockedAt": "2026-08-25T07:28:19.000Z",
-            "lastUnlockName": "Aeber's Wisdom",
+            "lastUnlockedAt": "2026-08-29T10:08:49.000Z",
+            "lastUnlockName": "Brand's Wisdom",
             "preview": [
+                {
+                    "apiName": "ACHIEVEMENT_036",
+                    "displayName": "Brand's Wisdom",
+                    "unlocked": true,
+                    "unlockedAt": "2026-08-29T10:08:49.000Z",
+                    "iconUrl": "fa70f9faef1c7508039c7c1b4de9e8920b90fc78.jpg",
+                    "iconGrayUrl": "fff3edaa7868729dbe93ef8387fb374a2b139338.jpg",
+                    "globalPct": 35.1
+                },
+                {
+                    "apiName": "ACHIEVEMENT_010",
+                    "displayName": "The Merchants' Fair",
+                    "unlocked": true,
+                    "unlockedAt": "2026-08-29T10:03:28.000Z",
+                    "iconUrl": "6c079936280423185a3e2254ee66e57d289d3aaa.jpg",
+                    "iconGrayUrl": "97a7440bea0d89c0fc51ef128d1b2e4a8eeccb4d.jpg",
+                    "globalPct": 33
+                },
                 {
                     "apiName": "ACHIEVEMENT_040",
                     "displayName": "Aeber's Wisdom",
@@ -34649,24 +34667,6 @@
                     "iconUrl": "6dcf309c7db783d741d5b4d0b18a22b7e1690ccc.jpg",
                     "iconGrayUrl": "a5d62b247cd0662ea88b57401846e3fe7923e071.jpg",
                     "globalPct": 42.4
-                },
-                {
-                    "apiName": "ACHIEVEMENT_017",
-                    "displayName": "Setting Out – Revenge",
-                    "unlocked": true,
-                    "unlockedAt": "2026-08-09T13:00:52.000Z",
-                    "iconUrl": "f646c663ce78fde53ff3cf67c97791e29edebd4d.jpg",
-                    "iconGrayUrl": "974ebb0d33c2b3a9157bf4a9b14fe0bd700bfceb.jpg",
-                    "globalPct": 56.8
-                },
-                {
-                    "apiName": "ACHIEVEMENT_084",
-                    "displayName": "Irresistible",
-                    "unlocked": true,
-                    "unlockedAt": "2026-08-09T12:34:59.000Z",
-                    "iconUrl": "0b4756e0942bf6d80945b629720263911140497b.jpg",
-                    "iconGrayUrl": "9f77882ebdac360ccd40c0dc46ff0ac98b7a5a0f.jpg",
-                    "globalPct": 57.5
                 }
             ]
         },

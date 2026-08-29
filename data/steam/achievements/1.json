@@ -3,6 +3,26 @@
         {
             "appId": 921570,
             "gameName": "OCTOPATH TRAVELER",
+            "apiName": "ACHIEVEMENT_036",
+            "displayName": "Brand's Wisdom",
+            "description": "Obtained warrior as a secondary job.",
+            "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/fa70f9faef1c7508039c7c1b4de9e8920b90fc78.jpg",
+            "unlockedAt": "2026-08-29T10:08:49.000Z",
+            "globalPct": 35.1
+        },
+        {
+            "appId": 921570,
+            "gameName": "OCTOPATH TRAVELER",
+            "apiName": "ACHIEVEMENT_010",
+            "displayName": "The Merchants' Fair",
+            "description": "Tressa rescues her rival, Ali, and drives Morlock from the town. Before resuming her journey, Tressa promises Ali they will one day meet again at the Merchants' Fair.",
+            "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/6c079936280423185a3e2254ee66e57d289d3aaa.jpg",
+            "unlockedAt": "2026-08-29T10:03:28.000Z",
+            "globalPct": 33
+        },
+        {
+            "appId": 921570,
+            "gameName": "OCTOPATH TRAVELER",
             "apiName": "ACHIEVEMENT_040",
             "displayName": "Aeber's Wisdom",
             "description": "Obtained thief as a secondary job.",
@@ -118,7 +138,7 @@
             "description": "Stole something for the first time.",
             "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/e1897d5f7697cb758eb4da5a8fbb7127353d5a94.jpg",
             "unlockedAt": "2026-07-06T15:01:24.000Z",
-            "globalPct": 62.3
+            "globalPct": 62.4
         }
     ]
 }

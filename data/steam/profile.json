@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-08-29T08:57:32.400Z"
+        "extractionTimestamp": "2026-08-29T14:24:44.425Z"
     },
     "profile": {
         "steamId": "76561198188939413",
@@ -8,16 +8,16 @@
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
         "status": 1,
-        "lastOnline": "2026-08-25T07:57:43.000Z",
+        "lastOnline": "2026-08-29T10:32:20.000Z",
         "countryCode": "ID"
     },
     "stats": {
-        "totalGames": 1285,
-        "totalPlaytimeMin": 347902,
-        "totalPlaytimeHrs": 5798,
+        "totalGames": 1286,
+        "totalPlaytimeMin": 347996,
+        "totalPlaytimeHrs": 5800,
         "gamesWithPlaytime": 817,
         "totalAchievements": 10055,
-        "unlockedAchievements": 2811,
+        "unlockedAchievements": 2813,
         "gamesWithAchievements": 170,
         "perfectCount": 17,
         "completionPct": 27,
@@ -27,33 +27,33 @@
         {
             "appId": 921570,
             "name": "OCTOPATH TRAVELER",
-            "playtime2Weeks": 198,
-            "playtimeForever": 1120,
+            "playtime2Weeks": 253,
+            "playtimeForever": 1214,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
             "storeUrl": "https://store.steampowered.com/app/921570",
-            "lastPlayedTs": "2026-08-29T08:56:30.000Z",
-            "achUnlocked": 26,
+            "lastPlayedTs": "2026-08-29T14:20:22.000Z",
+            "achUnlocked": 28,
             "achTotal": 88
         }
     ],
     "mostRecentGame": {
         "appId": 921570,
         "name": "OCTOPATH TRAVELER",
-        "playtime2Weeks": 198,
-        "playtimeForever": 1120,
+        "playtime2Weeks": 253,
+        "playtimeForever": 1214,
         "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
         "storeUrl": "https://store.steampowered.com/app/921570",
-        "lastPlayedTs": "2026-08-29T08:56:30.000Z"
+        "lastPlayedTs": "2026-08-29T14:20:22.000Z"
     },
     "mostRecentUnlock": {
         "appId": 921570,
         "gameName": "OCTOPATH TRAVELER",
-        "apiName": "ACHIEVEMENT_040",
-        "displayName": "Aeber's Wisdom",
-        "description": "Obtained thief as a secondary job.",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/2f8cc5729efbf7e8cd240826447e6b83be591433.jpg",
-        "unlockedAt": "2026-08-25T07:28:19.000Z",
-        "globalPct": 35
+        "apiName": "ACHIEVEMENT_036",
+        "displayName": "Brand's Wisdom",
+        "description": "Obtained warrior as a secondary job.",
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/fa70f9faef1c7508039c7c1b4de9e8920b90fc78.jpg",
+        "unlockedAt": "2026-08-29T10:08:49.000Z",
+        "globalPct": 35.1
     },
     "perfectGames": [
         {
