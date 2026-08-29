@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-08-29T05:20:04.428Z"
+        "extractionTimestamp": "2026-08-29T08:48:38.933Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Tomba is at Kujara Summit. 💯 292,700 🗒️37/58",
-        "lastGameId": 11306,
+        "richPresenceMsg": "Playing Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
+        "lastGameId": 22693,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2848,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Tomba is at Kujara Summit. 💯 292,700 🗒️37/58",
-        "richPresenceMsgDate": "2026-08-28 15:14:31",
-        "lastGameId": 11306,
+        "richPresenceMsg": "Playing Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
+        "richPresenceMsgDate": "2026-08-29 06:26:35",
+        "lastGameId": 22693,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 2848,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 41850,
+        "rank": 41859,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 160923,
+        "totalRanked": 160948,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -230,6 +230,24 @@
     },
     "recentlyPlayedGames": [
         {
+            "gameId": 22693,
+            "consoleId": 18,
+            "consoleName": "Nintendo DS",
+            "title": "Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
+            "imageIcon": "/Images/149664.png",
+            "imageTitle": "/Images/069700.png",
+            "imageIngame": "/Images/069701.png",
+            "imageBoxArt": "/Images/069702.png",
+            "lastPlayed": "2026-08-29 06:26:35",
+            "achievementsTotal": 389,
+            "numPossibleAchievements": 389,
+            "possibleScore": 815,
+            "numAchieved": 25,
+            "scoreAchieved": 34,
+            "numAchievedHardcore": 25,
+            "scoreAchievedHardcore": 34
+        },
+        {
             "gameId": 11306,
             "consoleId": 12,
             "consoleName": "PlayStation",
@@ -264,24 +282,6 @@
             "scoreAchieved": 0,
             "numAchievedHardcore": 0,
             "scoreAchievedHardcore": 0
-        },
-        {
-            "gameId": 22693,
-            "consoleId": 18,
-            "consoleName": "Nintendo DS",
-            "title": "Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
-            "imageIcon": "/Images/149664.png",
-            "imageTitle": "/Images/069700.png",
-            "imageIngame": "/Images/069701.png",
-            "imageBoxArt": "/Images/069702.png",
-            "lastPlayed": "2026-08-07 01:30:38",
-            "achievementsTotal": 389,
-            "numPossibleAchievements": 389,
-            "possibleScore": 815,
-            "numAchieved": 25,
-            "scoreAchieved": 34,
-            "numAchievedHardcore": 25,
-            "scoreAchievedHardcore": 34
         },
         {
             "gameId": 29892,
@@ -1593,22 +1593,22 @@
         "gameUrl": "/game/11306"
     },
     "mostRecentGame": {
-        "gameId": 11306,
-        "consoleId": 12,
-        "consoleName": "PlayStation",
-        "title": "Tomba! 2: The Evil Swine Return",
-        "imageIcon": "/Images/124477.png",
-        "imageTitle": "/Images/050910.png",
-        "imageIngame": "/Images/050909.png",
-        "imageBoxArt": "/Images/097460.png",
-        "lastPlayed": "2026-08-28 15:14:31",
-        "achievementsTotal": 45,
-        "numPossibleAchievements": 45,
-        "possibleScore": 604,
-        "numAchieved": 6,
-        "scoreAchieved": 30,
-        "numAchievedHardcore": 6,
-        "scoreAchievedHardcore": 30
+        "gameId": 22693,
+        "consoleId": 18,
+        "consoleName": "Nintendo DS",
+        "title": "Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
+        "imageIcon": "/Images/149664.png",
+        "imageTitle": "/Images/069700.png",
+        "imageIngame": "/Images/069701.png",
+        "imageBoxArt": "/Images/069702.png",
+        "lastPlayed": "2026-08-29 06:26:35",
+        "achievementsTotal": 389,
+        "numPossibleAchievements": 389,
+        "possibleScore": 815,
+        "numAchieved": 25,
+        "scoreAchieved": 34,
+        "numAchievedHardcore": 25,
+        "scoreAchievedHardcore": 34
     },
     "points7Days": 5,
     "points30Days": 5
