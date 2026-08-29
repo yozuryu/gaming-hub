@@ -34606,14 +34606,41 @@
             "appId": 921570,
             "hasAchievements": true,
             "total": 88,
-            "unlocked": 28,
+            "unlocked": 31,
             "gameName": "OCTOPATH TRAVELER",
-            "playtimeForever": 1214,
-            "lastPlayedTs": "2026-08-29T14:20:22.000Z",
+            "playtimeForever": 1291,
+            "lastPlayedTs": "2026-08-29T15:38:03.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
-            "lastUnlockedAt": "2026-08-29T10:08:49.000Z",
-            "lastUnlockName": "Brand's Wisdom",
+            "lastUnlockedAt": "2026-08-29T15:28:45.000Z",
+            "lastUnlockName": "Alephan's Wisdom",
             "preview": [
+                {
+                    "apiName": "ACHIEVEMENT_034",
+                    "displayName": "Alephan's Wisdom",
+                    "unlocked": true,
+                    "unlockedAt": "2026-08-29T15:28:45.000Z",
+                    "iconUrl": "bb2126bcdedd7431c3e8af901640b711054bf481.jpg",
+                    "iconGrayUrl": "754f447784ad01febd7db357fc12e247c806435d.jpg",
+                    "globalPct": 33.6
+                },
+                {
+                    "apiName": "ACHIEVEMENT_006",
+                    "displayName": "Traces of the Tome",
+                    "unlocked": true,
+                    "unlockedAt": "2026-08-29T15:22:29.000Z",
+                    "iconUrl": "5ff77eedd16a3184aca3320a453ab32e1db0f7d0.jpg",
+                    "iconGrayUrl": "986eba7fae0378315a7950b689885e284ab1d72a.jpg",
+                    "globalPct": 32.9
+                },
+                {
+                    "apiName": "ACHIEVEMENT_037",
+                    "displayName": "Sealticge's Wisdom",
+                    "unlocked": true,
+                    "unlockedAt": "2026-08-29T14:34:20.000Z",
+                    "iconUrl": "24e8d1dd5475d342830c6647b9566fb359e6cd41.jpg",
+                    "iconGrayUrl": "9231442d0cb6742424beb8894e0f55c346b44791.jpg",
+                    "globalPct": 32.5
+                },
                 {
                     "apiName": "ACHIEVEMENT_036",
                     "displayName": "Brand's Wisdom",
@@ -34640,33 +34667,6 @@
                     "iconUrl": "2f8cc5729efbf7e8cd240826447e6b83be591433.jpg",
                     "iconGrayUrl": "95a8371acc677d7a7c64f58f92647e6e8d179a3e.jpg",
                     "globalPct": 35
-                },
-                {
-                    "apiName": "ACHIEVEMENT_038",
-                    "displayName": "Dohter's Wisdom",
-                    "unlocked": true,
-                    "unlockedAt": "2026-08-20T14:53:46.000Z",
-                    "iconUrl": "177ef6b05f7b3a4c47cbed98d3e42be544ab6e9d.jpg",
-                    "iconGrayUrl": "37de59ec62e692266b10b9096606b8d715d359d3.jpg",
-                    "globalPct": 33.2
-                },
-                {
-                    "apiName": "ACHIEVEMENT_002",
-                    "displayName": "Gentle Guidance",
-                    "unlocked": true,
-                    "unlockedAt": "2026-08-20T14:32:58.000Z",
-                    "iconUrl": "7efec7fa79ad86588996eba32008fb4fe5eed59d.jpg",
-                    "iconGrayUrl": "fee34cb20a89121e522e1050cdc38da49023905f.jpg",
-                    "globalPct": 31.9
-                },
-                {
-                    "apiName": "ACHIEVEMENT_069",
-                    "displayName": "Moneybags",
-                    "unlocked": true,
-                    "unlockedAt": "2026-08-20T14:21:55.000Z",
-                    "iconUrl": "6dcf309c7db783d741d5b4d0b18a22b7e1690ccc.jpg",
-                    "iconGrayUrl": "a5d62b247cd0662ea88b57401846e3fe7923e071.jpg",
-                    "globalPct": 42.4
                 }
             ]
         },

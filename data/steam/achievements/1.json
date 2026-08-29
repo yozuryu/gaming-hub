@@ -3,6 +3,36 @@
         {
             "appId": 921570,
             "gameName": "OCTOPATH TRAVELER",
+            "apiName": "ACHIEVEMENT_034",
+            "displayName": "Alephan's Wisdom",
+            "description": "Obtained scholar as a secondary job.",
+            "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/bb2126bcdedd7431c3e8af901640b711054bf481.jpg",
+            "unlockedAt": "2026-08-29T15:28:45.000Z",
+            "globalPct": 33.6
+        },
+        {
+            "appId": 921570,
+            "gameName": "OCTOPATH TRAVELER",
+            "apiName": "ACHIEVEMENT_006",
+            "displayName": "Traces of the Tome",
+            "description": "After Cyrus solves the mystery of the missing townspeople, he and Odette ascertain where a copy of the tome was reproduced.",
+            "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/5ff77eedd16a3184aca3320a453ab32e1db0f7d0.jpg",
+            "unlockedAt": "2026-08-29T15:22:29.000Z",
+            "globalPct": 32.9
+        },
+        {
+            "appId": 921570,
+            "gameName": "OCTOPATH TRAVELER",
+            "apiName": "ACHIEVEMENT_037",
+            "displayName": "Sealticge's Wisdom",
+            "description": "Obtained dancer as a secondary job.",
+            "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/24e8d1dd5475d342830c6647b9566fb359e6cd41.jpg",
+            "unlockedAt": "2026-08-29T14:34:20.000Z",
+            "globalPct": 32.5
+        },
+        {
+            "appId": 921570,
+            "gameName": "OCTOPATH TRAVELER",
             "apiName": "ACHIEVEMENT_036",
             "displayName": "Brand's Wisdom",
             "description": "Obtained warrior as a secondary job.",
@@ -138,7 +168,7 @@
             "description": "Stole something for the first time.",
             "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/e1897d5f7697cb758eb4da5a8fbb7127353d5a94.jpg",
             "unlockedAt": "2026-07-06T15:01:24.000Z",
-            "globalPct": 62.4
+            "globalPct": 62.3
         }
     ]
 }
