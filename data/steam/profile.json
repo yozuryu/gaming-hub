@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-09-03T14:25:42.805Z"
+        "extractionTimestamp": "2026-09-03T18:32:54.712Z"
     },
     "profile": {
         "steamId": "76561198188939413",
@@ -8,26 +8,37 @@
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
         "status": 0,
-        "lastOnline": "2026-09-01T14:51:14.000Z",
+        "lastOnline": "2026-09-03T16:33:18.000Z",
         "countryCode": "ID"
     },
     "stats": {
-        "totalGames": 1286,
-        "totalPlaytimeMin": 348120,
-        "totalPlaytimeHrs": 5802,
-        "gamesWithPlaytime": 817,
+        "totalGames": 1287,
+        "totalPlaytimeMin": 348152,
+        "totalPlaytimeHrs": 5803,
+        "gamesWithPlaytime": 818,
         "totalAchievements": 10055,
         "unlockedAchievements": 2818,
         "gamesWithAchievements": 170,
         "perfectCount": 17,
         "completionPct": 28,
-        "avgPlaytimeMin": 426
+        "avgPlaytimeMin": 425
     },
     "recentlyPlayed": [
         {
+            "appId": 4474710,
+            "name": "FINAL FANTASY RESONANCE DEMO",
+            "playtime2Weeks": 32,
+            "playtimeForever": 32,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/4474710/4e89e6108d4a4eb44a9ae23d078eb8175118c4e3.jpg",
+            "storeUrl": "https://store.steampowered.com/app/4474710",
+            "lastPlayedTs": "2026-09-03T16:30:53.000Z",
+            "achUnlocked": null,
+            "achTotal": null
+        },
+        {
             "appId": 921570,
             "name": "OCTOPATH TRAVELER",
-            "playtime2Weeks": 297,
+            "playtime2Weeks": 258,
             "playtimeForever": 1338,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
             "storeUrl": "https://store.steampowered.com/app/921570",
@@ -37,13 +48,13 @@
         }
     ],
     "mostRecentGame": {
-        "appId": 921570,
-        "name": "OCTOPATH TRAVELER",
-        "playtime2Weeks": 297,
-        "playtimeForever": 1338,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
-        "storeUrl": "https://store.steampowered.com/app/921570",
-        "lastPlayedTs": "2026-08-30T04:40:57.000Z"
+        "appId": 4474710,
+        "name": "FINAL FANTASY RESONANCE DEMO",
+        "playtime2Weeks": 32,
+        "playtimeForever": 32,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/4474710/4e89e6108d4a4eb44a9ae23d078eb8175118c4e3.jpg",
+        "storeUrl": "https://store.steampowered.com/app/4474710",
+        "lastPlayedTs": "2026-09-03T16:30:53.000Z"
     },
     "mostRecentUnlock": {
         "appId": 921570,
