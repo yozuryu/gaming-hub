@@ -1,21 +1,21 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-09-06T14:06:53.751Z"
+        "extractionTimestamp": "2026-09-06T16:57:26.122Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 3,
-        "lastOnline": "2026-09-06T13:58:46.000Z",
+        "status": 0,
+        "lastOnline": "2026-09-06T15:36:03.000Z",
         "countryCode": "ID"
     },
     "stats": {
-        "totalGames": 1287,
-        "totalPlaytimeMin": 348152,
+        "totalGames": 1288,
+        "totalPlaytimeMin": 348183,
         "totalPlaytimeHrs": 5803,
-        "gamesWithPlaytime": 818,
+        "gamesWithPlaytime": 819,
         "totalAchievements": 10055,
         "unlockedAchievements": 2818,
         "gamesWithAchievements": 170,
@@ -24,6 +24,17 @@
         "avgPlaytimeMin": 425
     },
     "recentlyPlayed": [
+        {
+            "appId": 4391790,
+            "name": "Another Eden Begins Demo",
+            "playtime2Weeks": 31,
+            "playtimeForever": 31,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/4391790/a8292db0c617cd676528cec79d054f7ce1ca2184.jpg",
+            "storeUrl": "https://store.steampowered.com/app/4391790",
+            "lastPlayedTs": "2026-09-06T15:33:17.000Z",
+            "achUnlocked": null,
+            "achTotal": null
+        },
         {
             "appId": 4474710,
             "name": "FINAL FANTASY RESONANCE DEMO",
@@ -48,13 +59,13 @@
         }
     ],
     "mostRecentGame": {
-        "appId": 4474710,
-        "name": "FINAL FANTASY RESONANCE DEMO",
-        "playtime2Weeks": 32,
-        "playtimeForever": 32,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/4474710/4e89e6108d4a4eb44a9ae23d078eb8175118c4e3.jpg",
-        "storeUrl": "https://store.steampowered.com/app/4474710",
-        "lastPlayedTs": "2026-09-03T16:30:53.000Z"
+        "appId": 4391790,
+        "name": "Another Eden Begins Demo",
+        "playtime2Weeks": 31,
+        "playtimeForever": 31,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/4391790/a8292db0c617cd676528cec79d054f7ce1ca2184.jpg",
+        "storeUrl": "https://store.steampowered.com/app/4391790",
+        "lastPlayedTs": "2026-09-06T15:33:17.000Z"
     },
     "mostRecentUnlock": {
         "appId": 921570,
