@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-09-12T12:45:55.683Z"
+        "extractionTimestamp": "2026-09-12T16:07:35.704Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,13 +8,13 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Tomba is at Water Temple. 💯 510,000 🗒️57/85",
+        "richPresenceMsg": "Tomba is at Town of the Fishermen. 💯 581,100 🗒️66/98",
         "lastGameId": 11306,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2919,
+        "totalPoints": 2924,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 8770,
+        "totalTruePoints": 8777,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -33,31 +33,31 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Tomba is at Water Temple. 💯 510,000 🗒️57/85",
-        "richPresenceMsgDate": "2026-09-12 11:36:27",
+        "richPresenceMsg": "Tomba is at Town of the Fishermen. 💯 581,100 🗒️66/98",
+        "richPresenceMsgDate": "2026-09-12 13:41:54",
         "lastGameId": 11306,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2919,
+        "totalPoints": 2924,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 8770,
+        "totalTruePoints": 8777,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 41785,
+        "rank": 41744,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 163381,
+        "totalRanked": 163419,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 2919,
+        "points": 2924,
         "softcorePoints": 1
     },
     "pageAwards": {
@@ -238,14 +238,14 @@
             "imageTitle": "/Images/050910.png",
             "imageIngame": "/Images/050909.png",
             "imageBoxArt": "/Images/097460.png",
-            "lastPlayed": "2026-09-12 11:36:27",
+            "lastPlayed": "2026-09-12 13:41:54",
             "achievementsTotal": 45,
             "numPossibleAchievements": 45,
             "possibleScore": 604,
-            "numAchieved": 12,
-            "scoreAchieved": 52,
-            "numAchievedHardcore": 12,
-            "scoreAchievedHardcore": 52
+            "numAchieved": 13,
+            "scoreAchieved": 57,
+            "numAchievedHardcore": 13,
+            "scoreAchievedHardcore": 57
         },
         {
             "gameId": 11275,
@@ -511,9 +511,9 @@
                 "consoleId": 12,
                 "consoleName": "PlayStation",
                 "maxPossible": 45,
-                "numAwarded": 12,
-                "numAwardedHardcore": 12,
-                "mostRecentAwardedDate": "2026-09-12T11:31:12+00:00",
+                "numAwarded": 13,
+                "numAwardedHardcore": 13,
+                "mostRecentAwardedDate": "2026-09-12T13:16:54+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -1599,12 +1599,12 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-09-12 11:31:12",
+        "date": "2026-09-12 13:16:54",
         "hardcoreMode": true,
-        "achievementId": 89431,
-        "title": "A Pig Tribe Clown Statue",
-        "description": "Destroy the statue blocking your way to the Water Temple.",
-        "badgeName": "102829",
+        "achievementId": 89432,
+        "title": "I Can Swim",
+        "description": "Get the Swimming Pig Suit.",
+        "badgeName": "102830",
         "points": 5,
         "trueRatio": 7,
         "type": "progression",
@@ -1614,8 +1614,8 @@
         "gameIcon": "/Images/124477.png",
         "gameId": 11306,
         "consoleName": "PlayStation",
-        "cumulScore": 393,
-        "badgeUrl": "/Badge/102829.png",
+        "cumulScore": 368,
+        "badgeUrl": "/Badge/102830.png",
         "gameUrl": "/game/11306"
     },
     "mostRecentGame": {
@@ -1627,15 +1627,15 @@
         "imageTitle": "/Images/050910.png",
         "imageIngame": "/Images/050909.png",
         "imageBoxArt": "/Images/097460.png",
-        "lastPlayed": "2026-09-12 11:36:27",
+        "lastPlayed": "2026-09-12 13:41:54",
         "achievementsTotal": 45,
         "numPossibleAchievements": 45,
         "possibleScore": 604,
-        "numAchieved": 12,
-        "scoreAchieved": 52,
-        "numAchievedHardcore": 12,
-        "scoreAchievedHardcore": 52
+        "numAchieved": 13,
+        "scoreAchieved": 57,
+        "numAchievedHardcore": 13,
+        "scoreAchievedHardcore": 57
     },
-    "points7Days": 32,
-    "points30Days": 76
+    "points7Days": 37,
+    "points30Days": 81
 }
