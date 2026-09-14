@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-09-14T10:27:13.665Z"
+        "extractionTimestamp": "2026-09-14T16:53:03.770Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,13 +8,13 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Tomba is at Kujara Summit. 💯 704,600 🗒️69/99",
+        "richPresenceMsg": "Tomba is at Ghost Evil Pig Arena. 💯 721,900 🗒️69/99",
         "lastGameId": 11306,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2959,
+        "totalPoints": 2960,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 8836,
+        "totalTruePoints": 8837,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -33,31 +33,31 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Tomba is at Kujara Summit. 💯 704,600 🗒️69/99",
-        "richPresenceMsgDate": "2026-09-13 14:29:19",
+        "richPresenceMsg": "Tomba is at Ghost Evil Pig Arena. 💯 721,900 🗒️69/99",
+        "richPresenceMsgDate": "2026-09-14 14:35:58",
         "lastGameId": 11306,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 2959,
+        "totalPoints": 2960,
         "totalSoftcorePoints": 1,
-        "totalTruePoints": 8836,
+        "totalTruePoints": 8837,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 41440,
+        "rank": 41438,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 163809,
+        "totalRanked": 163840,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 2959,
+        "points": 2960,
         "softcorePoints": 1
     },
     "pageAwards": {
@@ -238,14 +238,14 @@
             "imageTitle": "/Images/050910.png",
             "imageIngame": "/Images/050909.png",
             "imageBoxArt": "/Images/097460.png",
-            "lastPlayed": "2026-09-13 14:29:19",
+            "lastPlayed": "2026-09-14 14:35:58",
             "achievementsTotal": 45,
             "numPossibleAchievements": 45,
             "possibleScore": 604,
-            "numAchieved": 15,
-            "scoreAchieved": 92,
-            "numAchievedHardcore": 15,
-            "scoreAchievedHardcore": 92
+            "numAchieved": 16,
+            "scoreAchieved": 93,
+            "numAchievedHardcore": 16,
+            "scoreAchievedHardcore": 93
         },
         {
             "gameId": 11407,
@@ -511,9 +511,9 @@
                 "consoleId": 12,
                 "consoleName": "PlayStation",
                 "maxPossible": 45,
-                "numAwarded": 15,
-                "numAwardedHardcore": 15,
-                "mostRecentAwardedDate": "2026-09-13T14:15:08+00:00",
+                "numAwarded": 16,
+                "numAwardedHardcore": 16,
+                "mostRecentAwardedDate": "2026-09-14T14:22:03+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -1599,23 +1599,23 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-09-13 14:15:08",
+        "date": "2026-09-14 14:22:03",
         "hardcoreMode": true,
-        "achievementId": 89495,
-        "title": "This Little Piggy Got Hypothermia",
-        "description": "Capture the Ice Evil Pig without taking damage and without equipping the Golden Powder.",
-        "badgeName": "102831",
-        "points": 25,
-        "trueRatio": 45,
-        "type": "missable",
+        "achievementId": 90322,
+        "title": "Coal Mine Bell",
+        "description": "Find the Coal Mine Bell.",
+        "badgeName": "102836",
+        "points": 1,
+        "trueRatio": 1,
+        "type": null,
         "author": "Alfex",
         "authorUlid": "0197V7CT1S4MM0HP5T3ECB6VY0",
         "gameTitle": "Tomba! 2: The Evil Swine Return",
         "gameIcon": "/Images/124477.png",
         "gameId": 11306,
         "consoleName": "PlayStation",
-        "cumulScore": 378,
-        "badgeUrl": "/Badge/102831.png",
+        "cumulScore": 379,
+        "badgeUrl": "/Badge/102836.png",
         "gameUrl": "/game/11306"
     },
     "mostRecentGame": {
@@ -1627,15 +1627,15 @@
         "imageTitle": "/Images/050910.png",
         "imageIngame": "/Images/050909.png",
         "imageBoxArt": "/Images/097460.png",
-        "lastPlayed": "2026-09-13 14:29:19",
+        "lastPlayed": "2026-09-14 14:35:58",
         "achievementsTotal": 45,
         "numPossibleAchievements": 45,
         "possibleScore": 604,
-        "numAchieved": 15,
-        "scoreAchieved": 92,
-        "numAchievedHardcore": 15,
-        "scoreAchievedHardcore": 92
+        "numAchieved": 16,
+        "scoreAchieved": 93,
+        "numAchievedHardcore": 16,
+        "scoreAchievedHardcore": 93
     },
-    "points7Days": 72,
-    "points30Days": 116
+    "points7Days": 58,
+    "points30Days": 117
 }
