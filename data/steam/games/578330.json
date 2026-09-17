@@ -2,7 +2,7 @@
     "appId": 578330,
     "hasAchievements": true,
     "total": 48,
-    "unlocked": 4,
+    "unlocked": 5,
     "gameName": "LEGO® City Undercover",
     "achievements": [
         {
@@ -25,7 +25,7 @@
             "iconUrl": "13b422b8f5537ce458f91a37efd018a6a3d63923.jpg",
             "iconGrayUrl": "23e266983abce9c823e0cc6b4f2718851fd79c80.jpg",
             "hidden": false,
-            "globalPct": 59.3
+            "globalPct": 59.2
         },
         {
             "apiName": "COMPLETE_STORYEVENT3",
@@ -80,7 +80,7 @@
             "iconUrl": "d9700e1f9b2e4021a94cf5b354e37225908578f5.jpg",
             "iconGrayUrl": "77dd6a75b04bcc3b23bf7c394c7367bcb3619fea.jpg",
             "hidden": false,
-            "globalPct": 33.3
+            "globalPct": 33.2
         },
         {
             "apiName": "COMPLETE_STORYEVENT8",
@@ -146,7 +146,7 @@
             "iconUrl": "c4a8836d775ff9e075559f3f98ccb10f18b619f4.jpg",
             "iconGrayUrl": "f2ad3448156be0842b46a38b1ebb8f63d98e77f2.jpg",
             "hidden": false,
-            "globalPct": 25.7
+            "globalPct": 25.6
         },
         {
             "apiName": "COMPLETE_STORYEVENT14",
@@ -421,7 +421,7 @@
             "iconUrl": "ad86ca01f55ea1d7a6098ddba7a27620e7c9590e.jpg",
             "iconGrayUrl": "7fe2254700b9f666f53269c7860223ddcd0906b6.jpg",
             "hidden": false,
-            "globalPct": 13.1
+            "globalPct": 13
         },
         {
             "apiName": "10_BOOST_RAMPS_IN_TAXI_WITH_PASSENGER",
@@ -436,14 +436,14 @@
         },
         {
             "apiName": "COMPLETE_BUCKING_BRONCO",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-09-17T13:40:08.000Z",
             "displayName": "Unbelievabull",
             "description": "Complete the Bucking Bronco game",
             "iconUrl": "d9ed6b2a6213f17d22be740f5e817973ed93d9e2.jpg",
             "iconGrayUrl": "c500fdd4c93d5397e2686d88d75aa9f234825be8.jpg",
             "hidden": false,
-            "globalPct": 35.9
+            "globalPct": 35.8
         },
         {
             "apiName": "REX_DRIVES_LAWNMOWER",
@@ -534,12 +534,21 @@
             "globalPct": 9
         }
     ],
-    "playtimeForever": 2707,
-    "lastPlayedTs": "2026-09-17T13:03:05.000Z",
+    "playtimeForever": 2765,
+    "lastPlayedTs": "2026-09-17T14:01:26.000Z",
     "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-    "lastUnlockedAt": "2025-10-18T08:08:31.000Z",
-    "lastUnlockName": "Grapple with Goons",
+    "lastUnlockedAt": "2026-09-17T13:40:08.000Z",
+    "lastUnlockName": "Unbelievabull",
     "preview": [
+        {
+            "apiName": "COMPLETE_BUCKING_BRONCO",
+            "displayName": "Unbelievabull",
+            "unlocked": true,
+            "unlockedAt": "2026-09-17T13:40:08.000Z",
+            "iconUrl": "d9ed6b2a6213f17d22be740f5e817973ed93d9e2.jpg",
+            "iconGrayUrl": "c500fdd4c93d5397e2686d88d75aa9f234825be8.jpg",
+            "globalPct": 35.8
+        },
         {
             "apiName": "COMPLETE_STORYEVENT2",
             "displayName": "Grapple with Goons",
@@ -547,7 +556,7 @@
             "unlockedAt": "2025-10-18T08:08:31.000Z",
             "iconUrl": "13b422b8f5537ce458f91a37efd018a6a3d63923.jpg",
             "iconGrayUrl": "23e266983abce9c823e0cc6b4f2718851fd79c80.jpg",
-            "globalPct": 59.3
+            "globalPct": 59.2
         },
         {
             "apiName": "COMPLETE_STORYEVENT1",
@@ -584,15 +593,6 @@
             "iconUrl": "9007c5fc599a6f0568af5ebc82024f6ad3e31a91.jpg",
             "iconGrayUrl": "a7de98a7dd8dc720c741605414a38e65a9675a17.jpg",
             "globalPct": 46.5
-        },
-        {
-            "apiName": "COMPLETE_STORYEVENT4",
-            "displayName": "Kung Fu... and Plumbing?",
-            "unlocked": false,
-            "unlockedAt": null,
-            "iconUrl": "faae8d197a5c285bdf76820ed425043807a5353a.jpg",
-            "iconGrayUrl": "78dcd1fc0bbd31cc5c894ac2db0bd331a158becb.jpg",
-            "globalPct": 42.7
         }
     ]
 }
