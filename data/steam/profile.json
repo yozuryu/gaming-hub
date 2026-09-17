@@ -1,13 +1,13 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-09-17T07:33:36.802Z"
+        "extractionTimestamp": "2026-09-17T13:22:23.461Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 0,
+        "status": 1,
         "lastOnline": "2026-09-12T15:18:21.000Z",
         "countryCode": "ID"
     },
@@ -25,6 +25,17 @@
     },
     "recentlyPlayed": [
         {
+            "appId": 578330,
+            "name": "LEGO® City Undercover",
+            "playtime2Weeks": 71,
+            "playtimeForever": 2707,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
+            "storeUrl": "https://store.steampowered.com/app/578330",
+            "lastPlayedTs": "2026-09-17T13:03:05.000Z",
+            "achUnlocked": 4,
+            "achTotal": 48
+        },
+        {
             "appId": 2515020,
             "name": "FINAL FANTASY XVI",
             "playtime2Weeks": 71,
@@ -34,17 +45,6 @@
             "lastPlayedTs": "2026-09-12T15:17:56.000Z",
             "achUnlocked": 6,
             "achTotal": 69
-        },
-        {
-            "appId": 578330,
-            "name": "LEGO® City Undercover",
-            "playtime2Weeks": 71,
-            "playtimeForever": 2707,
-            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-            "storeUrl": "https://store.steampowered.com/app/578330",
-            "lastPlayedTs": "2026-09-12T10:04:40.000Z",
-            "achUnlocked": 4,
-            "achTotal": 48
         },
         {
             "appId": 2486820,
@@ -114,13 +114,13 @@
         }
     ],
     "mostRecentGame": {
-        "appId": 2515020,
-        "name": "FINAL FANTASY XVI",
+        "appId": 578330,
+        "name": "LEGO® City Undercover",
         "playtime2Weeks": 71,
-        "playtimeForever": 652,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2515020/0ce29700a22fea9eb270b276fa157b79511365e6.jpg",
-        "storeUrl": "https://store.steampowered.com/app/2515020",
-        "lastPlayedTs": "2026-09-12T15:17:56.000Z"
+        "playtimeForever": 2707,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
+        "storeUrl": "https://store.steampowered.com/app/578330",
+        "lastPlayedTs": "2026-09-17T13:03:05.000Z"
     },
     "mostRecentUnlock": {
         "appId": 921570,
