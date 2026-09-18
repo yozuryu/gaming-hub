@@ -2,7 +2,7 @@
     "appId": 578330,
     "hasAchievements": true,
     "total": 48,
-    "unlocked": 5,
+    "unlocked": 6,
     "gameName": "LEGO® City Undercover",
     "achievements": [
         {
@@ -29,8 +29,8 @@
         },
         {
             "apiName": "COMPLETE_STORYEVENT3",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-09-18T12:41:39.000Z",
             "displayName": "From Blue to Bluebell",
             "description": "Complete Chapter 3 - Go Directly to Jail",
             "iconUrl": "9007c5fc599a6f0568af5ebc82024f6ad3e31a91.jpg",
@@ -179,7 +179,7 @@
             "iconUrl": "18fa9ff2ebee11ca70cee77edaecc4dc9d29407b.jpg",
             "iconGrayUrl": "67e864b3ee9579e7221e6698a9d99b2cf32bc5c5.jpg",
             "hidden": false,
-            "globalPct": 6
+            "globalPct": 5.9
         },
         {
             "apiName": "ALL_VEHICLE_RACES",
@@ -534,12 +534,21 @@
             "globalPct": 9
         }
     ],
-    "playtimeForever": 2765,
-    "lastPlayedTs": "2026-09-17T14:01:26.000Z",
+    "playtimeForever": 2828,
+    "lastPlayedTs": "2026-09-18T13:03:10.000Z",
     "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-    "lastUnlockedAt": "2026-09-17T13:40:08.000Z",
-    "lastUnlockName": "Unbelievabull",
+    "lastUnlockedAt": "2026-09-18T12:41:39.000Z",
+    "lastUnlockName": "From Blue to Bluebell",
     "preview": [
+        {
+            "apiName": "COMPLETE_STORYEVENT3",
+            "displayName": "From Blue to Bluebell",
+            "unlocked": true,
+            "unlockedAt": "2026-09-18T12:41:39.000Z",
+            "iconUrl": "9007c5fc599a6f0568af5ebc82024f6ad3e31a91.jpg",
+            "iconGrayUrl": "a7de98a7dd8dc720c741605414a38e65a9675a17.jpg",
+            "globalPct": 46.5
+        },
         {
             "apiName": "COMPLETE_BUCKING_BRONCO",
             "displayName": "Unbelievabull",
@@ -584,15 +593,6 @@
             "iconUrl": "c1d6c4b44c19159f5c23da52638733b09caf4c95.jpg",
             "iconGrayUrl": "01c1840d31acb312c9bec1cbd7690258b480b6fb.jpg",
             "globalPct": 13.9
-        },
-        {
-            "apiName": "COMPLETE_STORYEVENT3",
-            "displayName": "From Blue to Bluebell",
-            "unlocked": false,
-            "unlockedAt": null,
-            "iconUrl": "9007c5fc599a6f0568af5ebc82024f6ad3e31a91.jpg",
-            "iconGrayUrl": "a7de98a7dd8dc720c741605414a38e65a9675a17.jpg",
-            "globalPct": 46.5
         }
     ]
 }

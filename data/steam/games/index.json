@@ -28463,14 +28463,23 @@
             "appId": 578330,
             "hasAchievements": true,
             "total": 48,
-            "unlocked": 5,
+            "unlocked": 6,
             "gameName": "LEGO® City Undercover",
-            "playtimeForever": 2765,
-            "lastPlayedTs": "2026-09-17T14:01:26.000Z",
+            "playtimeForever": 2828,
+            "lastPlayedTs": "2026-09-18T13:03:10.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-            "lastUnlockedAt": "2026-09-17T13:40:08.000Z",
-            "lastUnlockName": "Unbelievabull",
+            "lastUnlockedAt": "2026-09-18T12:41:39.000Z",
+            "lastUnlockName": "From Blue to Bluebell",
             "preview": [
+                {
+                    "apiName": "COMPLETE_STORYEVENT3",
+                    "displayName": "From Blue to Bluebell",
+                    "unlocked": true,
+                    "unlockedAt": "2026-09-18T12:41:39.000Z",
+                    "iconUrl": "9007c5fc599a6f0568af5ebc82024f6ad3e31a91.jpg",
+                    "iconGrayUrl": "a7de98a7dd8dc720c741605414a38e65a9675a17.jpg",
+                    "globalPct": 46.5
+                },
                 {
                     "apiName": "COMPLETE_BUCKING_BRONCO",
                     "displayName": "Unbelievabull",
@@ -28515,15 +28524,6 @@
                     "iconUrl": "c1d6c4b44c19159f5c23da52638733b09caf4c95.jpg",
                     "iconGrayUrl": "01c1840d31acb312c9bec1cbd7690258b480b6fb.jpg",
                     "globalPct": 13.9
-                },
-                {
-                    "apiName": "COMPLETE_STORYEVENT3",
-                    "displayName": "From Blue to Bluebell",
-                    "unlocked": false,
-                    "unlockedAt": null,
-                    "iconUrl": "9007c5fc599a6f0568af5ebc82024f6ad3e31a91.jpg",
-                    "iconGrayUrl": "a7de98a7dd8dc720c741605414a38e65a9675a17.jpg",
-                    "globalPct": 46.5
                 }
             ]
         },
@@ -34608,8 +34608,8 @@
             "total": 88,
             "unlocked": 35,
             "gameName": "OCTOPATH TRAVELER",
-            "playtimeForever": 1373,
-            "lastPlayedTs": "2026-09-07T16:25:30.000Z",
+            "playtimeForever": 1391,
+            "lastPlayedTs": "2026-09-18T10:02:45.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
             "lastUnlockedAt": "2026-09-07T16:12:58.000Z",
             "lastUnlockName": "Aelfric's Wisdom",
@@ -34621,7 +34621,7 @@
                     "unlockedAt": "2026-09-07T16:12:58.000Z",
                     "iconUrl": "c8cc4b62a52bc2628b1e62b6b065d1ad768e5aaf.jpg",
                     "iconGrayUrl": "ea02d3bf6729335546e49aa95d2c767435b7da87.jpg",
-                    "globalPct": 32.9
+                    "globalPct": 33
                 },
                 {
                     "apiName": "ACHIEVEMENT_079",
@@ -39365,7 +39365,7 @@
                     "unlockedAt": "2026-04-26T13:03:01.000Z",
                     "iconUrl": "83dc4d3559c34a919e1ca834f626f6d1ff6507eb.jpg",
                     "iconGrayUrl": "2cde4d41f0138dd6ffc10818911e81e9b40131ab.jpg",
-                    "globalPct": 54.9
+                    "globalPct": 55
                 },
                 {
                     "apiName": "ACH_TERRA_012",
@@ -39420,8 +39420,8 @@
             "total": 69,
             "unlocked": 6,
             "gameName": "FINAL FANTASY XVI",
-            "playtimeForever": 652,
-            "lastPlayedTs": "2026-09-12T15:17:56.000Z",
+            "playtimeForever": 712,
+            "lastPlayedTs": "2026-09-18T14:12:08.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2515020/0ce29700a22fea9eb270b276fa157b79511365e6.jpg",
             "lastUnlockedAt": "2026-05-10T09:08:53.000Z",
             "lastUnlockName": "Acceptance",
