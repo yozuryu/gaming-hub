@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-09-19T10:49:33.549Z"
+        "extractionTimestamp": "2026-09-19T14:19:45.057Z"
     },
     "profile": {
         "steamId": "76561198188939413",
@@ -8,22 +8,33 @@
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
         "status": 0,
-        "lastOnline": "2026-09-19T10:41:25.000Z",
+        "lastOnline": "2026-09-19T13:25:53.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1292,
-        "totalPlaytimeMin": 348780,
-        "totalPlaytimeHrs": 5813,
+        "totalPlaytimeMin": 348840,
+        "totalPlaytimeHrs": 5814,
         "gamesWithPlaytime": 820,
         "totalAchievements": 10055,
-        "unlockedAchievements": 2822,
+        "unlockedAchievements": 2824,
         "gamesWithAchievements": 170,
         "perfectCount": 17,
         "completionPct": 28,
         "avgPlaytimeMin": 425
     },
     "recentlyPlayed": [
+        {
+            "appId": 578330,
+            "name": "LEGO® City Undercover",
+            "playtime2Weeks": 252,
+            "playtimeForever": 2888,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
+            "storeUrl": "https://store.steampowered.com/app/578330",
+            "lastPlayedTs": "2026-09-19T13:25:53.000Z",
+            "achUnlocked": 8,
+            "achTotal": 48
+        },
         {
             "appId": 921570,
             "name": "OCTOPATH TRAVELER",
@@ -45,17 +56,6 @@
             "lastPlayedTs": "2026-09-18T14:33:55.000Z",
             "achUnlocked": 6,
             "achTotal": 69
-        },
-        {
-            "appId": 578330,
-            "name": "LEGO® City Undercover",
-            "playtime2Weeks": 192,
-            "playtimeForever": 2828,
-            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-            "storeUrl": "https://store.steampowered.com/app/578330",
-            "lastPlayedTs": "2026-09-18T13:03:10.000Z",
-            "achUnlocked": 6,
-            "achTotal": 48
         },
         {
             "appId": 2486820,
@@ -103,23 +103,23 @@
         }
     ],
     "mostRecentGame": {
-        "appId": 921570,
-        "name": "OCTOPATH TRAVELER",
-        "playtime2Weeks": 90,
-        "playtimeForever": 1428,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
-        "storeUrl": "https://store.steampowered.com/app/921570",
-        "lastPlayedTs": "2026-09-19T10:39:39.000Z"
+        "appId": 578330,
+        "name": "LEGO® City Undercover",
+        "playtime2Weeks": 252,
+        "playtimeForever": 2888,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
+        "storeUrl": "https://store.steampowered.com/app/578330",
+        "lastPlayedTs": "2026-09-19T13:25:53.000Z"
     },
     "mostRecentUnlock": {
         "appId": 578330,
         "gameName": "LEGO® City Undercover",
-        "apiName": "COMPLETE_STORYEVENT3",
-        "displayName": "From Blue to Bluebell",
-        "description": "Complete Chapter 3 - Go Directly to Jail",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/578330/9007c5fc599a6f0568af5ebc82024f6ad3e31a91.jpg",
-        "unlockedAt": "2026-09-18T12:41:39.000Z",
-        "globalPct": 46.5
+        "apiName": "COMPLETE_STORYEVENT4",
+        "displayName": "Kung Fu... and Plumbing?",
+        "description": "Complete Chapter 4 - When the Going gets Tough",
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/578330/faae8d197a5c285bdf76820ed425043807a5353a.jpg",
+        "unlockedAt": "2026-09-19T13:19:24.000Z",
+        "globalPct": 42.7
     },
     "perfectGames": [
         {

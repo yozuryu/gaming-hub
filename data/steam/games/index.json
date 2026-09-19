@@ -28463,14 +28463,32 @@
             "appId": 578330,
             "hasAchievements": true,
             "total": 48,
-            "unlocked": 6,
+            "unlocked": 8,
             "gameName": "LEGO® City Undercover",
-            "playtimeForever": 2828,
-            "lastPlayedTs": "2026-09-18T13:03:10.000Z",
+            "playtimeForever": 2888,
+            "lastPlayedTs": "2026-09-19T13:25:53.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-            "lastUnlockedAt": "2026-09-18T12:41:39.000Z",
-            "lastUnlockName": "From Blue to Bluebell",
+            "lastUnlockedAt": "2026-09-19T13:19:24.000Z",
+            "lastUnlockName": "Kung Fu... and Plumbing?",
             "preview": [
+                {
+                    "apiName": "COMPLETE_STORYEVENT4",
+                    "displayName": "Kung Fu... and Plumbing?",
+                    "unlocked": true,
+                    "unlockedAt": "2026-09-19T13:19:24.000Z",
+                    "iconUrl": "faae8d197a5c285bdf76820ed425043807a5353a.jpg",
+                    "iconGrayUrl": "78dcd1fc0bbd31cc5c894ac2db0bd331a158becb.jpg",
+                    "globalPct": 42.7
+                },
+                {
+                    "apiName": "GANG_FIGHT_THROW_AT_ENEMY_5_TIMES",
+                    "displayName": "Double Trouble",
+                    "unlocked": true,
+                    "unlockedAt": "2026-09-19T13:14:56.000Z",
+                    "iconUrl": "890be2b2aa3afe8cb17833694aaac8fb7df9816d.jpg",
+                    "iconGrayUrl": "0cc35301f508550de48ee9f5217ac2c20d4a013e.jpg",
+                    "globalPct": 43.9
+                },
                 {
                     "apiName": "COMPLETE_STORYEVENT3",
                     "displayName": "From Blue to Bluebell",
@@ -28506,24 +28524,6 @@
                     "iconUrl": "a1a044b52537eb69a82b567a3c71b94eaccf8208.jpg",
                     "iconGrayUrl": "24a4ad0d7252951fa3090d7e97f8ef12cf8001f3.jpg",
                     "globalPct": 67
-                },
-                {
-                    "apiName": "BASKETBALL_3_OUT_OF_3",
-                    "displayName": "Nothing but Net",
-                    "unlocked": true,
-                    "unlockedAt": "2025-09-20T12:13:14.000Z",
-                    "iconUrl": "bcfbde70b0df7970e411b49ff43e9d03e0a5a83a.jpg",
-                    "iconGrayUrl": "f0e9e930c20a67956d1783fead032bde64fdcf3f.jpg",
-                    "globalPct": 34.1
-                },
-                {
-                    "apiName": "CAR_SURF_FOR_30_SECONDS",
-                    "displayName": "Steel Surfer",
-                    "unlocked": true,
-                    "unlockedAt": "2025-09-17T10:09:10.000Z",
-                    "iconUrl": "c1d6c4b44c19159f5c23da52638733b09caf4c95.jpg",
-                    "iconGrayUrl": "01c1840d31acb312c9bec1cbd7690258b480b6fb.jpg",
-                    "globalPct": 13.9
                 }
             ]
         },
@@ -39365,7 +39365,7 @@
                     "unlockedAt": "2026-04-26T13:03:01.000Z",
                     "iconUrl": "83dc4d3559c34a919e1ca834f626f6d1ff6507eb.jpg",
                     "iconGrayUrl": "2cde4d41f0138dd6ffc10818911e81e9b40131ab.jpg",
-                    "globalPct": 54.9
+                    "globalPct": 55
                 },
                 {
                     "apiName": "ACH_TERRA_012",
