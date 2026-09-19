@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-09-19T14:19:45.057Z"
+        "extractionTimestamp": "2026-09-19T17:56:48.805Z"
     },
     "profile": {
         "steamId": "76561198188939413",
@@ -8,22 +8,33 @@
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
         "status": 0,
-        "lastOnline": "2026-09-19T13:25:53.000Z",
+        "lastOnline": "2026-09-19T17:08:12.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1292,
-        "totalPlaytimeMin": 348840,
-        "totalPlaytimeHrs": 5814,
+        "totalPlaytimeMin": 348890,
+        "totalPlaytimeHrs": 5815,
         "gamesWithPlaytime": 820,
         "totalAchievements": 10055,
-        "unlockedAchievements": 2824,
+        "unlockedAchievements": 2825,
         "gamesWithAchievements": 170,
         "perfectCount": 17,
         "completionPct": 28,
         "avgPlaytimeMin": 425
     },
     "recentlyPlayed": [
+        {
+            "appId": 921570,
+            "name": "OCTOPATH TRAVELER",
+            "playtime2Weeks": 140,
+            "playtimeForever": 1478,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
+            "storeUrl": "https://store.steampowered.com/app/921570",
+            "lastPlayedTs": "2026-09-19T17:06:25.000Z",
+            "achUnlocked": 36,
+            "achTotal": 88
+        },
         {
             "appId": 578330,
             "name": "LEGO® City Undercover",
@@ -34,17 +45,6 @@
             "lastPlayedTs": "2026-09-19T13:25:53.000Z",
             "achUnlocked": 8,
             "achTotal": 48
-        },
-        {
-            "appId": 921570,
-            "name": "OCTOPATH TRAVELER",
-            "playtime2Weeks": 90,
-            "playtimeForever": 1428,
-            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
-            "storeUrl": "https://store.steampowered.com/app/921570",
-            "lastPlayedTs": "2026-09-19T10:39:39.000Z",
-            "achUnlocked": 35,
-            "achTotal": 88
         },
         {
             "appId": 2515020,
@@ -103,23 +103,23 @@
         }
     ],
     "mostRecentGame": {
-        "appId": 578330,
-        "name": "LEGO® City Undercover",
-        "playtime2Weeks": 252,
-        "playtimeForever": 2888,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-        "storeUrl": "https://store.steampowered.com/app/578330",
-        "lastPlayedTs": "2026-09-19T13:25:53.000Z"
+        "appId": 921570,
+        "name": "OCTOPATH TRAVELER",
+        "playtime2Weeks": 140,
+        "playtimeForever": 1478,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
+        "storeUrl": "https://store.steampowered.com/app/921570",
+        "lastPlayedTs": "2026-09-19T17:06:25.000Z"
     },
     "mostRecentUnlock": {
-        "appId": 578330,
-        "gameName": "LEGO® City Undercover",
-        "apiName": "COMPLETE_STORYEVENT4",
-        "displayName": "Kung Fu... and Plumbing?",
-        "description": "Complete Chapter 4 - When the Going gets Tough",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/578330/faae8d197a5c285bdf76820ed425043807a5353a.jpg",
-        "unlockedAt": "2026-09-19T13:19:24.000Z",
-        "globalPct": 42.7
+        "appId": 921570,
+        "gameName": "OCTOPATH TRAVELER",
+        "apiName": "ACHIEVEMENT_018",
+        "displayName": "Faith Shall Be Your Shield",
+        "description": "Primrose crosses Rufus, the Left-hand Man, off her list and takes the next step in her journey to learn the truth about her father's death.",
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/1d418442f3bb34d245041b75cb9e334344db7246.jpg",
+        "unlockedAt": "2026-09-19T16:57:00.000Z",
+        "globalPct": 31.7
     },
     "perfectGames": [
         {
