@@ -1,23 +1,23 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-09-22T09:51:41.226Z"
+        "extractionTimestamp": "2026-09-22T14:42:52.166Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 0,
+        "status": 1,
         "lastOnline": "2026-09-20T16:05:11.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1292,
-        "totalPlaytimeMin": 348955,
-        "totalPlaytimeHrs": 5816,
+        "totalPlaytimeMin": 349048,
+        "totalPlaytimeHrs": 5817,
         "gamesWithPlaytime": 820,
         "totalAchievements": 10055,
-        "unlockedAchievements": 2825,
+        "unlockedAchievements": 2827,
         "gamesWithAchievements": 170,
         "perfectCount": 17,
         "completionPct": 28,
@@ -25,14 +25,25 @@
     },
     "recentlyPlayed": [
         {
+            "appId": 2515020,
+            "name": "FINAL FANTASY XVI",
+            "playtime2Weeks": 212,
+            "playtimeForever": 794,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2515020/0ce29700a22fea9eb270b276fa157b79511365e6.jpg",
+            "storeUrl": "https://store.steampowered.com/app/2515020",
+            "lastPlayedTs": "2026-09-22T14:18:56.000Z",
+            "achUnlocked": 7,
+            "achTotal": 69
+        },
+        {
             "appId": 578330,
             "name": "LEGO® City Undercover",
-            "playtime2Weeks": 318,
-            "playtimeForever": 2953,
+            "playtime2Weeks": 351,
+            "playtimeForever": 2986,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
             "storeUrl": "https://store.steampowered.com/app/578330",
-            "lastPlayedTs": "2026-09-20T11:05:33.000Z",
-            "achUnlocked": 8,
+            "lastPlayedTs": "2026-09-22T13:18:40.000Z",
+            "achUnlocked": 9,
             "achTotal": 48
         },
         {
@@ -45,17 +56,6 @@
             "lastPlayedTs": "2026-09-19T17:06:25.000Z",
             "achUnlocked": 36,
             "achTotal": 88
-        },
-        {
-            "appId": 2515020,
-            "name": "FINAL FANTASY XVI",
-            "playtime2Weeks": 152,
-            "playtimeForever": 734,
-            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2515020/0ce29700a22fea9eb270b276fa157b79511365e6.jpg",
-            "storeUrl": "https://store.steampowered.com/app/2515020",
-            "lastPlayedTs": "2026-09-18T14:33:55.000Z",
-            "achUnlocked": 6,
-            "achTotal": 69
         },
         {
             "appId": 2486820,
@@ -92,23 +92,23 @@
         }
     ],
     "mostRecentGame": {
-        "appId": 578330,
-        "name": "LEGO® City Undercover",
-        "playtime2Weeks": 318,
-        "playtimeForever": 2953,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-        "storeUrl": "https://store.steampowered.com/app/578330",
-        "lastPlayedTs": "2026-09-20T11:05:33.000Z"
+        "appId": 2515020,
+        "name": "FINAL FANTASY XVI",
+        "playtime2Weeks": 212,
+        "playtimeForever": 794,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2515020/0ce29700a22fea9eb270b276fa157b79511365e6.jpg",
+        "storeUrl": "https://store.steampowered.com/app/2515020",
+        "lastPlayedTs": "2026-09-22T14:18:56.000Z"
     },
     "mostRecentUnlock": {
-        "appId": 921570,
-        "gameName": "OCTOPATH TRAVELER",
-        "apiName": "ACHIEVEMENT_018",
-        "displayName": "Faith Shall Be Your Shield",
-        "description": "Primrose crosses Rufus, the Left-hand Man, off her list and takes the next step in her journey to learn the truth about her father's death.",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/1d418442f3bb34d245041b75cb9e334344db7246.jpg",
-        "unlockedAt": "2026-09-19T16:57:00.000Z",
-        "globalPct": 31.8
+        "appId": 2515020,
+        "gameName": "FINAL FANTASY XVI",
+        "apiName": "1004",
+        "displayName": "Lawless",
+        "description": "",
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/2515020/8289deab066f28263e8f73ba929fd68958b040a2.jpg",
+        "unlockedAt": "2026-09-22T14:28:53.000Z",
+        "globalPct": 58.1
     },
     "perfectGames": [
         {

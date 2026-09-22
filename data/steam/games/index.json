@@ -28463,14 +28463,23 @@
             "appId": 578330,
             "hasAchievements": true,
             "total": 48,
-            "unlocked": 8,
+            "unlocked": 9,
             "gameName": "LEGO® City Undercover",
-            "playtimeForever": 2953,
-            "lastPlayedTs": "2026-09-20T11:05:33.000Z",
+            "playtimeForever": 2986,
+            "lastPlayedTs": "2026-09-22T13:18:40.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-            "lastUnlockedAt": "2026-09-19T13:19:24.000Z",
-            "lastUnlockName": "Kung Fu... and Plumbing?",
+            "lastUnlockedAt": "2026-09-22T12:56:08.000Z",
+            "lastUnlockName": "Chan Chuang's Gang",
             "preview": [
+                {
+                    "apiName": "COMPLETE_STORYEVENT5",
+                    "displayName": "Chan Chuang's Gang",
+                    "unlocked": true,
+                    "unlockedAt": "2026-09-22T12:56:08.000Z",
+                    "iconUrl": "aa20f1e7adf5df9dc12940a3a2786cb883a51fee.jpg",
+                    "iconGrayUrl": "698c0ae1bc63dbadbe01c50b80eb270f88d7539c.jpg",
+                    "globalPct": 39.5
+                },
                 {
                     "apiName": "COMPLETE_STORYEVENT4",
                     "displayName": "Kung Fu... and Plumbing?",
@@ -28515,15 +28524,6 @@
                     "iconUrl": "13b422b8f5537ce458f91a37efd018a6a3d63923.jpg",
                     "iconGrayUrl": "23e266983abce9c823e0cc6b4f2718851fd79c80.jpg",
                     "globalPct": 59.3
-                },
-                {
-                    "apiName": "COMPLETE_STORYEVENT1",
-                    "displayName": "Clowning Around",
-                    "unlocked": true,
-                    "unlockedAt": "2025-10-18T07:22:51.000Z",
-                    "iconUrl": "a1a044b52537eb69a82b567a3c71b94eaccf8208.jpg",
-                    "iconGrayUrl": "24a4ad0d7252951fa3090d7e97f8ef12cf8001f3.jpg",
-                    "globalPct": 67
                 }
             ]
         },
@@ -34621,7 +34621,7 @@
                     "unlockedAt": "2026-09-19T16:57:00.000Z",
                     "iconUrl": "1d418442f3bb34d245041b75cb9e334344db7246.jpg",
                     "iconGrayUrl": "cce371f88520c77815be3aa2ad82fd2379f66149.jpg",
-                    "globalPct": 31.8
+                    "globalPct": 31.7
                 },
                 {
                     "apiName": "ACHIEVEMENT_033",
@@ -34630,7 +34630,7 @@
                     "unlockedAt": "2026-09-07T16:12:58.000Z",
                     "iconUrl": "c8cc4b62a52bc2628b1e62b6b065d1ad768e5aaf.jpg",
                     "iconGrayUrl": "ea02d3bf6729335546e49aa95d2c767435b7da87.jpg",
-                    "globalPct": 33
+                    "globalPct": 32.9
                 },
                 {
                     "apiName": "ACHIEVEMENT_079",
@@ -34648,7 +34648,7 @@
                     "unlockedAt": "2026-08-30T04:31:57.000Z",
                     "iconUrl": "e1cb6aa604fa059a1fdd9bf98576655c96e775b8.jpg",
                     "iconGrayUrl": "4eff4fc11dcbf0199cd7699806fc1685f7f13cde.jpg",
-                    "globalPct": 34.6
+                    "globalPct": 34.5
                 },
                 {
                     "apiName": "ACHIEVEMENT_035",
@@ -34657,7 +34657,7 @@
                     "unlockedAt": "2026-08-30T04:06:41.000Z",
                     "iconUrl": "5d451a0b9fc50fad515703d17198793a1694907d.jpg",
                     "iconGrayUrl": "7d420eb7c9da62d6fb5fc315d6b669d3266a61f3.jpg",
-                    "globalPct": 32.5
+                    "globalPct": 32.4
                 },
                 {
                     "apiName": "ACHIEVEMENT_034",
@@ -34666,7 +34666,7 @@
                     "unlockedAt": "2026-08-29T15:28:45.000Z",
                     "iconUrl": "bb2126bcdedd7431c3e8af901640b711054bf481.jpg",
                     "iconGrayUrl": "754f447784ad01febd7db357fc12e247c806435d.jpg",
-                    "globalPct": 33.7
+                    "globalPct": 33.6
                 }
             ]
         },
@@ -39418,14 +39418,23 @@
             "appId": 2515020,
             "hasAchievements": true,
             "total": 69,
-            "unlocked": 6,
+            "unlocked": 7,
             "gameName": "FINAL FANTASY XVI",
-            "playtimeForever": 734,
-            "lastPlayedTs": "2026-09-18T14:33:55.000Z",
+            "playtimeForever": 794,
+            "lastPlayedTs": "2026-09-22T14:18:56.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2515020/0ce29700a22fea9eb270b276fa157b79511365e6.jpg",
-            "lastUnlockedAt": "2026-05-10T09:08:53.000Z",
-            "lastUnlockName": "Acceptance",
+            "lastUnlockedAt": "2026-09-22T14:28:53.000Z",
+            "lastUnlockName": "Lawless",
             "preview": [
+                {
+                    "apiName": "1004",
+                    "displayName": "Lawless",
+                    "unlocked": true,
+                    "unlockedAt": "2026-09-22T14:28:53.000Z",
+                    "iconUrl": "8289deab066f28263e8f73ba929fd68958b040a2.jpg",
+                    "iconGrayUrl": "ddd944bafb49b5f7f13dd8333a4e5add32828825.jpg",
+                    "globalPct": 58.1
+                },
                 {
                     "apiName": "1003",
                     "displayName": "Acceptance",
@@ -39433,7 +39442,7 @@
                     "unlockedAt": "2026-05-10T09:08:53.000Z",
                     "iconUrl": "8289deab066f28263e8f73ba929fd68958b040a2.jpg",
                     "iconGrayUrl": "ddd944bafb49b5f7f13dd8333a4e5add32828825.jpg",
-                    "globalPct": 64.3
+                    "globalPct": 64.2
                 },
                 {
                     "apiName": "1002",
@@ -39442,7 +39451,7 @@
                     "unlockedAt": "2026-05-09T08:38:38.000Z",
                     "iconUrl": "8289deab066f28263e8f73ba929fd68958b040a2.jpg",
                     "iconGrayUrl": "ddd944bafb49b5f7f13dd8333a4e5add32828825.jpg",
-                    "globalPct": 74.2
+                    "globalPct": 74.1
                 },
                 {
                     "apiName": "1015",
@@ -39451,7 +39460,7 @@
                     "unlockedAt": "2026-05-03T14:37:10.000Z",
                     "iconUrl": "a76b868f5477a4b9ad02d8c72ef9788d31910156.jpg",
                     "iconGrayUrl": "49290fb439b9cec624f808daf8e3c028d808b4b7.jpg",
-                    "globalPct": 78.4
+                    "globalPct": 78.3
                 },
                 {
                     "apiName": "1013",
@@ -39460,7 +39469,7 @@
                     "unlockedAt": "2026-05-03T14:22:24.000Z",
                     "iconUrl": "bc61b9e62ebb09cbc34fd311b7f5d5ca7918869b.jpg",
                     "iconGrayUrl": "b0449b2e0b3bb2d9b99c8359b5514886d7474819.jpg",
-                    "globalPct": 67.7
+                    "globalPct": 67.6
                 },
                 {
                     "apiName": "1001",
@@ -39470,15 +39479,6 @@
                     "iconUrl": "8289deab066f28263e8f73ba929fd68958b040a2.jpg",
                     "iconGrayUrl": "ddd944bafb49b5f7f13dd8333a4e5add32828825.jpg",
                     "globalPct": 86.6
-                },
-                {
-                    "apiName": "1019",
-                    "displayName": "Sheeeeeeeeeeeeeeeift",
-                    "unlocked": true,
-                    "unlockedAt": "2024-09-18T01:17:28.000Z",
-                    "iconUrl": "20d3fd0cc0bda5ea00268941601f5983c9e3be75.jpg",
-                    "iconGrayUrl": "a0f784aff731e07e712a8aa61c0f8a6145f87841.jpg",
-                    "globalPct": 87.2
                 }
             ]
         },
