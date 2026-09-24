@@ -168,7 +168,7 @@
             "iconUrl": "ca39da3216337801998ef2d70a706fe3b9e1d224.jpg",
             "iconGrayUrl": "7b5dd583ff5c7e837f5d9638b200aa69855bb0ed.jpg",
             "hidden": false,
-            "globalPct": 27.2
+            "globalPct": 27.1
         },
         {
             "apiName": "ACH_GAMES_PLAYED",
@@ -355,7 +355,7 @@
             "iconUrl": "02aef60b647bd2297ed3be4c08b151137a247817.jpg",
             "iconGrayUrl": "6cd187f03aac3387d591c1dac6408ade17402f7e.jpg",
             "hidden": false,
-            "globalPct": 37.3
+            "globalPct": 37.2
         },
         {
             "apiName": "ACH_WIN_KO_GOALS",
@@ -762,7 +762,7 @@
             "iconUrl": "4f975b6db64cce07594ae2cef135395b749512f3.jpg",
             "iconGrayUrl": "e5eae8af88308230dd0d159ce26f29b07c974311.jpg",
             "hidden": false,
-            "globalPct": 4.1
+            "globalPct": 4.2
         },
         {
             "apiName": "ACH_SHAM_TAG",
@@ -3325,7 +3325,7 @@
             "iconUrl": "595a81f4dbb2aa19f838c1127b06161d982489e0.jpg",
             "iconGrayUrl": "8320831d99862d7af5c4d7bf0ec41e4dffcca664.jpg",
             "hidden": false,
-            "globalPct": 1.6
+            "globalPct": 1.7
         },
         {
             "apiName": "ACH_OJ49_C00",
@@ -3402,7 +3402,7 @@
             "iconUrl": "8bf5e7dc6ac830b80b930d2f637b8211c93afe07.jpg",
             "iconGrayUrl": "1be95bebe522cd610c2dadf2b058338b8d6d3bff.jpg",
             "hidden": false,
-            "globalPct": 1.7
+            "globalPct": 1.8
         },
         {
             "apiName": "ACH_OJ51_C01",
@@ -3688,7 +3688,7 @@
             "iconUrl": "4dccd85323137d12da704f86a80c212381f78102.jpg",
             "iconGrayUrl": "06a21c98a2bacaffa3f70da885bfbdbeb4d2caf9.jpg",
             "hidden": false,
-            "globalPct": 1
+            "globalPct": 1.1
         },
         {
             "apiName": "ACH_OJ55_C03",
@@ -3958,67 +3958,67 @@
             "apiName": "ACH_OJ60_C01",
             "unlocked": false,
             "unlockedAt": null,
-            "displayName": "Po Once More!",
-            "description": "",
+            "displayName": "Rinse and Repeat",
+            "description": "Play 10 games as Rinse",
             "iconUrl": "cd755b8a99324bd1314b965bfff33c9bc83e9f77.jpg",
             "iconGrayUrl": "575eda62c8fa14df18b49d20cdbd1df39a82bada.jpg",
-            "hidden": true,
-            "globalPct": 0
+            "hidden": false,
+            "globalPct": 0.1
         },
         {
             "apiName": "ACH_OJ60_C02",
             "unlocked": false,
             "unlockedAt": null,
             "displayName": "A Selfish Streak",
-            "description": "",
+            "description": "As Rinse, benefit from your power in an unlikely way.",
             "iconUrl": "56a9dc40e786bf2025245c79fd95e036797d4618.jpg",
             "iconGrayUrl": "0d17b2a0b9deb9d6e45720a482379186aa112ef7.jpg",
-            "hidden": true,
-            "globalPct": 0
+            "hidden": false,
+            "globalPct": 0.1
         },
         {
             "apiName": "ACH_OJ60_C03",
             "unlocked": false,
             "unlockedAt": null,
             "displayName": "Going a Little All Out",
-            "description": "",
+            "description": "As Rinse, gain 40 or more stars from one Fierce Young Lady.",
             "iconUrl": "ecf6aaba1baef6315ec00f9eff7df49d4b18eb05.jpg",
             "iconGrayUrl": "4bb9d15ba5d99c44246c04e820b6d1816ccf034a.jpg",
-            "hidden": true,
-            "globalPct": 0
+            "hidden": false,
+            "globalPct": 0.1
         },
         {
             "apiName": "ACH_OJ60_C11",
             "unlocked": false,
             "unlockedAt": null,
             "displayName": "Cool as Cucumber",
-            "description": "",
+            "description": "Play 10 games as Suishou",
             "iconUrl": "d70171bf36c962f35dc0e561357b0530116fa256.jpg",
             "iconGrayUrl": "93078c7cc5331cde55905d0c1a801a0678860bea.jpg",
-            "hidden": true,
-            "globalPct": 0
+            "hidden": false,
+            "globalPct": 0.1
         },
         {
             "apiName": "ACH_OJ60_C12",
             "unlocked": false,
             "unlockedAt": null,
             "displayName": "Stance Shift",
-            "description": "",
+            "description": "As Suishou, prove that the Yukimura Style is not used against weak opponents.",
             "iconUrl": "93925248e6403a814b455e4877ef5ade212d8950.jpg",
             "iconGrayUrl": "fecdd5ef90a7c79db662973702ee2657629123bd.jpg",
-            "hidden": true,
-            "globalPct": 0
+            "hidden": false,
+            "globalPct": 0.1
         },
         {
             "apiName": "ACH_OJ60_C13",
             "unlocked": false,
             "unlockedAt": null,
             "displayName": "Order in the Hallways",
-            "description": "",
+            "description": "As Suishou, display the true strength of the Yukimura Style against a formidable foe.",
             "iconUrl": "a800beeec87736b4cfd42ef300be2b63ddc1ec0d.jpg",
             "iconGrayUrl": "a3100050fb96014a635055320e3998a9e642cb3e.jpg",
-            "hidden": true,
-            "globalPct": 0
+            "hidden": false,
+            "globalPct": 0.1
         }
     ],
     "playtimeForever": 795,
