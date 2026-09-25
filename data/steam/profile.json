@@ -1,20 +1,20 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-09-25T07:39:59.970Z"
+        "extractionTimestamp": "2026-09-25T13:38:49.965Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 0,
+        "status": 1,
         "lastOnline": "2026-09-22T14:47:58.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1292,
-        "totalPlaytimeMin": 349077,
-        "totalPlaytimeHrs": 5818,
+        "totalPlaytimeMin": 349116,
+        "totalPlaytimeHrs": 5819,
         "gamesWithPlaytime": 820,
         "totalAchievements": 10055,
         "unlockedAchievements": 2827,
@@ -25,6 +25,17 @@
     },
     "recentlyPlayed": [
         {
+            "appId": 578330,
+            "name": "LEGO® City Undercover",
+            "playtime2Weeks": 389,
+            "playtimeForever": 3025,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
+            "storeUrl": "https://store.steampowered.com/app/578330",
+            "lastPlayedTs": "2026-09-25T13:37:11.000Z",
+            "achUnlocked": 9,
+            "achTotal": 48
+        },
+        {
             "appId": 2515020,
             "name": "FINAL FANTASY XVI",
             "playtime2Weeks": 241,
@@ -34,17 +45,6 @@
             "lastPlayedTs": "2026-09-22T14:47:27.000Z",
             "achUnlocked": 7,
             "achTotal": 69
-        },
-        {
-            "appId": 578330,
-            "name": "LEGO® City Undercover",
-            "playtime2Weeks": 351,
-            "playtimeForever": 2986,
-            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-            "storeUrl": "https://store.steampowered.com/app/578330",
-            "lastPlayedTs": "2026-09-22T13:18:40.000Z",
-            "achUnlocked": 9,
-            "achTotal": 48
         },
         {
             "appId": 921570,
@@ -71,34 +71,23 @@
         {
             "appId": 4630570,
             "name": "RUNNING TRAIN",
-            "playtime2Weeks": 57,
+            "playtime2Weeks": 18,
             "playtimeForever": 57,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/4630570/68ae63bc4e04ca07b63cc5d555d8dd4035ae87de.jpg",
             "storeUrl": "https://store.steampowered.com/app/4630570",
             "lastPlayedTs": "2026-09-11T13:57:35.000Z",
             "achUnlocked": null,
             "achTotal": null
-        },
-        {
-            "appId": 431960,
-            "name": "Wallpaper Engine",
-            "playtime2Weeks": 1,
-            "playtimeForever": 114,
-            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/431960/72edaed9d748c6cf7397ffb1c83f0b837b9ebd9d.jpg",
-            "storeUrl": "https://store.steampowered.com/app/431960",
-            "lastPlayedTs": "2026-09-11T13:23:01.000Z",
-            "achUnlocked": 2,
-            "achTotal": 17
         }
     ],
     "mostRecentGame": {
-        "appId": 2515020,
-        "name": "FINAL FANTASY XVI",
-        "playtime2Weeks": 241,
-        "playtimeForever": 823,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2515020/0ce29700a22fea9eb270b276fa157b79511365e6.jpg",
-        "storeUrl": "https://store.steampowered.com/app/2515020",
-        "lastPlayedTs": "2026-09-22T14:47:27.000Z"
+        "appId": 578330,
+        "name": "LEGO® City Undercover",
+        "playtime2Weeks": 389,
+        "playtimeForever": 3025,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
+        "storeUrl": "https://store.steampowered.com/app/578330",
+        "lastPlayedTs": "2026-09-25T13:37:11.000Z"
     },
     "mostRecentUnlock": {
         "appId": 2515020,
