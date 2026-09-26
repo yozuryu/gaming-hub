@@ -17,6 +17,8 @@ Keep beaten and completed as separate milestones when they happen in different y
 
 ### Steam
 
+- Win conditions for 8 more games: Risk of Rain 2, PAW Patrol World, Bluey, Refunct, Full Metal Furies (either ending) and BattleBlock Theater now count as Beaten; the Klonoa Phantasy Reverie Series and Crash Bandicoot N. Sane Trilogy collections use AND mode, so they only count once every game's final boss is beaten
+- Pre-set win conditions for 13 unfinished games so they turn Beaten automatically when finished: LEGO City Undercover, SpongeBob: The Cosmic Shake, both PAW Patrol rescue games, CODE VEIN (any ending), Monster Hunter: World, Tales of Symphonia, Divinity: Original Sin 2 (any difficulty), Resonance of Fate, Hyperdimension Neptunia Re;Birth1 (either ending), KARAKARA, Bloodstained: Curse of the Moon, and Octopath Traveler (any one character's final chapter)
 - Beaten badge on game cards and in the achievement modal is now silver (was still the old gray)
 - Beaten count and award badge in the Completions section use silver instead of gray
 - Beaten icons in the Completions panel get a 1px solid silver border (had none); Perfect keeps 2px gold
@@ -69,6 +71,7 @@ Keep beaten and completed as separate milestones when they happen in different y
 - RA: API calls retry with backoff; if a year-of-activity chunk still fails, the run stops before writing instead of publishing activity with a three-month gap
 - Both: full refresh starts from the cached data, so a game whose fetch fails keeps its previous entry instead of disappearing from the site
 - Backlog: Xbox plan updated from a live OpenXBL test — verified endpoints and response shapes, required `Accept-Language` header, errors returned as HTTP 200 with an inner `code`, Xbox 360 titles listing only unlocked achievements, no playtime, and the full import fitting in one run (87 titles, ~85 calls)
+- Backlog: precompute beaten games in the Steam/Xbox pipelines (Part F) so pages stop fetching every win-condition game file (~55 requests per page today)
 - Backlog: handle Steam's per-game "Profile is not public" response as a skip rather than a failure (146 games in the first full refresh, all already cached with 0 unlocked)
 - RA pipeline attaches `playtime` (minutes, from `userTotalPlaytime` in game details) to each award in `profile.json` → `pageAwards.visibleUserAwards`, so the Completions page doesn't need to load `games.json`
 

@@ -1,6 +1,6 @@
 # Pipeline fixes and improvements (RA + Steam)
 
-**Status:** To do · **Priority:** Part A is urgent (1); Parts B–E are 3, after [xbox-integration.md](xbox-integration.md)
+**Status:** To do · **Priority:** Part A is urgent (1); Parts B–F are 3, after [xbox-integration.md](xbox-integration.md)
 
 From a full read of `scripts/ra-pipeline.js` and `scripts/steam-pipeline.js` plus recent commits and workflow runs (2026-09-26). The Xbox pipeline should be built on the fixed patterns from Part A (shared HTTP helper with status checks and retries), not copied from today's Steam code.
 
@@ -87,6 +87,27 @@ Most hourly commits are not your activity. Recent data commits change 44–486 l
 - **E3.** Shared HTTP helper: both pipelines use fixed `sleep()` pacing with no retry. After A1/A2, use one retry/backoff helper in both (and in the Xbox pipeline).
 
 ---
+
+## F. Precompute beaten games in the pipelines
+
+Added 2026-09-26. Beaten status comes from hand-edited win conditions (`data/{steam,xbox}/win-conditions.json`), and every page works it out in the browser by fetching **each** win-condition game's full file (10–40 KB each). With 40 Steam + 15 Xbox win conditions that's ~55 extra requests (~1 MB) per page load, and it grows with every win condition added.
+
+Pages doing this today (each with its own copy of the OR/AND logic):
+- Hub: completions strip counts (`loadCompletionsStrip`) and recently played beaten badges (`beatenIdsFor`)
+- Completions page: Steam loader in `App` + `loadWinConditionBeaten()` for Xbox
+- Steam profile and Xbox profile: sidebar Completions panel, card Beaten badges/stripes, User Stats "Beaten Games"
+
+**Plan:**
+1. Steam and Xbox pipelines read `win-conditions.json` and, using the game data they already have in memory, compute the beaten list with the same rules: OR = earliest matching unlock; AND = all listed achievements unlocked, date = latest; perfect/completed games excluded (or kept and flagged, matching today's `beatenOnly` behavior).
+2. Write it to `profile.json` as `beatenGames: [{ appId | titleId, gameName, iconUrl, beatenAt, winConditionName, winCondIconUrl, winCondGlobalPct, total }]`, sorted by `beatenAt` desc.
+3. Replace the per-page loaders with `profile.beatenGames` (hub, Completions page, both profile pages). One shared shape for Steam and Xbox, so the OR/AND logic lives only in the pipelines.
+4. Keep the rule in one place: a small shared module (e.g. `scripts/lib/win-conditions.js`) used by both pipelines.
+
+**Trade-off / open point:** a win condition edited in the admin would only show on the site after the next pipeline run (hourly), instead of on the next page load. Options: (a) accept it; (b) have the admin's Win Conditions "Save" also recompute and write `beatenGames` into the local `profile.json` (the admin server already runs locally with the data); (c) store a hash of `win-conditions.json` in `profile.json` and let pages fall back to the current per-page logic when the hash doesn't match. (b) is the cleanest.
+
+**Effect:** ~55 requests → 0 extra (the list rides in `profile.json`, which every page already loads); one implementation of the beaten rules instead of five.
+
+**Interaction with the data-branch migration:** `win-conditions.json` stays on `main` (hand-edited); `beatenGames` is pipeline output, so it lives in the generated `profile.json` on the `data` branch.
 
 ## Considered and rejected
 

@@ -17,10 +17,23 @@
       "NEW_ACHIEVEMENT_2_31"
     ]
   },
+  "238460": {
+    "mode": "or",
+    "achievements": [
+      "ACH10_HATS_OFF"
+    ]
+  },
   "251150": {
     "mode": "or",
     "achievements": [
       "CLEARCHAPTER4"
+    ]
+  },
+  "282900": {
+    "mode": "or",
+    "achievements": [
+      "ACHIEVEMENT_010",
+      "ACHIEVEMENT_011"
     ]
   },
   "335300": {
@@ -37,6 +50,12 @@
       "ACHIEVEMENT_06"
     ]
   },
+  "372360": {
+    "mode": "or",
+    "achievements": [
+      "TROPHY_ID_STORY_CLEAR_03"
+    ]
+  },
   "373420": {
     "mode": "or",
     "achievements": [
@@ -50,10 +69,38 @@
       "NEW_ACHIEVEMENT_1_15"
     ]
   },
+  "406150": {
+    "mode": "or",
+    "achievements": [
+      "ACH_ANY_RUN_2"
+    ]
+  },
+  "416600": {
+    "mode": "or",
+    "achievements": [
+      "ACHIEVEMENT_END_FALSE",
+      "ACHIEVEMENT_END_TRUE"
+    ]
+  },
   "427700": {
     "mode": "or",
     "achievements": [
       "BEATBOSS_9"
+    ]
+  },
+  "435150": {
+    "mode": "or",
+    "achievements": [
+      "DOS2_Quest82",
+      "DOS2_Quest83",
+      "DOS2_Quest84",
+      "DOS2_Quest99"
+    ]
+  },
+  "487430": {
+    "mode": "or",
+    "achievements": [
+      "chapter2_complete"
     ]
   },
   "538680": {
@@ -67,6 +114,18 @@
     "achievements": [
       "achievement_ep1_clear",
       "achievement_ep1_clear_p2"
+    ]
+  },
+  "578330": {
+    "mode": "or",
+    "achievements": [
+      "COMPLETE_STORYEVENT15"
+    ]
+  },
+  "582010": {
+    "mode": "or",
+    "achievements": [
+      "Achievement56"
     ]
   },
   "609150": {
@@ -83,6 +142,34 @@
       "TROPHY_E_PRIVATEED_09"
     ]
   },
+  "632360": {
+    "mode": "or",
+    "achievements": [
+      "CompleteMainEnding"
+    ]
+  },
+  "645730": {
+    "mode": "or",
+    "achievements": [
+      "ACHIEVE_CLEAR_GAME"
+    ]
+  },
+  "678960": {
+    "mode": "or",
+    "achievements": [
+      "Id40",
+      "Id41",
+      "Id42"
+    ]
+  },
+  "731490": {
+    "mode": "and",
+    "achievements": [
+      "ACH_117",
+      "ACH_219",
+      "ACH_319"
+    ]
+  },
   "738540": {
     "mode": "or",
     "achievements": [
@@ -95,10 +182,35 @@
       "TROPHY2_SCENARIO_AFTER"
     ]
   },
+  "758730": {
+    "mode": "or",
+    "achievements": [
+      "Adventure Bay Hero"
+    ]
+  },
   "837610": {
     "mode": "or",
     "achievements": [
       "NEW_ACHIEVEMENT_1_11"
+    ]
+  },
+  "838310": {
+    "mode": "or",
+    "achievements": [
+      "NEW_ACHIEVEMENT_1_0"
+    ]
+  },
+  "921570": {
+    "mode": "or",
+    "achievements": [
+      "ACHIEVEMENT_004",
+      "ACHIEVEMENT_008",
+      "ACHIEVEMENT_012",
+      "ACHIEVEMENT_016",
+      "ACHIEVEMENT_020",
+      "ACHIEVEMENT_024",
+      "ACHIEVEMENT_028",
+      "ACHIEVEMENT_032"
     ]
   },
   "1085180": {
@@ -107,16 +219,47 @@
       "NEW_ACHIEVEMENT_1_3"
     ]
   },
+  "1282150": {
+    "mode": "or",
+    "achievements": [
+      "DoItAgain"
+    ]
+  },
+  "1374990": {
+    "mode": "or",
+    "achievements": [
+      "30"
+    ]
+  },
+  "1730680": {
+    "mode": "and",
+    "achievements": [
+      "ACHIEVEMENT_07",
+      "ACHIEVEMENT_20"
+    ]
+  },
   "1903340": {
     "mode": "or",
     "achievements": [
       "THE_END"
     ]
   },
+  "1952520": {
+    "mode": "or",
+    "achievements": [
+      "ACHIEVEMENT_20"
+    ]
+  },
   "2001120": {
     "mode": "or",
     "achievements": [
       "CompleteGame"
+    ]
+  },
+  "2078350": {
+    "mode": "or",
+    "achievements": [
+      "9"
     ]
   },
   "2238900": {
