@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-09-26T07:20:58.270Z"
+        "extractionTimestamp": "2026-09-26T16:58:33.699Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Tomba is at The Ending. 💯 1,658,100 🗒️103/116",
-        "lastGameId": 11306,
+        "richPresenceMsg": "🗺️: Pesotto Forest | Fayt - ____ - ____ | Arena: S:❌ - P:❌ - R:❌ | Maze:❌ - Urssa:❌ - Sphere:❌ - Freya:❌ | Maps: 0 / 27 | 🎁:0 | 🧠: Galaxy | ⏰: 1h19",
+        "lastGameId": 19070,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 3172,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Tomba is at The Ending. 💯 1,658,100 🗒️103/116",
-        "richPresenceMsgDate": "2026-09-26 06:53:12",
-        "lastGameId": 11306,
+        "richPresenceMsg": "🗺️: Pesotto Forest | Fayt - ____ - ____ | Arena: S:❌ - P:❌ - R:❌ | Maze:❌ - Urssa:❌ - Sphere:❌ - Freya:❌ | Maps: 0 / 27 | 🎁:0 | 🧠: Galaxy | ⏰: 1h19",
+        "richPresenceMsgDate": "2026-09-26 14:28:38",
+        "lastGameId": 19070,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 3172,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 39537,
+        "rank": 39550,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 165651,
+        "totalRanked": 165701,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -255,6 +255,24 @@
     },
     "recentlyPlayedGames": [
         {
+            "gameId": 19070,
+            "consoleId": 21,
+            "consoleName": "PlayStation 2",
+            "title": "Star Ocean: Till the End of Time",
+            "imageIcon": "/Images/074616.png",
+            "imageTitle": "/Images/099874.png",
+            "imageIngame": "/Images/099876.png",
+            "imageBoxArt": "/Images/056698.png",
+            "lastPlayed": "2026-09-26 14:28:38",
+            "achievementsTotal": 217,
+            "numPossibleAchievements": 217,
+            "possibleScore": 2235,
+            "numAchieved": 6,
+            "scoreAchieved": 30,
+            "numAchievedHardcore": 6,
+            "scoreAchievedHardcore": 30
+        },
+        {
             "gameId": 11306,
             "consoleId": 12,
             "consoleName": "PlayStation",
@@ -307,24 +325,6 @@
             "scoreAchieved": 40,
             "numAchievedHardcore": 29,
             "scoreAchievedHardcore": 40
-        },
-        {
-            "gameId": 19070,
-            "consoleId": 21,
-            "consoleName": "PlayStation 2",
-            "title": "Star Ocean: Till the End of Time",
-            "imageIcon": "/Images/074616.png",
-            "imageTitle": "/Images/099874.png",
-            "imageIngame": "/Images/099876.png",
-            "imageBoxArt": "/Images/056698.png",
-            "lastPlayed": "2026-09-20 15:54:17",
-            "achievementsTotal": 217,
-            "numPossibleAchievements": 217,
-            "possibleScore": 2235,
-            "numAchieved": 6,
-            "scoreAchieved": 30,
-            "numAchievedHardcore": 6,
-            "scoreAchievedHardcore": 30
         },
         {
             "gameId": 19021,
@@ -1644,22 +1644,22 @@
         "gameUrl": "/game/11306"
     },
     "mostRecentGame": {
-        "gameId": 11306,
-        "consoleId": 12,
-        "consoleName": "PlayStation",
-        "title": "Tomba! 2: The Evil Swine Return",
-        "imageIcon": "/Images/124477.png",
-        "imageTitle": "/Images/050910.png",
-        "imageIngame": "/Images/050909.png",
-        "imageBoxArt": "/Images/097460.png",
-        "lastPlayed": "2026-09-26 06:53:12",
-        "achievementsTotal": 45,
-        "numPossibleAchievements": 45,
-        "possibleScore": 604,
-        "numAchieved": 30,
-        "scoreAchieved": 279,
-        "numAchievedHardcore": 30,
-        "scoreAchievedHardcore": 279
+        "gameId": 19070,
+        "consoleId": 21,
+        "consoleName": "PlayStation 2",
+        "title": "Star Ocean: Till the End of Time",
+        "imageIcon": "/Images/074616.png",
+        "imageTitle": "/Images/099874.png",
+        "imageIngame": "/Images/099876.png",
+        "imageBoxArt": "/Images/056698.png",
+        "lastPlayed": "2026-09-26 14:28:38",
+        "achievementsTotal": 217,
+        "numPossibleAchievements": 217,
+        "possibleScore": 2235,
+        "numAchieved": 6,
+        "scoreAchieved": 30,
+        "numAchievedHardcore": 6,
+        "scoreAchievedHardcore": 30
     },
     "points7Days": 212,
     "points30Days": 324
