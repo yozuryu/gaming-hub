@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 import { createRoot } from 'react-dom/client';
 import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock, X, Medal, Gamepad2 } from 'lucide-react';
 import { PROGRESS_SORTS } from './utils/constants.js';
-import { formatDate, formatTimeAgo, fmtDay, fmtTime, xboxSearchUrl, xboxProfileUrl, rarityLabel, rarityBorderColor } from './utils/helpers.js';
+import { formatDate, formatTimeAgo, fmtDay, fmtTime, xboxSearchUrl, xboxProfileUrl, xboxImg, rarityLabel, rarityBorderColor } from './utils/helpers.js';
 
 // Xbox 360 titles only return unlocked achievements (`partial: true`), but the
 // total is known, so the rest are filled in as locked placeholders.
@@ -54,7 +54,7 @@ const XboxGameCard = ({ game, achievementData, onViewDetails, beatenInfo }) => {
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     {(achievementData?.heroUrl || game.heroUrl) && (
                         <img
-                            src={achievementData?.heroUrl || game.heroUrl}
+                            src={xboxImg(achievementData?.heroUrl || game.heroUrl, 640)}
                             alt=""
                             className="absolute right-0 top-0 h-full w-full md:w-1/2 object-cover opacity-[0.45] mix-blend-screen mask-fade"
                             onError={e => { e.target.style.display = 'none'; }}
@@ -68,13 +68,13 @@ const XboxGameCard = ({ game, achievementData, onViewDetails, beatenInfo }) => {
                     href={game.storeUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="shrink-0 w-[140px] h-[66px] rounded-[2px] border border-[#101214] overflow-hidden bg-[#2a475e] hover:scale-105 transition-transform"
+                    className="shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-[2px] shadow-sm border border-[#101214] overflow-hidden bg-[#2a475e] hover:scale-105 transition-transform"
                 >
                     <img
-                        src={achievementData?.heroUrl || game.heroUrl || game.iconUrl}
+                        src={xboxImg(achievementData?.iconUrl || game.iconUrl, 160)}
                         alt={game.name}
                         className="w-full h-full object-cover"
-                        onError={e => { if (game.iconUrl && e.target.src !== game.iconUrl) e.target.src = game.iconUrl; else e.target.style.display = 'none'; }}
+                        onError={e => { e.target.style.display = 'none'; }}
                     />
                 </a>
 
@@ -160,7 +160,7 @@ const XboxGameCard = ({ game, achievementData, onViewDetails, beatenInfo }) => {
                                 <div className={`w-8 h-8 rounded-[2px] overflow-hidden border bg-black transition-all peer ${ach.unlocked ? 'border-[#2a475e]' : 'border-[#1e2a35] opacity-40'}`}>
                                     {ach.iconUrl
                                         ? <img
-                                            src={ach.iconUrl}
+                                            src={xboxImg(ach.iconUrl, 128)}
                                             alt={ach.displayName}
                                             className={`w-full h-full object-cover ${!ach.unlocked ? 'grayscale' : ''}`}
                                           />
@@ -271,9 +271,9 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo }) => {
                         href={game.storeUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="shrink-0 w-32 h-16 rounded-[2px] overflow-hidden border border-[#101214] bg-[#2a475e] hover:scale-105 transition-transform"
+                        className="shrink-0 w-16 h-16 rounded-[2px] overflow-hidden border border-[#101214] bg-[#2a475e] hover:scale-105 transition-transform"
                     >
-                        <img src={achievementData?.heroUrl || game.heroUrl || game.iconUrl} alt={game.name} className="w-full h-full object-cover" onError={e => { e.target.style.display = 'none'; }} />
+                        <img src={xboxImg(achievementData?.iconUrl || game.iconUrl, 128)} alt={game.name} className="w-full h-full object-cover" onError={e => { e.target.style.display = 'none'; }} />
                     </a>
                     <div className="flex-1 min-w-0">
                         <a
@@ -351,7 +351,7 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo }) => {
                             <div className="relative shrink-0 w-10 h-10 rounded-[2px] border border-[#101214] overflow-hidden bg-black">
                                 {ach.iconUrl
                                     ? <img
-                                        src={ach.iconUrl}
+                                        src={xboxImg(ach.iconUrl, 128)}
                                         alt={ach.displayName}
                                         className={`w-full h-full object-cover ${!ach.unlocked ? 'grayscale brightness-40' : ''}`}
                                       />
@@ -654,7 +654,7 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
                                             <div className="flex items-center gap-2 mb-1.5">
                                                 <div className="w-4 h-4 rounded-[1px] overflow-hidden border border-[#101214] bg-[#1b2838] shrink-0">
                                                     <img
-                                                        src={gameIcons?.[session.titleId]}
+                                                        src={xboxImg(gameIcons?.[session.titleId], 64)}
                                                         alt=""
                                                         className="w-full h-full object-cover"
                                                         onError={e => { e.target.style.display = 'none'; }}
@@ -674,7 +674,7 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
                                                     <div key={ai} className="flex items-center gap-2 p-2 rounded-[2px] border border-[#2a475e] border-l-[2px] bg-[#1b2838] hover:bg-[#2a475e] transition-colors" style={{ borderLeftColor: rarityBorderColor(ach.globalPct) }}>
                                                         <div className="shrink-0 w-8 h-8 rounded-[2px] overflow-hidden border border-[#101214] bg-black">
                                                             {ach.iconUrl
-                                                                ? <img src={ach.iconUrl} alt={ach.displayName} className="w-full h-full object-cover" />
+                                                                ? <img src={xboxImg(ach.iconUrl, 128)} alt={ach.displayName} className="w-full h-full object-cover" />
                                                                 : <div className="w-full h-full bg-[#2a475e]" />
                                                             }
                                                         </div>
@@ -1205,7 +1205,7 @@ const App = () => {
                     {/* Avatar */}
                     <div className="relative shrink-0">
                         <div className="w-20 h-20 md:w-24 md:h-24 rounded-[2px] border border-[#52b043] shadow-[0_2px_12px_rgba(0,0,0,0.5)] overflow-hidden bg-[#101214]">
-                            <img src={profile.avatar} alt={profile.gamertag} className="w-full h-full object-cover" />
+                            <img src={xboxImg(profile.avatar, 208)} alt={profile.gamertag} className="w-full h-full object-cover" />
                         </div>
                     </div>
 
@@ -1264,9 +1264,9 @@ const App = () => {
                             {mostRecentGame ? (
                                 <div className="bg-[#1b2838]/80 border border-[#323f4c] border-l-[3px] border-l-[#66c0f4] rounded-[3px] p-3 flex items-center gap-4 hover:bg-[#202d39] transition-colors shadow-sm">
                                     <a href={xboxSearchUrl(mostRecentGame.name)} target="_blank" rel="noreferrer"
-                                        className="w-28 shrink-0 rounded-[2px] overflow-hidden border border-[#101214] bg-black block hover:scale-105 transition-transform aspect-video">
-                                        <img src={mostRecentGame.heroUrl || mostRecentGame.iconUrl} alt={mostRecentGame.name} className="w-full h-full object-cover block"
-                                            onError={e => { e.target.src = mostRecentGame.iconUrl; }} />
+                                        className="w-14 h-14 shrink-0 rounded-[2px] overflow-hidden border border-[#101214] bg-black block hover:scale-105 transition-transform">
+                                        <img src={xboxImg(mostRecentGame.iconUrl, 112)} alt={mostRecentGame.name} className="w-full h-full object-cover block"
+                                            onError={e => { e.target.style.display = 'none'; }} />
                                     </a>
                                     <div className="flex-1 min-w-0 flex flex-col">
                                         <a href={xboxSearchUrl(mostRecentGame.name)} target="_blank" rel="noreferrer"
@@ -1308,7 +1308,7 @@ const App = () => {
                                 <div className="bg-[#1b2838]/80 border border-[#323f4c] border-l-[3px] border-l-[#e5b143] rounded-[3px] p-3 flex items-center gap-3 hover:bg-[#202d39] transition-colors shadow-sm">
                                     <div className="shrink-0 w-12 h-12 rounded-[2px] overflow-hidden border border-[#101214] bg-black">
                                         {mostRecentUnlock.iconUrl
-                                            ? <img src={mostRecentUnlock.iconUrl} alt={mostRecentUnlock.displayName} className="w-full h-full object-cover" />
+                                            ? <img src={xboxImg(mostRecentUnlock.iconUrl, 208)} alt={mostRecentUnlock.displayName} className="w-full h-full object-cover" />
                                             : <div className="w-full h-full bg-[#2a475e]" />
                                         }
                                     </div>
@@ -1327,7 +1327,7 @@ const App = () => {
                                         )}
                                         <div className="flex items-center gap-1.5 text-[10px]">
                                             <img
-                                                src={achProgress[mostRecentUnlock.titleId]?.iconUrl}
+                                                src={xboxImg(achProgress[mostRecentUnlock.titleId]?.iconUrl, 64)}
                                                 alt=""
                                                 className="w-4 h-4 rounded-[1px] border border-[#101214] object-cover"
                                                 onError={e => { e.target.style.display = 'none'; }}
@@ -1388,16 +1388,15 @@ const App = () => {
                                     <div key={g.titleId} className="relative group cursor-help">
                                         <a href={xboxSearchUrl(g.gameName)} target="_blank" rel="noreferrer">
                                             <img
-                                                src={g.lastAchIconUrl || g.iconUrl}
+                                                src={xboxImg(g.iconUrl, 128)}
                                                 alt={g.gameName}
                                                 className="w-full aspect-square object-cover rounded-[2px] border-2 border-[#e5b143] group-hover:scale-110 transition-all duration-200 bg-[#101214]"
-                                                onError={e => { if (g.iconUrl) e.target.src = g.iconUrl; }}
                                             />
                                         </a>
                                         <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[200px] bg-[#1b2838] border border-[#2a475e] rounded-[2px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100] shadow-xl pointer-events-none overflow-hidden">
                                             <div className="h-[2px] bg-gradient-to-r from-[#e5b143] to-[#e5b143]/20" />
                                             <div className="flex items-center gap-2 px-2.5 py-2 border-b border-[#2a475e] bg-[#172333]">
-                                                <img src={g.lastAchIconUrl || g.iconUrl} alt=""
+                                                <img src={xboxImg(g.iconUrl, 128)} alt=""
                                                     className="w-8 h-8 rounded-[2px] border border-[#e5b143]/30 bg-black shrink-0 object-cover" />
                                                 <div className="flex flex-col min-w-0">
                                                     <span className="text-[11px] text-white font-semibold leading-tight line-clamp-2">{g.gameName}</span>
@@ -1438,16 +1437,15 @@ const App = () => {
                                     <div key={g.titleId} className="relative group cursor-help">
                                         <a href={xboxSearchUrl(g.gameName)} target="_blank" rel="noreferrer">
                                             <img
-                                                src={g.winCondIconUrl || g.iconUrl}
+                                                src={xboxImg(g.iconUrl, 128)}
                                                 alt={g.gameName}
                                                 className="w-full aspect-square object-cover rounded-[2px] border border-[#b8c4ce] group-hover:scale-110 transition-all duration-200 bg-[#101214]"
-                                                onError={e => { if (g.iconUrl) e.target.src = g.iconUrl; }}
                                             />
                                         </a>
                                         <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[200px] bg-[#1b2838] border border-[#2a475e] rounded-[2px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100] shadow-xl pointer-events-none overflow-hidden">
                                             <div className="h-[2px] bg-gradient-to-r from-[#b8c4ce] to-[#b8c4ce]/20" />
                                             <div className="flex items-center gap-2 px-2.5 py-2 border-b border-[#2a475e] bg-[#172333]">
-                                                <img src={g.winCondIconUrl || g.iconUrl} alt=""
+                                                <img src={xboxImg(g.iconUrl, 128)} alt=""
                                                     className="w-8 h-8 rounded-[2px] border border-[#b8c4ce]/30 bg-black shrink-0 object-cover" />
                                                 <div className="flex flex-col min-w-0">
                                                     <span className="text-[11px] text-white font-semibold leading-tight line-clamp-2">{g.gameName}</span>

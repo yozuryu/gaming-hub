@@ -1,4 +1,5 @@
 import { RA_MEDIA } from './constants.js';
+import { xboxImg } from './helpers.js';
 
 export const normalizeRA = (a) => ({
     platform: 'ra',
@@ -32,7 +33,7 @@ export const normalizeXbox = (a) => ({
     id: `xbox-${a.titleId}-${a.apiName}`,
     achievementName: a.displayName,
     description: a.description || a.displayName,
-    achievementIcon: a.iconUrl,
+    achievementIcon: xboxImg(a.iconUrl, 128),
     gameName: a.gameName,
     gameId: a.titleId,
     gameIcon: null,   // filled from data/xbox/games/index.json

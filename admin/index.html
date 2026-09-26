@@ -1071,6 +1071,15 @@ function WinConditionsModule({ cfg }) {
     );
 }
 
+const EDS_WIDTHS = [64, 128, 150, 200, 208, 300, 424];
+// Xbox images are full-size originals; resize on request
+const xboxImg = (url, width) => {
+    if (!url) return url;
+    if (url.includes('store-images.s-microsoft.com')) return `${url}${url.includes('?') ? '&' : '?'}w=${width}`;
+    if (url.includes('images-eds')) return `${url}&w=${EDS_WIDTHS.find(w => w >= width) ?? 424}`;
+    return url;
+};
+
 const WC_CONFIG = {
     steam: {
         platform: 'steam', idKey: 'appId', idLabel: 'App',
@@ -1080,7 +1089,7 @@ const WC_CONFIG = {
     xbox: {
         platform: 'xbox', idKey: 'titleId', idLabel: 'Title',
         gameUrl:  (id) => `${API}/xbox/game?titleId=${id}`,
-        achIcon:  (game, ach) => ach.iconUrl,   // full URLs in Xbox data
+        achIcon:  (game, ach) => xboxImg(ach.iconUrl, 128),   // full-size URLs in Xbox data
     },
 };
 const SteamWinConditionsModule = () => <WinConditionsModule cfg={WC_CONFIG.steam} />;

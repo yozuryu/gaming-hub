@@ -106,6 +106,15 @@ const normalizeSteamBeaten = beatenGames =>
         gameUrl: `https://store.steampowered.com/app/${g.appId}`,
     }));
 
+const EDS_WIDTHS = [64, 128, 150, 200, 208, 300, 424];
+// Xbox images are full-size originals; resize on request (images-eds only accepts certain widths)
+const xboxImg = (url, width) => {
+    if (!url) return url;
+    if (url.includes('store-images.s-microsoft.com')) return `${url}${url.includes('?') ? '&' : '?'}w=${width}`;
+    if (url.includes('images-eds')) return `${url}&w=${EDS_WIDTHS.find(w => w >= width) ?? 424}`;
+    return url;
+};
+
 const xboxSearchUrl = name => `https://www.xbox.com/en-US/Search/Results?q=${encodeURIComponent(name ?? '')}`;
 
 const normalizeXbox = completedGames =>
@@ -115,7 +124,7 @@ const normalizeXbox = completedGames =>
         completedAt: g.completedAt,
         gameId: g.titleId,
         gameName: g.gameName,
-        iconUrl: g.lastAchIconUrl || g.iconUrl,
+        iconUrl: xboxImg(g.iconUrl, 128),   // square box art, like RA (Steam uses achievement art: no square game art)
         total: g.total,
         lastAchName: g.lastAchName,
         lastAchGlobalPct: g.lastAchGlobalPct,
@@ -129,7 +138,7 @@ const normalizeXboxBeaten = beatenGames =>
         completedAt: g.beatenAt,
         gameId: g.titleId,
         gameName: g.gameName,
-        iconUrl: g.winCondIconUrl || g.iconUrl,
+        iconUrl: xboxImg(g.iconUrl, 128),
         total: g.total,
         lastAchName: g.winConditionName,
         lastAchGlobalPct: g.winCondGlobalPct,

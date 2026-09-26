@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 import { createRoot } from 'react-dom/client';
 import { Activity, ChevronDown, Flame } from 'lucide-react';
 import { PLATFORM_COLOR, TILDE_TAG_COLORS } from './utils/constants.js';
-import { fmtDay, fmtTime, parseTitle } from './utils/helpers.js';
+import { fmtDay, fmtTime, parseTitle, xboxImg } from './utils/helpers.js';
 import { normalizeRA, normalizeSteam, normalizeXbox } from './utils/normalizers.js';
 
 const renderTildeTags = (tags) => {
@@ -292,7 +292,7 @@ const App = () => {
             .then(r => r.json())
             .then(d => {
                 const icons = Object.fromEntries(
-                    Object.entries(d.achievementProgress ?? {}).map(([id, g]) => [id, g.iconUrl])
+                    Object.entries(d.achievementProgress ?? {}).map(([id, g]) => [id, xboxImg(g.iconUrl, 64)])
                 );
                 setXboxGameIcons(icons);
                 setXboxAchs(prev => prev.map(a => icons[a.gameId] ? { ...a, gameIcon: icons[a.gameId] } : a));

@@ -579,6 +579,15 @@
       }
     }
 
+    // Xbox images are full-size originals; resize on request (images-eds only accepts certain widths)
+    const EDS_WIDTHS = [64, 128, 150, 200, 208, 300, 424];
+    const xboxImg = (url, width) => {
+        if (!url) return url;
+        if (url.includes('store-images.s-microsoft.com')) return `${url}${url.includes('?') ? '&' : '?'}w=${width}`;
+        if (url.includes('images-eds')) return `${url}&w=${EDS_WIDTHS.find(w => w >= width) ?? 424}`;
+        return url;
+    };
+
     // Beaten via win conditions (hand-picked "ending" achievements in the admin).
     // Returns the set of ids (as strings) among `ids` that are beaten.
     async function beatenIdsFor(platform, ids) {
@@ -718,7 +727,7 @@
             : '';
           return `
             <div class="recent-row" style="align-items:center;flex:1;padding-top:5px;padding-bottom:5px;">
-              <img src="${g.iconUrl || ''}" alt="${g.name}" class="game-icon object-cover"
+              <img src="${xboxImg(g.iconUrl, 64) || ''}" alt="${g.name}" class="game-icon object-cover"
                 style="align-self:center;" onerror="this.style.background='#2a475e';this.removeAttribute('src')" />
               <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;">
                 <div class="game-title">${g.name}</div>
@@ -828,7 +837,7 @@
           platform: 'xbox',
           achievementName: a.displayName,
           description: a.description || a.displayName,
-          achievementIcon: a.iconUrl,
+          achievementIcon: xboxImg(a.iconUrl, 128),
           gameName: a.gameName,
           gameUrl: `https://www.xbox.com/en-US/Search/Results?q=${encodeURIComponent(a.gameName)}`,
           unlockedAt: a.unlockedAt,
@@ -984,7 +993,7 @@
         const candidates  = [
           raLatest    && { ..._parseTitle(raLatest.title), name: raLatest.title, date: raLatest.awardedAt, icon: RA_MEDIA_BASE + raLatest.imageIcon, type: 'Completed' },
           steamLatest && { name: steamLatest.gameName, date: steamLatest.completedAt, icon: steamLatest.lastAchIconUrl || steamLatest.iconUrl, type: 'Completed' },
-          xboxLatest  && { name: xboxLatest.gameName,  date: xboxLatest.completedAt,  icon: xboxLatest.lastAchIconUrl  || xboxLatest.iconUrl,  type: 'Completed' },
+          xboxLatest  && { name: xboxLatest.gameName,  date: xboxLatest.completedAt,  icon: xboxImg(xboxLatest.iconUrl, 64), type: 'Completed' },
         ].filter(Boolean).sort((a, b) => new Date(b.date) - new Date(a.date));
         const latest = candidates[0];
 

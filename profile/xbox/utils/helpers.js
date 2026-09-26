@@ -48,3 +48,15 @@ export const rarityBorderColor = (globalPct) => {
     if (globalPct != null && globalPct < 30) return '#66c0f4'; // Rare      — blue
     return '#8f98a0';                                           // Common    — gray
 };
+
+// Xbox images come as full-size originals (box art up to 2160², achievement art
+// 1920×1080, avatar 1080²). Both image servers resize on request and keep the
+// aspect ratio, so every caller asks for roughly 2× its display width.
+// images-eds only accepts certain widths (64/128/150/200/208/300/424).
+const EDS_WIDTHS = [64, 128, 150, 200, 208, 300, 424];
+export const xboxImg = (url, width) => {
+    if (!url) return url;
+    if (url.includes('store-images.s-microsoft.com')) return `${url}${url.includes('?') ? '&' : '?'}w=${width}`;
+    if (url.includes('images-eds')) return `${url}&w=${EDS_WIDTHS.find(w => w >= width) ?? 424}`;
+    return url;   // e.g. Xbox 360 achievement icons (already small)
+};

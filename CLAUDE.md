@@ -176,6 +176,7 @@ Env vars: `XBOX_API_KEY` (OpenXBL). The XUID is read from `GET /account`; `XBOX_
 - Modern totals come from the achievement list (the title list's `totalAchievements` is often 0)
 - No sentinel file: titles without achievements are known from the title list every run
 - No playtime (the API's `stats` is null)
+- Image URLs are stored as full-size originals; every page resizes them with an `xboxImg(url, width)` helper (duplicated in the Xbox page, Activity, Completions, hub and admin). Never render an Xbox image URL without it
 - Files are only rewritten when their content changes (ignoring `metadata`), so runs with no activity make no commit
 - Outputs: `profile.json`, `games/index.json`, `games/{titleId}.json`, `achievements/1-4.json`, `achievements/heatmap.json`
 

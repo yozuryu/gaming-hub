@@ -26,6 +26,9 @@ Keep beaten and completed as separate milestones when they happen in different y
 
 ### Xbox
 
+- Game images follow RA's layout instead of Steam's: square box art for the card thumbnail, achievement modal header and Most Recently Played; wide hero art stays as the faded card background
+- Completions sidebar, Completions page and hub completions strip show the Xbox game's box art instead of an achievement icon
+- All Xbox images are now requested at display size (`xboxImg()`): originals were up to 2160×2160 (box art, ~1.5 MB), 1920×1080 (achievement art, ~230 KB) and 1080×1080 (avatar, ~1.6 MB). The full Completion Progress tab went from roughly 120 MB of images to 5.5 MB
 - Win conditions for 13 games (ending/final-boss achievements, OR logic): 12 now count as Beaten — Hi-Fi Rush, Star Ocean The Divine Force, Atomic Heart, Planet of Lana, High On Life, Titanfall 2, Tiny Tina's Wonderlands, Minecraft Dungeons, Asura's Wrath (Part III), Unravel Two, Soul Hackers 2, Hellblade; Tales of Arise will count once finished
 - New Xbox profile page (`profile/xbox/`), built from the Steam page: header with gamertag and gamerscore, Most Recently Played, User Stats, Completions sidebar, and Recent Games / Completion Progress / Activity tabs
 - Game cards use each game's wide hero art and show earned/total gamerscore; the achievement modal lists gamerscore per achievement and rarity
