@@ -40,6 +40,7 @@ Keep beaten and completed as separate milestones when they happen in different y
 - Steam: the three calls per game run one after another instead of in parallel, to avoid triggering throttling; "no achievements" is only recorded when Steam says so, and the flag is cleared when a game later returns achievements; cleared the 5 wrongly flagged entries in `games/sentinel.json`
 - RA: API calls retry with backoff; if a year-of-activity chunk still fails, the run stops before writing instead of publishing activity with a three-month gap
 - Both: full refresh starts from the cached data, so a game whose fetch fails keeps its previous entry instead of disappearing from the site
+- Backlog: Xbox plan updated from a live OpenXBL test — verified endpoints and response shapes, required `Accept-Language` header, errors returned as HTTP 200 with an inner `code`, Xbox 360 titles listing only unlocked achievements, no playtime, and the full import fitting in one run (87 titles, ~85 calls)
 - Backlog: handle Steam's per-game "Profile is not public" response as a skip rather than a failure (146 games in the first full refresh, all already cached with 0 unlocked)
 - RA pipeline attaches `playtime` (minutes, from `userTotalPlaytime` in game details) to each award in `profile.json` → `pageAwards.visibleUserAwards`, so the Completions page doesn't need to load `games.json`
 
