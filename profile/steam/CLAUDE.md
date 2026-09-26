@@ -8,6 +8,10 @@
 - `../../data/steam/achievements/1.json` — fetched when Activity tab opens
 - `../../data/steam/achievements/2–4.json` — lazy-loaded via IntersectionObserver
 
+## Completions Panel (sidebar)
+- Perfect games (gold border) then beaten-only games (from win conditions)
+- Collapsible: header is a toggle (`usePanelOpen('steam-profile-completions-open')`). Default open on desktop (≥768px), closed on mobile; choice remembered in `localStorage`. Counts stay visible in the header when collapsed.
+
 ## Tabs
 Three tabs: **Recent Games** (Clock) · **Completion Progress** (BarChart2) · **Activity** (Activity)
 

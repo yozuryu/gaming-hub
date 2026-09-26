@@ -867,8 +867,26 @@ const ProfileLoadingSkeleton = () => (
 
 // ── App ───────────────────────────────────────────────────────────────────────
 
+// Open/closed state for a collapsible sidebar panel. Remembers the viewer's
+// choice per browser; defaults to open on desktop, closed on mobile.
+const usePanelOpen = (storageKey) => {
+    const [open, setOpen] = useState(() => {
+        try {
+            const saved = localStorage.getItem(storageKey);
+            if (saved !== null) return saved === '1';
+        } catch { /* storage unavailable */ }
+        return window.matchMedia('(min-width: 768px)').matches;
+    });
+    const toggle = () => setOpen(prev => {
+        try { localStorage.setItem(storageKey, prev ? '0' : '1'); } catch { /* storage unavailable */ }
+        return !prev;
+    });
+    return [open, toggle];
+};
+
 const App = () => {
     const [profileData,       setProfileData]       = useState(null);
+    const [completionsOpen,   toggleCompletions]    = usePanelOpen('steam-profile-completions-open');
     const [gamesData,         setGamesData]         = useState(null);
     const [achievementChunks, setAchievementChunks] = useState([null, null, null, null]);
     const [heatmapData,       setHeatmapData]       = useState({});
@@ -1296,7 +1314,11 @@ const App = () => {
                     {/* Sidebar: Completions */}
                     <div className="flex flex-col gap-5">
                         <div className="bg-[#1b2838] border border-[#2a475e] rounded-[3px] shadow-sm h-fit">
-                            <div className="p-2.5 bg-[#172333] border-b border-[#2a475e] rounded-t-[2px] flex items-center gap-2">
+                            <button
+                                onClick={toggleCompletions}
+                                aria-expanded={completionsOpen}
+                                className={`w-full p-2.5 bg-[#172333] hover:bg-[#1b2838] transition-colors flex items-center gap-2 text-left outline-none ${completionsOpen ? 'border-b border-[#2a475e] rounded-t-[2px]' : 'rounded-[2px]'}`}
+                            >
                                 <span className="w-[2px] h-[12px] bg-[#e5b143] rounded-[1px] shrink-0" />
                                 <span className="text-[11px] uppercase tracking-wide font-semibold text-[#c6d4df] flex items-center gap-2 flex-1">
                                     <Star size={13} className="text-[#e5b143]" /> Completions
@@ -1307,7 +1329,9 @@ const App = () => {
                                     <Medal size={9} className="text-[#b8c4ce]" />
                                     <span className="text-[10px] font-semibold text-[#b8c4ce]">{beatenOnly.length}</span>
                                 </div>
-                            </div>
+                                <ChevronDown size={12} className={`text-[#546270] transition-transform duration-200 shrink-0 ${completionsOpen ? 'rotate-180' : ''}`} />
+                            </button>
+                            {completionsOpen && (
                             <div className="p-3 grid grid-cols-5 sm:grid-cols-8 lg:grid-cols-5 gap-2 min-h-[60px]">
                                 {perfectGames.map(g => (
                                     <div key={g.appId} className="relative group cursor-help">
@@ -1422,6 +1446,7 @@ const App = () => {
                                     <div className="col-span-full text-center text-[#546270] text-[10px] py-2">No completions yet.</div>
                                 )}
                             </div>
+                            )}
                         </div>
                     </div>
 

@@ -21,6 +21,23 @@ const renderTildeTags = (tags) => {
   });
 };
 
+// Open/closed state for a collapsible sidebar panel. Remembers the viewer's
+// choice per browser; defaults to open on desktop, closed on mobile.
+const usePanelOpen = (storageKey) => {
+  const [open, setOpen] = useState(() => {
+    try {
+      const saved = localStorage.getItem(storageKey);
+      if (saved !== null) return saved === '1';
+    } catch { /* storage unavailable */ }
+    return window.matchMedia('(min-width: 768px)').matches;
+  });
+  const toggle = () => setOpen(prev => {
+    try { localStorage.setItem(storageKey, prev ? '0' : '1'); } catch { /* storage unavailable */ }
+    return !prev;
+  });
+  return [open, toggle];
+};
+
 // --- Components ---
 
 const GuideStrip = ({ game, guides, isLast }) => {
@@ -1244,6 +1261,7 @@ export default function App() {
   const [watchlistStatusFilter, setWatchlistStatusFilter] = useState('all');
   const [watchlistGrouping, setWatchlistGrouping] = useState('none');
   const [collapsedGroups, setCollapsedGroups] = useState(new Set());
+  const [awardsOpen, toggleAwards] = usePanelOpen('ra-profile-awards-open');
   const [selectedGame, setSelectedGame] = useState(null);
   const [guidesData, setGuidesData] = useState({});
   const [seriesData, setSeriesData] = useState([]);
@@ -1620,7 +1638,11 @@ export default function App() {
           <div className="flex flex-col gap-5">
             
             <div className="bg-[#1b2838] border border-[#2a475e] rounded-[3px] shadow-sm h-fit">
-              <div className="p-2.5 bg-[#172333] border-b border-[#2a475e] rounded-t-[2px] text-[#c6d4df] flex items-center gap-2">
+              <button
+                onClick={toggleAwards}
+                aria-expanded={awardsOpen}
+                className={`w-full p-2.5 bg-[#172333] hover:bg-[#1b2838] transition-colors text-[#c6d4df] flex items-center gap-2 text-left outline-none ${awardsOpen ? 'border-b border-[#2a475e] rounded-t-[2px]' : 'rounded-[2px]'}`}
+              >
                 <span className="w-[2px] h-[12px] bg-[#e5b143] rounded-[1px] shrink-0"></span>
                 <span className="text-[11px] uppercase tracking-wide font-semibold flex items-center gap-2 flex-1">
                   <Star size={13} className="text-[#e5b143]" /> Game Awards
@@ -1628,10 +1650,12 @@ export default function App() {
                 <div className="flex items-center gap-1.5">
                   <Trophy size={9} className="text-[#e5b143]" />
                   <span className="text-[10px] font-semibold text-[#e5b143]">{PROFILE_DATA.gameAwards.filter(a => a.type === 'Mastery/Completion').length}</span>
-                  <Medal size={9} className="text-[#8f98a0]" />
-                  <span className="text-[10px] font-semibold text-[#8f98a0]">{PROFILE_DATA.gameAwards.filter(a => a.type !== 'Mastery/Completion').length}</span>
+                  <Medal size={9} className="text-[#b8c4ce]" />
+                  <span className="text-[10px] font-semibold text-[#b8c4ce]">{PROFILE_DATA.gameAwards.filter(a => a.type !== 'Mastery/Completion').length}</span>
                 </div>
-              </div>
+                <ChevronDown size={12} className={`text-[#546270] transition-transform duration-200 shrink-0 ${awardsOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {awardsOpen && (
               <div className="p-3 grid grid-cols-5 sm:grid-cols-8 lg:grid-cols-5 gap-2 min-h-[60px]">
                 {PROFILE_DATA.gameAwards.length > 0 ? PROFILE_DATA.gameAwards.map(award => (
                   <div key={award.id} className="relative group cursor-help">
@@ -1681,6 +1705,7 @@ export default function App() {
                   <div className="col-span-full text-center text-[#546270] text-[10px] py-2">No game awards yet.</div>
                 )}
               </div>
+              )}
             </div>
 
           </div>

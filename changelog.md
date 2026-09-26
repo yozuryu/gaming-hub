@@ -2,15 +2,17 @@
 
 ## v26.09.26
 
-Keep beaten and completed as separate milestones when they happen in different years; show RA playtime on completions; standardize Beaten on silver; app updates now show up without a manual cache bump.
+Keep beaten and completed as separate milestones when they happen in different years; show RA playtime on completions; standardize Beaten on silver; app updates now show up without a manual cache bump; RA Game Awards and Steam Completions panels are collapsible.
 
 ### RetroAchievements
 
-- Beaten game cards and award badges use silver (stripe `#b8c4ce`, badge `#2a3440` / `#c6d4df`) instead of gray/slate
+- Beaten game cards and award badges use silver (stripe `#b8c4ce`, badge `#2a3440` / `#c6d4df`) instead of gray/slate; Game Awards header Beaten count also silver
+- Game Awards panel is collapsible — click the header to toggle; open by default on desktop, closed on mobile, choice remembered per browser; Mastered/Beaten counts stay visible when collapsed
 
 ### Steam
 
 - Beaten count and award badge in the Completions section use silver instead of gray
+- Completions panel is collapsible — same behavior as RA Game Awards
 
 ### Hub
 

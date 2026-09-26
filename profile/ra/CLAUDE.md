@@ -36,6 +36,7 @@ Five tabs: **Recent Games** (Clock) · **Completion Progress** (BarChart2) · **
 - Sorted by type (Mastered first) then date desc
 - Deduplicated: if a game has both Beaten and Mastered, only Mastered is shown
 - Mastered icons: 2px solid gold border. Beaten: dimmed border.
+- Collapsible: header is a toggle (`usePanelOpen('ra-profile-awards-open')`). Default open on desktop (≥768px), closed on mobile; choice remembered in `localStorage`. Counts stay visible in the header when collapsed.
 
 ## RA Title Parsing
 Game titles use special syntax:
