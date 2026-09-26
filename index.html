@@ -348,6 +348,8 @@
       <span id="footer-site-url" class="text-[#8f98a0]"></span>
     </p>
     <a href="./changelog/" class="ml-auto text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">Changelog</a>
+    <span class="text-[10px] text-[#2a475e]">·</span>
+    <button id="refresh-app-btn" type="button" title="Fetch the latest app files. Your data is not affected." class="text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">Refresh app</button>
   </footer>
 
   <script>
@@ -859,6 +861,20 @@
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/gaming-hub/sw.js', { scope: '/gaming-hub/' });
   }
+
+  // Refresh app — clear cached app files (not data) and reload
+  document.getElementById('refresh-app-btn').addEventListener('click', async e => {
+    e.currentTarget.textContent = 'Refreshing…';
+    try {
+      if ('caches' in window) {
+        const keys = await caches.keys();
+        await Promise.all(keys.map(k => caches.delete(k)));
+      }
+      const reg = await navigator.serviceWorker?.getRegistration();
+      await reg?.update();
+    } catch { /* reload anyway */ }
+    location.reload();
+  });
 </script>
 <script src="./assets/mobile-nav.js"></script>
 </body>

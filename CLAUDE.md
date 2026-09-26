@@ -18,7 +18,7 @@ Personal gaming statistics dashboard aggregating RetroAchievements (RA) and Stea
 gaming-hub/
 ├── index.html                      # Hub landing page (vanilla JS, no React)
 ├── manifest.json                   # PWA manifest
-├── sw.js                           # Service worker (network-first data, cache-first assets)
+├── sw.js                           # Service worker (network-first data, stale-while-revalidate assets)
 ├── changelog.md                    # Project changelog (Markdown, parsed by changelog app)
 ├── CLAUDE.md                       # This file
 │
@@ -106,7 +106,8 @@ Self-contained IIFE injected into every page via `<script src="...assets/mobile-
 - `manifest.json` + `sw.js` at root
 - `viewport-fit=cover` on all 6 `index.html` viewport meta tags
 - Icons: `assets/icon-192.png` and `assets/icon-512.png` generated from `assets/appicon.png`
-- Service worker: network-first for `data/**` and `changelog.md`, cache-first for all other static assets
+- Service worker: network-first for `data/**` and `changelog.md`, stale-while-revalidate for all other static assets (cached copy served instantly, refreshed in the background — a deploy shows up on the next load). Bumping `CACHE_NAME` is no longer required for code changes; bump it only when the `PRECACHE` list changes
+- **Refresh app** button clears all SW caches, calls `registration.update()` and reloads (data untouched). Lives in the Changelog page header (mobile + desktop) and the hub footer (desktop only — footer is hidden on mobile)
 
 ### Page headers (mobile)
 All page headers use `pt-8 pb-5 md:pt-5` — extra top padding on mobile compensates for the hidden breadcrumb bar. Desktop keeps the original `pt-5`. Apply this to any new pages.

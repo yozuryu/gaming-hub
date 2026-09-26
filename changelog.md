@@ -2,7 +2,7 @@
 
 ## v26.09.26
 
-Keep beaten and completed as separate milestones when they happen in different years; show RA playtime on completions; standardize Beaten on silver.
+Keep beaten and completed as separate milestones when they happen in different years; show RA playtime on completions; standardize Beaten on silver; app updates now show up without a manual cache bump.
 
 ### RetroAchievements
 
@@ -14,6 +14,7 @@ Keep beaten and completed as separate milestones when they happen in different y
 
 ### Hub
 
+- Footer gains a "Refresh app" link next to Changelog (desktop): clears cached app files and reloads, data untouched
 - Beaten is now silver `#b8c4ce` everywhere on the hub: completions strip count, latest-completion line, mobile summary, and RA card stat (was a mix of blue and gray)
 
 ### Completions
@@ -26,6 +27,12 @@ Keep beaten and completed as separate milestones when they happen in different y
 ### Pipelines
 
 - RA pipeline attaches `playtime` (minutes, from `userTotalPlaytime` in game details) to each award in `profile.json` → `pageAwards.visibleUserAwards`, so the Completions page doesn't need to load `games.json`
+
+### Structure
+
+- `sw.js`: static assets switched from cache-first to stale-while-revalidate (cached copy served instantly, fresh copy fetched in the background with `cache: 'no-cache'`), so deploys reach installed apps on the next load without bumping `CACHE_NAME`; only same-origin GET requests are handled
+- `sw.js`: bumped cache to `gaming-hub-v4` so the switch and today's changes reach browsers still on the old cache-first worker
+- Changelog page: "Refresh app" button in the header (works on mobile and desktop) — deletes all SW caches, triggers a service worker update check, reloads
 
 ## v26.06.13
 

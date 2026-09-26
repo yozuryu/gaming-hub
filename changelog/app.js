@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
-import { ChevronDown, GitCommit } from 'lucide-react';
+import { ChevronDown, GitCommit, RefreshCw } from 'lucide-react';
 
 // ── Parser ─────────────────────────────────────────────────────────────────────
 // Parses the changelog markdown into: [{ date, sections: [{ title, entries[] }] }]
@@ -148,6 +148,22 @@ const Release = ({ date, summary, sections, defaultOpen }) => {
 
 const App = () => {
     const [releases, setReleases] = useState(null);
+    const [refreshing, setRefreshing] = useState(false);
+
+    // Clears the service worker's cached app files (not data) and reloads,
+    // so the latest deployed HTML/JS is fetched fresh
+    const refreshApp = async () => {
+        setRefreshing(true);
+        try {
+            if ('caches' in window) {
+                const keys = await caches.keys();
+                await Promise.all(keys.map(k => caches.delete(k)));
+            }
+            const reg = await navigator.serviceWorker?.getRegistration();
+            await reg?.update();
+        } catch { /* reload anyway */ }
+        location.reload();
+    };
 
     useEffect(() => {
         fetch('../changelog.md')
@@ -171,7 +187,7 @@ const App = () => {
             {/* Header */}
             <header className="bg-[#1b2838] border-b border-[#2a475e] px-4 md:px-8 pt-8 pb-5 md:pt-5 shadow-md">
                 <div className="max-w-3xl mx-auto">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 flex-wrap">
                         <span className="w-[3px] h-6 bg-[#66c0f4] rounded-[1px] shrink-0" />
                         <h1 className="text-2xl md:text-[26px] text-white font-medium tracking-wide leading-none flex items-center gap-3">
                             <GitCommit size={22} className="text-[#66c0f4]" /> Changelog
@@ -181,6 +197,15 @@ const App = () => {
                                 <span className="text-[#c6d4df]">{releases.length}</span> releases
                             </span>
                         )}
+                        <button
+                            onClick={refreshApp}
+                            disabled={refreshing}
+                            title="Fetch the latest app files. Your data is not affected."
+                            className="ml-auto flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#8f98a0] hover:text-[#66c0f4] hover:border-[#66c0f4]/50 active:scale-95 transition-colors disabled:opacity-60"
+                        >
+                            <RefreshCw size={10} className={refreshing ? 'animate-spin' : ''} />
+                            {refreshing ? 'Refreshing…' : 'Refresh app'}
+                        </button>
                     </div>
                 </div>
             </header>

@@ -1,6 +1,6 @@
-const CACHE_NAME = 'gaming-hub-v1';
+const CACHE_NAME = 'gaming-hub-v4';
 
-// Static assets — cache-first
+// Static assets — precached on install, then stale-while-revalidate
 const PRECACHE = [
   '/gaming-hub/',
   '/gaming-hub/index.html',
@@ -49,12 +49,12 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch — network-first for JSON data, cache-first for everything else
+// Fetch — network-first for JSON data, stale-while-revalidate for everything else
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
 
-  // Only handle same-origin requests
-  if (url.origin !== self.location.origin) return;
+  // Only handle same-origin GET requests
+  if (url.origin !== self.location.origin || event.request.method !== 'GET') return;
 
   const isData = url.pathname.startsWith('/gaming-hub/data/') ||
                  url.pathname.startsWith('/gaming-hub/changelog.md');
@@ -71,16 +71,18 @@ self.addEventListener('fetch', event => {
         .catch(() => caches.match(event.request))
     );
   } else {
-    // Cache-first: static assets served from cache, network fallback
-    event.respondWith(
-      caches.match(event.request)
-        .then(cached => cached || fetch(event.request)
-          .then(res => {
-            const clone = res.clone();
-            caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-            return res;
-          })
-        )
-    );
+    // Stale-while-revalidate: serve the cached copy immediately and refresh it
+    // in the background, so a deploy shows up on the next page load without a
+    // CACHE_NAME bump. no-cache revalidates past GitHub Pages' HTTP cache.
+    const network = fetch(event.request, { cache: 'no-cache' })
+      .then(res => {
+        if (res.ok) {
+          const clone = res.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+        }
+        return res;
+      });
+    event.respondWith(caches.match(event.request).then(cached => cached || network));
+    event.waitUntil(network.catch(() => {}));
   }
 });

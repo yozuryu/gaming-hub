@@ -27,3 +27,6 @@ Sections are sorted by this order regardless of their order in the markdown file
 
 ## Inline Code
 Backtick spans `` `foo` `` are rendered as `<code>` with cyan text (`#57cbde`) and dark background.
+
+## Refresh App Button
+Header has a "Refresh app" button (`refreshApp`): deletes all Cache Storage entries, calls `serviceWorker.getRegistration().update()`, then reloads. Only app files are affected — data is always network-first. This is the mobile entry point (the hub footer copy is desktop-only).
