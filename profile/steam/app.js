@@ -1304,8 +1304,8 @@ const App = () => {
                                 <div className="flex items-center gap-1.5">
                                     <Star size={9} className="text-[#e5b143]" />
                                     <span className="text-[10px] font-semibold text-[#e5b143]">{perfectGames.length}</span>
-                                    <Medal size={9} className="text-[#8f98a0]" />
-                                    <span className="text-[10px] font-semibold text-[#8f98a0]">{beatenOnly.length}</span>
+                                    <Medal size={9} className="text-[#b8c4ce]" />
+                                    <span className="text-[10px] font-semibold text-[#b8c4ce]">{beatenOnly.length}</span>
                                 </div>
                             </div>
                             <div className="p-3 grid grid-cols-5 sm:grid-cols-8 lg:grid-cols-5 gap-2 min-h-[60px]">
@@ -1389,7 +1389,7 @@ const App = () => {
                                             <div className="px-2.5 py-2 flex flex-col gap-1.5">
                                                 <div className="flex items-center justify-between">
                                                     <span className="text-[9px] text-[#546270] uppercase tracking-[0.08em]">Award</span>
-                                                    <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px]" style={{ background: 'rgba(143,152,160,0.15)', color: '#8f98a0', border: '1px solid rgba(143,152,160,0.3)' }}>Beaten</span>
+                                                    <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px]" style={{ background: '#2a3440', color: '#c6d4df', border: '1px solid rgba(184,196,206,0.3)' }}>Beaten</span>
                                                 </div>
                                                 {g.winCondGlobalPct != null && (<>
                                                     <div className="h-px bg-[#2a475e]" />

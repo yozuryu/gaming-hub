@@ -152,7 +152,7 @@ const groupByMonth = completions => {
 
 const TYPE_CFG = {
     mastered:  { label: 'Mastered', stripe: '#e5b143', badgeBg: '#e5b143', badgeText: '#101214', icon: <Star  size={7} /> },
-    beaten:    { label: 'Beaten',   stripe: '#66c0f4', badgeBg: '#1b4f72', badgeText: '#66c0f4', icon: <Medal size={7} /> },
+    beaten:    { label: 'Beaten',   stripe: '#b8c4ce', badgeBg: '#2a3440', badgeText: '#c6d4df', icon: <Medal size={7} /> },
     perfect:   { label: 'Perfect',    stripe: '#e5b143', badgeBg: '#e5b143', badgeText: '#101214', icon: <Star  size={7} /> },
 };
 

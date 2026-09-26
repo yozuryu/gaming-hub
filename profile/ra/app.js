@@ -95,7 +95,7 @@ const GameCard = ({ game, onViewDetails, guides }) => {
   const stripeColor = game.isMastered
     ? 'border-l-[#e5b143]'
     : game.isBeaten
-    ? 'border-l-[#8f98a0]'
+    ? 'border-l-[#b8c4ce]'
     : game.achievementsUnlocked > 0
     ? 'border-l-[#66c0f4]'
     : game.achievementsTotal > 0
@@ -179,7 +179,7 @@ const GameCard = ({ game, onViewDetails, guides }) => {
                 </span>
               )}
               {game.isBeaten && !game.isMastered && (
-                <span className="shrink-0 text-[9px] text-white bg-[#546270] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider border border-[#c6d4df]/30 flex items-center gap-1">
+                <span className="shrink-0 text-[9px] text-[#c6d4df] bg-[#2a3440] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider border border-[#b8c4ce]/30 flex items-center gap-1">
                   <Medal size={10} /> Beaten
                 </span>
               )}
@@ -380,7 +380,7 @@ const RAchievementModal = ({ game, onClose }) => {
                 <span className="shrink-0 text-[9px] text-[#101214] bg-[#e5b143] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider flex items-center gap-1"><Trophy size={10} /> Mastered</span>
               )}
               {game.isBeaten && !game.isMastered && (
-                <span className="shrink-0 text-[9px] text-white bg-[#546270] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider border border-[#c6d4df]/30 flex items-center gap-1"><Medal size={10} /> Beaten</span>
+                <span className="shrink-0 text-[9px] text-[#c6d4df] bg-[#2a3440] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider border border-[#b8c4ce]/30 flex items-center gap-1"><Medal size={10} /> Beaten</span>
               )}
             </div>
             {/* Progress bars */}
@@ -1667,7 +1667,7 @@ export default function App() {
                           <span className="text-[9px] text-[#546270] uppercase tracking-[0.08em]">Award</span>
                           {award.type === 'Mastery/Completion'
                             ? <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px] bg-[#e5b143] text-[#101214]">Mastered</span>
-                            : <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px] bg-[#546270] text-white border border-[#c6d4df]/20">Beaten</span>
+                            : <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px] bg-[#2a3440] text-[#c6d4df] border border-[#b8c4ce]/30">Beaten</span>
                           }
                         </div>
                         <div className="flex items-center justify-between">

@@ -449,7 +449,7 @@
           <div><div class="stat-val" style="color:#e5b143;">${totalPoints.toLocaleString()}</div><div class="stat-lbl">Points</div></div>
           <div><div class="stat-val" style="color:#c6d4df;">${rank ? '#' + Number(rank).toLocaleString() : '—'}</div><div class="stat-lbl">Rank</div></div>
           <div><div class="stat-val" style="color:#e5b143;">${mastered}</div><div class="stat-lbl">Mastered</div></div>
-          <div><div class="stat-val" style="color:#8f98a0;">${beaten}</div><div class="stat-lbl">Beaten</div></div>
+          <div><div class="stat-val" style="color:#b8c4ce;">${beaten}</div><div class="stat-lbl">Beaten</div></div>
           <div><div class="stat-val" style="color:#66c0f4;">${achievements.toLocaleString()}</div><div class="stat-lbl">Achievements</div></div>
           <div><div class="stat-val" style="color:#546270;">${totalGames}</div><div class="stat-lbl">Games</div></div>
         `;
@@ -800,7 +800,7 @@
         const parts = [];
         parts.push(pill(total, 'total', '#ffffff'));
         if (completed > 0) parts.push(pill(completed, 'Completed', '#e5b143'));
-        if (beaten    > 0) parts.push(pill(beaten,    'Beaten',    '#66c0f4'));
+        if (beaten    > 0) parts.push(pill(beaten,    'Beaten',    '#b8c4ce'));
 
         // Most recent completion across both platforms
         const RA_MEDIA_BASE = 'https://media.retroachievements.org';
@@ -816,7 +816,7 @@
         if (latest) {
           const diff = Math.floor((Date.now() - new Date(latest.date)) / 86400000);
           const ago  = diff === 0 ? 'Today' : diff === 1 ? 'Yesterday' : diff < 7 ? `${diff}d ago` : diff < 30 ? `${Math.floor(diff/7)}w ago` : `${Math.floor(diff/30)}mo ago`;
-          const typeColor = latest.type === 'Beaten' ? '#66c0f4' : '#e5b143';
+          const typeColor = latest.type === 'Beaten' ? '#b8c4ce' : '#e5b143';
           const latestDisplayName = latest.baseTitle || latest.name;
           const latestBadges = latest.isSubset
             ? `<span style="${_BADGE_BASE}border:1px solid rgba(229,177,67,0.3);background:rgba(229,177,67,0.08);color:#c8a84b;">Subset</span>`
@@ -840,7 +840,7 @@
 
         const mobileParts = [];
         if (completed > 0) mobileParts.push(`<span style="color:#e5b143;font-weight:700;">${completed}</span><span style="color:#8f98a0;"> Completed</span>`);
-        if (beaten    > 0) mobileParts.push(`<span style="color:#66c0f4;font-weight:700;">${beaten}</span><span style="color:#8f98a0;"> Beaten</span>`);
+        if (beaten    > 0) mobileParts.push(`<span style="color:#b8c4ce;font-weight:700;">${beaten}</span><span style="color:#8f98a0;"> Beaten</span>`);
         document.getElementById('completions-strip-total-mobile').innerHTML = mobileParts.join('<span style="color:#3a5068;margin:0 5px;">·</span>');
         document.getElementById('completions-strip-stats').innerHTML = parts.join(` ${dot} `);
         document.getElementById('completions-strip').style.display = '';

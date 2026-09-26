@@ -78,11 +78,11 @@ Vanilla JS, no React. Reads `data/hub/config.json`, `data/ra/profile.json`, `dat
 **Platform cards** — on desktop: full cards with header, stats grid, recently played rows, footer link. On mobile: header + stats grid only (recently played and footer hidden via CSS). Cards are not shown if `platforms[key].visible` is false in config.json.
 
 **Stats order and colors** (by relevance):
-- RA: Points (gold) → Rank (white) → Mastered (gold) → Beaten (gray) → Achievements (blue) → Games (muted)
+- RA: Points (gold) → Rank (white) → Mastered (gold) → Beaten (silver) → Achievements (blue) → Games (muted)
 - Steam: Hours (blue) → Perfect (gold) → Achievements (blue) → Games (muted) → Played (muted) → w/ Unlocks (muted)
 
 **Completions strip** (desktop only, hidden on mobile via CSS):
-- Shows: N total · N Completed (gold) · N Beaten (blue)
+- Shows: N total · N Completed (gold) · N Beaten (silver)
 - "Completed" = RA Mastered + Steam Perfect merged — they are the same concept
 - Most recent completion shown with icon, name, and time ago
 
@@ -221,7 +221,7 @@ Cyan accent:       #57cbde
 
 ### Completion status colors
 - Mastered / Perfect / Completed: `#e5b143` (gold)
-- Beaten: `#8f98a0` (gray) — lesser tier
+- Beaten: `#b8c4ce` (silver) — second tier, pairs with gold like a medal; badge bg `#2a3440`, badge text `#c6d4df`
 - In Progress: `#66c0f4` (blue)
 - Not started / border: `#323f4c`
 
@@ -229,7 +229,7 @@ Cyan accent:       #57cbde
 - Gold `#e5b143` — earned value: Points, Mastered, Perfect
 - White `#c6d4df` — identity: Rank
 - Blue `#66c0f4` — engagement: Hours, Achievements
-- Gray `#8f98a0` — lesser tier: Beaten
+- Silver `#b8c4ce` — second tier: Beaten
 - Muted `#546270` — context/breadth: Games, Played, w/ Unlocks
 
 ### Rarity colors (Steam achievements)

@@ -2,13 +2,26 @@
 
 ## v26.09.26
 
-Keep beaten and completed as separate milestones when they happen in different years; show RA playtime on completions.
+Keep beaten and completed as separate milestones when they happen in different years; show RA playtime on completions; standardize Beaten on silver.
+
+### RetroAchievements
+
+- Beaten game cards and award badges use silver (stripe `#b8c4ce`, badge `#2a3440` / `#c6d4df`) instead of gray/slate
+
+### Steam
+
+- Beaten count and award badge in the Completions section use silver instead of gray
+
+### Hub
+
+- Beaten is now silver `#b8c4ce` everywhere on the hub: completions strip count, latest-completion line, mobile summary, and RA card stat (was a mix of blue and gray)
 
 ### Completions
 
 - Beaten/completed dedup is now year-aware for both RA and Steam: a beaten entry is hidden only when the same game was mastered/perfected in the same calendar year; if beaten and completed fall in different years, both entries are shown
 - Steam beaten entries previously disappeared whenever the game was perfect, regardless of date; they now follow the same rule as RA
 - RA completions now show total playtime (clock icon), same as Steam
+- Beaten cards use silver (stripe `#b8c4ce`, badge `#2a3440` / `#c6d4df`) instead of blue, so the tier reads as second place next to gold
 
 ### Pipelines
 

@@ -20,10 +20,10 @@ Two normalizers in `app.js`:
 - `showBeaten` toggle controls whether beaten-only games appear
 - Platform filter: All / RA / Steam
 - Hidden tags filter (Homebrew, Demo, Prototype, Hack tilde tags)
-- Mastered/Perfect → gold `#e5b143`. Beaten → `#8f98a0` gray.
+- Mastered/Perfect → gold `#e5b143`. Beaten → `#b8c4ce` silver (badge `#2a3440` / `#c6d4df`).
 
 ## Terminology
 - RA Mastered = full 100% achievement completion (hardcore)
 - Steam Perfect = 100% achievements unlocked
 - Both are the same concept — "Completed" — shown with gold color
-- RA Beaten = game story completed without full achievement set — shown with gray color
+- RA Beaten = game story completed without full achievement set — shown with silver color
