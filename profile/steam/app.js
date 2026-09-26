@@ -704,11 +704,97 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
     );
 };
 
+// ── Progress filter bar ─────────────────────────────────────────────────────
+// Views bucket started-but-unfinished games, first match wins:
+// nearly there → in progress → abandoned. "Nearly there" ignores recency on
+// purpose — a game dropped at 80% is the one most worth picking back up.
+const PROGRESS_VIEWS = [
+    { value: 'all',        label: 'All'          },
+    { value: 'nearly',     label: 'Nearly there', hint: '75%+ done · fewest achievements left first' },
+    { value: 'inprogress', label: 'In progress',  hint: 'Played in the last 30 days · most recent first' },
+    { value: 'abandoned',  label: 'Abandoned',    hint: 'Unfinished · not played for 30+ days' },
+];
+const NEARLY_PCT = 75;
+const STALE_MS   = 30 * 24 * 60 * 60 * 1000;
+
+const chipCls = (active, activeCls = 'bg-[#66c0f4] text-[#101214] border-[#66c0f4]') =>
+    `text-[9px] font-semibold uppercase tracking-wider rounded-[2px] border transition-colors ${
+        active ? activeCls : 'bg-[#101214] text-[#8f98a0] border-[#323f4c] hover:text-[#c6d4df] hover:border-[#546270]'
+    }`;
+
+const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, showCompleted, onShowCompleted, count, search, onSearch }) => {
+    const hint = PROGRESS_VIEWS.find(v => v.value === view)?.hint;
+    return (
+        <div className="flex flex-col gap-2 mb-4">
+            {/* View — full-width segmented control on mobile, inline chips on desktop */}
+            <div className="grid grid-cols-4 gap-1 md:flex md:items-center md:gap-1.5">
+                <span className="hidden md:inline text-[9px] text-[#546270] uppercase tracking-wider mr-0.5">View</span>
+                {PROGRESS_VIEWS.map(v => (
+                    <button key={v.value} onClick={() => onView(v.value)}
+                        className={`${chipCls(view === v.value)} px-1 py-[6px] leading-tight text-center md:px-2 md:py-[3px]`}>
+                        {v.label}
+                    </button>
+                ))}
+            </div>
+
+            {/* Sort + completed toggle (All view) or the view's rule, plus the game count */}
+            <div className="flex items-center gap-2 min-h-[22px]">
+                {view === 'all' ? (
+                    <>
+                        <span className="text-[9px] text-[#546270] uppercase tracking-wider shrink-0">Sort</span>
+                        <div className="hidden md:flex items-center gap-1.5">
+                            {sorts.map(s => (
+                                <button key={s.value} onClick={() => onSort(s.value)}
+                                    className={`${chipCls(sort === s.value, s.activeCls)} px-2 py-[3px]`}>
+                                    {s.label}
+                                </button>
+                            ))}
+                        </div>
+                        <select value={sort} onChange={e => onSort(e.target.value)}
+                            className="md:hidden bg-[#101214] border border-[#323f4c] rounded-[2px] text-[10px] text-[#c6d4df] px-1.5 py-[3px] outline-none focus:border-[#546270]"
+                            style={{ colorScheme: 'dark' }}>
+                            {sorts.map(s => <option key={s.value} value={s.value}>{s.label}</option>)}
+                        </select>
+                        <div className="w-px h-3.5 bg-[#2a475e] mx-0.5 md:mx-1 shrink-0" />
+                        <button onClick={() => onShowCompleted(v => !v)}
+                            className={`${chipCls(showCompleted, 'bg-[#e5b143] text-[#101214] border-[#e5b143]')} px-2 py-[3px] shrink-0`}>
+                            {completedLabel}
+                        </button>
+                    </>
+                ) : (
+                    <span className="text-[9px] text-[#546270] leading-snug">{hint}</span>
+                )}
+                <span className="ml-auto text-[9px] text-[#546270] shrink-0">{count} games</span>
+            </div>
+
+            <div className="relative">
+                <input type="text" value={search} onChange={e => onSearch(e.target.value)} placeholder="Search games…"
+                    className="w-full bg-[#101214] border border-[#323f4c] rounded-[2px] px-2.5 py-1.5 text-[11px] text-[#c6d4df] placeholder-[#546270] outline-none focus:border-[#546270]" />
+                {search && <button onClick={() => onSearch('')} className="absolute right-2 top-1/2 -translate-y-1/2 text-[#546270] hover:text-[#c6d4df] text-[10px]">×</button>}
+            </div>
+        </div>
+    );
+};
+
+// Buckets a list of in-progress games by view. Caller supplies accessors so RA
+// and Steam games (different shapes) share the same rules.
+const applyProgressView = (games, view, { pct, left, lastPlayedMs, isCompleted }) => {
+    const now = Date.now();
+    const isNearly = g => !isCompleted(g) && pct(g) >= NEARLY_PCT;
+    const isStale  = g => { const t = lastPlayedMs(g); return !t || now - t > STALE_MS; };
+    const byRecency = (a, b) => (lastPlayedMs(b) || 0) - (lastPlayedMs(a) || 0);
+    if (view === 'nearly')     return games.filter(isNearly).sort((a, b) => (left(a) - left(b)) || (pct(b) - pct(a)));
+    if (view === 'inprogress') return games.filter(g => !isCompleted(g) && !isNearly(g) && !isStale(g)).sort(byRecency);
+    if (view === 'abandoned')  return games.filter(g => !isCompleted(g) && !isNearly(g) && isStale(g)).sort(byRecency);
+    return null; // 'all' — caller applies its own sort and completed toggle
+};
+
 // ── ProgressTab ───────────────────────────────────────────────────────────────
 
 const ProgressTab = ({ achievementProgress, recentlyPlayed, onViewDetails, beatenMap }) => {
     const [sort,        setSort]        = useState('pct');
     const [showPerfect, setShowPerfect] = useState(false);
+    const [view,        setView]        = useState('all');
     const [search,      setSearch]      = useState('');
 
     const playtimeMap = useMemo(() => {
@@ -717,78 +803,67 @@ const ProgressTab = ({ achievementProgress, recentlyPlayed, onViewDetails, beate
         return m;
     }, [recentlyPlayed]);
 
-    const games = useMemo(() => Object.entries(achievementProgress)
-        .filter(([, d]) => d.hasAchievements && d.unlocked > 0 && (showPerfect || d.total === 0 || d.unlocked < d.total) && (!search || (d.gameName ?? '').toLowerCase().includes(search.toLowerCase())))
-        .map(([appId, d]) => {
-            const pt = playtimeMap[Number(appId)];
-            const lastUnlockedAt = d.lastUnlockedAt ?? null;
-            return {
-                appId:           Number(appId),
-                gameName:        d.gameName ?? `App ${appId}`,
-                unlocked:        d.unlocked,
-                total:           d.total,
-                pct:             d.total > 0 ? (d.unlocked / d.total) * 100 : 0,
-                lastUnlockedAt,
-                // prefer enriched data from games.json, fall back to recentlyPlayed map
-                playtimeForever: d.playtimeForever ?? pt?.playtimeForever ?? 0,
-                playtime2Weeks:  d.playtime2Weeks  ?? pt?.playtime2Weeks  ?? 0,
-                lastPlayedTs:    d.lastPlayedTs    ?? pt?.lastPlayedTs    ?? null,
-            };
-        })
-        .sort((a, b) => {
-            if (sort === 'name')  return a.gameName.localeCompare(b.gameName);
-            if (sort === 'hours') return b.playtimeForever - a.playtimeForever;
-            if (sort === 'lastPlayed') {
-                if (!a.lastPlayedTs && !b.lastPlayedTs) return 0;
-                if (!a.lastPlayedTs) return 1;
-                if (!b.lastPlayedTs) return -1;
-                return b.lastPlayedTs.localeCompare(a.lastPlayedTs);
-            }
-            if (b.pct !== a.pct) return b.pct - a.pct;
-            if (!a.lastUnlockedAt && !b.lastUnlockedAt) return 0;
-            if (!a.lastUnlockedAt) return 1;
-            if (!b.lastUnlockedAt) return -1;
-            return b.lastUnlockedAt.localeCompare(a.lastUnlockedAt);
-        }),
-    [achievementProgress, sort, showPerfect, search]);
+    const games = useMemo(() => {
+        const list = Object.entries(achievementProgress)
+            .filter(([, d]) => d.hasAchievements && d.unlocked > 0 && d.total > 0 && (!search || (d.gameName ?? '').toLowerCase().includes(search.toLowerCase())))
+            .map(([appId, d]) => {
+                const pt = playtimeMap[Number(appId)];
+                const lastUnlockedAt = d.lastUnlockedAt ?? null;
+                return {
+                    appId:           Number(appId),
+                    gameName:        d.gameName ?? `App ${appId}`,
+                    unlocked:        d.unlocked,
+                    total:           d.total,
+                    pct:             d.total > 0 ? (d.unlocked / d.total) * 100 : 0,
+                    lastUnlockedAt,
+                    // prefer enriched data from games.json, fall back to recentlyPlayed map
+                    playtimeForever: d.playtimeForever ?? pt?.playtimeForever ?? 0,
+                    playtime2Weeks:  d.playtime2Weeks  ?? pt?.playtime2Weeks  ?? 0,
+                    lastPlayedTs:    d.lastPlayedTs    ?? pt?.lastPlayedTs    ?? null,
+                };
+            });
+
+        const bucketed = applyProgressView(list, view, {
+            pct:          g => g.pct,
+            left:         g => g.total - g.unlocked,
+            lastPlayedMs: g => (g.lastPlayedTs ? Date.parse(g.lastPlayedTs) || 0 : 0),
+            isCompleted:  g => g.unlocked >= g.total,
+        });
+        if (bucketed) return bucketed;
+
+        return list
+            .filter(g => showPerfect || g.unlocked < g.total)
+            .sort((a, b) => {
+                if (sort === 'name')  return a.gameName.localeCompare(b.gameName);
+                if (sort === 'hours') return b.playtimeForever - a.playtimeForever;
+                if (sort === 'lastPlayed') {
+                    if (!a.lastPlayedTs && !b.lastPlayedTs) return 0;
+                    if (!a.lastPlayedTs) return 1;
+                    if (!b.lastPlayedTs) return -1;
+                    return b.lastPlayedTs.localeCompare(a.lastPlayedTs);
+                }
+                if (b.pct !== a.pct) return b.pct - a.pct;
+                if (!a.lastUnlockedAt && !b.lastUnlockedAt) return 0;
+                if (!a.lastUnlockedAt) return 1;
+                if (!b.lastUnlockedAt) return -1;
+                return b.lastUnlockedAt.localeCompare(a.lastUnlockedAt);
+            });
+    }, [achievementProgress, playtimeMap, sort, showPerfect, search, view]);
 
     return (
         <div>
-            <div className="flex items-center gap-2 mb-3">
-                <span className="text-[9px] uppercase tracking-[0.07em] text-[#546270]">Sort</span>
-                {PROGRESS_SORTS.map(s => (
-                    <button
-                        key={s.id}
-                        onClick={() => setSort(s.id)}
-                        className={`text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-sm border transition-colors ${
-                            sort === s.id
-                                ? 'bg-[#66c0f4] text-[#101214] border-[#66c0f4]'
-                                : 'bg-[#101214] text-[#8f98a0] border-[#323f4c] hover:text-[#c6d4df] hover:border-[#546270]'
-                        }`}
-                    >
-                        {s.label}
-                    </button>
-                ))}
-                <div className="w-px h-3.5 bg-[#2a475e] mx-1" />
-                <span className="text-[9px] uppercase tracking-[0.07em] text-[#546270]">Filter</span>
-                <button onClick={() => setShowPerfect(v => !v)} className={`text-[9px] font-semibold uppercase tracking-wider px-2 py-[3px] rounded-sm border transition-colors ${showPerfect ? 'bg-[#e5b143] text-[#101214] border-[#e5b143]' : 'bg-transparent text-[#546270] border-[#323f4c] hover:text-[#8f98a0] hover:border-[#546270]'}`}>Perfect</button>
-                <span className="text-[9px] text-[#546270] ml-auto">{games.length} games</span>
-            </div>
-            <div className="relative mb-4">
-                <input
-                    type="text"
-                    value={search}
-                    onChange={e => setSearch(e.target.value)}
-                    placeholder="Search games…"
-                    className="w-full bg-[#101214] border border-[#323f4c] rounded-[2px] px-2.5 py-1.5 text-[11px] text-[#c6d4df] placeholder-[#546270] outline-none focus:border-[#546270]"
-                />
-                {search && <button onClick={() => setSearch('')} className="absolute right-2 top-1/2 -translate-y-1/2 text-[#546270] hover:text-[#c6d4df] text-[10px]">×</button>}
-            </div>
-
+            <ProgressFilterBar
+                view={view} onView={setView}
+                sorts={PROGRESS_SORTS.map(s => ({ value: s.id, label: s.label }))}
+                sort={sort} onSort={setSort}
+                completedLabel="Perfect" showCompleted={showPerfect} onShowCompleted={setShowPerfect}
+                count={games.length}
+                search={search} onSearch={setSearch}
+            />
             <div className="flex flex-col gap-3">
                 {games.length === 0 && (
                     <div className="text-center py-12 text-[#546270] text-[12px]">
-                        {search ? 'No games match your search.' : 'No achievement progress tracked yet.'}
+                        {search ? 'No games match your search.' : view !== 'all' ? 'No games in this view.' : 'No achievement progress tracked yet.'}
                     </div>
                 )}
                 {games.map(g => (

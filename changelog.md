@@ -2,18 +2,24 @@
 
 ## v26.09.26
 
-Keep beaten and completed as separate milestones when they happen in different years; show RA playtime on completions; standardize Beaten on silver; app updates now show up without a manual cache bump; RA Game Awards and Steam Completions panels show 2 rows with a Show all toggle.
+Keep beaten and completed as separate milestones when they happen in different years; show RA playtime on completions; standardize Beaten on silver; app updates now show up without a manual cache bump; RA Game Awards and Steam Completions panels show 2 rows with a Show all toggle; Progress tabs get Nearly there / In progress / Abandoned views and a mobile-friendly filter bar.
 
 ### RetroAchievements
 
 - Beaten game cards and award badges use silver (stripe `#b8c4ce`, badge `#2a3440` / `#c6d4df`) instead of gray/slate; Game Awards header Beaten count also silver
 - Beaten icons in the Game Awards panel get a 1px solid silver border (was a faint gold border); Mastered keeps 2px gold
+- Completion Progress gets views from cheevo-tracker: **All / Nearly there / In progress / Abandoned** (Nearly there = 75%+, fewest left first; In progress = played in the last 30 days; Abandoned = quiet for 30+ days); each non-All view shows its rule
+- Mastered games are now hidden from Completion Progress by default, with a Mastered toggle in the All view; Overall/Progression sort stays in the All view; game count and an empty-state message added
+- Progress filter bar redesigned for mobile: views become a full-width segmented control, sort becomes a compact dropdown
+- Last-played dates are parsed in a Safari-safe way for the Progress views
 - Game Awards panel shows the first 2 rows of icons, with a "Show all N / Show less" button at the bottom for the rest; rows follow the grid's column count (10 icons on mobile and desktop, 16 on tablet widths)
 
 ### Steam
 
 - Beaten count and award badge in the Completions section use silver instead of gray
 - Beaten icons in the Completions panel get a 1px solid silver border (had none); Perfect keeps 2px gold
+- Completion Progress gets the same All / Nearly there / In progress / Abandoned views as RA; Perfect toggle and Completion/Hours/Last Played sort move into the All view
+- Same mobile filter bar redesign as RA (segmented views, dropdown sort)
 - Completions panel shows the first 2 rows (perfect games first, then beaten), with the same "Show all / Show less" button as RA Game Awards
 
 ### Hub

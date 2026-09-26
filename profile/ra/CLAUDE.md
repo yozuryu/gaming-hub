@@ -19,6 +19,14 @@ Five tabs: **Recent Games** (Clock) · **Completion Progress** (BarChart2) · **
 - On mobile: icon + short label. On desktop: full text label.
 - `tabBarRef` tracks the natural tab bar position. Scroll handler watches `getBoundingClientRect().bottom < 0` to show/hide floating pill.
 
+## Completion Progress Filters
+- Shared `ProgressFilterBar` + `applyProgressView()` (duplicated in RA and Steam `app.js` — keep them in sync)
+- **Views** (first match wins, completed games excluded): **Nearly there** = 75%+ done, fewest achievements left first (ignores recency on purpose) · **In progress** = under 75%, played in the last 30 days, most recent first · **Abandoned** = under 75%, not played for 30+ days (or never), most recent first · **All** = everything, with the sort options and a **Mastered** toggle (hidden by default)
+- Sort buttons only appear in the All view; the other views have a fixed order and show a one-line rule instead
+- Mobile: views are a full-width 4-column segmented control; sort is a native `<select>` (chips on desktop)
+- All-view sorts: Overall % or Progression % (progression + win-condition achievements)
+- `raDateMs()` parses RA's `YYYY-MM-DD HH:MM:SS` (UTC) dates — Safari/iOS can't parse that format with `new Date()` directly
+
 ## Floating Tab Pill (mobile)
 - Shows when natural tab bar scrolls off screen
 - `showFloatingTabs` state + `pillLeaving` state for exit animation
