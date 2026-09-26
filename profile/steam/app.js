@@ -867,26 +867,28 @@ const ProfileLoadingSkeleton = () => (
 
 // ── App ───────────────────────────────────────────────────────────────────────
 
-// Open/closed state for a collapsible sidebar panel. Remembers the viewer's
-// choice per browser; defaults to open on desktop, closed on mobile.
-const usePanelOpen = (storageKey) => {
-    const [open, setOpen] = useState(() => {
-        try {
-            const saved = localStorage.getItem(storageKey);
-            if (saved !== null) return saved === '1';
-        } catch { /* storage unavailable */ }
-        return window.matchMedia('(min-width: 768px)').matches;
-    });
-    const toggle = () => setOpen(prev => {
-        try { localStorage.setItem(storageKey, prev ? '0' : '1'); } catch { /* storage unavailable */ }
-        return !prev;
-    });
-    return [open, toggle];
+// Column count of the sidebar icon grid (grid-cols-5 sm:grid-cols-8 lg:grid-cols-5),
+// tracked so the panel can show exactly two rows before "Show all"
+const useIconGridCols = () => {
+    const read = () =>
+        window.matchMedia('(min-width: 1024px)').matches ? 5
+        : window.matchMedia('(min-width: 640px)').matches ? 8
+        : 5;
+    const [cols, setCols] = useState(read);
+    useEffect(() => {
+        const queries = ['(min-width: 640px)', '(min-width: 1024px)'].map(q => window.matchMedia(q));
+        const onChange = () => setCols(read());
+        queries.forEach(mq => mq.addEventListener('change', onChange));
+        return () => queries.forEach(mq => mq.removeEventListener('change', onChange));
+    }, []);
+    return cols;
 };
 
 const App = () => {
     const [profileData,       setProfileData]       = useState(null);
-    const [completionsOpen,   toggleCompletions]    = usePanelOpen('steam-profile-completions-open');
+    const [completionsExpanded, setCompletionsExpanded] = useState(false);
+    const iconGridCols = useIconGridCols();
+    const iconLimit = iconGridCols * 2;
     const [gamesData,         setGamesData]         = useState(null);
     const [achievementChunks, setAchievementChunks] = useState([null, null, null, null]);
     const [heatmapData,       setHeatmapData]       = useState({});
@@ -1314,11 +1316,7 @@ const App = () => {
                     {/* Sidebar: Completions */}
                     <div className="flex flex-col gap-5">
                         <div className="bg-[#1b2838] border border-[#2a475e] rounded-[3px] shadow-sm h-fit">
-                            <button
-                                onClick={toggleCompletions}
-                                aria-expanded={completionsOpen}
-                                className={`w-full p-2.5 bg-[#172333] hover:bg-[#1b2838] transition-colors flex items-center gap-2 text-left outline-none ${completionsOpen ? 'border-b border-[#2a475e] rounded-t-[2px]' : 'rounded-[2px]'}`}
-                            >
+                            <div className="p-2.5 bg-[#172333] border-b border-[#2a475e] rounded-t-[2px] flex items-center gap-2">
                                 <span className="w-[2px] h-[12px] bg-[#e5b143] rounded-[1px] shrink-0" />
                                 <span className="text-[11px] uppercase tracking-wide font-semibold text-[#c6d4df] flex items-center gap-2 flex-1">
                                     <Star size={13} className="text-[#e5b143]" /> Completions
@@ -1329,11 +1327,9 @@ const App = () => {
                                     <Medal size={9} className="text-[#b8c4ce]" />
                                     <span className="text-[10px] font-semibold text-[#b8c4ce]">{beatenOnly.length}</span>
                                 </div>
-                                <ChevronDown size={12} className={`text-[#546270] transition-transform duration-200 shrink-0 ${completionsOpen ? 'rotate-180' : ''}`} />
-                            </button>
-                            {completionsOpen && (
+                            </div>
                             <div className="p-3 grid grid-cols-5 sm:grid-cols-8 lg:grid-cols-5 gap-2 min-h-[60px]">
-                                {perfectGames.map(g => (
+                                {(completionsExpanded ? perfectGames : perfectGames.slice(0, iconLimit)).map(g => (
                                     <div key={g.appId} className="relative group cursor-help">
                                         <a href={`https://store.steampowered.com/app/${g.appId}`} target="_blank" rel="noreferrer">
                                             <img
@@ -1390,7 +1386,7 @@ const App = () => {
                                         </div>
                                     </div>
                                 ))}
-                                {beatenOnly.map(g => (
+                                {(completionsExpanded ? beatenOnly : beatenOnly.slice(0, Math.max(0, iconLimit - perfectGames.length))).map(g => (
                                     <div key={g.appId} className="relative group cursor-help">
                                         <a href={`https://store.steampowered.com/app/${g.appId}`} target="_blank" rel="noreferrer">
                                             <img
@@ -1446,6 +1442,14 @@ const App = () => {
                                     <div className="col-span-full text-center text-[#546270] text-[10px] py-2">No completions yet.</div>
                                 )}
                             </div>
+                            {perfectGames.length + beatenOnly.length > iconLimit && (
+                              <button
+                                onClick={() => setCompletionsExpanded(v => !v)}
+                                className="w-full flex items-center justify-center gap-1 py-1.5 border-t border-[#2a475e] text-[9px] font-semibold uppercase tracking-[0.07em] text-[#546270] hover:text-[#c6d4df] hover:bg-[#202d39] transition-colors rounded-b-[2px] outline-none"
+                              >
+                                {completionsExpanded ? 'Show less' : `Show all ${perfectGames.length + beatenOnly.length}`}
+                                <ChevronDown size={11} className={`transition-transform duration-200 ${completionsExpanded ? 'rotate-180' : ''}`} />
+                              </button>
                             )}
                         </div>
                     </div>

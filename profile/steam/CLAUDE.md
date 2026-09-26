@@ -10,7 +10,7 @@
 
 ## Completions Panel (sidebar)
 - Perfect games (gold border) then beaten-only games (from win conditions)
-- Collapsible: header is a toggle (`usePanelOpen('steam-profile-completions-open')`). Default open on desktop (≥768px), closed on mobile; choice remembered in `localStorage`. Counts stay visible in the header when collapsed.
+- Shows the first 2 rows of icons by default (perfect first, then beaten fill the remaining slots); "Show all N / Show less" button at the bottom reveals the rest. Row size follows the grid breakpoints via `useIconGridCols()` (5 / 8 at `sm` / 5 at `lg`).
 
 ## Tabs
 Three tabs: **Recent Games** (Clock) · **Completion Progress** (BarChart2) · **Activity** (Activity)
