@@ -65,6 +65,22 @@ if (!admin.apps.length) {
 const db = admin.firestore();
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+// Retry an API call with backoff. If it still fails the error propagates:
+// for profile-level data that aborts the run before anything is written, so
+// the previous files stay in place instead of being replaced by partial data.
+const RETRY_DELAYS_MS = [3000, 8000, 20000];
+const withRetry = async (label, fn) => {
+    for (let attempt = 0; ; attempt++) {
+        try {
+            return await fn();
+        } catch (e) {
+            if (attempt >= RETRY_DELAYS_MS.length) throw new Error(`${label}: ${e.message}`);
+            log.info(`${label} failed (${e.message}) — retrying in ${RETRY_DELAYS_MS[attempt] / 1000}s`);
+            await sleep(RETRY_DELAYS_MS[attempt]);
+        }
+    }
+};
 const fmtDate = (d) => d.toISOString().substring(0, 10);
 
 // ── CLI Flags ──────────────────────────────────────────────
@@ -106,25 +122,25 @@ async function executeProfileExtraction(targetUser) {
 
     try {
         log.step('Fetching core profile...');
-        profilePayload.coreProfile = await getUserProfile(authorization, { username: targetUser });
+        profilePayload.coreProfile = await withRetry('core profile', () => getUserProfile(authorization, { username: targetUser }));
         log.done(`${profilePayload.coreProfile.user}`);
         log.debug('coreProfile', profilePayload.coreProfile);
         await sleep(1500);
 
         log.step('Fetching user summary...');
-        profilePayload.userSummary = await getUserSummary(authorization, { username: targetUser });
+        profilePayload.userSummary = await withRetry('user summary', () => getUserSummary(authorization, { username: targetUser }));
         log.done(`rank #${profilePayload.userSummary.rank}`);
         log.debug('userSummary', profilePayload.userSummary);
         await sleep(1500);
 
         log.step('Fetching points...');
-        profilePayload.points = await getUserPoints(authorization, { username: targetUser });
+        profilePayload.points = await withRetry('points', () => getUserPoints(authorization, { username: targetUser }));
         log.done(`${profilePayload.points.points} pts`);
         log.debug('points', profilePayload.points);
         await sleep(1500);
 
         log.step('Fetching awards...');
-        profilePayload.pageAwards = await getUserAwards(authorization, { username: targetUser });
+        profilePayload.pageAwards = await withRetry('awards', () => getUserAwards(authorization, { username: targetUser }));
         log.done(`${profilePayload.pageAwards.visibleUserAwards?.length ?? 0} awards`);
         log.debug('pageAwards', profilePayload.pageAwards);
 
@@ -151,18 +167,16 @@ async function executeProfileExtraction(targetUser) {
             const fromDate = new Date(toDate.getTime() - (CHUNK_DAYS * MS_PER_DAY));
 
             process.stdout.write(`     Chunk ${i + 1}/${NUM_CHUNKS}  ${fmtDate(fromDate)} → ${fmtDate(toDate)}...`);
-            try {
-                const chunk = await getAchievementsEarnedBetween(authorization, {
-                    username: targetUser,
-                    fromDate,
-                    toDate,
-                });
-                const count = Array.isArray(chunk) ? chunk.length : 0;
-                if (count > 0) allAchievements.push(...chunk);
-                console.log(` ✓  (${count} achievements)`);
-            } catch (e) {
-                console.log(` ✗  (${e.message})`);
-            }
+            // A missing chunk would publish a year of activity with a 3-month hole,
+            // so a chunk that still fails after retries aborts the whole run.
+            const chunk = await withRetry(`achievements chunk ${i + 1}`, () => getAchievementsEarnedBetween(authorization, {
+                username: targetUser,
+                fromDate,
+                toDate,
+            }));
+            const count = Array.isArray(chunk) ? chunk.length : 0;
+            if (count > 0) allAchievements.push(...chunk);
+            console.log(` ✓  (${count} achievements)`);
             await sleep(1500);
         }
 
@@ -209,7 +223,7 @@ async function executeProfileExtraction(targetUser) {
 
 
         log.step('Fetching recently played games...');
-        profilePayload.recentlyPlayedGames = await getUserRecentlyPlayedGames(authorization, { username: targetUser, count: 15 });
+        profilePayload.recentlyPlayedGames = await withRetry('recently played', () => getUserRecentlyPlayedGames(authorization, { username: targetUser, count: 15 }));
         log.done(`${profilePayload.recentlyPlayedGames.length} games`);
         log.debug('recentlyPlayedGames', profilePayload.recentlyPlayedGames);
         await sleep(1500);
@@ -229,13 +243,13 @@ async function executeProfileExtraction(targetUser) {
 
         log.step('Fetching want-to-play list...');
         const PAGE_SIZE = 500;
-        const firstPage = await getUserWantToPlayList(authorization, { username: targetUser, count: PAGE_SIZE, offset: 0 });
+        const firstPage = await withRetry('want-to-play list', () => getUserWantToPlayList(authorization, { username: targetUser, count: PAGE_SIZE, offset: 0 }));
         const allWantToPlay = [...(firstPage.results || [])];
         const totalWantToPlay = firstPage.total ?? allWantToPlay.length;
         let offset = PAGE_SIZE;
         while (allWantToPlay.length < totalWantToPlay) {
             await sleep(1500);
-            const page = await getUserWantToPlayList(authorization, { username: targetUser, count: PAGE_SIZE, offset });
+            const page = await withRetry('want-to-play list', () => getUserWantToPlayList(authorization, { username: targetUser, count: PAGE_SIZE, offset }));
             const batch = page.results || [];
             if (batch.length === 0) break;
             allWantToPlay.push(...batch);
@@ -246,7 +260,7 @@ async function executeProfileExtraction(targetUser) {
         await sleep(1500);
 
         log.step('Fetching completion progress...');
-        profilePayload.gameAwardsAndProgress = await getUserCompletionProgress(authorization, { username: targetUser });
+        profilePayload.gameAwardsAndProgress = await withRetry('completion progress', () => getUserCompletionProgress(authorization, { username: targetUser }));
         log.done(`${profilePayload.gameAwardsAndProgress.results?.length} games`);
         log.debug('gameAwardsAndProgress', profilePayload.gameAwardsAndProgress);
         await sleep(1500);
@@ -254,26 +268,24 @@ async function executeProfileExtraction(targetUser) {
         // ── Detailed game progress ────────────────────────────────────────
         const progressGames = profilePayload.gameAwardsAndProgress?.results || [];
 
-        // Incremental mode: seed cache from existing games.json so only new
-        // games are fetched. Full refresh skips this and fetches everything.
-        if (!REFRESH_GAMES) {
-            const gamesJsonPath = path.join(__dirname, '..', 'data', 'ra', 'games.json');
-            if (fs.existsSync(gamesJsonPath)) {
-                try {
-                    const existing = JSON.parse(fs.readFileSync(gamesJsonPath, 'utf8'));
-                    const cached = existing.detailedGameProgress || {};
-                    const cachedCount = Object.keys(cached).length;
-                    Object.assign(profilePayload.detailedGameProgress, cached);
-                    log.ok(`Loaded ${cachedCount} cached game(s) from games.json`);
-                } catch (e) {
-                    log.fail(`Could not read games.json — will fetch all: ${e.message}`);
-                }
-            } else {
-                log.skip('No existing games.json found — will fetch all games');
+        // Seed from existing games.json. Incremental mode only fetches new and
+        // recently played games; full refresh re-fetches everything but keeps the
+        // cached entry for any game whose fetch fails.
+        const gamesJsonPath = path.join(__dirname, '..', 'data', 'ra', 'games.json');
+        if (fs.existsSync(gamesJsonPath)) {
+            try {
+                const existing = JSON.parse(fs.readFileSync(gamesJsonPath, 'utf8'));
+                const cached = existing.detailedGameProgress || {};
+                const cachedCount = Object.keys(cached).length;
+                Object.assign(profilePayload.detailedGameProgress, cached);
+                log.ok(`Loaded ${cachedCount} cached game(s) from games.json`);
+            } catch (e) {
+                log.fail(`Could not read games.json — will fetch all: ${e.message}`);
             }
         } else {
-            log.ok('Full refresh — skipping cache, all games will be fetched');
+            log.skip('No existing games.json found — will fetch all games');
         }
+        if (REFRESH_GAMES) log.ok('Full refresh — all games will be re-fetched');
 
         const progressGameIds = new Set(progressGames.map(g => g.gameId));
         const recentGameIds   = new Set((profilePayload.recentlyPlayedGames || []).map(g => g.gameId));
@@ -291,20 +303,21 @@ async function executeProfileExtraction(targetUser) {
         let progressIdx = 0;
         for (const game of allGamesToFetch) {
             progressIdx++;
-            if (profilePayload.detailedGameProgress[game.gameId] && !recentGameIds.has(game.gameId)) {
+            if (!REFRESH_GAMES && profilePayload.detailedGameProgress[game.gameId] && !recentGameIds.has(game.gameId)) {
                 log.skip(`[${progressIdx}/${allGamesToFetch.length}] [${game.gameId}] ${game.title} — already cached`);
                 continue;
             }
             process.stdout.write(`  [${progressIdx}/${allGamesToFetch.length}] [${game.gameId}] ${game.title}...`);
             try {
-                profilePayload.detailedGameProgress[game.gameId] = await getGameInfoAndUserProgress(authorization, {
+                profilePayload.detailedGameProgress[game.gameId] = await withRetry(`game ${game.gameId}`, () => getGameInfoAndUserProgress(authorization, {
                     username: targetUser,
                     gameId: game.gameId,
-                });
+                }));
                 console.log(' ✓');
                 log.debug(`game ${game.gameId} response`, profilePayload.detailedGameProgress[game.gameId]);
             } catch (e) {
-                console.log(` ✗  (${e.message})`);
+                // One game failing shouldn't block the run; its cached entry (if any) is kept
+                console.log(` ✗  (${e.message}${profilePayload.detailedGameProgress[game.gameId] ? ' — kept cached data' : ''})`);
             }
             await sleep(2000);
         }
@@ -491,13 +504,13 @@ async function executeWatchlistOnly(targetUser) {
 
     log.step('Fetching want-to-play list...');
     const PAGE_SIZE = 500;
-    const firstPage = await getUserWantToPlayList(authorization, { username: targetUser, count: PAGE_SIZE, offset: 0 });
+    const firstPage = await withRetry('want-to-play list', () => getUserWantToPlayList(authorization, { username: targetUser, count: PAGE_SIZE, offset: 0 }));
     const allWantToPlay = [...(firstPage.results || [])];
     const totalWantToPlay = firstPage.total ?? allWantToPlay.length;
     let offset = PAGE_SIZE;
     while (allWantToPlay.length < totalWantToPlay) {
         await sleep(1500);
-        const page = await getUserWantToPlayList(authorization, { username: targetUser, count: PAGE_SIZE, offset });
+        const page = await withRetry('want-to-play list', () => getUserWantToPlayList(authorization, { username: targetUser, count: PAGE_SIZE, offset }));
         const batch = page.results || [];
         if (batch.length === 0) break;
         allWantToPlay.push(...batch);

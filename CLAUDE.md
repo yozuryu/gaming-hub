@@ -157,6 +157,8 @@ Env vars: `STEAM_API_KEY`, `STEAM_USER_ID`.
 - Both pipelines write JSON to `data/{ra,steam}/` and commit to main via GitHub Actions
 - Concurrency group `data-pipeline` prevents overlapping runs
 - `--debug` flag prints API responses without writing files
+- **Failure handling:** API calls retry with backoff. If profile-level data (profile, awards, RA achievement chunks, Steam owned/recent games) still fails, the run exits non-zero before writing, so the previous files stay and nothing is committed. A single game that fails keeps its cached entry (in every mode, including full refresh)
+- Steam `games/sentinel.json` ("no achievements") is only written when Steam says a game has no stats or an empty schema — never on a network/HTTP error — and an entry is removed when the game later returns achievements
 - Chunk files split by 91-day windows: chunk 1 = 0–91 days, chunk 2 = 91–182, etc.
 
 ---

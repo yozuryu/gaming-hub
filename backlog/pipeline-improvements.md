@@ -6,7 +6,9 @@ From a full read of `scripts/ra-pipeline.js` and `scripts/steam-pipeline.js` plu
 
 ---
 
-## A. Data-integrity fixes (urgent)
+## A. Data-integrity fixes (urgent) — done 2026-09-26
+
+A1–A3 implemented (retrying HTTP helper in Steam, `withRetry` in RA, cache seeding in full refresh) and the 5 error sentinel entries cleared. Doki Doki Literature Club (698780) and Supraland (813630) are only re-checked by a Steam full refresh (`--refresh-games`) or when played again.
 
 ### A1. Steam: errors permanently mark games as "no achievements"
 

@@ -67,25 +67,52 @@ log.ok(`Debug mode           : ${DEBUG ? 'enabled  (--debug)' : 'disabled'}`);
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-const steamGet = (endpoint) => new Promise((resolve, reject) => {
+// Transient failures (throttling, 5xx, dropped connections, HTML error pages)
+// are retried and, if they persist, surface as TransientError so callers keep
+// cached data instead of recording a wrong result.
+class TransientError extends Error {}
+
+const RETRY_DELAYS_MS = [2000, 5000, 15000];
+
+const steamGetOnce = (endpoint) => new Promise((resolve, reject) => {
     https.get(endpoint, (res) => {
         let data = '';
         res.on('data', chunk => { data += chunk; });
         res.on('end', () => {
-            try {
-                const parsed = JSON.parse(data);
-                if (DEBUG) {
-                    const sanitized = endpoint.replace(STEAM_API_KEY, '***');
-                    console.log(`\n  [DEBUG] GET ${sanitized}`);
-                    console.log(JSON.stringify(parsed, null, 2));
-                }
-                resolve(parsed);
-            } catch (e) {
-                reject(new Error(`JSON parse failed: ${e.message}`));
+            const status = res.statusCode;
+            if (status === 429 || status >= 500) {
+                reject(new TransientError(`HTTP ${status}`));
+                return;
             }
+            let parsed;
+            try {
+                parsed = JSON.parse(data);
+            } catch (e) {
+                // Steam serves HTML error pages when throttling
+                reject(new TransientError(`HTTP ${status}, non-JSON body`));
+                return;
+            }
+            if (DEBUG) {
+                const sanitized = endpoint.replace(STEAM_API_KEY, '***');
+                console.log(`\n  [DEBUG] GET ${sanitized}  (HTTP ${status})`);
+                console.log(JSON.stringify(parsed, null, 2));
+            }
+            // 4xx with a JSON body is a real answer (e.g. "Requested app has no stats")
+            resolve(parsed);
         });
-    }).on('error', reject);
+    }).on('error', e => reject(new TransientError(e.message)));
 });
+
+const steamGet = async (endpoint) => {
+    for (let attempt = 0; ; attempt++) {
+        try {
+            return await steamGetOnce(endpoint);
+        } catch (e) {
+            if (!(e instanceof TransientError) || attempt >= RETRY_DELAYS_MS.length) throw e;
+            await sleep(RETRY_DELAYS_MS[attempt]);
+        }
+    }
+};
 
 const API = 'https://api.steampowered.com';
 const STORE_API = 'https://store.steampowered.com';
@@ -255,6 +282,9 @@ async function executeGameExtraction(recentlyPlayed, owned) {
             ...ownedPlayed.filter(g => !recentIds.has(g.appId)),
         ];
 
+        // Seed from cache so a game whose fetch fails keeps its previous data
+        Object.assign(achievementProgress, cachedProgress);
+
         const extraCount = gamesToFetch.length - recentlyPlayed.filter(g => !noAchIds.has(g.appId)).length;
         log.section(`Phase 2a — Achievement Details  [ full refresh: ${gamesToFetch.length} games ]`);
         log.ok(`Re-fetching ${gamesToFetch.length} games (recently played + ${extraCount} owned/played)`);
@@ -290,27 +320,33 @@ async function executeGameExtraction(recentlyPlayed, owned) {
     }
 
     let idx = 0;
+    let failedCount = 0;
     for (const game of gamesToFetch) {
         idx++;
         const appId = game.appId;
 
         process.stdout.write(`  [${idx}/${gamesToFetch.length}] [${appId}] ${game.name}...`);
         try {
-            const [achRes, schemaRes, globalRes] = await Promise.all([
-                steamGet(url.playerAchievements(appId)),
-                steamGet(url.gameSchema(appId)),
-                steamGet(url.globalAchPct(appId)),
-            ]);
+            // Sequential, not parallel: bursts of three calls per game trigger throttling
+            const achRes = await steamGet(url.playerAchievements(appId));
+            const noStats = achRes.playerstats?.success === false
+                && /no stats/i.test(achRes.playerstats?.error ?? '');
+            if (!noStats && achRes.playerstats?.success === false) {
+                // e.g. "Profile is not public" — not an answer about this game
+                throw new TransientError(achRes.playerstats?.error ?? 'playerstats.success = false');
+            }
+            const schemaRes = noStats ? {} : await steamGet(url.gameSchema(appId));
+            const schemaAchs  = schemaRes.game?.availableGameStats?.achievements ?? [];
+            const globalRes = (noStats || schemaAchs.length === 0) ? {} : await steamGet(url.globalAchPct(appId));
 
             const playerAchs  = achRes.playerstats?.achievements ?? [];
-            const schemaAchs  = schemaRes.game?.availableGameStats?.achievements ?? [];
             const schemaMap   = Object.fromEntries(schemaAchs.map(a => [a.name, a]));
             const globalAchs  = globalRes.achievementpercentages?.achievements ?? [];
             const globalPctMap = Object.fromEntries(globalAchs.map(a => [a.name, a.percent]));
             const unlocked    = playerAchs.filter(a => a.achieved === 1).length;
 
-            if (schemaAchs.length === 0) {
-                // No achievements — write to sentinel cache (pipeline-only, not sent to frontend)
+            if (noStats || schemaAchs.length === 0) {
+                // Steam says this game has no achievements — pipeline-only sentinel
                 sentinelCache[appId] = { gameName: game.name };
                 console.log(` →  (no achievements)`);
             } else if (unlocked === 0) {
@@ -366,13 +402,16 @@ async function executeGameExtraction(recentlyPlayed, owned) {
                 };
                 console.log(` ✓  (${unlocked}/${schemaAchs.length} unlocked)`);
             }
+            if (!noStats && schemaAchs.length > 0) delete sentinelCache[appId];
         } catch (e) {
-            // Game doesn't support stats API (e.g. no achievements, delisted) — cache sentinel
-            sentinelCache[appId] = { gameName: game.name, error: e.message };
-            console.log(` →  (no stats: ${e.message})`);
+            // Transient or unexpected failure: keep any cached data, record nothing new
+            failedCount++;
+            console.log(` ✗  (${e.message}${achievementProgress[appId] ? ' — kept cached data' : ''})`);
         }
         await sleep(1500);
     }
+
+    if (failedCount > 0) log.fail(`${failedCount} game(s) failed after retries — cached data kept`);
 
     return { achievementProgress, sentinelCache };
 }

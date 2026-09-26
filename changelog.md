@@ -36,6 +36,10 @@ Keep beaten and completed as separate milestones when they happen in different y
 
 ### Pipelines
 
+- Steam: requests now check the HTTP status and retry throttling, server errors and dropped connections with backoff; a failed game keeps its cached data instead of being recorded as having no achievements. Previously an HTML error page from Steam marked games like LEGO City Undercover, WayOut and Light Fairytale Episode 1 as achievement-less for good
+- Steam: the three calls per game run one after another instead of in parallel, to avoid triggering throttling; "no achievements" is only recorded when Steam says so, and the flag is cleared when a game later returns achievements; cleared the 5 wrongly flagged entries in `games/sentinel.json`
+- RA: API calls retry with backoff; if a year-of-activity chunk still fails, the run stops before writing instead of publishing activity with a three-month gap
+- Both: full refresh starts from the cached data, so a game whose fetch fails keeps its previous entry instead of disappearing from the site
 - RA pipeline attaches `playtime` (minutes, from `userTotalPlaytime` in game details) to each award in `profile.json` → `pageAwards.visibleUserAwards`, so the Completions page doesn't need to load `games.json`
 
 ### Structure
