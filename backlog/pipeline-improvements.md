@@ -75,7 +75,7 @@ Most hourly commits are not your activity. Recent data commits change 44–486 l
 
 - **D1.** Remove the unused Firestore sync from `scripts/ra-pipeline.js` (`synchronizeWithFirestore(false, …)`, `admin.initializeApp`, `db`) and drop `firebase-admin` from `package.json`. It's installed on every run of both workflows. Update the root `CLAUDE.md` ("Game details cached in Firestore" is no longer true).
 - **D2.** Remove Steam's legacy `games.json` migration fallback (the `games/` directory format has been in place since March).
-- **D3.** `package.json` `homepage` / `repository` / `bugs` still point at `yozuryu/achievement-data`; update to `yozuryu/gaming-hub`. Also update the git remote to `git@github.com:yozuryu/gaming-hub.git` (GitHub reports the repo moved).
+- **D3.** ~~`package.json` `homepage` / `repository` / `bugs` still point at `yozuryu/achievement-data`~~ — done 2026-09-26 with the README. Also update the git remote to `git@github.com:yozuryu/gaming-hub.git` (GitHub reports the repo moved).
 
 ---
 

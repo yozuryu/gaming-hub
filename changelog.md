@@ -77,6 +77,8 @@ Keep beaten and completed as separate milestones when they happen in different y
 
 ### Structure
 
+- New `README.md`: overview, screenshots (`docs/screenshots/`), feature list, architecture diagram, pipeline schedule, local setup, admin panel and deployment steps; README and `docs/` are excluded from the published site
+- `package.json`: description added; homepage, repository and issues links now point to `yozuryu/gaming-hub` (were the old `achievement-data` repo)
 - New page `profile/xbox/` (`index.html`, `app.js`, `utils/`), with its own `CLAUDE.md` (excluded from the site in `_config.yml`); `sw.js` precaches it and the Xbox icon, cache bumped to `gaming-hub-v5`
 - `data/hub/config.json`: Xbox set to visible/active; `data/xbox/win-conditions.json` added (empty)
 - Stopped publishing private files: all five subfolder `CLAUDE.md` files were publicly served (only the root one was excluded); `_config.yml` now lists each one, plus `backlog/`, `.agents/`, `.claude/`, the unused `assets/appicon.png` source icon, the pipeline-only `data/steam/games/sentinel.json`, and the legacy `data/steam/achievements.json`

@@ -1,17 +1,17 @@
 {
   "name": "gaming-hub",
   "version": "1.0.0",
-  "description": "",
-  "homepage": "https://github.com/yozuryu/achievement-data#readme",
+  "description": "Personal achievement dashboard for RetroAchievements, Steam and Xbox — static site fed by scheduled data pipelines",
+  "homepage": "https://yozuryu.github.io/gaming-hub/",
   "bugs": {
-    "url": "https://github.com/yozuryu/achievement-data/issues"
+    "url": "https://github.com/yozuryu/gaming-hub/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/yozuryu/achievement-data.git"
+    "url": "git+https://github.com/yozuryu/gaming-hub.git"
   },
   "license": "ISC",
-  "author": "",
+  "author": "Yozuryu",
   "type": "commonjs",
   "main": "main.js",
   "scripts": {
