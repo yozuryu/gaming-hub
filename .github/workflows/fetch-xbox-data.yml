@@ -1,0 +1,77 @@
+name: Fetch Xbox Data
+
+run-name: >-
+  ${{ github.event_name == 'workflow_dispatch' && format('Xbox Data — manual ({0})', inputs.mode) ||
+      github.event.schedule == '27 0 * * *'      && 'Xbox Data — midnight full refresh' ||
+      'Xbox Data — 1h incremental' }}
+
+on:
+  schedule:
+    # Off the top of the hour: GitHub delays scheduled runs most around :00
+    - cron: '27 * * * *'    # every 1 hour at :27 — incremental (changed titles only)
+    - cron: '27 0 * * *'    # midnight UTC at :27 — full refresh (refreshes rarity)
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Fetch mode'
+        type: choice
+        default: incremental
+        options:
+          - incremental
+          - full-refresh
+
+concurrency:
+  group: data-pipeline
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run pipeline
+        env:
+          XBOX_API_KEY: ${{ secrets.XBOX_API_KEY }}
+          XBOX_XUID: ${{ secrets.XBOX_XUID }}
+        run: |
+          if [ "${{ github.event.schedule }}" = "27 0 * * *" ] || [ "${{ inputs.mode }}" = "full-refresh" ]; then
+            echo "Mode: full refresh"
+            npm run xbox-fetch:full
+          else
+            echo "Mode: incremental"
+            npm run xbox-fetch
+          fi
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/xbox/
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          if [ "${{ github.event.schedule }}" = "27 0 * * *" ] || [ "${{ inputs.mode }}" = "full-refresh" ]; then
+            MSG="chore: full refresh xbox data $(date -u '+%Y-%m-%d %H:%M UTC')"
+          else
+            MSG="chore: update xbox data $(date -u '+%Y-%m-%d %H:%M UTC')"
+          fi
+          git commit -m "$MSG"
+          # main may have moved during the run (e.g. a manual push): rebase and retry once
+          git push || (git pull --rebase && git push)

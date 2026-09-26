@@ -24,6 +24,9 @@
     "steam-fetch:debug": "node scripts/steam-pipeline.js --debug",
     "steam-fetch:unlocked": "node scripts/steam-pipeline.js --refresh-unlocked-games",
     "steam-fetch:full": "node scripts/steam-pipeline.js --refresh-games",
+    "xbox-fetch": "node scripts/xbox-pipeline.js",
+    "xbox-fetch:debug": "node scripts/xbox-pipeline.js --debug",
+    "xbox-fetch:full": "node scripts/xbox-pipeline.js --refresh-games",
     "assets": "node scripts/download-assets.js",
     "admin": "node scripts/admin-server.js"
   },

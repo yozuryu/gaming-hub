@@ -41,6 +41,14 @@ gaming-hub/
 │   │   └── achievements/
 │   │       ├── 1.json – 4.json     # Recent achievements chunked by 91-day windows
 │   │       └── heatmap.json        # { "YYYY-MM-DD": { count, points } }
+│   ├── xbox/
+│   │   ├── profile.json            # Xbox profile, stats, recently played, perfectGames
+│   │   ├── games/
+│   │   │   ├── index.json          # All titles with achievements, no achievements[] (includes syncKey)
+│   │   │   └── {titleId}.json      # Full title data + achievements[]
+│   │   └── achievements/
+│   │       ├── 1.json – 4.json     # Recent unlocks in 91-day chunks (anchored at UTC midnight)
+│   │       └── heatmap.json        # { "YYYY-MM-DD": { count, gamerscore } }
 │   └── steam/
 │       ├── profile.json            # Steam profile, stats, recently played
 │       ├── games/
@@ -64,11 +72,13 @@ gaming-hub/
 │
 ├── scripts/
 │   ├── ra-pipeline.js              # RA ETL: API → data/ra/ (~600 LOC)
-│   └── steam-pipeline.js           # Steam ETL: API → data/steam/ (~800 LOC)
+│   ├── steam-pipeline.js           # Steam ETL: API → data/steam/ (~800 LOC)
+│   └── xbox-pipeline.js            # Xbox ETL (OpenXBL): API → data/xbox/
 │
 └── .github/workflows/
     ├── fetch-ra-data.yml            # Hourly cron + manual dispatch
-    └── fetch-steam-data.yml         # Hourly cron (offset :10) + manual dispatch
+    ├── fetch-steam-data.yml         # Hourly cron (offset :10) + manual dispatch
+    └── fetch-xbox-data.yml          # Hourly cron (offset :27) + manual dispatch
 ```
 
 ---
@@ -152,6 +162,20 @@ Env vars: `STEAM_API_KEY`, `STEAM_USER_ID`.
 - `games/index.json` pre-computes `lastUnlockedAt`, `lastUnlockName`, `preview` (top 6 icon hashes) per game
 - `games/sentinel.json` tracks no-achievement games (pipeline-only, never fetched by frontend)
 - Outputs: `profile.json`, `games/index.json`, `games/{appId}.json`, `games/sentinel.json`, `achievements/1-4.json`, `achievements/heatmap.json`
+
+### Xbox Pipeline (`scripts/xbox-pipeline.js`)
+Env vars: `XBOX_API_KEY` (OpenXBL). The XUID is read from `GET /account`; `XBOX_XUID` is optional and only compared.
+- Uses [OpenXBL](https://xbl.io/) (`https://xbl.io/api/v2`), free tier 150 requests/hour. Every request needs `Accept-Language: en-US`
+- OpenXBL returns errors as HTTP 200 with the real status in the body's `code` (and `content` as a JSON string) — the HTTP helper checks both
+- Default (incremental): account + title list (2 calls), then achievement lists only for titles whose `syncKey` (current achievements, current/total gamerscore, last played) changed
+- `--refresh-games`: re-fetch every title with achievements (midnight; refreshes rarity). ~85 calls for 83 titles, fits in one run; a 130-request cap defers the rest to the next run if the library grows
+- `--debug`: dry run, writes nothing
+- Xbox 360 titles (`sourceVersion 1` or `Xbox360` in `devices`) use `/achievements/x360/…`, which **only lists unlocked achievements** — `partial: true` in the title file; totals come from the title list. 360 icons are built from `t.{titleId hex}/ach/0/{imageId hex}`
+- Modern totals come from the achievement list (the title list's `totalAchievements` is often 0)
+- No sentinel file: titles without achievements are known from the title list every run
+- No playtime (the API's `stats` is null)
+- Files are only rewritten when their content changes (ignoring `metadata`), so runs with no activity make no commit
+- Outputs: `profile.json`, `games/index.json`, `games/{titleId}.json`, `achievements/1-4.json`, `achievements/heatmap.json`
 
 ### Shared behavior
 - Both pipelines write JSON to `data/{ra,steam}/` and commit to main via GitHub Actions

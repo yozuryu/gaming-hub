@@ -36,6 +36,11 @@ Keep beaten and completed as separate milestones when they happen in different y
 
 ### Pipelines
 
+- New Xbox pipeline (`scripts/xbox-pipeline.js`) using the OpenXBL API: profile, all 87 titles, and per-title achievements with unlock times, gamerscore, rarity and icons → `data/xbox/` (profile, games index + per-title files, 1-year activity chunks, heatmap). First import is ~85 requests and fits in one run
+- Xbox: hourly runs fetch only titles whose summary changed (2 requests when nothing changed) and skip rewriting unchanged files, so quiet hours make no commit; midnight run refreshes everything including rarity
+- Xbox: handles OpenXBL errors hidden inside HTTP 200 responses, retries throttling/server errors, keeps cached data when a title fails, and stops before writing if every title fails
+- Xbox 360 titles use the separate 360 endpoint, which only returns unlocked achievements; totals come from the title list. Image URLs are forced to https
+- New workflow `fetch-xbox-data.yml`: hourly at :27, full refresh at 00:27 UTC, same `data-pipeline` concurrency group; rebases and retries if `main` moved during the run
 - Steam: requests now check the HTTP status and retry throttling, server errors and dropped connections with backoff; a failed game keeps its cached data instead of being recorded as having no achievements. Previously an HTML error page from Steam marked games like LEGO City Undercover, WayOut and Light Fairytale Episode 1 as achievement-less for good
 - Steam: the three calls per game run one after another instead of in parallel, to avoid triggering throttling; "no achievements" is only recorded when Steam says so, and the flag is cleared when a game later returns achievements; cleared the 5 wrongly flagged entries in `games/sentinel.json`
 - RA: API calls retry with backoff; if a year-of-activity chunk still fails, the run stops before writing instead of publishing activity with a three-month gap

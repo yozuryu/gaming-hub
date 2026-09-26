@@ -51,9 +51,11 @@ Base `https://xbl.io/api/v2`. Every request sends `X-Authorization: <key>`, `Acc
 2. Add the GitHub secret `XBOX_API_KEY`.
 3. `XBOX_XUID` is not needed: the pipeline reads the XUID from `GET /account`. The `XBOX_XUID` in `.env` is 9 digits, not the real 16-digit XUID; remove it or correct it.
 
-## Phase 1: Pipeline
+## Phase 1: Pipeline — done 2026-09-26
 
-`scripts/xbox-pipeline.js`, modelled on `scripts/steam-pipeline.js`.
+Built as `scripts/xbox-pipeline.js` + `.github/workflows/fetch-xbox-data.yml` (see root `CLAUDE.md` → Xbox Pipeline). Differences from the plan below: **no sentinel or pipeline-only cache file** (the title list reports titles without achievements on every run, for free); change detection uses a `syncKey` stored in `games/index.json`; cron is `:27` hourly and `00:27` full refresh; chunk boundaries anchored at UTC midnight and unchanged files not rewritten (Part B patterns from day one).
+
+Original plan:
 
 - **Output** (`data/xbox/`, same shapes as Steam where possible):
   - `profile.json`: gamertag, avatar, gamerscore, stats (games, achievements, perfect, gamerscore), recently played, pre-computed `perfectGames`.
