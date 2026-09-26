@@ -20,6 +20,8 @@ gaming-hub/
 ├── manifest.json                   # PWA manifest
 ├── sw.js                           # Service worker (network-first data, stale-while-revalidate assets)
 ├── changelog.md                    # Project changelog (Markdown, parsed by changelog app)
+├── _config.yml                     # GitHub Pages exclude list — anything private must be listed here
+├── backlog/                        # Planned work (not published)
 ├── CLAUDE.md                       # This file
 │
 ├── assets/
@@ -156,6 +158,12 @@ Env vars: `STEAM_API_KEY`, `STEAM_USER_ID`.
 - Concurrency group `data-pipeline` prevents overlapping runs
 - `--debug` flag prints API responses without writing files
 - Chunk files split by 91-day windows: chunk 1 = 0–91 days, chunk 2 = 91–182, etc.
+
+---
+
+## Publishing / Private Files
+
+GitHub Pages builds from `main` with Jekyll, so every tracked file is public unless listed in `_config.yml` → `exclude`. Jekyll's exclude does not match nested files by name: each `CLAUDE.md` is listed by path. **When adding a new `CLAUDE.md`, private folder, or notes file, add it to `_config.yml`.**
 
 ---
 

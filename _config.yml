@@ -1,9 +1,24 @@
+# Files that must not be published to GitHub Pages.
+# Keep this in sync with any new private folder or notes file.
 exclude:
+  # Project notes (every CLAUDE.md, not just the root one)
   - CLAUDE.md
+  - activity/CLAUDE.md
+  - changelog/CLAUDE.md
+  - completions/CLAUDE.md
+  - profile/ra/CLAUDE.md
+  - profile/steam/CLAUDE.md
   - TODO.md
+  - backlog/
+  # Local tooling
   - admin/
   - scripts/
   - package.json
   - package-lock.json
   - .env
   - .claude/
+  - .agents/
+  # Unused by the site
+  - assets/appicon.png                 # 1024px source for the PWA icons
+  - data/steam/games/sentinel.json     # pipeline-only cache
+  - data/steam/achievements.json       # legacy, not referenced
