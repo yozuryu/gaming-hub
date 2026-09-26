@@ -1,6 +1,8 @@
 # Move pipeline data to a `data` branch
 
-**Status:** To do · **Scope:** plan steps 1–6 · **Follow-up:** [history-cleanup.md](history-cleanup.md)
+**Status:** To do · **Priority:** 2 (after [xbox-integration.md](xbox-integration.md)) · **Scope:** plan steps 1–6 · **Follow-up:** [history-cleanup.md](history-cleanup.md)
+
+> If Xbox has landed, include it: `data/xbox/` generated files move to `data` (like Steam), `data/xbox/win-conditions.json` stays on `main`, the Xbox workflow gets the same data-branch + deploy changes, and its pipeline-only cache file joins the deploy exclusions.
 
 ## Why
 

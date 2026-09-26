@@ -42,6 +42,7 @@ Keep beaten and completed as separate milestones when they happen in different y
 
 - Stopped publishing private files: all five subfolder `CLAUDE.md` files were publicly served (only the root one was excluded); `_config.yml` now lists each one, plus `backlog/`, `.agents/`, `.claude/`, the unused `assets/appicon.png` source icon, the pipeline-only `data/steam/games/sentinel.json`, and the legacy `data/steam/achievements.json`
 - New `backlog/` folder for planned work: moving pipeline data to a `data` branch with daily squash (`data-branch-migration.md`) and the follow-up history cleanup (`history-cleanup.md`)
+- Backlog: Xbox integration plan (`xbox-integration.md`) via the OpenXBL API — pipeline, hub card, Xbox profile page, Activity/Completions support — set as top priority ahead of the data-branch migration; `backlog/README.md` lists items in priority order
 - `sw.js`: static assets switched from cache-first to stale-while-revalidate (cached copy served instantly, fresh copy fetched in the background with `cache: 'no-cache'`), so deploys reach installed apps on the next load without bumping `CACHE_NAME`; only same-origin GET requests are handled
 - `sw.js`: bumped cache to `gaming-hub-v4` so the switch and today's changes reach browsers still on the old cache-first worker
 - Changelog page: "Refresh app" button in the header (works on mobile and desktop) — deletes all SW caches, triggers a service worker update check, reloads
