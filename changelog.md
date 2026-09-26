@@ -1,5 +1,14 @@
 # Changelog
 
+## v26.09.26
+
+Keep beaten and completed as separate milestones when they happen in different years.
+
+### Completions
+
+- Beaten/completed dedup is now year-aware for both RA and Steam: a beaten entry is hidden only when the same game was mastered/perfected in the same calendar year; if beaten and completed fall in different years, both entries are shown
+- Steam beaten entries previously disappeared whenever the game was perfect, regardless of date; they now follow the same rule as RA
+
 ## v26.06.13
 
 Fix mobile horizontal scroll and bottom nav on RA profile page.

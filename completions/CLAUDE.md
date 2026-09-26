@@ -10,7 +10,10 @@ Two normalizers in `app.js`:
 - `normalizeSteam(perfectGames)` — returns entries with `type: 'perfect'`
 
 ## Deduplication
-RA entries are deduplicated by `gameId` in the `completions` useMemo — a game that is both mastered and beaten only appears once, as `mastered`. Logic: build a Map keyed by `gameId`, insert beaten first, then overwrite with mastered if present.
+`dedupeCompletions()` runs on the combined RA + Steam list, keyed by `platform-gameId`:
+- One mastered/perfect entry per game
+- A beaten entry is dropped only if the same game was mastered/perfected in the **same calendar year**; different years → both entries shown as separate milestones
+- If the mastered/perfect date is unknown, the beaten entry is hidden
 
 ## Display
 - Entries grouped by month (`groupByMonth`), then grouped by year for rendering

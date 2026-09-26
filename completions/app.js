@@ -105,6 +105,35 @@ const normalizeSteamBeaten = beatenGames =>
         gameUrl: `https://store.steampowered.com/app/${g.appId}`,
     }));
 
+// ── Dedupe ────────────────────────────────────────────────────────────────────
+
+// One mastered/perfect entry per game. A beaten entry is dropped only when the
+// same game was mastered/perfected in the same calendar year — beaten one year
+// and completed in a later year are kept as two separate milestones.
+const yearOf = date => date ? new Date(date).getFullYear() : null;
+
+const dedupeCompletions = entries => {
+    const keyOf = e => `${e.platform}-${e.gameId}`;
+    const completed = new Map();
+    for (const e of entries) {
+        if (e.type === 'beaten') continue;
+        if (!completed.has(keyOf(e))) completed.set(keyOf(e), e);
+    }
+    const beaten = entries.filter(e => {
+        if (e.type !== 'beaten') return false;
+        const done = completed.get(keyOf(e));
+        if (!done) return true;
+        const doneYear = yearOf(done.completedAt);
+        // Unknown completion date: keep the previous behaviour and hide beaten
+        return doneYear !== null && doneYear !== yearOf(e.completedAt);
+    });
+    const seenBeaten = new Set();
+    return [
+        ...completed.values(),
+        ...beaten.filter(e => !seenBeaten.has(keyOf(e)) && seenBeaten.add(keyOf(e))),
+    ];
+};
+
 // ── Group by month ────────────────────────────────────────────────────────────
 
 const groupByMonth = completions => {
@@ -277,22 +306,10 @@ const App = () => {
     }, []);
 
     const completions = useMemo(() => {
-        const raRaw = normalizeRA(raProfile?.pageAwards?.visibleUserAwards ?? [], showBeaten);
-        // Deduplicate RA entries by gameId: prefer mastered over beaten
-        const raMap = new Map();
-        for (const entry of raRaw) {
-            const key = entry.gameId;
-            if (!raMap.has(key) || entry.type === 'mastered') raMap.set(key, entry);
-        }
-        const ra           = Array.from(raMap.values());
+        const ra           = normalizeRA(raProfile?.pageAwards?.visibleUserAwards ?? [], showBeaten);
         const steamPerfect = normalizeSteam(steamProfile?.perfectGames ?? []);
-        // Exclude beaten games that are already perfect
-        const perfectIds   = new Set(steamPerfect.map(g => String(g.gameId)));
-        const steamBeaten  = showBeaten
-            ? normalizeSteamBeaten(beatenSteamGames ?? [])
-                .filter(g => !perfectIds.has(String(g.gameId)))
-            : [];
-        let all = [...ra, ...steamPerfect, ...steamBeaten];
+        const steamBeaten  = showBeaten ? normalizeSteamBeaten(beatenSteamGames ?? []) : [];
+        let all = dedupeCompletions([...ra, ...steamPerfect, ...steamBeaten]);
         if (platform === 'ra')    all = all.filter(c => c.platform === 'ra');
         if (platform === 'steam') all = all.filter(c => c.platform === 'steam');
         if (hiddenTags.size > 0)  all = all.filter(c => !c.tags?.some(t => hiddenTags.has(t)));
