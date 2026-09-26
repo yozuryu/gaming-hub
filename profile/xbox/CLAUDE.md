@@ -18,7 +18,7 @@ Built from `profile/steam/` and kept structurally parallel to it. When changing 
 - Profile link: `xboxProfileUrl(gamertag)`. No online status
 - 100% label is **Completed** (not Perfect); Beaten is silver like everywhere else
 - Each achievement shows its gamerscore (`10G`) in the modal and Activity timeline
-- **Xbox 360 titles** (`partial: true`): only unlocked achievements exist; the modal shows a note and totals come from the title data
+- **Xbox 360 titles** (`partial: true`): the data only has unlocked achievements, so `withPlaceholders()` adds one "Locked achievement" row per missing achievement (lock icon, no gamerscore/rarity) in the modal and fills the card's 6-icon preview strip. Placeholders are created in the page, not stored in the data files
 - Progress sorts (`utils/constants.js`): Completion, Gamerscore, Last Played
 
 ## Colors

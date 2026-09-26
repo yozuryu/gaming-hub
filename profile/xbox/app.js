@@ -4,6 +4,23 @@ import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Cloc
 import { PROGRESS_SORTS } from './utils/constants.js';
 import { formatDate, formatTimeAgo, fmtDay, fmtTime, xboxSearchUrl, xboxProfileUrl, rarityLabel, rarityBorderColor } from './utils/helpers.js';
 
+// Xbox 360 titles only return unlocked achievements (`partial: true`), but the
+// total is known, so the rest are filled in as locked placeholders.
+const lockedPlaceholder = (i) => ({
+    apiName:     `placeholder-${i}`,
+    displayName: 'Locked achievement',
+    description: 'Unlock to reveal',
+    unlocked:    false,
+    unlockedAt:  null,
+    iconUrl:     null,
+    placeholder: true,
+});
+const withPlaceholders = (achs, data, limit = Infinity) => {
+    if (!data?.partial) return achs;
+    const missing = Math.max(0, Math.min((data.total ?? 0) - achs.length, limit - achs.length));
+    return [...achs, ...Array.from({ length: missing }, (_, i) => lockedPlaceholder(i))];
+};
+
 // ── XboxGameCard ──────────────────────────────────────────────────────────────
 
 const XboxGameCard = ({ game, achievementData, onViewDetails, beatenInfo }) => {
@@ -27,7 +44,7 @@ const XboxGameCard = ({ game, achievementData, onViewDetails, beatenInfo }) => {
     const lastUnlock  = hasAch && achievementData.lastUnlockName
         ? { displayName: achievementData.lastUnlockName, unlockedAt: achievementData.lastUnlockedAt }
         : null;
-    const previewAchs = hasAch ? (achievementData.preview ?? []) : [];
+    const previewAchs = hasAch ? withPlaceholders(achievementData.preview ?? [], achievementData, 6) : [];
 
     return (
         <div className={`flex flex-col bg-[#202d39] rounded-[3px] transition-transform duration-200 hover:-translate-y-0.5 border-l-[3px] border border-[#323f4c] shadow-md ${stripeColor}`}>
@@ -147,7 +164,9 @@ const XboxGameCard = ({ game, achievementData, onViewDetails, beatenInfo }) => {
                                             alt={ach.displayName}
                                             className={`w-full h-full object-cover ${!ach.unlocked ? 'grayscale' : ''}`}
                                           />
-                                        : <div className="w-full h-full bg-[#2a475e]" />
+                                        : <div className="w-full h-full bg-[#2a475e] flex items-center justify-center">
+                                            {ach.placeholder && <Lock size={12} className="text-white/60" />}
+                                          </div>
                                     }
                                 </div>
                                 {/* Tooltip */}
@@ -196,7 +215,7 @@ const XboxGameCard = ({ game, achievementData, onViewDetails, beatenInfo }) => {
 const AchievementModal = ({ game, achievementData, onClose, beatenInfo }) => {
     const [lockFilter, setLockFilter] = useState('all');
 
-    const achs = achievementData?.achievements ?? [];
+    const achs = withPlaceholders(achievementData?.achievements ?? [], achievementData);
     const pct  = achievementData.total > 0
         ? (achievementData.unlocked / achievementData.total) * 100
         : null;
@@ -313,14 +332,9 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo }) => {
                         </button>
                     ))}
                     <span className="ml-auto text-[9px] text-[#546270]">
-                        {filteredAchs.length} / {achievementData.partial ? achievementData.total : achs.length}
+                        {filteredAchs.length} / {achs.length}
                     </span>
                 </div>
-                {achievementData.partial && (
-                    <div className="px-4 py-2 border-b border-[#101214] text-[10px] text-[#8f98a0] shrink-0">
-                        Xbox 360 game — only unlocked achievements are available from Xbox Live.
-                    </div>
-                )}
 
                 {/* Achievement list */}
                 <div className="overflow-y-auto overscroll-contain flex-1 px-4 py-3 space-y-1.5">

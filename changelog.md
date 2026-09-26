@@ -27,7 +27,8 @@ Keep beaten and completed as separate milestones when they happen in different y
 ### Xbox
 
 - New Xbox profile page (`profile/xbox/`), built from the Steam page: header with gamertag and gamerscore, Most Recently Played, User Stats, Completions sidebar, and Recent Games / Completion Progress / Activity tabs
-- Game cards use each game's wide hero art and show earned/total gamerscore; the achievement modal lists gamerscore per achievement, rarity, and a note for Xbox 360 games (only unlocked achievements are available)
+- Game cards use each game's wide hero art and show earned/total gamerscore; the achievement modal lists gamerscore per achievement and rarity
+- Xbox 360 games show one "Locked achievement" placeholder per locked achievement (Xbox only reports unlocked ones for 360 games), in the modal and the card preview strip
 - Completion Progress has the same All / Nearly there / In progress / Abandoned views, sorted by Completion, Gamerscore or Last Played
 - Uses the same blue/gold section colors as the RA and Steam pages; Xbox green `#52b043` only marks Xbox (avatar border, hub card, activity feed, Xbox filter). 100% is labelled "Completed"
 - Pipeline output now includes `heroUrl` and `posterUrl` per game
