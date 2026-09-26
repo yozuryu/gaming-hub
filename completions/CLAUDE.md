@@ -1,7 +1,7 @@
 # Completions — Page Context
 
 ## Data Sources
-- `../data/ra/profile.json` — awards from `pageAwards.visibleUserAwards`
+- `../data/ra/profile.json` — awards from `pageAwards.visibleUserAwards` (each game award carries `playtime` in minutes, added by the RA pipeline)
 - `../data/steam/profile.json` — `perfectGames` array
 
 ## Normalization

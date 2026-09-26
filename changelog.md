@@ -2,12 +2,17 @@
 
 ## v26.09.26
 
-Keep beaten and completed as separate milestones when they happen in different years.
+Keep beaten and completed as separate milestones when they happen in different years; show RA playtime on completions.
 
 ### Completions
 
 - Beaten/completed dedup is now year-aware for both RA and Steam: a beaten entry is hidden only when the same game was mastered/perfected in the same calendar year; if beaten and completed fall in different years, both entries are shown
 - Steam beaten entries previously disappeared whenever the game was perfect, regardless of date; they now follow the same rule as RA
+- RA completions now show total playtime (clock icon), same as Steam
+
+### Pipelines
+
+- RA pipeline attaches `playtime` (minutes, from `userTotalPlaytime` in game details) to each award in `profile.json` → `pageAwards.visibleUserAwards`, so the Completions page doesn't need to load `games.json`
 
 ## v26.06.13
 

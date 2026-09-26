@@ -72,6 +72,7 @@ const normalizeRA = (awards, showBeaten) =>
             ...parseTitle(a.title),
             iconUrl: `${RA_MEDIA}${a.imageIcon}`,
             console: a.consoleName,
+            playtime: a.playtime,
             gameUrl: `${RA_SITE}/game/${a.awardData}`,
         }));
 

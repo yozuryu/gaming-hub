@@ -343,6 +343,16 @@ function serializeLocally(payload) {
         log.ok(`${filename.padEnd(24)} ${sizeKb} KB  →  ${filePath}`);
     };
 
+    // Attach per-game playtime (minutes) to game awards so the Completions page
+    // can show it without loading games.json
+    const pageAwards = payload.pageAwards && {
+        ...payload.pageAwards,
+        visibleUserAwards: (payload.pageAwards.visibleUserAwards || []).map(award => {
+            const seconds = payload.detailedGameProgress[award.awardData]?.userTotalPlaytime;
+            return seconds ? { ...award, playtime: Math.round(seconds / 60) } : award;
+        }),
+    };
+
     // profile.json — everything needed to render above the fold
     write('profile.json', {
         metadata: payload.metadata,
@@ -350,7 +360,7 @@ function serializeLocally(payload) {
         coreProfile: payload.coreProfile,
         userSummary: payload.userSummary,
         points: payload.points,
-        pageAwards: payload.pageAwards,
+        pageAwards,
         recentlyPlayedGames: payload.recentlyPlayedGames,
         gameAwardsAndProgress: payload.gameAwardsAndProgress,
         mostRecentAchievement: payload.mostRecentAchievement,
