@@ -26,6 +26,7 @@ Keep beaten and completed as separate milestones when they happen in different y
 
 ### Xbox
 
+- Win conditions for 13 games (ending/final-boss achievements, OR logic): 12 now count as Beaten — Hi-Fi Rush, Star Ocean The Divine Force, Atomic Heart, Planet of Lana, High On Life, Titanfall 2, Tiny Tina's Wonderlands, Minecraft Dungeons, Asura's Wrath (Part III), Unravel Two, Soul Hackers 2, Hellblade; Tales of Arise will count once finished
 - New Xbox profile page (`profile/xbox/`), built from the Steam page: header with gamertag and gamerscore, Most Recently Played, User Stats, Completions sidebar, and Recent Games / Completion Progress / Activity tabs
 - Game cards use each game's wide hero art and show earned/total gamerscore; the achievement modal lists gamerscore per achievement and rarity
 - Xbox 360 games show one "Locked achievement" placeholder per locked achievement (Xbox only reports unlocked ones for 360 games), in the modal and the card preview strip
