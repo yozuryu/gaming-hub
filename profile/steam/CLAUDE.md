@@ -9,7 +9,7 @@
 - `../../data/steam/achievements/2–4.json` — lazy-loaded via IntersectionObserver
 
 ## Completions Panel (sidebar)
-- Perfect games (gold border) then beaten-only games (from win conditions)
+- Perfect games (2px gold border) then beaten-only games (from win conditions, 1px silver border `#b8c4ce`)
 - Shows the first 2 rows of icons by default (perfect first, then beaten fill the remaining slots); "Show all N / Show less" button at the bottom reveals the rest. Row size follows the grid breakpoints via `useIconGridCols()` (5 / 8 at `sm` / 5 at `lg`).
 
 ## Tabs

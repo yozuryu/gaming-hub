@@ -7,11 +7,13 @@ Keep beaten and completed as separate milestones when they happen in different y
 ### RetroAchievements
 
 - Beaten game cards and award badges use silver (stripe `#b8c4ce`, badge `#2a3440` / `#c6d4df`) instead of gray/slate; Game Awards header Beaten count also silver
+- Beaten icons in the Game Awards panel get a 1px solid silver border (was a faint gold border); Mastered keeps 2px gold
 - Game Awards panel shows the first 2 rows of icons, with a "Show all N / Show less" button at the bottom for the rest; rows follow the grid's column count (10 icons on mobile and desktop, 16 on tablet widths)
 
 ### Steam
 
 - Beaten count and award badge in the Completions section use silver instead of gray
+- Beaten icons in the Completions panel get a 1px solid silver border (had none); Perfect keeps 2px gold
 - Completions panel shows the first 2 rows (perfect games first, then beaten), with the same "Show all / Show less" button as RA Game Awards
 
 ### Hub

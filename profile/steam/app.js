@@ -1392,7 +1392,7 @@ const App = () => {
                                             <img
                                                 src={achIconUrl(g.appId, g.winCondIconHash) || g.iconUrl || capsuleUrl(g.appId)}
                                                 alt={g.gameName}
-                                                className="w-full aspect-square object-cover rounded-[2px] group-hover:scale-110 transition-all duration-200 bg-[#101214]"
+                                                className="w-full aspect-square object-cover rounded-[2px] border border-[#b8c4ce] group-hover:scale-110 transition-all duration-200 bg-[#101214]"
                                                 onError={e => { e.target.src = g.iconUrl || capsuleUrl(g.appId); }}
                                             />
                                         </a>

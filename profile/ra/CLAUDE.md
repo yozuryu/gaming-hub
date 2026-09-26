@@ -35,7 +35,7 @@ Five tabs: **Recent Games** (Clock) · **Completion Progress** (BarChart2) · **
 ## Game Awards
 - Sorted by type (Mastered first) then date desc
 - Deduplicated: if a game has both Beaten and Mastered, only Mastered is shown
-- Mastered icons: 2px solid gold border. Beaten: dimmed border.
+- Mastered icons: 2px solid gold border. Beaten: 1px solid silver border (`#b8c4ce`).
 - Shows the first 2 rows of icons by default; a "Show all N / Show less" button at the bottom (only when there are more) reveals the rest. Row size follows the grid breakpoints via `useIconGridCols()` (5 / 8 at `sm` / 5 at `lg`), so 2 rows = 10 or 16 icons.
 
 ## RA Title Parsing

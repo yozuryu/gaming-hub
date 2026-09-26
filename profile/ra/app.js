@@ -1658,7 +1658,7 @@ export default function App() {
                     <img
                       src={award.icon}
                       alt={award.title}
-                      className={`w-full aspect-square rounded-[2px] border transition-all duration-200 bg-black relative z-10 group-hover:scale-110 ${award.type === 'Mastery/Completion' ? 'border-2 border-[#e5b143]' : 'border border-[#e5b143]/30 group-hover:border-[#e5b143]/80'}`}
+                      className={`w-full aspect-square rounded-[2px] border transition-all duration-200 bg-black relative z-10 group-hover:scale-110 ${award.type === 'Mastery/Completion' ? 'border-2 border-[#e5b143]' : 'border border-[#b8c4ce]'}`}
                     />
 
                     <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[200px] bg-[#1b2838] border border-[#2a475e] rounded-[2px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100] shadow-xl pointer-events-none overflow-hidden">
