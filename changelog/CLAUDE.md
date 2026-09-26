@@ -14,13 +14,14 @@ Splits markdown by newline and builds `[{ date, summary, sections: [{ title, ent
 - Any non-heading, non-list line after the `## ` but before the first `### ` → `summary`
 
 ## Section Order (`SECTION_ORDER`)
-RetroAchievements, Steam, Hub, Completions, Activity, Pipelines, Structure, Admin
+RetroAchievements, Steam, Xbox, Hub, Completions, Activity, Pipelines, Structure, Admin
 
 Sections are sorted by this order regardless of their order in the markdown file.
 
 ## Section Colors (`SECTION_COLORS`)
 - RetroAchievements: `#e5b143` (gold)
 - Steam: `#66c0f4` (blue)
+- Xbox: `#52b043` (green)
 - Hub / Completions / Activity: `#c6d4df` (text primary)
 - Pipelines / Structure: `#8f98a0` (gray)
 - Admin: `#ff6b6b` (red)

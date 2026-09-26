@@ -61,7 +61,8 @@ gaming-hub/
 │
 ├── profile/
 │   ├── ra/                         # CLAUDE.md in this directory
-│   └── steam/                      # CLAUDE.md in this directory
+│   ├── steam/                      # CLAUDE.md in this directory
+│   └── xbox/                       # CLAUDE.md in this directory
 │
 ├── activity/                       # CLAUDE.md in this directory
 ├── completions/                    # CLAUDE.md in this directory
@@ -92,13 +93,14 @@ Vanilla JS, no React. Reads `data/hub/config.json`, `data/ra/profile.json`, `dat
 **Stats order and colors** (by relevance):
 - RA: Points (gold) → Rank (white) → Mastered (gold) → Beaten (silver) → Achievements (blue) → Games (muted)
 - Steam: Hours (blue) → Perfect (gold) → Achievements (blue) → Games (muted) → Played (muted) → w/ Unlocks (muted)
+- Xbox: Gamerscore (gold) → Completed (gold) → Achievements (blue) → Games (muted) → Started (muted) → w/ Achievements (muted)
 
 **Completions strip** (desktop only, hidden on mobile via CSS):
 - Shows: N total · N Completed (gold) · N Beaten (silver)
-- "Completed" = RA Mastered + Steam Perfect merged — they are the same concept
+- "Completed" = RA Mastered + Steam Perfect + Xbox Completed merged — they are the same concept
 - Most recent completion shown with icon, name, and time ago
 
-**Recent Activity feed** — up to 8 rows, combined RA + Steam sorted by date. On mobile collapses to 4 rows with a "Show more / Show less" toggle button below the feed.
+**Recent Activity feed** — up to 8 rows, combined RA + Steam + Xbox sorted by date. On mobile collapses to 4 rows with a "Show more / Show less" toggle button below the feed.
 
 ---
 
@@ -251,10 +253,12 @@ Text muted:        #546270
 
 RA gold:           #e5b143
 Steam blue:        #66c0f4
+Xbox green:        #52b043   (marks Xbox only: hub/activity borders, Xbox filters, avatar; not a section or status color)
 Cyan accent:       #57cbde
 ```
 
 ### Completion status colors
+Game-card left stripes use the same ladder everywhere (RA/Steam/Xbox cards, RA watchlist rows): gold → silver (beaten) → blue (in progress) → `#323f4c` (not started) → `#1e2a35` (no achievements). Hub recently-played badges: gold ★ completed, silver % beaten, blue % in progress.
 - Mastered / Perfect / Completed: `#e5b143` (gold)
 - Beaten: `#b8c4ce` (silver) — second tier, pairs with gold like a medal; badge bg `#2a3440`, badge text `#c6d4df`
 - In Progress: `#66c0f4` (blue)
@@ -292,7 +296,7 @@ Consistent pattern across all pages:
 <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0" />
 <span className="text-[13px] text-white tracking-wide uppercase font-medium">Title</span>
 ```
-RA sections use `#e5b143`, Steam/Activity/Hub sections use `#66c0f4`.
+General sections (Most Recently Played, User Stats, Activity) use `#66c0f4` on every profile page; achievement sections (Most Recently Unlocked, Recent Unlocks, Completions/Game Awards) use `#e5b143`. Xbox green is not a section color.
 
 ### Shimmer skeleton
 Defined in each `index.html` `<style>` block (not in app.js). Class name: `.shimmer`. Used on loading placeholders before data arrives.
@@ -322,4 +326,4 @@ Structure:
 - `### SectionName` subsections matching the page changed
 - Bullet points per change, technical but readable
 
-Section order (matches `SECTION_ORDER` in `changelog/app.js`): RetroAchievements, Steam, Hub, Completions, Activity, Pipelines, Structure.
+Section order (matches `SECTION_ORDER` in `changelog/app.js`): RetroAchievements, Steam, Xbox, Hub, Completions, Activity, Pipelines, Structure, Admin.

@@ -1,20 +1,22 @@
 # Activity — Page Context
 
 ## Data Sources
-- `../data/ra/achievements/heatmap.json` + `../data/steam/achievements/heatmap.json` — fetched on mount
-- `../data/ra/achievements/1.json` + `../data/steam/achievements/1.json` — fetched on mount
-- `../data/ra/achievements/2–4.json` + `../data/steam/achievements/2–4.json` — lazy-loaded via IntersectionObserver (300px rootMargin)
+- `../data/{ra,steam,xbox}/achievements/heatmap.json` — fetched on mount
+- `../data/{ra,steam,xbox}/achievements/1.json` — fetched on mount
+- `../data/{steam,xbox}/games/index.json` — game icons for Steam and Xbox sessions
+- `../data/{ra,steam,xbox}/achievements/2–4.json` — lazy-loaded via IntersectionObserver (300px rootMargin)
 
-All RA/Steam achievements are normalized to a unified shape via `utils/normalizers.js`:
+All RA/Steam/Xbox achievements are normalized to a unified shape via `utils/normalizers.js`:
 - `normalizeRA()` → `{ platform, gameId, gameName, achievementName, icon, unlockedAt, points, tags, ... }`
 - `normalizeSteam()` → same shape
+- `normalizeXbox()` → same shape (`gameId` = `titleId`, game links to xbox.com search)
 
 ## Key Features
 
 ### Heatmap
 - 365-day GitHub-style grid
-- Filterable by platform (All / RA / Steam)
-- RA peak color: `#e5b143` (gold). Steam peak color: `#66c0f4` (blue).
+- Filterable by platform (All / RA / Steam / Xbox)
+- RA peak color: `#e5b143` (gold). Steam peak color: `#66c0f4` (blue). Xbox peak color: `#52b043` (green).
 - `overflow-x: auto` wrapper with `minWidth: ${53 * 14}px` inner — intentional, do not change.
 - `scrollRef` on the wrapper div; `useEffect` auto-scrolls to `scrollWidth` on mount so the most recent weeks are visible immediately on mobile.
 

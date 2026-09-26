@@ -19,6 +19,8 @@ const ALLOWED = [
     'data/ra/guides.json',
     'data/ra/series.json',
     'data/steam/games/index.json',
+    'data/xbox/games/index.json',
+    'data/xbox/win-conditions.json',
     'data/steam/win-conditions.json',
 ];
 
@@ -32,6 +34,9 @@ const PIPELINES = {
     'steam-unlocked':   { script: 'scripts/steam-pipeline.js', args: ['--refresh-unlocked-games'] },
     'steam-full':       { script: 'scripts/steam-pipeline.js', args: ['--refresh-games'] },
     'steam-debug':      { script: 'scripts/steam-pipeline.js', args: ['--debug'] },
+    'xbox':             { script: 'scripts/xbox-pipeline.js',  args: [] },
+    'xbox-full':        { script: 'scripts/xbox-pipeline.js',  args: ['--refresh-games'] },
+    'xbox-debug':       { script: 'scripts/xbox-pipeline.js',  args: ['--debug'] },
 };
 
 // Active job state — only one pipeline runs at a time
@@ -320,6 +325,19 @@ const server = http.createServer((req, res) => {
         if (!appId || !/^\d+$/.test(appId)) { send(res, 400, { error: 'Invalid appId' }); return; }
         try {
             const filePath = path.join(ROOT, `data/steam/games/${appId}.json`);
+            send(res, 200, JSON.parse(fs.readFileSync(filePath, 'utf8')));
+        } catch (e) {
+            send(res, 404, { error: 'Not found' });
+        }
+        return;
+    }
+
+    // GET /api/xbox/game?titleId=  — read-only individual title file
+    if (method === 'GET' && pathname === '/api/xbox/game') {
+        const { titleId } = query;
+        if (!titleId || !/^\d+$/.test(titleId)) { send(res, 400, { error: 'Invalid titleId' }); return; }
+        try {
+            const filePath = path.join(ROOT, `data/xbox/games/${titleId}.json`);
             send(res, 200, JSON.parse(fs.readFileSync(filePath, 'utf8')));
         } catch (e) {
             send(res, 404, { error: 'Not found' });

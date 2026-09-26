@@ -296,6 +296,7 @@ export const transformData = (data) => {
           achievementsTotal: g.achievementsPublished || 0,
           numAwarded,
           inProgress: numAwarded > 0,
+          isBeaten: progressEntry?.highestAwardKind === 'beaten-hardcore' || progressEntry?.highestAwardKind === 'beaten-softcore',
           totalPlayers,
         };
       }).sort((a, b) => (a.baseTitle || a.title).localeCompare(b.baseTitle || b.title))

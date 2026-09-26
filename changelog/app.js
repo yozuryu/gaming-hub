@@ -46,6 +46,7 @@ const renderText = (text) => {
 const SECTION_ORDER = [
     'RetroAchievements',
     'Steam',
+    'Xbox',
     'Hub',
     'Completions',
     'Activity',
@@ -65,6 +66,7 @@ const sortSections = (sections) => {
 const SECTION_COLORS = {
     'RetroAchievements': '#e5b143',
     'Steam':             '#66c0f4',
+    'Xbox':              '#52b043',
     'Hub':               '#c6d4df',
     'Completions':       '#c6d4df',
     'Activity':          '#c6d4df',

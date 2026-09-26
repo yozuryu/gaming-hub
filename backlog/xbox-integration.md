@@ -1,6 +1,6 @@
 # Xbox integration
 
-**Status:** To do · **Priority:** 2 (after the urgent fixes in [pipeline-improvements.md](pipeline-improvements.md), ahead of [data-branch-migration.md](data-branch-migration.md)). Build the pipeline on Part A's HTTP helper (status checks, retries).
+**Status:** Done 2026-09-26 (all four phases) · **Priority:** 2 (after the urgent fixes in [pipeline-improvements.md](pipeline-improvements.md), ahead of [data-branch-migration.md](data-branch-migration.md)). Build the pipeline on Part A's HTTP helper (status checks, retries).
 
 ## Goal
 

@@ -106,6 +106,73 @@ const normalizeSteamBeaten = beatenGames =>
         gameUrl: `https://store.steampowered.com/app/${g.appId}`,
     }));
 
+const xboxSearchUrl = name => `https://www.xbox.com/en-US/Search/Results?q=${encodeURIComponent(name ?? '')}`;
+
+const normalizeXbox = completedGames =>
+    completedGames.map(g => ({
+        platform: 'xbox',
+        type: 'completed',
+        completedAt: g.completedAt,
+        gameId: g.titleId,
+        gameName: g.gameName,
+        iconUrl: g.lastAchIconUrl || g.iconUrl,
+        total: g.total,
+        lastAchName: g.lastAchName,
+        lastAchGlobalPct: g.lastAchGlobalPct,
+        gameUrl: xboxSearchUrl(g.gameName),
+    }));
+
+const normalizeXboxBeaten = beatenGames =>
+    beatenGames.map(g => ({
+        platform: 'xbox',
+        type: 'beaten',
+        completedAt: g.beatenAt,
+        gameId: g.titleId,
+        gameName: g.gameName,
+        iconUrl: g.winCondIconUrl || g.iconUrl,
+        total: g.total,
+        lastAchName: g.winConditionName,
+        lastAchGlobalPct: g.winCondGlobalPct,
+        gameUrl: xboxSearchUrl(g.gameName),
+    }));
+
+// Games beaten via win conditions (hand-picked "ending" achievements in the admin).
+// OR mode: first matching unlock counts; AND mode: all must be unlocked, latest wins.
+const loadWinConditionBeaten = async (platform, idKey) => {
+    const wc = await fetch(`../data/${platform}/win-conditions.json`).then(r => r.json());
+    const entries = Object.entries(wc);
+    if (!entries.length) return [];
+    const results = await Promise.all(entries.map(async ([id, cond]) => {
+        try {
+            const isArr = Array.isArray(cond);
+            const mode  = isArr ? 'or' : (cond.mode || 'or');
+            const names = isArr ? cond : (cond.achievements || []);
+            const game = await fetch(`../data/${platform}/games/${id}.json`).then(r => r.json());
+            const matched = (game.achievements || [])
+                .filter(a => names.includes(a.apiName) && a.unlocked && a.unlockedAt);
+            if (mode === 'and') {
+                if (matched.length < names.length) return null;
+                matched.sort((a, b) => new Date(b.unlockedAt) - new Date(a.unlockedAt));
+            } else {
+                if (!matched.length) return null;
+                matched.sort((a, b) => new Date(a.unlockedAt) - new Date(b.unlockedAt));
+            }
+            const pick = matched[0];
+            return {
+                [idKey]: game[idKey],
+                gameName: game.gameName,
+                iconUrl: game.iconUrl,
+                winCondIconUrl: pick.iconUrl,
+                winCondGlobalPct: pick.globalPct,
+                total: game.total,
+                beatenAt: pick.unlockedAt,
+                winConditionName: pick.displayName,
+            };
+        } catch { return null; }
+    }));
+    return results.filter(Boolean);
+};
+
 // ── Dedupe ────────────────────────────────────────────────────────────────────
 
 // One mastered/perfect entry per game. A beaten entry is dropped only when the
@@ -154,6 +221,7 @@ const TYPE_CFG = {
     mastered:  { label: 'Mastered', stripe: '#e5b143', badgeBg: '#e5b143', badgeText: '#101214', icon: <Star  size={7} /> },
     beaten:    { label: 'Beaten',   stripe: '#b8c4ce', badgeBg: '#2a3440', badgeText: '#c6d4df', icon: <Medal size={7} /> },
     perfect:   { label: 'Perfect',    stripe: '#e5b143', badgeBg: '#e5b143', badgeText: '#101214', icon: <Star  size={7} /> },
+    completed: { label: 'Completed',  stripe: '#e5b143', badgeBg: '#e5b143', badgeText: '#101214', icon: <Star  size={7} /> },
 };
 
 // ── CompletionCard ────────────────────────────────────────────────────────────
@@ -195,7 +263,7 @@ const CompletionCard = ({ item }) => {
                     </span>
                     {/* Platform icon */}
                     <img
-                        src={item.platform === 'ra' ? '../assets/icon-ra.png' : '../assets/icon-steam.png'}
+                        src={item.platform === 'ra' ? '../assets/icon-ra.png' : item.platform === 'xbox' ? '../assets/icon-xbox.png' : '../assets/icon-steam.png'}
                         alt={item.platform}
                         className="w-3 h-3 object-contain opacity-60 shrink-0"
                     />
@@ -248,6 +316,8 @@ const App = () => {
     const [raProfile,        setRaProfile]        = useState(null);
     const [steamProfile,     setSteamProfile]     = useState(null);
     const [beatenSteamGames, setBeatenSteamGames] = useState(null);
+    const [xboxProfile,      setXboxProfile]      = useState(null);
+    const [beatenXboxGames,  setBeatenXboxGames]  = useState(null);
     const [platform,         setPlatform]         = useState('all');
     const [showBeaten,       setShowBeaten]       = useState(true);
     const [hiddenTags,       setHiddenTags]       = useState(new Set(['Hack', 'Homebrew', 'Prototype']));
@@ -265,6 +335,10 @@ const App = () => {
             .then(r => r.json()).then(setRaProfile).catch(() => setRaProfile({}));
         fetch('../data/steam/profile.json')
             .then(r => r.json()).then(setSteamProfile).catch(() => setSteamProfile({}));
+        fetch('../data/xbox/profile.json')
+            .then(r => r.json()).then(setXboxProfile).catch(() => setXboxProfile({}));
+        loadWinConditionBeaten('xbox', 'titleId')
+            .then(setBeatenXboxGames).catch(() => setBeatenXboxGames([]));
         fetch('../data/steam/win-conditions.json')
             .then(r => r.json())
             .then(async wc => {
@@ -310,15 +384,17 @@ const App = () => {
         const ra           = normalizeRA(raProfile?.pageAwards?.visibleUserAwards ?? [], showBeaten);
         const steamPerfect = normalizeSteam(steamProfile?.perfectGames ?? []);
         const steamBeaten  = showBeaten ? normalizeSteamBeaten(beatenSteamGames ?? []) : [];
-        let all = dedupeCompletions([...ra, ...steamPerfect, ...steamBeaten]);
-        if (platform === 'ra')    all = all.filter(c => c.platform === 'ra');
-        if (platform === 'steam') all = all.filter(c => c.platform === 'steam');
+        const xboxDone     = normalizeXbox(xboxProfile?.perfectGames ?? []);
+        const xboxBeaten   = showBeaten ? normalizeXboxBeaten(beatenXboxGames ?? []) : [];
+        let all = dedupeCompletions([...ra, ...steamPerfect, ...steamBeaten, ...xboxDone, ...xboxBeaten]);
+        if (platform !== 'all') all = all.filter(c => c.platform === platform);
         if (hiddenTags.size > 0)  all = all.filter(c => !c.tags?.some(t => hiddenTags.has(t)));
         return all.sort((a, b) => new Date(b.completedAt) - new Date(a.completedAt));
-    }, [raProfile, steamProfile, beatenSteamGames, platform, showBeaten, hiddenTags]);
+    }, [raProfile, steamProfile, beatenSteamGames, xboxProfile, beatenXboxGames, platform, showBeaten, hiddenTags]);
 
     const groups  = useMemo(() => groupByMonth(completions), [completions]);
-    const loading = raProfile === null || steamProfile === null || beatenSteamGames === null;
+    const loading = raProfile === null || steamProfile === null || beatenSteamGames === null
+        || xboxProfile === null || beatenXboxGames === null;
 
     // Group months under years for rendering
     const byYear = useMemo(() => {
@@ -369,6 +445,7 @@ const App = () => {
                             { value: 'all',   label: 'All'   },
                             { value: 'ra',    label: 'RA'    },
                             { value: 'steam', label: 'Steam' },
+                            { value: 'xbox',  label: 'Xbox'  },
                         ].map(opt => (
                             <button key={opt.value} onClick={() => setPlatform(opt.value)}
                                 className={`text-[9px] font-semibold uppercase tracking-wider px-2.5 py-[3px] rounded-sm border transition-colors ${

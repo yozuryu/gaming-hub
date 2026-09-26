@@ -2,10 +2,11 @@
 
 ## v26.09.26
 
-Keep beaten and completed as separate milestones when they happen in different years; show RA playtime on completions; standardize Beaten on silver; app updates now show up without a manual cache bump; RA Game Awards and Steam Completions panels show 2 rows with a Show all toggle; Progress tabs get Nearly there / In progress / Abandoned views and a mobile-friendly filter bar.
+Keep beaten and completed as separate milestones when they happen in different years; show RA playtime on completions; standardize Beaten on silver; app updates now show up without a manual cache bump; RA Game Awards and Steam Completions panels show 2 rows with a Show all toggle; Progress tabs get Nearly there / In progress / Abandoned views and a mobile-friendly filter bar; Xbox joins the site with its own profile page, hub card, and Activity/Completions support.
 
 ### RetroAchievements
 
+- Watchlist rows use the same stripe colors as game cards: silver for beaten games (previously blue), and `#323f4c` for not started (was a lighter gray)
 - Beaten game cards and award badges use silver (stripe `#b8c4ce`, badge `#2a3440` / `#c6d4df`) instead of gray/slate; Game Awards header Beaten count also silver
 - Beaten icons in the Game Awards panel get a 1px solid silver border (was a faint gold border); Mastered keeps 2px gold
 - Completion Progress gets views from cheevo-tracker: **All / Nearly there / In progress / Abandoned** (Nearly there = 75%+, fewest left first; In progress = played in the last 30 days; Abandoned = quiet for 30+ days); each non-All view shows its rule
@@ -16,23 +17,40 @@ Keep beaten and completed as separate milestones when they happen in different y
 
 ### Steam
 
+- Beaten badge on game cards and in the achievement modal is now silver (was still the old gray)
 - Beaten count and award badge in the Completions section use silver instead of gray
 - Beaten icons in the Completions panel get a 1px solid silver border (had none); Perfect keeps 2px gold
 - Completion Progress gets the same All / Nearly there / In progress / Abandoned views as RA; Perfect toggle and Completion/Hours/Last Played sort move into the All view
 - Same mobile filter bar redesign as RA (segmented views, dropdown sort)
 - Completions panel shows the first 2 rows (perfect games first, then beaten), with the same "Show all / Show less" button as RA Game Awards
 
+### Xbox
+
+- New Xbox profile page (`profile/xbox/`), built from the Steam page: header with gamertag and gamerscore, Most Recently Played, User Stats, Completions sidebar, and Recent Games / Completion Progress / Activity tabs
+- Game cards use each game's wide hero art and show earned/total gamerscore; the achievement modal lists gamerscore per achievement, rarity, and a note for Xbox 360 games (only unlocked achievements are available)
+- Completion Progress has the same All / Nearly there / In progress / Abandoned views, sorted by Completion, Gamerscore or Last Played
+- Uses the same blue/gold section colors as the RA and Steam pages; Xbox green `#52b043` only marks Xbox (avatar border, hub card, activity feed, Xbox filter). 100% is labelled "Completed"
+- Pipeline output now includes `heroUrl` and `posterUrl` per game
+
 ### Hub
 
+- Recently played rows show a silver badge for beaten games (RA from award data, Steam/Xbox from win conditions) instead of the blue in-progress %
+- Xbox card replaces the "coming soon" placeholder: Gamerscore, Completed, Achievements, Games, Started, w/ Achievements, plus the 3 most recently played games; links to the Xbox profile page
+- Recent Activity feed and Completions strip include Xbox (green `#52b043` border and icon)
 - Footer gains a "Refresh app" link next to Changelog (desktop): clears cached app files and reloads, data untouched
 - Beaten is now silver `#b8c4ce` everywhere on the hub: completions strip count, latest-completion line, mobile summary, and RA card stat (was a mix of blue and gray)
 
 ### Completions
 
+- Xbox completions ("Completed", gold) and Xbox beaten games (from Xbox win conditions) appear in the list; platform filter gains Xbox
 - Beaten/completed dedup is now year-aware for both RA and Steam: a beaten entry is hidden only when the same game was mastered/perfected in the same calendar year; if beaten and completed fall in different years, both entries are shown
 - Steam beaten entries previously disappeared whenever the game was perfect, regardless of date; they now follow the same rule as RA
 - RA completions now show total playtime (clock icon), same as Steam
 - Beaten cards use silver (stripe `#b8c4ce`, badge `#2a3440` / `#c6d4df`) instead of blue, so the tier reads as second place next to gold
+
+### Activity
+
+- Xbox achievements join the timeline and heatmap, with an Xbox filter, a green heatmap ramp for the Xbox view, and an Xbox count in the header
 
 ### Pipelines
 
@@ -51,6 +69,8 @@ Keep beaten and completed as separate milestones when they happen in different y
 
 ### Structure
 
+- New page `profile/xbox/` (`index.html`, `app.js`, `utils/`), with its own `CLAUDE.md` (excluded from the site in `_config.yml`); `sw.js` precaches it and the Xbox icon, cache bumped to `gaming-hub-v5`
+- `data/hub/config.json`: Xbox set to visible/active; `data/xbox/win-conditions.json` added (empty)
 - Stopped publishing private files: all five subfolder `CLAUDE.md` files were publicly served (only the root one was excluded); `_config.yml` now lists each one, plus `backlog/`, `.agents/`, `.claude/`, the unused `assets/appicon.png` source icon, the pipeline-only `data/steam/games/sentinel.json`, and the legacy `data/steam/achievements.json`
 - New `backlog/` folder for planned work: moving pipeline data to a `data` branch with daily squash (`data-branch-migration.md`) and the follow-up history cleanup (`history-cleanup.md`)
 - Backlog: Xbox integration plan (`xbox-integration.md`) via the OpenXBL API — pipeline, hub card, Xbox profile page, Activity/Completions support — set as top priority ahead of the data-branch migration; `backlog/README.md` lists items in priority order
@@ -58,6 +78,11 @@ Keep beaten and completed as separate milestones when they happen in different y
 - `sw.js`: static assets switched from cache-first to stale-while-revalidate (cached copy served instantly, fresh copy fetched in the background with `cache: 'no-cache'`), so deploys reach installed apps on the next load without bumping `CACHE_NAME`; only same-origin GET requests are handled
 - `sw.js`: bumped cache to `gaming-hub-v4` so the switch and today's changes reach browsers still on the old cache-first worker
 - Changelog page: "Refresh app" button in the header (works on mobile and desktop) — deletes all SW caches, triggers a service worker update check, reloads
+
+### Admin
+
+- Win Conditions now works for Xbox too (new "Xbox" group), sharing one module with Steam; admin server gains `GET /api/xbox/game` and allows `data/xbox/win-conditions.json` / `data/xbox/games/index.json`
+- Pipelines screen can run the Xbox pipeline (incremental, full refresh, debug); Credentials screen has the OpenXBL API key
 
 ## v26.06.13
 

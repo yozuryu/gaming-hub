@@ -26,3 +26,16 @@ export const normalizeSteam = (a) => ({
     gameUrl: `https://store.steampowered.com/app/${a.appId}`,
     unlockedAt: a.unlockedAt,
 });
+
+export const normalizeXbox = (a) => ({
+    platform: 'xbox',
+    id: `xbox-${a.titleId}-${a.apiName}`,
+    achievementName: a.displayName,
+    description: a.description || a.displayName,
+    achievementIcon: a.iconUrl,
+    gameName: a.gameName,
+    gameId: a.titleId,
+    gameIcon: null,   // filled from data/xbox/games/index.json
+    gameUrl: `https://www.xbox.com/en-US/Search/Results?q=${encodeURIComponent(a.gameName ?? '')}`,
+    unlockedAt: a.unlockedAt,
+});

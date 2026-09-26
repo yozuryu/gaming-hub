@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gaming-hub-v4';
+const CACHE_NAME = 'gaming-hub-v5';
 
 // Static assets — precached on install, then stale-while-revalidate
 const PRECACHE = [
@@ -13,6 +13,10 @@ const PRECACHE = [
   '/gaming-hub/profile/steam/app.js',
   '/gaming-hub/profile/steam/utils/constants.js',
   '/gaming-hub/profile/steam/utils/helpers.js',
+  '/gaming-hub/profile/xbox/index.html',
+  '/gaming-hub/profile/xbox/app.js',
+  '/gaming-hub/profile/xbox/utils/constants.js',
+  '/gaming-hub/profile/xbox/utils/helpers.js',
   '/gaming-hub/activity/index.html',
   '/gaming-hub/activity/app.js',
   '/gaming-hub/activity/utils/constants.js',
@@ -25,6 +29,7 @@ const PRECACHE = [
   '/gaming-hub/assets/avatar.png',
   '/gaming-hub/assets/icon-ra.png',
   '/gaming-hub/assets/icon-steam.png',
+  '/gaming-hub/assets/icon-xbox.png',
   '/gaming-hub/assets/icon-192.png',
   '/gaming-hub/assets/icon-512.png',
 ];

@@ -1,6 +1,6 @@
 export const RA_MEDIA = 'https://media.retroachievements.org';
 
-export const PLATFORM_COLOR = { ra: '#e5b143', steam: '#66c0f4' };
+export const PLATFORM_COLOR = { ra: '#e5b143', steam: '#66c0f4', xbox: '#52b043' };
 
 export const TILDE_TAG_COLORS = {
     'Homebrew':  { bg: 'rgba(102,192,244,0.08)', border: 'rgba(102,192,244,0.3)',  color: '#66c0f4' },

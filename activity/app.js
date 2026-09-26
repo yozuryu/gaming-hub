@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { Activity, ChevronDown, Flame } from 'lucide-react';
 import { PLATFORM_COLOR, TILDE_TAG_COLORS } from './utils/constants.js';
 import { fmtDay, fmtTime, parseTitle } from './utils/helpers.js';
-import { normalizeRA, normalizeSteam } from './utils/normalizers.js';
+import { normalizeRA, normalizeSteam, normalizeXbox } from './utils/normalizers.js';
 
 const renderTildeTags = (tags) => {
     if (!tags?.length) return null;
@@ -76,6 +76,12 @@ const Heatmap = ({ heatmapData, filter, selectedDay, onSelectDay }) => {
             if (ratio >= 0.25) return '#1a5275';
             return '#0d2a3d';
         }
+        if (filter === 'xbox') {
+            if (ratio >= 0.8)  return '#52b043';
+            if (ratio >= 0.5)  return '#3a8a30';
+            if (ratio >= 0.25) return '#2f6b30';
+            return '#1d3d1f';
+        }
         if (ratio >= 0.8)  return '#e5b143';
         if (ratio >= 0.5)  return '#66c0f4';
         if (ratio >= 0.25) return '#2a6b9e';
@@ -86,6 +92,8 @@ const Heatmap = ({ heatmapData, filter, selectedDay, onSelectDay }) => {
         ? ['#101214', '#3d2507', '#7a4a10', '#c8901a', '#e5b143']
         : filter === 'steam'
         ? ['#101214', '#0d2a3d', '#1a5275', '#2a7bba', '#66c0f4']
+        : filter === 'xbox'
+        ? ['#101214', '#1d3d1f', '#2f6b30', '#3a8a30', '#52b043']
         : ['#101214', '#1a4a70', '#2a6b9e', '#66c0f4', '#e5b143'];
 
     return (
@@ -200,7 +208,7 @@ const GameSession = ({ session }) => {
         <div className="ml-4 border-l border-[#2a475e] pl-3 mb-3">
             <div className="flex items-center gap-2 mb-1.5">
                 <img
-                    src={isRA ? '../assets/icon-ra.png' : '../assets/icon-steam.png'}
+                    src={isRA ? '../assets/icon-ra.png' : session.platform === 'xbox' ? '../assets/icon-xbox.png' : '../assets/icon-steam.png'}
                     alt=""
                     className="w-3 h-3 shrink-0 object-contain opacity-60"
                     onError={e => { e.target.style.display = 'none'; }}
@@ -232,6 +240,9 @@ const App = () => {
     const [raHeatmap,     setRaHeatmap]     = useState({});
     const [steamHeatmap,  setSteamHeatmap]  = useState({});
     const [steamGameIcons, setSteamGameIcons] = useState({});
+    const [xboxAchs,      setXboxAchs]      = useState([]);
+    const [xboxHeatmap,   setXboxHeatmap]   = useState({});
+    const [xboxGameIcons, setXboxGameIcons] = useState({});
     const [loading,       setLoading]       = useState(true);
     const [loadingMore, setLoadingMore] = useState(false);
     const [nextChunk,   setNextChunk]   = useState(2);
@@ -248,33 +259,45 @@ const App = () => {
     });
 
     const fetchChunk = useCallback(async (platform, i) => {
-        const path = platform === 'ra'
-            ? `../data/ra/achievements/${i}.json`
-            : `../data/steam/achievements/${i}.json`;
+        const path = `../data/${platform}/achievements/${i}.json`;
         const d = await fetch(path)
             .then(r => r.ok ? r.json() : { recentAchievements: [] })
             .catch(() => ({ recentAchievements: [] }));
         const normalized = (d.recentAchievements ?? []).map(
-            platform === 'ra' ? normalizeRA : normalizeSteam
+            platform === 'ra' ? normalizeRA : platform === 'xbox' ? normalizeXbox : normalizeSteam
         );
-        if (platform === 'steam') {
+        const icons = platform === 'steam' ? steamGameIcons : platform === 'xbox' ? xboxGameIcons : null;
+        if (icons) {
             normalized.forEach(a => {
-                const icon = steamGameIcons[a.gameId];
+                const icon = icons[a.gameId];
                 if (icon) a.gameIcon = icon;
             });
         }
         return normalized;
-    }, [steamGameIcons]);
+    }, [steamGameIcons, xboxGameIcons]);
 
     useEffect(() => {
         // Fetch both heatmaps separately
         Promise.all([
             fetch('../data/ra/achievements/heatmap.json').then(r => r.json()).catch(() => ({})),
             fetch('../data/steam/achievements/heatmap.json').then(r => r.json()).catch(() => ({})),
-        ]).then(([raH, stH]) => {
+            fetch('../data/xbox/achievements/heatmap.json').then(r => r.json()).catch(() => ({})),
+        ]).then(([raH, stH, xbH]) => {
             setRaHeatmap(raH.activityHeatmap || {});
             setSteamHeatmap(stH.activityHeatmap || {});
+            setXboxHeatmap(xbH.activityHeatmap || {});
         });
+
+        fetch('../data/xbox/games/index.json')
+            .then(r => r.json())
+            .then(d => {
+                const icons = Object.fromEntries(
+                    Object.entries(d.achievementProgress ?? {}).map(([id, g]) => [id, g.iconUrl])
+                );
+                setXboxGameIcons(icons);
+                setXboxAchs(prev => prev.map(a => icons[a.gameId] ? { ...a, gameIcon: icons[a.gameId] } : a));
+            })
+            .catch(() => {});
 
         fetch('../data/steam/games/index.json')
             .then(r => r.json())
@@ -287,9 +310,10 @@ const App = () => {
             })
             .catch(() => {});
 
-        Promise.all([fetchChunk('ra', 1), fetchChunk('steam', 1)]).then(([ra, steam]) => {
+        Promise.all([fetchChunk('ra', 1), fetchChunk('steam', 1), fetchChunk('xbox', 1)]).then(([ra, steam, xbox]) => {
             setRaAchs(ra);
             setSteamAchs(steam);
+            setXboxAchs(xbox);
             setLoading(false);
         });
     }, []);
@@ -297,9 +321,10 @@ const App = () => {
     const loadMore = useCallback(() => {
         if (nextChunk > 4 || loadingMore) return;
         setLoadingMore(true);
-        Promise.all([fetchChunk('ra', nextChunk), fetchChunk('steam', nextChunk)]).then(([ra, steam]) => {
+        Promise.all([fetchChunk('ra', nextChunk), fetchChunk('steam', nextChunk), fetchChunk('xbox', nextChunk)]).then(([ra, steam, xbox]) => {
             setRaAchs(prev => [...prev, ...ra]);
             setSteamAchs(prev => [...prev, ...steam]);
+            setXboxAchs(prev => [...prev, ...xbox]);
             setNextChunk(prev => prev + 1);
             setLoadingMore(false);
         });
@@ -327,12 +352,13 @@ const App = () => {
     const heatmapData = useMemo(() => {
         if (filter === 'ra') return raHeatmap;
         if (filter === 'steam') return steamHeatmap;
+        if (filter === 'xbox') return xboxHeatmap;
         const merged = { ...raHeatmap };
-        Object.entries(steamHeatmap).forEach(([day, d]) => {
+        [steamHeatmap, xboxHeatmap].forEach(h => Object.entries(h).forEach(([day, d]) => {
             merged[day] = { count: (merged[day]?.count ?? 0) + (d.count ?? 0) };
-        });
+        }));
         return merged;
-    }, [filter, raHeatmap, steamHeatmap]);
+    }, [filter, raHeatmap, steamHeatmap, xboxHeatmap]);
 
     const streakInfo = useMemo(() => {
         const activeDays = new Set(
@@ -397,9 +423,10 @@ const App = () => {
     const sourceAchs = useMemo(() => {
         const base = filter === 'ra' ? raAchs
             : filter === 'steam' ? steamAchs
-            : [...raAchs, ...steamAchs];
+            : filter === 'xbox' ? xboxAchs
+            : [...raAchs, ...steamAchs, ...xboxAchs];
         return [...base].sort((a, b) => new Date(b.unlockedAt) - new Date(a.unlockedAt));
-    }, [raAchs, steamAchs, filter]);
+    }, [raAchs, steamAchs, xboxAchs, filter]);
 
     const loadedDays = useMemo(() => new Set(sourceAchs.map(a => a.unlockedAt.substring(0, 10))), [sourceAchs]);
 
@@ -445,10 +472,11 @@ const App = () => {
     }, [displayAchs]);
 
     const filters = useMemo(() => [
-        { id: 'all',   label: 'All',              count: raAchs.length + steamAchs.length },
+        { id: 'all',   label: 'All',              count: raAchs.length + steamAchs.length + xboxAchs.length },
         { id: 'ra',    label: 'RA',                count: raAchs.length },
         { id: 'steam', label: 'Steam',             count: steamAchs.length },
-    ], [raAchs.length, steamAchs.length]);
+        { id: 'xbox',  label: 'Xbox',              count: xboxAchs.length },
+    ], [raAchs.length, steamAchs.length, xboxAchs.length]);
 
     return (
         <div className="bg-[#171a21] text-[#c6d4df] min-h-screen flex flex-col font-sans selection:bg-[#66c0f4] selection:text-[#171a21]">
@@ -491,13 +519,16 @@ const App = () => {
                     {!loading && (
                         <div className="flex flex-wrap gap-2">
                             <span className="text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
-                                <span className="text-[#c6d4df]">{(raAchs.length + steamAchs.length).toLocaleString()}</span> total
+                                <span className="text-[#c6d4df]">{(raAchs.length + steamAchs.length + xboxAchs.length).toLocaleString()}</span> total
                             </span>
                             <span className="text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
                                 <span className="text-[#e5b143]">{raAchs.length.toLocaleString()}</span> RetroAchievements
                             </span>
                             <span className="text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
                                 <span className="text-[#66c0f4]">{steamAchs.length.toLocaleString()}</span> Steam
+                            </span>
+                            <span className="text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
+                                <span className="text-[#52b043]">{xboxAchs.length.toLocaleString()}</span> Xbox
                             </span>
                         </div>
                     )}

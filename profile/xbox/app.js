@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock, X, Medal } from 'lucide-react';
-import { STEAM_STATUS, PROGRESS_SORTS } from './utils/constants.js';
-import { formatPlaytime, formatDate, formatTimeAgo, fmtDay, fmtTime, achIconUrl, capsuleUrl, headerUrl, libraryPortraitUrl, rarityLabel, rarityBorderColor } from './utils/helpers.js';
+import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock, X, Medal, Gamepad2 } from 'lucide-react';
+import { PROGRESS_SORTS } from './utils/constants.js';
+import { formatDate, formatTimeAgo, fmtDay, fmtTime, xboxSearchUrl, xboxProfileUrl, rarityLabel, rarityBorderColor } from './utils/helpers.js';
 
-// ── SteamGameCard ─────────────────────────────────────────────────────────────
+// ── XboxGameCard ──────────────────────────────────────────────────────────────
 
-const SteamGameCard = ({ game, achievementData, onViewDetails, beatenInfo }) => {
+const XboxGameCard = ({ game, achievementData, onViewDetails, beatenInfo }) => {
     const hasAch = achievementData?.hasAchievements && achievementData?.total > 0;
     const pct    = hasAch && achievementData.total > 0
         ? (achievementData.unlocked / achievementData.total) * 100
@@ -35,12 +35,14 @@ const SteamGameCard = ({ game, achievementData, onViewDetails, beatenInfo }) => 
             {/* Main row — background scoped here so it doesn't stretch when expanded */}
             <div className="relative overflow-hidden rounded-t-[3px]">
                 <div className="absolute inset-0 z-0 pointer-events-none">
-                    <img
-                        src={libraryPortraitUrl(game.appId)}
-                        alt=""
-                        className="absolute right-0 top-0 h-full w-full md:w-1/2 object-cover opacity-[0.45] mix-blend-screen mask-fade"
-                        onError={e => { e.target.src = headerUrl(game.appId); }}
-                    />
+                    {(achievementData?.heroUrl || game.heroUrl) && (
+                        <img
+                            src={achievementData?.heroUrl || game.heroUrl}
+                            alt=""
+                            className="absolute right-0 top-0 h-full w-full md:w-1/2 object-cover opacity-[0.45] mix-blend-screen mask-fade"
+                            onError={e => { e.target.style.display = 'none'; }}
+                        />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-r from-[#202d39] from-50% via-[#202d39]/80 to-transparent" />
                 </div>
 
@@ -52,10 +54,10 @@ const SteamGameCard = ({ game, achievementData, onViewDetails, beatenInfo }) => 
                     className="shrink-0 w-[140px] h-[66px] rounded-[2px] border border-[#101214] overflow-hidden bg-[#2a475e] hover:scale-105 transition-transform"
                 >
                     <img
-                        src={headerUrl(game.appId)}
+                        src={achievementData?.heroUrl || game.heroUrl || game.iconUrl}
                         alt={game.name}
                         className="w-full h-full object-cover"
-                        onError={e => { e.target.style.display = 'none'; }}
+                        onError={e => { if (game.iconUrl && e.target.src !== game.iconUrl) e.target.src = game.iconUrl; else e.target.style.display = 'none'; }}
                     />
                 </a>
 
@@ -72,7 +74,7 @@ const SteamGameCard = ({ game, achievementData, onViewDetails, beatenInfo }) => 
                         </a>
                         {isPerfect && (
                             <span className="text-[8px] font-bold uppercase tracking-[0.07em] px-1.5 py-[1px] rounded-[2px] bg-[#e5b143] text-[#101214] shrink-0 flex items-center gap-1">
-                                <Star size={8} /> Perfect
+                                <Star size={8} /> Completed
                             </span>
                         )}
                         {!isPerfect && beatenInfo && (
@@ -82,22 +84,16 @@ const SteamGameCard = ({ game, achievementData, onViewDetails, beatenInfo }) => 
                         )}
                     </div>
 
-                    {game.playtimeForever > 0 && (
+                    {(hasAch || game.lastPlayedTs) && (
                         <div className="flex items-center leading-none gap-2 text-[10px] md:text-[11px] mb-1.5">
-                            <Clock size={9} className="text-[#8f98a0] shrink-0" />
-                            <span className="text-[#8f98a0]">{formatPlaytime(game.playtimeForever)} total</span>
-                            {game.playtime2Weeks > 0 && (
-                                <>
-                                    <span className="text-[#546270]">·</span>
-                                    <Clock size={9} className="text-[#57cbde] shrink-0" />
-                                    <span className="text-[#57cbde]">{formatPlaytime(game.playtime2Weeks)} recent</span>
-                                </>
+                            {hasAch && (
+                                <span className="text-[#8f98a0]">
+                                    <span className="text-[#c6d4df]">{(achievementData.gamerscore ?? 0).toLocaleString()}</span> / {(achievementData.totalGamerscore ?? 0).toLocaleString()} G
+                                </span>
                             )}
+                            {hasAch && game.lastPlayedTs && <span className="text-[#546270]">·</span>}
                             {game.lastPlayedTs && (
-                                <>
-                                    <span className="text-[#546270]">·</span>
-                                    <span className="text-[#546270]">Last Played <span className="text-[#8f98a0]">{formatTimeAgo(game.lastPlayedTs)}</span></span>
-                                </>
+                                <span className="text-[#546270]">Last Played <span className="text-[#8f98a0]">{formatTimeAgo(game.lastPlayedTs)}</span></span>
                             )}
                         </div>
                     )}
@@ -145,9 +141,9 @@ const SteamGameCard = ({ game, achievementData, onViewDetails, beatenInfo }) => 
                             <div key={i} className="relative shrink-0" style={{ zIndex: previewAchs.length - i }}>
                                 {/* Icon */}
                                 <div className={`w-8 h-8 rounded-[2px] overflow-hidden border bg-black transition-all peer ${ach.unlocked ? 'border-[#2a475e]' : 'border-[#1e2a35] opacity-40'}`}>
-                                    {(ach.iconUrl || ach.iconGrayUrl)
+                                    {ach.iconUrl
                                         ? <img
-                                            src={ach.unlocked ? achIconUrl(achievementData.appId, ach.iconUrl) : (achIconUrl(achievementData.appId, ach.iconGrayUrl) || achIconUrl(achievementData.appId, ach.iconUrl))}
+                                            src={ach.iconUrl}
                                             alt={ach.displayName}
                                             className={`w-full h-full object-cover ${!ach.unlocked ? 'grayscale' : ''}`}
                                           />
@@ -258,7 +254,7 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo }) => {
                         rel="noreferrer"
                         className="shrink-0 w-32 h-16 rounded-[2px] overflow-hidden border border-[#101214] bg-[#2a475e] hover:scale-105 transition-transform"
                     >
-                        <img src={headerUrl(game.appId)} alt={game.name} className="w-full h-full object-cover" onError={e => { e.target.style.display = 'none'; }} />
+                        <img src={achievementData?.heroUrl || game.heroUrl || game.iconUrl} alt={game.name} className="w-full h-full object-cover" onError={e => { e.target.style.display = 'none'; }} />
                     </a>
                     <div className="flex-1 min-w-0">
                         <a
@@ -273,7 +269,7 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo }) => {
                             <div className="flex items-center gap-1.5 mt-1">
                                 {isPerfect && (
                                     <span className="shrink-0 text-[9px] text-[#101214] bg-[#e5b143] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider flex items-center gap-1">
-                                        <Star size={9} /> Perfect
+                                        <Star size={9} /> Completed
                                     </span>
                                 )}
                                 {!isPerfect && beatenInfo && (
@@ -317,9 +313,14 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo }) => {
                         </button>
                     ))}
                     <span className="ml-auto text-[9px] text-[#546270]">
-                        {filteredAchs.length} / {achs.length}
+                        {filteredAchs.length} / {achievementData.partial ? achievementData.total : achs.length}
                     </span>
                 </div>
+                {achievementData.partial && (
+                    <div className="px-4 py-2 border-b border-[#101214] text-[10px] text-[#8f98a0] shrink-0">
+                        Xbox 360 game — only unlocked achievements are available from Xbox Live.
+                    </div>
+                )}
 
                 {/* Achievement list */}
                 <div className="overflow-y-auto overscroll-contain flex-1 px-4 py-3 space-y-1.5">
@@ -336,7 +337,7 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo }) => {
                             <div className="relative shrink-0 w-10 h-10 rounded-[2px] border border-[#101214] overflow-hidden bg-black">
                                 {ach.iconUrl
                                     ? <img
-                                        src={ach.unlocked ? achIconUrl(achievementData.appId, ach.iconUrl) : (achIconUrl(achievementData.appId, ach.iconGrayUrl) || achIconUrl(achievementData.appId, ach.iconUrl))}
+                                        src={ach.iconUrl}
                                         alt={ach.displayName}
                                         className={`w-full h-full object-cover ${!ach.unlocked ? 'grayscale brightness-40' : ''}`}
                                       />
@@ -347,8 +348,13 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo }) => {
                                 )}
                             </div>
                             <div className="flex-1 min-w-0 flex flex-col justify-center">
-                                <div className={`text-[12px] font-medium tracking-wide leading-tight truncate mb-1 ${ach.unlocked ? 'text-[#e5b143]' : 'text-[#8f98a0]'}`}>
-                                    {ach.displayName}
+                                <div className="flex items-center gap-2 mb-1 min-w-0">
+                                    <div className={`text-[12px] font-medium tracking-wide leading-tight truncate ${ach.unlocked ? 'text-[#e5b143]' : 'text-[#8f98a0]'}`}>
+                                        {ach.displayName}
+                                    </div>
+                                    {ach.gamerscore > 0 && (
+                                        <span className={`text-[9px] font-semibold shrink-0 ${ach.unlocked ? 'text-[#c6d4df]' : 'text-[#546270]'}`}>{ach.gamerscore}G</span>
+                                    )}
                                 </div>
                                 <p className="text-[10px] text-[#8f98a0] leading-snug mb-1.5">{ach.description || ach.displayName}</p>
                                 {ach.globalPct != null && (
@@ -478,8 +484,8 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
             .map(([day, achs]) => {
                 const byGame = {};
                 achs.forEach(ach => {
-                    if (!byGame[ach.appId]) byGame[ach.appId] = { appId: ach.appId, gameName: ach.gameName, achievements: [] };
-                    byGame[ach.appId].achievements.push(ach);
+                    if (!byGame[ach.titleId]) byGame[ach.titleId] = { titleId: ach.titleId, gameName: ach.gameName, achievements: [] };
+                    byGame[ach.titleId].achievements.push(ach);
                 });
                 const sessions = Object.values(byGame).sort((a, b) => {
                     const aT = Math.min(...a.achievements.map(x => new Date(x.unlockedAt).getTime()));
@@ -634,13 +640,13 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
                                             <div className="flex items-center gap-2 mb-1.5">
                                                 <div className="w-4 h-4 rounded-[1px] overflow-hidden border border-[#101214] bg-[#1b2838] shrink-0">
                                                     <img
-                                                        src={gameIcons?.[session.appId]}
+                                                        src={gameIcons?.[session.titleId]}
                                                         alt=""
                                                         className="w-full h-full object-cover"
                                                         onError={e => { e.target.style.display = 'none'; }}
                                                     />
                                                 </div>
-                                                <a href={`https://store.steampowered.com/app/${session.appId}`} target="_blank" rel="noreferrer" className="text-[9px] text-[#c6d4df] hover:text-[#66c0f4] uppercase tracking-wider font-medium truncate flex-1 transition-colors">
+                                                <a href={xboxSearchUrl(session.gameName)} target="_blank" rel="noreferrer" className="text-[9px] text-[#c6d4df] hover:text-[#66c0f4] uppercase tracking-wider font-medium truncate flex-1 transition-colors">
                                                     {session.gameName}
                                                 </a>
                                                 <span className="text-[8px] text-[#546270] shrink-0">
@@ -668,7 +674,10 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
                                                                 </div>
                                                             )}
                                                         </div>
-                                                        <span className="text-[9px] text-[#546270] shrink-0">{fmtTime(ach.unlockedAt)}</span>
+                                                        <div className="flex flex-col items-end shrink-0">
+                                                            {ach.gamerscore > 0 && <span className="text-[9px] text-[#c6d4df] font-semibold">{ach.gamerscore}G</span>}
+                                                            <span className="text-[9px] text-[#546270]">{fmtTime(ach.unlockedAt)}</span>
+                                                        </div>
                                                     </div>
                                                 ))}
                                             </div>
@@ -777,7 +786,7 @@ const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, 
 };
 
 // Buckets a list of in-progress games by view. Caller supplies accessors so RA
-// and Steam games (different shapes) share the same rules.
+// Steam and Xbox games (different shapes) share the same rules.
 const applyProgressView = (games, view, { pct, left, lastPlayedMs, isCompleted }) => {
     const now = Date.now();
     const isNearly = g => !isCompleted(g) && pct(g) >= NEARLY_PCT;
@@ -791,37 +800,19 @@ const applyProgressView = (games, view, { pct, left, lastPlayedMs, isCompleted }
 
 // ── ProgressTab ───────────────────────────────────────────────────────────────
 
-const ProgressTab = ({ achievementProgress, recentlyPlayed, onViewDetails, beatenMap }) => {
-    const [sort,        setSort]        = useState('pct');
-    const [showPerfect, setShowPerfect] = useState(false);
-    const [view,        setView]        = useState('all');
-    const [search,      setSearch]      = useState('');
-
-    const playtimeMap = useMemo(() => {
-        const m = {};
-        (recentlyPlayed || []).forEach(g => { m[g.appId] = g; });
-        return m;
-    }, [recentlyPlayed]);
+const ProgressTab = ({ achievementProgress, onViewDetails, beatenMap }) => {
+    const [sort,          setSort]          = useState('pct');
+    const [showCompleted, setShowCompleted] = useState(false);
+    const [view,          setView]          = useState('all');
+    const [search,        setSearch]        = useState('');
 
     const games = useMemo(() => {
-        const list = Object.entries(achievementProgress)
-            .filter(([, d]) => d.hasAchievements && d.unlocked > 0 && d.total > 0 && (!search || (d.gameName ?? '').toLowerCase().includes(search.toLowerCase())))
-            .map(([appId, d]) => {
-                const pt = playtimeMap[Number(appId)];
-                const lastUnlockedAt = d.lastUnlockedAt ?? null;
-                return {
-                    appId:           Number(appId),
-                    gameName:        d.gameName ?? `App ${appId}`,
-                    unlocked:        d.unlocked,
-                    total:           d.total,
-                    pct:             d.total > 0 ? (d.unlocked / d.total) * 100 : 0,
-                    lastUnlockedAt,
-                    // prefer enriched data from games.json, fall back to recentlyPlayed map
-                    playtimeForever: d.playtimeForever ?? pt?.playtimeForever ?? 0,
-                    playtime2Weeks:  d.playtime2Weeks  ?? pt?.playtime2Weeks  ?? 0,
-                    lastPlayedTs:    d.lastPlayedTs    ?? pt?.lastPlayedTs    ?? null,
-                };
-            });
+        const list = Object.values(achievementProgress)
+            .filter(d => d.hasAchievements && d.unlocked > 0 && d.total > 0 && (!search || (d.gameName ?? '').toLowerCase().includes(search.toLowerCase())))
+            .map(d => ({
+                ...d,
+                pct: (d.unlocked / d.total) * 100,
+            }));
 
         const bucketed = applyProgressView(list, view, {
             pct:          g => g.pct,
@@ -832,23 +823,14 @@ const ProgressTab = ({ achievementProgress, recentlyPlayed, onViewDetails, beate
         if (bucketed) return bucketed;
 
         return list
-            .filter(g => showPerfect || g.unlocked < g.total)
+            .filter(g => showCompleted || g.unlocked < g.total)
             .sort((a, b) => {
-                if (sort === 'name')  return a.gameName.localeCompare(b.gameName);
-                if (sort === 'hours') return b.playtimeForever - a.playtimeForever;
-                if (sort === 'lastPlayed') {
-                    if (!a.lastPlayedTs && !b.lastPlayedTs) return 0;
-                    if (!a.lastPlayedTs) return 1;
-                    if (!b.lastPlayedTs) return -1;
-                    return b.lastPlayedTs.localeCompare(a.lastPlayedTs);
-                }
+                if (sort === 'gamerscore') return (b.gamerscore ?? 0) - (a.gamerscore ?? 0);
+                if (sort === 'lastPlayed') return (b.lastPlayedTs || '').localeCompare(a.lastPlayedTs || '');
                 if (b.pct !== a.pct) return b.pct - a.pct;
-                if (!a.lastUnlockedAt && !b.lastUnlockedAt) return 0;
-                if (!a.lastUnlockedAt) return 1;
-                if (!b.lastUnlockedAt) return -1;
-                return b.lastUnlockedAt.localeCompare(a.lastUnlockedAt);
+                return (b.lastUnlockedAt || '').localeCompare(a.lastUnlockedAt || '');
             });
-    }, [achievementProgress, playtimeMap, sort, showPerfect, search, view]);
+    }, [achievementProgress, sort, showCompleted, search, view]);
 
     return (
         <div>
@@ -856,7 +838,7 @@ const ProgressTab = ({ achievementProgress, recentlyPlayed, onViewDetails, beate
                 view={view} onView={setView}
                 sorts={PROGRESS_SORTS.map(s => ({ value: s.id, label: s.label }))}
                 sort={sort} onSort={setSort}
-                completedLabel="Perfect" showCompleted={showPerfect} onShowCompleted={setShowPerfect}
+                completedLabel="Completed" showCompleted={showCompleted} onShowCompleted={setShowCompleted}
                 count={games.length}
                 search={search} onSearch={setSearch}
             />
@@ -867,19 +849,19 @@ const ProgressTab = ({ achievementProgress, recentlyPlayed, onViewDetails, beate
                     </div>
                 )}
                 {games.map(g => (
-                    <SteamGameCard
-                        key={g.appId}
+                    <XboxGameCard
+                        key={g.titleId}
                         game={{
-                            appId:           g.appId,
-                            name:            g.gameName,
-                            storeUrl:        `https://store.steampowered.com/app/${g.appId}`,
-                            playtime2Weeks:  g.playtime2Weeks,
-                            playtimeForever: g.playtimeForever,
-                            lastPlayedTs:    g.lastPlayedTs,
+                            titleId:      g.titleId,
+                            name:         g.gameName,
+                            storeUrl:     xboxSearchUrl(g.gameName),
+                            lastPlayedTs: g.lastPlayedTs,
+                            heroUrl:      g.heroUrl,
+                            iconUrl:      g.iconUrl,
                         }}
-                        achievementData={achievementProgress[g.appId]}
+                        achievementData={achievementProgress[g.titleId]}
                         onViewDetails={onViewDetails}
-                        beatenInfo={beatenMap?.get(g.appId) ?? null}
+                        beatenInfo={beatenMap?.get(g.titleId) ?? null}
                     />
                 ))}
             </div>
@@ -1023,18 +1005,18 @@ const App = () => {
 
     // Load win conditions + beaten game data
     useEffect(() => {
-        fetch('../../data/steam/win-conditions.json')
+        fetch('../../data/xbox/win-conditions.json')
             .then(r => r.json())
             .then(async wc => {
                 const entries = Object.entries(wc);
                 if (!entries.length) return;
                 const results = await Promise.all(
-                    entries.map(async ([appId, wc]) => {
+                    entries.map(async ([titleId, wc]) => {
                         try {
                             const isArr = Array.isArray(wc);
                             const mode  = isArr ? 'or' : (wc.mode || 'or');
                             const names = isArr ? wc : (wc.achievements || []);
-                            const game = await fetch(`../../data/steam/games/${appId}.json`).then(r => r.json());
+                            const game = await fetch(`../../data/xbox/games/${titleId}.json`).then(r => r.json());
                             const matched = (game.achievements || [])
                                 .filter(a => names.includes(a.apiName) && a.unlocked && a.unlockedAt);
                             if (mode === 'and') {
@@ -1046,14 +1028,13 @@ const App = () => {
                             }
                             const pick = matched[0];
                             return {
-                                appId: game.appId,
+                                titleId: game.titleId,
                                 gameName: game.gameName,
                                 iconUrl: game.iconUrl,
                                 total: game.total,
-                                playtimeForever: game.playtimeForever,
                                 beatenAt: pick.unlockedAt,
                                 winConditionName: pick.displayName,
-                                winCondIconHash: pick.iconUrl,
+                                winCondIconUrl: pick.iconUrl,
                                 winCondGlobalPct: pick.globalPct,
                             };
                         } catch { return null; }
@@ -1066,8 +1047,8 @@ const App = () => {
 
     // Load profile on mount
     useEffect(() => {
-        fetch('../../data/steam/profile.json')
-            .then(r => { if (!r.ok) throw new Error('Steam data not found'); return r.json(); })
+        fetch('../../data/xbox/profile.json')
+            .then(r => { if (!r.ok) throw new Error('Xbox data not found'); return r.json(); })
             .then(p => { setProfileData(p); setLoading(false); })
             .catch(e => { setError(e.message); setLoading(false); });
     }, []);
@@ -1076,7 +1057,7 @@ const App = () => {
         const nextIdx = achievementChunks.findIndex(c => c === null);
         if (nextIdx === -1 || loadingChunkIdx !== null) return;
         setLoadingChunkIdx(nextIdx);
-        fetch(`../../data/steam/achievements/${nextIdx + 1}.json`)
+        fetch(`../../data/xbox/achievements/${nextIdx + 1}.json`)
             .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
             .then(data => {
                 setAchievementChunks(prev => { const n = [...prev]; n[nextIdx] = data.recentAchievements ?? []; return n; });
@@ -1092,7 +1073,7 @@ const App = () => {
     useEffect(() => {
         if (activeTab !== 'activity') return;
         if (Object.keys(heatmapData).length === 0) {
-            fetch('../../data/steam/achievements/heatmap.json')
+            fetch('../../data/xbox/achievements/heatmap.json')
                 .then(r => r.json()).then(d => setHeatmapData(d.activityHeatmap || {}))
                 .catch(() => {});
         }
@@ -1104,7 +1085,7 @@ const App = () => {
     // Load games.json when Recent or Progress tab opens
     useEffect(() => {
         if (['recent', 'progress', 'activity'].includes(activeTab) && profileData && !gamesData) {
-            fetch('../../data/steam/games/index.json')
+            fetch('../../data/xbox/games/index.json')
                 .then(r => r.json())
                 .then(setGamesData)
                 .catch(() => setGamesData({ achievementProgress: {} }));
@@ -1112,15 +1093,15 @@ const App = () => {
     }, [activeTab, profileData, gamesData]);
 
     const handleViewDetails = useCallback(async ({ game, achievementData, beatenInfo }) => {
-        const appId = game.appId;
-        if (gameDetails[appId]) {
-            setSelectedGame({ game, achievementData: gameDetails[appId], beatenInfo });
+        const titleId = game.titleId;
+        if (gameDetails[titleId]) {
+            setSelectedGame({ game, achievementData: gameDetails[titleId], beatenInfo });
             return;
         }
         setModalLoading(game);
         try {
-            const data = await fetch(`../../data/steam/games/${appId}.json`).then(r => r.json());
-            setGameDetails(prev => ({ ...prev, [appId]: data }));
+            const data = await fetch(`../../data/xbox/games/${titleId}.json`).then(r => r.json());
+            setGameDetails(prev => ({ ...prev, [titleId]: data }));
             setModalLoading(null);
             setSelectedGame({ game, achievementData: data, beatenInfo });
         } catch {
@@ -1141,46 +1122,44 @@ const App = () => {
         if (b.lastAchGlobalPct == null) return -1;
         return a.lastAchGlobalPct - b.lastAchGlobalPct;
     });
-    const perfectAppIds = new Set(perfectGames.map(g => g.appId));
+    const perfectIds    = new Set(perfectGames.map(g => g.titleId));
     const beatenOnly    = beatenGames
-        .filter(g => !perfectAppIds.has(g.appId))
+        .filter(g => !perfectIds.has(g.titleId))
         .sort((a, b) => new Date(b.beatenAt) - new Date(a.beatenAt));
-    const beatenMap     = useMemo(() => new Map(beatenGames.map(g => [g.appId, g])), [beatenGames]);
+    const beatenMap     = useMemo(() => new Map(beatenGames.map(g => [g.titleId, g])), [beatenGames]);
 
     if (loading) return <ProfileLoadingSkeleton />;
 
     if (error) return (
         <div className="flex items-center justify-center min-h-screen bg-[#171a21] text-[#546270]">
             <div className="text-center">
-                <div className="text-[14px] mb-2">Could not load Steam data</div>
+                <div className="text-[14px] mb-2">Could not load Xbox data</div>
                 <div className="text-[11px]">{error}</div>
             </div>
         </div>
     );
 
-    const { profile, stats, recentlyPlayed, metadata, mostRecentGame } = profileData;
-    const status = STEAM_STATUS[profile.status] ?? STEAM_STATUS[0];
+    const { profile, stats, metadata, mostRecentGame } = profileData;
+    const recentlyPlayed = (profileData.recentlyPlayed ?? []).map(g => ({ ...g, storeUrl: xboxSearchUrl(g.name) }));
+    const profileUrl = xboxProfileUrl(profile.gamertag);
 
     const completionPct    = stats.completionPct ?? 0;
     const mostRecentUnlock  = profileData?.mostRecentUnlock ?? null;
     const mostRecentGameAch = mostRecentGame
-        ? (recentAchs.find(a => a.appId === mostRecentGame.appId) ?? null)
+        ? (recentAchs.find(a => a.titleId === mostRecentGame.titleId) ?? null)
         : null;
-    const avgPlaytime      = stats.avgPlaytimeMin > 0
-        ? formatPlaytime(stats.avgPlaytimeMin)
-        : '—';
 
     const statsLeft = [
-        { label: 'Total Games',         value: stats.totalGames.toLocaleString() },
-        { label: 'Games with Playtime', value: stats.gamesWithPlaytime.toLocaleString() },
-        { label: 'Hours Played',        value: `${stats.totalPlaytimeHrs.toLocaleString()}h` },
-        { label: 'Avg per Game',        value: avgPlaytime },
+        { label: 'Total Games',          value: stats.totalGames.toLocaleString() },
+        { label: 'Games w/ Achievements', value: stats.gamesWithAchievements.toLocaleString() },
+        { label: 'Games Started',        value: stats.gamesStarted.toLocaleString() },
+        { label: 'Gamerscore',           value: `${stats.gamerscore.toLocaleString()} G` },
     ];
     const statsRight = [
-        { label: 'Achievements',           value: `${stats.unlockedAchievements.toLocaleString()} / ${stats.totalAchievements.toLocaleString()}` },
-        { label: 'Games w/ Achievements',  value: stats.gamesWithAchievements.toLocaleString() },
-        { label: 'Overall Completion',     value: `${completionPct}%` },
-        { label: 'Perfect Games',          value: (stats.perfectCount ?? (gamesData ? perfectGames.length : null))?.toString() ?? '—' },
+        { label: 'Achievements',       value: `${stats.unlockedAchievements.toLocaleString()} / ${stats.totalAchievements.toLocaleString()}` },
+        { label: 'Overall Completion', value: `${completionPct}%` },
+        { label: 'Completed Games',    value: (stats.perfectCount ?? perfectGames.length).toString() },
+        { label: 'Beaten Games',       value: beatenOnly.length.toString() },
     ];
 
     return (
@@ -1202,7 +1181,7 @@ const App = () => {
                 <span className="text-[#2a475e]">›</span>
                 <a href="../../" className="text-[#546270] hover:text-[#8f98a0] transition-colors">Gaming Hub</a>
                 <span className="text-[#2a475e]">›</span>
-                <span className="text-[#c6d4df]">Steam</span>
+                <span className="text-[#c6d4df]">Xbox</span>
             </div>
 
             {/* Header */}
@@ -1211,10 +1190,9 @@ const App = () => {
 
                     {/* Avatar */}
                     <div className="relative shrink-0">
-                        <div className="w-20 h-20 md:w-24 md:h-24 rounded-[2px] border border-[#4c9be8] shadow-[0_2px_12px_rgba(0,0,0,0.5)] overflow-hidden bg-[#101214]">
-                            <img src={profile.avatar} alt={profile.displayName} className="w-full h-full object-cover" />
+                        <div className="w-20 h-20 md:w-24 md:h-24 rounded-[2px] border border-[#52b043] shadow-[0_2px_12px_rgba(0,0,0,0.5)] overflow-hidden bg-[#101214]">
+                            <img src={profile.avatar} alt={profile.gamertag} className="w-full h-full object-cover" />
                         </div>
-                        <span className="absolute bottom-1 right-1 w-3 h-3 rounded-full border-2 border-[#1b2838]" style={{ background: status.color }} />
                     </div>
 
                     {/* Meta */}
@@ -1222,29 +1200,23 @@ const App = () => {
 
                         <div className="flex items-center justify-center md:justify-start gap-2 flex-wrap">
                             <h1 className="text-2xl md:text-[26px] text-white font-medium tracking-wide leading-none">
-                                {profile.displayName}
+                                {profile.gamertag}
                             </h1>
-                            <a href={profile.profileUrl} target="_blank" rel="noreferrer"
-                                title="View on Steam"
+                            <a href={profileUrl} target="_blank" rel="noreferrer"
+                                title="View on Xbox"
                                 className="hover:opacity-80 transition-opacity bg-[#101214] p-1 rounded-[2px] border border-[#323f4c] flex items-center justify-center shrink-0">
-                                <img src="https://store.steampowered.com/favicon.ico" alt="Steam" className="w-3.5 h-3.5 object-contain" />
+                                <img src="../../assets/icon-xbox.png" alt="Xbox" className="w-3.5 h-3.5 object-contain" />
                             </a>
-                            {profile.lastOnline && profile.status !== 1 && (
+                            {mostRecentGame?.lastPlayedTs && (
                                 <span className="text-[10px] text-[#546270]">
-                                    Last online <span className="text-[#8f98a0]">{formatTimeAgo(profile.lastOnline)}</span>
+                                    Last played <span className="text-[#8f98a0]">{formatTimeAgo(mostRecentGame.lastPlayedTs)}</span>
                                 </span>
                             )}
                         </div>
 
-                        <div className="flex items-center justify-center md:justify-start gap-1.5">
-                            <span className="text-[9px] uppercase tracking-[0.07em] font-semibold" style={{ color: status.color }}>
-                                {status.label}
-                            </span>
-                        </div>
-
                         <div className="flex flex-wrap justify-center md:justify-start gap-1.5 mt-0.5">
                             <span className="text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
-                                <span className="text-[#e5b143]">{stats.totalPlaytimeHrs.toLocaleString()}h</span> played
+                                <span className="text-[#e5b143]">{stats.gamerscore.toLocaleString()}</span> gamerscore
                             </span>
                             <span className="text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
                                 <span className="text-[#c6d4df]">{stats.totalGames.toLocaleString()}</span> games
@@ -1277,29 +1249,23 @@ const App = () => {
                             </h2>
                             {mostRecentGame ? (
                                 <div className="bg-[#1b2838]/80 border border-[#323f4c] border-l-[3px] border-l-[#66c0f4] rounded-[3px] p-3 flex items-center gap-4 hover:bg-[#202d39] transition-colors shadow-sm">
-                                    <a href={mostRecentGame.storeUrl} target="_blank" rel="noreferrer"
-                                        className="w-24 shrink-0 rounded-[2px] overflow-hidden border border-[#101214] bg-black block hover:scale-105 transition-transform">
-                                        <img src={`https://cdn.akamai.steamstatic.com/steam/apps/${mostRecentGame.appId}/capsule_616x353.jpg`} alt={mostRecentGame.name} className="w-full h-auto block"
-                                            onError={e => { e.target.src = headerUrl(mostRecentGame.appId); }} />
+                                    <a href={xboxSearchUrl(mostRecentGame.name)} target="_blank" rel="noreferrer"
+                                        className="w-28 shrink-0 rounded-[2px] overflow-hidden border border-[#101214] bg-black block hover:scale-105 transition-transform aspect-video">
+                                        <img src={mostRecentGame.heroUrl || mostRecentGame.iconUrl} alt={mostRecentGame.name} className="w-full h-full object-cover block"
+                                            onError={e => { e.target.src = mostRecentGame.iconUrl; }} />
                                     </a>
                                     <div className="flex-1 min-w-0 flex flex-col">
-                                        <a href={mostRecentGame.storeUrl} target="_blank" rel="noreferrer"
+                                        <a href={xboxSearchUrl(mostRecentGame.name)} target="_blank" rel="noreferrer"
                                             className="text-[#c6d4df] hover:text-[#66c0f4] font-medium text-[14px] truncate leading-tight transition-colors">
                                             {mostRecentGame.name}
                                         </a>
                                         <div className="text-[10px] mt-1.5 flex items-center leading-none gap-1.5">
-                                            <Clock size={9} className="text-[#8f98a0] shrink-0" />
-                                            <span className="text-[#8f98a0]">{formatPlaytime(mostRecentGame.playtimeForever)} total</span>
-                                            {mostRecentGame.playtime2Weeks > 0 && (
-                                                <>
-                                                    <span className="text-[#546270]">•</span>
-                                                    <Clock size={9} className="text-[#57cbde] shrink-0" />
-                                                    <span className="text-[#57cbde]">{formatPlaytime(mostRecentGame.playtime2Weeks)} recent</span>
-                                                </>
+                                            {mostRecentGame.totalGamerscore > 0 && (
+                                                <span className="text-[#8f98a0]"><span className="text-[#c6d4df]">{mostRecentGame.gamerscore.toLocaleString()}</span> / {mostRecentGame.totalGamerscore.toLocaleString()} G</span>
                                             )}
                                             {mostRecentGame.lastPlayedTs && (
                                                 <>
-                                                    <span className="text-[#546270]">•</span>
+                                                    {mostRecentGame.totalGamerscore > 0 && <span className="text-[#546270]">•</span>}
                                                     <span className="text-[#546270]">{formatTimeAgo(mostRecentGame.lastPlayedTs)}</span>
                                                 </>
                                             )}
@@ -1347,12 +1313,12 @@ const App = () => {
                                         )}
                                         <div className="flex items-center gap-1.5 text-[10px]">
                                             <img
-                                                src={achProgress[mostRecentUnlock.appId]?.iconUrl}
+                                                src={achProgress[mostRecentUnlock.titleId]?.iconUrl}
                                                 alt=""
                                                 className="w-4 h-4 rounded-[1px] border border-[#101214] object-cover"
                                                 onError={e => { e.target.style.display = 'none'; }}
                                             />
-                                            <a href={`https://store.steampowered.com/app/${mostRecentUnlock.appId}`} target="_blank" rel="noreferrer" className="text-[#66c0f4] hover:text-[#c6d4df] transition-colors">{mostRecentUnlock.gameName}</a>
+                                            <a href={xboxSearchUrl(mostRecentUnlock.gameName)} target="_blank" rel="noreferrer" className="text-[#66c0f4] hover:text-[#c6d4df] transition-colors">{mostRecentUnlock.gameName}</a>
                                             <span className="text-[#546270]">•</span>
                                             <span className="text-[#546270]">{formatTimeAgo(mostRecentUnlock.unlockedAt)}</span>
                                         </div>
@@ -1405,19 +1371,19 @@ const App = () => {
                             </div>
                             <div className="p-3 grid grid-cols-5 sm:grid-cols-8 lg:grid-cols-5 gap-2 min-h-[60px]">
                                 {(completionsExpanded ? perfectGames : perfectGames.slice(0, iconLimit)).map(g => (
-                                    <div key={g.appId} className="relative group cursor-help">
-                                        <a href={`https://store.steampowered.com/app/${g.appId}`} target="_blank" rel="noreferrer">
+                                    <div key={g.titleId} className="relative group cursor-help">
+                                        <a href={xboxSearchUrl(g.gameName)} target="_blank" rel="noreferrer">
                                             <img
-                                                src={g.lastAchIconUrl || g.iconUrl || capsuleUrl(g.appId)}
+                                                src={g.lastAchIconUrl || g.iconUrl}
                                                 alt={g.gameName}
                                                 className="w-full aspect-square object-cover rounded-[2px] border-2 border-[#e5b143] group-hover:scale-110 transition-all duration-200 bg-[#101214]"
-                                                onError={e => { e.target.src = g.iconUrl || capsuleUrl(g.appId); }}
+                                                onError={e => { if (g.iconUrl) e.target.src = g.iconUrl; }}
                                             />
                                         </a>
                                         <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[200px] bg-[#1b2838] border border-[#2a475e] rounded-[2px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100] shadow-xl pointer-events-none overflow-hidden">
                                             <div className="h-[2px] bg-gradient-to-r from-[#e5b143] to-[#e5b143]/20" />
                                             <div className="flex items-center gap-2 px-2.5 py-2 border-b border-[#2a475e] bg-[#172333]">
-                                                <img src={g.lastAchIconUrl || g.iconUrl || capsuleUrl(g.appId)} alt=""
+                                                <img src={g.lastAchIconUrl || g.iconUrl} alt=""
                                                     className="w-8 h-8 rounded-[2px] border border-[#e5b143]/30 bg-black shrink-0 object-cover" />
                                                 <div className="flex flex-col min-w-0">
                                                     <span className="text-[11px] text-white font-semibold leading-tight line-clamp-2">{g.gameName}</span>
@@ -1427,12 +1393,12 @@ const App = () => {
                                             <div className="px-2.5 py-2 flex flex-col gap-1.5">
                                                 <div className="flex items-center justify-between">
                                                     <span className="text-[9px] text-[#546270] uppercase tracking-[0.08em]">Award</span>
-                                                    <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px] bg-[#e5b143] text-[#101214]">★ Perfect</span>
+                                                    <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px] bg-[#e5b143] text-[#101214]">★ Completed</span>
                                                 </div>
                                                 <div className="h-px bg-[#2a475e]" />
                                                 <div className="flex items-center justify-between">
                                                     <span className="text-[9px] text-[#546270] uppercase tracking-[0.08em]">Achievements</span>
-                                                    <span className="text-[9px] text-[#e5b143] font-medium">{g.total} / {g.total}</span>
+                                                    <span className="text-[9px] text-[#e5b143] font-medium">{g.total} / {g.total} · {(g.totalGamerscore ?? 0).toLocaleString()}G</span>
                                                 </div>
                                                 {g.lastAchGlobalPct != null && (<>
                                                     <div className="h-px bg-[#2a475e]" />
@@ -1441,13 +1407,6 @@ const App = () => {
                                                         <span className="text-[9px] font-medium" style={{ color: rarityBorderColor(g.lastAchGlobalPct) }}>
                                                             {rarityLabel(g.lastAchGlobalPct)} · {g.lastAchGlobalPct}%
                                                         </span>
-                                                    </div>
-                                                </>)}
-                                                {g.playtimeForever > 0 && (<>
-                                                    <div className="h-px bg-[#2a475e]" />
-                                                    <div className="flex items-center justify-between">
-                                                        <span className="text-[9px] text-[#546270] uppercase tracking-[0.08em]">Playtime</span>
-                                                        <span className="text-[9px] text-[#c6d4df]">{formatPlaytime(g.playtimeForever)}</span>
                                                     </div>
                                                 </>)}
                                                 {g.completedAt && (<>
@@ -1462,19 +1421,19 @@ const App = () => {
                                     </div>
                                 ))}
                                 {(completionsExpanded ? beatenOnly : beatenOnly.slice(0, Math.max(0, iconLimit - perfectGames.length))).map(g => (
-                                    <div key={g.appId} className="relative group cursor-help">
-                                        <a href={`https://store.steampowered.com/app/${g.appId}`} target="_blank" rel="noreferrer">
+                                    <div key={g.titleId} className="relative group cursor-help">
+                                        <a href={xboxSearchUrl(g.gameName)} target="_blank" rel="noreferrer">
                                             <img
-                                                src={achIconUrl(g.appId, g.winCondIconHash) || g.iconUrl || capsuleUrl(g.appId)}
+                                                src={g.winCondIconUrl || g.iconUrl}
                                                 alt={g.gameName}
                                                 className="w-full aspect-square object-cover rounded-[2px] border border-[#b8c4ce] group-hover:scale-110 transition-all duration-200 bg-[#101214]"
-                                                onError={e => { e.target.src = g.iconUrl || capsuleUrl(g.appId); }}
+                                                onError={e => { if (g.iconUrl) e.target.src = g.iconUrl; }}
                                             />
                                         </a>
                                         <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[200px] bg-[#1b2838] border border-[#2a475e] rounded-[2px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100] shadow-xl pointer-events-none overflow-hidden">
                                             <div className="h-[2px] bg-gradient-to-r from-[#b8c4ce] to-[#b8c4ce]/20" />
                                             <div className="flex items-center gap-2 px-2.5 py-2 border-b border-[#2a475e] bg-[#172333]">
-                                                <img src={achIconUrl(g.appId, g.winCondIconHash) || g.iconUrl || capsuleUrl(g.appId)} alt=""
+                                                <img src={g.winCondIconUrl || g.iconUrl} alt=""
                                                     className="w-8 h-8 rounded-[2px] border border-[#b8c4ce]/30 bg-black shrink-0 object-cover" />
                                                 <div className="flex flex-col min-w-0">
                                                     <span className="text-[11px] text-white font-semibold leading-tight line-clamp-2">{g.gameName}</span>
@@ -1493,13 +1452,6 @@ const App = () => {
                                                         <span className="text-[9px] font-medium" style={{ color: rarityBorderColor(g.winCondGlobalPct) }}>
                                                             {rarityLabel(g.winCondGlobalPct)} · {g.winCondGlobalPct}%
                                                         </span>
-                                                    </div>
-                                                </>)}
-                                                {g.playtimeForever > 0 && (<>
-                                                    <div className="h-px bg-[#2a475e]" />
-                                                    <div className="flex items-center justify-between">
-                                                        <span className="text-[9px] text-[#546270] uppercase tracking-[0.08em]">Playtime</span>
-                                                        <span className="text-[9px] text-[#c6d4df]">{formatPlaytime(g.playtimeForever)}</span>
                                                     </div>
                                                 </>)}
                                                 {g.beatenAt && (<>
@@ -1601,7 +1553,7 @@ const App = () => {
                         gamesData
                             ? <div className="flex flex-col gap-3">
                                 {recentlyPlayed.map(game => (
-                                    <SteamGameCard key={game.appId} game={game} achievementData={achProgress[game.appId]} onViewDetails={handleViewDetails} beatenInfo={beatenMap.get(game.appId) ?? null} />
+                                    <XboxGameCard key={game.titleId} game={game} achievementData={achProgress[game.titleId]} onViewDetails={handleViewDetails} beatenInfo={beatenMap.get(game.titleId) ?? null} />
                                 ))}
                               </div>
                             : <div className="flex items-center justify-center py-12 text-[#546270] text-[11px]">Loading games…</div>
@@ -1609,7 +1561,7 @@ const App = () => {
 
                     {activeTab === 'progress' && (
                         gamesData
-                            ? <ProgressTab achievementProgress={achProgress} recentlyPlayed={recentlyPlayed} onViewDetails={handleViewDetails} beatenMap={beatenMap} />
+                            ? <ProgressTab achievementProgress={achProgress} onViewDetails={handleViewDetails} beatenMap={beatenMap} />
                             : <div className="flex items-center justify-center py-12 text-[#546270] text-[11px]">Loading games…</div>
                     )}
 
@@ -1634,11 +1586,11 @@ const App = () => {
                 <div className="w-[3px] h-[18px] rounded-[1px] bg-[#66c0f4] opacity-50 shrink-0" />
                 <p className="text-[10px] text-[#546270]">
                     Personal gaming hub ·
-                    <span className="text-[#8f98a0] ml-1">{profile.profileUrl}</span>
+                    <span className="text-[#8f98a0] ml-1">{profile.gamertag}</span>
                 </p>
-                <a href="https://store.steampowered.com" target="_blank" rel="noreferrer"
+                <a href={profileUrl} target="_blank" rel="noreferrer"
                     className="ml-auto text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">
-                    steampowered.com ↗
+                    xbox.com ↗
                 </a>
             </footer>
 

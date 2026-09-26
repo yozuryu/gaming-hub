@@ -338,6 +338,16 @@ function serializeLocally(extractionTimestamp, profile, titles, games) {
 
     const titleMap = Object.fromEntries(titles.map(t => [String(t.titleId), t]));
     const iconOf   = (id) => httpsUrl(titleMap[id]?.displayImage);
+    // Wide art for card thumbnails/backgrounds, portrait poster as a fallback
+    const imageOf  = (t, ...types) => {
+        for (const type of types) {
+            const img = (t?.images || []).find(i => i.type === type);
+            if (img?.url) return httpsUrl(img.url);
+        }
+        return null;
+    };
+    const heroOf   = (id) => imageOf(titleMap[id], 'TitledHeroArt', 'SuperHeroArt');
+    const posterOf = (id) => imageOf(titleMap[id], 'Poster', 'BoxArt');
     const lastPlayedOf = (id) => titleMap[id]?.titleHistory?.lastTimePlayed ?? null;
 
     // Recent unlocks across all titles — 1 year window, newest first
@@ -369,6 +379,8 @@ function serializeLocally(extractionTimestamp, profile, titles, games) {
         const lockedAchs = (g.achievements || []).filter(a => !a.unlocked);
         return {
             iconUrl:        iconOf(id),
+            heroUrl:        heroOf(id),
+            posterUrl:      posterOf(id),
             devices:        titleMap[id]?.devices ?? [],
             lastPlayedTs:   lastPlayedOf(id),
             lastUnlockedAt: unlockedAchs[0]?.unlockedAt ?? null,
@@ -414,6 +426,8 @@ function serializeLocally(extractionTimestamp, profile, titles, games) {
                 titleId:         Number(t.titleId),
                 name:            t.name,
                 iconUrl:         httpsUrl(t.displayImage),
+                heroUrl:         heroOf(String(t.titleId)),
+                posterUrl:       posterOf(String(t.titleId)),
                 devices:         t.devices ?? [],
                 lastPlayedTs:    t.titleHistory.lastTimePlayed,
                 achUnlocked:     g?.unlocked ?? null,
