@@ -83,6 +83,7 @@ Most hourly commits are not your activity. Recent data commits change 44–486 l
 
 - **E1.** RA `--debug` is documented as a dry run but still writes files (only the watchlist path checks `DEBUG`). Skip `serializeLocally` in debug mode.
 - **E2.** Workflow push: `git commit && git push` fails if `main` moved since checkout (e.g. a manual push during the run), losing that run's data. Use `git pull --rebase` then push, with one retry. No failures seen in recent runs, so low urgency.
+- **E4.** Steam "Profile is not public" per game. In the 2026-09-26 manual full refresh, 146 games returned `playerstats.success = false` with `Profile is not public` while every other game worked, so the profile isn't private. All 146 were already cached with 0 unlocked; the A1 code treats the message as a failure, keeps the cache, and logs "146 game(s) failed", which buries real failures. **Fix:** for a single game, treat it as "no player stats": keep the cached entry, log it as a skip, don't count it as a failure. If every fetched game returns it, the profile really is private: abort before writing. Low urgency; nothing is lost today.
 - **E3.** Shared HTTP helper: both pipelines use fixed `sleep()` pacing with no retry. After A1/A2, use one retry/backoff helper in both (and in the Xbox pipeline).
 
 ---
