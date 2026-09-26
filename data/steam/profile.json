@@ -1,20 +1,20 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-09-26T07:32:51.931Z"
+        "extractionTimestamp": "2026-09-26T12:35:01.440Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 0,
+        "status": 4,
         "lastOnline": "2026-09-25T15:58:06.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1292,
-        "totalPlaytimeMin": 349160,
-        "totalPlaytimeHrs": 5819,
+        "totalPlaytimeMin": 349254,
+        "totalPlaytimeHrs": 5821,
         "gamesWithPlaytime": 820,
         "totalAchievements": 10055,
         "unlockedAchievements": 2827,
@@ -24,6 +24,17 @@
         "avgPlaytimeMin": 425
     },
     "recentlyPlayed": [
+        {
+            "appId": 578330,
+            "name": "LEGO® City Undercover",
+            "playtime2Weeks": 412,
+            "playtimeForever": 3119,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
+            "storeUrl": "https://store.steampowered.com/app/578330",
+            "lastPlayedTs": "2026-09-26T09:10:45.000Z",
+            "achUnlocked": 9,
+            "achTotal": 48
+        },
         {
             "appId": 2515020,
             "name": "FINAL FANTASY XVI",
@@ -36,17 +47,6 @@
             "achTotal": 69
         },
         {
-            "appId": 578330,
-            "name": "LEGO® City Undercover",
-            "playtime2Weeks": 389,
-            "playtimeForever": 3025,
-            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-            "storeUrl": "https://store.steampowered.com/app/578330",
-            "lastPlayedTs": "2026-09-25T13:37:11.000Z",
-            "achUnlocked": 9,
-            "achTotal": 48
-        },
-        {
             "appId": 921570,
             "name": "OCTOPATH TRAVELER",
             "playtime2Weeks": 104,
@@ -56,27 +56,16 @@
             "lastPlayedTs": "2026-09-19T17:06:25.000Z",
             "achUnlocked": 36,
             "achTotal": 88
-        },
-        {
-            "appId": 2486820,
-            "name": "Sonic Racing: CrossWorlds",
-            "playtime2Weeks": 79,
-            "playtimeForever": 509,
-            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2486820/b1ae28acb49215b4d5d94ecc752d377500c44057.jpg",
-            "storeUrl": "https://store.steampowered.com/app/2486820",
-            "lastPlayedTs": "2026-09-12T08:52:37.000Z",
-            "achUnlocked": 7,
-            "achTotal": 44
         }
     ],
     "mostRecentGame": {
-        "appId": 2515020,
-        "name": "FINAL FANTASY XVI",
-        "playtime2Weeks": 275,
-        "playtimeForever": 867,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2515020/0ce29700a22fea9eb270b276fa157b79511365e6.jpg",
-        "storeUrl": "https://store.steampowered.com/app/2515020",
-        "lastPlayedTs": "2026-09-25T15:57:46.000Z"
+        "appId": 578330,
+        "name": "LEGO® City Undercover",
+        "playtime2Weeks": 412,
+        "playtimeForever": 3119,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
+        "storeUrl": "https://store.steampowered.com/app/578330",
+        "lastPlayedTs": "2026-09-26T09:10:45.000Z"
     },
     "mostRecentUnlock": {
         "appId": 2515020,

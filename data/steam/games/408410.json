@@ -14,7 +14,7 @@
             "iconUrl": "c0211e4da8e9838f1ec529285794f684aa8cf24d.jpg",
             "iconGrayUrl": "affe115f84cb7b776373d3c2fc90d362d38ff8e6.jpg",
             "hidden": false,
-            "globalPct": 15.5
+            "globalPct": 15.3
         },
         {
             "apiName": "finish_campaign_cp",
@@ -36,7 +36,7 @@
             "iconUrl": "d79204767d11cec4a20f6d5a590f05dfbba1232e.jpg",
             "iconGrayUrl": "7a0861d88b3fb33aa43e2f165c599dd397da477b.jpg",
             "hidden": false,
-            "globalPct": 4.1
+            "globalPct": 4
         },
         {
             "apiName": "destroy_convoy",
@@ -47,7 +47,7 @@
             "iconUrl": "d9b52b54788743740325cff08296ea4b16b80534.jpg",
             "iconGrayUrl": "df8dee0d1c5a5dddb4cc2478d5ec6d1b67c5640c.jpg",
             "hidden": false,
-            "globalPct": 15.8
+            "globalPct": 15.6
         },
         {
             "apiName": "all_towers_types_in_mission",
@@ -58,7 +58,7 @@
             "iconUrl": "b2808abdd03487cfd148985c8989911b7fed2eba.jpg",
             "iconGrayUrl": "22dd2114503a00c3106764e5e0838042cbdfc4d8.jpg",
             "hidden": false,
-            "globalPct": 7.8
+            "globalPct": 7.7
         },
         {
             "apiName": "all_weapons_in_mission",
@@ -69,7 +69,7 @@
             "iconUrl": "82b28b907623cc162c3e1d124916e7503b0582b9.jpg",
             "iconGrayUrl": "2273f935d5e83a9e006812ecf49828e45624e60b.jpg",
             "hidden": false,
-            "globalPct": 20.8
+            "globalPct": 20.6
         },
         {
             "apiName": "finish_one_side_mission",
@@ -80,7 +80,7 @@
             "iconUrl": "61033174765b0edc771eb4049599dca0848a3dc2.jpg",
             "iconGrayUrl": "91fff29b5626b427d827b394f29ece65bca848c2.jpg",
             "hidden": false,
-            "globalPct": 51.5
+            "globalPct": 51.4
         },
         {
             "apiName": "finish_all_side_missions",
@@ -91,7 +91,7 @@
             "iconUrl": "eddbb7552434ad32d6fcfd6e8e7ff7ad9c421382.jpg",
             "iconGrayUrl": "3416cb50a52e2265b0c644e1027f39fc95bbaf69.jpg",
             "hidden": false,
-            "globalPct": 18.4
+            "globalPct": 18.2
         },
         {
             "apiName": "finish_mission_with_10_health_core",
@@ -135,7 +135,7 @@
             "iconUrl": "5f8a9d1e183c0eb57bb6e6a0125adc34ac469afe.jpg",
             "iconGrayUrl": "1dce4cfd36356fd38668c3b8684e0e55a2e2da5b.jpg",
             "hidden": false,
-            "globalPct": 2.4
+            "globalPct": 2.3
         },
         {
             "apiName": "finish_all_missions_gold",
@@ -168,7 +168,7 @@
             "iconUrl": "e9edd2ad414158ff6cebe404a7cf29c38edae123.jpg",
             "iconGrayUrl": "56693f54279a7ac39e9f810259f62bd1c47040f8.jpg",
             "hidden": false,
-            "globalPct": 70.3
+            "globalPct": 70.4
         },
         {
             "apiName": "kill_tank",
@@ -179,7 +179,7 @@
             "iconUrl": "8987b514aff11985378017b3fca682889dfc9cd8.jpg",
             "iconGrayUrl": "3571fd041d97f1416718ebc6e6cebc4887f7dc07.jpg",
             "hidden": false,
-            "globalPct": 30.6
+            "globalPct": 30.4
         },
         {
             "apiName": "kill_gunship",
@@ -190,7 +190,7 @@
             "iconUrl": "68ddaa382f98f11e8c84b7935bc84a333acd5fb9.jpg",
             "iconGrayUrl": "4f02aec04af39924c5a2e1bd348da05587ecc1fb.jpg",
             "hidden": false,
-            "globalPct": 24.1
+            "globalPct": 23.9
         },
         {
             "apiName": "kill_minotaur",
@@ -201,7 +201,7 @@
             "iconUrl": "ee2d525372564ef5b1e39bbfbb3585914fa39a26.jpg",
             "iconGrayUrl": "f1c529f565bcab80c74484ba20263a75c253d41a.jpg",
             "hidden": false,
-            "globalPct": 16.1
+            "globalPct": 15.9
         },
         {
             "apiName": "kill_ground_units_lvl1_sp",
@@ -212,7 +212,7 @@
             "iconUrl": "cedcb8a89fe5ec6fbc78a884dfa2ed8d51ecb1b4.jpg",
             "iconGrayUrl": "2096fb2006e5c816fac35b33b59576c4dbd18ae6.jpg",
             "hidden": false,
-            "globalPct": 28.8
+            "globalPct": 28.6
         },
         {
             "apiName": "kill_ground_units_lvl1_cp",
@@ -223,7 +223,7 @@
             "iconUrl": "7d24fb4cea0d3514c48ae11870552b29a4b7f6d0.jpg",
             "iconGrayUrl": "7c8143330f8b177f8fa41be21b3de2f9302eb67a.jpg",
             "hidden": false,
-            "globalPct": 3.8
+            "globalPct": 3.7
         },
         {
             "apiName": "kill_ground_units_lvl2_sp",
@@ -234,7 +234,7 @@
             "iconUrl": "34faa144082e05581fb599e29648ba46fdb6c55b.jpg",
             "iconGrayUrl": "dea5897ab7fbf6873837ee317570af4a0ad46600.jpg",
             "hidden": false,
-            "globalPct": 10.4
+            "globalPct": 10.3
         },
         {
             "apiName": "kill_ground_units_lvl2_cp",
@@ -256,7 +256,7 @@
             "iconUrl": "dec4429848cdcd31837baec9403310ac6f36cdd8.jpg",
             "iconGrayUrl": "7225399ababe967613d14d9c3dbad8574214c868.jpg",
             "hidden": false,
-            "globalPct": 25
+            "globalPct": 24.8
         },
         {
             "apiName": "kill_air_units_lvl1_cp",
@@ -278,7 +278,7 @@
             "iconUrl": "86f02d02251fc8f483cfffd151bb8c05d3f43e0a.jpg",
             "iconGrayUrl": "d07b13e2384822f1de73dd7f66e122a96c6b532f.jpg",
             "hidden": false,
-            "globalPct": 7.2
+            "globalPct": 7.1
         },
         {
             "apiName": "kill_air_units_lvl2_cp",
@@ -300,7 +300,7 @@
             "iconUrl": "1ec60ed00c8762d8fc53d89b9f3df66e8032e4f5.jpg",
             "iconGrayUrl": "87173b3f75a46324cbdb76b43f4156a6fb313f9e.jpg",
             "hidden": false,
-            "globalPct": 22.4
+            "globalPct": 22.2
         },
         {
             "apiName": "destroy_props_lvl2_sp",
@@ -311,7 +311,7 @@
             "iconUrl": "b52fa3ae6b31cf55d6c8490a25c06544271a5d29.jpg",
             "iconGrayUrl": "a974fc0b1ee0e5a41804dd8e33d2b19735edd602.jpg",
             "hidden": false,
-            "globalPct": 11.6
+            "globalPct": 11.5
         },
         {
             "apiName": "destroy_props_lvl1_cp",
@@ -333,7 +333,7 @@
             "iconUrl": "fda6d7c2145c1563b53bf62ecc53336e7248f97c.jpg",
             "iconGrayUrl": "8072dac7c10643319aed063798020ce51d0cfd22.jpg",
             "hidden": false,
-            "globalPct": 1.9
+            "globalPct": 1.8
         },
         {
             "apiName": "survival_first_medal",
@@ -377,7 +377,7 @@
             "iconUrl": "19ff9866802f153b714116919b9e190c8ef0bb59.jpg",
             "iconGrayUrl": "6b9f6a9c311926bc271e567224621f7f58cb16c1.jpg",
             "hidden": false,
-            "globalPct": 3.4
+            "globalPct": 3.3
         },
         {
             "apiName": "survival_kill_lvl1",
@@ -399,7 +399,7 @@
             "iconUrl": "d23f84be9651a2d88f52d92b70e28a53193cdef2.jpg",
             "iconGrayUrl": "94b10b0e4eafe96ee98b3d34f3b8f5879520ff81.jpg",
             "hidden": false,
-            "globalPct": 4.2
+            "globalPct": 4.1
         },
         {
             "apiName": "survival_kill_lvl3",
@@ -421,7 +421,7 @@
             "iconUrl": "cea9e07147ea239ee69d3dd41864516dbc89e7e4.jpg",
             "iconGrayUrl": "56903ffbefa45062c57179bc39cdc8d5e87d62bc.jpg",
             "hidden": false,
-            "globalPct": 12.3
+            "globalPct": 12.2
         },
         {
             "apiName": "survival_wave_lvl2",
@@ -443,7 +443,7 @@
             "iconUrl": "b83e37c0600f45f2e56e7190132046026949c892.jpg",
             "iconGrayUrl": "ad8cffaac8746a8e444c541b7d2817a3d94209ad.jpg",
             "hidden": false,
-            "globalPct": 5.4
+            "globalPct": 5.3
         }
     ],
     "playtimeForever": 274,
@@ -459,7 +459,7 @@
             "unlockedAt": null,
             "iconUrl": "c0211e4da8e9838f1ec529285794f684aa8cf24d.jpg",
             "iconGrayUrl": "affe115f84cb7b776373d3c2fc90d362d38ff8e6.jpg",
-            "globalPct": 15.5
+            "globalPct": 15.3
         },
         {
             "apiName": "finish_campaign_cp",
@@ -477,7 +477,7 @@
             "unlockedAt": null,
             "iconUrl": "d79204767d11cec4a20f6d5a590f05dfbba1232e.jpg",
             "iconGrayUrl": "7a0861d88b3fb33aa43e2f165c599dd397da477b.jpg",
-            "globalPct": 4.1
+            "globalPct": 4
         },
         {
             "apiName": "destroy_convoy",
@@ -486,7 +486,7 @@
             "unlockedAt": null,
             "iconUrl": "d9b52b54788743740325cff08296ea4b16b80534.jpg",
             "iconGrayUrl": "df8dee0d1c5a5dddb4cc2478d5ec6d1b67c5640c.jpg",
-            "globalPct": 15.8
+            "globalPct": 15.6
         },
         {
             "apiName": "all_towers_types_in_mission",
@@ -495,7 +495,7 @@
             "unlockedAt": null,
             "iconUrl": "b2808abdd03487cfd148985c8989911b7fed2eba.jpg",
             "iconGrayUrl": "22dd2114503a00c3106764e5e0838042cbdfc4d8.jpg",
-            "globalPct": 7.8
+            "globalPct": 7.7
         },
         {
             "apiName": "all_weapons_in_mission",
@@ -504,7 +504,7 @@
             "unlockedAt": null,
             "iconUrl": "82b28b907623cc162c3e1d124916e7503b0582b9.jpg",
             "iconGrayUrl": "2273f935d5e83a9e006812ecf49828e45624e60b.jpg",
-            "globalPct": 20.8
+            "globalPct": 20.6
         }
     ]
 }
