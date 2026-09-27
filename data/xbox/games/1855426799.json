@@ -2814,7 +2814,7 @@
             "iconUrl": "https://images-eds-ssl.xboxlive.com/image?url=27S1DHqE.cHkmFg4nspsd3sYSnTiyILnW4OqtPj1ErSnZr5xNd76UYXo4JRzeSfOfqGzMXCXlyH01RyBPZn7xRNgzHFNEqhVD8nln2_bfp7Ar5nG2OFtVpbXikfAGSMHvxpVcyPwZRGBgobH7Rix3A--",
             "hidden": true,
             "gamerscore": 15,
-            "globalPct": 0,
+            "globalPct": 0.1,
             "rarityCategory": "Rare"
         },
         {
@@ -2934,7 +2934,7 @@
             "iconUrl": "https://images-eds-ssl.xboxlive.com/image?url=27S1DHqE.cHkmFg4nspsd6ggjEIcWLDrdIe1xifVIMGgRowx7ckzo1leNj1nMaIFZDOFXK76nQV2yeFhIBN..JVnKwe7sOclwPZB0NgVzhZEi0bmQxrdANQivwP.Nz4XZjJRyDwP3GjiIJQDnJEcvg--",
             "hidden": false,
             "gamerscore": 15,
-            "globalPct": 0.3,
+            "globalPct": 0.4,
             "rarityCategory": "Rare"
         },
         {
@@ -2963,6 +2963,8 @@
         }
     ],
     "iconUrl": "https://store-images.s-microsoft.com/image/apps.40841.13859838656103240.91067596-d7f5-41db-a660-aa0cf34000ae.b9e8bd4a-7812-4265-84b5-9ab3376b61a5",
+    "heroUrl": "https://store-images.s-microsoft.com/image/apps.18191.13859838656103240.91067596-d7f5-41db-a660-aa0cf34000ae.76a37377-7952-412f-a27b-adb73815b31c",
+    "posterUrl": "https://store-images.s-microsoft.com/image/apps.34759.13859838656103240.91067596-d7f5-41db-a660-aa0cf34000ae.84269dc5-ec90-4353-9ecb-2cd95cbfb324",
     "devices": [
         "XboxSeries"
     ],
@@ -3018,7 +3020,5 @@
             "iconUrl": "https://images-eds-ssl.xboxlive.com/image?url=27S1DHqE.cHkmFg4nspsdwf3MBknhAx76H010_YgmBOux4YNjkc9BFciNofKD5dD4Y1FlyQfFv4cgD1clB14o4mJe73YEZGAJnZQXoj00vDDqPssuVqobY6r7RTFTJc5GAptKmdBcz8GPjmVmmHFZQ--",
             "globalPct": 6.7
         }
-    ],
-    "heroUrl": "https://store-images.s-microsoft.com/image/apps.18191.13859838656103240.91067596-d7f5-41db-a660-aa0cf34000ae.76a37377-7952-412f-a27b-adb73815b31c",
-    "posterUrl": "https://store-images.s-microsoft.com/image/apps.34759.13859838656103240.91067596-d7f5-41db-a660-aa0cf34000ae.84269dc5-ec90-4353-9ecb-2cd95cbfb324"
+    ]
 }

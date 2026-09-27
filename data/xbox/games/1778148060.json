@@ -30,7 +30,7 @@
             "iconUrl": "https://images-eds-ssl.xboxlive.com/image?url=27S1DHqE.cHkmFg4nspsd4Pi2EpqrpbQvoHERsIm8IvetM6iQpxFpGhJJZLdXdFAj7hnvWjPAduDqHLWMwSCJvHPBcOK1SNF07_OyY4e4EYADg.6zbGwcmvtw0uAHd5hHQofp8MYlAVDVg4YoKwCSCg0pJahT1kn.2zOkuZ9TF4-",
             "hidden": false,
             "gamerscore": 10,
-            "globalPct": 0,
+            "globalPct": 0.1,
             "rarityCategory": "Rare"
         },
         {
@@ -743,6 +743,8 @@
         }
     ],
     "iconUrl": "https://store-images.s-microsoft.com/image/apps.55101.14301619139286382.f67905d4-2f9c-4dea-a739-12ee0ceefe76.ff47cb4e-a55f-4aa6-bb37-31ecfc8c1bc1",
+    "heroUrl": "https://store-images.s-microsoft.com/image/apps.63554.14301619139286382.f67905d4-2f9c-4dea-a739-12ee0ceefe76.5bdbebdb-da71-4a9e-bd06-bfa7009c2330",
+    "posterUrl": "https://store-images.s-microsoft.com/image/apps.24050.14301619139286382.f67905d4-2f9c-4dea-a739-12ee0ceefe76.6a1d4e2b-3a93-47c0-b8bb-722a6a3b57d4",
     "devices": [
         "PC",
         "XboxOne",
@@ -766,7 +768,7 @@
             "unlocked": false,
             "unlockedAt": null,
             "iconUrl": "https://images-eds-ssl.xboxlive.com/image?url=27S1DHqE.cHkmFg4nspsd4Pi2EpqrpbQvoHERsIm8IvetM6iQpxFpGhJJZLdXdFAj7hnvWjPAduDqHLWMwSCJvHPBcOK1SNF07_OyY4e4EYADg.6zbGwcmvtw0uAHd5hHQofp8MYlAVDVg4YoKwCSCg0pJahT1kn.2zOkuZ9TF4-",
-            "globalPct": 0
+            "globalPct": 0.1
         },
         {
             "apiName": "3",
@@ -800,7 +802,5 @@
             "iconUrl": "https://images-eds-ssl.xboxlive.com/image?url=27S1DHqE.cHkmFg4nspsd0W70QW8EcDZP7AxuLja0gi6XRpCTfAoNbSHQdX3zzQ9UhuIlOQkYbaSvIDJeW7eX6C1vEtsT5MyYnpcnNKjMienf8JJWNX339lr6BshQsiGKj4Nmffq8D4KrjlosWdxtgDNUbKrjJyfhdgi8rCJ0zw-",
             "globalPct": 0
         }
-    ],
-    "heroUrl": "https://store-images.s-microsoft.com/image/apps.63554.14301619139286382.f67905d4-2f9c-4dea-a739-12ee0ceefe76.5bdbebdb-da71-4a9e-bd06-bfa7009c2330",
-    "posterUrl": "https://store-images.s-microsoft.com/image/apps.24050.14301619139286382.f67905d4-2f9c-4dea-a739-12ee0ceefe76.6a1d4e2b-3a93-47c0-b8bb-722a6a3b57d4"
+    ]
 }
