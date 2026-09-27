@@ -2,7 +2,11 @@
 
 ## v26.09.27
 
-Add a not-found page.
+Add a not-found page; sharper Xbox icon.
+
+### Xbox
+
+- Xbox icon replaced with the official 192×192 app icon from xbox.com (was a 15×15 favicon that looked blurry on the hub card, Activity feed, Completions page and Xbox profile header); `scripts/download-assets.js` now tries that source first
 
 ### Structure
 

@@ -74,6 +74,8 @@ const ASSETS = [
     file: 'icon-xbox.png',
     label: 'Xbox Icon',
     urls: [
+      // Official 192px app icon from xbox.com (the favicon fallbacks below are only 15-64px)
+      'https://cms-assets.xboxservices.com/assets/b1/ed/b1ed23d2-019e-4e67-a870-0f40825289f9.png?n=android-chrome-192x192.png',
       'https://www.xbox.com/favicon.ico',
       'https://www.google.com/s2/favicons?domain=xbox.com&sz=64',
     ],
