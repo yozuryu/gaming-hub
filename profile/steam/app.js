@@ -477,16 +477,15 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
         return Object.entries(byDay)
             .sort(([a], [b]) => b.localeCompare(a))
             .map(([day, achs]) => {
-                const byGame = {};
-                achs.forEach(ach => {
-                    if (!byGame[ach.appId]) byGame[ach.appId] = { appId: ach.appId, gameName: ach.gameName, achievements: [] };
-                    byGame[ach.appId].achievements.push(ach);
+                // Sessions = runs of consecutive unlocks in the same game (like cheevo-tracker),
+                // so switching games mid-day keeps timeline order. Newest session first.
+                const sessions = [];
+                [...achs].sort((a, b) => toMs(a.unlockedAt) - toMs(b.unlockedAt)).forEach(ach => {
+                    const last = sessions[sessions.length - 1];
+                    if (last && last.appId === ach.appId) last.achievements.push(ach);
+                    else sessions.push({ appId: ach.appId, gameName: ach.gameName, achievements: [ach] });
                 });
-                const sessions = Object.values(byGame).sort((a, b) => {
-                    const aT = Math.min(...a.achievements.map(x => new Date(x.unlockedAt).getTime()));
-                    const bT = Math.min(...b.achievements.map(x => new Date(x.unlockedAt).getTime()));
-                    return aT - bT;
-                });
+                sessions.reverse();
                 return { day, achCount: achs.length, sessions };
             });
     }, [achievements, selectedDay]);

@@ -9,15 +9,18 @@ Add a not-found page; sharper Xbox icon; days and times now follow your own time
 - Activity tab: heatmap days, the day timeline and session times now use your timezone (clock times were the raw UTC `HH:MM`); the timezone name (e.g. `Asia/Jakarta`) is shown in the Activity header
 - The heatmap is built in the browser from all four achievement chunks (loaded together when the tab opens) instead of `heatmap.json`, whose totals are per UTC day and can't be regrouped; the timeline still reveals one chunk at a time
 - RA's zone-less UTC dates (`2026-09-26 06:50:54`) were parsed as local time in the game modal's "Unlocked" date and in several sorts (and not at all in Safari); they now parse as UTC
+- Activity tab lists sessions newest first within a day (were oldest first), and clicking a heatmap day in an older part of the year now reveals chunks until that day appears (it stopped after one)
 
 ### Steam
 
 - Activity tab: same local-day heatmap and timeline, built from all chunks, with the timezone name in the header
+- Activity tab groups a day into sessions of consecutive unlocks in the same game, newest first, like cheevo-tracker (all of a game's unlocks for the day were merged into one group, oldest group first)
 
 ### Xbox
 
 - Xbox icon replaced with the official 192×192 app icon from xbox.com (was a 15×15 favicon that looked blurry on the hub card, Activity feed, Completions page and Xbox profile header); `scripts/download-assets.js` now tries that source first
 - Activity tab: same local-day heatmap and timeline, built from all chunks, with the timezone name in the header
+- Activity tab: same session grouping as Steam
 
 ### Hub
 
@@ -30,6 +33,7 @@ Add a not-found page; sharper Xbox icon; days and times now follow your own time
 ### Activity
 
 - Heatmap, streaks, day groups and times use your timezone (times were shown in UTC and days grouped by UTC date); heatmaps are built from all chunks instead of `heatmap.json`; timezone name shown next to the heatmap title
+- Day groups are split into sessions of consecutive unlocks in the same game, newest first, like cheevo-tracker; playing A → B → A now shows three sessions in timeline order (all of a game's unlocks for the day were merged into one group)
 
 ### Structure
 

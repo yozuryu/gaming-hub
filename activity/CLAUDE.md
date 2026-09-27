@@ -27,7 +27,7 @@ All RA/Steam/Xbox achievements are normalized to a unified shape via `utils/norm
 - Today is **never** counted as a streak break — the streak holds until the day ends with no achievements
 
 ### Timeline
-- Achievement groups: by day → by game → individual achievements
+- Achievement groups: by day → session → individual achievements. A session is a run of consecutive unlocks in the same platform + game (same as cheevo-tracker), so A → B → A is three sessions; sessions and achievements are newest first. Never merge all of a game's unlocks for a day into one group — that breaks timeline order
 - Reveals chunks 2–4 one at a time via IntersectionObserver with sentinel `ref` at bottom of list (already in memory; `nextChunk - 1` = chunks shown)
 - Days, streaks and times use the viewer's timezone via `assets/time.js`; never group by `unlockedAt.substring(0, 10)` (that's the UTC day)
 

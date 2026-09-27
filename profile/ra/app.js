@@ -660,12 +660,6 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
     return () => observer.disconnect();
   }, [hasMore, loadingMore, loadedChunks]);
 
-  // Auto-load chunk when a clicked heatmap day isn't in the loaded data yet
-  useEffect(() => {
-    if (!selectedDay || !heatmapData[selectedDay] || dayMap[selectedDay] || !hasMore || loadingMore) return;
-    onLoadMoreRef.current();
-  }, [selectedDay, dayMap, hasMore, loadingMore]);
-
   const toggleDay = (day) => setCollapsedDays(prev => {
     const next = new Set(prev);
     next.has(day) ? next.delete(day) : next.add(day);
@@ -684,6 +678,14 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
     });
     return map;
   }, [achievements]);
+
+  // Reveal more chunks when a clicked heatmap day isn't in the shown timeline yet.
+  // Declared after dayMap so its dependency list sees the real value and re-runs
+  // after each reveal until the day appears.
+  useEffect(() => {
+    if (!selectedDay || !heatmapData[selectedDay] || dayMap[selectedDay] || !hasMore || loadingMore) return;
+    onLoadMoreRef.current();
+  }, [selectedDay, dayMap, hasMore, loadingMore]);
 
   const maxPoints = useMemo(() => Math.max(1, ...Object.values(heatmapData).map(d => d.points || 0)), [heatmapData]);
 
@@ -757,6 +759,7 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
             sessions.push({ gameId: ach.gameId, gameTitle: ach.gameTitle, gameIcon: getMediaUrl(ach.gameIcon), consoleName: ach.consoleName, startTime: ach.date, endTime: ach.date, achievements: [ach] });
           }
         });
+        sessions.reverse(); // newest session first within a day
         const dayPts = achs.reduce((s, a) => s + (a.points || 0), 0);
         return { day, dayPts, achCount: achs.length, sessions };
       });

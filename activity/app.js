@@ -403,33 +403,34 @@ const App = () => {
         return sourceAchs.filter(a => dayKey(a.unlockedAt) === selectedDay);
     }, [sourceAchs, selectedDay]);
 
+    // Day → sessions, like cheevo-tracker: a session is a run of consecutive unlocks
+    // in the same game, so switching A → B → A gives three sessions in timeline order.
+    // Newest session first; achievements inside a session are sorted newest first on render.
     const groups = useMemo(() => {
         const byDay = {};
         displayAchs.forEach(a => {
             const day = dayKey(a.unlockedAt);
-            if (!byDay[day]) byDay[day] = {};
-            const key = `${a.platform}-${a.gameId}`;
-            if (!byDay[day][key]) byDay[day][key] = {
-                platform: a.platform,
-                gameId: a.gameId,
-                gameName: a.gameName,
-                gameIcon: a.gameIcon,
-                gameUrl: a.gameUrl,
-                consoleName: a.consoleName,
-                achs: [],
-            };
-            byDay[day][key].achs.push(a);
+            (byDay[day] ??= []).push(a);
         });
         return Object.entries(byDay)
             .sort(([a], [b]) => b.localeCompare(a))
-            .map(([day, games]) => {
-                const sessions = Object.values(games).sort((a, b) => {
-                    const aT = Math.max(...a.achs.map(x => new Date(x.unlockedAt).getTime()));
-                    const bT = Math.max(...b.achs.map(x => new Date(x.unlockedAt).getTime()));
-                    return bT - aT;
+            .map(([day, achs]) => {
+                const sessions = [];
+                [...achs].sort((a, b) => toMs(a.unlockedAt) - toMs(b.unlockedAt)).forEach(a => {
+                    const last = sessions[sessions.length - 1];
+                    if (last && last.platform === a.platform && last.gameId === a.gameId) last.achs.push(a);
+                    else sessions.push({
+                        platform: a.platform,
+                        gameId: a.gameId,
+                        gameName: a.gameName,
+                        gameIcon: a.gameIcon,
+                        gameUrl: a.gameUrl,
+                        consoleName: a.consoleName,
+                        achs: [a],
+                    });
                 });
-                const achCount = sessions.reduce((s, g) => s + g.achs.length, 0);
-                return { day, achCount, sessions };
+                sessions.reverse();
+                return { day, achCount: achs.length, sessions };
             });
     }, [displayAchs]);
 
@@ -708,7 +709,7 @@ const App = () => {
                                                 <ChevronDown size={11} className={`text-[#546270] transition-transform duration-200 shrink-0 ${isCollapsed ? '' : 'rotate-180'}`} />
                                             </button>
                                             {!isCollapsed && sessions.map((session) => (
-                                                <GameSession key={`${session.platform}-${session.gameId}`} session={session} />
+                                                <GameSession key={session.achs[0].id} session={session} />
                                             ))}
                                         </div>
                                     );
