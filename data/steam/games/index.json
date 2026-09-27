@@ -28463,14 +28463,23 @@
             "appId": 578330,
             "hasAchievements": true,
             "total": 48,
-            "unlocked": 9,
+            "unlocked": 10,
             "gameName": "LEGO® City Undercover",
-            "playtimeForever": 3119,
-            "lastPlayedTs": "2026-09-26T09:10:45.000Z",
+            "playtimeForever": 3180,
+            "lastPlayedTs": "2026-09-27T13:31:12.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-            "lastUnlockedAt": "2026-09-22T12:56:08.000Z",
-            "lastUnlockName": "Chan Chuang's Gang",
+            "lastUnlockedAt": "2026-09-27T12:51:55.000Z",
+            "lastUnlockName": "Vinnie's Jewels",
             "preview": [
+                {
+                    "apiName": "COMPLETE_STORYEVENT6",
+                    "displayName": "Vinnie's Jewels",
+                    "unlocked": true,
+                    "unlockedAt": "2026-09-27T12:51:55.000Z",
+                    "iconUrl": "933451e2edac4de99571313a5b122fe9588003b5.jpg",
+                    "iconGrayUrl": "253604ba55b57c0c74afc4368c499e64035a807e.jpg",
+                    "globalPct": 34.6
+                },
                 {
                     "apiName": "COMPLETE_STORYEVENT5",
                     "displayName": "Chan Chuang's Gang",
@@ -28496,7 +28505,7 @@
                     "unlockedAt": "2026-09-19T13:14:56.000Z",
                     "iconUrl": "890be2b2aa3afe8cb17833694aaac8fb7df9816d.jpg",
                     "iconGrayUrl": "0cc35301f508550de48ee9f5217ac2c20d4a013e.jpg",
-                    "globalPct": 43.9
+                    "globalPct": 44
                 },
                 {
                     "apiName": "COMPLETE_STORYEVENT3",
@@ -28515,15 +28524,6 @@
                     "iconUrl": "d9ed6b2a6213f17d22be740f5e817973ed93d9e2.jpg",
                     "iconGrayUrl": "c500fdd4c93d5397e2686d88d75aa9f234825be8.jpg",
                     "globalPct": 35.9
-                },
-                {
-                    "apiName": "COMPLETE_STORYEVENT2",
-                    "displayName": "Grapple with Goons",
-                    "unlocked": true,
-                    "unlockedAt": "2025-10-18T08:08:31.000Z",
-                    "iconUrl": "13b422b8f5537ce458f91a37efd018a6a3d63923.jpg",
-                    "iconGrayUrl": "23e266983abce9c823e0cc6b4f2718851fd79c80.jpg",
-                    "globalPct": 59.3
                 }
             ]
         },
@@ -34676,8 +34676,8 @@
             "total": 88,
             "unlocked": 36,
             "gameName": "OCTOPATH TRAVELER",
-            "playtimeForever": 1493,
-            "lastPlayedTs": "2026-09-26T14:52:51.000Z",
+            "playtimeForever": 1503,
+            "lastPlayedTs": "2026-09-27T11:20:54.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
             "lastUnlockedAt": "2026-09-19T16:57:00.000Z",
             "lastUnlockName": "Faith Shall Be Your Shield",
@@ -39528,7 +39528,7 @@
                     "unlockedAt": "2026-05-03T14:37:10.000Z",
                     "iconUrl": "a76b868f5477a4b9ad02d8c72ef9788d31910156.jpg",
                     "iconGrayUrl": "49290fb439b9cec624f808daf8e3c028d808b4b7.jpg",
-                    "globalPct": 78.3
+                    "globalPct": 78.4
                 },
                 {
                     "apiName": "1013",
