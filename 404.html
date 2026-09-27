@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Page not found · Gaming Hub</title>
+    <meta name="theme-color" content="#2a1a10">
+    <link rel="icon" type="image/png" href="/gaming-hub/assets/icon-192.png">
+    <!-- GitHub Pages serves this for any missing URL under /gaming-hub/, from any
+         depth, so every URL here is absolute. Styling comes from the root
+         site's design system (yozuryu.github.io/assets/noah-ui.css, same
+         origin) so all the sites share one "not found" screen. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&display=swap">
+    <link rel="stylesheet" href="/assets/noah-ui.css">
+    <style>
+        html, body { margin: 0; min-height: 100%; background: #2a1a10; }
+        main { position: relative; z-index: 1; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 32px 16px; box-sizing: border-box; }
+        .nu-frame { width: min(560px, 100%); text-align: center; }
+        .code { font: 800 64px/1 var(--nu-font); color: var(--nu-brown-600); margin: 6px 0 14px; letter-spacing: .04em; }
+        .nu-section__header { font-size: 20px; }
+        .nu-section__body { padding: 18px 16px 20px; }
+        .nu-desc { margin: 0 0 18px; }
+        .nu-hints { justify-content: center; }
+        @media (max-width: 480px) { .nu-hint { font-size: 16px; height: 40px; } .code { font-size: 48px; } }
+    </style>
+</head>
+<body class="nu-root">
+    <div class="nu-scene" aria-hidden="true"></div>
+    <main>
+        <div class="nu-frame">
+            <div class="code">404</div>
+            <section class="nu-section">
+                <div class="nu-section__header">Area not found</div>
+                <div class="nu-section__body">
+                    <p class="nu-desc">This page doesn't exist in Gaming Hub. It may have moved, or the link is wrong.</p>
+                    <nav class="nu-hints" aria-label="Go to">
+                        <a class="nu-hint" href="/gaming-hub/"><span class="nu-glyph">A</span>Gaming Hub</a>
+                        <a class="nu-hint" href="/"><span class="nu-glyph">B</span>Home</a>
+                    </nav>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

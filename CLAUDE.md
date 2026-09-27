@@ -17,6 +17,7 @@ Personal gaming statistics dashboard aggregating RetroAchievements (RA) and Stea
 ```
 gaming-hub/
 ├── index.html                      # Hub landing page (vanilla JS, no React)
+├── 404.html                        # Not-found page for /gaming-hub/* (menu style from the root site's /assets/noah-ui.css; absolute URLs only)
 ├── manifest.json                   # PWA manifest
 ├── sw.js                           # Service worker (network-first data, stale-while-revalidate assets)
 ├── changelog.md                    # Project changelog (Markdown, parsed by changelog app)

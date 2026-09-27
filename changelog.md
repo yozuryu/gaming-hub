@@ -1,5 +1,14 @@
 # Changelog
 
+## v26.09.27
+
+Add a not-found page.
+
+### Structure
+
+- New `404.html`: missing pages under `/gaming-hub/` now show a menu-styled "Area not found" card with links back to Gaming Hub and to the home page, instead of GitHub's default 404. It reuses the root site's design system (`/assets/noah-ui.css` from yozuryu.github.io) and uses absolute URLs so it works at any depth
+- Backlog: corrected the git remote command in `manual-todos.md` to use the `github-yozuryu` SSH alias
+
 ## v26.09.26
 
 Keep beaten and completed as separate milestones when they happen in different years; show RA playtime on completions; standardize Beaten on silver; app updates now show up without a manual cache bump; RA Game Awards and Steam Completions panels show 2 rows with a Show all toggle; Progress tabs get Nearly there / In progress / Abandoned views and a mobile-friendly filter bar; Xbox joins the site with its own profile page, hub card, and Activity/Completions support.

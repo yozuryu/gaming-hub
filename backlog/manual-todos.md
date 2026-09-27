@@ -18,10 +18,10 @@ On [github.com/yozuryu/gaming-hub](https://github.com/yozuryu/gaming-hub), click
 
 ## 2. Git remote URL
 
-GitHub reports the repo moved. Pushes still work through the redirect, but update the remote:
+The remote still points at the old repo name (`gaming-profile`), so GitHub prints "This repository moved" on every push. Update it, keeping the `github-yozuryu` SSH alias from `~/.ssh/config` (plain `github.com` would use a different key and fail):
 
 ```bash
-git remote set-url origin git@github.com:yozuryu/gaming-hub.git
+git remote set-url origin git@github-yozuryu:yozuryu/gaming-hub.git
 ```
 
 ## 3. `gh` CLI account
