@@ -2,7 +2,7 @@
 
 ## v26.09.27
 
-Add a not-found page; sharper Xbox icon; days and times now follow your own timezone instead of UTC.
+Add a not-found page; sharper Xbox icon; days and times now follow your own timezone instead of UTC; new app icon.
 
 ### RetroAchievements
 
@@ -37,6 +37,8 @@ Add a not-found page; sharper Xbox icon; days and times now follow your own time
 
 ### Structure
 
+- New app icon, the **Save Crystal**: three floating shards in RA gold, Steam blue and Xbox green forming one crystal, a JRPG save point for all your progress. Replaces the old trophy-on-controller icon in `appicon.png`, `icon-192.png`, `icon-512.png`; source kept as `assets/appicon.svg`. App icons are full-bleed with the art inside the maskable safe zone
+- Pages now have a favicon (`favicon.svg` + `favicon.ico`, crystal enlarged so it reads at 16 px) and an Apple touch icon — previously only the 404 page had one
 - New shared `assets/time.js` (UTC parsing incl. RA's zone-less format, local day keys, local date/clock formatting, heatmap builder); precached in the service worker (cache `v6`). The pipelines no longer write `achievements/heatmap.json` (RA, Steam, Xbox) and the files are deleted — the site builds heatmaps from the chunks
 - New `404.html`: missing pages under `/gaming-hub/` now show a menu-styled "Area not found" card with links back to Gaming Hub and to the home page, instead of GitHub's default 404. It reuses the root site's design system (`/assets/noah-ui.css` from yozuryu.github.io) and uses absolute URLs so it works at any depth
 - Backlog: corrected the git remote command in `manual-todos.md` to use the `github-yozuryu` SSH alias

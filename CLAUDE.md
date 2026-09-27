@@ -28,8 +28,9 @@ gaming-hub/
 ├── assets/
 │   ├── mobile-nav.js               # Shared bottom nav bar, injected into all pages via <script>
 │   ├── avatar.png                  # User avatar
-│   ├── appicon.png                 # Source icon (1024×1024, used to generate PWA icons)
-│   ├── icon-192.png / icon-512.png # PWA icons (generated from appicon.png)
+│   ├── appicon.svg / appicon.png   # App icon ("Save Crystal": three platform shards, one save crystal). SVG is the source; PNG 1024×1024, full-bleed, art at 90% for the maskable safe zone
+│   ├── icon-192.png / icon-512.png # PWA icons (rendered from appicon.svg)
+│   ├── favicon.svg / favicon.ico   # Browser-tab icon (rounded tile, crystal enlarged to read at 16 px); linked from every page
 │   └── icon-ra.png / icon-steam.png / icon-xbox.png
 │
 ├── data/                           # JSON written by pipelines, read by browser
@@ -117,7 +118,7 @@ Self-contained IIFE injected into every page via `<script src="...assets/mobile-
 ### PWA
 - `manifest.json` + `sw.js` at root
 - `viewport-fit=cover` on all 6 `index.html` viewport meta tags
-- Icons: `assets/icon-192.png` and `assets/icon-512.png` generated from `assets/appicon.png`
+- Icons: `assets/icon-192.png` and `assets/icon-512.png` rendered from `assets/appicon.svg` (full-bleed; the OS applies its own mask). Every page links `favicon.ico` + `favicon.svg` and `icon-192.png` as the Apple touch icon
 - Service worker: network-first for `data/**` and `changelog.md`, stale-while-revalidate for all other static assets (cached copy served instantly, refreshed in the background — a deploy shows up on the next load). Bumping `CACHE_NAME` is no longer required for code changes; bump it only when the `PRECACHE` list changes
 - **Refresh app** button clears all SW caches, calls `registration.update()` and reloads (data untouched). Lives in the Changelog page header (mobile + desktop) and the hub footer (desktop only — footer is hidden on mobile)
 
