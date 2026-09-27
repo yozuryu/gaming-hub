@@ -561,16 +561,6 @@ function serializeLocally(payload, achievementProgress, sentinelCache, owned) {
         perfectGames,
     });
 
-    // achievements/heatmap.json — compact day→count map for the Activity heatmap
-    const heatmap = {};
-    recentAchievements.forEach(a => {
-        if (!a.unlockedAt) return;
-        const day = a.unlockedAt.substring(0, 10);
-        if (!heatmap[day]) heatmap[day] = { count: 0 };
-        heatmap[day].count++;
-    });
-    write('heatmap.json', { activityHeatmap: heatmap }, ACH_DIR);
-
     // achievements/N.json — 1 year of unlocks split into 4 quarterly chunks
     // Chunk 1 = most recent (0–91 days), Chunk 4 = oldest (273–364 days)
     const CHUNK_MS = 91 * 24 * 60 * 60 * 1000;

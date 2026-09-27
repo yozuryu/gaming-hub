@@ -457,16 +457,6 @@ function serializeLocally(extractionTimestamp, profile, titles, games) {
         perfectGames,
     });
 
-    // achievements/heatmap.json — day → { count, gamerscore }
-    const heatmap = {};
-    for (const a of recentAchievements) {
-        const day = a.unlockedAt.substring(0, 10);
-        heatmap[day] ??= { count: 0, gamerscore: 0 };
-        heatmap[day].count++;
-        heatmap[day].gamerscore += a.gamerscore || 0;
-    }
-    write('heatmap.json', { activityHeatmap: heatmap }, ACH_DIR);
-
     // achievements/N.json — 1 year in 4 × 91-day chunks. Boundaries are anchored
     // at the next UTC midnight (not the run time) so entries only move between
     // chunks once a day, not on every run.

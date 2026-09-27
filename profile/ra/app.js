@@ -4,6 +4,7 @@ import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, T
 import { MEDIA_URL, SITE_URL, TILDE_TAG_COLORS } from './utils/constants.js';
 import { getMediaUrl, parseTitle, formatTimeAgo } from './utils/helpers.js';
 import { transformData } from './utils/transform.js';
+import { TZ, toMs, dayKey, addDays, keyToDate, fmtDate, fmtClock, buildHeatmap } from '../../assets/time.js';
 
 // --- JSX Helpers ---
 const renderTildeTags = (tags) => {
@@ -218,7 +219,7 @@ const GameCard = ({ game, onViewDetails, guides }) => {
     if (!game.achievements) return [];
     const unlocked = game.achievements
       .filter(a => a.isUnlocked)
-      .sort((a, b) => new Date(b.unlockDate || 0) - new Date(a.unlockDate || 0));
+      .sort((a, b) => toMs(b.unlockDate) - toMs(a.unlockDate));
     const locked = game.achievements.filter(a => !a.isUnlocked);
     return [...unlocked, ...locked].slice(0, 6);
   }, [game.achievements]);
@@ -608,7 +609,7 @@ const RAchievementModal = ({ game, onClose }) => {
                       </div>
                     </div>
                     {ach.isUnlocked && (
-                      <p className="text-[9px] text-[#66c0f4] shrink-0">Unlocked: {new Date(ach.unlockDate).toLocaleDateString()}</p>
+                      <p className="text-[9px] text-[#66c0f4] shrink-0">Unlocked: {fmtDate(ach.unlockDate)}</p>
                     )}
                   </div>
                 </div>
@@ -675,7 +676,7 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
   const dayMap = useMemo(() => {
     const map = {};
     achievements.forEach(ach => {
-      const day = ach.date.substring(0, 10);
+      const day = dayKey(ach.date);
       if (!map[day]) map[day] = { count: 0, points: 0, achievements: [] };
       map[day].count++;
       map[day].points += ach.points || 0;
@@ -687,14 +688,13 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
   const maxPoints = useMemo(() => Math.max(1, ...Object.values(heatmapData).map(d => d.points || 0)), [heatmapData]);
 
   // Build 365-day grid ending on ref date
-  const refDate = refTime ? new Date(refTime) : new Date();
+  // 365 local days ending on the ref date
   const days = useMemo(() => {
+    const end = dayKey(refTime || new Date());
     const arr = [];
     for (let i = 364; i >= 0; i--) {
-      const d = new Date(refDate);
-      d.setDate(d.getDate() - i);
-      const key = d.toISOString().substring(0, 10);
-      arr.push({ key, date: d });
+      const key = addDays(end, -i);
+      arr.push({ key, date: keyToDate(key) });
     }
     return arr;
   }, [refTime]);
@@ -737,7 +737,7 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
     // Group by day
     const byDay = {};
     source.forEach(ach => {
-      const day = ach.date.substring(0, 10);
+      const day = dayKey(ach.date);
       if (!byDay[day]) byDay[day] = [];
       byDay[day].push(ach);
     });
@@ -762,7 +762,7 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
       });
   }, [achievements, selectedDay, dayMap]);
 
-  const fmtTime = (str) => str ? str.substring(11, 16) : '';
+  const fmtTime = fmtClock;
   const fmtDay  = (str) => new Date(str + 'T00:00:00').toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
 
   return (
@@ -773,7 +773,8 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
         <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 mb-3">
           <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0"></span>
           <span className="text-[13px] text-white tracking-wide uppercase font-medium flex items-center gap-2"><Activity size={15} className="text-[#66c0f4]" /> Activity</span>
-          <span className="text-[10px] text-[#546270] ml-auto hidden sm:block">{loadedChunks < totalChunks ? `~${loadedChunks * 3} months` : '1 year'} · {achievements.length} achievements · click a day to filter</span>
+          <span className="text-[10px] text-[#546270] ml-auto" title="Days and times are shown in your timezone">{TZ}</span>
+          <span className="text-[10px] text-[#546270] hidden sm:block">· {loadedChunks < totalChunks ? `~${loadedChunks * 3} months` : '1 year'} · {achievements.length} achievements · click a day to filter</span>
           <span className="text-[10px] text-[#546270] ml-auto sm:hidden">{achievements.length} achievements</span>
         </div>
 
@@ -1160,8 +1161,7 @@ function SeriesProgressTab({ seriesData, gamesData, watchlistData }) {
               if (a.dateEarned) {
                 pointsEarned += a.points ?? 0;
                 achEarned++;
-                const t = new Date(a.dateEarned);
-                if (!latestAch || t > new Date(latestAch.date)) {
+                if (!latestAch || toMs(a.dateEarned) > toMs(latestAch.date)) {
                   latestAch = { title: a.title, badgeName: a.badgeName, achId: a.id, gameTitle: g.title, gameId: id, date: a.dateEarned };
                 }
               }
@@ -1183,7 +1183,7 @@ function SeriesProgressTab({ seriesData, gamesData, watchlistData }) {
         const isMastered   = hasAch && g && g.numAwardedToUser === g.numAchievements && g.numAchievements > 0;
         const isInProgress = hasAch && g && g.numAwardedToUser > 0 && !isMastered;
         const lastUnlockDate = (isMastered || isInProgress) && g?.achievements
-          ? Math.max(...Object.values(g.achievements).filter(a => a.dateEarned).map(a => new Date(a.dateEarned).getTime()))
+          ? Math.max(...Object.values(g.achievements).filter(a => a.dateEarned).map(a => toMs(a.dateEarned)))
           : 0;
         const sortBucket = isMastered ? 0 : isInProgress ? 1 : hasAch ? 2 : 3;
         if (imageIcon) {
@@ -1325,10 +1325,12 @@ export default function App() {
   const [profileData,   setProfileData]   = useState(null); // profile.json
   const [watchlistData, setWatchlistData] = useState(null); // watchlist.json
   const [gamesData,     setGamesData]     = useState(null); // games.json
-  const [heatmapData,  setHeatmapData]  = useState({});   // achievements/heatmap.json
-
+  // All 4 achievement chunks load together when Activity opens: the heatmap needs every
+  // unlock's timestamp to group them into the viewer's local days. The timeline still
+  // reveals them one chunk at a time (shownChunks).
   const TOTAL_ACH_CHUNKS = 4;
   const [achievementChunks, setAchievementChunks] = useState(() => Array(TOTAL_ACH_CHUNKS).fill(null));
+  const [shownChunks,       setShownChunks]       = useState(1);
   const [loadingChunkIdx,   setLoadingChunkIdx]   = useState(null);
 
   const [loadingProfile, setLoadingProfile] = useState(true);
@@ -1363,21 +1365,20 @@ export default function App() {
   const [guidesData, setGuidesData] = useState({});
   const [seriesData, setSeriesData] = useState([]);
 
-  const loadNextChunk = () => {
-    const nextIdx = achievementChunks.findIndex(c => c === null);
-    if (nextIdx === -1 || loadingChunkIdx !== null) return;
-    setLoadingChunkIdx(nextIdx);
-    fetch(`../../data/ra/achievements/${nextIdx + 1}.json`)
-      .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
-      .then(data => {
-        setAchievementChunks(prev => { const n = [...prev]; n[nextIdx] = data.recentAchievements || []; return n; });
-        setLoadingChunkIdx(null);
-      })
-      .catch(() => {
-        setAchievementChunks(prev => { const n = [...prev]; n[nextIdx] = []; return n; });
-        setLoadingChunkIdx(null);
-      });
+  const loadAllChunks = () => {
+    setLoadingChunkIdx(0);
+    Promise.all(Array.from({ length: TOTAL_ACH_CHUNKS }, (_, i) =>
+      fetch(`../../data/ra/achievements/${i + 1}.json`)
+        .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+        .then(data => data.recentAchievements || [])
+        .catch(() => [])
+    )).then(chunks => {
+      setAchievementChunks(chunks);
+      setLoadingChunkIdx(null);
+    });
   };
+
+  const loadNextChunk = () => setShownChunks(n => Math.min(n + 1, TOTAL_ACH_CHUNKS));
 
   const setTab = (tab) => {
     setActiveTab(tab);
@@ -1410,18 +1411,10 @@ export default function App() {
       .catch(() => {});
   }, []);
 
-  // ── Load heatmap + first achievement chunk when Activity tab is opened ──
+  // ── Load all achievement chunks when Activity tab is opened ──
   useEffect(() => {
     if (activeTab !== 'activity') return;
-    if (Object.keys(heatmapData).length === 0) {
-      fetch('../../data/ra/achievements/heatmap.json')
-        .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
-        .then(data => setHeatmapData(data.activityHeatmap || {}))
-        .catch(() => {});
-    }
-    if (achievementChunks[0] === null && loadingChunkIdx === null) {
-      loadNextChunk();
-    }
+    if (achievementChunks[0] === null && loadingChunkIdx === null) loadAllChunks();
   }, [activeTab]);
 
   // ── Fetch games.json when Recent or Progress tab is opened ─
@@ -1438,12 +1431,18 @@ export default function App() {
   // ── Merge loaded achievement chunks (newest first) ────────
   const allLoadedAchievements = useMemo(() => {
     return achievementChunks
+      .slice(0, shownChunks)
       .filter(c => c !== null)
       .flat()
-      .sort((a, b) => new Date(b.date) - new Date(a.date));
-  }, [achievementChunks]);
+      .sort((a, b) => toMs(b.date) - toMs(a.date));
+  }, [achievementChunks, shownChunks]);
 
-  const loadedChunkCount = achievementChunks.filter(c => c !== null).length;
+  const loadedChunkCount = Math.min(shownChunks, achievementChunks.filter(c => c !== null).length);
+
+  // Heatmap from every unlock of the year, in local days
+  const heatmapData = useMemo(() => buildHeatmap(
+    achievementChunks.filter(c => c !== null).flat(), a => a.date, { points: a => a.points }
+  ), [achievementChunks]);
 
   // ── Merge profile + watchlist + games into the shape transformData expects ──
   const rawData = useMemo(() => {
@@ -1498,7 +1497,7 @@ export default function App() {
 
   let displayedGames = [...ALL_GAMES];
   if (activeTab === 'recent') {
-    displayedGames.sort((a, b) => new Date(b.lastPlayedStr || 0) - new Date(a.lastPlayedStr || 0));
+    displayedGames.sort((a, b) => toMs(b.lastPlayedStr) - toMs(a.lastPlayedStr));
     displayedGames = displayedGames.slice(0, 15);
   } else if (activeTab === 'progress') {
     displayedGames = displayedGames
@@ -1910,7 +1909,7 @@ export default function App() {
                   loadedChunks={loadedChunkCount}
                   totalChunks={TOTAL_ACH_CHUNKS}
                   hasMore={loadedChunkCount < TOTAL_ACH_CHUNKS}
-                  loadingMore={loadingChunkIdx !== null}
+                  loadingMore={false}
                   onLoadMore={loadNextChunk}
                 />
           ) : activeTab === 'backlog' ? (

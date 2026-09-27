@@ -4,9 +4,7 @@
 - `../../data/steam/profile.json` — fetched on mount
 - `../../data/steam/games/index.json` — fetched when any game tab opens (~200KB, no `achievements[]`)
 - `../../data/steam/games/{appId}.json` — lazy-fetched per game when user opens achievement modal (`handleViewDetails`)
-- `../../data/steam/achievements/heatmap.json` — fetched when Activity tab opens
-- `../../data/steam/achievements/1.json` — fetched when Activity tab opens
-- `../../data/steam/achievements/2–4.json` — lazy-loaded via IntersectionObserver
+- `../../data/steam/achievements/1–4.json` — all four fetched when Activity tab opens (the heatmap is built in the browser from these chunks, in the viewer's timezone); the timeline reveals them one at a time (`shownChunks`) via IntersectionObserver
 
 ## Completions Panel (sidebar)
 - Perfect games (2px gold border) then beaten-only games (from win conditions, 1px silver border `#b8c4ce`)

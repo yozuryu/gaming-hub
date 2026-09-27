@@ -40,16 +40,14 @@ gaming-hub/
 │   │   ├── watchlist.json          # Want-to-play list (fetched separately by profile page)
 │   │   ├── series.json             # Named series with game ID arrays
 │   │   └── achievements/
-│   │       ├── 1.json – 4.json     # Recent achievements chunked by 91-day windows
-│   │       └── heatmap.json        # { "YYYY-MM-DD": { count, points } }
+│   │       └── 1.json – 4.json     # Recent achievements chunked by 91-day windows (the site builds heatmaps from these)
 │   ├── xbox/
 │   │   ├── profile.json            # Xbox profile, stats, recently played, perfectGames
 │   │   ├── games/
 │   │   │   ├── index.json          # All titles with achievements, no achievements[] (includes syncKey)
 │   │   │   └── {titleId}.json      # Full title data + achievements[]
 │   │   └── achievements/
-│   │       ├── 1.json – 4.json     # Recent unlocks in 91-day chunks (anchored at UTC midnight)
-│   │       └── heatmap.json        # { "YYYY-MM-DD": { count, gamerscore } }
+│   │       └── 1.json – 4.json     # Recent unlocks in 91-day chunks (anchored at UTC midnight)
 │   └── steam/
 │       ├── profile.json            # Steam profile, stats, recently played
 │       ├── games/
@@ -57,8 +55,7 @@ gaming-hub/
 │       │   ├── {appId}.json        # Full game data + achievements[], lazy-fetched per game
 │       │   └── sentinel.json       # Pipeline-only: no-achievement game cache (never loaded by frontend)
 │       └── achievements/
-│           ├── 1.json – 4.json     # Recent achievements chunked by 91-day windows
-│           └── heatmap.json        # { "YYYY-MM-DD": { count } }
+│           └── 1.json – 4.json     # Recent achievements chunked by 91-day windows
 │
 ├── profile/
 │   ├── ra/                         # CLAUDE.md in this directory
@@ -155,7 +152,7 @@ Env vars: `RA_USERNAME`, `RA_API_KEY`. Uses `@retroachievements/api` package.
 - `--refresh-games`: re-fetches per-game achievement details
 - `--watchlist-only`: fetches only want-to-play list → `watchlist.json`
 - Game details cached in Firestore to avoid re-fetching unchanged games
-- Outputs: `profile.json`, `games.json`, `watchlist.json`, `achievements/1-4.json`, `achievements/heatmap.json`
+- Outputs: `profile.json`, `games.json`, `watchlist.json`, `achievements/1-4.json`
 
 ### Steam Pipeline (`scripts/steam-pipeline.js`)
 Env vars: `STEAM_API_KEY`, `STEAM_USER_ID`.
@@ -164,7 +161,7 @@ Env vars: `STEAM_API_KEY`, `STEAM_USER_ID`.
 - `--refresh-games`: all owned games
 - `games/index.json` pre-computes `lastUnlockedAt`, `lastUnlockName`, `preview` (top 6 icon hashes) per game
 - `games/sentinel.json` tracks no-achievement games (pipeline-only, never fetched by frontend)
-- Outputs: `profile.json`, `games/index.json`, `games/{appId}.json`, `games/sentinel.json`, `achievements/1-4.json`, `achievements/heatmap.json`
+- Outputs: `profile.json`, `games/index.json`, `games/{appId}.json`, `games/sentinel.json`, `achievements/1-4.json`
 
 ### Xbox Pipeline (`scripts/xbox-pipeline.js`)
 Env vars: `XBOX_API_KEY` (OpenXBL). The XUID is read from `GET /account`; `XBOX_XUID` is optional and only compared.
@@ -179,7 +176,7 @@ Env vars: `XBOX_API_KEY` (OpenXBL). The XUID is read from `GET /account`; `XBOX_
 - No playtime (the API's `stats` is null)
 - Image URLs are stored as full-size originals; every page resizes them with an `xboxImg(url, width)` helper (duplicated in the Xbox page, Activity, Completions, hub and admin). Never render an Xbox image URL without it
 - Files are only rewritten when their content changes (ignoring `metadata`), so runs with no activity make no commit
-- Outputs: `profile.json`, `games/index.json`, `games/{titleId}.json`, `achievements/1-4.json`, `achievements/heatmap.json`
+- Outputs: `profile.json`, `games/index.json`, `games/{titleId}.json`, `achievements/1-4.json`
 
 ### Shared behavior
 - Both pipelines write JSON to `data/{ra,steam}/` and commit to main via GitHub Actions
@@ -231,6 +228,12 @@ There is **no bundler, no npm for the frontend, no TypeScript**. All frontend fi
 - Data fetched on mount with `useEffect` + `fetch()`
 - Loading skeletons shown while data is `null`/loading
 - Chunk-based lazy loading via `IntersectionObserver` with a sentinel `ref` at the bottom of the list
+
+### Dates and times
+- All data is stored in UTC. RA uses `YYYY-MM-DD HH:MM:SS` with no zone marker; Steam/Xbox use ISO with `Z`
+- Everything shown uses the **viewer's timezone**, through `assets/time.js`: `toDate`/`toMs` (parses both formats as UTC), `dayKey` (local `YYYY-MM-DD`), `addDays`, `fmtDate`, `fmtClock`, `buildHeatmap`, `TZ` (IANA name, shown as a small label on Activity views and Completions)
+- Never `new Date(raString)` (parsed as local time; Safari rejects it) and never `.substring(0, 10)` to get a day (that's the UTC day)
+- The hub page (classic script) has its own small `toDate`/`daysAgo`
 
 ### RA title parsing
 RA game titles use special syntax handled by `parseTitle()`:

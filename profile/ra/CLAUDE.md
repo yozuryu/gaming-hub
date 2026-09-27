@@ -5,8 +5,7 @@
 - `../../data/ra/games.json` — fetched on mount alongside profile
 - `../../data/ra/watchlist.json` — fetched separately (split from profile.json)
 - `../../data/ra/series.json` — fetched for Series tab
-- `../../data/ra/achievements/1.json` — fetched when Activity tab opens
-- `../../data/ra/achievements/2–4.json` — lazy-loaded via IntersectionObserver as user scrolls
+- `../../data/ra/achievements/1–4.json` — all four fetched when Activity tab opens (the heatmap is built in the browser from these chunks, in the viewer's timezone); the timeline reveals them one at a time (`shownChunks`) as the user scrolls
 
 ## transform.js
 Critical data layer — merges multiple API response shapes into what the UI expects. Takes `rawData` (profile + games + watchlist + achievements) and returns `{ profile: PROFILE_DATA, games: ALL_GAMES, backlog: BACKLOG }`. Do not bypass it or duplicate its logic.

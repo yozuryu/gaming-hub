@@ -1,4 +1,5 @@
 import { getMediaUrl, formatTimeAgo, formatDate, parseTitle } from './helpers.js';
+import { toMs } from '../../../assets/time.js';
 
 export const transformData = (data) => {
   if (!data) return { profile: null, games: [], backlog: { total: 0, games: [] }, recentAchievements: [] };
@@ -167,7 +168,7 @@ export const transformData = (data) => {
     const sevenDaysMs  = 7  * 24 * 60 * 60 * 1000;
     const thirtyDaysMs = 30 * 24 * 60 * 60 * 1000;
     data.recentAchievements.forEach(ach => {
-      const achDate = new Date(ach.Date || ach.dateEarned || ach.date || 0).getTime();
+      const achDate = toMs(ach.Date || ach.dateEarned || ach.date);
       const pts = ach.Points || ach.points || 0;
       if (refTimeMs - achDate <= thirtyDaysMs) {
         points30Days += pts;
@@ -176,7 +177,7 @@ export const transformData = (data) => {
     });
   }
 
-  const memberSinceMs = new Date(data.coreProfile.memberSince).getTime();
+  const memberSinceMs = toMs(data.coreProfile.memberSince);
   const weeksSince = Math.max(1, (refTimeMs - memberSinceMs) / (7 * 24 * 60 * 60 * 1000));
   const avgPointsPerWeek = Math.round(data.coreProfile.totalPoints / weeksSince);
 
@@ -277,7 +278,7 @@ export const transformData = (data) => {
     },
     games: ALL_GAMES,
     recentAchievements: Array.isArray(data.recentAchievements)
-      ? [...data.recentAchievements].sort((a, b) => new Date(b.date) - new Date(a.date))
+      ? [...data.recentAchievements].sort((a, b) => toMs(b.date) - toMs(a.date))
       : [],
     backlog: {
       total: data.wantToPlayList?.total || 0,

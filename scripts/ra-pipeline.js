@@ -388,17 +388,6 @@ function serializeLocally(payload) {
         results: payload.wantToPlayList?.results ?? [],
     });
 
-    // achievements/heatmap.json — compact day→points map for the Activity heatmap
-    const heatmap = {};
-    (payload.recentAchievements || []).forEach(a => {
-        if (!a.date) return;
-        const day = a.date.substring(0, 10);
-        if (!heatmap[day]) heatmap[day] = { points: 0, count: 0 };
-        heatmap[day].points += a.points || 0;
-        heatmap[day].count++;
-    });
-    write('heatmap.json', { activityHeatmap: heatmap }, ACH_DIR);
-
     // achievements/N.json — 1 year of unlocks split into 4 quarterly chunks
     // Chunk 1 = most recent (0–91 days), Chunk 4 = oldest (273–364 days)
     const CHUNK_MS = 91 * 24 * 60 * 60 * 1000;

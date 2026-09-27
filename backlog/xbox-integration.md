@@ -62,7 +62,7 @@ Original plan:
   - `games/index.json`: all titles without achievement lists (id, name, icon, unlocked/total, gamerscore earned/total, last played, `lastUnlockedAt`, `lastUnlockName`, `preview` icons).
   - `games/{titleId}.json`: full title data with `achievements[]`, lazy-loaded by the profile page.
   - `achievements/1.json`–`4.json`: recent unlocks in 91-day chunks.
-  - `achievements/heatmap.json`: `{ "YYYY-MM-DD": { count, gamerscore } }`.
+  - ~~`achievements/heatmap.json`~~ — removed 2026-09-27; heatmaps are built in the browser from the chunks, in the viewer's timezone.
 - **Hand-edited:** `data/xbox/win-conditions.json` (starts as `{}`).
 - **Incremental:** compare each title's `currentAchievements`, `currentGamerscore` and `lastTimePlayed` with the cached `games/index.json`; fetch achievement lists only for changed titles. Pick the endpoint by device: `/achievements/x360/...` when `devices` is only `Xbox360`, otherwise `/achievements/player/...`.
 - **Rate-limit budget:** 2 calls (account + title list) plus one per changed title. The full import is ~85 calls, so no resume queue is needed today. Keep a safety cap (e.g. 130 per run) and log `x-ratelimit-remaining`; if the library grows past the cap, the remaining titles are picked up next run because their cache is still stale.

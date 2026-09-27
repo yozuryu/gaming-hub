@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Star, Medal, Gem, Clock, Gamepad2, ChevronDown } from 'lucide-react';
+import { TZ, fmtDate, monthKey, yearOf, keyToDate } from '../assets/time.js';
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -15,15 +16,8 @@ const formatPlaytime = mins => {
     return h > 0 ? `${h}h ${m > 0 ? ` ${m}m` : ''}`.trim() : `${m}m`;
 };
 
-const fmtDate = iso => new Date(iso).toLocaleDateString('en-GB', {
-    day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC',
-});
-
-const fmtMonthYear = key => {
-    const [year, month] = key.split('-');
-    return new Date(Date.UTC(+year, +month - 1, 1))
-        .toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' });
-};
+// Dates, month groups and the dedupe year all use the viewer's timezone (assets/time.js)
+const fmtMonthYear = key => keyToDate(`${key}-01`).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
 
 const rarityLabel = pct => pct < 1 ? 'Ultra Rare' : pct < 10 ? 'Very Rare' : pct < 25 ? 'Rare' : pct < 50 ? 'Uncommon' : 'Common';
 const rarityColor = pct => pct < 1 ? '#ff6b6b' : pct < 10 ? '#e5b143' : pct < 25 ? '#66c0f4' : '#8f98a0';
@@ -187,8 +181,6 @@ const loadWinConditionBeaten = async (platform, idKey) => {
 // One mastered/perfect entry per game. A beaten entry is dropped only when the
 // same game was mastered/perfected in the same calendar year — beaten one year
 // and completed in a later year are kept as two separate milestones.
-const yearOf = date => date ? new Date(date).getFullYear() : null;
-
 const dedupeCompletions = entries => {
     const keyOf = e => `${e.platform}-${e.gameId}`;
     const completed = new Map();
@@ -216,8 +208,7 @@ const dedupeCompletions = entries => {
 const groupByMonth = completions => {
     const map = {};
     completions.forEach(c => {
-        const d = new Date(c.completedAt);
-        const key = `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}`;
+        const key = monthKey(c.completedAt);
         if (!map[key]) map[key] = [];
         map[key].push(c);
     });
@@ -441,6 +432,7 @@ const App = () => {
                                 <span className="text-[#c6d4df]">{completions.length}</span> total
                             </span>
                         )}
+                        <span className="ml-auto text-[10px] text-[#546270]" title="Dates are shown in your timezone">{TZ}</span>
                     </div>
                 </div>
             </header>

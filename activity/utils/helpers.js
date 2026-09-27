@@ -1,10 +1,5 @@
-export const fmtDay = (isoDay) =>
-    new Date(isoDay + 'T00:00:00Z').toLocaleDateString('en-GB', {
-        day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC',
-    });
-
-export const fmtTime = (iso) =>
-    new Date(iso).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' });
+// Day keys and clock times in the viewer's timezone (see assets/time.js)
+export { fmtDayKey as fmtDay, fmtClock as fmtTime } from '../../assets/time.js';
 
 export const parseTitle = (title) => {
     if (!title) return { baseTitle: title, subsetName: null, isSubset: false, tags: [] };

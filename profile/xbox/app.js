@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock, X, Medal, Gamepad2 } from 'lucide-react';
 import { PROGRESS_SORTS } from './utils/constants.js';
 import { formatDate, formatTimeAgo, fmtDay, fmtTime, xboxSearchUrl, xboxProfileUrl, xboxImg, rarityLabel, rarityBorderColor } from './utils/helpers.js';
+import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap } from '../../assets/time.js';
 
 // Xbox 360 titles only return unlocked achievements (`partial: true`), but the
 // total is known, so the rest are filled in as locked placeholders.
@@ -423,7 +424,7 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
         return () => observer.disconnect();
     }, [hasMore, loadingMore]);
 
-    const loadedDays = useMemo(() => new Set(achievements.map(a => a.unlockedAt.substring(0, 10))), [achievements]);
+    const loadedDays = useMemo(() => new Set(achievements.map(a => dayKey(a.unlockedAt))), [achievements]);
 
     // Auto-load next chunk when selected day has heatmap data but isn't loaded yet
     useEffect(() => {
@@ -437,13 +438,13 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
         return next;
     });
 
+    // 365 local days ending today
     const days = useMemo(() => {
         const arr   = [];
-        const today = new Date();
+        const today = todayKey();
         for (let i = 364; i >= 0; i--) {
-            const d = new Date(today);
-            d.setDate(d.getDate() - i);
-            arr.push({ key: d.toISOString().substring(0, 10), date: d });
+            const key = addDays(today, -i);
+            arr.push({ key, date: keyToDate(key) });
         }
         return arr;
     }, []);
@@ -483,12 +484,12 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
 
     const timelineGroups = useMemo(() => {
         const source = selectedDay
-            ? achievements.filter(a => a.unlockedAt.substring(0, 10) === selectedDay)
+            ? achievements.filter(a => dayKey(a.unlockedAt) === selectedDay)
             : achievements;
 
         const byDay = {};
         source.forEach(ach => {
-            const day = ach.unlockedAt.substring(0, 10);
+            const day = dayKey(ach.unlockedAt);
             if (!byDay[day]) byDay[day] = [];
             byDay[day].push(ach);
         });
@@ -537,7 +538,7 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
                         <Activity size={15} className="text-[#66c0f4]" /> Activity
                     </span>
                     <span className="text-[10px] text-[#546270] ml-auto hidden sm:block">
-                        {achievements.length} achievements · click a day to filter
+                        {achievements.length} achievements · <span title="Days and times are shown in your timezone">{TZ}</span> · click a day to filter
                     </span>
                     <span className="text-[10px] text-[#546270] ml-auto sm:hidden">
                         {achievements.length} achievements
@@ -961,8 +962,11 @@ const App = () => {
     const iconGridCols = useIconGridCols();
     const iconLimit = iconGridCols * 2;
     const [gamesData,         setGamesData]         = useState(null);
+    // All 4 chunks load together when Activity opens: the heatmap needs every unlock's
+    // timestamp to group them into the viewer's local days. The timeline still reveals
+    // them one chunk at a time (shownChunks).
     const [achievementChunks, setAchievementChunks] = useState([null, null, null, null]);
-    const [heatmapData,       setHeatmapData]       = useState({});
+    const [shownChunks,       setShownChunks]       = useState(1);
     const [loadingChunkIdx,   setLoadingChunkIdx]   = useState(null);
     const [loading,           setLoading]           = useState(true);
     const [error,             setError]             = useState(null);
@@ -1067,33 +1071,25 @@ const App = () => {
             .catch(e => { setError(e.message); setLoading(false); });
     }, []);
 
-    const loadNextChunk = () => {
-        const nextIdx = achievementChunks.findIndex(c => c === null);
-        if (nextIdx === -1 || loadingChunkIdx !== null) return;
-        setLoadingChunkIdx(nextIdx);
-        fetch(`../../data/xbox/achievements/${nextIdx + 1}.json`)
-            .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
-            .then(data => {
-                setAchievementChunks(prev => { const n = [...prev]; n[nextIdx] = data.recentAchievements ?? []; return n; });
-                setLoadingChunkIdx(null);
-            })
-            .catch(() => {
-                setAchievementChunks(prev => { const n = [...prev]; n[nextIdx] = []; return n; });
-                setLoadingChunkIdx(null);
-            });
+    const loadAllChunks = () => {
+        setLoadingChunkIdx(0);
+        Promise.all([1, 2, 3, 4].map(i =>
+            fetch(`../../data/xbox/achievements/${i}.json`)
+                .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+                .then(data => data.recentAchievements ?? [])
+                .catch(() => [])
+        )).then(chunks => {
+            setAchievementChunks(chunks);
+            setLoadingChunkIdx(null);
+        });
     };
 
-    // Load heatmap + first chunk when Activity tab opens
+    const loadNextChunk = () => setShownChunks(n => Math.min(n + 1, achievementChunks.length));
+
+    // Load all chunks when Activity tab opens
     useEffect(() => {
         if (activeTab !== 'activity') return;
-        if (Object.keys(heatmapData).length === 0) {
-            fetch('../../data/xbox/achievements/heatmap.json')
-                .then(r => r.json()).then(d => setHeatmapData(d.activityHeatmap || {}))
-                .catch(() => {});
-        }
-        if (achievementChunks[0] === null && loadingChunkIdx === null) {
-            loadNextChunk();
-        }
+        if (achievementChunks[0] === null && loadingChunkIdx === null) loadAllChunks();
     }, [activeTab]);
 
     // Load games.json when Recent or Progress tab opens
@@ -1127,8 +1123,11 @@ const App = () => {
     // Derived state — read pre-computed fields from JSON, no client-side iteration needed
     const achProgress  = gamesData?.achievementProgress ?? {};
     const recentAchs   = useMemo(() =>
-        achievementChunks.filter(c => c !== null).flat()
-            .sort((a, b) => new Date(b.unlockedAt) - new Date(a.unlockedAt)),
+        achievementChunks.slice(0, shownChunks).filter(c => c !== null).flat()
+            .sort((a, b) => toMs(b.unlockedAt) - toMs(a.unlockedAt)),
+    [achievementChunks, shownChunks]);
+    const heatmapData  = useMemo(() =>
+        buildHeatmap(achievementChunks.filter(c => c !== null).flat(), a => a.unlockedAt, { gamerscore: a => a.gamerscore }),
     [achievementChunks]);
     const perfectGames = [...(profileData?.perfectGames ?? [])].sort((a, b) => {
         if (a.lastAchGlobalPct == null && b.lastAchGlobalPct == null) return 0;
@@ -1583,8 +1582,8 @@ const App = () => {
                             heatmapData={heatmapData}
                             gameIcons={Object.fromEntries(Object.entries(gamesData?.achievementProgress ?? {}).map(([id, g]) => [id, g.iconUrl]))}
                             loading={loadingChunkIdx !== null || achievementChunks[0] === null}
-                            hasMore={achievementChunks.some(c => c === null)}
-                            loadingMore={loadingChunkIdx !== null}
+                            hasMore={shownChunks < achievementChunks.length}
+                            loadingMore={false}
                             onLoadMore={loadNextChunk}
                         />
                     )}

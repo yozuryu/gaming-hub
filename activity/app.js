@@ -4,6 +4,7 @@ import { Activity, ChevronDown, Flame } from 'lucide-react';
 import { PLATFORM_COLOR, TILDE_TAG_COLORS } from './utils/constants.js';
 import { fmtDay, fmtTime, parseTitle, xboxImg } from './utils/helpers.js';
 import { normalizeRA, normalizeSteam, normalizeXbox } from './utils/normalizers.js';
+import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap } from '../assets/time.js';
 
 const renderTildeTags = (tags) => {
     if (!tags?.length) return null;
@@ -28,13 +29,13 @@ const Heatmap = ({ heatmapData, filter, selectedDay, onSelectDay }) => {
         requestAnimationFrame(() => { scrollRef.current.scrollLeft = scrollRef.current.scrollWidth; });
     }, [heatmapKeys]);
 
+    // 365 local days ending today
     const days = useMemo(() => {
         const arr = [];
-        const today = new Date();
+        const today = todayKey();
         for (let i = 364; i >= 0; i--) {
-            const d = new Date(today);
-            d.setDate(d.getDate() - i);
-            arr.push({ key: d.toISOString().substring(0, 10), date: d });
+            const key = addDays(today, -i);
+            arr.push({ key, date: keyToDate(key) });
         }
         return arr;
     }, []);
@@ -235,16 +236,14 @@ const GameSession = ({ session }) => {
 // ── App ───────────────────────────────────────────────────────────────────────
 
 const App = () => {
-    const [raAchs,        setRaAchs]        = useState([]);
-    const [steamAchs,     setSteamAchs]     = useState([]);
-    const [raHeatmap,     setRaHeatmap]     = useState({});
-    const [steamHeatmap,  setSteamHeatmap]  = useState({});
+    // All 4 chunks per platform, fetched up front: the heatmap needs every unlock's
+    // timestamp to group them into the viewer's local days. The timeline still
+    // reveals one chunk at a time (nextChunk - 1 = chunks shown).
+    const [chunks,        setChunks]        = useState(null);   // { ra, steam, xbox: [c1, c2, c3, c4] }
     const [steamGameIcons, setSteamGameIcons] = useState({});
-    const [xboxAchs,      setXboxAchs]      = useState([]);
-    const [xboxHeatmap,   setXboxHeatmap]   = useState({});
     const [xboxGameIcons, setXboxGameIcons] = useState({});
     const [loading,       setLoading]       = useState(true);
-    const [loadingMore, setLoadingMore] = useState(false);
+    const loadingMore = false;
     const [nextChunk,   setNextChunk]   = useState(2);
     const [filter,      setFilter]      = useState('all');
     const [selectedDay, setSelectedDay] = useState(null);
@@ -258,77 +257,53 @@ const App = () => {
         return next;
     });
 
-    const fetchChunk = useCallback(async (platform, i) => {
-        const path = `../data/${platform}/achievements/${i}.json`;
-        const d = await fetch(path)
+    const fetchChunk = async (platform, i) => {
+        const d = await fetch(`../data/${platform}/achievements/${i}.json`)
             .then(r => r.ok ? r.json() : { recentAchievements: [] })
             .catch(() => ({ recentAchievements: [] }));
-        const normalized = (d.recentAchievements ?? []).map(
+        return (d.recentAchievements ?? []).map(
             platform === 'ra' ? normalizeRA : platform === 'xbox' ? normalizeXbox : normalizeSteam
         );
-        const icons = platform === 'steam' ? steamGameIcons : platform === 'xbox' ? xboxGameIcons : null;
-        if (icons) {
-            normalized.forEach(a => {
-                const icon = icons[a.gameId];
-                if (icon) a.gameIcon = icon;
-            });
-        }
-        return normalized;
-    }, [steamGameIcons, xboxGameIcons]);
+    };
 
     useEffect(() => {
-        // Fetch both heatmaps separately
-        Promise.all([
-            fetch('../data/ra/achievements/heatmap.json').then(r => r.json()).catch(() => ({})),
-            fetch('../data/steam/achievements/heatmap.json').then(r => r.json()).catch(() => ({})),
-            fetch('../data/xbox/achievements/heatmap.json').then(r => r.json()).catch(() => ({})),
-        ]).then(([raH, stH, xbH]) => {
-            setRaHeatmap(raH.activityHeatmap || {});
-            setSteamHeatmap(stH.activityHeatmap || {});
-            setXboxHeatmap(xbH.activityHeatmap || {});
-        });
-
         fetch('../data/xbox/games/index.json')
             .then(r => r.json())
-            .then(d => {
-                const icons = Object.fromEntries(
-                    Object.entries(d.achievementProgress ?? {}).map(([id, g]) => [id, xboxImg(g.iconUrl, 64)])
-                );
-                setXboxGameIcons(icons);
-                setXboxAchs(prev => prev.map(a => icons[a.gameId] ? { ...a, gameIcon: icons[a.gameId] } : a));
-            })
+            .then(d => setXboxGameIcons(Object.fromEntries(
+                Object.entries(d.achievementProgress ?? {}).map(([id, g]) => [id, xboxImg(g.iconUrl, 64)])
+            )))
             .catch(() => {});
 
         fetch('../data/steam/games/index.json')
             .then(r => r.json())
-            .then(d => {
-                const icons = Object.fromEntries(
-                    Object.entries(d.achievementProgress ?? {}).map(([id, g]) => [id, g.iconUrl])
-                );
-                setSteamGameIcons(icons);
-                setSteamAchs(prev => prev.map(a => icons[a.gameId] ? { ...a, gameIcon: icons[a.gameId] } : a));
-            })
+            .then(d => setSteamGameIcons(Object.fromEntries(
+                Object.entries(d.achievementProgress ?? {}).map(([id, g]) => [id, g.iconUrl])
+            )))
             .catch(() => {});
 
-        Promise.all([fetchChunk('ra', 1), fetchChunk('steam', 1), fetchChunk('xbox', 1)]).then(([ra, steam, xbox]) => {
-            setRaAchs(ra);
-            setSteamAchs(steam);
-            setXboxAchs(xbox);
+        const all = platform => Promise.all([1, 2, 3, 4].map(i => fetchChunk(platform, i)));
+        Promise.all([all('ra'), all('steam'), all('xbox')]).then(([ra, steam, xbox]) => {
+            setChunks({ ra, steam, xbox });
             setLoading(false);
         });
     }, []);
 
+    const withIcons = (list, icons) => list.map(a => icons[a.gameId] ? { ...a, gameIcon: icons[a.gameId] } : a);
+    const shown = (platform) => chunks ? chunks[platform].slice(0, nextChunk - 1).flat() : [];
+    const raAchs    = useMemo(() => shown('ra'), [chunks, nextChunk]);
+    const steamAchs = useMemo(() => withIcons(shown('steam'), steamGameIcons), [chunks, nextChunk, steamGameIcons]);
+    const xboxAchs  = useMemo(() => withIcons(shown('xbox'), xboxGameIcons), [chunks, nextChunk, xboxGameIcons]);
+
+    // Heatmaps from every unlock of the year, in local days
+    const heatOf = (platform) => chunks ? buildHeatmap(chunks[platform].flat(), a => a.unlockedAt) : {};
+    const raHeatmap    = useMemo(() => heatOf('ra'),    [chunks]);
+    const steamHeatmap = useMemo(() => heatOf('steam'), [chunks]);
+    const xboxHeatmap  = useMemo(() => heatOf('xbox'),  [chunks]);
+
     const loadMore = useCallback(() => {
-        if (nextChunk > 4 || loadingMore) return;
-        setLoadingMore(true);
-        Promise.all([fetchChunk('ra', nextChunk), fetchChunk('steam', nextChunk), fetchChunk('xbox', nextChunk)]).then(([ra, steam, xbox]) => {
-            setRaAchs(prev => [...prev, ...ra]);
-            setSteamAchs(prev => [...prev, ...steam]);
-            setXboxAchs(prev => [...prev, ...xbox]);
-            setNextChunk(prev => prev + 1);
-            setLoadingMore(false);
-        });
-    }, [nextChunk, loadingMore, fetchChunk]);
+        if (nextChunk > 4) return;
+        setNextChunk(prev => prev + 1);
+    }, [nextChunk]);
 
     // Scroll sentinel — auto-load next chunk when bottom is near
     const loadMoreRef = useRef(loadMore);
@@ -366,24 +341,15 @@ const App = () => {
                 .filter(([, d]) => (d.count ?? d) >= 1)
                 .map(([day]) => day)
         );
-        const toKey = (d) => {
-            const y = d.getFullYear();
-            const m = String(d.getMonth() + 1).padStart(2, '0');
-            const day = String(d.getDate()).padStart(2, '0');
-            return `${y}-${m}-${day}`;
-        };
-        const today = new Date();
-        const todayKey = toKey(today);
+        const today = todayKey();
         // Count streak from yesterday backwards; add today only if it has achievements
-        const yesterday = new Date(today);
-        yesterday.setDate(yesterday.getDate() - 1);
         let current = 0;
-        const cursor = new Date(yesterday);
-        while (activeDays.has(toKey(cursor))) {
+        let cursor = addDays(today, -1);
+        while (activeDays.has(cursor)) {
             current++;
-            cursor.setDate(cursor.getDate() - 1);
+            cursor = addDays(cursor, -1);
         }
-        if (activeDays.has(todayKey)) current++;
+        if (activeDays.has(today)) current++;
         const sortedDays = [...activeDays].sort();
         let longest = 0, longestStart = null, longestEnd = null;
         let runStart = null, runLen = 0, prev = null;
@@ -391,9 +357,7 @@ const App = () => {
             if (prev === null) {
                 runStart = day; runLen = 1;
             } else {
-                const expected = new Date(prev);
-                expected.setDate(expected.getDate() + 1);
-                if (day === toKey(expected)) {
+                if (day === addDays(prev, 1)) {
                     runLen++;
                 } else {
                     if (runLen > longest) { longest = runLen; longestStart = runStart; longestEnd = prev; }
@@ -405,13 +369,11 @@ const App = () => {
         if (runLen > longest) { longest = runLen; longestStart = runStart; longestEnd = prev; }
         const last14 = [];
         for (let i = 13; i >= 0; i--) {
-            const d = new Date(today);
-            d.setDate(d.getDate() - i);
-            const key = toKey(d);
+            const key = addDays(today, -i);
             const isToday = i === 0;
             last14.push({
                 key,
-                label: d.toLocaleDateString('en-GB', { weekday: 'short' }),
+                label: keyToDate(key).toLocaleDateString('en-GB', { weekday: 'short' }),
                 active: activeDays.has(key),
                 isToday,
                 isPending: isToday && !activeDays.has(key),
@@ -425,10 +387,10 @@ const App = () => {
             : filter === 'steam' ? steamAchs
             : filter === 'xbox' ? xboxAchs
             : [...raAchs, ...steamAchs, ...xboxAchs];
-        return [...base].sort((a, b) => new Date(b.unlockedAt) - new Date(a.unlockedAt));
+        return [...base].sort((a, b) => toMs(b.unlockedAt) - toMs(a.unlockedAt));
     }, [raAchs, steamAchs, xboxAchs, filter]);
 
-    const loadedDays = useMemo(() => new Set(sourceAchs.map(a => a.unlockedAt.substring(0, 10))), [sourceAchs]);
+    const loadedDays = useMemo(() => new Set(sourceAchs.map(a => dayKey(a.unlockedAt))), [sourceAchs]);
 
     // Auto-load next chunk when selected day has heatmap data but isn't loaded yet
     useEffect(() => {
@@ -438,13 +400,13 @@ const App = () => {
 
     const displayAchs = useMemo(() => {
         if (!selectedDay) return sourceAchs;
-        return sourceAchs.filter(a => a.unlockedAt.substring(0, 10) === selectedDay);
+        return sourceAchs.filter(a => dayKey(a.unlockedAt) === selectedDay);
     }, [sourceAchs, selectedDay]);
 
     const groups = useMemo(() => {
         const byDay = {};
         displayAchs.forEach(a => {
-            const day = a.unlockedAt.substring(0, 10);
+            const day = dayKey(a.unlockedAt);
             if (!byDay[day]) byDay[day] = {};
             const key = `${a.platform}-${a.gameId}`;
             if (!byDay[day][key]) byDay[day][key] = {
@@ -605,7 +567,8 @@ const App = () => {
                                 <span className="text-[13px] text-white tracking-wide uppercase font-medium flex items-center gap-2">
                                     <Activity size={15} className="text-[#66c0f4]" /> Heatmap
                                 </span>
-                                <span className="text-[10px] text-[#546270] ml-auto hidden sm:block">click a day to filter</span>
+                                <span className="text-[10px] text-[#546270] ml-auto" title="Days and times are shown in your timezone">{TZ}</span>
+                                <span className="text-[10px] text-[#546270] hidden sm:block">· click a day to filter</span>
                                 {selectedDay && (
                                     <button
                                         onClick={() => setSelectedDay(null)}

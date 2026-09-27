@@ -1,10 +1,8 @@
 # Activity — Page Context
 
 ## Data Sources
-- `../data/{ra,steam,xbox}/achievements/heatmap.json` — fetched on mount
-- `../data/{ra,steam,xbox}/achievements/1.json` — fetched on mount
+- `../data/{ra,steam,xbox}/achievements/1–4.json` — all four fetched on mount (the heatmap is built in the browser from these chunks, in the viewer's timezone)
 - `../data/{steam,xbox}/games/index.json` — game icons for Steam and Xbox sessions
-- `../data/{ra,steam,xbox}/achievements/2–4.json` — lazy-loaded via IntersectionObserver (300px rootMargin)
 
 All RA/Steam/Xbox achievements are normalized to a unified shape via `utils/normalizers.js`:
 - `normalizeRA()` → `{ platform, gameId, gameName, achievementName, icon, unlockedAt, points, tags, ... }`
@@ -30,8 +28,8 @@ All RA/Steam/Xbox achievements are normalized to a unified shape via `utils/norm
 
 ### Timeline
 - Achievement groups: by day → by game → individual achievements
-- Lazy-loads chunks 2–4 via IntersectionObserver with sentinel `ref` at bottom of list
-- `loadedChunkCount` tracks how many chunks are loaded; `loadingChunkIdx` tracks in-flight fetch
+- Reveals chunks 2–4 one at a time via IntersectionObserver with sentinel `ref` at bottom of list (already in memory; `nextChunk - 1` = chunks shown)
+- Days, streaks and times use the viewer's timezone via `assets/time.js`; never group by `unlockedAt.substring(0, 10)` (that's the UTC day)
 
 ## CSS Animations
 Defined in `<style>` tag inside the React return (established pattern):

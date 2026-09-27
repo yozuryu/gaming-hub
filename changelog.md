@@ -2,14 +2,38 @@
 
 ## v26.09.27
 
-Add a not-found page; sharper Xbox icon.
+Add a not-found page; sharper Xbox icon; days and times now follow your own timezone instead of UTC.
+
+### RetroAchievements
+
+- Activity tab: heatmap days, the day timeline and session times now use your timezone (clock times were the raw UTC `HH:MM`); the timezone name (e.g. `Asia/Jakarta`) is shown in the Activity header
+- The heatmap is built in the browser from all four achievement chunks (loaded together when the tab opens) instead of `heatmap.json`, whose totals are per UTC day and can't be regrouped; the timeline still reveals one chunk at a time
+- RA's zone-less UTC dates (`2026-09-26 06:50:54`) were parsed as local time in the game modal's "Unlocked" date and in several sorts (and not at all in Safari); they now parse as UTC
+
+### Steam
+
+- Activity tab: same local-day heatmap and timeline, built from all chunks, with the timezone name in the header
 
 ### Xbox
 
 - Xbox icon replaced with the official 192×192 app icon from xbox.com (was a 15×15 favicon that looked blurry on the hub card, Activity feed, Completions page and Xbox profile header); `scripts/download-assets.js` now tries that source first
+- Activity tab: same local-day heatmap and timeline, built from all chunks, with the timezone name in the header
+
+### Hub
+
+- "Today / Yesterday / Nd ago" labels count calendar days in your timezone (were 24-hour windows), and RA dates parse as UTC
+
+### Completions
+
+- Completion dates, month groups and the same-year dedupe all use your timezone (dates and months were UTC while the dedupe year was local, so they could disagree around New Year); timezone name shown in the header
+
+### Activity
+
+- Heatmap, streaks, day groups and times use your timezone (times were shown in UTC and days grouped by UTC date); heatmaps are built from all chunks instead of `heatmap.json`; timezone name shown next to the heatmap title
 
 ### Structure
 
+- New shared `assets/time.js` (UTC parsing incl. RA's zone-less format, local day keys, local date/clock formatting, heatmap builder); precached in the service worker (cache `v6`). The pipelines no longer write `achievements/heatmap.json` (RA, Steam, Xbox) and the files are deleted — the site builds heatmaps from the chunks
 - New `404.html`: missing pages under `/gaming-hub/` now show a menu-styled "Area not found" card with links back to Gaming Hub and to the home page, instead of GitHub's default 404. It reuses the root site's design system (`/assets/noah-ui.css` from yozuryu.github.io) and uses absolute URLs so it works at any depth
 - Backlog: corrected the git remote command in `manual-todos.md` to use the `github-yozuryu` SSH alias
 
