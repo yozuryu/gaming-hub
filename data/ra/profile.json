@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-09-28T15:10:40.658Z"
+        "extractionTimestamp": "2026-09-28T21:44:00.519Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Playing Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
-        "lastGameId": 22693,
+        "richPresenceMsg": "Playing Cut the Rope | ⭐0/375",
+        "lastGameId": 22343,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 3178,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Playing Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
-        "richPresenceMsgDate": "2026-09-28 13:05:12",
-        "lastGameId": 22693,
+        "richPresenceMsg": "Playing Cut the Rope | ⭐0/375",
+        "richPresenceMsgDate": "2026-09-28 17:41:21",
+        "lastGameId": 22343,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 3178,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 39552,
+        "rank": 39565,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 166036,
+        "totalRanked": 166104,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -254,6 +254,24 @@
         ]
     },
     "recentlyPlayedGames": [
+        {
+            "gameId": 22343,
+            "consoleId": 78,
+            "consoleName": "Nintendo DSi",
+            "title": "Cut the Rope",
+            "imageIcon": "/Images/072509.png",
+            "imageTitle": "/Images/140699.png",
+            "imageIngame": "/Images/140700.png",
+            "imageBoxArt": "/Images/072462.png",
+            "lastPlayed": "2026-09-28 17:41:21",
+            "achievementsTotal": 15,
+            "numPossibleAchievements": 15,
+            "possibleScore": 80,
+            "numAchieved": 0,
+            "scoreAchieved": 0,
+            "numAchievedHardcore": 0,
+            "scoreAchievedHardcore": 0
+        },
         {
             "gameId": 22693,
             "consoleId": 18,
@@ -505,24 +523,6 @@
             "scoreAchieved": 0,
             "numAchievedHardcore": 0,
             "scoreAchievedHardcore": 0
-        },
-        {
-            "gameId": 11242,
-            "consoleId": 12,
-            "consoleName": "PlayStation",
-            "title": "Final Fantasy VII",
-            "imageIcon": "/Images/070798.png",
-            "imageTitle": "/Images/159478.png",
-            "imageIngame": "/Images/159480.png",
-            "imageBoxArt": "/Images/046651.png",
-            "lastPlayed": "2026-09-05 17:09:05",
-            "achievementsTotal": 207,
-            "numPossibleAchievements": 207,
-            "possibleScore": 1702,
-            "numAchieved": 6,
-            "scoreAchieved": 28,
-            "numAchievedHardcore": 6,
-            "scoreAchievedHardcore": 28
         }
     ],
     "gameAwardsAndProgress": {
@@ -1639,27 +1639,27 @@
         "gameIcon": "/Images/061146.png",
         "gameId": 19021,
         "consoleName": "PlayStation 2",
-        "cumulScore": 493,
+        "cumulScore": 491,
         "badgeUrl": "/Badge/263370.png",
         "gameUrl": "/game/19021"
     },
     "mostRecentGame": {
-        "gameId": 22693,
-        "consoleId": 18,
-        "consoleName": "Nintendo DS",
-        "title": "Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
-        "imageIcon": "/Images/149664.png",
-        "imageTitle": "/Images/069700.png",
-        "imageIngame": "/Images/069701.png",
-        "imageBoxArt": "/Images/069702.png",
-        "lastPlayed": "2026-09-28 13:05:12",
-        "achievementsTotal": 389,
-        "numPossibleAchievements": 389,
-        "possibleScore": 815,
-        "numAchieved": 29,
-        "scoreAchieved": 40,
-        "numAchievedHardcore": 29,
-        "scoreAchievedHardcore": 40
+        "gameId": 22343,
+        "consoleId": 78,
+        "consoleName": "Nintendo DSi",
+        "title": "Cut the Rope",
+        "imageIcon": "/Images/072509.png",
+        "imageTitle": "/Images/140699.png",
+        "imageIngame": "/Images/140700.png",
+        "imageBoxArt": "/Images/072462.png",
+        "lastPlayed": "2026-09-28 17:41:21",
+        "achievementsTotal": 15,
+        "numPossibleAchievements": 15,
+        "possibleScore": 80,
+        "numAchieved": 0,
+        "scoreAchieved": 0,
+        "numAchievedHardcore": 0,
+        "scoreAchievedHardcore": 0
     },
     "points7Days": 34,
     "points30Days": 330
