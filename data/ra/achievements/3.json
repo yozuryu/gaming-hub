@@ -1408,7 +1408,7 @@
             "description": "Obtain an Exploud",
             "badgeName": "383514",
             "points": 3,
-            "trueRatio": 33,
+            "trueRatio": 34,
             "type": null,
             "author": "drisc",
             "authorUlid": "01F9P6T4BNASH7NR9YTG3Y8FBP",
@@ -2499,6 +2499,26 @@
             "cumulScore": 360,
             "badgeUrl": "/Badge/649953.png",
             "gameUrl": "/game/16452"
+        },
+        {
+            "date": "2026-03-29 23:35:43",
+            "hardcoreMode": true,
+            "achievementId": 381670,
+            "title": "Hexyz Force",
+            "description": "View the opening movie by waiting for a while on the title screen",
+            "badgeName": "436076",
+            "points": 0,
+            "trueRatio": 0,
+            "type": null,
+            "author": "Whithbrin",
+            "authorUlid": "01D9V4947B06WVSYT90HQ7PFBR",
+            "gameTitle": "Hexyz Force",
+            "gameIcon": "/Images/086971.png",
+            "gameId": 2883,
+            "consoleName": "PlayStation Portable",
+            "cumulScore": 360,
+            "badgeUrl": "/Badge/436076.png",
+            "gameUrl": "/game/2883"
         }
     ]
 }
