@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-09-28T06:31:48.531Z"
+        "extractionTimestamp": "2026-09-28T15:10:40.658Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Kite Lv:1 || Keywords:[Δ Bursting:Passed Over:Aqua Field - Lv:1] B2 || Bestiary:4/303 || Money:1,000 || Time:7:45",
-        "lastGameId": 19021,
+        "richPresenceMsg": "Playing Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
+        "lastGameId": 22693,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 3178,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Kite Lv:1 || Keywords:[Δ Bursting:Passed Over:Aqua Field - Lv:1] B2 || Bestiary:4/303 || Money:1,000 || Time:7:45",
-        "richPresenceMsgDate": "2026-09-27 05:34:26",
-        "lastGameId": 19021,
+        "richPresenceMsg": "Playing Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
+        "richPresenceMsgDate": "2026-09-28 13:05:12",
+        "lastGameId": 22693,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 3178,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 39545,
+        "rank": 39552,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 166002,
+        "totalRanked": 166036,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -255,6 +255,24 @@
     },
     "recentlyPlayedGames": [
         {
+            "gameId": 22693,
+            "consoleId": 18,
+            "consoleName": "Nintendo DS",
+            "title": "Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
+            "imageIcon": "/Images/149664.png",
+            "imageTitle": "/Images/069700.png",
+            "imageIngame": "/Images/069701.png",
+            "imageBoxArt": "/Images/069702.png",
+            "lastPlayed": "2026-09-28 13:05:12",
+            "achievementsTotal": 389,
+            "numPossibleAchievements": 389,
+            "possibleScore": 815,
+            "numAchieved": 29,
+            "scoreAchieved": 40,
+            "numAchievedHardcore": 29,
+            "scoreAchievedHardcore": 40
+        },
+        {
             "gameId": 19021,
             "consoleId": 21,
             "consoleName": "PlayStation 2",
@@ -325,24 +343,6 @@
             "scoreAchieved": 10,
             "numAchievedHardcore": 3,
             "scoreAchievedHardcore": 10
-        },
-        {
-            "gameId": 22693,
-            "consoleId": 18,
-            "consoleName": "Nintendo DS",
-            "title": "Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
-            "imageIcon": "/Images/149664.png",
-            "imageTitle": "/Images/069700.png",
-            "imageIngame": "/Images/069701.png",
-            "imageBoxArt": "/Images/069702.png",
-            "lastPlayed": "2026-09-26 03:16:17",
-            "achievementsTotal": 389,
-            "numPossibleAchievements": 389,
-            "possibleScore": 815,
-            "numAchieved": 29,
-            "scoreAchieved": 40,
-            "numAchievedHardcore": 29,
-            "scoreAchievedHardcore": 40
         },
         {
             "gameId": 11379,
@@ -1644,22 +1644,22 @@
         "gameUrl": "/game/19021"
     },
     "mostRecentGame": {
-        "gameId": 19021,
-        "consoleId": 21,
-        "consoleName": "PlayStation 2",
-        "title": ".hack//Infection",
-        "imageIcon": "/Images/061146.png",
-        "imageTitle": "/Images/135200.png",
-        "imageIngame": "/Images/135199.png",
-        "imageBoxArt": "/Images/055934.png",
-        "lastPlayed": "2026-09-27 05:34:26",
-        "achievementsTotal": 40,
-        "numPossibleAchievements": 40,
-        "possibleScore": 210,
-        "numAchieved": 1,
-        "scoreAchieved": 1,
-        "numAchievedHardcore": 1,
-        "scoreAchievedHardcore": 1
+        "gameId": 22693,
+        "consoleId": 18,
+        "consoleName": "Nintendo DS",
+        "title": "Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
+        "imageIcon": "/Images/149664.png",
+        "imageTitle": "/Images/069700.png",
+        "imageIngame": "/Images/069701.png",
+        "imageBoxArt": "/Images/069702.png",
+        "lastPlayed": "2026-09-28 13:05:12",
+        "achievementsTotal": 389,
+        "numPossibleAchievements": 389,
+        "possibleScore": 815,
+        "numAchieved": 29,
+        "scoreAchieved": 40,
+        "numAchievedHardcore": 29,
+        "scoreAchievedHardcore": 40
     },
     "points7Days": 34,
     "points30Days": 330
