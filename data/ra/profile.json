@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-09-29T08:11:12.793Z"
+        "extractionTimestamp": "2026-09-29T15:34:04.673Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,13 +8,13 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Playing Cut the Rope",
+        "richPresenceMsg": "Playing Cut the Rope | ⭐99/375",
         "lastGameId": 22343,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 3178,
+        "totalPoints": 3191,
         "totalSoftcorePoints": 0,
-        "totalTruePoints": 9253,
+        "totalTruePoints": 9268,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -33,31 +33,31 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Playing Cut the Rope",
-        "richPresenceMsgDate": "2026-09-29 01:37:11",
+        "richPresenceMsg": "Playing Cut the Rope | ⭐99/375",
+        "richPresenceMsgDate": "2026-09-29 12:50:04",
         "lastGameId": 22343,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 3178,
+        "totalPoints": 3191,
         "totalSoftcorePoints": 0,
-        "totalTruePoints": 9253,
+        "totalTruePoints": 9268,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 39596,
+        "rank": 39426,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 166191,
+        "totalRanked": 166206,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 3178,
+        "points": 3191,
         "softcorePoints": 0
     },
     "pageAwards": {
@@ -263,14 +263,14 @@
             "imageTitle": "/Images/140699.png",
             "imageIngame": "/Images/140700.png",
             "imageBoxArt": "/Images/072462.png",
-            "lastPlayed": "2026-09-29 01:37:11",
+            "lastPlayed": "2026-09-29 12:50:04",
             "achievementsTotal": 15,
             "numPossibleAchievements": 15,
             "possibleScore": 80,
-            "numAchieved": 0,
-            "scoreAchieved": 0,
-            "numAchievedHardcore": 0,
-            "scoreAchievedHardcore": 0
+            "numAchieved": 4,
+            "scoreAchieved": 13,
+            "numAchievedHardcore": 4,
+            "scoreAchievedHardcore": 13
         },
         {
             "gameId": 22693,
@@ -526,9 +526,22 @@
         }
     ],
     "gameAwardsAndProgress": {
-        "count": 84,
-        "total": 84,
+        "count": 85,
+        "total": 85,
         "results": [
+            {
+                "gameId": 22343,
+                "title": "Cut the Rope",
+                "imageIcon": "/Images/072509.png",
+                "consoleId": 78,
+                "consoleName": "Nintendo DSi",
+                "maxPossible": 15,
+                "numAwarded": 4,
+                "numAwardedHardcore": 4,
+                "mostRecentAwardedDate": "2026-09-29T12:45:52+00:00",
+                "highestAwardKind": null,
+                "highestAwardDate": null
+            },
             {
                 "gameId": 19021,
                 "title": ".hack//Infection",
@@ -1624,24 +1637,24 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-09-27 05:34:26",
+        "date": "2026-09-29 12:45:52",
         "hardcoreMode": true,
-        "achievementId": 237287,
-        "title": "Mysterious Girl",
-        "description": "Witness the events in [Delta] [Bursting:Passed Over:Aqua Field]",
-        "badgeName": "263370",
-        "points": 1,
-        "trueRatio": 1,
+        "achievementId": 314861,
+        "title": "Cutting into the Foil",
+        "description": "Collect 80 total stars",
+        "badgeName": "376578",
+        "points": 3,
+        "trueRatio": 4,
         "type": "progression",
-        "author": "SnowPin",
-        "authorUlid": "019TVEANZS2MMVS809D58X76W6",
-        "gameTitle": ".hack//Infection",
-        "gameIcon": "/Images/061146.png",
-        "gameId": 19021,
-        "consoleName": "PlayStation 2",
-        "cumulScore": 491,
-        "badgeUrl": "/Badge/263370.png",
-        "gameUrl": "/game/19021"
+        "author": "LilCutieSophia",
+        "authorUlid": "01CBJSCM5RVNRNFAKR3D4WYJQN",
+        "gameTitle": "Cut the Rope",
+        "gameIcon": "/Images/072509.png",
+        "gameId": 22343,
+        "consoleName": "Nintendo DSi",
+        "cumulScore": 500,
+        "badgeUrl": "/Badge/376578.png",
+        "gameUrl": "/game/22343"
     },
     "mostRecentGame": {
         "gameId": 22343,
@@ -1652,15 +1665,15 @@
         "imageTitle": "/Images/140699.png",
         "imageIngame": "/Images/140700.png",
         "imageBoxArt": "/Images/072462.png",
-        "lastPlayed": "2026-09-29 01:37:11",
+        "lastPlayed": "2026-09-29 12:50:04",
         "achievementsTotal": 15,
         "numPossibleAchievements": 15,
         "possibleScore": 80,
-        "numAchieved": 0,
-        "scoreAchieved": 0,
-        "numAchievedHardcore": 0,
-        "scoreAchievedHardcore": 0
+        "numAchieved": 4,
+        "scoreAchieved": 13,
+        "numAchievedHardcore": 4,
+        "scoreAchievedHardcore": 13
     },
-    "points7Days": 34,
-    "points30Days": 330
+    "points7Days": 47,
+    "points30Days": 343
 }
