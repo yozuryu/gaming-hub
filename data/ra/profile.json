@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-02T15:36:02.777Z"
+        "extractionTimestamp": "2026-10-02T20:32:35.533Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Playing Summon Night Craft Sword Monogatari: Hajimari no Ishi",
-        "lastGameId": 9334,
+        "richPresenceMsg": "Playing ~Homebrew~ Hatsune Miku Bomb Squad",
+        "lastGameId": 30725,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 3191,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Playing Summon Night Craft Sword Monogatari: Hajimari no Ishi",
-        "richPresenceMsgDate": "2026-10-01 16:10:38",
-        "lastGameId": 9334,
+        "richPresenceMsg": "Playing ~Homebrew~ Hatsune Miku Bomb Squad",
+        "richPresenceMsgDate": "2026-10-02 16:17:16",
+        "lastGameId": 30725,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 3191,
@@ -46,12 +46,12 @@
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 39540,
+        "rank": 39553,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 166639,
+        "totalRanked": 166669,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -254,6 +254,24 @@
         ]
     },
     "recentlyPlayedGames": [
+        {
+            "gameId": 30725,
+            "consoleId": 6,
+            "consoleName": "Game Boy Color",
+            "title": "~Homebrew~ Hatsune Miku Bomb Squad",
+            "imageIcon": "/Images/101115.png",
+            "imageTitle": "/Images/141065.png",
+            "imageIngame": "/Images/141064.png",
+            "imageBoxArt": "/Images/101118.png",
+            "lastPlayed": "2026-10-02 16:17:16",
+            "achievementsTotal": 6,
+            "numPossibleAchievements": 6,
+            "possibleScore": 27,
+            "numAchieved": 1,
+            "scoreAchieved": 1,
+            "numAchievedHardcore": 1,
+            "scoreAchievedHardcore": 1
+        },
         {
             "gameId": 9334,
             "consoleId": 5,
@@ -505,24 +523,6 @@
             "scoreAchieved": 39,
             "numAchievedHardcore": 10,
             "scoreAchievedHardcore": 39
-        },
-        {
-            "gameId": 8306,
-            "consoleId": 18,
-            "consoleName": "Nintendo DS",
-            "title": "Mega Man ZX Advent",
-            "imageIcon": "/Images/079538.png",
-            "imageTitle": "/Images/028626.png",
-            "imageIngame": "/Images/028625.png",
-            "imageBoxArt": "/Images/028431.png",
-            "lastPlayed": "2026-09-06 04:09:09",
-            "achievementsTotal": 62,
-            "numPossibleAchievements": 62,
-            "possibleScore": 635,
-            "numAchieved": 0,
-            "scoreAchieved": 0,
-            "numAchievedHardcore": 0,
-            "scoreAchievedHardcore": 0
         }
     ],
     "gameAwardsAndProgress": {
@@ -1657,22 +1657,22 @@
         "gameUrl": "/game/22343"
     },
     "mostRecentGame": {
-        "gameId": 9334,
-        "consoleId": 5,
-        "consoleName": "Game Boy Advance",
-        "title": "Summon Night Craft Sword Monogatari: Hajimari no Ishi",
-        "imageIcon": "/Images/122409.png",
-        "imageTitle": "/Images/101710.png",
-        "imageIngame": "/Images/101706.png",
-        "imageBoxArt": "/Images/101711.png",
-        "lastPlayed": "2026-10-01 16:10:38",
-        "achievementsTotal": 0,
-        "numPossibleAchievements": 0,
-        "possibleScore": 0,
-        "numAchieved": 0,
-        "scoreAchieved": 0,
-        "numAchievedHardcore": 0,
-        "scoreAchievedHardcore": 0
+        "gameId": 30725,
+        "consoleId": 6,
+        "consoleName": "Game Boy Color",
+        "title": "~Homebrew~ Hatsune Miku Bomb Squad",
+        "imageIcon": "/Images/101115.png",
+        "imageTitle": "/Images/141065.png",
+        "imageIngame": "/Images/141064.png",
+        "imageBoxArt": "/Images/101118.png",
+        "lastPlayed": "2026-10-02 16:17:16",
+        "achievementsTotal": 6,
+        "numPossibleAchievements": 6,
+        "possibleScore": 27,
+        "numAchieved": 1,
+        "scoreAchieved": 1,
+        "numAchievedHardcore": 1,
+        "scoreAchievedHardcore": 1
     },
     "points7Days": 45,
     "points30Days": 319
