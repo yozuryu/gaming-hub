@@ -1,23 +1,23 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-02T08:23:56.497Z"
+        "extractionTimestamp": "2026-10-02T15:43:19.249Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 0,
+        "status": 3,
         "lastOnline": "2026-09-27T15:02:16.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1292,
-        "totalPlaytimeMin": 349402,
-        "totalPlaytimeHrs": 5823,
+        "totalPlaytimeMin": 349429,
+        "totalPlaytimeHrs": 5824,
         "gamesWithPlaytime": 820,
         "totalAchievements": 10055,
-        "unlockedAchievements": 2829,
+        "unlockedAchievements": 2830,
         "gamesWithAchievements": 170,
         "perfectCount": 17,
         "completionPct": 28,
@@ -25,9 +25,20 @@
     },
     "recentlyPlayed": [
         {
+            "appId": 578330,
+            "name": "LEGO® City Undercover",
+            "playtime2Weeks": 379,
+            "playtimeForever": 3207,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
+            "storeUrl": "https://store.steampowered.com/app/578330",
+            "lastPlayedTs": "2026-10-02T13:34:23.000Z",
+            "achUnlocked": 11,
+            "achTotal": 48
+        },
+        {
             "appId": 2515020,
             "name": "FINAL FANTASY XVI",
-            "playtime2Weeks": 277,
+            "playtime2Weeks": 195,
             "playtimeForever": 929,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2515020/0ce29700a22fea9eb270b276fa157b79511365e6.jpg",
             "storeUrl": "https://store.steampowered.com/app/2515020",
@@ -36,20 +47,9 @@
             "achTotal": 69
         },
         {
-            "appId": 578330,
-            "name": "LEGO® City Undercover",
-            "playtime2Weeks": 414,
-            "playtimeForever": 3180,
-            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-            "storeUrl": "https://store.steampowered.com/app/578330",
-            "lastPlayedTs": "2026-09-27T13:31:12.000Z",
-            "achUnlocked": 10,
-            "achTotal": 48
-        },
-        {
             "appId": 921570,
             "name": "OCTOPATH TRAVELER",
-            "playtime2Weeks": 129,
+            "playtime2Weeks": 111,
             "playtimeForever": 1503,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
             "storeUrl": "https://store.steampowered.com/app/921570",
@@ -59,23 +59,23 @@
         }
     ],
     "mostRecentGame": {
-        "appId": 2515020,
-        "name": "FINAL FANTASY XVI",
-        "playtime2Weeks": 277,
-        "playtimeForever": 929,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2515020/0ce29700a22fea9eb270b276fa157b79511365e6.jpg",
-        "storeUrl": "https://store.steampowered.com/app/2515020",
-        "lastPlayedTs": "2026-09-27T15:01:53.000Z"
+        "appId": 578330,
+        "name": "LEGO® City Undercover",
+        "playtime2Weeks": 379,
+        "playtimeForever": 3207,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
+        "storeUrl": "https://store.steampowered.com/app/578330",
+        "lastPlayedTs": "2026-10-02T13:34:23.000Z"
     },
     "mostRecentUnlock": {
-        "appId": 2515020,
-        "gameName": "FINAL FANTASY XVI",
-        "apiName": "1047",
-        "displayName": "When You Ride Alone",
-        "description": "",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/2515020/3973c1845891e306d202b7628fc00d1892d2b70e.jpg",
-        "unlockedAt": "2026-09-27T14:31:57.000Z",
-        "globalPct": 48.4
+        "appId": 578330,
+        "gameName": "LEGO® City Undercover",
+        "apiName": "COMPLETE_STORYEVENT7",
+        "displayName": "Watch This Space",
+        "description": "Complete Chapter 7 - One Small Job for Chan",
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/578330/d9700e1f9b2e4021a94cf5b354e37225908578f5.jpg",
+        "unlockedAt": "2026-10-02T13:26:47.000Z",
+        "globalPct": 33.3
     },
     "perfectGames": [
         {

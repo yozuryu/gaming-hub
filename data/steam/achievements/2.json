@@ -38,7 +38,7 @@
             "description": "",
             "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/2515020/8289deab066f28263e8f73ba929fd68958b040a2.jpg",
             "unlockedAt": "2026-05-09T08:38:38.000Z",
-            "globalPct": 74.1
+            "globalPct": 74
         },
         {
             "appId": 206440,
@@ -68,7 +68,7 @@
             "description": "Craft or upgrade 5 pieces of gear.",
             "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/2515020/bc61b9e62ebb09cbc34fd311b7f5d5ca7918869b.jpg",
             "unlockedAt": "2026-05-03T14:22:24.000Z",
-            "globalPct": 67.6
+            "globalPct": 67.5
         },
         {
             "appId": 2486820,
@@ -79,26 +79,6 @@
             "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/2486820/83dc4d3559c34a919e1ca834f626f6d1ff6507eb.jpg",
             "unlockedAt": "2026-04-26T13:03:01.000Z",
             "globalPct": 55
-        },
-        {
-            "appId": 539330,
-            "gameName": "Light Fairytale Episode 1",
-            "apiName": "achievement_ep1_hidden_miyu",
-            "displayName": "B-Bomb?!",
-            "description": "",
-            "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/539330/b4da5ec9cd2b943f8891a001c71deef1a46c803b.jpg",
-            "unlockedAt": "2026-04-03T14:32:32.000Z",
-            "globalPct": 27
-        },
-        {
-            "appId": 539330,
-            "gameName": "Light Fairytale Episode 1",
-            "apiName": "achievement_ep1_dreamy_boy",
-            "displayName": "Dreamer boy",
-            "description": "",
-            "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/539330/2a5c913af5b4fe0b73fb8d12933cc0d3a561c3aa.jpg",
-            "unlockedAt": "2026-04-03T14:25:32.000Z",
-            "globalPct": 30.7
         }
     ]
 }
