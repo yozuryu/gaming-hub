@@ -2,7 +2,7 @@
     "appId": 578330,
     "hasAchievements": true,
     "total": 48,
-    "unlocked": 11,
+    "unlocked": 12,
     "gameName": "LEGO® City Undercover",
     "achievements": [
         {
@@ -84,14 +84,14 @@
         },
         {
             "apiName": "COMPLETE_STORYEVENT8",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-10-03T04:41:06.000Z",
             "displayName": "Save Points",
             "description": "Complete Chapter 8 - The Rescue",
             "iconUrl": "ebeb44b36cccac79674b0bb07c2383f1940ef2d4.jpg",
             "iconGrayUrl": "1092b2c48ac34be5d6f7b7b91f85fa6d80e0b9b7.jpg",
             "hidden": false,
-            "globalPct": 32.1
+            "globalPct": 32.2
         },
         {
             "apiName": "COMPLETE_STORYEVENT9",
@@ -223,7 +223,7 @@
             "iconUrl": "e8d5b8b81ab73c6726729e02ef67276e550bda77.jpg",
             "iconGrayUrl": "d7065f7d43b9c955fc4d0ea0fe6245013f40499e.jpg",
             "hidden": false,
-            "globalPct": 5.7
+            "globalPct": 5.8
         },
         {
             "apiName": "ALL_ASTRONAUT_CHALLENGES",
@@ -267,7 +267,7 @@
             "iconUrl": "46bed7326be744305c5b17cb38304167c82d9a79.jpg",
             "iconGrayUrl": "d490bf7021c74033380e2ddc8147b58264c60429.jpg",
             "hidden": false,
-            "globalPct": 5.7
+            "globalPct": 5.8
         },
         {
             "apiName": "TRUE_HERO_IN_LEVEL",
@@ -476,7 +476,7 @@
             "iconUrl": "42995cbc7262e33e19a411ed03cc4cdebb708319.jpg",
             "iconGrayUrl": "2bcfcaca9c3229dfbd86f6bb9c6198c066c334f5.jpg",
             "hidden": false,
-            "globalPct": 9.8
+            "globalPct": 9.9
         },
         {
             "apiName": "CAR_SURF_FOR_30_SECONDS",
@@ -534,12 +534,21 @@
             "globalPct": 9
         }
     ],
-    "playtimeForever": 3207,
-    "lastPlayedTs": "2026-10-02T13:34:23.000Z",
+    "playtimeForever": 3308,
+    "lastPlayedTs": "2026-10-03T05:05:34.000Z",
     "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-    "lastUnlockedAt": "2026-10-02T13:26:47.000Z",
-    "lastUnlockName": "Watch This Space",
+    "lastUnlockedAt": "2026-10-03T04:41:06.000Z",
+    "lastUnlockName": "Save Points",
     "preview": [
+        {
+            "apiName": "COMPLETE_STORYEVENT8",
+            "displayName": "Save Points",
+            "unlocked": true,
+            "unlockedAt": "2026-10-03T04:41:06.000Z",
+            "iconUrl": "ebeb44b36cccac79674b0bb07c2383f1940ef2d4.jpg",
+            "iconGrayUrl": "1092b2c48ac34be5d6f7b7b91f85fa6d80e0b9b7.jpg",
+            "globalPct": 32.2
+        },
         {
             "apiName": "COMPLETE_STORYEVENT7",
             "displayName": "Watch This Space",
@@ -584,15 +593,6 @@
             "iconUrl": "890be2b2aa3afe8cb17833694aaac8fb7df9816d.jpg",
             "iconGrayUrl": "0cc35301f508550de48ee9f5217ac2c20d4a013e.jpg",
             "globalPct": 44
-        },
-        {
-            "apiName": "COMPLETE_STORYEVENT3",
-            "displayName": "From Blue to Bluebell",
-            "unlocked": true,
-            "unlockedAt": "2026-09-18T12:41:39.000Z",
-            "iconUrl": "9007c5fc599a6f0568af5ebc82024f6ad3e31a91.jpg",
-            "iconGrayUrl": "a7de98a7dd8dc720c741605414a38e65a9675a17.jpg",
-            "globalPct": 46.5
         }
     ]
 }
