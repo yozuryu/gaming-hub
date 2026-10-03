@@ -28487,7 +28487,7 @@
                     "unlockedAt": "2026-10-02T13:26:47.000Z",
                     "iconUrl": "d9700e1f9b2e4021a94cf5b354e37225908578f5.jpg",
                     "iconGrayUrl": "77dd6a75b04bcc3b23bf7c394c7367bcb3619fea.jpg",
-                    "globalPct": 33.3
+                    "globalPct": 33.2
                 },
                 {
                     "apiName": "COMPLETE_STORYEVENT6",
@@ -34674,14 +34674,23 @@
             "appId": 921570,
             "hasAchievements": true,
             "total": 88,
-            "unlocked": 36,
+            "unlocked": 37,
             "gameName": "OCTOPATH TRAVELER",
-            "playtimeForever": 1503,
-            "lastPlayedTs": "2026-09-27T11:20:54.000Z",
+            "playtimeForever": 1579,
+            "lastPlayedTs": "2026-10-03T15:45:56.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
-            "lastUnlockedAt": "2026-09-19T16:57:00.000Z",
-            "lastUnlockName": "Faith Shall Be Your Shield",
+            "lastUnlockedAt": "2026-10-03T15:05:37.000Z",
+            "lastUnlockName": "Chasing the Dragonstones",
             "preview": [
+                {
+                    "apiName": "ACHIEVEMENT_030",
+                    "displayName": "Chasing the Dragonstones",
+                    "unlocked": true,
+                    "unlockedAt": "2026-10-03T15:05:37.000Z",
+                    "iconUrl": "3ca8fa454bd33f98380391fb36e2a9689f6346d5.jpg",
+                    "iconGrayUrl": "aaecb6d3e7fbe1f5d0c9112f649c1020bd13d6ac.jpg",
+                    "globalPct": 34
+                },
                 {
                     "apiName": "ACHIEVEMENT_018",
                     "displayName": "Faith Shall Be Your Shield",
@@ -34698,7 +34707,7 @@
                     "unlockedAt": "2026-09-07T16:12:58.000Z",
                     "iconUrl": "c8cc4b62a52bc2628b1e62b6b065d1ad768e5aaf.jpg",
                     "iconGrayUrl": "ea02d3bf6729335546e49aa95d2c767435b7da87.jpg",
-                    "globalPct": 32.8
+                    "globalPct": 32.7
                 },
                 {
                     "apiName": "ACHIEVEMENT_079",
@@ -34716,7 +34725,7 @@
                     "unlockedAt": "2026-08-30T04:31:57.000Z",
                     "iconUrl": "e1cb6aa604fa059a1fdd9bf98576655c96e775b8.jpg",
                     "iconGrayUrl": "4eff4fc11dcbf0199cd7699806fc1685f7f13cde.jpg",
-                    "globalPct": 34.5
+                    "globalPct": 34.4
                 },
                 {
                     "apiName": "ACHIEVEMENT_035",
@@ -34726,15 +34735,6 @@
                     "iconUrl": "5d451a0b9fc50fad515703d17198793a1694907d.jpg",
                     "iconGrayUrl": "7d420eb7c9da62d6fb5fc315d6b669d3266a61f3.jpg",
                     "globalPct": 32.3
-                },
-                {
-                    "apiName": "ACHIEVEMENT_034",
-                    "displayName": "Alephan's Wisdom",
-                    "unlocked": true,
-                    "unlockedAt": "2026-08-29T15:28:45.000Z",
-                    "iconUrl": "bb2126bcdedd7431c3e8af901640b711054bf481.jpg",
-                    "iconGrayUrl": "754f447784ad01febd7db357fc12e247c806435d.jpg",
-                    "globalPct": 33.5
                 }
             ]
         },
@@ -38041,6 +38041,74 @@
                 }
             ]
         },
+        "1658290": {
+            "appId": 1658290,
+            "hasAchievements": true,
+            "total": 50,
+            "unlocked": 1,
+            "gameName": "Eiyuden Chronicle: Rising",
+            "playtimeForever": 19,
+            "lastPlayedTs": "2026-10-03T16:07:34.000Z",
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1658290/449ec8f09bf72c9f8e00c113c1e12a7c70a86de4.jpg",
+            "lastUnlockedAt": "2026-10-03T16:06:46.000Z",
+            "lastUnlockName": "Plenty More to Go",
+            "preview": [
+                {
+                    "apiName": "ACHIEVEMENT001",
+                    "displayName": "Plenty More to Go",
+                    "unlocked": true,
+                    "unlockedAt": "2026-10-03T16:06:46.000Z",
+                    "iconUrl": "e795de25f1ee60903ebcc66b28a3a79bdbb0fc84.jpg",
+                    "iconGrayUrl": "c52f0941e8a0fa43a6e36a9bbb333928d9d03acc.jpg",
+                    "globalPct": 80.4
+                },
+                {
+                    "apiName": "ACHIEVEMENT002",
+                    "displayName": "Partners?",
+                    "unlocked": false,
+                    "unlockedAt": null,
+                    "iconUrl": "f11f05dd5563baa760d0451753feeb410a70dd9d.jpg",
+                    "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
+                    "globalPct": 60.8
+                },
+                {
+                    "apiName": "ACHIEVEMENT003",
+                    "displayName": "...And Your Tax Money",
+                    "unlocked": false,
+                    "unlockedAt": null,
+                    "iconUrl": "5ef5bbbf3d1de10a39c0b40ffd4371bb417c7ea8.jpg",
+                    "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
+                    "globalPct": 46.3
+                },
+                {
+                    "apiName": "ACHIEVEMENT004",
+                    "displayName": "All Bark, No Bite",
+                    "unlocked": false,
+                    "unlockedAt": null,
+                    "iconUrl": "924d1737b63a1f77822da49a85c47189ecb963b5.jpg",
+                    "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
+                    "globalPct": 70.5
+                },
+                {
+                    "apiName": "ACHIEVEMENT005",
+                    "displayName": "Magical Mineral Golem",
+                    "unlocked": false,
+                    "unlockedAt": null,
+                    "iconUrl": "05c7846bef15486bfd5d86531139998aa8244f8e.jpg",
+                    "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
+                    "globalPct": 53.7
+                },
+                {
+                    "apiName": "ACHIEVEMENT006",
+                    "displayName": "The Lords of the Snowpeak",
+                    "unlocked": false,
+                    "unlockedAt": null,
+                    "iconUrl": "52be66b2c35ea0e3c2fe1d71c53c8d6dbd66123f.jpg",
+                    "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
+                    "globalPct": 40.8
+                }
+            ]
+        },
         "1668510": {
             "appId": 1668510,
             "hasAchievements": true,
@@ -39519,7 +39587,7 @@
                     "unlockedAt": "2026-05-10T09:08:53.000Z",
                     "iconUrl": "8289deab066f28263e8f73ba929fd68958b040a2.jpg",
                     "iconGrayUrl": "ddd944bafb49b5f7f13dd8333a4e5add32828825.jpg",
-                    "globalPct": 64.1
+                    "globalPct": 64.2
                 },
                 {
                     "apiName": "1002",
@@ -39528,7 +39596,7 @@
                     "unlockedAt": "2026-05-09T08:38:38.000Z",
                     "iconUrl": "8289deab066f28263e8f73ba929fd68958b040a2.jpg",
                     "iconGrayUrl": "ddd944bafb49b5f7f13dd8333a4e5add32828825.jpg",
-                    "globalPct": 74
+                    "globalPct": 74.1
                 },
                 {
                     "apiName": "1015",
