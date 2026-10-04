@@ -66,7 +66,9 @@ Most hourly commits are not your activity. Recent data commits change 44–486 l
 
 ---
 
-## C. Schedule reliability
+## C. Schedule reliability — done 2026-10-04
+
+Done with the external scheduler: cron-job.org dispatches the merged `fetch-data.yml` (hourly `incremental`, `midnight` at 00:00 UTC); a 6-hourly `schedule` stays as a fallback.
 
 - The workflows are hourly, but the last runs were every ~3–4 hours (e.g. Steam at 18:29, 22:13, 01:27, 04:50, 07:32 UTC). The "midnight" refreshes ran around 04:50 UTC. GitHub delays or drops scheduled runs, especially at the top of the hour.
 - **Fix:** move crons off `:00` / `:10` (e.g. RA `:17`, Steam `:43`; midnight jobs `17 0` / `43 0`). If still unreliable, trigger `workflow_dispatch` from an external scheduler.

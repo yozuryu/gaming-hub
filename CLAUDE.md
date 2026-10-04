@@ -8,7 +8,7 @@
 
 ---
 
-Personal gaming statistics dashboard aggregating RetroAchievements (RA) and Steam data. Static site with no build tool — React, Tailwind, and Lucide are all loaded via CDN. Data is fetched by Node.js pipelines running on GitHub Actions hourly, stored as JSON files committed to the repo, and consumed directly by the browser.
+Personal gaming statistics dashboard aggregating RetroAchievements (RA) and Steam data. Static site with no build tool — React, Tailwind, and Lucide are all loaded via CDN. Data is fetched by Node.js pipelines running on GitHub Actions hourly (triggered by cron-job.org), stored as JSON files committed to the repo, and consumed directly by the browser.
 
 ---
 
@@ -86,9 +86,7 @@ gaming-hub/
 │       └── history.js              # Unlock history writer shared by all three pipelines
 │
 └── .github/workflows/
-    ├── fetch-ra-data.yml            # Hourly cron + manual dispatch
-    ├── fetch-steam-data.yml         # Hourly cron (offset :10) + manual dispatch
-    └── fetch-xbox-data.yml          # Hourly cron (offset :27) + manual dispatch
+    └── fetch-data.yml               # All three pipelines in sequence; dispatched by cron-job.org hourly + midnight, 6h fallback schedule
 ```
 
 ---
@@ -206,7 +204,8 @@ Every unlocked achievement, all time, rebuilt by each pipeline on every run from
 `{ metadata, unlocks: [{ t, g, a, n, p?, r?, hc? }] }`: `t` ISO UTC, `g` game id, `a` achievement id, `n` name, `p` RA points / Xbox gamerscore, `r` rarity % (Steam/Xbox global %, RA `numAwarded / numDistinctPlayersCasual`), `hc` RA hardcore. `history/index.json` (`{ years: { YYYY: count } }`) lists the year files. One unlock per line; unchanged years are not rewritten, empty years are deleted. `r` (0.1 precision) is only refreshed by the midnight run; other runs keep each stored unlock's `r` and only add new ones. ~390 KB for all years.
 
 ### Shared behavior
-- Both pipelines write JSON to `data/{ra,steam}/` and commit to main via GitHub Actions
+- **One workflow** (`fetch-data.yml`) runs RA → Steam → Xbox in one job and makes at most one commit (`chore: update data (ra, steam) …`, listing the platforms that changed). Each pipeline step has `continue-on-error`, so one platform failing doesn't stop the others; the commit step still runs (a failed pipeline wrote nothing) and a last step fails the job so GitHub emails. Inputs: `mode` (`incremental` · `midnight` = RA full, Steam unlock refresh, Xbox full · `full-refresh` = every game everywhere, Steam `--refresh-games` · `watchlist-only` = RA want-to-play list) and `platforms` (`all` / `ra` / `steam` / `xbox`)
+- **Scheduling:** GitHub's `schedule` trigger ran hours late, so cron-job.org POSTs to the `workflow_dispatch` API with an explicit `mode`: `incremental` hourly at :00 for hours 1–23, `midnight` at 00:00 UTC. The mode comes only from `inputs.mode`, never from `github.event.schedule`. A 6-hourly `schedule` stays as a fallback and always runs incremental
 - Concurrency group `data-pipeline` prevents overlapping runs
 - `--debug` flag prints API responses without writing files
 - **Failure handling:** API calls retry with backoff. If profile-level data (profile, awards, RA achievement chunks, Steam owned/recent games) still fails, the run exits non-zero before writing, so the previous files stay and nothing is committed. A single game that fails keeps its cached entry (in every mode, including full refresh)
@@ -232,7 +231,7 @@ GitHub Pages builds from `main` with Jekyll, so every tracked file is public unl
 | Icons | Lucide React 0.263.1 | Via CDN |
 | JS transform | Babel standalone | Transpiles JSX in-browser |
 | Node scripts | Node.js 20 | Pipelines only, not frontend |
-| CI/CD | GitHub Actions | Hourly data fetch + commit |
+| CI/CD | GitHub Actions | Hourly data fetch + commit, triggered by cron-job.org |
 | Hosting | GitHub Pages | Static files served as-is |
 
 There is **no bundler, no npm for the frontend, no TypeScript**. All frontend files are plain `.js` (JSX transpiled in-browser by Babel).

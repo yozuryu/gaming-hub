@@ -73,7 +73,7 @@ If Steam turns out to report `rtime_last_played` as session *start*, flip the mo
 - **RA:** `lastPlayed` behaves as session end; the delta always fits the run window (0 of 228 too large). 5 cases changed playtime by ≤ 150 s with `lastPlayed` unchanged (one was −16 s): server-side corrections, not play. 43 cases moved `lastPlayed` with no playtime change (sub-minute sessions or playtime landing a run later).
 - **Rarity:** `numDistinctPlayersCasual` is present for every RA game.
 - **Volume:** 80 Steam + 233 RA playtime changes in ~6 months, so ~630 sessions a year (~60 KB), less than estimated.
-- **Snapshot spacing:** median ~110 min, p90 ~220–245 min, max ~10 h. The pushed workflows still run on GitHub's late `schedule`; the cron-job.org hourly dispatch is only in the uncommitted working tree. Until it lands, several sessions of one game between two runs merge into one block ending at the last session's end.
+- **Snapshot spacing:** median ~110 min, p90 ~220–245 min, max ~10 h. Runs were on GitHub's late `schedule` until 2026-10-04, when the cron-job.org hourly dispatch of `fetch-data.yml` replaced it. Before that, several sessions of one game between two runs merge into one block ending at the last session's end.
 
 ### Rules this changes in Phase 1
 

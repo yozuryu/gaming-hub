@@ -4,9 +4,7 @@ A personal achievement dashboard that brings **RetroAchievements**, **Steam** an
 
 **Live site → [yozuryu.github.io/gaming-hub](https://yozuryu.github.io/gaming-hub/)**
 
-[![RA data](https://github.com/yozuryu/gaming-hub/actions/workflows/fetch-ra-data.yml/badge.svg)](https://github.com/yozuryu/gaming-hub/actions/workflows/fetch-ra-data.yml)
-[![Steam data](https://github.com/yozuryu/gaming-hub/actions/workflows/fetch-steam-data.yml/badge.svg)](https://github.com/yozuryu/gaming-hub/actions/workflows/fetch-steam-data.yml)
-[![Xbox data](https://github.com/yozuryu/gaming-hub/actions/workflows/fetch-xbox-data.yml/badge.svg)](https://github.com/yozuryu/gaming-hub/actions/workflows/fetch-xbox-data.yml)
+[![Data](https://github.com/yozuryu/gaming-hub/actions/workflows/fetch-data.yml/badge.svg)](https://github.com/yozuryu/gaming-hub/actions/workflows/fetch-data.yml)
 
 ![Gaming Hub home page with RetroAchievements, Steam and Xbox cards](docs/screenshots/hub.jpg)
 

@@ -1,0 +1,137 @@
+name: Fetch Data
+
+# Normally triggered by cron-job.org through the workflow_dispatch API:
+# hourly `incremental` (hours 1–23) and `midnight` at 00:00 UTC. The schedule below is
+# only a fallback in case the external cron stops: GitHub delays scheduled runs by hours.
+#
+# The three pipelines run one after another in one job. A platform that fails doesn't
+# stop the others (each pipeline exits before writing when it fails, so its previous
+# files stay); the job is marked failed at the end so GitHub still sends the email.
+run-name: >-
+  ${{ github.event_name == 'schedule' && 'Data — fallback incremental' ||
+      format('Data — {0} ({1})', inputs.mode, inputs.platforms) }}
+
+on:
+  schedule:
+    - cron: '43 */6 * * *'  # fallback — incremental every 6h
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'incremental = only writes on activity · midnight = RA full, Steam unlock, Xbox full refresh · full-refresh = every game on every platform · watchlist-only = RA want-to-play list'
+        type: choice
+        default: incremental
+        options:
+          - incremental
+          - midnight
+          - full-refresh
+          - watchlist-only
+      platforms:
+        description: 'Platforms to run'
+        type: choice
+        default: all
+        options:
+          - all
+          - ra
+          - steam
+          - xbox
+
+concurrency:
+  group: data-pipeline
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+env:
+  MODE: ${{ inputs.mode || 'incremental' }}
+  PLATFORMS: ${{ inputs.platforms || 'all' }}
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: RetroAchievements
+        id: ra
+        if: env.PLATFORMS == 'all' || env.PLATFORMS == 'ra'
+        continue-on-error: true
+        env:
+          RA_USERNAME: ${{ secrets.RA_USERNAME }}
+          RA_API_KEY: ${{ secrets.RA_API_KEY }}
+        run: |
+          case "$MODE" in
+            midnight|full-refresh) npm run ra-fetch:full ;;
+            watchlist-only)        npm run ra-fetch:watchlist ;;
+            *)                     npm run ra-fetch ;;
+          esac
+
+      - name: Steam
+        id: steam
+        if: (env.PLATFORMS == 'all' || env.PLATFORMS == 'steam') && env.MODE != 'watchlist-only'
+        continue-on-error: true
+        env:
+          STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
+          STEAM_USER_ID: ${{ secrets.STEAM_USER_ID }}
+        run: |
+          case "$MODE" in
+            midnight)     npm run steam-fetch:unlocked ;;
+            full-refresh) npm run steam-fetch:full ;;
+            *)            npm run steam-fetch ;;
+          esac
+
+      - name: Xbox
+        id: xbox
+        if: (env.PLATFORMS == 'all' || env.PLATFORMS == 'xbox') && env.MODE != 'watchlist-only'
+        continue-on-error: true
+        env:
+          XBOX_API_KEY: ${{ secrets.XBOX_API_KEY }}
+          XBOX_XUID: ${{ secrets.XBOX_XUID }}
+        run: |
+          case "$MODE" in
+            midnight|full-refresh) npm run xbox-fetch:full ;;
+            *)                     npm run xbox-fetch ;;
+          esac
+
+      - name: Commit updated data
+        if: ${{ !cancelled() }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ra/ data/steam/ data/xbox/
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          changed=""
+          for p in ra steam xbox; do
+            git diff --staged --quiet -- "data/$p/" || changed="$changed${changed:+, }$p"
+          done
+          case "$MODE" in
+            midnight)       MSG="chore: midnight refresh data" ;;
+            full-refresh)   MSG="chore: full refresh data" ;;
+            watchlist-only) MSG="chore: update ra watchlist" ;;
+            *)              MSG="chore: update data" ;;
+          esac
+          git commit -m "$MSG ($changed) $(date -u '+%Y-%m-%d %H:%M UTC')"
+          # main may have moved during the run (e.g. a manual push): rebase and retry once
+          git push || (git pull --rebase && git push)
+
+      - name: Report failed platforms
+        if: steps.ra.outcome == 'failure' || steps.steam.outcome == 'failure' || steps.xbox.outcome == 'failure'
+        run: |
+          echo "::error::Failed: RA=${{ steps.ra.outcome }} Steam=${{ steps.steam.outcome }} Xbox=${{ steps.xbox.outcome }}"
+          exit 1
