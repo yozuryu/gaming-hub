@@ -105,7 +105,7 @@ const Heatmap = ({ heatmapData, filter, selectedDay, onSelectDay, describe }) =>
         : ['#101214', '#1a4a70', '#2a6b9e', '#66c0f4', '#e5b143'];
 
     return (
-        <div className="overflow-x-auto" ref={scrollRef}>
+        <div className="overflow-x-auto anim-fade" ref={scrollRef}>
             <div style={{ minWidth: `${53 * 14}px` }}>
                 <div className="flex mb-1" style={{ paddingLeft: '28px' }}>
                     {weeks.map((_, wi) => {
@@ -897,6 +897,7 @@ const App = () => {
                                 )}
                             </div>
                             <Heatmap
+                                key={filter}
                                 heatmapData={heatmapData}
                                 filter={filter}
                                 selectedDay={selectedDay}

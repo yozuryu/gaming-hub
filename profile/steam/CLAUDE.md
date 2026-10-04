@@ -38,6 +38,6 @@ Does NOT need `achievements[]` to render. Full achievement data only loaded on m
 
 ## Achievement Modal
 - `handleViewDetails` checks `gameDetails[appId]` cache first
-- If not cached: sets `modalLoading` state, fetches `games/{appId}.json`, caches result, opens modal
+- If not cached: opens the modal right away with `loading: true` (header from the card's index data, `ModalListSkeleton` in place of the filter bar + list), fetches `games/{appId}.json`, caches it, then fills the same modal (skipped if it was closed meanwhile). The panel height animates from the skeleton to the list (`useAnimatedHeight`)
 - Fallback: opens modal with index data (no achievements) if fetch fails
 - Do not change the modal game banner (`w-32 h-16` image) — previous attempts to resize it were rejected

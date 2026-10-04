@@ -34,6 +34,8 @@ Playtime is now logged as play sessions for Steam and RetroAchievements, with hi
 ### Structure
 
 - Page switches cross-fade (View Transitions; the top bar and bottom nav stay put), content fades in as it replaces the loading skeleton, and tab, view, period and filter changes fade the new content in. Modals pop in. Shared in `assets/motion.css`; off when the system asks for reduced motion
+- Filter changes fade the updated list in: achievement modal filters, profile Progress sort and view, RA watchlist filters, picked heatmap days, the Activity heatmap platform filter, and the Analytics chart/table toggle; "Show all" items fade in
+- Achievement modals animate their height when the content changes (a filter, or loading finishing). Steam and Xbox modals now open immediately with a skeleton list and fill in place when the game's achievements arrive, instead of showing a separate loading box first
 - Shimmer skeletons replace the remaining "Loading…" text: Steam/Xbox game lists and Activity tab, the achievement modal while it loads, Activity's play sessions, and the hub's name, motto and "Last updated"
 
 ### Pipelines

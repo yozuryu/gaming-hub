@@ -182,8 +182,11 @@ const ChartCard = ({ title, subtitle, legend, table, children }) => {
                     </button>
                 )}
             </div>
-            {legend && !showTable && <div className="mb-2.5"><Legend items={legend} /></div>}
-            {showTable ? <DataTable {...table} /> : children}
+            {/* Chart ↔ table swap fades */}
+            <div key={showTable ? 'table' : 'chart'} className="anim-fade">
+                {legend && !showTable && <div className="mb-2.5"><Legend items={legend} /></div>}
+                {showTable ? <DataTable {...table} /> : children}
+            </div>
         </div>
     );
 };

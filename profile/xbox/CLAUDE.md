@@ -5,7 +5,7 @@ Built from `profile/steam/` and kept structurally parallel to it. When changing 
 ## Data Sources
 - `../../data/xbox/profile.json` — fetched on mount (profile, stats, recentlyPlayed, perfectGames)
 - `../../data/xbox/games/index.json` — fetched when any game tab opens (no `achievements[]`)
-- `../../data/xbox/games/{titleId}.json` — lazy-fetched when the achievement modal opens (`handleViewDetails`)
+- `../../data/xbox/games/{titleId}.json` — lazy-fetched when the achievement modal opens (`handleViewDetails`): the modal opens at once with `loading: true` (skeleton list) and fills in when the file arrives, its height animating (`useAnimatedHeight`), same as Steam
 - `../../data/xbox/achievements/1–4.json` — all four fetched when Activity tab opens (the heatmap is built in the browser from these chunks, in the viewer's timezone); the timeline reveals them one at a time (`shownChunks`) via IntersectionObserver
 - `../../data/xbox/win-conditions.json` — beaten games (edited in admin → Xbox → Win Conditions)
 

@@ -339,7 +339,9 @@ Linked from every page's `index.html`. Short and quiet: fades with a few pixels 
 - **Classes:** `.anim-in` (content replacing a skeleton, a new tab/view/period), `.anim-fade` (lists changing in place, expanded sections), `.anim-pop` (modal panels), `.anim-backdrop` (modal backdrops)
 - **Re-run on change** by giving the container a React `key` tied to what changed (e.g. `key={activeTab}` on profile tab content, `key={view}` on Activity, `key={`${period}-${hideFarms}`}` on Analytics, filters on Completions)
 - The hub (vanilla) animates children of its filled containers in CSS: `innerHTML` inserts new nodes, which replays the animation
-- Steam/Xbox achievement modals: the loading overlay fades the backdrop and pops a skeleton panel; the real modal only fades its panel in (no second backdrop fade)
+- **Modal height:** `useAnimatedHeight(ref)` (defined in each profile `app.js`) animates a panel's height whenever its content grows or shrinks: loading done, filter change. FLIP via ResizeObserver (runs after layout, before paint), so there is no jump. Used on all three achievement modals
+- Steam/Xbox achievement modals open immediately in a loading state (skeleton list) and fill in place when the game file arrives, so one panel animates from skeleton to list
+- **Filter changes** re-key the list they change so it fades: modal lock/type filters, profile Progress sort/view/completed toggles (not search, to avoid a fade per keystroke), RA watchlist status/grouping, Activity and profile Activity day selection, Activity heatmap platform filter, Analytics chart ↔ table toggle. "Show all"/"Show more" items fade in as they appear
 - Every load state uses a shimmer skeleton, never "Loading…" text
 
 ### Scroll-to-top button

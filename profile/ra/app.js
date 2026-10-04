@@ -410,9 +410,41 @@ const GameCard = ({ game, onViewDetails, guides }) => {
 
 // ── RAchievementModal ─────────────────────────────────────────────────────────
 
+// Animates an element's height when its content grows or shrinks (e.g. a filter
+// change). FLIP: the ResizeObserver callback runs after layout and before paint, so
+// the old height is restored and transitioned to the new one with no jump.
+const useAnimatedHeight = (ref, duration = 220) => {
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !window.ResizeObserver || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let prev = el.offsetHeight, run = 0;
+    const ro = new ResizeObserver(() => {
+      if (el.style.height) return;   // our own animation is resizing it
+      const next = el.offsetHeight;
+      if (Math.abs(next - prev) < 2) { prev = next; return; }
+      const from = prev, id = ++run;
+      prev = next;
+      el.style.overflow = 'hidden';
+      el.style.height = `${from}px`;
+      void el.offsetHeight;
+      el.style.transition = `height ${duration}ms cubic-bezier(0.2, 0.7, 0.3, 1)`;
+      el.style.height = `${next}px`;
+      setTimeout(() => {
+        if (id !== run) return;
+        el.style.height = el.style.transition = el.style.overflow = '';
+        prev = el.offsetHeight;
+      }, duration + 30);
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+};
+
 const RAchievementModal = ({ game, onClose }) => {
   const [lockFilter, setLockFilter] = useState('all');
   const [typeFilter, setTypeFilter] = useState('all');
+  const panelRef = useRef(null);
+  useAnimatedHeight(panelRef);
   const [tooltip,    setTooltip]    = useState(null); // { content, rect }
 
   const showTip = (e, content) => setTooltip({ content, rect: e.currentTarget.getBoundingClientRect() });
@@ -449,6 +481,7 @@ const RAchievementModal = ({ game, onClose }) => {
       <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px] anim-backdrop" />
 
       <div
+        ref={panelRef}
         className="relative z-10 w-full max-w-xl bg-[#1b2838] border border-[#2a475e] rounded-[4px] shadow-2xl flex flex-col max-h-[90vh] anim-pop"
         onClick={e => e.stopPropagation()}
       >
@@ -565,7 +598,8 @@ const RAchievementModal = ({ game, onClose }) => {
         </div>
 
         {/* Achievement list */}
-        <div className="overflow-y-auto overscroll-contain flex-1 px-4 py-3 space-y-1.5">
+        {/* Re-keyed so a filter change fades the new list in (the panel height animates too) */}
+        <div key={`${lockFilter}-${typeFilter}`} className="overflow-y-auto overscroll-contain flex-1 px-4 py-3 space-y-1.5 anim-fade">
           {filteredAchs.length > 0 ? filteredAchs.map(ach => {
             const casualPct   = game.totalPlayers   > 1 ? Math.min(100, (ach.numAwardedCasual   / game.totalPlayers)   * 100).toFixed(2) : null;
             const hardcorePct = game.totalPlayersHC > 1 ? Math.min(100, (ach.numAwardedHardcore / game.totalPlayersHC) * 100).toFixed(2) : null;
@@ -867,7 +901,7 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
             {timelineGroups.map(({ day, dayPts, achCount, sessions }) => {
               const isCollapsed = collapsedDays.has(day);
               return (
-              <div key={day} className="mb-4">
+              <div key={`${selectedDay}-${day}`} className="mb-4 anim-fade">
                 {/* Day header — clickable to collapse */}
                 <button onClick={() => toggleDay(day)} className="w-full flex items-center gap-2 mb-2 group outline-none">
                   <div className="w-2 h-2 rounded-full bg-[#2a475e] border border-[#66c0f4] shrink-0"></div>
@@ -1718,7 +1752,7 @@ export default function App() {
                 </div>
 
                 {/* Right column: always visible on sm+, hidden on mobile until expanded */}
-                <div className={`flex flex-col ${statsExpanded ? '' : 'hidden sm:flex'}`}>
+                <div className={`flex flex-col ${statsExpanded ? 'anim-fade' : 'hidden sm:flex'}`}>
                   {PROFILE_DATA.statsRight.map((stat, i) => (
                     <div key={`right-${i}`} className="flex items-end text-[11px] py-[3px] group hover:bg-[#202d39]/40 rounded-sm px-1 transition-colors">
                       <span className="text-[#8f98a0] font-medium leading-tight whitespace-nowrap">{stat.label}</span>
@@ -1759,7 +1793,7 @@ export default function App() {
               </div>
               <div className="p-3 grid grid-cols-5 sm:grid-cols-8 lg:grid-cols-5 gap-2 min-h-[60px]">
                 {PROFILE_DATA.gameAwards.length > 0 ? (awardsExpanded ? PROFILE_DATA.gameAwards : PROFILE_DATA.gameAwards.slice(0, iconLimit)).map(award => (
-                  <div key={award.id} className="relative group cursor-help">
+                  <div key={award.id} className="relative group cursor-help anim-fade">
                     <img
                       src={award.icon}
                       alt={award.title}
@@ -2088,6 +2122,7 @@ export default function App() {
                       ))}
                     </div>
 
+                    <div key={`${watchlistStatusFilter}-${watchlistGrouping}`} className="anim-fade">
                     {filtered.length === 0 ? (
                       <div className="text-center py-6 text-[#546270] text-[11px]">No games match the current filters.</div>
                     ) : watchlistGrouping === 'none' ? (
@@ -2110,6 +2145,7 @@ export default function App() {
                         );
                       })
                     )}
+                    </div>
                   </div>
                 </>
               );
@@ -2137,9 +2173,12 @@ export default function App() {
                   {progressSearch ? 'No games match your search.' : 'No games in this view.'}
                 </div>
               )}
-              {displayedGames.map(game => (
-                <GameCard key={game.id} game={game} onViewDetails={setSelectedGame} guides={guidesData[game.id] ?? null} />
-              ))}
+              {/* Re-keyed on sort/view/filter changes so the new order fades in (not on search keystrokes) */}
+              <div key={`${progressSort}-${progressView}-${showMastered}`} className="flex flex-col gap-3 anim-fade">
+                {displayedGames.map(game => (
+                  <GameCard key={game.id} game={game} onViewDetails={setSelectedGame} guides={guidesData[game.id] ?? null} />
+                ))}
+              </div>
             </>
           )}
         </div>

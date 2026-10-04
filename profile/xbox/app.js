@@ -213,11 +213,60 @@ const XboxGameCard = ({ game, achievementData, onViewDetails, beatenInfo }) => {
 
 // ── AchievementModal ───────────────────────────────────────────────────────────
 
-const AchievementModal = ({ game, achievementData, onClose, beatenInfo }) => {
+// Animates an element's height when its content grows or shrinks (loading done,
+// a filter change). FLIP: the ResizeObserver callback runs after layout and before
+// paint, so the old height is restored and transitioned to the new one with no jump.
+const useAnimatedHeight = (ref, duration = 220) => {
+    useEffect(() => {
+        const el = ref.current;
+        if (!el || !window.ResizeObserver || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        let prev = el.offsetHeight, run = 0;
+        const ro = new ResizeObserver(() => {
+            if (el.style.height) return;   // our own animation is resizing it
+            const next = el.offsetHeight;
+            if (Math.abs(next - prev) < 2) { prev = next; return; }
+            const from = prev, id = ++run;
+            prev = next;
+            el.style.overflow = 'hidden';
+            el.style.height = `${from}px`;
+            void el.offsetHeight;
+            el.style.transition = `height ${duration}ms cubic-bezier(0.2, 0.7, 0.3, 1)`;
+            el.style.height = `${next}px`;
+            setTimeout(() => {
+                if (id !== run) return;
+                el.style.height = el.style.transition = el.style.overflow = '';
+                prev = el.offsetHeight;
+            }, duration + 30);
+        });
+        ro.observe(el);
+        return () => ro.disconnect();
+    }, []);
+};
+
+// Achievement list placeholder while the game's file loads
+const ModalListSkeleton = () => (
+    <div className="px-4 py-3 flex flex-col gap-1.5" aria-busy="true">
+        {[...Array(6)].map((_, i) => (
+            <div key={i} className="flex items-center gap-3 p-2 bg-[#202d39] border border-[#2a475e] rounded-[2px]">
+                <div className="shimmer w-10 h-10 rounded-[2px] shrink-0" />
+                <div className="flex-1 flex flex-col gap-1.5">
+                    <div className="shimmer h-2.5 rounded" style={{ width: `${40 + (i % 3) * 15}%` }} />
+                    <div className="shimmer h-2 rounded" style={{ width: `${60 + (i % 2) * 20}%` }} />
+                </div>
+            </div>
+        ))}
+    </div>
+);
+
+// Opens straight away; while `loading` (the game's file is being fetched) the header uses the
+// card's summary and the list is a skeleton, then the panel grows to the real list.
+const AchievementModal = ({ game, achievementData, onClose, beatenInfo, loading = false }) => {
     const [lockFilter, setLockFilter] = useState('all');
+    const panelRef = useRef(null);
+    useAnimatedHeight(panelRef);
 
     const achs = withPlaceholders(achievementData?.achievements ?? [], achievementData);
-    const pct  = achievementData.total > 0
+    const pct  = achievementData?.total > 0
         ? (achievementData.unlocked / achievementData.total) * 100
         : null;
     const isPerfect = pct !== null && pct >= 100;
@@ -251,12 +300,12 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo }) => {
             onClick={onClose}
         >
             {/* Backdrop */}
-            {/* No backdrop animation: it usually follows the loading overlay, which already faded one in */}
-            <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px] anim-backdrop" />
 
-            {/* Panel */}
+            {/* Panel (height animates as the content changes) */}
             <div
-                className="relative z-10 w-full max-w-xl bg-[#1b2838] border border-[#2a475e] rounded-[4px] shadow-2xl flex flex-col max-h-[90vh] anim-fade"
+                ref={panelRef}
+                className="relative z-10 w-full max-w-xl bg-[#1b2838] border border-[#2a475e] rounded-[4px] shadow-2xl flex flex-col max-h-[90vh] anim-pop"
                 onClick={e => e.stopPropagation()}
             >
                 {/* Close button — absolute top-right */}
@@ -314,6 +363,7 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo }) => {
                     </div>
                 </div>
 
+                {loading ? <ModalListSkeleton /> : (<>
                 {/* Filter bar */}
                 <div className="flex items-center gap-2 px-4 py-2 border-b border-[#101214] shrink-0">
                     {[
@@ -338,8 +388,8 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo }) => {
                     </span>
                 </div>
 
-                {/* Achievement list */}
-                <div className="overflow-y-auto overscroll-contain flex-1 px-4 py-3 space-y-1.5">
+                {/* Achievement list (re-keyed so a filter change fades the new list in) */}
+                <div key={lockFilter} className="overflow-y-auto overscroll-contain flex-1 px-4 py-3 space-y-1.5 anim-fade">
                     {filteredAchs.map(ach => (
                         <div
                             key={ach.apiName}
@@ -396,6 +446,7 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo }) => {
                         </div>
                     ))}
                 </div>
+                </>)}
             </div>
         </div>
     );
@@ -621,7 +672,7 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
                         {timelineGroups.map(({ day, achCount, sessions }) => {
                             const isCollapsed = collapsedDays.has(day);
                             return (
-                            <div key={day} className="mb-4">
+                            <div key={`${selectedDay}-${day}`} className="mb-4 anim-fade">
                                 <button onClick={() => toggleDay(day)} className="w-full flex items-center gap-2 mb-2 group outline-none">
                                     <div className="w-2 h-2 rounded-full bg-[#2a475e] border border-[#66c0f4] shrink-0" />
                                     <span className="text-[10px] text-[#66c0f4] font-semibold group-hover:text-[#c6d4df] transition-colors">{fmtDay(day)}</span>
@@ -853,7 +904,8 @@ const ProgressTab = ({ achievementProgress, onViewDetails, beatenMap }) => {
                 count={games.length}
                 search={search} onSearch={setSearch}
             />
-            <div className="flex flex-col gap-3">
+            {/* Re-keyed on sort/view/filter changes so the new order fades in (not on search keystrokes) */}
+            <div key={`${sort}-${view}-${showCompleted}`} className="flex flex-col gap-3 anim-fade">
                 {games.length === 0 && (
                     <div className="text-center py-12 text-[#546270] text-[12px]">
                         {search ? 'No games match your search.' : view !== 'all' ? 'No games in this view.' : 'No achievement progress tracked yet.'}
@@ -1011,7 +1063,6 @@ const App = () => {
     const [error,             setError]             = useState(null);
     const [selectedGame,     setSelectedGame]     = useState(null);
     const [gameDetails,       setGameDetails]       = useState({});
-    const [modalLoading,      setModalLoading]      = useState(null); // game object being fetched
     const [beatenGames,       setBeatenGames]       = useState([]);
     const VALID_TABS = ['recent', 'progress', 'activity'];
     const initialTab = (() => {
@@ -1147,15 +1198,15 @@ const App = () => {
             setSelectedGame({ game, achievementData: gameDetails[titleId], beatenInfo });
             return;
         }
-        setModalLoading(game);
+        // Open now with the card's summary; fill in when the file arrives (unless closed meanwhile)
+        setSelectedGame({ game, achievementData, beatenInfo, loading: true });
+        const fill = (data) => setSelectedGame(prev => (prev?.game.titleId === titleId ? { game, achievementData: data, beatenInfo } : prev));
         try {
             const data = await fetch(`../../data/xbox/games/${titleId}.json`).then(r => r.json());
             setGameDetails(prev => ({ ...prev, [titleId]: data }));
-            setModalLoading(null);
-            setSelectedGame({ game, achievementData: data, beatenInfo });
+            fill(data);
         } catch {
-            setModalLoading(null);
-            setSelectedGame({ game, achievementData, beatenInfo });
+            fill(achievementData);
         }
     }, [gameDetails]);
 
@@ -1423,7 +1474,7 @@ const App = () => {
                             </div>
                             <div className="p-3 grid grid-cols-5 sm:grid-cols-8 lg:grid-cols-5 gap-2 min-h-[60px]">
                                 {(completionsExpanded ? perfectGames : perfectGames.slice(0, iconLimit)).map(g => (
-                                    <div key={g.titleId} className="relative group cursor-help">
+                                    <div key={g.titleId} className="relative group cursor-help anim-fade">
                                         <a href={xboxSearchUrl(g.gameName)} target="_blank" rel="noreferrer">
                                             <img
                                                 src={xboxImg(g.iconUrl, 128)}
@@ -1472,7 +1523,7 @@ const App = () => {
                                     </div>
                                 ))}
                                 {(completionsExpanded ? beatenOnly : beatenOnly.slice(0, Math.max(0, iconLimit - perfectGames.length))).map(g => (
-                                    <div key={g.titleId} className="relative group cursor-help">
+                                    <div key={g.titleId} className="relative group cursor-help anim-fade">
                                         <a href={xboxSearchUrl(g.gameName)} target="_blank" rel="noreferrer">
                                             <img
                                                 src={xboxImg(g.iconUrl, 128)}
@@ -1656,43 +1707,13 @@ const App = () => {
                 </button>
             )}
 
-            {/* Achievement modal loading overlay */}
-            {modalLoading && (
-                <div
-                    className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-                    onClick={() => setModalLoading(null)}
-                >
-                    <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px] anim-backdrop" />
-                    {/* Skeleton of the achievement modal while its game file loads */}
-                    <div className="relative z-10 w-full max-w-xl bg-[#1b2838] border border-[#2a475e] rounded-[4px] shadow-2xl flex flex-col anim-pop" aria-busy="true">
-                        <div className="flex items-center gap-3 p-4 border-b border-[#2a475e]">
-                            <div className="shimmer w-12 h-12 rounded-[2px] shrink-0" />
-                            <div className="flex-1 min-w-0 flex flex-col gap-1.5">
-                                <span className="text-[13px] text-[#c6d4df] font-medium truncate">{modalLoading.name}</span>
-                                <Sk w="w-32" h="h-2" />
-                            </div>
-                        </div>
-                        <div className="p-3 flex flex-col gap-2">
-                            {[...Array(5)].map((_, i) => (
-                                <div key={i} className="flex items-center gap-2.5 p-2 bg-[#202d39] border border-[#2a475e] rounded-[2px]">
-                                    <div className="shimmer w-9 h-9 rounded-[2px] shrink-0" />
-                                    <div className="flex-1 flex flex-col gap-1.5">
-                                        <div className="shimmer h-2.5 rounded" style={{ width: `${40 + (i % 3) * 15}%` }} />
-                                        <div className="shimmer h-2 rounded" style={{ width: `${60 + (i % 2) * 20}%` }} />
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            )}
-
             {/* Achievement modal */}
             {selectedGame && (
                 <AchievementModal
                     game={selectedGame.game}
                     achievementData={selectedGame.achievementData}
                     beatenInfo={selectedGame.beatenInfo}
+                    loading={!!selectedGame.loading}
                     onClose={() => setSelectedGame(null)}
                 />
             )}
