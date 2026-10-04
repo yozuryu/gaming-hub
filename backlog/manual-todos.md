@@ -16,9 +16,9 @@ On [github.com/yozuryu/gaming-hub](https://github.com/yozuryu/gaming-hub), click
   retroachievements steam xbox achievements dashboard github-pages github-actions pwa react
   ```
 
-## 2. Git remote URL
+## 2. Git remote URL — done 2026-10-04
 
-The remote still points at the old repo name (`gaming-profile`), so GitHub prints "This repository moved" on every push. Update it, keeping the `github-yozuryu` SSH alias from `~/.ssh/config` (plain `github.com` would use a different key and fail):
+Done: `origin` is now `git@github-yozuryu:yozuryu/gaming-hub.git`. Previously the remote still pointed at the old repo name (`gaming-profile`), so GitHub prints "This repository moved" on every push. Update it, keeping the `github-yozuryu` SSH alias from `~/.ssh/config` (plain `github.com` would use a different key and fail):
 
 ```bash
 git remote set-url origin git@github-yozuryu:yozuryu/gaming-hub.git

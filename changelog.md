@@ -28,6 +28,7 @@ Playtime is now logged as play sessions for Steam and RetroAchievements, with hi
 
 - Steam and RA runs turn each game's lifetime playtime into play sessions in `data/{steam,ra}/playtime/{YYYY}.json` (start, end, minutes), compared against a baseline in `playtime/state.json`. Session times come from the game's last-played time, which Steam moves to the session end when it closes
 - Server-side playtime corrections, negative changes and games the baseline never listed are not logged as play; the first run only records the baseline
+- A session that starts within 5 minutes of the same game's previous one is merged into it: Steam saves playtime every 30 minutes while a game runs, which split long sessions in two (e.g. Final Fantasy XVI on 22 Sept showed 1h + 29m instead of 1h 29m). History rebuilt: Steam 103 → 85 sessions, RA 331 → 301, same total hours
 - `scripts/backfill-playtime.js` replays the hourly snapshots in git history through the same logic: 103 Steam sessions (76.5 h) since 2026-03-25 and 331 RA sessions (85.3 h) since 2026-03-27
 - Shared logic lives in `scripts/lib/playtime.js`; `state.json` files are excluded from the site
 - RA, Steam and Xbox runs also write an all-time unlock history, `data/{ra,steam,xbox}/history/{YYYY}.json` (time, game, achievement, points, rarity) plus an `index.json` of the years, for the Analytics page (`scripts/lib/history.js`)

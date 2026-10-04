@@ -11,4 +11,4 @@ Planned work, in priority order. Not published to the site (`backlog/` is in `_c
 | 5 | [Remove pipeline data from `main`'s history](history-cleanup.md) | Blocked | #4 running cleanly for a day |
 | 6 | [Playtime log, Activity views and Analytics page](playtime-and-analytics.md) | Done 2026-10-04 | — |
 
-**For you:** [manual to-dos](manual-todos.md): repo About box text, git remote URL, `gh` account, `XBOX_XUID`.
+**For you:** [manual to-dos](manual-todos.md): repo About box text, `gh` account, `XBOX_XUID`.

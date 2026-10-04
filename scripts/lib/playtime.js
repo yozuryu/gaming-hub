@@ -12,12 +12,16 @@
 //   end = the game's last-played time, start = end − delta. Steam moves last-played to the
 //   session start when it begins and to the end when it closes; playtime only grows at the end.
 //   RA's last-played behaves as the session end.
+//   Steam also checkpoints playtime every 30 minutes while a game runs (moving last-played
+//   to the checkpoint), so a run landing mid-session sees a finished chunk. A session that
+//   starts within MERGE_GAP_MS of the game's previous session end continues that session.
 
 const fs   = require('fs');
 const path = require('path');
 
 const MIN = 60 * 1000;
 const APPROX_TOLERANCE_MS = 2 * MIN;
+const MERGE_GAP_MS = 5 * MIN;
 
 // Parses ISO strings and RA's "YYYY-MM-DD HH:MM:SS" (UTC, no zone marker)
 const toMs = (v) => {
@@ -96,16 +100,22 @@ function diffPlaytime(state, snapshot, { unitsPerMinute, asOf }) {
         let end = lastPlayed ?? asOf;
         if (lastPlayed == null || end > asOf) { end = asOf; approx = true; }
 
-        // Never overlap the game's previous session; if it had to move, the times are a guess
-        // (offline play synced late, or RA splitting one session across two runs)
         let start = end - minutes * MIN;
-        if (prev.lastEnd != null && start < prev.lastEnd - APPROX_TOLERANCE_MS) {
+        let continues = null;
+        if (prev.lastEnd != null && Math.abs(start - prev.lastEnd) <= MERGE_GAP_MS) {
+            // Picks up where the last logged session ended (a Steam checkpoint): extend it
+            continues = iso(prev.lastEnd);
+        } else if (prev.lastEnd != null && start < prev.lastEnd - APPROX_TOLERANCE_MS) {
+            // Never overlap the game's previous session; if it had to move, the times are a guess
+            // (offline play synced late, or RA splitting one session across two runs)
             start = Math.min(prev.lastEnd, end);
             approx = true;
         }
 
         const session = { start: iso(start), end: iso(end), gameId: g.id, minutes };
         if (approx) session.approx = true;
+        // Internal: the writer extends the session ending at this time instead of appending
+        if (continues) session.continues = continues;
         sessions.push(session);
 
         games[g.id] = { total, lastPlayed, lastEnd: end };
@@ -148,7 +158,18 @@ function writePlaytimeFiles(dir, { state, sessions, meta, asOf, dryRun = false }
             const consoleName = m?.console ?? games[s.gameId]?.console;
             if (consoleName) games[s.gameId].console = consoleName;   // RA only
         }
-        const all = [...prev.sessions, ...list].sort((a, b) => a.end.localeCompare(b.end));
+        const all = [...prev.sessions];
+        for (const { continues, ...rec } of list) {
+            const target = continues && all.findLast(x => x.gameId === rec.gameId && x.end === continues);
+            if (target) {
+                target.end = rec.end;
+                target.minutes += rec.minutes;
+                if (rec.approx) target.approx = true;
+            } else {
+                all.push(rec);
+            }
+        }
+        all.sort((a, b) => a.end.localeCompare(b.end));
         writes.push([filePath, { metadata: { generatedAt: iso(asOf), year: Number(year) }, games, sessions: all }]);
     }
     writes.push([path.join(dir, 'state.json'), state]);
@@ -179,7 +200,7 @@ function updatePlaytimeLog(dir, snapshot, { unitsPerMinute, asOf, dryRun = false
     const written = writePlaytimeFiles(dir, { state, sessions, meta, asOf, dryRun });
 
     if (seeded) log(`baseline seeded (${snapshot.length} games), no sessions logged`);
-    else log(`${sessions.length} new session(s)${sessions.length ? ': ' + sessions.map(s => `${meta[s.gameId]?.name ?? s.gameId} ${s.minutes}m`).join(', ') : ''}${dryRun ? '  (dry run)' : ''}`);
+    else log(`${sessions.length} new session(s)${sessions.length ? ': ' + sessions.map(s => `${meta[s.gameId]?.name ?? s.gameId} ${s.minutes}m${s.continues ? ' (continued)' : ''}`).join(', ') : ''}${dryRun ? '  (dry run)' : ''}`);
     return { sessions, seeded, written };
 }
 
