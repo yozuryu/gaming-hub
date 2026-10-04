@@ -9,6 +9,14 @@ export const PLATFORM_COLOR = { ra: '#e5b143', steam: '#66c0f4', xbox: '#52b043'
 export const PLATFORM_LABEL = { ra: 'RetroAchievements', steam: 'Steam', xbox: 'Xbox' };
 export const PLATFORM_SHORT = { ra: 'RA', steam: 'Steam', xbox: 'Xbox' };
 
+// RA tilde tags (~Hack~ Title), same colors as the other pages
+export const TILDE_TAG_COLORS = {
+    'Homebrew':  { bg: 'rgba(102,192,244,0.08)', border: 'rgba(102,192,244,0.3)',  color: '#66c0f4' },
+    'Demo':      { bg: 'rgba(87,203,222,0.08)',  border: 'rgba(87,203,222,0.3)',   color: '#57cbde' },
+    'Prototype': { bg: 'rgba(143,152,160,0.08)', border: 'rgba(143,152,160,0.3)',  color: '#8f98a0' },
+    'Hack':      { bg: 'rgba(255,107,107,0.08)', border: 'rgba(255,107,107,0.3)',  color: '#ff6b6b' },
+};
+
 // Rarity tiers, same colors as the Steam profile page
 export const RARITY_TIERS = [
     { id: 'ultra',    label: 'Ultra rare', max: 5,        color: '#e5b143' },
@@ -18,6 +26,11 @@ export const RARITY_TIERS = [
     { id: 'common',   label: 'Common',     max: Infinity, color: '#546270' },
 ];
 export const rarityTier = (r) => RARITY_TIERS.find(t => r < t.max) ?? RARITY_TIERS[RARITY_TIERS.length - 1];
+
+// Achievement farms: Steam games built to hand out hundreds of achievements in minutes.
+// Real games stay at or under ~6 per hour of lifetime playtime; farms run 20 to 700.
+export const FARM_PER_HOUR = 15;
+export const FARM_MIN_UNLOCKS = 10;   // so a short game with 3 quick achievements isn't flagged
 
 // Magnitude ramp for the punchcards (one hue, dark → light on the dark surface)
 export const HEAT_RAMP = ['#101214', '#0d2a3d', '#1a5275', '#2a7bba', '#66c0f4'];

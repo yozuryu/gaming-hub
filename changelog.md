@@ -6,7 +6,7 @@ Playtime is now logged as play sessions for Steam and RetroAchievements, with hi
 
 ### Activity
 
-- New **Achievements | Playtime** switch in the header; the view is kept in the URL (`?view=playtime`)
+- New Achievements | Playtime switch in the header; the view is kept in the URL (`?view=playtime`)
 - Playtime view: heatmap of minutes played per day in your timezone (sessions crossing midnight are split between the two days), streak of days with 15+ minutes, and a timeline of play sessions with start–end time, duration and the number of achievements unlocked during each session
 - Header shows hours played in the past year for RA and Steam; Xbox is marked n/a (it doesn't report playtime)
 - The streak panel and streak calculation are shared by both views
@@ -16,13 +16,17 @@ Playtime is now logged as play sessions for Steam and RetroAchievements, with hi
 
 - New page at `/analytics/`: one period selector (30 days, 12 months, this year, all time) scopes everything, in your timezone
 - Overview tiles with change vs the previous period: hours played, active days, sessions, average session, achievements, RA points, gamerscore, completed games
-- Trends (hours played, achievements unlocked), when you play (day × hour punchcards for playtime and unlocks), top games (most played, most unlocks, minutes per achievement), session lengths, rarity profile with rarest unlocks, completion funnel per platform with median days to complete, and RetroAchievements by console
+- Trends (hours played, achievements unlocked), when you play (day × hour punchcards for playtime and unlocks), top games, session lengths, rarity profile with rarest unlocks, completion funnel per platform with median days to complete, and RetroAchievements by console
 - Every chart has hover/focus tooltips and a Table toggle
+- Hide achievement farms checkbox (on by default) removes Steam games that hand out more than 15 achievements per hour of playtime (Slash It, Lines X, …) from every section
+- Top games: Most progress (share of each game's achievements earned in the period, sets of 10+) and Almost complete (unfinished games closest to 100%) replace "Most unlocks", which farm games dominated; minutes per achievement now lists the slowest first
+- RA games show their subset badge and tilde tags (Homebrew, Hack, Demo, Prototype) wherever they appear, so e.g. the original and Homebrew 2048 are told apart
 
 ### Hub
 
-- Mobile bottom nav: **Stats** (Analytics) replaces Log. The changelog is linked from the hub header on mobile; on desktop the header links Analytics and the footer links both
+- Mobile bottom nav: Stats (Analytics) replaces Log. The changelog is linked from the hub header on mobile; on desktop the header links Analytics and the footer links both
 - Service worker precaches the Analytics page (cache `gaming-hub-v7`)
+- Changelog page: Hub, Completions, Activity and the new Analytics section each get their own heading color (they shared one); Analytics sorts after Activity
 
 ### Pipelines
 

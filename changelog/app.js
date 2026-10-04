@@ -50,6 +50,7 @@ const SECTION_ORDER = [
     'Hub',
     'Completions',
     'Activity',
+    'Analytics',
     'Pipelines',
     'Structure',
     'Admin',
@@ -67,9 +68,12 @@ const SECTION_COLORS = {
     'RetroAchievements': '#e5b143',
     'Steam':             '#66c0f4',
     'Xbox':              '#52b043',
+    // Hub pages: one hue each, kept apart from the platform colors, Admin red and each
+    // other (OKLab ΔE ≥ 16 with normal vision; the heading text names the section anyway)
     'Hub':               '#c6d4df',
-    'Completions':       '#c6d4df',
-    'Activity':          '#c6d4df',
+    'Completions':       '#bef264',
+    'Activity':          '#e879f9',
+    'Analytics':         '#8b5cf6',
     'Pipelines':         '#8f98a0',
     'Structure':         '#8f98a0',
     'Admin':             '#ff6b6b',

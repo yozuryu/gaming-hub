@@ -4,6 +4,7 @@ import { BarChart3, ChevronDown, Table } from 'lucide-react';
 import { TZ, dayKey, todayKey, addDays, keyToDate, splitByDay, fmtDayKey } from '../assets/time.js';
 import {
     RA_MEDIA, PLATFORMS, PLATFORM_COLOR, PLATFORM_LABEL, PLATFORM_SHORT, RARITY_TIERS, rarityTier, HEAT_RAMP,
+    FARM_PER_HOUR, FARM_MIN_UNLOCKS, TILDE_TAG_COLORS,
     fmtMinutes, fmtHours, fmtNum, parseTitle, xboxImg, gameUrl, niceMax, median,
 } from './utils.js';
 
@@ -110,6 +111,30 @@ const useTip = (content) => {
 };
 
 // ── Building blocks ───────────────────────────────────────────────────────────
+
+// Subset badge + subset name + tilde tags for an RA title (nothing for other platforms).
+// Pair with parseTitle(name).baseTitle for the title itself.
+const TitleMarks = ({ platform, name }) => {
+    if (platform !== 'ra') return null;
+    const { subsetName, isSubset, tags } = parseTitle(name);
+    return (
+        <>
+            {isSubset && (
+                <>
+                    <span className="text-[7px] font-bold uppercase tracking-[0.07em] px-1 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>
+                    <span className="text-[8px] text-[#c8a84b] truncate min-w-0">{subsetName}</span>
+                </>
+            )}
+            {tags.map(tag => {
+                const c = TILDE_TAG_COLORS[tag] || TILDE_TAG_COLORS.Prototype;
+                return (
+                    <span key={tag} className="text-[7px] font-bold uppercase tracking-[0.07em] px-1 py-[1px] rounded-[2px] shrink-0"
+                        style={{ background: c.bg, border: `1px solid ${c.border}`, color: c.color }}>{tag}</span>
+                );
+            })}
+        </>
+    );
+};
 
 const SectionHeader = ({ title, gold, note }) => (
     <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 mb-3">
@@ -227,9 +252,10 @@ const Column = ({ bucket, series, max, height, format }) => {
 };
 
 // Horizontal bars for ranked lists: rows [{ key, label, sub, value, color, icon, href }]
-const BarList = ({ rows, format, empty = 'Nothing in this period.' }) => {
+// `max` fixes the scale (e.g. 100 for percentages); otherwise bars are relative to the top row
+const BarList = ({ rows, format, max: fixedMax, empty = 'Nothing in this period.' }) => {
     if (!rows.length) return <div className="text-[10px] text-[#546270] italic py-2">{empty}</div>;
-    const max = Math.max(...rows.map(r => r.value));
+    const max = fixedMax ?? Math.max(...rows.map(r => r.value));
     return (
         <div className="flex flex-col gap-1.5">
             {rows.map(r => (
@@ -240,11 +266,12 @@ const BarList = ({ rows, format, empty = 'Nothing in this period.' }) => {
                         </div>
                     )}
                     <div className="flex-1 min-w-0">
-                        <div className="flex items-baseline gap-2">
+                        <div className="flex items-center gap-1.5 min-w-0">
                             {r.href
-                                ? <a href={r.href} target="_blank" rel="noreferrer" className="text-[10px] text-[#c6d4df] hover:text-[#66c0f4] truncate transition-colors">{r.label}</a>
+                                ? <a href={r.href} target="_blank" rel="noreferrer" className="text-[10px] text-[#c6d4df] hover:text-[#66c0f4] truncate min-w-0 transition-colors">{r.label}</a>
                                 : <span className="text-[10px] text-[#c6d4df] truncate">{r.label}</span>}
-                            {r.sub && <span className="text-[9px] text-[#546270] truncate">{r.sub}</span>}
+                            {r.marks}
+                            {r.sub && <span className="text-[9px] text-[#546270] truncate min-w-0">{r.sub}</span>}
                             <span className="ml-auto text-[10px] text-[#c6d4df] font-semibold shrink-0">{format(r.value)}</span>
                         </div>
                         <div className="h-[3px] mt-0.5 bg-[#101214] rounded-[1px]">
@@ -388,7 +415,18 @@ async function loadAll() {
         ],
     };
 
-    return { unlocks, sessions, meta, completions, funnel };
+    // Current progress per game ("platform-id" → { unlocked, total }), for Most progress / Almost complete
+    const progress = {};
+    for (const [id, g] of Object.entries(steamIndex?.achievementProgress ?? {})) progress[`steam-${id}`] = { unlocked: g.unlocked ?? 0, total: g.total ?? 0 };
+    for (const [id, g] of Object.entries(xboxIndex?.achievementProgress ?? {})) progress[`xbox-${id}`] = { unlocked: g.unlocked ?? 0, total: g.total ?? 0 };
+    for (const g of raProgress) progress[`ra-${g.gameId}`] = { unlocked: g.numAwarded ?? 0, total: g.maxPossible ?? 0 };
+
+    // Achievement farms (Steam only: needs lifetime playtime per game)
+    const farms = new Set(Object.entries(steamIndex?.achievementProgress ?? {})
+        .filter(([, g]) => g.unlocked >= FARM_MIN_UNLOCKS && g.unlocked / Math.max((g.playtimeForever ?? 0) / 60, 0.1) > FARM_PER_HOUR)
+        .map(([id]) => `steam-${id}`));
+
+    return { unlocks, sessions, meta, completions, funnel, progress, farms };
 }
 
 // Session minutes split into local days: [{ key, minutes, s }]
@@ -430,6 +468,15 @@ const App = () => {
         if (id === '30d') url.searchParams.delete('period'); else url.searchParams.set('period', id);
         history.replaceState(null, '', url);
     };
+    // Hide achievement farms everywhere (default on); ?farms=show turns it off
+    const [hideFarms, setHideFarms] = useState(() => new URLSearchParams(location.search).get('farms') !== 'show');
+    const toggleFarms = () => {
+        const next = !hideFarms;
+        setHideFarms(next);
+        const url = new URL(location.href);
+        if (next) url.searchParams.delete('farms'); else url.searchParams.set('farms', 'show');
+        history.replaceState(null, '', url);
+    };
     const [tip, setTip] = useState(null);
     const [showScrollTop, setShowScrollTop] = useState(false);
 
@@ -466,14 +513,20 @@ const App = () => {
 
     const view = useMemo(() => {
         if (!base) return null;
-        const { days, unlocks, completions, trackingKey } = base;
+        const { trackingKey } = base;
         const { startKey, endKey, prevStartKey, prevEndKey } = range;
         const nameOf = (p, id) => data.meta[p][String(id)]?.name ?? `#${id}`;
+        // The farm filter scopes every section below it
+        const keep = (p, id) => !hideFarms || !data.farms.has(`${p}-${id}`);
+        const days = base.days.filter(x => keep(x.s.platform, x.s.gameId));
+        const unlocks = base.unlocks.filter(u => keep(u.platform, u.g));
+        const completions = base.completions.filter(c => keep(c.platform, c.gameId));
+        const sessions = data.sessions.filter(s => keep(s.platform, s.gameId));
 
         // ── Totals for a range
         const totals = (a, b) => {
             const d = days.filter(x => inRange(x.key, a, b));
-            const sess = data.sessions.filter(s => inRange(dayKey(new Date(s.endMs)), a, b));
+            const sess = sessions.filter(s => inRange(dayKey(new Date(s.endMs)), a, b));
             const u = unlocks.filter(x => inRange(x.key, a, b));
             const active = new Set([...d.filter(x => x.minutes >= 1).map(x => x.key), ...u.map(x => x.key)]);
             return {
@@ -513,7 +566,7 @@ const App = () => {
         }
 
         // ── When you play
-        const periodSessions = data.sessions.filter(s => inRange(dayKey(new Date(s.endMs)), startKey, endKey));
+        const periodSessions = sessions.filter(s => inRange(dayKey(new Date(s.endMs)), startKey, endKey));
         const periodUnlocks = unlocks.filter(u => inRange(u.key, startKey, endKey));
         const playGrid = hourGrid(periodSessions);
         const unlockGrid = Array.from({ length: 7 }, () => Array(24).fill(0));
@@ -527,6 +580,7 @@ const App = () => {
         const gameRow = (x, value, sub) => ({
             key: `${x.platform}-${x.id}`,
             label: parseTitle(nameOf(x.platform, x.id)).baseTitle,
+            marks: <TitleMarks platform={x.platform} name={nameOf(x.platform, x.id)} />,
             sub, value,
             color: PLATFORM_COLOR[x.platform],
             icon: data.meta[x.platform][x.id]?.icon ?? null,
@@ -535,10 +589,24 @@ const App = () => {
         const games = Object.values(perGame);
         const topHours = games.filter(x => x.minutes >= 1).sort((a, b) => b.minutes - a.minutes).slice(0, 8)
             .map(x => gameRow(x, x.minutes, PLATFORM_SHORT[x.platform]));
-        const topUnlocks = games.filter(x => x.unlocks).sort((a, b) => b.unlocks - a.unlocks).slice(0, 8)
-            .map(x => gameRow(x, x.unlocks, PLATFORM_SHORT[x.platform]));
+        // Most progress: share of each game's set earned in the period (sets of 10+), bigger sets first on ties
+        const doneInPeriod = new Set(completions.filter(c => inRange(c.key, startKey, endKey)).map(c => `${c.platform}-${c.gameId}`));
+        const mostProgress = games
+            .map(x => ({ ...x, total: data.progress[`${x.platform}-${x.id}`]?.total ?? 0 }))
+            .filter(x => x.unlocks && x.total >= 10)
+            .map(x => ({ ...x, pct: Math.min(100, (x.unlocks / x.total) * 100) }))
+            .sort((a, b) => b.pct - a.pct || b.total - a.total).slice(0, 8)
+            .map(x => gameRow(x, x.pct, `${x.unlocks} of ${x.total}${doneInPeriod.has(`${x.platform}-${x.id}`) ? ' ★' : ''}`));
+        // Almost complete: current progress of unfinished games (ignores the period), fewest left first on ties
+        const almostComplete = Object.entries(data.progress)
+            .map(([k, v]) => { const [platform, ...rest] = k.split('-'); return { platform, id: rest.join('-'), ...v }; })
+            .filter(x => keep(x.platform, x.id) && x.total >= 10 && x.unlocked > 0 && x.unlocked < x.total)
+            .map(x => ({ ...x, pct: (x.unlocked / x.total) * 100 }))
+            .sort((a, b) => b.pct - a.pct || (a.total - a.unlocked) - (b.total - b.unlocked)).slice(0, 8)
+            .map(x => gameRow(x, x.pct, `${x.total - x.unlocked} left`));
+        // Minutes per achievement, slowest first: where each unlock took real playtime
         const perAch = games.filter(x => x.unlocks >= 3 && x.minutes >= 30)
-            .map(x => ({ ...x, mpa: x.minutes / x.unlocks })).sort((a, b) => a.mpa - b.mpa).slice(0, 8)
+            .map(x => ({ ...x, mpa: x.minutes / x.unlocks })).sort((a, b) => b.mpa - a.mpa).slice(0, 8)
             .map(x => gameRow(x, x.mpa, `${x.unlocks} in ${fmtMinutes(x.minutes)}`));
 
         // ── Sessions
@@ -577,14 +645,15 @@ const App = () => {
         return {
             cur, prev, prevPlayTracked, playNote,
             playBuckets, unlockBuckets, playUnit, unit,
-            playGrid, unlockGrid, topHours, topUnlocks, perAch,
+            playGrid, unlockGrid, topHours, mostProgress, almostComplete, perAch,
+            farmsHidden: hideFarms ? data.farms.size : 0,
             lengthBuckets, longest, sessionCount: periodSessions.length,
             medianSession: median(periodSessions.map(s => s.minutes)),
             rarity, rarest, periodCompletions, daysToComplete,
             consoleHours: consoleRows('minutes'), consoleUnlocks: consoleRows('unlocks'),
             nameOf,
         };
-    }, [base, range, data]);
+    }, [base, range, data, hideFarms]);
 
     const d = (k, play) => (view?.prev && (!play || view.prevPlayTracked) ? pct(view.cur[k], view.prev[k]) : null);
     const periodLabel = PERIODS.find(p => p.id === period).label;
@@ -623,6 +692,11 @@ const App = () => {
                                 </button>
                             ))}
                         </div>
+                        <label className="flex items-center gap-1.5 text-[10px] text-[#8f98a0] cursor-pointer select-none"
+                            title={`Steam games with ${FARM_MIN_UNLOCKS}+ unlocks earning more than ${FARM_PER_HOUR} achievements per hour of playtime${data ? `:\n${[...data.farms].map(k => data.meta.steam[k.slice(6)]?.name ?? k).join(', ')}` : ''}`}>
+                            <input type="checkbox" checked={hideFarms} onChange={toggleFarms} className="accent-[#66c0f4] w-3 h-3" />
+                            Hide achievement farms{data ? ` (${data.farms.size})` : ''}
+                        </label>
                         <span className="text-[10px] text-[#546270]" title="Days and hours are shown in your timezone">
                             {fmtDayKey(range.startKey)} – {fmtDayKey(range.endKey)} · {TZ}
                         </span>
@@ -687,11 +761,16 @@ const App = () => {
 
                         {/* Top games */}
                         <section>
-                            <SectionHeader title="Top games" note={periodLabel} />
-                            <div className="grid md:grid-cols-3 gap-3">
+                            <SectionHeader title="Top games" note={`${periodLabel}${view.farmsHidden ? ` · ${view.farmsHidden} achievement farms hidden` : ''}`} />
+                            <div className="grid md:grid-cols-2 gap-3">
                                 <ChartCard title="Most played"><BarList rows={view.topHours} format={fmtMinutes} /></ChartCard>
-                                <ChartCard title="Most unlocks"><BarList rows={view.topUnlocks} format={fmtNum} /></ChartCard>
-                                <ChartCard title="Minutes per achievement" subtitle="Fastest first · 3+ unlocks and 30m+ played">
+                                <ChartCard title="Most progress" subtitle="Share of the game's achievements earned · sets of 10+ · ★ completed">
+                                    <BarList rows={view.mostProgress} format={v => `${Math.round(v)}%`} max={100} />
+                                </ChartCard>
+                                <ChartCard title="Almost complete" subtitle="Current progress, any time · sets of 10+">
+                                    <BarList rows={view.almostComplete} format={v => `${Math.floor(v)}%`} max={100} empty="No unfinished games." />
+                                </ChartCard>
+                                <ChartCard title="Minutes per achievement" subtitle="Slowest first · 3+ unlocks and 30m+ played">
                                     <BarList rows={view.perAch} format={v => fmtMinutes(v)} empty="No game with 3+ unlocks and 30m+ played." />
                                 </ChartCard>
                             </div>
@@ -703,7 +782,13 @@ const App = () => {
                                 <SectionHeader title="Sessions" note={`${fmtNum(view.sessionCount)} · median ${fmtMinutes(view.medianSession)}`} />
                                 <ChartCard
                                     title="Session length"
-                                    subtitle={view.longest ? `Longest: ${fmtMinutes(view.longest.minutes)}, ${parseTitle(view.nameOf(view.longest.platform, view.longest.gameId)).baseTitle} (${fmtDayKey(dayKey(new Date(view.longest.endMs)))})` : 'No sessions in this period'}
+                                    subtitle={view.longest ? (
+                                        <span className="flex items-center gap-1.5 min-w-0 flex-wrap">
+                                            <span>Longest: {fmtMinutes(view.longest.minutes)}, {parseTitle(view.nameOf(view.longest.platform, view.longest.gameId)).baseTitle}</span>
+                                            <TitleMarks platform={view.longest.platform} name={view.nameOf(view.longest.platform, view.longest.gameId)} />
+                                            <span>({fmtDayKey(dayKey(new Date(view.longest.endMs)))})</span>
+                                        </span>
+                                    ) : 'No sessions in this period'}
                                     legend={PLAYTIME_PLATFORMS.map(p => ({ label: PLATFORM_SHORT[p], color: PLATFORM_COLOR[p] }))}
                                     table={{ columns: ['Length', 'RA', 'Steam'], rows: view.lengthBuckets.map(b => [b.label, fmtNum(b.values.ra), fmtNum(b.values.steam)]) }}>
                                     <StackedColumns buckets={view.lengthBuckets} series={PLAYTIME_PLATFORMS} format={fmtNum} height={130} />
@@ -727,6 +812,7 @@ const App = () => {
                                                         <span className="w-[3px] h-3 rounded-[1px] shrink-0" style={{ background: PLATFORM_COLOR[u.platform] }} />
                                                         <span className="text-[#c6d4df] truncate">{u.n}</span>
                                                         <span className="text-[#546270] truncate">{parseTitle(view.nameOf(u.platform, u.g)).baseTitle}</span>
+                                                        <TitleMarks platform={u.platform} name={view.nameOf(u.platform, u.g)} />
                                                         <span className="ml-auto shrink-0 font-semibold" style={{ color: rarityTier(u.r).color }}>{u.r}%</span>
                                                     </div>
                                                 ))}

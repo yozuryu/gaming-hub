@@ -358,4 +358,4 @@ Structure:
 - `### SectionName` subsections matching the page changed
 - Bullet points per change, technical but readable
 
-Section order (matches `SECTION_ORDER` in `changelog/app.js`): RetroAchievements, Steam, Xbox, Hub, Completions, Activity, Pipelines, Structure, Admin.
+Section order (matches `SECTION_ORDER` in `changelog/app.js`): RetroAchievements, Steam, Xbox, Hub, Completions, Activity, Analytics, Pipelines, Structure, Admin. Each section has its own heading color (`SECTION_COLORS`, see `changelog/CLAUDE.md`).

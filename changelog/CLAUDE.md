@@ -14,7 +14,7 @@ Splits markdown by newline and builds `[{ date, summary, sections: [{ title, ent
 - Any non-heading, non-list line after the `## ` but before the first `### ` → `summary`
 
 ## Section Order (`SECTION_ORDER`)
-RetroAchievements, Steam, Xbox, Hub, Completions, Activity, Pipelines, Structure, Admin
+RetroAchievements, Steam, Xbox, Hub, Completions, Activity, Analytics, Pipelines, Structure, Admin
 
 Sections are sorted by this order regardless of their order in the markdown file.
 
@@ -22,7 +22,11 @@ Sections are sorted by this order regardless of their order in the markdown file
 - RetroAchievements: `#e5b143` (gold)
 - Steam: `#66c0f4` (blue)
 - Xbox: `#52b043` (green)
-- Hub / Completions / Activity: `#c6d4df` (text primary)
+- Hub: `#c6d4df` (text primary)
+- Completions: `#bef264` (lime)
+- Activity: `#e879f9` (magenta)
+- Analytics: `#8b5cf6` (violet)
+- Hub-page colors are chosen to stay apart from the platform colors, Admin red and each other (OKLab ΔE ≥ 16 with normal vision). A new page section needs its own entry in both `SECTION_ORDER` and `SECTION_COLORS`
 - Pipelines / Structure: `#8f98a0` (gray)
 - Admin: `#ff6b6b` (red)
 
