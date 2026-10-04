@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-04T15:46:57.277Z"
+        "extractionTimestamp": "2026-10-04T16:16:57.048Z"
     },
     "profile": {
         "steamId": "76561198188939413",
@@ -13,11 +13,11 @@
     },
     "stats": {
         "totalGames": 1292,
-        "totalPlaytimeMin": 349859,
+        "totalPlaytimeMin": 349889,
         "totalPlaytimeHrs": 5831,
         "gamesWithPlaytime": 821,
         "totalAchievements": 10105,
-        "unlockedAchievements": 2834,
+        "unlockedAchievements": 2837,
         "gamesWithAchievements": 171,
         "perfectCount": 17,
         "completionPct": 28,
@@ -27,12 +27,12 @@
         {
             "appId": 921570,
             "name": "OCTOPATH TRAVELER",
-            "playtime2Weeks": 100,
-            "playtimeForever": 1579,
+            "playtime2Weeks": 130,
+            "playtimeForever": 1609,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
             "storeUrl": "https://store.steampowered.com/app/921570",
-            "lastPlayedTs": "2026-10-04T15:22:34.000Z",
-            "achUnlocked": 37,
+            "lastPlayedTs": "2026-10-04T15:52:35.000Z",
+            "achUnlocked": 40,
             "achTotal": 88
         },
         {
@@ -72,21 +72,21 @@
     "mostRecentGame": {
         "appId": 921570,
         "name": "OCTOPATH TRAVELER",
-        "playtime2Weeks": 100,
-        "playtimeForever": 1579,
+        "playtime2Weeks": 130,
+        "playtimeForever": 1609,
         "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
         "storeUrl": "https://store.steampowered.com/app/921570",
-        "lastPlayedTs": "2026-10-04T15:22:34.000Z"
+        "lastPlayedTs": "2026-10-04T15:52:35.000Z"
     },
     "mostRecentUnlock": {
-        "appId": 578330,
-        "gameName": "LEGO® City Undercover",
-        "apiName": "COMPLETE_STORYEVENT9",
-        "displayName": "When Pigs Can Fly",
-        "description": "Complete Chapter 9 - Bringing Home the Bacon",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/578330/598fb9a5f89a4d6db5a102acfdc9ac32d1c68ed0.jpg",
-        "unlockedAt": "2026-10-04T09:08:27.000Z",
-        "globalPct": 30.8
+        "appId": 921570,
+        "gameName": "OCTOPATH TRAVELER",
+        "apiName": "ACHIEVEMENT_045",
+        "displayName": "Aelfric's Auspices",
+        "description": "Mastered cleric as a secondary job.",
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/c006c34a2734ce340a992cf55f2c7c3e24dbe778.jpg",
+        "unlockedAt": "2026-10-04T16:12:02.000Z",
+        "globalPct": 29.4
     },
     "perfectGames": [
         {
