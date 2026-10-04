@@ -299,13 +299,57 @@ const BarList = ({ rows, format, max: fixedMax, empty = 'Nothing in this period.
 };
 
 // Day-of-week × hour grid; cells: [7][24] numbers
-const Punchcard = ({ cells, format, unitLabel }) => {
-    const max = Math.max(0, ...cells.flat());
-    const color = (v) => {
-        if (!v) return HEAT_RAMP[0];
-        const r = v / max;
-        return r >= 0.75 ? HEAT_RAMP[4] : r >= 0.5 ? HEAT_RAMP[3] : r >= 0.25 ? HEAT_RAMP[2] : HEAT_RAMP[1];
+// Average unlocks: 0.43 → "0.43", 2.5 → "2.5"
+const fmtAvg = (v) => (v >= 10 ? v.toFixed(0) : v >= 1 ? v.toFixed(1) : v.toFixed(2));
+
+// ── Top unlock hours ──
+const DayChip = ({ d }) => (
+    <span className="text-[8px] font-bold uppercase tracking-[0.07em] px-1.5 py-[2px] rounded-[2px] border border-[#2a475e] bg-[#101214] text-[#c6d4df] shrink-0 w-[34px] text-center">{WEEKDAYS[d]}</span>
+);
+// 24-hour clock (00 at the top, clockwise), each hour shaded by its unlocks per day (square root,
+// like the grid); the top hours' wedges are outlined and numbered, with the ranked list beside it
+const TopHoursDial = ({ top, byHour }) => {
+    if (!top.length) return <div className="text-[10px] text-[#546270] italic py-2">No unlocks in this period.</div>;
+    const max = Math.max(...byHour) || 1;
+    const shade = (v) => { if (!v) return HEAT_RAMP[0]; const r = Math.sqrt(v / max); return r >= 0.75 ? HEAT_RAMP[4] : r >= 0.5 ? HEAT_RAMP[3] : r >= 0.25 ? HEAT_RAMP[2] : HEAT_RAMP[1]; };
+    const C = 60, R1 = 34, R2 = 54;
+    const pt = (r, h) => { const a = (h / 24) * 2 * Math.PI - Math.PI / 2; return [C + r * Math.cos(a), C + r * Math.sin(a)]; };
+    const wedge = (h) => {
+        const [a, b, c, d] = [pt(R2, h + 0.04), pt(R2, h + 0.96), pt(R1, h + 0.96), pt(R1, h + 0.04)];
+        return `M${a} A${R2},${R2} 0 0 1 ${b} L${c} A${R1},${R1} 0 0 0 ${d} Z`;
     };
+    const rankOf = Object.fromEntries(top.map((x, i) => [x.h, i + 1]));
+    return (
+        <div className="flex items-center gap-4">
+            <svg viewBox="0 0 120 120" className="w-[150px] h-[150px] shrink-0">
+                {byHour.map((v, h) => <path key={h} d={wedge(h)} fill={shade(v)} stroke={h in rankOf ? '#c6d4df' : 'none'} strokeWidth={h in rankOf ? 1 : 0} />)}
+                {[0, 6, 12, 18].map(h => { const [x, y] = pt(R1 - 8, h + 0.5); return <text key={h} x={x} y={y} fontSize="7" fill="#546270" textAnchor="middle" dominantBaseline="middle">{hh(h)}</text>; })}
+                {Object.entries(rankOf).map(([h, r]) => { const [x, y] = pt(R2 + 5, Number(h) + 0.5); return <text key={h} x={x} y={y} fontSize="6" fontWeight="700" fill="#c6d4df" textAnchor="middle" dominantBaseline="middle">{r}</text>; })}
+            </svg>
+            <div className="flex-1 min-w-0 flex flex-col gap-1.5">
+                {top.map((x, i) => (
+                    <div key={x.h} className="flex items-center gap-2 min-w-0">
+                        <span className="text-[9px] text-[#546270] w-3 text-right shrink-0">{i + 1}</span>
+                        <span className="text-[10px] text-[#c6d4df] tabular-nums shrink-0">{hh(x.h)}:00–{hh(x.h + 1)}:00</span>
+                        <span className="text-[9px] text-[#546270] shrink-0">peak</span>
+                        <DayChip d={x.peakDay} />
+                        <span className="text-[9px] text-[#546270] truncate">{fmtNum(x.total)} in total</span>
+                        <span className="ml-auto text-[11px] text-white font-semibold tabular-nums shrink-0">{fmtAvg(x.v)}<span className="text-[8px] text-[#546270] font-normal"> /day</span></span>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+// Day-of-week × hour grid of average unlocks; cells: [7][24]. Colors by rank, not linear:
+// the non-empty cells split into four equal groups, so one burst hour can't turn every
+// other cell into the darkest shade, and every range uses the whole ramp
+const Punchcard = ({ cells, totals }) => {
+    const sorted = cells.flat().filter(v => v > 0).sort((a, b) => a - b);
+    const cut = [0.25, 0.5, 0.75].map(q => sorted[Math.floor(q * sorted.length)] ?? Infinity);
+    const max = sorted[sorted.length - 1] || 1;
+    const color = (v) => { if (!v) return HEAT_RAMP[0]; const r = Math.sqrt(v / max); return r >= 0.75 ? HEAT_RAMP[4] : r >= 0.5 ? HEAT_RAMP[3] : r >= 0.25 ? HEAT_RAMP[2] : HEAT_RAMP[1]; };
     return (
         <div className="overflow-x-auto">
             <div style={{ minWidth: 24 * 10 + 30 }}>
@@ -317,20 +361,25 @@ const Punchcard = ({ cells, format, unitLabel }) => {
                 {cells.map((row, d) => (
                     <div key={d} className="flex items-center gap-[2px] mb-[2px]">
                         <div className="w-[28px] text-[8px] text-[#546270] text-right pr-1 shrink-0">{WEEKDAYS[d]}</div>
-                        {row.map((v, h) => <PunchCell key={h} v={v} d={d} h={h} color={color(v)} format={format} unitLabel={unitLabel} />)}
+                        {row.map((v, h) => <PunchCell key={h} v={v} total={totals[d][h]} d={d} h={h} color={color(v)} />)}
                     </div>
                 ))}
+                <div className="flex items-center justify-end gap-1 mt-2 text-[8px] text-[#546270]">
+                    <span className="mr-0.5">Fewer</span>
+                    {HEAT_RAMP.slice(1).map(c => <span key={c} className="w-2.5 h-2.5 rounded-[2px]" style={{ background: c }} />)}
+                    <span className="ml-0.5">More</span>
+                </div>
             </div>
         </div>
     );
 };
 
-const PunchCell = ({ v, d, h, color, format, unitLabel }) => {
+const PunchCell = ({ v, total, d, h, color }) => {
     const tip = useTip(() => ({
-        title: `${WEEKDAYS[d]} ${String(h).padStart(2, '0')}:00–${String((h + 1) % 24).padStart(2, '0')}:00`,
-        rows: [{ value: format(v), label: unitLabel }],
+        title: `${WEEKDAY_NAMES[d]} ${hh(h)}:00–${hh(h + 1)}:00`,
+        rows: [{ value: v ? fmtAvg(v) : '0', label: `per ${WEEKDAY_NAMES[d]}` }, { value: fmtNum(total), label: 'in total' }],
     }));
-    return <div className="flex-1 h-[12px] rounded-[2px] outline-none hover:brightness-150 focus:brightness-150" style={{ background: color }} {...tip} />;
+    return <div className="flex-1 aspect-square rounded-[2px] outline-none hover:brightness-150 focus:brightness-150" style={{ background: color }} {...tip} />;
 };
 
 const StatTile = ({ label, value, delta, note }) => (
@@ -614,8 +663,23 @@ const App = () => {
         const periodSessions = sessions.filter(s => inRange(dayKey(new Date(s.endMs)), startKey, endKey));
         const periodUnlocks = unlocks.filter(u => inRange(u.key, startKey, endKey));
         const playGrid = hourGrid(periodSessions);
-        const unlockGrid = Array.from({ length: 7 }, () => Array(24).fill(0));
-        for (const u of periodUnlocks) { const d = new Date(u.ms); unlockGrid[(d.getDay() + 6) % 7][d.getHours()]++; }
+        // Unlocks by hour: totals, and the average per weekday-hour (÷ how many of that weekday the
+        // range has), so values mean the same on every range
+        const unlockTotals = Array.from({ length: 7 }, () => Array(24).fill(0));
+        for (const u of periodUnlocks) { const d = new Date(u.ms); unlockTotals[(d.getDay() + 6) % 7][d.getHours()]++; }
+        const rangeWeekdays = Array(7).fill(0);
+        for (let k = startKey; k <= endKey; k = addDays(k, 1)) rangeWeekdays[(keyToDate(k).getDay() + 6) % 7]++;
+        const unlockGrid = unlockTotals.map((r, d) => r.map(v => (rangeWeekdays[d] ? v / rangeWeekdays[d] : 0)));
+        // Per hour of the day (all days): unlocks in that hour ÷ days in the range, for the dial,
+        // plus the weekday that peaks in it
+        const rangeDays = rangeWeekdays.reduce((a, n) => a + n, 0);
+        const unlockByHour = Array.from({ length: 24 }, (_, h) => (rangeDays ? unlockTotals.reduce((a, r) => a + r[h], 0) / rangeDays : 0));
+        const hourTotal = (h) => unlockTotals.reduce((a, r) => a + r[h], 0);
+        const hourPeak = (h) => unlockGrid.reduce((best, r, d) => (r[h] > unlockGrid[best][h] ? d : best), 0);
+        const unlockHourTable = unlockByHour.map((v, h) => [`${hh(h)}:00`, v ? fmtAvg(v) : '', fmtNum(hourTotal(h)), v ? WEEKDAY_NAMES[hourPeak(h)] : '']);
+        const topUnlockHours = unlockByHour.map((v, h) => ({ h, v }))
+            .filter(x => x.v > 0).sort((a, b) => b.v - a.v).slice(0, 6)
+            .map(x => ({ ...x, total: hourTotal(x.h), peakDay: hourPeak(x.h) }));
 
         // Habits, all from the playtime grid (RA + Steam)
         const playTotal = playGrid.flat().reduce((a, v) => a + v, 0);
@@ -647,6 +711,13 @@ const App = () => {
             { id: 'all', label: 'RA + Steam', parts: partsOf(playGrid) },
             ...PLAYTIME_PLATFORMS.map(p => ({ id: p, label: PLATFORM_LABEL[p], parts: partsOf(platformGrids[p]) })),
         ].map(r => ({ ...r, total: r.parts.reduce((a, x) => a + x.minutes, 0) })).filter(r => r.total > 0);
+        // Average per hour of the day, weekdays vs weekends: minutes in that hour ÷ tracked days of that kind
+        const kindDays = { weekdays: weekdayCount.slice(0, 5).reduce((a, n) => a + n, 0), weekends: weekdayCount[5] + weekdayCount[6] };
+        const hourAvg = Array.from({ length: 24 }, (_, h) => ({
+            hour: h,
+            weekdays: kindDays.weekdays ? [0, 1, 2, 3, 4].reduce((a, d) => a + playGrid[d][h], 0) / kindDays.weekdays : 0,
+            weekends: kindDays.weekends ? (playGrid[5][h] + playGrid[6][h]) / kindDays.weekends : 0,
+        }));
         const weekdayAvg = WEEKDAYS.map((label, i) => ({
             key: label, label,
             values: Object.fromEntries(PLAYTIME_PLATFORMS.map(p => [p, weekdayCount[i] ? platformGrids[p][i].reduce((a, v) => a + v, 0) / weekdayCount[i] : 0])),
@@ -752,9 +823,11 @@ const App = () => {
         return {
             cur, prev, prevPlayTracked, playNote,
             playBuckets, unlockBuckets, playUnit, unit,
-            playGrid, unlockGrid, topHours, mostProgress, almostComplete, perAch,
+            unlockGrid, unlockTotals, topHours,
+            unlockByHour, topUnlockHours, unlockHourTable, mostProgress, almostComplete, perAch,
             peak, favDay: weekdayMinutes[favDay] ? favDay : null, favDayShare: share(weekdayMinutes[favDay]), weekendShare, lateShare,
-            typicalStart, busiest, dayParts, playTotal, weekdayAvg,
+            typicalStart, busiest, dayParts, playTotal, weekdayAvg, hourAvg, kindDays,
+            hourMax: niceMax(Math.max(0, ...hourAvg.flatMap(r => [r.weekdays, r.weekends]))),
             topShare, topGame: topHours[0] ?? null, gamesPerWeek, newCount: newGames.length, newDone, newRows,
             droppedCount: dropped.length, droppedRows,
             farmsHidden: hideFarms ? data.farms.size : 0,
@@ -881,14 +954,23 @@ const App = () => {
                                     <StackedColumns buckets={view.weekdayAvg} series={PLAYTIME_PLATFORMS} format={v => fmtMinutes(v)} height={110} />
                                 </ChartCard>
                             </div>
+                            {/* Average per hour: weekdays and weekends in their own cards, same scale so they compare */}
+                            <div className="grid md:grid-cols-2 gap-3 mb-3">
+                                {HOUR_SERIES.map(s => (
+                                    <ChartCard key={s.id} title={`${s.label} by hour`} subtitle={`Average playtime per hour of a ${s.id === 'weekdays' ? 'weekday' : 'weekend day'} · ${view.kindDays[s.id]} days${view.playNote ? ` · ${view.playNote}` : ''}`}
+                                        table={{ columns: ['Hour', 'Played'], rows: view.hourAvg.map(r => [`${hh(r.hour)}:00`, fmtMinutes(r[s.id])]) }}>
+                                        <HourBars rows={view.hourAvg} series={s} max={view.hourMax} />
+                                    </ChartCard>
+                                ))}
+                            </div>
                             <div className="grid md:grid-cols-2 gap-3">
-                                <ChartCard title="Playtime by hour" subtitle="RA + Steam, minutes per hour of the week"
-                                    table={{ columns: ['Day', ...Array.from({ length: 24 }, (_, h) => String(h).padStart(2, '0'))], rows: view.playGrid.map((r, i) => [WEEKDAYS[i], ...r.map(v => Math.round(v) || '')]) }}>
-                                    <Punchcard cells={view.playGrid} format={fmtMinutes} unitLabel="played" />
+                                <ChartCard title="Unlocks by hour" subtitle="Average achievements per weekday-hour · all platforms"
+                                    table={{ columns: ['Day', ...Array.from({ length: 24 }, (_, h) => String(h).padStart(2, '0'))], rows: view.unlockGrid.map((r, i) => [WEEKDAYS[i], ...r.map(v => (v ? fmtAvg(v) : ''))]) }}>
+                                    <Punchcard cells={view.unlockGrid} totals={view.unlockTotals} />
                                 </ChartCard>
-                                <ChartCard title="Unlocks by hour" subtitle="All platforms"
-                                    table={{ columns: ['Day', ...Array.from({ length: 24 }, (_, h) => String(h).padStart(2, '0'))], rows: view.unlockGrid.map((r, i) => [WEEKDAYS[i], ...r.map(v => v || '')]) }}>
-                                    <Punchcard cells={view.unlockGrid} format={v => `${v}`} unitLabel={'achievements'} />
+                                <ChartCard title="Top unlock hours" subtitle="Unlocks per day in each hour · all platforms · peak = the weekday busiest in that hour"
+                                    table={{ columns: ['Hour', 'Per day', 'Total', 'Peak day'], rows: view.unlockHourTable }}>
+                                    <TopHoursDial top={view.topUnlockHours} byHour={view.unlockByHour} />
                                 </ChartCard>
                             </div>
                         </section>
@@ -1024,6 +1106,52 @@ const App = () => {
             <Tooltip tip={tip} />
         </div>
         </TipContext.Provider>
+    );
+};
+
+// Average minutes per hour of the day, weekdays and weekends in separate cards
+const HOUR_SERIES = [
+    { id: 'weekdays', label: 'Weekdays', color: '#c6d4df' },
+    { id: 'weekends', label: 'Weekends', color: '#66c0f4' },
+];
+
+// One series as 24 bars (dimmed) with a line through the same values in the full color; `max` is shared with the other series' card so they compare
+const HourBars = ({ rows, series, max, height = 110 }) => (
+    <div className="flex gap-1.5">
+        <div className="flex flex-col justify-between text-[8px] text-[#546270] text-right tabular-nums shrink-0" style={{ height }}>
+            <span>{fmtMinutes(max)}</span><span>{fmtMinutes(max / 2)}</span><span>0</span>
+        </div>
+        <div className="flex-1 min-w-0">
+            <div className="relative" style={{ height }}>
+                {[0, 0.5, 1].map(f => <div key={f} className="absolute left-0 right-0 h-px bg-[#202d39]" style={{ top: `${f * 100}%` }} />)}
+                {/* Bars: how much is played in each hour */}
+                <div className="absolute inset-0 flex items-end gap-[2px]">
+                    {rows.map(r => <HourBar key={r.hour} row={r} series={series} max={max} height={height} />)}
+                </div>
+                {/* Line through the same values: when play picks up and when it winds down */}
+                <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none" viewBox={`0 0 24 ${height}`} preserveAspectRatio="none">
+                    <polyline points={rows.map(r => `${r.hour + 0.5},${height - (r[series.id] / max) * height}`).join(' ')}
+                        fill="none" stroke={series.color} strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+                </svg>
+            </div>
+            <div className="flex gap-[2px] mt-1">
+                {rows.map(r => <div key={r.hour} className="flex-1 text-center text-[8px] text-[#546270]">{r.hour % 3 === 0 ? hh(r.hour) : ''}</div>)}
+            </div>
+        </div>
+    </div>
+);
+
+const HourBar = ({ row, series, max, height }) => {
+    const tip = useTip(() => ({
+        title: `${hh(row.hour)}:00–${hh(row.hour + 1)}:00`,
+        rows: [{ color: series.color, value: fmtMinutes(row[series.id]), label: `on ${series.label.toLowerCase()}` }],
+    }));
+    return (
+        <div className="flex-1 min-w-0 h-full flex items-end justify-center outline-none group" {...tip}>
+            {/* Bars dimmed so the line in the full color reads on top */}
+            <div className="w-full max-w-[24px] rounded-t-[2px] opacity-50 group-hover:opacity-80 group-focus:opacity-80"
+                style={{ height: row[series.id] ? Math.max(1, (row[series.id] / max) * height) : 0, background: series.color }} />
+        </div>
     );
 };
 

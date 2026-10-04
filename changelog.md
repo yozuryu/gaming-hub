@@ -30,7 +30,10 @@ Playtime is now logged as play sessions for Steam and RetroAchievements, with hi
 - Completion funnel: Steam and Xbox now have a Beaten stage (games whose ending achievement from the admin's win conditions is unlocked, plus 100% games), like RA
 - RA games show their subset badge and tilde tags (Homebrew, Hack, Demo, Prototype) wherever they appear, so e.g. the original and Homebrew 2048 are told apart
 - Session lengths start at "<30m": the "<5m" bar is gone now that launches of 5 minutes or less aren't logged
-- When you play now answers the question directly: peak time (busiest 2-hour window of the week), favorite day, weekend and after-midnight share, typical start time and busiest day, plus a Time of day split (morning, afternoon, evening, night; overall, RA and Steam) and average playtime per weekday. The hour-by-hour grids stay below
+- When you play now answers the question directly: peak time (busiest 2-hour window of the week), favorite day, weekend and after-midnight share, typical start time and busiest day, plus a Time of day split (morning, afternoon, evening, night; overall, RA and Steam) and average playtime per weekday
+- Weekdays by hour and Weekends by hour: average playtime in each hour of a weekday and of a weekend day, bars with a line over them showing when play picks up and winds down. They replace the playtime-by-hour grid
+- Unlocks by hour shows the average per weekday-hour instead of totals, with square cells and a square-root color scale, so wide ranges no longer turn every square the same dim blue. The tooltip shows the average and the total
+- Top unlock hours: a 24-hour dial shaded by unlocks per day in each hour, with the top 6 hours numbered and listed with the weekday that peaks in each
 - New Focus section: share of playtime on the top game, games per week, new games started (and completed) in the period, and games tried and dropped (under an hour played, untouched for 30+ days), each with a list
 - "Minutes per achievement" is now "Hardest earned" (most playtime per achievement)
 
