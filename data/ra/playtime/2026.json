@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "generatedAt": "2026-10-03T23:39:03Z",
+        "generatedAt": "2026-10-04T12:03:14Z",
         "year": 2026
     },
     "games": {
@@ -503,6 +503,11 @@
             "name": "~Homebrew~ Hatsune Miku Bomb Squad",
             "icon": "/Images/101115.png",
             "console": "Game Boy Color"
+        },
+        "31367": {
+            "name": "Zuma",
+            "icon": "/Images/120859.png",
+            "console": "PlayStation Portable"
         },
         "32817": {
             "name": "~Homebrew~ Inventory Full",
@@ -2348,6 +2353,12 @@
             "end": "2026-10-01T16:10:38Z",
             "gameId": 9334,
             "minutes": 1
+        },
+        {
+            "start": "2026-10-04T11:02:51Z",
+            "end": "2026-10-04T11:09:51Z",
+            "gameId": 31367,
+            "minutes": 7
         }
     ]
 }

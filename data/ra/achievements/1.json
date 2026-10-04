@@ -1314,25 +1314,6 @@
         {
             "date": "2026-09-20 14:32:07",
             "hardcoreMode": true,
-            "achievementId": 90861,
-            "title": "This Little Piggy Got Crushed",
-            "description": "Capture the Earth Evil Pig without taking damage and without equipping the Golden Powder.",
-            "badgeName": "102838",
-            "points": 25,
-            "trueRatio": 47,
-            "type": "missable",
-            "author": "Alfex",
-            "authorUlid": "0197V7CT1S4MM0HP5T3ECB6VY0",
-            "gameTitle": "Tomba! 2: The Evil Swine Return",
-            "gameIcon": "/Images/124477.png",
-            "gameId": 11306,
-            "consoleName": "PlayStation",
-            "badgeUrl": "/Badge/102838.png",
-            "gameUrl": "/game/11306"
-        },
-        {
-            "date": "2026-09-20 14:32:07",
-            "hardcoreMode": true,
             "achievementId": 90860,
             "title": "Circus Village Restored",
             "description": "Capture the Earth Evil Pig.",
@@ -1347,6 +1328,25 @@
             "gameId": 11306,
             "consoleName": "PlayStation",
             "badgeUrl": "/Badge/102839.png",
+            "gameUrl": "/game/11306"
+        },
+        {
+            "date": "2026-09-20 14:32:07",
+            "hardcoreMode": true,
+            "achievementId": 90861,
+            "title": "This Little Piggy Got Crushed",
+            "description": "Capture the Earth Evil Pig without taking damage and without equipping the Golden Powder.",
+            "badgeName": "102838",
+            "points": 25,
+            "trueRatio": 47,
+            "type": "missable",
+            "author": "Alfex",
+            "authorUlid": "0197V7CT1S4MM0HP5T3ECB6VY0",
+            "gameTitle": "Tomba! 2: The Evil Swine Return",
+            "gameIcon": "/Images/124477.png",
+            "gameId": 11306,
+            "consoleName": "PlayStation",
+            "badgeUrl": "/Badge/102838.png",
             "gameUrl": "/game/11306"
         },
         {
@@ -1557,6 +1557,25 @@
             "consoleName": "Nintendo DSi",
             "badgeUrl": "/Badge/376578.png",
             "gameUrl": "/game/22343"
+        },
+        {
+            "date": "2026-10-04 11:03:31",
+            "hardcoreMode": true,
+            "achievementId": 564659,
+            "title": "I Herd U Still Like Powerups",
+            "description": "Activate any Power Up during a level",
+            "badgeName": "658012",
+            "points": 1,
+            "trueRatio": 1,
+            "type": null,
+            "author": "TheScarletDevil",
+            "authorUlid": "01K1ERK6500BWMGEZHA2JS8PZY",
+            "gameTitle": "Zuma",
+            "gameIcon": "/Images/120859.png",
+            "gameId": 31367,
+            "consoleName": "PlayStation Portable",
+            "badgeUrl": "/Badge/658012.png",
+            "gameUrl": "/game/31367"
         }
     ]
 }
