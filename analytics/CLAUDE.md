@@ -6,6 +6,7 @@ Metrics across playtime and achievements. Everything is computed in the browser,
 - `../data/{ra,steam,xbox}/history/index.json` → the listed `{YYYY}.json` files: all-time unlocks `{ t, g, a, n, p?, r?, hc? }`
 - `../data/{ra,steam}/playtime/{YYYY}.json` for every year from `PLAYTIME_FIRST_YEAR` (2026) to now: play sessions + `games` name/icon (RA also `console`)
 - `../data/{ra,steam,xbox}/profile.json`: completions (RA `Mastery/Completion` awards, Steam/Xbox `perfectGames`), funnel counts, RA console names (`gameAwardsAndProgress`, `recentlyPlayedGames`, awards)
+- `../data/{steam,xbox}/win-conditions.json`: beaten games for the funnel
 - `../data/{steam,xbox}/games/index.json`: names, icons and current `unlocked`/`total` per game; Steam "started" count and farm detection (`playtimeForever`). RA current progress comes from `gameAwardsAndProgress` (`numAwarded` / `maxPossible`)
 - Not `data/ra/games.json` (5 MB). No genre breakdown for that reason
 
@@ -25,7 +26,7 @@ Playtime only exists since logging started (2026-03-26). Playtime tiles show "si
 - **Top games:** most played; **most progress** (share of each game's set earned in the period, sets of 10+, ties → bigger set, gold ★ if completed in the period); **almost complete** (current progress of unfinished games, ignores the period, sets of 10+, ties → fewest left); minutes per achievement (3+ unlocks and 30m+ played, slowest first). "Most unlocks" was dropped: it rewarded achievement farms, and rarity weighting doesn't fix that (farm achievements look rare because few owners grind them)
 - **Sessions:** length histogram (<5m … 4h+), longest session, median
 - **Rarity:** 100% stacked bar of rarity tiers per platform (site rarity colors, `RARITY_TIERS`), rarest unlocks in the period
-- **Completion:** all-time funnel per platform (RA started → beaten → mastered; Steam owned → played → started → perfect; Xbox owned → started → completed), plus completions in the period and median days from a game's first unlock to completion
+- **Completion:** all-time funnel per platform (RA started → beaten → mastered; Steam owned → played → started → beaten → perfect; Xbox owned → started → beaten → completed). Steam/Xbox beaten = the win condition in `../data/{steam,xbox}/win-conditions.json` (same rule as the Completions page: `or` any / `and` all of the listed achievements) is met in the unlock history, plus every 100% game so Beaten never falls below Perfect/Completed, plus completions in the period and median days from a game's first unlock to completion
 - **RA by console:** hours and achievements per console
 
 ## Charts (hand-written, no chart library)

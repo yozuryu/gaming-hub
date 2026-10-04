@@ -21,6 +21,7 @@ Playtime is now logged as play sessions for Steam and RetroAchievements, with hi
 - 3 months period (weekly bars) between 30 days and 12 months; the ★ for games completed in the period is gold
 - Hide achievement farms checkbox (on by default) removes Steam games that hand out more than 15 achievements per hour of playtime (Slash It, Lines X, …) from every section
 - Top games: Most progress (share of each game's achievements earned in the period, sets of 10+) and Almost complete (unfinished games closest to 100%) replace "Most unlocks", which farm games dominated; minutes per achievement now lists the slowest first
+- Completion funnel: Steam and Xbox now have a Beaten stage (games whose ending achievement from the admin's win conditions is unlocked, plus 100% games), like RA
 - RA games show their subset badge and tilde tags (Homebrew, Hack, Demo, Prototype) wherever they appear, so e.g. the original and Homebrew 2048 are told apart
 
 ### Hub

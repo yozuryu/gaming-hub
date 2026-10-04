@@ -360,12 +360,14 @@ const Skeleton = () => (
 // ── Data loading ──────────────────────────────────────────────────────────────
 
 async function loadAll() {
-    const [raProfile, steamProfile, xboxProfile, steamIndex, xboxIndex, ...historyIdx] = await Promise.all([
+    const [raProfile, steamProfile, xboxProfile, steamIndex, xboxIndex, steamWin, xboxWin, ...historyIdx] = await Promise.all([
         fetchJson('../data/ra/profile.json'),
         fetchJson('../data/steam/profile.json'),
         fetchJson('../data/xbox/profile.json'),
         fetchJson('../data/steam/games/index.json'),
         fetchJson('../data/xbox/games/index.json'),
+        fetchJson('../data/steam/win-conditions.json'),
+        fetchJson('../data/xbox/win-conditions.json'),
         ...PLATFORMS.map(p => fetchJson(`../data/${p}/history/index.json`)),
     ]);
 
@@ -403,6 +405,22 @@ async function loadAll() {
         ...(xboxProfile?.perfectGames ?? []).map(g => ({ platform: 'xbox', gameId: String(g.titleId), ms: Date.parse(g.completedAt) })),
     ].filter(c => !Number.isNaN(c.ms));
 
+    // Beaten (Steam/Xbox): the game's win condition (ending achievements picked in the admin;
+    // "or" = any, "and" = all) is met in the unlock history, or the game is at 100%.
+    // Same rule as the Completions page, but checked against history instead of per-game files.
+    const unlockedBy = {};
+    for (const u of unlocks) (unlockedBy[`${u.platform}-${u.g}`] ??= new Set()).add(String(u.a));
+    const beatenCount = (platform, winConditions, perfectIds) => {
+        const beaten = new Set(perfectIds.map(String));
+        for (const [id, cond] of Object.entries(winConditions ?? {})) {
+            const names = (Array.isArray(cond) ? cond : cond.achievements ?? []).map(String);
+            const mode = Array.isArray(cond) ? 'or' : (cond.mode || 'or');
+            const got = unlockedBy[`${platform}-${id}`] ?? new Set();
+            if (names.length && (mode === 'and' ? names.every(n => got.has(n)) : names.some(n => got.has(n)))) beaten.add(String(id));
+        }
+        return beaten.size;
+    };
+
     const raProgress = raProfile?.gameAwardsAndProgress?.results ?? [];
     const funnel = {
         // RA's progress list only has games with an unlock, so there's no separate "played" stage
@@ -415,11 +433,13 @@ async function loadAll() {
             ['Owned', steamProfile?.stats?.totalGames ?? 0],
             ['Played', steamProfile?.stats?.gamesWithPlaytime ?? 0],
             ['Started', Object.values(steamIndex?.achievementProgress ?? {}).filter(g => g.unlocked > 0).length],
+            ['Beaten', beatenCount('steam', steamWin, (steamProfile?.perfectGames ?? []).map(g => g.appId))],
             ['Perfect', steamProfile?.stats?.perfectCount ?? 0],
         ],
         xbox: [
             ['Owned', xboxProfile?.stats?.totalGames ?? 0],
             ['Started', xboxProfile?.stats?.gamesStarted ?? 0],
+            ['Beaten', beatenCount('xbox', xboxWin, (xboxProfile?.perfectGames ?? []).map(g => g.titleId))],
             ['Completed', xboxProfile?.stats?.perfectCount ?? 0],
         ],
     };
