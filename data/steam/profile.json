@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-04T09:02:34.431Z"
+        "extractionTimestamp": "2026-10-04T10:02:34.490Z"
     },
     "profile": {
         "steamId": "76561198188939413",
@@ -13,26 +13,26 @@
     },
     "stats": {
         "totalGames": 1292,
-        "totalPlaytimeMin": 349742,
-        "totalPlaytimeHrs": 5829,
+        "totalPlaytimeMin": 349802,
+        "totalPlaytimeHrs": 5830,
         "gamesWithPlaytime": 821,
         "totalAchievements": 10105,
-        "unlockedAchievements": 2833,
+        "unlockedAchievements": 2834,
         "gamesWithAchievements": 171,
         "perfectCount": 17,
         "completionPct": 28,
-        "avgPlaytimeMin": 425
+        "avgPlaytimeMin": 426
     },
     "recentlyPlayed": [
         {
             "appId": 578330,
             "name": "LEGO® City Undercover",
-            "playtime2Weeks": 537,
-            "playtimeForever": 3425,
+            "playtime2Weeks": 595,
+            "playtimeForever": 3485,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
             "storeUrl": "https://store.steampowered.com/app/578330",
-            "lastPlayedTs": "2026-10-04T08:53:46.000Z",
-            "achUnlocked": 12,
+            "lastPlayedTs": "2026-10-04T09:53:46.000Z",
+            "achUnlocked": 13,
             "achTotal": 48
         },
         {
@@ -72,21 +72,21 @@
     "mostRecentGame": {
         "appId": 578330,
         "name": "LEGO® City Undercover",
-        "playtime2Weeks": 537,
-        "playtimeForever": 3425,
+        "playtime2Weeks": 595,
+        "playtimeForever": 3485,
         "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
         "storeUrl": "https://store.steampowered.com/app/578330",
-        "lastPlayedTs": "2026-10-04T08:53:46.000Z"
+        "lastPlayedTs": "2026-10-04T09:53:46.000Z"
     },
     "mostRecentUnlock": {
-        "appId": 1658290,
-        "gameName": "Eiyuden Chronicle: Rising",
-        "apiName": "ACHIEVEMENT001",
-        "displayName": "Plenty More to Go",
-        "description": "",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/1658290/e795de25f1ee60903ebcc66b28a3a79bdbb0fc84.jpg",
-        "unlockedAt": "2026-10-03T16:06:46.000Z",
-        "globalPct": 80.4
+        "appId": 578330,
+        "gameName": "LEGO® City Undercover",
+        "apiName": "COMPLETE_STORYEVENT9",
+        "displayName": "When Pigs Can Fly",
+        "description": "Complete Chapter 9 - Bringing Home the Bacon",
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/578330/598fb9a5f89a4d6db5a102acfdc9ac32d1c68ed0.jpg",
+        "unlockedAt": "2026-10-04T09:08:27.000Z",
+        "globalPct": 30.8
     },
     "perfectGames": [
         {
