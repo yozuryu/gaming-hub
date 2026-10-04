@@ -4,19 +4,9 @@
         "year": 2026
     },
     "games": {
-        "319": {
-            "name": "Chrono Trigger",
-            "icon": "/Images/093950.png",
-            "console": "SNES/Super Famicom"
-        },
         "449": {
             "name": "Breath of Fire",
             "icon": "/Images/105046.png",
-            "console": "SNES/Super Famicom"
-        },
-        "450": {
-            "name": "Breath of Fire II",
-            "icon": "/Images/008647.png",
             "console": "SNES/Super Famicom"
         },
         "503": {
@@ -34,11 +24,6 @@
             "icon": "/Images/105044.png",
             "console": "Game Boy Advance"
         },
-        "559": {
-            "name": "The Legend of Zelda: The Minish Cap",
-            "icon": "/Images/113471.png",
-            "console": "Game Boy Advance"
-        },
         "676": {
             "name": "The Legend of Zelda: Oracle of Seasons",
             "icon": "/Images/108279.png",
@@ -53,16 +38,6 @@
             "name": "Mega Man Zero",
             "icon": "/Images/025922.png",
             "console": "Game Boy Advance"
-        },
-        "783": {
-            "name": "Mega Man Zero 2",
-            "icon": "/Images/124432.png",
-            "console": "Game Boy Advance"
-        },
-        "1523": {
-            "name": "Advanced Dungeons & Dragons: Pool of Radiance",
-            "icon": "/Images/011516.png",
-            "console": "NES/Famicom"
         },
         "2021": {
             "name": "Tetris (BPS)",
@@ -89,11 +64,6 @@
             "icon": "/Images/122120.png",
             "console": "Game Boy Advance"
         },
-        "2642": {
-            "name": "Kingdom Hearts: 358/2 Days",
-            "icon": "/Images/158585.png",
-            "console": "Nintendo DS"
-        },
         "2780": {
             "name": "Kingdom Hearts: Final Mix",
             "icon": "/Images/112152.png",
@@ -103,11 +73,6 @@
             "name": "Donald Duck: Goin' Quackers",
             "icon": "/Images/113907.png",
             "console": "PlayStation"
-        },
-        "2883": {
-            "name": "Hexyz Force",
-            "icon": "/Images/086971.png",
-            "console": "PlayStation Portable"
         },
         "2923": {
             "name": "Black Rock Shooter: The Game",
@@ -119,20 +84,10 @@
             "icon": "/Images/070789.png",
             "console": "PlayStation Portable"
         },
-        "3562": {
-            "name": "The Legend of Heroes: A Tear of Vermillion",
-            "icon": "/Images/100541.png",
-            "console": "PlayStation Portable"
-        },
         "3894": {
             "name": "SaGa 2: Hihou Densetsu - Goddess of Destiny",
             "icon": "/Images/116260.png",
             "console": "Nintendo DS"
-        },
-        "3908": {
-            "name": "Star Ocean: First Departure",
-            "icon": "/Images/103361.png",
-            "console": "PlayStation Portable"
         },
         "3921": {
             "name": "Hatsune Miku: Project DIVA",
@@ -144,55 +99,20 @@
             "icon": "/Images/113079.png",
             "console": "Nintendo DS"
         },
-        "4872": {
-            "name": "Breath of Fire",
-            "icon": "/Images/104995.png",
-            "console": "Game Boy Advance"
-        },
-        "5137": {
-            "name": "Castlevania Legends",
-            "icon": "/Images/071507.png",
-            "console": "Game Boy"
-        },
         "6070": {
             "name": "~Homebrew~ 2048",
             "icon": "/Images/066649.png",
             "console": "NES/Famicom"
-        },
-        "7095": {
-            "name": "Shining Soul II",
-            "icon": "/Images/046731.png",
-            "console": "Game Boy Advance"
         },
         "7212": {
             "name": "Pokémon HeartGold Version | Pokémon SoulSilver Version",
             "icon": "/Images/063592.png",
             "console": "Nintendo DS"
         },
-        "8306": {
-            "name": "Mega Man ZX Advent",
-            "icon": "/Images/079538.png",
-            "console": "Nintendo DS"
-        },
-        "9077": {
-            "name": "Suikoden Tierkreis",
-            "icon": "/Images/060181.png",
-            "console": "Nintendo DS"
-        },
         "9190": {
             "name": "The Legend of Zelda: The Wind Waker",
             "icon": "/Images/099022.png",
             "console": "GameCube"
-        },
-        "9334": {
-            "name": "Summon Night Craft Sword Monogatari: Hajimari no Ishi",
-            "icon": "/Images/122409.png",
-            "console": "Game Boy Advance"
-        },
-        "9483": {
-            "name": "Shin Megami Tensei: Devil Survivor 2",
-            "icon": "/Images/043375.png",
-            "console": "Nintendo DS"
         },
         "9818": {
             "name": "Mega Man ZX",
@@ -202,11 +122,6 @@
         "9878": {
             "name": "Tetris DS",
             "icon": "/Images/059744.png",
-            "console": "Nintendo DS"
-        },
-        "9898": {
-            "name": "The Legend of Zelda: Spirit Tracks",
-            "icon": "/Images/046401.png",
             "console": "Nintendo DS"
         },
         "9931": {
@@ -219,11 +134,6 @@
             "icon": "/Images/081159.png",
             "console": "PlayStation"
         },
-        "10434": {
-            "name": "Crash Bandicoot",
-            "icon": "/Images/081157.png",
-            "console": "PlayStation"
-        },
         "11242": {
             "name": "Final Fantasy VII",
             "icon": "/Images/070798.png",
@@ -234,29 +144,9 @@
             "icon": "/Images/094986.png",
             "console": "PlayStation"
         },
-        "11264": {
-            "name": "The Legend of Dragoon",
-            "icon": "/Images/035804.png",
-            "console": "PlayStation"
-        },
-        "11269": {
-            "name": "Breath of Fire III",
-            "icon": "/Images/019054.png",
-            "console": "PlayStation"
-        },
         "11274": {
             "name": "Tales of Destiny II | Tales of Eternia",
             "icon": "/Images/049638.png",
-            "console": "PlayStation"
-        },
-        "11275": {
-            "name": "Vagrant Story",
-            "icon": "/Images/054471.png",
-            "console": "PlayStation"
-        },
-        "11288": {
-            "name": "Legend of Mana",
-            "icon": "/Images/074533.png",
             "console": "PlayStation"
         },
         "11290": {
@@ -289,24 +179,9 @@
             "icon": "/Images/097437.png",
             "console": "PlayStation"
         },
-        "11365": {
-            "name": "Mega Man 8",
-            "icon": "/Images/054970.png",
-            "console": "PlayStation"
-        },
         "11372": {
             "name": "Thousand Arms",
             "icon": "/Images/072312.png",
-            "console": "PlayStation"
-        },
-        "11379": {
-            "name": "Digimon Rumble Arena",
-            "icon": "/Images/103153.png",
-            "console": "PlayStation"
-        },
-        "11382": {
-            "name": "Mega Man X6",
-            "icon": "/Images/032736.png",
             "console": "PlayStation"
         },
         "11385": {
@@ -314,25 +189,10 @@
             "icon": "/Images/113111.png",
             "console": "PlayStation"
         },
-        "11407": {
-            "name": "Alundra 2: A New Legend Begins",
-            "icon": "/Images/054365.png",
-            "console": "PlayStation"
-        },
         "11415": {
             "name": "Beyond the Beyond",
             "icon": "/Images/075811.png",
             "console": "PlayStation"
-        },
-        "11644": {
-            "name": "Shin Megami Tensei: Strange Journey",
-            "icon": "/Images/067523.png",
-            "console": "Nintendo DS"
-        },
-        "11781": {
-            "name": "Pokémon Party mini",
-            "icon": "/Images/122876.png",
-            "console": "Pokemon Mini"
         },
         "12746": {
             "name": "Clock Tower: Ghost Head",
@@ -349,70 +209,30 @@
             "icon": "/Images/098142.png",
             "console": "PlayStation"
         },
-        "14372": {
-            "name": "The Granstream Saga",
-            "icon": "/Images/039272.png",
-            "console": "PlayStation"
-        },
-        "14434": {
-            "name": "Final Fantasy Anthology: Final Fantasy VI",
-            "icon": "/Images/076139.png",
-            "console": "PlayStation"
-        },
         "14502": {
             "name": "Brandish: The Dark Revenant",
             "icon": "/Images/088290.png",
             "console": "PlayStation Portable"
-        },
-        "14837": {
-            "name": "Final Fantasy: The 4 Heroes of Light",
-            "icon": "/Images/054808.png",
-            "console": "Nintendo DS"
         },
         "16084": {
             "name": "Pokémon Red Version [Subset - Professor Oak Challenge]",
             "icon": "/Images/148038.png",
             "console": "Game Boy"
         },
-        "16244": {
-            "name": "Final Fantasy Crystal Chronicles: Ring of Fates",
-            "icon": "/Images/116299.png",
-            "console": "Nintendo DS"
-        },
-        "16382": {
-            "name": "Crash of the Titans",
-            "icon": "/Images/047553.png",
-            "console": "Nintendo DS"
-        },
         "16452": {
             "name": "7th Dragon 2020",
             "icon": "/Images/123011.png",
             "console": "PlayStation Portable"
-        },
-        "16713": {
-            "name": "MapleStory DS",
-            "icon": "/Images/073715.png",
-            "console": "Nintendo DS"
         },
         "17166": {
             "name": "...Iru!",
             "icon": "/Images/103338.png",
             "console": "PlayStation"
         },
-        "17890": {
-            "name": "Mega Man Star Force: Dragon",
-            "icon": "/Images/121894.png",
-            "console": "Nintendo DS"
-        },
         "18157": {
             "name": "DJ Max Fever",
             "icon": "/Images/080862.png",
             "console": "PlayStation Portable"
-        },
-        "18846": {
-            "name": "Poy Poy",
-            "icon": "/Images/000001.png",
-            "console": "PlayStation"
         },
         "19021": {
             "name": ".hack//Infection",
@@ -423,11 +243,6 @@
             "name": "Star Ocean: Till the End of Time",
             "icon": "/Images/074616.png",
             "console": "PlayStation 2"
-        },
-        "19255": {
-            "name": "Nora to Toki no Koubou: Kiri no Mori no Majo",
-            "icon": "/Images/145401.png",
-            "console": "Nintendo DS"
         },
         "19291": {
             "name": "2048",
@@ -444,20 +259,10 @@
             "icon": "/Images/057644.png",
             "console": "WASM-4"
         },
-        "19706": {
-            "name": "~Homebrew~ PokeMaze",
-            "icon": "/Images/058035.png",
-            "console": "Pokemon Mini"
-        },
         "22343": {
             "name": "Cut the Rope",
             "icon": "/Images/072509.png",
             "console": "Nintendo DSi"
-        },
-        "22353": {
-            "name": "~Homebrew~ Hime's Quest",
-            "icon": "/Images/068576.png",
-            "console": "Game Boy Color"
         },
         "22693": {
             "name": "Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
@@ -474,35 +279,15 @@
             "icon": "/Images/156330.png",
             "console": "Game Boy Advance"
         },
-        "24140": {
-            "name": "Pokémon Crystal Version [Subset - Professor Oak Challenge]",
-            "icon": "/Images/148243.png",
-            "console": "Game Boy Color"
-        },
         "24186": {
             "name": "Pokémon Emerald Version [Subset - Professor Oak Challenge]",
             "icon": "/Images/155673.png",
             "console": "Game Boy Advance"
         },
-        "27590": {
-            "name": "~Homebrew~ Bridge Quest",
-            "icon": "/Images/093528.png",
-            "console": "Game Boy Advance"
-        },
-        "29047": {
-            "name": "~Homebrew~ Hollow Knight Silksong",
-            "icon": "/Images/111197.png",
-            "console": "Game Boy Color"
-        },
         "29892": {
             "name": "2048",
             "icon": "/Images/120045.png",
             "console": "Arduboy"
-        },
-        "30725": {
-            "name": "~Homebrew~ Hatsune Miku Bomb Squad",
-            "icon": "/Images/101115.png",
-            "console": "Game Boy Color"
         },
         "31367": {
             "name": "Zuma",
@@ -524,11 +309,6 @@
             "icon": "/Images/112694.png",
             "console": "Nintendo DS"
         },
-        "34313": {
-            "name": "~Homebrew~ Uma Musume Delish Derby",
-            "icon": "/Images/115591.png",
-            "console": "Game Boy"
-        },
         "34489": {
             "name": "Tetris (Nintendo) [Subset - Master]",
             "icon": "/Images/116887.png",
@@ -538,38 +318,9 @@
             "name": "~Homebrew~ Walfie's Nonograms",
             "icon": "/Images/124659.png",
             "console": "Game Boy Color"
-        },
-        "40459": {
-            "name": "Zuma's Revenge",
-            "icon": "/Images/000001.png",
-            "console": "Nintendo DS"
         }
     },
     "sessions": [
-        {
-            "start": "2026-03-28T02:03:05Z",
-            "end": "2026-03-28T02:08:05Z",
-            "gameId": 11781,
-            "minutes": 5
-        },
-        {
-            "start": "2026-03-28T02:59:29Z",
-            "end": "2026-03-28T03:00:29Z",
-            "gameId": 18846,
-            "minutes": 1
-        },
-        {
-            "start": "2026-03-28T03:09:33Z",
-            "end": "2026-03-28T03:10:33Z",
-            "gameId": 33170,
-            "minutes": 1
-        },
-        {
-            "start": "2026-03-28T06:32:24Z",
-            "end": "2026-03-28T06:33:24Z",
-            "gameId": 16382,
-            "minutes": 1
-        },
         {
             "start": "2026-03-28T06:26:57Z",
             "end": "2026-03-28T06:36:57Z",
@@ -581,12 +332,6 @@
             "end": "2026-03-28T14:45:59Z",
             "gameId": 3952,
             "minutes": 52
-        },
-        {
-            "start": "2026-03-28T14:41:30Z",
-            "end": "2026-03-28T14:46:30Z",
-            "gameId": 16244,
-            "minutes": 5
         },
         {
             "start": "2026-03-28T14:42:18Z",
@@ -613,12 +358,6 @@
             "minutes": 6
         },
         {
-            "start": "2026-03-29T10:14:39Z",
-            "end": "2026-03-29T10:16:39Z",
-            "gameId": 3562,
-            "minutes": 2
-        },
-        {
             "start": "2026-03-29T11:13:53Z",
             "end": "2026-03-29T12:03:53Z",
             "gameId": 16452,
@@ -629,18 +368,6 @@
             "end": "2026-03-29T15:54:03Z",
             "gameId": 16452,
             "minutes": 86
-        },
-        {
-            "start": "2026-03-29T15:54:50Z",
-            "end": "2026-03-29T15:55:50Z",
-            "gameId": 2883,
-            "minutes": 1
-        },
-        {
-            "start": "2026-03-29T23:34:43Z",
-            "end": "2026-03-29T23:35:43Z",
-            "gameId": 2883,
-            "minutes": 1
         },
         {
             "start": "2026-03-30T16:11:06Z",
@@ -673,12 +400,6 @@
             "minutes": 45
         },
         {
-            "start": "2026-04-03T08:46:24Z",
-            "end": "2026-04-03T08:51:24Z",
-            "gameId": 16452,
-            "minutes": 5
-        },
-        {
             "start": "2026-04-03T12:37:52Z",
             "end": "2026-04-03T13:21:52Z",
             "gameId": 16452,
@@ -707,12 +428,6 @@
             "end": "2026-04-04T02:03:17Z",
             "gameId": 11292,
             "minutes": 17
-        },
-        {
-            "start": "2026-04-05T04:59:43Z",
-            "end": "2026-04-05T05:03:43Z",
-            "gameId": 11264,
-            "minutes": 4
         },
         {
             "start": "2026-04-05T13:51:27Z",
@@ -745,18 +460,6 @@
             "minutes": 68
         },
         {
-            "start": "2026-04-09T16:59:22Z",
-            "end": "2026-04-09T17:00:22Z",
-            "gameId": 11382,
-            "minutes": 1
-        },
-        {
-            "start": "2026-04-09T23:18:52Z",
-            "end": "2026-04-09T23:19:52Z",
-            "gameId": 11382,
-            "minutes": 1
-        },
-        {
             "start": "2026-04-10T16:04:43Z",
             "end": "2026-04-10T16:19:43Z",
             "gameId": 11306,
@@ -781,40 +484,10 @@
             "minutes": 24
         },
         {
-            "start": "2026-04-12T08:48:40Z",
-            "end": "2026-04-12T08:49:40Z",
-            "gameId": 3908,
-            "minutes": 1
-        },
-        {
-            "start": "2026-04-12T16:02:34Z",
-            "end": "2026-04-12T16:04:34Z",
-            "gameId": 450,
-            "minutes": 2
-        },
-        {
-            "start": "2026-04-12T16:03:59Z",
-            "end": "2026-04-12T16:04:59Z",
-            "gameId": 449,
-            "minutes": 1
-        },
-        {
-            "start": "2026-04-13T04:25:35Z",
-            "end": "2026-04-13T04:27:35Z",
-            "gameId": 10434,
-            "minutes": 2
-        },
-        {
             "start": "2026-04-13T15:37:59Z",
             "end": "2026-04-13T15:43:59Z",
             "gameId": 14370,
             "minutes": 6
-        },
-        {
-            "start": "2026-04-13T23:14:44Z",
-            "end": "2026-04-13T23:19:44Z",
-            "gameId": 2873,
-            "minutes": 5
         },
         {
             "start": "2026-04-14T13:27:11Z",
@@ -833,12 +506,6 @@
             "end": "2026-04-16T05:02:04Z",
             "gameId": 2873,
             "minutes": 6
-        },
-        {
-            "start": "2026-04-18T13:14:20Z",
-            "end": "2026-04-18T13:18:20Z",
-            "gameId": 18157,
-            "minutes": 4
         },
         {
             "start": "2026-04-18T15:42:48Z",
@@ -865,12 +532,6 @@
             "minutes": 7
         },
         {
-            "start": "2026-04-19T07:19:11Z",
-            "end": "2026-04-19T07:20:11Z",
-            "gameId": 11269,
-            "minutes": 1
-        },
-        {
             "start": "2026-04-19T12:00:12Z",
             "end": "2026-04-19T12:06:12Z",
             "gameId": 11310,
@@ -895,12 +556,6 @@
             "minutes": 15
         },
         {
-            "start": "2026-04-20T01:50:08Z",
-            "end": "2026-04-20T01:51:08Z",
-            "gameId": 29047,
-            "minutes": 1
-        },
-        {
             "start": "2026-04-21T12:49:42Z",
             "end": "2026-04-21T12:56:42Z",
             "gameId": 11306,
@@ -919,12 +574,6 @@
             "minutes": 17
         },
         {
-            "start": "2026-04-23T02:28:12Z",
-            "end": "2026-04-23T02:29:12Z",
-            "gameId": 4872,
-            "minutes": 1
-        },
-        {
             "start": "2026-04-23T02:31:59Z",
             "end": "2026-04-23T02:38:59Z",
             "gameId": 449,
@@ -935,12 +584,6 @@
             "end": "2026-04-23T11:17:19Z",
             "gameId": 2257,
             "minutes": 35
-        },
-        {
-            "start": "2026-04-23T13:07:57Z",
-            "end": "2026-04-23T13:08:57Z",
-            "gameId": 19706,
-            "minutes": 1
         },
         {
             "start": "2026-04-23T15:22:51Z",
@@ -961,46 +604,16 @@
             "minutes": 38
         },
         {
-            "start": "2026-04-25T02:15:43Z",
-            "end": "2026-04-25T02:16:43Z",
-            "gameId": 17890,
-            "minutes": 1
-        },
-        {
-            "start": "2026-04-25T14:53:37Z",
-            "end": "2026-04-25T14:54:37Z",
-            "gameId": 11306,
-            "minutes": 1
-        },
-        {
-            "start": "2026-04-25T14:56:05Z",
-            "end": "2026-04-25T14:59:05Z",
-            "gameId": 14837,
-            "minutes": 3
-        },
-        {
             "start": "2026-04-25T14:56:35Z",
             "end": "2026-04-25T15:30:35Z",
             "gameId": 449,
             "minutes": 34
         },
         {
-            "start": "2026-04-25T16:02:58Z",
-            "end": "2026-04-25T16:04:58Z",
-            "gameId": 319,
-            "minutes": 2
-        },
-        {
             "start": "2026-04-25T15:56:38Z",
             "end": "2026-04-25T16:14:38Z",
             "gameId": 449,
             "minutes": 18
-        },
-        {
-            "start": "2026-04-26T08:48:54Z",
-            "end": "2026-04-26T08:49:54Z",
-            "gameId": 449,
-            "minutes": 1
         },
         {
             "start": "2026-04-26T12:40:45Z",
@@ -1021,18 +634,6 @@
             "minutes": 22
         },
         {
-            "start": "2026-04-27T14:35:03Z",
-            "end": "2026-04-27T14:36:03Z",
-            "gameId": 5137,
-            "minutes": 1
-        },
-        {
-            "start": "2026-04-27T14:39:28Z",
-            "end": "2026-04-27T14:42:28Z",
-            "gameId": 449,
-            "minutes": 3
-        },
-        {
             "start": "2026-04-28T02:08:50Z",
             "end": "2026-04-28T02:17:50Z",
             "gameId": 2021,
@@ -1043,12 +644,6 @@
             "end": "2026-04-28T08:07:01Z",
             "gameId": 2021,
             "minutes": 19
-        },
-        {
-            "start": "2026-04-28T12:27:09Z",
-            "end": "2026-04-28T12:28:09Z",
-            "gameId": 2021,
-            "minutes": 1
         },
         {
             "start": "2026-04-28T15:10:14Z",
@@ -1099,12 +694,6 @@
             "minutes": 31
         },
         {
-            "start": "2026-05-06T01:11:01Z",
-            "end": "2026-05-06T01:16:01Z",
-            "gameId": 9931,
-            "minutes": 5
-        },
-        {
             "start": "2026-05-06T14:33:15Z",
             "end": "2026-05-06T14:41:15Z",
             "gameId": 10433,
@@ -1145,18 +734,6 @@
             "end": "2026-05-11T23:51:32Z",
             "gameId": 7212,
             "minutes": 114
-        },
-        {
-            "start": "2026-05-12T00:39:41Z",
-            "end": "2026-05-12T00:42:41Z",
-            "gameId": 22693,
-            "minutes": 3
-        },
-        {
-            "start": "2026-05-12T01:33:32Z",
-            "end": "2026-05-12T01:37:32Z",
-            "gameId": 32928,
-            "minutes": 4
         },
         {
             "start": "2026-05-12T13:23:31Z",
@@ -1225,12 +802,6 @@
             "minutes": 60
         },
         {
-            "start": "2026-05-13T16:40:50Z",
-            "end": "2026-05-13T16:44:50Z",
-            "gameId": 24140,
-            "minutes": 4
-        },
-        {
             "start": "2026-05-14T01:10:53Z",
             "end": "2026-05-14T02:09:53Z",
             "gameId": 16084,
@@ -1243,34 +814,10 @@
             "minutes": 17
         },
         {
-            "start": "2026-05-14T02:31:45Z",
-            "end": "2026-05-14T02:32:45Z",
-            "gameId": 27590,
-            "minutes": 1
-        },
-        {
-            "start": "2026-05-14T03:09:22Z",
-            "end": "2026-05-14T03:14:22Z",
-            "gameId": 27590,
-            "minutes": 5
-        },
-        {
-            "start": "2026-05-14T07:48:38Z",
-            "end": "2026-05-14T07:53:38Z",
-            "gameId": 724,
-            "minutes": 5
-        },
-        {
             "start": "2026-05-14T07:44:07Z",
             "end": "2026-05-14T07:54:07Z",
             "gameId": 16084,
             "minutes": 10
-        },
-        {
-            "start": "2026-05-14T10:19:26Z",
-            "end": "2026-05-14T10:24:26Z",
-            "gameId": 32817,
-            "minutes": 5
         },
         {
             "start": "2026-05-14T12:45:27Z",
@@ -1297,28 +844,10 @@
             "minutes": 24
         },
         {
-            "start": "2026-05-14T15:13:58Z",
-            "end": "2026-05-14T15:14:58Z",
-            "gameId": 22353,
-            "minutes": 1
-        },
-        {
             "start": "2026-05-15T01:11:50Z",
             "end": "2026-05-15T01:27:50Z",
             "gameId": 724,
             "minutes": 16
-        },
-        {
-            "start": "2026-05-15T15:13:35Z",
-            "end": "2026-05-15T15:14:35Z",
-            "gameId": 38014,
-            "minutes": 1
-        },
-        {
-            "start": "2026-05-16T13:19:52Z",
-            "end": "2026-05-16T13:21:52Z",
-            "gameId": 34313,
-            "minutes": 2
         },
         {
             "start": "2026-05-16T14:26:59Z",
@@ -1327,23 +856,10 @@
             "minutes": 17
         },
         {
-            "start": "2026-05-17T14:59:23Z",
-            "end": "2026-05-17T15:01:23Z",
-            "gameId": 30725,
-            "minutes": 2,
-            "approx": true
-        },
-        {
             "start": "2026-05-17T21:53:13Z",
             "end": "2026-05-17T22:17:50Z",
             "gameId": 6070,
             "minutes": 26
-        },
-        {
-            "start": "2026-05-18T02:14:37Z",
-            "end": "2026-05-18T02:16:37Z",
-            "gameId": 34313,
-            "minutes": 2
         },
         {
             "start": "2026-05-18T10:13:16Z",
@@ -1356,12 +872,6 @@
             "end": "2026-05-18T16:01:10Z",
             "gameId": 7212,
             "minutes": 12
-        },
-        {
-            "start": "2026-05-19T00:54:27Z",
-            "end": "2026-05-19T00:59:27Z",
-            "gameId": 22862,
-            "minutes": 5
         },
         {
             "start": "2026-05-19T15:52:14Z",
@@ -1386,12 +896,6 @@
             "end": "2026-05-21T09:26:03Z",
             "gameId": 19334,
             "minutes": 24
-        },
-        {
-            "start": "2026-05-21T09:45:56Z",
-            "end": "2026-05-21T09:50:56Z",
-            "gameId": 22862,
-            "minutes": 5
         },
         {
             "start": "2026-05-21T11:03:47Z",
@@ -1436,34 +940,16 @@
             "minutes": 33
         },
         {
-            "start": "2026-05-29T01:31:00Z",
-            "end": "2026-05-29T01:36:00Z",
-            "gameId": 9878,
-            "minutes": 5
-        },
-        {
             "start": "2026-05-29T10:14:49Z",
             "end": "2026-05-29T10:25:49Z",
             "gameId": 9878,
             "minutes": 11
         },
         {
-            "start": "2026-05-30T01:26:18Z",
-            "end": "2026-05-30T01:29:18Z",
-            "gameId": 9878,
-            "minutes": 3
-        },
-        {
             "start": "2026-05-30T14:24:37Z",
             "end": "2026-05-30T14:35:37Z",
             "gameId": 9931,
             "minutes": 11
-        },
-        {
-            "start": "2026-05-31T01:36:59Z",
-            "end": "2026-05-31T01:37:59Z",
-            "gameId": 9878,
-            "minutes": 1
         },
         {
             "start": "2026-05-31T07:30:06Z",
@@ -1526,70 +1012,16 @@
             "minutes": 52
         },
         {
-            "start": "2026-06-06T06:35:22Z",
-            "end": "2026-06-06T06:36:22Z",
-            "gameId": 11242,
-            "minutes": 1
-        },
-        {
             "start": "2026-06-06T08:15:05Z",
             "end": "2026-06-06T08:31:05Z",
             "gameId": 2780,
             "minutes": 16
         },
         {
-            "start": "2026-06-06T12:41:24Z",
-            "end": "2026-06-06T12:42:24Z",
-            "gameId": 14434,
-            "minutes": 1
-        },
-        {
             "start": "2026-06-06T14:03:35Z",
             "end": "2026-06-06T15:00:35Z",
             "gameId": 11242,
             "minutes": 57
-        },
-        {
-            "start": "2026-06-07T00:11:55Z",
-            "end": "2026-06-07T00:13:55Z",
-            "gameId": 11288,
-            "minutes": 2
-        },
-        {
-            "start": "2026-06-07T08:49:11Z",
-            "end": "2026-06-07T08:50:11Z",
-            "gameId": 24186,
-            "minutes": 1
-        },
-        {
-            "start": "2026-06-07T09:02:54Z",
-            "end": "2026-06-07T09:04:54Z",
-            "gameId": 9818,
-            "minutes": 2
-        },
-        {
-            "start": "2026-06-07T10:44:39Z",
-            "end": "2026-06-07T10:46:39Z",
-            "gameId": 9077,
-            "minutes": 2
-        },
-        {
-            "start": "2026-06-07T11:21:54Z",
-            "end": "2026-06-07T11:22:54Z",
-            "gameId": 9483,
-            "minutes": 1
-        },
-        {
-            "start": "2026-06-07T12:20:31Z",
-            "end": "2026-06-07T12:21:31Z",
-            "gameId": 11644,
-            "minutes": 1
-        },
-        {
-            "start": "2026-06-08T03:49:22Z",
-            "end": "2026-06-08T03:50:22Z",
-            "gameId": 11644,
-            "minutes": 1
         },
         {
             "start": "2026-06-09T10:36:50Z",
@@ -1610,28 +1042,10 @@
             "minutes": 16
         },
         {
-            "start": "2026-06-12T01:05:41Z",
-            "end": "2026-06-12T01:08:41Z",
-            "gameId": 22862,
-            "minutes": 3
-        },
-        {
-            "start": "2026-06-13T14:23:37Z",
-            "end": "2026-06-13T14:28:37Z",
-            "gameId": 22693,
-            "minutes": 5
-        },
-        {
             "start": "2026-06-13T14:30:21Z",
             "end": "2026-06-13T15:39:21Z",
             "gameId": 12746,
             "minutes": 69
-        },
-        {
-            "start": "2026-06-14T04:28:40Z",
-            "end": "2026-06-14T04:29:40Z",
-            "gameId": 12746,
-            "minutes": 1
         },
         {
             "start": "2026-06-14T06:21:13Z",
@@ -1656,12 +1070,6 @@
             "end": "2026-06-16T07:28:11Z",
             "gameId": 11242,
             "minutes": 47
-        },
-        {
-            "start": "2026-06-16T12:27:20Z",
-            "end": "2026-06-16T12:32:20Z",
-            "gameId": 22693,
-            "minutes": 5
         },
         {
             "start": "2026-06-17T00:44:46Z",
@@ -1730,12 +1138,6 @@
             "minutes": 12
         },
         {
-            "start": "2026-06-29T13:24:49Z",
-            "end": "2026-06-29T13:25:49Z",
-            "gameId": 24186,
-            "minutes": 1
-        },
-        {
             "start": "2026-06-29T15:23:26Z",
             "end": "2026-06-29T15:30:26Z",
             "gameId": 23905,
@@ -1746,12 +1148,6 @@
             "end": "2026-06-29T15:31:15Z",
             "gameId": 515,
             "minutes": 9
-        },
-        {
-            "start": "2026-06-30T10:43:56Z",
-            "end": "2026-06-30T10:48:56Z",
-            "gameId": 515,
-            "minutes": 5
         },
         {
             "start": "2026-06-30T10:37:22Z",
@@ -1766,40 +1162,16 @@
             "minutes": 10
         },
         {
-            "start": "2026-07-01T01:18:00Z",
-            "end": "2026-07-01T01:23:00Z",
-            "gameId": 515,
-            "minutes": 5
-        },
-        {
-            "start": "2026-07-01T01:41:31Z",
-            "end": "2026-07-01T01:46:31Z",
-            "gameId": 22693,
-            "minutes": 5
-        },
-        {
             "start": "2026-07-04T14:13:39Z",
             "end": "2026-07-04T14:29:39Z",
             "gameId": 9190,
             "minutes": 16
         },
         {
-            "start": "2026-07-04T21:51:17Z",
-            "end": "2026-07-04T21:53:17Z",
-            "gameId": 16713,
-            "minutes": 2
-        },
-        {
             "start": "2026-07-05T03:59:53Z",
             "end": "2026-07-05T04:23:53Z",
             "gameId": 9190,
             "minutes": 24
-        },
-        {
-            "start": "2026-07-07T05:44:08Z",
-            "end": "2026-07-07T05:45:08Z",
-            "gameId": 515,
-            "minutes": 1
         },
         {
             "start": "2026-07-07T16:13:11Z",
@@ -1814,18 +1186,6 @@
             "minutes": 29
         },
         {
-            "start": "2026-07-08T02:08:50Z",
-            "end": "2026-07-08T02:09:50Z",
-            "gameId": 22693,
-            "minutes": 1
-        },
-        {
-            "start": "2026-07-08T02:19:24Z",
-            "end": "2026-07-08T02:23:24Z",
-            "gameId": 22693,
-            "minutes": 4
-        },
-        {
             "start": "2026-07-09T01:12:47Z",
             "end": "2026-07-09T01:24:47Z",
             "gameId": 22693,
@@ -1838,34 +1198,16 @@
             "minutes": 27
         },
         {
-            "start": "2026-07-09T18:16:21Z",
-            "end": "2026-07-09T18:21:21Z",
-            "gameId": 22693,
-            "minutes": 5
-        },
-        {
             "start": "2026-07-09T23:23:10Z",
             "end": "2026-07-09T23:40:10Z",
             "gameId": 22693,
             "minutes": 17
         },
         {
-            "start": "2026-07-12T16:28:56Z",
-            "end": "2026-07-12T16:31:56Z",
-            "gameId": 22693,
-            "minutes": 3
-        },
-        {
             "start": "2026-07-13T01:11:52Z",
             "end": "2026-07-13T01:26:52Z",
             "gameId": 22693,
             "minutes": 15
-        },
-        {
-            "start": "2026-07-13T06:54:15Z",
-            "end": "2026-07-13T06:57:15Z",
-            "gameId": 22693,
-            "minutes": 3
         },
         {
             "start": "2026-07-13T11:09:46Z",
@@ -1886,18 +1228,6 @@
             "minutes": 11
         },
         {
-            "start": "2026-07-16T12:40:08Z",
-            "end": "2026-07-16T12:41:08Z",
-            "gameId": 9077,
-            "minutes": 1
-        },
-        {
-            "start": "2026-07-17T00:06:38Z",
-            "end": "2026-07-17T00:09:38Z",
-            "gameId": 22693,
-            "minutes": 3
-        },
-        {
             "start": "2026-07-17T12:06:53Z",
             "end": "2026-07-17T12:13:54Z",
             "gameId": 22693,
@@ -1916,13 +1246,6 @@
             "minutes": 62
         },
         {
-            "start": "2026-07-18T16:01:52Z",
-            "end": "2026-07-18T16:08:33Z",
-            "gameId": 9898,
-            "minutes": 5,
-            "approx": true
-        },
-        {
             "start": "2026-07-18T17:00:55Z",
             "end": "2026-07-18T17:15:55Z",
             "gameId": 9931,
@@ -1935,12 +1258,6 @@
             "minutes": 8
         },
         {
-            "start": "2026-07-19T14:16:54Z",
-            "end": "2026-07-19T14:17:54Z",
-            "gameId": 559,
-            "minutes": 1
-        },
-        {
             "start": "2026-07-20T01:16:39Z",
             "end": "2026-07-20T01:31:39Z",
             "gameId": 11253,
@@ -1951,12 +1268,6 @@
             "end": "2026-07-21T01:32:03Z",
             "gameId": 11253,
             "minutes": 13
-        },
-        {
-            "start": "2026-07-21T03:56:55Z",
-            "end": "2026-07-21T03:57:55Z",
-            "gameId": 11372,
-            "minutes": 1
         },
         {
             "start": "2026-07-21T14:33:14Z",
@@ -1977,22 +1288,10 @@
             "minutes": 10
         },
         {
-            "start": "2026-07-26T00:59:50Z",
-            "end": "2026-07-26T01:01:50Z",
-            "gameId": 11372,
-            "minutes": 2
-        },
-        {
             "start": "2026-07-26T05:32:19Z",
             "end": "2026-07-26T07:10:19Z",
             "gameId": 11372,
             "minutes": 98
-        },
-        {
-            "start": "2026-07-26T09:39:14Z",
-            "end": "2026-07-26T09:40:14Z",
-            "gameId": 14372,
-            "minutes": 1
         },
         {
             "start": "2026-07-26T14:12:25Z",
@@ -2007,22 +1306,10 @@
             "minutes": 9
         },
         {
-            "start": "2026-08-07T01:27:38Z",
-            "end": "2026-08-07T01:30:38Z",
-            "gameId": 22693,
-            "minutes": 3
-        },
-        {
             "start": "2026-08-25T09:57:37Z",
             "end": "2026-08-25T10:47:13Z",
             "gameId": 11306,
             "minutes": 48
-        },
-        {
-            "start": "2026-08-28T12:34:50Z",
-            "end": "2026-08-28T12:35:50Z",
-            "gameId": 11365,
-            "minutes": 1
         },
         {
             "start": "2026-08-28T14:54:31Z",
@@ -2043,12 +1330,6 @@
             "minutes": 8
         },
         {
-            "start": "2026-09-01T23:35:38Z",
-            "end": "2026-09-01T23:37:38Z",
-            "gameId": 2022,
-            "minutes": 2
-        },
-        {
             "start": "2026-09-02T11:25:04Z",
             "end": "2026-09-02T11:43:04Z",
             "gameId": 2022,
@@ -2059,18 +1340,6 @@
             "end": "2026-09-02T11:43:04Z",
             "gameId": 34489,
             "minutes": 17
-        },
-        {
-            "start": "2026-09-02T15:04:39Z",
-            "end": "2026-09-02T15:08:39Z",
-            "gameId": 2642,
-            "minutes": 4
-        },
-        {
-            "start": "2026-09-02T15:28:11Z",
-            "end": "2026-09-02T15:29:11Z",
-            "gameId": 19255,
-            "minutes": 1
         },
         {
             "start": "2026-09-05T09:35:46Z",
@@ -2091,34 +1360,10 @@
             "minutes": 7
         },
         {
-            "start": "2026-09-05T17:08:30Z",
-            "end": "2026-09-05T17:09:30Z",
-            "gameId": 783,
-            "minutes": 1
-        },
-        {
-            "start": "2026-09-06T03:29:21Z",
-            "end": "2026-09-06T03:30:21Z",
-            "gameId": 7095,
-            "minutes": 1
-        },
-        {
-            "start": "2026-09-06T04:08:09Z",
-            "end": "2026-09-06T04:09:09Z",
-            "gameId": 8306,
-            "minutes": 1
-        },
-        {
             "start": "2026-09-07T14:52:05Z",
             "end": "2026-09-07T14:59:05Z",
             "gameId": 2022,
             "minutes": 7
-        },
-        {
-            "start": "2026-09-11T14:12:11Z",
-            "end": "2026-09-11T14:13:11Z",
-            "gameId": 11275,
-            "minutes": 1
         },
         {
             "start": "2026-09-12T10:17:27Z",
@@ -2131,18 +1376,6 @@
             "end": "2026-09-12T13:41:54Z",
             "gameId": 11306,
             "minutes": 31
-        },
-        {
-            "start": "2026-09-13T08:42:26Z",
-            "end": "2026-09-13T08:43:26Z",
-            "gameId": 1523,
-            "minutes": 1
-        },
-        {
-            "start": "2026-09-13T10:11:05Z",
-            "end": "2026-09-13T10:12:05Z",
-            "gameId": 11407,
-            "minutes": 1
         },
         {
             "start": "2026-09-13T13:53:19Z",
@@ -2179,12 +1412,6 @@
             "end": "2026-09-20T05:47:28Z",
             "gameId": 22693,
             "minutes": 7
-        },
-        {
-            "start": "2026-09-20T05:59:09Z",
-            "end": "2026-09-20T06:00:09Z",
-            "gameId": 11379,
-            "minutes": 1
         },
         {
             "start": "2026-09-20T07:58:38Z",
@@ -2229,40 +1456,16 @@
             "minutes": 15
         },
         {
-            "start": "2026-09-20T15:49:17Z",
-            "end": "2026-09-20T15:54:17Z",
-            "gameId": 19070,
-            "minutes": 5
-        },
-        {
             "start": "2026-09-21T13:05:39Z",
             "end": "2026-09-21T13:22:39Z",
             "gameId": 22693,
             "minutes": 17
         },
         {
-            "start": "2026-09-22T00:23:59Z",
-            "end": "2026-09-22T00:28:59Z",
-            "gameId": 22693,
-            "minutes": 5
-        },
-        {
-            "start": "2026-09-23T01:13:38Z",
-            "end": "2026-09-23T01:14:38Z",
-            "gameId": 22693,
-            "minutes": 1
-        },
-        {
             "start": "2026-09-23T15:52:11Z",
             "end": "2026-09-23T16:05:11Z",
             "gameId": 22693,
             "minutes": 13
-        },
-        {
-            "start": "2026-09-25T13:09:06Z",
-            "end": "2026-09-25T13:10:06Z",
-            "gameId": 22693,
-            "minutes": 1
         },
         {
             "start": "2026-09-26T03:02:23Z",
@@ -2301,58 +1504,10 @@
             "minutes": 9
         },
         {
-            "start": "2026-09-28T13:04:12Z",
-            "end": "2026-09-28T13:05:12Z",
-            "gameId": 22693,
-            "minutes": 1
-        },
-        {
-            "start": "2026-09-28T17:40:21Z",
-            "end": "2026-09-28T17:41:21Z",
-            "gameId": 22343,
-            "minutes": 1
-        },
-        {
-            "start": "2026-09-29T01:36:11Z",
-            "end": "2026-09-29T01:37:11Z",
-            "gameId": 22343,
-            "minutes": 1
-        },
-        {
             "start": "2026-09-29T12:19:04Z",
             "end": "2026-09-29T12:50:04Z",
             "gameId": 22343,
             "minutes": 31
-        },
-        {
-            "start": "2026-09-30T05:29:22Z",
-            "end": "2026-09-30T05:34:22Z",
-            "gameId": 22343,
-            "minutes": 5
-        },
-        {
-            "start": "2026-09-30T11:56:42Z",
-            "end": "2026-09-30T11:57:42Z",
-            "gameId": 40459,
-            "minutes": 1
-        },
-        {
-            "start": "2026-10-01T09:46:58Z",
-            "end": "2026-10-01T09:49:58Z",
-            "gameId": 22343,
-            "minutes": 3
-        },
-        {
-            "start": "2026-10-01T10:02:02Z",
-            "end": "2026-10-01T10:05:02Z",
-            "gameId": 22693,
-            "minutes": 3
-        },
-        {
-            "start": "2026-10-01T16:09:38Z",
-            "end": "2026-10-01T16:10:38Z",
-            "gameId": 9334,
-            "minutes": 1
         },
         {
             "start": "2026-10-04T11:02:51Z",

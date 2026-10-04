@@ -645,7 +645,8 @@ const App = () => {
             .map(x => gameRow(x, x.mpa, `${x.unlocks} in ${fmtMinutes(x.minutes)}`));
 
         // ── Sessions
-        const LENGTHS = [['<5m', 0, 5], ['5–30m', 5, 30], ['30m–1h', 30, 60], ['1–2h', 60, 120], ['2–4h', 120, 240], ['4h+', 240, Infinity]];
+        // Sessions of 5 minutes or less aren't logged by the pipelines (launches, not play)
+        const LENGTHS = [['<30m', 0, 30], ['30m–1h', 30, 60], ['1–2h', 60, 120], ['2–4h', 120, 240], ['4h+', 240, Infinity]];
         const lengthBuckets = LENGTHS.map(([label]) => ({ key: label, label, values: {} }));
         for (const s of periodSessions) {
             const i = LENGTHS.findIndex(([, lo, hi]) => s.minutes >= lo && s.minutes < hi);

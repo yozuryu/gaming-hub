@@ -15,6 +15,8 @@
 //   Steam also checkpoints playtime every 30 minutes while a game runs (moving last-played
 //   to the checkpoint), so a run landing mid-session sees a finished chunk. A session that
 //   starts within MERGE_GAP_MS of the game's previous session end continues that session.
+//   A new session of MIN_SESSION_MINUTES or less is not logged: it's a launch (wrong game,
+//   checking an RA hash), not play. Pieces that continue a logged session are always kept.
 
 const fs   = require('fs');
 const path = require('path');
@@ -22,6 +24,7 @@ const path = require('path');
 const MIN = 60 * 1000;
 const APPROX_TOLERANCE_MS = 2 * MIN;
 const MERGE_GAP_MS = 5 * MIN;
+const MIN_SESSION_MINUTES = 5;
 
 // Parses ISO strings and RA's "YYYY-MM-DD HH:MM:SS" (UTC, no zone marker)
 const toMs = (v) => {
@@ -153,6 +156,7 @@ function writePlaytimeFiles(dir, { state, sessions, meta, asOf, dryRun = false }
         const prev = readJson(filePath) ?? { games: {}, sessions: [] };
         const games = { ...prev.games };
         for (const s of list) {
+            if (s.minutes <= MIN_SESSION_MINUTES && !s.continues) continue;   // not logged, see above
             const m = meta[s.gameId];
             games[s.gameId] = { name: m?.name ?? games[s.gameId]?.name ?? null, icon: m?.icon ?? games[s.gameId]?.icon ?? null };
             const consoleName = m?.console ?? games[s.gameId]?.console;
@@ -165,7 +169,7 @@ function writePlaytimeFiles(dir, { state, sessions, meta, asOf, dryRun = false }
                 target.end = rec.end;
                 target.minutes += rec.minutes;
                 if (rec.approx) target.approx = true;
-            } else {
+            } else if (rec.minutes > MIN_SESSION_MINUTES) {
                 all.push(rec);
             }
         }
@@ -200,8 +204,8 @@ function updatePlaytimeLog(dir, snapshot, { unitsPerMinute, asOf, dryRun = false
     const written = writePlaytimeFiles(dir, { state, sessions, meta, asOf, dryRun });
 
     if (seeded) log(`baseline seeded (${snapshot.length} games), no sessions logged`);
-    else log(`${sessions.length} new session(s)${sessions.length ? ': ' + sessions.map(s => `${meta[s.gameId]?.name ?? s.gameId} ${s.minutes}m${s.continues ? ' (continued)' : ''}`).join(', ') : ''}${dryRun ? '  (dry run)' : ''}`);
+    else log(`${sessions.length} new session(s)${sessions.length ? ': ' + sessions.map(s => `${meta[s.gameId]?.name ?? s.gameId} ${s.minutes}m${s.continues ? ' (continued)' : s.minutes <= MIN_SESSION_MINUTES ? ' (launch, not logged)' : ''}`).join(', ') : ''}${dryRun ? '  (dry run)' : ''}`);
     return { sessions, seeded, written };
 }
 
-module.exports = { diffPlaytime, writePlaytimeFiles, updatePlaytimeLog, toMs, iso };
+module.exports = { diffPlaytime, writePlaytimeFiles, updatePlaytimeLog, toMs, iso, MIN_SESSION_MINUTES };

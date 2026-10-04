@@ -28,10 +28,6 @@
             "name": "Paw Patrol: On A Roll",
             "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/758730/60f80ab9be49220d165ec78f27fe5311180e87ae.jpg"
         },
-        "837610": {
-            "name": "Mary Skelter: Nightmares",
-            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/837610/13766adba6c87624bcc43a3dd8e53a030b258e95.jpg"
-        },
         "921570": {
             "name": "OCTOPATH TRAVELER",
             "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg"
@@ -39,10 +35,6 @@
         "996580": {
             "name": "Spyro™ Reignited Trilogy",
             "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/996580/58d9d5bb243382cdb00259733d71e7621f502a2d.jpg"
-        },
-        "1272840": {
-            "name": "Dordogne",
-            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/1272840/d117b3ead9a721e49f9ed4718fa68b0b14a5831c.jpg"
         },
         "1282590": {
             "name": "Train Sim World® 2",
@@ -94,12 +86,6 @@
         }
     },
     "sessions": [
-        {
-            "start": "2026-03-26T05:19:31Z",
-            "end": "2026-03-26T05:20:31Z",
-            "gameId": 1272840,
-            "minutes": 1
-        },
         {
             "start": "2026-03-26T13:59:54Z",
             "end": "2026-03-26T14:43:54Z",
@@ -201,12 +187,6 @@
             "end": "2026-05-01T10:55:19Z",
             "gameId": 206440,
             "minutes": 30
-        },
-        {
-            "start": "2026-05-01T11:03:11Z",
-            "end": "2026-05-01T11:05:11Z",
-            "gameId": 837610,
-            "minutes": 2
         },
         {
             "start": "2026-05-01T13:28:09Z",
@@ -339,12 +319,6 @@
             "end": "2026-07-06T15:08:18Z",
             "gameId": 921570,
             "minutes": 10
-        },
-        {
-            "start": "2026-07-20T14:41:29Z",
-            "end": "2026-07-20T14:43:29Z",
-            "gameId": 921570,
-            "minutes": 2
         },
         {
             "start": "2026-07-20T14:52:07Z",
