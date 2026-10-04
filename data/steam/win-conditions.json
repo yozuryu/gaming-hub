@@ -17,16 +17,88 @@
       "NEW_ACHIEVEMENT_2_31"
     ]
   },
+  "207320": {
+    "mode": "or",
+    "achievements": [
+      "Hollow Victory",
+      "Mildly Manly",
+      "Gods Beater",
+      "Hardcore Hero",
+      "Genos Who?",
+      "Bearer of the Biggest Sword"
+    ]
+  },
+  "207350": {
+    "mode": "or",
+    "achievements": [
+      "Who Needs Magic?",
+      "It's a Fact: Magic is Awesome",
+      "Now the Gloves Come Off",
+      "Average Joe",
+      "Tuff Enuff"
+    ]
+  },
+  "223810": {
+    "mode": "or",
+    "achievements": [
+      "De-Fact-o"
+    ]
+  },
+  "223870": {
+    "mode": "or",
+    "achievements": [
+      "Darm It!"
+    ]
+  },
+  "237890": {
+    "mode": "or",
+    "achievements": [
+      "ACHIEVEMENT_05",
+      "ACHIEVEMENT_06"
+    ]
+  },
   "238460": {
     "mode": "or",
     "achievements": [
       "ACH10_HATS_OFF"
     ]
   },
+  "239120": {
+    "mode": "or",
+    "achievements": [
+      "FF3_ACHIEVEMENT_5"
+    ]
+  },
   "251150": {
     "mode": "or",
     "achievements": [
       "CLEARCHAPTER4"
+    ]
+  },
+  "251290": {
+    "mode": "or",
+    "achievements": [
+      "CLEARCHAPTER9"
+    ]
+  },
+  "256460": {
+    "mode": "or",
+    "achievements": [
+      "NEW_ACHIEVEMENT_3_0"
+    ]
+  },
+  "258910": {
+    "mode": "or",
+    "achievements": [
+      "Achievement_Win_Game"
+    ]
+  },
+  "260130": {
+    "mode": "or",
+    "achievements": [
+      "ACHIEVEMENT_01",
+      "ACHIEVEMENT_02",
+      "ACHIEVEMENT_03"
     ]
   },
   "282900": {
@@ -36,10 +108,64 @@
       "ACHIEVEMENT_011"
     ]
   },
+  "292120": {
+    "mode": "or",
+    "achievements": [
+      "ACV_EVENT_12"
+    ]
+  },
+  "294860": {
+    "mode": "or",
+    "achievements": [
+      "NEW_ACHIEVEMENT_1_4"
+    ]
+  },
+  "312540": {
+    "mode": "or",
+    "achievements": [
+      "BOSS_ERNST"
+    ]
+  },
+  "312750": {
+    "mode": "or",
+    "achievements": [
+      "com.square_enix.ff4_achievement019"
+    ]
+  },
+  "312790": {
+    "mode": "or",
+    "achievements": [
+      "ACHIEVEMENT_23"
+    ]
+  },
+  "315860": {
+    "mode": "or",
+    "achievements": [
+      "ACH_HONORED_COMPANION"
+    ]
+  },
+  "330390": {
+    "mode": "or",
+    "achievements": [
+      "ACH_BOSS_ZERA"
+    ]
+  },
   "335300": {
     "mode": "or",
     "achievements": [
       "ACHIEVEMENT_04"
+    ]
+  },
+  "340170": {
+    "mode": "or",
+    "achievements": [
+      "ACH_CHAPTER_CLEAR_8"
+    ]
+  },
+  "346830": {
+    "mode": "or",
+    "achievements": [
+      "com.square_enix.ff4ta_achievement011"
     ]
   },
   "347830": {
@@ -48,6 +174,42 @@
       "ACHIEVEMENT_04",
       "ACHIEVEMENT_05",
       "ACHIEVEMENT_06"
+    ]
+  },
+  "351710": {
+    "mode": "or",
+    "achievements": [
+      "ACHIEVEMENT_038",
+      "ACHIEVEMENT_039",
+      "ACHIEVEMENT_040"
+    ]
+  },
+  "351970": {
+    "mode": "or",
+    "achievements": [
+      "TROPHY_ID_005"
+    ]
+  },
+  "353270": {
+    "mode": "or",
+    "achievements": [
+      "ACHIEVEMENT_012",
+      "ACHIEVEMENT_013",
+      "ACHIEVEMENT_014"
+    ]
+  },
+  "359870": {
+    "mode": "or",
+    "achievements": [
+      "ACH_THE_ETERNAL_CALM",
+      "ACH_MACHINE_OF_WAR"
+    ]
+  },
+  "367500": {
+    "mode": "or",
+    "achievements": [
+      "ACH_ACHIEVEMENT_12",
+      "ACH_ACHIEVEMENT_16"
     ]
   },
   "372360": {
@@ -60,6 +222,12 @@
     "mode": "or",
     "achievements": [
       "quest51"
+    ]
+  },
+  "377840": {
+    "mode": "or",
+    "achievements": [
+      "CgkIgrPmjcATEAIQKw"
     ]
   },
   "388800": {
@@ -75,6 +243,32 @@
       "ACH_ANY_RUN_2"
     ]
   },
+  "409000": {
+    "mode": "or",
+    "achievements": [
+      "ONE_WAY_US_ACHIEVEMENT_09"
+    ]
+  },
+  "409890": {
+    "mode": "or",
+    "achievements": [
+      "ACHIEVEMENT_16_GAME_CLEAR"
+    ]
+  },
+  "415300": {
+    "mode": "or",
+    "achievements": [
+      "ACHIEVEMENT_044",
+      "ACHIEVEMENT_010"
+    ]
+  },
+  "415480": {
+    "mode": "or",
+    "achievements": [
+      "NEW_ACHIEVEMENT_2_050",
+      "NEW_ACHIEVEMENT_2_051"
+    ]
+  },
   "416600": {
     "mode": "or",
     "achievements": [
@@ -82,10 +276,28 @@
       "ACHIEVEMENT_END_TRUE"
     ]
   },
+  "421600": {
+    "mode": "or",
+    "achievements": [
+      "RAYGIGANT_EN_ACHIEVEMENT_21"
+    ]
+  },
+  "427680": {
+    "mode": "or",
+    "achievements": [
+      "ACH_COMPLETE"
+    ]
+  },
   "427700": {
     "mode": "or",
     "achievements": [
       "BEATBOSS_9"
+    ]
+  },
+  "429660": {
+    "mode": "or",
+    "achievements": [
+      "TROPHY_ID_SCENARIO_007"
     ]
   },
   "435150": {
@@ -97,10 +309,73 @@
       "DOS2_Quest99"
     ]
   },
+  "436670": {
+    "mode": "or",
+    "achievements": [
+      "CLEARGAME_EASY"
+    ]
+  },
+  "438490": {
+    "mode": "or",
+    "achievements": [
+      "TROPHY_ID_StoryDemo_10"
+    ]
+  },
+  "441830": {
+    "mode": "or",
+    "achievements": [
+      "KILL_TALK_BOSS"
+    ]
+  },
+  "458730": {
+    "mode": "or",
+    "achievements": [
+      "Original_Sin_Smiter"
+    ]
+  },
+  "460870": {
+    "mode": "or",
+    "achievements": [
+      "TROPHY_ID_StoryDemo_09"
+    ]
+  },
   "487430": {
     "mode": "or",
     "achievements": [
       "chapter2_complete"
+    ]
+  },
+  "524220": {
+    "mode": "or",
+    "achievements": [
+      "ACH_CLEAR_A"
+    ]
+  },
+  "524580": {
+    "mode": "or",
+    "achievements": [
+      "ACHIEVEMENT_03",
+      "ACHIEVEMENT_04",
+      "ACHIEVEMENT_05"
+    ]
+  },
+  "525480": {
+    "mode": "or",
+    "achievements": [
+      "ACHIEVEMENT_03",
+      "ACHIEVEMENT_04"
+    ]
+  },
+  "527270": {
+    "mode": "or",
+    "achievements": [
+      "005"
+    ]
+  },
+  "527280": {
+    "mode": "or",
+    "achievements": [
+      "TROPHY_ENDING_001"
     ]
   },
   "538680": {
@@ -116,16 +391,53 @@
       "achievement_ep1_clear_p2"
     ]
   },
+  "556740": {
+    "mode": "or",
+    "achievements": [
+      "Chapter_8_Complete"
+    ]
+  },
   "578330": {
     "mode": "or",
     "achievements": [
       "COMPLETE_STORYEVENT15"
     ]
   },
+  "579180": {
+    "mode": "or",
+    "achievements": [
+      "ACHIEVEMENT54",
+      "ACHIEVEMENT53"
+    ]
+  },
   "582010": {
     "mode": "or",
     "achievements": [
       "Achievement56"
+    ]
+  },
+  "587100": {
+    "mode": "or",
+    "achievements": [
+      "ClearAnyDifficult"
+    ]
+  },
+  "587110": {
+    "mode": "or",
+    "achievements": [
+      "TROPHY_SCENECLEAR"
+    ]
+  },
+  "587260": {
+    "mode": "or",
+    "achievements": [
+      "ACHIEVEMENT_53"
+    ]
+  },
+  "595520": {
+    "mode": "or",
+    "achievements": [
+      "ACH_EVENT_DEFEAT_VAYNE"
     ]
   },
   "609150": {
@@ -162,6 +474,13 @@
       "Id42"
     ]
   },
+  "699170": {
+    "mode": "or",
+    "achievements": [
+      "ACH_FS_19",
+      "ACH_FS_20"
+    ]
+  },
   "731490": {
     "mode": "and",
     "achievements": [
@@ -176,6 +495,12 @@
       "TROP053"
     ]
   },
+  "740130": {
+    "mode": "or",
+    "achievements": [
+      "TROPHY_ID_SCENARIO_COMPLETE"
+    ]
+  },
   "748490": {
     "mode": "or",
     "achievements": [
@@ -188,6 +513,12 @@
       "Adventure Bay Hero"
     ]
   },
+  "798460": {
+    "mode": "or",
+    "achievements": [
+      "NEW_ACHIEVEMENT_1_6"
+    ]
+  },
   "837610": {
     "mode": "or",
     "achievements": [
@@ -198,6 +529,12 @@
     "mode": "or",
     "achievements": [
       "NEW_ACHIEVEMENT_1_0"
+    ]
+  },
+  "899440": {
+    "mode": "or",
+    "achievements": [
+      "B_13"
     ]
   },
   "921570": {
@@ -213,10 +550,60 @@
       "ACHIEVEMENT_032"
     ]
   },
+  "990050": {
+    "mode": "or",
+    "achievements": [
+      "NEW_ACHIEVEMENT_1_2"
+    ]
+  },
+  "991270": {
+    "mode": "or",
+    "achievements": [
+      "TROPHY3_SCENARIO_05"
+    ]
+  },
+  "1027250": {
+    "mode": "or",
+    "achievements": [
+      "NEW_ACHIEVEMENT_1_8"
+    ]
+  },
+  "1042550": {
+    "mode": "or",
+    "achievements": [
+      "DIGIMON_ACHIEVE_C_21",
+      "DIGIMON_ACHIEVE_H_19"
+    ]
+  },
+  "1057540": {
+    "mode": "or",
+    "achievements": [
+      "NEW_ACHIEVEMENT_1_7"
+    ]
+  },
   "1085180": {
     "mode": "or",
     "achievements": [
       "NEW_ACHIEVEMENT_1_3"
+    ]
+  },
+  "1198090": {
+    "mode": "or",
+    "achievements": [
+      "TROPHY4_SCENARIO_07"
+    ]
+  },
+  "1218210": {
+    "mode": "or",
+    "achievements": [
+      "FINISH_GAME_ON_EASY",
+      "WATCH_CREDITS"
+    ]
+  },
+  "1229240": {
+    "mode": "or",
+    "achievements": [
+      "STORY4"
     ]
   },
   "1282150": {
@@ -231,11 +618,37 @@
       "30"
     ]
   },
+  "1668510": {
+    "mode": "or",
+    "achievements": [
+      "AR_LAST_CLEAR"
+    ]
+  },
+  "1668520": {
+    "mode": "or",
+    "achievements": [
+      "AR_LAST_CLEAR"
+    ]
+  },
   "1730680": {
     "mode": "and",
     "achievements": [
       "ACHIEVEMENT_07",
       "ACHIEVEMENT_20"
+    ]
+  },
+  "1776380": {
+    "mode": "or",
+    "achievements": [
+      "trophy_0018",
+      "trophy_0019",
+      "trophy_0020",
+      "trophy_0021",
+      "trophy_0022",
+      "trophy_0023",
+      "trophy_0024",
+      "trophy_0025",
+      "trophy_0026"
     ]
   },
   "1903340": {
@@ -267,6 +680,19 @@
     "achievements": [
       "Achievement_14",
       "Achievement_15"
+    ]
+  },
+  "2515020": {
+    "mode": "or",
+    "achievements": [
+      "1012"
+    ]
+  },
+  "2679460": {
+    "mode": "or",
+    "achievements": [
+      "ACHIEVEMENT_2",
+      "ACHIEVEMENT_42"
     ]
   }
 }

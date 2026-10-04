@@ -4,6 +4,10 @@
 
 Playtime is now logged as play sessions for Steam and RetroAchievements, with history back to late March; the Activity page gets a Playtime view, and a new Analytics page.
 
+### Steam
+
+- Win conditions (ending achievements that mark a game as beaten) added for 65 played JRPGs and JRPG-style games (each checked against achievement guides): Ys, Trails, Final Fantasy, Tales, Agarest, Neptunia, God Eater, Digimon, Chained Echoes and more; usually any-difficulty or any-ending clears count
+
 ### Activity
 
 - New Achievements | Playtime switch in the header; the view is kept in the URL (`?view=playtime`)
