@@ -251,11 +251,12 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo }) => {
             onClick={onClose}
         >
             {/* Backdrop */}
+            {/* No backdrop animation: it usually follows the loading overlay, which already faded one in */}
             <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
 
             {/* Panel */}
             <div
-                className="relative z-10 w-full max-w-xl bg-[#1b2838] border border-[#2a475e] rounded-[4px] shadow-2xl flex flex-col max-h-[90vh]"
+                className="relative z-10 w-full max-w-xl bg-[#1b2838] border border-[#2a475e] rounded-[4px] shadow-2xl flex flex-col max-h-[90vh] anim-fade"
                 onClick={e => e.stopPropagation()}
             >
                 {/* Close button — absolute top-right */}
@@ -511,11 +512,7 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
     }, [achievements, selectedDay]);
 
     if (loading) {
-        return (
-            <div className="text-center py-12 text-[#546270] text-[12px]">
-                Loading activity…
-            </div>
-        );
+        return <ActivitySkeleton />;
     }
 
     if (achievements.length === 0) {
@@ -889,6 +886,49 @@ const Sk = ({ w = 'w-full', h = 'h-4', cls = '' }) => (
     <div className={`shimmer ${w} ${h} ${cls}`} />
 );
 
+// Placeholders for the lazy-loaded tabs (same look as the RA page's)
+const GameCardSkeleton = () => (
+    <div className="bg-[#202d39] border border-[#323f4c] border-l-[3px] border-l-[#323f4c] rounded-[3px] p-3 flex gap-4">
+        <div className="shimmer w-16 h-16 md:w-20 md:h-20 rounded-[2px] flex-shrink-0" />
+        <div className="flex-1 flex flex-col gap-2 justify-center">
+            <Sk w="w-3/4" h="h-3.5" /><Sk w="w-1/2" h="h-2.5" />
+            <div className="flex gap-2 mt-1"><Sk w="w-20" h="h-2" /><Sk w="w-16" h="h-2" /></div>
+        </div>
+    </div>
+);
+const GamesSkeleton = () => <div className="flex flex-col gap-3">{[...Array(5)].map((_, i) => <GameCardSkeleton key={i} />)}</div>;
+
+const ActivitySkeleton = () => (
+    <div className="flex flex-col gap-6">
+        <div>
+            <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 mb-3">
+                <div className="shimmer w-[3px] h-[14px] rounded-[1px]" />
+                <Sk w="w-24" h="h-3.5" /><Sk w="w-48" h="h-2.5" cls="ml-auto" />
+            </div>
+            <div className="shimmer w-full h-[96px] rounded-[2px]" />
+        </div>
+        <div>
+            <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 mb-3">
+                <div className="shimmer w-[3px] h-[14px] rounded-[1px]" />
+                <Sk w="w-32" h="h-3.5" />
+            </div>
+            {[...Array(3)].map((_, i) => (
+                <div key={i} className="mb-4">
+                    <div className="flex items-center gap-2 mb-2"><div className="shimmer w-2 h-2 rounded-full" /><Sk w="w-32" h="h-2.5" /></div>
+                    <div className="ml-4 border-l border-[#2a475e] pl-3 flex flex-col gap-1.5">
+                        {[...Array(2)].map((_, j) => (
+                            <div key={j} className="flex items-center gap-2 p-2 bg-[#1b2838] border border-[#2a475e] rounded-[2px]">
+                                <div className="shimmer w-8 h-8 rounded-[2px] flex-shrink-0" />
+                                <div className="flex-1 flex flex-col gap-1.5"><Sk w="w-3/4" h="h-2.5" /><Sk w="w-1/2" h="h-2" /></div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+);
+
 const ProfileLoadingSkeleton = () => (
     <div className="min-h-screen bg-[#171a21] flex flex-col">
         <div className="bg-[#131a22] border-b border-[#101214] px-4 md:px-8 py-1.5 flex items-center gap-2">
@@ -1197,7 +1237,7 @@ const App = () => {
             </div>
 
             {/* Header */}
-            <header className="bg-[#1b2838] border-b border-[#2a475e] px-4 md:px-8 pt-8 pb-5 md:pt-5 shadow-md">
+            <header className="bg-[#1b2838] border-b border-[#2a475e] px-4 md:px-8 pt-8 pb-5 md:pt-5 shadow-md anim-fade">
                 <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-5">
 
                     {/* Avatar */}
@@ -1245,7 +1285,7 @@ const App = () => {
                 </div>
             </header>
 
-            <main className="max-w-5xl mx-auto px-4 md:px-8 py-6 flex-1 w-full">
+            <main className="max-w-5xl mx-auto px-4 md:px-8 py-6 flex-1 w-full anim-in">
 
                 {/* ── Overview 2-column ── */}
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 lg:gap-8 mb-8">
@@ -1556,8 +1596,8 @@ const App = () => {
                     </div>
                 )}
 
-                {/* ── Tab content ── */}
-                <div className="flex flex-col gap-3">
+                {/* ── Tab content ── (re-keyed per tab so each tab fades in) */}
+                <div key={activeTab} className="flex flex-col gap-3 anim-in">
 
                     {activeTab === 'recent' && (
                         gamesData
@@ -1566,13 +1606,13 @@ const App = () => {
                                     <XboxGameCard key={game.titleId} game={game} achievementData={achProgress[game.titleId]} onViewDetails={handleViewDetails} beatenInfo={beatenMap.get(game.titleId) ?? null} />
                                 ))}
                               </div>
-                            : <div className="flex items-center justify-center py-12 text-[#546270] text-[11px]">Loading games…</div>
+                            : <GamesSkeleton />
                     )}
 
                     {activeTab === 'progress' && (
                         gamesData
                             ? <ProgressTab achievementProgress={achProgress} onViewDetails={handleViewDetails} beatenMap={beatenMap} />
-                            : <div className="flex items-center justify-center py-12 text-[#546270] text-[11px]">Loading games…</div>
+                            : <GamesSkeleton />
                     )}
 
                     {activeTab === 'activity' && (
@@ -1622,12 +1662,27 @@ const App = () => {
                     className="fixed inset-0 z-[100] flex items-center justify-center p-4"
                     onClick={() => setModalLoading(null)}
                 >
-                    <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
-                    <div className="relative z-10 flex flex-col items-center gap-3 bg-[#1b2838] border border-[#2a475e] rounded-[4px] px-8 py-6 shadow-2xl">
-                        <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
-                        <div style={{ width: 28, height: 28, border: '3px solid #2a475e', borderTopColor: '#66c0f4', borderRadius: '50%', animation: 'spin 0.7s linear infinite' }} />
-                        <span className="text-[12px] text-[#8f98a0]">{modalLoading.name}</span>
-                        <span className="text-[10px] text-[#546270] tracking-wide uppercase">Loading achievements…</span>
+                    <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px] anim-backdrop" />
+                    {/* Skeleton of the achievement modal while its game file loads */}
+                    <div className="relative z-10 w-full max-w-xl bg-[#1b2838] border border-[#2a475e] rounded-[4px] shadow-2xl flex flex-col anim-pop" aria-busy="true">
+                        <div className="flex items-center gap-3 p-4 border-b border-[#2a475e]">
+                            <div className="shimmer w-12 h-12 rounded-[2px] shrink-0" />
+                            <div className="flex-1 min-w-0 flex flex-col gap-1.5">
+                                <span className="text-[13px] text-[#c6d4df] font-medium truncate">{modalLoading.name}</span>
+                                <Sk w="w-32" h="h-2" />
+                            </div>
+                        </div>
+                        <div className="p-3 flex flex-col gap-2">
+                            {[...Array(5)].map((_, i) => (
+                                <div key={i} className="flex items-center gap-2.5 p-2 bg-[#202d39] border border-[#2a475e] rounded-[2px]">
+                                    <div className="shimmer w-9 h-9 rounded-[2px] shrink-0" />
+                                    <div className="flex-1 flex flex-col gap-1.5">
+                                        <div className="shimmer h-2.5 rounded" style={{ width: `${40 + (i % 3) * 15}%` }} />
+                                        <div className="shimmer h-2 rounded" style={{ width: `${60 + (i % 2) * 20}%` }} />
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             )}

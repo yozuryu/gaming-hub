@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gaming-hub-v7';
+const CACHE_NAME = 'gaming-hub-v8';
 
 // Static assets — precached on install, then stale-while-revalidate
 const PRECACHE = [
@@ -30,6 +30,7 @@ const PRECACHE = [
   '/gaming-hub/changelog/index.html',
   '/gaming-hub/changelog/app.js',
   '/gaming-hub/assets/time.js',
+  '/gaming-hub/assets/motion.css',
   '/gaming-hub/assets/avatar.png',
   '/gaming-hub/assets/icon-ra.png',
   '/gaming-hub/assets/icon-steam.png',

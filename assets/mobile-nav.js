@@ -127,6 +127,8 @@
       background: #131a22;
       border-top: 1px solid #2a475e;
       padding-bottom: env(safe-area-inset-bottom, 0px);
+      /* Stays put while pages cross-fade (assets/motion.css) */
+      view-transition-name: mobile-nav;
     }
 
     @media (max-width: 767px) {

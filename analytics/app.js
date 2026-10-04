@@ -738,7 +738,8 @@ const App = () => {
 
             <main className="max-w-5xl mx-auto px-4 md:px-8 py-6 flex-1 w-full flex flex-col gap-7">
                 {!view ? <Skeleton /> : (
-                    <>
+                    // Fades in over the skeleton, and again when the period or farm filter changes
+                    <div key={`${period}-${hideFarms}`} className="anim-in flex flex-col gap-7">
                         {/* Overview */}
                         <section>
                             <SectionHeader title="Overview" note={range.prevLabel ? `change vs ${range.prevLabel}` : null} />
@@ -877,7 +878,7 @@ const App = () => {
                                 <ChartCard title="Achievements"><BarList rows={view.consoleUnlocks} format={fmtNum} /></ChartCard>
                             </div>
                         </section>
-                    </>
+                    </div>
                 )}
             </main>
 

@@ -8,6 +8,7 @@
   <link rel="icon" href="./assets/favicon.ico" sizes="48x48">
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
   <link rel="apple-touch-icon" href="./assets/icon-192.png">
+  <link rel="stylesheet" href="./assets/motion.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html, body { background-color: #171a21; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
@@ -16,6 +17,19 @@
       0%   { background-position: -800px 0; }
       100% { background-position:  800px 0; }
     }
+    /* Content fades in as it replaces the skeletons: innerHTML inserts new nodes, which
+       replays the animation (keyframes in assets/motion.css) */
+    #ra-stats > *, #steam-stats > *, #xbox-stats > *,
+    #ra-recent > *, #steam-recent > *, #xbox-recent > *,
+    #activity-feed > *, #completions-strip-latest > *, #completions-strip-stats > *, #header-tags > * {
+      animation: motion-fade 200ms ease-out both;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #ra-stats > *, #steam-stats > *, #xbox-stats > *,
+      #ra-recent > *, #steam-recent > *, #xbox-recent > *,
+      #activity-feed > *, #completions-strip-latest > *, #completions-strip-stats > *, #header-tags > * { animation: none; }
+    }
+
     .skeleton {
       background: linear-gradient(90deg, #1b2838 25%, #2a3f52 50%, #1b2838 75%);
       background-size: 800px 100%;
@@ -136,11 +150,11 @@
         <img id="avatar-img" src="./assets/avatar.png" alt="" class="w-full h-full object-cover" />
       </div>
       <div class="flex flex-col gap-2">
-        <h1 id="header-username" class="text-2xl md:text-[26px] text-white font-medium tracking-wide leading-none"></h1>
-        <p id="header-motto" class="text-[10px] text-[#8f98a0] italic border-l-2 border-[#2a475e] pl-2 leading-snug"></p>
+        <h1 id="header-username" class="text-2xl md:text-[26px] text-white font-medium tracking-wide leading-none"><span class="skeleton" style="width:150px;height:24px"></span></h1>
+        <p id="header-motto" class="text-[10px] text-[#8f98a0] italic border-l-2 border-[#2a475e] pl-2 leading-snug"><span class="skeleton align-middle" style="width:220px;height:10px"></span></p>
         <!-- Genre tags -->
         <div id="header-tags" class="flex flex-wrap gap-1.5"></div>
-        <p class="text-[11px] text-[#546270]">Last updated <span id="hub-updated" class="text-[#8f98a0]">loading…</span>
+        <p class="text-[11px] text-[#546270]">Last updated <span id="hub-updated" class="text-[#8f98a0]"><span class="skeleton align-middle" style="width:72px;height:10px"></span></span>
           <!-- Analytics has a bottom-nav tab on mobile, the changelog doesn't (and the footer is hidden there) -->
           <span class="hidden md:inline"> · <a href="./analytics/" class="text-[#8f98a0] hover:text-[#66c0f4] transition-colors">Analytics</a></span>
           <span class="md:hidden"> · <a href="./changelog/" class="text-[#8f98a0] hover:text-[#66c0f4] transition-colors">Changelog</a></span>

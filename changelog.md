@@ -31,6 +31,11 @@ Playtime is now logged as play sessions for Steam and RetroAchievements, with hi
 - Service worker precaches the Analytics page (cache `gaming-hub-v7`)
 - Changelog page: Hub, Completions, Activity and the new Analytics section each get their own heading color (they shared one); Analytics sorts after Activity
 
+### Structure
+
+- Page switches cross-fade (View Transitions; the top bar and bottom nav stay put), content fades in as it replaces the loading skeleton, and tab, view, period and filter changes fade the new content in. Modals pop in. Shared in `assets/motion.css`; off when the system asks for reduced motion
+- Shimmer skeletons replace the remaining "Loading…" text: Steam/Xbox game lists and Activity tab, the achievement modal while it loads, Activity's play sessions, and the hub's name, motto and "Last updated"
+
 ### Pipelines
 
 - Steam and RA runs turn each game's lifetime playtime into play sessions in `data/{steam,ra}/playtime/{YYYY}.json` (start, end, minutes), compared against a baseline in `playtime/state.json`. Session times come from the game's last-played time, which Steam moves to the session end when it closes

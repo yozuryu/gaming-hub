@@ -139,7 +139,7 @@ const Release = ({ date, summary, sections, defaultOpen }) => {
             </button>
 
             {open && (
-                <div className="ml-[18px] border-l-2 border-[#1e2d3a] pl-4 pt-3 mt-2">
+                <div className="ml-[18px] border-l-2 border-[#1e2d3a] pl-4 pt-3 mt-2 anim-fade">
                     {summary && (
                         <p className="text-[11px] text-[#546270] italic mb-4">{renderText(summary)}</p>
                     )}
@@ -231,7 +231,7 @@ const App = () => {
                 ) : releases.length === 0 ? (
                     <div className="text-center py-16 text-[#546270] text-[11px]">Could not load changelog.</div>
                 ) : (
-                    <div className="flex flex-col">
+                    <div className="flex flex-col anim-in">
                         {releases.map((r, i) => (
                             <Release key={r.date} date={r.date} summary={r.summary} sections={r.sections} defaultOpen={i === 0} />
                         ))}

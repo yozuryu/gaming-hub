@@ -333,6 +333,15 @@ General sections (Most Recently Played, User Stats, Activity) use `#66c0f4` on e
 ### Shimmer skeleton
 Defined in each `index.html` `<style>` block (not in app.js). Class name: `.shimmer`. Used on loading placeholders before data arrives.
 
+### Motion (`assets/motion.css`)
+Linked from every page's `index.html`. Short and quiet: fades with a few pixels of lift, nothing bouncy; all of it is off under `prefers-reduced-motion`.
+- **Page switch:** cross-document View Transitions (`@view-transition { navigation: auto; }`): old page fades out (120ms), new one fades in with a 6px lift (220ms). `.page-topbar` and the mobile nav (`view-transition-name` in `mobile-nav.js`) stay in place. Unsupported browsers just navigate
+- **Classes:** `.anim-in` (content replacing a skeleton, a new tab/view/period), `.anim-fade` (lists changing in place, expanded sections), `.anim-pop` (modal panels), `.anim-backdrop` (modal backdrops)
+- **Re-run on change** by giving the container a React `key` tied to what changed (e.g. `key={activeTab}` on profile tab content, `key={view}` on Activity, `key={`${period}-${hideFarms}`}` on Analytics, filters on Completions)
+- The hub (vanilla) animates children of its filled containers in CSS: `innerHTML` inserts new nodes, which replays the animation
+- Steam/Xbox achievement modals: the loading overlay fades the backdrop and pops a skeleton panel; the real modal only fades its panel in (no second backdrop fade)
+- Every load state uses a shimmer skeleton, never "Loading…" text
+
 ### Scroll-to-top button
 Rounded FAB: `w-10 h-10 rounded-full bg-[#131a22] border border-[#2a475e] active:scale-90`. Has class `scroll-top-btn` so mobile-nav.js can reposition it above the nav bar.
 

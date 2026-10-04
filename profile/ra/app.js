@@ -446,10 +446,10 @@ const RAchievementModal = ({ game, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px] anim-backdrop" />
 
       <div
-        className="relative z-10 w-full max-w-xl bg-[#1b2838] border border-[#2a475e] rounded-[4px] shadow-2xl flex flex-col max-h-[90vh]"
+        className="relative z-10 w-full max-w-xl bg-[#1b2838] border border-[#2a475e] rounded-[4px] shadow-2xl flex flex-col max-h-[90vh] anim-pop"
         onClick={e => e.stopPropagation()}
       >
         {/* Close button */}
@@ -1538,7 +1538,7 @@ export default function App() {
       </div>
 
       {/* Header */}
-      <header className="bg-[#1b2838] border-b border-[#2a475e] px-4 md:px-8 pt-8 pb-5 md:pt-5 shadow-md">
+      <header className="bg-[#1b2838] border-b border-[#2a475e] px-4 md:px-8 pt-8 pb-5 md:pt-5 shadow-md anim-fade">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-5">
 
           {/* Avatar */}
@@ -1608,7 +1608,7 @@ export default function App() {
         </div>
       </header>
 
-      <main className="max-w-5xl mx-auto px-4 md:px-8 py-6 flex-1 w-full">
+      <main className="max-w-5xl mx-auto px-4 md:px-8 py-6 flex-1 w-full anim-in">
         
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6 lg:gap-8 mb-8">
           
@@ -1899,7 +1899,8 @@ export default function App() {
           </div>
         )}
 
-        <div className="flex flex-col gap-3">
+        {/* Re-keyed per tab so each tab's content fades in */}
+        <div key={activeTab} className="flex flex-col gap-3 anim-in">
           {activeTab === 'series' ? (
             <SeriesProgressTab seriesData={seriesData} gamesData={gamesData} watchlistData={watchlistData} />
           ) : activeTab === 'activity' ? (

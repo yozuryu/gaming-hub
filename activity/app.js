@@ -443,6 +443,34 @@ const buildPlaytimeHeatmap = (sessions) => {
     return map;
 };
 
+// Placeholder while the playtime files load (normally only a moment after the page)
+const PlaySessionsSkeleton = () => (
+    <div className="flex flex-col gap-4">
+        {[...Array(3)].map((_, i) => (
+            <div key={i}>
+                <div className="flex items-center gap-2 mb-2">
+                    <div className="shimmer w-2 h-2 rounded-full" />
+                    <div className="shimmer h-2.5 w-24 rounded" />
+                    <div className="flex-1 h-px bg-[#1e2d3a]" />
+                    <div className="shimmer h-2 w-20 rounded" />
+                </div>
+                <div className="ml-4 border-l border-[#2a475e] pl-3 flex flex-col gap-1">
+                    {[...Array(2)].map((_, j) => (
+                        <div key={j} className="flex items-center gap-2 p-2 bg-[#1b2838] border border-[#2a475e] rounded-[2px]">
+                            <div className="shimmer w-8 h-8 rounded-[2px] shrink-0" />
+                            <div className="flex-1 flex flex-col gap-1.5">
+                                <div className="shimmer h-2.5 rounded" style={{ width: `${45 + j * 20}%` }} />
+                                <div className="shimmer h-2 w-20 rounded" />
+                            </div>
+                            <div className="shimmer h-3 w-10 rounded" />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        ))}
+    </div>
+);
+
 // ── App ───────────────────────────────────────────────────────────────────────
 
 const App = () => {
@@ -843,7 +871,8 @@ const App = () => {
                         </div>
                     </div>
                 ) : (
-                    <>
+                    // Fades in over the skeleton, and again on each Achievements/Playtime switch
+                    <div key={view} className="anim-in flex flex-col gap-6">
                         {/* Heatmap */}
                         <div>
                             <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 mb-3">
@@ -910,15 +939,15 @@ const App = () => {
                         {/* Timeline */}
                         {view === 'playtime' ? (
                             !playtime ? (
-                                <div className="text-[#8f98a0] text-[11px] py-4 italic text-center">Loading play sessions…</div>
+                                <PlaySessionsSkeleton />
                             ) : playGroups.length === 0 ? (
                                 <div className="text-[#8f98a0] text-[11px] py-4 italic text-center">No play sessions found.</div>
                             ) : (
-                                <div className="flex flex-col gap-0">
+                                <div key={`${filter}-${selectedDay}`} className="flex flex-col gap-0">
                                     {playGroups.slice(0, selectedDay ? undefined : visibleDays).map(({ day, minutes, sessions: daySessions }) => {
                                         const isCollapsed = collapsedDays.has(day);
                                         return (
-                                            <div key={day} className="mb-4">
+                                            <div key={day} className="mb-4 anim-fade">
                                                 <button onClick={() => toggleDay(day)} className="w-full flex items-center gap-2 mb-2 group outline-none">
                                                     <div className="w-2 h-2 rounded-full bg-[#2a475e] border border-[#66c0f4] shrink-0" />
                                                     <span className="text-[10px] text-[#66c0f4] font-semibold group-hover:text-[#c6d4df] transition-colors">{fmtDay(day)}</span>
@@ -929,7 +958,7 @@ const App = () => {
                                                     <ChevronDown size={11} className={`text-[#546270] transition-transform duration-200 shrink-0 ${isCollapsed ? '' : 'rotate-180'}`} />
                                                 </button>
                                                 {!isCollapsed && (
-                                                    <div className="ml-4 border-l border-[#2a475e] pl-3 flex flex-col gap-1">
+                                                    <div className="ml-4 border-l border-[#2a475e] pl-3 flex flex-col gap-1 anim-fade">
                                                         {daySessions.map(session => <PlaySessionRow key={session.id} session={session} day={day} />)}
                                                     </div>
                                                 )}
@@ -941,11 +970,11 @@ const App = () => {
                         ) : groups.length === 0 ? (
                             <div className="text-[#8f98a0] text-[11px] py-4 italic text-center">No achievements found.</div>
                         ) : (
-                            <div className="flex flex-col gap-0">
+                            <div key={`${filter}-${selectedDay}`} className="flex flex-col gap-0">
                                 {groups.map(({ day, achCount, sessions }) => {
                                     const isCollapsed = collapsedDays.has(day);
                                     return (
-                                        <div key={day} className="mb-4">
+                                        <div key={day} className="mb-4 anim-fade">
                                             <button onClick={() => toggleDay(day)} className="w-full flex items-center gap-2 mb-2 group outline-none">
                                                 <div className="w-2 h-2 rounded-full bg-[#2a475e] border border-[#66c0f4] shrink-0" />
                                                 <span className="text-[10px] text-[#66c0f4] font-semibold group-hover:text-[#c6d4df] transition-colors">{fmtDay(day)}</span>
@@ -955,9 +984,11 @@ const App = () => {
                                                 </span>
                                                 <ChevronDown size={11} className={`text-[#546270] transition-transform duration-200 shrink-0 ${isCollapsed ? '' : 'rotate-180'}`} />
                                             </button>
-                                            {!isCollapsed && sessions.map((session) => (
-                                                <GameSession key={session.achs[0].id} session={session} />
-                                            ))}
+                                            {!isCollapsed && (
+                                                <div className="anim-fade">
+                                                    {sessions.map((session) => <GameSession key={session.achs[0].id} session={session} />)}
+                                                </div>
+                                            )}
                                         </div>
                                     );
                                 })}
@@ -970,7 +1001,7 @@ const App = () => {
                                 {loadingMore && <span className="text-[9px] text-[#546270] uppercase tracking-wider">Loading…</span>}
                             </div>
                         )}
-                    </>
+                    </div>
                 )}
 
             </main>

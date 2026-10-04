@@ -534,9 +534,10 @@ const App = () => {
                         ))}
                     </div>
                 ) : completions.length === 0 ? (
-                    <div className="text-center py-16 text-[#546270] text-[11px]">No completions found.</div>
+                    <div className="text-center py-16 text-[#546270] text-[11px] anim-fade">No completions found.</div>
                 ) : (
-                    <div className="flex flex-col gap-5">
+                    // Fades in over the skeleton, and again when a filter changes the list
+                    <div key={`${platform}-${showBeaten}-${[...hiddenTags].sort().join(',')}`} className="flex flex-col gap-5 anim-in">
                         {byYear.map(([year, monthGroups]) => {
                             const open = expandedYears.has(year);
                             const yearTotal = monthGroups.reduce((s, [, items]) => s + items.length, 0);
@@ -558,7 +559,7 @@ const App = () => {
                                     </button>
 
                                     {open && (
-                                        <div className="ml-3 border-l border-[#1e2d3a] pl-4 flex flex-col gap-4">
+                                        <div className="ml-3 border-l border-[#1e2d3a] pl-4 flex flex-col gap-4 anim-fade">
                                             {monthGroups.map(([monthKey, items]) => (
                                                 <div key={monthKey}>
                                                     {/* Month header */}
