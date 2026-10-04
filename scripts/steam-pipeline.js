@@ -2,6 +2,8 @@ require('dotenv').config();
 const fs    = require('fs');
 const path  = require('path');
 const https = require('https');
+const { updatePlaytimeLog, toMs, iso } = require('./lib/playtime');
+const { writeUnlockHistory } = require('./lib/history');
 
 // Extract just the filename from a Steam CDN achievement icon URL.
 // Full URL: https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/{appId}/{hash}.jpg
@@ -629,6 +631,54 @@ function serializeLocally(payload, achievementProgress, sentinelCache, owned) {
 }
 
 // =========================================================
+// Phase 3a: Playtime Log
+// =========================================================
+
+// Turns lifetime playtime from GetOwnedGames into sessions (scripts/lib/playtime.js)
+function logPlaytime(owned) {
+    log.section('Phase 3a — Playtime Log');
+    // An empty list (private profile, API hiccup) would read as every game going to zero
+    if (owned.length === 0) {
+        log.skip('No owned games returned, playtime log skipped');
+        return;
+    }
+    const snapshot = owned.map(g => ({
+        id:         g.appid,
+        total:      g.playtime_forever ?? 0,
+        lastPlayed: g.rtime_last_played ? g.rtime_last_played * 1000 : null,
+        name:       g.name,
+        icon:       g.img_icon_url
+            ? `https://media.steampowered.com/steamcommunity/public/images/apps/${g.appid}/${g.img_icon_url}.jpg`
+            : null,
+    }));
+    updatePlaytimeLog(path.join(__dirname, '..', 'data', 'steam', 'playtime'), snapshot, {
+        unitsPerMinute: 1,
+        asOf:           Date.now(),
+        dryRun:         DEBUG,
+        log:            log.ok,
+    });
+}
+
+// =========================================================
+// Phase 3b: Unlock History
+// =========================================================
+
+// All-time unlocks per calendar year for the Analytics page (scripts/lib/history.js)
+// Rarity = Steam's global unlock percentage
+function logHistory(achievementProgress) {
+    log.section('Phase 3b — Unlock History');
+    const unlocks = [];
+    for (const [appId, game] of Object.entries(achievementProgress)) {
+        for (const ach of game.achievements || []) {
+            if (!ach.unlocked || !ach.unlockedAt) continue;
+            unlocks.push({ t: iso(toMs(ach.unlockedAt)), g: Number(appId), a: ach.apiName, n: ach.displayName, r: ach.globalPct });
+        }
+    }
+    const { written, years } = writeUnlockHistory(path.join(__dirname, '..', 'data', 'steam', 'history'), unlocks, { asOf: new Date().toISOString(), dryRun: DEBUG });
+    log.ok(`${unlocks.length} unlocks in ${years.length} year file(s), ${written} written${DEBUG ? '  (dry run)' : ''}`);
+}
+
+// =========================================================
 // Phase 4: ETL Orchestration
 // =========================================================
 
@@ -637,6 +687,8 @@ async function runPipeline() {
         const { payload, owned } = await executeProfileExtraction();
         const { achievementProgress, sentinelCache } = await executeGameExtraction(payload.recentlyPlayed, owned);
         serializeLocally(payload, achievementProgress, sentinelCache, owned);
+        logPlaytime(owned);
+        logHistory(achievementProgress);
 
         log.section('Pipeline Complete');
         log.ok(`Extraction timestamp  : ${payload.metadata.extractionTimestamp}`);

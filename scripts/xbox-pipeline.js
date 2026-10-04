@@ -1,6 +1,7 @@
 require('dotenv').config({ quiet: true });
 const fs   = require('fs');
 const path = require('path');
+const { writeUnlockHistory } = require('./lib/history');
 
 // =========================================================
 // Logging Helpers
@@ -499,6 +500,25 @@ function serializeLocally(extractionTimestamp, profile, titles, games) {
 }
 
 // =========================================================
+// Phase 3b: Unlock History
+// =========================================================
+
+// All-time unlocks per calendar year for the Analytics page (scripts/lib/history.js)
+// Rarity = Xbox's rarity percentage; 360 titles only list unlocked achievements, which is all this needs
+function logHistory(extractionTimestamp, games) {
+    log.section(`Phase 3b — Unlock History${DEBUG ? '  (debug: dry run)' : ''}`);
+    const unlocks = [];
+    for (const [titleId, game] of Object.entries(games)) {
+        for (const ach of game.achievements || []) {
+            if (!ach.unlocked || !ach.unlockedAt) continue;
+            unlocks.push({ t: new Date(ach.unlockedAt).toISOString().slice(0, 19) + 'Z', g: titleId, a: ach.apiName, n: ach.displayName, p: ach.gamerscore, r: ach.globalPct });
+        }
+    }
+    const { written, years } = writeUnlockHistory(path.join(__dirname, '..', 'data', 'xbox', 'history'), unlocks, { asOf: extractionTimestamp, dryRun: DEBUG });
+    log.ok(`${unlocks.length} unlocks in ${years.length} year file(s), ${written} written`);
+}
+
+// =========================================================
 // Phase 4: ETL Orchestration
 // =========================================================
 
@@ -508,6 +528,7 @@ async function runPipeline() {
         const { profile, titles } = await executeProfileExtraction();
         const games = await executeGameExtraction(profile.xuid, titles);
         const { recentAchievements, perfectGames, started } = serializeLocally(extractionTimestamp, profile, titles, games);
+        logHistory(extractionTimestamp, games);
 
         log.section('Pipeline Complete');
         log.ok(`Extraction timestamp  : ${extractionTimestamp}`);

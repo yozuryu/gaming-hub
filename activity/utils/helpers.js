@@ -1,6 +1,22 @@
 // Day keys and clock times in the viewer's timezone (see assets/time.js)
 export { fmtDayKey as fmtDay, fmtClock as fmtTime } from '../../assets/time.js';
 
+// 45 → "45m", 135 → "2h 15m", 120 → "2h"
+export const fmtMinutes = (m) => {
+    const min = Math.round(m || 0);
+    if (min < 60) return `${min}m`;
+    const h = Math.floor(min / 60), r = min % 60;
+    return r ? `${h}h ${r}m` : `${h}h`;
+};
+
+// Largest whole unit only, for tight spots: 45 → "45m", 163 → "2h", 1500 → "1d"
+export const fmtMinutesShort = (m) => {
+    const min = Math.round(m || 0);
+    if (min < 60) return `${min}m`;
+    if (min < 1440) return `${Math.floor(min / 60)}h`;
+    return `${Math.floor(min / 1440)}d`;
+};
+
 export const parseTitle = (title) => {
     if (!title) return { baseTitle: title, subsetName: null, isSubset: false, tags: [] };
     const tags = [];

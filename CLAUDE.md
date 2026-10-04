@@ -40,10 +40,13 @@ gaming-hub/
 │   │   ├── games.json              # All RA games with per-achievement details
 │   │   ├── watchlist.json          # Want-to-play list (fetched separately by profile page)
 │   │   ├── series.json             # Named series with game ID arrays
+│   │   ├── playtime/               # Play sessions: {YYYY}.json + state.json (pipeline-only baseline); see Playtime Log
+│   │   ├── history/                # All-time unlocks, {YYYY}.json + index.json, for Analytics; see Unlock History
 │   │   └── achievements/
 │   │       └── 1.json – 4.json     # Recent achievements chunked by 91-day windows (the site builds heatmaps from these)
 │   ├── xbox/
 │   │   ├── profile.json            # Xbox profile, stats, recently played, perfectGames
+│   │   ├── history/                # All-time unlocks, {YYYY}.json + index.json, for Analytics; see Unlock History
 │   │   ├── games/
 │   │   │   ├── index.json          # All titles with achievements, no achievements[] (includes syncKey)
 │   │   │   └── {titleId}.json      # Full title data + achievements[]
@@ -51,6 +54,8 @@ gaming-hub/
 │   │       └── 1.json – 4.json     # Recent unlocks in 91-day chunks (anchored at UTC midnight)
 │   └── steam/
 │       ├── profile.json            # Steam profile, stats, recently played
+│       ├── playtime/               # Play sessions: {YYYY}.json + state.json (pipeline-only baseline); see Playtime Log
+│       ├── history/                # All-time unlocks, {YYYY}.json + index.json, for Analytics; see Unlock History
 │       ├── games/
 │       │   ├── index.json          # All games, no achievements[] — fast initial load (~200KB)
 │       │   ├── {appId}.json        # Full game data + achievements[], lazy-fetched per game
@@ -64,6 +69,7 @@ gaming-hub/
 │   └── xbox/                       # CLAUDE.md in this directory
 │
 ├── activity/                       # CLAUDE.md in this directory
+├── analytics/                      # CLAUDE.md in this directory
 ├── completions/                    # CLAUDE.md in this directory
 ├── changelog/                      # CLAUDE.md in this directory
 │
@@ -73,7 +79,11 @@ gaming-hub/
 ├── scripts/
 │   ├── ra-pipeline.js              # RA ETL: API → data/ra/ (~600 LOC)
 │   ├── steam-pipeline.js           # Steam ETL: API → data/steam/ (~800 LOC)
-│   └── xbox-pipeline.js            # Xbox ETL (OpenXBL): API → data/xbox/
+│   ├── xbox-pipeline.js            # Xbox ETL (OpenXBL): API → data/xbox/
+│   ├── backfill-playtime.js        # One-off: rebuilds data/{steam,ra}/playtime/ from git history
+│   └── lib/
+│       ├── playtime.js             # Playtime diff + file writer shared by RA, Steam and the backfill
+│       └── history.js              # Unlock history writer shared by all three pipelines
 │
 └── .github/workflows/
     ├── fetch-ra-data.yml            # Hourly cron + manual dispatch
@@ -108,7 +118,7 @@ Vanilla JS, no React. Reads `data/hub/config.json`, `data/ra/profile.json`, `dat
 ### Bottom navigation (`assets/mobile-nav.js`)
 Self-contained IIFE injected into every page via `<script src="...assets/mobile-nav.js">`. Visible only on screens < 768px.
 
-- 5 tabs: Home, Profile (popup), Activity, Done (Completions), Log (Changelog)
+- 5 tabs: Home, Profile (popup), Activity, Done (Completions), Stats (Analytics). The changelog has no tab: the hub header links to it on mobile (and to Analytics on desktop); the desktop footer links both
 - **Profile tab** fetches `data/hub/config.json` and builds a vertical pill popup showing only `visible: true` platforms. Popup slides up/down via CSS transition (no JS animation). If only one platform, navigates directly.
 - `BASE` is derived from `document.currentScript.src` — works on any host (GitHub Pages `/gaming-hub/`, local `/`, etc.)
 - Mobile CSS injected via `<style>`: hides `.page-topbar` and `footer`, adds `padding-bottom` to body, repositions `.scroll-top-btn`
@@ -117,7 +127,7 @@ Self-contained IIFE injected into every page via `<script src="...assets/mobile-
 
 ### PWA
 - `manifest.json` + `sw.js` at root
-- `viewport-fit=cover` on all 6 `index.html` viewport meta tags
+- `viewport-fit=cover` on every page's `index.html` viewport meta tag
 - Icons: `assets/icon-192.png` and `assets/icon-512.png` rendered from `assets/appicon.svg` (full-bleed; the OS applies its own mask). Every page links `favicon.ico` + `favicon.svg` and `icon-192.png` as the Apple touch icon
 - Service worker: network-first for `data/**` and `changelog.md`, stale-while-revalidate for all other static assets (cached copy served instantly, refreshed in the background — a deploy shows up on the next load). Bumping `CACHE_NAME` is no longer required for code changes; bump it only when the `PRECACHE` list changes
 - **Refresh app** button clears all SW caches, calls `registration.update()` and reloads (data untouched). Lives in the Changelog page header (mobile + desktop) and the hub footer (desktop only — footer is hidden on mobile)
@@ -178,6 +188,21 @@ Env vars: `XBOX_API_KEY` (OpenXBL). The XUID is read from `GET /account`; `XBOX_
 - Image URLs are stored as full-size originals; every page resizes them with an `xboxImg(url, width)` helper (duplicated in the Xbox page, Activity, Completions, hub and admin). Never render an Xbox image URL without it
 - Files are only rewritten when their content changes (ignoring `metadata`), so runs with no activity make no commit
 - Outputs: `profile.json`, `games/index.json`, `games/{titleId}.json`, `achievements/1-4.json`
+
+### Playtime Log (`scripts/lib/playtime.js`)
+Steam and RA only (Xbox has no playtime). Each run compares lifetime playtime per game (Steam `playtime_forever` minutes, RA `userTotalPlaytime` seconds) with `playtime/state.json` and appends the difference as a session to `playtime/{YYYY}.json` (year of the session's end, UTC):
+`{ metadata, games: { id: { name, icon, console? } }, sessions: [{ start, end, gameId, minutes, approx? }] }`
+- **Session times:** `end` = the game's last-played time, `start = end − minutes`. Steam moves last-played to the session start when it begins and to the end when it closes, and playtime only grows at the end; RA's last-played is the session end (verified against the git history, see `backlog/playtime-and-analytics.md`). `approx: true` when the start had to be moved to avoid overlapping the game's previous session (offline play synced late, RA splitting one session across runs) or no last-played time was known
+- **Not play:** a negative change, or a change while last-played didn't move (RA corrections), only updates the baseline. Under a minute is carried until it adds up
+- **Unknown games** count as new play only when last-played is after `state.asOf`; otherwise they're added to the baseline silently. The first run with no `state.json` only seeds it
+- Store sessions, never daily totals: the frontend groups them into the viewer's local days. No rollups; one file per year
+- RA's snapshot is every game in `games.json`, but last-played is only known for recently played games (the only ones re-fetched)
+- `state.json` is pipeline-only (excluded in `_config.yml`) and only rewritten when it changes
+- `scripts/backfill-playtime.js [--ref origin/main] [--platform steam|ra] [--dry-run]` replays the hourly snapshots in git through the same diff and replaces the playtime files. History starts 2026-03-25 (Steam) / 2026-03-27 (RA)
+
+### Unlock History (`scripts/lib/history.js`)
+Every unlocked achievement, all time, rebuilt by each pipeline on every run from the per-game data it already loads, into `data/{ra,steam,xbox}/history/{YYYY}.json` (UTC year of the unlock). The achievement chunks only cover 364 days; this is the all-time source for Analytics.
+`{ metadata, unlocks: [{ t, g, a, n, p?, r?, hc? }] }`: `t` ISO UTC, `g` game id, `a` achievement id, `n` name, `p` RA points / Xbox gamerscore, `r` rarity % (Steam/Xbox global %, RA `numAwarded / numDistinctPlayersCasual`), `hc` RA hardcore. `history/index.json` (`{ years: { YYYY: count } }`) lists the year files. One unlock per line; unchanged years are not rewritten, empty years are deleted. ~390 KB for all years.
 
 ### Shared behavior
 - Both pipelines write JSON to `data/{ra,steam}/` and commit to main via GitHub Actions

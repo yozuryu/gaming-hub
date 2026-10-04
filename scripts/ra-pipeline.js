@@ -16,6 +16,8 @@ const {
 } = require('@retroachievements/api');
 
 const admin = require('firebase-admin');
+const { updatePlaytimeLog, toMs, iso } = require('./lib/playtime');
+const { writeUnlockHistory } = require('./lib/history');
 
 // =========================================================
 // Logging Helpers
@@ -510,6 +512,66 @@ async function executeWatchlistOnly(targetUser) {
 }
 
 // =========================================================
+// Phase 4a: Playtime Log
+// =========================================================
+
+// Turns per-game userTotalPlaytime (seconds) into sessions (scripts/lib/playtime.js).
+// Every game in games.json goes in the snapshot so the baseline knows all of them;
+// last-played is only known for recently played games (the only ones re-fetched).
+function logPlaytime(payload) {
+    log.section('Phase 4a — Playtime Log');
+    const games = Object.values(payload.detailedGameProgress || {});
+    if (games.length === 0) {
+        log.skip('No game progress, playtime log skipped');
+        return;
+    }
+    const lastPlayed = Object.fromEntries((payload.recentlyPlayedGames || []).map(g => [g.gameId, g.lastPlayed]));
+    const snapshot = games.map(g => ({
+        id:         g.id,
+        total:      g.userTotalPlaytime ?? 0,
+        lastPlayed: lastPlayed[g.id],
+        name:       g.title,
+        icon:       g.imageIcon ?? null,
+        console:    g.consoleName ?? null,
+    }));
+    updatePlaytimeLog(path.join(__dirname, '..', 'data', 'ra', 'playtime'), snapshot, {
+        unitsPerMinute: 60,
+        asOf:           Date.now(),
+        dryRun:         DEBUG,
+        log:            log.ok,
+    });
+}
+
+// =========================================================
+// Phase 4b: Unlock History
+// =========================================================
+
+// All-time unlocks per calendar year for the Analytics page (scripts/lib/history.js)
+// Rarity = share of the game's players who have the achievement (softcore + hardcore)
+function logHistory(payload) {
+    log.section('Phase 4b — Unlock History');
+    const unlocks = [];
+    for (const game of Object.values(payload.detailedGameProgress || {})) {
+        const players = game.numDistinctPlayersCasual || game.numDistinctPlayers || 0;
+        for (const ach of Object.values(game.achievements || {})) {
+            const earned = ach.dateEarnedHardcore || ach.dateEarned;
+            if (!earned) continue;
+            unlocks.push({
+                t:  iso(toMs(earned)),
+                g:  game.id,
+                a:  ach.id,
+                n:  ach.title,
+                p:  ach.points,
+                r:  players ? (ach.numAwarded / players) * 100 : undefined,
+                hc: !!ach.dateEarnedHardcore,
+            });
+        }
+    }
+    const { written, years } = writeUnlockHistory(path.join(__dirname, '..', 'data', 'ra', 'history'), unlocks, { asOf: new Date().toISOString(), dryRun: DEBUG });
+    log.ok(`${unlocks.length} unlocks in ${years.length} year file(s), ${written} written${DEBUG ? '  (dry run)' : ''}`);
+}
+
+// =========================================================
 // Phase 5: ETL Orchestration
 // =========================================================
 
@@ -534,6 +596,8 @@ async function runPipeline() {
 
         const payload = await executeProfileExtraction(RA_USERNAME);
         serializeLocally(payload);
+        logPlaytime(payload);
+        logHistory(payload);
         await synchronizeWithFirestore(false, payload);
 
         const totalGames = Object.keys(payload.detailedGameProgress).length;

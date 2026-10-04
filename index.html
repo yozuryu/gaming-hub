@@ -140,7 +140,11 @@
         <p id="header-motto" class="text-[10px] text-[#8f98a0] italic border-l-2 border-[#2a475e] pl-2 leading-snug"></p>
         <!-- Genre tags -->
         <div id="header-tags" class="flex flex-wrap gap-1.5"></div>
-        <p class="text-[11px] text-[#546270]">Last updated <span id="hub-updated" class="text-[#8f98a0]">loading…</span></p>
+        <p class="text-[11px] text-[#546270]">Last updated <span id="hub-updated" class="text-[#8f98a0]">loading…</span>
+          <!-- Analytics has a bottom-nav tab on mobile, the changelog doesn't (and the footer is hidden there) -->
+          <span class="hidden md:inline"> · <a href="./analytics/" class="text-[#8f98a0] hover:text-[#66c0f4] transition-colors">Analytics</a></span>
+          <span class="md:hidden"> · <a href="./changelog/" class="text-[#8f98a0] hover:text-[#66c0f4] transition-colors">Changelog</a></span>
+        </p>
       </div>
     </div>
   </header>
@@ -384,7 +388,9 @@
       Personal gaming hub ·
       <span id="footer-site-url" class="text-[#8f98a0]"></span>
     </p>
-    <a href="./changelog/" class="ml-auto text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">Changelog</a>
+    <a href="./analytics/" class="ml-auto text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">Analytics</a>
+    <span class="text-[10px] text-[#2a475e]">·</span>
+    <a href="./changelog/" class="text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">Changelog</a>
     <span class="text-[10px] text-[#2a475e]">·</span>
     <button id="refresh-app-btn" type="button" title="Fetch the latest app files. Your data is not affected." class="text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">Refresh app</button>
   </footer>

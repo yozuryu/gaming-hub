@@ -1,5 +1,38 @@
 # Changelog
 
+## v26.10.04
+
+Playtime is now logged as play sessions for Steam and RetroAchievements, with history back to late March; the Activity page gets a Playtime view, and a new Analytics page.
+
+### Activity
+
+- New **Achievements | Playtime** switch in the header; the view is kept in the URL (`?view=playtime`)
+- Playtime view: heatmap of minutes played per day in your timezone (sessions crossing midnight are split between the two days), streak of days with 15+ minutes, and a timeline of play sessions with start–end time, duration and the number of achievements unlocked during each session
+- Header shows hours played in the past year for RA and Steam; Xbox is marked n/a (it doesn't report playtime)
+- The streak panel and streak calculation are shared by both views
+- Playtime streak circles show only the largest unit (`45m`, `2h`, `1d`, rounded down); hover for the exact time
+
+### Analytics
+
+- New page at `/analytics/`: one period selector (30 days, 12 months, this year, all time) scopes everything, in your timezone
+- Overview tiles with change vs the previous period: hours played, active days, sessions, average session, achievements, RA points, gamerscore, completed games
+- Trends (hours played, achievements unlocked), when you play (day × hour punchcards for playtime and unlocks), top games (most played, most unlocks, minutes per achievement), session lengths, rarity profile with rarest unlocks, completion funnel per platform with median days to complete, and RetroAchievements by console
+- Every chart has hover/focus tooltips and a Table toggle
+
+### Hub
+
+- Mobile bottom nav: **Stats** (Analytics) replaces Log. The changelog is linked from the hub header on mobile; on desktop the header links Analytics and the footer links both
+- Service worker precaches the Analytics page (cache `gaming-hub-v7`)
+
+### Pipelines
+
+- Steam and RA runs turn each game's lifetime playtime into play sessions in `data/{steam,ra}/playtime/{YYYY}.json` (start, end, minutes), compared against a baseline in `playtime/state.json`. Session times come from the game's last-played time, which Steam moves to the session end when it closes
+- Server-side playtime corrections, negative changes and games the baseline never listed are not logged as play; the first run only records the baseline
+- `scripts/backfill-playtime.js` replays the hourly snapshots in git history through the same logic: 103 Steam sessions (76.5 h) since 2026-03-25 and 331 RA sessions (85.3 h) since 2026-03-27
+- Shared logic lives in `scripts/lib/playtime.js`; `state.json` files are excluded from the site
+- RA, Steam and Xbox runs also write an all-time unlock history, `data/{ra,steam,xbox}/history/{YYYY}.json` (time, game, achievement, points, rarity) plus an `index.json` of the years, for the Analytics page (`scripts/lib/history.js`)
+- RA play sessions record each game's console, for the Analytics console breakdown
+
 ## v26.09.27
 
 Add a not-found page; sharper Xbox icon; days and times now follow your own timezone instead of UTC; new app icon.

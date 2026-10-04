@@ -15,6 +15,24 @@ export const normalizeRA = (a) => ({
     unlockedAt: a.date.replace(' ', 'T') + 'Z',
 });
 
+// Play sessions from data/{ra,steam}/playtime/{YYYY}.json; `games` is that file's name/icon map
+export const normalizeSession = (platform, s, games) => {
+    const g = games?.[s.gameId] ?? {};
+    const isRA = platform === 'ra';
+    return {
+        platform,
+        id: `${platform}-${s.gameId}-${s.end}`,
+        gameId: s.gameId,
+        gameName: g.name ?? `#${s.gameId}`,
+        gameIcon: g.icon ? (isRA ? `${RA_MEDIA}${g.icon}` : g.icon) : null,
+        gameUrl: isRA ? `https://retroachievements.org/game/${s.gameId}` : `https://store.steampowered.com/app/${s.gameId}`,
+        startMs: Date.parse(s.start),
+        endMs: Date.parse(s.end),
+        minutes: s.minutes,
+        approx: !!s.approx,
+    };
+};
+
 export const normalizeSteam = (a) => ({
     platform: 'steam',
     id: `steam-${a.appId}-${a.apiName}`,

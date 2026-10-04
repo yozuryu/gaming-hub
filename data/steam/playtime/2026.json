@@ -1,0 +1,716 @@
+{
+    "metadata": {
+        "generatedAt": "2026-10-03T17:11:46Z",
+        "year": 2026
+    },
+    "games": {
+        "206440": {
+            "name": "To the Moon",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/206440/6e29eb4076a6253fdbccb987a2a21746d2df54d7.jpg"
+        },
+        "282900": {
+            "name": "Hyperdimension Neptunia Re;Birth1",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/282900/0cd228210df4f44ef8e77f62b18d1a9af81a72d4.jpg"
+        },
+        "539330": {
+            "name": "Light Fairytale Episode 1",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/539330/fede24802944d93c6453e75e6a1263d738abf347.jpg"
+        },
+        "551110": {
+            "name": "WayOut",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/551110/bb0ad694b15682ccc19cc6c071de283398f4ad3c.jpg"
+        },
+        "578330": {
+            "name": "LEGO® City Undercover",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg"
+        },
+        "758730": {
+            "name": "Paw Patrol: On A Roll",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/758730/60f80ab9be49220d165ec78f27fe5311180e87ae.jpg"
+        },
+        "837610": {
+            "name": "Mary Skelter: Nightmares",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/837610/13766adba6c87624bcc43a3dd8e53a030b258e95.jpg"
+        },
+        "921570": {
+            "name": "OCTOPATH TRAVELER",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg"
+        },
+        "996580": {
+            "name": "Spyro™ Reignited Trilogy",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/996580/58d9d5bb243382cdb00259733d71e7621f502a2d.jpg"
+        },
+        "1272840": {
+            "name": "Dordogne",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/1272840/d117b3ead9a721e49f9ed4718fa68b0b14a5831c.jpg"
+        },
+        "1282590": {
+            "name": "Train Sim World® 2",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/1282590/1ae9efd1d3e696051d6228d84ea74bbf13d5b2dc.jpg"
+        },
+        "1658290": {
+            "name": "Eiyuden Chronicle: Rising",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/1658290/449ec8f09bf72c9f8e00c113c1e12a7c70a86de4.jpg"
+        },
+        "1952520": {
+            "name": "PAW Patrol World",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/1952520/142c61fb8b234665494cd459d72000fd3642dc12.jpg"
+        },
+        "2078350": {
+            "name": "Bluey: The Videogame",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/2078350/725ce61379c9e1d3e2edc56e1852cd779febd67b.jpg"
+        },
+        "2183900": {
+            "name": "Warhammer 40,000: Space Marine 2",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/2183900/0fccfb5eb2acb934db1fe95a4e578f25ccbd71ec.jpg"
+        },
+        "2235440": {
+            "name": "My Little Pony: A Zephyr Heights Mystery",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/2235440/cf7be3222ec01032054dbea9a892f5ba18b75c8e.jpg"
+        },
+        "2486820": {
+            "name": "Sonic Racing: CrossWorlds",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/2486820/b1ae28acb49215b4d5d94ecc752d377500c44057.jpg"
+        },
+        "2515020": {
+            "name": "FINAL FANTASY XVI",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/2515020/0ce29700a22fea9eb270b276fa157b79511365e6.jpg"
+        },
+        "3124540": {
+            "name": "Far Far West",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/3124540/a0a5e461c215c2a8916f42111ce41fa887cbec71.jpg"
+        },
+        "4391790": {
+            "name": "Another Eden Begins Demo",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/4391790/a8292db0c617cd676528cec79d054f7ce1ca2184.jpg"
+        },
+        "4474710": {
+            "name": "FINAL FANTASY RESONANCE DEMO",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/4474710/4e89e6108d4a4eb44a9ae23d078eb8175118c4e3.jpg"
+        },
+        "4630570": {
+            "name": "RUNNING TRAIN",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/4630570/68ae63bc4e04ca07b63cc5d555d8dd4035ae87de.jpg"
+        }
+    },
+    "sessions": [
+        {
+            "start": "2026-03-26T05:19:31Z",
+            "end": "2026-03-26T05:20:31Z",
+            "gameId": 1272840,
+            "minutes": 1
+        },
+        {
+            "start": "2026-03-26T13:59:54Z",
+            "end": "2026-03-26T14:43:54Z",
+            "gameId": 2183900,
+            "minutes": 44
+        },
+        {
+            "start": "2026-03-27T12:31:15Z",
+            "end": "2026-03-27T13:18:15Z",
+            "gameId": 578330,
+            "minutes": 47
+        },
+        {
+            "start": "2026-03-28T12:44:56Z",
+            "end": "2026-03-28T13:02:56Z",
+            "gameId": 996580,
+            "minutes": 18
+        },
+        {
+            "start": "2026-03-28T13:03:14Z",
+            "end": "2026-03-28T13:36:14Z",
+            "gameId": 578330,
+            "minutes": 33
+        },
+        {
+            "start": "2026-03-29T06:11:43Z",
+            "end": "2026-03-29T07:11:43Z",
+            "gameId": 578330,
+            "minutes": 60
+        },
+        {
+            "start": "2026-03-29T07:11:31Z",
+            "end": "2026-03-29T08:25:31Z",
+            "gameId": 578330,
+            "minutes": 74
+        },
+        {
+            "start": "2026-04-01T12:55:24Z",
+            "end": "2026-04-01T13:28:24Z",
+            "gameId": 578330,
+            "minutes": 33
+        },
+        {
+            "start": "2026-04-03T05:16:13Z",
+            "end": "2026-04-03T05:40:13Z",
+            "gameId": 551110,
+            "minutes": 24
+        },
+        {
+            "start": "2026-04-03T14:20:40Z",
+            "end": "2026-04-03T14:36:40Z",
+            "gameId": 539330,
+            "minutes": 16
+        },
+        {
+            "start": "2026-04-05T02:04:06Z",
+            "end": "2026-04-05T03:31:06Z",
+            "gameId": 1282590,
+            "minutes": 87
+        },
+        {
+            "start": "2026-04-16T12:26:22Z",
+            "end": "2026-04-16T13:29:22Z",
+            "gameId": 578330,
+            "minutes": 63
+        },
+        {
+            "start": "2026-04-17T11:28:59Z",
+            "end": "2026-04-17T11:59:59Z",
+            "gameId": 578330,
+            "minutes": 31
+        },
+        {
+            "start": "2026-04-17T12:00:11Z",
+            "end": "2026-04-17T12:40:11Z",
+            "gameId": 578330,
+            "minutes": 40
+        },
+        {
+            "start": "2026-04-18T10:18:26Z",
+            "end": "2026-04-18T10:48:26Z",
+            "gameId": 578330,
+            "minutes": 30
+        },
+        {
+            "start": "2026-04-18T10:48:14Z",
+            "end": "2026-04-18T11:28:14Z",
+            "gameId": 578330,
+            "minutes": 40
+        },
+        {
+            "start": "2026-04-19T08:38:46Z",
+            "end": "2026-04-19T09:43:46Z",
+            "gameId": 578330,
+            "minutes": 65
+        },
+        {
+            "start": "2026-04-25T11:35:10Z",
+            "end": "2026-04-25T13:06:10Z",
+            "gameId": 578330,
+            "minutes": 91
+        },
+        {
+            "start": "2026-04-26T11:57:31Z",
+            "end": "2026-04-26T13:04:31Z",
+            "gameId": 2486820,
+            "minutes": 67
+        },
+        {
+            "start": "2026-04-27T12:32:23Z",
+            "end": "2026-04-27T13:28:23Z",
+            "gameId": 2486820,
+            "minutes": 56
+        },
+        {
+            "start": "2026-05-01T10:25:19Z",
+            "end": "2026-05-01T10:55:19Z",
+            "gameId": 206440,
+            "minutes": 30
+        },
+        {
+            "start": "2026-05-01T11:03:11Z",
+            "end": "2026-05-01T11:05:11Z",
+            "gameId": 837610,
+            "minutes": 2
+        },
+        {
+            "start": "2026-05-01T13:28:09Z",
+            "end": "2026-05-01T13:35:09Z",
+            "gameId": 206440,
+            "minutes": 7
+        },
+        {
+            "start": "2026-05-01T13:44:12Z",
+            "end": "2026-05-01T14:31:12Z",
+            "gameId": 206440,
+            "minutes": 47
+        },
+        {
+            "start": "2026-05-01T14:32:51Z",
+            "end": "2026-05-01T14:58:51Z",
+            "gameId": 921570,
+            "minutes": 26
+        },
+        {
+            "start": "2026-05-02T11:51:42Z",
+            "end": "2026-05-02T13:06:42Z",
+            "gameId": 2235440,
+            "minutes": 75
+        },
+        {
+            "start": "2026-05-02T13:54:32Z",
+            "end": "2026-05-02T14:56:32Z",
+            "gameId": 206440,
+            "minutes": 62
+        },
+        {
+            "start": "2026-05-02T14:56:51Z",
+            "end": "2026-05-02T15:05:51Z",
+            "gameId": 206440,
+            "minutes": 9
+        },
+        {
+            "start": "2026-05-03T03:18:44Z",
+            "end": "2026-05-03T03:34:44Z",
+            "gameId": 206440,
+            "minutes": 16
+        },
+        {
+            "start": "2026-05-03T13:48:52Z",
+            "end": "2026-05-03T14:44:52Z",
+            "gameId": 2515020,
+            "minutes": 56
+        },
+        {
+            "start": "2026-05-05T14:12:24Z",
+            "end": "2026-05-05T15:24:24Z",
+            "gameId": 206440,
+            "minutes": 72
+        },
+        {
+            "start": "2026-05-09T05:51:06Z",
+            "end": "2026-05-09T06:21:06Z",
+            "gameId": 3124540,
+            "minutes": 30
+        },
+        {
+            "start": "2026-05-09T06:21:44Z",
+            "end": "2026-05-09T06:33:44Z",
+            "gameId": 3124540,
+            "minutes": 12
+        },
+        {
+            "start": "2026-05-09T06:37:15Z",
+            "end": "2026-05-09T08:37:15Z",
+            "gameId": 2515020,
+            "minutes": 120
+        },
+        {
+            "start": "2026-05-09T08:37:30Z",
+            "end": "2026-05-09T09:34:30Z",
+            "gameId": 2515020,
+            "minutes": 57
+        },
+        {
+            "start": "2026-05-09T12:51:53Z",
+            "end": "2026-05-09T13:21:53Z",
+            "gameId": 3124540,
+            "minutes": 30
+        },
+        {
+            "start": "2026-05-09T13:21:53Z",
+            "end": "2026-05-09T14:51:53Z",
+            "gameId": 3124540,
+            "minutes": 90
+        },
+        {
+            "start": "2026-05-09T14:51:21Z",
+            "end": "2026-05-09T15:27:21Z",
+            "gameId": 3124540,
+            "minutes": 36
+        },
+        {
+            "start": "2026-05-10T05:42:57Z",
+            "end": "2026-05-10T06:12:57Z",
+            "gameId": 2515020,
+            "minutes": 30
+        },
+        {
+            "start": "2026-05-10T06:12:57Z",
+            "end": "2026-05-10T08:42:57Z",
+            "gameId": 2515020,
+            "minutes": 150
+        },
+        {
+            "start": "2026-05-10T08:42:15Z",
+            "end": "2026-05-10T09:19:15Z",
+            "gameId": 2515020,
+            "minutes": 37
+        },
+        {
+            "start": "2026-05-19T12:26:47Z",
+            "end": "2026-05-19T13:02:47Z",
+            "gameId": 578330,
+            "minutes": 36
+        },
+        {
+            "start": "2026-05-21T11:53:54Z",
+            "end": "2026-05-21T12:44:54Z",
+            "gameId": 2486820,
+            "minutes": 51
+        },
+        {
+            "start": "2026-05-27T11:17:03Z",
+            "end": "2026-05-27T12:28:03Z",
+            "gameId": 578330,
+            "minutes": 71
+        },
+        {
+            "start": "2026-05-27T12:31:08Z",
+            "end": "2026-05-27T13:09:08Z",
+            "gameId": 758730,
+            "minutes": 38
+        },
+        {
+            "start": "2026-05-28T12:12:17Z",
+            "end": "2026-05-28T12:48:17Z",
+            "gameId": 2078350,
+            "minutes": 36
+        },
+        {
+            "start": "2026-05-30T12:18:55Z",
+            "end": "2026-05-30T13:06:55Z",
+            "gameId": 1952520,
+            "minutes": 48
+        },
+        {
+            "start": "2026-06-05T14:14:17Z",
+            "end": "2026-06-05T14:47:17Z",
+            "gameId": 2515020,
+            "minutes": 33
+        },
+        {
+            "start": "2026-06-06T11:38:01Z",
+            "end": "2026-06-06T12:09:01Z",
+            "gameId": 578330,
+            "minutes": 31
+        },
+        {
+            "start": "2026-06-06T13:03:03Z",
+            "end": "2026-06-06T13:35:03Z",
+            "gameId": 2515020,
+            "minutes": 32
+        },
+        {
+            "start": "2026-07-06T14:58:18Z",
+            "end": "2026-07-06T15:08:18Z",
+            "gameId": 921570,
+            "minutes": 10
+        },
+        {
+            "start": "2026-07-20T14:41:29Z",
+            "end": "2026-07-20T14:43:29Z",
+            "gameId": 921570,
+            "minutes": 2
+        },
+        {
+            "start": "2026-07-20T14:52:07Z",
+            "end": "2026-07-20T15:01:07Z",
+            "gameId": 282900,
+            "minutes": 9
+        },
+        {
+            "start": "2026-08-02T13:38:51Z",
+            "end": "2026-08-02T13:57:51Z",
+            "gameId": 921570,
+            "minutes": 19
+        },
+        {
+            "start": "2026-08-07T14:15:07Z",
+            "end": "2026-08-07T14:45:07Z",
+            "gameId": 921570,
+            "minutes": 30
+        },
+        {
+            "start": "2026-08-07T14:44:24Z",
+            "end": "2026-08-07T15:51:24Z",
+            "gameId": 921570,
+            "minutes": 67
+        },
+        {
+            "start": "2026-08-09T07:05:19Z",
+            "end": "2026-08-09T07:50:19Z",
+            "gameId": 921570,
+            "minutes": 45
+        },
+        {
+            "start": "2026-08-09T12:23:06Z",
+            "end": "2026-08-09T13:06:06Z",
+            "gameId": 921570,
+            "minutes": 43
+        },
+        {
+            "start": "2026-08-10T13:38:29Z",
+            "end": "2026-08-10T13:52:29Z",
+            "gameId": 921570,
+            "minutes": 14
+        },
+        {
+            "start": "2026-08-12T14:36:32Z",
+            "end": "2026-08-12T15:06:32Z",
+            "gameId": 921570,
+            "minutes": 30
+        },
+        {
+            "start": "2026-08-12T15:07:24Z",
+            "end": "2026-08-12T15:32:24Z",
+            "gameId": 921570,
+            "minutes": 25
+        },
+        {
+            "start": "2026-08-15T13:40:27Z",
+            "end": "2026-08-15T14:19:27Z",
+            "gameId": 921570,
+            "minutes": 39
+        },
+        {
+            "start": "2026-08-17T14:50:00Z",
+            "end": "2026-08-17T15:20:00Z",
+            "gameId": 921570,
+            "minutes": 30
+        },
+        {
+            "start": "2026-08-17T15:19:45Z",
+            "end": "2026-08-17T15:49:45Z",
+            "gameId": 921570,
+            "minutes": 30
+        },
+        {
+            "start": "2026-08-20T14:04:50Z",
+            "end": "2026-08-20T14:35:50Z",
+            "gameId": 921570,
+            "minutes": 31
+        },
+        {
+            "start": "2026-08-20T14:36:16Z",
+            "end": "2026-08-20T15:04:16Z",
+            "gameId": 921570,
+            "minutes": 28
+        },
+        {
+            "start": "2026-08-25T07:14:06Z",
+            "end": "2026-08-25T07:44:06Z",
+            "gameId": 921570,
+            "minutes": 30
+        },
+        {
+            "start": "2026-08-25T07:43:44Z",
+            "end": "2026-08-25T07:54:44Z",
+            "gameId": 921570,
+            "minutes": 11
+        },
+        {
+            "start": "2026-08-29T12:46:22Z",
+            "end": "2026-08-29T14:20:22Z",
+            "gameId": 921570,
+            "minutes": 94
+        },
+        {
+            "start": "2026-08-29T14:21:03Z",
+            "end": "2026-08-29T15:38:03Z",
+            "gameId": 921570,
+            "minutes": 77
+        },
+        {
+            "start": "2026-08-30T03:53:57Z",
+            "end": "2026-08-30T04:40:57Z",
+            "gameId": 921570,
+            "minutes": 47
+        },
+        {
+            "start": "2026-09-03T15:58:53Z",
+            "end": "2026-09-03T16:30:53Z",
+            "gameId": 4474710,
+            "minutes": 32
+        },
+        {
+            "start": "2026-09-06T15:02:17Z",
+            "end": "2026-09-06T15:33:17Z",
+            "gameId": 4391790,
+            "minutes": 31
+        },
+        {
+            "start": "2026-09-07T15:50:30Z",
+            "end": "2026-09-07T16:25:30Z",
+            "gameId": 921570,
+            "minutes": 35
+        },
+        {
+            "start": "2026-09-11T13:00:35Z",
+            "end": "2026-09-11T13:57:35Z",
+            "gameId": 4630570,
+            "minutes": 57
+        },
+        {
+            "start": "2026-09-12T05:35:54Z",
+            "end": "2026-09-12T05:45:54Z",
+            "gameId": 2515020,
+            "minutes": 10
+        },
+        {
+            "start": "2026-09-12T07:08:37Z",
+            "end": "2026-09-12T08:52:37Z",
+            "gameId": 2486820,
+            "minutes": 104
+        },
+        {
+            "start": "2026-09-12T08:52:40Z",
+            "end": "2026-09-12T10:04:40Z",
+            "gameId": 578330,
+            "minutes": 72
+        },
+        {
+            "start": "2026-09-12T14:16:56Z",
+            "end": "2026-09-12T15:17:56Z",
+            "gameId": 2515020,
+            "minutes": 61
+        },
+        {
+            "start": "2026-09-17T13:03:26Z",
+            "end": "2026-09-17T14:01:26Z",
+            "gameId": 578330,
+            "minutes": 58
+        },
+        {
+            "start": "2026-09-18T09:44:45Z",
+            "end": "2026-09-18T10:02:45Z",
+            "gameId": 921570,
+            "minutes": 18
+        },
+        {
+            "start": "2026-09-18T12:00:10Z",
+            "end": "2026-09-18T13:03:10Z",
+            "gameId": 578330,
+            "minutes": 63
+        },
+        {
+            "start": "2026-09-18T13:12:08Z",
+            "end": "2026-09-18T14:12:08Z",
+            "gameId": 2515020,
+            "minutes": 60
+        },
+        {
+            "start": "2026-09-18T14:11:55Z",
+            "end": "2026-09-18T14:33:55Z",
+            "gameId": 2515020,
+            "minutes": 22
+        },
+        {
+            "start": "2026-09-19T10:02:39Z",
+            "end": "2026-09-19T10:39:39Z",
+            "gameId": 921570,
+            "minutes": 37
+        },
+        {
+            "start": "2026-09-19T12:25:53Z",
+            "end": "2026-09-19T13:25:53Z",
+            "gameId": 578330,
+            "minutes": 60
+        },
+        {
+            "start": "2026-09-19T16:16:25Z",
+            "end": "2026-09-19T17:06:25Z",
+            "gameId": 921570,
+            "minutes": 50
+        },
+        {
+            "start": "2026-09-20T10:00:33Z",
+            "end": "2026-09-20T11:05:33Z",
+            "gameId": 578330,
+            "minutes": 65
+        },
+        {
+            "start": "2026-09-22T12:45:40Z",
+            "end": "2026-09-22T13:18:40Z",
+            "gameId": 578330,
+            "minutes": 33
+        },
+        {
+            "start": "2026-09-22T13:18:56Z",
+            "end": "2026-09-22T14:18:56Z",
+            "gameId": 2515020,
+            "minutes": 60
+        },
+        {
+            "start": "2026-09-22T14:18:27Z",
+            "end": "2026-09-22T14:47:27Z",
+            "gameId": 2515020,
+            "minutes": 29
+        },
+        {
+            "start": "2026-09-25T12:58:11Z",
+            "end": "2026-09-25T13:37:11Z",
+            "gameId": 578330,
+            "minutes": 39
+        },
+        {
+            "start": "2026-09-25T15:13:46Z",
+            "end": "2026-09-25T15:57:46Z",
+            "gameId": 2515020,
+            "minutes": 44
+        },
+        {
+            "start": "2026-09-26T07:36:45Z",
+            "end": "2026-09-26T09:10:45Z",
+            "gameId": 578330,
+            "minutes": 94
+        },
+        {
+            "start": "2026-09-26T14:37:51Z",
+            "end": "2026-09-26T14:52:51Z",
+            "gameId": 921570,
+            "minutes": 15
+        },
+        {
+            "start": "2026-09-27T11:10:54Z",
+            "end": "2026-09-27T11:20:54Z",
+            "gameId": 921570,
+            "minutes": 10
+        },
+        {
+            "start": "2026-09-27T12:30:12Z",
+            "end": "2026-09-27T13:31:12Z",
+            "gameId": 578330,
+            "minutes": 61
+        },
+        {
+            "start": "2026-09-27T13:59:53Z",
+            "end": "2026-09-27T15:01:53Z",
+            "gameId": 2515020,
+            "minutes": 62
+        },
+        {
+            "start": "2026-10-02T13:07:23Z",
+            "end": "2026-10-02T13:34:23Z",
+            "gameId": 578330,
+            "minutes": 27
+        },
+        {
+            "start": "2026-10-03T03:24:34Z",
+            "end": "2026-10-03T05:05:34Z",
+            "gameId": 578330,
+            "minutes": 101
+        },
+        {
+            "start": "2026-10-03T09:40:38Z",
+            "end": "2026-10-03T11:07:38Z",
+            "gameId": 578330,
+            "minutes": 87
+        },
+        {
+            "start": "2026-10-03T14:29:56Z",
+            "end": "2026-10-03T15:45:56Z",
+            "gameId": 921570,
+            "minutes": 76
+        },
+        {
+            "start": "2026-10-03T15:48:34Z",
+            "end": "2026-10-03T16:07:34Z",
+            "gameId": 1658290,
+            "minutes": 19
+        }
+    ]
+}

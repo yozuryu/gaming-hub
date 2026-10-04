@@ -9,5 +9,6 @@ Planned work, in priority order. Not published to the site (`backlog/` is in `_c
 | 3 | [Pipeline improvements](pipeline-improvements.md) (Parts B–F: commit noise, schedule, cleanup, precomputed beaten games) | To do | — |
 | 4 | [Move pipeline data to a `data` branch](data-branch-migration.md) | To do | Include Xbox if #2 has landed; less urgent once #3 Part B lands |
 | 5 | [Remove pipeline data from `main`'s history](history-cleanup.md) | Blocked | #4 running cleanly for a day |
+| 6 | [Playtime log, Activity views and Analytics page](playtime-and-analytics.md) | Done 2026-10-04 | — |
 
 **For you:** [manual to-dos](manual-todos.md): repo About box text, git remote URL, `gh` account, `XBOX_XUID`.

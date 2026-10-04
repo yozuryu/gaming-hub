@@ -4,6 +4,7 @@ exclude:
   # Project notes (every CLAUDE.md, not just the root one)
   - CLAUDE.md
   - activity/CLAUDE.md
+  - analytics/CLAUDE.md
   - changelog/CLAUDE.md
   - completions/CLAUDE.md
   - profile/ra/CLAUDE.md
@@ -24,4 +25,6 @@ exclude:
   # Unused by the site
   - assets/appicon.png                 # 1024px source for the PWA icons
   - data/steam/games/sentinel.json     # pipeline-only cache
+  - data/steam/playtime/state.json     # pipeline-only playtime baseline
+  - data/ra/playtime/state.json        # pipeline-only playtime baseline
   - data/steam/achievements.json       # legacy, not referenced

@@ -1,10 +1,16 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Activity, ChevronDown, Flame } from 'lucide-react';
+import { Activity, ChevronDown, Clock, Flame, Trophy } from 'lucide-react';
 import { PLATFORM_COLOR, TILDE_TAG_COLORS } from './utils/constants.js';
-import { fmtDay, fmtTime, parseTitle, xboxImg } from './utils/helpers.js';
-import { normalizeRA, normalizeSteam, normalizeXbox } from './utils/normalizers.js';
-import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap } from '../assets/time.js';
+import { fmtDay, fmtTime, fmtMinutes, fmtMinutesShort, parseTitle, xboxImg } from './utils/helpers.js';
+import { normalizeRA, normalizeSteam, normalizeXbox, normalizeSession } from './utils/normalizers.js';
+import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap, splitByDay } from '../assets/time.js';
+
+// A day counts toward the playtime streak with at least this much play
+const PLAYTIME_STREAK_MIN = 15;
+// Play sessions overlapping an unlock by this much still count it (unlocks can land
+// a little after Steam closes the session)
+const UNLOCK_GRACE_MS = 5 * 60 * 1000;
 
 const renderTildeTags = (tags) => {
     if (!tags?.length) return null;
@@ -20,7 +26,8 @@ const renderTildeTags = (tags) => {
 
 // ── Heatmap ───────────────────────────────────────────────────────────────────
 
-const Heatmap = ({ heatmapData, filter, selectedDay, onSelectDay }) => {
+// heatmapData: { day: { count } }; count is unlocks or minutes, `describe(day)` writes the tooltip
+const Heatmap = ({ heatmapData, filter, selectedDay, onSelectDay, describe }) => {
     const scrollRef = useRef(null);
     const heatmapKeys = Object.keys(heatmapData).length;
 
@@ -123,7 +130,7 @@ const Heatmap = ({ heatmapData, filter, selectedDay, onSelectDay }) => {
                                     <div
                                         key={key}
                                         onClick={() => onSelectDay(selectedDay === key ? null : key)}
-                                        title={`${key}${heatmapData[key] ? ` · ${heatmapData[key].count ?? heatmapData[key]} achievement${(heatmapData[key].count ?? heatmapData[key]) !== 1 ? 's' : ''}` : ''}`}
+                                        title={describe(key)}
                                         style={{
                                             height: '12px',
                                             borderRadius: '2px',
@@ -149,6 +156,136 @@ const Heatmap = ({ heatmapData, filter, selectedDay, onSelectDay }) => {
         </div>
     );
 };
+
+// ── Streak ────────────────────────────────────────────────────────────────────
+
+// Current / longest run of days whose value reaches minValue (1 unlock, or N minutes)
+const computeStreak = (heatmapData, minValue) => {
+    const activeDays = new Set(
+        Object.entries(heatmapData)
+            .filter(([, d]) => (d.count ?? d) >= minValue)
+            .map(([day]) => day)
+    );
+    const today = todayKey();
+    // Count streak from yesterday backwards; add today only if it already counts
+    let current = 0;
+    let cursor = addDays(today, -1);
+    while (activeDays.has(cursor)) {
+        current++;
+        cursor = addDays(cursor, -1);
+    }
+    if (activeDays.has(today)) current++;
+    const sortedDays = [...activeDays].sort();
+    let longest = 0, longestStart = null, longestEnd = null;
+    let runStart = null, runLen = 0, prev = null;
+    for (const day of sortedDays) {
+        if (prev === null) {
+            runStart = day; runLen = 1;
+        } else {
+            if (day === addDays(prev, 1)) {
+                runLen++;
+            } else {
+                if (runLen > longest) { longest = runLen; longestStart = runStart; longestEnd = prev; }
+                runStart = day; runLen = 1;
+            }
+        }
+        prev = day;
+    }
+    if (runLen > longest) { longest = runLen; longestStart = runStart; longestEnd = prev; }
+    const last14 = [];
+    for (let i = 13; i >= 0; i--) {
+        const key = addDays(today, -i);
+        const isToday = i === 0;
+        last14.push({
+            key,
+            label: keyToDate(key).toLocaleDateString('en-GB', { weekday: 'short' }),
+            active: activeDays.has(key),
+            isToday,
+            isPending: isToday && !activeDays.has(key),
+        });
+    }
+    return { current, longest, longestStart, longestEnd, last14 };
+};
+
+// Streak circles for the last 14 days (5 on mobile); `cellLabel(day)` is the number in a lit circle
+const StreakPanel = ({ streakInfo, describe, cellLabel }) => (
+    <div style={{ marginTop: 14, background: 'linear-gradient(160deg, #1c2130 0%, #1b2838 100%)', border: '1px solid #263545', borderRadius: 5, padding: '12px 16px 11px' }}>
+        {/* Header */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+                <span style={{ width: 3, height: 14, background: '#e5b143', borderRadius: 1, flexShrink: 0, display: 'block' }} />
+                <Flame size={13} color="#e5b143" style={{ animation: 'flameFlicker 1.8s ease-in-out infinite' }} />
+                <span style={{ fontSize: 11, color: '#8f98a0', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>Streak</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
+                <span style={{ fontSize: 22, fontWeight: 700, lineHeight: 1, color: streakInfo.current > 0 ? '#e5b143' : '#3d5060', animation: streakInfo.current > 0 ? 'streakGlow 3s ease-in-out infinite' : 'none' }}>
+                    {streakInfo.current}
+                </span>
+                <span style={{ fontSize: 9, color: '#546270', textTransform: 'uppercase', letterSpacing: '0.07em' }}>
+                    day{streakInfo.current !== 1 ? 's' : ''}
+                </span>
+            </div>
+        </div>
+        {/* 14-day circles (7 on mobile, 14 on desktop) */}
+        <div style={{ overflowX: 'auto' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+                {(window.innerWidth < 768 ? streakInfo.last14.slice(-5) : streakInfo.last14).map((d, i, arr) => (
+                    <React.Fragment key={d.key}>
+                        {i > 0 && (
+                            <div style={{ flex: 1, minWidth: 6, paddingTop: 24, display: 'flex', alignItems: 'flex-start' }}>
+                                <div style={{ width: '100%', height: 1.5, background: arr[i - 1].active && d.active ? 'rgba(229,177,67,0.35)' : 'transparent' }} />
+                            </div>
+                        )}
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5 }}>
+                            <div
+                                title={describe(d.key)}
+                                style={{
+                                    width: 48, height: 48, borderRadius: '50%', flexShrink: 0,
+                                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6,
+                                    background: d.active
+                                        ? 'linear-gradient(145deg, #2e1f02, #1c1200)'
+                                        : d.isPending
+                                        ? 'linear-gradient(145deg, #0d1825, #0a1018)'
+                                        : '#0e0c10',
+                                    border: `1.5px solid ${d.active ? '#9a7020' : d.isPending ? '#253545' : '#1c1520'}`,
+                                    boxShadow: d.active ? '0 0 10px rgba(229,177,67,0.2), inset 0 1px 0 rgba(229,177,67,0.08)' : 'none',
+                                    animation: d.isPending ? 'pendingPulse 2.5s ease-in-out infinite' : 'none',
+                                }}
+                            >
+                                {d.active ? (
+                                    <>
+                                        <Flame size={16} color="#e5b143" style={{ animation: 'flameFlicker 1.8s ease-in-out infinite', animationDelay: `${i * 0.18}s`, flexShrink: 0 }} />
+                                        <span style={{ fontSize: 9, lineHeight: 1, color: '#c8880a', fontWeight: 700 }}>
+                                            {cellLabel(d.key)}
+                                        </span>
+                                    </>
+                                ) : d.isPending ? (
+                                    <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#2a475e', display: 'block', opacity: 0.7 }} />
+                                ) : (
+                                    <span style={{ fontSize: 12, color: '#3a1e28', lineHeight: 1, fontWeight: 700 }}>✕</span>
+                                )}
+                            </div>
+                            <span style={{ fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: d.isToday ? 700 : 500, color: d.active ? '#8a6520' : d.isPending ? '#4a6070' : '#2a1e24' }}>
+                                {d.isToday ? 'Today' : d.label}
+                            </span>
+                        </div>
+                    </React.Fragment>
+                ))}
+            </div>
+        </div>
+        {/* Longest streak */}
+        {streakInfo.longestStart && (
+            <div style={{ marginTop: 10, paddingTop: 9, borderTop: '1px solid #1e2a38', display: 'flex', alignItems: 'center', gap: 5 }}>
+                <Flame size={10} color="#5a7a40" />
+                <span style={{ fontSize: 10, color: '#3d5060', letterSpacing: '0.04em' }}>
+                    Best streak: <span style={{ color: '#546270' }}>{streakInfo.longest} day{streakInfo.longest !== 1 ? 's' : ''}</span>
+                    <span style={{ color: '#2a3a48', margin: '0 4px' }}>·</span>
+                    {fmtDay(streakInfo.longestStart)} – {fmtDay(streakInfo.longestEnd)}
+                </span>
+            </div>
+        )}
+    </div>
+);
 
 // ── Achievement row ───────────────────────────────────────────────────────────
 
@@ -233,6 +370,79 @@ const GameSession = ({ session }) => {
     );
 };
 
+// ── Play session ──────────────────────────────────────────────────────────────
+
+// One play session (playtime view). `day` is the timeline day it's listed under: a
+// session crossing midnight is listed under both days and shows where it started.
+const PlaySessionRow = ({ session: s, day }) => {
+    const isRA = s.platform === 'ra';
+    const { baseTitle, subsetName, isSubset, tags } = isRA ? parseTitle(s.gameName) : { baseTitle: s.gameName };
+    const start = new Date(s.startMs);
+    const startedEarlier = dayKey(start) !== day;
+    return (
+        <div className="flex items-center gap-2 p-2 rounded-[2px] border border-[#2a475e] border-l-[2px] bg-[#1b2838] hover:bg-[#202d39] transition-colors"
+            style={{ borderLeftColor: PLATFORM_COLOR[s.platform] }}>
+            <a href={s.gameUrl} target="_blank" rel="noreferrer"
+                className="shrink-0 w-8 h-8 rounded-[2px] overflow-hidden border border-[#101214] bg-black block">
+                {s.gameIcon
+                    ? <img src={s.gameIcon} alt="" className="w-full h-full object-cover" />
+                    : <div className="w-full h-full bg-[#2a475e]" />}
+            </a>
+            <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-1.5 min-w-0">
+                    <img src={isRA ? '../assets/icon-ra.png' : '../assets/icon-steam.png'} alt=""
+                        className="w-3 h-3 shrink-0 object-contain opacity-60"
+                        onError={e => { e.target.style.display = 'none'; }} />
+                    <a href={s.gameUrl} target="_blank" rel="noreferrer"
+                        className="text-[11px] font-medium text-[#c6d4df] hover:text-[#66c0f4] truncate transition-colors">
+                        {baseTitle}
+                    </a>
+                    {isSubset && (
+                        <>
+                            <span className="text-[7px] font-bold uppercase tracking-[0.07em] px-1 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>
+                            <span className="text-[8px] text-[#c8a84b] truncate">{subsetName}</span>
+                        </>
+                    )}
+                    {!isSubset && renderTildeTags(tags)}
+                </div>
+                <p className="text-[9px] text-[#8f98a0] truncate mt-0.5"
+                    title={s.approx ? 'Start time estimated: the playtime was reported late (offline play, or a session spanning two updates)' : undefined}>
+                    {s.approx && <span className="text-[#546270]">≈ </span>}
+                    {startedEarlier && `${start.toLocaleDateString('en-GB', { weekday: 'short' })} `}
+                    {fmtTime(start)} – {fmtTime(new Date(s.endMs))}
+                </p>
+            </div>
+            <div className="shrink-0 flex flex-col items-end gap-0.5">
+                <span className="text-[11px] font-semibold text-[#c6d4df]">{fmtMinutes(s.minutes)}</span>
+                {s.unlocks > 0 && (
+                    <span className="text-[9px] text-[#e5b143] flex items-center gap-0.5" title={`${s.unlocks} achievement${s.unlocks !== 1 ? 's' : ''} unlocked in this session`}>
+                        <Trophy size={9} /> {s.unlocks}
+                    </span>
+                )}
+            </div>
+        </div>
+    );
+};
+
+// { day: { count: minutes } } in local days; sessions crossing midnight are split
+const buildPlaytimeHeatmap = (sessions) => {
+    const map = {};
+    for (const s of sessions) {
+        const parts = splitByDay(s.startMs, s.endMs);
+        const span = parts.reduce((a, p) => a + p.ms, 0);
+        for (const p of parts) {
+            const cell = map[p.key] ??= { count: 0, sessions: 0 };
+            cell.count += span ? s.minutes * (p.ms / span) : s.minutes;
+            cell.sessions++;
+        }
+    }
+    for (const [key, cell] of Object.entries(map)) {
+        cell.count = Math.round(cell.count);
+        if (cell.count === 0) delete map[key];
+    }
+    return map;
+};
+
 // ── App ───────────────────────────────────────────────────────────────────────
 
 const App = () => {
@@ -245,6 +455,10 @@ const App = () => {
     const [loading,       setLoading]       = useState(true);
     const loadingMore = false;
     const [nextChunk,   setNextChunk]   = useState(2);
+    // Playtime view: sessions for this UTC year and last (covers the 365-day heatmap)
+    const [view,        setView]        = useState(() => new URLSearchParams(location.search).get('view') === 'playtime' ? 'playtime' : 'achievements');
+    const [playtime,    setPlaytime]    = useState(null);   // { ra: [...sessions], steam: [...] }
+    const [visibleDays, setVisibleDays] = useState(30);
     const [filter,      setFilter]      = useState('all');
     const [selectedDay, setSelectedDay] = useState(null);
     const [collapsedDays, setCollapsedDays] = useState(new Set());
@@ -256,6 +470,16 @@ const App = () => {
         next.has(day) ? next.delete(day) : next.add(day);
         return next;
     });
+
+    const switchView = (next) => {
+        setView(next);
+        setSelectedDay(null);
+        if (next === 'playtime' && filter === 'xbox') setFilter('all');
+        const url = new URL(location.href);
+        if (next === 'playtime') url.searchParams.set('view', 'playtime');
+        else url.searchParams.delete('view');
+        history.replaceState(null, '', url);
+    };
 
     const fetchChunk = async (platform, i) => {
         const d = await fetch(`../data/${platform}/achievements/${i}.json`)
@@ -281,6 +505,14 @@ const App = () => {
             )))
             .catch(() => {});
 
+        const year = new Date().getUTCFullYear();
+        const playtimeOf = platform => Promise.all([year - 1, year].map(y =>
+            fetch(`../data/${platform}/playtime/${y}.json`)
+                .then(r => r.ok ? r.json() : null)
+                .catch(() => null)
+        )).then(files => files.flatMap(f => (f?.sessions ?? []).map(s => normalizeSession(platform, s, f.games))));
+        Promise.all([playtimeOf('ra'), playtimeOf('steam')]).then(([ra, steam]) => setPlaytime({ ra, steam }));
+
         const all = platform => Promise.all([1, 2, 3, 4].map(i => fetchChunk(platform, i)));
         Promise.all([all('ra'), all('steam'), all('xbox')]).then(([ra, steam, xbox]) => {
             setChunks({ ra, steam, xbox });
@@ -300,23 +532,37 @@ const App = () => {
     const steamHeatmap = useMemo(() => heatOf('steam'), [chunks]);
     const xboxHeatmap  = useMemo(() => heatOf('xbox'),  [chunks]);
 
+    // Play sessions with the number of unlocks each one produced (same platform + game,
+    // unlocked between its start and end)
+    const sessions = useMemo(() => {
+        if (!playtime) return { ra: [], steam: [] };
+        const withUnlocks = (platform) => {
+            const unlocks = chunks ? chunks[platform].flat() : [];
+            return playtime[platform].map(s => ({
+                ...s,
+                unlocks: unlocks.filter(a => a.gameId === s.gameId && (() => {
+                    const t = toMs(a.unlockedAt);
+                    return t >= s.startMs - UNLOCK_GRACE_MS && t <= s.endMs + UNLOCK_GRACE_MS;
+                })()).length,
+            }));
+        };
+        return { ra: withUnlocks('ra'), steam: withUnlocks('steam') };
+    }, [playtime, chunks]);
+    const raPlayHeatmap    = useMemo(() => buildPlaytimeHeatmap(sessions.ra),    [sessions]);
+    const steamPlayHeatmap = useMemo(() => buildPlaytimeHeatmap(sessions.steam), [sessions]);
+    const firstSessionMs = useMemo(() => {
+        const all = [...sessions.ra, ...sessions.steam];
+        return all.length ? Math.min(...all.map(s => s.startMs)) : null;
+    }, [sessions]);
+
     const loadMore = useCallback(() => {
+        if (view === 'playtime') { setVisibleDays(prev => prev + 30); return; }
         if (nextChunk > 4) return;
         setNextChunk(prev => prev + 1);
-    }, [nextChunk]);
+    }, [nextChunk, view]);
 
-    // Scroll sentinel — auto-load next chunk when bottom is near
     const loadMoreRef = useRef(loadMore);
     useEffect(() => { loadMoreRef.current = loadMore; }, [loadMore]);
-    useEffect(() => {
-        if (!sentinelRef.current || nextChunk > 4 || loadingMore) return;
-        const observer = new IntersectionObserver(
-            (entries) => { if (entries[0].isIntersecting) loadMoreRef.current(); },
-            { rootMargin: '300px' }
-        );
-        observer.observe(sentinelRef.current);
-        return () => observer.disconnect();
-    }, [nextChunk, loadingMore, loading]);
 
     useEffect(() => {
         const onScroll = () => setShowScrollTop(window.scrollY > 300);
@@ -325,6 +571,15 @@ const App = () => {
     }, []);
 
     const heatmapData = useMemo(() => {
+        if (view === 'playtime') {
+            if (filter === 'ra') return raPlayHeatmap;
+            if (filter === 'steam') return steamPlayHeatmap;
+            const merged = {};
+            [raPlayHeatmap, steamPlayHeatmap].forEach(h => Object.entries(h).forEach(([day, d]) => {
+                merged[day] = { count: (merged[day]?.count ?? 0) + d.count, sessions: (merged[day]?.sessions ?? 0) + d.sessions };
+            }));
+            return merged;
+        }
         if (filter === 'ra') return raHeatmap;
         if (filter === 'steam') return steamHeatmap;
         if (filter === 'xbox') return xboxHeatmap;
@@ -333,54 +588,26 @@ const App = () => {
             merged[day] = { count: (merged[day]?.count ?? 0) + (d.count ?? 0) };
         }));
         return merged;
-    }, [filter, raHeatmap, steamHeatmap, xboxHeatmap]);
+    }, [view, filter, raHeatmap, steamHeatmap, xboxHeatmap, raPlayHeatmap, steamPlayHeatmap]);
 
-    const streakInfo = useMemo(() => {
-        const activeDays = new Set(
-            Object.entries(heatmapData)
-                .filter(([, d]) => (d.count ?? d) >= 1)
-                .map(([day]) => day)
-        );
-        const today = todayKey();
-        // Count streak from yesterday backwards; add today only if it has achievements
-        let current = 0;
-        let cursor = addDays(today, -1);
-        while (activeDays.has(cursor)) {
-            current++;
-            cursor = addDays(cursor, -1);
-        }
-        if (activeDays.has(today)) current++;
-        const sortedDays = [...activeDays].sort();
-        let longest = 0, longestStart = null, longestEnd = null;
-        let runStart = null, runLen = 0, prev = null;
-        for (const day of sortedDays) {
-            if (prev === null) {
-                runStart = day; runLen = 1;
-            } else {
-                if (day === addDays(prev, 1)) {
-                    runLen++;
-                } else {
-                    if (runLen > longest) { longest = runLen; longestStart = runStart; longestEnd = prev; }
-                    runStart = day; runLen = 1;
-                }
-            }
-            prev = day;
-        }
-        if (runLen > longest) { longest = runLen; longestStart = runStart; longestEnd = prev; }
-        const last14 = [];
-        for (let i = 13; i >= 0; i--) {
-            const key = addDays(today, -i);
-            const isToday = i === 0;
-            last14.push({
-                key,
-                label: keyToDate(key).toLocaleDateString('en-GB', { weekday: 'short' }),
-                active: activeDays.has(key),
-                isToday,
-                isPending: isToday && !activeDays.has(key),
-            });
-        }
-        return { current, longest, longestStart, longestEnd, last14 };
-    }, [heatmapData]);
+    // Tooltip and streak-circle text for a day
+    const describeDay = (key) => {
+        const d = heatmapData[key];
+        if (!d) return key;
+        if (view === 'playtime') return `${key} · ${fmtMinutes(d.count)} · ${d.sessions} session${d.sessions !== 1 ? 's' : ''}`;
+        return `${key} · ${d.count} achievement${d.count !== 1 ? 's' : ''}`;
+    };
+    const cellLabel = (key) => {
+        const d = heatmapData[key];
+        if (!d) return '';
+        // Circles are small: largest unit only (the tooltip keeps the exact time)
+        return view === 'playtime' ? fmtMinutesShort(d.count) : d.count;
+    };
+
+    const streakInfo = useMemo(
+        () => computeStreak(heatmapData, view === 'playtime' ? PLAYTIME_STREAK_MIN : 1),
+        [heatmapData, view]
+    );
 
     const sourceAchs = useMemo(() => {
         const base = filter === 'ra' ? raAchs
@@ -394,7 +621,7 @@ const App = () => {
 
     // Auto-load next chunk when selected day has heatmap data but isn't loaded yet
     useEffect(() => {
-        if (!selectedDay || !heatmapData[selectedDay] || loadedDays.has(selectedDay) || nextChunk > 4 || loadingMore) return;
+        if (view !== 'achievements' || !selectedDay || !heatmapData[selectedDay] || loadedDays.has(selectedDay) || nextChunk > 4 || loadingMore) return;
         loadMoreRef.current();
     }, [selectedDay, loadedDays, nextChunk, loadingMore]);
 
@@ -434,12 +661,49 @@ const App = () => {
             });
     }, [displayAchs]);
 
-    const filters = useMemo(() => [
-        { id: 'all',   label: 'All',              count: raAchs.length + steamAchs.length + xboxAchs.length },
-        { id: 'ra',    label: 'RA',                count: raAchs.length },
-        { id: 'steam', label: 'Steam',             count: steamAchs.length },
-        { id: 'xbox',  label: 'Xbox',              count: xboxAchs.length },
-    ], [raAchs.length, steamAchs.length, xboxAchs.length]);
+    // Playtime timeline: day → sessions, newest first. A session crossing midnight is
+    // listed under both days; the day total comes from the heatmap (split by day).
+    const playGroups = useMemo(() => {
+        const base = filter === 'ra' ? sessions.ra : filter === 'steam' ? sessions.steam : [...sessions.ra, ...sessions.steam];
+        const byDay = {};
+        for (const s of base) for (const part of splitByDay(s.startMs, s.endMs)) (byDay[part.key] ??= []).push(s);
+        return Object.entries(byDay)
+            .filter(([day]) => !selectedDay || day === selectedDay)
+            .sort(([a], [b]) => b.localeCompare(a))
+            .map(([day, list]) => ({ day, minutes: heatmapData[day]?.count ?? 0, sessions: [...list].sort((a, b) => b.endMs - a.endMs) }));
+    }, [sessions, filter, selectedDay, heatmapData]);
+
+    // Last 365 days of playtime per platform, for the header
+    const playTotals = useMemo(() => {
+        const cutoff = Date.now() - 365 * 86400000;
+        const sum = list => list.filter(s => s.endMs >= cutoff).reduce((a, s) => a + s.minutes, 0);
+        return { ra: sum(sessions.ra), steam: sum(sessions.steam) };
+    }, [sessions]);
+
+    // Scroll sentinel — reveal the next chunk (achievements) or 30 more days (playtime)
+    const hasMore = view === 'playtime' ? visibleDays < playGroups.length : nextChunk <= 4;
+    useEffect(() => {
+        if (!sentinelRef.current || !hasMore || loadingMore) return;
+        const observer = new IntersectionObserver(
+            (entries) => { if (entries[0].isIntersecting) loadMoreRef.current(); },
+            { rootMargin: '300px' }
+        );
+        observer.observe(sentinelRef.current);
+        return () => observer.disconnect();
+    }, [hasMore, nextChunk, visibleDays, view, loadingMore, loading]);
+
+    const filters = useMemo(() => view === 'playtime' ? [
+        { id: 'all',   label: 'All' },
+        { id: 'ra',    label: 'RA' },
+        { id: 'steam', label: 'Steam' },
+    ] : [
+        { id: 'all',   label: 'All' },
+        { id: 'ra',    label: 'RA' },
+        { id: 'steam', label: 'Steam' },
+        { id: 'xbox',  label: 'Xbox' },
+    ], [view]);
+
+    const pill = "text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]";
 
     return (
         <div className="bg-[#171a21] text-[#c6d4df] min-h-screen flex flex-col font-sans selection:bg-[#66c0f4] selection:text-[#171a21]">
@@ -473,13 +737,32 @@ const App = () => {
             {/* Header */}
             <header className="bg-[#1b2838] border-b border-[#2a475e] px-4 md:px-8 pt-8 pb-5 md:pt-5 shadow-md">
                 <div className="max-w-5xl mx-auto">
-                    <div className="flex items-center gap-3 mb-3">
+                    <div className="flex items-center gap-3 mb-3 flex-wrap">
                         <span className="w-[3px] h-6 bg-[#66c0f4] rounded-[1px] shrink-0" />
                         <h1 className="text-2xl md:text-[26px] text-white font-medium tracking-wide leading-none flex items-center gap-3">
                             <Activity size={22} className="text-[#66c0f4]" /> Activity
                         </h1>
+                        {/* View switch */}
+                        <div className="flex p-[2px] rounded-[3px] border border-[#2a475e] bg-[#101214] ml-auto" role="tablist">
+                            {[['achievements', 'Achievements', Trophy], ['playtime', 'Playtime', Clock]].map(([id, label, Icon]) => (
+                                <button key={id} role="tab" aria-selected={view === id} onClick={() => switchView(id)}
+                                    className={`flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.07em] px-3 py-1 rounded-[2px] transition-colors ${
+                                        view === id ? 'bg-[#2a475e] text-white' : 'text-[#546270] hover:text-[#c6d4df]'
+                                    }`}>
+                                    <Icon size={11} /> {label}
+                                </button>
+                            ))}
+                        </div>
                     </div>
-                    {!loading && (
+                    {!loading && view === 'playtime' && (
+                        <div className="flex flex-wrap gap-2">
+                            <span className={pill}><span className="text-[#c6d4df]">{fmtMinutes(playTotals.ra + playTotals.steam)}</span> past year</span>
+                            <span className={pill}><span className="text-[#e5b143]">{fmtMinutes(playTotals.ra)}</span> RetroAchievements</span>
+                            <span className={pill}><span className="text-[#66c0f4]">{fmtMinutes(playTotals.steam)}</span> Steam</span>
+                            <span className={pill} title="Xbox doesn't report playtime">Xbox <span className="text-[#323f4c]">n/a</span></span>
+                        </div>
+                    )}
+                    {!loading && view === 'achievements' && (
                         <div className="flex flex-wrap gap-2">
                             <span className="text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
                                 <span className="text-[#c6d4df]">{(raAchs.length + steamAchs.length + xboxAchs.length).toLocaleString()}</span> total
@@ -566,8 +849,13 @@ const App = () => {
                             <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 mb-3">
                                 <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0" />
                                 <span className="text-[13px] text-white tracking-wide uppercase font-medium flex items-center gap-2">
-                                    <Activity size={15} className="text-[#66c0f4]" /> Heatmap
+                                    {view === 'playtime'
+                                        ? <><Clock size={15} className="text-[#66c0f4]" /> Playtime</>
+                                        : <><Activity size={15} className="text-[#66c0f4]" /> Heatmap</>}
                                 </span>
+                                {view === 'playtime' && firstSessionMs && (
+                                    <span className="text-[10px] text-[#546270] hidden sm:block">since {fmtDay(dayKey(new Date(firstSessionMs)))}</span>
+                                )}
                                 <span className="text-[10px] text-[#546270] ml-auto" title="Days and times are shown in your timezone">{TZ}</span>
                                 <span className="text-[10px] text-[#546270] hidden sm:block">· click a day to filter</span>
                                 {selectedDay && (
@@ -584,90 +872,15 @@ const App = () => {
                                 filter={filter}
                                 selectedDay={selectedDay}
                                 onSelectDay={setSelectedDay}
+                                describe={describeDay}
                             />
-                            {/* Streak panel */}
-                            <div style={{ marginTop: 14, background: 'linear-gradient(160deg, #1c2130 0%, #1b2838 100%)', border: '1px solid #263545', borderRadius: 5, padding: '12px 16px 11px' }}>
-                                {/* Header */}
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
-                                        <span style={{ width: 3, height: 14, background: '#e5b143', borderRadius: 1, flexShrink: 0, display: 'block' }} />
-                                        <Flame size={13} color="#e5b143" style={{ animation: 'flameFlicker 1.8s ease-in-out infinite' }} />
-                                        <span style={{ fontSize: 11, color: '#8f98a0', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>Streak</span>
-                                    </div>
-                                    <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
-                                        <span style={{ fontSize: 22, fontWeight: 700, lineHeight: 1, color: streakInfo.current > 0 ? '#e5b143' : '#3d5060', animation: streakInfo.current > 0 ? 'streakGlow 3s ease-in-out infinite' : 'none' }}>
-                                            {streakInfo.current}
-                                        </span>
-                                        <span style={{ fontSize: 9, color: '#546270', textTransform: 'uppercase', letterSpacing: '0.07em' }}>
-                                            day{streakInfo.current !== 1 ? 's' : ''}
-                                        </span>
-                                    </div>
-                                </div>
-                                {/* 14-day circles (7 on mobile, 14 on desktop) */}
-                                <div style={{ overflowX: 'auto' }}>
-                                    <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-                                        {(window.innerWidth < 768 ? streakInfo.last14.slice(-5) : streakInfo.last14).map((d, i, arr) => (
-                                            <React.Fragment key={d.key}>
-                                                {i > 0 && (
-                                                    <div style={{ flex: 1, minWidth: 6, paddingTop: 24, display: 'flex', alignItems: 'flex-start' }}>
-                                                        <div style={{ width: '100%', height: 1.5, background: arr[i - 1].active && d.active ? 'rgba(229,177,67,0.35)' : 'transparent' }} />
-                                                    </div>
-                                                )}
-                                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5 }}>
-                                                    <div
-                                                        title={`${d.key}${heatmapData[d.key] ? ` · ${heatmapData[d.key].count ?? heatmapData[d.key]} achievement${(heatmapData[d.key].count ?? heatmapData[d.key]) !== 1 ? 's' : ''}` : ''}`}
-                                                        style={{
-                                                            width: 48, height: 48, borderRadius: '50%', flexShrink: 0,
-                                                            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6,
-                                                            background: d.active
-                                                                ? 'linear-gradient(145deg, #2e1f02, #1c1200)'
-                                                                : d.isPending
-                                                                ? 'linear-gradient(145deg, #0d1825, #0a1018)'
-                                                                : '#0e0c10',
-                                                            border: `1.5px solid ${d.active ? '#9a7020' : d.isPending ? '#253545' : '#1c1520'}`,
-                                                            boxShadow: d.active ? '0 0 10px rgba(229,177,67,0.2), inset 0 1px 0 rgba(229,177,67,0.08)' : 'none',
-                                                            animation: d.isPending ? 'pendingPulse 2.5s ease-in-out infinite' : 'none',
-                                                        }}
-                                                    >
-                                                        {d.active ? (
-                                                            <>
-                                                                <Flame size={16} color="#e5b143" style={{ animation: 'flameFlicker 1.8s ease-in-out infinite', animationDelay: `${i * 0.18}s`, flexShrink: 0 }} />
-                                                                <span style={{ fontSize: 9, lineHeight: 1, color: '#c8880a', fontWeight: 700 }}>
-                                                                    {heatmapData[d.key]?.count ?? heatmapData[d.key] ?? ''}
-                                                                </span>
-                                                            </>
-                                                        ) : d.isPending ? (
-                                                            <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#2a475e', display: 'block', opacity: 0.7 }} />
-                                                        ) : (
-                                                            <span style={{ fontSize: 12, color: '#3a1e28', lineHeight: 1, fontWeight: 700 }}>✕</span>
-                                                        )}
-                                                    </div>
-                                                    <span style={{ fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: d.isToday ? 700 : 500, color: d.active ? '#8a6520' : d.isPending ? '#4a6070' : '#2a1e24' }}>
-                                                        {d.isToday ? 'Today' : d.label}
-                                                    </span>
-                                                </div>
-                                            </React.Fragment>
-                                        ))}
-                                    </div>
-                                </div>
-                                {/* Longest streak */}
-                                {streakInfo.longestStart && (
-                                    <div style={{ marginTop: 10, paddingTop: 9, borderTop: '1px solid #1e2a38', display: 'flex', alignItems: 'center', gap: 5 }}>
-                                        <Flame size={10} color="#5a7a40" />
-                                        <span style={{ fontSize: 10, color: '#3d5060', letterSpacing: '0.04em' }}>
-                                            Best streak: <span style={{ color: '#546270' }}>{streakInfo.longest} day{streakInfo.longest !== 1 ? 's' : ''}</span>
-                                            <span style={{ color: '#2a3a48', margin: '0 4px' }}>·</span>
-                                            {fmtDay(streakInfo.longestStart)} – {fmtDay(streakInfo.longestEnd)}
-                                        </span>
-                                    </div>
-                                )}
-                            </div>
+                            <StreakPanel streakInfo={streakInfo} describe={describeDay} cellLabel={cellLabel} />
                         </div>
 
                         {/* Filter + count */}
                         <div className="flex items-center gap-2 flex-wrap border-b border-[#2a475e] pb-1.5">
                             <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0" />
-                            <span className="text-[13px] text-white tracking-wide uppercase font-medium">Recent Unlocks</span>
+                            <span className="text-[13px] text-white tracking-wide uppercase font-medium">{view === 'playtime' ? 'Play Sessions' : 'Recent Unlocks'}</span>
                             <div className="flex items-center gap-1.5 ml-2">
                                 {filters.map(f => (
                                     <button
@@ -684,14 +897,48 @@ const App = () => {
                                 ))}
                             </div>
                             <span className="text-[10px] text-[#546270] ml-auto">
-                                {selectedDay
+                                {view === 'playtime'
+                                    ? (selectedDay
+                                        ? `${fmtDay(selectedDay)} · ${fmtMinutes(heatmapData[selectedDay]?.count ?? 0)}`
+                                        : <span className="hidden sm:inline">Xbox doesn't report playtime</span>)
+                                    : selectedDay
                                     ? `${fmtDay(selectedDay)} · ${displayAchs.length} achievements`
                                     : `${displayAchs.length} total`}
                             </span>
                         </div>
 
                         {/* Timeline */}
-                        {groups.length === 0 ? (
+                        {view === 'playtime' ? (
+                            !playtime ? (
+                                <div className="text-[#8f98a0] text-[11px] py-4 italic text-center">Loading play sessions…</div>
+                            ) : playGroups.length === 0 ? (
+                                <div className="text-[#8f98a0] text-[11px] py-4 italic text-center">No play sessions found.</div>
+                            ) : (
+                                <div className="flex flex-col gap-0">
+                                    {playGroups.slice(0, selectedDay ? undefined : visibleDays).map(({ day, minutes, sessions: daySessions }) => {
+                                        const isCollapsed = collapsedDays.has(day);
+                                        return (
+                                            <div key={day} className="mb-4">
+                                                <button onClick={() => toggleDay(day)} className="w-full flex items-center gap-2 mb-2 group outline-none">
+                                                    <div className="w-2 h-2 rounded-full bg-[#2a475e] border border-[#66c0f4] shrink-0" />
+                                                    <span className="text-[10px] text-[#66c0f4] font-semibold group-hover:text-[#c6d4df] transition-colors">{fmtDay(day)}</span>
+                                                    <div className="flex-1 h-px bg-[#2a475e] opacity-40" />
+                                                    <span className="text-[9px] text-[#546270]">
+                                                        {fmtMinutes(minutes)} · {daySessions.length} session{daySessions.length !== 1 ? 's' : ''}
+                                                    </span>
+                                                    <ChevronDown size={11} className={`text-[#546270] transition-transform duration-200 shrink-0 ${isCollapsed ? '' : 'rotate-180'}`} />
+                                                </button>
+                                                {!isCollapsed && (
+                                                    <div className="ml-4 border-l border-[#2a475e] pl-3 flex flex-col gap-1">
+                                                        {daySessions.map(session => <PlaySessionRow key={session.id} session={session} day={day} />)}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            )
+                        ) : groups.length === 0 ? (
                             <div className="text-[#8f98a0] text-[11px] py-4 italic text-center">No achievements found.</div>
                         ) : (
                             <div className="flex flex-col gap-0">
@@ -718,7 +965,7 @@ const App = () => {
                         )}
 
                         {/* Scroll sentinel */}
-                        {nextChunk <= 4 && (
+                        {hasMore && (view === 'achievements' || !selectedDay) && (
                             <div ref={sentinelRef} className="py-4 flex justify-center">
                                 {loadingMore && <span className="text-[9px] text-[#546270] uppercase tracking-wider">Loading…</span>}
                             </div>

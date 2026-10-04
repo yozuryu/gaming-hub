@@ -56,6 +56,22 @@ export const fmtDayKey = (key, opts = DATE_OPTS) => key ? keyToDate(key).toLocal
 export const fmtDate   = (v, opts = DATE_OPTS) => { const d = toDate(v); return d ? d.toLocaleDateString('en-GB', opts) : ''; };
 export const fmtClock  = (v) => { const d = toDate(v); return d ? d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) : ''; };
 
+// Splits a time span at local midnights: [{ key: "YYYY-MM-DD", ms }] (a play session
+// from 23:30 to 00:45 gives 30 min to one day and 45 to the next). A zero-length
+// span gives its whole day 0 ms, so callers can still credit it.
+export const splitByDay = (startMs, endMs) => {
+    if (!(endMs > startMs)) return [{ key: dayKey(new Date(endMs)), ms: 0 }];
+    const parts = [];
+    let t = startMs;
+    while (t < endMs) {
+        const d = new Date(t);
+        const next = Math.min(new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1).getTime(), endMs);
+        parts.push({ key: dayKey(d), ms: next - t });
+        t = next;
+    }
+    return parts;
+};
+
 // Heatmap { "YYYY-MM-DD": { count, ...sums } } in local days, built from raw unlocks.
 // `sums` maps an output field to a getter, e.g. { points: a => a.points }.
 export const buildHeatmap = (items, getTs, sums = {}) => {
