@@ -7,6 +7,7 @@ Playtime is now logged as play sessions for Steam and RetroAchievements, with hi
 ### Steam
 
 - Win conditions (ending achievements that mark a game as beaten) added for 65 played JRPGs and JRPG-style games (each checked against achievement guides): Ys, Trails, Final Fantasy, Tales, Agarest, Neptunia, God Eater, Digimon, Chained Echoes and more; usually any-difficulty or any-ending clears count
+- Win conditions added for 127 played story-driven games (Batman Arkham, BioShock, Resident Evil, Metro, Tomb Raider, Devil May Cry, Telltale, Hollow Knight, Celeste and more), each taken from the achievement's own wording or checked against guides; games with no achievement marking the ending are left without one
 
 ### Activity
 
