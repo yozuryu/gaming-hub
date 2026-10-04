@@ -626,10 +626,13 @@ const App = () => {
             .map(x => ({ ...x, pct: Math.min(100, (x.unlocks / x.total) * 100) }))
             .sort((a, b) => b.pct - a.pct || b.total - a.total).slice(0, 8)
             .map(x => gameRow(x, x.pct, <>{x.unlocks} of {x.total}{doneInPeriod.has(`${x.platform}-${x.id}`) && <span className="text-[#e5b143]" title="Completed in this period"> ★</span>}</>));
-        // Almost complete: current progress of unfinished games (ignores the period), fewest left first on ties
+        // Almost complete: current progress of unfinished games touched in the period (played or
+        // unlocked something), fewest left first on ties. All time = every unfinished game.
+        const touched = new Set(games.filter(x => x.unlocks || x.minutes >= 1).map(x => `${x.platform}-${x.id}`));
         const almostComplete = Object.entries(data.progress)
-            .map(([k, v]) => { const [platform, ...rest] = k.split('-'); return { platform, id: rest.join('-'), ...v }; })
+            .map(([k, v]) => { const [platform, ...rest] = k.split('-'); return { platform, id: rest.join('-'), key: k, ...v }; })
             .filter(x => keep(x.platform, x.id) && x.total >= 10 && x.unlocked > 0 && x.unlocked < x.total)
+            .filter(x => period === 'all' || touched.has(x.key))
             .map(x => ({ ...x, pct: (x.unlocked / x.total) * 100 }))
             .sort((a, b) => b.pct - a.pct || (a.total - a.unlocked) - (b.total - b.unlocked)).slice(0, 8)
             .map(x => gameRow(x, x.pct, `${x.total - x.unlocked} left`));
@@ -682,7 +685,7 @@ const App = () => {
             consoleHours: consoleRows('minutes'), consoleUnlocks: consoleRows('unlocks'),
             nameOf,
         };
-    }, [base, range, data, hideFarms]);
+    }, [base, range, data, hideFarms, period]);
 
     const d = (k, play) => (view?.prev && (!play || view.prevPlayTracked) ? pct(view.cur[k], view.prev[k]) : null);
     const periodLabel = PERIODS.find(p => p.id === period).label;
@@ -796,8 +799,8 @@ const App = () => {
                                 <ChartCard title="Most progress" subtitle={<>Share of the game's achievements earned · sets of 10+ · <span className="text-[#e5b143]">★</span> completed</>}>
                                     <BarList rows={view.mostProgress} format={v => `${Math.round(v)}%`} max={100} />
                                 </ChartCard>
-                                <ChartCard title="Almost complete" subtitle="Current progress, any time · sets of 10+">
-                                    <BarList rows={view.almostComplete} format={v => `${Math.floor(v)}%`} max={100} empty="No unfinished games." />
+                                <ChartCard title="Almost complete" subtitle={`Current progress${period === 'all' ? '' : ' of games played in this period'} · sets of 10+`}>
+                                    <BarList rows={view.almostComplete} format={v => `${Math.floor(v)}%`} max={100} empty={period === 'all' ? 'No unfinished games.' : 'No unfinished games played in this period.'} />
                                 </ChartCard>
                                 <ChartCard title="Minutes per achievement" subtitle="Slowest first · 3+ unlocks and 30m+ played">
                                     <BarList rows={view.perAch} format={v => fmtMinutes(v)} empty="No game with 3+ unlocks and 30m+ played." />
