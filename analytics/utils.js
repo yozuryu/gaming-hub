@@ -35,6 +35,19 @@ export const FARM_MIN_UNLOCKS = 10;   // so a short game with 3 quick achievemen
 // Magnitude ramp for the punchcards (one hue, dark → light on the dark surface)
 export const HEAT_RAMP = ['#101214', '#0d2a3d', '#1a5275', '#2a7bba', '#66c0f4'];
 
+// Parts of the day, lightest (morning) to darkest (night): one hue, ordered like the clock.
+// Hours are local; night wraps past midnight.
+export const DAY_PARTS = [
+    { id: 'morning',   label: 'Morning',   range: '05–12', hours: [5, 6, 7, 8, 9, 10, 11],       color: '#a9dcf8' },
+    { id: 'afternoon', label: 'Afternoon', range: '12–17', hours: [12, 13, 14, 15, 16],          color: '#66c0f4' },
+    { id: 'evening',   label: 'Evening',   range: '17–22', hours: [17, 18, 19, 20, 21],          color: '#2a7bba' },
+    { id: 'night',     label: 'Night',     range: '22–05', hours: [22, 23, 0, 1, 2, 3, 4],       color: '#1a5275' },
+];
+
+// Behaviour thresholds
+export const DROPPED_MAX_MINUTES = 60;   // tried and dropped: under an hour played in total…
+export const DROPPED_IDLE_DAYS = 30;     // …and not touched for this long
+
 // 45 → "45m", 135 → "2h 15m", 120 → "2h"
 export const fmtMinutes = (m) => {
     const min = Math.round(m || 0);

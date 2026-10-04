@@ -30,6 +30,9 @@ Playtime is now logged as play sessions for Steam and RetroAchievements, with hi
 - Completion funnel: Steam and Xbox now have a Beaten stage (games whose ending achievement from the admin's win conditions is unlocked, plus 100% games), like RA
 - RA games show their subset badge and tilde tags (Homebrew, Hack, Demo, Prototype) wherever they appear, so e.g. the original and Homebrew 2048 are told apart
 - Session lengths start at "<30m": the "<5m" bar is gone now that launches of 5 minutes or less aren't logged
+- When you play now answers the question directly: peak time (busiest 2-hour window of the week), favorite day, weekend and after-midnight share, typical start time and busiest day, plus a Time of day split (morning, afternoon, evening, night; overall, RA and Steam) and average playtime per weekday. The hour-by-hour grids stay below
+- New Focus section: share of playtime on the top game, games per week, new games started (and completed) in the period, and games tried and dropped (under an hour played, untouched for 30+ days), each with a list
+- "Minutes per achievement" is now "Hardest earned" (most playtime per achievement)
 
 ### Hub
 

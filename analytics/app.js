@@ -4,7 +4,7 @@ import { BarChart3, ChevronDown, Table } from 'lucide-react';
 import { TZ, dayKey, todayKey, addDays, keyToDate, splitByDay, fmtDayKey } from '../assets/time.js';
 import {
     RA_MEDIA, PLATFORMS, PLATFORM_COLOR, PLATFORM_LABEL, PLATFORM_SHORT, RARITY_TIERS, rarityTier, HEAT_RAMP,
-    FARM_PER_HOUR, FARM_MIN_UNLOCKS, TILDE_TAG_COLORS,
+    FARM_PER_HOUR, FARM_MIN_UNLOCKS, TILDE_TAG_COLORS, DAY_PARTS, DROPPED_MAX_MINUTES, DROPPED_IDLE_DAYS,
     fmtMinutes, fmtHours, fmtNum, parseTitle, xboxImg, gameUrl, niceMax, median,
 } from './utils.js';
 
@@ -12,6 +12,8 @@ import {
 const PLAYTIME_FIRST_YEAR = 2026;
 const PLAYTIME_PLATFORMS = ['ra', 'steam'];
 const WEEKDAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const WEEKDAY_NAMES = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const hh = (h) => String(((h % 24) + 24) % 24).padStart(2, '0');
 
 const fetchJson = (url) => fetch(url).then(r => (r.ok ? r.json() : null)).catch(() => null);
 
@@ -538,7 +540,18 @@ const App = () => {
             const k = `${u.platform}-${u.g}`;
             if (!(k in firstUnlock) || u.ms < firstUnlock[k]) firstUnlock[k] = u.ms;
         }
-        return { days, unlocks, completions, firstUnlockKey, trackingKey, firstUnlock };
+        // Per game, all time: first and last activity (a session or an unlock) and minutes played
+        const life = {};
+        const touch = (k, ms) => {
+            const x = (life[k] ??= { first: ms, last: ms, minutes: 0 });
+            if (ms < x.first) x.first = ms;
+            if (ms > x.last) x.last = ms;
+            return x;
+        };
+        for (const s of data.sessions) touch(`${s.platform}-${s.gameId}`, s.startMs).minutes += s.minutes;
+        for (const s of data.sessions) touch(`${s.platform}-${s.gameId}`, s.endMs);
+        for (const u of data.unlocks) touch(`${u.platform}-${u.g}`, u.ms);
+        return { days, unlocks, completions, firstUnlockKey, trackingKey, firstUnlock, life };
     }, [data]);
 
     const range = useMemo(() => buildRange(period, base?.firstUnlockKey), [period, base]);
@@ -604,6 +617,41 @@ const App = () => {
         const unlockGrid = Array.from({ length: 7 }, () => Array(24).fill(0));
         for (const u of periodUnlocks) { const d = new Date(u.ms); unlockGrid[(d.getDay() + 6) % 7][d.getHours()]++; }
 
+        // Habits, all from the playtime grid (RA + Steam)
+        const playTotal = playGrid.flat().reduce((a, v) => a + v, 0);
+        const share = (v) => (playTotal ? Math.round((v / playTotal) * 100) : 0);
+        // Peak: busiest 2-hour window of the week (wraps across midnight and Sunday → Monday)
+        const flat = playGrid.flat();
+        let peakAt = 0;
+        for (let i = 1; i < 168; i++) if (flat[i] + flat[(i + 1) % 168] > flat[peakAt] + flat[(peakAt + 1) % 168]) peakAt = i;
+        const peakMinutes = flat[peakAt] + flat[(peakAt + 1) % 168];
+        const peak = peakMinutes ? { label: `${WEEKDAYS[Math.floor(peakAt / 24)]} ${hh(peakAt % 24)}–${hh(peakAt % 24 + 2)}`, share: share(peakMinutes) } : null;
+        const weekdayMinutes = playGrid.map(r => r.reduce((a, v) => a + v, 0));
+        const favDay = weekdayMinutes.indexOf(Math.max(...weekdayMinutes));
+        const weekendShare = share(weekdayMinutes[5] + weekdayMinutes[6]);
+        const lateShare = share(playGrid.reduce((a, r) => a + r[0] + r[1] + r[2] + r[3] + r[4], 0));
+        // Typical start: median start time, on a clock that starts at 05:00 so after-midnight play counts as late
+        const startMins = periodSessions.map(s => { const d = new Date(s.startMs); return (d.getHours() * 60 + d.getMinutes() - 300 + 1440) % 1440; });
+        const typicalStart = startMins.length ? Math.round(median(startMins) + 300) % 1440 : null;
+        // Busiest single day
+        const dayTotals = {};
+        for (const x of days) if (inRange(x.key, startKey, endKey)) dayTotals[x.key] = (dayTotals[x.key] || 0) + x.minutes;
+        const busiest = Object.entries(dayTotals).reduce((m, e) => (!m || e[1] > m[1] ? e : m), null);
+        // Average per weekday: minutes on that weekday ÷ how many of them the tracked part of the period has
+        const weekdayCount = Array(7).fill(0);
+        for (let k = startKey < trackingKey ? trackingKey : startKey; k <= endKey; k = addDays(k, 1)) weekdayCount[(keyToDate(k).getDay() + 6) % 7]++;
+        const platformGrids = Object.fromEntries(PLAYTIME_PLATFORMS.map(p => [p, hourGrid(periodSessions.filter(s => s.platform === p))]));
+        // Time of day, overall and per platform
+        const partsOf = (grid) => DAY_PARTS.map(p => ({ ...p, minutes: grid.reduce((a, r) => a + p.hours.reduce((b, h) => b + r[h], 0), 0) }));
+        const dayParts = [
+            { id: 'all', label: 'RA + Steam', parts: partsOf(playGrid) },
+            ...PLAYTIME_PLATFORMS.map(p => ({ id: p, label: PLATFORM_LABEL[p], parts: partsOf(platformGrids[p]) })),
+        ].map(r => ({ ...r, total: r.parts.reduce((a, x) => a + x.minutes, 0) })).filter(r => r.total > 0);
+        const weekdayAvg = WEEKDAYS.map((label, i) => ({
+            key: label, label,
+            values: Object.fromEntries(PLAYTIME_PLATFORMS.map(p => [p, weekdayCount[i] ? platformGrids[p][i].reduce((a, v) => a + v, 0) / weekdayCount[i] : 0])),
+        }));
+
         // ── Top games
         const perGame = {};
         const g = (p, id) => (perGame[`${p}-${id}`] ??= { platform: p, id: String(id), minutes: 0, unlocks: 0 });
@@ -639,10 +687,33 @@ const App = () => {
             .map(x => ({ ...x, pct: (x.unlocked / x.total) * 100 }))
             .sort((a, b) => b.pct - a.pct || (a.total - a.unlocked) - (b.total - b.unlocked)).slice(0, 8)
             .map(x => gameRow(x, x.pct, `${x.total - x.unlocked} left`));
-        // Minutes per achievement, slowest first: where each unlock took real playtime
+        // Hardest earned: most playtime per achievement, where each unlock took real play
         const perAch = games.filter(x => x.unlocks >= 3 && x.minutes >= 30)
             .map(x => ({ ...x, mpa: x.minutes / x.unlocks })).sort((a, b) => b.mpa - a.mpa).slice(0, 8)
             .map(x => gameRow(x, x.mpa, `${x.unlocks} in ${fmtMinutes(x.minutes)}`));
+
+        // ── Focus
+        const topShare = cur.minutes && topHours.length ? Math.round((topHours[0].value / cur.minutes) * 100) : null;
+        // Games per week: distinct games played or unlocked in, averaged over the period's weeks
+        const perWeek = {};
+        for (const x of days) if (inRange(x.key, startKey, endKey)) (perWeek[weekStartKey(x.key)] ??= new Set()).add(`${x.s.platform}-${x.s.gameId}`);
+        for (const u of periodUnlocks) (perWeek[weekStartKey(u.key)] ??= new Set()).add(`${u.platform}-${u.g}`);
+        const weekKeys = buildBuckets(startKey, endKey, 'week');
+        const gamesPerWeek = weekKeys.length ? weekKeys.reduce((a, k) => a + (perWeek[k]?.size ?? 0), 0) / weekKeys.length : 0;
+        // New games: first played or unlocked (all time) in the period
+        const newGames = Object.entries(base.life)
+            .filter(([k, x]) => { const [p, ...id] = k.split('-'); return keep(p, id.join('-')) && inRange(dayKey(new Date(x.first)), startKey, endKey); })
+            .map(([k, x]) => { const [platform, ...id] = k.split('-'); return { platform, id: id.join('-'), key: k, ...x }; });
+        const newDone = newGames.filter(x => doneInPeriod.has(x.key)).length;
+        const newRows = [...newGames].sort((a, b) => b.minutes - a.minutes || b.last - a.last).slice(0, 8)
+            .map(x => gameRow(x, x.minutes, <>{x.platform === 'xbox' ? 'no playtime' : PLATFORM_SHORT[x.platform]}{doneInPeriod.has(x.key) && <span className="text-[#e5b143]" title="Completed in this period"> ★</span>}</>));
+        // Tried and dropped: first played in the period (after tracking began), under an hour in total,
+        // and untouched for DROPPED_IDLE_DAYS. RA/Steam only: it needs playtime.
+        const idleBefore = Date.now() - DROPPED_IDLE_DAYS * 86400000;
+        const dropped = newGames
+            .filter(x => x.platform !== 'xbox' && dayKey(new Date(x.first)) >= trackingKey && x.minutes < DROPPED_MAX_MINUTES && x.last < idleBefore)
+            .sort((a, b) => b.last - a.last);
+        const droppedRows = dropped.slice(0, 8).map(x => gameRow(x, x.minutes, `last ${fmtDayKey(dayKey(new Date(x.last)))}`));
 
         // ── Sessions
         // Sessions of 5 minutes or less aren't logged by the pipelines (launches, not play)
@@ -682,6 +753,10 @@ const App = () => {
             cur, prev, prevPlayTracked, playNote,
             playBuckets, unlockBuckets, playUnit, unit,
             playGrid, unlockGrid, topHours, mostProgress, almostComplete, perAch,
+            peak, favDay: weekdayMinutes[favDay] ? favDay : null, favDayShare: share(weekdayMinutes[favDay]), weekendShare, lateShare,
+            typicalStart, busiest, dayParts, playTotal, weekdayAvg,
+            topShare, topGame: topHours[0] ?? null, gamesPerWeek, newCount: newGames.length, newDone, newRows,
+            droppedCount: dropped.length, droppedRows,
             farmsHidden: hideFarms ? data.farms.size : 0,
             lengthBuckets, longest, sessionCount: periodSessions.length,
             medianSession: median(periodSessions.map(s => s.minutes)),
@@ -781,9 +856,31 @@ const App = () => {
                             </div>
                         </section>
 
-                        {/* When you play */}
+                        {/* When you play: direct answers first, the hour-by-hour grids below */}
                         <section>
-                            <SectionHeader title="When you play" note={TZ} />
+                            <SectionHeader title="When you play" note={`RA + Steam playtime${view.playNote ? ` ${view.playNote}` : ''} · ${TZ}`} />
+                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 mb-3">
+                                <StatTile label="Peak time" value={view.peak?.label ?? '–'} note={view.peak ? `${view.peak.share}% of play` : null} />
+                                <StatTile label="Favorite day" value={view.favDay != null ? WEEKDAY_NAMES[view.favDay] : '–'} note={view.favDay != null ? `${view.favDayShare}% of play` : null} />
+                                <StatTile label="Weekends" value={view.playTotal ? `${view.weekendShare}%` : '–'} note="of play · 29% of days" />
+                                <StatTile label="After midnight" value={view.playTotal ? `${view.lateShare}%` : '–'} note="of play · 00–05" />
+                                <StatTile label="Typical start" value={view.typicalStart != null ? `${hh(Math.floor(view.typicalStart / 60))}:${String(view.typicalStart % 60).padStart(2, '0')}` : '–'} note="median session start" />
+                                <StatTile label="Busiest day" value={view.busiest ? fmtMinutes(view.busiest[1]) : '–'} note={view.busiest ? fmtDayKey(view.busiest[0]) : null} />
+                            </div>
+                            <div className="grid md:grid-cols-2 gap-3 mb-3">
+                                <ChartCard title="Time of day" subtitle="Share of playtime"
+                                    legend={DAY_PARTS.map(p => ({ label: `${p.label} ${p.range}`, color: p.color }))}
+                                    table={{ columns: ['Part', 'Hours', ...view.dayParts.map(r => r.id === 'all' ? 'Total' : PLATFORM_SHORT[r.id])], rows: DAY_PARTS.map((p, i) => [p.label, p.range, ...view.dayParts.map(r => `${fmtMinutes(r.parts[i].minutes)} (${Math.round((r.parts[i].minutes / r.total) * 100)}%)`)]) }}>
+                                    {view.dayParts.length === 0
+                                        ? <div className="text-[10px] text-[#546270] italic py-2">No playtime in this period.</div>
+                                        : <div className="flex flex-col gap-3">{view.dayParts.map(r => <DayPartBar key={r.id} row={r} labels={r.id === 'all'} />)}</div>}
+                                </ChartCard>
+                                <ChartCard title="Average per weekday" subtitle={`Playtime on an average day of each kind${view.playNote ? ` · ${view.playNote}` : ''}`}
+                                    legend={PLAYTIME_PLATFORMS.map(p => ({ label: PLATFORM_SHORT[p], color: PLATFORM_COLOR[p] }))}
+                                    table={{ columns: ['Day', 'RA', 'Steam', 'Total'], rows: view.weekdayAvg.map(b => [WEEKDAY_NAMES[WEEKDAYS.indexOf(b.label)], fmtMinutes(b.values.ra), fmtMinutes(b.values.steam), fmtMinutes((b.values.ra || 0) + (b.values.steam || 0))]) }}>
+                                    <StackedColumns buckets={view.weekdayAvg} series={PLAYTIME_PLATFORMS} format={v => fmtMinutes(v)} height={110} />
+                                </ChartCard>
+                            </div>
                             <div className="grid md:grid-cols-2 gap-3">
                                 <ChartCard title="Playtime by hour" subtitle="RA + Steam, minutes per hour of the week"
                                     table={{ columns: ['Day', ...Array.from({ length: 24 }, (_, h) => String(h).padStart(2, '0'))], rows: view.playGrid.map((r, i) => [WEEKDAYS[i], ...r.map(v => Math.round(v) || '')]) }}>
@@ -807,8 +904,29 @@ const App = () => {
                                 <ChartCard title="Almost complete" subtitle={`Current progress${period === 'all' ? '' : ' of games played in this period'} · sets of 10+`}>
                                     <BarList rows={view.almostComplete} format={v => `${Math.floor(v)}%`} max={100} empty={period === 'all' ? 'No unfinished games.' : 'No unfinished games played in this period.'} />
                                 </ChartCard>
-                                <ChartCard title="Minutes per achievement" subtitle="Slowest first · 3+ unlocks and 30m+ played">
+                                <ChartCard title="Hardest earned" subtitle="Most playtime per achievement · 3+ unlocks and 30m+ played">
                                     <BarList rows={view.perAch} format={v => fmtMinutes(v)} empty="No game with 3+ unlocks and 30m+ played." />
+                                </ChartCard>
+                            </div>
+                        </section>
+
+                        {/* Focus: how play spreads across games */}
+                        <section>
+                            <SectionHeader title="Focus" note={periodLabel} />
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-3">
+                                <StatTile label="Top game share" value={view.topShare != null ? `${view.topShare}%` : '–'}
+                                    note={view.topGame ? view.topGame.label : 'of playtime'} />
+                                <StatTile label="Games per week" value={view.gamesPerWeek ? view.gamesPerWeek.toFixed(1) : '–'} note="played or unlocked in" />
+                                <StatTile label="New games" value={fmtNum(view.newCount)} note={`${fmtNum(view.newDone)} completed`} />
+                                <StatTile label="Tried and dropped" value={fmtNum(view.droppedCount)} note={`<1h, idle ${DROPPED_IDLE_DAYS}+ days`} />
+                            </div>
+                            <div className="grid md:grid-cols-2 gap-3">
+                                <ChartCard title="New games" subtitle={<>First played or unlocked in this period · time played so far · <span className="text-[#e5b143]">★</span> completed</>}>
+                                    <BarList rows={view.newRows} format={fmtMinutes} empty="No new games in this period." />
+                                </ChartCard>
+                                <ChartCard title="Tried and dropped" subtitle={`New in this period, under 1h played in total, untouched for ${DROPPED_IDLE_DAYS}+ days · RA + Steam`}>
+                                    <BarList rows={view.droppedRows} format={fmtMinutes} max={DROPPED_MAX_MINUTES}
+                                        empty={period === '30d' ? `None yet: a game needs ${DROPPED_IDLE_DAYS} idle days to count.` : 'No dropped games in this period.'} />
                                 </ChartCard>
                             </div>
                         </section>
@@ -907,6 +1025,35 @@ const App = () => {
         </div>
         </TipContext.Provider>
     );
+};
+
+// 100% bar of playtime by part of the day, 2px gaps; `labels` adds percentages under each part
+const DayPartBar = ({ row, labels }) => {
+    const { parts, total } = row;
+    const shown = parts.filter(p => p.minutes > 0);
+    return (
+        <div>
+            <div className="flex items-baseline justify-between text-[10px] mb-1">
+                <span className="text-[#c6d4df]">{row.label}</span>
+                <span className="text-[#546270]">{fmtMinutes(total)}</span>
+            </div>
+            <div className={`flex gap-[2px] ${labels ? 'h-[14px]' : 'h-[10px]'}`}>
+                {shown.map(p => <DayPartSegment key={p.id} part={p} total={total} who={row.label} />)}
+            </div>
+            {labels && <div className="flex gap-[2px] mt-1.5">
+                {shown.map(p => (
+                    <div key={p.id} className="min-w-0 text-[10px] leading-tight" style={{ width: `${(p.minutes / total) * 100}%`, minWidth: 3 }}>
+                        {p.minutes / total >= 0.08 && <><div className="text-[#c6d4df] font-semibold">{Math.round((p.minutes / total) * 100)}%</div><div className="text-[9px] text-[#546270] truncate">{p.label}</div></>}
+                    </div>
+                ))}
+            </div>}
+        </div>
+    );
+};
+
+const DayPartSegment = ({ part, total, who }) => {
+    const tip = useTip(() => ({ title: `${who} · ${part.label} ${part.range}`, rows: [{ color: part.color, value: fmtMinutes(part.minutes), label: `${Math.round((part.minutes / total) * 100)}% of play` }] }));
+    return <div className="h-full first:rounded-l-[2px] last:rounded-r-[2px] outline-none hover:brightness-125 focus:brightness-125" style={{ width: `${(part.minutes / total) * 100}%`, minWidth: 3, background: part.color }} {...tip} />;
 };
 
 // 100% stacked bar of rarity tiers for one platform, 2px gaps between segments
