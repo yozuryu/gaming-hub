@@ -20,6 +20,7 @@ const fetchJson = (url) => fetch(url).then(r => (r.ok ? r.json() : null)).catch(
 
 const PERIODS = [
     { id: '30d',  label: '30 days' },
+    { id: '3m',   label: '3 months' },
     { id: '12m',  label: '12 months' },
     { id: 'year', label: 'This year' },
     { id: 'all',  label: 'All time' },
@@ -37,6 +38,11 @@ const buildRange = (period, firstKey) => {
         const startKey = addDays(today, -29);
         return { startKey, endKey: today, prevStartKey: addDays(today, -59), prevEndKey: addDays(today, -30), unit: 'day', prevLabel: 'previous 30 days' };
     }
+    if (period === '3m') {
+        // This month and the two before it, like 12 months
+        const startKey = monthStartKey(today, 2);
+        return { startKey, endKey: today, prevStartKey: monthStartKey(today, 5), prevEndKey: addDays(startKey, -1), unit: 'week', prevLabel: 'previous 3 months' };
+    }
     if (period === '12m') {
         const startKey = monthStartKey(today, 11);
         return { startKey, endKey: today, prevStartKey: monthStartKey(today, 23), prevEndKey: addDays(startKey, -1), unit: 'month', prevLabel: 'previous 12 months' };
@@ -50,12 +56,15 @@ const buildRange = (period, firstKey) => {
 
 const inRange = (key, a, b) => a != null && key >= a && key <= b;
 
-// Bucket keys between two day keys for a unit
-const bucketKeyOf = (key, unit) => (unit === 'day' ? key : unit === 'month' ? key.slice(0, 7) : key.slice(0, 4));
+// Bucket keys between two day keys for a unit. A week is keyed by its Monday.
+const weekStartKey = (key) => addDays(key, -((keyToDate(key).getDay() + 6) % 7));
+const bucketKeyOf = (key, unit) => (unit === 'day' ? key : unit === 'week' ? weekStartKey(key) : unit === 'month' ? key.slice(0, 7) : key.slice(0, 4));
 const buildBuckets = (startKey, endKey, unit) => {
     const keys = [];
     if (unit === 'day') {
         for (let k = startKey; k <= endKey; k = addDays(k, 1)) keys.push(k);
+    } else if (unit === 'week') {
+        for (let k = weekStartKey(startKey); k <= endKey; k = addDays(k, 7)) keys.push(k);
     } else if (unit === 'month') {
         const d = keyToDate(startKey), end = endKey.slice(0, 7);
         for (let m = new Date(d.getFullYear(), d.getMonth(), 1); ; m.setMonth(m.getMonth() + 1)) {
@@ -69,7 +78,7 @@ const buildBuckets = (startKey, endKey, unit) => {
     return keys;
 };
 const bucketLabel = (k, unit) => {
-    if (unit === 'day') return keyToDate(k).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+    if (unit === 'day' || unit === 'week') return keyToDate(k).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
     if (unit === 'month') return keyToDate(`${k}-01`).toLocaleDateString('en-GB', { month: 'short', year: '2-digit' });
     return k;
 };
@@ -596,7 +605,7 @@ const App = () => {
             .filter(x => x.unlocks && x.total >= 10)
             .map(x => ({ ...x, pct: Math.min(100, (x.unlocks / x.total) * 100) }))
             .sort((a, b) => b.pct - a.pct || b.total - a.total).slice(0, 8)
-            .map(x => gameRow(x, x.pct, `${x.unlocks} of ${x.total}${doneInPeriod.has(`${x.platform}-${x.id}`) ? ' ★' : ''}`));
+            .map(x => gameRow(x, x.pct, <>{x.unlocks} of {x.total}{doneInPeriod.has(`${x.platform}-${x.id}`) && <span className="text-[#e5b143]" title="Completed in this period"> ★</span>}</>));
         // Almost complete: current progress of unfinished games (ignores the period), fewest left first on ties
         const almostComplete = Object.entries(data.progress)
             .map(([k, v]) => { const [platform, ...rest] = k.split('-'); return { platform, id: rest.join('-'), ...v }; })
@@ -764,7 +773,7 @@ const App = () => {
                             <SectionHeader title="Top games" note={`${periodLabel}${view.farmsHidden ? ` · ${view.farmsHidden} achievement farms hidden` : ''}`} />
                             <div className="grid md:grid-cols-2 gap-3">
                                 <ChartCard title="Most played"><BarList rows={view.topHours} format={fmtMinutes} /></ChartCard>
-                                <ChartCard title="Most progress" subtitle="Share of the game's achievements earned · sets of 10+ · ★ completed">
+                                <ChartCard title="Most progress" subtitle={<>Share of the game's achievements earned · sets of 10+ · <span className="text-[#e5b143]">★</span> completed</>}>
                                     <BarList rows={view.mostProgress} format={v => `${Math.round(v)}%`} max={100} />
                                 </ChartCard>
                                 <ChartCard title="Almost complete" subtitle="Current progress, any time · sets of 10+">

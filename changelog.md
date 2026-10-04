@@ -18,6 +18,7 @@ Playtime is now logged as play sessions for Steam and RetroAchievements, with hi
 - Overview tiles with change vs the previous period: hours played, active days, sessions, average session, achievements, RA points, gamerscore, completed games
 - Trends (hours played, achievements unlocked), when you play (day × hour punchcards for playtime and unlocks), top games, session lengths, rarity profile with rarest unlocks, completion funnel per platform with median days to complete, and RetroAchievements by console
 - Every chart has hover/focus tooltips and a Table toggle
+- 3 months period (weekly bars) between 30 days and 12 months; the ★ for games completed in the period is gold
 - Hide achievement farms checkbox (on by default) removes Steam games that hand out more than 15 achievements per hour of playtime (Slash It, Lines X, …) from every section
 - Top games: Most progress (share of each game's achievements earned in the period, sets of 10+) and Almost complete (unfinished games closest to 100%) replace "Most unlocks", which farm games dominated; minutes per achievement now lists the slowest first
 - RA games show their subset badge and tilde tags (Homebrew, Hack, Demo, Prototype) wherever they appear, so e.g. the original and Homebrew 2048 are told apart
