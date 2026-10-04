@@ -19,20 +19,32 @@ const readJson = (filePath) => {
 };
 
 const round1 = (n) => (n == null || Number.isNaN(n) ? undefined : Math.round(n * 10) / 10);
+const keyOf = (u) => `${u.g}|${u.a}`;
 
 /**
  * Writes the year files for a full list of unlocks. Only files whose content
  * changed (ignoring metadata) are rewritten; years that no longer have unlocks
  * are removed.
  *
- * @param unlocks  [{ t, g, a, n, p?, r?, hc? }], t as ISO UTC
+ * @param unlocks     [{ t, g, a, n, p?, r?, hc? }], t as ISO UTC
+ * @param keepRarity  regular (non-refresh) runs: unlocks already in the files keep their
+ *                    stored rarity, so other players' activity doesn't rewrite history
+ *                    every run; only the daily refresh run updates it
  * @returns { written, years }
  */
-function writeUnlockHistory(dir, unlocks, { asOf, dryRun = false } = {}) {
+function writeUnlockHistory(dir, unlocks, { asOf, dryRun = false, keepRarity = false } = {}) {
+    const stored = new Map();
+    if (keepRarity && fs.existsSync(dir)) {
+        for (const file of fs.readdirSync(dir)) {
+            if (!/^\d{4}\.json$/.test(file)) continue;
+            for (const u of readJson(path.join(dir, file))?.unlocks ?? []) stored.set(keyOf(u), u.r);
+        }
+    }
     const byYear = {};
     for (const u of unlocks) {
         if (!u.t) continue;
-        const clean = Object.fromEntries(Object.entries({ ...u, r: round1(u.r) }).filter(([, v]) => v !== undefined && v !== null && v !== false));
+        const r = keepRarity && stored.has(keyOf(u)) ? stored.get(keyOf(u)) : round1(u.r);
+        const clean = Object.fromEntries(Object.entries({ ...u, r }).filter(([, v]) => v !== undefined && v !== null && v !== false));
         (byYear[u.t.slice(0, 4)] ??= []).push(clean);
     }
 

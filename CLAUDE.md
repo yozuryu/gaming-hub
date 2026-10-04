@@ -203,7 +203,7 @@ Steam and RA only (Xbox has no playtime). Each run compares lifetime playtime pe
 
 ### Unlock History (`scripts/lib/history.js`)
 Every unlocked achievement, all time, rebuilt by each pipeline on every run from the per-game data it already loads, into `data/{ra,steam,xbox}/history/{YYYY}.json` (UTC year of the unlock). The achievement chunks only cover 364 days; this is the all-time source for Analytics.
-`{ metadata, unlocks: [{ t, g, a, n, p?, r?, hc? }] }`: `t` ISO UTC, `g` game id, `a` achievement id, `n` name, `p` RA points / Xbox gamerscore, `r` rarity % (Steam/Xbox global %, RA `numAwarded / numDistinctPlayersCasual`), `hc` RA hardcore. `history/index.json` (`{ years: { YYYY: count } }`) lists the year files. One unlock per line; unchanged years are not rewritten, empty years are deleted. ~390 KB for all years.
+`{ metadata, unlocks: [{ t, g, a, n, p?, r?, hc? }] }`: `t` ISO UTC, `g` game id, `a` achievement id, `n` name, `p` RA points / Xbox gamerscore, `r` rarity % (Steam/Xbox global %, RA `numAwarded / numDistinctPlayersCasual`), `hc` RA hardcore. `history/index.json` (`{ years: { YYYY: count } }`) lists the year files. One unlock per line; unchanged years are not rewritten, empty years are deleted. `r` (0.1 precision) is only refreshed by the midnight run; other runs keep each stored unlock's `r` and only add new ones. ~390 KB for all years.
 
 ### Shared behavior
 - Both pipelines write JSON to `data/{ra,steam}/` and commit to main via GitHub Actions
@@ -211,7 +211,9 @@ Every unlocked achievement, all time, rebuilt by each pipeline on every run from
 - `--debug` flag prints API responses without writing files
 - **Failure handling:** API calls retry with backoff. If profile-level data (profile, awards, RA achievement chunks, Steam owned/recent games) still fails, the run exits non-zero before writing, so the previous files stay and nothing is committed. A single game that fails keeps its cached entry (in every mode, including full refresh)
 - Steam `games/sentinel.json` ("no achievements") is only written when Steam says a game has no stats or an empty schema — never on a network/HTTP error — and an entry is removed when the game later returns achievements
-- Chunk files split by 91-day windows: chunk 1 = 0–91 days, chunk 2 = 91–182, etc.
+- **Regular runs write only on activity:** hourly (incremental) runs compare with the committed files and exit before writing anything unless you did something — RA: a game's unlock count or playtime, a new unlock, recently played times or the want-to-play list; Steam: playtime / last played against `playtime/state.json`, or an unlocked count against `games/index.json`; Xbox: a title's `syncKey`. No activity = no commit. Everything else (rarity, RA rank, rolling 7/30-day points, Steam presence and `playtime2Weeks`) refreshes in the midnight run, or along with an activity run. The site labels the timestamp "Last change" for that reason
+- Files are only rewritten when their content changes, ignoring `metadata`
+- Chunk files split by 91-day windows anchored at the next UTC midnight (boundaries move once a day): chunk 1 = 0–91 days, chunk 2 = 91–182, etc. RA chunks drop the unused `cumulScore`
 
 ---
 

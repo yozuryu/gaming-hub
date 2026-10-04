@@ -441,10 +441,12 @@ function serializeLocally(payload, achievementProgress, sentinelCache, owned) {
         log.ok(`Created games directory: ${GAMES_DIR}`);
     }
 
+    // Files are only rewritten when their content changes (ignoring metadata)
     const write = (filename, data, dir = OUTPUT_DIR) => {
         const filePath = path.join(dir, filename);
         const json     = JSON.stringify(data, null, 4);
         const sizeKb   = (Buffer.byteLength(json, 'utf8') / 1024).toFixed(1);
+        if (sameIgnoringMetadata(filePath, data)) return;
         fs.writeFileSync(filePath, json, 'utf8');
         log.ok(`${filename.padEnd(24)} ${sizeKb} KB  →  ${filePath}`);
     };
@@ -565,11 +567,14 @@ function serializeLocally(payload, achievementProgress, sentinelCache, owned) {
 
     // achievements/N.json — 1 year of unlocks split into 4 quarterly chunks
     // Chunk 1 = most recent (0–91 days), Chunk 4 = oldest (273–364 days)
+    // Boundaries are anchored at the next UTC midnight (not the run time), so they
+    // move once a day instead of shifting unlocks between files on every run
     const CHUNK_MS = 91 * 24 * 60 * 60 * 1000;
-    const extractionTime = new Date(payload.metadata.extractionTimestamp).getTime();
+    const anchor = new Date(payload.metadata.extractionTimestamp);
+    anchor.setUTCHours(24, 0, 0, 0);
     for (let i = 0; i < 4; i++) {
-        const toMs   = extractionTime - (i * CHUNK_MS);
-        const fromMs = extractionTime - ((i + 1) * CHUNK_MS);
+        const toMs   = anchor.getTime() - (i * CHUNK_MS);
+        const fromMs = anchor.getTime() - ((i + 1) * CHUNK_MS);
         const chunk  = recentAchievements.filter(a => {
             const t = new Date(a.unlockedAt).getTime();
             return t > fromMs && t <= toMs;
@@ -631,6 +636,49 @@ function serializeLocally(payload, achievementProgress, sentinelCache, owned) {
 }
 
 // =========================================================
+// Activity detection (regular runs)
+// =========================================================
+
+const readJsonFile = (filePath) => {
+    try { return JSON.parse(fs.readFileSync(filePath, 'utf8')); } catch { return null; }
+};
+
+const sameIgnoringMetadata = (filePath, data) => {
+    const prev = readJsonFile(filePath);
+    if (!prev) return false;
+    const { metadata: _a, ...a } = prev;
+    const { metadata: _b, ...b } = data;
+    return JSON.stringify(a) === JSON.stringify(b);
+};
+
+// Returns a short reason if you played or unlocked anything since the last written
+// files, otherwise null. Playtime is checked against the playtime log baseline,
+// unlocks against games/index.json.
+function detectActivity(owned, achievementProgress) {
+    const dir   = path.join(__dirname, '..', 'data', 'steam');
+    const state = readJsonFile(path.join(dir, 'playtime', 'state.json'));
+    const index = readJsonFile(path.join(dir, 'games', 'index.json'))?.achievementProgress;
+    if (!state || !index) return 'no previous data';
+
+    for (const g of owned) {
+        const total      = g.playtime_forever ?? 0;
+        const lastPlayed = g.rtime_last_played ? g.rtime_last_played * 1000 : null;
+        const prev       = state.games?.[g.appid];
+        if (!prev) {
+            // Same rule as the playtime log: an unknown game is new play only if played since the baseline
+            if (total > 0 && lastPlayed != null && lastPlayed > state.asOf) return `new game ${g.name}`;
+            continue;
+        }
+        if (prev.total !== total || prev.lastPlayed !== lastPlayed) return `played ${g.name}`;
+    }
+
+    for (const [appId, game] of Object.entries(achievementProgress)) {
+        if ((index[appId]?.unlocked ?? 0) !== (game.unlocked ?? 0)) return `unlock in ${game.gameName ?? appId}`;
+    }
+    return null;
+}
+
+// =========================================================
 // Phase 3a: Playtime Log
 // =========================================================
 
@@ -674,7 +722,7 @@ function logHistory(achievementProgress) {
             unlocks.push({ t: iso(toMs(ach.unlockedAt)), g: Number(appId), a: ach.apiName, n: ach.displayName, r: ach.globalPct });
         }
     }
-    const { written, years } = writeUnlockHistory(path.join(__dirname, '..', 'data', 'steam', 'history'), unlocks, { asOf: new Date().toISOString(), dryRun: DEBUG });
+    const { written, years } = writeUnlockHistory(path.join(__dirname, '..', 'data', 'steam', 'history'), unlocks, { asOf: new Date().toISOString(), dryRun: DEBUG, keepRarity: !(REFRESH_GAMES || REFRESH_UNLOCKED_GAMES) });
     log.ok(`${unlocks.length} unlocks in ${years.length} year file(s), ${written} written${DEBUG ? '  (dry run)' : ''}`);
 }
 
@@ -686,6 +734,20 @@ async function runPipeline() {
     try {
         const { payload, owned } = await executeProfileExtraction();
         const { achievementProgress, sentinelCache } = await executeGameExtraction(payload.recentlyPlayed, owned);
+
+        // Regular runs only write when you did something; everything else
+        // (rarity, presence, 2-week playtime) refreshes in the daily midnight run
+        if (!REFRESH_GAMES && !REFRESH_UNLOCKED_GAMES) {
+            const activity = detectActivity(owned, achievementProgress);
+            if (!activity) {
+                log.section('No activity since the last run');
+                log.skip('No new unlocks or playtime, nothing written');
+                console.log();
+                process.exit(0);
+            }
+            log.ok(`Activity: ${activity}`);
+        }
+
         serializeLocally(payload, achievementProgress, sentinelCache, owned);
         logPlaytime(owned);
         logHistory(achievementProgress);

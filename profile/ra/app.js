@@ -2191,7 +2191,7 @@ export default function App() {
         <p className="text-[10px] text-[#546270]">
           Generated from <span className="text-[#8f98a0]">RetroAchievements API</span>
           <span className="mx-2 text-[#2a475e]">·</span>
-          Data as of <span className="text-[#8f98a0]">{rawData?.metadata?.extractionTimestamp ? new Date(rawData.metadata.extractionTimestamp).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}</span>
+          Last change <span className="text-[#8f98a0]">{rawData?.metadata?.extractionTimestamp ? new Date(rawData.metadata.extractionTimestamp).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}</span>
         </p>
         <a href={SITE_URL} target="_blank" rel="noreferrer" className="ml-auto text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors shrink-0">
           retroachievements.org ↗

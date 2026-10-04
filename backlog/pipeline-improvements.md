@@ -40,7 +40,9 @@ A1–A3 implemented (retrying HTTP helper in Steam, `withRetry` in RA, cache see
 
 ---
 
-## B. Stop committing noise (high value)
+## B. Stop committing noise (high value) — done 2026-10-04
+
+Done differently from B1: regular runs still fetch, but compare with the committed files and write nothing unless you unlocked, played or edited the want-to-play list (`detectActivity` in the RA and Steam pipelines; Xbox already worked this way via `syncKey`). B2–B5 done as written, plus: history `r` only refreshed at midnight; RA rank, rolling 7/30-day points and Steam presence / `playtime2Weeks` also wait for midnight or an activity run; "Last updated" relabeled "Last change". B1's API savings (fewer calls per hour) are still open if rate limits ever matter.
 
 Most hourly commits are not your activity. Recent data commits change 44–486 lines even between hours with no play:
 

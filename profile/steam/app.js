@@ -1344,7 +1344,7 @@ const App = () => {
                         </div>
 
                         <p className="text-[9px] text-[#546270]">
-                            Last updated <span className="text-[#8f98a0]">{formatDate(metadata.extractionTimestamp)}</span>
+                            Last change <span className="text-[#8f98a0]">{formatDate(metadata.extractionTimestamp)}</span>
                         </p>
                     </div>
                 </div>

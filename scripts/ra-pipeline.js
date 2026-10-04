@@ -350,10 +350,12 @@ function serializeLocally(payload) {
         log.ok(`Created achievements directory: ${ACH_DIR}`);
     }
 
+    // Files are only rewritten when their content changes (ignoring metadata)
     const write = (filename, data, dir = OUTPUT_DIR) => {
         const filePath = path.join(dir, filename);
         const json = JSON.stringify(data, null, 4);
         const sizeKb = (Buffer.byteLength(json, 'utf8') / 1024).toFixed(1);
+        if (sameIgnoringMetadata(filePath, data)) { log.skip(`${filename.padEnd(24)} unchanged`); return; }
         fs.writeFileSync(filePath, json, 'utf8');
         log.ok(`${filename.padEnd(24)} ${sizeKb} KB  →  ${filePath}`);
     };
@@ -392,15 +394,19 @@ function serializeLocally(payload) {
 
     // achievements/N.json — 1 year of unlocks split into 4 quarterly chunks
     // Chunk 1 = most recent (0–91 days), Chunk 4 = oldest (273–364 days)
+    // Boundaries are anchored at the next UTC midnight (not the run time), so they
+    // move once a day instead of shifting unlocks between files on every run.
+    // cumulScore isn't used by the site and changes as entries shift, so it's dropped.
     const CHUNK_MS = 91 * 24 * 60 * 60 * 1000;
-    const extractionTime = new Date(payload.metadata.extractionTimestamp).getTime();
+    const anchor = new Date(payload.metadata.extractionTimestamp);
+    anchor.setUTCHours(24, 0, 0, 0);
     for (let i = 0; i < 4; i++) {
-        const toMs   = extractionTime - (i * CHUNK_MS);
-        const fromMs = extractionTime - ((i + 1) * CHUNK_MS);
+        const toMs   = anchor.getTime() - (i * CHUNK_MS);
+        const fromMs = anchor.getTime() - ((i + 1) * CHUNK_MS);
         const chunk  = (payload.recentAchievements || []).filter(a => {
-            const t = new Date(a.date).getTime();
+            const t = new Date(a.date.replace(' ', 'T') + 'Z').getTime();
             return t > fromMs && t <= toMs;
-        });
+        }).map(({ cumulScore, ...a }) => a);
         write(`${i + 1}.json`, { recentAchievements: chunk }, ACH_DIR);
     }
 
@@ -512,6 +518,54 @@ async function executeWatchlistOnly(targetUser) {
 }
 
 // =========================================================
+// Activity detection (regular runs)
+// =========================================================
+
+const readJsonFile = (filePath) => {
+    try { return JSON.parse(fs.readFileSync(filePath, 'utf8')); } catch { return null; }
+};
+
+const sameIgnoringMetadata = (filePath, data) => {
+    const prev = readJsonFile(filePath);
+    if (!prev) return false;
+    const { metadata: _a, ...a } = prev;
+    const { metadata: _b, ...b } = data;
+    return JSON.stringify(a) === JSON.stringify(b);
+};
+
+// Returns a short reason if anything you did changed since the last written files
+// (an unlock, playtime / last played, a want-to-play edit), otherwise null.
+function detectActivity(payload) {
+    const dir = path.join(__dirname, '..', 'data', 'ra');
+    const games   = readJsonFile(path.join(dir, 'games.json'))?.detailedGameProgress;
+    const profile = readJsonFile(path.join(dir, 'profile.json'));
+    if (!games || !profile) return 'no previous data';
+
+    for (const [id, g] of Object.entries(payload.detailedGameProgress || {})) {
+        const prev = games[id];
+        if (!prev) return `new game ${g.title}`;
+        if ((prev.numAwardedToUser ?? 0) !== (g.numAwardedToUser ?? 0) || (prev.numAwardedToUserHardcore ?? 0) !== (g.numAwardedToUserHardcore ?? 0)) return `unlock in ${g.title}`;
+        if ((prev.userTotalPlaytime ?? 0) !== (g.userTotalPlaytime ?? 0)) return `playtime in ${g.title}`;
+    }
+
+    const prevUnlocks = new Set();
+    for (let i = 1; i <= 4; i++) {
+        for (const a of readJsonFile(path.join(dir, 'achievements', `${i}.json`))?.recentAchievements ?? []) prevUnlocks.add(`${a.achievementId}|${a.date}`);
+    }
+    const fresh = (payload.recentAchievements || []).find(a => !prevUnlocks.has(`${a.achievementId}|${a.date}`));
+    if (fresh) return `unlock ${fresh.title}`;
+
+    const played = (list) => (list || []).map(g => `${g.gameId}|${g.lastPlayed}`).sort().join(',');
+    if (played(profile.recentlyPlayedGames) !== played(payload.recentlyPlayedGames)) return 'played a game';
+
+    const wanted = (list) => (list || []).map(g => g.id).sort().join(',');
+    const watch = readJsonFile(path.join(dir, 'watchlist.json'));
+    if (wanted(watch?.results) !== wanted(payload.wantToPlayList?.results)) return 'want-to-play list changed';
+
+    return null;
+}
+
+// =========================================================
 // Phase 4a: Playtime Log
 // =========================================================
 
@@ -567,7 +621,7 @@ function logHistory(payload) {
             });
         }
     }
-    const { written, years } = writeUnlockHistory(path.join(__dirname, '..', 'data', 'ra', 'history'), unlocks, { asOf: new Date().toISOString(), dryRun: DEBUG });
+    const { written, years } = writeUnlockHistory(path.join(__dirname, '..', 'data', 'ra', 'history'), unlocks, { asOf: new Date().toISOString(), dryRun: DEBUG, keepRarity: !REFRESH_GAMES });
     log.ok(`${unlocks.length} unlocks in ${years.length} year file(s), ${written} written${DEBUG ? '  (dry run)' : ''}`);
 }
 
@@ -595,6 +649,20 @@ async function runPipeline() {
         }
 
         const payload = await executeProfileExtraction(RA_USERNAME);
+
+        // Regular runs only write when you did something; everything else
+        // (rank, rarity, rolling 7/30-day points) refreshes in the daily full refresh
+        if (!REFRESH_GAMES) {
+            const activity = detectActivity(payload);
+            if (!activity) {
+                log.section('No activity since the last run');
+                log.skip('No new unlocks, playtime or watchlist changes, nothing written');
+                console.log();
+                process.exit(0);
+            }
+            log.ok(`Activity: ${activity}`);
+        }
+
         serializeLocally(payload);
         logPlaytime(payload);
         logHistory(payload);

@@ -42,6 +42,7 @@ Playtime is now logged as play sessions for Steam and RetroAchievements, with hi
 - Filter changes fade the updated list in: achievement modal filters, profile Progress sort and view, RA watchlist filters, picked heatmap days, the Activity heatmap platform filter, and the Analytics chart/table toggle; "Show all" items fade in
 - Achievement modals animate their height when the content changes (a filter, or loading finishing). Steam and Xbox modals now open immediately with a skeleton list and fill in place when the game's achievements arrive, instead of showing a separate loading box first
 - Shimmer skeletons replace the remaining "Loading…" text: Steam/Xbox game lists and Activity tab, the achievement modal while it loads, Activity's play sessions, and the hub's name, motto and "Last updated"
+- "Last updated" (hub, Steam and Xbox profiles) and "Data as of" (RA profile) now read "Last change": the data only changes when you play or unlock something, plus the daily refresh
 
 ### Pipelines
 
@@ -52,6 +53,9 @@ Playtime is now logged as play sessions for Steam and RetroAchievements, with hi
 - Shared logic lives in `scripts/lib/playtime.js`; `state.json` files are excluded from the site
 - RA, Steam and Xbox runs also write an all-time unlock history, `data/{ra,steam,xbox}/history/{YYYY}.json` (time, game, achievement, points, rarity) plus an `index.json` of the years, for the Analytics page (`scripts/lib/history.js`)
 - RA play sessions record each game's console, for the Analytics console breakdown
+- Hourly RA and Steam runs only write (and commit) when you unlocked something, played, or changed the RA want-to-play list. Rarity, RA rank, 7/30-day points and Steam presence refresh in the midnight run instead of drifting in every hourly commit
+- Files are only rewritten when their content changes; the 91-day achievement chunks are cut at UTC midnight instead of the run time, and RA chunks drop the unused `cumulScore`
+- Unlock history rarity is only refreshed at midnight; hourly runs keep the stored values and only add new unlocks
 
 ## v26.09.27
 

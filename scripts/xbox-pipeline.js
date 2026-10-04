@@ -514,7 +514,7 @@ function logHistory(extractionTimestamp, games) {
             unlocks.push({ t: new Date(ach.unlockedAt).toISOString().slice(0, 19) + 'Z', g: titleId, a: ach.apiName, n: ach.displayName, p: ach.gamerscore, r: ach.globalPct });
         }
     }
-    const { written, years } = writeUnlockHistory(path.join(__dirname, '..', 'data', 'xbox', 'history'), unlocks, { asOf: extractionTimestamp, dryRun: DEBUG });
+    const { written, years } = writeUnlockHistory(path.join(__dirname, '..', 'data', 'xbox', 'history'), unlocks, { asOf: extractionTimestamp, dryRun: DEBUG, keepRarity: !REFRESH_GAMES });
     log.ok(`${unlocks.length} unlocks in ${years.length} year file(s), ${written} written`);
 }
 
