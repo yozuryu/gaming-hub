@@ -53,11 +53,11 @@ Playtime is now logged as play sessions for Steam and RetroAchievements, with hi
 - Shared logic lives in `scripts/lib/playtime.js`; `state.json` files are excluded from the site
 - RA, Steam and Xbox runs also write an all-time unlock history, `data/{ra,steam,xbox}/history/{YYYY}.json` (time, game, achievement, points, rarity) plus an `index.json` of the years, for the Analytics page (`scripts/lib/history.js`)
 - RA play sessions record each game's console, for the Analytics console breakdown
-- Hourly RA and Steam runs only write (and commit) when you unlocked something, played, or changed the RA want-to-play list. Rarity, RA rank, 7/30-day points and Steam presence refresh in the midnight run instead of drifting in every hourly commit
+- Regular (incremental) RA and Steam runs only write (and commit) when you unlocked something, played, or changed the RA want-to-play list. Rarity, RA rank, 7/30-day points and Steam presence refresh in the midnight run instead of drifting in every commit
 - Files are only rewritten when their content changes; the 91-day achievement chunks are cut at UTC midnight instead of the run time, and RA chunks drop the unused `cumulScore`
-- Unlock history rarity is only refreshed at midnight; hourly runs keep the stored values and only add new unlocks
+- Unlock history rarity is only refreshed at midnight; incremental runs keep the stored values and only add new unlocks
 - The three data workflows are merged into one, `fetch-data.yml`, running RA, Steam and Xbox one after another and making at most one commit per run (`chore: update data (ra, steam) …`). A platform that fails doesn't stop the others; the run is marked failed at the end. Manual runs pick a `mode` and `platforms`
-- Runs are started by cron-job.org through the `workflow_dispatch` API (hourly incremental, `midnight` refresh at 00:00 UTC): GitHub's scheduled runs arrived hours late (midnight refreshes at 03:00–05:30 UTC, "hourly" runs about every 3h). The run mode comes only from the `mode` input, never `github.event.schedule` (empty on a dispatch). A 6-hourly schedule stays as a fallback
+- Runs are started by cron-job.org through the `workflow_dispatch` API (incremental every 30 minutes at :15 and :45, `midnight` refresh at 00:00 UTC): GitHub's scheduled runs arrived hours late (midnight refreshes at 03:00–05:30 UTC, "hourly" runs about every 3h). The run mode comes only from the `mode` input, never `github.event.schedule` (empty on a dispatch). A 6-hourly schedule stays as a fallback
 - Pushes rebase and retry once when `main` moved during the run
 
 ## v26.09.27

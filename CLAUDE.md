@@ -8,7 +8,7 @@
 
 ---
 
-Personal gaming statistics dashboard aggregating RetroAchievements (RA) and Steam data. Static site with no build tool — React, Tailwind, and Lucide are all loaded via CDN. Data is fetched by Node.js pipelines running on GitHub Actions hourly (triggered by cron-job.org), stored as JSON files committed to the repo, and consumed directly by the browser.
+Personal gaming statistics dashboard aggregating RetroAchievements (RA) and Steam data. Static site with no build tool — React, Tailwind, and Lucide are all loaded via CDN. Data is fetched by Node.js pipelines running on GitHub Actions every 30 minutes (triggered by cron-job.org), stored as JSON files committed to the repo, and consumed directly by the browser.
 
 ---
 
@@ -86,7 +86,7 @@ gaming-hub/
 │       └── history.js              # Unlock history writer shared by all three pipelines
 │
 └── .github/workflows/
-    └── fetch-data.yml               # All three pipelines in sequence; dispatched by cron-job.org hourly + midnight, 6h fallback schedule
+    └── fetch-data.yml               # All three pipelines in sequence; dispatched by cron-job.org every 30 min + midnight, 6h fallback schedule
 ```
 
 ---
@@ -205,12 +205,12 @@ Every unlocked achievement, all time, rebuilt by each pipeline on every run from
 
 ### Shared behavior
 - **One workflow** (`fetch-data.yml`) runs RA → Steam → Xbox in one job and makes at most one commit (`chore: update data (ra, steam) …`, listing the platforms that changed). Each pipeline step has `continue-on-error`, so one platform failing doesn't stop the others; the commit step still runs (a failed pipeline wrote nothing) and a last step fails the job so GitHub emails. Inputs: `mode` (`incremental` · `midnight` = RA full, Steam unlock refresh, Xbox full · `full-refresh` = every game everywhere, Steam `--refresh-games` · `watchlist-only` = RA want-to-play list) and `platforms` (`all` / `ra` / `steam` / `xbox`)
-- **Scheduling:** GitHub's `schedule` trigger ran hours late, so cron-job.org POSTs to the `workflow_dispatch` API with an explicit `mode`: `incremental` hourly at :00 for hours 1–23, `midnight` at 00:00 UTC. The mode comes only from `inputs.mode`, never from `github.event.schedule`. A 6-hourly `schedule` stays as a fallback and always runs incremental
+- **Scheduling:** GitHub's `schedule` trigger ran hours late, so cron-job.org POSTs to the `workflow_dispatch` API with an explicit `mode`: `incremental` every 30 minutes (:15 and :45, off the midnight slot), `midnight` at 00:00 UTC. The mode comes only from `inputs.mode`, never from `github.event.schedule`. A 6-hourly `schedule` stays as a fallback and always runs incremental
 - Concurrency group `data-pipeline` prevents overlapping runs
 - `--debug` flag prints API responses without writing files
 - **Failure handling:** API calls retry with backoff. If profile-level data (profile, awards, RA achievement chunks, Steam owned/recent games) still fails, the run exits non-zero before writing, so the previous files stay and nothing is committed. A single game that fails keeps its cached entry (in every mode, including full refresh)
 - Steam `games/sentinel.json` ("no achievements") is only written when Steam says a game has no stats or an empty schema — never on a network/HTTP error — and an entry is removed when the game later returns achievements
-- **Regular runs write only on activity:** hourly (incremental) runs compare with the committed files and exit before writing anything unless you did something — RA: a game's unlock count or playtime, a new unlock, recently played times or the want-to-play list; Steam: playtime / last played against `playtime/state.json`, or an unlocked count against `games/index.json`; Xbox: a title's `syncKey`. No activity = no commit. Everything else (rarity, RA rank, rolling 7/30-day points, Steam presence and `playtime2Weeks`) refreshes in the midnight run, or along with an activity run. The site labels the timestamp "Last change" for that reason
+- **Regular runs write only on activity:** incremental runs compare with the committed files and exit before writing anything unless you did something — RA: a game's unlock count or playtime, a new unlock, recently played times or the want-to-play list; Steam: playtime / last played against `playtime/state.json`, or an unlocked count against `games/index.json`; Xbox: a title's `syncKey`. No activity = no commit. Everything else (rarity, RA rank, rolling 7/30-day points, Steam presence and `playtime2Weeks`) refreshes in the midnight run, or along with an activity run. The site labels the timestamp "Last change" for that reason
 - Files are only rewritten when their content changes, ignoring `metadata`
 - Chunk files split by 91-day windows anchored at the next UTC midnight (boundaries move once a day): chunk 1 = 0–91 days, chunk 2 = 91–182, etc. RA chunks drop the unused `cumulScore`
 
@@ -231,7 +231,7 @@ GitHub Pages builds from `main` with Jekyll, so every tracked file is public unl
 | Icons | Lucide React 0.263.1 | Via CDN |
 | JS transform | Babel standalone | Transpiles JSX in-browser |
 | Node scripts | Node.js 20 | Pipelines only, not frontend |
-| CI/CD | GitHub Actions | Hourly data fetch + commit, triggered by cron-job.org |
+| CI/CD | GitHub Actions | Data fetch every 30 min + commit on activity, triggered by cron-job.org |
 | Hosting | GitHub Pages | Static files served as-is |
 
 There is **no bundler, no npm for the frontend, no TypeScript**. All frontend files are plain `.js` (JSX transpiled in-browser by Babel).

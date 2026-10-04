@@ -1,7 +1,7 @@
 name: Fetch Data
 
 # Normally triggered by cron-job.org through the workflow_dispatch API:
-# hourly `incremental` (hours 1–23) and `midnight` at 00:00 UTC. The schedule below is
+# `incremental` every 30 min (:15 and :45) and `midnight` at 00:00 UTC. The schedule below is
 # only a fallback in case the external cron stops: GitHub delays scheduled runs by hours.
 #
 # The three pipelines run one after another in one job. A platform that fails doesn't
