@@ -994,11 +994,12 @@
             "rarityCategory": "Rare"
         }
     ],
-    "iconUrl": null,
-    "heroUrl": null,
-    "posterUrl": null,
+    "iconUrl": "https://store-images.s-microsoft.com/image/apps.1647.13567343664224659.1eb6fdf9-8a0b-4344-a135-ab17dfa3c609.39331391-9de2-48f8-8643-8eb1bd964383",
+    "heroUrl": "https://store-images.s-microsoft.com/image/apps.61347.13567343664224659.1eb6fdf9-8a0b-4344-a135-ab17dfa3c609.5a50438a-d975-42b4-ac77-d73755da54d1",
+    "posterUrl": "https://store-images.s-microsoft.com/image/apps.35187.13567343664224659.1eb6fdf9-8a0b-4344-a135-ab17dfa3c609.c83b6d6a-56c3-4c3f-8b31-456cfb21c3b7",
     "devices": [
-        "Win32"
+        "PC",
+        "XboxSeries"
     ],
     "lastPlayedTs": "2023-08-21T16:02:56.3191548Z",
     "lastUnlockedAt": null,
