@@ -1,14 +1,14 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-07T00:05:43.132Z"
+        "extractionTimestamp": "2026-10-08T08:47:02.554Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 0,
-        "lastOnline": "2026-10-05T09:22:44.000Z",
+        "status": 1,
+        "lastOnline": "2026-10-08T08:22:28.000Z",
         "countryCode": "ID"
     },
     "stats": {
@@ -17,7 +17,7 @@
         "totalPlaytimeHrs": 5833,
         "gamesWithPlaytime": 821,
         "totalAchievements": 10105,
-        "unlockedAchievements": 2837,
+        "unlockedAchievements": 2838,
         "gamesWithAchievements": 171,
         "perfectCount": 17,
         "completionPct": 28,
@@ -27,12 +27,12 @@
         {
             "appId": 578330,
             "name": "LEGO® City Undercover",
-            "playtime2Weeks": 630,
+            "playtime2Weeks": 631,
             "playtimeForever": 3616,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
             "storeUrl": "https://store.steampowered.com/app/578330",
-            "lastPlayedTs": "2026-10-05T09:20:11.000Z",
-            "achUnlocked": 13,
+            "lastPlayedTs": "2026-10-08T08:20:56.000Z",
+            "achUnlocked": 14,
             "achTotal": 48
         },
         {
@@ -72,21 +72,21 @@
     "mostRecentGame": {
         "appId": 578330,
         "name": "LEGO® City Undercover",
-        "playtime2Weeks": 630,
+        "playtime2Weeks": 631,
         "playtimeForever": 3616,
         "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
         "storeUrl": "https://store.steampowered.com/app/578330",
-        "lastPlayedTs": "2026-10-05T09:20:11.000Z"
+        "lastPlayedTs": "2026-10-08T08:20:56.000Z"
     },
     "mostRecentUnlock": {
-        "appId": 921570,
-        "gameName": "OCTOPATH TRAVELER",
-        "apiName": "ACHIEVEMENT_045",
-        "displayName": "Aelfric's Auspices",
-        "description": "Mastered cleric as a secondary job.",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/921570/c006c34a2734ce340a992cf55f2c7c3e24dbe778.jpg",
-        "unlockedAt": "2026-10-04T16:12:02.000Z",
-        "globalPct": 29.4
+        "appId": 578330,
+        "gameName": "LEGO® City Undercover",
+        "apiName": "COMPLETE_STORYEVENT10",
+        "displayName": "Exhibit T",
+        "description": "Complete Chapter 10 - Back on the Case",
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/578330/f58c18471f39a5890dd95ead319c6ef56ed55166.jpg",
+        "unlockedAt": "2026-10-08T08:46:37.000Z",
+        "globalPct": 28.5
     },
     "perfectGames": [
         {

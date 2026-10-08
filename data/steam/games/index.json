@@ -28463,14 +28463,23 @@
             "appId": 578330,
             "hasAchievements": true,
             "total": 48,
-            "unlocked": 13,
+            "unlocked": 14,
             "gameName": "LEGO® City Undercover",
             "playtimeForever": 3616,
-            "lastPlayedTs": "2026-10-05T09:20:11.000Z",
+            "lastPlayedTs": "2026-10-08T08:20:56.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-            "lastUnlockedAt": "2026-10-04T09:08:27.000Z",
-            "lastUnlockName": "When Pigs Can Fly",
+            "lastUnlockedAt": "2026-10-08T08:46:37.000Z",
+            "lastUnlockName": "Exhibit T",
             "preview": [
+                {
+                    "apiName": "COMPLETE_STORYEVENT10",
+                    "displayName": "Exhibit T",
+                    "unlocked": true,
+                    "unlockedAt": "2026-10-08T08:46:37.000Z",
+                    "iconUrl": "f58c18471f39a5890dd95ead319c6ef56ed55166.jpg",
+                    "iconGrayUrl": "00917f017d3191a4cdf14beca4a8a141663204e3.jpg",
+                    "globalPct": 28.5
+                },
                 {
                     "apiName": "COMPLETE_STORYEVENT9",
                     "displayName": "When Pigs Can Fly",
@@ -28515,15 +28524,6 @@
                     "iconUrl": "aa20f1e7adf5df9dc12940a3a2786cb883a51fee.jpg",
                     "iconGrayUrl": "698c0ae1bc63dbadbe01c50b80eb270f88d7539c.jpg",
                     "globalPct": 39.5
-                },
-                {
-                    "apiName": "COMPLETE_STORYEVENT4",
-                    "displayName": "Kung Fu... and Plumbing?",
-                    "unlocked": true,
-                    "unlockedAt": "2026-09-19T13:19:24.000Z",
-                    "iconUrl": "faae8d197a5c285bdf76820ed425043807a5353a.jpg",
-                    "iconGrayUrl": "78dcd1fc0bbd31cc5c894ac2db0bd331a158becb.jpg",
-                    "globalPct": 42.7
                 }
             ]
         },
