@@ -28463,14 +28463,23 @@
             "appId": 578330,
             "hasAchievements": true,
             "total": 48,
-            "unlocked": 14,
+            "unlocked": 15,
             "gameName": "LEGO® City Undercover",
-            "playtimeForever": 3708,
-            "lastPlayedTs": "2026-10-08T09:52:34.000Z",
+            "playtimeForever": 3762,
+            "lastPlayedTs": "2026-10-08T10:46:23.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-            "lastUnlockedAt": "2026-10-08T08:46:37.000Z",
-            "lastUnlockName": "Exhibit T",
+            "lastUnlockedAt": "2026-10-08T10:24:32.000Z",
+            "lastUnlockName": "Honey and Ice Cream",
             "preview": [
+                {
+                    "apiName": "COMPLETE_STORYEVENT11",
+                    "displayName": "Honey and Ice Cream",
+                    "unlocked": true,
+                    "unlockedAt": "2026-10-08T10:24:32.000Z",
+                    "iconUrl": "29bd127ab4d260145e86d5817935c0bcef93ccd0.jpg",
+                    "iconGrayUrl": "bb4a78141f299cfe581a819c00694fdf4a598158.jpg",
+                    "globalPct": 27.2
+                },
                 {
                     "apiName": "COMPLETE_STORYEVENT10",
                     "displayName": "Exhibit T",
@@ -28515,15 +28524,6 @@
                     "iconUrl": "933451e2edac4de99571313a5b122fe9588003b5.jpg",
                     "iconGrayUrl": "253604ba55b57c0c74afc4368c499e64035a807e.jpg",
                     "globalPct": 34.5
-                },
-                {
-                    "apiName": "COMPLETE_STORYEVENT5",
-                    "displayName": "Chan Chuang's Gang",
-                    "unlocked": true,
-                    "unlockedAt": "2026-09-22T12:56:08.000Z",
-                    "iconUrl": "aa20f1e7adf5df9dc12940a3a2786cb883a51fee.jpg",
-                    "iconGrayUrl": "698c0ae1bc63dbadbe01c50b80eb270f88d7539c.jpg",
-                    "globalPct": 39.4
                 }
             ]
         },
