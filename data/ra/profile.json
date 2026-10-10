@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-10T09:15:47.537Z"
+        "extractionTimestamp": "2026-10-10T09:45:48.020Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -12,9 +12,9 @@
         "lastGameId": 45053,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 3300,
+        "totalPoints": 3325,
         "totalSoftcorePoints": 0,
-        "totalTruePoints": 9350,
+        "totalTruePoints": 9368,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -34,13 +34,13 @@
             "data2": null
         },
         "richPresenceMsg": "Playing Poring Clicker",
-        "richPresenceMsgDate": "2026-10-10 06:28:26",
+        "richPresenceMsgDate": "2026-10-10 09:39:21",
         "lastGameId": 45053,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 3300,
+        "totalPoints": 3325,
         "totalSoftcorePoints": 0,
-        "totalTruePoints": 9350,
+        "totalTruePoints": 9368,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -57,7 +57,7 @@
         "status": "Offline"
     },
     "points": {
-        "points": 3300,
+        "points": 3325,
         "softcorePoints": 0
     },
     "pageAwards": {
@@ -263,14 +263,14 @@
             "imageTitle": "/Images/000002.png",
             "imageIngame": "/Images/000002.png",
             "imageBoxArt": "/Images/000002.png",
-            "lastPlayed": "2026-10-10 06:28:26",
+            "lastPlayed": "2026-10-10 09:39:21",
             "achievementsTotal": 173,
             "numPossibleAchievements": 173,
             "possibleScore": 1402,
-            "numAchieved": 26,
-            "scoreAchieved": 106,
-            "numAchievedHardcore": 26,
-            "scoreAchievedHardcore": 106
+            "numAchieved": 31,
+            "scoreAchieved": 131,
+            "numAchievedHardcore": 31,
+            "scoreAchievedHardcore": 131
         },
         {
             "gameId": 22693,
@@ -536,9 +536,9 @@
                 "consoleId": 102,
                 "consoleName": "Standalone",
                 "maxPossible": 173,
-                "numAwarded": 26,
-                "numAwardedHardcore": 26,
-                "mostRecentAwardedDate": "2026-10-10T06:28:26+00:00",
+                "numAwarded": 31,
+                "numAwardedHardcore": 31,
+                "mostRecentAwardedDate": "2026-10-10T09:39:21+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -1663,14 +1663,14 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-10-10 06:28:26",
+        "date": "2026-10-10 09:39:21",
         "hardcoreMode": true,
-        "achievementId": 642606,
-        "title": "Apprentice",
-        "description": "Reach job level 10",
-        "badgeName": "734488",
-        "points": 5,
-        "trueRatio": 6,
+        "achievementId": 642588,
+        "title": "Eclipse Nemesis",
+        "description": "Kill Eclipse 50 times",
+        "badgeName": "734470",
+        "points": 10,
+        "trueRatio": 13,
         "type": null,
         "author": "SpringRO",
         "authorUlid": "01KR6CQSQY9WS7R3F49W3C3F12",
@@ -1678,8 +1678,8 @@
         "gameIcon": "/Images/163848.png",
         "gameId": 45053,
         "consoleName": "Standalone",
-        "cumulScore": 595,
-        "badgeUrl": "/Badge/734488.png",
+        "cumulScore": 620,
+        "badgeUrl": "/Badge/734470.png",
         "gameUrl": "/game/45053"
     },
     "mostRecentGame": {
@@ -1691,15 +1691,15 @@
         "imageTitle": "/Images/000002.png",
         "imageIngame": "/Images/000002.png",
         "imageBoxArt": "/Images/000002.png",
-        "lastPlayed": "2026-10-10 06:28:26",
+        "lastPlayed": "2026-10-10 09:39:21",
         "achievementsTotal": 173,
         "numPossibleAchievements": 173,
         "possibleScore": 1402,
-        "numAchieved": 26,
-        "scoreAchieved": 106,
-        "numAchievedHardcore": 26,
-        "scoreAchievedHardcore": 106
+        "numAchieved": 31,
+        "scoreAchieved": 131,
+        "numAchievedHardcore": 31,
+        "scoreAchievedHardcore": 131
     },
-    "points7Days": 109,
-    "points30Days": 398
+    "points7Days": 134,
+    "points30Days": 423
 }

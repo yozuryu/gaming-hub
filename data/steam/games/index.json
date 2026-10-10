@@ -28463,14 +28463,23 @@
             "appId": 578330,
             "hasAchievements": true,
             "total": 48,
-            "unlocked": 16,
+            "unlocked": 17,
             "gameName": "LEGO® City Undercover",
-            "playtimeForever": 3939,
-            "lastPlayedTs": "2026-10-10T08:47:27.000Z",
+            "playtimeForever": 3983,
+            "lastPlayedTs": "2026-10-10T09:31:33.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-            "lastUnlockedAt": "2026-10-09T13:30:10.000Z",
-            "lastUnlockName": "Build in Sight",
+            "lastUnlockedAt": "2026-10-10T09:26:29.000Z",
+            "lastUnlockName": "Back to Blackwell's",
             "preview": [
+                {
+                    "apiName": "COMPLETE_STORYEVENT13",
+                    "displayName": "Back to Blackwell's",
+                    "unlocked": true,
+                    "unlockedAt": "2026-10-10T09:26:29.000Z",
+                    "iconUrl": "c4a8836d775ff9e075559f3f98ccb10f18b619f4.jpg",
+                    "iconGrayUrl": "f2ad3448156be0842b46a38b1ebb8f63d98e77f2.jpg",
+                    "globalPct": 25.7
+                },
                 {
                     "apiName": "COMPLETE_STORYEVENT12",
                     "displayName": "Build in Sight",
@@ -28487,7 +28496,7 @@
                     "unlockedAt": "2026-10-08T10:24:32.000Z",
                     "iconUrl": "29bd127ab4d260145e86d5817935c0bcef93ccd0.jpg",
                     "iconGrayUrl": "bb4a78141f299cfe581a819c00694fdf4a598158.jpg",
-                    "globalPct": 27.2
+                    "globalPct": 27.3
                 },
                 {
                     "apiName": "COMPLETE_STORYEVENT10",
@@ -28515,15 +28524,6 @@
                     "iconUrl": "ebeb44b36cccac79674b0bb07c2383f1940ef2d4.jpg",
                     "iconGrayUrl": "1092b2c48ac34be5d6f7b7b91f85fa6d80e0b9b7.jpg",
                     "globalPct": 32.1
-                },
-                {
-                    "apiName": "COMPLETE_STORYEVENT7",
-                    "displayName": "Watch This Space",
-                    "unlocked": true,
-                    "unlockedAt": "2026-10-02T13:26:47.000Z",
-                    "iconUrl": "d9700e1f9b2e4021a94cf5b354e37225908578f5.jpg",
-                    "iconGrayUrl": "77dd6a75b04bcc3b23bf7c394c7367bcb3619fea.jpg",
-                    "globalPct": 33.2
                 }
             ]
         },
