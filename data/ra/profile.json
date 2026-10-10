@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-10T04:15:51.817Z"
+        "extractionTimestamp": "2026-10-10T04:45:54.089Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -12,9 +12,9 @@
         "lastGameId": 45053,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 3295,
+        "totalPoints": 3194,
         "totalSoftcorePoints": 0,
-        "totalTruePoints": 9416,
+        "totalTruePoints": 9206,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -38,15 +38,15 @@
         "lastGameId": 45053,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 3295,
+        "totalPoints": 3194,
         "totalSoftcorePoints": 0,
-        "totalTruePoints": 9416,
+        "totalTruePoints": 9206,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 38700,
+        "rank": 38966,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
@@ -57,7 +57,7 @@
         "status": "Offline"
     },
     "points": {
-        "points": 3295,
+        "points": 3194,
         "softcorePoints": 0
     },
     "pageAwards": {
@@ -264,13 +264,13 @@
             "imageIngame": "/Images/000002.png",
             "imageBoxArt": "/Images/000002.png",
             "lastPlayed": "2026-10-10 02:17:41",
-            "achievementsTotal": 173,
-            "numPossibleAchievements": 173,
-            "possibleScore": 1402,
-            "numAchieved": 25,
-            "scoreAchieved": 101,
-            "numAchievedHardcore": 25,
-            "scoreAchievedHardcore": 101
+            "achievementsTotal": 0,
+            "numPossibleAchievements": 0,
+            "possibleScore": 0,
+            "numAchieved": 0,
+            "scoreAchieved": 0,
+            "numAchievedHardcore": 0,
+            "scoreAchievedHardcore": 0
         },
         {
             "gameId": 22693,
@@ -526,22 +526,9 @@
         }
     ],
     "gameAwardsAndProgress": {
-        "count": 87,
-        "total": 87,
+        "count": 86,
+        "total": 86,
         "results": [
-            {
-                "gameId": 45053,
-                "title": "Poring Clicker",
-                "imageIcon": "/Images/163848.png",
-                "consoleId": 102,
-                "consoleName": "Standalone",
-                "maxPossible": 173,
-                "numAwarded": 25,
-                "numAwardedHardcore": 25,
-                "mostRecentAwardedDate": "2026-10-10T02:13:54+00:00",
-                "highestAwardKind": null,
-                "highestAwardDate": null
-            },
             {
                 "gameId": 22693,
                 "title": "Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
@@ -1663,24 +1650,24 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-10-10 02:13:54",
+        "date": "2026-10-08 01:27:54",
         "hardcoreMode": true,
-        "achievementId": 642739,
-        "title": "Way of Commerce",
-        "description": "Become a Merchant",
-        "badgeName": "734375",
-        "points": 5,
-        "trueRatio": 13,
+        "achievementId": 298792,
+        "title": "Flaaffy",
+        "description": "Obtain Flaaffy",
+        "badgeName": "331450",
+        "points": 2,
+        "trueRatio": 38,
         "type": null,
-        "author": "SpringRO",
-        "authorUlid": "01KR6CQSQY9WS7R3F49W3C3F12",
-        "gameTitle": "Poring Clicker",
-        "gameIcon": "/Images/163848.png",
-        "gameId": 45053,
-        "consoleName": "Standalone",
-        "cumulScore": 590,
-        "badgeUrl": "/Badge/734375.png",
-        "gameUrl": "/game/45053"
+        "author": "SnowPin",
+        "authorUlid": "019TVEANZS2MMVS809D58X76W6",
+        "gameTitle": "Pokémon SoulSilver Version [Subset - Professor Oak Challenge]",
+        "gameIcon": "/Images/149664.png",
+        "gameId": 22693,
+        "consoleName": "Nintendo DS",
+        "cumulScore": 489,
+        "badgeUrl": "/Badge/331450.png",
+        "gameUrl": "/game/22693"
     },
     "mostRecentGame": {
         "gameId": 45053,
@@ -1692,14 +1679,14 @@
         "imageIngame": "/Images/000002.png",
         "imageBoxArt": "/Images/000002.png",
         "lastPlayed": "2026-10-10 02:17:41",
-        "achievementsTotal": 173,
-        "numPossibleAchievements": 173,
-        "possibleScore": 1402,
-        "numAchieved": 25,
-        "scoreAchieved": 101,
-        "numAchievedHardcore": 25,
-        "scoreAchievedHardcore": 101
+        "achievementsTotal": 0,
+        "numPossibleAchievements": 0,
+        "possibleScore": 0,
+        "numAchieved": 0,
+        "scoreAchieved": 0,
+        "numAchievedHardcore": 0,
+        "scoreAchievedHardcore": 0
     },
-    "points7Days": 104,
-    "points30Days": 393
+    "points7Days": 3,
+    "points30Days": 292
 }
