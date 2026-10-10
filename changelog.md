@@ -1,5 +1,13 @@
 # Changelog
 
+## v26.10.10
+
+Xbox sync paused.
+
+### Pipelines
+
+- Scheduled data runs skip Xbox for now (`XBOX_ENABLED` in `fetch-data.yml`): no Xbox play lately, and OpenXBL intermittently refused the first request with 429 even with quota left, failing about 1 in 20 runs (RA and Steam were unaffected). A manual run with `platforms: xbox` still syncs it
+
 ## v26.10.04
 
 Playtime is now logged as play sessions for Steam and RetroAchievements, with history back to late March; the Activity page gets a Playtime view, and a new Analytics page.

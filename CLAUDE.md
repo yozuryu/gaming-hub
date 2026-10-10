@@ -206,6 +206,7 @@ Every unlocked achievement, all time, rebuilt by each pipeline on every run from
 
 ### Shared behavior
 - **One workflow** (`fetch-data.yml`) runs RA → Steam → Xbox in one job and makes at most one commit (`chore: update data (ra, steam) …`, listing the platforms that changed). Each pipeline step has `continue-on-error`, so one platform failing doesn't stop the others; the commit step still runs (a failed pipeline wrote nothing) and a last step fails the job so GitHub emails. Inputs: `mode` (`incremental` · `midnight` = RA full, Steam unlock refresh, Xbox full · `full-refresh` = every game everywhere, Steam `--refresh-games` · `watchlist-only` = RA want-to-play list) and `platforms` (`all` / `ra` / `steam` / `xbox`)
+- **Xbox sync is paused** (`XBOX_ENABLED: 'false'` in `fetch-data.yml`, since 2026-10-10): scheduled runs skip Xbox; a manual dispatch with `platforms: xbox` still syncs it. OpenXBL intermittently returns 429 on the first request even with quota left (5 of ~100 runs on 8–9 Oct). Set it back to `'true'` to resume
 - **Scheduling:** GitHub's `schedule` trigger ran hours late, so cron-job.org POSTs to the `workflow_dispatch` API with an explicit `mode`: `incremental` every 30 minutes (:15 and :45, off the midnight slot), `midnight` at 00:00 UTC. The mode comes only from `inputs.mode`, never from `github.event.schedule`. A 6-hourly `schedule` stays as a fallback and always runs incremental
 - Concurrency group `data-pipeline` prevents overlapping runs
 - `--debug` flag prints API responses without writing files

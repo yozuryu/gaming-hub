@@ -45,6 +45,10 @@ permissions:
 env:
   MODE: ${{ inputs.mode || 'incremental' }}
   PLATFORMS: ${{ inputs.platforms || 'all' }}
+  # Xbox sync paused (2026-10-10): not playing on Xbox, and OpenXBL intermittently answers 429
+  # even with quota left. Scheduled runs (`all`) skip it; a manual run with platforms=xbox still
+  # syncs. Set to 'true' to resume.
+  XBOX_ENABLED: 'false'
 
 jobs:
   fetch:
@@ -95,7 +99,7 @@ jobs:
 
       - name: Xbox
         id: xbox
-        if: (env.PLATFORMS == 'all' || env.PLATFORMS == 'xbox') && env.MODE != 'watchlist-only'
+        if: (env.PLATFORMS == 'xbox' || (env.PLATFORMS == 'all' && env.XBOX_ENABLED == 'true')) && env.MODE != 'watchlist-only'
         continue-on-error: true
         env:
           XBOX_API_KEY: ${{ secrets.XBOX_API_KEY }}
