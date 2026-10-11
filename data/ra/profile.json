@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-11T04:15:48.084Z"
+        "extractionTimestamp": "2026-10-11T04:45:50.827Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -12,9 +12,9 @@
         "lastGameId": 45053,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 3340,
+        "totalPoints": 3350,
         "totalSoftcorePoints": 0,
-        "totalTruePoints": 9372,
+        "totalTruePoints": 9370,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -34,13 +34,13 @@
             "data2": null
         },
         "richPresenceMsg": "Playing Poring Clicker",
-        "richPresenceMsgDate": "2026-10-10 15:02:23",
+        "richPresenceMsgDate": "2026-10-11 03:40:50",
         "lastGameId": 45053,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 3340,
+        "totalPoints": 3350,
         "totalSoftcorePoints": 0,
-        "totalTruePoints": 9372,
+        "totalTruePoints": 9370,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -51,13 +51,13 @@
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 167912,
+        "totalRanked": 167925,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 3340,
+        "points": 3350,
         "softcorePoints": 0
     },
     "pageAwards": {
@@ -263,14 +263,14 @@
             "imageTitle": "/Images/000002.png",
             "imageIngame": "/Images/000002.png",
             "imageBoxArt": "/Images/000002.png",
-            "lastPlayed": "2026-10-10 15:02:23",
+            "lastPlayed": "2026-10-11 03:41:50",
             "achievementsTotal": 173,
             "numPossibleAchievements": 173,
             "possibleScore": 1402,
-            "numAchieved": 33,
-            "scoreAchieved": 146,
-            "numAchievedHardcore": 33,
-            "scoreAchievedHardcore": 146
+            "numAchieved": 35,
+            "scoreAchieved": 161,
+            "numAchievedHardcore": 35,
+            "scoreAchievedHardcore": 161
         },
         {
             "gameId": 22693,
@@ -536,9 +536,9 @@
                 "consoleId": 102,
                 "consoleName": "Standalone",
                 "maxPossible": 173,
-                "numAwarded": 33,
-                "numAwardedHardcore": 33,
-                "mostRecentAwardedDate": "2026-10-10T15:02:23+00:00",
+                "numAwarded": 35,
+                "numAwardedHardcore": 35,
+                "mostRecentAwardedDate": "2026-10-11T03:42:18+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -1663,12 +1663,12 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-10-10 15:02:23",
+        "date": "2026-10-11 03:40:50",
         "hardcoreMode": true,
-        "achievementId": 642710,
-        "title": "Fully Automated",
-        "description": "Max the Auto-Clicker",
-        "badgeName": "734592",
+        "achievementId": 642580,
+        "title": "Damage Dealer",
+        "description": "Deal 1,000,000 lifetime damage",
+        "badgeName": "734462",
         "points": 10,
         "trueRatio": 10,
         "type": null,
@@ -1678,8 +1678,8 @@
         "gameIcon": "/Images/163848.png",
         "gameId": 45053,
         "consoleName": "Standalone",
-        "cumulScore": 635,
-        "badgeUrl": "/Badge/734592.png",
+        "cumulScore": 645,
+        "badgeUrl": "/Badge/734462.png",
         "gameUrl": "/game/45053"
     },
     "mostRecentGame": {
@@ -1691,15 +1691,15 @@
         "imageTitle": "/Images/000002.png",
         "imageIngame": "/Images/000002.png",
         "imageBoxArt": "/Images/000002.png",
-        "lastPlayed": "2026-10-10 15:02:23",
+        "lastPlayed": "2026-10-11 03:41:50",
         "achievementsTotal": 173,
         "numPossibleAchievements": 173,
         "possibleScore": 1402,
-        "numAchieved": 33,
-        "scoreAchieved": 146,
-        "numAchievedHardcore": 33,
-        "scoreAchievedHardcore": 146
+        "numAchieved": 35,
+        "scoreAchieved": 161,
+        "numAchievedHardcore": 35,
+        "scoreAchievedHardcore": 161
     },
-    "points7Days": 149,
-    "points30Days": 438
+    "points7Days": 159,
+    "points30Days": 448
 }

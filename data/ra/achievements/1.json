@@ -2136,7 +2136,7 @@
             "description": "Master your first zone (100 kills on every mob)",
             "badgeName": "734513",
             "points": 5,
-            "trueRatio": 6,
+            "trueRatio": 5,
             "type": null,
             "author": "SpringRO",
             "authorUlid": "01KR6CQSQY9WS7R3F49W3C3F12",
@@ -2164,6 +2164,25 @@
             "gameId": 45053,
             "consoleName": "Standalone",
             "badgeUrl": "/Badge/734592.png",
+            "gameUrl": "/game/45053"
+        },
+        {
+            "date": "2026-10-11 03:40:50",
+            "hardcoreMode": true,
+            "achievementId": 642580,
+            "title": "Damage Dealer",
+            "description": "Deal 1,000,000 lifetime damage",
+            "badgeName": "734462",
+            "points": 10,
+            "trueRatio": 10,
+            "type": null,
+            "author": "SpringRO",
+            "authorUlid": "01KR6CQSQY9WS7R3F49W3C3F12",
+            "gameTitle": "Poring Clicker",
+            "gameIcon": "/Images/163848.png",
+            "gameId": 45053,
+            "consoleName": "Standalone",
+            "badgeUrl": "/Badge/734462.png",
             "gameUrl": "/game/45053"
         }
     ]
