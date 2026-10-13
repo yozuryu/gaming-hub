@@ -411,9 +411,7 @@
       Personal gaming hub ·
       <span id="footer-site-url" class="text-[#8f98a0]"></span>
     </p>
-    <a href="./analytics/" class="ml-auto text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">Analytics</a>
-    <span class="text-[10px] text-[#2a475e]">·</span>
-    <a href="./changelog/" class="text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">Changelog</a>
+    <a href="./changelog/" class="ml-auto text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">Changelog</a>
     <span class="text-[10px] text-[#2a475e]">·</span>
     <button id="refresh-app-btn" type="button" title="Fetch the latest app files. Your data is not affected." class="text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">Refresh app</button>
   </footer>
@@ -1153,7 +1151,8 @@
         } else {
           if (minutes >= 1) items.push(`<span class="shrink-0">${val(fmtHours(minutes))} played</span>`);
           items.push(`<span class="shrink-0">${val(unlockCount.toLocaleString())} ${unlockCount === 1 ? 'unlock' : 'unlocks'}</span>`);
-          if (topPart[1] > 0) items.push(`<span class="shrink-0">Mostly ${val(topPart[0] === 'night' ? 'at night' : `in the ${topPart[0]}`)}</span>`);
+          const PART_RANGE = { morning: '05:00–12:00', afternoon: '12:00–17:00', evening: '17:00–22:00', night: '22:00–05:00' };
+          if (topPart[1] > 0) items.push(`<span class="shrink-0">Mostly ${val(PART_RANGE[topPart[0]])}</span>`);
           if (top) {
             const [p, id] = top[0].split(':');
             const name = p === 'ra' ? _parseTitle(names.ra[id] ?? '').baseTitle : names.steam[id];
