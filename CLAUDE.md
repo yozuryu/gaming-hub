@@ -107,6 +107,8 @@ Vanilla JS, no React. Reads `data/hub/config.json`, `data/ra/profile.json`, `dat
 - "Completed" = RA Mastered + Steam Perfect + Xbox Completed merged — they are the same concept
 - Most recent completion shown with icon, name, and time ago
 
+**Analytics strip** (desktop only, below the Completions strip; the header no longer links Analytics): last 30 days · hours played · unlocks · the part of the day with the most play · top game, linking to `analytics/`. `loadAnalyticsStrip()` repeats the Analytics page's default view (30 days, farms hidden, viewer's timezone) from `playtime/{YYYY}.json` and achievement chunk 1; farms use the same rule as `analytics/utils.js` but only fetch the per-game files of the Steam games active in the window (the Steam index is 1.8 MB). Keep both in sync. `fetchJsonOnce` shares the chunk requests with the activity feed
+
 **Recent Activity feed** — up to 8 rows, combined RA + Steam + Xbox sorted by date. On mobile collapses to 4 rows with a "Show more / Show less" toggle button below the feed.
 
 ---
@@ -116,7 +118,7 @@ Vanilla JS, no React. Reads `data/hub/config.json`, `data/ra/profile.json`, `dat
 ### Bottom navigation (`assets/mobile-nav.js`)
 Self-contained IIFE injected into every page via `<script src="...assets/mobile-nav.js">`. Visible only on screens < 768px.
 
-- 5 tabs: Home, Profile (popup), Activity, Done (Completions), Stats (Analytics). The changelog has no tab: the hub header links to it on mobile (and to Analytics on desktop); the desktop footer links both
+- 5 tabs: Home, Profile (popup), Activity, Done (Completions), Stats (Analytics). The changelog has no tab: the hub header links to it on mobile; the desktop footer links both, and the hub has an Analytics strip on desktop
 - **Profile tab** fetches `data/hub/config.json` and builds a vertical pill popup showing only `visible: true` platforms. Popup slides up/down via CSS transition (no JS animation). If only one platform, navigates directly.
 - `BASE` is derived from `document.currentScript.src` — works on any host (GitHub Pages `/gaming-hub/`, local `/`, etc.)
 - Mobile CSS injected via `<style>`: hides `.page-topbar` and `footer`, adds `padding-bottom` to body, repositions `.scroll-top-btn`
@@ -135,7 +137,7 @@ All page headers use `pt-8 pb-5 md:pt-5` — extra top padding on mobile compens
 
 ### Hub page (mobile)
 - Platform cards: header + stats grid only — recently played rows (`.recent-label`, `#ra-recent`, `#steam-recent`) and card footers (`.card-ftr`) hidden via `@media (max-width: 767px)` CSS in `index.html`
-- Completions strip (`#completions-strip`): hidden on mobile entirely via same media query — redundant with Done nav tab
+- Completions and Analytics strips (`#completions-strip`, `#analytics-strip`): hidden on mobile entirely via same media query — redundant with the Done and Stats nav tabs
 - Activity feed: collapses to 4 rows on mobile; rows 4+ have `data-activity-extra="1"` attribute and class `activity-row-hidden`; toggle button `#activity-toggle-btn` shown/hidden by JS after feed renders
 
 ### RA Profile stats (mobile)

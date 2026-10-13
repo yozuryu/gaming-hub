@@ -10,6 +10,8 @@ Metrics across playtime and achievements. Everything is computed in the browser,
 - `../data/{steam,xbox}/games/index.json`: names, icons and current `unlocked`/`total` per game; Steam "started" count and farm detection (`playtimeForever`). RA current progress comes from `gameAwardsAndProgress` (`numAwarded` / `maxPossible`)
 - Not `data/ra/games.json` (5 MB). No genre breakdown for that reason
 
+The hub's Analytics strip (`loadAnalyticsStrip()` in `../index.html`) shows this page's 30-day hours, unlocks, top part of the day and most played game, computed the same way. Change the period rules, `DAY_PARTS` or the farm rule here, and update it there too.
+
 Game metadata is merged into `meta[platform][id]` (string ids) from all of the above.
 
 ## Period

@@ -1,5 +1,15 @@
 # Changelog
 
+## v26.10.13
+
+Chevron icons for the hub's links, and an Analytics strip on the hub.
+
+### Hub
+
+- The "View all →" text on the Completions strip and the Recent Activity header is now a chevron-right icon (inline Lucide SVG, the hub doesn't load Lucide). The Activity link keeps "View all activity" as its accessible label and tooltip, with a slightly larger click area
+- The platform cards' "View full dashboard" footer arrow uses the same chevron
+- New **Analytics strip** under Completions (desktop): the last 30 days at a glance (hours played, unlocks, the part of the day you play most, top game), linking to Analytics. It replaces the small "Analytics" text link in the header and matches the Analytics page's default view, farms hidden, in your timezone. The activity feed and the strip share the achievement file requests
+
 ## v26.10.10
 
 Xbox sync paused.

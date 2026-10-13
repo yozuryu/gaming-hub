@@ -21,13 +21,13 @@
        replays the animation (keyframes in assets/motion.css) */
     #ra-stats > *, #steam-stats > *, #xbox-stats > *,
     #ra-recent > *, #steam-recent > *, #xbox-recent > *,
-    #activity-feed > *, #completions-strip-latest > *, #completions-strip-stats > *, #header-tags > * {
+    #activity-feed > *, #completions-strip-latest > *, #completions-strip-stats > *, #analytics-strip-stats > *, #header-tags > * {
       animation: motion-fade 200ms ease-out both;
     }
     @media (prefers-reduced-motion: reduce) {
       #ra-stats > *, #steam-stats > *, #xbox-stats > *,
       #ra-recent > *, #steam-recent > *, #xbox-recent > *,
-      #activity-feed > *, #completions-strip-latest > *, #completions-strip-stats > *, #header-tags > * { animation: none; }
+      #activity-feed > *, #completions-strip-latest > *, #completions-strip-stats > *, #analytics-strip-stats > *, #header-tags > * { animation: none; }
     }
 
     .skeleton {
@@ -106,7 +106,7 @@
       .recent-label, .recent-rows, #ra-recent, #steam-recent, #xbox-recent { display: none !important; }
       .card-ftr { display: none !important; }
       .stat-grid { border-bottom: none; }
-      #completions-strip { display: none !important; }
+      #completions-strip, #analytics-strip { display: none !important; }
       .activity-view-all { display: none !important; }
 
       /* Activity feed collapse */
@@ -155,8 +155,7 @@
         <!-- Genre tags -->
         <div id="header-tags" class="flex flex-wrap gap-1.5"></div>
         <p class="text-[11px] text-[#546270]">Last change <span id="hub-updated" class="text-[#8f98a0]"><span class="skeleton align-middle" style="width:72px;height:10px"></span></span>
-          <!-- Analytics has a bottom-nav tab on mobile, the changelog doesn't (and the footer is hidden there) -->
-          <span class="hidden md:inline"> · <a href="./analytics/" class="text-[#8f98a0] hover:text-[#66c0f4] transition-colors">Analytics</a></span>
+          <!-- The changelog has no bottom-nav tab, and the footer is hidden on mobile -->
           <span class="md:hidden"> · <a href="./changelog/" class="text-[#8f98a0] hover:text-[#66c0f4] transition-colors">Changelog</a></span>
         </p>
       </div>
@@ -226,7 +225,7 @@
 
           <div class="card-ftr">
             <span class="text-[10px] text-[#546270]">View full dashboard</span>
-            <span class="card-arrow text-[10px] text-[#2a475e] transition-colors">→</span>
+            <span class="card-arrow flex text-[#2a475e] transition-colors"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
           </div>
         </div>
       </a>
@@ -281,7 +280,7 @@
 
           <div class="card-ftr">
             <span class="text-[10px] text-[#546270]">View full dashboard</span>
-            <span class="card-arrow text-[10px] text-[#2a475e] transition-colors">→</span>
+            <span class="card-arrow flex text-[#2a475e] transition-colors"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
           </div>
         </div>
       </a>
@@ -336,7 +335,7 @@
 
           <div class="card-ftr">
             <span class="text-[10px] text-[#546270]">View full dashboard</span>
-            <span class="card-arrow text-[10px] text-[#2a475e] transition-colors">→</span>
+            <span class="card-arrow flex text-[#2a475e] transition-colors"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
           </div>
         </div>
       </a>
@@ -353,7 +352,17 @@
       <div id="completions-strip-stats" class="hidden sm:flex items-center gap-3 text-[11px]"></div>
       <span class="w-px h-3.5 bg-[#3a5068] shrink-0 hidden sm:block"></span>
       <div id="completions-strip-latest" class="hidden sm:flex items-center gap-3 flex-1 min-w-0"></div>
-      <span class="ml-auto text-[10px] text-[#546270] group-hover:text-[#66c0f4] transition-colors shrink-0">View all →</span>
+      <span class="ml-auto flex text-[#546270] group-hover:text-[#66c0f4] transition-colors shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
+    </a>
+
+    <!-- Analytics strip (desktop only: the Stats tab covers it on mobile) -->
+    <a id="analytics-strip" href="./analytics/" style="display:none;"
+      class="flex items-center gap-3 mt-3 px-4 py-3 min-h-[48px] bg-[#1b2838] border border-[#2a475e] rounded-[2px] hover:border-[#4c9be8] transition-colors group">
+      <span class="text-[#66c0f4] flex shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></span>
+      <span class="text-[11px] font-bold uppercase tracking-[0.08em] text-[#8f98a0] shrink-0">Analytics</span>
+      <span class="w-px h-3.5 bg-[#3a5068] shrink-0"></span>
+      <div id="analytics-strip-stats" class="flex items-center gap-3 text-[11px] text-[#546270] flex-1 min-w-0"></div>
+      <span class="ml-auto flex text-[#546270] group-hover:text-[#66c0f4] transition-colors shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
     </a>
 
     <!-- Recent Activity -->
@@ -361,7 +370,7 @@
     <div class="flex items-center gap-2 border-b border-[#2a475e] pb-[7px] mb-4 mt-8">
       <span class="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] flex-shrink-0"></span>
       <span class="text-[13px] text-white uppercase tracking-[0.1em] font-semibold">Recent Activity</span>
-      <a href="./activity/" class="activity-view-all ml-auto text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">View all →</a>
+      <a href="./activity/" class="activity-view-all ml-auto flex p-1 -m-1 text-[#546270] hover:text-[#66c0f4] transition-colors" aria-label="View all activity" title="View all activity"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
     </div>
     <div id="activity-feed" class="bg-[#1b2838] border border-[#2a475e] rounded-[2px] overflow-hidden" style="border-bottom-left-radius:0;border-bottom-right-radius:0;">
       <!-- skeleton -->
@@ -441,6 +450,10 @@
       return `<span style="${_BADGE_BASE}border:1px solid ${s.border};background:${s.bg};color:${s.color};">${tag}</span>`;
     }).join(' ');
 
+    // One request per URL, shared by the activity feed and the Analytics strip; null when missing
+    const _jsonCache = {};
+    const fetchJsonOnce = (url) => (_jsonCache[url] ??= fetch(url).then(r => r.ok ? r.json() : null).catch(() => null));
+
     async function loadHubProfile() {
       try {
         const res = await fetch('./data/hub/config.json');
@@ -487,6 +500,7 @@
         if (p.completions?.visible !== false) {
           loadCompletionsStrip();
         }
+        loadAnalyticsStrip();
       } catch (e) {
         console.warn('Could not load hub profile:', e);
       }
@@ -830,19 +844,13 @@
       try {
         const [raChunks, steamChunks, xboxChunks] = await Promise.all([
           Promise.all([1, 2, 3, 4].map(i =>
-            fetch(`./data/ra/achievements/${i}.json`)
-              .then(r => r.ok ? r.json() : { recentAchievements: [] })
-              .catch(() => ({ recentAchievements: [] }))
+            fetchJsonOnce(`./data/ra/achievements/${i}.json`).then(d => d ?? { recentAchievements: [] })
           )),
           Promise.all([1, 2, 3, 4].map(i =>
-            fetch(`./data/steam/achievements/${i}.json`)
-              .then(r => r.ok ? r.json() : { recentAchievements: [] })
-              .catch(() => ({ recentAchievements: [] }))
+            fetchJsonOnce(`./data/steam/achievements/${i}.json`).then(d => d ?? { recentAchievements: [] })
           )),
           Promise.all([1, 2, 3, 4].map(i =>
-            fetch(`./data/xbox/achievements/${i}.json`)
-              .then(r => r.ok ? r.json() : { recentAchievements: [] })
-              .catch(() => ({ recentAchievements: [] }))
+            fetchJsonOnce(`./data/xbox/achievements/${i}.json`).then(d => d ?? { recentAchievements: [] })
           )),
         ]);
 
@@ -1063,6 +1071,100 @@
         document.getElementById('completions-strip').style.display = '';
       } catch (e) {
         // silently skip — strip is non-critical
+      }
+    }
+
+    // Last 30 days, computed like the Analytics page's default view (30 days, farms hidden) in the
+    // viewer's timezone: hours = session minutes split into local days; unlocks by local day;
+    // time of day and top game from the same sessions. Achievement chunk 1 covers 91 days.
+    async function loadAnalyticsStrip() {
+      try {
+        const localKey = (ms) => { const d = new Date(ms); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+        const now = new Date();
+        const startMs = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 29).getTime();
+        const startKey = localKey(startMs);
+        const endKey = localKey(now.getTime());
+        const inRange = (ms) => { const k = localKey(ms); return k >= startKey && k <= endKey; };
+
+        // Play sessions (RA + Steam): this year's file, plus last year's when the window crosses New Year
+        const years = [...new Set([new Date(startMs).getUTCFullYear(), now.getUTCFullYear()])];
+        const playFiles = await Promise.all(['ra', 'steam'].flatMap(p => years.map(y =>
+          fetchJsonOnce(`./data/${p}/playtime/${y}.json`).then(f => ({ p, f })))));
+        const names = { ra: {}, steam: {} };
+        for (const { p, f } of playFiles) for (const [id, g] of Object.entries(f?.games ?? {})) names[p][id] = g.name;
+        const sessions = playFiles.flatMap(({ p, f }) => (f?.sessions ?? []).map(s => ({
+          platform: p, gameId: String(s.gameId), minutes: s.minutes, startMs: Date.parse(s.start), endMs: Date.parse(s.end),
+        })));
+
+        const chunk = async (p, map) => ((await fetchJsonOnce(`./data/${p}/achievements/1.json`))?.recentAchievements ?? []).map(map);
+        const unlocks = (await Promise.all([
+          chunk('ra',    a => ({ platform: 'ra',    gameId: String(a.gameId),  ms: Date.parse(a.date.replace(' ', 'T') + 'Z') })),
+          chunk('steam', a => ({ platform: 'steam', gameId: String(a.appId),   ms: Date.parse(a.unlockedAt) })),
+          chunk('xbox',  a => ({ platform: 'xbox',  gameId: String(a.titleId), ms: Date.parse(a.unlockedAt) })),
+        ])).flat().filter(u => inRange(u.ms));
+
+        // Achievement farms, same rule as Analytics (FARM_* in analytics/utils.js), checked only for
+        // the Steam games active in the window, from their small per-game files (the index is 1.8 MB)
+        const steamIds = [...new Set([
+          ...sessions.filter(s => s.platform === 'steam' && s.endMs >= startMs - 86400000).map(s => s.gameId),
+          ...unlocks.filter(u => u.platform === 'steam').map(u => u.gameId),
+        ])];
+        const farms = new Set((await Promise.all(steamIds.map(async id => {
+          const g = await fetchJsonOnce(`./data/steam/games/${id}.json`);
+          return g && g.unlocked >= 10 && g.unlocked / Math.max((g.playtimeForever ?? 0) / 60, 0.1) > 15 ? id : null;
+        }))).filter(Boolean));
+        const keep = (x) => !(x.platform === 'steam' && farms.has(x.gameId));
+
+        // Session minutes spread over local days (hours, top game) and local hours (time of day),
+        // like Analytics' sessionDays and hourGrid
+        const spread = (s, nextStep) => {
+          const span = s.endMs - s.startMs;
+          if (!(span > 0)) return [{ t: s.endMs, minutes: s.minutes }];
+          const out = [];
+          for (let t = s.startMs; t < s.endMs;) { const next = Math.min(nextStep(new Date(t)), s.endMs); out.push({ t, minutes: s.minutes * ((next - t) / span) }); t = next; }
+          return out;
+        };
+        const nextDay = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1).getTime();
+        const nextHour = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours() + 1).getTime();
+        const partOf = (h) => (h >= 5 && h < 12 ? 'morning' : h < 17 && h >= 12 ? 'afternoon' : h < 22 && h >= 17 ? 'evening' : 'night');
+        let minutes = 0;
+        const perGame = {};
+        const parts = { morning: 0, afternoon: 0, evening: 0, night: 0 };
+        for (const s of sessions.filter(keep)) {
+          for (const d of spread(s, nextDay)) {
+            if (!inRange(d.t)) continue;
+            minutes += d.minutes;
+            perGame[`${s.platform}:${s.gameId}`] = (perGame[`${s.platform}:${s.gameId}`] ?? 0) + d.minutes;
+          }
+          // Time of day takes the sessions that ended in the window, whole (as Analytics does)
+          if (inRange(s.endMs)) for (const h of spread(s, nextHour)) parts[partOf(new Date(h.t).getHours())] += h.minutes;
+        }
+        const unlockCount = unlocks.filter(keep).length;
+        const topPart = Object.entries(parts).reduce((m, e) => (e[1] > m[1] ? e : m), ['', 0]);
+        const top = Object.entries(perGame).filter(([, m]) => m >= 1).reduce((m, e) => (!m || e[1] > m[1] ? e : m), null);
+
+        const fmtHours = (m) => { const min = Math.round(m); return min >= 60 ? `${Math.round(min / 60).toLocaleString()}h` : `${min}m`; };
+        const esc = (t) => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+        const val = (v) => `<b style="color:#fff;font-weight:600;">${v}</b>`;
+        const dot = '<span style="color:#3a5068;">·</span>';
+        const items = ['<span class="shrink-0">Last 30 days</span>'];
+        if (minutes < 1 && unlockCount === 0) {
+          items.push('<span class="shrink-0">No play or unlocks</span>');
+        } else {
+          if (minutes >= 1) items.push(`<span class="shrink-0">${val(fmtHours(minutes))} played</span>`);
+          items.push(`<span class="shrink-0">${val(unlockCount.toLocaleString())} ${unlockCount === 1 ? 'unlock' : 'unlocks'}</span>`);
+          if (topPart[1] > 0) items.push(`<span class="shrink-0">Mostly ${val(topPart[0] === 'night' ? 'at night' : `in the ${topPart[0]}`)}</span>`);
+          if (top) {
+            const [p, id] = top[0].split(':');
+            const name = p === 'ra' ? _parseTitle(names.ra[id] ?? '').baseTitle : names.steam[id];
+            if (name) items.push(`<span class="min-w-0" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Top game ${val(esc(name))}</span>`);
+          }
+        }
+
+        document.getElementById('analytics-strip-stats').innerHTML = items.join(` ${dot} `);
+        document.getElementById('analytics-strip').style.display = '';
+      } catch (e) {
+        // non-critical, like the Completions strip
       }
     }
 
