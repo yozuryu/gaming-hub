@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "generatedAt": "2026-10-15T10:46:50Z",
+        "generatedAt": "2026-10-15T11:46:50Z",
         "year": 2026
     },
     "games": {
@@ -1561,6 +1561,13 @@
             "end": "2026-10-15T10:45:57Z",
             "gameId": 45053,
             "minutes": 6
+        },
+        {
+            "start": "2026-10-15T11:14:29Z",
+            "end": "2026-10-15T11:28:54Z",
+            "gameId": 45053,
+            "minutes": 22,
+            "approx": true
         }
     ]
 }
