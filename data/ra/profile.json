@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-16T05:45:55.603Z"
+        "extractionTimestamp": "2026-10-16T06:15:55.692Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,13 +8,13 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Poring Clicker | Level 24 | Prestige 0",
+        "richPresenceMsg": "Poring Clicker | Level 26 | Prestige 0",
         "lastGameId": 45053,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 3395,
+        "totalPoints": 3405,
         "totalSoftcorePoints": 0,
-        "totalTruePoints": 9389,
+        "totalTruePoints": 9399,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -33,31 +33,31 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Poring Clicker | Level 24 | Prestige 0",
-        "richPresenceMsgDate": "2026-10-15 23:13:07",
+        "richPresenceMsg": "Poring Clicker | Level 26 | Prestige 0",
+        "richPresenceMsgDate": "2026-10-16 06:15:44",
         "lastGameId": 45053,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 3395,
+        "totalPoints": 3405,
         "totalSoftcorePoints": 0,
-        "totalTruePoints": 9389,
+        "totalTruePoints": 9399,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 38000,
+        "rank": 38002,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 168733,
+        "totalRanked": 168736,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 3395,
+        "points": 3405,
         "softcorePoints": 0
     },
     "pageAwards": {
@@ -263,14 +263,14 @@
             "imageTitle": "/Images/000002.png",
             "imageIngame": "/Images/000002.png",
             "imageBoxArt": "/Images/000002.png",
-            "lastPlayed": "2026-10-15 23:13:07",
+            "lastPlayed": "2026-10-16 06:15:44",
             "achievementsTotal": 173,
             "numPossibleAchievements": 173,
             "possibleScore": 1402,
-            "numAchieved": 42,
-            "scoreAchieved": 201,
-            "numAchievedHardcore": 42,
-            "scoreAchievedHardcore": 201
+            "numAchieved": 44,
+            "scoreAchieved": 211,
+            "numAchievedHardcore": 44,
+            "scoreAchievedHardcore": 211
         },
         {
             "gameId": 22693,
@@ -536,9 +536,9 @@
                 "consoleId": 102,
                 "consoleName": "Standalone",
                 "maxPossible": 173,
-                "numAwarded": 42,
-                "numAwardedHardcore": 42,
-                "mostRecentAwardedDate": "2026-10-15T11:25:35+00:00",
+                "numAwarded": 44,
+                "numAwardedHardcore": 44,
+                "mostRecentAwardedDate": "2026-10-16T06:14:42+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -1663,12 +1663,12 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-10-15 11:25:35",
+        "date": "2026-10-16 06:14:42",
         "hardcoreMode": true,
-        "achievementId": 642702,
-        "title": "Comfortable",
-        "description": "Earn 100,000 total zeny",
-        "badgeName": "734584",
+        "achievementId": 642597,
+        "title": "Shiny Expert",
+        "description": "Kill 50 Shiny monsters",
+        "badgeName": "734479",
         "points": 5,
         "trueRatio": 5,
         "type": null,
@@ -1678,8 +1678,8 @@
         "gameIcon": "/Images/163848.png",
         "gameId": 45053,
         "consoleName": "Standalone",
-        "cumulScore": 684,
-        "badgeUrl": "/Badge/734584.png",
+        "cumulScore": 694,
+        "badgeUrl": "/Badge/734479.png",
         "gameUrl": "/game/45053"
     },
     "mostRecentGame": {
@@ -1691,15 +1691,15 @@
         "imageTitle": "/Images/000002.png",
         "imageIngame": "/Images/000002.png",
         "imageBoxArt": "/Images/000002.png",
-        "lastPlayed": "2026-10-15 23:13:07",
+        "lastPlayed": "2026-10-16 06:15:44",
         "achievementsTotal": 173,
         "numPossibleAchievements": 173,
         "possibleScore": 1402,
-        "numAchieved": 42,
-        "scoreAchieved": 201,
-        "numAchievedHardcore": 42,
-        "scoreAchievedHardcore": 201
+        "numAchieved": 44,
+        "scoreAchieved": 211,
+        "numAchievedHardcore": 44,
+        "scoreAchievedHardcore": 211
     },
-    "points7Days": 201,
-    "points30Days": 435
+    "points7Days": 211,
+    "points30Days": 445
 }
