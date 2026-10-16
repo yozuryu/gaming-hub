@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-16T09:16:01.512Z"
+        "extractionTimestamp": "2026-10-16T09:45:56.960Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,13 +8,13 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Poring Clicker | Level 38 | Prestige 0",
+        "richPresenceMsg": "Poring Clicker | Level 40 | Prestige 0",
         "lastGameId": 45053,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 3434,
+        "totalPoints": 3444,
         "totalSoftcorePoints": 0,
-        "totalTruePoints": 9428,
+        "totalTruePoints": 9438,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -33,20 +33,20 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Poring Clicker | Level 38 | Prestige 0",
-        "richPresenceMsgDate": "2026-10-16 09:12:17",
+        "richPresenceMsg": "Poring Clicker | Level 40 | Prestige 0",
+        "richPresenceMsgDate": "2026-10-16 09:42:44",
         "lastGameId": 45053,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 3434,
+        "totalPoints": 3444,
         "totalSoftcorePoints": 0,
-        "totalTruePoints": 9428,
+        "totalTruePoints": 9438,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 37647,
+        "rank": 37595,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
@@ -57,7 +57,7 @@
         "status": "Offline"
     },
     "points": {
-        "points": 3434,
+        "points": 3444,
         "softcorePoints": 0
     },
     "pageAwards": {
@@ -263,14 +263,14 @@
             "imageTitle": "/Images/000002.png",
             "imageIngame": "/Images/000002.png",
             "imageBoxArt": "/Images/000002.png",
-            "lastPlayed": "2026-10-16 09:12:17",
+            "lastPlayed": "2026-10-16 09:42:44",
             "achievementsTotal": 173,
             "numPossibleAchievements": 173,
             "possibleScore": 1402,
-            "numAchieved": 50,
-            "scoreAchieved": 240,
-            "numAchievedHardcore": 50,
-            "scoreAchievedHardcore": 240
+            "numAchieved": 52,
+            "scoreAchieved": 250,
+            "numAchievedHardcore": 52,
+            "scoreAchievedHardcore": 250
         },
         {
             "gameId": 22693,
@@ -536,9 +536,9 @@
                 "consoleId": 102,
                 "consoleName": "Standalone",
                 "maxPossible": 173,
-                "numAwarded": 50,
-                "numAwardedHardcore": 50,
-                "mostRecentAwardedDate": "2026-10-16T07:59:53+00:00",
+                "numAwarded": 52,
+                "numAwardedHardcore": 52,
+                "mostRecentAwardedDate": "2026-10-16T09:42:01+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -1663,14 +1663,14 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-10-16 07:59:53",
+        "date": "2026-10-16 09:42:01",
         "hardcoreMode": true,
-        "achievementId": 642647,
-        "title": "Arsenal",
-        "description": "Own 10 different equipment pieces",
-        "badgeName": "734529",
-        "points": 4,
-        "trueRatio": 4,
+        "achievementId": 642619,
+        "title": "Desert Wanderer",
+        "description": "Unlock Sograt Desert",
+        "badgeName": "734501",
+        "points": 5,
+        "trueRatio": 5,
         "type": null,
         "author": "SpringRO",
         "authorUlid": "01KR6CQSQY9WS7R3F49W3C3F12",
@@ -1678,8 +1678,8 @@
         "gameIcon": "/Images/163848.png",
         "gameId": 45053,
         "consoleName": "Standalone",
-        "cumulScore": 723,
-        "badgeUrl": "/Badge/734529.png",
+        "cumulScore": 733,
+        "badgeUrl": "/Badge/734501.png",
         "gameUrl": "/game/45053"
     },
     "mostRecentGame": {
@@ -1691,15 +1691,15 @@
         "imageTitle": "/Images/000002.png",
         "imageIngame": "/Images/000002.png",
         "imageBoxArt": "/Images/000002.png",
-        "lastPlayed": "2026-10-16 09:12:17",
+        "lastPlayed": "2026-10-16 09:42:44",
         "achievementsTotal": 173,
         "numPossibleAchievements": 173,
         "possibleScore": 1402,
-        "numAchieved": 50,
-        "scoreAchieved": 240,
-        "numAchievedHardcore": 50,
-        "scoreAchievedHardcore": 240
+        "numAchieved": 52,
+        "scoreAchieved": 250,
+        "numAchievedHardcore": 52,
+        "scoreAchievedHardcore": 250
     },
-    "points7Days": 240,
-    "points30Days": 474
+    "points7Days": 250,
+    "points30Days": 484
 }
