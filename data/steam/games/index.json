@@ -28463,14 +28463,23 @@
             "appId": 578330,
             "hasAchievements": true,
             "total": 48,
-            "unlocked": 19,
+            "unlocked": 20,
             "gameName": "LEGO® City Undercover",
-            "playtimeForever": 4073,
-            "lastPlayedTs": "2026-10-16T11:54:44.000Z",
+            "playtimeForever": 4103,
+            "lastPlayedTs": "2026-10-16T12:24:44.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-            "lastUnlockedAt": "2026-10-16T10:36:01.000Z",
-            "lastUnlockName": "Ultimate Protection",
+            "lastUnlockedAt": "2026-10-16T12:31:41.000Z",
+            "lastUnlockName": "City Saviour",
             "preview": [
+                {
+                    "apiName": "COMPLETE_STORYEVENT15",
+                    "displayName": "City Saviour",
+                    "unlocked": true,
+                    "unlockedAt": "2026-10-16T12:31:41.000Z",
+                    "iconUrl": "e6bbc39e56dc964b24a63eaa0f656c7ab7187b19.jpg",
+                    "iconGrayUrl": "bf8bd72b8ffcb1f7186118d7c65d6f4e83e3b355.jpg",
+                    "globalPct": 25
+                },
                 {
                     "apiName": "COMPLETE_STORYEVENT14",
                     "displayName": "Ultimate Protection",
@@ -28515,15 +28524,6 @@
                     "iconUrl": "29bd127ab4d260145e86d5817935c0bcef93ccd0.jpg",
                     "iconGrayUrl": "bb4a78141f299cfe581a819c00694fdf4a598158.jpg",
                     "globalPct": 27.2
-                },
-                {
-                    "apiName": "COMPLETE_STORYEVENT10",
-                    "displayName": "Exhibit T",
-                    "unlocked": true,
-                    "unlockedAt": "2026-10-08T08:46:37.000Z",
-                    "iconUrl": "f58c18471f39a5890dd95ead319c6ef56ed55166.jpg",
-                    "iconGrayUrl": "00917f017d3191a4cdf14beca4a8a141663204e3.jpg",
-                    "globalPct": 28.5
                 }
             ]
         },

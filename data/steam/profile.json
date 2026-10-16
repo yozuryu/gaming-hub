@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-16T11:56:04.462Z"
+        "extractionTimestamp": "2026-10-16T12:46:50.863Z"
     },
     "profile": {
         "steamId": "76561198188939413",
@@ -13,11 +13,11 @@
     },
     "stats": {
         "totalGames": 1292,
-        "totalPlaytimeMin": 350475,
-        "totalPlaytimeHrs": 5841,
+        "totalPlaytimeMin": 350505,
+        "totalPlaytimeHrs": 5842,
         "gamesWithPlaytime": 821,
         "totalAchievements": 10139,
-        "unlockedAchievements": 2843,
+        "unlockedAchievements": 2844,
         "gamesWithAchievements": 171,
         "perfectCount": 17,
         "completionPct": 28,
@@ -27,12 +27,12 @@
         {
             "appId": 578330,
             "name": "LEGO® City Undercover",
-            "playtime2Weeks": 893,
-            "playtimeForever": 4073,
+            "playtime2Weeks": 923,
+            "playtimeForever": 4103,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
             "storeUrl": "https://store.steampowered.com/app/578330",
-            "lastPlayedTs": "2026-10-16T11:54:44.000Z",
-            "achUnlocked": 19,
+            "lastPlayedTs": "2026-10-16T12:24:44.000Z",
+            "achUnlocked": 20,
             "achTotal": 48
         },
         {
@@ -61,21 +61,21 @@
     "mostRecentGame": {
         "appId": 578330,
         "name": "LEGO® City Undercover",
-        "playtime2Weeks": 893,
-        "playtimeForever": 4073,
+        "playtime2Weeks": 923,
+        "playtimeForever": 4103,
         "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
         "storeUrl": "https://store.steampowered.com/app/578330",
-        "lastPlayedTs": "2026-10-16T11:54:44.000Z"
+        "lastPlayedTs": "2026-10-16T12:24:44.000Z"
     },
     "mostRecentUnlock": {
         "appId": 578330,
         "gameName": "LEGO® City Undercover",
-        "apiName": "COMPLETE_STORYEVENT14",
-        "displayName": "Ultimate Protection",
-        "description": "Complete Chapter 14 - Savings and Loans",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/578330/e55e95aba21b895ae9fc892dfd7be976c612e259.jpg",
-        "unlockedAt": "2026-10-16T10:36:01.000Z",
-        "globalPct": 25.3
+        "apiName": "COMPLETE_STORYEVENT15",
+        "displayName": "City Saviour",
+        "description": "Complete Chapter 15 - Far Above the Call of Duty",
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/578330/e6bbc39e56dc964b24a63eaa0f656c7ab7187b19.jpg",
+        "unlockedAt": "2026-10-16T12:31:41.000Z",
+        "globalPct": 25
     },
     "perfectGames": [
         {
