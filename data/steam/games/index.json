@@ -28463,14 +28463,32 @@
             "appId": 578330,
             "hasAchievements": true,
             "total": 48,
-            "unlocked": 17,
+            "unlocked": 19,
             "gameName": "LEGO® City Undercover",
             "playtimeForever": 3983,
-            "lastPlayedTs": "2026-10-10T09:31:33.000Z",
+            "lastPlayedTs": "2026-10-16T10:24:43.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-            "lastUnlockedAt": "2026-10-10T09:26:29.000Z",
-            "lastUnlockName": "Back to Blackwell's",
+            "lastUnlockedAt": "2026-10-16T10:36:01.000Z",
+            "lastUnlockName": "Ultimate Protection",
             "preview": [
+                {
+                    "apiName": "COMPLETE_STORYEVENT14",
+                    "displayName": "Ultimate Protection",
+                    "unlocked": true,
+                    "unlockedAt": "2026-10-16T10:36:01.000Z",
+                    "iconUrl": "e55e95aba21b895ae9fc892dfd7be976c612e259.jpg",
+                    "iconGrayUrl": "2809287077a669490a01809363250e9f4aa3fa32.jpg",
+                    "globalPct": 25.3
+                },
+                {
+                    "apiName": "JUMP_HELICOPTER_TO_CAR",
+                    "displayName": "Daredevil",
+                    "unlocked": true,
+                    "unlockedAt": "2026-10-16T10:29:13.000Z",
+                    "iconUrl": "753177a0e0319ef1a8cb3741cf58b725e0f79542.jpg",
+                    "iconGrayUrl": "4efb251458dee3faaec998bb02b615fb1df97c03.jpg",
+                    "globalPct": 21.1
+                },
                 {
                     "apiName": "COMPLETE_STORYEVENT13",
                     "displayName": "Back to Blackwell's",
@@ -28506,24 +28524,6 @@
                     "iconUrl": "f58c18471f39a5890dd95ead319c6ef56ed55166.jpg",
                     "iconGrayUrl": "00917f017d3191a4cdf14beca4a8a141663204e3.jpg",
                     "globalPct": 28.5
-                },
-                {
-                    "apiName": "COMPLETE_STORYEVENT9",
-                    "displayName": "When Pigs Can Fly",
-                    "unlocked": true,
-                    "unlockedAt": "2026-10-04T09:08:27.000Z",
-                    "iconUrl": "598fb9a5f89a4d6db5a102acfdc9ac32d1c68ed0.jpg",
-                    "iconGrayUrl": "fe7840c5ab5945a9b10fdd4a15c96c9be92c7bf8.jpg",
-                    "globalPct": 30.7
-                },
-                {
-                    "apiName": "COMPLETE_STORYEVENT8",
-                    "displayName": "Save Points",
-                    "unlocked": true,
-                    "unlockedAt": "2026-10-03T04:41:06.000Z",
-                    "iconUrl": "ebeb44b36cccac79674b0bb07c2383f1940ef2d4.jpg",
-                    "iconGrayUrl": "1092b2c48ac34be5d6f7b7b91f85fa6d80e0b9b7.jpg",
-                    "globalPct": 32.1
                 }
             ]
         },
@@ -34725,7 +34725,7 @@
                     "unlockedAt": "2026-09-19T16:57:00.000Z",
                     "iconUrl": "1d418442f3bb34d245041b75cb9e334344db7246.jpg",
                     "iconGrayUrl": "cce371f88520c77815be3aa2ad82fd2379f66149.jpg",
-                    "globalPct": 31.6
+                    "globalPct": 31.5
                 },
                 {
                     "apiName": "ACHIEVEMENT_033",

@@ -1,14 +1,14 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-15T15:46:56.350Z"
+        "extractionTimestamp": "2026-10-16T10:46:48.240Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 0,
-        "lastOnline": "2026-10-15T15:23:49.000Z",
+        "status": 1,
+        "lastOnline": "2026-10-16T10:23:13.000Z",
         "countryCode": "ID"
     },
     "stats": {
@@ -17,13 +17,24 @@
         "totalPlaytimeHrs": 5840,
         "gamesWithPlaytime": 821,
         "totalAchievements": 10139,
-        "unlockedAchievements": 2841,
+        "unlockedAchievements": 2843,
         "gamesWithAchievements": 171,
         "perfectCount": 17,
         "completionPct": 28,
         "avgPlaytimeMin": 426
     },
     "recentlyPlayed": [
+        {
+            "appId": 578330,
+            "name": "LEGO® City Undercover",
+            "playtime2Weeks": 803,
+            "playtimeForever": 3983,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
+            "storeUrl": "https://store.steampowered.com/app/578330",
+            "lastPlayedTs": "2026-10-16T10:24:43.000Z",
+            "achUnlocked": 19,
+            "achTotal": 48
+        },
         {
             "appId": 921570,
             "name": "OCTOPATH TRAVELER",
@@ -34,17 +45,6 @@
             "lastPlayedTs": "2026-10-15T15:22:02.000Z",
             "achUnlocked": 40,
             "achTotal": 88
-        },
-        {
-            "appId": 578330,
-            "name": "LEGO® City Undercover",
-            "playtime2Weeks": 803,
-            "playtimeForever": 3983,
-            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-            "storeUrl": "https://store.steampowered.com/app/578330",
-            "lastPlayedTs": "2026-10-10T09:31:33.000Z",
-            "achUnlocked": 17,
-            "achTotal": 48
         },
         {
             "appId": 1658290,
@@ -59,23 +59,23 @@
         }
     ],
     "mostRecentGame": {
-        "appId": 921570,
-        "name": "OCTOPATH TRAVELER",
-        "playtime2Weeks": 161,
-        "playtimeForever": 1664,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
-        "storeUrl": "https://store.steampowered.com/app/921570",
-        "lastPlayedTs": "2026-10-15T15:22:02.000Z"
+        "appId": 578330,
+        "name": "LEGO® City Undercover",
+        "playtime2Weeks": 803,
+        "playtimeForever": 3983,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
+        "storeUrl": "https://store.steampowered.com/app/578330",
+        "lastPlayedTs": "2026-10-16T10:24:43.000Z"
     },
     "mostRecentUnlock": {
         "appId": 578330,
         "gameName": "LEGO® City Undercover",
-        "apiName": "COMPLETE_STORYEVENT13",
-        "displayName": "Back to Blackwell's",
-        "description": "Complete Chapter 13 - Secrets",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/578330/c4a8836d775ff9e075559f3f98ccb10f18b619f4.jpg",
-        "unlockedAt": "2026-10-10T09:26:29.000Z",
-        "globalPct": 25.6
+        "apiName": "COMPLETE_STORYEVENT14",
+        "displayName": "Ultimate Protection",
+        "description": "Complete Chapter 14 - Savings and Loans",
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/578330/e55e95aba21b895ae9fc892dfd7be976c612e259.jpg",
+        "unlockedAt": "2026-10-16T10:36:01.000Z",
+        "globalPct": 25.3
     },
     "perfectGames": [
         {
