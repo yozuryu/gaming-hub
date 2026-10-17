@@ -1,25 +1,6 @@
 {
     "recentAchievements": [
         {
-            "date": "2026-04-18 13:18:20",
-            "hardcoreMode": true,
-            "achievementId": 374096,
-            "title": "LuvFlow Clear",
-            "description": "Clear 'LuvFlow' (Non-mission)",
-            "badgeName": "420741",
-            "points": 1,
-            "trueRatio": 1,
-            "type": "progression",
-            "author": "ACheapLemon",
-            "authorUlid": "01D36HWVNT3NCRWQ4GBB743HTA",
-            "gameTitle": "DJ Max Fever",
-            "gameIcon": "/Images/080862.png",
-            "gameId": 18157,
-            "consoleName": "PlayStation Portable",
-            "badgeUrl": "/Badge/420741.png",
-            "gameUrl": "/game/18157"
-        },
-        {
             "date": "2026-04-18 16:16:23",
             "hardcoreMode": true,
             "achievementId": 374122,
@@ -3419,6 +3400,25 @@
             "consoleName": "PlayStation",
             "badgeUrl": "/Badge/405201.png",
             "gameUrl": "/game/2873"
+        },
+        {
+            "date": "2026-04-18 13:18:20",
+            "hardcoreMode": true,
+            "achievementId": 374096,
+            "title": "LuvFlow Clear",
+            "description": "Clear 'LuvFlow' (Non-mission)",
+            "badgeName": "420741",
+            "points": 1,
+            "trueRatio": 1,
+            "type": "progression",
+            "author": "ACheapLemon",
+            "authorUlid": "01D36HWVNT3NCRWQ4GBB743HTA",
+            "gameTitle": "DJ Max Fever",
+            "gameIcon": "/Images/080862.png",
+            "gameId": 18157,
+            "consoleName": "PlayStation Portable",
+            "badgeUrl": "/Badge/420741.png",
+            "gameUrl": "/game/18157"
         }
     ]
 }
