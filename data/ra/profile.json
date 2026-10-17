@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-17T00:01:32.589Z"
+        "extractionTimestamp": "2026-10-17T00:15:52.597Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -12,9 +12,9 @@
         "lastGameId": 45053,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 3454,
+        "totalPoints": 3464,
         "totalSoftcorePoints": 0,
-        "totalTruePoints": 9449,
+        "totalTruePoints": 9459,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -34,13 +34,13 @@
             "data2": null
         },
         "richPresenceMsg": "Poring Clicker | Level 49 | Prestige 0",
-        "richPresenceMsgDate": "2026-10-17 00:01:04",
+        "richPresenceMsgDate": "2026-10-17 00:13:17",
         "lastGameId": 45053,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 3454,
+        "totalPoints": 3464,
         "totalSoftcorePoints": 0,
-        "totalTruePoints": 9449,
+        "totalTruePoints": 9459,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -57,7 +57,7 @@
         "status": "Offline"
     },
     "points": {
-        "points": 3454,
+        "points": 3464,
         "softcorePoints": 0
     },
     "pageAwards": {
@@ -263,14 +263,14 @@
             "imageTitle": "/Images/000002.png",
             "imageIngame": "/Images/000002.png",
             "imageBoxArt": "/Images/000002.png",
-            "lastPlayed": "2026-10-17 00:01:04",
+            "lastPlayed": "2026-10-17 00:13:17",
             "achievementsTotal": 173,
             "numPossibleAchievements": 173,
             "possibleScore": 1402,
-            "numAchieved": 53,
-            "scoreAchieved": 260,
-            "numAchievedHardcore": 53,
-            "scoreAchievedHardcore": 260
+            "numAchieved": 55,
+            "scoreAchieved": 270,
+            "numAchievedHardcore": 55,
+            "scoreAchievedHardcore": 270
         },
         {
             "gameId": 22693,
@@ -536,9 +536,9 @@
                 "consoleId": 102,
                 "consoleName": "Standalone",
                 "maxPossible": 173,
-                "numAwarded": 53,
-                "numAwardedHardcore": 53,
-                "mostRecentAwardedDate": "2026-10-16T23:40:46+00:00",
+                "numAwarded": 55,
+                "numAwardedHardcore": 55,
+                "mostRecentAwardedDate": "2026-10-17T00:13:17+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -1663,14 +1663,14 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-10-16 23:40:46",
+        "date": "2026-10-17 00:13:17",
         "hardcoreMode": true,
-        "achievementId": 642703,
-        "title": "Wealthy",
-        "description": "Earn 1,000,000 total zeny",
-        "badgeName": "734585",
-        "points": 10,
-        "trueRatio": 11,
+        "achievementId": 642602,
+        "title": "Veteran",
+        "description": "Reach level 50",
+        "badgeName": "734484",
+        "points": 5,
+        "trueRatio": 5,
         "type": null,
         "author": "SpringRO",
         "authorUlid": "01KR6CQSQY9WS7R3F49W3C3F12",
@@ -1678,8 +1678,8 @@
         "gameIcon": "/Images/163848.png",
         "gameId": 45053,
         "consoleName": "Standalone",
-        "cumulScore": 742,
-        "badgeUrl": "/Badge/734585.png",
+        "cumulScore": 747,
+        "badgeUrl": "/Badge/734484.png",
         "gameUrl": "/game/45053"
     },
     "mostRecentGame": {
@@ -1691,15 +1691,15 @@
         "imageTitle": "/Images/000002.png",
         "imageIngame": "/Images/000002.png",
         "imageBoxArt": "/Images/000002.png",
-        "lastPlayed": "2026-10-17 00:01:04",
+        "lastPlayed": "2026-10-17 00:13:17",
         "achievementsTotal": 173,
         "numPossibleAchievements": 173,
         "possibleScore": 1402,
-        "numAchieved": 53,
-        "scoreAchieved": 260,
-        "numAchievedHardcore": 53,
-        "scoreAchievedHardcore": 260
+        "numAchieved": 55,
+        "scoreAchieved": 270,
+        "numAchievedHardcore": 55,
+        "scoreAchievedHardcore": 270
     },
-    "points7Days": 260,
-    "points30Days": 494
+    "points7Days": 270,
+    "points30Days": 504
 }
