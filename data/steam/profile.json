@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-18T08:16:46.584Z"
+        "extractionTimestamp": "2026-10-18T08:46:47.518Z"
     },
     "profile": {
         "steamId": "76561198188939413",
@@ -13,7 +13,7 @@
     },
     "stats": {
         "totalGames": 1292,
-        "totalPlaytimeMin": 350574,
+        "totalPlaytimeMin": 350604,
         "totalPlaytimeHrs": 5843,
         "gamesWithPlaytime": 821,
         "totalAchievements": 10139,
@@ -25,9 +25,20 @@
     },
     "recentlyPlayed": [
         {
+            "appId": 2486820,
+            "name": "Sonic Racing: CrossWorlds",
+            "playtime2Weeks": 30,
+            "playtimeForever": 539,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2486820/b1ae28acb49215b4d5d94ecc752d377500c44057.jpg",
+            "storeUrl": "https://store.steampowered.com/app/2486820",
+            "lastPlayedTs": "2026-10-18T08:19:18.000Z",
+            "achUnlocked": 7,
+            "achTotal": 44
+        },
+        {
             "appId": 578330,
             "name": "LEGO® City Undercover",
-            "playtime2Weeks": 776,
+            "playtime2Weeks": 753,
             "playtimeForever": 4172,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
             "storeUrl": "https://store.steampowered.com/app/578330",
@@ -48,13 +59,13 @@
         }
     ],
     "mostRecentGame": {
-        "appId": 578330,
-        "name": "LEGO® City Undercover",
-        "playtime2Weeks": 776,
-        "playtimeForever": 4172,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-        "storeUrl": "https://store.steampowered.com/app/578330",
-        "lastPlayedTs": "2026-10-16T13:34:20.000Z"
+        "appId": 2486820,
+        "name": "Sonic Racing: CrossWorlds",
+        "playtime2Weeks": 30,
+        "playtimeForever": 539,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2486820/b1ae28acb49215b4d5d94ecc752d377500c44057.jpg",
+        "storeUrl": "https://store.steampowered.com/app/2486820",
+        "lastPlayedTs": "2026-10-18T08:19:18.000Z"
     },
     "mostRecentUnlock": {
         "appId": 578330,
