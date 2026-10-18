@@ -1,25 +1,6 @@
 {
     "recentAchievements": [
         {
-            "date": "2026-01-18 14:35:49",
-            "hardcoreMode": true,
-            "achievementId": 191691,
-            "title": "8-Item Challenge - Liberte",
-            "description": "Find the 8 hidden items in [Liberte]",
-            "badgeName": "212474",
-            "points": 1,
-            "trueRatio": 3,
-            "type": null,
-            "author": "SnowPin",
-            "authorUlid": "019TVEANZS2MMVS809D58X76W6",
-            "gameTitle": "Final Fantasy: The 4 Heroes of Light",
-            "gameIcon": "/Images/054808.png",
-            "gameId": 14837,
-            "consoleName": "Nintendo DS",
-            "badgeUrl": "/Badge/212474.png",
-            "gameUrl": "/game/14837"
-        },
-        {
             "date": "2026-01-18 14:47:51",
             "hardcoreMode": true,
             "achievementId": 191693,
@@ -777,6 +758,25 @@
             "gameId": 14837,
             "consoleName": "Nintendo DS",
             "badgeUrl": "/Badge/212473.png",
+            "gameUrl": "/game/14837"
+        },
+        {
+            "date": "2026-01-18 14:35:49",
+            "hardcoreMode": true,
+            "achievementId": 191691,
+            "title": "8-Item Challenge - Liberte",
+            "description": "Find the 8 hidden items in [Liberte]",
+            "badgeName": "212474",
+            "points": 1,
+            "trueRatio": 3,
+            "type": null,
+            "author": "SnowPin",
+            "authorUlid": "019TVEANZS2MMVS809D58X76W6",
+            "gameTitle": "Final Fantasy: The 4 Heroes of Light",
+            "gameIcon": "/Images/054808.png",
+            "gameId": 14837,
+            "consoleName": "Nintendo DS",
+            "badgeUrl": "/Badge/212474.png",
             "gameUrl": "/game/14837"
         }
     ]
