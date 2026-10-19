@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-19T13:15:53.445Z"
+        "extractionTimestamp": "2026-10-19T13:45:56.188Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -12,9 +12,9 @@
         "lastGameId": 45053,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 3519,
+        "totalPoints": 3529,
         "totalSoftcorePoints": 0,
-        "totalTruePoints": 9519,
+        "totalTruePoints": 9531,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -34,30 +34,30 @@
             "data2": null
         },
         "richPresenceMsg": "Poring Clicker | Level 58 | Prestige 0",
-        "richPresenceMsgDate": "2026-10-19 13:11:13",
+        "richPresenceMsgDate": "2026-10-19 13:42:39",
         "lastGameId": 45053,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 3519,
+        "totalPoints": 3529,
         "totalSoftcorePoints": 0,
-        "totalTruePoints": 9519,
+        "totalTruePoints": 9531,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
         "userWallActive": true,
         "motto": "JRPG Maniac. Pixel Graphic Lover. Gaming for fun!",
-        "rank": 36993,
+        "rank": 36904,
         "recentlyPlayedCount": 0,
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 169249,
+        "totalRanked": 169250,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
     },
     "points": {
-        "points": 3519,
+        "points": 3529,
         "softcorePoints": 0
     },
     "pageAwards": {
@@ -263,14 +263,14 @@
             "imageTitle": "/Images/000002.png",
             "imageIngame": "/Images/000002.png",
             "imageBoxArt": "/Images/000002.png",
-            "lastPlayed": "2026-10-19 13:11:13",
+            "lastPlayed": "2026-10-19 13:42:39",
             "achievementsTotal": 154,
             "numPossibleAchievements": 154,
             "possibleScore": 1244,
-            "numAchieved": 60,
-            "scoreAchieved": 325,
-            "numAchievedHardcore": 60,
-            "scoreAchievedHardcore": 325
+            "numAchieved": 61,
+            "scoreAchieved": 335,
+            "numAchievedHardcore": 61,
+            "scoreAchievedHardcore": 335
         },
         {
             "gameId": 22693,
@@ -536,9 +536,9 @@
                 "consoleId": 102,
                 "consoleName": "Standalone",
                 "maxPossible": 154,
-                "numAwarded": 60,
-                "numAwardedHardcore": 60,
-                "mostRecentAwardedDate": "2026-10-18T03:01:57+00:00",
+                "numAwarded": 61,
+                "numAwardedHardcore": 61,
+                "mostRecentAwardedDate": "2026-10-19T13:24:21+00:00",
                 "highestAwardKind": null,
                 "highestAwardDate": null
             },
@@ -1663,14 +1663,14 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-10-18 03:01:57",
+        "date": "2026-10-19 13:24:21",
         "hardcoreMode": true,
-        "achievementId": 642609,
-        "title": "Master Swordsman",
-        "description": "Max Swordsman to job level 50",
-        "badgeName": "734491",
+        "achievementId": 642706,
+        "title": "Millionaire",
+        "description": "Hold 1,000,000z at once",
+        "badgeName": "734588",
         "points": 10,
-        "trueRatio": 12,
+        "trueRatio": 11,
         "type": null,
         "author": "SpringRO",
         "authorUlid": "01KR6CQSQY9WS7R3F49W3C3F12",
@@ -1678,8 +1678,8 @@
         "gameIcon": "/Images/163848.png",
         "gameId": 45053,
         "consoleName": "Standalone",
-        "cumulScore": 792,
-        "badgeUrl": "/Badge/734491.png",
+        "cumulScore": 802,
+        "badgeUrl": "/Badge/734588.png",
         "gameUrl": "/game/45053"
     },
     "mostRecentGame": {
@@ -1691,15 +1691,15 @@
         "imageTitle": "/Images/000002.png",
         "imageIngame": "/Images/000002.png",
         "imageBoxArt": "/Images/000002.png",
-        "lastPlayed": "2026-10-19 13:11:13",
+        "lastPlayed": "2026-10-19 13:42:39",
         "achievementsTotal": 154,
         "numPossibleAchievements": 154,
         "possibleScore": 1244,
-        "numAchieved": 60,
-        "scoreAchieved": 325,
-        "numAchievedHardcore": 60,
-        "scoreAchievedHardcore": 325
+        "numAchieved": 61,
+        "scoreAchieved": 335,
+        "numAchievedHardcore": 61,
+        "scoreAchievedHardcore": 335
     },
-    "points7Days": 164,
-    "points30Days": 559
+    "points7Days": 174,
+    "points30Days": 569
 }
