@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "generatedAt": "2026-10-20T09:16:54Z",
+        "generatedAt": "2026-10-20T15:46:53Z",
         "year": 2026
     },
     "games": {
@@ -22,6 +22,11 @@
         "515": {
             "name": "Pokémon FireRed Version",
             "icon": "/Images/105044.png",
+            "console": "Game Boy Advance"
+        },
+        "575": {
+            "name": "Mega Man Battle Network",
+            "icon": "/Images/091410.png",
             "console": "Game Boy Advance"
         },
         "676": {
@@ -1629,6 +1634,12 @@
             "end": "2026-10-20T08:51:03Z",
             "gameId": 45053,
             "minutes": 140
+        },
+        {
+            "start": "2026-10-20T15:33:05Z",
+            "end": "2026-10-20T15:39:05Z",
+            "gameId": 575,
+            "minutes": 6
         }
     ]
 }
