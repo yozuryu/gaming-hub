@@ -1,13 +1,13 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-23T00:05:36.860Z"
+        "extractionTimestamp": "2026-10-23T12:09:09.262Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 0,
+        "status": 1,
         "lastOnline": "2026-10-20T15:11:49.000Z",
         "countryCode": "ID"
     },
@@ -24,6 +24,17 @@
         "avgPlaytimeMin": 427
     },
     "recentlyPlayed": [
+        {
+            "appId": 578330,
+            "name": "LEGO® City Undercover",
+            "playtime2Weeks": 410,
+            "playtimeForever": 4172,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
+            "storeUrl": "https://store.steampowered.com/app/578330",
+            "lastPlayedTs": "2026-10-23T12:02:08.000Z",
+            "achUnlocked": 20,
+            "achTotal": 48
+        },
         {
             "appId": 921570,
             "name": "OCTOPATH TRAVELER",
@@ -45,27 +56,16 @@
             "lastPlayedTs": "2026-10-18T09:31:31.000Z",
             "achUnlocked": 7,
             "achTotal": 44
-        },
-        {
-            "appId": 578330,
-            "name": "LEGO® City Undercover",
-            "playtime2Weeks": 410,
-            "playtimeForever": 4172,
-            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-            "storeUrl": "https://store.steampowered.com/app/578330",
-            "lastPlayedTs": "2026-10-16T13:34:20.000Z",
-            "achUnlocked": 20,
-            "achTotal": 48
         }
     ],
     "mostRecentGame": {
-        "appId": 921570,
-        "name": "OCTOPATH TRAVELER",
-        "playtime2Weeks": 44,
-        "playtimeForever": 1683,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
-        "storeUrl": "https://store.steampowered.com/app/921570",
-        "lastPlayedTs": "2026-10-19T15:23:36.000Z"
+        "appId": 578330,
+        "name": "LEGO® City Undercover",
+        "playtime2Weeks": 410,
+        "playtimeForever": 4172,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
+        "storeUrl": "https://store.steampowered.com/app/578330",
+        "lastPlayedTs": "2026-10-23T12:02:08.000Z"
     },
     "mostRecentUnlock": {
         "appId": 578330,
