@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "generatedAt": "2026-10-24T06:47:02Z",
+        "generatedAt": "2026-10-24T10:47:04Z",
         "year": 2026
     },
     "games": {
@@ -35,6 +35,10 @@
         "996580": {
             "name": "Spyro™ Reignited Trilogy",
             "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/996580/58d9d5bb243382cdb00259733d71e7621f502a2d.jpg"
+        },
+        "1085180": {
+            "name": "Gunvolt Chronicles: Luminous Avenger iX",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/1085180/ce2fa0347e2027bfd1b3f5d6a7c3327d0b48c083.jpg"
         },
         "1282590": {
             "name": "Train Sim World® 2",
@@ -655,6 +659,12 @@
             "end": "2026-10-24T06:33:54Z",
             "gameId": 578330,
             "minutes": 138
+        },
+        {
+            "start": "2026-10-24T10:15:40Z",
+            "end": "2026-10-24T10:32:40Z",
+            "gameId": 1085180,
+            "minutes": 17
         }
     ]
 }

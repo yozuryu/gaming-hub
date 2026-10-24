@@ -1,19 +1,19 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-24T10:16:53.517Z"
+        "extractionTimestamp": "2026-10-24T10:46:53.503Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 1,
-        "lastOnline": "2026-10-24T10:08:59.000Z",
+        "status": 4,
+        "lastOnline": "2026-10-24T10:33:23.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1290,
-        "totalPlaytimeMin": 350862,
+        "totalPlaytimeMin": 350879,
         "totalPlaytimeHrs": 5848,
         "gamesWithPlaytime": 819,
         "totalAchievements": 10139,
@@ -24,6 +24,17 @@
         "avgPlaytimeMin": 428
     },
     "recentlyPlayed": [
+        {
+            "appId": 1085180,
+            "name": "Gunvolt Chronicles: Luminous Avenger iX",
+            "playtime2Weeks": 17,
+            "playtimeForever": 279,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1085180/ce2fa0347e2027bfd1b3f5d6a7c3327d0b48c083.jpg",
+            "storeUrl": "https://store.steampowered.com/app/1085180",
+            "lastPlayedTs": "2026-10-24T10:32:40.000Z",
+            "achUnlocked": 11,
+            "achTotal": 15
+        },
         {
             "appId": 578330,
             "name": "LEGO® City Undercover",
@@ -59,13 +70,13 @@
         }
     ],
     "mostRecentGame": {
-        "appId": 578330,
-        "name": "LEGO® City Undercover",
-        "playtime2Weeks": 419,
-        "playtimeForever": 4402,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/578330/48536e84b21951f851ec4ecf8349370a867e2c37.jpg",
-        "storeUrl": "https://store.steampowered.com/app/578330",
-        "lastPlayedTs": "2026-10-24T06:33:54.000Z"
+        "appId": 1085180,
+        "name": "Gunvolt Chronicles: Luminous Avenger iX",
+        "playtime2Weeks": 17,
+        "playtimeForever": 279,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1085180/ce2fa0347e2027bfd1b3f5d6a7c3327d0b48c083.jpg",
+        "storeUrl": "https://store.steampowered.com/app/1085180",
+        "lastPlayedTs": "2026-10-24T10:32:40.000Z"
     },
     "mostRecentUnlock": {
         "appId": 578330,
