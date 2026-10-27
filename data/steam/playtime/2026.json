@@ -1,12 +1,16 @@
 {
     "metadata": {
-        "generatedAt": "2026-10-24T10:47:04Z",
+        "generatedAt": "2026-10-27T14:17:09Z",
         "year": 2026
     },
     "games": {
         "206440": {
             "name": "To the Moon",
             "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/206440/6e29eb4076a6253fdbccb987a2a21746d2df54d7.jpg"
+        },
+        "224760": {
+            "name": "FEZ",
+            "icon": "https://media.steampowered.com/steamcommunity/public/images/apps/224760/900590f739d69da4f50112669f5d949a2e6b9261.jpg"
         },
         "282900": {
             "name": "Hyperdimension Neptunia Re;Birth1",
@@ -665,6 +669,12 @@
             "end": "2026-10-24T10:32:40Z",
             "gameId": 1085180,
             "minutes": 17
+        },
+        {
+            "start": "2026-10-27T13:44:06Z",
+            "end": "2026-10-27T14:10:06Z",
+            "gameId": 224760,
+            "minutes": 26
         }
     ]
 }

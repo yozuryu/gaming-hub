@@ -1,29 +1,40 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-27T13:46:53.165Z"
+        "extractionTimestamp": "2026-10-27T14:16:56.112Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 1,
-        "lastOnline": "2026-10-27T13:43:25.000Z",
+        "status": 0,
+        "lastOnline": "2026-10-27T14:12:21.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1290,
-        "totalPlaytimeMin": 350881,
+        "totalPlaytimeMin": 350907,
         "totalPlaytimeHrs": 5848,
         "gamesWithPlaytime": 819,
         "totalAchievements": 10139,
-        "unlockedAchievements": 2844,
+        "unlockedAchievements": 2845,
         "gamesWithAchievements": 171,
         "perfectCount": 17,
         "completionPct": 28,
         "avgPlaytimeMin": 428
     },
     "recentlyPlayed": [
+        {
+            "appId": 224760,
+            "name": "FEZ",
+            "playtime2Weeks": 25,
+            "playtimeForever": 183,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/224760/900590f739d69da4f50112669f5d949a2e6b9261.jpg",
+            "storeUrl": "https://store.steampowered.com/app/224760",
+            "lastPlayedTs": "2026-10-27T14:10:06.000Z",
+            "achUnlocked": 4,
+            "achTotal": 12
+        },
         {
             "appId": 921570,
             "name": "OCTOPATH TRAVELER",
@@ -70,23 +81,23 @@
         }
     ],
     "mostRecentGame": {
-        "appId": 921570,
-        "name": "OCTOPATH TRAVELER",
-        "playtime2Weeks": 45,
-        "playtimeForever": 1685,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
-        "storeUrl": "https://store.steampowered.com/app/921570",
-        "lastPlayedTs": "2026-10-27T13:37:11.000Z"
+        "appId": 224760,
+        "name": "FEZ",
+        "playtime2Weeks": 25,
+        "playtimeForever": 183,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/224760/900590f739d69da4f50112669f5d949a2e6b9261.jpg",
+        "storeUrl": "https://store.steampowered.com/app/224760",
+        "lastPlayedTs": "2026-10-27T14:10:06.000Z"
     },
     "mostRecentUnlock": {
-        "appId": 578330,
-        "gameName": "LEGO® City Undercover",
-        "apiName": "COMPLETE_STORYEVENT15",
-        "displayName": "City Saviour",
-        "description": "Complete Chapter 15 - Far Above the Call of Duty",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/578330/e6bbc39e56dc964b24a63eaa0f656c7ab7187b19.jpg",
-        "unlockedAt": "2026-10-16T12:31:41.000Z",
-        "globalPct": 25
+        "appId": 224760,
+        "gameName": "FEZ",
+        "apiName": "Achievement_11",
+        "displayName": "Cryptographer",
+        "description": "Break the code. ",
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/224760/6fe291fa8d05d79cc83528c0d20917059960a2b6.jpg",
+        "unlockedAt": "2026-10-27T13:56:31.000Z",
+        "globalPct": 25.6
     },
     "perfectGames": [
         {

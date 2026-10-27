@@ -2,7 +2,7 @@
     "appId": 224760,
     "hasAchievements": true,
     "total": 12,
-    "unlocked": 3,
+    "unlocked": 4,
     "gameName": "FEZ",
     "achievements": [
         {
@@ -117,8 +117,8 @@
         },
         {
             "apiName": "Achievement_11",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-10-27T13:56:31.000Z",
             "displayName": "Cryptographer",
             "description": "Break the code. ",
             "iconUrl": "6fe291fa8d05d79cc83528c0d20917059960a2b6.jpg",
@@ -138,12 +138,21 @@
             "globalPct": 22.4
         }
     ],
-    "playtimeForever": 157,
-    "lastPlayedTs": "2026-10-27T13:44:50.000Z",
+    "playtimeForever": 183,
+    "lastPlayedTs": "2026-10-27T14:10:06.000Z",
     "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/224760/900590f739d69da4f50112669f5d949a2e6b9261.jpg",
-    "lastUnlockedAt": "2026-03-01T13:39:43.000Z",
-    "lastUnlockName": "Equal and opposite",
+    "lastUnlockedAt": "2026-10-27T13:56:31.000Z",
+    "lastUnlockName": "Cryptographer",
     "preview": [
+        {
+            "apiName": "Achievement_11",
+            "displayName": "Cryptographer",
+            "unlocked": true,
+            "unlockedAt": "2026-10-27T13:56:31.000Z",
+            "iconUrl": "6fe291fa8d05d79cc83528c0d20917059960a2b6.jpg",
+            "iconGrayUrl": "8c3d33c74ba7c83d1ac8e43d63c68a12f437fb7b.jpg",
+            "globalPct": 25.6
+        },
         {
             "apiName": "Achievement_09",
             "displayName": "Equal and opposite",
@@ -188,15 +197,6 @@
             "iconUrl": "494a93d862b3245738b302dcc6f914d49932b05c.jpg",
             "iconGrayUrl": "404f1fcb0bfe410432a22d2bb09fa0ca9cf79166.jpg",
             "globalPct": 16.5
-        },
-        {
-            "apiName": "Achievement_04",
-            "displayName": "Hexahedronaut",
-            "unlocked": false,
-            "unlockedAt": null,
-            "iconUrl": "b4a29610ac8f45a1dc23477a99403cecea64f79c.jpg",
-            "iconGrayUrl": "bc10bf8b9c7331ffc32e9e16fad10e6d400a8d19.jpg",
-            "globalPct": 7.8
         }
     ]
 }
