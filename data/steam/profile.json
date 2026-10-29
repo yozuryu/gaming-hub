@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-29T14:16:57.317Z"
+        "extractionTimestamp": "2026-10-29T14:46:54.911Z"
     },
     "profile": {
         "steamId": "76561198188939413",
@@ -13,26 +13,26 @@
     },
     "stats": {
         "totalGames": 1290,
-        "totalPlaytimeMin": 350937,
+        "totalPlaytimeMin": 350967,
         "totalPlaytimeHrs": 5849,
         "gamesWithPlaytime": 819,
         "totalAchievements": 10178,
-        "unlockedAchievements": 2849,
+        "unlockedAchievements": 2851,
         "gamesWithAchievements": 172,
         "perfectCount": 17,
-        "completionPct": 27,
+        "completionPct": 28,
         "avgPlaytimeMin": 428
     },
     "recentlyPlayed": [
         {
             "appId": 1883260,
             "name": "Little Noah: Scion of Paradise",
-            "playtime2Weeks": 30,
-            "playtimeForever": 244,
+            "playtime2Weeks": 60,
+            "playtimeForever": 274,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1883260/5fb49ba38199e7e9295156b4e849a8857b5c0a68.jpg",
             "storeUrl": "https://store.steampowered.com/app/1883260",
-            "lastPlayedTs": "2026-10-29T14:10:23.000Z",
-            "achUnlocked": 4,
+            "lastPlayedTs": "2026-10-29T14:40:23.000Z",
+            "achUnlocked": 6,
             "achTotal": 39
         },
         {
@@ -94,21 +94,21 @@
     "mostRecentGame": {
         "appId": 1883260,
         "name": "Little Noah: Scion of Paradise",
-        "playtime2Weeks": 30,
-        "playtimeForever": 244,
+        "playtime2Weeks": 60,
+        "playtimeForever": 274,
         "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1883260/5fb49ba38199e7e9295156b4e849a8857b5c0a68.jpg",
         "storeUrl": "https://store.steampowered.com/app/1883260",
-        "lastPlayedTs": "2026-10-29T14:10:23.000Z"
+        "lastPlayedTs": "2026-10-29T14:40:23.000Z"
     },
     "mostRecentUnlock": {
         "appId": 1883260,
         "gameName": "Little Noah: Scion of Paradise",
-        "apiName": "trp_005",
-        "displayName": "King of Steel",
+        "apiName": "trp_007",
+        "displayName": "Nimble Knight",
         "description": "",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/1883260/e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
-        "unlockedAt": "2026-10-29T14:10:53.000Z",
-        "globalPct": 78.2
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/1883260/41e37c8b5b0ebbbb4d4d1cac155f2e9350049e93.jpg",
+        "unlockedAt": "2026-10-29T14:36:32.000Z",
+        "globalPct": 65.4
     },
     "perfectGames": [
         {

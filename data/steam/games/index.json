@@ -28523,7 +28523,7 @@
                     "unlockedAt": "2026-10-08T10:24:32.000Z",
                     "iconUrl": "29bd127ab4d260145e86d5817935c0bcef93ccd0.jpg",
                     "iconGrayUrl": "bb4a78141f299cfe581a819c00694fdf4a598158.jpg",
-                    "globalPct": 27.2
+                    "globalPct": 27.1
                 }
             ]
         },
@@ -38793,14 +38793,32 @@
             "appId": 1883260,
             "hasAchievements": true,
             "total": 39,
-            "unlocked": 4,
+            "unlocked": 6,
             "gameName": "Little Noah: Scion of Paradise",
-            "playtimeForever": 244,
-            "lastPlayedTs": "2026-10-29T14:10:23.000Z",
+            "playtimeForever": 274,
+            "lastPlayedTs": "2026-10-29T14:40:23.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1883260/5fb49ba38199e7e9295156b4e849a8857b5c0a68.jpg",
-            "lastUnlockedAt": "2026-10-29T14:10:53.000Z",
-            "lastUnlockName": "King of Steel",
+            "lastUnlockedAt": "2026-10-29T14:36:32.000Z",
+            "lastUnlockName": "Nimble Knight",
             "preview": [
+                {
+                    "apiName": "trp_007",
+                    "displayName": "Nimble Knight",
+                    "unlocked": true,
+                    "unlockedAt": "2026-10-29T14:36:32.000Z",
+                    "iconUrl": "41e37c8b5b0ebbbb4d4d1cac155f2e9350049e93.jpg",
+                    "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
+                    "globalPct": 65.4
+                },
+                {
+                    "apiName": "trp_003",
+                    "displayName": "To the Winding Caverns!",
+                    "unlocked": true,
+                    "unlockedAt": "2026-10-29T14:24:04.000Z",
+                    "iconUrl": "27ac78d5cf95a012efaabcdc8db00df3fe35900c.jpg",
+                    "iconGrayUrl": "e5a7af0008fc3fcb15e12c848d73bed26fb65224.jpg",
+                    "globalPct": 67
+                },
                 {
                     "apiName": "trp_005",
                     "displayName": "King of Steel",
@@ -38836,24 +38854,6 @@
                     "iconUrl": "27ac78d5cf95a012efaabcdc8db00df3fe35900c.jpg",
                     "iconGrayUrl": "e5a7af0008fc3fcb15e12c848d73bed26fb65224.jpg",
                     "globalPct": 89.3
-                },
-                {
-                    "apiName": "trp_003",
-                    "displayName": "To the Winding Caverns!",
-                    "unlocked": false,
-                    "unlockedAt": null,
-                    "iconUrl": "27ac78d5cf95a012efaabcdc8db00df3fe35900c.jpg",
-                    "iconGrayUrl": "e5a7af0008fc3fcb15e12c848d73bed26fb65224.jpg",
-                    "globalPct": 67
-                },
-                {
-                    "apiName": "trp_004",
-                    "displayName": "To the Depths!",
-                    "unlocked": false,
-                    "unlockedAt": null,
-                    "iconUrl": "27ac78d5cf95a012efaabcdc8db00df3fe35900c.jpg",
-                    "iconGrayUrl": "e5a7af0008fc3fcb15e12c848d73bed26fb65224.jpg",
-                    "globalPct": 56.6
                 }
             ]
         },
@@ -39501,7 +39501,7 @@
                     "unlockedAt": "2026-04-26T13:03:01.000Z",
                     "iconUrl": "83dc4d3559c34a919e1ca834f626f6d1ff6507eb.jpg",
                     "iconGrayUrl": "2cde4d41f0138dd6ffc10818911e81e9b40131ab.jpg",
-                    "globalPct": 54.9
+                    "globalPct": 55
                 },
                 {
                     "apiName": "ACH_TERRA_012",
