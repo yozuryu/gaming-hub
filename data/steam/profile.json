@@ -1,23 +1,23 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-29T14:46:54.911Z"
+        "extractionTimestamp": "2026-10-29T15:16:59.903Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 1,
-        "lastOnline": "2026-10-29T13:34:04.000Z",
+        "status": 0,
+        "lastOnline": "2026-10-29T15:07:35.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1290,
-        "totalPlaytimeMin": 350967,
-        "totalPlaytimeHrs": 5849,
+        "totalPlaytimeMin": 350988,
+        "totalPlaytimeHrs": 5850,
         "gamesWithPlaytime": 819,
         "totalAchievements": 10178,
-        "unlockedAchievements": 2851,
+        "unlockedAchievements": 2852,
         "gamesWithAchievements": 172,
         "perfectCount": 17,
         "completionPct": 28,
@@ -27,12 +27,12 @@
         {
             "appId": 1883260,
             "name": "Little Noah: Scion of Paradise",
-            "playtime2Weeks": 60,
-            "playtimeForever": 274,
+            "playtime2Weeks": 80,
+            "playtimeForever": 295,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1883260/5fb49ba38199e7e9295156b4e849a8857b5c0a68.jpg",
             "storeUrl": "https://store.steampowered.com/app/1883260",
-            "lastPlayedTs": "2026-10-29T14:40:23.000Z",
-            "achUnlocked": 6,
+            "lastPlayedTs": "2026-10-29T15:00:51.000Z",
+            "achUnlocked": 7,
             "achTotal": 39
         },
         {
@@ -49,7 +49,7 @@
         {
             "appId": 921570,
             "name": "OCTOPATH TRAVELER",
-            "playtime2Weeks": 45,
+            "playtime2Weeks": 25,
             "playtimeForever": 1685,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/921570/f044bcf179c1f3609c730d5ed4e0af0a984ea8b5.jpg",
             "storeUrl": "https://store.steampowered.com/app/921570",
@@ -94,21 +94,21 @@
     "mostRecentGame": {
         "appId": 1883260,
         "name": "Little Noah: Scion of Paradise",
-        "playtime2Weeks": 60,
-        "playtimeForever": 274,
+        "playtime2Weeks": 80,
+        "playtimeForever": 295,
         "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1883260/5fb49ba38199e7e9295156b4e849a8857b5c0a68.jpg",
         "storeUrl": "https://store.steampowered.com/app/1883260",
-        "lastPlayedTs": "2026-10-29T14:40:23.000Z"
+        "lastPlayedTs": "2026-10-29T15:00:51.000Z"
     },
     "mostRecentUnlock": {
         "appId": 1883260,
         "gameName": "Little Noah: Scion of Paradise",
-        "apiName": "trp_007",
-        "displayName": "Nimble Knight",
-        "description": "",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/1883260/41e37c8b5b0ebbbb4d4d1cac155f2e9350049e93.jpg",
-        "unlockedAt": "2026-10-29T14:36:32.000Z",
-        "globalPct": 65.4
+        "apiName": "trp_014",
+        "displayName": "Dawn of Strength",
+        "description": "Max out a Lilliput's level for the first time.",
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/1883260/c2f325587e0e83893b0dcdc2cafa17c3bf19e8bc.jpg",
+        "unlockedAt": "2026-10-29T14:47:38.000Z",
+        "globalPct": 60.2
     },
     "perfectGames": [
         {

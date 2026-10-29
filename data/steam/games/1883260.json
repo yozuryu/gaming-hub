@@ -2,7 +2,7 @@
     "appId": 1883260,
     "hasAchievements": true,
     "total": 39,
-    "unlocked": 6,
+    "unlocked": 7,
     "gameName": "Little Noah: Scion of Paradise",
     "achievements": [
         {
@@ -139,8 +139,8 @@
         },
         {
             "apiName": "trp_014",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-10-29T14:47:38.000Z",
             "displayName": "Dawn of Strength",
             "description": "Max out a Lilliput's level for the first time.",
             "iconUrl": "c2f325587e0e83893b0dcdc2cafa17c3bf19e8bc.jpg",
@@ -435,12 +435,21 @@
             "globalPct": 13.3
         }
     ],
-    "playtimeForever": 274,
-    "lastPlayedTs": "2026-10-29T14:40:23.000Z",
+    "playtimeForever": 295,
+    "lastPlayedTs": "2026-10-29T15:00:51.000Z",
     "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1883260/5fb49ba38199e7e9295156b4e849a8857b5c0a68.jpg",
-    "lastUnlockedAt": "2026-10-29T14:36:32.000Z",
-    "lastUnlockName": "Nimble Knight",
+    "lastUnlockedAt": "2026-10-29T14:47:38.000Z",
+    "lastUnlockName": "Dawn of Strength",
     "preview": [
+        {
+            "apiName": "trp_014",
+            "displayName": "Dawn of Strength",
+            "unlocked": true,
+            "unlockedAt": "2026-10-29T14:47:38.000Z",
+            "iconUrl": "c2f325587e0e83893b0dcdc2cafa17c3bf19e8bc.jpg",
+            "iconGrayUrl": "670f9fce20317aa30b80150aaba8a2d06e0aeecd.jpg",
+            "globalPct": 60.2
+        },
         {
             "apiName": "trp_007",
             "displayName": "Nimble Knight",
@@ -485,15 +494,6 @@
             "iconUrl": "05c5c0b277fdc75ad8243c8431812486e413e1b2.jpg",
             "iconGrayUrl": "7509b318a749cdfd37d7e14e447a96d3aaf229da.jpg",
             "globalPct": 66.8
-        },
-        {
-            "apiName": "trp_002",
-            "displayName": "Unknown Ruins",
-            "unlocked": true,
-            "unlockedAt": "2026-10-29T13:46:48.000Z",
-            "iconUrl": "27ac78d5cf95a012efaabcdc8db00df3fe35900c.jpg",
-            "iconGrayUrl": "e5a7af0008fc3fcb15e12c848d73bed26fb65224.jpg",
-            "globalPct": 89.3
         }
     ]
 }
