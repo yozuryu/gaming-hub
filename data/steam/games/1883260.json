@@ -2,19 +2,19 @@
     "appId": 1883260,
     "hasAchievements": true,
     "total": 39,
-    "unlocked": 0,
+    "unlocked": 4,
     "gameName": "Little Noah: Scion of Paradise",
     "achievements": [
         {
             "apiName": "trp_002",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-10-29T13:46:48.000Z",
             "displayName": "Unknown Ruins",
             "description": "Begin exploring the ruins.",
             "iconUrl": "27ac78d5cf95a012efaabcdc8db00df3fe35900c.jpg",
             "iconGrayUrl": "e5a7af0008fc3fcb15e12c848d73bed26fb65224.jpg",
             "hidden": false,
-            "globalPct": 89.4
+            "globalPct": 89.3
         },
         {
             "apiName": "trp_003",
@@ -40,14 +40,14 @@
         },
         {
             "apiName": "trp_005",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-10-29T14:10:53.000Z",
             "displayName": "King of Steel",
             "description": "",
             "iconUrl": "e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
             "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
             "hidden": true,
-            "globalPct": 78.3
+            "globalPct": 78.2
         },
         {
             "apiName": "trp_006",
@@ -58,7 +58,7 @@
             "iconUrl": "e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
             "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
             "hidden": true,
-            "globalPct": 65.5
+            "globalPct": 65.4
         },
         {
             "apiName": "trp_007",
@@ -69,7 +69,7 @@
             "iconUrl": "41e37c8b5b0ebbbb4d4d1cac155f2e9350049e93.jpg",
             "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
             "hidden": true,
-            "globalPct": 65.5
+            "globalPct": 65.4
         },
         {
             "apiName": "trp_008",
@@ -80,7 +80,7 @@
             "iconUrl": "e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
             "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
             "hidden": true,
-            "globalPct": 49.3
+            "globalPct": 49.2
         },
         {
             "apiName": "trp_009",
@@ -91,7 +91,7 @@
             "iconUrl": "e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
             "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
             "hidden": true,
-            "globalPct": 49
+            "globalPct": 48.9
         },
         {
             "apiName": "trp_010",
@@ -102,7 +102,7 @@
             "iconUrl": "e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
             "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
             "hidden": true,
-            "globalPct": 34.2
+            "globalPct": 34.1
         },
         {
             "apiName": "trp_011",
@@ -113,7 +113,7 @@
             "iconUrl": "41e37c8b5b0ebbbb4d4d1cac155f2e9350049e93.jpg",
             "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
             "hidden": true,
-            "globalPct": 34
+            "globalPct": 33.9
         },
         {
             "apiName": "trp_012",
@@ -124,7 +124,7 @@
             "iconUrl": "e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
             "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
             "hidden": true,
-            "globalPct": 49.6
+            "globalPct": 49.5
         },
         {
             "apiName": "trp_013",
@@ -135,7 +135,7 @@
             "iconUrl": "d3b065bc0874c130de2f0b4f35999af96beefcc4.jpg",
             "iconGrayUrl": "1672b39e56365ead7adee2a2048ffc3e327bfa31.jpg",
             "hidden": true,
-            "globalPct": 44.4
+            "globalPct": 44.3
         },
         {
             "apiName": "trp_014",
@@ -150,8 +150,8 @@
         },
         {
             "apiName": "trp_015",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-10-29T14:03:13.000Z",
             "displayName": "Monumental",
             "description": "Place a statue on the airship for the first time.",
             "iconUrl": "e06bf289b18abde76d7b7e46dfde2ff54f81568c.jpg",
@@ -161,8 +161,8 @@
         },
         {
             "apiName": "trp_016",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-10-29T14:01:16.000Z",
             "displayName": "A New Outfit",
             "description": "Switch Noah's Avatar for the first time.",
             "iconUrl": "05c5c0b277fdc75ad8243c8431812486e413e1b2.jpg",
@@ -179,7 +179,7 @@
             "iconUrl": "7bd4f881c6527d2f2b6e04ecca596f4aeb45bb01.jpg",
             "iconGrayUrl": "65104aae11207a2d445bc74a77a7e1d5e3f61de7.jpg",
             "hidden": false,
-            "globalPct": 31.2
+            "globalPct": 31.1
         },
         {
             "apiName": "trp_018",
@@ -278,7 +278,7 @@
             "iconUrl": "7bd4f881c6527d2f2b6e04ecca596f4aeb45bb01.jpg",
             "iconGrayUrl": "65104aae11207a2d445bc74a77a7e1d5e3f61de7.jpg",
             "hidden": false,
-            "globalPct": 28.9
+            "globalPct": 28.8
         },
         {
             "apiName": "trp_027",
@@ -289,7 +289,7 @@
             "iconUrl": "f4c3237b4f173e979bae7ad5e533a151d8ba5862.jpg",
             "iconGrayUrl": "108f49fe0742e04148f3f6d1bbd937b91397270f.jpg",
             "hidden": false,
-            "globalPct": 11.7
+            "globalPct": 11.6
         },
         {
             "apiName": "trp_028",
@@ -311,7 +311,7 @@
             "iconUrl": "297779ee72c422e195c1409497896e8cf458d9ff.jpg",
             "iconGrayUrl": "164852581e3a62836a2581c844046bf1b6d2b81f.jpg",
             "hidden": false,
-            "globalPct": 32.2
+            "globalPct": 32.1
         },
         {
             "apiName": "trp_030",
@@ -377,7 +377,7 @@
             "iconUrl": "68beaca8717fa29130d4ea4100c323f893818a3b.jpg",
             "iconGrayUrl": "4837193e27a93d1cc073a3c6a2abbaaa5332945f.jpg",
             "hidden": true,
-            "globalPct": 47.2
+            "globalPct": 47.1
         },
         {
             "apiName": "trp_036",
@@ -388,7 +388,7 @@
             "iconUrl": "68beaca8717fa29130d4ea4100c323f893818a3b.jpg",
             "iconGrayUrl": "4837193e27a93d1cc073a3c6a2abbaaa5332945f.jpg",
             "hidden": true,
-            "globalPct": 20.9
+            "globalPct": 20.8
         },
         {
             "apiName": "trp_037",
@@ -435,20 +435,47 @@
             "globalPct": 13.3
         }
     ],
-    "playtimeForever": 214,
-    "lastPlayedTs": "2026-10-29T13:40:22.000Z",
+    "playtimeForever": 244,
+    "lastPlayedTs": "2026-10-29T14:10:23.000Z",
     "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1883260/5fb49ba38199e7e9295156b4e849a8857b5c0a68.jpg",
-    "lastUnlockedAt": null,
-    "lastUnlockName": null,
+    "lastUnlockedAt": "2026-10-29T14:10:53.000Z",
+    "lastUnlockName": "King of Steel",
     "preview": [
+        {
+            "apiName": "trp_005",
+            "displayName": "King of Steel",
+            "unlocked": true,
+            "unlockedAt": "2026-10-29T14:10:53.000Z",
+            "iconUrl": "e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
+            "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
+            "globalPct": 78.2
+        },
+        {
+            "apiName": "trp_015",
+            "displayName": "Monumental",
+            "unlocked": true,
+            "unlockedAt": "2026-10-29T14:03:13.000Z",
+            "iconUrl": "e06bf289b18abde76d7b7e46dfde2ff54f81568c.jpg",
+            "iconGrayUrl": "5003dd39bde6d79e0633c5b884f4572796105486.jpg",
+            "globalPct": 79.8
+        },
+        {
+            "apiName": "trp_016",
+            "displayName": "A New Outfit",
+            "unlocked": true,
+            "unlockedAt": "2026-10-29T14:01:16.000Z",
+            "iconUrl": "05c5c0b277fdc75ad8243c8431812486e413e1b2.jpg",
+            "iconGrayUrl": "7509b318a749cdfd37d7e14e447a96d3aaf229da.jpg",
+            "globalPct": 66.8
+        },
         {
             "apiName": "trp_002",
             "displayName": "Unknown Ruins",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-10-29T13:46:48.000Z",
             "iconUrl": "27ac78d5cf95a012efaabcdc8db00df3fe35900c.jpg",
             "iconGrayUrl": "e5a7af0008fc3fcb15e12c848d73bed26fb65224.jpg",
-            "globalPct": 89.4
+            "globalPct": 89.3
         },
         {
             "apiName": "trp_003",
@@ -467,33 +494,6 @@
             "iconUrl": "27ac78d5cf95a012efaabcdc8db00df3fe35900c.jpg",
             "iconGrayUrl": "e5a7af0008fc3fcb15e12c848d73bed26fb65224.jpg",
             "globalPct": 56.6
-        },
-        {
-            "apiName": "trp_005",
-            "displayName": "King of Steel",
-            "unlocked": false,
-            "unlockedAt": null,
-            "iconUrl": "e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
-            "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
-            "globalPct": 78.3
-        },
-        {
-            "apiName": "trp_006",
-            "displayName": "Queen of Swords",
-            "unlocked": false,
-            "unlockedAt": null,
-            "iconUrl": "e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
-            "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
-            "globalPct": 65.5
-        },
-        {
-            "apiName": "trp_007",
-            "displayName": "Nimble Knight",
-            "unlocked": false,
-            "unlockedAt": null,
-            "iconUrl": "41e37c8b5b0ebbbb4d4d1cac155f2e9350049e93.jpg",
-            "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
-            "globalPct": 65.5
         }
     ]
 }

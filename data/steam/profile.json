@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-29T13:45:09.729Z"
+        "extractionTimestamp": "2026-10-29T14:16:57.317Z"
     },
     "profile": {
         "steamId": "76561198188939413",
@@ -13,17 +13,28 @@
     },
     "stats": {
         "totalGames": 1290,
-        "totalPlaytimeMin": 350907,
-        "totalPlaytimeHrs": 5848,
+        "totalPlaytimeMin": 350937,
+        "totalPlaytimeHrs": 5849,
         "gamesWithPlaytime": 819,
-        "totalAchievements": 10139,
-        "unlockedAchievements": 2845,
-        "gamesWithAchievements": 171,
+        "totalAchievements": 10178,
+        "unlockedAchievements": 2849,
+        "gamesWithAchievements": 172,
         "perfectCount": 17,
-        "completionPct": 28,
+        "completionPct": 27,
         "avgPlaytimeMin": 428
     },
     "recentlyPlayed": [
+        {
+            "appId": 1883260,
+            "name": "Little Noah: Scion of Paradise",
+            "playtime2Weeks": 30,
+            "playtimeForever": 244,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1883260/5fb49ba38199e7e9295156b4e849a8857b5c0a68.jpg",
+            "storeUrl": "https://store.steampowered.com/app/1883260",
+            "lastPlayedTs": "2026-10-29T14:10:23.000Z",
+            "achUnlocked": 4,
+            "achTotal": 39
+        },
         {
             "appId": 224760,
             "name": "FEZ",
@@ -81,23 +92,23 @@
         }
     ],
     "mostRecentGame": {
-        "appId": 224760,
-        "name": "FEZ",
-        "playtime2Weeks": 25,
-        "playtimeForever": 183,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/224760/900590f739d69da4f50112669f5d949a2e6b9261.jpg",
-        "storeUrl": "https://store.steampowered.com/app/224760",
-        "lastPlayedTs": "2026-10-27T14:10:06.000Z"
+        "appId": 1883260,
+        "name": "Little Noah: Scion of Paradise",
+        "playtime2Weeks": 30,
+        "playtimeForever": 244,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1883260/5fb49ba38199e7e9295156b4e849a8857b5c0a68.jpg",
+        "storeUrl": "https://store.steampowered.com/app/1883260",
+        "lastPlayedTs": "2026-10-29T14:10:23.000Z"
     },
     "mostRecentUnlock": {
-        "appId": 224760,
-        "gameName": "FEZ",
-        "apiName": "Achievement_11",
-        "displayName": "Cryptographer",
-        "description": "Break the code. ",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/224760/6fe291fa8d05d79cc83528c0d20917059960a2b6.jpg",
-        "unlockedAt": "2026-10-27T13:56:31.000Z",
-        "globalPct": 25.6
+        "appId": 1883260,
+        "gameName": "Little Noah: Scion of Paradise",
+        "apiName": "trp_005",
+        "displayName": "King of Steel",
+        "description": "",
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/1883260/e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
+        "unlockedAt": "2026-10-29T14:10:53.000Z",
+        "globalPct": 78.2
     },
     "perfectGames": [
         {

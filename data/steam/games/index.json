@@ -28523,7 +28523,7 @@
                     "unlockedAt": "2026-10-08T10:24:32.000Z",
                     "iconUrl": "29bd127ab4d260145e86d5817935c0bcef93ccd0.jpg",
                     "iconGrayUrl": "bb4a78141f299cfe581a819c00694fdf4a598158.jpg",
-                    "globalPct": 27.1
+                    "globalPct": 27.2
                 }
             ]
         },
@@ -38793,22 +38793,49 @@
             "appId": 1883260,
             "hasAchievements": true,
             "total": 39,
-            "unlocked": 0,
+            "unlocked": 4,
             "gameName": "Little Noah: Scion of Paradise",
-            "playtimeForever": 214,
-            "lastPlayedTs": "2026-10-29T13:40:22.000Z",
+            "playtimeForever": 244,
+            "lastPlayedTs": "2026-10-29T14:10:23.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1883260/5fb49ba38199e7e9295156b4e849a8857b5c0a68.jpg",
-            "lastUnlockedAt": null,
-            "lastUnlockName": null,
+            "lastUnlockedAt": "2026-10-29T14:10:53.000Z",
+            "lastUnlockName": "King of Steel",
             "preview": [
+                {
+                    "apiName": "trp_005",
+                    "displayName": "King of Steel",
+                    "unlocked": true,
+                    "unlockedAt": "2026-10-29T14:10:53.000Z",
+                    "iconUrl": "e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
+                    "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
+                    "globalPct": 78.2
+                },
+                {
+                    "apiName": "trp_015",
+                    "displayName": "Monumental",
+                    "unlocked": true,
+                    "unlockedAt": "2026-10-29T14:03:13.000Z",
+                    "iconUrl": "e06bf289b18abde76d7b7e46dfde2ff54f81568c.jpg",
+                    "iconGrayUrl": "5003dd39bde6d79e0633c5b884f4572796105486.jpg",
+                    "globalPct": 79.8
+                },
+                {
+                    "apiName": "trp_016",
+                    "displayName": "A New Outfit",
+                    "unlocked": true,
+                    "unlockedAt": "2026-10-29T14:01:16.000Z",
+                    "iconUrl": "05c5c0b277fdc75ad8243c8431812486e413e1b2.jpg",
+                    "iconGrayUrl": "7509b318a749cdfd37d7e14e447a96d3aaf229da.jpg",
+                    "globalPct": 66.8
+                },
                 {
                     "apiName": "trp_002",
                     "displayName": "Unknown Ruins",
-                    "unlocked": false,
-                    "unlockedAt": null,
+                    "unlocked": true,
+                    "unlockedAt": "2026-10-29T13:46:48.000Z",
                     "iconUrl": "27ac78d5cf95a012efaabcdc8db00df3fe35900c.jpg",
                     "iconGrayUrl": "e5a7af0008fc3fcb15e12c848d73bed26fb65224.jpg",
-                    "globalPct": 89.4
+                    "globalPct": 89.3
                 },
                 {
                     "apiName": "trp_003",
@@ -38827,33 +38854,6 @@
                     "iconUrl": "27ac78d5cf95a012efaabcdc8db00df3fe35900c.jpg",
                     "iconGrayUrl": "e5a7af0008fc3fcb15e12c848d73bed26fb65224.jpg",
                     "globalPct": 56.6
-                },
-                {
-                    "apiName": "trp_005",
-                    "displayName": "King of Steel",
-                    "unlocked": false,
-                    "unlockedAt": null,
-                    "iconUrl": "e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
-                    "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
-                    "globalPct": 78.3
-                },
-                {
-                    "apiName": "trp_006",
-                    "displayName": "Queen of Swords",
-                    "unlocked": false,
-                    "unlockedAt": null,
-                    "iconUrl": "e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
-                    "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
-                    "globalPct": 65.5
-                },
-                {
-                    "apiName": "trp_007",
-                    "displayName": "Nimble Knight",
-                    "unlocked": false,
-                    "unlockedAt": null,
-                    "iconUrl": "41e37c8b5b0ebbbb4d4d1cac155f2e9350049e93.jpg",
-                    "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
-                    "globalPct": 65.5
                 }
             ]
         },
@@ -39501,7 +39501,7 @@
                     "unlockedAt": "2026-04-26T13:03:01.000Z",
                     "iconUrl": "83dc4d3559c34a919e1ca834f626f6d1ff6507eb.jpg",
                     "iconGrayUrl": "2cde4d41f0138dd6ffc10818911e81e9b40131ab.jpg",
-                    "globalPct": 55
+                    "globalPct": 54.9
                 },
                 {
                     "apiName": "ACH_TERRA_012",
