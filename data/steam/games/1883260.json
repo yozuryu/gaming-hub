@@ -2,7 +2,7 @@
     "appId": 1883260,
     "hasAchievements": true,
     "total": 39,
-    "unlocked": 9,
+    "unlocked": 11,
     "gameName": "Little Noah: Scion of Paradise",
     "achievements": [
         {
@@ -29,8 +29,8 @@
         },
         {
             "apiName": "trp_004",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-10-31T11:32:28.000Z",
             "displayName": "To the Depths!",
             "description": "Reach the depths of the ruins.",
             "iconUrl": "27ac78d5cf95a012efaabcdc8db00df3fe35900c.jpg",
@@ -293,8 +293,8 @@
         },
         {
             "apiName": "trp_028",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-10-31T11:28:08.000Z",
             "displayName": "Master Locksmith",
             "description": "Use 20 Ruin Keys.",
             "iconUrl": "b8c5fe5786916dcfeb6b9b23a831665764a7700d.jpg",
@@ -435,12 +435,30 @@
             "globalPct": 13.3
         }
     ],
-    "playtimeForever": 357,
-    "lastPlayedTs": "2026-10-31T11:06:49.000Z",
+    "playtimeForever": 392,
+    "lastPlayedTs": "2026-10-31T11:41:21.000Z",
     "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1883260/5fb49ba38199e7e9295156b4e849a8857b5c0a68.jpg",
-    "lastUnlockedAt": "2026-10-31T11:09:51.000Z",
-    "lastUnlockName": "Glaive Titan",
+    "lastUnlockedAt": "2026-10-31T11:32:28.000Z",
+    "lastUnlockName": "To the Depths!",
     "preview": [
+        {
+            "apiName": "trp_004",
+            "displayName": "To the Depths!",
+            "unlocked": true,
+            "unlockedAt": "2026-10-31T11:32:28.000Z",
+            "iconUrl": "27ac78d5cf95a012efaabcdc8db00df3fe35900c.jpg",
+            "iconGrayUrl": "e5a7af0008fc3fcb15e12c848d73bed26fb65224.jpg",
+            "globalPct": 56.6
+        },
+        {
+            "apiName": "trp_028",
+            "displayName": "Master Locksmith",
+            "unlocked": true,
+            "unlockedAt": "2026-10-31T11:28:08.000Z",
+            "iconUrl": "b8c5fe5786916dcfeb6b9b23a831665764a7700d.jpg",
+            "iconGrayUrl": "1fb7e96fb2a75ff1d7237a2a2d1e1f7da83989d0.jpg",
+            "globalPct": 50.1
+        },
         {
             "apiName": "trp_009",
             "displayName": "Glaive Titan",
@@ -476,24 +494,6 @@
             "iconUrl": "41e37c8b5b0ebbbb4d4d1cac155f2e9350049e93.jpg",
             "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
             "globalPct": 65.4
-        },
-        {
-            "apiName": "trp_003",
-            "displayName": "To the Winding Caverns!",
-            "unlocked": true,
-            "unlockedAt": "2026-10-29T14:24:04.000Z",
-            "iconUrl": "27ac78d5cf95a012efaabcdc8db00df3fe35900c.jpg",
-            "iconGrayUrl": "e5a7af0008fc3fcb15e12c848d73bed26fb65224.jpg",
-            "globalPct": 67
-        },
-        {
-            "apiName": "trp_005",
-            "displayName": "King of Steel",
-            "unlocked": true,
-            "unlockedAt": "2026-10-29T14:10:53.000Z",
-            "iconUrl": "e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
-            "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
-            "globalPct": 78.2
         }
     ]
 }

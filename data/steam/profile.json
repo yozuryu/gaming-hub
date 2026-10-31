@@ -1,23 +1,23 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-31T11:16:54.230Z"
+        "extractionTimestamp": "2026-10-31T11:46:48.976Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 1,
-        "lastOnline": "2026-10-31T01:20:07.000Z",
+        "status": 0,
+        "lastOnline": "2026-10-31T11:43:06.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1292,
-        "totalPlaytimeMin": 351054,
+        "totalPlaytimeMin": 351089,
         "totalPlaytimeHrs": 5851,
         "gamesWithPlaytime": 820,
         "totalAchievements": 10178,
-        "unlockedAchievements": 2854,
+        "unlockedAchievements": 2856,
         "gamesWithAchievements": 172,
         "perfectCount": 17,
         "completionPct": 28,
@@ -27,12 +27,12 @@
         {
             "appId": 1883260,
             "name": "Little Noah: Scion of Paradise",
-            "playtime2Weeks": 142,
-            "playtimeForever": 357,
+            "playtime2Weeks": 177,
+            "playtimeForever": 392,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1883260/5fb49ba38199e7e9295156b4e849a8857b5c0a68.jpg",
             "storeUrl": "https://store.steampowered.com/app/1883260",
-            "lastPlayedTs": "2026-10-31T11:06:49.000Z",
-            "achUnlocked": 9,
+            "lastPlayedTs": "2026-10-31T11:41:21.000Z",
+            "achUnlocked": 11,
             "achTotal": 39
         },
         {
@@ -105,21 +105,21 @@
     "mostRecentGame": {
         "appId": 1883260,
         "name": "Little Noah: Scion of Paradise",
-        "playtime2Weeks": 142,
-        "playtimeForever": 357,
+        "playtime2Weeks": 177,
+        "playtimeForever": 392,
         "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1883260/5fb49ba38199e7e9295156b4e849a8857b5c0a68.jpg",
         "storeUrl": "https://store.steampowered.com/app/1883260",
-        "lastPlayedTs": "2026-10-31T11:06:49.000Z"
+        "lastPlayedTs": "2026-10-31T11:41:21.000Z"
     },
     "mostRecentUnlock": {
         "appId": 1883260,
         "gameName": "Little Noah: Scion of Paradise",
-        "apiName": "trp_009",
-        "displayName": "Glaive Titan",
-        "description": "",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/1883260/e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
-        "unlockedAt": "2026-10-31T11:09:51.000Z",
-        "globalPct": 48.9
+        "apiName": "trp_004",
+        "displayName": "To the Depths!",
+        "description": "Reach the depths of the ruins.",
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/1883260/27ac78d5cf95a012efaabcdc8db00df3fe35900c.jpg",
+        "unlockedAt": "2026-10-31T11:32:28.000Z",
+        "globalPct": 56.6
     },
     "perfectGames": [
         {
