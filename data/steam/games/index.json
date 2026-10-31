@@ -28523,7 +28523,7 @@
                     "unlockedAt": "2026-10-08T10:24:32.000Z",
                     "iconUrl": "29bd127ab4d260145e86d5817935c0bcef93ccd0.jpg",
                     "iconGrayUrl": "bb4a78141f299cfe581a819c00694fdf4a598158.jpg",
-                    "globalPct": 27.2
+                    "globalPct": 27.1
                 }
             ]
         },
@@ -33520,7 +33520,7 @@
                     "unlockedAt": null,
                     "iconUrl": "2f5917feb40bd711b1236215467f9bc94236b34b.jpg",
                     "iconGrayUrl": "f725611c1cfaed2d2d9b812fab07a30aaa040ce8.jpg",
-                    "globalPct": 26.2
+                    "globalPct": 34.7
                 },
                 {
                     "apiName": "A02_TotemOcean",
@@ -33529,7 +33529,7 @@
                     "unlockedAt": null,
                     "iconUrl": "4a334413079e9ece22dc00f40bb3df84359ee7a0.jpg",
                     "iconGrayUrl": "041da3feb7e5dce30c00551f5e3c65d5c85fd186.jpg",
-                    "globalPct": 29.3
+                    "globalPct": 34.1
                 },
                 {
                     "apiName": "A03_TotemJungle",
@@ -33538,7 +33538,7 @@
                     "unlockedAt": null,
                     "iconUrl": "3f11809705f6e57072e3e1dc9308aecd0f127d28.jpg",
                     "iconGrayUrl": "66e04d28136ef011f08b96431f768f31e6970f50.jpg",
-                    "globalPct": 23
+                    "globalPct": 29.3
                 },
                 {
                     "apiName": "A04_TotemDesert",
@@ -33547,7 +33547,7 @@
                     "unlockedAt": null,
                     "iconUrl": "891cc116879295431117397954d32eec4f491f9f.jpg",
                     "iconGrayUrl": "1bf2423baea762b168ef2f983dd448e062999fb5.jpg",
-                    "globalPct": 21.7
+                    "globalPct": 28.3
                 },
                 {
                     "apiName": "A05_TotemClouds",
@@ -33556,7 +33556,7 @@
                     "unlockedAt": null,
                     "iconUrl": "8708fa274b447e8cea7d0801aab710e45b8dc599.jpg",
                     "iconGrayUrl": "909698dc418d2a5bd809513dd4063550cff394a3.jpg",
-                    "globalPct": 19
+                    "globalPct": 25.8
                 },
                 {
                     "apiName": "A06_TotemMaster",
@@ -33565,7 +33565,7 @@
                     "unlockedAt": null,
                     "iconUrl": "93f731e4f258ae63d852e104d9af764b4d854965.jpg",
                     "iconGrayUrl": "49b48d6327d3f261a23eb7d2700b01639d47297b.jpg",
-                    "globalPct": 16.8
+                    "globalPct": 23.2
                 }
             ]
         },
@@ -38861,14 +38861,23 @@
             "appId": 1883260,
             "hasAchievements": true,
             "total": 39,
-            "unlocked": 8,
+            "unlocked": 9,
             "gameName": "Little Noah: Scion of Paradise",
-            "playtimeForever": 327,
-            "lastPlayedTs": "2026-10-31T10:36:48.000Z",
+            "playtimeForever": 357,
+            "lastPlayedTs": "2026-10-31T11:06:49.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1883260/5fb49ba38199e7e9295156b4e849a8857b5c0a68.jpg",
-            "lastUnlockedAt": "2026-10-31T01:02:45.000Z",
-            "lastUnlockName": "Titan Expert",
+            "lastUnlockedAt": "2026-10-31T11:09:51.000Z",
+            "lastUnlockName": "Glaive Titan",
             "preview": [
+                {
+                    "apiName": "trp_009",
+                    "displayName": "Glaive Titan",
+                    "unlocked": true,
+                    "unlockedAt": "2026-10-31T11:09:51.000Z",
+                    "iconUrl": "e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
+                    "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
+                    "globalPct": 48.9
+                },
                 {
                     "apiName": "trp_035",
                     "displayName": "Titan Expert",
@@ -38913,15 +38922,6 @@
                     "iconUrl": "e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
                     "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
                     "globalPct": 78.2
-                },
-                {
-                    "apiName": "trp_015",
-                    "displayName": "Monumental",
-                    "unlocked": true,
-                    "unlockedAt": "2026-10-29T14:03:13.000Z",
-                    "iconUrl": "e06bf289b18abde76d7b7e46dfde2ff54f81568c.jpg",
-                    "iconGrayUrl": "5003dd39bde6d79e0633c5b884f4572796105486.jpg",
-                    "globalPct": 79.8
                 }
             ]
         },
@@ -39569,7 +39569,7 @@
                     "unlockedAt": "2026-04-26T13:03:01.000Z",
                     "iconUrl": "83dc4d3559c34a919e1ca834f626f6d1ff6507eb.jpg",
                     "iconGrayUrl": "2cde4d41f0138dd6ffc10818911e81e9b40131ab.jpg",
-                    "globalPct": 55
+                    "globalPct": 54.9
                 },
                 {
                     "apiName": "ACH_TERRA_012",

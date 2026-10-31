@@ -2,7 +2,7 @@
     "appId": 1883260,
     "hasAchievements": true,
     "total": 39,
-    "unlocked": 8,
+    "unlocked": 9,
     "gameName": "Little Noah: Scion of Paradise",
     "achievements": [
         {
@@ -84,8 +84,8 @@
         },
         {
             "apiName": "trp_009",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-10-31T11:09:51.000Z",
             "displayName": "Glaive Titan",
             "description": "",
             "iconUrl": "e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
@@ -168,7 +168,7 @@
             "iconUrl": "05c5c0b277fdc75ad8243c8431812486e413e1b2.jpg",
             "iconGrayUrl": "7509b318a749cdfd37d7e14e447a96d3aaf229da.jpg",
             "hidden": false,
-            "globalPct": 66.7
+            "globalPct": 66.8
         },
         {
             "apiName": "trp_017",
@@ -223,7 +223,7 @@
             "iconUrl": "5803ea2ae4c4be251800ae237bc70e9c9f786bf2.jpg",
             "iconGrayUrl": "b5a4f0313533a3d6f4d601fadc7d424205d160f4.jpg",
             "hidden": false,
-            "globalPct": 31.4
+            "globalPct": 31.5
         },
         {
             "apiName": "trp_022",
@@ -435,12 +435,21 @@
             "globalPct": 13.3
         }
     ],
-    "playtimeForever": 327,
-    "lastPlayedTs": "2026-10-31T10:36:48.000Z",
+    "playtimeForever": 357,
+    "lastPlayedTs": "2026-10-31T11:06:49.000Z",
     "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1883260/5fb49ba38199e7e9295156b4e849a8857b5c0a68.jpg",
-    "lastUnlockedAt": "2026-10-31T01:02:45.000Z",
-    "lastUnlockName": "Titan Expert",
+    "lastUnlockedAt": "2026-10-31T11:09:51.000Z",
+    "lastUnlockName": "Glaive Titan",
     "preview": [
+        {
+            "apiName": "trp_009",
+            "displayName": "Glaive Titan",
+            "unlocked": true,
+            "unlockedAt": "2026-10-31T11:09:51.000Z",
+            "iconUrl": "e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
+            "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
+            "globalPct": 48.9
+        },
         {
             "apiName": "trp_035",
             "displayName": "Titan Expert",
@@ -485,15 +494,6 @@
             "iconUrl": "e6bc15154d82b9f8b7b1a4e966f5ec1c8b2f0cf6.jpg",
             "iconGrayUrl": "a69fb4f04ad535f3b20e1f8d32081c5afa44c1a8.jpg",
             "globalPct": 78.2
-        },
-        {
-            "apiName": "trp_015",
-            "displayName": "Monumental",
-            "unlocked": true,
-            "unlockedAt": "2026-10-29T14:03:13.000Z",
-            "iconUrl": "e06bf289b18abde76d7b7e46dfde2ff54f81568c.jpg",
-            "iconGrayUrl": "5003dd39bde6d79e0633c5b884f4572796105486.jpg",
-            "globalPct": 79.8
         }
     ]
 }
