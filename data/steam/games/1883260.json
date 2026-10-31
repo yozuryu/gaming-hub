@@ -2,7 +2,7 @@
     "appId": 1883260,
     "hasAchievements": true,
     "total": 39,
-    "unlocked": 7,
+    "unlocked": 8,
     "gameName": "Little Noah: Scion of Paradise",
     "achievements": [
         {
@@ -370,8 +370,8 @@
         },
         {
             "apiName": "trp_035",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-10-31T01:02:45.000Z",
             "displayName": "Titan Expert",
             "description": "",
             "iconUrl": "68beaca8717fa29130d4ea4100c323f893818a3b.jpg",
@@ -435,12 +435,21 @@
             "globalPct": 13.3
         }
     ],
-    "playtimeForever": 295,
-    "lastPlayedTs": "2026-10-31T00:46:11.000Z",
+    "playtimeForever": 325,
+    "lastPlayedTs": "2026-10-31T01:16:11.000Z",
     "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1883260/5fb49ba38199e7e9295156b4e849a8857b5c0a68.jpg",
-    "lastUnlockedAt": "2026-10-29T14:47:38.000Z",
-    "lastUnlockName": "Dawn of Strength",
+    "lastUnlockedAt": "2026-10-31T01:02:45.000Z",
+    "lastUnlockName": "Titan Expert",
     "preview": [
+        {
+            "apiName": "trp_035",
+            "displayName": "Titan Expert",
+            "unlocked": true,
+            "unlockedAt": "2026-10-31T01:02:45.000Z",
+            "iconUrl": "68beaca8717fa29130d4ea4100c323f893818a3b.jpg",
+            "iconGrayUrl": "4837193e27a93d1cc073a3c6a2abbaaa5332945f.jpg",
+            "globalPct": 47.1
+        },
         {
             "apiName": "trp_014",
             "displayName": "Dawn of Strength",
@@ -485,15 +494,6 @@
             "iconUrl": "e06bf289b18abde76d7b7e46dfde2ff54f81568c.jpg",
             "iconGrayUrl": "5003dd39bde6d79e0633c5b884f4572796105486.jpg",
             "globalPct": 79.8
-        },
-        {
-            "apiName": "trp_016",
-            "displayName": "A New Outfit",
-            "unlocked": true,
-            "unlockedAt": "2026-10-29T14:01:16.000Z",
-            "iconUrl": "05c5c0b277fdc75ad8243c8431812486e413e1b2.jpg",
-            "iconGrayUrl": "7509b318a749cdfd37d7e14e447a96d3aaf229da.jpg",
-            "globalPct": 66.8
         }
     ]
 }
