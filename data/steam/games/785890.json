@@ -1,0 +1,191 @@
+{
+    "appId": 785890,
+    "hasAchievements": true,
+    "total": 11,
+    "unlocked": 0,
+    "gameName": "Hexologic",
+    "achievements": [
+        {
+            "apiName": "A01_HexMaster",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hex Master",
+            "description": "Complete 90 basic levels",
+            "iconUrl": "2f5917feb40bd711b1236215467f9bc94236b34b.jpg",
+            "iconGrayUrl": "f725611c1cfaed2d2d9b812fab07a30aaa040ce8.jpg",
+            "hidden": false,
+            "globalPct": 26.2
+        },
+        {
+            "apiName": "A02_TotemOcean",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ocean Master",
+            "description": "Complete underwater special levels",
+            "iconUrl": "4a334413079e9ece22dc00f40bb3df84359ee7a0.jpg",
+            "iconGrayUrl": "041da3feb7e5dce30c00551f5e3c65d5c85fd186.jpg",
+            "hidden": false,
+            "globalPct": 29.3
+        },
+        {
+            "apiName": "A03_TotemJungle",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Jungle Master",
+            "description": "Complete jungle special levels",
+            "iconUrl": "3f11809705f6e57072e3e1dc9308aecd0f127d28.jpg",
+            "iconGrayUrl": "66e04d28136ef011f08b96431f768f31e6970f50.jpg",
+            "hidden": false,
+            "globalPct": 23
+        },
+        {
+            "apiName": "A04_TotemDesert",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Desert Master",
+            "description": "Complete desert special levels",
+            "iconUrl": "891cc116879295431117397954d32eec4f491f9f.jpg",
+            "iconGrayUrl": "1bf2423baea762b168ef2f983dd448e062999fb5.jpg",
+            "hidden": false,
+            "globalPct": 21.7
+        },
+        {
+            "apiName": "A05_TotemClouds",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sky Master",
+            "description": "Complete sky special levels",
+            "iconUrl": "8708fa274b447e8cea7d0801aab710e45b8dc599.jpg",
+            "iconGrayUrl": "909698dc418d2a5bd809513dd4063550cff394a3.jpg",
+            "hidden": false,
+            "globalPct": 19
+        },
+        {
+            "apiName": "A06_TotemMaster",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Secret Master",
+            "description": "Complete all secret sky levels",
+            "iconUrl": "93f731e4f258ae63d852e104d9af764b4d854965.jpg",
+            "iconGrayUrl": "49b48d6327d3f261a23eb7d2700b01639d47297b.jpg",
+            "hidden": false,
+            "globalPct": 16.8
+        },
+        {
+            "apiName": "A07_HexEmperor",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hex Emperor",
+            "description": "Complete 90 basic and 21 special levels",
+            "iconUrl": "bb2c79645b3f230d808349ce4e68839470406ec9.jpg",
+            "iconGrayUrl": "c3ae299b36bcca260783b7cb1a92874da5b3678d.jpg",
+            "hidden": false,
+            "globalPct": 16.1
+        },
+        {
+            "apiName": "A08_HardMode",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hard Mode Master",
+            "description": "Complete 90 basic levels in hard mode",
+            "iconUrl": "2b91c248ee1b4d06b9d8d0f4cb3f3202f481e3b3.jpg",
+            "iconGrayUrl": "e3d576ac139d5d96eab2fde5da983137ccc71558.jpg",
+            "hidden": false,
+            "globalPct": 13.6
+        },
+        {
+            "apiName": "A09_HardModeSpecials",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hard Mode Totems Master",
+            "description": "Complete 90 basic and 21 special levels in hard mode",
+            "iconUrl": "2c3dd8d3bdf396ab91f5445009459c8124f9409d.jpg",
+            "iconGrayUrl": "9806462b1f2916aa66f1cba525f4593cf90cd793.jpg",
+            "hidden": false,
+            "globalPct": 12.4
+        },
+        {
+            "apiName": "A10_TotemCosmos",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Space Master",
+            "description": "Complete cosmic special levels",
+            "iconUrl": "9294f1ca079853862c5fe5435a893528aeabed5d.jpg",
+            "iconGrayUrl": "2d0668c980ae6bae773aa378d4a087c03a3ca910.jpg",
+            "hidden": false,
+            "globalPct": 17.7
+        },
+        {
+            "apiName": "A11_TotemVenus",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Forbidden Planet Master",
+            "description": "Complete special levels of Forbidden Planet",
+            "iconUrl": "695771f256fea2079ece50fe6e348df236724e9b.jpg",
+            "iconGrayUrl": "432494d0b309bbc93744845dd2e74133ac64ed40.jpg",
+            "hidden": false,
+            "globalPct": 17
+        }
+    ],
+    "playtimeForever": 4,
+    "lastPlayedTs": "2026-10-31T10:36:33.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/785890/7bedc0ef6e2d0fba292e2cad90d0166fb670319c.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "A01_HexMaster",
+            "displayName": "Hex Master",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "2f5917feb40bd711b1236215467f9bc94236b34b.jpg",
+            "iconGrayUrl": "f725611c1cfaed2d2d9b812fab07a30aaa040ce8.jpg",
+            "globalPct": 26.2
+        },
+        {
+            "apiName": "A02_TotemOcean",
+            "displayName": "Ocean Master",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "4a334413079e9ece22dc00f40bb3df84359ee7a0.jpg",
+            "iconGrayUrl": "041da3feb7e5dce30c00551f5e3c65d5c85fd186.jpg",
+            "globalPct": 29.3
+        },
+        {
+            "apiName": "A03_TotemJungle",
+            "displayName": "Jungle Master",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "3f11809705f6e57072e3e1dc9308aecd0f127d28.jpg",
+            "iconGrayUrl": "66e04d28136ef011f08b96431f768f31e6970f50.jpg",
+            "globalPct": 23
+        },
+        {
+            "apiName": "A04_TotemDesert",
+            "displayName": "Desert Master",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "891cc116879295431117397954d32eec4f491f9f.jpg",
+            "iconGrayUrl": "1bf2423baea762b168ef2f983dd448e062999fb5.jpg",
+            "globalPct": 21.7
+        },
+        {
+            "apiName": "A05_TotemClouds",
+            "displayName": "Sky Master",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "8708fa274b447e8cea7d0801aab710e45b8dc599.jpg",
+            "iconGrayUrl": "909698dc418d2a5bd809513dd4063550cff394a3.jpg",
+            "globalPct": 19
+        },
+        {
+            "apiName": "A06_TotemMaster",
+            "displayName": "Secret Master",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "93f731e4f258ae63d852e104d9af764b4d854965.jpg",
+            "iconGrayUrl": "49b48d6327d3f261a23eb7d2700b01639d47297b.jpg",
+            "globalPct": 16.8
+        }
+    ]
+}

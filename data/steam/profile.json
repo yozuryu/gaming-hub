@@ -1,21 +1,21 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-10-31T01:46:54.983Z"
+        "extractionTimestamp": "2026-10-31T10:46:55.711Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 0,
+        "status": 1,
         "lastOnline": "2026-10-31T01:20:07.000Z",
         "countryCode": "ID"
     },
     "stats": {
-        "totalGames": 1290,
-        "totalPlaytimeMin": 351020,
+        "totalGames": 1292,
+        "totalPlaytimeMin": 351024,
         "totalPlaytimeHrs": 5850,
-        "gamesWithPlaytime": 819,
+        "gamesWithPlaytime": 820,
         "totalAchievements": 10178,
         "unlockedAchievements": 2853,
         "gamesWithAchievements": 172,
@@ -31,9 +31,20 @@
             "playtimeForever": 327,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1883260/5fb49ba38199e7e9295156b4e849a8857b5c0a68.jpg",
             "storeUrl": "https://store.steampowered.com/app/1883260",
-            "lastPlayedTs": "2026-10-31T01:18:27.000Z",
+            "lastPlayedTs": "2026-10-31T10:36:48.000Z",
             "achUnlocked": 8,
             "achTotal": 39
+        },
+        {
+            "appId": 785890,
+            "name": "Hexologic",
+            "playtime2Weeks": 4,
+            "playtimeForever": 4,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/785890/7bedc0ef6e2d0fba292e2cad90d0166fb670319c.jpg",
+            "storeUrl": "https://store.steampowered.com/app/785890",
+            "lastPlayedTs": "2026-10-31T10:36:33.000Z",
+            "achUnlocked": 0,
+            "achTotal": 11
         },
         {
             "appId": 224760,
@@ -98,7 +109,7 @@
         "playtimeForever": 327,
         "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1883260/5fb49ba38199e7e9295156b4e849a8857b5c0a68.jpg",
         "storeUrl": "https://store.steampowered.com/app/1883260",
-        "lastPlayedTs": "2026-10-31T01:18:27.000Z"
+        "lastPlayedTs": "2026-10-31T10:36:48.000Z"
     },
     "mostRecentUnlock": {
         "appId": 1883260,
