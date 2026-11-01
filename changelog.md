@@ -6,7 +6,7 @@ A Playing list for the games in rotation; the floating tab pill on the profile p
 
 ### Hub
 
-- New **Playing** section at the top of the hub (mobile and desktop): the games played in the last 2 weeks, with when you last played, time and unlocks over the last 90 days, and a link line with how many are on hold or drifting
+- New **Playing** section at the top of the hub (mobile and desktop): the 4 most recent games in rotation as tiles like the Activity view (cover, status, last played, achievement progress, 13-week play strip), 2×2 on mobile and one row on desktop, with a link line for the rest (`+4 more playing · 1 on hold`)
 
 ### Activity
 
