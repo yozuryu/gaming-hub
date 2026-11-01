@@ -1,7 +1,10 @@
 # Activity — Page Context
 
-## Two views
-One page, two views switched by the segmented control in the header (**Achievements | Playtime**). The view is kept in the URL (`?view=playtime`, absent = achievements) with `history.replaceState`. Both share the same layout (heatmap → streak → timeline), the platform filter and the selected day; only the metric changes. Switching view clears the selected day, and the Xbox filter falls back to All in Playtime (Xbox has no playtime; the header shows "Xbox n/a").
+## Three views
+One page, three views switched by the segmented control in the header (**Unlocks | Playtime | Playing**; on mobile it's its own full-width row under the title). The view is kept in the URL (`?view=playtime` / `?view=playing`, absent = achievements) with `history.replaceState`. Achievements and Playtime share the same layout (heatmap → streak → timeline), the platform filter and the selected day; only the metric changes. Switching view clears the selected day, and the Xbox filter falls back to All in Playtime (Xbox has no playtime; the header shows "Xbox n/a").
+
+### Playing view
+Games in rotation from `loadPlaying()` in `assets/playing.js` (rules in the root CLAUDE.md, "Playing"), loaded the first time the view opens. No heatmap: header pills with the group counts, then "In Rotation" with the platform filter (All / RA / Steam / Xbox) and the Playing / On hold / Drifting groups (`PlayingGroups`, rows `PlayingRow`: last played, days played, time and unlocks over the 90 days; Xbox time shows n/a). An empty group says "No games". The hub's Playing section links here
 
 ## Data Sources
 - `../data/{ra,steam,xbox}/achievements/1–4.json` — all four fetched on mount (the heatmap is built in the browser from these chunks, in the viewer's timezone)

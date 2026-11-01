@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Activity, ChevronDown, Clock, Flame, Trophy } from 'lucide-react';
+import { Activity, ChevronDown, Clock, Flame, Gamepad2, Trophy } from 'lucide-react';
 import { PLATFORM_COLOR, TILDE_TAG_COLORS } from './utils/constants.js';
 import { fmtDay, fmtTime, fmtMinutes, fmtMinutesShort, parseTitle, xboxImg } from './utils/helpers.js';
 import { normalizeRA, normalizeSteam, normalizeXbox, normalizeSession } from './utils/normalizers.js';
 import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap, splitByDay } from '../assets/time.js';
+import { loadPlaying, PLAYING_GROUPS, PLAYING_WINDOW_DAYS } from '../assets/playing.js';
 
 // A day counts toward the playtime streak with at least this much play
 const PLAYTIME_STREAK_MIN = 15;
@@ -471,6 +472,130 @@ const PlaySessionsSkeleton = () => (
     </div>
 );
 
+// ── Playing view ──────────────────────────────────────────────────────────────
+
+const PLATFORM_ICON = { ra: '../assets/icon-ra.png', steam: '../assets/icon-steam.png', xbox: '../assets/icon-xbox.png' };
+const GAME_URL = {
+    ra:    g => `https://retroachievements.org/game/${g.gameId}`,
+    steam: g => `https://store.steampowered.com/app/${g.gameId}`,
+    xbox:  g => `https://www.xbox.com/en-US/Search/Results?q=${encodeURIComponent(g.name)}`,
+};
+// Group marker colors: in progress blue, then fading as the game goes untouched
+const PLAYING_GROUP_COLOR = { playing: '#66c0f4', onhold: '#8f98a0', drifting: '#546270' };
+
+const fmtAgo = (days) => days === 0 ? 'Today' : days === 1 ? 'Yesterday' : `${days}d ago`;
+
+// One game in rotation: last played, days with play, time and unlocks over the window
+const PlayingRow = ({ game: g }) => {
+    const isRA = g.platform === 'ra';
+    const { baseTitle, subsetName, isSubset, tags } = isRA ? parseTitle(g.name) : { baseTitle: g.name };
+    const url = GAME_URL[g.platform](g);
+    const icon = g.platform === 'xbox' ? xboxImg(g.icon, 64) : g.icon;
+    return (
+        <div className="flex items-center gap-2 p-2 rounded-[2px] border border-[#2a475e] border-l-[2px] bg-[#1b2838] hover:bg-[#202d39] transition-colors"
+            style={{ borderLeftColor: PLATFORM_COLOR[g.platform] }}>
+            <a href={url} target="_blank" rel="noreferrer"
+                className="shrink-0 w-8 h-8 rounded-[2px] overflow-hidden border border-[#101214] bg-black block">
+                {icon
+                    ? <img src={icon} alt="" className="w-full h-full object-cover" />
+                    : <div className="w-full h-full bg-[#2a475e]" />}
+            </a>
+            <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-1.5 min-w-0">
+                    <img src={PLATFORM_ICON[g.platform]} alt=""
+                        className="w-3 h-3 shrink-0 object-contain opacity-60"
+                        onError={e => { e.target.style.display = 'none'; }} />
+                    <a href={url} target="_blank" rel="noreferrer"
+                        className="text-[11px] font-medium text-[#c6d4df] hover:text-[#66c0f4] truncate transition-colors">
+                        {baseTitle}
+                    </a>
+                    {isSubset && (
+                        <>
+                            <span className="text-[7px] font-bold uppercase tracking-[0.07em] px-1 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>
+                            <span className="text-[8px] text-[#c8a84b] truncate">{subsetName}</span>
+                        </>
+                    )}
+                    {!isSubset && renderTildeTags(tags)}
+                    {g.beaten && (
+                        <span className="text-[7px] font-bold uppercase tracking-[0.07em] px-1 py-[1px] rounded-[2px] shrink-0"
+                            style={{ background: '#2a3440', color: '#c6d4df', border: '1px solid rgba(184,196,206,0.3)' }}
+                            title="Beaten, still playing it">Beaten</span>
+                    )}
+                </div>
+                <p className="text-[9px] text-[#8f98a0] truncate mt-0.5">
+                    {fmtAgo(g.daysAgo)}
+                    <span className="text-[#546270]"> · {g.days} day{g.days !== 1 ? 's' : ''} played</span>
+                    {isRA && g.consoleName && <span className="text-[#546270]"> · {g.consoleName}</span>}
+                </p>
+            </div>
+            <div className="shrink-0 flex flex-col items-end gap-0.5">
+                {g.platform === 'xbox'
+                    ? <span className="text-[11px] font-semibold text-[#323f4c]" title="Xbox doesn't report playtime">n/a</span>
+                    : <span className="text-[11px] font-semibold text-[#c6d4df]">{fmtMinutes(g.minutes)}</span>}
+                {g.unlocks > 0 && (
+                    <span className="text-[9px] text-[#e5b143] flex items-center gap-0.5" title={`${g.unlocks} achievement${g.unlocks !== 1 ? 's' : ''} in the last ${PLAYING_WINDOW_DAYS} days`}>
+                        <Trophy size={9} /> {g.unlocks}
+                    </span>
+                )}
+            </div>
+        </div>
+    );
+};
+
+const PlayingSkeleton = () => (
+    <div className="flex flex-col gap-5">
+        {[3, 2, 2].map((n, i) => (
+            <div key={i}>
+                <div className="flex items-center gap-2 mb-2">
+                    <div className="shimmer w-2 h-2 rounded-full" />
+                    <div className="shimmer h-2.5 w-20 rounded" />
+                    <div className="flex-1 h-px bg-[#1e2d3a]" />
+                    <div className="shimmer h-2 w-28 rounded" />
+                </div>
+                <div className="flex flex-col gap-1">
+                    {[...Array(n)].map((_, j) => (
+                        <div key={j} className="flex items-center gap-2 p-2 bg-[#1b2838] border border-[#2a475e] rounded-[2px]">
+                            <div className="shimmer w-8 h-8 rounded-[2px] shrink-0" />
+                            <div className="flex-1 flex flex-col gap-1.5">
+                                <div className="shimmer h-2.5 rounded" style={{ width: `${45 + j * 20}%` }} />
+                                <div className="shimmer h-2 w-24 rounded" />
+                            </div>
+                            <div className="shimmer h-3 w-10 rounded" />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        ))}
+    </div>
+);
+
+// Playing / On hold / Drifting, each a list of game rows (an empty group says so)
+const PlayingGroups = ({ games }) => (
+    <div className="flex flex-col gap-5">
+        {PLAYING_GROUPS.map(grp => {
+            const list = games.filter(g => g.group === grp.id);
+            return (
+                <div key={grp.id}>
+                    <div className="flex items-center gap-2 mb-2">
+                        <div className="w-2 h-2 rounded-full shrink-0" style={{ background: PLAYING_GROUP_COLOR[grp.id] }} />
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.07em]" style={{ color: PLAYING_GROUP_COLOR[grp.id] }}>{grp.label}</span>
+                        <span className="text-[10px] text-[#546270]">{list.length}</span>
+                        <div className="flex-1 h-px bg-[#2a475e] opacity-40" />
+                        <span className="text-[9px] text-[#546270] truncate">{grp.hint}</span>
+                    </div>
+                    {list.length === 0
+                        ? <p className="text-[10px] text-[#546270] italic pl-4">No games</p>
+                        : <div className="flex flex-col gap-1">{list.map(g => <PlayingRow key={g.key} game={g} />)}</div>}
+                </div>
+            );
+        })}
+    </div>
+);
+
+// Shared fetch for loadPlaying: one request per file, missing files resolve to null
+const _playingCache = {};
+const fetchJsonOnce = (url) => (_playingCache[url] ??= fetch(url).then(r => r.ok ? r.json() : null).catch(() => null));
+
 // ── App ───────────────────────────────────────────────────────────────────────
 
 const App = () => {
@@ -483,8 +608,14 @@ const App = () => {
     const [loading,       setLoading]       = useState(true);
     const loadingMore = false;
     const [nextChunk,   setNextChunk]   = useState(2);
+    // View from the URL: ?view=playtime | playing (absent = achievements)
+    const [view,        setView]        = useState(() => {
+        const v = new URLSearchParams(location.search).get('view');
+        return v === 'playtime' || v === 'playing' ? v : 'achievements';
+    });
+    // Playing view: games in rotation (assets/playing.js), loaded the first time the view opens
+    const [playing,     setPlaying]     = useState(null);   // { games, groups } | { error: true }
     // Playtime view: sessions for this UTC year and last (covers the 365-day heatmap)
-    const [view,        setView]        = useState(() => new URLSearchParams(location.search).get('view') === 'playtime' ? 'playtime' : 'achievements');
     const [playtime,    setPlaytime]    = useState(null);   // { ra: [...sessions], steam: [...] }
     const [visibleDays, setVisibleDays] = useState(30);
     const [filter,      setFilter]      = useState('all');
@@ -504,10 +635,19 @@ const App = () => {
         setSelectedDay(null);
         if (next === 'playtime' && filter === 'xbox') setFilter('all');
         const url = new URL(location.href);
-        if (next === 'playtime') url.searchParams.set('view', 'playtime');
+        if (next !== 'achievements') url.searchParams.set('view', next);
         else url.searchParams.delete('view');
         history.replaceState(null, '', url);
     };
+
+    useEffect(() => {
+        if (view !== 'playing' || playing) return;
+        loadPlaying(fetchJsonOnce, '../').then(setPlaying).catch(() => setPlaying({ error: true, games: [], groups: {} }));
+    }, [view]);
+    const playingShown = useMemo(
+        () => (playing?.games ?? []).filter(g => filter === 'all' || g.platform === filter),
+        [playing, filter]
+    );
 
     const fetchChunk = async (platform, i) => {
         const d = await fetch(`../data/${platform}/achievements/${i}.json`)
@@ -771,10 +911,11 @@ const App = () => {
                             <Activity size={22} className="text-[#66c0f4]" /> Activity
                         </h1>
                         {/* View switch */}
-                        <div className="flex p-[2px] rounded-[3px] border border-[#2a475e] bg-[#101214] ml-auto" role="tablist">
-                            {[['achievements', 'Achievements', Trophy], ['playtime', 'Playtime', Clock]].map(([id, label, Icon]) => (
+                        {/* Its own full-width row on mobile (three segments don't fit beside the title) */}
+                        <div className="grid grid-cols-3 basis-full md:flex md:basis-auto p-[2px] rounded-[3px] border border-[#2a475e] bg-[#101214] md:ml-auto" role="tablist">
+                            {[['achievements', 'Unlocks', Trophy], ['playtime', 'Playtime', Clock], ['playing', 'Playing', Gamepad2]].map(([id, label, Icon]) => (
                                 <button key={id} role="tab" aria-selected={view === id} onClick={() => switchView(id)}
-                                    className={`flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.07em] px-3 py-1 rounded-[2px] transition-colors ${
+                                    className={`flex items-center justify-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.07em] px-3 py-1.5 md:py-1 rounded-[2px] transition-colors ${
                                         view === id ? 'bg-[#2a475e] text-white' : 'text-[#546270] hover:text-[#c6d4df]'
                                     }`}>
                                     <Icon size={11} /> {label}
@@ -794,6 +935,21 @@ const App = () => {
                             <span className={pill}><span className="text-[#e5b143]">{fmtMinutes(playTotals.ra)}</span> RetroAchievements</span>
                             <span className={pill}><span className="text-[#66c0f4]">{fmtMinutes(playTotals.steam)}</span> Steam</span>
                             <span className={pill} title="Xbox doesn't report playtime">Xbox <span className="text-[#323f4c]">n/a</span></span>
+                        </div>
+                    )}
+                    {view === 'playing' && !playing && (
+                        <div className="flex flex-wrap gap-2">
+                            {[78, 70, 74, 92].map((w, i) => <span key={i} className="shimmer h-[19px] rounded-[2px]" style={{ width: w }} />)}
+                        </div>
+                    )}
+                    {view === 'playing' && playing && (
+                        <div key="playing-pills" className="flex flex-wrap gap-2 anim-fade">
+                            {PLAYING_GROUPS.map(grp => (
+                                <span key={grp.id} className={pill}>
+                                    <span className={grp.id === 'playing' ? 'text-[#66c0f4]' : 'text-[#c6d4df]'}>{playing.groups[grp.id]?.length ?? 0}</span> {grp.label}
+                                </span>
+                            ))}
+                            <span className={pill}>Last {PLAYING_WINDOW_DAYS} days</span>
                         </div>
                     )}
                     {!loading && view === 'achievements' && (
@@ -817,7 +973,36 @@ const App = () => {
 
             <main className="max-w-5xl mx-auto px-4 md:px-8 py-6 flex-1 w-full flex flex-col gap-6">
 
-                {loading ? (
+                {view === 'playing' ? (
+                    // Games in rotation: no heatmap, it's about games, not days
+                    <div key="playing" className="anim-in flex flex-col gap-4">
+                        <div className="flex items-center gap-2 flex-wrap border-b border-[#2a475e] pb-1.5">
+                            <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0" />
+                            <span className="text-[13px] text-white tracking-wide uppercase font-medium">In Rotation</span>
+                            <div className="flex items-center gap-1.5 ml-2">
+                                {filters.map(f => (
+                                    <button
+                                        key={f.id}
+                                        onClick={() => setFilter(f.id)}
+                                        className={`text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[2px] rounded-[2px] border transition-colors ${
+                                            filter === f.id
+                                                ? 'bg-[#66c0f4] text-[#101214] border-[#66c0f4]'
+                                                : 'text-[#546270] border-[#2a475e] hover:border-[#66c0f4] hover:text-[#c6d4df]'
+                                        }`}
+                                    >
+                                        {f.label}
+                                    </button>
+                                ))}
+                            </div>
+                            <span className="text-[10px] text-[#546270] ml-auto hidden sm:inline">Unfinished games with an hour or more of play</span>
+                        </div>
+                        {!playing ? <PlayingSkeleton /> : playing.error ? (
+                            <div className="text-[#8f98a0] text-[11px] py-4 italic text-center anim-fade">Could not load the games in rotation.</div>
+                        ) : (
+                            <div key={filter} className="anim-fade"><PlayingGroups games={playingShown} /></div>
+                        )}
+                    </div>
+                ) : loading ? (
                     <div className="flex flex-col gap-6">
                         {/* Heatmap skeleton */}
                         <div>

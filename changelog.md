@@ -2,9 +2,21 @@
 
 ## v26.11.01
 
-The floating tab pill on the profile pages stays on screen again.
+A Playing list for the games in rotation; the floating tab pill on the profile pages stays on screen again.
+
+### Hub
+
+- New **Playing** section at the top of the hub (mobile and desktop): the games played in the last 2 weeks, with when you last played, time and unlocks over the last 90 days, and a link line with how many are on hold or drifting
+
+### Activity
+
+- New **Playing** view (`?view=playing`): the unfinished games you've put an hour or more into in the last 90 days, grouped Playing (≤2 weeks), On hold (2–6 weeks) and Drifting (6+ weeks), filterable by platform. Mastered/Perfect games and achievement farms are left out; a Beaten game shows only while you keep playing it after the credits
+- The view switch reads **Unlocks | Playtime | Playing** and sits on its own full-width row on mobile
 
 ### Structure
+
+- `assets/playing.js`: the shared rules for the Playing list, computed in the browser from play sessions, recent unlocks, RA awards and win conditions (no new pipeline file). Added to the service worker precache (`gaming-hub-v9`)
+- CLAUDE.md: the site is mobile first; features join an existing bottom-nav tab instead of adding a sixth
 
 - Fixed the mobile floating tab pill (RA, Steam, Xbox) only showing at the very bottom of the page instead of above the nav bar. The shared animation classes (`.anim-in`, `.anim-fade`, `.anim-pop`, `.anim-backdrop`, plus the admin copy and the hub fades) kept their end state with `animation-fill-mode: both`, and a transform animation that stays in effect makes `<main class="anim-in">` the containing block for its `position: fixed` children. They now use `backwards`, which looks the same once the animation ends
 

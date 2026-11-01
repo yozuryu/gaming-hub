@@ -21,17 +21,17 @@
        replays the animation (keyframes in assets/motion.css) */
     #ra-stats > *, #steam-stats > *, #xbox-stats > *,
     #ra-recent > *, #steam-recent > *, #xbox-recent > *,
-    #activity-feed > *, #completions-strip-latest > *, #completions-strip-stats > *, #analytics-strip-stats > *, #header-tags > * {
+    #activity-feed > *, #playing-list > *, #completions-strip-latest > *, #completions-strip-stats > *, #analytics-strip-stats > *, #header-tags > * {
       animation: motion-fade 200ms ease-out backwards;
     }
-    #completions-strip, #analytics-strip, #activity-section, #activity-toggle-btn {
+    #completions-strip, #analytics-strip, #activity-section, #activity-toggle-btn, #playing-more {
       animation: motion-fade 200ms ease-out backwards;
     }
     @media (prefers-reduced-motion: reduce) {
-      #completions-strip, #analytics-strip, #activity-section, #activity-toggle-btn { animation: none; }
+      #completions-strip, #analytics-strip, #activity-section, #activity-toggle-btn, #playing-more { animation: none; }
       #ra-stats > *, #steam-stats > *, #xbox-stats > *,
       #ra-recent > *, #steam-recent > *, #xbox-recent > *,
-      #activity-feed > *, #completions-strip-latest > *, #completions-strip-stats > *, #analytics-strip-stats > *, #header-tags > * { animation: none; }
+      #activity-feed > *, #playing-list > *, #completions-strip-latest > *, #completions-strip-stats > *, #analytics-strip-stats > *, #header-tags > * { animation: none; }
     }
 
     .skeleton {
@@ -168,6 +168,44 @@
 
   <!-- Main -->
   <main class="max-w-5xl mx-auto px-4 md:px-8 py-6 flex-1 w-full">
+
+    <!-- Playing: games played in the last 2 weeks (assets/playing.js). First on the page: it's what
+         you open the app for. On hold / Drifting live in Activity's Playing view -->
+    <div id="playing-section" class="mb-8">
+    <div class="flex items-center gap-2 border-b border-[#2a475e] pb-[7px] mb-4">
+      <span class="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] flex-shrink-0"></span>
+      <span class="text-[13px] text-white uppercase tracking-[0.1em] font-semibold">Playing</span>
+      <a href="./activity/?view=playing" class="ml-auto flex p-1 -m-1 text-[#546270] hover:text-[#66c0f4] transition-colors" aria-label="All games in rotation" title="All games in rotation"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+    </div>
+    <div id="playing-list" class="bg-[#1b2838] border border-[#2a475e] rounded-[2px] overflow-hidden">
+      <div style="border-left:3px solid #2a475e;border-bottom:1px solid #1a2535;" class="flex items-center gap-3 px-3 py-2.5">
+        <div class="skeleton w-8 h-8 rounded-[2px] flex-shrink-0"></div>
+        <div class="flex-1 min-w-0 flex flex-col gap-1.5">
+          <div class="skeleton h-2.5 rounded" style="width:55%"></div>
+          <div class="skeleton h-2 rounded" style="width:35%"></div>
+        </div>
+        <div class="skeleton h-3 w-10 rounded flex-shrink-0"></div>
+      </div>
+      <div style="border-left:3px solid #2a475e;border-bottom:1px solid #1a2535;" class="flex items-center gap-3 px-3 py-2.5">
+        <div class="skeleton w-8 h-8 rounded-[2px] flex-shrink-0"></div>
+        <div class="flex-1 min-w-0 flex flex-col gap-1.5">
+          <div class="skeleton h-2.5 rounded" style="width:65%"></div>
+          <div class="skeleton h-2 rounded" style="width:42%"></div>
+        </div>
+        <div class="skeleton h-3 w-10 rounded flex-shrink-0"></div>
+      </div>
+      <div style="border-left:3px solid #2a475e;border-bottom:1px solid #1a2535;" class="flex items-center gap-3 px-3 py-2.5">
+        <div class="skeleton w-8 h-8 rounded-[2px] flex-shrink-0"></div>
+        <div class="flex-1 min-w-0 flex flex-col gap-1.5">
+          <div class="skeleton h-2.5 rounded" style="width:48%"></div>
+          <div class="skeleton h-2 rounded" style="width:30%"></div>
+        </div>
+        <div class="skeleton h-3 w-10 rounded flex-shrink-0"></div>
+      </div>
+    </div>
+    <a id="playing-more" href="./activity/?view=playing" style="display:none;"
+      class="flex items-center gap-2 px-3 py-2 text-[10px] text-[#546270] bg-[#172333] border border-t-0 border-[#2a475e] rounded-b-[2px] hover:text-[#66c0f4] transition-colors"></a>
+    </div><!-- /playing-section -->
 
     <div class="flex items-center gap-2 border-b border-[#2a475e] pb-[7px] mb-5">
       <span class="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] flex-shrink-0"></span>
@@ -1180,6 +1218,81 @@
       }
     }
 
+    // Playing section: games with play or unlocks in the last 2 weeks, from assets/playing.js (an
+    // ES module, so import() from this classic script). Shares the chunk and playtime requests
+    // with the activity feed and the Analytics strip through fetchJsonOnce
+    async function loadPlayingSection() {
+      const section = document.getElementById('playing-section');
+      const list = document.getElementById('playing-list');
+      const more = document.getElementById('playing-more');
+      try {
+        const { loadPlaying } = await import('./assets/playing.js');
+        const { games, groups } = await loadPlaying(fetchJsonOnce, './');
+        if (!games.length) { section.style.display = 'none'; return; }
+
+        const MAX_ROWS = 5;
+        const esc = (t) => String(t ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+        const fmtMin = (m) => { const h = Math.floor(m / 60), r = m % 60; return h ? `${h}h${r ? ` ${r}m` : ''}` : `${r}m`; };
+        const ago = (d) => d === 0 ? 'Today' : d === 1 ? 'Yesterday' : `${d}d ago`;
+        const COLOR = { ra: '#e5b143', steam: '#66c0f4', xbox: '#52b043' };
+        const ICON  = { ra: './assets/icon-ra.png', steam: './assets/icon-steam.png', xbox: './assets/icon-xbox.png' };
+
+        const row = (g) => {
+          let label = g.name, badges = '';
+          if (g.platform === 'ra') {
+            const t = _parseTitle(g.name);
+            label = t.baseTitle;
+            badges = t.isSubset
+              ? `<span style="${_BADGE_BASE}border:1px solid rgba(229,177,67,0.3);background:rgba(229,177,67,0.08);color:#c8a84b;">Subset</span>`
+              : _tildeBadgesHtml(t.tags);
+          }
+          if (g.beaten) badges += `<span style="${_BADGE_BASE}border:1px solid rgba(184,196,206,0.3);background:#2a3440;color:#c6d4df;" title="Beaten, still playing it">Beaten</span>`;
+          const icon = g.platform === 'xbox' ? xboxImg(g.icon, 64) : g.icon;
+          const sub = [ago(g.daysAgo), g.platform === 'ra' && g.consoleName ? esc(g.consoleName) : null].filter(Boolean).join(' · ');
+          const time = g.platform === 'xbox'
+            ? '<span style="font-size:11px;font-weight:600;color:#323f4c;" title="Xbox doesn\'t report playtime">n/a</span>'
+            : `<span style="font-size:11px;font-weight:600;color:#c6d4df;">${fmtMin(g.minutes)}</span>`;
+          const unlocks = g.unlocks ? `<span style="font-size:9px;color:#e5b143;">★ ${g.unlocks}</span>` : '';
+          return `
+            <div style="border-left:3px solid ${COLOR[g.platform]};border-bottom:1px solid #1a2535;" class="flex items-center gap-3 px-3 py-2.5">
+              ${icon
+                ? `<img src="${esc(icon)}" alt="" style="width:32px;height:32px;border-radius:2px;flex-shrink:0;background:#101214;object-fit:cover;border:1px solid #101214;" />`
+                : '<div style="width:32px;height:32px;border-radius:2px;flex-shrink:0;background:#2a475e;"></div>'}
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px;">
+                <div style="display:flex;align-items:center;gap:5px;min-width:0;">
+                  <img src="${ICON[g.platform]}" alt="" style="width:12px;height:12px;flex-shrink:0;object-fit:contain;opacity:0.6;" onerror="this.style.display='none'" />
+                  <span style="font-size:11px;color:#c6d4df;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(label)}</span>
+                  ${badges}
+                </div>
+                <div style="font-size:9px;color:#8f98a0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${sub}</div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex-shrink:0;">${time}${unlocks}</div>
+            </div>`;
+        };
+
+        const shown = groups.playing.slice(0, MAX_ROWS);
+        list.innerHTML = shown.length
+          ? shown.map(row).join('')
+          : '<div style="padding:14px;text-align:center;font-size:10px;color:#546270;">Nothing played in the last 2 weeks</div>';
+
+        // The rest of the rotation, as one link to Activity's Playing view
+        const extra = groups.playing.length - shown.length;
+        const parts = [
+          extra > 0 && `<b style="color:#c6d4df;font-weight:600;">+${extra}</b> more playing`,
+          groups.onhold.length && `<b style="color:#c6d4df;font-weight:600;">${groups.onhold.length}</b> on hold`,
+          groups.drifting.length && `<b style="color:#c6d4df;font-weight:600;">${groups.drifting.length}</b> drifting`,
+        ].filter(Boolean);
+        if (parts.length) {
+          more.innerHTML = `<span class="flex-1 min-w-0">${parts.join(' <span style="color:#3a5068;">·</span> ')}</span><span class="flex shrink-0">${'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>'}</span>`;
+          more.style.display = 'flex';
+          list.style.borderBottomLeftRadius = list.style.borderBottomRightRadius = '0';
+        }
+      } catch (e) {
+        section.style.display = 'none';
+      }
+    }
+
+    loadPlayingSection();
     loadHubProfile();
     loadRAStats();
     loadSteamStats();

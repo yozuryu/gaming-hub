@@ -5,6 +5,7 @@
 - **Be honest with opinions.** When asked for a preference or recommendation, give a direct, genuine answer — not a diplomatic non-answer.
 - **Push back before implementing bad ideas.** If asked to add or change something that seems like a poor UX, visual, or technical decision, say so clearly and explain why before doing it. Do not silently implement something you think is wrong — always confirm first.
 - **Discuss before building when uncertain.** For UI/UX decisions especially, a short discussion upfront saves rework.
+- **Mobile first.** The site is used mostly on a phone (installed as a PWA). Design every feature for the ~400px layout first, decide where it lives in the mobile view (hub order, bottom nav, profile tabs) before the desktop one, and check it at phone width. Desktop-only placements (like the hub's Completions and Analytics strips) are fine for extras, never for a feature's main entry point.
 
 ---
 
@@ -27,6 +28,7 @@ gaming-hub/
 │
 ├── assets/
 │   ├── mobile-nav.js               # Shared bottom nav bar, injected into all pages via <script>
+│   ├── playing.js                  # "Playing" games in rotation (ES module), used by the hub and Activity; see Playing
 │   ├── avatar.png                  # User avatar
 │   ├── appicon.svg / appicon.png   # App icon ("Save Crystal": three platform shards, one save crystal). SVG is the source; PNG 1024×1024, full-bleed, art at 90% for the maskable safe zone
 │   ├── icon-192.png / icon-512.png # PWA icons (rendered from appicon.svg)
@@ -109,6 +111,8 @@ Vanilla JS, no React. Reads `data/hub/config.json`, `data/ra/profile.json`, `dat
 
 **Analytics strip** (desktop only, below the Completions strip; the header no longer links Analytics): last 30 days · hours played · unlocks · the part of the day with the most play, as its hours (`17:00–22:00`) · top game, linking to `analytics/`. `loadAnalyticsStrip()` repeats the Analytics page's default view (30 days, farms hidden, viewer's timezone) from `playtime/{YYYY}.json` and achievement chunk 1; farms use the same rule as `analytics/utils.js` but only fetch the per-game files of the Steam games active in the window (the Steam index is 1.8 MB). Keep both in sync. `fetchJsonOnce` shares the chunk requests with the activity feed
 
+**Playing section** (first on the page, mobile and desktop): up to 5 games from the Playing group of `assets/playing.js`, then one link line (`+N more playing · N on hold · N drifting`) to `activity/?view=playing`. Loaded with `import('./assets/playing.js')` from the classic script, sharing `fetchJsonOnce`. Shows its skeleton at once; hidden only when nothing is in rotation at all
+
 **Recent Activity feed** — up to 8 rows, combined RA + Steam + Xbox sorted by date. On mobile collapses to 4 rows with a "Show more / Show less" toggle button below the feed.
 
 ---
@@ -118,7 +122,7 @@ Vanilla JS, no React. Reads `data/hub/config.json`, `data/ra/profile.json`, `dat
 ### Bottom navigation (`assets/mobile-nav.js`)
 Self-contained IIFE injected into every page via `<script src="...assets/mobile-nav.js">`. Visible only on screens < 768px.
 
-- 5 tabs: Home, Profile (popup), Activity, Done (Completions), Stats (Analytics). The changelog has no tab: the hub header links to it on mobile; the desktop footer links it too; Analytics is reached from the hub's Analytics strip on desktop
+- 5 tabs: Home, Profile (popup), Activity, Done (Completions), Stats (Analytics). New features join an existing tab (e.g. Playing is a view of Activity) rather than adding a sixth: five is what fits at 400px. The changelog has no tab: the hub header links to it on mobile; the desktop footer links it too; Analytics is reached from the hub's Analytics strip on desktop
 - **Profile tab** fetches `data/hub/config.json` and builds a vertical pill popup showing only `visible: true` platforms. Popup slides up/down via CSS transition (no JS animation). If only one platform, navigates directly.
 - `BASE` is derived from `document.currentScript.src` — works on any host (GitHub Pages `/gaming-hub/`, local `/`, etc.)
 - Mobile CSS injected via `<style>`: hides `.page-topbar` and `footer`, adds `padding-bottom` to body, repositions `.scroll-top-btn`
@@ -201,6 +205,13 @@ Steam and RA only (Xbox has no playtime). Each run compares lifetime playtime pe
 - RA's snapshot is every game in `games.json`, but last-played is only known for recently played games (the only ones re-fetched)
 - `state.json` is pipeline-only (excluded in `_config.yml`) and only rewritten when it changes
 - `scripts/backfill-playtime.js [--ref origin/main] [--platform steam|ra] [--dry-run]` replays the hourly snapshots in git through the same diff and replaces the playtime files. History starts 2026-03-25 (Steam) / 2026-03-27 (RA)
+
+### Playing (`assets/playing.js`)
+Games in rotation, so games played in parallel don't get lost. Computed in the browser (no pipeline file), so "3d ago" is never stale. `loadPlaying(fetchJson, base)` reads play sessions (RA, Steam), achievement chunk 1 (all platforms), RA awards from `ra/profile.json`, and the per-game file + `win-conditions.json` of each Steam/Xbox candidate.
+- **Window** 90 days. **Groups** by local days since the last session end or unlock: Playing ≤14, On hold ≤45, Drifting ≤90
+- **Counts only with real time:** 60+ minutes of sessions in the window (RA, Steam); Xbox (no playtime) needs unlocks on 2+ days. Drops tryouts, demos and RA hash checks
+- **Excluded:** Mastered/Completed/Perfect games, Steam achievement farms (same rule as Analytics). A **Beaten** game counts only activity more than 30 min after the beat (RA award date, or the win-condition unlock) and only in Playing: finishing it and moving on is not "drifting"
+- Thresholds are the constants at the top of the file; check a change against real data before shipping it
 
 ### Unlock History (`scripts/lib/history.js`)
 Every unlocked achievement, all time, rebuilt by each pipeline on every run from the per-game data it already loads, into `data/{ra,steam,xbox}/history/{YYYY}.json` (UTC year of the unlock). The achievement chunks only cover 364 days; this is the all-time source for Analytics.
