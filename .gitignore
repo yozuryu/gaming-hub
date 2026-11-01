@@ -1,3 +1,25 @@
 node_modules/
 .env
 **/.DS_Store
+
+# Pipeline output: lives on the `data` branch, `npm run data:pull` fetches it.
+# Same list as scripts/data-paths.json.
+/data/ra/profile.json
+/data/ra/games.json
+/data/ra/watchlist.json
+/data/ra/achievements/
+/data/ra/playtime/
+/data/ra/history/
+/data/steam/profile.json
+/data/steam/games/
+/data/steam/achievements/
+/data/steam/playtime/
+/data/steam/history/
+/data/xbox/profile.json
+/data/xbox/games/
+/data/xbox/achievements/
+/data/xbox/history/
+# Untouched copy of the data branch for the admin Data Diff; deploy build folders
+/.data-snapshot/
+/_data/
+/_site/

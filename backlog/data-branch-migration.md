@@ -1,6 +1,13 @@
 # Move pipeline data to a `data` branch
 
-**Status:** To do · **Priority:** 4 (see [README.md](README.md)) · **Scope:** plan steps 1–6 · **Follow-up:** [history-cleanup.md](history-cleanup.md)
+**Status:** Done 2026-11-01 · **Follow-up:** [history-cleanup.md](history-cleanup.md)
+
+> **As built (differs from the plan below, which predates the single workflow):**
+> - One workflow, `fetch-data.yml` (RA → Steam → Xbox), restores the `data` branch into `data/`, commits only to `data`, and calls `deploy.yml` when data changed. No separate squash workflow: the **midnight** run (dispatched by cron-job.org at 00:00 UTC, so not subject to GitHub's schedule delays) squashes `data` into one parentless commit.
+> - The file split gained `data/{ra,steam}/playtime/`, `data/{ra,steam,xbox}/history/` and all of `data/xbox/` except `win-conditions.json`. One list in `scripts/data-paths.json` drives the workflow, the deploy and `npm run data:pull`; `private` there = pipeline-only caches (`sentinel.json`, both playtime `state.json`), on the branch but never deployed.
+> - The deploy exclusion list lives in `deploy.yml` (rsync patterns, `CLAUDE.md` matched at any depth); `_config.yml` deleted.
+> - Backups: `backup/main-2026-11-01` on GitHub + `~/projects/personal/gaming-hub-backups/gaming-hub-2026-11-01-pre-data-branch.bundle`. `backfill-playtime.js` now defaults to the backup ref, the last place the hourly snapshots exist.
+> - The workflow wasn't paused (disabling it needs the owner); the switchover was timed between cron-job.org runs instead.
 
 > If Xbox has landed, include it: `data/xbox/` generated files move to `data` (like Steam), `data/xbox/win-conditions.json` stays on `main`, the Xbox workflow gets the same data-branch + deploy changes, and its pipeline-only cache file joins the deploy exclusions.
 

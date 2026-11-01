@@ -2,7 +2,7 @@
 
 ## v26.11.01
 
-A Playing list for the games in rotation, a platform filter on Analytics; the floating tab pill on the profile pages stays on screen again.
+A Playing list for the games in rotation, a platform filter on Analytics, and pipeline data moved to its own branch; the floating tab pill on the profile pages stays on screen again.
 
 ### Hub
 
@@ -23,9 +23,16 @@ A Playing list for the games in rotation, a platform filter on Analytics; the fl
 
 ### Pipelines
 
+- Pipeline output moved off `main` to a **`data` branch**. Each run restores the branch into `data/`, runs the pipelines and commits only there; the midnight run squashes it to one commit, so it holds at most a day of history. `main` now only gets code commits (it had 4,783 pipeline commits vs 139 code commits)
+- The site is deployed by a new `deploy.yml` (Pages source: GitHub Actions) that combines `main` with the `data` branch at the same paths; a pipeline run that changed data deploys right after. Site URLs, the app and the service worker are unchanged
+
 - RA: every game in `profile.json`'s `gameAwardsAndProgress` gets its lifetime `playtime` (minutes), for the Playing tiles' all-time playtime without loading `games.json`
 
 ### Structure
+
+- `scripts/data-paths.json` lists what lives on the `data` branch (one list for the workflow, the deploy and `npm run data:pull`); generated files are gitignored on `main`. `npm run data:pull` fetches them for local work and keeps an untouched copy for the admin Data Diff, which now diffs generated files against it
+- Private files are excluded by the deploy step instead of Jekyll's `_config.yml` (deleted, along with the unused `data/steam/achievements.json`)
+- Backups of `main` from before the move: `backup/main-2026-11-01` and a local git bundle; `backfill-playtime.js` defaults to the backup branch, the last place the hourly snapshots exist
 
 - `assets/playing.js`: the shared rules for the Playing list, computed in the browser from play sessions, recent unlocks, RA awards and win conditions (no new pipeline file). Added to the service worker precache (`gaming-hub-v9`)
 - CLAUDE.md: the site is mobile first; features join an existing bottom-nav tab instead of adding a sixth

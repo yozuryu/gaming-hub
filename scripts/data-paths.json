@@ -1,0 +1,25 @@
+{
+    "about": "Pipeline output, kept on the `data` branch instead of main. Read by .github/workflows/fetch-data.yml (restore before the pipelines, commit to `data` after), .github/workflows/deploy.yml (assemble the site) and scripts/data-pull.js. Keep .gitignore in step. `private` files are pipeline-only caches: on the data branch, never deployed.",
+    "paths": [
+        "data/ra/profile.json",
+        "data/ra/games.json",
+        "data/ra/watchlist.json",
+        "data/ra/achievements",
+        "data/ra/playtime",
+        "data/ra/history",
+        "data/steam/profile.json",
+        "data/steam/games",
+        "data/steam/achievements",
+        "data/steam/playtime",
+        "data/steam/history",
+        "data/xbox/profile.json",
+        "data/xbox/games",
+        "data/xbox/achievements",
+        "data/xbox/history"
+    ],
+    "private": [
+        "data/steam/games/sentinel.json",
+        "data/ra/playtime/state.json",
+        "data/steam/playtime/state.json"
+    ]
+}

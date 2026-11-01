@@ -1,7 +1,7 @@
 // One-off: rebuilds data/{steam,ra}/playtime/ from the hourly snapshots in git history,
 // using the same diff logic as the live pipelines (scripts/lib/playtime.js).
 //
-//   node scripts/backfill-playtime.js [--ref origin/main] [--platform steam|ra] [--dry-run]
+//   node scripts/backfill-playtime.js [--ref origin/backup/main-2026-11-01] [--platform steam|ra] [--dry-run]
 //
 // Run it with the hourly workflows paused (or between runs), then commit the output.
 // It replaces any existing playtime files for the platform, state.json included, so the
@@ -23,7 +23,9 @@ const arg = (name, def) => {
     const i = process.argv.indexOf(name);
     return i > -1 ? process.argv[i + 1] : def;
 };
-const REF      = arg('--ref', 'origin/main');
+// Snapshots are only in git up to the move to the `data` branch (2026-11-01), which is squashed
+// daily since: the default ref is the backup of main from that day
+const REF      = arg('--ref', 'origin/backup/main-2026-11-01');
 const PLATFORM = arg('--platform', null);
 const DRY_RUN  = process.argv.includes('--dry-run');
 
