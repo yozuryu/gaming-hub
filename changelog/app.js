@@ -199,7 +199,7 @@ const App = () => {
                             <GitCommit size={22} className="text-[#66c0f4]" /> Changelog
                         </h1>
                         {releases && (
-                            <span className="ml-2 text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
+                            <span className="ml-2 text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270] anim-fade">
                                 <span className="text-[#c6d4df]">{releases.length}</span> releases
                             </span>
                         )}
@@ -229,7 +229,7 @@ const App = () => {
                         ))}
                     </div>
                 ) : releases.length === 0 ? (
-                    <div className="text-center py-16 text-[#546270] text-[11px]">Could not load changelog.</div>
+                    <div className="text-center py-16 text-[#546270] text-[11px] anim-in">Could not load changelog.</div>
                 ) : (
                     <div className="flex flex-col anim-in">
                         {releases.map((r, i) => (

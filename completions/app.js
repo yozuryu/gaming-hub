@@ -428,7 +428,7 @@ const App = () => {
                             <Star size={22} className="text-[#e5b143]" /> Completions
                         </h1>
                         {!loading && (
-                            <span className="ml-2 text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
+                            <span className="ml-2 text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270] anim-fade">
                                 <span className="text-[#c6d4df]">{completions.length}</span> total
                             </span>
                         )}

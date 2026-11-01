@@ -200,14 +200,17 @@
     }
 
     /* ── Profile popup ── */
+    /* The backdrop fades with the popup (opacity, not display, so it animates both ways) */
     .mnav-popup-backdrop {
-      display: none;
       position: fixed;
       inset: 0;
       z-index: 198;
       background: rgba(0,0,0,0.45);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
     }
-    .mnav-popup-backdrop.open { display: block; }
+    .mnav-popup-backdrop.open { opacity: 1; pointer-events: auto; }
 
     .mnav-popup {
       position: fixed;
@@ -234,6 +237,9 @@
       opacity: 1;
       pointer-events: auto;
       transform: translateX(-50%) translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .mnav-popup, .mnav-popup-backdrop { transition: none; }
     }
 
     .mnav-popup-item {

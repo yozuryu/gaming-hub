@@ -105,7 +105,7 @@ const Heatmap = ({ heatmapData, filter, selectedDay, onSelectDay, describe }) =>
         : ['#101214', '#1a4a70', '#2a6b9e', '#66c0f4', '#e5b143'];
 
     return (
-        <div className="overflow-x-auto anim-fade" ref={scrollRef}>
+        <div className="overflow-x-auto" ref={scrollRef}>
             <div style={{ minWidth: `${53 * 14}px` }}>
                 <div className="flex mb-1" style={{ paddingLeft: '28px' }}>
                     {weeks.map((_, wi) => {
@@ -782,8 +782,14 @@ const App = () => {
                             ))}
                         </div>
                     </div>
-                    {!loading && view === 'playtime' && (
+                    {/* Playtime pills wait for the playtime files (skeleton until then); both pill rows fade in and swap with a fade */}
+                    {!loading && view === 'playtime' && !playtime && (
                         <div className="flex flex-wrap gap-2">
+                            {[86, 132, 72, 60].map(w => <span key={w} className="shimmer h-[19px] rounded-[2px]" style={{ width: w }} />)}
+                        </div>
+                    )}
+                    {!loading && view === 'playtime' && playtime && (
+                        <div key="play-pills" className="flex flex-wrap gap-2 anim-fade">
                             <span className={pill}><span className="text-[#c6d4df]">{fmtMinutes(playTotals.ra + playTotals.steam)}</span> past year</span>
                             <span className={pill}><span className="text-[#e5b143]">{fmtMinutes(playTotals.ra)}</span> RetroAchievements</span>
                             <span className={pill}><span className="text-[#66c0f4]">{fmtMinutes(playTotals.steam)}</span> Steam</span>
@@ -791,7 +797,7 @@ const App = () => {
                         </div>
                     )}
                     {!loading && view === 'achievements' && (
-                        <div className="flex flex-wrap gap-2">
+                        <div key="ach-pills" className="flex flex-wrap gap-2 anim-fade">
                             <span className="text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
                                 <span className="text-[#c6d4df]">{(raAchs.length + steamAchs.length + xboxAchs.length).toLocaleString()}</span> total
                             </span>
@@ -883,28 +889,30 @@ const App = () => {
                                         : <><Activity size={15} className="text-[#66c0f4]" /> Heatmap</>}
                                 </span>
                                 {view === 'playtime' && firstSessionMs && (
-                                    <span className="text-[10px] text-[#546270] hidden sm:block">since {fmtDay(dayKey(new Date(firstSessionMs)))}</span>
+                                    <span className="text-[10px] text-[#546270] hidden sm:block anim-fade">since {fmtDay(dayKey(new Date(firstSessionMs)))}</span>
                                 )}
                                 <span className="text-[10px] text-[#546270] ml-auto" title="Days and times are shown in your timezone">{TZ}</span>
                                 <span className="text-[10px] text-[#546270] hidden sm:block">· click a day to filter</span>
                                 {selectedDay && (
                                     <button
                                         onClick={() => setSelectedDay(null)}
-                                        className="text-[9px] text-[#546270] hover:text-[#c6d4df] border border-[#2a475e] px-2 py-0.5 rounded-[2px] transition-colors sm:ml-2"
+                                        className="text-[9px] text-[#546270] hover:text-[#c6d4df] border border-[#2a475e] px-2 py-0.5 rounded-[2px] transition-colors sm:ml-2 anim-fade"
                                     >
                                         Clear ×
                                     </button>
                                 )}
                             </div>
-                            <Heatmap
-                                key={filter}
-                                heatmapData={heatmapData}
-                                filter={filter}
-                                selectedDay={selectedDay}
-                                onSelectDay={setSelectedDay}
-                                describe={describeDay}
-                            />
-                            <StreakPanel streakInfo={streakInfo} describe={describeDay} cellLabel={cellLabel} />
+                            {/* Heatmap and streaks fade together on a platform filter change */}
+                            <div key={filter} className="anim-fade">
+                                <Heatmap
+                                    heatmapData={heatmapData}
+                                    filter={filter}
+                                    selectedDay={selectedDay}
+                                    onSelectDay={setSelectedDay}
+                                    describe={describeDay}
+                                />
+                                <StreakPanel streakInfo={streakInfo} describe={describeDay} cellLabel={cellLabel} />
+                            </div>
                         </div>
 
                         {/* Filter + count */}
@@ -942,7 +950,7 @@ const App = () => {
                             !playtime ? (
                                 <PlaySessionsSkeleton />
                             ) : playGroups.length === 0 ? (
-                                <div className="text-[#8f98a0] text-[11px] py-4 italic text-center">No play sessions found.</div>
+                                <div key={`${filter}-${selectedDay}`} className="text-[#8f98a0] text-[11px] py-4 italic text-center anim-fade">No play sessions found.</div>
                             ) : (
                                 <div key={`${filter}-${selectedDay}`} className="flex flex-col gap-0">
                                     {playGroups.slice(0, selectedDay ? undefined : visibleDays).map(({ day, minutes, sessions: daySessions }) => {
@@ -969,7 +977,7 @@ const App = () => {
                                 </div>
                             )
                         ) : groups.length === 0 ? (
-                            <div className="text-[#8f98a0] text-[11px] py-4 italic text-center">No achievements found.</div>
+                            <div key={`${filter}-${selectedDay}`} className="text-[#8f98a0] text-[11px] py-4 italic text-center anim-fade">No achievements found.</div>
                         ) : (
                             <div key={`${filter}-${selectedDay}`} className="flex flex-col gap-0">
                                 {groups.map(({ day, achCount, sessions }) => {
@@ -1018,7 +1026,7 @@ const App = () => {
             {showScrollTop && (
                 <button
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className="scroll-top-btn fixed bottom-14 right-4 z-50 w-10 h-10 bg-[#131a22] border border-[#2a475e] hover:border-[#66c0f4] hover:text-[#66c0f4] text-[#8f98a0] rounded-full flex items-center justify-center shadow-lg transition-all duration-200 active:scale-90"
+                    className="scroll-top-btn anim-fade fixed bottom-14 right-4 z-50 w-10 h-10 bg-[#131a22] border border-[#2a475e] hover:border-[#66c0f4] hover:text-[#66c0f4] text-[#8f98a0] rounded-full flex items-center justify-center shadow-lg transition-all duration-200 active:scale-90"
                     title="Scroll to top"
                 >
                     <ChevronDown size={16} className="rotate-180" />

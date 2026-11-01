@@ -2,16 +2,55 @@
 
 ## v26.10.13
 
-Chevron icons for the hub's links, and an Analytics strip on the hub.
+Chevron icons and an Analytics strip on the hub; every component now animates.
+
+### RetroAchievements
+
+- Animations added where things popped in: the Guides/Videos dropdown, Activity content, expanded days, Clear filter, the "all 12 months loaded" line, Watchlist groups and Clear ×, the Progress empty state, the filter bar and its sort row on a view change, tab underlines, tooltips (modal and hover cards), the error screen and the scroll-to-top button
+- Series tab shows card skeletons until the series list and games have loaded, instead of watchlist-only numbers that jumped, and "No series flagged" waits for the series list
+- Watchlist tab shows skeleton rows while the want-to-play list loads, instead of flashing "No games match"
+- An empty Activity day now says "No achievements on this day." instead of the 180-days message
+
+### Steam
+
+- Animations added to Activity content, its empty state, expanded days and Clear filter, the Recent list, the achievement modal's filter bar, the Beaten badge (the card stripe colour now transitions too), the last-unlock line, Completions "Show all", tab underlines, the filter bar, the error screen and the scroll-to-top button
+
+### Xbox
+
+- Same animation additions as Steam
 
 ### Hub
 
 - Analytics strip: the busiest part of the day shows as its hours ("Mostly 17:00–22:00") instead of "in the evening"
 - The desktop footer no longer links Analytics: the strip covers it (Changelog and Refresh app stay)
+- The Completions and Analytics strips show at once with skeletons and fade in, instead of appearing late and pushing Recent Activity down (they hide again if empty or on error). Header name, motto, last-change date, footer URL and the mobile "Show more" button fade in too
 
 - The "View all →" text on the Completions strip and the Recent Activity header is now a chevron-right icon (inline Lucide SVG, the hub doesn't load Lucide). The Activity link keeps "View all activity" as its accessible label and tooltip, with a slightly larger click area
 - The platform cards' "View full dashboard" footer arrow uses the same chevron
 - New **Analytics strip** under Completions (desktop): the last 30 days at a glance (hours played, unlocks, the part of the day you play most, top game), linking to Analytics. It replaces the small "Analytics" text link in the header and matches the Analytics page's default view, farms hidden, in your timezone. The activity feed and the strip share the achievement file requests
+### Completions
+
+- The "N total" badge fades in
+
+### Activity
+
+- Playtime pills show skeletons until the playtime files load, instead of "0m" that jumped to the real values; both pill rows fade in and swap with a fade
+- Heatmap and streaks fade together on a platform filter change; empty days, Clear ×, the "since" label and the scroll-to-top button fade in
+
+### Analytics
+
+- The scroll-to-top button fades in
+
+### Structure
+
+- `CLAUDE.md` rule: every component that appears, loads, expands or swaps content animates, and late-loading sections show a skeleton instead of jumping in
+- Mobile nav: the profile popup's backdrop fades with the popup (it snapped before), and the popup respects reduced motion
+- Changelog page: the releases badge and the load error fade in
+
+### Admin
+
+- Motion classes copied into the admin page (its local server only serves that page): module switches, loaded views, detail panes on each selection, the series modal, Saved/Saving, added tags/groups/links, win-condition controls, server status and pipeline buttons now animate
+
 
 ## v26.10.10
 

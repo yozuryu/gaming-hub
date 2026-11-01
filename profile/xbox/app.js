@@ -48,7 +48,7 @@ const XboxGameCard = ({ game, achievementData, onViewDetails, beatenInfo }) => {
     const previewAchs = hasAch ? withPlaceholders(achievementData.preview ?? [], achievementData, 6) : [];
 
     return (
-        <div className={`flex flex-col bg-[#202d39] rounded-[3px] transition-transform duration-200 hover:-translate-y-0.5 border-l-[3px] border border-[#323f4c] shadow-md ${stripeColor}`}>
+        <div className={`flex flex-col bg-[#202d39] rounded-[3px] transition-[transform,border-color] duration-200 hover:-translate-y-0.5 border-l-[3px] border border-[#323f4c] shadow-md ${stripeColor}`}>
 
             {/* Main row — background scoped here so it doesn't stretch when expanded */}
             <div className="relative overflow-hidden rounded-t-[3px]">
@@ -96,7 +96,7 @@ const XboxGameCard = ({ game, achievementData, onViewDetails, beatenInfo }) => {
                             </span>
                         )}
                         {!isPerfect && beatenInfo && (
-                            <span className="text-[8px] font-bold uppercase tracking-[0.07em] px-1.5 py-[1px] rounded-[2px] shrink-0 flex items-center gap-1" style={{ background: '#2a3440', color: '#c6d4df', border: '1px solid rgba(184,196,206,0.3)' }}>
+                            <span className="text-[8px] font-bold uppercase tracking-[0.07em] px-1.5 py-[1px] rounded-[2px] shrink-0 flex items-center gap-1 anim-fade" style={{ background: '#2a3440', color: '#c6d4df', border: '1px solid rgba(184,196,206,0.3)' }}>
                                 <Medal size={8} /> Beaten
                             </span>
                         )}
@@ -365,7 +365,7 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo, loading 
 
                 {loading ? <ModalListSkeleton /> : (<>
                 {/* Filter bar */}
-                <div className="flex items-center gap-2 px-4 py-2 border-b border-[#101214] shrink-0">
+                <div className="flex items-center gap-2 px-4 py-2 border-b border-[#101214] shrink-0 anim-fade">
                     {[
                         { value: 'all',      label: 'All',      icon: null },
                         { value: 'unlocked', label: 'Unlocked', icon: <Unlock size={9} /> },
@@ -568,14 +568,14 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
 
     if (achievements.length === 0) {
         return (
-            <div className="text-center py-12 text-[#546270] text-[12px]">
+            <div className="text-center py-12 text-[#546270] text-[12px] anim-fade">
                 No achievements unlocked in the past year
             </div>
         );
     }
 
     return (
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 anim-fade">
 
             {/* ── Heatmap ── */}
             <div>
@@ -640,7 +640,7 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
                             <span className="text-[8px] text-[#546270]">More</span>
                             <span className="text-[8px] text-[#e5b143] ml-2">● peak</span>
                             {selectedDay && (
-                                <button onClick={() => setSelectedDay(null)} className="ml-auto text-[8px] text-[#66c0f4] hover:text-[#c6d4df] uppercase tracking-wider">
+                                <button onClick={() => setSelectedDay(null)} className="ml-auto text-[8px] text-[#66c0f4] hover:text-[#c6d4df] uppercase tracking-wider anim-fade">
                                     Clear filter ×
                                 </button>
                             )}
@@ -664,7 +664,7 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
                 </div>
 
                 {timelineGroups.length === 0 ? (
-                    <div className="text-[#8f98a0] text-[11px] py-4 italic text-center">
+                    <div key={selectedDay ?? 'all'} className="text-[#8f98a0] text-[11px] py-4 italic text-center anim-fade">
                         {selectedDay ? 'No achievements on this day.' : 'No achievements unlocked in the last year.'}
                     </div>
                 ) : (
@@ -697,7 +697,7 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
                                     ));
 
                                     return (
-                                        <div key={si} className="ml-4 border-l border-[#2a475e] pl-3 mb-3">
+                                        <div key={si} className="ml-4 border-l border-[#2a475e] pl-3 mb-3 anim-fade">
                                             {/* Session header */}
                                             <div className="flex items-center gap-2 mb-1.5">
                                                 <div className="w-4 h-4 rounded-[1px] overflow-hidden border border-[#101214] bg-[#1b2838] shrink-0">
@@ -796,7 +796,7 @@ const chipCls = (active, activeCls = 'bg-[#66c0f4] text-[#101214] border-[#66c0f
 const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, showCompleted, onShowCompleted, count, search, onSearch }) => {
     const hint = PROGRESS_VIEWS.find(v => v.value === view)?.hint;
     return (
-        <div className="flex flex-col gap-2 mb-4">
+        <div className="flex flex-col gap-2 mb-4 anim-fade">
             {/* View — full-width segmented control on mobile, inline chips on desktop */}
             <div className="grid grid-cols-4 gap-1 md:flex md:items-center md:gap-1.5">
                 <span className="hidden md:inline text-[9px] text-[#546270] uppercase tracking-wider mr-0.5">View</span>
@@ -810,6 +810,7 @@ const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, 
 
             {/* Sort + completed toggle (All view) or the view's rule, plus the game count */}
             <div className="flex items-center gap-2 min-h-[22px]">
+                <div key={view === 'all' ? 'all' : view} className="flex items-center gap-2 min-w-0 anim-fade">
                 {view === 'all' ? (
                     <>
                         <span className="text-[9px] text-[#546270] uppercase tracking-wider shrink-0">Sort</span>
@@ -835,6 +836,7 @@ const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, 
                 ) : (
                     <span className="text-[9px] text-[#546270] leading-snug">{hint}</span>
                 )}
+                </div>
                 <span className="ml-auto text-[9px] text-[#546270] shrink-0">{count} games</span>
             </div>
 
@@ -1234,7 +1236,7 @@ const App = () => {
     if (loading) return <ProfileLoadingSkeleton />;
 
     if (error) return (
-        <div className="flex items-center justify-center min-h-screen bg-[#171a21] text-[#546270]">
+        <div className="flex items-center justify-center min-h-screen bg-[#171a21] text-[#546270] anim-fade">
             <div className="text-center">
                 <div className="text-[14px] mb-2">Could not load Xbox data</div>
                 <div className="text-[11px]">{error}</div>
@@ -1374,7 +1376,7 @@ const App = () => {
                                             )}
                                         </div>
                                         {mostRecentGameAch && (
-                                            <div className="flex items-center leading-none gap-1 text-[10px] mt-1.5 truncate">
+                                            <div className="flex items-center leading-none gap-1 text-[10px] mt-1.5 truncate anim-fade">
                                                 <Trophy size={9} className="text-[#e5b143] shrink-0" />
                                                 <span className="text-[#c6d4df] truncate">{mostRecentGameAch.displayName}</span>
                                                 <span className="text-[#546270] shrink-0">· {formatTimeAgo(mostRecentGameAch.unlockedAt)}</span>
@@ -1573,7 +1575,7 @@ const App = () => {
                             {perfectGames.length + beatenOnly.length > iconLimit && (
                               <button
                                 onClick={() => setCompletionsExpanded(v => !v)}
-                                className="w-full flex items-center justify-center gap-1 py-1.5 border-t border-[#2a475e] text-[9px] font-semibold uppercase tracking-[0.07em] text-[#546270] hover:text-[#c6d4df] hover:bg-[#202d39] transition-colors rounded-b-[2px] outline-none"
+                                className="w-full flex items-center justify-center gap-1 py-1.5 border-t border-[#2a475e] text-[9px] font-semibold uppercase tracking-[0.07em] text-[#546270] hover:text-[#c6d4df] hover:bg-[#202d39] transition-colors rounded-b-[2px] outline-none anim-fade"
                               >
                                 {completionsExpanded ? 'Show less' : `Show all ${perfectGames.length + beatenOnly.length}`}
                                 <ChevronDown size={11} className={`transition-transform duration-200 ${completionsExpanded ? 'rotate-180' : ''}`} />
@@ -1591,19 +1593,19 @@ const App = () => {
                         <Clock size={18} className="block md:hidden shrink-0" />
                         <span className="block md:hidden text-[9px] font-semibold uppercase tracking-[0.06em] leading-none">Recent</span>
                         <span className="hidden md:inline text-[11px] md:text-[14px] uppercase tracking-wide font-medium whitespace-nowrap">Recent Games</span>
-                        {activeTab === 'recent' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] bg-[#66c0f4]" />}
+                        {activeTab === 'recent' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] anim-fade bg-[#66c0f4]" />}
                     </button>
                     <button onClick={() => setTab('progress')} className={`flex-1 md:flex-none flex flex-col md:flex-row items-center justify-center gap-1 md:gap-0 py-2.5 md:py-0 md:pb-2 px-1 md:px-0 transition-colors relative ${activeTab === 'progress' ? 'text-white' : 'text-[#546270] hover:text-[#c6d4df]'}`}>
                         <BarChart2 size={18} className="block md:hidden shrink-0" />
                         <span className="block md:hidden text-[9px] font-semibold uppercase tracking-[0.06em] leading-none">Progress</span>
                         <span className="hidden md:inline text-[11px] md:text-[14px] uppercase tracking-wide font-medium whitespace-nowrap">Completion Progress</span>
-                        {activeTab === 'progress' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] bg-[#66c0f4]" />}
+                        {activeTab === 'progress' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] anim-fade bg-[#66c0f4]" />}
                     </button>
                     <button onClick={() => setTab('activity')} className={`flex-1 md:flex-none flex flex-col md:flex-row items-center justify-center gap-1 md:gap-0 py-2.5 md:py-0 md:pb-2 px-1 md:px-0 transition-colors relative ${activeTab === 'activity' ? 'text-white' : 'text-[#546270] hover:text-[#c6d4df]'}`}>
                         <Activity size={18} className="block md:hidden shrink-0" />
                         <span className="block md:hidden text-[9px] font-semibold uppercase tracking-[0.06em] leading-none">Activity</span>
                         <span className="hidden md:inline text-[11px] md:text-[14px] uppercase tracking-wide font-medium whitespace-nowrap">Activity</span>
-                        {activeTab === 'activity' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] bg-[#66c0f4]" />}
+                        {activeTab === 'activity' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] anim-fade bg-[#66c0f4]" />}
                     </button>
                 </div>
                 </div>
@@ -1652,7 +1654,7 @@ const App = () => {
 
                     {activeTab === 'recent' && (
                         gamesData
-                            ? <div className="flex flex-col gap-3">
+                            ? <div className="flex flex-col gap-3 anim-fade">
                                 {recentlyPlayed.map(game => (
                                     <XboxGameCard key={game.titleId} game={game} achievementData={achProgress[game.titleId]} onViewDetails={handleViewDetails} beatenInfo={beatenMap.get(game.titleId) ?? null} />
                                 ))}
@@ -1699,7 +1701,7 @@ const App = () => {
             {showScrollTop && (
                 <button
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className="scroll-top-btn fixed right-4 z-50 w-10 h-10 bg-[#131a22] border border-[#2a475e] hover:border-[#66c0f4] hover:text-[#66c0f4] text-[#8f98a0] rounded-full flex items-center justify-center shadow-lg transition-all duration-200 active:scale-90"
+                    className="scroll-top-btn anim-fade fixed right-4 z-50 w-10 h-10 bg-[#131a22] border border-[#2a475e] hover:border-[#66c0f4] hover:text-[#66c0f4] text-[#8f98a0] rounded-full flex items-center justify-center shadow-lg transition-all duration-200 active:scale-90"
                     style={{ bottom: (showFloatingTabs || pillLeaving) ? 'calc(120px + env(safe-area-inset-bottom, 0px))' : '3.5rem' }}
                     title="Scroll to top"
                 >

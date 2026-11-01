@@ -29,6 +29,15 @@
     .btn-ghost { color:#546270; background:transparent; border:none; cursor:pointer; font-size:11px; transition:color .15s; }
     .btn-ghost:hover { color:#c6d4df; }
     .btn-danger:hover { color:#ff6b6b !important; }
+    /* Motion: copy of the .anim-* classes in assets/motion.css (admin-server.js serves only this page) */
+    .anim-in       { animation: motion-in 240ms cubic-bezier(0.2, 0.7, 0.3, 1) both; }
+    .anim-fade     { animation: motion-fade 180ms ease-out both; }
+    .anim-pop      { animation: motion-pop 180ms cubic-bezier(0.2, 0.7, 0.3, 1) both; }
+    .anim-backdrop { animation: motion-fade 160ms ease-out both; }
+    @keyframes motion-in   { from { opacity: 0; transform: translateY(6px); } }
+    @keyframes motion-fade { from { opacity: 0; } }
+    @keyframes motion-pop  { from { opacity: 0; transform: translateY(4px) scale(0.97); } }
+    @media (prefers-reduced-motion: reduce) { .anim-in, .anim-fade, .anim-pop, .anim-backdrop { animation: none; } }
   </style>
 </head>
 <body>
@@ -63,8 +72,8 @@ const SectionHeader = ({ color = '#66c0f4', children }) => (
 const SaveBar = ({ dirty, saving, saved, onSave }) => (
     <div className="flex items-center gap-3 px-4 py-2.5 border-b border-[#2a475e] bg-[#171a21]">
         <div className="flex-1" />
-        {saved  && <span className="text-[10px] text-[#57cbde]">Saved</span>}
-        {saving && <span className="text-[10px] text-[#546270]">Saving…</span>}
+        {saved  && <span className="text-[10px] text-[#57cbde] anim-fade">Saved</span>}
+        {saving && <span className="text-[10px] text-[#546270] anim-fade">Saving…</span>}
         <button className="btn-primary" onClick={onSave} disabled={!dirty || saving}>Save</button>
     </div>
 );
@@ -102,7 +111,7 @@ const TagList = ({ tags, onChange }) => {
         <div>
             <div className="flex flex-wrap gap-1 mb-1.5">
                 {tags.map((t, i) => (
-                    <span key={i} className="flex items-center gap-1 text-[10px] bg-[#202d39] border border-[#2a475e] rounded-[2px] px-1.5 py-0.5 text-[#c6d4df]">
+                    <span key={t} className="flex items-center gap-1 text-[10px] bg-[#202d39] border border-[#2a475e] rounded-[2px] px-1.5 py-0.5 text-[#c6d4df] anim-fade">
                         {t}
                         <button className="btn-ghost btn-danger text-[12px] leading-none" onClick={() => onChange(tags.filter((_, j) => j !== i))}>×</button>
                     </span>
@@ -157,7 +166,7 @@ function SiteConfigModule() {
     return (
         <div className="flex flex-col h-full">
             <SaveBar dirty={dirty} saving={saving} saved={saved} onSave={save} />
-            <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-6">
+            <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-6 anim-in">
 
                 {/* Identity */}
                 <div>
@@ -180,7 +189,7 @@ function SiteConfigModule() {
                     <SectionHeader color="#e5b143">Tags</SectionHeader>
                     <div className="flex flex-col gap-4">
                         {Object.entries(data.tags).map(([group, tags]) => (
-                            <div key={group}>
+                            <div key={group} className="anim-fade">
                                 <div className="flex items-center gap-2 mb-1.5">
                                     <span className="text-[11px] text-[#8f98a0] capitalize font-medium">{group}</span>
                                     <button className="btn-ghost btn-danger text-[11px]" onClick={() => {
@@ -244,7 +253,7 @@ const CategoryEditor = ({ cat, onChange, onDelete }) => {
     const removeLink = (i) => onChange({ ...cat, links: cat.links.filter((_, idx) => idx !== i) });
 
     return (
-        <div className="border border-[#2a475e] rounded-[3px] bg-[#1b2838]">
+        <div className="border border-[#2a475e] rounded-[3px] bg-[#1b2838] anim-fade">
             <div className="flex items-center gap-2 px-3 py-2 border-b border-[#2a475e]">
                 <span className="text-[11px]">{CATEGORY_ICON[cat.category] ?? '🔗'}</span>
                 <span className="text-[12px] font-medium text-white flex-1">{cat.category}</span>
@@ -252,7 +261,7 @@ const CategoryEditor = ({ cat, onChange, onDelete }) => {
             </div>
             <div className="flex flex-col gap-1 p-2">
                 {cat.links.map((link, i) => (
-                    <div key={i} className="flex items-center gap-1.5">
+                    <div key={i} className="flex items-center gap-1.5 anim-fade">
                         <input value={link.label} onChange={e => updateLink(i, 'label', e.target.value)}
                             placeholder="Label" className="input w-[120px] shrink-0" />
                         <input value={link.url} onChange={e => updateLink(i, 'url', e.target.value)}
@@ -338,8 +347,8 @@ function RAGuidesModule() {
                 </div>
             </div>
 
-            {/* Detail */}
-            <div className="flex-1 flex flex-col overflow-hidden">
+            {/* Detail (fades in on each selection) */}
+            <div key={selected?.id ?? 'none'} className="flex-1 flex flex-col overflow-hidden anim-fade">
                 {!selected ? (
                     <div className="flex items-center justify-center h-full text-[#546270] text-[12px]">Select a game</div>
                 ) : (
@@ -357,7 +366,7 @@ function RAGuidesModule() {
                                 </div>
                             </div>
                             <div className="flex items-center gap-2 shrink-0">
-                                {saved  && <span className="text-[10px] text-[#57cbde]">Saved</span>}
+                                {saved  && <span className="text-[10px] text-[#57cbde] anim-fade">Saved</span>}
                                 <button className="btn-primary" onClick={save} disabled={!dirty || saving}>
                                     {saving ? 'Saving…' : 'Save'}
                                 </button>
@@ -409,8 +418,8 @@ function SeriesModal({ mode, seriesName, initialValue, onConfirm, onCancel }) {
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center" onKeyDown={onKey}>
-            <div className="absolute inset-0 bg-black/60" onClick={onCancel} />
-            <div className="relative z-10 bg-[#1b2838] border border-[#2a475e] rounded-[3px] shadow-xl w-[320px] flex flex-col">
+            <div className="absolute inset-0 bg-black/60 anim-backdrop" onClick={onCancel} />
+            <div className="relative z-10 bg-[#1b2838] border border-[#2a475e] rounded-[3px] shadow-xl w-[320px] flex flex-col anim-pop">
                 <div className="flex items-center justify-between px-4 py-3 border-b border-[#2a475e]">
                     <span className="text-[12px] text-white font-medium">
                         {mode === 'add' ? 'New Series' : mode === 'rename' ? 'Rename Series' : 'Delete Series'}
@@ -591,7 +600,7 @@ function RASeriesModule() {
     const modalSeries = modal?.id ? series.find(s => s.id === modal.id) : null;
 
     return (
-        <div className="flex h-full overflow-hidden relative">
+        <div className="flex h-full overflow-hidden relative anim-in">
             {modal && (
                 <SeriesModal
                     mode={modal.mode}
@@ -644,8 +653,8 @@ function RASeriesModule() {
                 </div>
             </div>
 
-            {/* ── Right: editor, unassigned, or suggestions ── */}
-            <div className="flex-1 flex flex-col overflow-hidden">
+            {/* ── Right: editor, unassigned, or suggestions (fades in when it switches) ── */}
+            <div key={showUnassigned ? 'unassigned' : showSuggestions ? 'suggestions' : selectedId ?? 'none'} className="flex-1 flex flex-col overflow-hidden anim-fade">
                 {showUnassigned ? (
                     <>
                         <div className="flex items-center gap-3 px-4 py-3 border-b border-[#2a475e]">
@@ -727,7 +736,7 @@ function RASeriesModule() {
                             <button className="btn-ghost text-[11px]" onClick={() => setModal({ mode: 'rename', id: selected.id })}>Rename</button>
                             <button className="btn-ghost btn-danger text-[11px]" onClick={() => setModal({ mode: 'delete', id: selected.id })}>Delete</button>
                             <span className="text-[#2a475e]">|</span>
-                            {saved  && <span className="text-[10px] text-[#57cbde]">Saved</span>}
+                            {saved  && <span className="text-[10px] text-[#57cbde] anim-fade">Saved</span>}
                             <button className="btn-primary" onClick={save} disabled={!dirty || saving}>
                                 {saving ? 'Saving…' : 'Save'}
                             </button>
@@ -946,7 +955,7 @@ function WinConditionsModule({ cfg }) {
     if (!gameIndex || !winConditions) return <div className="p-6 text-[#546270] text-[11px]">Loading…</div>;
 
     return (
-        <div className="flex h-full overflow-hidden">
+        <div className="flex h-full overflow-hidden anim-in">
             {/* Sidebar */}
             <div className="w-[240px] shrink-0 flex flex-col border-r border-[#2a475e]">
                 <div className="px-3 pt-3 pb-2 border-b border-[#2a475e]">
@@ -973,8 +982,8 @@ function WinConditionsModule({ cfg }) {
                 </div>
             </div>
 
-            {/* Detail */}
-            <div className="flex-1 flex flex-col overflow-hidden">
+            {/* Detail (fades in on each selection) */}
+            <div key={selected?.[cfg.idKey] ?? 'none'} className="flex-1 flex flex-col overflow-hidden anim-fade">
                 {!selected ? (
                     <div className="flex items-center justify-center h-full text-[#546270] text-[12px]">Select a game to set a win condition</div>
                 ) : (
@@ -987,11 +996,11 @@ function WinConditionsModule({ cfg }) {
                                 <div className="flex items-center gap-3 mt-0.5">
                                     <span className="text-[10px] text-[#546270]">{cfg.idLabel} {selected[cfg.idKey]}</span>
                                     <span className="text-[10px] text-[#546270]">{selected.total} achievements</span>
-                                    {currentWinConds.length > 0 && <span className="text-[10px] text-[#e5b143] font-medium">{currentWinConds.length} win condition{currentWinConds.length !== 1 ? 's' : ''} set</span>}
+                                    {currentWinConds.length > 0 && <span className="text-[10px] text-[#e5b143] font-medium anim-fade">{currentWinConds.length} win condition{currentWinConds.length !== 1 ? 's' : ''} set</span>}
                                 </div>
                             </div>
                             <div className="flex items-center gap-2 shrink-0">
-                                {saved && <span className="text-[10px] text-[#57cbde]">Saved</span>}
+                                {saved && <span className="text-[10px] text-[#57cbde] anim-fade">Saved</span>}
                                 <button className="btn-primary" onClick={save} disabled={!dirty || saving}>
                                     {saving ? 'Saving…' : 'Save'}
                                 </button>
@@ -1011,7 +1020,7 @@ function WinConditionsModule({ cfg }) {
                                     <input value={achSearch} onChange={e => setAchSearch(e.target.value)}
                                         placeholder={`Search ${gameData.achievements.length} achievements…`} className="input flex-1" />
                                     {currentWinConds.length > 0 && (<>
-                                        <div className="flex items-center shrink-0 border border-[#2a475e] rounded-[2px] overflow-hidden text-[10px] font-bold uppercase tracking-wider">
+                                        <div className="flex items-center shrink-0 border border-[#2a475e] rounded-[2px] overflow-hidden text-[10px] font-bold uppercase tracking-wider anim-fade">
                                             {['or', 'and'].map(m => (
                                                 <button key={m} onClick={() => toggleMode(selected[cfg.idKey])}
                                                     className={`px-2 py-1 transition-colors ${currentMode === m ? 'bg-[#66c0f4] text-[#101214]' : 'text-[#546270] hover:text-[#8f98a0]'}`}>
@@ -1020,12 +1029,12 @@ function WinConditionsModule({ cfg }) {
                                             ))}
                                         </div>
                                         <button onClick={() => clearWinConds(selected[cfg.idKey])}
-                                            className="shrink-0 text-[10px] text-[#ff6b6b] border border-[#ff6b6b]/30 hover:border-[#ff6b6b] px-2 py-1 rounded-[2px] transition-colors whitespace-nowrap">
+                                            className="shrink-0 text-[10px] text-[#ff6b6b] border border-[#ff6b6b]/30 hover:border-[#ff6b6b] px-2 py-1 rounded-[2px] transition-colors whitespace-nowrap anim-fade">
                                             Clear all
                                         </button>
                                     </>)}
                                 </div>
-                                <div className="flex-1 overflow-y-auto">
+                                <div className="flex-1 overflow-y-auto anim-fade">
                                     {filteredAch.length === 0 && (
                                         <div className="text-[11px] text-[#546270] text-center py-6">No matches</div>
                                     )}
@@ -1058,7 +1067,7 @@ function WinConditionsModule({ cfg }) {
                                                         <span className="text-[10px] text-[#546270]">{ach.globalPct.toFixed(1)}%</span>
                                                     )}
                                                     {isWC && (
-                                                        <span className="text-[9px] font-bold text-[#e5b143] border border-[#e5b143]/40 px-1.5 py-[1px] rounded-[2px] uppercase tracking-wider whitespace-nowrap">Win Cond</span>
+                                                        <span className="text-[9px] font-bold text-[#e5b143] border border-[#e5b143]/40 px-1.5 py-[1px] rounded-[2px] uppercase tracking-wider whitespace-nowrap anim-fade">Win Cond</span>
                                                     )}
                                                 </div>
                                             </button>
@@ -1216,12 +1225,12 @@ function PipelinesModule() {
                          : <span>Select a pipeline to run</span>}
                     </span>
                     {running && (
-                        <button onClick={stop} className="text-[10px] text-[#ff6b6b] border border-[#ff6b6b]/40 hover:bg-[#ff6b6b]/10 px-2 py-1 rounded-[2px] transition-colors">
+                        <button onClick={stop} className="text-[10px] text-[#ff6b6b] border border-[#ff6b6b]/40 hover:bg-[#ff6b6b]/10 px-2 py-1 rounded-[2px] transition-colors anim-fade">
                             Stop
                         </button>
                     )}
                     {log.length > 0 && !running && (
-                        <button onClick={() => setLog([])} className="btn-ghost text-[10px]">Clear</button>
+                        <button onClick={() => setLog([])} className="btn-ghost text-[10px] anim-fade">Clear</button>
                     )}
                 </div>
                 <div ref={logRef} className="flex-1 overflow-y-auto p-3 font-mono text-[11px] leading-relaxed">
@@ -1367,8 +1376,8 @@ function DataDiffModule() {
                 </div>
             </div>
 
-            {/* Diff view */}
-            <div className="flex-1 flex flex-col overflow-hidden">
+            {/* Diff view (fades in on each selection) */}
+            <div key={selected?.file ?? 'none'} className="flex-1 flex flex-col overflow-hidden anim-fade">
                 {selected ? (
                     <>
                         <div className="flex items-center gap-3 px-4 py-2 border-b border-[#2a475e] shrink-0">
@@ -1441,7 +1450,7 @@ function CredentialsModule() {
     return (
         <div className="flex flex-col h-full">
             <SaveBar dirty={dirty} saving={saving} saved={saved} onSave={save} />
-            <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-6">
+            <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-6 anim-in">
                 {CREDENTIAL_FIELDS.map(({ group, fields }) => (
                     <div key={group}>
                         <SectionHeader color={group === 'Steam' ? '#66c0f4' : '#e5b143'}>{group}</SectionHeader>
@@ -1537,7 +1546,7 @@ export default function App() {
 
     if (error) return (
         <div className="flex items-center justify-center h-screen text-center px-6">
-            <div>
+            <div className="anim-in">
                 <div className="text-[#ff6b6b] text-[14px] font-medium mb-2">Connection error</div>
                 <div className="text-[#8f98a0] text-[12px] mb-3">{error}</div>
                 <code className="text-[#66c0f4] text-[11px]">npm run admin</code>
@@ -1570,13 +1579,13 @@ export default function App() {
                 {/* Server controls */}
                 <div className="px-3 py-2 border-t border-[#2a475e] flex flex-col gap-1.5">
                     {serverStatus === 'offline' && (
-                        <div className="text-[10px] text-[#ff6b6b] text-center py-1">Server stopped</div>
+                        <div className="text-[10px] text-[#ff6b6b] text-center py-1 anim-fade">Server stopped</div>
                     )}
                     {serverStatus === 'restarting' && (
-                        <div className="text-[10px] text-[#e5b143] text-center py-1">Restarting…</div>
+                        <div className="text-[10px] text-[#e5b143] text-center py-1 anim-fade">Restarting…</div>
                     )}
                     {(serverStatus === 'online' || serverStatus === 'stopping') && (
-                        <div className="flex gap-1.5">
+                        <div className="flex gap-1.5 anim-fade">
                             <button onClick={restartServer} disabled={serverStatus !== 'online'}
                                 className="flex-1 py-1 text-[10px] rounded-[2px] border border-[#2a475e] text-[#8f98a0] hover:text-white hover:border-[#66c0f4] transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
                                 Restart
@@ -1593,11 +1602,11 @@ export default function App() {
             {/* Main content */}
             <div className="flex-1 flex flex-col overflow-hidden">
                 {/* Page title */}
-                <div className="px-5 py-3 border-b border-[#2a475e] shrink-0">
+                <div key={activeId} className="px-5 py-3 border-b border-[#2a475e] shrink-0 anim-fade">
                     <div className="text-[13px] text-white font-medium">{active?.icon} {active?.label}</div>
                     <div className="text-[10px] text-[#546270]">{active?.group}</div>
                 </div>
-                <div className="flex-1 overflow-hidden">
+                <div key={activeId} className="flex-1 overflow-hidden anim-in">
                     {ActiveComponent && <ActiveComponent />}
                 </div>
             </div>

@@ -62,7 +62,7 @@ const chipCls = (active, activeCls = 'bg-[#66c0f4] text-[#101214] border-[#66c0f
 const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, showCompleted, onShowCompleted, count, search, onSearch }) => {
   const hint = PROGRESS_VIEWS.find(v => v.value === view)?.hint;
   return (
-    <div className="flex flex-col gap-2 mb-4">
+    <div className="flex flex-col gap-2 mb-4 anim-fade">
       {/* View — full-width segmented control on mobile, inline chips on desktop */}
       <div className="grid grid-cols-4 gap-1 md:flex md:items-center md:gap-1.5">
         <span className="hidden md:inline text-[9px] text-[#546270] uppercase tracking-wider mr-0.5">View</span>
@@ -76,6 +76,7 @@ const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, 
 
       {/* Sort + completed toggle (All view) or the view's rule, plus the game count */}
       <div className="flex items-center gap-2 min-h-[22px]">
+        <div key={view === 'all' ? 'all' : view} className="flex items-center gap-2 min-w-0 anim-fade">
         {view === 'all' ? (
           <>
             <span className="text-[9px] text-[#546270] uppercase tracking-wider shrink-0">Sort</span>
@@ -101,6 +102,7 @@ const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, 
         ) : (
           <span className="text-[9px] text-[#546270] leading-snug">{hint}</span>
         )}
+        </div>
         <span className="ml-auto text-[9px] text-[#546270] shrink-0">{count} games</span>
       </div>
 
@@ -180,7 +182,7 @@ const GuideStrip = ({ game, guides, isLast }) => {
               </button>
             )}
             {isOpen && (
-              <div className="absolute top-full left-0 mt-1 z-50 min-w-[140px] bg-[#101214] border border-[#2a475e] rounded-[3px] shadow-lg py-0.5">
+              <div className="absolute top-full left-0 mt-1 z-50 min-w-[140px] bg-[#101214] border border-[#2a475e] rounded-[3px] shadow-lg py-0.5 anim-pop">
                 {cat.links.map((link, i) => (
                   <a
                     key={i}
@@ -658,7 +660,7 @@ const RAchievementModal = ({ game, onClose }) => {
       {/* Fixed-position tooltip — escapes scroll container, always above hovered element */}
       {tooltip && (
         <div
-          className="pointer-events-none fixed z-[9999] bg-[#131a22] border border-[#2a475e] rounded-[2px] px-2 py-1.5 shadow-lg"
+          className="pointer-events-none fixed z-[9999] bg-[#131a22] border border-[#2a475e] rounded-[2px] px-2 py-1.5 shadow-lg anim-fade"
           style={{ left: tooltip.rect.left + tooltip.rect.width / 2, top: tooltip.rect.top - 7, transform: 'translate(-50%, -100%)' }}
         >
           {tooltip.content}
@@ -803,7 +805,7 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
   const fmtDay  = (str) => new Date(str + 'T00:00:00').toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 anim-fade">
 
       {/* ── Heatmap ── */}
       <div>
@@ -859,7 +861,7 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
               <span className="text-[8px] text-[#546270]">More</span>
               <span className="text-[8px] text-[#e5b143] ml-2">● peak</span>
               {selectedDay && (
-                <button onClick={() => setSelectedDay(null)} className="ml-auto text-[8px] text-[#66c0f4] hover:text-[#c6d4df] uppercase tracking-wider">
+                <button onClick={() => setSelectedDay(null)} className="ml-auto text-[8px] text-[#66c0f4] hover:text-[#c6d4df] uppercase tracking-wider anim-fade">
                   Clear filter ×
                 </button>
               )}
@@ -895,7 +897,9 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
             ))}
           </div>
         ) : timelineGroups.length === 0 ? (
-          <div className="text-[#8f98a0] text-[11px] py-4 italic text-center">No achievements unlocked in the last 180 days.</div>
+          <div key={selectedDay ?? 'all'} className="text-[#8f98a0] text-[11px] py-4 italic text-center anim-fade">
+            {selectedDay ? 'No achievements on this day.' : 'No achievements unlocked in the last 180 days.'}
+          </div>
         ) : (
           <div className="flex flex-col gap-0">
             {timelineGroups.map(({ day, dayPts, achCount, sessions }) => {
@@ -913,7 +917,7 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
 
                 {/* Sessions — hidden when collapsed */}
                 {!isCollapsed && sessions.map((session, si) => (
-                  <div key={si} className="ml-4 border-l border-[#2a475e] pl-3 mb-3">
+                  <div key={si} className="ml-4 border-l border-[#2a475e] pl-3 mb-3 anim-fade">
                     {/* Session label */}
                     <div className="flex items-center gap-2 mb-1.5">
                       <a href={`${SITE_URL}/game/${session.gameId}`} target="_blank" rel="noreferrer" className="w-4 h-4 rounded-[1px] overflow-hidden border border-[#101214] bg-black block hover:scale-110 transition-transform shrink-0">
@@ -1019,7 +1023,7 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
               )}
             </div>
           ) : achievements.length > 0 ? (
-            <div className="text-center py-3 mt-2 border-t border-[#1e2a35] text-[9px] text-[#546270] uppercase tracking-wider">
+            <div className="text-center py-3 mt-2 border-t border-[#1e2a35] text-[9px] text-[#546270] uppercase tracking-wider anim-fade">
               {achievements.length} achievements · all 12 months loaded
             </div>
           ) : null
@@ -1253,7 +1257,7 @@ function SeriesProgressTab({ seriesData, gamesData, watchlistData }) {
 
   if (cards.length === 0) {
     return (
-      <div className="text-center py-12 text-[#546270] text-[12px]">
+      <div className="text-center py-12 text-[#546270] text-[12px] anim-fade">
         No series flagged for progress tracking yet.<br />
         <span className="text-[11px]">Enable <strong className="text-[#8f98a0]">📊 Progress</strong> on a series in the admin panel.</span>
       </div>
@@ -1261,7 +1265,7 @@ function SeriesProgressTab({ seriesData, gamesData, watchlistData }) {
   }
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 anim-fade">
       {cards.map(({ series, total, tracked, inProgress, mastered, pointsEarned, pointsTotal, achEarned, achTotal, latestAch, icons, coverBg, coverIcon, coverId }) => {
         const achPct = achTotal > 0 ? (achEarned / achTotal) * 100 : 0;
         const ICON_LIMIT   = 8;
@@ -1401,6 +1405,8 @@ export default function App() {
   const [selectedGame, setSelectedGame] = useState(null);
   const [guidesData, setGuidesData] = useState({});
   const [seriesData, setSeriesData] = useState([]);
+  const [seriesLoaded, setSeriesLoaded] = useState(false);   // so "No series flagged" waits for series.json
+  const [gamesFailed, setGamesFailed] = useState(false);
 
   const loadAllChunks = () => {
     setLoadingChunkIdx(0);
@@ -1445,7 +1451,8 @@ export default function App() {
     fetch('../../data/ra/series.json')
       .then(r => r.ok ? r.json() : [])
       .then(data => setSeriesData(Array.isArray(data) ? data : []))
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => setSeriesLoaded(true));
   }, []);
 
   // ── Load all achievement chunks when Activity tab is opened ──
@@ -1461,7 +1468,7 @@ export default function App() {
       fetch('../../data/ra/games.json')
         .then(r => { if (!r.ok) throw new Error('Failed to load games.json'); return r.json(); })
         .then(data => { setGamesData(data); setLoadingGames(false); })
-        .catch(err => { console.error(err); setLoadingGames(false); });
+        .catch(err => { console.error(err); setLoadingGames(false); setGamesFailed(true); });
     }
   }, [activeTab]);
 
@@ -1525,7 +1532,7 @@ export default function App() {
 
   if (loadingProfile) return <ProfileLoadingSkeleton />;
   if (error || !PROFILE_DATA) return (
-    <div className="min-h-screen bg-[#171a21] flex flex-col items-center justify-center text-[#c6d4df] p-4">
+    <div className="min-h-screen bg-[#171a21] flex flex-col items-center justify-center text-[#c6d4df] p-4 anim-fade">
         <AlertCircle className="text-[#ff6b6b] mb-2" size={48} />
         <h1 className="text-xl font-bold mb-2">Data Load Error</h1>
         <p className="text-[#8f98a0] mb-4">{error || "Could not transform profile data."}</p>
@@ -1861,33 +1868,33 @@ export default function App() {
               <Clock size={18} className="block md:hidden shrink-0" />
               <span className="block md:hidden text-[9px] font-semibold uppercase tracking-[0.06em] leading-none">Recent</span>
               <span className="hidden md:inline text-[11px] md:text-[14px] uppercase tracking-wide font-medium whitespace-nowrap">Recent Games</span>
-              {activeTab === 'recent' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] bg-[#66c0f4]" />}
+              {activeTab === 'recent' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] anim-fade bg-[#66c0f4]" />}
             </button>
             <button onClick={() => setTab('progress')} className={`flex-1 md:flex-none flex flex-col md:flex-row items-center justify-center gap-1 md:gap-0 py-2.5 md:py-0 md:pb-2 px-1 md:px-0 transition-colors relative ${activeTab === 'progress' ? 'text-white' : 'text-[#546270] hover:text-[#c6d4df]'}`}>
               <BarChart2 size={18} className="block md:hidden shrink-0" />
               <span className="block md:hidden text-[9px] font-semibold uppercase tracking-[0.06em] leading-none">Progress</span>
               <span className="hidden md:inline text-[11px] md:text-[14px] uppercase tracking-wide font-medium whitespace-nowrap">Completion Progress</span>
-              {activeTab === 'progress' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] bg-[#66c0f4]" />}
+              {activeTab === 'progress' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] anim-fade bg-[#66c0f4]" />}
             </button>
             {seriesData.some(s => s.showProgress) && (
-              <button onClick={() => setTab('series')} className={`flex-1 md:flex-none flex flex-col md:flex-row items-center justify-center gap-1 md:gap-0 py-2.5 md:py-0 md:pb-2 px-1 md:px-0 transition-colors relative ${activeTab === 'series' ? 'text-white' : 'text-[#546270] hover:text-[#c6d4df]'}`}>
+              <button onClick={() => setTab('series')} className={`anim-fade flex-1 md:flex-none flex flex-col md:flex-row items-center justify-center gap-1 md:gap-0 py-2.5 md:py-0 md:pb-2 px-1 md:px-0 transition-colors relative ${activeTab === 'series' ? 'text-white' : 'text-[#546270] hover:text-[#c6d4df]'}`}>
                 <Layers size={18} className="block md:hidden shrink-0" />
                 <span className="block md:hidden text-[9px] font-semibold uppercase tracking-[0.06em] leading-none">Series</span>
                 <span className="hidden md:inline text-[11px] md:text-[14px] uppercase tracking-wide font-medium whitespace-nowrap">Series Progress</span>
-                {activeTab === 'series' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] bg-[#e5b143]" />}
+                {activeTab === 'series' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] anim-fade bg-[#e5b143]" />}
               </button>
             )}
             <button onClick={() => setTab('activity')} className={`flex-1 md:flex-none flex flex-col md:flex-row items-center justify-center gap-1 md:gap-0 py-2.5 md:py-0 md:pb-2 px-1 md:px-0 transition-colors relative ${activeTab === 'activity' ? 'text-white' : 'text-[#546270] hover:text-[#c6d4df]'}`}>
               <Activity size={18} className="block md:hidden shrink-0" />
               <span className="block md:hidden text-[9px] font-semibold uppercase tracking-[0.06em] leading-none">Activity</span>
               <span className="hidden md:inline text-[11px] md:text-[14px] uppercase tracking-wide font-medium whitespace-nowrap">Activity</span>
-              {activeTab === 'activity' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] bg-[#66c0f4]" />}
+              {activeTab === 'activity' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] anim-fade bg-[#66c0f4]" />}
             </button>
             <button onClick={() => setTab('backlog')} className={`flex-1 md:flex-none flex flex-col md:flex-row items-center justify-center gap-1 md:gap-0 py-2.5 md:py-0 md:pb-2 px-1 md:px-0 transition-colors relative ${activeTab === 'backlog' ? 'text-white' : 'text-[#546270] hover:text-[#c6d4df]'}`}>
               <Star size={18} className="block md:hidden shrink-0" />
               <span className="block md:hidden text-[9px] font-semibold uppercase tracking-[0.06em] leading-none">Watchlist</span>
               <span className="hidden md:inline text-[11px] md:text-[14px] uppercase tracking-wide font-medium whitespace-nowrap">Watchlist</span>
-              {activeTab === 'backlog' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] bg-[#66c0f4]" />}
+              {activeTab === 'backlog' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] anim-fade bg-[#66c0f4]" />}
             </button>
           </div>
         </div>
@@ -1936,7 +1943,9 @@ export default function App() {
         {/* Re-keyed per tab so each tab's content fades in */}
         <div key={activeTab} className="flex flex-col gap-3 anim-in">
           {activeTab === 'series' ? (
-            <SeriesProgressTab seriesData={seriesData} gamesData={gamesData} watchlistData={watchlistData} />
+            !seriesLoaded || (!gamesData && !gamesFailed)
+              ? <>{[...Array(3)].map((_, i) => <GameCardSkeleton key={i} />)}</>
+              : <SeriesProgressTab seriesData={seriesData} gamesData={gamesData} watchlistData={watchlistData} />
           ) : activeTab === 'activity' ? (
             loadedChunkCount === 0 && loadingChunkIdx !== null
               ? <ActivitySkeleton />
@@ -1950,6 +1959,19 @@ export default function App() {
                   loadingMore={false}
                   onLoadMore={loadNextChunk}
                 />
+          ) : activeTab === 'backlog' && watchlistData === null ? (
+            // watchlist.json loads separately from profile.json: skeleton rows until it lands
+            <div className="flex flex-col gap-2">
+              <div className="shimmer h-6 w-2/3 rounded-[2px]" />
+              <div className="border border-[#2a475e] rounded-[2px] overflow-hidden">
+                {[...Array(6)].map((_, i) => (
+                  <div key={i} className="flex items-center gap-3 px-3 py-2 border-b border-[#1a2535]">
+                    <div className="shimmer w-8 h-8 rounded-[2px] shrink-0" />
+                    <div className="flex-1 flex flex-col gap-1.5"><Sk w="w-1/2" h="h-2.5" /><Sk w="w-1/4" h="h-2" /></div>
+                  </div>
+                ))}
+              </div>
+            </div>
           ) : activeTab === 'backlog' ? (
             <>{(() => {
               // ── helpers ──────────────────────────────────────────────
@@ -2094,7 +2116,7 @@ export default function App() {
                       </button>
                     ))}
                     {(watchlistSearch || watchlistStatusFilter !== 'all') && (
-                      <button onClick={() => { setWatchlistSearch(''); setWatchlistStatusFilter('all'); }} className="ml-auto text-[9px] text-[#546270] hover:text-[#66c0f4] uppercase tracking-wider transition-colors">Clear ×</button>
+                      <button onClick={() => { setWatchlistSearch(''); setWatchlistStatusFilter('all'); }} className="ml-auto text-[9px] text-[#546270] hover:text-[#66c0f4] uppercase tracking-wider transition-colors anim-fade">Clear ×</button>
                     )}
                   </div>
 
@@ -2140,7 +2162,7 @@ export default function App() {
                               <span className="text-[9px] text-[#546270]">{group.games.length} game{group.games.length !== 1 ? 's' : ''}</span>
                               <ChevronDown size={11} className={`text-[#546270] transition-transform duration-200 shrink-0 ${isOpen ? 'rotate-180' : ''}`} />
                             </button>
-                            {isOpen && group.games.map(game => <GameRow key={game.id} game={game} />)}
+                            {isOpen && <div className="anim-fade">{group.games.map(game => <GameRow key={game.id} game={game} />)}</div>}
                           </div>
                         );
                       })
@@ -2168,13 +2190,13 @@ export default function App() {
                   search={progressSearch} onSearch={setProgressSearch}
                 />
               )}
-              {activeTab === 'progress' && displayedGames.length === 0 && (
-                <div className="text-center py-12 text-[#546270] text-[12px]">
-                  {progressSearch ? 'No games match your search.' : 'No games in this view.'}
-                </div>
-              )}
               {/* Re-keyed on sort/view/filter changes so the new order fades in (not on search keystrokes) */}
               <div key={`${progressSort}-${progressView}-${showMastered}`} className="flex flex-col gap-3 anim-fade">
+                {activeTab === 'progress' && displayedGames.length === 0 && (
+                  <div className="text-center py-12 text-[#546270] text-[12px]">
+                    {progressSearch ? 'No games match your search.' : 'No games in this view.'}
+                  </div>
+                )}
                 {displayedGames.map(game => (
                   <GameCard key={game.id} game={game} onViewDetails={setSelectedGame} guides={guidesData[game.id] ?? null} />
                 ))}
@@ -2202,7 +2224,7 @@ export default function App() {
       {showScrollTop && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="scroll-top-btn fixed right-4 z-[195] w-10 h-10 bg-[#131a22] border border-[#2a475e] hover:border-[#66c0f4] hover:text-[#66c0f4] text-[#8f98a0] rounded-full flex items-center justify-center shadow-lg transition-all duration-200 active:scale-90"
+          className="scroll-top-btn anim-fade fixed right-4 z-[195] w-10 h-10 bg-[#131a22] border border-[#2a475e] hover:border-[#66c0f4] hover:text-[#66c0f4] text-[#8f98a0] rounded-full flex items-center justify-center shadow-lg transition-all duration-200 active:scale-90"
           style={{ bottom: showFloatingTabs ? 'calc(120px + env(safe-area-inset-bottom, 0px))' : '3.5rem' }}
           title="Scroll to top"
         >
@@ -2230,7 +2252,8 @@ export default function App() {
           content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
           border: 4px solid transparent; border-top-color: #2a475e;
         }
-        .pop-wrap:hover .pop-box { display: block; }
+        .pop-wrap:hover .pop-box { display: block; animation: motion-fade 120ms ease-out both; }
+        @media (prefers-reduced-motion: reduce) { .pop-wrap:hover .pop-box { animation: none; } }
         .pop-name { font-size: 10px; color: #c6d4df; font-weight: 600; margin-bottom: 2px; }
         .pop-sub  { font-size: 9px; color: #546270; margin-bottom: 2px; }
         .pop-val  { font-size: 10px; font-weight: 700; }

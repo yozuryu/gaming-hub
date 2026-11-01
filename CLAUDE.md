@@ -340,6 +340,11 @@ Defined in each `index.html` `<style>` block (not in app.js). Class name: `.shim
 
 ### Motion (`assets/motion.css`)
 Linked from every page's `index.html`. Short and quiet: fades with a few pixels of lift, nothing bouncy; all of it is off under `prefers-reduced-motion`.
+
+**Rule: every component animates.** Anything that appears, disappears, fills in after loading, expands, or swaps content on a filter, tab or toggle gets one of the classes below (or, on the vanilla hub, a `motion-fade` CSS rule). Nothing pops in. Check this for every new component and every new conditional render. Exceptions: hover/focus color transitions, text typed into a search box (no fade per keystroke), and pointer-following tooltips.
+- **No late jumps:** a section that loads after the page shows its skeleton at once (hidden again if it ends up empty) instead of appearing later and pushing content down. The hub's Completions and Analytics strips work this way
+- **Admin** (`admin/index.html`) has its own copy of the `.anim-*` classes: `scripts/admin-server.js` serves only that page, so it can't link `assets/motion.css`. Keep the copy in step. `mobile-nav.js` animates its popup and backdrop with its own CSS transitions
+- **Hub (vanilla):** sections shown by lifting `display:none` (`#completions-strip`, `#analytics-strip`, `#activity-section`) fade through a CSS rule on the element itself; containers filled with `innerHTML` fade their children (`#x > *`). Skeletons inside such a container are wrapped in a plain `<span>` so the fade rule doesn't override their shimmer
 - **Page switch:** cross-document View Transitions (`@view-transition { navigation: auto; }`): old page fades out (120ms), new one fades in with a 6px lift (220ms). `.page-topbar` and the mobile nav (`view-transition-name` in `mobile-nav.js`) stay in place. Unsupported browsers just navigate
 - **Classes:** `.anim-in` (content replacing a skeleton, a new tab/view/period), `.anim-fade` (lists changing in place, expanded sections), `.anim-pop` (modal panels), `.anim-backdrop` (modal backdrops)
 - **Re-run on change** by giving the container a React `key` tied to what changed (e.g. `key={activeTab}` on profile tab content, `key={view}` on Activity, `key={`${period}-${hideFarms}`}` on Analytics, filters on Completions)
