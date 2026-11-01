@@ -487,6 +487,8 @@ const STATUS_CHIP = {
     drifting: 'text-[#8f98a0] border border-dashed border-[#3a4a5a]',
 };
 const STATUS_LABEL = Object.fromEntries(PLAYING_GROUPS.map(g => [g.id, g.label]));
+// Group heading colours: in progress blue, fading as the game goes untouched
+const GROUP_COLOR = { playing: '#66c0f4', onhold: '#b8c4ce', drifting: '#8f98a0' };
 const chipCls = 'text-[7px] font-bold uppercase tracking-[0.08em] px-[5px] py-[2px] rounded-[2px] shrink-0 whitespace-nowrap';
 
 const fmtAgo = (days) => days === 0 ? 'Today' : days === 1 ? 'Yesterday' : `${days}d ago`;
@@ -1016,8 +1018,28 @@ const App = () => {
                             playingShown.length === 0 ? (
                                 <div key={filter} className="text-[#8f98a0] text-[11px] py-4 italic text-center anim-fade">No games in rotation.</div>
                             ) : (
-                                <div key={filter} className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-2.5 anim-fade">
-                                    {playingShown.map(g => <PlayingTile key={g.key} game={g} />)}
+                                // One section per group; a group with no games is left out (its count stays in the header pills)
+                                <div key={filter} className="flex flex-col gap-5 anim-fade">
+                                    {PLAYING_GROUPS.map(grp => {
+                                        const list = playingShown.filter(g => g.group === grp.id);
+                                        if (!list.length) return null;
+                                        return (
+                                            <section key={grp.id} className="flex flex-col gap-2">
+                                                <div className="flex flex-col gap-0.5">
+                                                    <div className="flex items-center gap-2">
+                                                        <span className="w-2 h-2 rounded-full shrink-0" style={{ background: GROUP_COLOR[grp.id] }} />
+                                                        <span className="text-[10px] font-semibold uppercase tracking-[0.08em]" style={{ color: GROUP_COLOR[grp.id] }}>{grp.label}</span>
+                                                        <span className="text-[10px] text-[#546270] tabular-nums">{list.length}</span>
+                                                        <span className="flex-1 h-px bg-[#2a475e] opacity-40" />
+                                                    </div>
+                                                    <span className="text-[9px] text-[#546270] pl-4">{grp.hint}</span>
+                                                </div>
+                                                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-2.5">
+                                                    {list.map(g => <PlayingTile key={g.key} game={g} />)}
+                                                </div>
+                                            </section>
+                                        );
+                                    })}
                                 </div>
                             )
                         )}
