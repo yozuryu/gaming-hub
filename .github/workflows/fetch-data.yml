@@ -66,13 +66,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Full history of `data` (at most a day of commits) so the midnight squash can count them
+      # Shallow: fetch-depth 0 would fetch every branch's history (main's included, ~300 MB)
       - name: Checkout data branch
         uses: actions/checkout@v4
         with:
           ref: data
           path: _data
-          fetch-depth: 0
 
       # The pipelines read their previous output (caches, playtime baseline, history) from data/
       - name: Restore data
@@ -162,7 +161,8 @@ jobs:
           if [ "$MODE" = "midnight" ]; then
             # Daily squash: the current tree as one parentless commit, replacing the day's commits
             tree="$(git write-tree)"
-            if [ "$tree" = "$(git rev-parse 'HEAD^{tree}')" ] && [ "$(git rev-list --count HEAD)" = "1" ]; then
+            # A shallow clone still has the commit object, whose `parent` lines say if there's history
+            if [ "$tree" = "$(git rev-parse 'HEAD^{tree}')" ] && ! git cat-file -p HEAD | grep -q '^parent '; then
               echo "No changes, data branch already a single commit"
               exit 0
             fi
