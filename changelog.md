@@ -2,7 +2,7 @@
 
 ## v26.11.01
 
-A Playing list for the games in rotation; the floating tab pill on the profile pages stays on screen again.
+A Playing list for the games in rotation, a platform filter on Analytics; the floating tab pill on the profile pages stays on screen again.
 
 ### Hub
 
@@ -15,6 +15,11 @@ A Playing list for the games in rotation; the floating tab pill on the profile p
 - Playing covers RA and Steam only: it's measured in play time, which Xbox doesn't report, and judging Xbox by unlocks missed games played without unlocking anything. The Xbox filter is gone from this view
 - Rotation rules: Playing = played in the last 2 weeks, or within 6 weeks for a game with 5+ hours in (a long RPG you come back to stays Playing); a game touched in the last 2 weeks needs 30 minutes instead of an hour, so one you just started shows up
 - The view switch reads **Unlocks | Playtime | Playing** and sits on its own full-width row on mobile
+
+### Analytics
+
+- New **platform filter** next to the period: All · RA · Steam · Xbox, kept in the URL (`?platform=`). It scopes every section like the farm filter; charts narrow to that platform in its own colour, Overview drops tiles of other platforms (RA points, gamerscore), Time of day shows one row, RA by console only shows for All and RA. Xbox has no playtime, so its view keeps the achievement sections (unlocks, gamerscore, rarity, unlock hours, completion) and notes that playtime isn't reported
+- The "achievement farms hidden" note only shows when Steam is in view
 
 ### Pipelines
 
