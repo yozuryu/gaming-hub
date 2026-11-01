@@ -7,6 +7,11 @@ name: Fetch Data
 # The three pipelines run one after another in one job. A platform that fails doesn't
 # stop the others (each pipeline exits before writing when it fails, so its previous
 # files stay); the job is marked failed at the end so GitHub still sends the email.
+#
+# Pipeline output lives on the `data` branch, not main (paths in scripts/data-paths.json):
+# each run restores it into data/, runs the pipelines, and commits only to `data`. The
+# midnight run squashes `data` into a single commit, so the branch holds at most a day of
+# history. A run that changed data then deploys the site (deploy.yml).
 run-name: >-
   ${{ github.event_name == 'schedule' && 'Data — fallback incremental' ||
       format('Data — {0} ({1})', inputs.mode, inputs.platforms) }}
@@ -54,10 +59,28 @@ jobs:
   fetch:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    outputs:
+      deploy: ${{ steps.commit.outputs.deploy }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      # Full history of `data` (at most a day of commits) so the midnight squash can count them
+      - name: Checkout data branch
+        uses: actions/checkout@v4
+        with:
+          ref: data
+          path: _data
+          fetch-depth: 0
+
+      # The pipelines read their previous output (caches, playtime baseline, history) from data/
+      - name: Restore data
+        run: |
+          for p in $(node -p "require('./scripts/data-paths.json').paths.join(' ')"); do
+            rm -rf "$p"
+            if [ -e "_data/$p" ]; then mkdir -p "$(dirname "$p")"; cp -R "_data/$p" "$p"; fi
+          done
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -111,15 +134,18 @@ jobs:
           esac
 
       - name: Commit updated data
+        id: commit
         if: ${{ !cancelled() }}
         run: |
+          # Copy the generated paths back onto the data branch checkout (removals included)
+          for p in $(node -p "require('./scripts/data-paths.json').paths.join(' ')"); do
+            rm -rf "_data/$p"
+            if [ -e "$p" ]; then mkdir -p "_data/$(dirname "$p")"; cp -R "$p" "_data/$p"; fi
+          done
+          cd _data
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/ra/ data/steam/ data/xbox/
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-            exit 0
-          fi
+          git add -A data
           changed=""
           for p in ra steam xbox; do
             git diff --staged --quiet -- "data/$p/" || changed="$changed${changed:+, }$p"
@@ -130,12 +156,43 @@ jobs:
             watchlist-only) MSG="chore: update ra watchlist" ;;
             *)              MSG="chore: update data" ;;
           esac
-          git commit -m "$MSG ($changed) $(date -u '+%Y-%m-%d %H:%M UTC')"
-          # main may have moved during the run (e.g. a manual push): rebase and retry once
-          git push || (git pull --rebase && git push)
+          STAMP="$(date -u '+%Y-%m-%d %H:%M UTC')"
+          tip="$(git rev-parse HEAD)"
+
+          if [ "$MODE" = "midnight" ]; then
+            # Daily squash: the current tree as one parentless commit, replacing the day's commits
+            tree="$(git write-tree)"
+            if [ "$tree" = "$(git rev-parse 'HEAD^{tree}')" ] && [ "$(git rev-list --count HEAD)" = "1" ]; then
+              echo "No changes, data branch already a single commit"
+              exit 0
+            fi
+            squashed="$(git commit-tree "$tree" -m "chore: data snapshot ${changed:+($changed) }$STAMP")"
+            git push --force-with-lease="data:$tip" origin "$squashed:refs/heads/data"
+            [ "$tree" != "$(git rev-parse 'HEAD^{tree}')" ] && echo "deploy=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "$MSG ($changed) $STAMP"
+          # Only this workflow writes to data, one run at a time (concurrency group), so no rebase
+          git push origin HEAD:refs/heads/data
+          echo "deploy=true" >> "$GITHUB_OUTPUT"
 
       - name: Report failed platforms
         if: steps.ra.outcome == 'failure' || steps.steam.outcome == 'failure' || steps.xbox.outcome == 'failure'
         run: |
           echo "::error::Failed: RA=${{ steps.ra.outcome }} Steam=${{ steps.steam.outcome }} Xbox=${{ steps.xbox.outcome }}"
           exit 1
+
+  # Publish the new data: the site is main + the data branch (deploy.yml)
+  deploy:
+    needs: fetch
+    if: ${{ !cancelled() && needs.fetch.outputs.deploy == 'true' }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy.yml

@@ -256,8 +256,16 @@ const server = http.createServer((req, res) => {
             return chunks;
         };
 
-        execFile('git', ['diff', 'data/'], { cwd: ROOT }, (_err, diffOut) => {
-            const tracked = splitDiff(diffOut);
+        // Hand-edited files (tracked on main) diff against git; pipeline output (ignored, from the
+        // data branch) diffs against the untouched copy that `npm run data:pull` keeps in .data-snapshot/
+        const GENERATED = require('./data-paths.json').paths;
+        const isGenerated = (file) => GENERATED.some(p => file === p || file.startsWith(p + '/'));
+        execFile('git', ['diff', '--', 'data/'], { cwd: ROOT }, (_err, diffOut) => {
+            execFile('git', ['diff', '--no-index', '--', '.data-snapshot/data', 'data'], { cwd: ROOT, maxBuffer: 1 << 28 }, (_errG, genOut) => {
+            const generated = fs.existsSync(path.join(ROOT, '.data-snapshot'))
+                ? splitDiff(genOut || '').map(c => ({ ...c, file: c.file.replace(/^\.data-snapshot\//, '') })).filter(c => isGenerated(c.file))
+                : [];
+            const tracked = [...splitDiff(diffOut), ...generated];
 
             execFile('git', ['ls-files', '--others', '--exclude-standard', 'data/'], { cwd: ROOT }, (_err2, untrackedOut) => {
                 const untrackedFiles = untrackedOut.trim().split('\n').filter(Boolean);
@@ -279,6 +287,7 @@ const server = http.createServer((req, res) => {
                 });
 
                 send(res, 200, { files: [...tracked, ...untracked] });
+            });
             });
         });
         return;

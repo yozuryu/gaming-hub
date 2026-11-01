@@ -1,6 +1,8 @@
 # Remove pipeline data from `main`'s history
 
-**Status:** Blocked by [data-branch-migration.md](data-branch-migration.md) · **Run:** only after the `data` branch has been running cleanly for at least a day
+**Status:** To do · **Run:** not before 2026-11-08 (a week of the `data` branch running cleanly, live since 2026-11-01)
+
+> Before rewriting: the hourly data snapshots `backfill-playtime.js` replays exist only in `main`'s history, `backup/main-2026-11-01` and the local bundle. The rewrite removes them from `main`; keep the backup branch (or at least the bundle) so the backfill can still run. Pipeline paths to drop are in `scripts/data-paths.json` (plus the deleted `data/steam/achievements.json` and `_config.yml` history if wanted).
 
 ## Why
 
