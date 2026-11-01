@@ -2,7 +2,7 @@
     "appId": 1658290,
     "hasAchievements": true,
     "total": 50,
-    "unlocked": 1,
+    "unlocked": 2,
     "gameName": "Eiyuden Chronicle: Rising",
     "achievements": [
         {
@@ -40,8 +40,8 @@
         },
         {
             "apiName": "ACHIEVEMENT004",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-11-01T10:08:58.000Z",
             "displayName": "All Bark, No Bite",
             "description": "",
             "iconUrl": "924d1737b63a1f77822da49a85c47189ecb963b5.jpg",
@@ -432,7 +432,7 @@
             "iconUrl": "2d5b9d9aaed1e9cb336cf2cd6471693c1755e8fe.jpg",
             "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
             "hidden": false,
-            "globalPct": 29.5
+            "globalPct": 29.4
         },
         {
             "apiName": "ACHIEVEMENT040",
@@ -556,12 +556,21 @@
             "globalPct": 14
         }
     ],
-    "playtimeForever": 19,
-    "lastPlayedTs": "2026-11-01T09:47:37.000Z",
+    "playtimeForever": 60,
+    "lastPlayedTs": "2026-11-01T10:29:18.000Z",
     "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1658290/449ec8f09bf72c9f8e00c113c1e12a7c70a86de4.jpg",
-    "lastUnlockedAt": "2026-10-03T16:06:46.000Z",
-    "lastUnlockName": "Plenty More to Go",
+    "lastUnlockedAt": "2026-11-01T10:08:58.000Z",
+    "lastUnlockName": "All Bark, No Bite",
     "preview": [
+        {
+            "apiName": "ACHIEVEMENT004",
+            "displayName": "All Bark, No Bite",
+            "unlocked": true,
+            "unlockedAt": "2026-11-01T10:08:58.000Z",
+            "iconUrl": "924d1737b63a1f77822da49a85c47189ecb963b5.jpg",
+            "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
+            "globalPct": 70.5
+        },
         {
             "apiName": "ACHIEVEMENT001",
             "displayName": "Plenty More to Go",
@@ -588,15 +597,6 @@
             "iconUrl": "5ef5bbbf3d1de10a39c0b40ffd4371bb417c7ea8.jpg",
             "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
             "globalPct": 46.3
-        },
-        {
-            "apiName": "ACHIEVEMENT004",
-            "displayName": "All Bark, No Bite",
-            "unlocked": false,
-            "unlockedAt": null,
-            "iconUrl": "924d1737b63a1f77822da49a85c47189ecb963b5.jpg",
-            "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
-            "globalPct": 70.5
         },
         {
             "apiName": "ACHIEVEMENT005",
