@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-11-01T11:15:55.682Z"
+        "extractionTimestamp": "2026-11-01T11:45:56.042Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,13 +8,13 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Yuri is exploring the Hill Caves along Chelinka [69 pockets] [1/24 stamps]",
+        "richPresenceMsg": "Yuri is exploring the Hill Caves along Chelinka [69 pockets] [2/24 stamps]",
         "lastGameId": 16244,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 3529,
+        "totalPoints": 3534,
         "totalSoftcorePoints": 0,
-        "totalTruePoints": 9511,
+        "totalTruePoints": 9522,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -33,14 +33,14 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Yuri is exploring the Hill Caves along Chelinka [69 pockets] [1/24 stamps]",
-        "richPresenceMsgDate": "2026-11-01 11:14:07",
+        "richPresenceMsg": "Yuri is exploring the Hill Caves along Chelinka [69 pockets] [2/24 stamps]",
+        "richPresenceMsgDate": "2026-11-01 11:44:19",
         "lastGameId": 16244,
         "contribCount": 0,
         "contribYield": 0,
-        "totalPoints": 3529,
+        "totalPoints": 3534,
         "totalSoftcorePoints": 0,
-        "totalTruePoints": 9511,
+        "totalTruePoints": 9522,
         "permissions": 1,
         "untracked": false,
         "id": 533508,
@@ -57,7 +57,7 @@
         "status": "Offline"
     },
     "points": {
-        "points": 3529,
+        "points": 3534,
         "softcorePoints": 0
     },
     "pageAwards": {
@@ -263,14 +263,14 @@
             "imageTitle": "/Images/117313.png",
             "imageIngame": "/Images/117312.png",
             "imageBoxArt": "/Images/034353.png",
-            "lastPlayed": "2026-11-01 11:16:08",
+            "lastPlayed": "2026-11-01 11:44:19",
             "achievementsTotal": 76,
             "numPossibleAchievements": 76,
             "possibleScore": 686,
-            "numAchieved": 0,
-            "scoreAchieved": 0,
-            "numAchievedHardcore": 0,
-            "scoreAchievedHardcore": 0
+            "numAchieved": 1,
+            "scoreAchieved": 5,
+            "numAchievedHardcore": 1,
+            "scoreAchievedHardcore": 5
         },
         {
             "gameId": 45053,
@@ -526,9 +526,22 @@
         }
     ],
     "gameAwardsAndProgress": {
-        "count": 87,
-        "total": 87,
+        "count": 88,
+        "total": 88,
         "results": [
+            {
+                "gameId": 16244,
+                "title": "Final Fantasy Crystal Chronicles: Ring of Fates",
+                "imageIcon": "/Images/116299.png",
+                "consoleId": 18,
+                "consoleName": "Nintendo DS",
+                "maxPossible": 76,
+                "numAwarded": 1,
+                "numAwardedHardcore": 1,
+                "mostRecentAwardedDate": "2026-11-01T11:43:31+00:00",
+                "highestAwardKind": null,
+                "highestAwardDate": null
+            },
             {
                 "gameId": 45053,
                 "title": "Poring Clicker",
@@ -1663,24 +1676,24 @@
         ]
     },
     "mostRecentAchievement": {
-        "date": "2026-10-19 13:24:21",
+        "date": "2026-11-01 11:43:31",
         "hardcoreMode": true,
-        "achievementId": 642706,
-        "title": "Millionaire",
-        "description": "Hold 1,000,000z at once",
-        "badgeName": "734588",
-        "points": 10,
+        "achievementId": 540647,
+        "title": "The Monster Next Door",
+        "description": "Defeat the massive Scorpion deep within the Hill Caves. Every other achievement blocks Multiplay",
+        "badgeName": "614928",
+        "points": 5,
         "trueRatio": 11,
-        "type": null,
-        "author": "SpringRO",
-        "authorUlid": "01KR6CQSQY9WS7R3F49W3C3F12",
-        "gameTitle": "Poring Clicker",
-        "gameIcon": "/Images/163848.png",
-        "gameId": 45053,
-        "consoleName": "Standalone",
-        "cumulScore": 686,
-        "badgeUrl": "/Badge/734588.png",
-        "gameUrl": "/game/45053"
+        "type": "progression",
+        "author": "KiwiTaco",
+        "authorUlid": "01H8VJC4PTMB4FPV8CG6WPH0FS",
+        "gameTitle": "Final Fantasy Crystal Chronicles: Ring of Fates",
+        "gameIcon": "/Images/116299.png",
+        "gameId": 16244,
+        "consoleName": "Nintendo DS",
+        "cumulScore": 691,
+        "badgeUrl": "/Badge/614928.png",
+        "gameUrl": "/game/16244"
     },
     "mostRecentGame": {
         "gameId": 16244,
@@ -1691,15 +1704,15 @@
         "imageTitle": "/Images/117313.png",
         "imageIngame": "/Images/117312.png",
         "imageBoxArt": "/Images/034353.png",
-        "lastPlayed": "2026-11-01 11:16:08",
+        "lastPlayed": "2026-11-01 11:44:19",
         "achievementsTotal": 76,
         "numPossibleAchievements": 76,
         "possibleScore": 686,
-        "numAchieved": 0,
-        "scoreAchieved": 0,
-        "numAchievedHardcore": 0,
-        "scoreAchievedHardcore": 0
+        "numAchieved": 1,
+        "scoreAchieved": 5,
+        "numAchievedHardcore": 1,
+        "scoreAchievedHardcore": 5
     },
-    "points7Days": 0,
-    "points30Days": 338
+    "points7Days": 5,
+    "points30Days": 343
 }
