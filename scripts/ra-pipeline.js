@@ -370,6 +370,15 @@ function serializeLocally(payload) {
         }),
     };
 
+    // Same for every game with progress: the Playing view shows lifetime playtime per game
+    const gameAwardsAndProgress = payload.gameAwardsAndProgress && {
+        ...payload.gameAwardsAndProgress,
+        results: (payload.gameAwardsAndProgress.results || []).map(game => {
+            const seconds = payload.detailedGameProgress[game.gameId]?.userTotalPlaytime;
+            return seconds ? { ...game, playtime: Math.round(seconds / 60) } : game;
+        }),
+    };
+
     // profile.json — everything needed to render above the fold
     write('profile.json', {
         metadata: payload.metadata,
@@ -379,7 +388,7 @@ function serializeLocally(payload) {
         points: payload.points,
         pageAwards,
         recentlyPlayedGames: payload.recentlyPlayedGames,
-        gameAwardsAndProgress: payload.gameAwardsAndProgress,
+        gameAwardsAndProgress,
         mostRecentAchievement: payload.mostRecentAchievement,
         mostRecentGame: payload.mostRecentGame,
         points7Days: payload.points7Days,

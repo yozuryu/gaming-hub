@@ -5,20 +5,34 @@
 // Plain ES module (no JSX), imported by the Activity page and, via import(), by the hub.
 import { toMs, dayKey, addDays, keyToDate } from './time.js';
 
-export const PLAYING_WINDOW_DAYS = 90;
-// A game needs real time in it to count: an hour of play in the window (RA, Steam), or unlocks
-// on two different days (Xbox, which has no playtime). This drops tryouts, demos and checking
-// that an RA hash loads
-export const PLAYING_MIN_MINUTES = 60;
-export const PLAYING_MIN_DAYS    = 2;
+// 13 weeks, so the weekly play strip and the session stats cover the same days
+export const PLAYING_WEEKS = 13;
+export const PLAYING_WINDOW_DAYS = PLAYING_WEEKS * 7;
+// A game needs real time in it to count, which drops demos and checking that an RA hash loads:
+// an hour of play in the window (RA, Steam), or unlocks on two different days (Xbox, which has
+// no playtime). A game touched in the last 2 weeks needs only 30 minutes, so one you just
+// started shows up
+export const PLAYING_MIN_MINUTES    = 60;
+export const PLAYING_RECENT_DAYS    = 14;
+export const PLAYING_RECENT_MINUTES = 30;
+export const PLAYING_MIN_DAYS       = 2;
+// A game with 5+ hours in the window stays Playing until On hold ends: a long RPG you come
+// back to every few weeks is still in rotation
+export const PLAYING_INVESTED_MINUTES = 300;
+export const PLAYING_ONHOLD_DAYS      = 45;
 // Play in the same sitting as the beat isn't post-game play
 const BEATEN_GRACE_MS = 30 * 60000;
-// Groups by days since the game was last played or had an unlock (local calendar days)
+// Groups by local calendar days since the game was last played or had an unlock
 export const PLAYING_GROUPS = [
-    { id: 'playing',  label: 'Playing',  maxDays: 14, hint: 'Played in the last 2 weeks' },
-    { id: 'onhold',   label: 'On hold',  maxDays: 45, hint: 'Not played for 2–6 weeks' },
-    { id: 'drifting', label: 'Drifting', maxDays: PLAYING_WINDOW_DAYS, hint: 'Not played for 6+ weeks, unfinished' },
+    { id: 'playing',  label: 'Playing',  hint: 'Played in the last 2 weeks, or 5h+ in and played in the last 6' },
+    { id: 'onhold',   label: 'On hold',  hint: 'Not played for 2–6 weeks' },
+    { id: 'drifting', label: 'Drifting', hint: 'Not played for 6+ weeks, unfinished' },
 ];
+const groupOf = (ago, minutes) =>
+    ago <= PLAYING_RECENT_DAYS || (minutes >= PLAYING_INVESTED_MINUTES && ago <= PLAYING_ONHOLD_DAYS) ? 'playing'
+    : ago <= PLAYING_ONHOLD_DAYS ? 'onhold'
+    : ago <= PLAYING_WINDOW_DAYS ? 'drifting'
+    : null;
 // Same rule as Analytics (FARM_* in analytics/utils.js): achievement farms aren't games in rotation
 const FARM_PER_HOUR = 15;
 const FARM_MIN_UNLOCKS = 10;
@@ -42,7 +56,12 @@ const beatenAt = (cond, achs) => {
 
 // `fetchJson(url)` resolves to parsed JSON or null; `base` is the site root ('./' or '../').
 // Resolves to { games, groups } — games sorted most recent first, each with
-// { key, platform, gameId, name, icon, consoleName, lastMs, daysAgo, minutes, unlocks, days, beaten, group }
+// { key, platform, gameId, name, icon, cover, consoleName, lastMs, daysAgo, minutes, unlocks, days,
+//   sessions, weeks, totalMinutes, progress: { unlocked, total } | null, beaten, group }.
+// `minutes`, `sessions` and `weeks` cover the 13 weeks; `weeks` holds minutes per week, oldest
+// first (unlock counts for Xbox). `totalMinutes` is lifetime playtime (null for Xbox, and for RA
+// until the pipeline has written it). `cover` is a wide image (Steam header,
+// Xbox hero, raw: pages resize Xbox with xboxImg) or null for RA, whose files only carry the icon
 export async function loadPlaying(fetchJson, base = './', now = Date.now()) {
     const today   = dayKey(now);
     const startMs = keyToDate(addDays(today, -(PLAYING_WINDOW_DAYS - 1))).getTime();
@@ -61,8 +80,10 @@ export async function loadPlaying(fetchJson, base = './', now = Date.now()) {
     const games = {};
     const game = (platform, gameId) => (games[`${platform}:${gameId}`] ??= {
         key: `${platform}:${gameId}`, platform, gameId: String(gameId), name: null, icon: null, consoleName: null,
-        lastMs: 0, minutes: 0, unlocks: 0, dayKeys: new Set(), activity: [],
+        lastMs: 0, minutes: 0, unlocks: 0, sessions: 0, weeks: Array(PLAYING_WEEKS).fill(0), dayKeys: new Set(), activity: [],
     });
+    // Week cell of a timestamp: 7-day blocks counted back from today, the last cell is the current one
+    const weekOf = (ms) => PLAYING_WEEKS - 1 - Math.floor(daysAgo(ms, today) / 7);
 
     // Sessions: counted by end time (a session still running at the window start counts whole)
     for (const { p, f } of playFiles) {
@@ -75,6 +96,8 @@ export async function loadPlaying(fetchJson, base = './', now = Date.now()) {
             g.icon ??= meta.icon ? (p === 'ra' ? `${RA_MEDIA}${meta.icon}` : meta.icon) : null;
             g.consoleName ??= meta.console ?? null;
             g.minutes += s.minutes;
+            g.sessions++;
+            g.weeks[weekOf(end)] += s.minutes;
             g.dayKeys.add(dayKey(end));
             g.activity.push(end);
         }
@@ -87,6 +110,7 @@ export async function loadPlaying(fetchJson, base = './', now = Date.now()) {
             g.name ??= p === 'ra' ? a.gameTitle : a.gameName;
             if (p === 'ra') { g.icon ??= a.gameIcon ? `${RA_MEDIA}${a.gameIcon}` : null; g.consoleName ??= a.consoleName ?? null; }
             g.unlocks++;
+            if (p === 'xbox') g.weeks[weekOf(ms)]++;
             g.dayKeys.add(dayKey(ms));
             g.activity.push(ms);
         }
@@ -102,13 +126,23 @@ export async function loadPlaying(fetchJson, base = './', now = Date.now()) {
         }
     }
     const wc = { steam: steamWc ?? {}, xbox: xboxWc ?? {} };
+    // RA progress (unlocked / total) for every game with an unlock, from the same profile file
+    const raProgress = Object.fromEntries((raProfile?.gameAwardsAndProgress?.results ?? []).map(r => [String(r.gameId), r]));
 
     const out = (await Promise.all(Object.values(games).map(async g => {
-        let beatenMs = 0;
+        let beatenMs = 0, progress = null, cover = null, totalMinutes = null;
         if (g.platform === 'ra') {
             const d = raDone[g.gameId];
             if (d?.complete) return null;
             beatenMs = d?.beatenMs ?? 0;
+            const r = raProgress[g.gameId];
+            if (r) {
+                progress = { unlocked: Math.max(r.numAwarded ?? 0, r.numAwardedHardcore ?? 0), total: r.maxPossible ?? 0 };
+                g.name ??= r.title ?? null;
+                g.icon ??= r.imageIcon ? `${RA_MEDIA}${r.imageIcon}` : null;
+                g.consoleName ??= r.consoleName ?? null;
+                totalMinutes = r.playtime ?? null;
+            }
         } else {
             const file = await fetchJson(`${base}data/${g.platform}/games/${g.gameId}.json`);
             if (file) {
@@ -118,20 +152,25 @@ export async function loadPlaying(fetchJson, base = './', now = Date.now()) {
                     && unlocked / Math.max((file.playtimeForever ?? 0) / 60, 0.1) > FARM_PER_HOUR) return null;
                 g.name ??= file.gameName ?? null;
                 g.icon ??= file.iconUrl ?? null;
+                if (total > 0) progress = { unlocked, total };
+                if (g.platform === 'steam') totalMinutes = file.playtimeForever ?? null;
+                if (g.platform === 'xbox') cover = file.heroUrl ?? file.posterUrl ?? null;
                 beatenMs = beatenAt(wc[g.platform][g.gameId], file.achievements ?? []);
             }
+            if (g.platform === 'steam') cover = `https://cdn.akamai.steamstatic.com/steam/apps/${g.gameId}/header.jpg`;
         }
         // A beaten game only counts what happened after it was beaten
         const activity = beatenMs ? g.activity.filter(t => t > beatenMs + BEATEN_GRACE_MS) : g.activity;
         if (!activity.length) return null;
         const lastMs = Math.max(...activity);
         const days = g.dayKeys.size;
-        if (g.platform === 'xbox' ? days < PLAYING_MIN_DAYS : g.minutes < PLAYING_MIN_MINUTES) return null;
         const ago = daysAgo(lastMs, today);
-        const group = PLAYING_GROUPS.find(x => ago <= x.maxDays)?.id;
+        const minMinutes = ago <= PLAYING_RECENT_DAYS ? PLAYING_RECENT_MINUTES : PLAYING_MIN_MINUTES;
+        if (g.platform === 'xbox' ? days < PLAYING_MIN_DAYS : g.minutes < minMinutes) return null;
+        const group = groupOf(ago, g.minutes);
         if (!group || (beatenMs && group !== 'playing')) return null;
         const { dayKeys, activity: _a, ...rest } = g;
-        return { ...rest, name: g.name ?? `#${g.gameId}`, lastMs, daysAgo: ago, days, beaten: !!beatenMs, group };
+        return { ...rest, name: g.name ?? `#${g.gameId}`, cover, progress, totalMinutes, lastMs, daysAgo: ago, days, beaten: !!beatenMs, group };
     }))).filter(Boolean).sort((a, b) => b.lastMs - a.lastMs);
 
     const groups = Object.fromEntries(PLAYING_GROUPS.map(x => [x.id, out.filter(g => g.group === x.id)]));

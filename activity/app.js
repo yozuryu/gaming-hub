@@ -5,7 +5,7 @@ import { PLATFORM_COLOR, TILDE_TAG_COLORS } from './utils/constants.js';
 import { fmtDay, fmtTime, fmtMinutes, fmtMinutesShort, parseTitle, xboxImg } from './utils/helpers.js';
 import { normalizeRA, normalizeSteam, normalizeXbox, normalizeSession } from './utils/normalizers.js';
 import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap, splitByDay } from '../assets/time.js';
-import { loadPlaying, PLAYING_GROUPS, PLAYING_WINDOW_DAYS } from '../assets/playing.js';
+import { loadPlaying, PLAYING_GROUPS } from '../assets/playing.js';
 
 // A day counts toward the playtime streak with at least this much play
 const PLAYTIME_STREAK_MIN = 15;
@@ -474,121 +474,135 @@ const PlaySessionsSkeleton = () => (
 
 // ── Playing view ──────────────────────────────────────────────────────────────
 
-const PLATFORM_ICON = { ra: '../assets/icon-ra.png', steam: '../assets/icon-steam.png', xbox: '../assets/icon-xbox.png' };
 const GAME_URL = {
     ra:    g => `https://retroachievements.org/game/${g.gameId}`,
     steam: g => `https://store.steampowered.com/app/${g.gameId}`,
     xbox:  g => `https://www.xbox.com/en-US/Search/Results?q=${encodeURIComponent(g.name)}`,
 };
-// Group marker colors: in progress blue, then fading as the game goes untouched
-const PLAYING_GROUP_COLOR = { playing: '#66c0f4', onhold: '#8f98a0', drifting: '#546270' };
+const PLATFORM_LABEL = { ra: 'RA', steam: 'Steam', xbox: 'Xbox' };
+const PLATFORM_RGB = { ra: '229,177,67', steam: '102,192,244', xbox: '82,176,67' };
+const STATUS_CHIP = {
+    playing:  'text-[#66c0f4] bg-[rgba(102,192,244,0.1)] border border-[rgba(102,192,244,0.35)]',
+    onhold:   'text-[#c6d4df] bg-[#2a3440] border border-[rgba(184,196,206,0.25)]',
+    drifting: 'text-[#8f98a0] border border-dashed border-[#3a4a5a]',
+};
+const STATUS_LABEL = Object.fromEntries(PLAYING_GROUPS.map(g => [g.id, g.label]));
+const chipCls = 'text-[7px] font-bold uppercase tracking-[0.08em] px-[5px] py-[2px] rounded-[2px] shrink-0 whitespace-nowrap';
 
 const fmtAgo = (days) => days === 0 ? 'Today' : days === 1 ? 'Yesterday' : `${days}d ago`;
+// Lifetime hours: whole hours from 10h up, exact below
+const fmtTotal = (m) => m >= 600 ? `${Math.round(m / 60).toLocaleString()}h` : fmtMinutes(m);
 
-// One game in rotation: last played, days with play, time and unlocks over the window
-const PlayingRow = ({ game: g }) => {
-    const isRA = g.platform === 'ra';
-    const { baseTitle, subsetName, isSubset, tags } = isRA ? parseTitle(g.name) : { baseTitle: g.name };
-    const url = GAME_URL[g.platform](g);
-    const icon = g.platform === 'xbox' ? xboxImg(g.icon, 64) : g.icon;
+// One week cell: brighter = more play that week (unlock count for Xbox, which has no playtime)
+const weekAlpha = (v, platform) => {
+    if (!v) return 0;
+    if (platform === 'xbox') return v >= 10 ? 1 : v >= 5 ? 0.75 : v >= 2 ? 0.5 : 0.3;
+    return v >= 300 ? 1 : v >= 150 ? 0.75 : v >= 60 ? 0.5 : 0.3;
+};
+
+// Wide cover: Steam header / Xbox hero. RA files only carry the square icon, so RA (and a Steam
+// game without a header) shows the icon centered on a blurred, enlarged copy of itself
+const TileCover = ({ game: g }) => {
+    const [failed, setFailed] = useState(false);
+    const wide = g.cover && !failed ? (g.platform === 'xbox' ? xboxImg(g.cover, 480) : g.cover) : null;
+    const icon = g.platform === 'xbox' ? xboxImg(g.icon, 128) : g.icon;
+    if (wide) return <img src={wide} alt="" className="absolute inset-0 w-full h-full object-cover" onError={() => setFailed(true)} />;
+    if (!icon) return <div className="absolute inset-0 bg-[#2a475e]" />;
     return (
-        <div className="flex items-center gap-2 p-2 rounded-[2px] border border-[#2a475e] border-l-[2px] bg-[#1b2838] hover:bg-[#202d39] transition-colors"
-            style={{ borderLeftColor: PLATFORM_COLOR[g.platform] }}>
-            <a href={url} target="_blank" rel="noreferrer"
-                className="shrink-0 w-8 h-8 rounded-[2px] overflow-hidden border border-[#101214] bg-black block">
-                {icon
-                    ? <img src={icon} alt="" className="w-full h-full object-cover" />
-                    : <div className="w-full h-full bg-[#2a475e]" />}
-            </a>
-            <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-1.5 min-w-0">
-                    <img src={PLATFORM_ICON[g.platform]} alt=""
-                        className="w-3 h-3 shrink-0 object-contain opacity-60"
-                        onError={e => { e.target.style.display = 'none'; }} />
-                    <a href={url} target="_blank" rel="noreferrer"
-                        className="text-[11px] font-medium text-[#c6d4df] hover:text-[#66c0f4] truncate transition-colors">
-                        {baseTitle}
-                    </a>
-                    {isSubset && (
-                        <>
-                            <span className="text-[7px] font-bold uppercase tracking-[0.07em] px-1 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>
-                            <span className="text-[8px] text-[#c8a84b] truncate">{subsetName}</span>
-                        </>
-                    )}
-                    {!isSubset && renderTildeTags(tags)}
-                    {g.beaten && (
-                        <span className="text-[7px] font-bold uppercase tracking-[0.07em] px-1 py-[1px] rounded-[2px] shrink-0"
-                            style={{ background: '#2a3440', color: '#c6d4df', border: '1px solid rgba(184,196,206,0.3)' }}
-                            title="Beaten, still playing it">Beaten</span>
-                    )}
-                </div>
-                <p className="text-[9px] text-[#8f98a0] truncate mt-0.5">
-                    {fmtAgo(g.daysAgo)}
-                    <span className="text-[#546270]"> · {g.days} day{g.days !== 1 ? 's' : ''} played</span>
-                    {isRA && g.consoleName && <span className="text-[#546270]"> · {g.consoleName}</span>}
-                </p>
+        <>
+            <img src={icon} alt="" className="absolute -inset-[20%] w-[140%] h-[140%] max-w-none object-cover blur-[14px] saturate-[1.2] opacity-70" />
+            <img src={icon} alt="" className="absolute top-[11%] left-1/2 -translate-x-1/2 h-[78%] w-auto aspect-square object-cover rounded-[3px] border border-[rgba(0,0,0,0.6)] shadow-[0_4px_14px_rgba(0,0,0,0.6)]" />
+        </>
+    );
+};
+
+const PlayingTile = ({ game: g }) => {
+    const isRA = g.platform === 'ra';
+    const { baseTitle, isSubset, tags } = isRA ? parseTitle(g.name) : { baseTitle: g.name };
+    const pct = g.progress?.total ? Math.round(g.progress.unlocked / g.progress.total * 100) : null;
+    const isXbox = g.platform === 'xbox';
+    const rgb = PLATFORM_RGB[g.platform];
+    return (
+        <a href={GAME_URL[g.platform](g)} target="_blank" rel="noreferrer"
+            className="group flex flex-col min-w-0 bg-[#1b2838] border border-[#2a475e] rounded-[2px] overflow-hidden hover:border-[#4c9be8] transition-colors">
+            {/* Steam header art is 460×215: the box matches it so nothing is cropped */}
+            <div className="relative aspect-[460/215] overflow-hidden grid place-items-center bg-[#101214]">
+                <TileCover game={g} />
+                {/* Dark backing so the chip reads on any cover art */}
+                <span className="absolute top-[5px] left-[5px] rounded-[2px] bg-[rgba(16,18,20,0.85)]">
+                    <span className={`block ${chipCls} ${STATUS_CHIP[g.group]}`}>{STATUS_LABEL[g.group]}</span>
+                </span>
+                <span className="absolute top-[5px] right-[5px] text-[8px] font-semibold text-white bg-[rgba(16,18,20,0.75)] px-[5px] py-[2px] rounded-[2px] tabular-nums">{fmtAgo(g.daysAgo)}</span>
             </div>
-            <div className="shrink-0 flex flex-col items-end gap-0.5">
-                {g.platform === 'xbox'
-                    ? <span className="text-[11px] font-semibold text-[#323f4c]" title="Xbox doesn't report playtime">n/a</span>
-                    : <span className="text-[11px] font-semibold text-[#c6d4df]">{fmtMinutes(g.minutes)}</span>}
-                {g.unlocks > 0 && (
-                    <span className="text-[9px] text-[#e5b143] flex items-center gap-0.5" title={`${g.unlocks} achievement${g.unlocks !== 1 ? 's' : ''} in the last ${PLAYING_WINDOW_DAYS} days`}>
-                        <Trophy size={9} /> {g.unlocks}
+            <div className="flex flex-col gap-1.5 px-2 pt-[7px] min-w-0">
+                <div className="flex items-center gap-[5px] min-w-0">
+                    <span className="text-[7px] font-extrabold tracking-[0.04em] uppercase px-[3px] py-[1px] rounded-[2px] shrink-0"
+                        style={{ color: `rgb(${rgb})`, background: `rgba(${rgb},0.1)`, border: `1px solid rgba(${rgb},0.3)` }}>
+                        {PLATFORM_LABEL[g.platform]}
                     </span>
-                )}
+                    <span className="text-[11px] font-medium text-[#c6d4df] group-hover:text-white truncate min-w-0 transition-colors" title={g.name}>{baseTitle}</span>
+                    {isSubset && <span className="text-[7px] font-bold uppercase tracking-[0.07em] px-[3px] py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>}
+                    {!isSubset && renderTildeTags(tags)}
+                    {g.beaten && <span className={`${chipCls} ${STATUS_CHIP.onhold}`} title="Beaten, still playing it">Beaten</span>}
+                </div>
+                {/* Achievement progress */}
+                <div className="flex items-center gap-1.5 text-[9px] text-[#546270] tabular-nums">
+                    <div className="flex-1 h-1 bg-[#101a24] rounded-[1px] overflow-hidden">
+                        {pct !== null && <div className="h-full" style={{ width: `${pct}%`, background: `rgb(${rgb})` }} />}
+                    </div>
+                    <span className="text-[#c6d4df] font-semibold" title={g.progress ? `${g.progress.unlocked} of ${g.progress.total} achievements` : undefined}>{pct !== null ? `${pct}%` : '–'}</span>
+                </div>
+                {/* 13 weeks of play, oldest first */}
+                <div className="flex flex-col gap-[3px]">
+                    <div className="grid grid-cols-[repeat(13,1fr)] gap-[2px]">
+                        {g.weeks.map((v, i) => {
+                            const a = weekAlpha(v, g.platform);
+                            const weeksAgo = g.weeks.length - 1 - i;
+                            const label = isXbox ? `${v} unlock${v !== 1 ? 's' : ''}` : fmtMinutes(v);
+                            return <i key={i} className="h-[9px] rounded-[1px]" style={{ background: a ? `rgba(${rgb},${a})` : '#243444' }}
+                                title={`${weeksAgo === 0 ? 'This week' : `${weeksAgo} week${weeksAgo !== 1 ? 's' : ''} ago`}: ${v ? label : 'not played'}`} />;
+                        })}
+                    </div>
+                    <div className="flex items-center gap-[5px] text-[8px] text-[#546270] uppercase tracking-[0.06em]">
+                        <span>13 weeks ago</span>
+                        <i className="relative flex-1 h-px bg-[#2a3a4a] after:content-[''] after:absolute after:-right-px after:-top-[2px] after:border-l-4 after:border-l-[#2a3a4a] after:border-y-[2.5px] after:border-y-transparent" />
+                        <span>now</span>
+                    </div>
+                </div>
             </div>
-        </div>
+            {/* Stats: the first two cover the same 13 weeks as the strip */}
+            <div className="mt-1.5 grid grid-cols-3 border-t border-[#1a2535] bg-[#172333]">
+                <div className="col-span-2 pt-1 text-center text-[7px] font-bold uppercase tracking-[0.1em] text-[#3f5368]">Last 13 weeks</div>
+                <div className="pt-1 text-center text-[7px] font-bold uppercase tracking-[0.1em] text-[#3f5368] border-l border-[#1a2535]">All time</div>
+                {[
+                    { v: isXbox || !g.sessions ? null : fmtMinutes(Math.round(g.minutes / g.sessions)), l: 'Avg session' },
+                    { v: isXbox ? null : g.sessions, l: 'Sessions' },
+                    { v: g.totalMinutes != null ? fmtTotal(g.totalMinutes) : null, l: 'Played', border: true },
+                ].map(({ v, l, border }) => (
+                    <div key={l} className={`flex flex-col items-center gap-px px-0.5 pt-0.5 pb-1.5 min-w-0 ${border ? 'border-l border-[#1a2535]' : ''}`}>
+                        <b className={`text-[10px] font-semibold tabular-nums whitespace-nowrap ${v == null ? 'text-[#323f4c]' : 'text-[#c6d4df]'}`}
+                            title={v == null && isXbox ? "Xbox doesn't report playtime" : undefined}>{v ?? (isXbox ? 'n/a' : '–')}</b>
+                        <span className="text-[7px] font-bold uppercase tracking-[0.08em] text-[#546270] whitespace-nowrap">{l}</span>
+                    </div>
+                ))}
+            </div>
+        </a>
     );
 };
 
 const PlayingSkeleton = () => (
-    <div className="flex flex-col gap-5">
-        {[3, 2, 2].map((n, i) => (
-            <div key={i}>
-                <div className="flex items-center gap-2 mb-2">
-                    <div className="shimmer w-2 h-2 rounded-full" />
-                    <div className="shimmer h-2.5 w-20 rounded" />
-                    <div className="flex-1 h-px bg-[#1e2d3a]" />
-                    <div className="shimmer h-2 w-28 rounded" />
-                </div>
-                <div className="flex flex-col gap-1">
-                    {[...Array(n)].map((_, j) => (
-                        <div key={j} className="flex items-center gap-2 p-2 bg-[#1b2838] border border-[#2a475e] rounded-[2px]">
-                            <div className="shimmer w-8 h-8 rounded-[2px] shrink-0" />
-                            <div className="flex-1 flex flex-col gap-1.5">
-                                <div className="shimmer h-2.5 rounded" style={{ width: `${45 + j * 20}%` }} />
-                                <div className="shimmer h-2 w-24 rounded" />
-                            </div>
-                            <div className="shimmer h-3 w-10 rounded" />
-                        </div>
-                    ))}
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-2.5">
+        {[...Array(8)].map((_, i) => (
+            <div key={i} className="flex flex-col bg-[#1b2838] border border-[#2a475e] rounded-[2px] overflow-hidden">
+                <div className="shimmer aspect-[460/215]" style={{ borderRadius: 0 }} />
+                <div className="flex flex-col gap-2 p-2">
+                    <div className="shimmer h-2.5 rounded" style={{ width: `${55 + (i % 3) * 15}%` }} />
+                    <div className="shimmer h-1 rounded" />
+                    <div className="shimmer h-[9px] rounded" />
+                    <div className="shimmer h-6 rounded" />
                 </div>
             </div>
         ))}
-    </div>
-);
-
-// Playing / On hold / Drifting, each a list of game rows (an empty group says so)
-const PlayingGroups = ({ games }) => (
-    <div className="flex flex-col gap-5">
-        {PLAYING_GROUPS.map(grp => {
-            const list = games.filter(g => g.group === grp.id);
-            return (
-                <div key={grp.id}>
-                    <div className="flex items-center gap-2 mb-2">
-                        <div className="w-2 h-2 rounded-full shrink-0" style={{ background: PLAYING_GROUP_COLOR[grp.id] }} />
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.07em]" style={{ color: PLAYING_GROUP_COLOR[grp.id] }}>{grp.label}</span>
-                        <span className="text-[10px] text-[#546270]">{list.length}</span>
-                        <div className="flex-1 h-px bg-[#2a475e] opacity-40" />
-                        <span className="text-[9px] text-[#546270] truncate">{grp.hint}</span>
-                    </div>
-                    {list.length === 0
-                        ? <p className="text-[10px] text-[#546270] italic pl-4">No games</p>
-                        : <div className="flex flex-col gap-1">{list.map(g => <PlayingRow key={g.key} game={g} />)}</div>}
-                </div>
-            );
-        })}
     </div>
 );
 
@@ -949,7 +963,7 @@ const App = () => {
                                     <span className={grp.id === 'playing' ? 'text-[#66c0f4]' : 'text-[#c6d4df]'}>{playing.groups[grp.id]?.length ?? 0}</span> {grp.label}
                                 </span>
                             ))}
-                            <span className={pill}>Last {PLAYING_WINDOW_DAYS} days</span>
+                            <span className={pill}>Last 13 weeks</span>
                         </div>
                     )}
                     {!loading && view === 'achievements' && (
@@ -994,12 +1008,18 @@ const App = () => {
                                     </button>
                                 ))}
                             </div>
-                            <span className="text-[10px] text-[#546270] ml-auto hidden sm:inline">Unfinished games with an hour or more of play</span>
+                            <span className="text-[10px] text-[#546270] ml-auto hidden sm:inline">Unfinished games you've put time into, last 13 weeks</span>
                         </div>
                         {!playing ? <PlayingSkeleton /> : playing.error ? (
                             <div className="text-[#8f98a0] text-[11px] py-4 italic text-center anim-fade">Could not load the games in rotation.</div>
                         ) : (
-                            <div key={filter} className="anim-fade"><PlayingGroups games={playingShown} /></div>
+                            playingShown.length === 0 ? (
+                                <div key={filter} className="text-[#8f98a0] text-[11px] py-4 italic text-center anim-fade">No games in rotation.</div>
+                            ) : (
+                                <div key={filter} className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-2.5 anim-fade">
+                                    {playingShown.map(g => <PlayingTile key={g.key} game={g} />)}
+                                </div>
+                            )
                         )}
                     </div>
                 ) : loading ? (

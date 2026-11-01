@@ -207,9 +207,10 @@ Steam and RA only (Xbox has no playtime). Each run compares lifetime playtime pe
 - `scripts/backfill-playtime.js [--ref origin/main] [--platform steam|ra] [--dry-run]` replays the hourly snapshots in git through the same diff and replaces the playtime files. History starts 2026-03-25 (Steam) / 2026-03-27 (RA)
 
 ### Playing (`assets/playing.js`)
-Games in rotation, so games played in parallel don't get lost. Computed in the browser (no pipeline file), so "3d ago" is never stale. `loadPlaying(fetchJson, base)` reads play sessions (RA, Steam), achievement chunk 1 (all platforms), RA awards from `ra/profile.json`, and the per-game file + `win-conditions.json` of each Steam/Xbox candidate.
-- **Window** 90 days. **Groups** by local days since the last session end or unlock: Playing ≤14, On hold ≤45, Drifting ≤90
-- **Counts only with real time:** 60+ minutes of sessions in the window (RA, Steam); Xbox (no playtime) needs unlocks on 2+ days. Drops tryouts, demos and RA hash checks
+Games in rotation, so games played in parallel don't get lost. Computed in the browser (no pipeline file), so "3d ago" is never stale. `loadPlaying(fetchJson, base)` reads play sessions (RA, Steam), achievement chunk 1 (all platforms), RA awards and progress from `ra/profile.json`, and the per-game file + `win-conditions.json` of each Steam/Xbox candidate.
+- **Window** 13 weeks (91 days), so the weekly strip and the session stats cover the same days. **Groups** by local days since the last session end or unlock: Playing ≤14, or ≤45 with 5h+ in the window (a long game you come back to); On hold ≤45; Drifting ≤91
+- **Counts only with real time:** 60+ minutes of sessions in the window (RA, Steam), 30 for a game touched in the last 14 days (one you just started); Xbox (no playtime) needs unlocks on 2+ days. Drops tryouts, demos and RA hash checks
+- **Per game:** `sessions`, `minutes` and `weeks` (13 week cells of minutes, oldest first, 7-day blocks back from today; unlock counts for Xbox) over the window; `progress` (Steam/Xbox per-game file, RA `gameAwardsAndProgress`); `totalMinutes` lifetime (Steam `playtimeForever`, RA `playtime` that the RA pipeline adds to each `gameAwardsAndProgress` entry); `cover` (Steam header from the CDN, Xbox hero, none for RA)
 - **Excluded:** Mastered/Completed/Perfect games, Steam achievement farms (same rule as Analytics). A **Beaten** game counts only activity more than 30 min after the beat (RA award date, or the win-condition unlock) and only in Playing: finishing it and moving on is not "drifting"
 - Thresholds are the constants at the top of the file; check a change against real data before shipping it
 
