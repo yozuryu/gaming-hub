@@ -21,11 +21,15 @@
    .anim-fade lighter swap for lists that change in place (filters, a picked day)
    .anim-pop  popups and modal panels
    .anim-backdrop  modal backdrops
-   Re-run on change by giving the element a React `key` tied to what changed. */
-.anim-in       { animation: motion-in 240ms cubic-bezier(0.2, 0.7, 0.3, 1) both; }
-.anim-fade     { animation: motion-fade 180ms ease-out both; }
-.anim-pop      { animation: motion-pop 180ms cubic-bezier(0.2, 0.7, 0.3, 1) both; }
-.anim-backdrop { animation: motion-fade 160ms ease-out both; }
+   Re-run on change by giving the element a React `key` tied to what changed.
+   Fill is `backwards`, never `both`: an animation that stays in effect on
+   `transform` turns the element into the containing block for every
+   `position: fixed` descendant (the profile pages' floating tab pill sits inside
+   `<main class="anim-in">` and would stick to the bottom of the page). */
+.anim-in       { animation: motion-in 240ms cubic-bezier(0.2, 0.7, 0.3, 1) backwards; }
+.anim-fade     { animation: motion-fade 180ms ease-out backwards; }
+.anim-pop      { animation: motion-pop 180ms cubic-bezier(0.2, 0.7, 0.3, 1) backwards; }
+.anim-backdrop { animation: motion-fade 160ms ease-out backwards; }
 
 @keyframes motion-in   { from { opacity: 0; transform: translateY(6px); } }
 @keyframes motion-fade { from { opacity: 0; } }

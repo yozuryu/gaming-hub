@@ -1,5 +1,13 @@
 # Changelog
 
+## v26.11.01
+
+The floating tab pill on the profile pages stays on screen again.
+
+### Structure
+
+- Fixed the mobile floating tab pill (RA, Steam, Xbox) only showing at the very bottom of the page instead of above the nav bar. The shared animation classes (`.anim-in`, `.anim-fade`, `.anim-pop`, `.anim-backdrop`, plus the admin copy and the hub fades) kept their end state with `animation-fill-mode: both`, and a transform animation that stays in effect makes `<main class="anim-in">` the containing block for its `position: fixed` children. They now use `backwards`, which looks the same once the animation ends
+
 ## v26.10.13
 
 Chevron icons and an Analytics strip on the hub; every component now animates.
