@@ -1,0 +1,422 @@
+{
+    "appId": 899440,
+    "hasAchievements": true,
+    "total": 32,
+    "unlocked": 0,
+    "gameName": "GOD EATER 3",
+    "achievements": [
+        {
+            "apiName": "P_01",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "It All Comes Together",
+            "description": "Collect all trophies.",
+            "iconUrl": "2f4c926d6ddc492957c1f1abf468ce382ca77bd9.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": false,
+            "globalPct": 3
+        },
+        {
+            "apiName": "B_02",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Adaptive God Eater",
+            "description": "Survive the AGE aptitude test and for several years after.",
+            "iconUrl": "edffacb67167123c22a9594b8ce8cb38607ebff5.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": false,
+            "globalPct": 94.7
+        },
+        {
+            "apiName": "B_04",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Turning Point",
+            "description": "",
+            "iconUrl": "edffacb67167123c22a9594b8ce8cb38607ebff5.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": true,
+            "globalPct": 69.9
+        },
+        {
+            "apiName": "S_06",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Humanity's Hope",
+            "description": "",
+            "iconUrl": "edffacb67167123c22a9594b8ce8cb38607ebff5.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": true,
+            "globalPct": 48.6
+        },
+        {
+            "apiName": "B_08",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Salty Cake",
+            "description": "",
+            "iconUrl": "edffacb67167123c22a9594b8ce8cb38607ebff5.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": true,
+            "globalPct": 39.3
+        },
+        {
+            "apiName": "B_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Path of the Hounds",
+            "description": "",
+            "iconUrl": "edffacb67167123c22a9594b8ce8cb38607ebff5.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": true,
+            "globalPct": 31.6
+        },
+        {
+            "apiName": "S_12",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "More than a Dream",
+            "description": "",
+            "iconUrl": "2033b99b8175ebd48d549e6893862fccfdaefa90.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": true,
+            "globalPct": 24.9
+        },
+        {
+            "apiName": "B_13",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Welcome Home!",
+            "description": "",
+            "iconUrl": "ad68d982b8f0b04aa96580f9638cf66c403113f0.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": true,
+            "globalPct": 19.5
+        },
+        {
+            "apiName": "B_03",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "False Sun",
+            "description": "",
+            "iconUrl": "2033b99b8175ebd48d549e6893862fccfdaefa90.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": true,
+            "globalPct": 48.6
+        },
+        {
+            "apiName": "B_05",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Blasphemy Incarnate",
+            "description": "",
+            "iconUrl": "2033b99b8175ebd48d549e6893862fccfdaefa90.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": true,
+            "globalPct": 39
+        },
+        {
+            "apiName": "B_07",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Lord of Bones",
+            "description": "",
+            "iconUrl": "2033b99b8175ebd48d549e6893862fccfdaefa90.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": true,
+            "globalPct": 37
+        },
+        {
+            "apiName": "S_09",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "King of the Underworld",
+            "description": "",
+            "iconUrl": "ad68d982b8f0b04aa96580f9638cf66c403113f0.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": true,
+            "globalPct": 24.9
+        },
+        {
+            "apiName": "B_11",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Insatiable",
+            "description": "",
+            "iconUrl": "ad68d982b8f0b04aa96580f9638cf66c403113f0.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": true,
+            "globalPct": 21.7
+        },
+        {
+            "apiName": "B_14",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Divine Fodder",
+            "description": "Gain strength by devouring an Aragami.",
+            "iconUrl": "28dea4cd6b50af298fdec15aea0ba2493ba43c36.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": false,
+            "globalPct": 80.8
+        },
+        {
+            "apiName": "B_15",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Shared Power",
+            "description": "Successfully use a Link Burst.",
+            "iconUrl": "edffacb67167123c22a9594b8ce8cb38607ebff5.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": false,
+            "globalPct": 62.4
+        },
+        {
+            "apiName": "B_16",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Togetherness",
+            "description": "",
+            "iconUrl": "edffacb67167123c22a9594b8ce8cb38607ebff5.jpg",
+            "iconGrayUrl": "57c910c9b9ac00720a2f440b4b2377f1468a915b.jpg",
+            "hidden": true,
+            "globalPct": 73.1
+        },
+        {
+            "apiName": "S_17",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Ties that Bind Us",
+            "description": "",
+            "iconUrl": "24653cf4a59602c30ec6a0ceed0d277fee986ea7.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": true,
+            "globalPct": 9.2
+        },
+        {
+            "apiName": "G_34",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dreams of Glory",
+            "description": "Earn an SSS rank on 40 missions.",
+            "iconUrl": "ad68d982b8f0b04aa96580f9638cf66c403113f0.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": false,
+            "globalPct": 30.4
+        },
+        {
+            "apiName": "B_19",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Expedition Leader",
+            "description": "Clear an expedition for the first time.",
+            "iconUrl": "edffacb67167123c22a9594b8ce8cb38607ebff5.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": false,
+            "globalPct": 37.9
+        },
+        {
+            "apiName": "G_20",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ultimate Skill",
+            "description": "",
+            "iconUrl": "ad68d982b8f0b04aa96580f9638cf66c403113f0.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": true,
+            "globalPct": 8
+        },
+        {
+            "apiName": "B_21",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cooperative Venture",
+            "description": "",
+            "iconUrl": "edffacb67167123c22a9594b8ce8cb38607ebff5.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": true,
+            "globalPct": 22.7
+        },
+        {
+            "apiName": "B_22",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Technical Expert",
+            "description": "",
+            "iconUrl": "edffacb67167123c22a9594b8ce8cb38607ebff5.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": true,
+            "globalPct": 53.7
+        },
+        {
+            "apiName": "B_23",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Power Rising",
+            "description": "Unleash your first Burst Art.",
+            "iconUrl": "edffacb67167123c22a9594b8ce8cb38607ebff5.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": false,
+            "globalPct": 74.5
+        },
+        {
+            "apiName": "B_24",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "New Gear",
+            "description": "Craft equipment for the first time.",
+            "iconUrl": "edffacb67167123c22a9594b8ce8cb38607ebff5.jpg",
+            "iconGrayUrl": "57c910c9b9ac00720a2f440b4b2377f1468a915b.jpg",
+            "hidden": false,
+            "globalPct": 64.3
+        },
+        {
+            "apiName": "B_35",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "God Arc Tuning",
+            "description": "Upgrade equipment for the first time.",
+            "iconUrl": "edffacb67167123c22a9594b8ce8cb38607ebff5.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": false,
+            "globalPct": 53.5
+        },
+        {
+            "apiName": "S_25",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Jackpot",
+            "description": "Discover a top-rank, max-level Abandoned God Arc.",
+            "iconUrl": "2033b99b8175ebd48d549e6893862fccfdaefa90.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": false,
+            "globalPct": 30.4
+        },
+        {
+            "apiName": "S_26",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Most Trusted Ally",
+            "description": "Use one type of melee weapon or gun for 200 missions.",
+            "iconUrl": "2033b99b8175ebd48d549e6893862fccfdaefa90.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": false,
+            "globalPct": 9.4
+        },
+        {
+            "apiName": "B_27",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Real Treasure",
+            "description": "Obtain your first piece of rank 7 equipment.",
+            "iconUrl": "edffacb67167123c22a9594b8ce8cb38607ebff5.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": false,
+            "globalPct": 12.6
+        },
+        {
+            "apiName": "S_28",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Unstoppable Armament",
+            "description": "Obtain rank 7 versions of each type of melee weapon, gun, and shield.",
+            "iconUrl": "2033b99b8175ebd48d549e6893862fccfdaefa90.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": false,
+            "globalPct": 3.7
+        },
+        {
+            "apiName": "B_30",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Broken Bond",
+            "description": "Break your first enemy bond.",
+            "iconUrl": "edffacb67167123c22a9594b8ce8cb38607ebff5.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": false,
+            "globalPct": 69.8
+        },
+        {
+            "apiName": "S_31",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Breaker of Bonds",
+            "description": "Break 100 bonds.",
+            "iconUrl": "2033b99b8175ebd48d549e6893862fccfdaefa90.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": false,
+            "globalPct": 33.5
+        },
+        {
+            "apiName": "G_33",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "An Irreplaceable Friend",
+            "description": "Beat a mission with an ally who has learned all their Personal Abilities.",
+            "iconUrl": "ad68d982b8f0b04aa96580f9638cf66c403113f0.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "hidden": false,
+            "globalPct": 4.4
+        }
+    ],
+    "playtimeForever": 473,
+    "lastPlayedTs": "2025-02-19T03:22:51.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/899440/4d01f75174b7cd6d840ca2a53689fda737876703.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "P_01",
+            "displayName": "It All Comes Together",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "2f4c926d6ddc492957c1f1abf468ce382ca77bd9.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "globalPct": 3
+        },
+        {
+            "apiName": "B_02",
+            "displayName": "Adaptive God Eater",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "edffacb67167123c22a9594b8ce8cb38607ebff5.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "globalPct": 94.7
+        },
+        {
+            "apiName": "B_04",
+            "displayName": "Turning Point",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "edffacb67167123c22a9594b8ce8cb38607ebff5.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "globalPct": 69.9
+        },
+        {
+            "apiName": "S_06",
+            "displayName": "Humanity's Hope",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "edffacb67167123c22a9594b8ce8cb38607ebff5.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "globalPct": 48.6
+        },
+        {
+            "apiName": "B_08",
+            "displayName": "Salty Cake",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "edffacb67167123c22a9594b8ce8cb38607ebff5.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "globalPct": 39.3
+        },
+        {
+            "apiName": "B_10",
+            "displayName": "Path of the Hounds",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "edffacb67167123c22a9594b8ce8cb38607ebff5.jpg",
+            "iconGrayUrl": "00a1133f2a2a46b31dcfb9bea76b509be972c49f.jpg",
+            "globalPct": 31.6
+        }
+    ]
+}

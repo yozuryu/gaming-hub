@@ -1,0 +1,202 @@
+{
+    "appId": 394600,
+    "hasAchievements": true,
+    "total": 12,
+    "unlocked": 0,
+    "gameName": "Mighty Gunvolt",
+    "achievements": [
+        {
+            "apiName": "ACHIEVEMENT_00",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Boss Beatdown",
+            "description": "Defeat a boss",
+            "iconUrl": "1c28be67be0332a64b544c7eab3066d23c6dd98e.jpg",
+            "iconGrayUrl": "ca70ed58e67f31a25126db9cc756e25762aa1026.jpg",
+            "hidden": false,
+            "globalPct": 65.4
+        },
+        {
+            "apiName": "ACHIEVEMENT_01",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Peaceful Approach",
+            "description": "Reach a boss without defeating any enemies",
+            "iconUrl": "e6d8bb28fb3a2ba703921db26de3ceb29970a2a7.jpg",
+            "iconGrayUrl": "cfe3ee7ac826389905744bcf1a6bc83260877807.jpg",
+            "hidden": false,
+            "globalPct": 12.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_02",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Blue Butterfly",
+            "description": "Discover the hidden butterfly",
+            "iconUrl": "8df184175082dd5c872eaad3b4d0eead814c9a04.jpg",
+            "iconGrayUrl": "7d9146cd631e8fcbbeda07e096bf2b2c9e191784.jpg",
+            "hidden": false,
+            "globalPct": 25.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_03",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Master of Lightning",
+            "description": "View Gunvolt's ending",
+            "iconUrl": "cf5d52002a88b0895142fcb0e48531f9468431b9.jpg",
+            "iconGrayUrl": "6e6cdf0ac21a9bc11c37fc9ba0010cc60f49257a.jpg",
+            "hidden": false,
+            "globalPct": 31.5
+        },
+        {
+            "apiName": "ACHIEVEMENT_04",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Master of Love",
+            "description": "View Ekoro's ending",
+            "iconUrl": "e7b6020c25c91fc14a8a56c01adac5f4aa538c24.jpg",
+            "iconGrayUrl": "f58cad22fd40415d063c1c6dc54c8bba1f3a8a20.jpg",
+            "hidden": false,
+            "globalPct": 19.3
+        },
+        {
+            "apiName": "ACHIEVEMENT_05",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Master of Might",
+            "description": "View Beck's ending",
+            "iconUrl": "832993aeeb137b96a69270528bb1926a879c7130.jpg",
+            "iconGrayUrl": "d1963220ae3866fe52a5f19c8046fd11d8415a34.jpg",
+            "hidden": false,
+            "globalPct": 17.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_06",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Old-School Cool",
+            "description": "Obtain more than 30,000 points in a single stage",
+            "iconUrl": "1367442376ae6b1ef57f951d9816179310140e69.jpg",
+            "iconGrayUrl": "dc3ca6cc186a283f5b42b1ccb997cfe45e8f8f1c.jpg",
+            "hidden": false,
+            "globalPct": 48.9
+        },
+        {
+            "apiName": "ACHIEVEMENT_07",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stockpiler",
+            "description": "Obtain 9 lives",
+            "iconUrl": "d2100db4ca2702e78e408880fdefa3c00ff69cc4.jpg",
+            "iconGrayUrl": "1f6bc539f8ab9a1d83f5e24a897a93b61282c176.jpg",
+            "hidden": false,
+            "globalPct": 16.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_08",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Unscathed Hero",
+            "description": "Defeat a boss without taking damage",
+            "iconUrl": "f4249f4e232accf795f8925e4b0dda8abe9a5d75.jpg",
+            "iconGrayUrl": "59a7a7f8012a7abd4946d778ac53f9a7b5f9cb56.jpg",
+            "hidden": false,
+            "globalPct": 11.2
+        },
+        {
+            "apiName": "ACHIEVEMENT_09",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Shot to the Heart",
+            "description": "Befriend 10 enemies in one stage with Ekoro",
+            "iconUrl": "cd1312ef24d1a2089c74fd579ca394555b3ede2d.jpg",
+            "iconGrayUrl": "33033f975a1e7d0a1dfbf429629b5fd324e1d207.jpg",
+            "hidden": false,
+            "globalPct": 16.2
+        },
+        {
+            "apiName": "ACHIEVEMENT_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Super Combo",
+            "description": "Get a x1.50 combo",
+            "iconUrl": "577bcc31552770267b50401785f0b11f9945381e.jpg",
+            "iconGrayUrl": "e27c286c9c4ebd3317514bad8b3d505f9b4e2fc7.jpg",
+            "hidden": false,
+            "globalPct": 49.4
+        },
+        {
+            "apiName": "ACHIEVEMENT_11",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Perfection",
+            "description": "Clear all 9 stages with any character",
+            "iconUrl": "61875d99f95bcfb34e358aa4ae8349e24ef3f08e.jpg",
+            "iconGrayUrl": "b8ceac447f0286bedcb0f1cd16535940d1158c7e.jpg",
+            "hidden": false,
+            "globalPct": 11.8
+        }
+    ],
+    "playtimeForever": 8,
+    "lastPlayedTs": "2020-06-24T17:20:48.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/394600/63b8b51b014778523f88d9a2420948379d1e000a.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACHIEVEMENT_00",
+            "displayName": "Boss Beatdown",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1c28be67be0332a64b544c7eab3066d23c6dd98e.jpg",
+            "iconGrayUrl": "ca70ed58e67f31a25126db9cc756e25762aa1026.jpg",
+            "globalPct": 65.4
+        },
+        {
+            "apiName": "ACHIEVEMENT_01",
+            "displayName": "A Peaceful Approach",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "e6d8bb28fb3a2ba703921db26de3ceb29970a2a7.jpg",
+            "iconGrayUrl": "cfe3ee7ac826389905744bcf1a6bc83260877807.jpg",
+            "globalPct": 12.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_02",
+            "displayName": "Blue Butterfly",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "8df184175082dd5c872eaad3b4d0eead814c9a04.jpg",
+            "iconGrayUrl": "7d9146cd631e8fcbbeda07e096bf2b2c9e191784.jpg",
+            "globalPct": 25.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_03",
+            "displayName": "Master of Lightning",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "cf5d52002a88b0895142fcb0e48531f9468431b9.jpg",
+            "iconGrayUrl": "6e6cdf0ac21a9bc11c37fc9ba0010cc60f49257a.jpg",
+            "globalPct": 31.5
+        },
+        {
+            "apiName": "ACHIEVEMENT_04",
+            "displayName": "Master of Love",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "e7b6020c25c91fc14a8a56c01adac5f4aa538c24.jpg",
+            "iconGrayUrl": "f58cad22fd40415d063c1c6dc54c8bba1f3a8a20.jpg",
+            "globalPct": 19.3
+        },
+        {
+            "apiName": "ACHIEVEMENT_05",
+            "displayName": "Master of Might",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "832993aeeb137b96a69270528bb1926a879c7130.jpg",
+            "iconGrayUrl": "d1963220ae3866fe52a5f19c8046fd11d8415a34.jpg",
+            "globalPct": 17.1
+        }
+    ]
+}

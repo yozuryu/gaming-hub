@@ -1,0 +1,213 @@
+{
+    "appId": 388880,
+    "hasAchievements": true,
+    "total": 13,
+    "unlocked": 0,
+    "gameName": "Oxenfree",
+    "achievements": [
+        {
+            "apiName": "NO_DIALOGUE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Strong, Silent Type",
+            "description": "",
+            "iconUrl": "1643bc36ae1ff9bb5e53a92857e9453a1edc4cf7.jpg",
+            "iconGrayUrl": "545cecce60e63a8515761df3ce2fa2a2f5d7e034.jpg",
+            "hidden": true,
+            "globalPct": 2.5
+        },
+        {
+            "apiName": "STORY_COMPLETE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "\"This House is Clear\"",
+            "description": "Complete the story.",
+            "iconUrl": "0968daef81491af1066b490ebcd50f9d6b01db67.jpg",
+            "iconGrayUrl": "d02c12ce9f0f3531b2f229d6ebf043efcae8f6f7.jpg",
+            "hidden": false,
+            "globalPct": 44
+        },
+        {
+            "apiName": "MICHAEL_SAVED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Thicker than Water",
+            "description": "",
+            "iconUrl": "c8a16eb39823d7ec4731ad94a5f1920d5a1a619e.jpg",
+            "iconGrayUrl": "601499798fa18b7cf69216ff792252516f7d9f41.jpg",
+            "hidden": true,
+            "globalPct": 11.1
+        },
+        {
+            "apiName": "JONAS_BROTHER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "New Beginnings",
+            "description": "",
+            "iconUrl": "b6db10315ff72de9ee811efd9c005b8f0a1eda94.jpg",
+            "iconGrayUrl": "b28b62f0d6b0acdf20407b73e11f4197eb8fba6f.jpg",
+            "hidden": true,
+            "globalPct": 38.5
+        },
+        {
+            "apiName": "ADLER_PART1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Adler Letters, Pt. 1",
+            "description": "Collect 4 of Maggie's letters.",
+            "iconUrl": "cdd63638da0555e76354f467a483879574037ab6.jpg",
+            "iconGrayUrl": "289755ac57297de8bb83b7409fa6c48cc1d9cb66.jpg",
+            "hidden": false,
+            "globalPct": 25.7
+        },
+        {
+            "apiName": "ADLER_PART2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Adler Letters, Pt. 2",
+            "description": "Collect 8 of Maggie's letters.",
+            "iconUrl": "080d061e4a60a848f12033864b49a19820f915ea.jpg",
+            "iconGrayUrl": "bb4899217c5aa390aba586dcaff9999601dcebd3.jpg",
+            "hidden": false,
+            "globalPct": 14.4
+        },
+        {
+            "apiName": "ADLER_PART3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Adler Letters, Pt. 3",
+            "description": "Collect all of Maggie's letters.",
+            "iconUrl": "c0fd8394789ca2c0e384f64952564ca280076817.jpg",
+            "iconGrayUrl": "36c5c86df6bada244c9fc525437f80f6f7a39608.jpg",
+            "hidden": false,
+            "globalPct": 11.3
+        },
+        {
+            "apiName": "GHOST_STORIES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ghost Stories",
+            "description": "Find all hidden frequencies.",
+            "iconUrl": "097cb86df8d6d237134f5044cb48ec697bb1b645.jpg",
+            "iconGrayUrl": "b6462629de60d3ba378103f6dac254092f4298d2.jpg",
+            "hidden": false,
+            "globalPct": 7.5
+        },
+        {
+            "apiName": "FRIENDS_HATE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I'm the Firestarter",
+            "description": "Make enemies with all of your friends.",
+            "iconUrl": "3e84053f4855505d3623926dc31ecb31671f2410.jpg",
+            "iconGrayUrl": "6514006bf95d0dbdbedcc5288f5f9b90b38b4d0b.jpg",
+            "hidden": false,
+            "globalPct": 3
+        },
+        {
+            "apiName": "SLAP_REN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Renjamin Spanklin",
+            "description": "Slap Ren in the face.",
+            "iconUrl": "7676152082ed3f982d961cf06806c436538be023.jpg",
+            "iconGrayUrl": "d057854c0b908153424a9eea1abf459e9447d09d.jpg",
+            "hidden": false,
+            "globalPct": 12.9
+        },
+        {
+            "apiName": "JUMP_CHASM",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "It's A Me",
+            "description": "Jump the crazy chasm in the woods.",
+            "iconUrl": "2bdeafbe6877d9a941608666b9acf9ff8ce2ba82.jpg",
+            "iconGrayUrl": "869db2d579a6162a7a155e4938d7bceee6465ff5.jpg",
+            "hidden": false,
+            "globalPct": 49.6
+        },
+        {
+            "apiName": "REN_NONA_TOGETHER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Matchmaker",
+            "description": "",
+            "iconUrl": "da3e71c12b613125e024f1d0f575329923db6bb0.jpg",
+            "iconGrayUrl": "6a357489bdab1c836e942c026ad4d028df670682.jpg",
+            "hidden": true,
+            "globalPct": 29
+        },
+        {
+            "apiName": "REN_NONA_ALONE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "You'd just end up hating each other.",
+            "description": "",
+            "iconUrl": "9a071bf9f39fb3690550becacaf01da4afb92dea.jpg",
+            "iconGrayUrl": "c4d8baf21bb4c9c9c6cbe3f338bdb5ad74835806.jpg",
+            "hidden": true,
+            "globalPct": 20.2
+        }
+    ],
+    "playtimeForever": 244,
+    "lastPlayedTs": "2024-06-03T18:22:46.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/388880/ebd4e04badb440be4f2ceca1a9b25efd1054c70e.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "NO_DIALOGUE",
+            "displayName": "The Strong, Silent Type",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1643bc36ae1ff9bb5e53a92857e9453a1edc4cf7.jpg",
+            "iconGrayUrl": "545cecce60e63a8515761df3ce2fa2a2f5d7e034.jpg",
+            "globalPct": 2.5
+        },
+        {
+            "apiName": "STORY_COMPLETE",
+            "displayName": "\"This House is Clear\"",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "0968daef81491af1066b490ebcd50f9d6b01db67.jpg",
+            "iconGrayUrl": "d02c12ce9f0f3531b2f229d6ebf043efcae8f6f7.jpg",
+            "globalPct": 44
+        },
+        {
+            "apiName": "MICHAEL_SAVED",
+            "displayName": "Thicker than Water",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c8a16eb39823d7ec4731ad94a5f1920d5a1a619e.jpg",
+            "iconGrayUrl": "601499798fa18b7cf69216ff792252516f7d9f41.jpg",
+            "globalPct": 11.1
+        },
+        {
+            "apiName": "JONAS_BROTHER",
+            "displayName": "New Beginnings",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "b6db10315ff72de9ee811efd9c005b8f0a1eda94.jpg",
+            "iconGrayUrl": "b28b62f0d6b0acdf20407b73e11f4197eb8fba6f.jpg",
+            "globalPct": 38.5
+        },
+        {
+            "apiName": "ADLER_PART1",
+            "displayName": "Adler Letters, Pt. 1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "cdd63638da0555e76354f467a483879574037ab6.jpg",
+            "iconGrayUrl": "289755ac57297de8bb83b7409fa6c48cc1d9cb66.jpg",
+            "globalPct": 25.7
+        },
+        {
+            "apiName": "ADLER_PART2",
+            "displayName": "Adler Letters, Pt. 2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "080d061e4a60a848f12033864b49a19820f915ea.jpg",
+            "iconGrayUrl": "bb4899217c5aa390aba586dcaff9999601dcebd3.jpg",
+            "globalPct": 14.4
+        }
+    ]
+}

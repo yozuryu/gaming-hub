@@ -1,0 +1,290 @@
+{
+    "appId": 339800,
+    "hasAchievements": true,
+    "total": 20,
+    "unlocked": 0,
+    "gameName": "HuniePop",
+    "achievements": [
+        {
+            "apiName": "there_may_be_hope",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "There May Be Hope",
+            "description": "Have your first successful date with a girl.",
+            "iconUrl": "95aa78d4a9cf3672105fd470b0936ee53422148f.jpg",
+            "iconGrayUrl": "f6579a850c62b0b81eca979fd1edb297d2825f73.jpg",
+            "hidden": false,
+            "globalPct": 85.4
+        },
+        {
+            "apiName": "vcard_revoked",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "V-card Revoked",
+            "description": "Spend the night with a girl for the first time.",
+            "iconUrl": "317f65255d1074dfd5c9ced2b0e1e81dacb4f08f.jpg",
+            "iconGrayUrl": "37093f0a6abce21c99de6b73523f7c5848e9a913.jpg",
+            "hidden": false,
+            "globalPct": 71.3
+        },
+        {
+            "apiName": "truest_player",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Truest Player",
+            "description": "Spend the night with the goddess of love.",
+            "iconUrl": "1c5a465041ae4331c85a2e2d5c94db38a3d26e9a.jpg",
+            "iconGrayUrl": "93cad25933bd9f1daa940b9057758a0abd8243d4.jpg",
+            "hidden": false,
+            "globalPct": 40.3
+        },
+        {
+            "apiName": "alpha",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Alpha",
+            "description": "Give Kyu ALL the pairs of panties after she asks for them.",
+            "iconUrl": "91ca9d0c78d4968694a96c7832303557784eff51.jpg",
+            "iconGrayUrl": "0877417ec3c653ea58a7267dcb54ae7f50f74525.jpg",
+            "hidden": false,
+            "globalPct": 26.7
+        },
+        {
+            "apiName": "alpha_champ",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Alpha Champ",
+            "description": "Successfully complete 5 dates while in Alpha Mode.",
+            "iconUrl": "8798ff7912b819b01e77bff4e177d01e174ea552.jpg",
+            "iconGrayUrl": "644373bc0c6fd0fb9f6ae78c0a5fc554aa541a30.jpg",
+            "hidden": false,
+            "globalPct": 8.5
+        },
+        {
+            "apiName": "alpha_master",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Alpha Master",
+            "description": "Successfully complete 10 dates while in Alpha Mode.",
+            "iconUrl": "ed9d273fa3e37d47a10b4064e2402bf9b6a5aa2d.jpg",
+            "iconGrayUrl": "c868e7c4fd0cb183b4c1409695406f2af8b2f059.jpg",
+            "hidden": false,
+            "globalPct": 6.4
+        },
+        {
+            "apiName": "pickup_artist",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pickup Artist",
+            "description": "Spend the night with a girl within 4 days.",
+            "iconUrl": "5a4d264da26b27a0e5585a25df9056ec8431719d.jpg",
+            "iconGrayUrl": "d845d9a92b47657ca4ce51b384f4b28431fcbbae.jpg",
+            "hidden": false,
+            "globalPct": 14.9
+        },
+        {
+            "apiName": "pickup_legend",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pickup Legend",
+            "description": "Spend the night with ALL the girls within 18 days.",
+            "iconUrl": "08c44a68159da4412a34e2947c737acfb9667ef0.jpg",
+            "iconGrayUrl": "3594f8fcf48abdd46f6cf70134f5fb54099aac4c.jpg",
+            "hidden": false,
+            "globalPct": 3.8
+        },
+        {
+            "apiName": "smooth_as_fuck",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Smooth as F*ck",
+            "description": "Spend the night with ALL the girls without failing a single date.",
+            "iconUrl": "9620aa74909d2a0b920f7f8293a906a13d11e5d1.jpg",
+            "iconGrayUrl": "c5b8e6a61857d469884f955927998fe07f203d9f.jpg",
+            "hidden": false,
+            "globalPct": 5.9
+        },
+        {
+            "apiName": "sobriety",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sobriety",
+            "description": "Spend the night with ALL the girls without giving any of them an alcoholic drink.",
+            "iconUrl": "bdcd3640e568f284df6ca85942b94dec368b6dc0.jpg",
+            "iconGrayUrl": "4ae80902f3021b11638d28879493c0e2ddb3a936.jpg",
+            "hidden": false,
+            "globalPct": 6.3
+        },
+        {
+            "apiName": "buying_love",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Buying Love",
+            "description": "Spend the night with ALL the girls without talking with any of them.",
+            "iconUrl": "7747a425bc461ff6af46e71ee79fc5a83dcfd718.jpg",
+            "iconGrayUrl": "3588eb32cca788db1e0f323a0c2d3c05760f76cc.jpg",
+            "hidden": false,
+            "globalPct": 3.6
+        },
+        {
+            "apiName": "lucky_loser",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Lucky Loser",
+            "description": "Spend the night with 3 girls without upgrading any of your traits.",
+            "iconUrl": "e6fe7e3122ce16419f20a4ee4310eff80516daa9.jpg",
+            "iconGrayUrl": "ea273a454122291c1cee7cf6d61b6650b8045e7e.jpg",
+            "hidden": false,
+            "globalPct": 4.2
+        },
+        {
+            "apiName": "quickie",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Quickie",
+            "description": "Successfully complete a date with at least 20 Moves remaining.",
+            "iconUrl": "d0a157171e04924a7a4b911a5c940f125e2479c2.jpg",
+            "iconGrayUrl": "5da022e8a179b9c87a292aa59a527c9ad3785950.jpg",
+            "hidden": false,
+            "globalPct": 12
+        },
+        {
+            "apiName": "make_the_move",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Make the Move",
+            "description": "While on a date, earn 2000 or more Affection in a single move.",
+            "iconUrl": "2af0accd325b940ab1bc7484330f32e7b25eadc6.jpg",
+            "iconGrayUrl": "4519169d4a3f172ed70935c2a2a4bdc780924045.jpg",
+            "hidden": false,
+            "globalPct": 27.2
+        },
+        {
+            "apiName": "zero_life",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Zero Life",
+            "description": "Earn a 100% completion rate.",
+            "iconUrl": "539354ccd3ba6d57247cb990ef47880e32e6d58b.jpg",
+            "iconGrayUrl": "003a0e1a126353626002c3fce1d000bb6bed396c.jpg",
+            "hidden": false,
+            "globalPct": 5
+        },
+        {
+            "apiName": "money_bags",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Money Bags",
+            "description": "Max out both your Munie and Hunie.",
+            "iconUrl": "c9eb9b83724057396b04ca419fbef9f0a41870d2.jpg",
+            "iconGrayUrl": "04c5cff7563c7e154ddfc807ef63c09979e5e264.jpg",
+            "hidden": false,
+            "globalPct": 7.5
+        },
+        {
+            "apiName": "date_the_fairy",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "DTF: Date the Fairy",
+            "description": "",
+            "iconUrl": "b328f254615aa4b9192c233b42b1d9fb8b70d5fd.jpg",
+            "iconGrayUrl": "bdeaa46cc35e9a7ed5edabded80d5ee8a163367d.jpg",
+            "hidden": true,
+            "globalPct": 70.1
+        },
+        {
+            "apiName": "beastiality",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bestiality",
+            "description": "",
+            "iconUrl": "94c023fc8454f47098f4e5ae54ebbb51594dde45.jpg",
+            "iconGrayUrl": "baa0f85b8a25cfe7a6f118ea622648460f8bfe41.jpg",
+            "hidden": true,
+            "globalPct": 45.4
+        },
+        {
+            "apiName": "ayy_lmao",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ayy Lmao",
+            "description": "",
+            "iconUrl": "6f05f7045ed03c4cbf7761ad819a0f502a27c58e.jpg",
+            "iconGrayUrl": "115a6122035ccfb71d656992a05841a8294aa243.jpg",
+            "hidden": true,
+            "globalPct": 44
+        },
+        {
+            "apiName": "heavenly_body",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Heavenly Body",
+            "description": "",
+            "iconUrl": "1bf4482a1be1c3308f87b12d3e993168fa152bb8.jpg",
+            "iconGrayUrl": "1399b4faf2e4674df935e86aded0bc7e3319362c.jpg",
+            "hidden": true,
+            "globalPct": 44
+        }
+    ],
+    "playtimeForever": 120,
+    "lastPlayedTs": "2025-02-12T14:24:53.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/339800/a49f1398797b570567b73ec5f74e2e31cc39e273.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "there_may_be_hope",
+            "displayName": "There May Be Hope",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "95aa78d4a9cf3672105fd470b0936ee53422148f.jpg",
+            "iconGrayUrl": "f6579a850c62b0b81eca979fd1edb297d2825f73.jpg",
+            "globalPct": 85.4
+        },
+        {
+            "apiName": "vcard_revoked",
+            "displayName": "V-card Revoked",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "317f65255d1074dfd5c9ced2b0e1e81dacb4f08f.jpg",
+            "iconGrayUrl": "37093f0a6abce21c99de6b73523f7c5848e9a913.jpg",
+            "globalPct": 71.3
+        },
+        {
+            "apiName": "truest_player",
+            "displayName": "Truest Player",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1c5a465041ae4331c85a2e2d5c94db38a3d26e9a.jpg",
+            "iconGrayUrl": "93cad25933bd9f1daa940b9057758a0abd8243d4.jpg",
+            "globalPct": 40.3
+        },
+        {
+            "apiName": "alpha",
+            "displayName": "Alpha",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "91ca9d0c78d4968694a96c7832303557784eff51.jpg",
+            "iconGrayUrl": "0877417ec3c653ea58a7267dcb54ae7f50f74525.jpg",
+            "globalPct": 26.7
+        },
+        {
+            "apiName": "alpha_champ",
+            "displayName": "Alpha Champ",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "8798ff7912b819b01e77bff4e177d01e174ea552.jpg",
+            "iconGrayUrl": "644373bc0c6fd0fb9f6ae78c0a5fc554aa541a30.jpg",
+            "globalPct": 8.5
+        },
+        {
+            "apiName": "alpha_master",
+            "displayName": "Alpha Master",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "ed9d273fa3e37d47a10b4064e2402bf9b6a5aa2d.jpg",
+            "iconGrayUrl": "c868e7c4fd0cb183b4c1409695406f2af8b2f059.jpg",
+            "globalPct": 6.4
+        }
+    ]
+}

@@ -1,0 +1,279 @@
+{
+    "appId": 259600,
+    "hasAchievements": true,
+    "total": 19,
+    "unlocked": 0,
+    "gameName": "Finding Teddy",
+    "achievements": [
+        {
+            "apiName": "ACH_GAME_COMPLETE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Teddy's Saviour",
+            "description": "You beat the game and saved Teddy.",
+            "iconUrl": "f50a59605a2a0316363e7ca3e811335f293c026f.jpg",
+            "iconGrayUrl": "ce6451b1d8c880ba19909659fac688a75e96e798.jpg",
+            "hidden": false,
+            "globalPct": 21.5
+        },
+        {
+            "apiName": "ACH_NYAN_CAT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Nyanyanyanya",
+            "description": "Tarant showed you his Nyan Cat talent.",
+            "iconUrl": "7bfe5539ecc89685c71af01ffc5190261e98ea29.jpg",
+            "iconGrayUrl": "1b90a63acd31576c9f51b6c7a9079826c7215415.jpg",
+            "hidden": false,
+            "globalPct": 11.5
+        },
+        {
+            "apiName": "ACH_FIRST_LUCIOLE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Firefly",
+            "description": "You found a firefly. Find them all !",
+            "iconUrl": "01da700173919d7416154e6cdae087389661a75f.jpg",
+            "iconGrayUrl": "e1db5f0eb7b97620e7882dfe63e149d226b36c8b.jpg",
+            "hidden": false,
+            "globalPct": 23.6
+        },
+        {
+            "apiName": "ACH_ALL_LUCIOLES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Firefly Collector",
+            "description": "You found all fireflies.",
+            "iconUrl": "279d70301a793ff14e7d484bf210116b0d875c08.jpg",
+            "iconGrayUrl": "575b37cda4a6e6300aceb2936886645f143fa05f.jpg",
+            "hidden": false,
+            "globalPct": 13.7
+        },
+        {
+            "apiName": "ACH_ALL_ARTWORKS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Artwork Collector",
+            "description": "You unlocked all artworks.",
+            "iconUrl": "05d65847f4edbc6bbaa95ad019ecd1ab0d94cc85.jpg",
+            "iconGrayUrl": "fa2215b1a818141eb87c075c067f3da30e1e9201.jpg",
+            "hidden": false,
+            "globalPct": 11.3
+        },
+        {
+            "apiName": "ACH_CAT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Meow",
+            "description": "Mr Cat joined you.",
+            "iconUrl": "a1f1bec635a9a402c205621f4503a0faa4351760.jpg",
+            "iconGrayUrl": "ee0224cc392269cbdb0d06a35ba771a09b21b91f.jpg",
+            "hidden": false,
+            "globalPct": 27.9
+        },
+        {
+            "apiName": "ACH_BUG",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bzzzz",
+            "description": "Mr Bug joined you.",
+            "iconUrl": "b5a0fd2c2617c99574bca9b452644a6373bf1a77.jpg",
+            "iconGrayUrl": "8a2afa2b33d35d24c12f4249e3c0f329d80dd3c4.jpg",
+            "hidden": false,
+            "globalPct": 38.3
+        },
+        {
+            "apiName": "ACH_DEATH_BLOB",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Blobbed",
+            "description": "You died against the Blob.",
+            "iconUrl": "5c0258dac6ac3d89e713cd31c0f02ddb060f10d7.jpg",
+            "iconGrayUrl": "200e8a297fc02c59a69f95f73ad7746dc886eb0a.jpg",
+            "hidden": false,
+            "globalPct": 38.4
+        },
+        {
+            "apiName": "ACH_DEATH_BEE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Wasped",
+            "description": "You died against the Wasp.",
+            "iconUrl": "692dd27f8bc29730da82ebfc0fb31a459017e5a1.jpg",
+            "iconGrayUrl": "b91bdcbb092d3f43b548be3d826c84cfbe527783.jpg",
+            "hidden": false,
+            "globalPct": 45.7
+        },
+        {
+            "apiName": "ACH_DEATH_MONSTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Monstered",
+            "description": "You died against the Monster.",
+            "iconUrl": "4a1f8d836996f2e339a68647990deaba59f5f93c.jpg",
+            "iconGrayUrl": "7542af792c9b68950d74464d7cddca7b2d944ba7.jpg",
+            "hidden": false,
+            "globalPct": 48.2
+        },
+        {
+            "apiName": "ACH_DEATH_SPIDER_WOOL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Spidered",
+            "description": "You died against the Spider.",
+            "iconUrl": "5e888676ea517cae5df7c413f5e85295bef507ce.jpg",
+            "iconGrayUrl": "7f856b943abb1702f9b53522e4c2f017426e805e.jpg",
+            "hidden": false,
+            "globalPct": 28.2
+        },
+        {
+            "apiName": "ACH_DEATH_CROCO",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Crocodiled",
+            "description": "You died against the Crocodile.",
+            "iconUrl": "fd182ccc47156049c5c3e7f304a84686fbc05d28.jpg",
+            "iconGrayUrl": "7fdaba6e32f10d2acd88b40814e97063fe51032b.jpg",
+            "hidden": false,
+            "globalPct": 27.1
+        },
+        {
+            "apiName": "ACH_DEATH_SNAKE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Snaked",
+            "description": "You died against the Snake.",
+            "iconUrl": "f2309694412dda35fb51d9252fe6baa86995bf2c.jpg",
+            "iconGrayUrl": "84b8b357f1d00ee8a4bcc2cd96cf58ba313a6bf2.jpg",
+            "hidden": false,
+            "globalPct": 28.5
+        },
+        {
+            "apiName": "ACH_DEATH_SPIDER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Spidered. Again !",
+            "description": "You died against the second Spider.",
+            "iconUrl": "d329bdbb5dc2e78f0869fce8879f72dd0b75d778.jpg",
+            "iconGrayUrl": "b9f8ff6cce49e643fb3aa080577f689d9b76fa39.jpg",
+            "hidden": false,
+            "globalPct": 23.3
+        },
+        {
+            "apiName": "ACH_DEATH_TARANT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Taranted",
+            "description": "You died against Tarant.",
+            "iconUrl": "9215215eb57601a72df226d38c72dcd6afbd710f.jpg",
+            "iconGrayUrl": "c21dbea35ec0a96959fb721935cf9eab2cfc601e.jpg",
+            "hidden": false,
+            "globalPct": 20.2
+        },
+        {
+            "apiName": "ACH_ALL_MUSICOM",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Musician",
+            "description": "You unlocked all the Musicom.",
+            "iconUrl": "3c7fd764a3e76f3456d1a3b7f3c750a4550b0af9.jpg",
+            "iconGrayUrl": "f8e0277d4cc927dada2c84533fe0a58806fea051.jpg",
+            "hidden": false,
+            "globalPct": 11.7
+        },
+        {
+            "apiName": "ACH_QUEST_GHOST",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "R.I.P.",
+            "description": "You helped the ghost to transmit a message.",
+            "iconUrl": "7b5ccbd078d1953ceb59c81d72825fd176a911b1.jpg",
+            "iconGrayUrl": "7df93a4c6cfa62ce992560e16f5c442c24a3c76a.jpg",
+            "hidden": false,
+            "globalPct": 12.5
+        },
+        {
+            "apiName": "ACH_QUEST_SPIDER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Baby Sitter",
+            "description": "You helped the Spider Mother to get back it's lost baby.",
+            "iconUrl": "d6df10119957c8524ae531e020cd4b49f71ace72.jpg",
+            "iconGrayUrl": "f0f2183884b81abfee69213a818bd1c0c33c88dc.jpg",
+            "hidden": false,
+            "globalPct": 20.8
+        },
+        {
+            "apiName": "ACH_ALL_COMPLETE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Who's Your Daddy?",
+            "description": "You beat the game and unlocked all the content.",
+            "iconUrl": "08e2359b5df82e28a7eef78d6a924ab4d0d06098.jpg",
+            "iconGrayUrl": "04d92823feeafef1d6ae86caa1c15d221d865ac1.jpg",
+            "hidden": false,
+            "globalPct": 11.2
+        }
+    ],
+    "playtimeForever": 215,
+    "lastPlayedTs": "2024-05-31T13:25:49.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/259600/16a9f2317257621a44dc2f881f0fe0d324ccd6db.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACH_GAME_COMPLETE",
+            "displayName": "Teddy's Saviour",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f50a59605a2a0316363e7ca3e811335f293c026f.jpg",
+            "iconGrayUrl": "ce6451b1d8c880ba19909659fac688a75e96e798.jpg",
+            "globalPct": 21.5
+        },
+        {
+            "apiName": "ACH_NYAN_CAT",
+            "displayName": "Nyanyanyanya",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "7bfe5539ecc89685c71af01ffc5190261e98ea29.jpg",
+            "iconGrayUrl": "1b90a63acd31576c9f51b6c7a9079826c7215415.jpg",
+            "globalPct": 11.5
+        },
+        {
+            "apiName": "ACH_FIRST_LUCIOLE",
+            "displayName": "Firefly",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "01da700173919d7416154e6cdae087389661a75f.jpg",
+            "iconGrayUrl": "e1db5f0eb7b97620e7882dfe63e149d226b36c8b.jpg",
+            "globalPct": 23.6
+        },
+        {
+            "apiName": "ACH_ALL_LUCIOLES",
+            "displayName": "Firefly Collector",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "279d70301a793ff14e7d484bf210116b0d875c08.jpg",
+            "iconGrayUrl": "575b37cda4a6e6300aceb2936886645f143fa05f.jpg",
+            "globalPct": 13.7
+        },
+        {
+            "apiName": "ACH_ALL_ARTWORKS",
+            "displayName": "Artwork Collector",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "05d65847f4edbc6bbaa95ad019ecd1ab0d94cc85.jpg",
+            "iconGrayUrl": "fa2215b1a818141eb87c075c067f3da30e1e9201.jpg",
+            "globalPct": 11.3
+        },
+        {
+            "apiName": "ACH_CAT",
+            "displayName": "Meow",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a1f1bec635a9a402c205621f4503a0faa4351760.jpg",
+            "iconGrayUrl": "ee0224cc392269cbdb0d06a35ba771a09b21b91f.jpg",
+            "globalPct": 27.9
+        }
+    ]
+}

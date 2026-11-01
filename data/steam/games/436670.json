@@ -1,0 +1,356 @@
+{
+    "appId": 436670,
+    "hasAchievements": true,
+    "total": 26,
+    "unlocked": 0,
+    "gameName": "The Legend of Heroes: Trails in the Sky the 3rd",
+    "achievements": [
+        {
+            "apiName": "CLEARPROLOGUE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Gralsritter",
+            "description": "",
+            "iconUrl": "f329347cae845c486963c65926fd7df8bc347b82.jpg",
+            "iconGrayUrl": "7e7737ff92af11d1f425d0214cfd0651d86bac4f.jpg",
+            "hidden": true,
+            "globalPct": 83
+        },
+        {
+            "apiName": "CLEARCHAPTER1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Phantasma",
+            "description": "",
+            "iconUrl": "06381481f5da2ed55277b95645233420ac7cbc16.jpg",
+            "iconGrayUrl": "977d99809319509bee76d0fa37eccba4a4ac8c3e.jpg",
+            "hidden": true,
+            "globalPct": 79.5
+        },
+        {
+            "apiName": "CLEARCHAPTER2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Otherworldly Capital",
+            "description": "",
+            "iconUrl": "2234c4f4db50d76de9b6aa5e89f3c5a1ea362787.jpg",
+            "iconGrayUrl": "da036b3d0e6fe1893bc905f3777307fc1d5361a8.jpg",
+            "hidden": true,
+            "globalPct": 75.6
+        },
+        {
+            "apiName": "CLEARCHAPTER3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Golden Road, Silver Road",
+            "description": "",
+            "iconUrl": "d0da1a8d8c5e1fc2599fb805ea99b54559595f24.jpg",
+            "iconGrayUrl": "9170e57824c9f21ac7bec05fbcd87ec59b14da12.jpg",
+            "hidden": true,
+            "globalPct": 74.1
+        },
+        {
+            "apiName": "CLEARCHAPTER4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Dark Stigma",
+            "description": "",
+            "iconUrl": "9d75629c92f247f07b1135fe0f6d18827f7d045d.jpg",
+            "iconGrayUrl": "d1dea183af0dac955e2523a7c562318cccd1731d.jpg",
+            "hidden": true,
+            "globalPct": 71.8
+        },
+        {
+            "apiName": "CLEARCHAPTER5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Labyrinth of Shadows and Light",
+            "description": "",
+            "iconUrl": "8f942ae3b3e8472375256e18b6023fa1092e8494.jpg",
+            "iconGrayUrl": "c8a4875bbce7d278e68d3c6995d717fa0e7f010f.jpg",
+            "hidden": true,
+            "globalPct": 70.2
+        },
+        {
+            "apiName": "CLEARCHAPTER6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Guardians' Trials",
+            "description": "",
+            "iconUrl": "2c80b99fbfc1e0760637700c6fcef065f798dfba.jpg",
+            "iconGrayUrl": "b623412f6151e16293ba06e95c62a3052e0502fd.jpg",
+            "hidden": true,
+            "globalPct": 66.9
+        },
+        {
+            "apiName": "CLEARCHAPTER7",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Distant Flames",
+            "description": "",
+            "iconUrl": "e23417dd553fb5e13cb738c94a42a6e1f301a999.jpg",
+            "iconGrayUrl": "e85a7c4284bb630a9b457da4ce51d048fec383f1.jpg",
+            "hidden": true,
+            "globalPct": 66.6
+        },
+        {
+            "apiName": "CLEARCHAPTER8",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Future We Dream Of",
+            "description": "",
+            "iconUrl": "efd1fb7cb440f362c4e5c0ff239c3e36c90770aa.jpg",
+            "iconGrayUrl": "7779578cb818b0c61f4eb6738aef63d1369b2fde.jpg",
+            "hidden": true,
+            "globalPct": 62.4
+        },
+        {
+            "apiName": "CLEARSTARDOORS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Starry-Eyed",
+            "description": "Complete all Star Doors.",
+            "iconUrl": "20fc96dda3d39f85de39cba43b09a3c1e83eacf7.jpg",
+            "iconGrayUrl": "fbe25866d738e85143ac741a17adef6d75c943f3.jpg",
+            "hidden": false,
+            "globalPct": 46.9
+        },
+        {
+            "apiName": "CLEARMOONDOORS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Honeymoon",
+            "description": "Complete all Moon Doors.",
+            "iconUrl": "c9831b1dadb9f0e0f86114c9f9e4c1b36df2d51b.jpg",
+            "iconGrayUrl": "d0cdc35581349192821b7bdf4da247d5e20e5f21.jpg",
+            "hidden": false,
+            "globalPct": 48.9
+        },
+        {
+            "apiName": "CLEARSUNDOORS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sunny Days",
+            "description": "Complete all Sun Doors.",
+            "iconUrl": "65198aa10e4bc1bf9e3bf95c9d69910658b854c2.jpg",
+            "iconGrayUrl": "37bedb2ff9b41faa7ebf307412870245e2309230.jpg",
+            "hidden": false,
+            "globalPct": 41.2
+        },
+        {
+            "apiName": "CLEARARENA_NIGHTMARE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Farewell, My Nightmares",
+            "description": "",
+            "iconUrl": "1bab30c6c7462cc23d91e328ec32092d74c841fb.jpg",
+            "iconGrayUrl": "d262e6346e5dba3f7f54ca49a3a0f76ad810d61a.jpg",
+            "hidden": true,
+            "globalPct": 7.3
+        },
+        {
+            "apiName": "CLEARQUIZ_MANIAC",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "You Know Too Much",
+            "description": "Complete \"Who Wants to Be a Mirannaire?\" Maniac mode.",
+            "iconUrl": "1f164dd3cd2e77d7c0b3043cac7166a31d0b87b8.jpg",
+            "iconGrayUrl": "6b833d6b8a2143c5311f73f248a6d507e34d7cfb.jpg",
+            "hidden": false,
+            "globalPct": 34.8
+        },
+        {
+            "apiName": "CLEARMINIGAMES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Minigame Madness",
+            "description": "Complete all minigames on any difficulty.",
+            "iconUrl": "5d736431a96f62c937a8046941fc7c17e6675c52.jpg",
+            "iconGrayUrl": "aee2f0e3fbc31b0368a61fabd302f1855c807b0f.jpg",
+            "hidden": false,
+            "globalPct": 48.2
+        },
+        {
+            "apiName": "BEATABYSSBOSSES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Tempting Fate",
+            "description": "Defeat all Abyss fiends.",
+            "iconUrl": "c1b60cc8d4554529923bd0f8d77935f25a5a48e8.jpg",
+            "iconGrayUrl": "48f936c058e347e814dff7676c8c5cff42c782fe.jpg",
+            "hidden": false,
+            "globalPct": 50.8
+        },
+        {
+            "apiName": "READALLBOOKS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bookworm",
+            "description": "Read all of the books in the Garden.",
+            "iconUrl": "64e43a64175645f249713791e574e7091a7e8398.jpg",
+            "iconGrayUrl": "ae461a3582de211109b783da9ddabb467b0e9d68.jpg",
+            "hidden": false,
+            "globalPct": 16.2
+        },
+        {
+            "apiName": "READGILBERTBOOK",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Please Erase My Memories",
+            "description": "",
+            "iconUrl": "cdbb78d83c22333e4bd1187949e199a7aa63afdf.jpg",
+            "iconGrayUrl": "98bea1bb9deb8f02cf743c31d6e97aabf93b9b2e.jpg",
+            "hidden": true,
+            "globalPct": 25.8
+        },
+        {
+            "apiName": "SPECIALQUARTZ1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fierce Fighter",
+            "description": "",
+            "iconUrl": "4e4b308b6493490fb2d5d6866e56a0d7e6b0913b.jpg",
+            "iconGrayUrl": "02dcdb8e4aa712c2dc284c2a3b1d05705d5847ac.jpg",
+            "hidden": true,
+            "globalPct": 12.3
+        },
+        {
+            "apiName": "SPECIALQUARTZ2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Flighty Fighter",
+            "description": "",
+            "iconUrl": "b7994ae47fbb16b89907c84f0d8d807a8026608e.jpg",
+            "iconGrayUrl": "1f84d9a3f09b840e488b517b9a0974127b23c625.jpg",
+            "hidden": true,
+            "globalPct": 9.2
+        },
+        {
+            "apiName": "CLEARGAME_EASY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Easy Peasy",
+            "description": "Finish the game on Easy or above.",
+            "iconUrl": "6af2aff82ae56689f4b3c7a8143f3cdb63a99323.jpg",
+            "iconGrayUrl": "b60e20fd5e8d1f5713a9f4e644ccccc486bd76d8.jpg",
+            "hidden": false,
+            "globalPct": 62.4
+        },
+        {
+            "apiName": "CLEARGAME_NORMAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Straight and Narrow",
+            "description": "Finish the game on Normal or above.",
+            "iconUrl": "c9075a27d4f6d06b4453eed1a285fb591243c9e0.jpg",
+            "iconGrayUrl": "50b6a9504f6cc37173110b379d6a828bcdf7fce8.jpg",
+            "hidden": false,
+            "globalPct": 53.3
+        },
+        {
+            "apiName": "CLEARGAME_HARD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Proud Powerhouse",
+            "description": "Finish the game on Hard or above.",
+            "iconUrl": "22abed0009fde447011449c018976c5316fe0b4f.jpg",
+            "iconGrayUrl": "5dc8bd6301ff708d2750308d4b7cae378e055a84.jpg",
+            "hidden": false,
+            "globalPct": 13.2
+        },
+        {
+            "apiName": "CLEARGAME_NIGHTMARE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Only In Your Dreams",
+            "description": "Finish the game on Nightmare.",
+            "iconUrl": "720c860cdc5ccc1627bb4a04ffe0f7031a1b282f.jpg",
+            "iconGrayUrl": "aefab47237bbc2c586faf3343d3de0474d03bbe7.jpg",
+            "hidden": false,
+            "globalPct": 7
+        },
+        {
+            "apiName": "BEATCASSIUS_NIGHTMARE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Dadliest",
+            "description": "",
+            "iconUrl": "03824efb9481d9f0c7c0565f9a01a88c7cbf12e5.jpg",
+            "iconGrayUrl": "dbe7f7127ee1be88efdca2c0963b68ea2f22d90d.jpg",
+            "hidden": true,
+            "globalPct": 7.3
+        },
+        {
+            "apiName": "ALLTREASURETALKS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sidetracked Chest-Tracker",
+            "description": "Carefully examine nearly every chest that you come across before the final chapter.",
+            "iconUrl": "9821ca23b0cbf1758b9ac058f7d0ad8a2e72de47.jpg",
+            "iconGrayUrl": "89a092812847c6e95ab211bea09a9048e910c3ed.jpg",
+            "hidden": false,
+            "globalPct": 32.3
+        }
+    ],
+    "playtimeForever": 427,
+    "lastPlayedTs": "2024-06-02T03:35:19.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/436670/1fb9610ea9419c4f320b29ff27ea6cac4fbfd2cb.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "CLEARPROLOGUE",
+            "displayName": "The Gralsritter",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f329347cae845c486963c65926fd7df8bc347b82.jpg",
+            "iconGrayUrl": "7e7737ff92af11d1f425d0214cfd0651d86bac4f.jpg",
+            "globalPct": 83
+        },
+        {
+            "apiName": "CLEARCHAPTER1",
+            "displayName": "Phantasma",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "06381481f5da2ed55277b95645233420ac7cbc16.jpg",
+            "iconGrayUrl": "977d99809319509bee76d0fa37eccba4a4ac8c3e.jpg",
+            "globalPct": 79.5
+        },
+        {
+            "apiName": "CLEARCHAPTER2",
+            "displayName": "The Otherworldly Capital",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "2234c4f4db50d76de9b6aa5e89f3c5a1ea362787.jpg",
+            "iconGrayUrl": "da036b3d0e6fe1893bc905f3777307fc1d5361a8.jpg",
+            "globalPct": 75.6
+        },
+        {
+            "apiName": "CLEARCHAPTER3",
+            "displayName": "Golden Road, Silver Road",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d0da1a8d8c5e1fc2599fb805ea99b54559595f24.jpg",
+            "iconGrayUrl": "9170e57824c9f21ac7bec05fbcd87ec59b14da12.jpg",
+            "globalPct": 74.1
+        },
+        {
+            "apiName": "CLEARCHAPTER4",
+            "displayName": "The Dark Stigma",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9d75629c92f247f07b1135fe0f6d18827f7d045d.jpg",
+            "iconGrayUrl": "d1dea183af0dac955e2523a7c562318cccd1731d.jpg",
+            "globalPct": 71.8
+        },
+        {
+            "apiName": "CLEARCHAPTER5",
+            "displayName": "Labyrinth of Shadows and Light",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "8f942ae3b3e8472375256e18b6023fa1092e8494.jpg",
+            "iconGrayUrl": "c8a4875bbce7d278e68d3c6995d717fa0e7f010f.jpg",
+            "globalPct": 70.2
+        }
+    ]
+}

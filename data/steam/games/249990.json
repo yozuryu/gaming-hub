@@ -1,0 +1,334 @@
+{
+    "appId": 249990,
+    "hasAchievements": true,
+    "total": 24,
+    "unlocked": 0,
+    "gameName": "FORCED",
+    "achievements": [
+        {
+            "apiName": "Complete_Game",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Freedom!",
+            "description": "Complete FORCED (Good luck!)",
+            "iconUrl": "be1366a12f20e67328e21929e127eb78eac45f6f.jpg",
+            "iconGrayUrl": "7f470e31c72b6a3000bf654f08cc419ab274c1a1.jpg",
+            "hidden": false,
+            "globalPct": 4.6
+        },
+        {
+            "apiName": "Complete_Chamber_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Beat the Cow Level",
+            "description": "Wrangle with Wrathhoof",
+            "iconUrl": "11bd8f69f1b6ad916bdf520aed27d2b3e6b34598.jpg",
+            "iconGrayUrl": "77111a002b43ae3a48177aabe2e915645d332df7.jpg",
+            "hidden": false,
+            "globalPct": 54.5
+        },
+        {
+            "apiName": "Complete_Chamber_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Student of Pain",
+            "description": "Slay Slarth",
+            "iconUrl": "1aa671eedad9d40b9ee86ffe156a5943484aac8e.jpg",
+            "iconGrayUrl": "df5c3025c4edf71a7878a8e5d903545bd6ee5edc.jpg",
+            "hidden": false,
+            "globalPct": 24.5
+        },
+        {
+            "apiName": "Complete_Chamber_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Heart Attack",
+            "description": "Get Graw",
+            "iconUrl": "9811a9c597989ee3ffe256fad6988de8791e90de.jpg",
+            "iconGrayUrl": "b937c851f1c275cafbcd241fab5936bd3a39ee53.jpg",
+            "hidden": false,
+            "globalPct": 10.6
+        },
+        {
+            "apiName": "Complete_Chamber4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Brittle Bones",
+            "description": "Maim Mordar",
+            "iconUrl": "77dd454fb29398e423cdb40fd82a8344495a6fad.jpg",
+            "iconGrayUrl": "d0b4f79030eae0debb053441f6a69a159a163cf1.jpg",
+            "hidden": false,
+            "globalPct": 5.6
+        },
+        {
+            "apiName": "Write_Own_Name",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "\"Hodor\" -Hodor",
+            "description": "Hodor. Hodor hodor, hodor... Hodor!",
+            "iconUrl": "5dccbf503620dd6e1698a82d817aaa14dec146ec.jpg",
+            "iconGrayUrl": "e47ec784b108ed0a65d8b3add0ba94ca5fcf0325.jpg",
+            "hidden": false,
+            "globalPct": 3.1
+        },
+        {
+            "apiName": "Earn_Crystals_25",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bejeweled",
+            "description": "Earn 25 Crystals",
+            "iconUrl": "7a2363a7f6aecd48fec22b23e05218074903c4b8.jpg",
+            "iconGrayUrl": "547f9e47067b608e1f0eeecac5b846db4eb34ac3.jpg",
+            "hidden": false,
+            "globalPct": 15.3
+        },
+        {
+            "apiName": "Destroy_Boomer_Eggs 100",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Volatile Omelet",
+            "description": "Burst 100 Volatile Swarmer Eggs",
+            "iconUrl": "cd944811b4619d54c59028b4f3aea33bbcb710d5.jpg",
+            "iconGrayUrl": "d16895de46f5a0bbcc59b8862f5c85c6e569ce69.jpg",
+            "hidden": false,
+            "globalPct": 6.8
+        },
+        {
+            "apiName": "Hammer_Trials_Completed",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "It’s Hammer time!",
+            "description": "Complete 10 trials with the Volcanic Hammer",
+            "iconUrl": "871d60cff8a9cd4f12365e0e36102e6da4f1cff4.jpg",
+            "iconGrayUrl": "2d366b241627495aabc67b763e7e2670194b946c.jpg",
+            "hidden": false,
+            "globalPct": 13.5
+        },
+        {
+            "apiName": "Bow_Trials_Completed",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "High Voltage!",
+            "description": "Complete 10 trials with the Storm Bow",
+            "iconUrl": "33a1a2ac2fd3349e22b30259f15591597d4853d3.jpg",
+            "iconGrayUrl": "7ea2a15698ef83fd2e7f5c73d24e6ea02c62d52a.jpg",
+            "hidden": false,
+            "globalPct": 15.2
+        },
+        {
+            "apiName": "Shield_Trials_Completed",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mr. Ice Guy!",
+            "description": "Complete 10 trials with the Ice Shield",
+            "iconUrl": "8a96548ec475d3fc7ba97d6714e80be13130a95f.jpg",
+            "iconGrayUrl": "e08fec767d82830dae6360ba2e1c6e21ab06c2b7.jpg",
+            "hidden": false,
+            "globalPct": 13.5
+        },
+        {
+            "apiName": "Blades_Trials_Completed",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Slice and Dice!",
+            "description": "Complete 10 trials with the Spirit Claws",
+            "iconUrl": "9526e41e61d9ed589f424abe1506a55420d55e81.jpg",
+            "iconGrayUrl": "093711b174904622b818c9a617dc25febe0e1694.jpg",
+            "hidden": false,
+            "globalPct": 16.4
+        },
+        {
+            "apiName": "Time_Trial_Completed_8",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "¡Arriba! ¡Arriba!",
+            "description": "Beat 8 time challenges",
+            "iconUrl": "9fd03f967296a19c30c2ec0ecbac15f4344e07d0.jpg",
+            "iconGrayUrl": "d4ace2b0a9653cf2189e0313d190eebd2f20ebcc.jpg",
+            "hidden": false,
+            "globalPct": 9.7
+        },
+        {
+            "apiName": "Challenge_Trial_Completed_8",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A New Challenger Appears!",
+            "description": "Beat 8 challenges",
+            "iconUrl": "213cdc115e3f5449c43fc29cfff28825f16eded7.jpg",
+            "iconGrayUrl": "fb3c0eda204fa542cbe7bb8028030241a19170ba.jpg",
+            "hidden": false,
+            "globalPct": 11.4
+        },
+        {
+            "apiName": "Challenge_Trial_Completed_16",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Challenge Accepted!",
+            "description": "Beat 16 challenges",
+            "iconUrl": "e6b2468f14b0b06cdb37bc5ed4e3c4a224bf5d8d.jpg",
+            "iconGrayUrl": "6a629921dc6bf013b8944118739bc53919ce3ed8.jpg",
+            "hidden": false,
+            "globalPct": 3.1
+        },
+        {
+            "apiName": "Challenge_Trial_Completed_25",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Challenge Completed!",
+            "description": "Beat 25 challenges",
+            "iconUrl": "a94f30403b89c8bc2fc6e6597147c7db76541507.jpg",
+            "iconGrayUrl": "b3dbc2d6a927b4f8b8687856fbd45a84a20b1a23.jpg",
+            "hidden": false,
+            "globalPct": 1.1
+        },
+        {
+            "apiName": "Time_Trial_Completed_16",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Speed Racer!",
+            "description": "Beat 16 time challenges",
+            "iconUrl": "d466609d05aad85fbeb166e033133d083f1c43ca.jpg",
+            "iconGrayUrl": "6ce6063ef8c83f2b8104880f490224a6c1d3a829.jpg",
+            "hidden": false,
+            "globalPct": 3.1
+        },
+        {
+            "apiName": "Time_Trial_Completed_25",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Speed Racer!",
+            "description": "Beat 25 time challenges",
+            "iconUrl": "0c07ee1e1d93257def4d3e2fd7d5aa333ad8462a.jpg",
+            "iconGrayUrl": "b1b94393715102eaae8ef598cef351104fe5f967.jpg",
+            "hidden": false,
+            "globalPct": 1.2
+        },
+        {
+            "apiName": "Earn_Crystals_50",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Putting the Pro in Prospector",
+            "description": "Earn 50 Crystals",
+            "iconUrl": "908e4a8af4c20113c731520f959c49595934caca.jpg",
+            "iconGrayUrl": "395169d6026fb397e118b988e5542f158e5efe9b.jpg",
+            "hidden": false,
+            "globalPct": 3.9
+        },
+        {
+            "apiName": "Earn_Crystals_75",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Gotta collect 'em all!",
+            "description": "Earn 75 Crystals",
+            "iconUrl": "65fb9c0c6cb89d734cd6bafbc2d43bf0d8fcfc8a.jpg",
+            "iconGrayUrl": "4038535135f863adc70fff5dda95d56fcecdf31a.jpg",
+            "hidden": false,
+            "globalPct": 1.3
+        },
+        {
+            "apiName": "Endless_Earn_Bronze",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Survivor",
+            "description": "Earn a Bronze Crystal in a Survival mode",
+            "iconUrl": "03bfb8d641b06d7b76de1d45314cf26409fd2172.jpg",
+            "iconGrayUrl": "bd5252245373f06aea64be0e859dbeac8471c79b.jpg",
+            "hidden": false,
+            "globalPct": 5.5
+        },
+        {
+            "apiName": "Endless_Earn_Silver",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Staying Alive",
+            "description": "Earn a Silver Crystal in a Survival mode",
+            "iconUrl": "086659b3834e0b78f6a1e3aa9e3bb16575a15911.jpg",
+            "iconGrayUrl": "6c0ea030ce47fc55d1fd591f74f3aad8f1344766.jpg",
+            "hidden": false,
+            "globalPct": 3.8
+        },
+        {
+            "apiName": "Endless_Earn_Gold",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I can do this all day!",
+            "description": "Earn a Gold Crystal in a Survival mode",
+            "iconUrl": "ddbb5853eb521fb13bf1533edc96362a79ca893f.jpg",
+            "iconGrayUrl": "ab922c6f436aee01eb553d4a5db32353f32693ce.jpg",
+            "hidden": false,
+            "globalPct": 2.5
+        },
+        {
+            "apiName": "Endless_Earn_Gold_In_All",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Gladiator",
+            "description": "Earn all crystals from the Survival modes",
+            "iconUrl": "b4ba6a45ad4f385ae057db866c7d44f0e12fdb3a.jpg",
+            "iconGrayUrl": "8e0f9257fa28a5a6a041b305ab59303aa84a4d1b.jpg",
+            "hidden": false,
+            "globalPct": 1
+        }
+    ],
+    "playtimeForever": 199,
+    "lastPlayedTs": "2024-05-31T12:55:25.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/249990/d9ab3c38b347a2510f6ab540921248da14349ca4.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "Complete_Game",
+            "displayName": "Freedom!",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "be1366a12f20e67328e21929e127eb78eac45f6f.jpg",
+            "iconGrayUrl": "7f470e31c72b6a3000bf654f08cc419ab274c1a1.jpg",
+            "globalPct": 4.6
+        },
+        {
+            "apiName": "Complete_Chamber_1",
+            "displayName": "Beat the Cow Level",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "11bd8f69f1b6ad916bdf520aed27d2b3e6b34598.jpg",
+            "iconGrayUrl": "77111a002b43ae3a48177aabe2e915645d332df7.jpg",
+            "globalPct": 54.5
+        },
+        {
+            "apiName": "Complete_Chamber_2",
+            "displayName": "Student of Pain",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1aa671eedad9d40b9ee86ffe156a5943484aac8e.jpg",
+            "iconGrayUrl": "df5c3025c4edf71a7878a8e5d903545bd6ee5edc.jpg",
+            "globalPct": 24.5
+        },
+        {
+            "apiName": "Complete_Chamber_3",
+            "displayName": "Heart Attack",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9811a9c597989ee3ffe256fad6988de8791e90de.jpg",
+            "iconGrayUrl": "b937c851f1c275cafbcd241fab5936bd3a39ee53.jpg",
+            "globalPct": 10.6
+        },
+        {
+            "apiName": "Complete_Chamber4",
+            "displayName": "Brittle Bones",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "77dd454fb29398e423cdb40fd82a8344495a6fad.jpg",
+            "iconGrayUrl": "d0b4f79030eae0debb053441f6a69a159a163cf1.jpg",
+            "globalPct": 5.6
+        },
+        {
+            "apiName": "Write_Own_Name",
+            "displayName": "\"Hodor\" -Hodor",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "5dccbf503620dd6e1698a82d817aaa14dec146ec.jpg",
+            "iconGrayUrl": "e47ec784b108ed0a65d8b3add0ba94ca5fcf0325.jpg",
+            "globalPct": 3.1
+        }
+    ]
+}

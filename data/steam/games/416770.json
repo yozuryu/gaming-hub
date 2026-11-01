@@ -1,0 +1,147 @@
+{
+    "appId": 416770,
+    "hasAchievements": true,
+    "total": 7,
+    "unlocked": 0,
+    "gameName": "SquareCells",
+    "achievements": [
+        {
+            "apiName": "ACH_WORLD1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "World 1 Complete",
+            "description": "Complete puzzles 1-6",
+            "iconUrl": "7c49c6099826eefd4cfcab5bbd96309cff20edbf.jpg",
+            "iconGrayUrl": "1a9e0c15f912d7d45203d6eb4b49d2e0ea1c0142.jpg",
+            "hidden": false,
+            "globalPct": 78.4
+        },
+        {
+            "apiName": "ACH_WORLD2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "World 2 Complete",
+            "description": "Complete puzzles 7-12",
+            "iconUrl": "9892193578218a431db403e734fe91ef6ff13c57.jpg",
+            "iconGrayUrl": "3e90c22bd0ad921a5cff4942ff16d1695716e5ae.jpg",
+            "hidden": false,
+            "globalPct": 73.5
+        },
+        {
+            "apiName": "ACH_WORLD3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "World 3 Complete",
+            "description": "Complete puzzles 13-18",
+            "iconUrl": "4a291346d264134fbaa924414da8399f9e284d43.jpg",
+            "iconGrayUrl": "c66afaf2a81e092948bba87984cbcec2844d9a32.jpg",
+            "hidden": false,
+            "globalPct": 65.8
+        },
+        {
+            "apiName": "ACH_WORLD4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "World 4 Complete",
+            "description": "Complete puzzles 19-24",
+            "iconUrl": "ac930a33e805913208f82aac60bbcd595aa54852.jpg",
+            "iconGrayUrl": "af2234c4d3292d2225a1afd389acd3c65bcf8af5.jpg",
+            "hidden": false,
+            "globalPct": 59.5
+        },
+        {
+            "apiName": "ACH_WORLD5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "World 5 Complete",
+            "description": "Complete puzzles 25-30",
+            "iconUrl": "329bab0199e3af46c2371b6f78c19a597beb6893.jpg",
+            "iconGrayUrl": "d5e956f4c04eb4885de6f2baef5cf3653387f2e5.jpg",
+            "hidden": false,
+            "globalPct": 55.1
+        },
+        {
+            "apiName": "ACH_WORLD6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "World 6 Complete",
+            "description": "Complete puzzles 31-36",
+            "iconUrl": "aacc00d5809f27f842de42bc10f1ab5bb09d31e6.jpg",
+            "iconGrayUrl": "99181b7ef534887f5a578986674da7d9126bb47c.jpg",
+            "hidden": false,
+            "globalPct": 50.1
+        },
+        {
+            "apiName": "ACH_PERFECT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Perfectionist",
+            "description": "Earn all 108 stars.",
+            "iconUrl": "b91d9e857e0b14123f133e058b61b89ba55d21ab.jpg",
+            "iconGrayUrl": "93f950f7240dc0369731052232c4754283f3ad1e.jpg",
+            "hidden": false,
+            "globalPct": 47.3
+        }
+    ],
+    "playtimeForever": 13,
+    "lastPlayedTs": "2017-08-18T12:16:16.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/416770/b4a61003ddb773e0b565f6b6e1dcb5127e0c5d64.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACH_WORLD1",
+            "displayName": "World 1 Complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "7c49c6099826eefd4cfcab5bbd96309cff20edbf.jpg",
+            "iconGrayUrl": "1a9e0c15f912d7d45203d6eb4b49d2e0ea1c0142.jpg",
+            "globalPct": 78.4
+        },
+        {
+            "apiName": "ACH_WORLD2",
+            "displayName": "World 2 Complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9892193578218a431db403e734fe91ef6ff13c57.jpg",
+            "iconGrayUrl": "3e90c22bd0ad921a5cff4942ff16d1695716e5ae.jpg",
+            "globalPct": 73.5
+        },
+        {
+            "apiName": "ACH_WORLD3",
+            "displayName": "World 3 Complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "4a291346d264134fbaa924414da8399f9e284d43.jpg",
+            "iconGrayUrl": "c66afaf2a81e092948bba87984cbcec2844d9a32.jpg",
+            "globalPct": 65.8
+        },
+        {
+            "apiName": "ACH_WORLD4",
+            "displayName": "World 4 Complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "ac930a33e805913208f82aac60bbcd595aa54852.jpg",
+            "iconGrayUrl": "af2234c4d3292d2225a1afd389acd3c65bcf8af5.jpg",
+            "globalPct": 59.5
+        },
+        {
+            "apiName": "ACH_WORLD5",
+            "displayName": "World 5 Complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "329bab0199e3af46c2371b6f78c19a597beb6893.jpg",
+            "iconGrayUrl": "d5e956f4c04eb4885de6f2baef5cf3653387f2e5.jpg",
+            "globalPct": 55.1
+        },
+        {
+            "apiName": "ACH_WORLD6",
+            "displayName": "World 6 Complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "aacc00d5809f27f842de42bc10f1ab5bb09d31e6.jpg",
+            "iconGrayUrl": "99181b7ef534887f5a578986674da7d9126bb47c.jpg",
+            "globalPct": 50.1
+        }
+    ]
+}

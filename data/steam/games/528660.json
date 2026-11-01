@@ -1,0 +1,235 @@
+{
+    "appId": 528660,
+    "hasAchievements": true,
+    "total": 15,
+    "unlocked": 0,
+    "gameName": "Spin Rush",
+    "achievements": [
+        {
+            "apiName": "FAST_MODE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fast Mode",
+            "description": "Reach level 2 and unlock Fast mode",
+            "iconUrl": "0abff4dada334b5e6f1804a99bed9af086c44f64.jpg",
+            "iconGrayUrl": "5362ec8ece9a6a69a502e73201cd7be812cee0e5.jpg",
+            "hidden": false,
+            "globalPct": 11.3
+        },
+        {
+            "apiName": "FAST_ADRENALINE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fast Adrenaline",
+            "description": "Get 20 score in Fast mode",
+            "iconUrl": "145c18c158930f56a87000ec4a4cd398df92c643.jpg",
+            "iconGrayUrl": "f948f4724e74c2936e4c074a9c11ceb9c0093361.jpg",
+            "hidden": false,
+            "globalPct": 5
+        },
+        {
+            "apiName": "HEXAGON_MODE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hexagon Mode",
+            "description": "Reach level 3 and unlock Hexagon mode",
+            "iconUrl": "2465d3a92eacdb18871b2e2a1028d5c82c0c6266.jpg",
+            "iconGrayUrl": "246f0c0724579c6c07621a699c49f23fe1933fe1.jpg",
+            "hidden": false,
+            "globalPct": 8.9
+        },
+        {
+            "apiName": "HEXAMASTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hexamaster",
+            "description": "Get 18 score in Hexagon mode. Can you rotate fast enough?",
+            "iconUrl": "648667ea7228a80b3a9ce398fd5723992d222b7f.jpg",
+            "iconGrayUrl": "8b5097b97e65f7fd4c74891d8199de318895aa7c.jpg",
+            "hidden": false,
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "WORDS_MODE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Words Mode",
+            "description": "Unlock Words mode by reaching level 5",
+            "iconUrl": "690d08906103eddad2692209197dd110a01568f1.jpg",
+            "iconGrayUrl": "67927833f54f42a01f54323465b9a5ac1c274922.jpg",
+            "hidden": false,
+            "globalPct": 7.1
+        },
+        {
+            "apiName": "SPEED_READER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Speed Reader",
+            "description": "Get 16 score in Words mode. Can you read fast enough?",
+            "iconUrl": "78130805ce85333721c69fbc89180a1ff13d59c6.jpg",
+            "iconGrayUrl": "f5d19ae257475231721fe8f8ed7852a8b29fcb6e.jpg",
+            "hidden": false,
+            "globalPct": 4.9
+        },
+        {
+            "apiName": "TIME_MODE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Time Mode",
+            "description": "Unlock Time mode by reaching level 8",
+            "iconUrl": "c72c087cee683436c6acb459b4fcdd4d7f42c5bf.jpg",
+            "iconGrayUrl": "cb78d6967105fcb9be63adac54f7f1313630e4cf.jpg",
+            "hidden": false,
+            "globalPct": 5.7
+        },
+        {
+            "apiName": "TIME_CONTROLL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Time Controll",
+            "description": "Get 14 score in Time mode. Can you Time Travel?",
+            "iconUrl": "8d4cb7ea4a6f1ea86a930adf1404393b26b6ee29.jpg",
+            "iconGrayUrl": "10666e53d6900681f9d9da7db71b1349738e660c.jpg",
+            "hidden": false,
+            "globalPct": 4.6
+        },
+        {
+            "apiName": "TRIP_MODE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Trip Mode",
+            "description": "Unlock Trip mode by reaching level 15",
+            "iconUrl": "cc429fea84788923f9d0544ce9eed8909c740e7e.jpg",
+            "iconGrayUrl": "b1bedee99948c4852ca8e333715146a685c02c6e.jpg",
+            "hidden": false,
+            "globalPct": 4.6
+        },
+        {
+            "apiName": "ARE_YOU_TRIPPING",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Are you tripping?",
+            "description": "Get 6 score in Trip mode. Are you on LSD?",
+            "iconUrl": "727eff84b555311b2a815c21a876d095156db671.jpg",
+            "iconGrayUrl": "a3752f3afcb8387904fa27314ef8d96dddbbd721.jpg",
+            "hidden": false,
+            "globalPct": 4.3
+        },
+        {
+            "apiName": "FLIP_MADNESS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Flip Madness",
+            "description": "Unlock Flip Madness mode by reaching level 20",
+            "iconUrl": "d8d0b6daaec67ef06b450e0244c22564c4571865.jpg",
+            "iconGrayUrl": "7424c0bf00e0317b13b63e03a1279a4afe7dfa7f.jpg",
+            "hidden": false,
+            "globalPct": 4
+        },
+        {
+            "apiName": "FLIPPER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Flipper",
+            "description": "Get 10 score in Flip mode. Are you dizzy?",
+            "iconUrl": "41af805639e60722741ffe8d6f375070df55420f.jpg",
+            "iconGrayUrl": "f1ff9f6a356e5850787cca568a9e0edfbb2e9386.jpg",
+            "hidden": false,
+            "globalPct": 3.9
+        },
+        {
+            "apiName": "LEVEL_MASTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Level Master",
+            "description": "Get to level 30",
+            "iconUrl": "713673894e3e4c3f637bfa5e9700c8a97be3ae85.jpg",
+            "iconGrayUrl": "4814271901495083bd11f027141ad9eb1b60af47.jpg",
+            "hidden": false,
+            "globalPct": 3.7
+        },
+        {
+            "apiName": "WORKING_HARD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Working Hard",
+            "description": "Get a total of 250 score",
+            "iconUrl": "b9dd73e80390e5ef9ac6b06c891bc6bf0af87c57.jpg",
+            "iconGrayUrl": "6dc539e9020856ccafd32536121b368d6e8eac64.jpg",
+            "hidden": false,
+            "globalPct": 5.4
+        },
+        {
+            "apiName": "INSANE_COLLECTOR",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Insane Collector",
+            "description": "Get a total of 500 score",
+            "iconUrl": "369c08318a36cc16c79e78d65645973264f4fcbe.jpg",
+            "iconGrayUrl": "06ad5bbfbc2993a9648320eadb71f647840835c3.jpg",
+            "hidden": false,
+            "globalPct": 4.7
+        }
+    ],
+    "playtimeForever": 244,
+    "lastPlayedTs": "2024-06-26T09:16:33.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/528660/90c017563a20f7de32ae599a364db2743d7daa1a.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "FAST_MODE",
+            "displayName": "Fast Mode",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "0abff4dada334b5e6f1804a99bed9af086c44f64.jpg",
+            "iconGrayUrl": "5362ec8ece9a6a69a502e73201cd7be812cee0e5.jpg",
+            "globalPct": 11.3
+        },
+        {
+            "apiName": "FAST_ADRENALINE",
+            "displayName": "Fast Adrenaline",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "145c18c158930f56a87000ec4a4cd398df92c643.jpg",
+            "iconGrayUrl": "f948f4724e74c2936e4c074a9c11ceb9c0093361.jpg",
+            "globalPct": 5
+        },
+        {
+            "apiName": "HEXAGON_MODE",
+            "displayName": "Hexagon Mode",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "2465d3a92eacdb18871b2e2a1028d5c82c0c6266.jpg",
+            "iconGrayUrl": "246f0c0724579c6c07621a699c49f23fe1933fe1.jpg",
+            "globalPct": 8.9
+        },
+        {
+            "apiName": "HEXAMASTER",
+            "displayName": "Hexamaster",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "648667ea7228a80b3a9ce398fd5723992d222b7f.jpg",
+            "iconGrayUrl": "8b5097b97e65f7fd4c74891d8199de318895aa7c.jpg",
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "WORDS_MODE",
+            "displayName": "Words Mode",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "690d08906103eddad2692209197dd110a01568f1.jpg",
+            "iconGrayUrl": "67927833f54f42a01f54323465b9a5ac1c274922.jpg",
+            "globalPct": 7.1
+        },
+        {
+            "apiName": "SPEED_READER",
+            "displayName": "Speed Reader",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "78130805ce85333721c69fbc89180a1ff13d59c6.jpg",
+            "iconGrayUrl": "f5d19ae257475231721fe8f8ed7852a8b29fcb6e.jpg",
+            "globalPct": 4.9
+        }
+    ]
+}

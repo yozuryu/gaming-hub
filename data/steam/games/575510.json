@@ -1,0 +1,180 @@
+{
+    "appId": 575510,
+    "hasAchievements": true,
+    "total": 10,
+    "unlocked": 0,
+    "gameName": "Sakura Agent",
+    "achievements": [
+        {
+            "apiName": "first_mission",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "First Mission",
+            "description": "Complete your first mission.",
+            "iconUrl": "c757214473a23c3d438d4a7a575da4d2317b2c5f.jpg",
+            "iconGrayUrl": "b8cffdcce851779bbff9affb5a6dc5146223f5af.jpg",
+            "hidden": false,
+            "globalPct": 50.4
+        },
+        {
+            "apiName": "the_assistant",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Assistant",
+            "description": "Unlock all of Kimiko's scenes. ",
+            "iconUrl": "dd31a58cdeba4127763eee84dee321bf65bccc87.jpg",
+            "iconGrayUrl": "23abb431d8fac1dd756c9b31c375fc2eccb7101c.jpg",
+            "hidden": false,
+            "globalPct": 35.9
+        },
+        {
+            "apiName": "on_duty",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "On Duty",
+            "description": "Working hard while patrolling the beach.",
+            "iconUrl": "d7ebc2f3e59d6638db42f9e9e134dfd6bde8de82.jpg",
+            "iconGrayUrl": "54ce698fdfddcceed98993b263f690cc3dc46f65.jpg",
+            "hidden": false,
+            "globalPct": 39.6
+        },
+        {
+            "apiName": "poor_coordination",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "'Poor' Coordination",
+            "description": "Fail to stop someone from falling.",
+            "iconUrl": "3c1a03a12caf39e7bccf64c4431a7903d31c05c1.jpg",
+            "iconGrayUrl": "312132ca729d08b7fcff21cfeb137715a5cef3c9.jpg",
+            "hidden": false,
+            "globalPct": 31.4
+        },
+        {
+            "apiName": "the_rookie",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Rookie",
+            "description": "Unlock all of Masumi's scenes.",
+            "iconUrl": "24bbf0cefcf0bf8d54fbff851aa80f5a117202cd.jpg",
+            "iconGrayUrl": "2a562c4c8a9d3f2acd6e27809195584b07f71b2c.jpg",
+            "hidden": false,
+            "globalPct": 37.2
+        },
+        {
+            "apiName": "your_partners",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Your Partners",
+            "description": "Unlock all of Masumi's and Kimiko's shared scenes.",
+            "iconUrl": "b26b49d9aedee777a0208047982548481a1e4144.jpg",
+            "iconGrayUrl": "e88e6597a8f3c55a3078c6dc299599b7719b6717.jpg",
+            "hidden": false,
+            "globalPct": 28.7
+        },
+        {
+            "apiName": "poker_face",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Poker Face",
+            "description": "Win a poker game.",
+            "iconUrl": "108618ecad3d262aa304941bada393d967001d51.jpg",
+            "iconGrayUrl": "3b0490e94d26f98adaf1b219f4e2e561020bff6a.jpg",
+            "hidden": false,
+            "globalPct": 26.9
+        },
+        {
+            "apiName": "extradimensional_encounter",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Extradimensional Encounter",
+            "description": "",
+            "iconUrl": "252a096b327ac2a66c1e7d0b83b489180148ef62.jpg",
+            "iconGrayUrl": "acb01be1a64c1bc79ddfbb915bd7371bf79cbd92.jpg",
+            "hidden": true,
+            "globalPct": 37.4
+        },
+        {
+            "apiName": "stopped_the_invasion",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stopped The Invasion",
+            "description": "Put an end to the invasion. ",
+            "iconUrl": "e8ec9af2de3d9f30abe9ee5b0945dacfdb697b9f.jpg",
+            "iconGrayUrl": "27527fbd0c7d5ebb0da9919844b678cb292b4063.jpg",
+            "hidden": false,
+            "globalPct": 35
+        },
+        {
+            "apiName": "picturesque",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Picturesque",
+            "description": "Unlock all images in the gallery.",
+            "iconUrl": "91651e0a7338a69b689853a7b08c326057085d98.jpg",
+            "iconGrayUrl": "0d1346d6ec0f91eb7b925a7b4b0302be87422513.jpg",
+            "hidden": false,
+            "globalPct": 28.6
+        }
+    ],
+    "playtimeForever": 275,
+    "lastPlayedTs": "2024-06-27T07:29:14.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/575510/d5d234c5eff71c589b1f1751d4c349554f2192cf.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "first_mission",
+            "displayName": "First Mission",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c757214473a23c3d438d4a7a575da4d2317b2c5f.jpg",
+            "iconGrayUrl": "b8cffdcce851779bbff9affb5a6dc5146223f5af.jpg",
+            "globalPct": 50.4
+        },
+        {
+            "apiName": "the_assistant",
+            "displayName": "The Assistant",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "dd31a58cdeba4127763eee84dee321bf65bccc87.jpg",
+            "iconGrayUrl": "23abb431d8fac1dd756c9b31c375fc2eccb7101c.jpg",
+            "globalPct": 35.9
+        },
+        {
+            "apiName": "on_duty",
+            "displayName": "On Duty",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d7ebc2f3e59d6638db42f9e9e134dfd6bde8de82.jpg",
+            "iconGrayUrl": "54ce698fdfddcceed98993b263f690cc3dc46f65.jpg",
+            "globalPct": 39.6
+        },
+        {
+            "apiName": "poor_coordination",
+            "displayName": "'Poor' Coordination",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "3c1a03a12caf39e7bccf64c4431a7903d31c05c1.jpg",
+            "iconGrayUrl": "312132ca729d08b7fcff21cfeb137715a5cef3c9.jpg",
+            "globalPct": 31.4
+        },
+        {
+            "apiName": "the_rookie",
+            "displayName": "The Rookie",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "24bbf0cefcf0bf8d54fbff851aa80f5a117202cd.jpg",
+            "iconGrayUrl": "2a562c4c8a9d3f2acd6e27809195584b07f71b2c.jpg",
+            "globalPct": 37.2
+        },
+        {
+            "apiName": "your_partners",
+            "displayName": "Your Partners",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "b26b49d9aedee777a0208047982548481a1e4144.jpg",
+            "iconGrayUrl": "e88e6597a8f3c55a3078c6dc299599b7719b6717.jpg",
+            "globalPct": 28.7
+        }
+    ]
+}

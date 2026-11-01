@@ -1,0 +1,257 @@
+{
+    "appId": 683320,
+    "hasAchievements": true,
+    "total": 17,
+    "unlocked": 0,
+    "gameName": "GRIS",
+    "achievements": [
+        {
+            "apiName": "Z1_DISCOVER_RED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Red",
+            "description": "",
+            "iconUrl": "0ab3b42637b2d42cb41e58ec08f06e1c554b81ca.jpg",
+            "iconGrayUrl": "7608dc3e1da1bfdb7fd8faf7813b987c66e83355.jpg",
+            "hidden": true,
+            "globalPct": 88.8
+        },
+        {
+            "apiName": "Z1_DENIAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Denial",
+            "description": "",
+            "iconUrl": "f188808f73bd056384ba384c50c04467481eaec8.jpg",
+            "iconGrayUrl": "bdbe48c9a5b067049fee151fe7606341ef9aeeb5.jpg",
+            "hidden": true,
+            "globalPct": 8
+        },
+        {
+            "apiName": "Z2_DISCOVER_GREEN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Green",
+            "description": "",
+            "iconUrl": "306abd4cfb176a4f9c734afa99cdf35086e29cfe.jpg",
+            "iconGrayUrl": "169ae810512268fe3bc490dc5c7126d4852e1a3a.jpg",
+            "hidden": true,
+            "globalPct": 65.1
+        },
+        {
+            "apiName": "Z2_ANGER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Anger",
+            "description": "",
+            "iconUrl": "8d2ec20b3e476af3be1fada287155e264fe59803.jpg",
+            "iconGrayUrl": "b38cb405f1a5834c5a8047a4394d6b9bdfc9c7e0.jpg",
+            "hidden": true,
+            "globalPct": 7.8
+        },
+        {
+            "apiName": "Z3_DISCOVER_BLUE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Blue",
+            "description": "",
+            "iconUrl": "7bd4e670a6f403d8507b10948f47b059bc950ab1.jpg",
+            "iconGrayUrl": "842f7e7b010b9137fa4034cf28d19c62461c680c.jpg",
+            "hidden": true,
+            "globalPct": 52.7
+        },
+        {
+            "apiName": "Z3_BARGAINING",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bargaining",
+            "description": "",
+            "iconUrl": "a2b43b24acd2f83a149c92cb16a18ae79a4bd067.jpg",
+            "iconGrayUrl": "f1ceee93b14423b7c2cf303f7adad6396933bb7e.jpg",
+            "hidden": true,
+            "globalPct": 7.8
+        },
+        {
+            "apiName": "Z4_DISCOVER_YELLOW",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Yellow",
+            "description": "",
+            "iconUrl": "7cd00af83733b8fea182480e45a159cca39d739d.jpg",
+            "iconGrayUrl": "537cb8203fd812d79ceca033fa7281d7d41c50ff.jpg",
+            "hidden": true,
+            "globalPct": 45.2
+        },
+        {
+            "apiName": "Z4_DEPRESSION",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Depression",
+            "description": "",
+            "iconUrl": "b8603c6709e52de4140c255a620a7e7818088edf.jpg",
+            "iconGrayUrl": "b2ad8c0ba2d759b65fa7d211b99a5f93430eb69e.jpg",
+            "hidden": true,
+            "globalPct": 16.3
+        },
+        {
+            "apiName": "Z5_ACCEPTANCE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Acceptance",
+            "description": "",
+            "iconUrl": "a93d2e10b87021e934ecd7bf377cd9323dedea8e.jpg",
+            "iconGrayUrl": "5046eaeca4ba827890f51afb60ed6ba8e82fd734.jpg",
+            "hidden": true,
+            "globalPct": 25.4
+        },
+        {
+            "apiName": "Z6_ENDGAME",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The End",
+            "description": "Finish the game",
+            "iconUrl": "babd54e574ed82137bfbc80a76a51a9c0987be90.jpg",
+            "iconGrayUrl": "ac838dd4cede24f6f74897819788f5e3fde66fc0.jpg",
+            "hidden": false,
+            "globalPct": 38.1
+        },
+        {
+            "apiName": "Z6_ALLCOLLECTIBLES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mementos",
+            "description": "Find all mementos",
+            "iconUrl": "a528587aa8737fbe7f5037db73795c73ad51bbe5.jpg",
+            "iconGrayUrl": "97e23360b705cba68c1ce0951f9a9f2e8c18030f.jpg",
+            "hidden": false,
+            "globalPct": 5.6
+        },
+        {
+            "apiName": "Z6_EXTRAENDING",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Childhood",
+            "description": "",
+            "iconUrl": "bdeead7a90b6f5ce193777e0dcecec4d5e15f1c5.jpg",
+            "iconGrayUrl": "cb4095ad6fdce2ceacc83ddd47fc185d4cd0e01e.jpg",
+            "hidden": true,
+            "globalPct": 5.5
+        },
+        {
+            "apiName": "Z2_AVOID_SANDSTORM",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sandstorm",
+            "description": "",
+            "iconUrl": "e5b4e7fdf845edef105f1ca55b643d8c58f86923.jpg",
+            "iconGrayUrl": "bdca795dd71c8b7534785d7a28a7dcc9af4090c8.jpg",
+            "hidden": true,
+            "globalPct": 7
+        },
+        {
+            "apiName": "Z3_KODAMA_APPLES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Apples",
+            "description": "",
+            "iconUrl": "b9cc1fd2030d765dc493e1853b70a31767adb3bb.jpg",
+            "iconGrayUrl": "137866bbc099774d632dd7f4e86ac2e305fe3004.jpg",
+            "hidden": true,
+            "globalPct": 12.6
+        },
+        {
+            "apiName": "Z4_AVOID_EEL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Eel",
+            "description": "",
+            "iconUrl": "12a6b733baf805118a8551345ec08bba2ecc16bd.jpg",
+            "iconGrayUrl": "788833801ff80d5f7b37c0a42b3f160c618fc232.jpg",
+            "hidden": true,
+            "globalPct": 9.2
+        },
+        {
+            "apiName": "Z5_SING_SPECIAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Magic fowls",
+            "description": "",
+            "iconUrl": "0f13c54c508f6ed74193fbae924ad1fd15a60916.jpg",
+            "iconGrayUrl": "7a2562cfd85f470111b826b5376514ffa0e907d9.jpg",
+            "hidden": true,
+            "globalPct": 6
+        },
+        {
+            "apiName": "Z2_INUKSUIT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Inuksuit",
+            "description": "",
+            "iconUrl": "74a704db94bee84791862a6704a1fe0bd2ab9930.jpg",
+            "iconGrayUrl": "dbc90fc9ae9e786527492b005531f70e91fc1000.jpg",
+            "hidden": true,
+            "globalPct": 8.7
+        }
+    ],
+    "playtimeForever": 345,
+    "lastPlayedTs": "2025-02-19T05:53:43.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/683320/10a3afeac4adedb37acaec02885bdc3c102eca93.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "Z1_DISCOVER_RED",
+            "displayName": "Red",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "0ab3b42637b2d42cb41e58ec08f06e1c554b81ca.jpg",
+            "iconGrayUrl": "7608dc3e1da1bfdb7fd8faf7813b987c66e83355.jpg",
+            "globalPct": 88.8
+        },
+        {
+            "apiName": "Z1_DENIAL",
+            "displayName": "Denial",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f188808f73bd056384ba384c50c04467481eaec8.jpg",
+            "iconGrayUrl": "bdbe48c9a5b067049fee151fe7606341ef9aeeb5.jpg",
+            "globalPct": 8
+        },
+        {
+            "apiName": "Z2_DISCOVER_GREEN",
+            "displayName": "Green",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "306abd4cfb176a4f9c734afa99cdf35086e29cfe.jpg",
+            "iconGrayUrl": "169ae810512268fe3bc490dc5c7126d4852e1a3a.jpg",
+            "globalPct": 65.1
+        },
+        {
+            "apiName": "Z2_ANGER",
+            "displayName": "Anger",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "8d2ec20b3e476af3be1fada287155e264fe59803.jpg",
+            "iconGrayUrl": "b38cb405f1a5834c5a8047a4394d6b9bdfc9c7e0.jpg",
+            "globalPct": 7.8
+        },
+        {
+            "apiName": "Z3_DISCOVER_BLUE",
+            "displayName": "Blue",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "7bd4e670a6f403d8507b10948f47b059bc950ab1.jpg",
+            "iconGrayUrl": "842f7e7b010b9137fa4034cf28d19c62461c680c.jpg",
+            "globalPct": 52.7
+        },
+        {
+            "apiName": "Z3_BARGAINING",
+            "displayName": "Bargaining",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a2b43b24acd2f83a149c92cb16a18ae79a4bd067.jpg",
+            "iconGrayUrl": "f1ceee93b14423b7c2cf303f7adad6396933bb7e.jpg",
+            "globalPct": 7.8
+        }
+    ]
+}

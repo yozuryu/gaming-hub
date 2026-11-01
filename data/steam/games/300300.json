@@ -1,0 +1,257 @@
+{
+    "appId": 300300,
+    "hasAchievements": true,
+    "total": 17,
+    "unlocked": 0,
+    "gameName": "Ichi",
+    "achievements": [
+        {
+            "apiName": "Achievement_Published_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Publisher",
+            "description": "Create & Publish 1 level.",
+            "iconUrl": "4eeccc5654599a31d18ad28be8d1aa5543cafe73.jpg",
+            "iconGrayUrl": "149ce836f78ca84a433facdeb37e6f5b554eba5d.jpg",
+            "hidden": false,
+            "globalPct": 8.2
+        },
+        {
+            "apiName": "Achievement_Published_5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Experienced Publisher",
+            "description": "Create & Publish 5 levels.",
+            "iconUrl": "22582567f23392ce5c5aacbe56c04a0f94c9f90a.jpg",
+            "iconGrayUrl": "8e5a35d54ba5d78b0bec071aec99fc12f94848ef.jpg",
+            "hidden": false,
+            "globalPct": 5.6
+        },
+        {
+            "apiName": "Achievement_Published_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Master Publisher",
+            "description": "Create & Publish 10 levels.",
+            "iconUrl": "b46997dcc359478ceaa3a3a801eb2af7e1100507.jpg",
+            "iconGrayUrl": "6eb4fa10457abb3f520ee485fb277cac0c85c058.jpg",
+            "hidden": false,
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "Achievement_Shared_100",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Master",
+            "description": "Let 100 people play your level(s).",
+            "iconUrl": "0704b2bffdad5dfa540c321d27dc5eac4045fed1.jpg",
+            "iconGrayUrl": "aaed3c81883c0db7dfeccbfe1aeee91ad3122c41.jpg",
+            "hidden": false,
+            "globalPct": 4.7
+        },
+        {
+            "apiName": "Achievement_Levels_5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bright Beginner",
+            "description": "Complete 5 levels.",
+            "iconUrl": "ac20099a5b607d5c1d70007e9f406d8334f21d3f.jpg",
+            "iconGrayUrl": "78def411e1d9e4ad2d8f9bea34999d48706dec6a.jpg",
+            "hidden": false,
+            "globalPct": 38.7
+        },
+        {
+            "apiName": "Achievement_Levels_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Clever Leveler",
+            "description": "Complete 10 levels.",
+            "iconUrl": "6b1a8c2c19f83397bf777a2ede2f3ab9a6eedd6a.jpg",
+            "iconGrayUrl": "fc5b0151d58da2c9f018a5f5bbe25315a61ad59b.jpg",
+            "hidden": false,
+            "globalPct": 28.4
+        },
+        {
+            "apiName": "Achievement_Levels_25",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cunning Puzzler",
+            "description": "Complete 25 levels.",
+            "iconUrl": "f980c49d45c2824f89a0052d2dc747a6598824e1.jpg",
+            "iconGrayUrl": "53b5ffe941e1eda595d63a0b5550ed02b6179edb.jpg",
+            "hidden": false,
+            "globalPct": 13.2
+        },
+        {
+            "apiName": "Achievement_Levels_50",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Witty Thinker",
+            "description": "Complete 50 levels.",
+            "iconUrl": "78854ea7c6bba4f0fd6ff14d495a6f542314ea97.jpg",
+            "iconGrayUrl": "a27b84fe88938e6e29e9af28401e499a7ceec56d.jpg",
+            "hidden": false,
+            "globalPct": 8.7
+        },
+        {
+            "apiName": "Achievement_Levels_75",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ichi Intellect",
+            "description": "Complete 75 levels.",
+            "iconUrl": "b3546d973c8dd7caa1c75baea23fe2ab7810b5c8.jpg",
+            "iconGrayUrl": "1145cd02cb5c73c311c2795dfa2b7103dbbf18b8.jpg",
+            "hidden": false,
+            "globalPct": 5.3
+        },
+        {
+            "apiName": "Achievement_Shared_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Apprentice",
+            "description": "Let 10 people play your level(s).",
+            "iconUrl": "b9c3a4771028b77d49f11626f57543cadf4e9751.jpg",
+            "iconGrayUrl": "2bed6383b0d9579c980da06424dd9536390fc6af.jpg",
+            "hidden": false,
+            "globalPct": 6
+        },
+        {
+            "apiName": "Achievement_Levels_100",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Brilliant Brainiac",
+            "description": "Complete 100 levels.",
+            "iconUrl": "e996e82f2b68bac1c2afa233ec058ee631685376.jpg",
+            "iconGrayUrl": "7ab963f25d2cf65fc379607fcbfc63851b055752.jpg",
+            "hidden": false,
+            "globalPct": 5
+        },
+        {
+            "apiName": "Achievement_Taps_100",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Savvy Tapper",
+            "description": "",
+            "iconUrl": "5c5d68225920e84d25e67350044fb4397fb906a3.jpg",
+            "iconGrayUrl": "6ec197e61cf6bb58d90b7fbe4be03adde1d3f68f.jpg",
+            "hidden": true,
+            "globalPct": 32.3
+        },
+        {
+            "apiName": "Achievement_Taps_500",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Tapping Talent",
+            "description": "",
+            "iconUrl": "a020c164f214d49041b42b525ff38c3dbd91d9d8.jpg",
+            "iconGrayUrl": "dc75b3f311d694529db8f8475a00f763f66cdbfe.jpg",
+            "hidden": true,
+            "globalPct": 14.2
+        },
+        {
+            "apiName": "Achievement_Taps_1000",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Expert Tapper",
+            "description": "",
+            "iconUrl": "84e081ee014160220f464378721eb981807c33af.jpg",
+            "iconGrayUrl": "9072124049ab412696fbfbc88f9ed631f75de3d7.jpg",
+            "hidden": true,
+            "globalPct": 9.9
+        },
+        {
+            "apiName": "Achievement_Score_100",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Score 100",
+            "description": "Get a score of 100 points.",
+            "iconUrl": "d8d773242f6c8b0a3de0b75b3369dcf69ad8b0d7.jpg",
+            "iconGrayUrl": "2e32bd2acb5c72476daea1a8bf5b0e13e43c9e07.jpg",
+            "hidden": false,
+            "globalPct": 10.3
+        },
+        {
+            "apiName": "Achievement_Score_500",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Score 500",
+            "description": "Get a score of 500 points.",
+            "iconUrl": "f8e0bfb57e86c096e6fe41a56a847504732840b9.jpg",
+            "iconGrayUrl": "6dfa5e302151b1d7c3895ab396f85e5b8315f0e9.jpg",
+            "hidden": false,
+            "globalPct": 4.5
+        },
+        {
+            "apiName": "Achievement_Score_1000",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Score 1000",
+            "description": "Get a score of 1000 points.",
+            "iconUrl": "84e081ee014160220f464378721eb981807c33af.jpg",
+            "iconGrayUrl": "9072124049ab412696fbfbc88f9ed631f75de3d7.jpg",
+            "hidden": false,
+            "globalPct": 4.4
+        }
+    ],
+    "playtimeForever": 214,
+    "lastPlayedTs": "2024-06-10T16:56:49.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/300300/c0f692e308f66d704f1cbad6cce096cae47fcbd4.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "Achievement_Published_1",
+            "displayName": "Publisher",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "4eeccc5654599a31d18ad28be8d1aa5543cafe73.jpg",
+            "iconGrayUrl": "149ce836f78ca84a433facdeb37e6f5b554eba5d.jpg",
+            "globalPct": 8.2
+        },
+        {
+            "apiName": "Achievement_Published_5",
+            "displayName": "Experienced Publisher",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "22582567f23392ce5c5aacbe56c04a0f94c9f90a.jpg",
+            "iconGrayUrl": "8e5a35d54ba5d78b0bec071aec99fc12f94848ef.jpg",
+            "globalPct": 5.6
+        },
+        {
+            "apiName": "Achievement_Published_10",
+            "displayName": "Master Publisher",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "b46997dcc359478ceaa3a3a801eb2af7e1100507.jpg",
+            "iconGrayUrl": "6eb4fa10457abb3f520ee485fb277cac0c85c058.jpg",
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "Achievement_Shared_100",
+            "displayName": "Master",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "0704b2bffdad5dfa540c321d27dc5eac4045fed1.jpg",
+            "iconGrayUrl": "aaed3c81883c0db7dfeccbfe1aeee91ad3122c41.jpg",
+            "globalPct": 4.7
+        },
+        {
+            "apiName": "Achievement_Levels_5",
+            "displayName": "Bright Beginner",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "ac20099a5b607d5c1d70007e9f406d8334f21d3f.jpg",
+            "iconGrayUrl": "78def411e1d9e4ad2d8f9bea34999d48706dec6a.jpg",
+            "globalPct": 38.7
+        },
+        {
+            "apiName": "Achievement_Levels_10",
+            "displayName": "Clever Leveler",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "6b1a8c2c19f83397bf777a2ede2f3ab9a6eedd6a.jpg",
+            "iconGrayUrl": "fc5b0151d58da2c9f018a5f5bbe25315a61ad59b.jpg",
+            "globalPct": 28.4
+        }
+    ]
+}

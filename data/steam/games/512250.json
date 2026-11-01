@@ -1,0 +1,268 @@
+{
+    "appId": 512250,
+    "hasAchievements": true,
+    "total": 18,
+    "unlocked": 0,
+    "gameName": "Oh...Sir! The Insult Simulator",
+    "achievements": [
+        {
+            "apiName": "ITS_ELEMENTARY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "It's Elementary",
+            "description": "Compose a phrase with \"A duck hunter probably murdered this poor man\".",
+            "iconUrl": "54c48afc65d2cfefb7d3bb29c90b3b37d6bc3cf8.jpg",
+            "iconGrayUrl": "bfbe829c22bd52feb1b71059a26cff762d613ec4.jpg",
+            "hidden": false,
+            "globalPct": 1.5
+        },
+        {
+            "apiName": "FAMILY_MATTERS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Family Matters",
+            "description": "Compose a phrase with \"Your beloved auntie worked with the Nazis\".",
+            "iconUrl": "ddb283ecc5916ace2eeae7dee58fdda3eb72dc02.jpg",
+            "iconGrayUrl": "2f1dd3621eb5e9425af2f382cefd75e18aea6bc8.jpg",
+            "hidden": false,
+            "globalPct": 1.3
+        },
+        {
+            "apiName": "WHAT_ARE_YOU_DOING_IN_ENGLAND",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "What Are You Doing in England?",
+            "description": "Compose a phrase with \"Your mother was a hamster\".",
+            "iconUrl": "6a9109208ed79c5a66a06ca5c674ff0758389df3.jpg",
+            "iconGrayUrl": "0c8388e3c055e36c7721a591c5361b79bba76ce4.jpg",
+            "hidden": false,
+            "globalPct": 2.7
+        },
+        {
+            "apiName": "DIRTY_HUNGARIAN_PHRASEBOOK",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dirty Hungarian Phrasebook",
+            "description": "Compose a phrase with \"Your hovercraft is full of eels\".",
+            "iconUrl": "266dd66dbad934fb384345ed8e0bb2083a425a67.jpg",
+            "iconGrayUrl": "6b0e19f5abdf747975652f3117e7a4fceba0fb7f.jpg",
+            "hidden": false,
+            "globalPct": 2.2
+        },
+        {
+            "apiName": "THE_B_WORD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The B Word",
+            "description": "Compose a phrase with \"Your country is not a part of Europe\".",
+            "iconUrl": "9af9eff19682c0b435c020a68f5ee1a1d9ffd5c6.jpg",
+            "iconGrayUrl": "cebf625232e93049ff95eb7b9100fa3b0b2ba0a9.jpg",
+            "hidden": false,
+            "globalPct": 8.3
+        },
+        {
+            "apiName": "HOW_DO_YOU_DO_FELLOW_KIDS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "How Do You Do, Fellow Kids?",
+            "description": "Compose a phrase with \"You still use Windows Vista and never watched Star Wars\".",
+            "iconUrl": "fff07e56d094391ffa985b6255fb70d7ef80bf34.jpg",
+            "iconGrayUrl": "8be09071cea0587e56fb8d676a39494d16e7695f.jpg",
+            "hidden": false,
+            "globalPct": 1.5
+        },
+        {
+            "apiName": "CLASSIC",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Classic",
+            "description": "Compose a phrase with \"Your mother is your father\".",
+            "iconUrl": "c8d10f1b6d0268059d219d4fa10ff7e41b05ba2a.jpg",
+            "iconGrayUrl": "cc1698334907caea4d8d4acfe5dc9835353c8cc4.jpg",
+            "hidden": false,
+            "globalPct": 5.3
+        },
+        {
+            "apiName": "NO_YOU_ARE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "No, You Are",
+            "description": "Compose a phrase with \"You are silly, and everybody knows that!\".",
+            "iconUrl": "812dd8196eeb85399120b43963d946da64c563ff.jpg",
+            "iconGrayUrl": "f303bf7dba7305498c776ece26959aa2b9fec081.jpg",
+            "hidden": false,
+            "globalPct": 1.4
+        },
+        {
+            "apiName": "SAY_NO_MORE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Say No More",
+            "description": "Compose a phrase with \"Your wife is interested in photography, nudge nudge!\".",
+            "iconUrl": "de3e687ad3938ac17479f21228974ccba5e0e3ca.jpg",
+            "iconGrayUrl": "e4b8d3bd5744e8f9172980ef82bce4cddfe8278c.jpg",
+            "hidden": false,
+            "globalPct": 1
+        },
+        {
+            "apiName": "SPARKING_CONTROVERSY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sparking Controversy",
+            "description": "Compose a phrase with \"Your son died because of your sins!\".",
+            "iconUrl": "c4571c6bbd7b566858dd8bf9d56ddd2fa72425b8.jpg",
+            "iconGrayUrl": "75b9ea2aa8282cb7b99898514e144ca92b5556d6.jpg",
+            "hidden": false,
+            "globalPct": 2.1
+        },
+        {
+            "apiName": "I_KNOW_INSULTS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I Know Insults!",
+            "description": "Play the basic tutorial.",
+            "iconUrl": "d1380f64f6736e56983d25af781d76a47ddf6ef1.jpg",
+            "iconGrayUrl": "83e2c57d7080399fe7b879c65cd6d908d062cfb4.jpg",
+            "hidden": false,
+            "globalPct": 62
+        },
+        {
+            "apiName": "MIC_DROP",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mic Drop",
+            "description": "Win your first argument.",
+            "iconUrl": "188338fa90fa6afe13a03ba486ae3ce041049d5c.jpg",
+            "iconGrayUrl": "99cbd8369df4ad3093fe0c4c9b8d4cef2bd69d5f.jpg",
+            "hidden": false,
+            "globalPct": 68.7
+        },
+        {
+            "apiName": "LEARN_THE_MEANING_OF_LIFE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Learn The Meaning of Life",
+            "description": "Complete the Insulting Tournament.",
+            "iconUrl": "8a1d8bcb34ea9f70d7c9b56e50c06e84c379e6f4.jpg",
+            "iconGrayUrl": "bcdf89bac9f8ff9dcafe75e79484c467207755e2.jpg",
+            "hidden": false,
+            "globalPct": 32.4
+        },
+        {
+            "apiName": "HIGH_FIVE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "It's Getting Crowded",
+            "description": "Unlock two additional characters.",
+            "iconUrl": "a4b7d322efa8110736c898072cc78c5be123b1ba.jpg",
+            "iconGrayUrl": "0bba76f96646a299e705380699a7a8252dacf7e3.jpg",
+            "hidden": false,
+            "globalPct": 27.3
+        },
+        {
+            "apiName": "DONT_TELL_A_SOUL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Don't Tell a Soul",
+            "description": "Unlock a secret character.",
+            "iconUrl": "59898f1129d54c77138e9295cb28b09b7383318a.jpg",
+            "iconGrayUrl": "851b9d78738a5c7804bc044fed771923d81ad04f.jpg",
+            "hidden": false,
+            "globalPct": 8.2
+        },
+        {
+            "apiName": "MMMMONSTER_INSULT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "M-M-M-M-ONSTER INSULT",
+            "description": "Take 50 honour points off your opponent in a single insult.",
+            "iconUrl": "a8157f6f62c573934da6612a88ea4fcd7416679b.jpg",
+            "iconGrayUrl": "e41670c5e15804fe36ae3372904951b920054cf6.jpg",
+            "hidden": false,
+            "globalPct": 22.1
+        },
+        {
+            "apiName": "THE_NUMBER_OF_THE_BEAST",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Number of The Beast",
+            "description": "Mention Satan 66 times.",
+            "iconUrl": "266d1b25e74ee07a0241ef03049af8cddf4ea700.jpg",
+            "iconGrayUrl": "fb7c107e428633094aec8446e94808efe38c2a39.jpg",
+            "hidden": false,
+            "globalPct": 1
+        },
+        {
+            "apiName": "IT_GETS_BORING_AFTER_AN_HOUR",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "It Gets Boring After An Hour",
+            "description": "Play more than 100 duels.",
+            "iconUrl": "87530e990f2e629109a49bb7591fe606b1d4f905.jpg",
+            "iconGrayUrl": "da2084dd1134d6ad4e72c14a87be739dacb0a8e9.jpg",
+            "hidden": false,
+            "globalPct": 2.4
+        }
+    ],
+    "playtimeForever": 275,
+    "lastPlayedTs": "2024-06-17T12:08:27.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/512250/87964c0a844e9040faba377684b0d8ca832f6d7e.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ITS_ELEMENTARY",
+            "displayName": "It's Elementary",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "54c48afc65d2cfefb7d3bb29c90b3b37d6bc3cf8.jpg",
+            "iconGrayUrl": "bfbe829c22bd52feb1b71059a26cff762d613ec4.jpg",
+            "globalPct": 1.5
+        },
+        {
+            "apiName": "FAMILY_MATTERS",
+            "displayName": "Family Matters",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "ddb283ecc5916ace2eeae7dee58fdda3eb72dc02.jpg",
+            "iconGrayUrl": "2f1dd3621eb5e9425af2f382cefd75e18aea6bc8.jpg",
+            "globalPct": 1.3
+        },
+        {
+            "apiName": "WHAT_ARE_YOU_DOING_IN_ENGLAND",
+            "displayName": "What Are You Doing in England?",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "6a9109208ed79c5a66a06ca5c674ff0758389df3.jpg",
+            "iconGrayUrl": "0c8388e3c055e36c7721a591c5361b79bba76ce4.jpg",
+            "globalPct": 2.7
+        },
+        {
+            "apiName": "DIRTY_HUNGARIAN_PHRASEBOOK",
+            "displayName": "Dirty Hungarian Phrasebook",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "266dd66dbad934fb384345ed8e0bb2083a425a67.jpg",
+            "iconGrayUrl": "6b0e19f5abdf747975652f3117e7a4fceba0fb7f.jpg",
+            "globalPct": 2.2
+        },
+        {
+            "apiName": "THE_B_WORD",
+            "displayName": "The B Word",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9af9eff19682c0b435c020a68f5ee1a1d9ffd5c6.jpg",
+            "iconGrayUrl": "cebf625232e93049ff95eb7b9100fa3b0b2ba0a9.jpg",
+            "globalPct": 8.3
+        },
+        {
+            "apiName": "HOW_DO_YOU_DO_FELLOW_KIDS",
+            "displayName": "How Do You Do, Fellow Kids?",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "fff07e56d094391ffa985b6255fb70d7ef80bf34.jpg",
+            "iconGrayUrl": "8be09071cea0587e56fb8d676a39494d16e7695f.jpg",
+            "globalPct": 1.5
+        }
+    ]
+}

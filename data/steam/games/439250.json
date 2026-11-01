@@ -1,0 +1,147 @@
+{
+    "appId": 439250,
+    "hasAchievements": true,
+    "total": 7,
+    "unlocked": 0,
+    "gameName": "Space Pilgrim Episode III: Delta Pavonis",
+    "achievements": [
+        {
+            "apiName": "ACH_PROLOGUE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Planetfall",
+            "description": "Complete the prologue of Episode Three.",
+            "iconUrl": "6e5f23cbd061cb7090987eca5567846c7edf981a.jpg",
+            "iconGrayUrl": "1f2e26ac6dff38abc23b2a7206667557dd95294a.jpg",
+            "hidden": false,
+            "globalPct": 5.3
+        },
+        {
+            "apiName": "ACH_TEASE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Tease",
+            "description": "Accidentally flirt with a dock worker.",
+            "iconUrl": "579d5608420a8ee0dafd4e4aa7b13d1a13da597e.jpg",
+            "iconGrayUrl": "c274213990aabc489245fad2f9411a7ad6832d5c.jpg",
+            "hidden": false,
+            "globalPct": 4.9
+        },
+        {
+            "apiName": "ACH_ACT1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Big Trouble in Hope City",
+            "description": "Complete act one of Episode Three.",
+            "iconUrl": "6b5675c3a2d7c26dabf2de8bd9fbbb1ffc86166f.jpg",
+            "iconGrayUrl": "090c3143d58f7aeb39b0517091f54b68923b79e2.jpg",
+            "hidden": false,
+            "globalPct": 4.8
+        },
+        {
+            "apiName": "ACH_HOSPITAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pablo's Revenge",
+            "description": "Watch another episode of Galactic Hospital.",
+            "iconUrl": "a2b98d31186147358f7521ebe09894eda1996ac7.jpg",
+            "iconGrayUrl": "0d74526c5a3fb6ced3e5198587aa306c5fdfea3b.jpg",
+            "hidden": false,
+            "globalPct": 4.8
+        },
+        {
+            "apiName": "ACH_ACT2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Star to Steer Her By",
+            "description": "Complete act two of Episode Three.",
+            "iconUrl": "c6f22dbe878c68f66b2f196848de8cbcdfa10d19.jpg",
+            "iconGrayUrl": "4aa4e224b82f1227d20ab7d1d092687645c630ce.jpg",
+            "hidden": false,
+            "globalPct": 4.7
+        },
+        {
+            "apiName": "ACH_XENO",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Xenobiologist",
+            "description": "Examine every alien specimen in the mines.",
+            "iconUrl": "cec91eb3fd6a185e1cf8fc6a05be46b64f7bd7dc.jpg",
+            "iconGrayUrl": "c4c6035ca60660ca37faa5ac486d4abc31428a7f.jpg",
+            "hidden": false,
+            "globalPct": 4.5
+        },
+        {
+            "apiName": "ACH_ACT3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Rabbit Hole",
+            "description": "Complete Episode Three.",
+            "iconUrl": "076963b7654e7f8a6ac49bb2cd936deadd0c1e2b.jpg",
+            "iconGrayUrl": "a88eb139f61039b78679961e671c4acc43378818.jpg",
+            "hidden": false,
+            "globalPct": 4.6
+        }
+    ],
+    "playtimeForever": 274,
+    "lastPlayedTs": "2024-06-30T08:37:04.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/439250/d7436e0172010957caab6eeeaf016028f2f85f1c.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACH_PROLOGUE",
+            "displayName": "Planetfall",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "6e5f23cbd061cb7090987eca5567846c7edf981a.jpg",
+            "iconGrayUrl": "1f2e26ac6dff38abc23b2a7206667557dd95294a.jpg",
+            "globalPct": 5.3
+        },
+        {
+            "apiName": "ACH_TEASE",
+            "displayName": "Tease",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "579d5608420a8ee0dafd4e4aa7b13d1a13da597e.jpg",
+            "iconGrayUrl": "c274213990aabc489245fad2f9411a7ad6832d5c.jpg",
+            "globalPct": 4.9
+        },
+        {
+            "apiName": "ACH_ACT1",
+            "displayName": "Big Trouble in Hope City",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "6b5675c3a2d7c26dabf2de8bd9fbbb1ffc86166f.jpg",
+            "iconGrayUrl": "090c3143d58f7aeb39b0517091f54b68923b79e2.jpg",
+            "globalPct": 4.8
+        },
+        {
+            "apiName": "ACH_HOSPITAL",
+            "displayName": "Pablo's Revenge",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a2b98d31186147358f7521ebe09894eda1996ac7.jpg",
+            "iconGrayUrl": "0d74526c5a3fb6ced3e5198587aa306c5fdfea3b.jpg",
+            "globalPct": 4.8
+        },
+        {
+            "apiName": "ACH_ACT2",
+            "displayName": "A Star to Steer Her By",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c6f22dbe878c68f66b2f196848de8cbcdfa10d19.jpg",
+            "iconGrayUrl": "4aa4e224b82f1227d20ab7d1d092687645c630ce.jpg",
+            "globalPct": 4.7
+        },
+        {
+            "apiName": "ACH_XENO",
+            "displayName": "Xenobiologist",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "cec91eb3fd6a185e1cf8fc6a05be46b64f7bd7dc.jpg",
+            "iconGrayUrl": "c4c6035ca60660ca37faa5ac486d4abc31428a7f.jpg",
+            "globalPct": 4.5
+        }
+    ]
+}

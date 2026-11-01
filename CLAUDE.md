@@ -9,7 +9,7 @@
 
 ---
 
-Personal gaming statistics dashboard aggregating RetroAchievements (RA) and Steam data. Static site with no build tool — React, Tailwind, and Lucide are all loaded via CDN. Data is fetched by Node.js pipelines running on GitHub Actions every 30 minutes (triggered by cron-job.org), stored as JSON files on the repo's `data` branch, and consumed directly by the browser. The site is deployed by a GitHub Actions workflow that combines `main` (code) with the `data` branch.
+Personal gaming statistics dashboard aggregating RetroAchievements (RA) and Steam data. Static site with no build tool — React, Tailwind, and Lucide are all loaded via CDN. Data is fetched by Node.js pipelines running on GitHub Actions every 30 minutes (triggered by cron-job.org), stored as JSON files committed to the repo, and consumed directly by the browser.
 
 ---
 
@@ -22,6 +22,7 @@ gaming-hub/
 ├── manifest.json                   # PWA manifest
 ├── sw.js                           # Service worker (network-first data, stale-while-revalidate assets)
 ├── changelog.md                    # Project changelog (Markdown, parsed by changelog app)
+├── _config.yml                     # GitHub Pages exclude list — anything private must be listed here
 ├── backlog/                        # Planned work (not published)
 ├── CLAUDE.md                       # This file
 │
@@ -34,9 +35,7 @@ gaming-hub/
 │   ├── favicon.svg / favicon.ico   # Browser-tab icon (rounded tile, crystal enlarged to read at 16 px); linked from every page
 │   └── icon-ra.png / icon-steam.png / icon-xbox.png
 │
-├── data/                           # JSON read by the browser. Pipeline output is NOT on main: it lives on the `data` branch
-│                                   #   (scripts/data-paths.json, gitignored here, `npm run data:pull` to get it locally).
-│                                   #   On main: hub/config.json, ra/series.json, ra/guides.json, {steam,xbox}/win-conditions.json
+├── data/                           # JSON written by pipelines, read by browser
 │   ├── hub/config.json             # Username, motto, tags, platform visibility flags
 │   ├── ra/
 │   │   ├── profile.json            # RA profile, stats, awards, recently played
@@ -83,16 +82,13 @@ gaming-hub/
 │   ├── ra-pipeline.js              # RA ETL: API → data/ra/ (~600 LOC)
 │   ├── steam-pipeline.js           # Steam ETL: API → data/steam/ (~800 LOC)
 │   ├── xbox-pipeline.js            # Xbox ETL (OpenXBL): API → data/xbox/
-│   ├── backfill-playtime.js        # One-off: rebuilds data/{steam,ra}/playtime/ from git history (snapshots up to 2026-11-01, on backup/main-2026-11-01)
-│   ├── data-paths.json             # The generated paths that live on the `data` branch (+ pipeline-only caches never deployed)
-│   ├── data-pull.js                # `npm run data:pull`: data branch → data/ (+ .data-snapshot/ for the admin Data Diff)
+│   ├── backfill-playtime.js        # One-off: rebuilds data/{steam,ra}/playtime/ from git history
 │   └── lib/
 │       ├── playtime.js             # Playtime diff + file writer shared by RA, Steam and the backfill
 │       └── history.js              # Unlock history writer shared by all three pipelines
 │
 └── .github/workflows/
-    ├── fetch-data.yml               # All three pipelines in sequence, output committed to the `data` branch; dispatched by cron-job.org every 30 min + midnight, 6h fallback schedule
-    └── deploy.yml                   # Builds the site (main + data branch, private files excluded) and deploys it to Pages
+    └── fetch-data.yml               # All three pipelines in sequence; dispatched by cron-job.org every 30 min + midnight, 6h fallback schedule
 ```
 
 ---
@@ -207,8 +203,8 @@ Steam and RA only (Xbox has no playtime). Each run compares lifetime playtime pe
 - **Unknown games** count as new play only when last-played is after `state.asOf`; otherwise they're added to the baseline silently. The first run with no `state.json` only seeds it
 - Store sessions, never daily totals: the frontend groups them into the viewer's local days. No rollups; one file per year
 - RA's snapshot is every game in `games.json`, but last-played is only known for recently played games (the only ones re-fetched)
-- `state.json` is pipeline-only (`private` in `scripts/data-paths.json`: on the data branch, never deployed) and only rewritten when it changes
-- `scripts/backfill-playtime.js [--ref origin/backup/main-2026-11-01] [--platform steam|ra] [--dry-run]` replays the hourly snapshots in git through the same diff and replaces the playtime files. History starts 2026-03-25 (Steam) / 2026-03-27 (RA) and ends 2026-11-01: since then data lives on the `data` branch, squashed daily, so the backup branch (and the local bundle in `~/projects/personal/gaming-hub-backups/`) holds the only snapshots
+- `state.json` is pipeline-only (excluded in `_config.yml`) and only rewritten when it changes
+- `scripts/backfill-playtime.js [--ref origin/main] [--platform steam|ra] [--dry-run]` replays the hourly snapshots in git through the same diff and replaces the playtime files. History starts 2026-03-25 (Steam) / 2026-03-27 (RA)
 
 ### Playing (`assets/playing.js`)
 Games in rotation, so games played in parallel don't get lost. Computed in the browser (no pipeline file), so "3d ago" is never stale. `loadPlaying(fetchJson, base)` reads play sessions, achievement chunk 1, RA awards and progress from `ra/profile.json`, and the per-game file + `win-conditions.json` of each Steam candidate. **RA and Steam only:** rotation is measured in play time, which Xbox doesn't report (judging Xbox by unlocks misses games played without unlocking anything).
@@ -223,7 +219,7 @@ Every unlocked achievement, all time, rebuilt by each pipeline on every run from
 `{ metadata, unlocks: [{ t, g, a, n, p?, r?, hc? }] }`: `t` ISO UTC, `g` game id, `a` achievement id, `n` name, `p` RA points / Xbox gamerscore, `r` rarity % (Steam/Xbox global %, RA `numAwarded / numDistinctPlayersCasual`), `hc` RA hardcore. `history/index.json` (`{ years: { YYYY: count } }`) lists the year files. One unlock per line; unchanged years are not rewritten, empty years are deleted. `r` (0.1 precision) is only refreshed by the midnight run; other runs keep each stored unlock's `r` and only add new ones. ~390 KB for all years.
 
 ### Shared behavior
-- **One workflow** (`fetch-data.yml`) runs RA → Steam → Xbox in one job and makes at most one commit, **on the `data` branch** (`chore: update data (ra, steam) …`, listing the platforms that changed). `main` gets no pipeline commits. Each pipeline step has `continue-on-error`, so one platform failing doesn't stop the others; the commit step still runs (a failed pipeline wrote nothing) and a last step fails the job so GitHub emails. Inputs: `mode` (`incremental` · `midnight` = RA full, Steam unlock refresh, Xbox full · `full-refresh` = every game everywhere, Steam `--refresh-games` · `watchlist-only` = RA want-to-play list) and `platforms` (`all` / `ra` / `steam` / `xbox`)
+- **One workflow** (`fetch-data.yml`) runs RA → Steam → Xbox in one job and makes at most one commit (`chore: update data (ra, steam) …`, listing the platforms that changed). Each pipeline step has `continue-on-error`, so one platform failing doesn't stop the others; the commit step still runs (a failed pipeline wrote nothing) and a last step fails the job so GitHub emails. Inputs: `mode` (`incremental` · `midnight` = RA full, Steam unlock refresh, Xbox full · `full-refresh` = every game everywhere, Steam `--refresh-games` · `watchlist-only` = RA want-to-play list) and `platforms` (`all` / `ra` / `steam` / `xbox`)
 - **Xbox sync is paused** (`XBOX_ENABLED: 'false'` in `fetch-data.yml`, since 2026-10-10): scheduled runs skip Xbox; a manual dispatch with `platforms: xbox` still syncs it. OpenXBL intermittently returns 429 on the first request even with quota left (5 of ~100 runs on 8–9 Oct). Set it back to `'true'` to resume
 - **Scheduling:** GitHub's `schedule` trigger ran hours late, so cron-job.org POSTs to the `workflow_dispatch` API with an explicit `mode`: `incremental` every 30 minutes (:15 and :45, off the midnight slot), `midnight` at 00:00 UTC. The mode comes only from `inputs.mode`, never from `github.event.schedule`. A 6-hourly `schedule` stays as a fallback and always runs incremental
 - Concurrency group `data-pipeline` prevents overlapping runs
@@ -238,14 +234,7 @@ Every unlocked achievement, all time, rebuilt by each pipeline on every run from
 
 ## Publishing / Private Files
 
-Pages source is **GitHub Actions** (`deploy.yml`), not a branch build: the site is `main`'s files plus `data/` from the `data` branch, at the same paths as always. Every file on `main` is public unless excluded in `deploy.yml`'s **Assemble site** step (an rsync exclude list: every `CLAUDE.md` at any depth, `backlog/`, `docs/`, `admin/`, `scripts/`, `README.md`, `TODO.md`, `package*.json`, `.github/`, …) and the pipeline-only caches listed as `private` in `scripts/data-paths.json`. **When adding a private folder or notes file, add it to that list.** There is no Jekyll and no `_config.yml` any more.
-
-### Data branch
-- `data` holds only pipeline output (`scripts/data-paths.json`). `fetch-data.yml` restores it into `data/` before the pipelines (they read their previous output as cache), copies the generated paths back after, and commits to `data`. The **midnight** run squashes the branch into one parentless commit (`chore: data snapshot …`, force-push with lease), so it never holds more than a day of history
-- A run that changed data calls `deploy.yml` as a second job (pushes made with `GITHUB_TOKEN` don't trigger workflows); every push to `main` deploys too. Deploys share the `pages` concurrency group
-- **Local:** a checkout of `main` has no pipeline output. `npm run data:pull` extracts the `data` branch into `data/` and an untouched copy into `.data-snapshot/` (both gitignored); the admin **Data Diff** compares generated files against that copy and hand-edited files against git. Local pipeline runs are for testing; publishing data only happens from Actions
-- Moving a file between `main` and `data`: update `scripts/data-paths.json` and `.gitignore` together
-- Before the move (2026-11-01) data was committed to `main`: that history is on `backup/main-2026-11-01` and in the local bundle `~/projects/personal/gaming-hub-backups/gaming-hub-2026-11-01-pre-data-branch.bundle`
+GitHub Pages builds from `main` with Jekyll, so every tracked file is public unless listed in `_config.yml` → `exclude`. Jekyll's exclude does not match nested files by name: each `CLAUDE.md` is listed by path. **When adding a new `CLAUDE.md`, private folder, or notes file, add it to `_config.yml`.**
 
 ---
 
@@ -258,8 +247,8 @@ Pages source is **GitHub Actions** (`deploy.yml`), not a branch build: the site 
 | Icons | Lucide React 0.263.1 | Via CDN |
 | JS transform | Babel standalone | Transpiles JSX in-browser |
 | Node scripts | Node.js 20 | Pipelines only, not frontend |
-| CI/CD | GitHub Actions | Data fetch every 30 min + commit to the `data` branch on activity, triggered by cron-job.org; `deploy.yml` deploys main + data |
-| Hosting | GitHub Pages | Static files served as-is, deployed by Actions (no Jekyll) |
+| CI/CD | GitHub Actions | Data fetch every 30 min + commit on activity, triggered by cron-job.org |
+| Hosting | GitHub Pages | Static files served as-is |
 
 There is **no bundler, no npm for the frontend, no TypeScript**. All frontend files are plain `.js` (JSX transpiled in-browser by Babel).
 

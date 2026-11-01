@@ -1,0 +1,334 @@
+{
+    "appId": 368640,
+    "hasAchievements": true,
+    "total": 24,
+    "unlocked": 0,
+    "gameName": "htoL#NiQ: The Firefly Diary",
+    "achievements": [
+        {
+            "apiName": "ACHIEVEMENT00",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Chapter 1 Cleared",
+            "description": "",
+            "iconUrl": "42d7d91361e46b38b4f914a2674103203ff8fd23.jpg",
+            "iconGrayUrl": "a46161ac80006fa1cd1fa80f6c374b107ad6ab7d.jpg",
+            "hidden": true,
+            "globalPct": 63.9
+        },
+        {
+            "apiName": "ACHIEVEMENT01",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Chapter 2 Cleared",
+            "description": "",
+            "iconUrl": "35f8227f8ce87e19055cac30e1093660c00751b3.jpg",
+            "iconGrayUrl": "ac751b188a0be00651c1f0d3e9d32b9a4bd9be9a.jpg",
+            "hidden": true,
+            "globalPct": 30.2
+        },
+        {
+            "apiName": "ACHIEVEMENT02",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Chapter 3 Cleared",
+            "description": "",
+            "iconUrl": "315ab943e62cbe62918f2db6c5aed95c75339ed6.jpg",
+            "iconGrayUrl": "05e3e3cb782be0080dc0087edd1a24944ce99b88.jpg",
+            "hidden": true,
+            "globalPct": 19.2
+        },
+        {
+            "apiName": "ACHIEVEMENT03",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Chapter 4 Cleared",
+            "description": "",
+            "iconUrl": "5995eee895eb423da22ae0903056af35690b36fc.jpg",
+            "iconGrayUrl": "e64495800f64e08144207945b4101ade6261fac1.jpg",
+            "hidden": true,
+            "globalPct": 15.6
+        },
+        {
+            "apiName": "ACHIEVEMENT04",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mion's Punishment",
+            "description": "",
+            "iconUrl": "49435d4ae49ce4a6cc977ac52077a3f7c6318d63.jpg",
+            "iconGrayUrl": "f5b72b71b41affd83d9ff97079aec6cba0b887c3.jpg",
+            "hidden": true,
+            "globalPct": 11.7
+        },
+        {
+            "apiName": "ACHIEVEMENT05",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Escape Artist",
+            "description": "",
+            "iconUrl": "c2c0b53e161a8a5ea1bc471cc7d752609e380c15.jpg",
+            "iconGrayUrl": "1e4a1c0a25478747f12179c413a27fcf91c0f8ac.jpg",
+            "hidden": true,
+            "globalPct": 11.6
+        },
+        {
+            "apiName": "ACHIEVEMENT06",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Risky Feeding",
+            "description": "",
+            "iconUrl": "11a4481e640e6effd182846aad276873d3f312f1.jpg",
+            "iconGrayUrl": "bc6c749140e26c9ab609c1b879b52ce12dcad5be.jpg",
+            "hidden": true,
+            "globalPct": 15.6
+        },
+        {
+            "apiName": "ACHIEVEMENT07",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dinner Delayed",
+            "description": "",
+            "iconUrl": "d08358cc00c799b70d3ea24e35a84465149579c8.jpg",
+            "iconGrayUrl": "8756ebdb1e5d252777507b33cf8479162cdeaffb.jpg",
+            "hidden": true,
+            "globalPct": 13
+        },
+        {
+            "apiName": "ACHIEVEMENT08",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "You're Just Naturally Lucky?",
+            "description": "",
+            "iconUrl": "6be3d484015b0a40bebe9d570a7fdd09b317cddb.jpg",
+            "iconGrayUrl": "57ef8eedd3038a9fa23783cc8c27e7636915ec29.jpg",
+            "hidden": true,
+            "globalPct": 3.4
+        },
+        {
+            "apiName": "ACHIEVEMENT09",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Memories",
+            "description": "",
+            "iconUrl": "45ca19c822c755050f100a44b7dc1d6bcd518594.jpg",
+            "iconGrayUrl": "fc7a949ad97799c620a20db1bed2acfe03bf340c.jpg",
+            "hidden": true,
+            "globalPct": 12.8
+        },
+        {
+            "apiName": "ACHIEVEMENT10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I Have Nothing Else to Do",
+            "description": "Cleared Stage 1-1 in under 80 seconds without dying",
+            "iconUrl": "f580c78190a956996f647edfc4291c5f3f93b6f7.jpg",
+            "iconGrayUrl": "01054b20e613a4872cfb1e9e28c40bf08f094153.jpg",
+            "hidden": false,
+            "globalPct": 12.2
+        },
+        {
+            "apiName": "ACHIEVEMENT11",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Curiosity Killed the Cat",
+            "description": "Touched the toxic waste in Stage 1-2",
+            "iconUrl": "76aa3c26a8be849f895e3f802b0fc0d2a1c792a3.jpg",
+            "iconGrayUrl": "a1a9d7dce3f1c29499f828f63a0b744178eecf6c.jpg",
+            "hidden": false,
+            "globalPct": 27.1
+        },
+        {
+            "apiName": "ACHIEVEMENT12",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mementos...?",
+            "description": "Cleared Stage 1-3 after collecting all the stuffed animals",
+            "iconUrl": "94dd978dfb8d9190ed4648f9ab6aa1cf78b5e36e.jpg",
+            "iconGrayUrl": "70b5031ce20d83e63cdec585df7c7a5aaff7e8e1.jpg",
+            "hidden": false,
+            "globalPct": 12.5
+        },
+        {
+            "apiName": "ACHIEVEMENT13",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sharp Mind",
+            "description": "Cleared Stage 2-1 without dying, and without using the levers more than 4 times",
+            "iconUrl": "1398a215a326171d870d607cb65476f9be4f0f08.jpg",
+            "iconGrayUrl": "fffb63f06a11f4968b807752f06f407a918c07b9.jpg",
+            "hidden": false,
+            "globalPct": 5.3
+        },
+        {
+            "apiName": "ACHIEVEMENT14",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "What's the Hurry?",
+            "description": "Completed the maze area in Stage 2-2 without dying, and within 60 seconds of stepping on the switch",
+            "iconUrl": "13faf5184fc0b14b0be4903c8c69a7fa26b0d715.jpg",
+            "iconGrayUrl": "0aa2d886743bd4748d37529b44322d95fba1676d.jpg",
+            "hidden": false,
+            "globalPct": 42.9
+        },
+        {
+            "apiName": "ACHIEVEMENT15",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Concentration",
+            "description": "Completed the maze in Stage 2-3 with Lumen within 2 minutes and 10 seconds, and without touching the sides",
+            "iconUrl": "d6f221a60a1a75905e7e0e8411a605b6d6c16d5c.jpg",
+            "iconGrayUrl": "eae69259b410028e44694e255668fc6617ac7b7a.jpg",
+            "hidden": false,
+            "globalPct": 3.6
+        },
+        {
+            "apiName": "ACHIEVEMENT16",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cloud Hopping",
+            "description": "Completed the floating portion of Stage 3-1 without landing once",
+            "iconUrl": "177d397f6bda781e1be6d32bd8f5fa755b65fe7b.jpg",
+            "iconGrayUrl": "353ab85d18360244495e91f62b939dde6df16ff1.jpg",
+            "hidden": false,
+            "globalPct": 3.7
+        },
+        {
+            "apiName": "ACHIEVEMENT17",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hopeless Romantic",
+            "description": "Gazed at the moon in Stage 3-2",
+            "iconUrl": "e991e1e6a58b094ee99f3ef3333115eded4d579b.jpg",
+            "iconGrayUrl": "3279347c0a0ade2de422162a7059bc2995f6e8e2.jpg",
+            "hidden": false,
+            "globalPct": 17.5
+        },
+        {
+            "apiName": "ACHIEVEMENT18",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Patience Please",
+            "description": "Fed the Shadow Bird seeds in Stage 3-3",
+            "iconUrl": "e98dd6fcbb9e81a9b5fc261b4f93123eefbf8fa3.jpg",
+            "iconGrayUrl": "efc901ba6a6c6d4f2c9fc16994cc4e3347b46352.jpg",
+            "hidden": false,
+            "globalPct": 11.3
+        },
+        {
+            "apiName": "ACHIEVEMENT19",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sharp Mind 2",
+            "description": "Cleared Stage 4-1 without dying, and without opening the doors more than 18 times",
+            "iconUrl": "5ca98b5d593da6d676dcae0c3435356c815c8589.jpg",
+            "iconGrayUrl": "3819c92082db03421b4056c08958d70331259f62.jpg",
+            "hidden": false,
+            "globalPct": 3.9
+        },
+        {
+            "apiName": "ACHIEVEMENT20",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cull the Weak",
+            "description": "Cleared Stage 4-2 and defeated every shadow enemy in the elevator area",
+            "iconUrl": "fc561ad9185df0e16e78476e30c2d94e2fc35fff.jpg",
+            "iconGrayUrl": "0377559e42872547c3d29437f1f20341fcd6f04a.jpg",
+            "hidden": false,
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "ACHIEVEMENT21",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Lord of the Pipes",
+            "description": "Cleared Stage 4-3 after passing through all the pipes",
+            "iconUrl": "10887449e4ee00efefa233f2981a6b3a5abaa05b.jpg",
+            "iconGrayUrl": "ba65c70eb7cc9e08b0a761cf0bf3bfab2a8807e8.jpg",
+            "hidden": false,
+            "globalPct": 10.7
+        },
+        {
+            "apiName": "ACHIEVEMENT22",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Unbending Resolve",
+            "description": "",
+            "iconUrl": "471917a30c39e404a8365fefa66d03f9125866e3.jpg",
+            "iconGrayUrl": "11c86b30248f03cb0f11a4e67573b4d9a40638d9.jpg",
+            "hidden": true,
+            "globalPct": 59.1
+        },
+        {
+            "apiName": "ACHIEVEMENT23",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Unbreakable Resolve",
+            "description": "",
+            "iconUrl": "c4c68f4789cb7282d49f7e7c8820eb208bf64bdb.jpg",
+            "iconGrayUrl": "0cdc017f14ac084339b5578db26c7559147fbff3.jpg",
+            "hidden": true,
+            "globalPct": 24.8
+        }
+    ],
+    "playtimeForever": 837,
+    "lastPlayedTs": "2024-06-10T00:46:02.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/368640/97c7445c22569297b1ff4f5f012194b1412afec8.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACHIEVEMENT00",
+            "displayName": "Chapter 1 Cleared",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "42d7d91361e46b38b4f914a2674103203ff8fd23.jpg",
+            "iconGrayUrl": "a46161ac80006fa1cd1fa80f6c374b107ad6ab7d.jpg",
+            "globalPct": 63.9
+        },
+        {
+            "apiName": "ACHIEVEMENT01",
+            "displayName": "Chapter 2 Cleared",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "35f8227f8ce87e19055cac30e1093660c00751b3.jpg",
+            "iconGrayUrl": "ac751b188a0be00651c1f0d3e9d32b9a4bd9be9a.jpg",
+            "globalPct": 30.2
+        },
+        {
+            "apiName": "ACHIEVEMENT02",
+            "displayName": "Chapter 3 Cleared",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "315ab943e62cbe62918f2db6c5aed95c75339ed6.jpg",
+            "iconGrayUrl": "05e3e3cb782be0080dc0087edd1a24944ce99b88.jpg",
+            "globalPct": 19.2
+        },
+        {
+            "apiName": "ACHIEVEMENT03",
+            "displayName": "Chapter 4 Cleared",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "5995eee895eb423da22ae0903056af35690b36fc.jpg",
+            "iconGrayUrl": "e64495800f64e08144207945b4101ade6261fac1.jpg",
+            "globalPct": 15.6
+        },
+        {
+            "apiName": "ACHIEVEMENT04",
+            "displayName": "Mion's Punishment",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "49435d4ae49ce4a6cc977ac52077a3f7c6318d63.jpg",
+            "iconGrayUrl": "f5b72b71b41affd83d9ff97079aec6cba0b887c3.jpg",
+            "globalPct": 11.7
+        },
+        {
+            "apiName": "ACHIEVEMENT05",
+            "displayName": "Escape Artist",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c2c0b53e161a8a5ea1bc471cc7d752609e380c15.jpg",
+            "iconGrayUrl": "1e4a1c0a25478747f12179c413a27fcf91c0f8ac.jpg",
+            "globalPct": 11.6
+        }
+    ]
+}

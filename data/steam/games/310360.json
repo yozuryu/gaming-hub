@@ -1,0 +1,224 @@
+{
+    "appId": 310360,
+    "hasAchievements": true,
+    "total": 14,
+    "unlocked": 0,
+    "gameName": "Higurashi When They Cry Hou - Ch.1 Onikakushi",
+    "achievements": [
+        {
+            "apiName": "HIGURASHI_STORY_EP01_01",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Farewell...",
+            "description": "Bid your love goodbye.",
+            "iconUrl": "976e356f36770677157b8b79ff529e0f9cf2f002.jpg",
+            "iconGrayUrl": "1b17d3e27111f9d4ea779006281002ffdb2d4ff2.jpg",
+            "hidden": false,
+            "globalPct": 76.1
+        },
+        {
+            "apiName": "HIGURASHI_STORY_EP01_02",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Welcome to Hinamizawa",
+            "description": "Meet the villagers of Hinamizawa.",
+            "iconUrl": "f53743bcf98df95fee44444ffef173f5ab3a574f.jpg",
+            "iconGrayUrl": "1b17d3e27111f9d4ea779006281002ffdb2d4ff2.jpg",
+            "hidden": false,
+            "globalPct": 44.4
+        },
+        {
+            "apiName": "HIGURASHI_STORY_EP01_03",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "One Man's Trash...",
+            "description": "Help Rena find her treasure.",
+            "iconUrl": "d0670c3afdc59f321b2a0672a417fcd69a4304d8.jpg",
+            "iconGrayUrl": "1b17d3e27111f9d4ea779006281002ffdb2d4ff2.jpg",
+            "hidden": false,
+            "globalPct": 34.6
+        },
+        {
+            "apiName": "HIGURASHI_STORY_EP01_04",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Fate Worse Than Death",
+            "description": "Have your luck run out.",
+            "iconUrl": "8447c26ea2fb8e64f5f590f0d63bc1c814bbdf91.jpg",
+            "iconGrayUrl": "1b17d3e27111f9d4ea779006281002ffdb2d4ff2.jpg",
+            "hidden": false,
+            "globalPct": 30.5
+        },
+        {
+            "apiName": "HIGURASHI_STORY_EP01_05",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Not a Clue",
+            "description": "Receive an unexpected report.",
+            "iconUrl": "140186dbd2e62caab4706aa84e6eca01db872bda.jpg",
+            "iconGrayUrl": "1b17d3e27111f9d4ea779006281002ffdb2d4ff2.jpg",
+            "hidden": false,
+            "globalPct": 27.5
+        },
+        {
+            "apiName": "HIGURASHI_STORY_EP01_06",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "LIES!!!",
+            "description": "Lie to Rena.",
+            "iconUrl": "b0734364749bc056bf45b1d53200be504030eabf.jpg",
+            "iconGrayUrl": "1b17d3e27111f9d4ea779006281002ffdb2d4ff2.jpg",
+            "hidden": false,
+            "globalPct": 26.6
+        },
+        {
+            "apiName": "HIGURASHI_STORY_EP01_07",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hard to Swallow",
+            "description": "Enjoy(?) a homemade snack.",
+            "iconUrl": "b967bbdf3da66d591bbba38d7cf32f7dea5b19b8.jpg",
+            "iconGrayUrl": "1b17d3e27111f9d4ea779006281002ffdb2d4ff2.jpg",
+            "hidden": false,
+            "globalPct": 26.2
+        },
+        {
+            "apiName": "HIGURASHI_STORY_EP01_08",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Chasing Shadows",
+            "description": "Pursue the truth behind the crimes.",
+            "iconUrl": "dd1da3ad9b9bfcf86b6db58400bde4f3febff15f.jpg",
+            "iconGrayUrl": "1b17d3e27111f9d4ea779006281002ffdb2d4ff2.jpg",
+            "hidden": false,
+            "globalPct": 25.7
+        },
+        {
+            "apiName": "HIGURASHI_STORY_EP01_09",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pinch Hitter",
+            "description": "Take up another's bat.",
+            "iconUrl": "15dd53c8cfd99793049de5c5a5da1cacc1b84bd1.jpg",
+            "iconGrayUrl": "1b17d3e27111f9d4ea779006281002ffdb2d4ff2.jpg",
+            "hidden": false,
+            "globalPct": 25.4
+        },
+        {
+            "apiName": "HIGURASHI_STORY_EP01_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Rain of Apologies",
+            "description": "Falling on deaf ears.",
+            "iconUrl": "3658abbd6cf5fdc5de9a158afa9f3a6bdb3cf691.jpg",
+            "iconGrayUrl": "1b17d3e27111f9d4ea779006281002ffdb2d4ff2.jpg",
+            "hidden": false,
+            "globalPct": 25.1
+        },
+        {
+            "apiName": "HIGURASHI_STORY_EP01_11",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Chased by Shadows",
+            "description": "Run from the truth of your crimes.",
+            "iconUrl": "9cde7ba3b9f2837eb341204561176840610744ac.jpg",
+            "iconGrayUrl": "1b17d3e27111f9d4ea779006281002ffdb2d4ff2.jpg",
+            "hidden": false,
+            "globalPct": 24.7
+        },
+        {
+            "apiName": "HIGURASHI_STORY_EP01_ENDING",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Please, Uncover the Truth",
+            "description": "Complete Onikakushi chapter.",
+            "iconUrl": "bb901e966ba6887425c05818f1eb45b4156acf98.jpg",
+            "iconGrayUrl": "1b17d3e27111f9d4ea779006281002ffdb2d4ff2.jpg",
+            "hidden": false,
+            "globalPct": 24.7
+        },
+        {
+            "apiName": "HIGURASHI_STORY_EP01_OMAKE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Onikakushi Party",
+            "description": "Enjoy Onikakushi's after-party.",
+            "iconUrl": "5da2e86f9c1c2953505c255192de850a3d6e09f7.jpg",
+            "iconGrayUrl": "1b17d3e27111f9d4ea779006281002ffdb2d4ff2.jpg",
+            "hidden": false,
+            "globalPct": 22
+        },
+        {
+            "apiName": "HIGURASHI_STORY_EP01_TIPS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Detective - Onikakushi",
+            "description": "Read all TIPS in Onikakushi.",
+            "iconUrl": "9e5b0ef0f3ca088a4b2e35813a2940ce80a5cc34.jpg",
+            "iconGrayUrl": "1b17d3e27111f9d4ea779006281002ffdb2d4ff2.jpg",
+            "hidden": false,
+            "globalPct": 20
+        }
+    ],
+    "playtimeForever": 306,
+    "lastPlayedTs": "2024-06-08T00:41:17.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/310360/8347887b669eb9459f5359516bb7bb99cc0dc8e3.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "HIGURASHI_STORY_EP01_01",
+            "displayName": "Farewell...",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "976e356f36770677157b8b79ff529e0f9cf2f002.jpg",
+            "iconGrayUrl": "1b17d3e27111f9d4ea779006281002ffdb2d4ff2.jpg",
+            "globalPct": 76.1
+        },
+        {
+            "apiName": "HIGURASHI_STORY_EP01_02",
+            "displayName": "Welcome to Hinamizawa",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f53743bcf98df95fee44444ffef173f5ab3a574f.jpg",
+            "iconGrayUrl": "1b17d3e27111f9d4ea779006281002ffdb2d4ff2.jpg",
+            "globalPct": 44.4
+        },
+        {
+            "apiName": "HIGURASHI_STORY_EP01_03",
+            "displayName": "One Man's Trash...",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d0670c3afdc59f321b2a0672a417fcd69a4304d8.jpg",
+            "iconGrayUrl": "1b17d3e27111f9d4ea779006281002ffdb2d4ff2.jpg",
+            "globalPct": 34.6
+        },
+        {
+            "apiName": "HIGURASHI_STORY_EP01_04",
+            "displayName": "A Fate Worse Than Death",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "8447c26ea2fb8e64f5f590f0d63bc1c814bbdf91.jpg",
+            "iconGrayUrl": "1b17d3e27111f9d4ea779006281002ffdb2d4ff2.jpg",
+            "globalPct": 30.5
+        },
+        {
+            "apiName": "HIGURASHI_STORY_EP01_05",
+            "displayName": "Not a Clue",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "140186dbd2e62caab4706aa84e6eca01db872bda.jpg",
+            "iconGrayUrl": "1b17d3e27111f9d4ea779006281002ffdb2d4ff2.jpg",
+            "globalPct": 27.5
+        },
+        {
+            "apiName": "HIGURASHI_STORY_EP01_06",
+            "displayName": "LIES!!!",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "b0734364749bc056bf45b1d53200be504030eabf.jpg",
+            "iconGrayUrl": "1b17d3e27111f9d4ea779006281002ffdb2d4ff2.jpg",
+            "globalPct": 26.6
+        }
+    ]
+}

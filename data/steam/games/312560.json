@@ -1,0 +1,235 @@
+{
+    "appId": 312560,
+    "hasAchievements": true,
+    "total": 15,
+    "unlocked": 0,
+    "gameName": "Xanadu Next",
+    "achievements": [
+        {
+            "apiName": "ALMOST_DROWN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Out of Breath",
+            "description": "Barely made it back to shore after almost drowning.",
+            "iconUrl": "e23311558949d6425011f022023f84f14d4e7125.jpg",
+            "iconGrayUrl": "55286e9cf0b253c7df3c64ad2426c51e97fc2907.jpg",
+            "hidden": false,
+            "globalPct": 18.7
+        },
+        {
+            "apiName": "ALL_TABULASMEMOIRS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Lore Lord",
+            "description": "Found and translated all tabulae and memoirs.",
+            "iconUrl": "1b51965e4aa68e2eb80034db8b88b010f94010d3.jpg",
+            "iconGrayUrl": "34c32bb1b4b7499bd63a779e850b98e2305816b1.jpg",
+            "hidden": false,
+            "globalPct": 8.2
+        },
+        {
+            "apiName": "ALL_SKILLSMAGICS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Expertly Trained",
+            "description": "Innately learned all skills and acquired all levels of all spells.",
+            "iconUrl": "469ef18e78e38ff6a5b5cbc51ab350bdb28acdd5.jpg",
+            "iconGrayUrl": "e6e15d8066de4f88442b9532597336c2a05a4b3d.jpg",
+            "hidden": false,
+            "globalPct": 5.3
+        },
+        {
+            "apiName": "MAXED_GUARDIANS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Guardians' Crusader",
+            "description": "Found and maxed out all Guardians.",
+            "iconUrl": "a5e41e66400554b8f4bf9134e6812aa1b0868ac2.jpg",
+            "iconGrayUrl": "fa6e3992b54aaf5e26e20edca23a11977ad56875.jpg",
+            "hidden": false,
+            "globalPct": 1.8
+        },
+        {
+            "apiName": "ALLMAPS_COMPLETE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cartographer",
+            "description": "Mapped 100% of the game.",
+            "iconUrl": "7e2a9066a09903f884ff67f8eccd278ec4a1efc5.jpg",
+            "iconGrayUrl": "4c1eeff696edad66d14c7544cf397c7925403739.jpg",
+            "hidden": false,
+            "globalPct": 1.5
+        },
+        {
+            "apiName": "MAXRANK_ATTAINED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Chevalier des Chevaliers",
+            "description": "Received the max final rank upon clearing the game.",
+            "iconUrl": "fe4480da8e2f23217c63351feeff05a9bfa1ba68.jpg",
+            "iconGrayUrl": "287558df988cce5ff87545d87b14dbc249fac917.jpg",
+            "hidden": false,
+            "globalPct": 1
+        },
+        {
+            "apiName": "BEAT_BERILARD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Lumberjack",
+            "description": "",
+            "iconUrl": "c7d89676afe1d9bb409adc0038b7de647c8e1d15.jpg",
+            "iconGrayUrl": "c82c850ecde7f761d6dba48890bc9e46c8332382.jpg",
+            "hidden": true,
+            "globalPct": 40.4
+        },
+        {
+            "apiName": "BEAT_DVORAK",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Defender",
+            "description": "",
+            "iconUrl": "adb3ecce2ae8691a621fc279a89c01df3ef1ded4.jpg",
+            "iconGrayUrl": "a3c2b8efbf3bdf454829a16bcee3953790bd95cf.jpg",
+            "hidden": true,
+            "globalPct": 33
+        },
+        {
+            "apiName": "BEAT_SCOLTULA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Exterminator",
+            "description": "",
+            "iconUrl": "522d0f770c741a9459e6773593edb8d076136074.jpg",
+            "iconGrayUrl": "902b6e5c8625ce12a9df2156a869762c34668ce1.jpg",
+            "hidden": true,
+            "globalPct": 32.3
+        },
+        {
+            "apiName": "BEAT_EVILWURM",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Demon Buster",
+            "description": "",
+            "iconUrl": "adbe8c2072a0960de90c6bad760954bc74df6d86.jpg",
+            "iconGrayUrl": "6ab85f46604601eae5e20f0ad1084878f57cf44c.jpg",
+            "hidden": true,
+            "globalPct": 26.5
+        },
+        {
+            "apiName": "BEAT_ASCOMOID",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Unbeholder",
+            "description": "",
+            "iconUrl": "3a4787c3f4ac9bc57f1fd80fa38d289a1c6dbf86.jpg",
+            "iconGrayUrl": "df7cd25a61cb9144d1a3047a112b5fa2b383b9f1.jpg",
+            "hidden": true,
+            "globalPct": 23.8
+        },
+        {
+            "apiName": "BEAT_LORELEI",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Vindicator",
+            "description": "",
+            "iconUrl": "58c7ee6569b5b5dc1d5af6d3105dd249a8609369.jpg",
+            "iconGrayUrl": "6764a06ee73cb226646a35c8e645185b732903ea.jpg",
+            "hidden": true,
+            "globalPct": 22.9
+        },
+        {
+            "apiName": "BEAT_GALSIS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dragon Slayer",
+            "description": "",
+            "iconUrl": "99517f529785b0af5a6231f57a2cd1b83eabd987.jpg",
+            "iconGrayUrl": "984ef265c7f175e5c3af1d9b08e720c721895583.jpg",
+            "hidden": true,
+            "globalPct": 18.5
+        },
+        {
+            "apiName": "CLEAR_BONUSDUNGEON",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Multiverse Champion",
+            "description": "",
+            "iconUrl": "516f6ccddcba2cf01f933d703e33bc3fe8023d7e.jpg",
+            "iconGrayUrl": "3c82b4362a9308dd7496050409cdd75aaa80d6d6.jpg",
+            "hidden": true,
+            "globalPct": 1.8
+        },
+        {
+            "apiName": "ALLACHIEVEMENTS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Kublai Khan",
+            "description": "Attained all other achievements.",
+            "iconUrl": "5b20f4ffd1419ec95f6c568bd1a5ae3f7a557a21.jpg",
+            "iconGrayUrl": "efb45bfa4c0c37a08220fadf4f50496c6cb9bc90.jpg",
+            "hidden": false,
+            "globalPct": 0.8
+        }
+    ],
+    "playtimeForever": 274,
+    "lastPlayedTs": "2024-07-06T01:00:12.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/312560/bff95a99d0d408bfdee5e90ed498f71c98758805.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ALMOST_DROWN",
+            "displayName": "Out of Breath",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "e23311558949d6425011f022023f84f14d4e7125.jpg",
+            "iconGrayUrl": "55286e9cf0b253c7df3c64ad2426c51e97fc2907.jpg",
+            "globalPct": 18.7
+        },
+        {
+            "apiName": "ALL_TABULASMEMOIRS",
+            "displayName": "Lore Lord",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1b51965e4aa68e2eb80034db8b88b010f94010d3.jpg",
+            "iconGrayUrl": "34c32bb1b4b7499bd63a779e850b98e2305816b1.jpg",
+            "globalPct": 8.2
+        },
+        {
+            "apiName": "ALL_SKILLSMAGICS",
+            "displayName": "Expertly Trained",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "469ef18e78e38ff6a5b5cbc51ab350bdb28acdd5.jpg",
+            "iconGrayUrl": "e6e15d8066de4f88442b9532597336c2a05a4b3d.jpg",
+            "globalPct": 5.3
+        },
+        {
+            "apiName": "MAXED_GUARDIANS",
+            "displayName": "Guardians' Crusader",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a5e41e66400554b8f4bf9134e6812aa1b0868ac2.jpg",
+            "iconGrayUrl": "fa6e3992b54aaf5e26e20edca23a11977ad56875.jpg",
+            "globalPct": 1.8
+        },
+        {
+            "apiName": "ALLMAPS_COMPLETE",
+            "displayName": "Cartographer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "7e2a9066a09903f884ff67f8eccd278ec4a1efc5.jpg",
+            "iconGrayUrl": "4c1eeff696edad66d14c7544cf397c7925403739.jpg",
+            "globalPct": 1.5
+        },
+        {
+            "apiName": "MAXRANK_ATTAINED",
+            "displayName": "Chevalier des Chevaliers",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "fe4480da8e2f23217c63351feeff05a9bfa1ba68.jpg",
+            "iconGrayUrl": "287558df988cce5ff87545d87b14dbc249fac917.jpg",
+            "globalPct": 1
+        }
+    ]
+}

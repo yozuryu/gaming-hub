@@ -1,0 +1,290 @@
+{
+    "appId": 340730,
+    "hasAchievements": true,
+    "total": 20,
+    "unlocked": 0,
+    "gameName": "Sunrider Academy",
+    "achievements": [
+        {
+            "apiName": "asaga",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Wedding (Not) Crashed",
+            "description": "Complete Asaga's route",
+            "iconUrl": "0ccd2560ea28875818a8687e5a0ef468b732701c.jpg",
+            "iconGrayUrl": "508577975c77b64d66e0f3c6e028929ce02ea117.jpg",
+            "hidden": false,
+            "globalPct": 13
+        },
+        {
+            "apiName": "ava",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Noticed By Pres",
+            "description": "Complete Ava's route",
+            "iconUrl": "4286768a9d0242b58657e43c0f50c1b5ce8c64ba.jpg",
+            "iconGrayUrl": "4100604f1ecd33045563c78a102eb5b29a98e699.jpg",
+            "hidden": false,
+            "globalPct": 13.6
+        },
+        {
+            "apiName": "sola",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Indecent Shrine Maiden",
+            "description": "Complete Sola's route",
+            "iconUrl": "5cc9aae52dc6f54dd55d3a6ca658456d46c79e73.jpg",
+            "iconGrayUrl": "1f26b4fa7a96414d2175e0ea70f439ee881b85d5.jpg",
+            "hidden": false,
+            "globalPct": 12.5
+        },
+        {
+            "apiName": "chigara",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Horny Pastry Puffer",
+            "description": "Complete Chigara's route",
+            "iconUrl": "016e4fa714077a980c2f040f599f312e732180bf.jpg",
+            "iconGrayUrl": "8bf44d06dcaa214c47dacbdcc79a29ef4a3ff775.jpg",
+            "hidden": false,
+            "globalPct": 12
+        },
+        {
+            "apiName": "complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Full Completion",
+            "description": "Complete all four routes",
+            "iconUrl": "3fe87c5280c7d608d9b45e0121902636104b92e7.jpg",
+            "iconGrayUrl": "676574a89f505bde8c1ef0e3ffcd69257cb64a02.jpg",
+            "hidden": false,
+            "globalPct": 7.2
+        },
+        {
+            "apiName": "champ",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Champ",
+            "description": "Complete the game beginning to finish on space whale difficulty",
+            "iconUrl": "691c27f053db1cc861c19462b7760b90d1061360.jpg",
+            "iconGrayUrl": "ab64f1ae434397a3abbaeef8d70e9d247673de47.jpg",
+            "hidden": false,
+            "globalPct": 3.2
+        },
+        {
+            "apiName": "academic",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Academic",
+            "description": "Visit the science museum 400 times in a single game",
+            "iconUrl": "dfa6df0615ea4d4bdf15ce2927f5f0b629c3eff6.jpg",
+            "iconGrayUrl": "9dc3b896dc5f07643ebc2aa3532021302c55e6d1.jpg",
+            "hidden": false,
+            "globalPct": 4.1
+        },
+        {
+            "apiName": "devout",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Devout",
+            "description": "Visit the shrine 400 times in a single game",
+            "iconUrl": "07cfb3cf27ccadb907b524ece81ab7c17ac3b088.jpg",
+            "iconGrayUrl": "356b4532bdd302a6f5609bf9a8eed5dda7765c33.jpg",
+            "hidden": false,
+            "globalPct": 3.9
+        },
+        {
+            "apiName": "dog",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Walk the Dog",
+            "description": "Visit the park 400 times in a single game",
+            "iconUrl": "9d59a0c53732fae928f65b5b98bab784ffa267ea.jpg",
+            "iconGrayUrl": "65f268346ca7572ddff94890c882d3f7da2e2284.jpg",
+            "hidden": false,
+            "globalPct": 4.3
+        },
+        {
+            "apiName": "gamer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Gamer",
+            "description": "Visit the arcade 400 times in a single game",
+            "iconUrl": "b202720cd4d3e57a2ecb8aa5daa5dddac70b0742.jpg",
+            "iconGrayUrl": "3eb20f2586da1fb5283e5cc3a1d3ac1f86e35c27.jpg",
+            "hidden": false,
+            "globalPct": 3.7
+        },
+        {
+            "apiName": "genius",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Genius",
+            "description": "Rank in the 99th percentile on an exam",
+            "iconUrl": "06bc1c462a8a2aceaab879bfd750658d15433c0f.jpg",
+            "iconGrayUrl": "bd1daa409bb167e5c9328a7ffc5b3e5d77c59f30.jpg",
+            "hidden": false,
+            "globalPct": 34.9
+        },
+        {
+            "apiName": "landslide",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Landslide Victory",
+            "description": "Win the election with all 560 votes in your favor",
+            "iconUrl": "1630a4cc6c3e95c5d9bda166f43b104eef4c2198.jpg",
+            "iconGrayUrl": "5a42c3559de074b6e150f39b467d82cce635cacd.jpg",
+            "hidden": false,
+            "globalPct": 6.4
+        },
+        {
+            "apiName": "member",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Club Recruiter",
+            "description": "Have a total of 200 members between all your clubs.",
+            "iconUrl": "d41949f0127e802833d980a7d30d18a27acc9f1c.jpg",
+            "iconGrayUrl": "60d0b4afa94586aa9253a78094e5801609df1de8.jpg",
+            "hidden": false,
+            "globalPct": 13.9
+        },
+        {
+            "apiName": "readiness",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Club Trainer",
+            "description": "Have a total of 1000 readiness between all your clubs",
+            "iconUrl": "8fd3575ea1a74d8748b59fc6b0fe4768e5ef0fa7.jpg",
+            "iconGrayUrl": "047bc80d46fe708a40160dec19e240879b1433f8.jpg",
+            "hidden": false,
+            "globalPct": 9.1
+        },
+        {
+            "apiName": "money",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Rich!!!",
+            "description": "Save up a collection of 500 credits",
+            "iconUrl": "6ee00eac2d9875a3dcf3dfe456e026330617c5b6.jpg",
+            "iconGrayUrl": "2982c4c7804fad5c444a2f0c892eda7cb7c20f8a.jpg",
+            "hidden": false,
+            "globalPct": 20.7
+        },
+        {
+            "apiName": "siscon",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hentai Siscon",
+            "description": "Successfully flirt with Maray",
+            "iconUrl": "5df2f69cd5a003c1108407d4a323fecd3bebece5.jpg",
+            "iconGrayUrl": "b237093e8461a07ac84a9684465cdd10a9c11d27.jpg",
+            "hidden": false,
+            "globalPct": 33.2
+        },
+        {
+            "apiName": "soldout",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Soldout",
+            "description": "Purchase every single item at the store and shrine",
+            "iconUrl": "4714645dcc27380f013edde7f7e55c399697faec.jpg",
+            "iconGrayUrl": "46fa15cc7e7dbb4046931657fdb4af8ae9e05620.jpg",
+            "hidden": false,
+            "globalPct": 22.3
+        },
+        {
+            "apiName": "ripped",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ripped",
+            "description": "Exercise at the gym 200 times in a single game",
+            "iconUrl": "b9b96db22182f424f853e20d7378f8415903f1cc.jpg",
+            "iconGrayUrl": "78e3ca82661416c318057d0ff53350d8c2b6445c.jpg",
+            "hidden": false,
+            "globalPct": 4.5
+        },
+        {
+            "apiName": "challenge",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Living on the Edge",
+            "description": "Go 20 days with your stress over 50",
+            "iconUrl": "4375abbc89e382869945bf0bf6793bf149491749.jpg",
+            "iconGrayUrl": "84afc7c953ffcb99015f006fa389c718a2fdfe04.jpg",
+            "hidden": false,
+            "globalPct": 13.3
+        },
+        {
+            "apiName": "everyone",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Everyone's Kayto",
+            "description": "Have 10 hearts with every girl",
+            "iconUrl": "0b43fb5445c9f81cd299133061db600f9b4c9896.jpg",
+            "iconGrayUrl": "86d0bab904562a55ba56aefff888229f422804cd.jpg",
+            "hidden": false,
+            "globalPct": 28.6
+        }
+    ],
+    "playtimeForever": 336,
+    "lastPlayedTs": "2024-07-02T05:37:16.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/340730/c8e2dd573569d7f8e701f84e815272c7c3e4a1e5.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "asaga",
+            "displayName": "Wedding (Not) Crashed",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "0ccd2560ea28875818a8687e5a0ef468b732701c.jpg",
+            "iconGrayUrl": "508577975c77b64d66e0f3c6e028929ce02ea117.jpg",
+            "globalPct": 13
+        },
+        {
+            "apiName": "ava",
+            "displayName": "Noticed By Pres",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "4286768a9d0242b58657e43c0f50c1b5ce8c64ba.jpg",
+            "iconGrayUrl": "4100604f1ecd33045563c78a102eb5b29a98e699.jpg",
+            "globalPct": 13.6
+        },
+        {
+            "apiName": "sola",
+            "displayName": "Indecent Shrine Maiden",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "5cc9aae52dc6f54dd55d3a6ca658456d46c79e73.jpg",
+            "iconGrayUrl": "1f26b4fa7a96414d2175e0ea70f439ee881b85d5.jpg",
+            "globalPct": 12.5
+        },
+        {
+            "apiName": "chigara",
+            "displayName": "Horny Pastry Puffer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "016e4fa714077a980c2f040f599f312e732180bf.jpg",
+            "iconGrayUrl": "8bf44d06dcaa214c47dacbdcc79a29ef4a3ff775.jpg",
+            "globalPct": 12
+        },
+        {
+            "apiName": "complete",
+            "displayName": "Full Completion",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "3fe87c5280c7d608d9b45e0121902636104b92e7.jpg",
+            "iconGrayUrl": "676574a89f505bde8c1ef0e3ffcd69257cb64a02.jpg",
+            "globalPct": 7.2
+        },
+        {
+            "apiName": "champ",
+            "displayName": "Champ",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "691c27f053db1cc861c19462b7760b90d1061360.jpg",
+            "iconGrayUrl": "ab64f1ae434397a3abbaeef8d70e9d247673de47.jpg",
+            "globalPct": 3.2
+        }
+    ]
+}

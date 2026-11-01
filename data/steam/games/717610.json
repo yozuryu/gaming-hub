@@ -1,0 +1,180 @@
+{
+    "appId": 717610,
+    "hasAchievements": true,
+    "total": 10,
+    "unlocked": 0,
+    "gameName": "A Case of Distrust",
+    "achievements": [
+        {
+            "apiName": "ACHIEVEMENT_NO_FOOD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "No Food Here",
+            "description": "",
+            "iconUrl": "d690dc9cd1a3d7945cc36f8399e435a4373d4580.jpg",
+            "iconGrayUrl": "32f765ef33f3e69cdffaaacdbe9b9eb480d04dbc.jpg",
+            "hidden": true,
+            "globalPct": 45.3
+        },
+        {
+            "apiName": "ACHIEVEMENT_TAKE_CASE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "On the Job",
+            "description": "",
+            "iconUrl": "b35e26f24d3870c75cfec85e98b7c1ccfe7a2b83.jpg",
+            "iconGrayUrl": "f9731581887fb554a53d426b0a0f1d6eb7bdeba3.jpg",
+            "hidden": true,
+            "globalPct": 32.7
+        },
+        {
+            "apiName": "ACHIEVEMENT_COAT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Vision",
+            "description": "",
+            "iconUrl": "35c28a9e8490f5e1e8d9a383ba37d44592270a1c.jpg",
+            "iconGrayUrl": "58eab316ff676866ffeb947addcab6d1333ce31b.jpg",
+            "hidden": true,
+            "globalPct": 22.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_END",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Master Sleuth",
+            "description": "",
+            "iconUrl": "8df9fa52f270475ee320275b59ce8eea08f9a068.jpg",
+            "iconGrayUrl": "83c7ea16230f0818408cd98605bfc130185169ae.jpg",
+            "hidden": true,
+            "globalPct": 17.4
+        },
+        {
+            "apiName": "ACHIEVEMENT_ZAIDE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "My Zaide",
+            "description": "",
+            "iconUrl": "6c14abf217f54d9fb6026e71efb0ca86da67a256.jpg",
+            "iconGrayUrl": "55db0befe59f341c57075d5dbeb57fc5c9d52ce2.jpg",
+            "hidden": true,
+            "globalPct": 21.5
+        },
+        {
+            "apiName": "ACHIEVEMENT_POEM",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Becoming Learned",
+            "description": "",
+            "iconUrl": "80275efb1de4f9faf352843477d0bc87439f27b3.jpg",
+            "iconGrayUrl": "6fde4f57eb24e99d0be4b258ac894a1c76dc4277.jpg",
+            "hidden": true,
+            "globalPct": 17.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_CAP",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Capital",
+            "description": "",
+            "iconUrl": "6e31376a7b1db23da7b8a35b6b09aa409e484e60.jpg",
+            "iconGrayUrl": "b9f608e04e13ad149ef092ce60496907527daaef.jpg",
+            "hidden": true,
+            "globalPct": 10
+        },
+        {
+            "apiName": "ACHIEVEMENT_SOC",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Das Kapital",
+            "description": "",
+            "iconUrl": "3d5402accb460c7a32c343cb4029a8576028207c.jpg",
+            "iconGrayUrl": "9b7256402c9811eedc0160e7687c80d9d5a2e4c8.jpg",
+            "hidden": true,
+            "globalPct": 10.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_DRINK",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pour Me Another",
+            "description": "",
+            "iconUrl": "c8bc5def3766fce2cc7680a55ebe32585f9e98c9.jpg",
+            "iconGrayUrl": "d1684bf46db5b737da488d983fd5d7ef4a679351.jpg",
+            "hidden": true,
+            "globalPct": 13.4
+        },
+        {
+            "apiName": "ACHIEVEMENT_JEANS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Broken Levi",
+            "description": "",
+            "iconUrl": "d902271b9ae41518becfb563ff3da596314fedbf.jpg",
+            "iconGrayUrl": "1c1bc309cb73cb165cabfd01c759e02faa973215.jpg",
+            "hidden": true,
+            "globalPct": 13.4
+        }
+    ],
+    "playtimeForever": 186,
+    "lastPlayedTs": "2024-05-20T02:06:47.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/717610/4cfd3a0a9a2c47bfd39416d5bb840cf4e1a5b592.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACHIEVEMENT_NO_FOOD",
+            "displayName": "No Food Here",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d690dc9cd1a3d7945cc36f8399e435a4373d4580.jpg",
+            "iconGrayUrl": "32f765ef33f3e69cdffaaacdbe9b9eb480d04dbc.jpg",
+            "globalPct": 45.3
+        },
+        {
+            "apiName": "ACHIEVEMENT_TAKE_CASE",
+            "displayName": "On the Job",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "b35e26f24d3870c75cfec85e98b7c1ccfe7a2b83.jpg",
+            "iconGrayUrl": "f9731581887fb554a53d426b0a0f1d6eb7bdeba3.jpg",
+            "globalPct": 32.7
+        },
+        {
+            "apiName": "ACHIEVEMENT_COAT",
+            "displayName": "Vision",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "35c28a9e8490f5e1e8d9a383ba37d44592270a1c.jpg",
+            "iconGrayUrl": "58eab316ff676866ffeb947addcab6d1333ce31b.jpg",
+            "globalPct": 22.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_END",
+            "displayName": "Master Sleuth",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "8df9fa52f270475ee320275b59ce8eea08f9a068.jpg",
+            "iconGrayUrl": "83c7ea16230f0818408cd98605bfc130185169ae.jpg",
+            "globalPct": 17.4
+        },
+        {
+            "apiName": "ACHIEVEMENT_ZAIDE",
+            "displayName": "My Zaide",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "6c14abf217f54d9fb6026e71efb0ca86da67a256.jpg",
+            "iconGrayUrl": "55db0befe59f341c57075d5dbeb57fc5c9d52ce2.jpg",
+            "globalPct": 21.5
+        },
+        {
+            "apiName": "ACHIEVEMENT_POEM",
+            "displayName": "Becoming Learned",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "80275efb1de4f9faf352843477d0bc87439f27b3.jpg",
+            "iconGrayUrl": "6fde4f57eb24e99d0be4b258ac894a1c76dc4277.jpg",
+            "globalPct": 17.6
+        }
+    ]
+}

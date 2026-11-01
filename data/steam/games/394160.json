@@ -1,0 +1,290 @@
+{
+    "appId": 394160,
+    "hasAchievements": true,
+    "total": 20,
+    "unlocked": 0,
+    "gameName": "ARCADE GAME SERIES: PAC-MAN",
+    "achievements": [
+        {
+            "apiName": "Achievement_0",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cherry",
+            "description": "Eat the Cherry that appears after eating a set number of Pac-Dots in Round 1!",
+            "iconUrl": "829e2be136e0d004c2965405735b5b3260479309.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "hidden": false,
+            "globalPct": 58.3
+        },
+        {
+            "apiName": "Achievement_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Strawberry",
+            "description": "Eat the Strawberry that appears after eating a set number of Pac-Dots in Round 2!",
+            "iconUrl": "0c175874aa343d443ff8691b03e99598a3d04e32.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "hidden": false,
+            "globalPct": 41.1
+        },
+        {
+            "apiName": "Achievement_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Orange",
+            "description": "Eat the Orange that appears after eating a set number of Pac-Dots in Round 3 or 4!",
+            "iconUrl": "bb08cda8e5f49a0c29a4eeb5b79a2406dd4ddc1e.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "hidden": false,
+            "globalPct": 26.2
+        },
+        {
+            "apiName": "Achievement_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Apple",
+            "description": "Eat the Apple that appears after eating a set number of Pac-Dots in Round 5 or 6!",
+            "iconUrl": "1056c20e3734422597aa88f085f48b1af19d9993.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "hidden": false,
+            "globalPct": 9.7
+        },
+        {
+            "apiName": "Achievement_4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Melon",
+            "description": "Eat the Melon that appears after eating a set number of Pac-Dots in Round 7 or 8!",
+            "iconUrl": "10b7b31bd7a68f0e6fc202500a0346cc3cd70508.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "hidden": false,
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "Achievement_5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Galboss",
+            "description": "Eat the Galboss that appears after eating a set number of Pac-Dots in Round 9 or 10!",
+            "iconUrl": "62e09037ca3a052ec8e3786a2abbcf4aa7439227.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "hidden": false,
+            "globalPct": 4
+        },
+        {
+            "apiName": "Achievement_6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bell",
+            "description": "Eat the Bell that appears after eating a set number of Pac-Dots in Round 11 or 12!",
+            "iconUrl": "dc0a34db7b74981a957f5226b4357f5b44989ee5.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "hidden": false,
+            "globalPct": 3.7
+        },
+        {
+            "apiName": "Achievement_7",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Key",
+            "description": "Eat the Key that appears after eating a set number of Pac-Dots after Round 13!",
+            "iconUrl": "922cc400bd319eca566588a0ed3ee5dfdb5e6396.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "hidden": false,
+            "globalPct": 3.5
+        },
+        {
+            "apiName": "Achievement_8",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fruit Basket",
+            "description": "Eat all 5 fruits (Cherry, Strawberry, Orange, Apple, Melon) in one playthrough!",
+            "iconUrl": "5a33fc557259ff28c9721708620745195c052a2a.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "hidden": false,
+            "globalPct": 3.3
+        },
+        {
+            "apiName": "Achievement_9",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "All Ghosts",
+            "description": "Eat all ghosts in succession after eating a Power Pellet!",
+            "iconUrl": "c8fb696d34c64bfa6abce1caf79dbf87387a4d79.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "hidden": false,
+            "globalPct": 31.7
+        },
+        {
+            "apiName": "Achievement_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Om Nom Nom",
+            "description": "Eat 2 fruits and all four ghosts in succession four times in a single round!",
+            "iconUrl": "6b8730b27842540b1da65b6f04fe5d4f20a71e39.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "hidden": false,
+            "globalPct": 2.6
+        },
+        {
+            "apiName": "Achievement_11",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Om Nom Nom x2",
+            "description": "Eat all four ghosts in succession twice in a single round!",
+            "iconUrl": "6a7f3834b99c975df4a572c337741e602394263f.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "hidden": false,
+            "globalPct": 8.9
+        },
+        {
+            "apiName": "Achievement_12",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Om Nom Nom x3",
+            "description": "Eat all four ghosts in succession three times in a single round!",
+            "iconUrl": "60ffc8adc8f2cd9b2c3b39d2150343e8bb5a73dd.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "hidden": false,
+            "globalPct": 4.3
+        },
+        {
+            "apiName": "Achievement_13",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Om Nom Nom x4",
+            "description": "Eat all four ghosts in succession four times in a single round!",
+            "iconUrl": "cf1801ac6a9634d5e9d680f0725e1a87aaeba7d8.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "hidden": false,
+            "globalPct": 2.9
+        },
+        {
+            "apiName": "Achievement_14",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Picky Eater",
+            "description": "Clear 3 Rounds in a row without eating a single ghost and without losing a life!",
+            "iconUrl": "d28254c2e01b8bc4059ddaa211099d9661c87cbd.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "hidden": false,
+            "globalPct": 2.6
+        },
+        {
+            "apiName": "Achievement_15",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Round 2 Cleared",
+            "description": "Clear round 2!",
+            "iconUrl": "8cb7e1d45ced6dfbdc568bde125dc947204f4f0c.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "hidden": false,
+            "globalPct": 41.7
+        },
+        {
+            "apiName": "Achievement_16",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Round 5 Cleared",
+            "description": "Clear round 5!",
+            "iconUrl": "46703f452095087598ed9a0547a9fe890cd4f16a.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "hidden": false,
+            "globalPct": 7.7
+        },
+        {
+            "apiName": "Achievement_17",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Round 9 Cleared",
+            "description": "Clear round 9!",
+            "iconUrl": "6b96f91c589bc68786881c22f0f085f402a8cb8b.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "hidden": false,
+            "globalPct": 3.9
+        },
+        {
+            "apiName": "Achievement_18",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Round 13 Cleared",
+            "description": "Clear round 13!",
+            "iconUrl": "8803025d2514ef5c21a3ca7f77cd8c2778fa1cbb.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "hidden": false,
+            "globalPct": 3.4
+        },
+        {
+            "apiName": "Achievement_19",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Round 17 Cleared",
+            "description": "Clear round 17!",
+            "iconUrl": "f49cb01449761c2631514be53fb002cb3c2a7f1c.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "hidden": false,
+            "globalPct": 3.1
+        }
+    ],
+    "playtimeForever": 2,
+    "lastPlayedTs": "2017-04-14T22:15:28.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/394160/5c6189178ec91489c8e1c3be1e86a11780345a47.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "Achievement_0",
+            "displayName": "Cherry",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "829e2be136e0d004c2965405735b5b3260479309.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "globalPct": 58.3
+        },
+        {
+            "apiName": "Achievement_1",
+            "displayName": "Strawberry",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "0c175874aa343d443ff8691b03e99598a3d04e32.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "globalPct": 41.1
+        },
+        {
+            "apiName": "Achievement_2",
+            "displayName": "Orange",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "bb08cda8e5f49a0c29a4eeb5b79a2406dd4ddc1e.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "globalPct": 26.2
+        },
+        {
+            "apiName": "Achievement_3",
+            "displayName": "Apple",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1056c20e3734422597aa88f085f48b1af19d9993.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "globalPct": 9.7
+        },
+        {
+            "apiName": "Achievement_4",
+            "displayName": "Melon",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "10b7b31bd7a68f0e6fc202500a0346cc3cd70508.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "Achievement_5",
+            "displayName": "Galboss",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "62e09037ca3a052ec8e3786a2abbcf4aa7439227.jpg",
+            "iconGrayUrl": "e7ef716a40b6db1dc375861c8fba74409d23540f.jpg",
+            "globalPct": 4
+        }
+    ]
+}

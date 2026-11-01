@@ -1,0 +1,400 @@
+{
+    "appId": 238460,
+    "hasAchievements": true,
+    "total": 30,
+    "unlocked": 19,
+    "gameName": "BattleBlock Theater",
+    "achievements": [
+        {
+            "apiName": "ACH01_CAST_MEMBER",
+            "unlocked": true,
+            "unlockedAt": "2016-05-06T16:50:47.000Z",
+            "displayName": "Cast Member",
+            "description": "Complete the story's opening sequence in any mode.",
+            "iconUrl": "900ef7665e7a2b49f68bb285360256f2843847d4.jpg",
+            "iconGrayUrl": "ba8dc13df9827b6ac6b595888550800d8b3f1621.jpg",
+            "hidden": false,
+            "globalPct": 85.8
+        },
+        {
+            "apiName": "ACH02_SEASONED_PERFORMER",
+            "unlocked": true,
+            "unlockedAt": "2016-12-08T08:47:50.000Z",
+            "displayName": "Seasoned Performer",
+            "description": "Complete the first four finales in any mode.",
+            "iconUrl": "65b958e738d87987d2d2ae9930e314a6f435f218.jpg",
+            "iconGrayUrl": "45157c1f6da4bc3809a13e81ea4e4dfe6cb8ce66.jpg",
+            "hidden": false,
+            "globalPct": 27.4
+        },
+        {
+            "apiName": "ACH03_VIRTUOSO",
+            "unlocked": true,
+            "unlockedAt": "2016-12-08T08:42:49.000Z",
+            "displayName": "Virtuoso",
+            "description": "Get an A++ in 10 levels.",
+            "iconUrl": "e58dce944c210d025b2e2f5d300e94dc13c9b5b1.jpg",
+            "iconGrayUrl": "328d667d13e1e8c12a1d57f9b4feb36190ffe1ec.jpg",
+            "hidden": false,
+            "globalPct": 28.5
+        },
+        {
+            "apiName": "ACH04_SOLO_STAR",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Solo Star",
+            "description": "Get a letter grade in every level (except Encores) in Normal Solo Story Mode.",
+            "iconUrl": "8a70125f6b8d8582dd86c3dd3b629eabd9a472db.jpg",
+            "iconGrayUrl": "61fdd415a4c1775a47dc718a6ba35c17b6825efa.jpg",
+            "hidden": false,
+            "globalPct": 4.3
+        },
+        {
+            "apiName": "ACH05_COOP_STAR",
+            "unlocked": true,
+            "unlockedAt": "2016-12-21T13:15:18.000Z",
+            "displayName": "Coop Star",
+            "description": "Get a letter grade in every level (except Encores) in Normal Co-op Story Mode.",
+            "iconUrl": "02033dc91eaebf65e82dfdb0ce4b365e4f455bb9.jpg",
+            "iconGrayUrl": "eee41cbe7f3a99bf4963cf7713acbac429442718.jpg",
+            "hidden": false,
+            "globalPct": 6.1
+        },
+        {
+            "apiName": "ACH06_INSANE_SOLO_STAR",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Insane Solo Star",
+            "description": "Get a letter grade  in every level (except Encores) in insane solo story mode.",
+            "iconUrl": "eff79809bac238b6377a72fd0bc254040bbc5e60.jpg",
+            "iconGrayUrl": "320760ae72d8a5facd05e90e49aba1d1a3283ffe.jpg",
+            "hidden": false,
+            "globalPct": 1.7
+        },
+        {
+            "apiName": "ACH07_INSANE_COOP_STAR",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Insane Coop Star",
+            "description": "Get a letter grade in every level (except Encores) in insane co-op story mode.",
+            "iconUrl": "56e65a6e6cafc5149e6f9268ffbd0e54ec418c9d.jpg",
+            "iconGrayUrl": "a49819b06c9b3608c6b23642fa367506b93f7cae.jpg",
+            "hidden": false,
+            "globalPct": 1.5
+        },
+        {
+            "apiName": "ACH08_CROWD_PLEASER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Crowd Pleaser",
+            "description": "Complete all the Encores in any mode.",
+            "iconUrl": "f35fd326a35a53fa582932e2467d8d89cf69f8c5.jpg",
+            "iconGrayUrl": "f4ab805359975509fc0e630799278c32e33ae977.jpg",
+            "hidden": false,
+            "globalPct": 2.1
+        },
+        {
+            "apiName": "ACH09_SECRET_HAT_HUNTER",
+            "unlocked": true,
+            "unlockedAt": "2017-04-15T14:07:04.000Z",
+            "displayName": "Secret Hat Hunter",
+            "description": "Collect 10 Golden Hats.",
+            "iconUrl": "fafa18fcac71d98a869051e85f726b4d163090ac.jpg",
+            "iconGrayUrl": "4ae5a4fd320cf93641e5a5477db102188bc54630.jpg",
+            "hidden": false,
+            "globalPct": 6.6
+        },
+        {
+            "apiName": "ACH10_HATS_OFF",
+            "unlocked": true,
+            "unlockedAt": "2016-12-21T13:15:18.000Z",
+            "displayName": "Hats Off",
+            "description": "Get a letter grade in all eight finales in any mode.",
+            "iconUrl": "2f96ed0c83cdc2eef004b30e0331cb934a97546e.jpg",
+            "iconGrayUrl": "c46a28896c299d548e0c4242e01a976ea032d51a.jpg",
+            "hidden": false,
+            "globalPct": 10
+        },
+        {
+            "apiName": "ACH11_THE_PROFESSIONAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Professional",
+            "description": "Be on the winning team in 100 arena matches.",
+            "iconUrl": "8a95da27f9a060df462a3bf77ce0558950ee508c.jpg",
+            "iconGrayUrl": "24c37567cd68073c0a60fb69b2fac2704e81810f.jpg",
+            "hidden": false,
+            "globalPct": 2.7
+        },
+        {
+            "apiName": "ACH12_ALL_AROUND_JOE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "All Around Joe",
+            "description": "Be on the winning team in one arena match of every mode.",
+            "iconUrl": "ed48d5eb8efd48d6e12379f929dce991c5f7bc75.jpg",
+            "iconGrayUrl": "d14d4c8fa79592a70e7457c118cd9973c098f83d.jpg",
+            "hidden": false,
+            "globalPct": 3.1
+        },
+        {
+            "apiName": "ACH13_SECRET_FINDER",
+            "unlocked": true,
+            "unlockedAt": "2016-05-06T17:42:07.000Z",
+            "displayName": "Secret Finder",
+            "description": "",
+            "iconUrl": "f7b1c544152c5a71ddd6ed83ba4a64af2572a2e4.jpg",
+            "iconGrayUrl": "e637e8f3460abfea4f9c45bfa052d2081e174a9c.jpg",
+            "hidden": true,
+            "globalPct": 55.9
+        },
+        {
+            "apiName": "ACH14_NAIL_FILE_CAKE",
+            "unlocked": true,
+            "unlockedAt": "2016-05-06T17:13:11.000Z",
+            "displayName": "Nail File Cake",
+            "description": "Free a fellow prisoner.",
+            "iconUrl": "d1af4f9cc11d0a007b9e79a8ba353b484999e10b.jpg",
+            "iconGrayUrl": "0192cbaae5fc1a6b53cc2f454c4a04af7cac2474.jpg",
+            "hidden": false,
+            "globalPct": 64.5
+        },
+        {
+            "apiName": "ACH15_BLACK_MARKETEER",
+            "unlocked": true,
+            "unlockedAt": "2016-05-06T17:12:19.000Z",
+            "displayName": "Black Marketeer",
+            "description": "Get yourself a cool new weapon.",
+            "iconUrl": "5e0cebd31226034fe9cad057a320b9d2873a8acd.jpg",
+            "iconGrayUrl": "bbf5aac9f0993178ecc3b1505e3e2e0d1a5f4af7.jpg",
+            "hidden": false,
+            "globalPct": 68.6
+        },
+        {
+            "apiName": "ACH16_JAIL_BREAKER",
+            "unlocked": true,
+            "unlockedAt": "2016-12-15T12:56:40.000Z",
+            "displayName": "Jail Breaker",
+            "description": "Free 50 prisoners in the Gift Shop.",
+            "iconUrl": "e6edf5147f25560f1f88f32f8030b3aa2cefa0e4.jpg",
+            "iconGrayUrl": "793e47ad463e91e1854faba1783199486bf4ff09.jpg",
+            "hidden": false,
+            "globalPct": 17
+        },
+        {
+            "apiName": "ACH17_SOCIAL_BUTTERFLY",
+            "unlocked": true,
+            "unlockedAt": "2017-04-21T19:59:52.000Z",
+            "displayName": "Social Butterfly",
+            "description": "Collect all the prisoners of one head shape.",
+            "iconUrl": "e0ae895d04fa01520c25ab9f4319e7916db5a5a9.jpg",
+            "iconGrayUrl": "2e21cca323a2d8dfbb1bfb58a70dc5a195b72627.jpg",
+            "hidden": false,
+            "globalPct": 3.9
+        },
+        {
+            "apiName": "ACH18_FREEDOM_HERO",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Freedom Hero",
+            "description": "Free all the prisoners in the Gift Shop by unlocking or trading.",
+            "iconUrl": "e0826075ff618c2e3620962ad108f7eb243ce966.jpg",
+            "iconGrayUrl": "17b7cb19cd02cff854d15a11417d5f26cf1205b6.jpg",
+            "hidden": false,
+            "globalPct": 1.5
+        },
+        {
+            "apiName": "ACH19_ARMED_AND_DANGEROUS",
+            "unlocked": true,
+            "unlockedAt": "2016-12-11T07:14:14.000Z",
+            "displayName": "Armed and Dangerous",
+            "description": "Collect all the weapons in the Gift Shop by unlocking or trading.",
+            "iconUrl": "2fbda0a827a46f18ef75854e0b92517d72fc6b7e.jpg",
+            "iconGrayUrl": "ab61d9cac06d9d4d6ca80a8b6901e9fb19ff26db.jpg",
+            "hidden": false,
+            "globalPct": 19.5
+        },
+        {
+            "apiName": "ACH20_FIRST_TIME_TRADER",
+            "unlocked": true,
+            "unlockedAt": "2017-04-21T19:31:28.000Z",
+            "displayName": "First Time Trader",
+            "description": "Make a trade with someone.",
+            "iconUrl": "1b71376aab844e8611434b2f3d5a72882c1a4525.jpg",
+            "iconGrayUrl": "2e62d313faf423ec1a1c578e59126f7e3655e12f.jpg",
+            "hidden": false,
+            "globalPct": 23
+        },
+        {
+            "apiName": "ACH21_TAKE_A_BOW",
+            "unlocked": true,
+            "unlockedAt": "2017-04-07T17:38:01.000Z",
+            "displayName": "Take A Bow",
+            "description": "Complete an encore level in Story Mode.",
+            "iconUrl": "aa003d3d3ac721d9f0e9c34d49382523f8cc0c94.jpg",
+            "iconGrayUrl": "69cc49713b16b14b7f1b8fe92bf80b34c59f5ce3.jpg",
+            "hidden": false,
+            "globalPct": 23.8
+        },
+        {
+            "apiName": "ACH22_TRAITOR",
+            "unlocked": true,
+            "unlockedAt": "2016-12-08T07:49:10.000Z",
+            "displayName": "Traitor",
+            "description": "",
+            "iconUrl": "b65bb50a85c32f0b9592c9d240b7977806fcbede.jpg",
+            "iconGrayUrl": "56d65db57df5f4b6ac6086659c70c8900deeb4ea.jpg",
+            "hidden": true,
+            "globalPct": 32.5
+        },
+        {
+            "apiName": "ACH23_DEADLY_PERFORMER",
+            "unlocked": true,
+            "unlockedAt": "2016-12-08T08:44:33.000Z",
+            "displayName": "Deadly Performer",
+            "description": "Get 100 kills.",
+            "iconUrl": "5c75a1d40b55f027162da1892f9fb35630c5174b.jpg",
+            "iconGrayUrl": "c22e843bc2d4bbf8e22053bd0d4c8ba9ab5cb750.jpg",
+            "hidden": false,
+            "globalPct": 29.4
+        },
+        {
+            "apiName": "ACH24_CHICKEN_TOUCHER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Chicken Toucher",
+            "description": "Play with the Behemoth or someone with this achievement in an online game.",
+            "iconUrl": "5f98c1457f0ce2aeb72ba23ddc6e8c56235ade74.jpg",
+            "iconGrayUrl": "bc7036e01d95406c8010ec915ada5375049c2bcd.jpg",
+            "hidden": false,
+            "globalPct": 19.6
+        },
+        {
+            "apiName": "ACH25_MELEE_MASTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Melee Master",
+            "description": "Successfully use every melee attack move.",
+            "iconUrl": "1f0dd1cc4dff56eb95d95dda56bd7d6c4f01be1c.jpg",
+            "iconGrayUrl": "17e31bf42a9b6c74014ea29424eabc0503d05f37.jpg",
+            "hidden": false,
+            "globalPct": 16.6
+        },
+        {
+            "apiName": "ACH26_WEAPONS_MASTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Weapons Master",
+            "description": "Use each weapon successfully.",
+            "iconUrl": "71e8e339efbc3773e7a52c9e8967e8f72ee5789d.jpg",
+            "iconGrayUrl": "ef7002db9e0215b50fb05fe4e9c8999f5cd91793.jpg",
+            "hidden": false,
+            "globalPct": 3.8
+        },
+        {
+            "apiName": "ACH27_CONSOLATION_PRIZE",
+            "unlocked": true,
+            "unlockedAt": "2016-12-08T09:01:57.000Z",
+            "displayName": "Consolation Prize",
+            "description": "",
+            "iconUrl": "fd86126b45309118e123ac00d46dfaa81d621761.jpg",
+            "iconGrayUrl": "396034b161fd33420e067339b6c51f6c4c4ee50e.jpg",
+            "hidden": true,
+            "globalPct": 28.5
+        },
+        {
+            "apiName": "ACH28_PRISON_FOOD",
+            "unlocked": true,
+            "unlockedAt": "2016-05-07T17:38:26.000Z",
+            "displayName": "Prison Food",
+            "description": "",
+            "iconUrl": "47a1d8a22a0e20952cb587d76c1e36c2a01d4ce9.jpg",
+            "iconGrayUrl": "795eb736d143367b7c5c3d22e70272318f632e43.jpg",
+            "hidden": true,
+            "globalPct": 52.5
+        },
+        {
+            "apiName": "ACH29_THEATER_CRITIC",
+            "unlocked": true,
+            "unlockedAt": "2017-04-21T18:09:43.000Z",
+            "displayName": "Theater Critic",
+            "description": "Complete 10 user-created levels in a single Featured Story playlist.",
+            "iconUrl": "06c4e75c757485cc27b1276dddc19295dfc00143.jpg",
+            "iconGrayUrl": "4e900301025f1a0ad5352ab96a0417b2438c3f5a.jpg",
+            "hidden": false,
+            "globalPct": 4.5
+        },
+        {
+            "apiName": "ACH30_THEATER_MANAGER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Theater Manager",
+            "description": "Download and host a game of user-created levels.",
+            "iconUrl": "18253f22af43914117c1537dc9c034f292e3c423.jpg",
+            "iconGrayUrl": "7c8d3955e13f5ae1b1c5865509ce0791825d7105.jpg",
+            "hidden": false,
+            "globalPct": 7.4
+        }
+    ],
+    "playtimeForever": 1291,
+    "lastPlayedTs": "2019-05-17T16:34:57.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/238460/2f258aaff583d797812cdcf24830d5992f48733b.jpg",
+    "lastUnlockedAt": "2017-04-21T19:59:52.000Z",
+    "lastUnlockName": "Social Butterfly",
+    "preview": [
+        {
+            "apiName": "ACH17_SOCIAL_BUTTERFLY",
+            "displayName": "Social Butterfly",
+            "unlocked": true,
+            "unlockedAt": "2017-04-21T19:59:52.000Z",
+            "iconUrl": "e0ae895d04fa01520c25ab9f4319e7916db5a5a9.jpg",
+            "iconGrayUrl": "2e21cca323a2d8dfbb1bfb58a70dc5a195b72627.jpg",
+            "globalPct": 3.9
+        },
+        {
+            "apiName": "ACH20_FIRST_TIME_TRADER",
+            "displayName": "First Time Trader",
+            "unlocked": true,
+            "unlockedAt": "2017-04-21T19:31:28.000Z",
+            "iconUrl": "1b71376aab844e8611434b2f3d5a72882c1a4525.jpg",
+            "iconGrayUrl": "2e62d313faf423ec1a1c578e59126f7e3655e12f.jpg",
+            "globalPct": 23
+        },
+        {
+            "apiName": "ACH29_THEATER_CRITIC",
+            "displayName": "Theater Critic",
+            "unlocked": true,
+            "unlockedAt": "2017-04-21T18:09:43.000Z",
+            "iconUrl": "06c4e75c757485cc27b1276dddc19295dfc00143.jpg",
+            "iconGrayUrl": "4e900301025f1a0ad5352ab96a0417b2438c3f5a.jpg",
+            "globalPct": 4.5
+        },
+        {
+            "apiName": "ACH09_SECRET_HAT_HUNTER",
+            "displayName": "Secret Hat Hunter",
+            "unlocked": true,
+            "unlockedAt": "2017-04-15T14:07:04.000Z",
+            "iconUrl": "fafa18fcac71d98a869051e85f726b4d163090ac.jpg",
+            "iconGrayUrl": "4ae5a4fd320cf93641e5a5477db102188bc54630.jpg",
+            "globalPct": 6.6
+        },
+        {
+            "apiName": "ACH21_TAKE_A_BOW",
+            "displayName": "Take A Bow",
+            "unlocked": true,
+            "unlockedAt": "2017-04-07T17:38:01.000Z",
+            "iconUrl": "aa003d3d3ac721d9f0e9c34d49382523f8cc0c94.jpg",
+            "iconGrayUrl": "69cc49713b16b14b7f1b8fe92bf80b34c59f5ce3.jpg",
+            "globalPct": 23.8
+        },
+        {
+            "apiName": "ACH05_COOP_STAR",
+            "displayName": "Coop Star",
+            "unlocked": true,
+            "unlockedAt": "2016-12-21T13:15:18.000Z",
+            "iconUrl": "02033dc91eaebf65e82dfdb0ce4b365e4f455bb9.jpg",
+            "iconGrayUrl": "eee41cbe7f3a99bf4963cf7713acbac429442718.jpg",
+            "globalPct": 6.1
+        }
+    ]
+}

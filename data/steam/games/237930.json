@@ -1,0 +1,433 @@
+{
+    "appId": 237930,
+    "hasAchievements": true,
+    "total": 33,
+    "unlocked": 0,
+    "gameName": "Transistor",
+    "achievements": [
+        {
+            "apiName": "AchCompleteIntro",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Drive()",
+            "description": "Reach the Goldwalk District.",
+            "iconUrl": "615b34d738ae719a9a28453031f132e709a159d8.jpg",
+            "iconGrayUrl": "678f3868bd5843339b29b8a8476461f6d0360ce5.jpg",
+            "hidden": false,
+            "globalPct": 81
+        },
+        {
+            "apiName": "AchDefeatSybil",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Reisz()",
+            "description": "",
+            "iconUrl": "b923e4588c6031de6b6b1b8a13245ceab51f8c4d.jpg",
+            "iconGrayUrl": "b7826f0dc500991b198f081c80704c7d00de6b1b.jpg",
+            "hidden": true,
+            "globalPct": 60.4
+        },
+        {
+            "apiName": "AchDefeatSpine",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Spine()",
+            "description": "",
+            "iconUrl": "1ae3d7c213ae7d3d710c2e1fc18a89ead4c78706.jpg",
+            "iconGrayUrl": "683dc1c65c8095a967427c3198073d9379689ed0.jpg",
+            "hidden": true,
+            "globalPct": 33.9
+        },
+        {
+            "apiName": "AchDefeatAsherGrant",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Kendrell()",
+            "description": "",
+            "iconUrl": "b374a69186a1939731110088c637e13d721fd6a7.jpg",
+            "iconGrayUrl": "77d323c906e4e22d20eacda6a9d2b201129ebfb1.jpg",
+            "hidden": true,
+            "globalPct": 29
+        },
+        {
+            "apiName": "AchDefeatRoyce",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bracket()",
+            "description": "",
+            "iconUrl": "ff3228ca5b800c1db79ee32caacb113c1f94d650.jpg",
+            "iconGrayUrl": "2a193a9bb43d16f5df3a9168d201a0b89174e198.jpg",
+            "hidden": true,
+            "globalPct": 25.2
+        },
+        {
+            "apiName": "AchSandboxOneEach",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sandbox()",
+            "description": "Clear one of each Test.",
+            "iconUrl": "f7cbe1ce5c238b48931e1d66ddc04700d8ec1402.jpg",
+            "iconGrayUrl": "d5ea174f4026ba6fc762f33770ef63e6b08d6954.jpg",
+            "hidden": false,
+            "globalPct": 6.3
+        },
+        {
+            "apiName": "AchSandboxTimed",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Speed()",
+            "description": "Complete each Speed Test.",
+            "iconUrl": "13b6c7e40669ac7ac8152d4fc48d01e354569361.jpg",
+            "iconGrayUrl": "562c69a2a1b3165dd2f9913af12b704603443271.jpg",
+            "hidden": false,
+            "globalPct": 5.5
+        },
+        {
+            "apiName": "AchSandboxSurvival",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stability()",
+            "description": "Complete each Stability Test.",
+            "iconUrl": "1d1eb50d9050053385aaebe6bdf7cf3aa9ca9171.jpg",
+            "iconGrayUrl": "8a2d3e7546bac091d0c221c6cd96e731d709630d.jpg",
+            "hidden": false,
+            "globalPct": 15.4
+        },
+        {
+            "apiName": "AchSandboxCheckmate",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Planning()",
+            "description": "Complete each Planning Test.",
+            "iconUrl": "9f8d290e0d78bac650934050bb4a6881dc23cbef.jpg",
+            "iconGrayUrl": "172d39b9284058c455335f662ff68356e4c579ce.jpg",
+            "hidden": false,
+            "globalPct": 8.8
+        },
+        {
+            "apiName": "AchSandboxEndless",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Performance()",
+            "description": "Complete each Performance Test.",
+            "iconUrl": "74af69fab400b4bbbbc93f1c47b6e8750023e915.jpg",
+            "iconGrayUrl": "5aba317b8460c63e17009d78081f74521e57c681.jpg",
+            "hidden": false,
+            "globalPct": 3.8
+        },
+        {
+            "apiName": "AchSandboxShowdown",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Agency()",
+            "description": "Complete each Agency Test",
+            "iconUrl": "633e14bafbeed1f8291bdb052a2526a5c20b285a.jpg",
+            "iconGrayUrl": "51c0598000a2c6967e06d05c74196802d3552664.jpg",
+            "hidden": false,
+            "globalPct": 4.1
+        },
+        {
+            "apiName": "AchTurnDamageA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Anything()",
+            "description": "Deal at least 1024 damage in one Turn() in the Practice Test.",
+            "iconUrl": "0ba1fe3c46fc583b75ed60f849e961e01cc53d19.jpg",
+            "iconGrayUrl": "ae1675a34d69c24c5b5e6686a0bf8e9e4d8c7c46.jpg",
+            "hidden": false,
+            "globalPct": 11.4
+        },
+        {
+            "apiName": "AchTurnDamageB",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Everything()",
+            "description": "Deal at least 2048 damage in one Turn() in the Practice Test.",
+            "iconUrl": "b7a2b27818f192dce347c65d056fb9da7f7384a1.jpg",
+            "iconGrayUrl": "11b12949bb22dc90d66ed71fcbb430298c2ef195.jpg",
+            "hidden": false,
+            "globalPct": 6.6
+        },
+        {
+            "apiName": "AchSandboxAll",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Contest()",
+            "description": "Clear every Test.",
+            "iconUrl": "d532378aa72b76145c1253164c5c292bad62b613.jpg",
+            "iconGrayUrl": "fe0bdab668d65667a77f84aad203b2e9573f2fbc.jpg",
+            "hidden": false,
+            "globalPct": 3.8
+        },
+        {
+            "apiName": "AchCompleteStory",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bye()",
+            "description": "Complete the story.",
+            "iconUrl": "6c6611c1c58300e02562dd52b92c20dc16412518.jpg",
+            "iconGrayUrl": "bbffe4279417e3c740cd49f270ade8986d3f4c95.jpg",
+            "hidden": false,
+            "globalPct": 25.1
+        },
+        {
+            "apiName": "AchCompleteNewGamePlus",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Goodbye()",
+            "description": "Recurse through the story.",
+            "iconUrl": "48ce5d35e748e8a2711d3b8bb62eb83b0d0db683.jpg",
+            "iconGrayUrl": "51e207ca219611789596f7f9e79615a1e9c18ae1.jpg",
+            "hidden": false,
+            "globalPct": 4.2
+        },
+        {
+            "apiName": "AchFightLimitersA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bet()",
+            "description": "Complete five encounters with one or more Limiters in use.",
+            "iconUrl": "69e0128e16b0fdfe9e9072a86a0710a14e0c15f6.jpg",
+            "iconGrayUrl": "25c56a99261b597ebe02fb296d24f0e9e09db3aa.jpg",
+            "hidden": false,
+            "globalPct": 41
+        },
+        {
+            "apiName": "AchFightLimitersB",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dare()",
+            "description": "Complete five encounters with five or more Limiters in use.",
+            "iconUrl": "0493294bec520a0f76085c8b491c4c3e16368765.jpg",
+            "iconGrayUrl": "3bc837c89be1273c21fffbbae9de710b0dda1d21.jpg",
+            "hidden": false,
+            "globalPct": 9.3
+        },
+        {
+            "apiName": "AchFightLimitersC",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Risk()",
+            "description": "Complete five encounters with all 10 Limiters in use.",
+            "iconUrl": "3e698abe7afcca24656f1f2438b9044dc3ffab18.jpg",
+            "iconGrayUrl": "21d4d7c5415c226bab2f621bfaef5cf95e04c0c9.jpg",
+            "hidden": false,
+            "globalPct": 3.5
+        },
+        {
+            "apiName": "AchInspectFunctionsA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Search()",
+            "description": "Inspect five completed Function Files.",
+            "iconUrl": "6bac5b411cce41da93aa139b0ef38611402914d0.jpg",
+            "iconGrayUrl": "6710db237d3dfb5c05885cc7b70f152e290e1465.jpg",
+            "hidden": false,
+            "globalPct": 14.9
+        },
+        {
+            "apiName": "AchInspectFunctionsB",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Find()",
+            "description": "Inspect 10 completed Function Files.",
+            "iconUrl": "4daab2bef044235c62cc4cd761dbdef19c5a0079.jpg",
+            "iconGrayUrl": "2bf2fdb96b7f715770cef9f5fc42f877bcaf4c54.jpg",
+            "hidden": false,
+            "globalPct": 9.8
+        },
+        {
+            "apiName": "AchInspectFunctionsC",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Reveal()",
+            "description": "Inspect all completed Function Files.",
+            "iconUrl": "04866514cc13bcc896d30915e2036f4ca334e26b.jpg",
+            "iconGrayUrl": "22f20685f4d1482c4eed5abac4d7eb5573e5ba8c.jpg",
+            "hidden": false,
+            "globalPct": 4.6
+        },
+        {
+            "apiName": "AchInspectLimiters",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Process()",
+            "description": "Inspect all completed Limiter Files.",
+            "iconUrl": "e79d1542c82e006ee58d8dfbada6390c6e291b22.jpg",
+            "iconGrayUrl": "47c49744a44d248bef0d9c03730c5405c524eac2.jpg",
+            "hidden": false,
+            "globalPct": 4.1
+        },
+        {
+            "apiName": "AchTerminalUse",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "News()",
+            "description": "Use 10 different OVC Terminals.",
+            "iconUrl": "90ac3bbb476965e900cbd5a852818fd93bcf1825.jpg",
+            "iconGrayUrl": "6513d6cf9821bf344ed330093a490aa8ff6dd64f.jpg",
+            "hidden": false,
+            "globalPct": 38.2
+        },
+        {
+            "apiName": "AchUnlockAllFunctions",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Function()",
+            "description": "Unlock every Transistor Function.",
+            "iconUrl": "e334e34326944232bd03a1ae494512e375a0ed16.jpg",
+            "iconGrayUrl": "b297a15da98e758ae68474869e0690e46acf7b8a.jpg",
+            "hidden": false,
+            "globalPct": 12.9
+        },
+        {
+            "apiName": "AchUnlockAllSlots",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "User()",
+            "description": "Unlock every Upgrade Slot and Passive Slot.",
+            "iconUrl": "45097e7a8795daa72a00ff0013554bbf6e7cbf40.jpg",
+            "iconGrayUrl": "e4daa0fd4e50948df0f694f8635914fabc9167a9.jpg",
+            "hidden": false,
+            "globalPct": 5.3
+        },
+        {
+            "apiName": "AchUnlockAllMem",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Memory()",
+            "description": "Unlock 32 MEM.",
+            "iconUrl": "46a29711b229d0ad228b4430e6c7fc46710565e5.jpg",
+            "iconGrayUrl": "b33deb7e395730852feaa5b917ca8aeca4e30d2e.jpg",
+            "hidden": false,
+            "globalPct": 7.1
+        },
+        {
+            "apiName": "AchSelfCombo",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Self()",
+            "description": "",
+            "iconUrl": "ad3ab8d3ea8dc54ca358dd33658372725cb07fc0.jpg",
+            "iconGrayUrl": "03c9544c7a2d4d88f7f1956650fde4507f5b6156.jpg",
+            "hidden": true,
+            "globalPct": 6
+        },
+        {
+            "apiName": "AchUserLevelA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Align()",
+            "description": "Achieve User Level 8.",
+            "iconUrl": "a51c86acb45a6219a3730d6ff9a43aa99b2c9978.jpg",
+            "iconGrayUrl": "73d16206e9268f91b5fd5cc0574edf1a1c704858.jpg",
+            "hidden": false,
+            "globalPct": 33
+        },
+        {
+            "apiName": "AchUserLevelB",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Focus()",
+            "description": "Achieve User Level 16.",
+            "iconUrl": "c7e0920e6209a0449eb216aad00963280db8fb73.jpg",
+            "iconGrayUrl": "d720071159a2af3dff483e724f71cebdc8220d46.jpg",
+            "hidden": false,
+            "globalPct": 7.4
+        },
+        {
+            "apiName": "AchUserLevelC",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "One()",
+            "description": "Achieve User Level 24.",
+            "iconUrl": "90198aa3a8f237e9f7ba303eee7a42bb002a7c58.jpg",
+            "iconGrayUrl": "c08da548e1dd77c3d13fff21135d24c7445be7da.jpg",
+            "hidden": false,
+            "globalPct": 4.1
+        },
+        {
+            "apiName": "AchUnlockAllLimiters",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Limiter()",
+            "description": "Unlock every Process Limiter.",
+            "iconUrl": "f79ef4c02f194f01734feeae3fb5acf51d0cf672.jpg",
+            "iconGrayUrl": "3b427433cc11d0147f73a3d135f3d2b702b563a4.jpg",
+            "hidden": false,
+            "globalPct": 8.5
+        },
+        {
+            "apiName": "AchMaxFunctionSlot",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stack()",
+            "description": "Create a Function combination requiring 12 MEM.",
+            "iconUrl": "8f856797386323fb1d1b670e309c4fbd10668b99.jpg",
+            "iconGrayUrl": "6c1e5df5fc390318c4731a260626a8d12899fc3f.jpg",
+            "hidden": false,
+            "globalPct": 5.9
+        }
+    ],
+    "playtimeForever": 184,
+    "lastPlayedTs": "2024-07-04T05:50:04.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/237930/b45dc369d45afe945d379e75545959f845094f92.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "AchCompleteIntro",
+            "displayName": "Drive()",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "615b34d738ae719a9a28453031f132e709a159d8.jpg",
+            "iconGrayUrl": "678f3868bd5843339b29b8a8476461f6d0360ce5.jpg",
+            "globalPct": 81
+        },
+        {
+            "apiName": "AchDefeatSybil",
+            "displayName": "Reisz()",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "b923e4588c6031de6b6b1b8a13245ceab51f8c4d.jpg",
+            "iconGrayUrl": "b7826f0dc500991b198f081c80704c7d00de6b1b.jpg",
+            "globalPct": 60.4
+        },
+        {
+            "apiName": "AchDefeatSpine",
+            "displayName": "Spine()",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1ae3d7c213ae7d3d710c2e1fc18a89ead4c78706.jpg",
+            "iconGrayUrl": "683dc1c65c8095a967427c3198073d9379689ed0.jpg",
+            "globalPct": 33.9
+        },
+        {
+            "apiName": "AchDefeatAsherGrant",
+            "displayName": "Kendrell()",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "b374a69186a1939731110088c637e13d721fd6a7.jpg",
+            "iconGrayUrl": "77d323c906e4e22d20eacda6a9d2b201129ebfb1.jpg",
+            "globalPct": 29
+        },
+        {
+            "apiName": "AchDefeatRoyce",
+            "displayName": "Bracket()",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "ff3228ca5b800c1db79ee32caacb113c1f94d650.jpg",
+            "iconGrayUrl": "2a193a9bb43d16f5df3a9168d201a0b89174e198.jpg",
+            "globalPct": 25.2
+        },
+        {
+            "apiName": "AchSandboxOneEach",
+            "displayName": "Sandbox()",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f7cbe1ce5c238b48931e1d66ddc04700d8ec1402.jpg",
+            "iconGrayUrl": "d5ea174f4026ba6fc762f33770ef63e6b08d6954.jpg",
+            "globalPct": 6.3
+        }
+    ]
+}

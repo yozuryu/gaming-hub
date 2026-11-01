@@ -1,0 +1,257 @@
+{
+    "appId": 223810,
+    "hasAchievements": true,
+    "total": 17,
+    "unlocked": 0,
+    "gameName": "Ys I",
+    "achievements": [
+        {
+            "apiName": "Hello, My Name Is Adol",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hello, My Name Is Adol",
+            "description": "Completely fill the character notebook.",
+            "iconUrl": "971345b00d457094da9f01bdfaaeb5507ba57d3f.jpg",
+            "iconGrayUrl": "6dcd4e4ca45703fb836c903626707c19b3d28089.jpg",
+            "hidden": false,
+            "globalPct": 12.3
+        },
+        {
+            "apiName": "Monster Masher",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Monster Masher",
+            "description": "Unlock all details for all non-boss bestiary entries.",
+            "iconUrl": "5648865f20f3aa929f83f3f1f8bac4946ba0b7f6.jpg",
+            "iconGrayUrl": "c6188b8adbe374ebb4c55485ec67733e53816cb0.jpg",
+            "hidden": false,
+            "globalPct": 6.5
+        },
+        {
+            "apiName": "De-Fact-o",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "De-Fact-o",
+            "description": "Complete Ys I on any difficulty.",
+            "iconUrl": "e66d4f029a79786351f60d0282670f7d1d3a0383.jpg",
+            "iconGrayUrl": "eecd79351bf104f82cb87db3e1c2f4ef0419b9c3.jpg",
+            "hidden": false,
+            "globalPct": 30.2
+        },
+        {
+            "apiName": "Into the Sky",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Into the Sky",
+            "description": "Complete Ys I on Nightmare difficulty.",
+            "iconUrl": "2ecfb6417bd93322cd6df9a3bb1c523e39d4be34.jpg",
+            "iconGrayUrl": "25e11d0ec6441f839d96b6935c3b557760437b2e.jpg",
+            "hidden": false,
+            "globalPct": 4.7
+        },
+        {
+            "apiName": "Bump Master",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bump Master",
+            "description": "Complete Ys I Time Attack.",
+            "iconUrl": "c38209d5de3aa5345880f2d01da951d01bd9c685.jpg",
+            "iconGrayUrl": "3ddb9af4fbe55892efbc44212c5c635d0556c6e4.jpg",
+            "hidden": false,
+            "globalPct": 3.8
+        },
+        {
+            "apiName": "Sworded Details",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sworded Details",
+            "description": "Receive a free Short Sword.",
+            "iconUrl": "502b8371ec190fcd5daf25a5697deb0d45e521f8.jpg",
+            "iconGrayUrl": "d64ef9f0734efd5555713c7d77f2e9256a9c6bf3.jpg",
+            "hidden": false,
+            "globalPct": 29.9
+        },
+        {
+            "apiName": "Seriously Sworded Details",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Seriously Sworded Details",
+            "description": "Receive a free Talwar prior to entering the tower.",
+            "iconUrl": "f0e818e954f5d37e1097b00f80cda5b19ea8d219.jpg",
+            "iconGrayUrl": "7cc4aaaa18e515404296396afeccc716d4f6d374.jpg",
+            "hidden": false,
+            "globalPct": 34
+        },
+        {
+            "apiName": "The Pim's-Lower Approach",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Pim's-Lower Approach",
+            "description": "Drive a hard bargain with Pim.",
+            "iconUrl": "36b8b3576be237b1d00a6f88c37dac1df07da691.jpg",
+            "iconGrayUrl": "43d2ffb5433db0d7aea9ff606308a95cf0e73287.jpg",
+            "hidden": false,
+            "globalPct": 21.2
+        },
+        {
+            "apiName": "Some Kind of Sorcerer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Some Kind of Sorcerer",
+            "description": "Confuse and astound the townsfolk.",
+            "iconUrl": "9568110b861b544ec0ffa651e76e00a502eeace7.jpg",
+            "iconGrayUrl": "95c9cba2bdab9ba904e114e3880e8879cf592276.jpg",
+            "hidden": false,
+            "globalPct": 18.5
+        },
+        {
+            "apiName": "Forever Level One To Me",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Forever Level One To Me",
+            "description": "Level-up Feena.",
+            "iconUrl": "245a402e389706ff828b2852f2d0ea95901a6027.jpg",
+            "iconGrayUrl": "4065442759ea02fb7766c4285306ee85f2017e5c.jpg",
+            "hidden": false,
+            "globalPct": 10.8
+        },
+        {
+            "apiName": "Hey Baby, What's Your Width?",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hey Baby, What's Your Width?",
+            "description": "\"Measure\" Feena.",
+            "iconUrl": "e944c4a2e64f0280697cc480cde3cd687cedcf11.jpg",
+            "iconGrayUrl": "208fe529a43c8dd0b43c25c8ebcfedc37e0d8859.jpg",
+            "hidden": false,
+            "globalPct": 14.9
+        },
+        {
+            "apiName": "I Can't See You, But I Can Feel You",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I Can't See You, But I Can Feel You",
+            "description": "\"Measure\" Feena in the creepiest way possible.",
+            "iconUrl": "7e49124b14365b8808525b6b56842de52f84d908.jpg",
+            "iconGrayUrl": "1c1866ff3887cfe6c69e8747814bd7ab8c1e9142.jpg",
+            "hidden": false,
+            "globalPct": 12.4
+        },
+        {
+            "apiName": "That Wacky Minstrel",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "That Wacky Minstrel",
+            "description": "Rescue Luta Gemma from monsters in the field.",
+            "iconUrl": "371a8a7e66fb12f13edaba163ad7807a78001a56.jpg",
+            "iconGrayUrl": "e14021e3f7ce4b3ce80a1898307bd730c63bb8d3.jpg",
+            "hidden": false,
+            "globalPct": 22
+        },
+        {
+            "apiName": "Poetry In Motion",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Poetry In Motion",
+            "description": "Listen to Reah recite her poem.",
+            "iconUrl": "0899ed2280001907c3215f7f72ede09f8ac7618b.jpg",
+            "iconGrayUrl": "d6800446aaf1923ce7f4e053f9b898b778a2dc9d.jpg",
+            "hidden": false,
+            "globalPct": 23.7
+        },
+        {
+            "apiName": "Adol the Wall-Crusher-Enabler",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Adol the Wall-Crusher-Enabler",
+            "description": "Make Dogi break through three different walls.",
+            "iconUrl": "0c730c9cddec0f0d375b62f3b6550a632c8ef773.jpg",
+            "iconGrayUrl": "0574da79dbffb02227fed5f5d52f6ede7e7b77d9.jpg",
+            "hidden": false,
+            "globalPct": 17.8
+        },
+        {
+            "apiName": "Gold Is the New Silver",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Gold Is the New Silver",
+            "description": "Max out your money.",
+            "iconUrl": "3a7b363d235294994ea05290d661a09574f0528d.jpg",
+            "iconGrayUrl": "68a9a0f7530b28766e1ac0c4b174960eaeea86ab.jpg",
+            "hidden": false,
+            "globalPct": 21.1
+        },
+        {
+            "apiName": "Esteria, We Hardly Knew Ye",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Esteria, We Hardly Knew Ye",
+            "description": "Master every achievement in Ys I.",
+            "iconUrl": "4b935ea785230da462eba21ceac6dccc1ac73b00.jpg",
+            "iconGrayUrl": "c7566ba4894ea6510e62ebd38b7587ed977bca11.jpg",
+            "hidden": false,
+            "globalPct": 3.5
+        }
+    ],
+    "playtimeForever": 156,
+    "lastPlayedTs": "2018-01-13T05:07:40.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/223810/d749d1b847cd218b2f013dabf5587d7f1a16356d.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "Hello, My Name Is Adol",
+            "displayName": "Hello, My Name Is Adol",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "971345b00d457094da9f01bdfaaeb5507ba57d3f.jpg",
+            "iconGrayUrl": "6dcd4e4ca45703fb836c903626707c19b3d28089.jpg",
+            "globalPct": 12.3
+        },
+        {
+            "apiName": "Monster Masher",
+            "displayName": "Monster Masher",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "5648865f20f3aa929f83f3f1f8bac4946ba0b7f6.jpg",
+            "iconGrayUrl": "c6188b8adbe374ebb4c55485ec67733e53816cb0.jpg",
+            "globalPct": 6.5
+        },
+        {
+            "apiName": "De-Fact-o",
+            "displayName": "De-Fact-o",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "e66d4f029a79786351f60d0282670f7d1d3a0383.jpg",
+            "iconGrayUrl": "eecd79351bf104f82cb87db3e1c2f4ef0419b9c3.jpg",
+            "globalPct": 30.2
+        },
+        {
+            "apiName": "Into the Sky",
+            "displayName": "Into the Sky",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "2ecfb6417bd93322cd6df9a3bb1c523e39d4be34.jpg",
+            "iconGrayUrl": "25e11d0ec6441f839d96b6935c3b557760437b2e.jpg",
+            "globalPct": 4.7
+        },
+        {
+            "apiName": "Bump Master",
+            "displayName": "Bump Master",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c38209d5de3aa5345880f2d01da951d01bd9c685.jpg",
+            "iconGrayUrl": "3ddb9af4fbe55892efbc44212c5c635d0556c6e4.jpg",
+            "globalPct": 3.8
+        },
+        {
+            "apiName": "Sworded Details",
+            "displayName": "Sworded Details",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "502b8371ec190fcd5daf25a5697deb0d45e521f8.jpg",
+            "iconGrayUrl": "d64ef9f0734efd5555713c7d77f2e9256a9c6bf3.jpg",
+            "globalPct": 29.9
+        }
+    ]
+}

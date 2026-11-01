@@ -28,8 +28,7 @@
     "xbox-fetch:debug": "node scripts/xbox-pipeline.js --debug",
     "xbox-fetch:full": "node scripts/xbox-pipeline.js --refresh-games",
     "assets": "node scripts/download-assets.js",
-    "admin": "node scripts/admin-server.js",
-    "data:pull": "node scripts/data-pull.js"
+    "admin": "node scripts/admin-server.js"
   },
   "dependencies": {
     "@retroachievements/api": "^2.10.0",

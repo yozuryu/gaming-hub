@@ -1,0 +1,301 @@
+{
+    "appId": 452060,
+    "hasAchievements": true,
+    "total": 21,
+    "unlocked": 0,
+    "gameName": "Caveblazers",
+    "achievements": [
+        {
+            "apiName": "ACH_FINISH_TUTORIAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Caveblazin'",
+            "description": "Finish the tutorial",
+            "iconUrl": "1bee85c58b8134c93d6938742a9f4438124ca1ed.jpg",
+            "iconGrayUrl": "fcc3e3266426ad60c3c7d58fdd5582d0666b136c.jpg",
+            "hidden": false,
+            "globalPct": 75.7
+        },
+        {
+            "apiName": "ACH_DEFEAT_BOSS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Harder They Fall",
+            "description": "Defeat a boss",
+            "iconUrl": "28769f57876f5bef3995784a1a1e0dfe719cc425.jpg",
+            "iconGrayUrl": "605599da258ce4e487709fd57e9fe86f0b8c5095.jpg",
+            "hidden": false,
+            "globalPct": 40.2
+        },
+        {
+            "apiName": "ACH_WIN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Complete!",
+            "description": "Finish the game",
+            "iconUrl": "49a02af85232f5e15bf06ab7bde7f8692f5cf8b0.jpg",
+            "iconGrayUrl": "94e7f6b69be85425f772f2d98069aec8f421e7c9.jpg",
+            "hidden": false,
+            "globalPct": 7.4
+        },
+        {
+            "apiName": "ACH_RELICS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Historian",
+            "description": "Discover all 5 relics",
+            "iconUrl": "8512640f200b6d6ede4741440ee3f04a1b5b3638.jpg",
+            "iconGrayUrl": "c8afa1f64c38f0dd880737877f5da75ce39fc56c.jpg",
+            "hidden": false,
+            "globalPct": 4.5
+        },
+        {
+            "apiName": "ACH_100_KILLS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Executioner",
+            "description": "Kill 100 enemies",
+            "iconUrl": "25e975371c21e389f4c94373ceb0b7d1f82014b4.jpg",
+            "iconGrayUrl": "3f9d11e9dfe846ce72466e72622e9f22daa554aa.jpg",
+            "hidden": false,
+            "globalPct": 54.2
+        },
+        {
+            "apiName": "ACH_50_CHESTS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Brute Force",
+            "description": "Smash 50 treasure chests",
+            "iconUrl": "1bf9fee7c1dbf0c520f7b822b84dd6f00ae2fb63.jpg",
+            "iconGrayUrl": "a1cbf2982044c78a2f295751da065c06fca92175.jpg",
+            "hidden": false,
+            "globalPct": 39.9
+        },
+        {
+            "apiName": "ACH_SUPER_WEAPON",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Super Powered!",
+            "description": "Create a super weapon",
+            "iconUrl": "4e1f64879dba987be7b3615568c96660fcc761bd.jpg",
+            "iconGrayUrl": "464d114d681f5ce8af62b7c2b3ba949409351469.jpg",
+            "hidden": false,
+            "globalPct": 26
+        },
+        {
+            "apiName": "ACH_MEGA_WEAPON",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mega Powered!",
+            "description": "Create a mega shadow weapon",
+            "iconUrl": "d9d893f3258d16588b01272afee97b295e2868bb.jpg",
+            "iconGrayUrl": "74e0f52ee55cc7423c30bf2b2f353eef1893c5be.jpg",
+            "hidden": false,
+            "globalPct": 2.3
+        },
+        {
+            "apiName": "ACH_REVIVE_FRIEND",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Besties",
+            "description": "Revive a friend",
+            "iconUrl": "ab73c81d3f0cebc7da5490f3588795eb5ee70b53.jpg",
+            "iconGrayUrl": "79770b2ba259ef287abae558b9235fa769988d54.jpg",
+            "hidden": false,
+            "globalPct": 19.7
+        },
+        {
+            "apiName": "ACH_100_POTIONS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Quaffer",
+            "description": "Drink 100 Potions",
+            "iconUrl": "c5f1792886596f12bea8c943dcf2dabd60c56685.jpg",
+            "iconGrayUrl": "9ff1c204cad30a997054f096e18d234b76f4ddfd.jpg",
+            "hidden": false,
+            "globalPct": 15.2
+        },
+        {
+            "apiName": "ACH_DEFEAT_ALL_BOSSES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Giant Slayer",
+            "description": "Defeat all of the regular bosses",
+            "iconUrl": "c501c82357db241bef48de9109dda32fb758a33c.jpg",
+            "iconGrayUrl": "25303957d7025ca65d6a94aaa43ea48611a17271.jpg",
+            "hidden": false,
+            "globalPct": 12
+        },
+        {
+            "apiName": "ACH_SHROUDED_LAND",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "True Purpose",
+            "description": "Reach the Shrouded Land",
+            "iconUrl": "38a72adacd8e09f65012d368f608a9b8a36c3660.jpg",
+            "iconGrayUrl": "9b84e0310ba1c1cec66bbd77043a4d62f99a2b34.jpg",
+            "hidden": false,
+            "globalPct": 1.5
+        },
+        {
+            "apiName": "ACH_WIN_HARD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hero",
+            "description": "Complete the game with all 5 relics active",
+            "iconUrl": "24e12378e55ea67e4f65de2c5040834152b359fa.jpg",
+            "iconGrayUrl": "2798e348303913f6b40b6a12f8e287b65ae27d7b.jpg",
+            "hidden": false,
+            "globalPct": 1.1
+        },
+        {
+            "apiName": "ACH_20_HOURS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Habitual Caveblazer",
+            "description": "Play for a total of 20 hours",
+            "iconUrl": "5b2b29d6d4bd36ca0dcb91929e569c43222ec6b4.jpg",
+            "iconGrayUrl": "619463163b3ed79814725223c6b01a91c50f657c.jpg",
+            "hidden": false,
+            "globalPct": 8.5
+        },
+        {
+            "apiName": "ACH_ALL_MONSTERS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Monster Hunter",
+            "description": "Fill up the monsters section of your journal",
+            "iconUrl": "56b4026c58d3f609da9db79e77ae65f22b6230fa.jpg",
+            "iconGrayUrl": "1ae7811ba978e29457ddbce5ea0bfccc2b69286e.jpg",
+            "hidden": false,
+            "globalPct": 1.9
+        },
+        {
+            "apiName": "ACH_100%_COMPLETE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Completionist",
+            "description": "Achieve 100% game completion",
+            "iconUrl": "0db88340804f371bc84c06c3f9b34b31d6589c77.jpg",
+            "iconGrayUrl": "9191b90ae5b788ccbe8586b88d8b291a3e937ad9.jpg",
+            "hidden": false,
+            "globalPct": 0.9
+        },
+        {
+            "apiName": "ACH_HARDCORE_BOSS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hardcore Boss",
+            "description": "Defeat a boss with all 5 relics active",
+            "iconUrl": "1472db1b7a4e8d155bd8b82d79d29751f9c8087b.jpg",
+            "iconGrayUrl": "67c943925990fc5f168161108d9071b02bde5879.jpg",
+            "hidden": false,
+            "globalPct": 2.3
+        },
+        {
+            "apiName": "ACH_ARENA_CHAMPION",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Arena Champion",
+            "description": "Become the champion of an arena",
+            "iconUrl": "12de897695f87456f2077a2b8ebba72b00d5861a.jpg",
+            "iconGrayUrl": "e4c00f40e4acea6e961d66caaa2ac5e1cd3683f0.jpg",
+            "hidden": false,
+            "globalPct": 13.2
+        },
+        {
+            "apiName": "ACH_COOP_COMPLETE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Partnership",
+            "description": "Finish the game in co-op mode",
+            "iconUrl": "d1f09b7e292149a5516d1320592c5ae93500cb38.jpg",
+            "iconGrayUrl": "d68ab6cdef90c816bd28829cc80554b3759163ae.jpg",
+            "hidden": false,
+            "globalPct": 1.1
+        },
+        {
+            "apiName": "ACH_COOP_LEVELS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cooperation",
+            "description": "Complete 10 levels with both players alive in co-op mode",
+            "iconUrl": "453780c43f1e5bb5e955df3e4ba99cb66be617ab.jpg",
+            "iconGrayUrl": "a03ee5423281a2f06d20f1c38846d15b86b271b8.jpg",
+            "hidden": false,
+            "globalPct": 4.6
+        },
+        {
+            "apiName": "ACH_COOP_JUNGLE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Coordination",
+            "description": "Reach the Forsaken Jungle in co-op mode without dying",
+            "iconUrl": "e3d7f946d931298af695f00109c637815fa329cf.jpg",
+            "iconGrayUrl": "2df0142a86ea6af188265d7a24e056febf06d013.jpg",
+            "hidden": false,
+            "globalPct": 2.1
+        }
+    ],
+    "playtimeForever": 518,
+    "lastPlayedTs": "2024-05-24T05:54:40.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/452060/3adc638e097221d750c50228d3eff395613db3c7.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACH_FINISH_TUTORIAL",
+            "displayName": "Caveblazin'",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1bee85c58b8134c93d6938742a9f4438124ca1ed.jpg",
+            "iconGrayUrl": "fcc3e3266426ad60c3c7d58fdd5582d0666b136c.jpg",
+            "globalPct": 75.7
+        },
+        {
+            "apiName": "ACH_DEFEAT_BOSS",
+            "displayName": "The Harder They Fall",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "28769f57876f5bef3995784a1a1e0dfe719cc425.jpg",
+            "iconGrayUrl": "605599da258ce4e487709fd57e9fe86f0b8c5095.jpg",
+            "globalPct": 40.2
+        },
+        {
+            "apiName": "ACH_WIN",
+            "displayName": "Complete!",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "49a02af85232f5e15bf06ab7bde7f8692f5cf8b0.jpg",
+            "iconGrayUrl": "94e7f6b69be85425f772f2d98069aec8f421e7c9.jpg",
+            "globalPct": 7.4
+        },
+        {
+            "apiName": "ACH_RELICS",
+            "displayName": "Historian",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "8512640f200b6d6ede4741440ee3f04a1b5b3638.jpg",
+            "iconGrayUrl": "c8afa1f64c38f0dd880737877f5da75ce39fc56c.jpg",
+            "globalPct": 4.5
+        },
+        {
+            "apiName": "ACH_100_KILLS",
+            "displayName": "Executioner",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "25e975371c21e389f4c94373ceb0b7d1f82014b4.jpg",
+            "iconGrayUrl": "3f9d11e9dfe846ce72466e72622e9f22daa554aa.jpg",
+            "globalPct": 54.2
+        },
+        {
+            "apiName": "ACH_50_CHESTS",
+            "displayName": "Brute Force",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1bf9fee7c1dbf0c520f7b822b84dd6f00ae2fb63.jpg",
+            "iconGrayUrl": "a1cbf2982044c78a2f295751da065c06fca92175.jpg",
+            "globalPct": 39.9
+        }
+    ]
+}

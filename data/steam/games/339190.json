@@ -1,0 +1,334 @@
+{
+    "appId": 339190,
+    "hasAchievements": true,
+    "total": 24,
+    "unlocked": 0,
+    "gameName": "Dead Synchronicity: Tomorrow Comes Today",
+    "achievements": [
+        {
+            "apiName": "Peeping_Tom",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Peeping Tom",
+            "description": "A good model knows how to stand still until the sound of the flash.",
+            "iconUrl": "7c8c62e9a2b43e9b365035db18469f8d3b3c9401.jpg",
+            "iconGrayUrl": "29d8deef7c4304926d041090e16b57c0123fed1a.jpg",
+            "hidden": false,
+            "globalPct": 5.8
+        },
+        {
+            "apiName": "Deep_Red",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Deep Red",
+            "description": "Only red and yellow... everywhere you look.",
+            "iconUrl": "7e7a5a15ab6af28777c1d8b4dd196b5e50513dc3.jpg",
+            "iconGrayUrl": "c4c602a3ea200536dd0a67063ce681e8a9a08004.jpg",
+            "hidden": false,
+            "globalPct": 9.5
+        },
+        {
+            "apiName": "Jacobs_Ladder",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Jacob´s Ladder",
+            "description": "If there's a hell in this world, it's down there.",
+            "iconUrl": "9d3f89d273cda5aff8a8f4bf87ee4a0b9f4bfcc2.jpg",
+            "iconGrayUrl": "c1c804495fbb6b3f185ea2b59eb69ec5d80ee856.jpg",
+            "hidden": false,
+            "globalPct": 10.2
+        },
+        {
+            "apiName": "Hellraiser",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hellraiser",
+            "description": "Nails, nails, and more nails...",
+            "iconUrl": "c3c7dd2bed50e62cf7638d292ee6543568f8544f.jpg",
+            "iconGrayUrl": "f5efda9ca33b1c4e909fd3e783f997d825611d17.jpg",
+            "hidden": false,
+            "globalPct": 6.2
+        },
+        {
+            "apiName": "Rosemarys_Baby",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Rosemary´s Baby",
+            "description": "Look at him sleeping. Isn't he cute?",
+            "iconUrl": "744c8b0be398e811ff5dfc31fd85974698d9a52a.jpg",
+            "iconGrayUrl": "7402c07005dd15fd45602a712baf422671dd616b.jpg",
+            "hidden": false,
+            "globalPct": 6.6
+        },
+        {
+            "apiName": "Westworld",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Westworld",
+            "description": "Welcome to the sparkling, wild West.",
+            "iconUrl": "353098abf54d81631fb099af02c28422da4ea945.jpg",
+            "iconGrayUrl": "2a333931c4d253eead572c69b92de090faa0bfed.jpg",
+            "hidden": false,
+            "globalPct": 5.6
+        },
+        {
+            "apiName": "Soylent_Green",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Soylent Green",
+            "description": "100% organic and gluten-free. Ready to bake.",
+            "iconUrl": "7bf3c4d9ee4805b25534354edfab36eeabd4f52c.jpg",
+            "iconGrayUrl": "9452145601aaaa5eb7ff531910819ab3f9156ad3.jpg",
+            "hidden": false,
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "God_Told_Me_To",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "God Told Me To",
+            "description": "You should follow His signs, God is much smarter than you.",
+            "iconUrl": "49ab949e8f4e5f02e2226de7ffa01b0b536e9ec8.jpg",
+            "iconGrayUrl": "70150fdd5d08236e90657904f7d702b4139a7257.jpg",
+            "hidden": false,
+            "globalPct": 5.8
+        },
+        {
+            "apiName": "The_Island_of_Dr_Moreau",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Island of Dr Moreau",
+            "description": "The pig is a dog for the rat.",
+            "iconUrl": "9f18ecb8b276680a7bd2507cbc4d4c91d8b0ee99.jpg",
+            "iconGrayUrl": "c76e0f86beef1db459a5967100df5c87efc72e0f.jpg",
+            "hidden": false,
+            "globalPct": 5.4
+        },
+        {
+            "apiName": "Invasion_of_the_Body_Snatchers",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Invasion of the Body Snatchers",
+            "description": "Calm down, death is just a change of skin.",
+            "iconUrl": "56027975979b2e9ea4fb4e374d5f4240fc21d4df.jpg",
+            "iconGrayUrl": "2dbeca43964997016facfeb4194676cd52453475.jpg",
+            "hidden": false,
+            "globalPct": 7.8
+        },
+        {
+            "apiName": "Farenheit_451",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Farenheit 451",
+            "description": "You know how it is: \"Burn 'em to ashes, then burn the ashes.\"",
+            "iconUrl": "38b5e375c3de908165523e1a0146d728bff84a8b.jpg",
+            "iconGrayUrl": "3c8d7c56be71803f88621348005ac08db2f3f3ce.jpg",
+            "hidden": false,
+            "globalPct": 6.3
+        },
+        {
+            "apiName": "The_Thing",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Thing",
+            "description": "Let's try the Electric Kool-Aid Alien Blood Test!",
+            "iconUrl": "b85e042d012d9e09d1d60d86c711df6d09478b79.jpg",
+            "iconGrayUrl": "70ce3c0508ad4d6d2a2c139f0ad835e04f0b4c72.jpg",
+            "hidden": false,
+            "globalPct": 5.3
+        },
+        {
+            "apiName": "A_Bucket_of_Blood",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Bucket of Blood",
+            "description": "A nice souvenir. I visited the New World and I brought you this.",
+            "iconUrl": "7fd3433c915664007d4526fdc68235be95b938b3.jpg",
+            "iconGrayUrl": "65a7cd6a2bfd4562dbf4dae86a2c129645940f62.jpg",
+            "hidden": false,
+            "globalPct": 5.4
+        },
+        {
+            "apiName": "Logans_Run",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Logan´s Run",
+            "description": "Happy Birthday! You are 30 today.",
+            "iconUrl": "bd7c72e5147dbc3f9bb8db378e38f541c280bb2e.jpg",
+            "iconGrayUrl": "707cc087f43f29517be5719e9b75be4201321636.jpg",
+            "hidden": false,
+            "globalPct": 11.7
+        },
+        {
+            "apiName": "Third_Encounters",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Dead Zone",
+            "description": "As devastated as the wreckage of your memory.",
+            "iconUrl": "ae649b92a37ef7ed3373b3c9359b8676460fb22f.jpg",
+            "iconGrayUrl": "703af44c380405476bcc3829ad4ad5ce1a071daf.jpg",
+            "hidden": false,
+            "globalPct": 10.2
+        },
+        {
+            "apiName": "12_Monkeys",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "La Jetée",
+            "description": "Past, present and future. Shaken... and well stirred.",
+            "iconUrl": "36f510beead1ccbe6622a4c128f9633c4078b4e1.jpg",
+            "iconGrayUrl": "bb107c68dc2562407b5437164c1e7bd03eb5832c.jpg",
+            "hidden": false,
+            "globalPct": 7.5
+        },
+        {
+            "apiName": "The_Andromeda_Strain",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Andromeda Strain",
+            "description": "Say it loud: I'm ill and proud!",
+            "iconUrl": "8cc0aea39243f9efa93c585dc4c5d15980df56a9.jpg",
+            "iconGrayUrl": "ca01c1587a140ff234036223c6a9942565be090c.jpg",
+            "hidden": false,
+            "globalPct": 6.1
+        },
+        {
+            "apiName": "Island_of_the_Damned",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Island of the Damned / Who can kill a child?",
+            "description": "Enjoy our games, our lemonade and our awesome piñata.",
+            "iconUrl": "9772d98532dc4725e8cef6dff28fe823eda8a349.jpg",
+            "iconGrayUrl": "ec4f2fb7613965434bbea3a8f2613462ea061956.jpg",
+            "hidden": false,
+            "globalPct": 3.5
+        },
+        {
+            "apiName": "The_Driller_Killer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Driller Killer",
+            "description": "Or ",
+            "iconUrl": "93a02cbafd3898f19d3810176e3fcecc3bd25c19.jpg",
+            "iconGrayUrl": "f32b8f547c201978013e9ea907df2878aab46b18.jpg",
+            "hidden": false,
+            "globalPct": 2.8
+        },
+        {
+            "apiName": "Piranha",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Piranha",
+            "description": "Where do good fish go when they die?",
+            "iconUrl": "25ca4f91bd80f56321a7096a508db85d4b7436b9.jpg",
+            "iconGrayUrl": "030bd84d8a8eb3444c58c68b1931d0a4e69cea0a.jpg",
+            "hidden": false,
+            "globalPct": 2.8
+        },
+        {
+            "apiName": "Stalker",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stalker",
+            "description": "Because our lives are like a train heading nowhere...",
+            "iconUrl": "6565789a8548be5f2c9875ce0919fdf90e5fb564.jpg",
+            "iconGrayUrl": "ebf9cfeb8827c76bde7ae205225518ce73060020.jpg",
+            "hidden": false,
+            "globalPct": 7.1
+        },
+        {
+            "apiName": "Altered_States",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Altered States",
+            "description": "No doubt about it: you lost your mind. Take good note of it.",
+            "iconUrl": "977a09e6a3857a5536e86b5402da612da98db365.jpg",
+            "iconGrayUrl": "56cae6755c3d0c24dd70bcb9aae3fc898e20fdce.jpg",
+            "hidden": false,
+            "globalPct": 3.2
+        },
+        {
+            "apiName": "The_Nightmare_Before_Christmas",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Nightmare Before Christmas",
+            "description": "A year, already? Time to hang the lights again!",
+            "iconUrl": "d818a6be53ce8450d32b79f9fb0b4f1fad286d08.jpg",
+            "iconGrayUrl": "c141c9ebea2eafdd4d859660d2f565c7c627259c.jpg",
+            "hidden": false,
+            "globalPct": 3.2
+        },
+        {
+            "apiName": "House",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "House",
+            "description": "Come in, no need to knock!",
+            "iconUrl": "0b58bcab436c0afb6205a3eca2b86554a3f4b4e5.jpg",
+            "iconGrayUrl": "f61dd74c9be1785791ebe4f9d608fc704f1150c6.jpg",
+            "hidden": false,
+            "globalPct": 7.5
+        }
+    ],
+    "playtimeForever": 275,
+    "lastPlayedTs": "2024-05-27T18:30:11.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/339190/310a84ab3f614abc7f434ccf47df355e764fa62b.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "Peeping_Tom",
+            "displayName": "Peeping Tom",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "7c8c62e9a2b43e9b365035db18469f8d3b3c9401.jpg",
+            "iconGrayUrl": "29d8deef7c4304926d041090e16b57c0123fed1a.jpg",
+            "globalPct": 5.8
+        },
+        {
+            "apiName": "Deep_Red",
+            "displayName": "Deep Red",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "7e7a5a15ab6af28777c1d8b4dd196b5e50513dc3.jpg",
+            "iconGrayUrl": "c4c602a3ea200536dd0a67063ce681e8a9a08004.jpg",
+            "globalPct": 9.5
+        },
+        {
+            "apiName": "Jacobs_Ladder",
+            "displayName": "Jacob´s Ladder",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9d3f89d273cda5aff8a8f4bf87ee4a0b9f4bfcc2.jpg",
+            "iconGrayUrl": "c1c804495fbb6b3f185ea2b59eb69ec5d80ee856.jpg",
+            "globalPct": 10.2
+        },
+        {
+            "apiName": "Hellraiser",
+            "displayName": "Hellraiser",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c3c7dd2bed50e62cf7638d292ee6543568f8544f.jpg",
+            "iconGrayUrl": "f5efda9ca33b1c4e909fd3e783f997d825611d17.jpg",
+            "globalPct": 6.2
+        },
+        {
+            "apiName": "Rosemarys_Baby",
+            "displayName": "Rosemary´s Baby",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "744c8b0be398e811ff5dfc31fd85974698d9a52a.jpg",
+            "iconGrayUrl": "7402c07005dd15fd45602a712baf422671dd616b.jpg",
+            "globalPct": 6.6
+        },
+        {
+            "apiName": "Westworld",
+            "displayName": "Westworld",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "353098abf54d81631fb099af02c28422da4ea945.jpg",
+            "iconGrayUrl": "2a333931c4d253eead572c69b92de090faa0bfed.jpg",
+            "globalPct": 5.6
+        }
+    ]
+}

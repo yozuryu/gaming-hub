@@ -1,0 +1,422 @@
+{
+    "appId": 504230,
+    "hasAchievements": true,
+    "total": 32,
+    "unlocked": 0,
+    "gameName": "Celeste",
+    "achievements": [
+        {
+            "apiName": "CH7",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Celeste",
+            "description": "Climb Celeste Mountain",
+            "iconUrl": "f8563120e18b88ff7e31b03ff6fcb61c5553b1ac.jpg",
+            "iconGrayUrl": "89873d2063ca6c68cb5ca6082356ff2591c8d33c.jpg",
+            "hidden": false,
+            "globalPct": 34.6
+        },
+        {
+            "apiName": "CH1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Forsaken",
+            "description": "",
+            "iconUrl": "6d16bf0629b862295a62b2d92ab22a94dc593903.jpg",
+            "iconGrayUrl": "8537ffcbf48c8ea47a2acee6b1cba9465b73bf7f.jpg",
+            "hidden": true,
+            "globalPct": 70.7
+        },
+        {
+            "apiName": "CH2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Archaeology",
+            "description": "",
+            "iconUrl": "7544829d732b63de52eb0e68c796a68e8153c26f.jpg",
+            "iconGrayUrl": "ba3a0b98c79dcbdb25f4e802da77b9e3c544b979.jpg",
+            "hidden": true,
+            "globalPct": 61.7
+        },
+        {
+            "apiName": "CH3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Checking Out",
+            "description": "",
+            "iconUrl": "7e202a373754eac26194d75d6ba82e7fcc48ea42.jpg",
+            "iconGrayUrl": "2c69807ad4b81b4824d1ca7bde2c4b038a21b45e.jpg",
+            "hidden": true,
+            "globalPct": 50.5
+        },
+        {
+            "apiName": "CH4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Breathe",
+            "description": "",
+            "iconUrl": "fc3f2ae7d42ce92886c166aff6e9868b6dd9c518.jpg",
+            "iconGrayUrl": "f453fdf354ee1bbe4dd5463e06c1983c49e23e27.jpg",
+            "hidden": true,
+            "globalPct": 43.1
+        },
+        {
+            "apiName": "CH5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "In the Mirror",
+            "description": "",
+            "iconUrl": "902474b484af5d94aeaa22d74e3559c47e94beec.jpg",
+            "iconGrayUrl": "7ea000251756c770a4addac20a5f04fd3de294fa.jpg",
+            "hidden": true,
+            "globalPct": 38.5
+        },
+        {
+            "apiName": "CH6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Reflection",
+            "description": "",
+            "iconUrl": "82f006e8c91ec81c8af98f7e5c59ad2ea1f8b0b1.jpg",
+            "iconGrayUrl": "276c5c9194faa612c2340f3e4c8d0fdd547b1044.jpg",
+            "hidden": true,
+            "globalPct": 36.6
+        },
+        {
+            "apiName": "STRB1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Strawberry Badge",
+            "description": "",
+            "iconUrl": "64cffde21bf6fba1d3749e751a5772765f95357c.jpg",
+            "iconGrayUrl": "144a66f76deb04b7c1479ce7e625a1d117b0755b.jpg",
+            "hidden": true,
+            "globalPct": 47.7
+        },
+        {
+            "apiName": "STRB2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Strawberry Medal",
+            "description": "",
+            "iconUrl": "0e3b7b3e990ea0e212df36054e31521d29da21ca.jpg",
+            "iconGrayUrl": "b4b1111ddc4b01f90ddfc130835f573d519946ad.jpg",
+            "hidden": true,
+            "globalPct": 27.8
+        },
+        {
+            "apiName": "STRB3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Impress Your Friends",
+            "description": "",
+            "iconUrl": "9b043fec21f1028d306f0908b401c86d8869c334.jpg",
+            "iconGrayUrl": "c19e04df8e8edad7457bcf0c864dee288b44fbdd.jpg",
+            "hidden": true,
+            "globalPct": 10.4
+        },
+        {
+            "apiName": "CASS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Gateway",
+            "description": "",
+            "iconUrl": "5b74fdc02266a082409cb59543c2736c51d90896.jpg",
+            "iconGrayUrl": "3f3bd4871dcc6680d00ba85ab11c36701707df9c.jpg",
+            "hidden": true,
+            "globalPct": 62.1
+        },
+        {
+            "apiName": "ONEUP",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "1UP!",
+            "description": "Get a 1UP",
+            "iconUrl": "01751a67a64a8d6883480f5626233d2952b3faff.jpg",
+            "iconGrayUrl": "f747dd03981d694d78b94024755ad0952977e624.jpg",
+            "hidden": false,
+            "globalPct": 8.2
+        },
+        {
+            "apiName": "PICO8",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Real Gamer",
+            "description": "",
+            "iconUrl": "2b5f3e3777afa012ea64f2c1fd5ee810b6d52efa.jpg",
+            "iconGrayUrl": "f4c88ceb5c37e76b2df3b8eaade87d4f0a2a7dc4.jpg",
+            "hidden": true,
+            "globalPct": 17.7
+        },
+        {
+            "apiName": "HEART1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pointless Machines",
+            "description": "",
+            "iconUrl": "82a52b6dbe6bb56f69ad1f568c8d91a2de2a0834.jpg",
+            "iconGrayUrl": "3c78373948ffc206aa53c9e1726f9bfb5d8d83dd.jpg",
+            "hidden": true,
+            "globalPct": 28.3
+        },
+        {
+            "apiName": "BSIDE1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sever the Skyline",
+            "description": "",
+            "iconUrl": "810cd273532315aedb7ccd1f8a9ccb247b9477cd.jpg",
+            "iconGrayUrl": "14e2067c5f48c169be5de46471e0ebca44dd0f9d.jpg",
+            "hidden": true,
+            "globalPct": 22.5
+        },
+        {
+            "apiName": "HEART2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Resurrections",
+            "description": "",
+            "iconUrl": "30e45ac30d9fb90d1dd76688875e2d491fdd9054.jpg",
+            "iconGrayUrl": "8730aeac3d2149016ef756623190eb219a22dfb8.jpg",
+            "hidden": true,
+            "globalPct": 26.8
+        },
+        {
+            "apiName": "BSIDE2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Black Moonrise",
+            "description": "",
+            "iconUrl": "e9a6f8264778706d452b8599cee3b4ebba41f7a3.jpg",
+            "iconGrayUrl": "f2313be79e6a89d411c747701e341129c296e90d.jpg",
+            "hidden": true,
+            "globalPct": 23.1
+        },
+        {
+            "apiName": "HEART3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Scattered and Lost",
+            "description": "",
+            "iconUrl": "c4774b17ade252213f7fd01436e0b62d6a8e0fda.jpg",
+            "iconGrayUrl": "4a0a9b61bdc33f712c99b1bd5187c8df069cb566.jpg",
+            "hidden": true,
+            "globalPct": 23.4
+        },
+        {
+            "apiName": "BSIDE3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Good Karma",
+            "description": "",
+            "iconUrl": "0bd13d2fe79f014051195b4a75f27f543598e412.jpg",
+            "iconGrayUrl": "e4d5f892bf95035096188052acfeb3e174cdc624.jpg",
+            "hidden": true,
+            "globalPct": 18.4
+        },
+        {
+            "apiName": "HEART4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Eye of the Storm",
+            "description": "",
+            "iconUrl": "450875d5a9861e9265102674661e0e2fe7ce4037.jpg",
+            "iconGrayUrl": "1b3c97598dd38a430e4d6f83960750b62fdf3241.jpg",
+            "hidden": true,
+            "globalPct": 24.2
+        },
+        {
+            "apiName": "BSIDE4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Golden Feather",
+            "description": "",
+            "iconUrl": "7fd5c7ddb1265089f604c7acbbf0434135021984.jpg",
+            "iconGrayUrl": "282e1e2463e2f3900a32682f6eb11121ad1d6d4a.jpg",
+            "hidden": true,
+            "globalPct": 16.1
+        },
+        {
+            "apiName": "HEART5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Quiet and Falling",
+            "description": "",
+            "iconUrl": "4343dd6a0af97f4817efa300c72a264822b2b9e4.jpg",
+            "iconGrayUrl": "ce91b829dbd5c113a6f8538fcf9110dcd7d4e3f4.jpg",
+            "hidden": true,
+            "globalPct": 18.1
+        },
+        {
+            "apiName": "BSIDE5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mirror Magic",
+            "description": "",
+            "iconUrl": "06e9484e9b1f240047b143e3ece2b306d2c34b9a.jpg",
+            "iconGrayUrl": "47479cb403ba676c8f9d47235f42e3a9fedcf291.jpg",
+            "hidden": true,
+            "globalPct": 15.3
+        },
+        {
+            "apiName": "HEART6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Heavy and Frail",
+            "description": "",
+            "iconUrl": "d4c3d118bcd6ca1c46b8253f3564698365ee03ff.jpg",
+            "iconGrayUrl": "3879be4f3d34b67290a0b462ef9ea653727fcfea.jpg",
+            "hidden": true,
+            "globalPct": 19.2
+        },
+        {
+            "apiName": "BSIDE6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Center of the Earth",
+            "description": "",
+            "iconUrl": "ae38d92eda2cd671dd4c5f28eb6aa71ba91cad02.jpg",
+            "iconGrayUrl": "3199a67316a17c3a035bf106634b2ce86da2f223.jpg",
+            "hidden": true,
+            "globalPct": 14.2
+        },
+        {
+            "apiName": "HEART7",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pink Sunrise",
+            "description": "",
+            "iconUrl": "b4d22b2828d901d6becc9dd8f0a1b3139ac6919c.jpg",
+            "iconGrayUrl": "d246c1a4887535a23fda48beba22dda2b5e6e1ec.jpg",
+            "hidden": true,
+            "globalPct": 15.7
+        },
+        {
+            "apiName": "BSIDE7",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "No More Running",
+            "description": "",
+            "iconUrl": "8e8dc94c39aa1c2f7f78a3516ce6a028db395cd0.jpg",
+            "iconGrayUrl": "f2e36541e6402e20ebc4326df6f453c30ed011fc.jpg",
+            "hidden": true,
+            "globalPct": 13.7
+        },
+        {
+            "apiName": "HEART8",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Heart of the Mountain",
+            "description": "",
+            "iconUrl": "555bf873af6c8ebd1d71b387a72951b7c3255d39.jpg",
+            "iconGrayUrl": "02d0cfb97b8b3e304a21920548b566fa4f77b794.jpg",
+            "hidden": true,
+            "globalPct": 19.1
+        },
+        {
+            "apiName": "BSIDE8",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Say Goodbye",
+            "description": "",
+            "iconUrl": "e80a2d49fc33936b74f1631d77165b33822c4925.jpg",
+            "iconGrayUrl": "99e33224f242d0e72f7f442595866d577bfa1151.jpg",
+            "hidden": true,
+            "globalPct": 11.4
+        },
+        {
+            "apiName": "CSIDES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Thanks For Playing",
+            "description": "",
+            "iconUrl": "9492cd8d788b45471c098fa29372570892be4452.jpg",
+            "iconGrayUrl": "f96f29231f0005b77eb1cee1a7dcbdf3dce5dccb.jpg",
+            "hidden": true,
+            "globalPct": 8.2
+        },
+        {
+            "apiName": "FAREWELL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Farewell",
+            "description": "",
+            "iconUrl": "fde5aef242ebd69a490713d84b7053dbb99d7144.jpg",
+            "iconGrayUrl": "a9623e6c0ae401b58958849c434ce08cde6e5090.jpg",
+            "hidden": true,
+            "globalPct": 8.8
+        },
+        {
+            "apiName": "WOW",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Wow",
+            "description": "",
+            "iconUrl": "b002c7e5e8cb1da71c5992a73076a26a5403e1ee.jpg",
+            "iconGrayUrl": "7e673ac4397279781499ec76087b4c87d9c872fd.jpg",
+            "hidden": true,
+            "globalPct": 6.6
+        }
+    ],
+    "playtimeForever": 285,
+    "lastPlayedTs": "2025-02-18T04:24:21.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/504230/04cb7aa0b497a3962e6b1655b7fd81a2cc95d18b.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "CH7",
+            "displayName": "Celeste",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f8563120e18b88ff7e31b03ff6fcb61c5553b1ac.jpg",
+            "iconGrayUrl": "89873d2063ca6c68cb5ca6082356ff2591c8d33c.jpg",
+            "globalPct": 34.6
+        },
+        {
+            "apiName": "CH1",
+            "displayName": "Forsaken",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "6d16bf0629b862295a62b2d92ab22a94dc593903.jpg",
+            "iconGrayUrl": "8537ffcbf48c8ea47a2acee6b1cba9465b73bf7f.jpg",
+            "globalPct": 70.7
+        },
+        {
+            "apiName": "CH2",
+            "displayName": "Archaeology",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "7544829d732b63de52eb0e68c796a68e8153c26f.jpg",
+            "iconGrayUrl": "ba3a0b98c79dcbdb25f4e802da77b9e3c544b979.jpg",
+            "globalPct": 61.7
+        },
+        {
+            "apiName": "CH3",
+            "displayName": "Checking Out",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "7e202a373754eac26194d75d6ba82e7fcc48ea42.jpg",
+            "iconGrayUrl": "2c69807ad4b81b4824d1ca7bde2c4b038a21b45e.jpg",
+            "globalPct": 50.5
+        },
+        {
+            "apiName": "CH4",
+            "displayName": "Breathe",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "fc3f2ae7d42ce92886c166aff6e9868b6dd9c518.jpg",
+            "iconGrayUrl": "f453fdf354ee1bbe4dd5463e06c1983c49e23e27.jpg",
+            "globalPct": 43.1
+        },
+        {
+            "apiName": "CH5",
+            "displayName": "In the Mirror",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "902474b484af5d94aeaa22d74e3559c47e94beec.jpg",
+            "iconGrayUrl": "7ea000251756c770a4addac20a5f04fd3de294fa.jpg",
+            "globalPct": 38.5
+        }
+    ]
+}

@@ -1,0 +1,224 @@
+{
+    "appId": 468490,
+    "hasAchievements": true,
+    "total": 14,
+    "unlocked": 0,
+    "gameName": "Neon Space",
+    "achievements": [
+        {
+            "apiName": "USE_BLINK_5_TIMES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Use blink 5 times",
+            "description": "What kind of sorcery is this?",
+            "iconUrl": "d2bb3a3c70136f4a2b01452afc337706e2f2e5c9.jpg",
+            "iconGrayUrl": "c5fd3514775f3c39462ef09452876cd8cd77f90f.jpg",
+            "hidden": false,
+            "globalPct": 6.3
+        },
+        {
+            "apiName": "USE_SLOW_TIME_5_TIMES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Use slow time 5 times",
+            "description": "Is Chronos your brother?",
+            "iconUrl": "aab58842104e044e6372206a084f196777dbffce.jpg",
+            "iconGrayUrl": "46d227e046b569ae9194a0b0692bf964b2d6e5f8.jpg",
+            "hidden": false,
+            "globalPct": 5.3
+        },
+        {
+            "apiName": "FINISH_LEVEL_ONE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Finish level one",
+            "description": "Good job rookie!",
+            "iconUrl": "9a5582a0c916ad4a2e19659f54cf0b03a4a251d8.jpg",
+            "iconGrayUrl": "54610a4088e6cfd6e0ea274789925d32069efc82.jpg",
+            "hidden": false,
+            "globalPct": 12.4
+        },
+        {
+            "apiName": "FINISH_FINAL_BOSS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Finish final boss",
+            "description": "There is no limit for your neon glow.",
+            "iconUrl": "3d5b8c6e97facaf6bf8d4be4a51a86c77e80b65a.jpg",
+            "iconGrayUrl": "2a662997c435e839f8553d618ea168a0cb21e54a.jpg",
+            "hidden": false,
+            "globalPct": 3.3
+        },
+        {
+            "apiName": "ACTIVATE_FIRST_TIME_CHECKPOINT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Activate first time checkpoint",
+            "description": "You better keep an eye on that watch!",
+            "iconUrl": "88409488c8d494e8aa1a1eef1e2369082d94f8d9.jpg",
+            "iconGrayUrl": "5731c5be9961b1894a5826042ba94c4ec7bbed1c.jpg",
+            "hidden": false,
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "DIE_ONCE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Die once",
+            "description": "Glow brighter my precious...",
+            "iconUrl": "31114e933954b337e3f4dbef73fc8808652ded09.jpg",
+            "iconGrayUrl": "5efd4bd41dc1885f49f32b36e1731ca3c0fdd459.jpg",
+            "hidden": false,
+            "globalPct": 11.7
+        },
+        {
+            "apiName": "GET_10_BRONZE_MEDALS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Get 10 bronze medals",
+            "description": "You are on the right way. Keep going!",
+            "iconUrl": "9997d4ae3366ae668b8a8af3ccaa17c1121c8d1f.jpg",
+            "iconGrayUrl": "e765f101e304101bc182c527921414d6a47ec1b9.jpg",
+            "hidden": false,
+            "globalPct": 5.7
+        },
+        {
+            "apiName": "GET_10_SILVER_MEDALS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Get 10 silver medals",
+            "description": "You want to be famous?",
+            "iconUrl": "6c8baaa82754de81a85b138efec9e25f66aba116.jpg",
+            "iconGrayUrl": "e765f101e304101bc182c527921414d6a47ec1b9.jpg",
+            "hidden": false,
+            "globalPct": 5.4
+        },
+        {
+            "apiName": "GET_10_GOLD_MEDALS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Get 10 gold medals",
+            "description": "Shine like your skills, right?",
+            "iconUrl": "dea7c30c24ddcb89df1a8071d078e1b36584dbed.jpg",
+            "iconGrayUrl": "e765f101e304101bc182c527921414d6a47ec1b9.jpg",
+            "hidden": false,
+            "globalPct": 4.5
+        },
+        {
+            "apiName": "GET_20_MEDALS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Get 20 medals",
+            "description": "Looks like you don't want to be average player!",
+            "iconUrl": "38d3fb2538fdfab59828094e6a89ca54b632ef19.jpg",
+            "iconGrayUrl": "9aad9fc454da5f3cb275aa34066ec95734bd7d07.jpg",
+            "hidden": false,
+            "globalPct": 4.2
+        },
+        {
+            "apiName": "GET_50_MEDALS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Get 50 medals",
+            "description": "Wow. Your skill are stunning!",
+            "iconUrl": "ceeb5bb3deab91556f592c266ceeadf92c20cdb0.jpg",
+            "iconGrayUrl": "3d4b0dfb41f812cd7af6f16a15fbb89f7e9e7268.jpg",
+            "hidden": false,
+            "globalPct": 3.2
+        },
+        {
+            "apiName": "ACTIVATE_10_CHECKPOINTS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Activate 10 checkpoints",
+            "description": "Thats right. Keep your focus sharp!",
+            "iconUrl": "ada96ac5abb9ea337e79ee0c5bb0a593fd25f4b5.jpg",
+            "iconGrayUrl": "cd2b7d0e14504fcdefe3e9c78fd211de075c7f02.jpg",
+            "hidden": false,
+            "globalPct": 5.9
+        },
+        {
+            "apiName": "ACTIVATE_20_CHECKPOINTS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Activate 20 checkpoints",
+            "description": "There is nothing to stop you!",
+            "iconUrl": "c7ed5b4da47a98d49eb69282286ddec811a5e9c2.jpg",
+            "iconGrayUrl": "7522b30d4e1b33d7e6945cf18d39b4265c57fc80.jpg",
+            "hidden": false,
+            "globalPct": 5.4
+        },
+        {
+            "apiName": "ACTIVATE_50_CHECKPOINTS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Activate 50 checkpoints",
+            "description": "You started to be an expert!",
+            "iconUrl": "83de4cd057b91a87f68e61581bf25ba90b0d3ee3.jpg",
+            "iconGrayUrl": "7c8cae6ebd00b19afcae3a2fd5684ae8aa471b4e.jpg",
+            "hidden": false,
+            "globalPct": 4.5
+        }
+    ],
+    "playtimeForever": 217,
+    "lastPlayedTs": "2024-06-01T03:53:21.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/468490/4f6ca05d7cadc0b911fd92237232615db151ae88.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "USE_BLINK_5_TIMES",
+            "displayName": "Use blink 5 times",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d2bb3a3c70136f4a2b01452afc337706e2f2e5c9.jpg",
+            "iconGrayUrl": "c5fd3514775f3c39462ef09452876cd8cd77f90f.jpg",
+            "globalPct": 6.3
+        },
+        {
+            "apiName": "USE_SLOW_TIME_5_TIMES",
+            "displayName": "Use slow time 5 times",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "aab58842104e044e6372206a084f196777dbffce.jpg",
+            "iconGrayUrl": "46d227e046b569ae9194a0b0692bf964b2d6e5f8.jpg",
+            "globalPct": 5.3
+        },
+        {
+            "apiName": "FINISH_LEVEL_ONE",
+            "displayName": "Finish level one",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9a5582a0c916ad4a2e19659f54cf0b03a4a251d8.jpg",
+            "iconGrayUrl": "54610a4088e6cfd6e0ea274789925d32069efc82.jpg",
+            "globalPct": 12.4
+        },
+        {
+            "apiName": "FINISH_FINAL_BOSS",
+            "displayName": "Finish final boss",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "3d5b8c6e97facaf6bf8d4be4a51a86c77e80b65a.jpg",
+            "iconGrayUrl": "2a662997c435e839f8553d618ea168a0cb21e54a.jpg",
+            "globalPct": 3.3
+        },
+        {
+            "apiName": "ACTIVATE_FIRST_TIME_CHECKPOINT",
+            "displayName": "Activate first time checkpoint",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "88409488c8d494e8aa1a1eef1e2369082d94f8d9.jpg",
+            "iconGrayUrl": "5731c5be9961b1894a5826042ba94c4ec7bbed1c.jpg",
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "DIE_ONCE",
+            "displayName": "Die once",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "31114e933954b337e3f4dbef73fc8808652ded09.jpg",
+            "iconGrayUrl": "5efd4bd41dc1885f49f32b36e1731ca3c0fdd459.jpg",
+            "globalPct": 11.7
+        }
+    ]
+}

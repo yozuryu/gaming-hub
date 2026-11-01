@@ -1,0 +1,235 @@
+{
+    "appId": 1085180,
+    "hasAchievements": true,
+    "total": 15,
+    "unlocked": 11,
+    "gameName": "Gunvolt Chronicles: Luminous Avenger iX",
+    "achievements": [
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_0",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Luminous Avenger iX",
+            "description": "",
+            "iconUrl": "b93456af6d554ac45678b1bbeea1ea6b65e5c550.jpg",
+            "iconGrayUrl": "458fad8907edb7af2e69cc2ce4b76aa97412135a.jpg",
+            "hidden": true,
+            "globalPct": 13.3
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Muse of Hope",
+            "description": "Unlock every song in the jukebox.",
+            "iconUrl": "e6dd5735e7d5baf1efbf12d8b8ffa9692476e6d7.jpg",
+            "iconGrayUrl": "5387027744844e5a2049f6813e097bd3dd35b48b.jpg",
+            "hidden": false,
+            "globalPct": 23.8
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ability Collector",
+            "description": "Purchase every ability for customization.",
+            "iconUrl": "141722cd694b62ca61dc8009fb6654483bfce96b.jpg",
+            "iconGrayUrl": "cf221283d50f101019a364cc3ec2dbafce1a464b.jpg",
+            "hidden": false,
+            "globalPct": 9.2
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Overseer of the End",
+            "description": "",
+            "iconUrl": "d9676b752739f80992582d162752312309f343ff.jpg",
+            "iconGrayUrl": "8ec122cb880e6a1e8cd66df5b2c76c6f3e750738.jpg",
+            "hidden": true,
+            "globalPct": 40.1
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_4",
+            "unlocked": true,
+            "unlockedAt": "2020-03-20T20:55:30.000Z",
+            "displayName": "Butterfly Effect",
+            "description": "",
+            "iconUrl": "d98058d05294919201e19076f46af40df9d9be39.jpg",
+            "iconGrayUrl": "a621bce66ac739fba4202dbcd38a576cc5a25099.jpg",
+            "hidden": true,
+            "globalPct": 43.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_5",
+            "unlocked": true,
+            "unlockedAt": "2020-03-20T20:39:52.000Z",
+            "displayName": "Beneath the Mask",
+            "description": "",
+            "iconUrl": "38c1907eec2daf7453002cd3e1332557617c2440.jpg",
+            "iconGrayUrl": "7180f7861877986fe689b58533f70b8329b5e55f.jpg",
+            "hidden": true,
+            "globalPct": 44.8
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_6",
+            "unlocked": true,
+            "unlockedAt": "2019-11-08T16:31:01.000Z",
+            "displayName": "Attack of the Giga-Lola",
+            "description": "",
+            "iconUrl": "526ae6a79a6ed56d34d07994900daf20307bedd9.jpg",
+            "iconGrayUrl": "5896b5489e68ad67836db1578724a715e6feec4a.jpg",
+            "hidden": true,
+            "globalPct": 46.3
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_7",
+            "unlocked": true,
+            "unlockedAt": "2019-11-08T16:26:16.000Z",
+            "displayName": "The Hidden World",
+            "description": "",
+            "iconUrl": "7caecdd60d3afc73bd934f731a0d29cb609b05ec.jpg",
+            "iconGrayUrl": "92fb43f89a69fc1400648ee9a2128337427242bb.jpg",
+            "hidden": true,
+            "globalPct": 46.5
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_8",
+            "unlocked": true,
+            "unlockedAt": "2019-11-08T16:12:28.000Z",
+            "displayName": "Lost Memories",
+            "description": "",
+            "iconUrl": "d69631ebf8d902f2bf794683e50f6b90eaefee11.jpg",
+            "iconGrayUrl": "f2be4209d9c46d60ca22ae01d7f443e1250d2bf7.jpg",
+            "hidden": true,
+            "globalPct": 47.5
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_9",
+            "unlocked": true,
+            "unlockedAt": "2019-10-27T10:31:24.000Z",
+            "displayName": "Heaven's Concert Stage",
+            "description": "",
+            "iconUrl": "f68666e2d938ed6279e3435af3adfc4c5c68dd5b.jpg",
+            "iconGrayUrl": "0701c943983afee14332dac68e782630c4270e7a.jpg",
+            "hidden": true,
+            "globalPct": 49.1
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_10",
+            "unlocked": true,
+            "unlockedAt": "2019-10-27T10:05:52.000Z",
+            "displayName": "Thunderbolt",
+            "description": "",
+            "iconUrl": "2c995dac4289f7cd7f0c312075ae86067954e1a5.jpg",
+            "iconGrayUrl": "be30f110fa5c4c9ea63445b552c022605cbd4440.jpg",
+            "hidden": true,
+            "globalPct": 51.5
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_11",
+            "unlocked": true,
+            "unlockedAt": "2019-10-11T15:24:27.000Z",
+            "displayName": "Detonations in Bloom",
+            "description": "",
+            "iconUrl": "9d34a1831cf71924f27895bd001edde540e2c483.jpg",
+            "iconGrayUrl": "b99c71087e2a7cacccc0431873bfa7bc976e0f60.jpg",
+            "hidden": true,
+            "globalPct": 53.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_12",
+            "unlocked": true,
+            "unlockedAt": "2019-10-10T12:33:02.000Z",
+            "displayName": "The Weight of Pygmalion",
+            "description": "",
+            "iconUrl": "87ac0e896e597eddd915d68657ba44dc8f09b627.jpg",
+            "iconGrayUrl": "04a91422e31d5db77d4dae16591e3708c4652b82.jpg",
+            "hidden": true,
+            "globalPct": 57.3
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_13",
+            "unlocked": true,
+            "unlockedAt": "2019-10-10T12:00:56.000Z",
+            "displayName": "Redline Tangle",
+            "description": "",
+            "iconUrl": "7ac5e9b04e245a7e73d6d8656e7b36cf79748b03.jpg",
+            "iconGrayUrl": "94ab9c22f7d6beb74a19526fb5ff57d825fe8565.jpg",
+            "hidden": true,
+            "globalPct": 66.4
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_14",
+            "unlocked": true,
+            "unlockedAt": "2019-10-10T08:36:22.000Z",
+            "displayName": "Meeting of the Minos",
+            "description": "",
+            "iconUrl": "dc25df982147b38592f8a553d53e47b985a3860c.jpg",
+            "iconGrayUrl": "55e0255d35d95e1a115fe6f5ef88b00dfb2a99f7.jpg",
+            "hidden": true,
+            "globalPct": 80
+        }
+    ],
+    "playtimeForever": 279,
+    "lastPlayedTs": "2026-10-24T10:32:40.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1085180/ce2fa0347e2027bfd1b3f5d6a7c3327d0b48c083.jpg",
+    "lastUnlockedAt": "2020-03-20T20:55:30.000Z",
+    "lastUnlockName": "Butterfly Effect",
+    "preview": [
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_4",
+            "displayName": "Butterfly Effect",
+            "unlocked": true,
+            "unlockedAt": "2020-03-20T20:55:30.000Z",
+            "iconUrl": "d98058d05294919201e19076f46af40df9d9be39.jpg",
+            "iconGrayUrl": "a621bce66ac739fba4202dbcd38a576cc5a25099.jpg",
+            "globalPct": 43.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_5",
+            "displayName": "Beneath the Mask",
+            "unlocked": true,
+            "unlockedAt": "2020-03-20T20:39:52.000Z",
+            "iconUrl": "38c1907eec2daf7453002cd3e1332557617c2440.jpg",
+            "iconGrayUrl": "7180f7861877986fe689b58533f70b8329b5e55f.jpg",
+            "globalPct": 44.8
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_6",
+            "displayName": "Attack of the Giga-Lola",
+            "unlocked": true,
+            "unlockedAt": "2019-11-08T16:31:01.000Z",
+            "iconUrl": "526ae6a79a6ed56d34d07994900daf20307bedd9.jpg",
+            "iconGrayUrl": "5896b5489e68ad67836db1578724a715e6feec4a.jpg",
+            "globalPct": 46.3
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_7",
+            "displayName": "The Hidden World",
+            "unlocked": true,
+            "unlockedAt": "2019-11-08T16:26:16.000Z",
+            "iconUrl": "7caecdd60d3afc73bd934f731a0d29cb609b05ec.jpg",
+            "iconGrayUrl": "92fb43f89a69fc1400648ee9a2128337427242bb.jpg",
+            "globalPct": 46.5
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_8",
+            "displayName": "Lost Memories",
+            "unlocked": true,
+            "unlockedAt": "2019-11-08T16:12:28.000Z",
+            "iconUrl": "d69631ebf8d902f2bf794683e50f6b90eaefee11.jpg",
+            "iconGrayUrl": "f2be4209d9c46d60ca22ae01d7f443e1250d2bf7.jpg",
+            "globalPct": 47.5
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_9",
+            "displayName": "Heaven's Concert Stage",
+            "unlocked": true,
+            "unlockedAt": "2019-10-27T10:31:24.000Z",
+            "iconUrl": "f68666e2d938ed6279e3435af3adfc4c5c68dd5b.jpg",
+            "iconGrayUrl": "0701c943983afee14332dac68e782630c4270e7a.jpg",
+            "globalPct": 49.1
+        }
+    ]
+}
