@@ -474,40 +474,31 @@ const PlaySessionsSkeleton = () => (
 
 // ── Playing view ──────────────────────────────────────────────────────────────
 
+// RA and Steam only (assets/playing.js leaves Xbox out: no playtime)
 const GAME_URL = {
     ra:    g => `https://retroachievements.org/game/${g.gameId}`,
     steam: g => `https://store.steampowered.com/app/${g.gameId}`,
-    xbox:  g => `https://www.xbox.com/en-US/Search/Results?q=${encodeURIComponent(g.name)}`,
 };
-const PLATFORM_LABEL = { ra: 'RA', steam: 'Steam', xbox: 'Xbox' };
-const PLATFORM_RGB = { ra: '229,177,67', steam: '102,192,244', xbox: '82,176,67' };
-const STATUS_CHIP = {
-    playing:  'text-[#66c0f4] bg-[rgba(102,192,244,0.1)] border border-[rgba(102,192,244,0.35)]',
-    onhold:   'text-[#c6d4df] bg-[#2a3440] border border-[rgba(184,196,206,0.25)]',
-    drifting: 'text-[#8f98a0] border border-dashed border-[#3a4a5a]',
-};
-const STATUS_LABEL = Object.fromEntries(PLAYING_GROUPS.map(g => [g.id, g.label]));
+const PLATFORM_LABEL = { ra: 'RA', steam: 'Steam' };
+const PLATFORM_RGB = { ra: '229,177,67', steam: '102,192,244' };
 // Group heading colours: in progress blue, fading as the game goes untouched
 const GROUP_COLOR = { playing: '#66c0f4', onhold: '#b8c4ce', drifting: '#8f98a0' };
-const chipCls = 'text-[7px] font-bold uppercase tracking-[0.08em] px-[5px] py-[2px] rounded-[2px] shrink-0 whitespace-nowrap';
+// Silver "Beaten" badge, like the profile pages' second-tier status
+const BEATEN_CLS = 'text-[7px] font-bold uppercase tracking-[0.08em] px-[5px] py-[2px] rounded-[2px] shrink-0 whitespace-nowrap text-[#c6d4df] bg-[#2a3440] border border-[rgba(184,196,206,0.25)]';
 
 const fmtAgo = (days) => days === 0 ? 'Today' : days === 1 ? 'Yesterday' : `${days}d ago`;
 // Lifetime hours: whole hours from 10h up, exact below
 const fmtTotal = (m) => m >= 600 ? `${Math.round(m / 60).toLocaleString()}h` : fmtMinutes(m);
 
-// One week cell: brighter = more play that week (unlock count for Xbox, which has no playtime)
-const weekAlpha = (v, platform) => {
-    if (!v) return 0;
-    if (platform === 'xbox') return v >= 10 ? 1 : v >= 5 ? 0.75 : v >= 2 ? 0.5 : 0.3;
-    return v >= 300 ? 1 : v >= 150 ? 0.75 : v >= 60 ? 0.5 : 0.3;
-};
+// One week cell: brighter = more play that week
+const weekAlpha = (minutes) => !minutes ? 0 : minutes >= 300 ? 1 : minutes >= 150 ? 0.75 : minutes >= 60 ? 0.5 : 0.3;
 
-// Wide cover: Steam header / Xbox hero. RA files only carry the square icon, so RA (and a Steam
+// Wide cover: the Steam header. RA files only carry the square icon, so RA (and a Steam
 // game without a header) shows the icon centered on a blurred, enlarged copy of itself
 const TileCover = ({ game: g }) => {
     const [failed, setFailed] = useState(false);
-    const wide = g.cover && !failed ? (g.platform === 'xbox' ? xboxImg(g.cover, 480) : g.cover) : null;
-    const icon = g.platform === 'xbox' ? xboxImg(g.icon, 128) : g.icon;
+    const wide = g.cover && !failed ? g.cover : null;
+    const icon = g.icon;
     if (wide) return <img src={wide} alt="" className="absolute inset-0 w-full h-full object-cover" onError={() => setFailed(true)} />;
     if (!icon) return <div className="absolute inset-0 bg-[#2a475e]" />;
     return (
@@ -522,7 +513,6 @@ const PlayingTile = ({ game: g }) => {
     const isRA = g.platform === 'ra';
     const { baseTitle, isSubset, tags } = isRA ? parseTitle(g.name) : { baseTitle: g.name };
     const pct = g.progress?.total ? Math.round(g.progress.unlocked / g.progress.total * 100) : null;
-    const isXbox = g.platform === 'xbox';
     const rgb = PLATFORM_RGB[g.platform];
     return (
         <a href={GAME_URL[g.platform](g)} target="_blank" rel="noreferrer"
@@ -530,10 +520,6 @@ const PlayingTile = ({ game: g }) => {
             {/* Steam header art is 460×215: the box matches it so nothing is cropped */}
             <div className="relative aspect-[460/215] overflow-hidden grid place-items-center bg-[#101214]">
                 <TileCover game={g} />
-                {/* Dark backing so the chip reads on any cover art */}
-                <span className="absolute top-[5px] left-[5px] rounded-[2px] bg-[rgba(16,18,20,0.85)]">
-                    <span className={`block ${chipCls} ${STATUS_CHIP[g.group]}`}>{STATUS_LABEL[g.group]}</span>
-                </span>
                 <span className="absolute top-[5px] right-[5px] text-[8px] font-semibold text-white bg-[rgba(16,18,20,0.75)] px-[5px] py-[2px] rounded-[2px] tabular-nums">{fmtAgo(g.daysAgo)}</span>
             </div>
             <div className="flex flex-col gap-1.5 px-2 pt-[7px] min-w-0">
@@ -545,7 +531,7 @@ const PlayingTile = ({ game: g }) => {
                     <span className="text-[11px] font-medium text-[#c6d4df] group-hover:text-white truncate min-w-0 transition-colors" title={g.name}>{baseTitle}</span>
                     {isSubset && <span className="text-[7px] font-bold uppercase tracking-[0.07em] px-[3px] py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>}
                     {!isSubset && renderTildeTags(tags)}
-                    {g.beaten && <span className={`${chipCls} ${STATUS_CHIP.onhold}`} title="Beaten, still playing it">Beaten</span>}
+                    {g.beaten && <span className={BEATEN_CLS} title="Beaten, still playing it">Beaten</span>}
                 </div>
                 {/* Achievement progress */}
                 <div className="flex items-center gap-1.5 text-[9px] text-[#546270] tabular-nums">
@@ -558,11 +544,10 @@ const PlayingTile = ({ game: g }) => {
                 <div className="flex flex-col gap-[3px]">
                     <div className="grid grid-cols-[repeat(13,1fr)] gap-[2px]">
                         {g.weeks.map((v, i) => {
-                            const a = weekAlpha(v, g.platform);
+                            const a = weekAlpha(v);
                             const weeksAgo = g.weeks.length - 1 - i;
-                            const label = isXbox ? `${v} unlock${v !== 1 ? 's' : ''}` : fmtMinutes(v);
                             return <i key={i} className="h-[9px] rounded-[1px]" style={{ background: a ? `rgba(${rgb},${a})` : '#243444' }}
-                                title={`${weeksAgo === 0 ? 'This week' : `${weeksAgo} week${weeksAgo !== 1 ? 's' : ''} ago`}: ${v ? label : 'not played'}`} />;
+                                title={`${weeksAgo === 0 ? 'This week' : `${weeksAgo} week${weeksAgo !== 1 ? 's' : ''} ago`}: ${v ? fmtMinutes(v) : 'not played'}`} />;
                         })}
                     </div>
                     <div className="flex items-center gap-[5px] text-[8px] text-[#546270] uppercase tracking-[0.06em]">
@@ -577,13 +562,12 @@ const PlayingTile = ({ game: g }) => {
                 <div className="col-span-2 pt-1 text-center text-[7px] font-bold uppercase tracking-[0.1em] text-[#3f5368]">Last 13 weeks</div>
                 <div className="pt-1 text-center text-[7px] font-bold uppercase tracking-[0.1em] text-[#3f5368] border-l border-[#1a2535]">All time</div>
                 {[
-                    { v: isXbox || !g.sessions ? null : fmtMinutes(Math.round(g.minutes / g.sessions)), l: 'Avg session' },
-                    { v: isXbox ? null : g.sessions, l: 'Sessions' },
+                    { v: g.sessions ? fmtMinutes(Math.round(g.minutes / g.sessions)) : null, l: 'Avg session' },
+                    { v: g.sessions, l: 'Sessions' },
                     { v: g.totalMinutes != null ? fmtTotal(g.totalMinutes) : null, l: 'Played', border: true },
                 ].map(({ v, l, border }) => (
                     <div key={l} className={`flex flex-col items-center gap-px px-0.5 pt-0.5 pb-1.5 min-w-0 ${border ? 'border-l border-[#1a2535]' : ''}`}>
-                        <b className={`text-[10px] font-semibold tabular-nums whitespace-nowrap ${v == null ? 'text-[#323f4c]' : 'text-[#c6d4df]'}`}
-                            title={v == null && isXbox ? "Xbox doesn't report playtime" : undefined}>{v ?? (isXbox ? 'n/a' : '–')}</b>
+                        <b className={`text-[10px] font-semibold tabular-nums whitespace-nowrap ${v == null ? 'text-[#323f4c]' : 'text-[#c6d4df]'}`}>{v ?? '–'}</b>
                         <span className="text-[7px] font-bold uppercase tracking-[0.08em] text-[#546270] whitespace-nowrap">{l}</span>
                     </div>
                 ))}
@@ -649,7 +633,7 @@ const App = () => {
     const switchView = (next) => {
         setView(next);
         setSelectedDay(null);
-        if (next === 'playtime' && filter === 'xbox') setFilter('all');
+        if (next !== 'achievements' && filter === 'xbox') setFilter('all');
         const url = new URL(location.href);
         if (next !== 'achievements') url.searchParams.set('view', next);
         else url.searchParams.delete('view');
@@ -876,7 +860,8 @@ const App = () => {
         return () => observer.disconnect();
     }, [hasMore, nextChunk, visibleDays, view, loadingMore, loading]);
 
-    const filters = useMemo(() => view === 'playtime' ? [
+    // Playtime and Playing have no Xbox: both are measured in play time, which Xbox doesn't report
+    const filters = useMemo(() => view !== 'achievements' ? [
         { id: 'all',   label: 'All' },
         { id: 'ra',    label: 'RA' },
         { id: 'steam', label: 'Steam' },

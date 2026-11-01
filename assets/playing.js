@@ -1,7 +1,9 @@
 // "Playing": the games in rotation, so games played in parallel don't get lost.
 // Built in the browser from files the pipelines already write, so "3d ago" is never stale:
-// play sessions (RA + Steam), achievement chunk 1 (all three platforms, covers 91 days),
-// RA awards, the per-game files of the Steam/Xbox candidates and their win conditions.
+// play sessions, achievement chunk 1 (covers 91 days), RA awards and progress, the per-game
+// files of the Steam candidates and their win conditions.
+// RA and Steam only: rotation is measured in play time, and Xbox reports none (judging it by
+// unlocks would miss games played without unlocking anything).
 // Plain ES module (no JSX), imported by the Activity page and, via import(), by the hub.
 import { toMs, dayKey, addDays, keyToDate } from './time.js';
 
@@ -9,13 +11,11 @@ import { toMs, dayKey, addDays, keyToDate } from './time.js';
 export const PLAYING_WEEKS = 13;
 export const PLAYING_WINDOW_DAYS = PLAYING_WEEKS * 7;
 // A game needs real time in it to count, which drops demos and checking that an RA hash loads:
-// an hour of play in the window (RA, Steam), or unlocks on two different days (Xbox, which has
-// no playtime). A game touched in the last 2 weeks needs only 30 minutes, so one you just
-// started shows up
+// an hour of play in the window. A game touched in the last 2 weeks needs only 30 minutes, so
+// one you just started shows up
 export const PLAYING_MIN_MINUTES    = 60;
 export const PLAYING_RECENT_DAYS    = 14;
 export const PLAYING_RECENT_MINUTES = 30;
-export const PLAYING_MIN_DAYS       = 2;
 // A game with 5+ hours in the window stays Playing until On hold ends: a long RPG you come
 // back to every few weeks is still in rotation
 export const PLAYING_INVESTED_MINUTES = 300;
@@ -59,22 +59,20 @@ const beatenAt = (cond, achs) => {
 // { key, platform, gameId, name, icon, cover, consoleName, lastMs, daysAgo, minutes, unlocks, days,
 //   sessions, weeks, totalMinutes, progress: { unlocked, total } | null, beaten, group }.
 // `minutes`, `sessions` and `weeks` cover the 13 weeks; `weeks` holds minutes per week, oldest
-// first (unlock counts for Xbox). `totalMinutes` is lifetime playtime (null for Xbox, and for RA
-// until the pipeline has written it). `cover` is a wide image (Steam header,
-// Xbox hero, raw: pages resize Xbox with xboxImg) or null for RA, whose files only carry the icon
+// first. `totalMinutes` is lifetime playtime (null for an RA game the pipeline hasn't written it
+// for). `cover` is the Steam header, or null for RA, whose files only carry the icon
 export async function loadPlaying(fetchJson, base = './', now = Date.now()) {
     const today   = dayKey(now);
     const startMs = keyToDate(addDays(today, -(PLAYING_WINDOW_DAYS - 1))).getTime();
     const years   = [...new Set([new Date(startMs).getUTCFullYear(), new Date(now).getUTCFullYear()])];
 
-    const [playFiles, chunks, raProfile, steamWc, xboxWc] = await Promise.all([
+    const [playFiles, chunks, raProfile, steamWc] = await Promise.all([
         Promise.all(['ra', 'steam'].flatMap(p => years.map(y =>
             fetchJson(`${base}data/${p}/playtime/${y}.json`).then(f => ({ p, f }))))),
-        Promise.all(['ra', 'steam', 'xbox'].map(p =>
+        Promise.all(['ra', 'steam'].map(p =>
             fetchJson(`${base}data/${p}/achievements/1.json`).then(c => ({ p, list: c?.recentAchievements ?? [] })))),
         fetchJson(`${base}data/ra/profile.json`),
         fetchJson(`${base}data/steam/win-conditions.json`),
-        fetchJson(`${base}data/xbox/win-conditions.json`),
     ]);
 
     const games = {};
@@ -106,11 +104,10 @@ export async function loadPlaying(fetchJson, base = './', now = Date.now()) {
         for (const a of list) {
             const ms = toMs(p === 'ra' ? a.date : a.unlockedAt);
             if (ms < startMs || ms > now) continue;
-            const g = game(p, p === 'ra' ? a.gameId : p === 'steam' ? a.appId : a.titleId);
+            const g = game(p, p === 'ra' ? a.gameId : a.appId);
             g.name ??= p === 'ra' ? a.gameTitle : a.gameName;
             if (p === 'ra') { g.icon ??= a.gameIcon ? `${RA_MEDIA}${a.gameIcon}` : null; g.consoleName ??= a.consoleName ?? null; }
             g.unlocks++;
-            if (p === 'xbox') g.weeks[weekOf(ms)]++;
             g.dayKeys.add(dayKey(ms));
             g.activity.push(ms);
         }
@@ -125,7 +122,6 @@ export async function loadPlaying(fetchJson, base = './', now = Date.now()) {
             raDone[id] = { beatenMs: Math.min(raDone[id]?.beatenMs ?? Infinity, toMs(aw.awardedAt)) };
         }
     }
-    const wc = { steam: steamWc ?? {}, xbox: xboxWc ?? {} };
     // RA progress (unlocked / total) for every game with an unlock, from the same profile file
     const raProgress = Object.fromEntries((raProfile?.gameAwardsAndProgress?.results ?? []).map(r => [String(r.gameId), r]));
 
@@ -144,20 +140,19 @@ export async function loadPlaying(fetchJson, base = './', now = Date.now()) {
                 totalMinutes = r.playtime ?? null;
             }
         } else {
-            const file = await fetchJson(`${base}data/${g.platform}/games/${g.gameId}.json`);
+            const file = await fetchJson(`${base}data/steam/games/${g.gameId}.json`);
             if (file) {
                 const total = file.total ?? 0, unlocked = file.unlocked ?? 0;
                 if (total > 0 && unlocked >= total) return null;
-                if (g.platform === 'steam' && unlocked >= FARM_MIN_UNLOCKS
+                if (unlocked >= FARM_MIN_UNLOCKS
                     && unlocked / Math.max((file.playtimeForever ?? 0) / 60, 0.1) > FARM_PER_HOUR) return null;
                 g.name ??= file.gameName ?? null;
                 g.icon ??= file.iconUrl ?? null;
                 if (total > 0) progress = { unlocked, total };
-                if (g.platform === 'steam') totalMinutes = file.playtimeForever ?? null;
-                if (g.platform === 'xbox') cover = file.heroUrl ?? file.posterUrl ?? null;
-                beatenMs = beatenAt(wc[g.platform][g.gameId], file.achievements ?? []);
+                totalMinutes = file.playtimeForever ?? null;
+                beatenMs = beatenAt(steamWc?.[g.gameId], file.achievements ?? []);
             }
-            if (g.platform === 'steam') cover = `https://cdn.akamai.steamstatic.com/steam/apps/${g.gameId}/header.jpg`;
+            cover = `https://cdn.akamai.steamstatic.com/steam/apps/${g.gameId}/header.jpg`;
         }
         // A beaten game only counts what happened after it was beaten
         const activity = beatenMs ? g.activity.filter(t => t > beatenMs + BEATEN_GRACE_MS) : g.activity;
@@ -166,7 +161,7 @@ export async function loadPlaying(fetchJson, base = './', now = Date.now()) {
         const days = g.dayKeys.size;
         const ago = daysAgo(lastMs, today);
         const minMinutes = ago <= PLAYING_RECENT_DAYS ? PLAYING_RECENT_MINUTES : PLAYING_MIN_MINUTES;
-        if (g.platform === 'xbox' ? days < PLAYING_MIN_DAYS : g.minutes < minMinutes) return null;
+        if (g.minutes < minMinutes) return null;
         const group = groupOf(ago, g.minutes);
         if (!group || (beatenMs && group !== 'playing')) return null;
         const { dayKeys, activity: _a, ...rest } = g;

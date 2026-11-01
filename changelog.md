@@ -11,7 +11,8 @@ A Playing list for the games in rotation; the floating tab pill on the profile p
 ### Activity
 
 - New **Playing** view (`?view=playing`): the unfinished games you've put time into in the last 13 weeks, as a grid of game tiles (2 across on mobile, 4 on desktop) sorted by last played, filterable by platform. Each tile has the cover art, a Playing / On hold / Drifting chip, how long ago you played, achievement progress, a 13-week strip of the weeks you played it, and average session, session count (13 weeks) and all-time playtime. Mastered/Perfect games and achievement farms are left out; a Beaten game shows only while you keep playing it after the credits
-- The tiles are split into Playing, On hold and Drifting sections, each with its count and what it means; an empty group is left out
+- The tiles are split into Playing, On hold and Drifting sections, each with its count and what it means; an empty group is left out. The status chip on each cover is gone (the section heading says it); the hub tiles keep theirs
+- Playing covers RA and Steam only: it's measured in play time, which Xbox doesn't report, and judging Xbox by unlocks missed games played without unlocking anything. The Xbox filter is gone from this view
 - Rotation rules: Playing = played in the last 2 weeks, or within 6 weeks for a game with 5+ hours in (a long RPG you come back to stays Playing); a game touched in the last 2 weeks needs 30 minutes instead of an hour, so one you just started shows up
 - The view switch reads **Unlocks | Playtime | Playing** and sits on its own full-width row on mobile
 

@@ -1226,20 +1226,18 @@
         const MAX_TILES = 4;
         const esc = (t) => String(t ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
         const ago = (d) => d === 0 ? 'Today' : d === 1 ? 'Yesterday' : `${d}d ago`;
-        const RGB   = { ra: '229,177,67', steam: '102,192,244', xbox: '82,176,67' };
-        const LABEL = { ra: 'RA', steam: 'Steam', xbox: 'Xbox' };
+        // RA and Steam only (assets/playing.js leaves Xbox out: no playtime)
+        const RGB   = { ra: '229,177,67', steam: '102,192,244' };
+        const LABEL = { ra: 'RA', steam: 'Steam' };
         const URL_OF = {
           ra:    g => `https://retroachievements.org/game/${g.gameId}`,
           steam: g => `https://store.steampowered.com/app/${g.gameId}`,
-          xbox:  g => `https://www.xbox.com/en-US/Search/Results?q=${encodeURIComponent(g.name)}`,
         };
-        // Same week-cell steps as the Activity tiles (unlock counts for Xbox)
-        const alpha = (v, p) => !v ? 0 : p === 'xbox'
-          ? (v >= 10 ? 1 : v >= 5 ? 0.75 : v >= 2 ? 0.5 : 0.3)
-          : (v >= 300 ? 1 : v >= 150 ? 0.75 : v >= 60 ? 0.5 : 0.3);
+        // Same week-cell steps as the Activity tiles
+        const alpha = (v) => !v ? 0 : v >= 300 ? 1 : v >= 150 ? 0.75 : v >= 60 ? 0.5 : 0.3;
         const CHIP = 'font-size:7px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:2px 5px;border-radius:2px;white-space:nowrap;display:block;';
 
-        // Cover: Steam header / Xbox hero; RA (or a missing header) is the icon on a blurred copy of itself
+        // Cover: the Steam header; RA (or a missing header) is the icon on a blurred copy of itself
         const iconCover = (icon) => icon
           ? `<img src="${esc(icon)}" alt="" style="position:absolute;inset:-20%;width:140%;height:140%;max-width:none;object-fit:cover;filter:blur(14px) saturate(1.2);opacity:0.7;" />
              <img src="${esc(icon)}" alt="" style="position:absolute;top:11%;left:50%;transform:translateX(-50%);height:78%;width:auto;aspect-ratio:1;object-fit:cover;border-radius:3px;border:1px solid rgba(0,0,0,0.6);box-shadow:0 4px 14px rgba(0,0,0,0.6);" />`
@@ -1247,13 +1245,13 @@
 
         const tile = (g) => {
           const rgb = RGB[g.platform];
-          const icon = g.platform === 'xbox' ? xboxImg(g.icon, 128) : g.icon;
-          const wide = g.cover ? (g.platform === 'xbox' ? xboxImg(g.cover, 480) : g.cover) : null;
+          const icon = g.icon;
+          const wide = g.cover;
           const t = g.platform === 'ra' ? _parseTitle(g.name) : { baseTitle: g.name, isSubset: false, tags: [] };
           const badges = (t.isSubset ? `<span style="${_BADGE_BASE}border:1px solid rgba(229,177,67,0.3);background:rgba(229,177,67,0.1);color:#c8a84b;">Subset</span>` : _tildeBadgesHtml(t.tags))
             + (g.beaten ? `<span style="${_BADGE_BASE}border:1px solid rgba(184,196,206,0.25);background:#2a3440;color:#c6d4df;" title="Beaten, still playing it">Beaten</span>` : '');
           const pct = g.progress?.total ? Math.round(g.progress.unlocked / g.progress.total * 100) : null;
-          const cells = g.weeks.map(v => { const a = alpha(v, g.platform); return `<i style="height:9px;border-radius:1px;background:${a ? `rgba(${rgb},${a})` : '#243444'};"></i>`; }).join('');
+          const cells = g.weeks.map(v => { const a = alpha(v); return `<i style="height:9px;border-radius:1px;background:${a ? `rgba(${rgb},${a})` : '#243444'};"></i>`; }).join('');
           return `
             <a href="${URL_OF[g.platform](g)}" target="_blank" rel="noreferrer" class="flex flex-col min-w-0 bg-[#1b2838] border border-[#2a475e] rounded-[2px] overflow-hidden hover:border-[#4c9be8] transition-colors">
               <div style="position:relative;aspect-ratio:460/215;overflow:hidden;background:#101214;">
