@@ -25,6 +25,7 @@ A Playing list for the games in rotation, a platform filter on Analytics, and pi
 
 - Pipeline output moved off `main` to a **`data` branch**. Each run restores the branch into `data/`, runs the pipelines and commits only there; the midnight run squashes it to one commit, so it holds at most a day of history. `main` now only gets code commits (it had 4,783 pipeline commits vs 139 code commits)
 - The site is deployed by a new `deploy.yml` (Pages source: GitHub Actions) that combines `main` with the `data` branch at the same paths; a pipeline run that changed data deploys right after. Site URLs, the app and the service worker are unchanged
+- Each run checks out only the tip of the `data` branch (22 s → 2 s per run; the full checkout fetched every branch's history)
 
 - RA: every game in `profile.json`'s `gameAwardsAndProgress` gets its lifetime `playtime` (minutes), for the Playing tiles' all-time playtime without loading `games.json`
 
