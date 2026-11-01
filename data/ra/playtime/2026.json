@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "generatedAt": "2026-10-20T15:46:53Z",
+        "generatedAt": "2026-11-01T11:16:52Z",
         "year": 2026
     },
     "games": {
@@ -223,6 +223,11 @@
             "name": "Pokémon Red Version [Subset - Professor Oak Challenge]",
             "icon": "/Images/148038.png",
             "console": "Game Boy"
+        },
+        "16244": {
+            "name": "Final Fantasy Crystal Chronicles: Ring of Fates",
+            "icon": "/Images/116299.png",
+            "console": "Nintendo DS"
         },
         "16452": {
             "name": "7th Dragon 2020",
@@ -1640,6 +1645,12 @@
             "end": "2026-10-20T15:39:05Z",
             "gameId": 575,
             "minutes": 6
+        },
+        {
+            "start": "2026-11-01T11:07:08Z",
+            "end": "2026-11-01T11:16:08Z",
+            "gameId": 16244,
+            "minutes": 9
         }
     ]
 }
