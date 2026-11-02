@@ -12,5 +12,6 @@ Planned work, in priority order. Not published to the site (`backlog/` is exclud
 | 6 | [Playtime log, Activity views and Analytics page](playtime-and-analytics.md) | Done 2026-10-04 | — |
 | 7 | [Xbox Mythic Achievements](xbox-mythic.md) | Parked, revisit later | OpenXBL exposing it (Insider-only as of 2026-09) |
 | 8 | [Share card](share-card.md) (canvas share image: Showcase / Trophy / Dashboard; mockups and reference renders in `share-card/`) | Planned, mockups approved 2026-11-02 | — |
+| 9 | [Design fold-in](fold-in.md) (swipe-up modal, Hub console strip, blurred profile header, list/tiles toggle, new Completions view; mockups and live captures in `fold-in/`) | Planned, design approved 2026-11-03 | — |
 
 **For you:** [manual to-dos](manual-todos.md): repo About box text, `gh` account, `XBOX_XUID`.
