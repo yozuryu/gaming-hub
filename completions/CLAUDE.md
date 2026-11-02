@@ -1,7 +1,7 @@
 # Completions — Page Context
 
 ## Data Sources
-- `../data/ra/profile.json` — awards from `pageAwards.visibleUserAwards` (each game award carries `playtime` in minutes and `imageIngame`, added by the RA pipeline); achievement totals from `gameAwardsAndProgress.results[].maxPossible`
+- `../data/ra/profile.json` — awards from `pageAwards.visibleUserAwards` (each game award carries `playtime` in minutes and `imageIngame`, each beaten award `winCondition` `{ name, pct }`, all added by the RA pipeline); achievement totals from `gameAwardsAndProgress.results[].maxPossible`
 - `../data/{ra,steam,xbox}/history/{YYYY}.json` — the rarest unlocked achievement per game (lowest `r`), fetched once a completed game of that platform is on screen (`loadRarest`, ~400 KB for everything)
 - `../data/steam/profile.json` — `perfectGames` array
 - `../data/xbox/profile.json` — `perfectGames` array (100% gamerscore)
@@ -26,7 +26,7 @@ Two normalizers in `app.js`:
   - phone: a month timeline (ring + line per month) with entries in date order
   - desktop: "Completed" highlights three across, then "Beaten" rows three across
 - **Completed** (Mastered / Perfect / Completed) = `Highlight`: art banner (Steam banner uncropped; RA screenshot with the icon over it, or the icon zoomed and blurred when there's no screenshot; Xbox hero with icon), platform chip + Hardcore chip + date on the art, status chip, title, console, then Achievements / Played (hidden without playtime) / Rarest cells. Gold left edge
-- **Beaten** = `BeatenRow`: compact row using the shared `.grow` styles in `assets/ui.css` (icon or Steam banner, faded art, silver edge), Steam/Xbox keep the winning achievement and its rarity
+- **Beaten** = `BeatenRow`: compact row using the shared `.grow` styles in `assets/ui.css` (icon or Steam banner, faded art, silver edge), every platform shows the achievement that beat the game: Steam/Xbox the hand-picked win condition with its rarity tier, RA its win condition with the unlock rate in red (hardcore, flame) or grey (softcore, feather)
 - **Closed years**: one line each (counts + up to 12 covers with a ★ on completed ones), two columns on desktop
 - A mastered and a beaten game must never look alike
 - `showBeaten` toggle controls whether beaten-only games appear

@@ -360,18 +360,36 @@ function serializeLocally(payload) {
         log.ok(`${filename.padEnd(24)} ${sizeKb} KB  →  ${filePath}`);
     };
 
-    // Attach per-game playtime (minutes) and screenshot to game awards so the Completions
-    // page can show them without loading games.json
+    // The win-condition achievement that beat a game: the first one unlocked (hardcore date for
+    // a hardcore award), with its unlock rate among players of the same mode
+    const winConditionOf = (game, hardcore) => {
+        const achs = Object.values(game.achievements || {});
+        const dateOf = a => (hardcore ? a.dateEarnedHardcore : a.dateEarned) || null;
+        const won = achs.filter(a => a.type === 'win_condition' && dateOf(a))
+            .sort((a, b) => dateOf(a).localeCompare(dateOf(b)))[0];
+        if (!won) return null;
+        const players = hardcore ? game.numDistinctPlayersHardcore : game.numDistinctPlayersCasual;
+        const awarded = hardcore ? won.numAwardedHardcore : won.numAwarded;
+        return {
+            name: won.title,
+            ...(players > 0 ? { pct: Math.round(Math.min(100, (awarded / players) * 100) * 10) / 10 } : {}),
+        };
+    };
+
+    // Attach per-game playtime (minutes), screenshot and (beaten awards) the win condition to
+    // game awards so the Completions page can show them without loading games.json
     const pageAwards = payload.pageAwards && {
         ...payload.pageAwards,
         visibleUserAwards: (payload.pageAwards.visibleUserAwards || []).map(award => {
             const game = payload.detailedGameProgress[award.awardData];
             if (!game) return award;
             const seconds = game.userTotalPlaytime;
+            const winCondition = award.awardType === 'Game Beaten' ? winConditionOf(game, award.awardDataExtra === 1) : null;
             return {
                 ...award,
                 ...(seconds ? { playtime: Math.round(seconds / 60) } : {}),
                 ...(game.imageIngame ? { imageIngame: game.imageIngame } : {}),
+                ...(winCondition ? { winCondition } : {}),
             };
         }),
     };

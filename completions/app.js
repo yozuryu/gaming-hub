@@ -74,6 +74,8 @@ const normalizeRA = (awards, showBeaten, totals = {}) =>
             total: totals[a.awardData] ?? null,
             console: a.consoleName,
             playtime: a.playtime,
+            lastAchName: a.winCondition?.name ?? null,   // beaten: the win condition (RA pipeline)
+            lastAchGlobalPct: a.winCondition?.pct ?? null,
             gameUrl: `${RA_SITE}/game/${a.awardData}`,
         }));
 
@@ -329,7 +331,7 @@ const Highlight = ({ item, rare }) => (
 );
 
 // A beaten game: compact silver row with its art faded behind (row styles in assets/ui.css);
-// Steam / Xbox rows keep the winning achievement
+// every row shows the achievement that beat the game (RA: its win condition)
 const BeatenRow = ({ item }) => (
     <a href={item.gameUrl} target="_blank" rel="noreferrer" className="grow" style={{ background: '#1b2838', borderColor: '#2a475e', borderLeftColor: '#b8c4ce' }}>
         {(item.artUrl || item.platform === 'ra') && (
@@ -350,11 +352,16 @@ const BeatenRow = ({ item }) => (
             {item.lastAchName && (
                 <div className="grow-sub" style={{ flexWrap: 'wrap', rowGap: '2px', whiteSpace: 'normal' }}>
                     <span className="text-[#e5b143] shrink">{item.lastAchName}</span>
-                    {item.lastAchGlobalPct != null && (
+                    {item.lastAchGlobalPct != null && (item.platform === 'ra' ? (
+                        // RA: unlock rate among players of the same mode, as in the achievement modal
+                        <span className="flex items-center gap-1" style={{ color: item.hardcore ? '#ff6b6b' : '#8f98a0' }}>
+                            {item.hardcore ? <Flame size={10} /> : <Feather size={10} />}{item.lastAchGlobalPct}%
+                        </span>
+                    ) : (
                         <span className="flex items-center gap-1" style={{ color: rarityColor(item.lastAchGlobalPct) }}>
                             <Gem size={10} />{rarityLabel(item.lastAchGlobalPct)} · {item.lastAchGlobalPct}%
                         </span>
-                    )}
+                    ))}
                 </div>
             )}
         </div>

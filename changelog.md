@@ -30,13 +30,13 @@ Five pieces from the design review folded into the current look: the achievement
 
 ### Completions
 
-- New layout. A completed game (★ Mastered / Perfect / Completed) is a **highlight**: its art banner (Steam store banner uncropped, RA screenshot with the icon over it, Xbox hero), platform, Hardcore and date on the art, then achievements, time played and the **rarest achievement** in its rarity colour (from the unlock history). A beaten game is a compact silver row with its art faded behind; Steam rows keep the winning achievement
+- New layout. A completed game (★ Mastered / Perfect / Completed) is a **highlight**: its art banner (Steam store banner uncropped, RA screenshot with the icon over it, Xbox hero), platform, Hardcore and date on the art, then achievements, time played and the **rarest achievement** in its rarity colour (from the unlock history). A beaten game is a compact silver row with its art faded behind and the achievement that beat it: Steam's hand-picked win condition with its rarity, RA's win condition with its hardcore (or softcore) unlock rate
 - Each open year starts with a summary line (`5 ★ complete · 4 beaten · 127h played`); on phone the entries follow a month timeline, on desktop the completed games sit three across with the beaten rows below. Closed years are one line each with their covers (★ on completed ones), two columns on desktop
 - The page is wider on desktop to fit three highlights per row
 
 ### Pipelines
 
-- RA: each game award in `profile.json` also carries the game's screenshot (`imageIngame`), for the Completions highlights without loading `games.json`. Until the next RA run writes it, highlights use the game's icon, zoomed and blurred
+- RA: each game award in `profile.json` also carries the game's screenshot (`imageIngame`), for the Completions highlights without loading `games.json`, and each beaten award its win condition (`winCondition`: the first win-condition achievement unlocked, with its unlock rate among players of the same mode). Until the next RA run writes them, highlights use the game's icon, zoomed and blurred
 
 ### Structure
 
