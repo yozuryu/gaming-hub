@@ -13,7 +13,8 @@ Built from `profile/steam/` and kept structurally parallel to it. When changing 
 - IDs are `titleId`, not `appId`
 - **No playtime** (OpenXBL has none): no Hours stats or sort. Cards and "Most Recently Played" show gamerscore (`earned / total G`) and last played instead
 - Achievement icons are **full URLs** in the data (no hash → URL helper); locked icons are the same image with `grayscale`
-- **Images follow RA, not Steam** (Steam uses wide art only because it has no square game art): card thumbnail (64/80px), modal header (64px), Most Recently Played (56px) and Completions sidebar tiles use the square box art `iconUrl`; the wide `heroUrl` is only the faded card background
+- **Images follow RA, not Steam** (Steam uses wide art only because it has no square game art): list row icon (44px), tile icon, modal header (64px), Most Recently Played (56px) and Completions use the square box art `iconUrl`; the wide `heroUrl` is the faded row background, the blurred tile background, the blurred modal and profile header background
+- Game lists: same list / tiles views as Steam (`GameListRow` / `GameTile`, `useGameView()`), with gamerscore where Steam shows playtime. The modal is the shared sheet (`assets/sheet.js`)
 - **Always wrap Xbox image URLs in `xboxImg(url, width)`** (`utils/helpers.js`). Originals are huge (box art up to 2160², achievement art 1920×1080, avatar 1080²); `xboxImg` asks the image server for ~2× the display width. `images-eds` only accepts widths 64/128/150/200/208/300/424 (others return HTTP 400), so it snaps up to one of those. The full Progress tab went from ~120 MB of images to ~5.5 MB
 - Completions sidebar shows the **game** box art for Completed and Beaten (Steam shows the last / win-condition achievement art because it lacks square game art)
 - Game links go to xbox.com search (`xboxSearchUrl`) — OpenXBL gives no store product ID

@@ -30,14 +30,13 @@ Same architecture as RA profile:
 - `slideUpPill` / `slideDownPill` keyframes defined in inline `<style>` tag
 - All three tabs use `#66c0f4` (blue) — no gold accent tabs on Steam
 
-## SteamGameCard
-Reused across both Recent Games and Completion Progress tabs. Uses pre-computed fields from `games/index.json`:
-- `preview` — top 6 achievement icon hashes (not full URLs)
-- `lastUnlockedAt` / `lastUnlockName` — shown without iterating `achievements[]`
-Does NOT need `achievements[]` to render. Full achievement data only loaded on modal open.
+## Game list: list / tiles
+Recent Games and Completion Progress render `GameListRow` (full store banner, title, playtime · last played, count + bar, hero art faded on the right, status stripe) or `GameTile` (banner uncropped on top, last played, title, bar, count + playtime, status colour on the bottom edge), switched by `ViewToggle` and `useGameView()` (`assets/game-view.js`, `localStorage['gh:gameView']`, shared with RA and Xbox). Styles are the `.glist/.grow/.gtiles/.gtile` classes in `assets/ui.css`. Both only need `games/index.json` fields; full achievement data loads when the sheet opens.
 
 ## Achievement Modal
 - `handleViewDetails` checks `gameDetails[appId]` cache first
 - If not cached: opens the modal right away with `loading: true` (header from the card's index data, `ModalListSkeleton` in place of the filter bar + list), fetches `games/{appId}.json`, caches it, then fills the same modal (skipped if it was closed meanwhile). The panel height animates from the skeleton to the list (`useAnimatedHeight`)
 - Fallback: opens modal with index data (no achievements) if fetch fails
 - Do not change the modal game banner (`w-32 h-16` image) — previous attempts to resize it were rejected
+- The modal shell is the shared sheet (`assets/sheet.js` `useSheet`, `.sheet-*` in `assets/ui.css`): bottom sheet below `md` (drag the header down to close), centred dialog from `md`. Header art: `library_hero.jpg`, falling back to `header.jpg` (`useArtSrc`)
+- Profile header: the most recently played game's hero art blurred behind it (`HeaderArt`)

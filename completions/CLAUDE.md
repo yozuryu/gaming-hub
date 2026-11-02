@@ -1,14 +1,16 @@
 # Completions — Page Context
 
 ## Data Sources
-- `../data/ra/profile.json` — awards from `pageAwards.visibleUserAwards` (each game award carries `playtime` in minutes, added by the RA pipeline)
+- `../data/ra/profile.json` — awards from `pageAwards.visibleUserAwards` (each game award carries `playtime` in minutes and `imageIngame`, added by the RA pipeline); achievement totals from `gameAwardsAndProgress.results[].maxPossible`
+- `../data/{ra,steam,xbox}/history/{YYYY}.json` — the rarest unlocked achievement per game (lowest `r`), fetched once a completed game of that platform is on screen (`loadRarest`, ~400 KB for everything)
 - `../data/steam/profile.json` — `perfectGames` array
 - `../data/xbox/profile.json` — `perfectGames` array (100% gamerscore)
 - `../data/{steam,xbox}/win-conditions.json` + per-game files — beaten games (`loadWinConditionBeaten()` for Xbox; Steam has its own loader)
 
 ## Normalization
 Two normalizers in `app.js`:
-- `normalizeRA(awards, showBeaten)` — returns entries with `type: 'mastered'` or `type: 'beaten'`, keyed by `gameId: a.awardData`
+- `normalizeRA(awards, showBeaten, totals)` — returns entries with `type: 'mastered'` or `type: 'beaten'`, keyed by `gameId: a.awardData`; `artUrl` is the screenshot (null for RA's `000002.png` placeholder or a missing field), `hardcore` from `awardDataExtra`
+- Every entry has `artUrl`: RA screenshot, Steam `header.jpg`, Xbox `heroUrl` (if any)
 - `normalizeSteam(perfectGames)` — returns entries with `type: 'perfect'`
 - `normalizeXbox(perfectGames)` — returns entries with `type: 'completed'` (label "Completed"); `normalizeXboxBeaten()` for beaten
 
@@ -20,6 +22,13 @@ Two normalizers in `app.js`:
 
 ## Display
 - Entries grouped by month (`groupByMonth`), then grouped by year for rendering
+- **Open years** (the current year to start with; tap a year to toggle): the year line (`5 ★ complete · 4 beaten · 127h played`), then
+  - phone: a month timeline (ring + line per month) with entries in date order
+  - desktop: "Completed" highlights three across, then "Beaten" rows three across
+- **Completed** (Mastered / Perfect / Completed) = `Highlight`: art banner (Steam banner uncropped; RA screenshot with the icon over it, or the icon zoomed and blurred when there's no screenshot; Xbox hero with icon), platform chip + Hardcore chip + date on the art, status chip, title, console, then Achievements / Played (hidden without playtime) / Rarest cells. Gold left edge
+- **Beaten** = `BeatenRow`: compact row using the shared `.grow` styles in `assets/ui.css` (icon or Steam banner, faded art, silver edge), Steam/Xbox keep the winning achievement and its rarity
+- **Closed years**: one line each (counts + up to 12 covers with a ★ on completed ones), two columns on desktop
+- A mastered and a beaten game must never look alike
 - `showBeaten` toggle controls whether beaten-only games appear
 - Platform filter: All / RA / Steam / Xbox
 - Hidden tags filter (Homebrew, Demo, Prototype, Hack tilde tags)

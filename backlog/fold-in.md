@@ -1,6 +1,8 @@
 # Design fold-in
 
-**Status:** Planned, design approved 2026-11-03 · **Priority:** 9 · Written 2026-11-03
+**Status:** Done 2026-11-03 · **Priority:** 9 · Written 2026-11-03
+
+**Shipped differently from this plan:** the Completions header and filter bar stayed as they were live (the plan text said so; the mockup also showed a new totals strip and sentence-case filter chips, not built). RA achievement totals for the highlights come from `gameAwardsAndProgress.maxPossible`, so the pipeline only adds `imageIngame`. The guide links sit in their own strip under the genre line rather than inside it.
 
 Five pieces from the set-aside redesign, folded into today's site. Everything else (type, chips, tabs, colours, card art gradients, page structure) stays as it is live. Each piece ships on its own; none depends on another.
 

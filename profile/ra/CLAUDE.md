@@ -26,6 +26,14 @@ Five tabs: **Recent Games** (Clock) · **Completion Progress** (BarChart2) · **
 - All-view sorts: Overall % or Progression % (progression + win-condition achievements)
 - `raDateMs()` parses RA's `YYYY-MM-DD HH:MM:SS` (UTC) dates — Safari/iOS can't parse that format with `new Date()` directly
 
+## Game list: list / tiles
+Recent Games and Completion Progress render `GameListRow` (icon, title, console, Hardcore flame / Softcore feather, tags, playtime · last played, count + bar, screenshot faded on the right, status stripe) or `GameTile` (icon over the blurred screenshot, last played, mode, title, console, bar, count + playtime, status colour on the bottom edge), switched by `ViewToggle` + `useGameView()` (`assets/game-view.js`, shared with Steam and Xbox). Tap opens the achievement sheet; the guide links (`GuideStrip inModal`) live in the sheet under the genre line. The Series tab keeps its own layout.
+
+## Achievement modal and header art
+- The modal shell is the shared sheet (`assets/sheet.js` `useSheet`, `.sheet-*` in `assets/ui.css`): bottom sheet below `md` that covers the bottom nav (z-index 210 > 200) and closes by dragging the header down; centred dialog from `md`
+- **RA art fallback:** `raShot()` in `utils/helpers.js` treats RA's "no image" placeholder (`/Images/000002.png`, e.g. Poring Clicker) as missing. `transform.js` sets `game.artIsIcon` when the art fell back to the icon; the art then gets `.art-icon` (zoomed and blurred harder) wherever it sits behind something
+- Profile header: the most recently played game's screenshot (or icon) blurred behind it (`HeaderArt`)
+
 ## Floating Tab Pill (mobile)
 - Shows when natural tab bar scrolls off screen
 - `showFloatingTabs` state + `pillLeaving` state for exit animation

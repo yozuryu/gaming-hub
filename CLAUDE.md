@@ -28,6 +28,9 @@ gaming-hub/
 ├── assets/
 │   ├── mobile-nav.js               # Shared bottom nav bar, injected into all pages via <script>
 │   ├── playing.js                  # "Playing" games in rotation (ES module), used by the hub and Activity; see Playing
+│   ├── sheet.js                    # Achievement modal behaviour for the profile pages: sheet on phone, dialog on desktop, drag to close, art fallback chain (ES module)
+│   ├── game-view.js                # Remembered list / tiles choice of the profile game lists (`gh:gameView`) + shortAgo (ES module)
+│   ├── ui.css                      # Shared component styles: sheet, blurred art backgrounds, game list rows and tiles (profile pages, Completions)
 │   ├── avatar.png                  # User avatar
 │   ├── appicon.svg / appicon.png   # App icon ("Save Crystal": three platform shards, one save crystal). SVG is the source; PNG 1024×1024, full-bleed, art at 90% for the maskable safe zone
 │   ├── icon-192.png / icon-512.png # PWA icons (rendered from appicon.svg)
@@ -101,12 +104,12 @@ gaming-hub/
 
 Vanilla JS, no React. Reads `data/hub/config.json`, `data/ra/profile.json`, `data/steam/profile.json`.
 
-**Platform cards** — on desktop: full cards with header, stats grid, recently played rows, footer link. On mobile: header + stats grid only (recently played and footer hidden via CSS). Cards are not shown if `platforms[key].visible` is false in config.json.
+**Platform strip** (`.pstrip`, one `a.pcell` per platform): three headline numbers per platform. On mobile one row each (icon, numbers, chevron); on desktop three cells side by side with the name on top and the three most recently played covers below. A platform is hidden if `platforms[key].visible` is false in config.json (the strip then uses fewer columns). The other counts (rank, beaten, games…) are on the profiles.
 
-**Stats order and colors** (by relevance):
-- RA: Points (gold) → Rank (white) → Mastered (gold) → Beaten (silver) → Achievements (blue) → Games (muted)
-- Steam: Hours (blue) → Perfect (gold) → Achievements (blue) → Games (muted) → Played (muted) → w/ Unlocks (muted)
-- Xbox: Gamerscore (gold) → Completed (gold) → Achievements (blue) → Games (muted) → Started (muted) → w/ Achievements (muted)
+**Numbers and colors:**
+- RA: Points (gold) · Mastered (gold) · Unlocks (blue)
+- Steam: Hours (blue) · Perfect (gold) · Unlocks (blue)
+- Xbox: Gamerscore (gold) · Completed (gold) · Unlocks (blue)
 
 **Completions strip** (desktop only, hidden on mobile via CSS):
 - Shows: N total · N Completed (gold) · N Beaten (silver)
@@ -144,7 +147,7 @@ Self-contained IIFE injected into every page via `<script src="...assets/mobile-
 All page headers use `pt-8 pb-5 md:pt-5` — extra top padding on mobile compensates for the hidden breadcrumb bar. Desktop keeps the original `pt-5`. Apply this to any new pages.
 
 ### Hub page (mobile)
-- Platform cards: header + stats grid only — recently played rows (`.recent-label`, `#ra-recent`, `#steam-recent`) and card footers (`.card-ftr`) hidden via `@media (max-width: 767px)` CSS in `index.html`
+- Platform strip: one row per platform; the name and covers (`.pc-name`, `.pc-covers`) are hidden via `@media (max-width: 767px)` CSS in `index.html`
 - Completions and Analytics strips (`#completions-strip`, `#analytics-strip`): hidden on mobile entirely via same media query — redundant with the Done and Stats nav tabs
 - Activity feed: collapses to 4 rows on mobile; rows 4+ have `data-activity-extra="1"` attribute and class `activity-row-hidden`; toggle button `#activity-toggle-btn` shown/hidden by JS after feed renders
 
@@ -344,6 +347,10 @@ Game-card left stripes use the same ladder everywhere (RA/Steam/Xbox cards, RA w
 - Demo: cyan `#57cbde`
 - Prototype: gray `#8f98a0`
 
+### Game art behind things
+- Blurred art backgrounds (`.art-bg` in `assets/ui.css`) bleed 30px past every edge so the blur never shows a dark rim; `max-width: none` beats Tailwind's img reset
+- **RA art fallback:** RA's "no image" placeholder `/Images/000002.png` counts as no screenshot. The icon is used instead, zoomed to cover and blurred harder (`.art-icon`), everywhere art sits behind something (profile lists and tiles, profile header, achievement sheet, Completions)
+
 ### Typography
 - Font: `'Segoe UI', Arial, sans-serif`
 - Sizes: 7–15px (very compact, dashboard-style)
@@ -372,6 +379,7 @@ Linked from every page's `index.html`. Short and quiet: fades with a few pixels 
 - **Classes:** `.anim-in` (content replacing a skeleton, a new tab/view/period), `.anim-fade` (lists changing in place, expanded sections), `.anim-pop` (modal panels), `.anim-backdrop` (modal backdrops). Fill mode is `backwards`, never `both`/`forwards`: a transform animation left in effect makes the element the containing block for `position: fixed` children (it broke the floating tab pill)
 - **Re-run on change** by giving the container a React `key` tied to what changed (e.g. `key={activeTab}` on profile tab content, `key={view}` on Activity, `key={`${period}-${hideFarms}`}` on Analytics, filters on Completions)
 - The hub (vanilla) animates children of its filled containers in CSS: `innerHTML` inserts new nodes, which replays the animation
+- **Achievement modals** use the shared sheet (`assets/sheet.js` + `.sheet-*` in `assets/ui.css`): below `md` the panel slides up from the bottom (`sheet-up`, covers the bottom nav at z-index 210) and slides back down on close (✕, backdrop, Escape, or dragging the header down: 120px or a fling); from `md` it stays a centred dialog with `motion-pop`. The header has the game's art blurred behind it and a round close button
 - **Modal height:** `useAnimatedHeight(ref)` (defined in each profile `app.js`) animates a panel's height whenever its content grows or shrinks: loading done, filter change. FLIP via ResizeObserver (runs after layout, before paint), so there is no jump. Used on all three achievement modals
 - Steam/Xbox achievement modals open immediately in a loading state (skeleton list) and fill in place when the game file arrives, so one panel animates from skeleton to list
 - **Filter changes** re-key the list they change so it fades: modal lock/type filters, profile Progress sort/view/completed toggles (not search, to avoid a fade per keystroke), RA watchlist status/grouping, Activity and profile Activity day selection, Activity heatmap platform filter, Analytics chart ↔ table toggle. "Show all"/"Show more" items fade in as they appear
