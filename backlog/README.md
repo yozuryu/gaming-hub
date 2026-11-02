@@ -1,6 +1,6 @@
 # Backlog
 
-Planned work, in priority order. Not published to the site (`backlog/` is in `_config.yml` `exclude`).
+Planned work, in priority order. Not published to the site (`backlog/` is excluded in `.github/workflows/deploy.yml`).
 
 | # | Item | Status | Depends on |
 |---|---|---|---|
@@ -11,5 +11,6 @@ Planned work, in priority order. Not published to the site (`backlog/` is in `_c
 | 5 | [Remove pipeline data from `main`'s history](history-cleanup.md) | To do, not before 2026-11-08 | #4 running cleanly for a week |
 | 6 | [Playtime log, Activity views and Analytics page](playtime-and-analytics.md) | Done 2026-10-04 | — |
 | 7 | [Xbox Mythic Achievements](xbox-mythic.md) | Parked, revisit later | OpenXBL exposing it (Insider-only as of 2026-09) |
+| 8 | [Share card](share-card.md) (canvas share image: Showcase / Trophy / Dashboard; mockups and reference renders in `share-card/`) | Planned, mockups approved 2026-11-02 | — |
 
 **For you:** [manual to-dos](manual-todos.md): repo About box text, `gh` account, `XBOX_XUID`.
