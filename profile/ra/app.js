@@ -1,10 +1,11 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, Trophy, Crown, Lock, Unlock, AlertTriangle, Flame, Feather, Medal, ShieldOff, CircleDashed, X, Clock, BookOpen, Youtube, ExternalLink, Layers } from 'lucide-react';
+import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, Trophy, Crown, Lock, Unlock, AlertTriangle, Flame, Feather, Medal, ShieldOff, CircleDashed, X, Clock, BookOpen, Youtube, ExternalLink, Layers, List, LayoutGrid } from 'lucide-react';
 import { MEDIA_URL, SITE_URL, TILDE_TAG_COLORS } from './utils/constants.js';
 import { getMediaUrl, parseTitle, formatTimeAgo, raShot } from './utils/helpers.js';
 import { transformData } from './utils/transform.js';
 import { useSheet, useArtSrc } from '../../assets/sheet.js';
+import { useGameView, shortAgo } from '../../assets/game-view.js';
 import { TZ, toMs, dayKey, addDays, keyToDate, fmtDate, fmtClock, buildHeatmap } from '../../assets/time.js';
 
 // --- JSX Helpers ---
@@ -60,7 +61,7 @@ const chipCls = (active, activeCls = 'bg-[#66c0f4] text-[#101214] border-[#66c0f
     active ? activeCls : 'bg-[#101214] text-[#8f98a0] border-[#323f4c] hover:text-[#c6d4df] hover:border-[#546270]'
   }`;
 
-const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, showCompleted, onShowCompleted, count, search, onSearch }) => {
+const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, showCompleted, onShowCompleted, count, search, onSearch, viewToggle }) => {
   const hint = PROGRESS_VIEWS.find(v => v.value === view)?.hint;
   return (
     <div className="flex flex-col gap-2 mb-4 anim-fade">
@@ -105,6 +106,7 @@ const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, 
         )}
         </div>
         <span className="ml-auto text-[9px] text-[#546270] shrink-0">{count} games</span>
+        {viewToggle}
       </div>
 
       <div className="relative">
@@ -137,7 +139,7 @@ const raDateMs = s => {
 };
 
 
-const GuideStrip = ({ game, guides, isLast }) => {
+const GuideStrip = ({ game, guides, isLast, inModal = false }) => {
   const [openCategory, setOpenCategory] = useState(null);
   const ref = useRef(null);
 
@@ -165,7 +167,7 @@ const GuideStrip = ({ game, guides, isLast }) => {
   }, [openCategory]);
 
   return (
-    <div ref={ref} className={`relative flex items-center gap-1 px-3 py-1.5 bg-[#171a21] border-t border-[#323f4c] flex-wrap ${isLast ? 'rounded-b-[3px]' : ''}`}>
+    <div ref={ref} className={`relative flex items-center gap-1 flex-wrap ${inModal ? 'px-4 py-1.5 border-b border-[#101214] shrink-0 z-20' : `px-3 py-1.5 bg-[#171a21] border-t border-[#323f4c] ${isLast ? 'rounded-b-[3px]' : ''}`}`}>
       <span className="text-[9px] text-[#546270] uppercase tracking-[0.07em] font-semibold mr-1 shrink-0">Guides</span>
       {categories.map((cat) => {
         const isSingle = !cat.isCustom && cat.links.length === 1;
@@ -205,211 +207,104 @@ const GuideStrip = ({ game, guides, isLast }) => {
   );
 };
 
-const GameCard = ({ game, onViewDetails, guides }) => {
-  const stripeColor = game.isMastered
-    ? 'border-l-[#e5b143]'
-    : game.isBeaten
-    ? 'border-l-[#b8c4ce]'
-    : game.achievementsUnlocked > 0
-    ? 'border-l-[#66c0f4]'
-    : game.achievementsTotal > 0
-    ? 'border-l-[#323f4c]'
-    : 'border-l-[#1e2a35]';
+// ── Game list: list / tiles views ────────────────────────────────────────────
+// Status colour on the card edge, same ladder as everywhere: mastered gold, beaten silver,
+// started blue, not started, no achievements
+const gameStatusColor = g =>
+  g.isMastered ? '#e5b143' : g.isBeaten ? '#b8c4ce' : g.achievementsUnlocked > 0 ? '#66c0f4' : g.achievementsTotal > 0 ? '#323f4c' : '#1e2a35';
 
-  const hasAchievements = game.achievementsTotal > 0;
+const ModeIcon = ({ game, size = 11 }) => {
+  if (!game.achievementsUnlocked) return null;
+  return game.hardcore
+    ? <Flame size={size} className="text-[#ff6b6b]" aria-label="Hardcore" />
+    : <Feather size={size} className="text-[#8f98a0]" aria-label="Softcore" />;
+};
 
-  const previewAchs = useMemo(() => {
-    if (!game.achievements) return [];
-    const unlocked = game.achievements
-      .filter(a => a.isUnlocked)
-      .sort((a, b) => toMs(b.unlockDate) - toMs(a.unlockDate));
-    const locked = game.achievements.filter(a => !a.isUnlocked);
-    return [...unlocked, ...locked].slice(0, 6);
-  }, [game.achievements]);
+const GameProgress = ({ game }) => (
+  <>
+    <span className="gcount" style={game.isMastered ? { color: '#e5b143' } : undefined}>
+      {game.achievementsUnlocked}<span>/{game.achievementsTotal}</span>
+    </span>
+    <div className="gbar"><i style={{ width: `${game.rawProgress}%`, background: game.isMastered ? '#e5b143' : '#66c0f4' }} /></div>
+  </>
+);
 
+// One compact row: icon, title, console + mode + tags, playtime · last played, count and bar.
+// Tap opens the achievement sheet (badges, guides and the progression bar live there).
+const GameListRow = ({ game, onViewDetails }) => {
+  const hasAch = game.achievementsTotal > 0;
+  const ago = shortAgo(raDateMs(game.lastPlayedStr));
+  const Tag = hasAch ? 'button' : 'div';
   return (
-    <div className={`flex flex-col bg-[#202d39] rounded-[3px] transition-transform duration-200 hover:-translate-y-0.5 border-l-[3px] border border-[#323f4c] shadow-md ${stripeColor}`}>
-
-      <div className="relative flex flex-row p-3 gap-3 md:gap-4 items-center min-h-[90px] z-10 overflow-hidden rounded-t-[3px]">
-
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-t-[3px]">
-          <img 
-            src={game.background} 
-            alt="" 
-            className="absolute right-0 top-0 h-full w-full md:w-1/2 object-cover opacity-[0.55] object-center mix-blend-screen mask-fade" 
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#202d39] via-[#202d39]/95 to-transparent"></div>
-        </div>
-
-        <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer" className="relative z-10 shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-[2px] shadow-sm border border-[#101214] overflow-hidden bg-[#101214] hover:scale-105 transition-transform">
-           <img src={game.icon} alt={game.title} className="w-full h-full object-cover" />
-        </a>
-
-        <div className="relative z-10 flex-1 flex flex-col justify-center min-w-0">
-
-          <div className="flex flex-col mb-1">
-            <div className="flex items-center gap-2 flex-wrap">
-              <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer" className="text-[15px] md:text-base text-white font-medium tracking-wide drop-shadow-sm hover:text-[#66c0f4] transition-colors">
-                {game.baseTitle || game.title}
-              </a>
-              {game.isSubset && (
-                <span className="text-[8px] font-bold uppercase tracking-[0.07em] px-1.5 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">
-                  Subset
-                </span>
-              )}
-              {renderTildeTags(game.tags)}
-            </div>
-            {game.isSubset && game.subsetName && (
-              <span className="text-[10px] text-[#c8a84b] truncate">{game.subsetName}</span>
-            )}
-          </div>
-
-          <div className="text-[11px] text-[#66c0f4] mb-1.5 flex items-center gap-2 flex-wrap">
-            <span className="flex items-center gap-1 shrink-0"><Gamepad2 size={12} /> {game.console}</span>
-            <span className="text-[#546270] shrink-0">|</span>
-            <div className="flex items-center gap-1.5 flex-wrap">
-              
-              {!hasAchievements ? (
-                <span className="shrink-0 text-[9px] text-[#546270] border border-[#323f4c] bg-[#101214]/60 px-1.5 py-[1px] rounded-sm font-semibold uppercase tracking-wider flex items-center gap-1">
-                  <ShieldOff size={10} /> No Achievements
-                </span>
-              ) : game.achievementsUnlocked === 0 ? (
-                <span className="shrink-0 text-[9px] text-[#8f98a0] border border-[#323f4c] bg-[#101214]/60 px-1.5 py-[1px] rounded-sm font-semibold uppercase tracking-wider flex items-center gap-1">
-                  <CircleDashed size={10} /> Not Started
-                </span>
-              ) : game.hardcore ? (
-                <span className="shrink-0 text-[9px] text-[#ff6b6b] border border-[#ff6b6b]/30 bg-[#101214]/60 px-1.5 py-[1px] rounded-sm font-semibold uppercase tracking-wider flex items-center gap-1">
-                  <Flame size={10} /> Hardcore
-                </span>
-              ) : (
-                <span className="shrink-0 text-[9px] text-[#8f98a0] border border-[#323f4c] bg-[#101214]/60 px-1.5 py-[1px] rounded-sm font-semibold uppercase tracking-wider flex items-center gap-1">
-                  <Feather size={10} /> Softcore
-                </span>
-              )}
-              
-              {game.isMastered && (
-                <span className="shrink-0 text-[9px] text-[#101214] bg-[#e5b143] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider shadow-sm flex items-center gap-1">
-                  <Trophy size={10} /> Mastered
-                </span>
-              )}
-              {game.isBeaten && !game.isMastered && (
-                <span className="shrink-0 text-[9px] text-[#c6d4df] bg-[#2a3440] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider border border-[#b8c4ce]/30 flex items-center gap-1">
-                  <Medal size={10} /> Beaten
-                </span>
-              )}
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2 text-[10px] md:text-[11px] mb-2">
-            {game.playtime !== "Unknown" && <><div className="flex items-center gap-1 text-[#c6d4df]"><Clock size={9} className="text-[#8f98a0] shrink-0" />{game.playtime}</div><span className="text-[#546270]">·</span></>}
-            <span className="text-[#546270]">Last Played <span className="text-[#8f98a0]">{game.lastPlayed}</span></span>
-          </div>
-
-          {hasAchievements && (() => {
-            const progAchs = game.achievements.filter(a => a.type === 'progression' || a.type === 'win_condition');
-            const progTotal = progAchs.length;
-            const progUnlocked = progAchs.filter(a => a.isUnlocked).length;
-            const progPct = progTotal > 0 ? (progUnlocked / progTotal) * 100 : null;
-            const labelW = 'w-[70px] shrink-0';
-            return (
-              <div className="flex flex-col gap-1.5">
-                {progPct !== null && (
-                  <div className="flex items-center gap-2">
-                    <span className={`${labelW} text-[8px] text-[#546270] uppercase tracking-wider text-right`}>Progression</span>
-                    <div className="flex-1 bg-[#101214] h-[4px] rounded-sm overflow-hidden max-w-full">
-                      <div
-                        className="h-full transition-all duration-1000 ease-out rounded-sm bg-[#e5b143]"
-                        style={{ width: `${progPct}%` }}
-                      ></div>
-                    </div>
-                    <div className="text-[10px] text-[#e5b143] shrink-0 whitespace-nowrap" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.9), 0 0 8px rgba(0,0,0,0.6)' }}>
-                      <span>{progUnlocked}</span>/{progTotal} <span className="ml-0.5">({progPct.toFixed(2)}%)</span>
-                    </div>
-                  </div>
-                )}
-                <div className="flex items-center gap-2">
-                  <span className={`${labelW} text-[8px] text-[#546270] uppercase tracking-wider text-right`}>Overall</span>
-                  <div className="flex-1 bg-[#101214] h-[4px] rounded-sm overflow-hidden max-w-full">
-                    <div
-                      className={`h-full transition-all duration-1000 ease-out rounded-sm ${game.isMastered ? 'bg-[#e5b143]' : 'bg-[#66c0f4]'}`}
-                      style={{ width: `${game.rawProgress}%` }}
-                    ></div>
-                  </div>
-                  <div className="text-[10px] text-[#8f98a0] shrink-0 whitespace-nowrap" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.9), 0 0 8px rgba(0,0,0,0.6)' }}>
-                    <span className="text-[#c6d4df]">{game.achievementsUnlocked}</span>/{game.achievementsTotal} <span className="ml-0.5">({game.rawProgress.toFixed(2)}%)</span>
-                  </div>
-                </div>
-              </div>
-            );
-          })()}
+    <Tag onClick={hasAch ? () => onViewDetails(game) : undefined} className="grow" style={{ borderLeftColor: gameStatusColor(game) }}>
+      {game.background && <div className="grow-art"><img src={game.background} alt="" loading="lazy" className={`px ${game.artIsIcon ? 'art-icon' : ''}`} /></div>}
+      <img src={game.icon} alt="" loading="lazy" className="grow-icon px" />
+      <div className="grow-main">
+        <span className="grow-title">{game.baseTitle || game.title}</span>
+        <div className="grow-sub">
+          <span className="text-[#66c0f4] keep">{game.console}</span>
+          {game.isSubset && game.subsetName && <span className="text-[#c8a84b] shrink">{game.subsetName}</span>}
+          {renderTildeTags(game.tags)}
+          <ModeIcon game={game} />
+          <span className="shrink">{[game.playtime !== 'Unknown' ? game.playtime : null, ago].filter(Boolean).join(' · ')}</span>
         </div>
       </div>
-
-      {/* Guide links strip */}
-      <GuideStrip game={game} guides={guides} isLast={!hasAchievements || !onViewDetails} />
-
-      {/* Achievement preview strip */}
-      {hasAchievements && onViewDetails && (
-        <button
-          onClick={() => onViewDetails(game)}
-          className="w-full flex items-center gap-2.5 px-3 py-2 bg-[#171a21] hover:bg-[#1b2838] transition-colors border-t border-[#323f4c] outline-none z-10 relative group rounded-b-[3px]"
-        >
-          {/* Badge icon previews */}
-          <div className="flex items-center gap-1 shrink-0">
-            {previewAchs.map((ach, i) => {
-              const isFirst  = i === 0;
-              const isLast   = i === previewAchs.length - 1;
-              const tipPos   = isFirst ? 'left-0' : isLast ? 'right-0' : 'left-1/2 -translate-x-1/2';
-              const caretPos = isFirst ? 'ml-[7px]' : isLast ? 'mr-[7px] ml-auto' : 'mx-auto';
-              const borderCls = ach.isHardcore ? 'border-[#e5b143]' : ach.isUnlocked ? 'border-[#8f98a0]' : 'border-[#1e2a35] opacity-40';
-              return (
-                <div key={ach.id} className="relative shrink-0" style={{ zIndex: previewAchs.length - i }}>
-                  <div className={`w-8 h-8 rounded-[2px] overflow-hidden border bg-black peer ${borderCls}`}>
-                    <img
-                      src={`${MEDIA_URL}/Badge/${ach.badgeName || '00001'}.png`}
-                      alt={ach.title}
-                      className={`w-full h-full object-cover ${!ach.isUnlocked ? 'grayscale' : ''}`}
-                    />
-                  </div>
-                  {/* Tooltip */}
-                  <div className={`pointer-events-none absolute bottom-full ${tipPos} mb-1.5 opacity-0 peer-hover:opacity-100 transition-opacity duration-150 z-50 w-max max-w-[160px]`}>
-                    <div className="bg-[#101214] border border-[#2a475e] rounded-[3px] px-2 py-1.5 shadow-lg">
-                      <div className={`text-[10px] font-medium leading-tight text-left ${ach.isUnlocked ? 'text-[#e5b143]' : 'text-[#8f98a0]'}`}>
-                        {ach.title}
-                      </div>
-                      <div className="text-[9px] text-[#8f98a0] mt-0.5 text-left leading-snug">
-                        {ach.description || ach.title}
-                      </div>
-                      {ach.isUnlocked ? (
-                        <div className="flex items-center gap-1 mt-1 flex-wrap">
-                          <span className="text-[8px] font-bold text-[#66c0f4] bg-[#101214] border border-[#323f4c] px-1 py-px rounded-sm">{ach.points}pts</span>
-                          {ach.isHardcore && <span className="text-[8px] text-[#ff6b6b] border border-[#ff6b6b]/30 px-1 py-px rounded-sm font-semibold">HC</span>}
-                        </div>
-                      ) : (
-                        <div className="text-[8px] text-[#546270] mt-1 text-left">Locked</div>
-                      )}
-                    </div>
-                    <div className={`w-1.5 h-1.5 bg-[#101214] border-r border-b border-[#2a475e] rotate-45 -mt-[5px] ${caretPos}`} />
-                  </div>
-                </div>
-              );
-            })}
-            {game.achievementsTotal > previewAchs.length && (
-              <span className="text-[9px] text-[#546270] group-hover:text-[#8f98a0] transition-colors ml-0.5">
-                +{game.achievementsTotal - previewAchs.length}
-              </span>
-            )}
-          </div>
-
-          {/* Arrow */}
-          <div className="ml-auto flex items-center shrink-0">
-            <ChevronDown size={10} className="-rotate-90 text-[#546270] group-hover:text-[#66c0f4] transition-colors" />
-          </div>
-        </button>
-      )}
-    </div>
+      <div className="grow-prog">
+        {hasAch ? <GameProgress game={game} /> : <span className="text-[11px] text-[#546270]">No achievements</span>}
+      </div>
+    </Tag>
   );
 };
+
+// Tile: icon over its blurred screenshot (or its own zoomed icon), last played, mode, title,
+// console, one bar, count and playtime; status colour on the bottom edge
+const GameTile = ({ game, onViewDetails }) => {
+  const hasAch = game.achievementsTotal > 0;
+  const ago = shortAgo(raDateMs(game.lastPlayedStr));
+  const Tag = hasAch ? 'button' : 'div';
+  return (
+    <Tag onClick={hasAch ? () => onViewDetails(game) : undefined} className="gtile" style={{ borderBottomColor: gameStatusColor(game) }}>
+      <div className="gtile-art">
+        <img src={game.background || game.icon} alt="" loading="lazy" className={`bg px ${game.artIsIcon || !game.background ? 'art-icon' : ''}`} />
+        <img src={game.icon} alt="" loading="lazy" className="icon px" />
+        {ago && <span className="gtile-ago">{ago}</span>}
+        {game.achievementsUnlocked > 0 && (
+          <span className="gtile-mode" style={{ borderColor: game.hardcore ? 'rgba(255,107,107,0.45)' : '#323f4c' }}><ModeIcon game={game} /></span>
+        )}
+      </div>
+      <div className="gtile-body">
+        <span className="gtile-title">{game.baseTitle || game.title}</span>
+        <div className="gtile-sub"><span className="shrink">{game.console}</span>{renderTildeTags(game.tags)}</div>
+        {hasAch && <div className="gbar"><i style={{ width: `${game.rawProgress}%`, background: game.isMastered ? '#e5b143' : '#66c0f4' }} /></div>}
+        <div className="gtile-meta">
+          <span style={game.isMastered ? { color: '#e5b143' } : undefined}>{hasAch ? `${game.achievementsUnlocked}/${game.achievementsTotal}` : 'No achievements'}</span>
+          {game.playtime !== 'Unknown' && <span>{game.playtime}</span>}
+        </div>
+      </div>
+    </Tag>
+  );
+};
+
+const ViewToggle = ({ view, onChange }) => (
+  <div className="vtoggle" role="group" aria-label="Game list view">
+    <button onClick={() => onChange('list')} className={view === 'list' ? 'on' : ''} aria-pressed={view === 'list'} title="List"><List size={14} /></button>
+    <button onClick={() => onChange('tiles')} className={view === 'tiles' ? 'on' : ''} aria-pressed={view === 'tiles'} title="Tiles"><LayoutGrid size={13} /></button>
+  </div>
+);
+
+const GameViewSkeleton = ({ view, count = 4 }) => view === 'tiles' ? (
+  <div className="gtiles">
+    {[...Array(count)].map((_, i) => (
+      <div key={i} className="gtile"><div className="gtile-art shimmer" /><div className="gtile-body"><div className="shimmer h-3 w-3/4 rounded-[2px]" /><div className="shimmer h-2.5 w-1/2 rounded-[2px]" /><div className="shimmer h-1 rounded-[2px]" /></div></div>
+    ))}
+  </div>
+) : (
+  <div className="glist">
+    {[...Array(count)].map((_, i) => (
+      <div key={i} className="grow"><div className="grow-icon shimmer" /><div className="grow-main"><div className="shimmer h-3 w-2/3 rounded-[2px]" /><div className="shimmer h-2.5 w-1/2 rounded-[2px]" /></div></div>
+    ))}
+  </div>
+);
 
 // Profile header background: the latest game's art, blurred, fading into the header
 // (layers in assets/ui.css). Fades in once loaded; the header stays flat until then.
@@ -456,7 +351,7 @@ const useAnimatedHeight = (ref, duration = 220) => {
   }, []);
 };
 
-const RAchievementModal = ({ game, onClose }) => {
+const RAchievementModal = ({ game, guides, onClose }) => {
   const [lockFilter, setLockFilter] = useState('all');
   const [typeFilter, setTypeFilter] = useState('all');
   const panelRef = useRef(null);
@@ -572,6 +467,9 @@ const RAchievementModal = ({ game, onClose }) => {
             {game.released  && <span className="text-[9px] text-[#8f98a0]">{game.released}</span>}
           </div>
         )}
+
+        {/* Guides (moved here from the game cards) */}
+        <GuideStrip game={game} guides={guides} inModal />
 
         {/* Filter bar — two rows */}
         <div className="flex flex-col px-4 py-2 border-b border-[#101214] gap-1.5 shrink-0">
@@ -1285,7 +1183,7 @@ function SeriesProgressTab({ seriesData, gamesData, watchlistData }) {
         return (
           <div key={series.id} className="flex flex-col bg-[#202d39] rounded-[3px] border-l-[3px] border border-[#323f4c] shadow-md overflow-hidden" style={{ borderLeftColor: '#e5b143' }}>
 
-            {/* Top section: bg image + cover icon + title (mirrors GameCard header) */}
+            {/* Top section: bg image + cover icon + title (game card header style) */}
             <div className="relative flex flex-row p-3 gap-3 md:gap-4 items-center min-h-[90px] overflow-hidden rounded-t-[3px]">
               {/* Background image */}
               {coverBg && (
@@ -1397,6 +1295,7 @@ export default function App() {
   const [progressSort,   setProgressSort]   = useState('overall');
   const [progressSearch, setProgressSearch] = useState('');
   const [progressView,   setProgressView]   = useState('all');
+  const [gameView,       setGameView]       = useGameView();
   const [showMastered,   setShowMastered]   = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [showFloatingTabs, setShowFloatingTabs] = useState(false);
@@ -2189,7 +2088,7 @@ export default function App() {
             })()}</>
           ) : (
             loadingGames
-              ? <>{[...Array(5)].map((_, i) => <GameCardSkeleton key={i} />)}</>
+              ? <GameViewSkeleton view={gameView} />
               : <>
               {/* Filter bar — only for Completion Progress */}
               {activeTab === 'progress' && (
@@ -2203,18 +2102,27 @@ export default function App() {
                   completedLabel="Mastered" showCompleted={showMastered} onShowCompleted={setShowMastered}
                   count={displayedGames.length}
                   search={progressSearch} onSearch={setProgressSearch}
+                  viewToggle={<ViewToggle view={gameView} onChange={setGameView} />}
                 />
               )}
+              {activeTab === 'recent' && (
+                <div className="flex items-center gap-2 text-[11px] text-[#8f98a0]">
+                  <span>Recently played · <span className="text-[#c6d4df] font-semibold">{displayedGames.length} games</span></span>
+                  <span className="ml-auto"><ViewToggle view={gameView} onChange={setGameView} /></span>
+                </div>
+              )}
               {/* Re-keyed on sort/view/filter changes so the new order fades in (not on search keystrokes) */}
-              <div key={`${progressSort}-${progressView}-${showMastered}`} className="flex flex-col gap-3 anim-fade">
+              <div key={`${progressSort}-${progressView}-${showMastered}-${gameView}`} className="anim-fade">
                 {activeTab === 'progress' && displayedGames.length === 0 && (
                   <div className="text-center py-12 text-[#546270] text-[12px]">
                     {progressSearch ? 'No games match your search.' : 'No games in this view.'}
                   </div>
                 )}
-                {displayedGames.map(game => (
-                  <GameCard key={game.id} game={game} onViewDetails={setSelectedGame} guides={guidesData[game.id] ?? null} />
-                ))}
+                <div className={gameView === 'tiles' ? 'gtiles' : 'glist'}>
+                  {displayedGames.map(game => gameView === 'tiles'
+                    ? <GameTile key={game.id} game={game} onViewDetails={setSelectedGame} />
+                    : <GameListRow key={game.id} game={game} onViewDetails={setSelectedGame} />)}
+                </div>
               </div>
             </>
           )}
@@ -2311,7 +2219,7 @@ export default function App() {
 
       `}</style>
 
-      {selectedGame && <RAchievementModal game={selectedGame} onClose={() => setSelectedGame(null)} />}
+      {selectedGame && <RAchievementModal game={selectedGame} guides={guidesData[selectedGame.id] ?? null} onClose={() => setSelectedGame(null)} />}
     </div>
   );
 }

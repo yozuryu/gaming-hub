@@ -2,21 +2,25 @@
 
 ## v26.11.03
 
-Five pieces from the design review folded into the current look: the achievement modal opens as a swipe-up sheet on phone, the Hub's platform cards become one compact strip, and profile headers show your latest game's art.
+Five pieces from the design review folded into the current look: the achievement modal opens as a swipe-up sheet on phone, the Hub's platform cards become one compact strip, profile headers show your latest game's art, and game lists get a list/tiles switch.
 
 ### RetroAchievements
 
 - Achievement modal: on phone it slides up from the bottom as a sheet (full width, covers the bottom nav), and closes by dragging the header down, tapping outside, ✕ or Escape. On desktop it stays a centred dialog. Both get a new header: the game's screenshot blurred behind it and a round close button
+- Recent Games and Completion Progress: a **list / tiles** switch replaces the detailed game cards. List = one compact row per game (icon, title, console, Hardcore flame / Softcore feather, tags, playtime · last played, count and bar, with the screenshot fading in on the right and the status stripe); tiles = the icon over its blurred screenshot, last played, mode, title, console, one bar, count and playtime, status colour on the bottom edge. Two columns of rows or four tiles across on desktop. The choice is remembered per device and shared by the three profiles. Tap a game for its achievements
+- The guide links (GameFAQs, YouTube, your own guides) moved from the game cards into the achievement modal, under the genre line; badge previews and the progression bar live there already
 - Profile header: the most recently played game's screenshot sits behind it, blurred and fading into the page; layout and content unchanged
 - A game with no screenshot (RA's "no image" placeholder, e.g. Poring Clicker) uses its own icon, zoomed and blurred, wherever the art sits behind something; before, the placeholder image showed
 
 ### Steam
 
+- Recent Games and Completion Progress: the same **list / tiles** switch. Rows show the full store banner; tiles show it uncropped on top
 - Profile header: the most recently played game's store hero art blurred behind it
 - Achievement modal as a swipe-up sheet on phone, with the game's store hero art blurred behind the header (the header banner when there's no hero) and the round close button
 
 ### Xbox
 
+- Recent Games and Completion Progress: the same **list / tiles** switch. Rows and tiles show gamerscore where Steam shows playtime (Xbox doesn't report playtime)
 - Profile header: the most recently played title's hero art blurred behind it
 - Achievement modal as a swipe-up sheet on phone, with the title's hero art blurred behind the header and the round close button
 
@@ -26,6 +30,7 @@ Five pieces from the design review folded into the current look: the achievement
 
 ### Structure
 
+- New `assets/game-view.js` (the remembered list/tiles choice, `gh:gameView`)
 - New `assets/sheet.js` (sheet behaviour: drag to close, close animation, Escape, scroll lock, art fallback chain) and `assets/ui.css` (sheet layout, blurred art backgrounds), shared by the profile pages; both precached (`CACHE_NAME` v10)
 
 ## v26.11.01

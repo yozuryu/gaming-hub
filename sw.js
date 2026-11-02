@@ -34,6 +34,7 @@ const PRECACHE = [
   '/gaming-hub/assets/motion.css',
   '/gaming-hub/assets/ui.css',
   '/gaming-hub/assets/sheet.js',
+  '/gaming-hub/assets/game-view.js',
   '/gaming-hub/assets/avatar.png',
   '/gaming-hub/assets/icon-ra.png',
   '/gaming-hub/assets/icon-steam.png',

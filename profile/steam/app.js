@@ -1,201 +1,86 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock, X, Medal } from 'lucide-react';
+import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock, X, Medal , List, LayoutGrid } from 'lucide-react';
 import { STEAM_STATUS, PROGRESS_SORTS } from './utils/constants.js';
 import { formatPlaytime, formatDate, formatTimeAgo, fmtDay, fmtTime, achIconUrl, capsuleUrl, headerUrl, heroUrl, libraryPortraitUrl, rarityLabel, rarityBorderColor } from './utils/helpers.js';
 import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap } from '../../assets/time.js';
 import { useSheet, useArtSrc } from '../../assets/sheet.js';
+import { useGameView, shortAgo } from '../../assets/game-view.js';
 
-// ── SteamGameCard ─────────────────────────────────────────────────────────────
 
-const SteamGameCard = ({ game, achievementData, onViewDetails, beatenInfo }) => {
-    const hasAch = achievementData?.hasAchievements && achievementData?.total > 0;
-    const pct    = hasAch && achievementData.total > 0
-        ? (achievementData.unlocked / achievementData.total) * 100
-        : null;
-    const isPerfect = pct !== null && pct >= 100;
+// ── Game list: list / tiles views ────────────────────────────────────────────
+// Status colour on the card edge, same ladder as everywhere: complete gold, beaten silver,
+// started blue, not started, no achievements
+const gameStatus = (achievementData, beatenInfo) => {
+    const hasAch = !!(achievementData?.hasAchievements && achievementData?.total > 0);
+    const pct = hasAch ? (achievementData.unlocked / achievementData.total) * 100 : null;
+    const done = pct !== null && pct >= 100;
+    const color = done ? '#e5b143' : beatenInfo ? '#b8c4ce' : pct > 0 ? '#66c0f4' : hasAch ? '#323f4c' : '#1e2a35';
+    return { hasAch, pct, done, color };
+};
 
-    const stripeColor = isPerfect
-        ? 'border-l-[#e5b143]'
-        : beatenInfo
-        ? 'border-l-[#b8c4ce]'
-        : pct > 0
-        ? 'border-l-[#66c0f4]'
-        : hasAch
-        ? 'border-l-[#323f4c]'
-        : 'border-l-[#1e2a35]';
+const ViewToggle = ({ view, onChange }) => (
+    <div className="vtoggle" role="group" aria-label="Game list view">
+        <button onClick={() => onChange('list')} className={view === 'list' ? 'on' : ''} aria-pressed={view === 'list'} title="List"><List size={14} /></button>
+        <button onClick={() => onChange('tiles')} className={view === 'tiles' ? 'on' : ''} aria-pressed={view === 'tiles'} title="Tiles"><LayoutGrid size={13} /></button>
+    </div>
+);
 
-    // Use pre-computed fields from games/index.json (no achievements[] iteration needed)
-    const lastUnlock  = hasAch && achievementData.lastUnlockName
-        ? { displayName: achievementData.lastUnlockName, unlockedAt: achievementData.lastUnlockedAt }
-        : null;
-    const previewAchs = hasAch ? (achievementData.preview ?? []) : [];
+const GameBar = ({ pct, done }) => (
+    <div className="gbar"><i style={{ width: `${pct}%`, background: done ? '#e5b143' : '#66c0f4' }} /></div>
+);
 
+// One compact row: full store banner, title, playtime · last played, count and bar.
+// Tap opens the achievement sheet.
+const GameListRow = ({ game, achievementData, onViewDetails, beatenInfo }) => {
+    const { hasAch, pct, done, color } = gameStatus(achievementData, beatenInfo);
+    const ago = shortAgo(game.lastPlayedTs ? Date.parse(game.lastPlayedTs) : 0);
+    const Tag = hasAch ? 'button' : 'div';
     return (
-        <div className={`flex flex-col bg-[#202d39] rounded-[3px] transition-[transform,border-color] duration-200 hover:-translate-y-0.5 border-l-[3px] border border-[#323f4c] shadow-md ${stripeColor}`}>
-
-            {/* Main row — background scoped here so it doesn't stretch when expanded */}
-            <div className="relative overflow-hidden rounded-t-[3px]">
-                <div className="absolute inset-0 z-0 pointer-events-none">
-                    <img
-                        src={libraryPortraitUrl(game.appId)}
-                        alt=""
-                        className="absolute right-0 top-0 h-full w-full md:w-1/2 object-cover opacity-[0.45] mix-blend-screen mask-fade"
-                        onError={e => { e.target.src = headerUrl(game.appId); }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#202d39] from-50% via-[#202d39]/80 to-transparent" />
-                </div>
-
-            <div className="relative z-10 flex items-center gap-3 md:gap-4 p-3">
-                <a
-                    href={game.storeUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="shrink-0 w-[140px] h-[66px] rounded-[2px] border border-[#101214] overflow-hidden bg-[#2a475e] hover:scale-105 transition-transform"
-                >
-                    <img
-                        src={headerUrl(game.appId)}
-                        alt={game.name}
-                        className="w-full h-full object-cover"
-                        onError={e => { e.target.style.display = 'none'; }}
-                    />
-                </a>
-
-                <div className="flex-1 min-w-0 flex flex-col justify-center">
-
-                    <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <a
-                            href={game.storeUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-[15px] md:text-base text-white font-medium tracking-wide hover:text-[#66c0f4] transition-colors leading-tight"
-                        >
-                            {game.name}
-                        </a>
-                        {isPerfect && (
-                            <span className="text-[8px] font-bold uppercase tracking-[0.07em] px-1.5 py-[1px] rounded-[2px] bg-[#e5b143] text-[#101214] shrink-0 flex items-center gap-1">
-                                <Star size={8} /> Perfect
-                            </span>
-                        )}
-                        {!isPerfect && beatenInfo && (
-                            <span className="text-[8px] font-bold uppercase tracking-[0.07em] px-1.5 py-[1px] rounded-[2px] shrink-0 flex items-center gap-1 anim-fade" style={{ background: '#2a3440', color: '#c6d4df', border: '1px solid rgba(184,196,206,0.3)' }}>
-                                <Medal size={8} /> Beaten
-                            </span>
-                        )}
-                    </div>
-
-                    {game.playtimeForever > 0 && (
-                        <div className="flex items-center leading-none gap-2 text-[10px] md:text-[11px] mb-1.5">
-                            <Clock size={9} className="text-[#8f98a0] shrink-0" />
-                            <span className="text-[#8f98a0]">{formatPlaytime(game.playtimeForever)} total</span>
-                            {game.playtime2Weeks > 0 && (
-                                <>
-                                    <span className="text-[#546270]">·</span>
-                                    <Clock size={9} className="text-[#57cbde] shrink-0" />
-                                    <span className="text-[#57cbde]">{formatPlaytime(game.playtime2Weeks)} recent</span>
-                                </>
-                            )}
-                            {game.lastPlayedTs && (
-                                <>
-                                    <span className="text-[#546270]">·</span>
-                                    <span className="text-[#546270]">Last Played <span className="text-[#8f98a0]">{formatTimeAgo(game.lastPlayedTs)}</span></span>
-                                </>
-                            )}
-                        </div>
-                    )}
-
-                    {lastUnlock && (
-                        <div className="flex items-center leading-none gap-1 text-[10px] mb-1.5 truncate">
-                            <Trophy size={9} className="text-[#e5b143] shrink-0" />
-                            <span className="text-[#c6d4df] truncate">{lastUnlock.displayName}</span>
-                            <span className="text-[#546270] shrink-0">· {formatTimeAgo(lastUnlock.unlockedAt)}</span>
-                        </div>
-                    )}
-
-                    {pct !== null && (
-                        <div className="flex items-center gap-2">
-                            <div className="flex-1 bg-[#101214] h-[4px] rounded-sm overflow-hidden">
-                                <div
-                                    className="h-full rounded-sm transition-all duration-700"
-                                    style={{ width: `${pct}%`, background: isPerfect ? '#e5b143' : '#66c0f4' }}
-                                />
-                            </div>
-                            <div className="text-[10px] shrink-0 whitespace-nowrap" style={{ color: isPerfect ? '#e5b143' : '#8f98a0', textShadow: '0 1px 4px rgba(0,0,0,0.9), 0 0 8px rgba(0,0,0,0.6)' }}>
-                                <span className="text-[#c6d4df]">{achievementData.unlocked}</span>/{achievementData.total}
-                                <span className="ml-0.5">({Math.floor(pct)}%)</span>
-                            </div>
-                        </div>
-                    )}
+        <Tag onClick={hasAch ? () => onViewDetails({ game, achievementData, beatenInfo }) : undefined} className="grow" style={{ borderLeftColor: color }}>
+            <div className="grow-art"><img src={heroUrl(game.appId)} alt="" loading="lazy" onError={e => { e.target.style.display = 'none'; }} /></div>
+            <img src={headerUrl(game.appId)} alt="" loading="lazy" className="grow-banner" onError={e => { e.target.style.visibility = 'hidden'; }} />
+            <div className="grow-main">
+                <span className="grow-title">{game.name}</span>
+                <div className="grow-sub">
+                    <span className="shrink">{[game.playtimeForever ? formatPlaytime(game.playtimeForever) : null, ago].filter(Boolean).join(' · ') || 'Not played'}</span>
                 </div>
             </div>
-            </div>{/* end main-row background scope */}
-
-            {/* Achievement preview strip */}
-            {hasAch && onViewDetails && (
-                <button
-                    onClick={() => onViewDetails({ game, achievementData, beatenInfo })}
-                    className="w-full flex items-center gap-2.5 px-3 py-2 bg-[#171a21] hover:bg-[#1b2838] transition-colors border-t border-[#323f4c] outline-none z-10 relative group rounded-b-[3px]"
-                >
-                    {/* Achievement icon previews */}
-                    <div className="flex items-center gap-1 shrink-0">
-                        {previewAchs.map((ach, i) => {
-                            const isFirst = i === 0;
-                            const isLast  = i === previewAchs.length - 1;
-                            const tipPos  = isFirst ? 'left-0' : isLast ? 'right-0' : 'left-1/2 -translate-x-1/2';
-                            const caretPos = isFirst ? 'ml-[7px]' : isLast ? 'mr-[7px] ml-auto' : 'mx-auto';
-                            return (
-                            <div key={i} className="relative shrink-0" style={{ zIndex: previewAchs.length - i }}>
-                                {/* Icon */}
-                                <div className={`w-8 h-8 rounded-[2px] overflow-hidden border bg-black transition-all peer ${ach.unlocked ? 'border-[#2a475e]' : 'border-[#1e2a35] opacity-40'}`}>
-                                    {(ach.iconUrl || ach.iconGrayUrl)
-                                        ? <img
-                                            src={ach.unlocked ? achIconUrl(achievementData.appId, ach.iconUrl) : (achIconUrl(achievementData.appId, ach.iconGrayUrl) || achIconUrl(achievementData.appId, ach.iconUrl))}
-                                            alt={ach.displayName}
-                                            className={`w-full h-full object-cover ${!ach.unlocked ? 'grayscale' : ''}`}
-                                          />
-                                        : <div className="w-full h-full bg-[#2a475e]" />
-                                    }
-                                </div>
-                                {/* Tooltip */}
-                                <div className={`pointer-events-none absolute bottom-full ${tipPos} mb-1.5 opacity-0 peer-hover:opacity-100 transition-opacity duration-150 z-50 w-max max-w-[160px]`}>
-                                    <div className="bg-[#101214] border border-[#2a475e] rounded-[3px] px-2 py-1.5 shadow-lg">
-                                        <div className={`text-[10px] font-medium leading-tight text-left ${ach.unlocked ? 'text-[#e5b143]' : 'text-[#8f98a0]'}`}>
-                                            {ach.displayName}
-                                        </div>
-                                        <div className="text-[9px] mt-0.5 text-left leading-snug text-[#8f98a0]">
-                                            {ach.description || ach.displayName}
-                                        </div>
-                                        {ach.unlocked
-                                            ? <div className="flex items-center gap-1 mt-1">
-                                                <Gem size={7} style={{ color: rarityBorderColor(ach.globalPct), flexShrink: 0 }} />
-                                                <span className="text-[8px] font-medium text-left" style={{ color: rarityBorderColor(ach.globalPct) }}>
-                                                    {rarityLabel(ach.globalPct)}{ach.globalPct != null ? ` · ${ach.globalPct}%` : ''}
-                                                </span>
-                                              </div>
-                                            : <div className="text-[8px] text-[#546270] mt-1 text-left">Locked</div>
-                                        }
-                                    </div>
-                                    <div className={`w-1.5 h-1.5 bg-[#101214] border-r border-b border-[#2a475e] rotate-45 -mt-[5px] ${caretPos}`} />
-                                </div>
-                            </div>
-                            );
-                        })}
-                        {achievementData.total > previewAchs.length && (
-                            <span className="text-[9px] text-[#546270] group-hover:text-[#8f98a0] transition-colors ml-0.5">
-                                +{achievementData.total - previewAchs.length}
-                            </span>
-                        )}
-                    </div>
-
-                    {/* Arrow */}
-                    <div className="ml-auto flex items-center shrink-0">
-                        <ChevronDown size={10} className="-rotate-90 text-[#546270] group-hover:text-[#66c0f4] transition-colors" />
-                    </div>
-                </button>
-            )}
-        </div>
+            <div className="grow-prog">
+                {hasAch ? <>
+                    <span className="gcount" style={done ? { color: '#e5b143' } : undefined}>{achievementData.unlocked}<span>/{achievementData.total}</span></span>
+                    <GameBar pct={pct} done={done} />
+                </> : <span className="text-[11px] text-[#546270]">No achievements</span>}
+            </div>
+        </Tag>
     );
 };
+
+// Tile: the store banner uncropped on top, last played, title, one bar, count and playtime;
+// status colour on the bottom edge
+const GameTile = ({ game, achievementData, onViewDetails, beatenInfo }) => {
+    const { hasAch, pct, done, color } = gameStatus(achievementData, beatenInfo);
+    const ago = shortAgo(game.lastPlayedTs ? Date.parse(game.lastPlayedTs) : 0);
+    const Tag = hasAch ? 'button' : 'div';
+    return (
+        <Tag onClick={hasAch ? () => onViewDetails({ game, achievementData, beatenInfo }) : undefined} className="gtile" style={{ borderBottomColor: color }}>
+            <div className="gtile-art">
+                <img src={headerUrl(game.appId)} alt="" loading="lazy" className="banner" onError={e => { e.target.style.visibility = 'hidden'; }} />
+                {ago && <span className="gtile-ago">{ago}</span>}
+            </div>
+            <div className="gtile-body">
+                <span className="gtile-title">{game.name}</span>
+                {hasAch && <GameBar pct={pct} done={done} />}
+                <div className="gtile-meta">
+                    <span style={done ? { color: '#e5b143' } : undefined}>{hasAch ? `${achievementData.unlocked}/${achievementData.total}` : 'No achievements'}</span>
+                    {game.playtimeForever > 0 && <span>{formatPlaytime(game.playtimeForever)}</span>}
+                </div>
+            </div>
+        </Tag>
+    );
+};
+
+const GameCardFor = ({ view, ...props }) => view === 'tiles' ? <GameTile {...props} /> : <GameListRow {...props} />;
 
 // ── AchievementModal ───────────────────────────────────────────────────────────
 
@@ -771,7 +656,7 @@ const chipCls = (active, activeCls = 'bg-[#66c0f4] text-[#101214] border-[#66c0f
         active ? activeCls : 'bg-[#101214] text-[#8f98a0] border-[#323f4c] hover:text-[#c6d4df] hover:border-[#546270]'
     }`;
 
-const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, showCompleted, onShowCompleted, count, search, onSearch }) => {
+const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, showCompleted, onShowCompleted, count, search, onSearch, viewToggle }) => {
     const hint = PROGRESS_VIEWS.find(v => v.value === view)?.hint;
     return (
         <div className="flex flex-col gap-2 mb-4 anim-fade">
@@ -816,6 +701,7 @@ const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, 
                 )}
                 </div>
                 <span className="ml-auto text-[9px] text-[#546270] shrink-0">{count} games</span>
+                {viewToggle}
             </div>
 
             <div className="relative">
@@ -842,7 +728,7 @@ const applyProgressView = (games, view, { pct, left, lastPlayedMs, isCompleted }
 
 // ── ProgressTab ───────────────────────────────────────────────────────────────
 
-const ProgressTab = ({ achievementProgress, recentlyPlayed, onViewDetails, beatenMap }) => {
+const ProgressTab = ({ achievementProgress, recentlyPlayed, onViewDetails, beatenMap, gameView, onGameView }) => {
     const [sort,        setSort]        = useState('pct');
     const [showPerfect, setShowPerfect] = useState(false);
     const [view,        setView]        = useState('all');
@@ -910,16 +796,17 @@ const ProgressTab = ({ achievementProgress, recentlyPlayed, onViewDetails, beate
                 completedLabel="Perfect" showCompleted={showPerfect} onShowCompleted={setShowPerfect}
                 count={games.length}
                 search={search} onSearch={setSearch}
+                viewToggle={<ViewToggle view={gameView} onChange={onGameView} />}
             />
             {/* Re-keyed on sort/view/filter changes so the new order fades in (not on search keystrokes) */}
-            <div key={`${sort}-${view}-${showPerfect}`} className="flex flex-col gap-3 anim-fade">
+            <div key={`${sort}-${view}-${showPerfect}-${gameView}`} className={`${gameView === 'tiles' ? 'gtiles' : 'glist'} anim-fade`}>
                 {games.length === 0 && (
                     <div className="text-center py-12 text-[#546270] text-[12px]">
                         {search ? 'No games match your search.' : view !== 'all' ? 'No games in this view.' : 'No achievement progress tracked yet.'}
                     </div>
                 )}
                 {games.map(g => (
-                    <SteamGameCard
+                    <GameCardFor view={gameView}
                         key={g.appId}
                         game={{
                             appId:           g.appId,
@@ -946,16 +833,19 @@ const Sk = ({ w = 'w-full', h = 'h-4', cls = '' }) => (
 );
 
 // Placeholders for the lazy-loaded tabs (same look as the RA page's)
-const GameCardSkeleton = () => (
-    <div className="bg-[#202d39] border border-[#323f4c] border-l-[3px] border-l-[#323f4c] rounded-[3px] p-3 flex gap-4">
-        <div className="shimmer w-16 h-16 md:w-20 md:h-20 rounded-[2px] flex-shrink-0" />
-        <div className="flex-1 flex flex-col gap-2 justify-center">
-            <Sk w="w-3/4" h="h-3.5" /><Sk w="w-1/2" h="h-2.5" />
-            <div className="flex gap-2 mt-1"><Sk w="w-20" h="h-2" /><Sk w="w-16" h="h-2" /></div>
-        </div>
+const GameViewSkeleton = ({ view, count = 5 }) => view === 'tiles' ? (
+    <div className="gtiles">
+        {[...Array(count + 1)].map((_, i) => (
+            <div key={i} className="gtile"><div className="gtile-art shimmer" /><div className="gtile-body"><div className="shimmer h-3 w-3/4 rounded-[2px]" /><div className="shimmer h-1 rounded-[2px]" /></div></div>
+        ))}
+    </div>
+) : (
+    <div className="glist">
+        {[...Array(count)].map((_, i) => (
+            <div key={i} className="grow"><div className="grow-icon shimmer" /><div className="grow-main"><div className="shimmer h-3 w-2/3 rounded-[2px]" /><div className="shimmer h-2.5 w-1/2 rounded-[2px]" /></div></div>
+        ))}
     </div>
 );
-const GamesSkeleton = () => <div className="flex flex-col gap-3">{[...Array(5)].map((_, i) => <GameCardSkeleton key={i} />)}</div>;
 
 const ActivitySkeleton = () => (
     <div className="flex flex-col gap-6">
@@ -1077,6 +967,7 @@ const App = () => {
         return VALID_TABS.includes(p) ? p : 'recent';
     })();
     const [activeTab, setActiveTab] = useState(initialTab);
+    const [gameView, setGameView] = useGameView();
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [showFloatingTabs, setShowFloatingTabs] = useState(false);
     const [pillLeaving, setPillLeaving] = useState(false);
@@ -1693,17 +1584,24 @@ const App = () => {
                     {activeTab === 'recent' && (
                         gamesData
                             ? <div className="flex flex-col gap-3 anim-fade">
-                                {recentlyPlayed.map(game => (
-                                    <SteamGameCard key={game.appId} game={game} achievementData={achProgress[game.appId]} onViewDetails={handleViewDetails} beatenInfo={beatenMap.get(game.appId) ?? null} />
-                                ))}
+                                <div className="flex items-center gap-2 text-[11px] text-[#8f98a0]">
+                                    <span>Recently played · <span className="text-[#c6d4df] font-semibold">{recentlyPlayed.length} games</span></span>
+                                    <span className="ml-auto"><ViewToggle view={gameView} onChange={setGameView} /></span>
+                                </div>
+                                <div key={gameView} className={`${gameView === 'tiles' ? 'gtiles' : 'glist'} anim-fade`}>
+                                    {recentlyPlayed.map(game => {
+                                        const Card = gameView === 'tiles' ? GameTile : GameListRow;
+                                        return <Card key={game.appId} game={game} achievementData={achProgress[game.appId]} onViewDetails={handleViewDetails} beatenInfo={beatenMap.get(game.appId) ?? null} />;
+                                    })}
+                                </div>
                               </div>
-                            : <GamesSkeleton />
+                            : <GameViewSkeleton view={gameView} />
                     )}
 
                     {activeTab === 'progress' && (
                         gamesData
-                            ? <ProgressTab achievementProgress={achProgress} recentlyPlayed={recentlyPlayed} onViewDetails={handleViewDetails} beatenMap={beatenMap} />
-                            : <GamesSkeleton />
+                            ? <ProgressTab achievementProgress={achProgress} recentlyPlayed={recentlyPlayed} onViewDetails={handleViewDetails} beatenMap={beatenMap} gameView={gameView} onGameView={setGameView} />
+                            : <GameViewSkeleton view={gameView} />
                     )}
 
                     {activeTab === 'activity' && (
