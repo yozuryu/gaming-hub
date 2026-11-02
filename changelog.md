@@ -2,7 +2,7 @@
 
 ## v26.11.03
 
-Five pieces from the design review folded into the current look: the achievement modal opens as a swipe-up sheet on phone, the Hub's platform cards become one compact strip, profile headers show your latest game's art, and game lists get a list/tiles switch.
+Five pieces from the design review folded into the current look: the achievement modal opens as a swipe-up sheet on phone, the Hub's platform cards become one compact strip, profile headers show your latest game's art, game lists get a list/tiles switch, and Completions gets a new layout.
 
 ### RetroAchievements
 
@@ -27,6 +27,16 @@ Five pieces from the design review folded into the current look: the achievement
 ### Hub
 
 - The three tall platform cards are now one **platform strip**: on phone one row per platform with its three headline numbers (RA points · mastered · unlocks, Steam hours · perfect · unlocks, Xbox gamerscore · completed · unlocks) and a chevron to the profile, about a third of the height; on desktop three cells side by side, each with its three most recently played covers instead of the recent-games rows. Rank, beaten, games and the other counts are on each profile
+
+### Completions
+
+- New layout. A completed game (★ Mastered / Perfect / Completed) is a **highlight**: its art banner (Steam store banner uncropped, RA screenshot with the icon over it, Xbox hero), platform, Hardcore and date on the art, then achievements, time played and the **rarest achievement** in its rarity colour (from the unlock history). A beaten game is a compact silver row with its art faded behind; Steam rows keep the winning achievement
+- Each open year starts with a summary line (`5 ★ complete · 4 beaten · 127h played`); on phone the entries follow a month timeline, on desktop the completed games sit three across with the beaten rows below. Closed years are one line each with their covers (★ on completed ones), two columns on desktop
+- The page is wider on desktop to fit three highlights per row
+
+### Pipelines
+
+- RA: each game award in `profile.json` also carries the game's screenshot (`imageIngame`), for the Completions highlights without loading `games.json`. Until the next RA run writes it, highlights use the game's icon, zoomed and blurred
 
 ### Structure
 
