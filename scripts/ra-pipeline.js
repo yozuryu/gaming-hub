@@ -360,13 +360,19 @@ function serializeLocally(payload) {
         log.ok(`${filename.padEnd(24)} ${sizeKb} KB  →  ${filePath}`);
     };
 
-    // Attach per-game playtime (minutes) to game awards so the Completions page
-    // can show it without loading games.json
+    // Attach per-game playtime (minutes) and screenshot to game awards so the Completions
+    // page can show them without loading games.json
     const pageAwards = payload.pageAwards && {
         ...payload.pageAwards,
         visibleUserAwards: (payload.pageAwards.visibleUserAwards || []).map(award => {
-            const seconds = payload.detailedGameProgress[award.awardData]?.userTotalPlaytime;
-            return seconds ? { ...award, playtime: Math.round(seconds / 60) } : award;
+            const game = payload.detailedGameProgress[award.awardData];
+            if (!game) return award;
+            const seconds = game.userTotalPlaytime;
+            return {
+                ...award,
+                ...(seconds ? { playtime: Math.round(seconds / 60) } : {}),
+                ...(game.imageIngame ? { imageIngame: game.imageIngame } : {}),
+            };
         }),
     };
 
