@@ -229,6 +229,19 @@ const useAnimatedHeight = (ref, duration = 220) => {
     }, []);
 };
 
+// Profile header background: the latest game's art, blurred, fading into the header
+// (layers in assets/ui.css). Fades in once loaded; the header stays flat until then.
+const HeaderArt = ({ urls }) => {
+    const art = useArtSrc(urls);
+    if (!art.src) return null;
+    return (
+        <div className="art-bg art-header">
+            <img src={art.src} alt="" onLoad={art.onLoad} onError={art.onError}
+                className={art.loaded ? 'loaded' : ''} />
+        </div>
+    );
+};
+
 // Achievement list placeholder while the game's file loads
 const ModalListSkeleton = () => (
     <div className="px-4 py-3 flex flex-col gap-1.5" aria-busy="true">
@@ -1285,8 +1298,9 @@ const App = () => {
             </div>
 
             {/* Header */}
-            <header className="bg-[#1b2838] border-b border-[#2a475e] px-4 md:px-8 pt-8 pb-5 md:pt-5 shadow-md anim-fade">
-                <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-5">
+            <header className="relative overflow-hidden bg-[#1b2838] border-b border-[#2a475e] px-4 md:px-8 pt-8 pb-5 md:pt-5 shadow-md anim-fade">
+                <HeaderArt urls={recentlyPlayed[0] ? [heroUrl(recentlyPlayed[0].appId), headerUrl(recentlyPlayed[0].appId)] : []} />
+                <div className="relative art-shadow max-w-5xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-5">
 
                     {/* Avatar */}
                     <div className="relative shrink-0">

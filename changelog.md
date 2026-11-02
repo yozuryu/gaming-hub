@@ -2,19 +2,22 @@
 
 ## v26.11.03
 
-Five pieces from the design review folded into the current look: the achievement modal opens as a swipe-up sheet on phone, and the Hub's platform cards become one compact strip.
+Five pieces from the design review folded into the current look: the achievement modal opens as a swipe-up sheet on phone, the Hub's platform cards become one compact strip, and profile headers show your latest game's art.
 
 ### RetroAchievements
 
 - Achievement modal: on phone it slides up from the bottom as a sheet (full width, covers the bottom nav), and closes by dragging the header down, tapping outside, ✕ or Escape. On desktop it stays a centred dialog. Both get a new header: the game's screenshot blurred behind it and a round close button
+- Profile header: the most recently played game's screenshot sits behind it, blurred and fading into the page; layout and content unchanged
 - A game with no screenshot (RA's "no image" placeholder, e.g. Poring Clicker) uses its own icon, zoomed and blurred, wherever the art sits behind something; before, the placeholder image showed
 
 ### Steam
 
+- Profile header: the most recently played game's store hero art blurred behind it
 - Achievement modal as a swipe-up sheet on phone, with the game's store hero art blurred behind the header (the header banner when there's no hero) and the round close button
 
 ### Xbox
 
+- Profile header: the most recently played title's hero art blurred behind it
 - Achievement modal as a swipe-up sheet on phone, with the title's hero art blurred behind the header and the round close button
 
 ### Hub

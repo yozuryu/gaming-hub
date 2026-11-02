@@ -411,6 +411,19 @@ const GameCard = ({ game, onViewDetails, guides }) => {
   );
 };
 
+// Profile header background: the latest game's art, blurred, fading into the header
+// (layers in assets/ui.css). Fades in once loaded; the header stays flat until then.
+const HeaderArt = ({ urls, icon = false }) => {
+  const art = useArtSrc(urls);
+  if (!art.src) return null;
+  return (
+    <div className="art-bg art-header">
+      <img src={art.src} alt="" onLoad={art.onLoad} onError={art.onError}
+        className={`${icon ? 'px art-icon' : 'px'} ${art.loaded ? 'loaded' : ''}`} />
+    </div>
+  );
+};
+
 // ── RAchievementModal ─────────────────────────────────────────────────────────
 
 // Animates an element's height when its content grows or shrinks (e.g. a filter
@@ -1497,6 +1510,11 @@ export default function App() {
 
   const { profile: PROFILE_DATA, games: ALL_GAMES, backlog: BACKLOG } = useMemo(() => transformData(rawData), [rawData]);
 
+  // Header background: the most recently played game's screenshot, or its icon when it has none
+  const latestGame = profileData?.recentlyPlayedGames?.[0];
+  const latestShot = latestGame ? raShot(latestGame.imageIngame, latestGame.imageTitle) : null;
+  const headerArt  = { url: latestGame ? getMediaUrl(latestShot || latestGame.imageIcon) : null, icon: !!latestGame && !latestShot };
+
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
@@ -1575,8 +1593,9 @@ export default function App() {
       </div>
 
       {/* Header */}
-      <header className="bg-[#1b2838] border-b border-[#2a475e] px-4 md:px-8 pt-8 pb-5 md:pt-5 shadow-md anim-fade">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-5">
+      <header className="relative overflow-hidden bg-[#1b2838] border-b border-[#2a475e] px-4 md:px-8 pt-8 pb-5 md:pt-5 shadow-md anim-fade">
+        <HeaderArt urls={[headerArt.url]} icon={headerArt.icon} />
+        <div className="relative art-shadow max-w-5xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-5">
 
           {/* Avatar */}
           <div className="relative shrink-0">
