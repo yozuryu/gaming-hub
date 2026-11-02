@@ -1,4 +1,4 @@
-import { getMediaUrl, formatTimeAgo, formatDate, parseTitle } from './helpers.js';
+import { getMediaUrl, formatTimeAgo, formatDate, parseTitle, raShot } from './helpers.js';
 import { toMs } from '../../../assets/time.js';
 
 export const transformData = (data) => {
@@ -39,7 +39,8 @@ export const transformData = (data) => {
         isMastered: false,
         isBeaten: false,
         icon: getMediaUrl(rg.imageIcon),
-        background: getMediaUrl(rg.imageIngame || rg.imageTitle || rg.imageIcon),
+        background: getMediaUrl(raShot(rg.imageIngame, rg.imageTitle) || rg.imageIcon),
+        artIsIcon: !raShot(rg.imageIngame, rg.imageTitle),
         totalPlayers: 1,
         achievements: []
       });
@@ -57,7 +58,8 @@ export const transformData = (data) => {
         lastPlayedStr: game.mostRecentAwardedDate,
         lastPlayed: formatTimeAgo(game.mostRecentAwardedDate, refTime),
         icon: getMediaUrl(game.imageIcon),
-        background: getMediaUrl(game.imageIngame || game.imageTitle || game.imageIcon),
+        background: getMediaUrl(raShot(game.imageIngame, game.imageTitle) || game.imageIcon),
+        artIsIcon: !raShot(game.imageIngame, game.imageTitle),
         totalPlayers: 1,
         achievements: []
       };
@@ -88,7 +90,8 @@ export const transformData = (data) => {
         game.playtime = `${hours}h ${minutes}m`;
       }
 
-      game.background = getMediaUrl(details.imageIngame || details.imageTitle) || game.background;
+      const shot = raShot(details.imageIngame, details.imageTitle);
+      if (shot) { game.background = getMediaUrl(shot); game.artIsIcon = false; }
       game.totalPlayers   = details.numDistinctPlayersCasual  || game.totalPlayers;
       game.totalPlayersHC = details.numDistinctPlayersHardcore || game.totalPlayers;
 

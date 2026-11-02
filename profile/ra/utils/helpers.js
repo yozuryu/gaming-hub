@@ -48,3 +48,8 @@ export const parseTitle = (title) => {
 
   return { baseTitle: withoutTags, subsetName: null, isSubset: false, tags };
 };
+
+// RA's "no image" placeholder: standalone games (Poring Clicker) have it as screenshot and title image
+export const RA_NO_IMAGE = '/Images/000002.png';
+// First real screenshot / title image path, or null when the game has none
+export const raShot = (...paths) => paths.find(p => p && !p.endsWith(RA_NO_IMAGE)) || null;

@@ -1,5 +1,30 @@
 # Changelog
 
+## v26.11.03
+
+Five pieces from the design review folded into the current look: the achievement modal opens as a swipe-up sheet on phone, and the Hub's platform cards become one compact strip.
+
+### RetroAchievements
+
+- Achievement modal: on phone it slides up from the bottom as a sheet (full width, covers the bottom nav), and closes by dragging the header down, tapping outside, ✕ or Escape. On desktop it stays a centred dialog. Both get a new header: the game's screenshot blurred behind it and a round close button
+- A game with no screenshot (RA's "no image" placeholder, e.g. Poring Clicker) uses its own icon, zoomed and blurred, wherever the art sits behind something; before, the placeholder image showed
+
+### Steam
+
+- Achievement modal as a swipe-up sheet on phone, with the game's store hero art blurred behind the header (the header banner when there's no hero) and the round close button
+
+### Xbox
+
+- Achievement modal as a swipe-up sheet on phone, with the title's hero art blurred behind the header and the round close button
+
+### Hub
+
+- The three tall platform cards are now one **platform strip**: on phone one row per platform with its three headline numbers (RA points · mastered · unlocks, Steam hours · perfect · unlocks, Xbox gamerscore · completed · unlocks) and a chevron to the profile, about a third of the height; on desktop three cells side by side, each with its three most recently played covers instead of the recent-games rows. Rank, beaten, games and the other counts are on each profile
+
+### Structure
+
+- New `assets/sheet.js` (sheet behaviour: drag to close, close animation, Escape, scroll lock, art fallback chain) and `assets/ui.css` (sheet layout, blurred art backgrounds), shared by the profile pages; both precached (`CACHE_NAME` v10)
+
 ## v26.11.01
 
 A Playing list for the games in rotation, a platform filter on Analytics, and pipeline data moved to its own branch; the floating tab pill on the profile pages stays on screen again.

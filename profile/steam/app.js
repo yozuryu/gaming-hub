@@ -2,8 +2,9 @@ import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 import { createRoot } from 'react-dom/client';
 import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock, X, Medal } from 'lucide-react';
 import { STEAM_STATUS, PROGRESS_SORTS } from './utils/constants.js';
-import { formatPlaytime, formatDate, formatTimeAgo, fmtDay, fmtTime, achIconUrl, capsuleUrl, headerUrl, libraryPortraitUrl, rarityLabel, rarityBorderColor } from './utils/helpers.js';
+import { formatPlaytime, formatDate, formatTimeAgo, fmtDay, fmtTime, achIconUrl, capsuleUrl, headerUrl, heroUrl, libraryPortraitUrl, rarityLabel, rarityBorderColor } from './utils/helpers.js';
 import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap } from '../../assets/time.js';
+import { useSheet, useArtSrc } from '../../assets/sheet.js';
 
 // ── SteamGameCard ─────────────────────────────────────────────────────────────
 
@@ -266,85 +267,72 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo, loading 
         return [...unl, ...lck];
     }, [achs, lockFilter]);
 
-    // Close on Escape
-    useEffect(() => {
-        const onKey = (e) => { if (e.key === 'Escape') onClose(); };
-        window.addEventListener('keydown', onKey);
-        return () => window.removeEventListener('keydown', onKey);
-    }, [onClose]);
-
-    // Lock body scroll
-    useEffect(() => {
-        document.body.style.overflow = 'hidden';
-        return () => { document.body.style.overflow = ''; };
-    }, []);
+    // Sheet on phone, dialog from md (assets/sheet.js): Escape, scroll lock, drag to close
+    const rootRef = useRef(null);
+    const dragRef = useRef(null);
+    const close = useSheet({ panelRef, dragRef, rootRef, onClose });
+    const art = useArtSrc([heroUrl(game.appId), headerUrl(game.appId)]);
 
     return (
-        <div
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-            onClick={onClose}
-        >
-            {/* Backdrop */}
-            <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px] anim-backdrop" />
+        <div ref={rootRef} className="sheet-root" onClick={close}>
+            <div className="sheet-backdrop anim-backdrop" />
 
-            {/* Panel (height animates as the content changes) */}
-            <div
-                ref={panelRef}
-                className="relative z-10 w-full max-w-xl bg-[#1b2838] border border-[#2a475e] rounded-[4px] shadow-2xl flex flex-col max-h-[90vh] anim-pop"
-                onClick={e => e.stopPropagation()}
-            >
-                {/* Close button — absolute top-right */}
-                <button
-                    onClick={onClose}
-                    className="absolute top-2 right-2 z-10 text-[#546270] hover:text-[#c6d4df] transition-colors outline-none"
-                >
-                    <X size={15} />
-                </button>
+            {/* Panel (height animates as the content changes on desktop) */}
+            <div ref={panelRef} className="sheet-panel" onClick={e => e.stopPropagation()}>
+                <button onClick={close} className="sheet-close" aria-label="Close"><X size={15} /></button>
 
-                {/* Modal header */}
-                <div className="flex items-center gap-4 px-4 py-4 border-b border-[#2a475e] shrink-0">
-                    <a
-                        href={game.storeUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="shrink-0 w-32 h-16 rounded-[2px] overflow-hidden border border-[#101214] bg-[#2a475e] hover:scale-105 transition-transform"
-                    >
-                        <img src={headerUrl(game.appId)} alt={game.name} className="w-full h-full object-cover" onError={e => { e.target.style.display = 'none'; }} />
-                    </a>
-                    <div className="flex-1 min-w-0">
+                {/* Modal header: blurred hero art behind it; drag it down to close on phone */}
+                <div ref={dragRef} className="sheet-head">
+                    {art.src && (
+                        <div className="art-bg art-sheet">
+                            <img src={art.src} alt="" onLoad={art.onLoad} onError={art.onError} className={art.loaded ? 'loaded' : ''} />
+                        </div>
+                    )}
+                    <span className="sheet-grab" />
+                    <div className="relative flex items-end gap-4 px-4 pt-[34px] pb-4">
                         <a
                             href={game.storeUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="text-[15px] font-medium text-white hover:text-[#66c0f4] transition-colors leading-tight truncate block"
+                            className="shrink-0 w-32 h-16 rounded-[2px] overflow-hidden border border-[#101214] bg-[#2a475e] hover:scale-105 transition-transform"
                         >
-                            {game.name}
+                            <img src={headerUrl(game.appId)} alt={game.name} className="w-full h-full object-cover" onError={e => { e.target.style.display = 'none'; }} />
                         </a>
-                        {(isPerfect || beatenInfo) && (
-                            <div className="flex items-center gap-1.5 mt-1">
-                                {isPerfect && (
-                                    <span className="shrink-0 text-[9px] text-[#101214] bg-[#e5b143] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider flex items-center gap-1">
-                                        <Star size={9} /> Perfect
-                                    </span>
-                                )}
-                                {!isPerfect && beatenInfo && (
-                                    <span className="shrink-0 text-[9px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-sm flex items-center gap-1" style={{ background: '#2a3440', color: '#c6d4df', border: '1px solid rgba(184,196,206,0.3)' }}>
-                                        <Medal size={9} /> Beaten
-                                    </span>
-                                )}
-                            </div>
-                        )}
-                        {pct !== null && (
-                            <div className="flex items-center gap-2 mt-1.5">
-                                <div className="flex-1 bg-[#101214] h-[3px] rounded-sm overflow-hidden">
-                                    <div className="h-full rounded-sm" style={{ width: `${pct}%`, background: isPerfect ? '#e5b143' : '#66c0f4' }} />
+                        <div className="flex-1 min-w-0">
+                            <a
+                                href={game.storeUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="sheet-title text-[15px] md:text-[17px] font-medium text-white hover:text-[#66c0f4] transition-colors leading-tight block pr-8"
+                            >
+                                {game.name}
+                            </a>
+                            {(isPerfect || beatenInfo) && (
+                                <div className="flex items-center gap-1.5 mt-1">
+                                    {isPerfect && (
+                                        <span className="shrink-0 text-[9px] text-[#101214] bg-[#e5b143] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider flex items-center gap-1">
+                                            <Star size={9} /> Perfect
+                                        </span>
+                                    )}
+                                    {!isPerfect && beatenInfo && (
+                                        <span className="shrink-0 text-[9px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-sm flex items-center gap-1" style={{ background: '#2a3440', color: '#c6d4df', border: '1px solid rgba(184,196,206,0.3)' }}>
+                                            <Medal size={9} /> Beaten
+                                        </span>
+                                    )}
                                 </div>
-                                <span className="text-[10px] shrink-0" style={{ color: isPerfect ? '#e5b143' : '#8f98a0' }}>
-                                    <span className="text-[#c6d4df]">{achievementData.unlocked}</span>/{achievementData.total}
-                                    <span className="ml-0.5">({Math.floor(pct)}%)</span>
-                                </span>
-                            </div>
-                        )}
+                            )}
+                            {pct !== null && (
+                                <div className="flex items-center gap-2 mt-1.5">
+                                    <div className="flex-1 bg-[#101214] h-[3px] rounded-sm overflow-hidden">
+                                        <div className="h-full rounded-sm" style={{ width: `${pct}%`, background: isPerfect ? '#e5b143' : '#66c0f4' }} />
+                                    </div>
+                                    <span className="text-[10px] shrink-0" style={{ color: isPerfect ? '#e5b143' : '#8f98a0' }}>
+                                        <span className="text-[#c6d4df]">{achievementData.unlocked}</span>/{achievementData.total}
+                                        <span className="ml-0.5">({Math.floor(pct)}%)</span>
+                                    </span>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
 
@@ -374,7 +362,7 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo, loading 
                 </div>
 
                 {/* Achievement list (re-keyed so a filter change fades the new list in) */}
-                <div key={lockFilter} className="overflow-y-auto overscroll-contain flex-1 px-4 py-3 space-y-1.5 anim-fade">
+                <div key={lockFilter} className="sheet-scroll overflow-y-auto overscroll-contain flex-1 min-h-0 px-4 pt-3 space-y-1.5 anim-fade">
                     {filteredAchs.map(ach => (
                         <div
                             key={ach.apiName}

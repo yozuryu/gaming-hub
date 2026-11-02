@@ -2,8 +2,9 @@ import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, Trophy, Crown, Lock, Unlock, AlertTriangle, Flame, Feather, Medal, ShieldOff, CircleDashed, X, Clock, BookOpen, Youtube, ExternalLink, Layers } from 'lucide-react';
 import { MEDIA_URL, SITE_URL, TILDE_TAG_COLORS } from './utils/constants.js';
-import { getMediaUrl, parseTitle, formatTimeAgo } from './utils/helpers.js';
+import { getMediaUrl, parseTitle, formatTimeAgo, raShot } from './utils/helpers.js';
 import { transformData } from './utils/transform.js';
+import { useSheet, useArtSrc } from '../../assets/sheet.js';
 import { TZ, toMs, dayKey, addDays, keyToDate, fmtDate, fmtClock, buildHeatmap } from '../../assets/time.js';
 
 // --- JSX Helpers ---
@@ -467,87 +468,82 @@ const RAchievementModal = ({ game, onClose }) => {
   const progUnlocked = progAchs.filter(a => a.isUnlocked).length;
   const progPct      = progAchs.length > 0 ? (progUnlocked / progAchs.length) * 100 : null;
 
-  useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [onClose]);
-
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = ''; };
-  }, []);
+  const rootRef = useRef(null);
+  const dragRef = useRef(null);
+  const close = useSheet({ panelRef, dragRef, rootRef, onClose });
+  const art = useArtSrc([game.background]);
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px] anim-backdrop" />
+    <div ref={rootRef} className="sheet-root" onClick={close}>
+      <div className="sheet-backdrop anim-backdrop" />
 
-      <div
-        ref={panelRef}
-        className="relative z-10 w-full max-w-xl bg-[#1b2838] border border-[#2a475e] rounded-[4px] shadow-2xl flex flex-col max-h-[90vh] anim-pop"
-        onClick={e => e.stopPropagation()}
-      >
-        {/* Close button */}
-        <button onClick={onClose} className="absolute top-2 right-2 z-10 text-[#546270] hover:text-[#c6d4df] transition-colors outline-none">
-          <X size={15} />
-        </button>
+      <div ref={panelRef} className="sheet-panel" onClick={e => e.stopPropagation()}>
+        <button onClick={close} className="sheet-close" aria-label="Close"><X size={15} /></button>
 
-        {/* Header */}
-        <div className="flex items-center gap-4 px-4 py-4 border-b border-[#2a475e] shrink-0">
-          <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer"
-            className="shrink-0 w-16 h-16 rounded-[2px] overflow-hidden border border-[#101214] bg-[#101214] hover:scale-105 transition-transform">
-            <img src={game.icon} alt={game.title} className="w-full h-full object-cover" />
-          </a>
-          <div className="flex-1 min-w-0">
-            <div className="flex flex-col mb-1">
-              <div className="flex items-center gap-2 flex-wrap">
-                <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer"
-                  className="text-[15px] font-medium text-white hover:text-[#66c0f4] transition-colors leading-tight truncate">
-                  {game.baseTitle || game.title}
-                </a>
-                {game.isSubset && (
-                  <span className="text-[8px] font-bold uppercase tracking-[0.07em] px-1.5 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>
+        {/* Header: blurred screenshot (or the zoomed icon) behind it; drag it down to close on phone */}
+        <div ref={dragRef} className="sheet-head">
+          {art.src && (
+            <div className="art-bg art-sheet">
+              <img src={art.src} alt="" onLoad={art.onLoad} onError={art.onError} className={`px ${game.artIsIcon ? 'art-icon' : ''} ${art.loaded ? 'loaded' : ''}`} />
+            </div>
+          )}
+          <span className="sheet-grab" />
+          <div className="relative flex items-end gap-4 px-4 pt-[34px] pb-4">
+            <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer"
+              className="shrink-0 w-16 h-16 rounded-[3px] overflow-hidden border-2 border-white/20 bg-[#101214] shadow-[0_6px_18px_rgba(0,0,0,0.55)] hover:scale-105 transition-transform">
+              <img src={game.icon} alt={game.title} className="w-full h-full object-cover" />
+            </a>
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-col mb-1 pr-8">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer"
+                    className="sheet-title text-[15px] md:text-[17px] font-medium text-white hover:text-[#66c0f4] transition-colors leading-tight">
+                    {game.baseTitle || game.title}
+                  </a>
+                  {game.isSubset && (
+                    <span className="text-[8px] font-bold uppercase tracking-[0.07em] px-1.5 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>
+                  )}
+                  {renderTildeTags(game.tags)}
+                </div>
+                {game.isSubset && game.subsetName && (
+                  <span className="text-[10px] text-[#c8a84b] truncate">{game.subsetName}</span>
                 )}
-                {renderTildeTags(game.tags)}
               </div>
-              {game.isSubset && game.subsetName && (
-                <span className="text-[10px] text-[#c8a84b] truncate">{game.subsetName}</span>
-              )}
-            </div>
-            <div className="flex items-center gap-2 flex-wrap mb-2 text-[10px]">
-              <span className="text-[#66c0f4] flex items-center gap-1"><Gamepad2 size={10} />{game.console}</span>
-              <span className="text-[#546270]">·</span>
-              {!game.achievementsUnlocked ? null : game.hardcore ? (
-                <span className="shrink-0 text-[9px] text-[#ff6b6b] border border-[#ff6b6b]/30 bg-[#101214]/60 px-1.5 py-[1px] rounded-sm font-semibold uppercase tracking-wider flex items-center gap-1"><Flame size={10} /> Hardcore</span>
-              ) : (
-                <span className="shrink-0 text-[9px] text-[#8f98a0] border border-[#323f4c] bg-[#101214]/60 px-1.5 py-[1px] rounded-sm font-semibold uppercase tracking-wider flex items-center gap-1"><Feather size={10} /> Softcore</span>
-              )}
-              {game.isMastered && (
-                <span className="shrink-0 text-[9px] text-[#101214] bg-[#e5b143] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider flex items-center gap-1"><Trophy size={10} /> Mastered</span>
-              )}
-              {game.isBeaten && !game.isMastered && (
-                <span className="shrink-0 text-[9px] text-[#c6d4df] bg-[#2a3440] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider border border-[#b8c4ce]/30 flex items-center gap-1"><Medal size={10} /> Beaten</span>
-              )}
-            </div>
-            {/* Progress bars */}
-            <div className="flex flex-col gap-1">
-              {progPct !== null && (
-                <div className="flex items-center gap-2">
-                  <span className="w-[64px] shrink-0 text-[8px] text-[#546270] uppercase tracking-wider text-right">Progression</span>
-                  <div className="flex-1 bg-[#101214] h-[3px] rounded-sm overflow-hidden">
-                    <div className="h-full rounded-sm bg-[#e5b143]" style={{ width: `${progPct}%` }} />
+              <div className="flex items-center gap-2 flex-wrap mb-2 text-[10px]">
+                <span className="text-[#66c0f4] flex items-center gap-1"><Gamepad2 size={10} />{game.console}</span>
+                <span className="text-[#546270]">·</span>
+                {!game.achievementsUnlocked ? null : game.hardcore ? (
+                  <span className="shrink-0 text-[9px] text-[#ff6b6b] border border-[#ff6b6b]/30 bg-[#101214]/60 px-1.5 py-[1px] rounded-sm font-semibold uppercase tracking-wider flex items-center gap-1"><Flame size={10} /> Hardcore</span>
+                ) : (
+                  <span className="shrink-0 text-[9px] text-[#8f98a0] border border-[#323f4c] bg-[#101214]/60 px-1.5 py-[1px] rounded-sm font-semibold uppercase tracking-wider flex items-center gap-1"><Feather size={10} /> Softcore</span>
+                )}
+                {game.isMastered && (
+                  <span className="shrink-0 text-[9px] text-[#101214] bg-[#e5b143] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider flex items-center gap-1"><Trophy size={10} /> Mastered</span>
+                )}
+                {game.isBeaten && !game.isMastered && (
+                  <span className="shrink-0 text-[9px] text-[#c6d4df] bg-[#2a3440] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider border border-[#b8c4ce]/30 flex items-center gap-1"><Medal size={10} /> Beaten</span>
+                )}
+              </div>
+              {/* Progress bars */}
+              <div className="flex flex-col gap-1">
+                {progPct !== null && (
+                  <div className="flex items-center gap-2">
+                    <span className="w-[64px] shrink-0 text-[8px] text-[#546270] uppercase tracking-wider text-right">Progression</span>
+                    <div className="flex-1 bg-[#101214] h-[3px] rounded-sm overflow-hidden">
+                      <div className="h-full rounded-sm bg-[#e5b143]" style={{ width: `${progPct}%` }} />
+                    </div>
+                    <span className="text-[9px] text-[#e5b143] shrink-0">{progUnlocked}/{progAchs.length}</span>
                   </div>
-                  <span className="text-[9px] text-[#e5b143] shrink-0">{progUnlocked}/{progAchs.length}</span>
+                )}
+                <div className="flex items-center gap-2">
+                  <span className="w-[64px] shrink-0 text-[8px] text-[#546270] uppercase tracking-wider text-right">Overall</span>
+                  <div className="flex-1 bg-[#101214] h-[3px] rounded-sm overflow-hidden">
+                    <div className={`h-full rounded-sm ${game.isMastered ? 'bg-[#e5b143]' : 'bg-[#66c0f4]'}`} style={{ width: `${game.rawProgress}%` }} />
+                  </div>
+                  <span className="text-[9px] text-[#8f98a0] shrink-0">
+                    <span className="text-[#c6d4df]">{game.achievementsUnlocked}</span>/{game.achievementsTotal}
+                  </span>
                 </div>
-              )}
-              <div className="flex items-center gap-2">
-                <span className="w-[64px] shrink-0 text-[8px] text-[#546270] uppercase tracking-wider text-right">Overall</span>
-                <div className="flex-1 bg-[#101214] h-[3px] rounded-sm overflow-hidden">
-                  <div className={`h-full rounded-sm ${game.isMastered ? 'bg-[#e5b143]' : 'bg-[#66c0f4]'}`} style={{ width: `${game.rawProgress}%` }} />
-                </div>
-                <span className="text-[9px] text-[#8f98a0] shrink-0">
-                  <span className="text-[#c6d4df]">{game.achievementsUnlocked}</span>/{game.achievementsTotal}
-                </span>
               </div>
             </div>
           </div>
@@ -601,7 +597,7 @@ const RAchievementModal = ({ game, onClose }) => {
 
         {/* Achievement list */}
         {/* Re-keyed so a filter change fades the new list in (the panel height animates too) */}
-        <div key={`${lockFilter}-${typeFilter}`} className="overflow-y-auto overscroll-contain flex-1 px-4 py-3 space-y-1.5 anim-fade">
+        <div key={`${lockFilter}-${typeFilter}`} className="sheet-scroll overflow-y-auto overscroll-contain flex-1 min-h-0 px-4 pt-3 space-y-1.5 anim-fade">
           {filteredAchs.length > 0 ? filteredAchs.map(ach => {
             const casualPct   = game.totalPlayers   > 1 ? Math.min(100, (ach.numAwardedCasual   / game.totalPlayers)   * 100).toFixed(2) : null;
             const hardcorePct = game.totalPlayersHC > 1 ? Math.min(100, (ach.numAwardedHardcore / game.totalPlayersHC) * 100).toFixed(2) : null;
@@ -1244,7 +1240,7 @@ function SeriesProgressTab({ seriesData, gamesData, watchlistData }) {
       const coverId   = series.coverGameId ?? series.gameIds[0];
       const coverGame = getGameInfo(coverId);
       const coverBg   = coverGame
-        ? getMediaUrl(coverGame.imageIngame || coverGame.imageTitle || coverGame.imageIcon)
+        ? getMediaUrl(raShot(coverGame.imageIngame, coverGame.imageTitle) || coverGame.imageIcon)
         : null;
       const coverIcon = coverGame ? getMediaUrl(coverGame.imageIcon) : null;
 

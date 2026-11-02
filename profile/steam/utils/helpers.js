@@ -61,3 +61,7 @@ export const rarityBorderColor = (globalPct) => {
     if (globalPct != null && globalPct < 30) return '#66c0f4'; // Rare      — blue
     return '#8f98a0';                                           // Common    — gray
 };
+
+// Store hero art (wide, no logo); not every game has one, so fall back to headerUrl
+export const heroUrl = (appId) =>
+    `https://cdn.akamai.steamstatic.com/steam/apps/${appId}/library_hero.jpg`;
