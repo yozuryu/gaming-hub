@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Star, Gem, ChevronDown, Flame, Feather } from 'lucide-react';
+import { Star, Gem, ChevronDown, Flame, Feather, Check, Plus } from 'lucide-react';
 import { TZ, fmtDate, monthKey, yearOf, keyToDate } from '../assets/time.js';
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -623,9 +623,7 @@ const App = () => {
                             <Star size={22} className="text-[#e5b143]" /> Completions
                         </h1>
                         {!loading && (
-                            <span className="ml-2 text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270] anim-fade">
-                                <span className="text-[#c6d4df]">{completions.length}</span> total
-                            </span>
+                            <span className="ml-1 text-[12px] text-[#8f98a0] anim-fade"><span className="text-[#c6d4df] font-semibold">{completions.length}</span> total</span>
                         )}
                         <span className="ml-auto text-[10px] text-[#546270]" title="Dates are shown in your timezone">{TZ}</span>
                     </div>
@@ -634,56 +632,36 @@ const App = () => {
 
             <main className="max-w-5xl mx-auto px-4 md:px-8 py-6 flex-1 w-full">
 
-                {/* Filter bar */}
-                <div className="flex items-center gap-3 mb-6 flex-wrap">
-                    <div className="flex items-center gap-1.5">
-                        {[
-                            { value: 'all',   label: 'All'   },
-                            { value: 'ra',    label: 'RA'    },
-                            { value: 'steam', label: 'Steam' },
-                            { value: 'xbox',  label: 'Xbox'  },
-                        ].map(opt => (
-                            <button key={opt.value} onClick={() => setPlatform(opt.value)}
-                                className={`text-[9px] font-semibold uppercase tracking-wider px-2.5 py-[3px] rounded-sm border transition-colors ${
-                                    platform === opt.value
-                                        ? 'bg-[#66c0f4] text-[#101214] border-[#66c0f4]'
-                                        : 'bg-[#101214] text-[#8f98a0] border-[#323f4c] hover:text-[#c6d4df] hover:border-[#546270]'
-                                }`}>{opt.label}</button>
-                        ))}
-                    </div>
-
-                    <div className="w-px h-4 bg-[#2a475e]" />
-
-                    <button onClick={() => setShowBeaten(v => !v)}
-                        className={`text-[9px] font-semibold uppercase tracking-wider px-2.5 py-[3px] rounded-sm border transition-colors ${
-                            showBeaten
-                                ? 'bg-[#66c0f4] text-[#101214] border-[#66c0f4]'
-                                : 'bg-transparent text-[#546270] border-[#323f4c] hover:text-[#8f98a0] hover:border-[#546270]'
-                        }`}>Beaten</button>
-
-                    <div className="w-px h-4 bg-[#2a475e]" />
-
-                    <div className="flex items-center gap-1">
-                        {['Hack', 'Homebrew', 'Prototype'].map(tag => {
-                            const s = TILDE_TAG_COLORS[tag];
-                            const isHidden = hiddenTags.has(tag);
-                            return (
-                                <button key={tag}
-                                    onClick={() => setHiddenTags(prev => {
-                                        const next = new Set(prev);
-                                        next.has(tag) ? next.delete(tag) : next.add(tag);
-                                        return next;
-                                    })}
-                                    className="text-[9px] font-semibold uppercase tracking-wider px-2 py-[3px] rounded-sm border transition-colors"
-                                    style={isHidden
-                                        ? { color: '#546270', borderColor: '#323f4c', background: 'transparent' }
-                                        : { color: s.color, borderColor: s.border, background: s.bg }
-                                    }
-                                >{tag}</button>
-                            );
-                        })}
-                    </div>
-
+                {/* Filters: platform, then what to include; one row that scrolls sideways (styles in assets/ui.css) */}
+                <div className="frow mb-6" role="group" aria-label="Filter completions">
+                    {[
+                        { value: 'all',   label: 'All'   },
+                        { value: 'ra',    label: 'RA'    },
+                        { value: 'steam', label: 'Steam' },
+                        { value: 'xbox',  label: 'Xbox'  },
+                    ].map(opt => (
+                        <button key={opt.value} onClick={() => setPlatform(opt.value)} aria-pressed={platform === opt.value}
+                            className={`fchip ${platform === opt.value ? 'on' : ''}`}>{opt.label}</button>
+                    ))}
+                    <span className="fsep" />
+                    <button onClick={() => setShowBeaten(v => !v)} aria-pressed={showBeaten} title="Include beaten games"
+                        className={`fchip ${showBeaten ? 'on' : ''}`}>
+                        {showBeaten ? <Check size={12} /> : <Plus size={12} />}Beaten
+                    </button>
+                    {[['Hack', 'Hacks'], ['Homebrew', 'Homebrew'], ['Prototype', 'Prototypes']].map(([tag, label]) => {
+                        const shown = !hiddenTags.has(tag);
+                        return (
+                            <button key={tag} aria-pressed={shown} title={`Include ${label.toLowerCase()}`}
+                                onClick={() => setHiddenTags(prev => {
+                                    const next = new Set(prev);
+                                    next.has(tag) ? next.delete(tag) : next.add(tag);
+                                    return next;
+                                })}
+                                className={`fchip ${shown ? 'on' : ''}`}>
+                                {shown ? <Check size={12} /> : <Plus size={12} />}{label}
+                            </button>
+                        );
+                    })}
                 </div>
 
                 {/* Content */}

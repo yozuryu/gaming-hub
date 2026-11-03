@@ -347,6 +347,13 @@ Game-card left stripes use the same ladder everywhere (RA/Steam/Xbox cards, RA w
 - Demo: cyan `#57cbde`
 - Prototype: gray `#8f98a0`
 
+### Filters and search
+One look on every page, from the classes in `assets/ui.css`:
+- Filters = `.fchip` (28px, sentence case, `.on` = blue tint) in a `.frow` that scrolls sideways instead of wrapping; `.fsep` between groups. Include-toggles show `+` off and `✓` on
+- Search = `.fsearch` (icon + clear button) with sort / group as a `.fselect` beside it in a `.fbar`
+- Counts and hints = `.fmeta`, a plain muted line. Never draw a count as a chip, or a filter in the small uppercase tag style
+- View switches (Unlocks / Playtime / Playing, list / tiles) stay segmented controls
+
 ### Game art behind things
 - Blurred art backgrounds (`.art-bg` in `assets/ui.css`) bleed 30px past every edge so the blur never shows a dark rim; `max-width: none` beats Tailwind's img reset
 - **RA art fallback:** RA's "no image" placeholder `/Images/000002.png` counts as no screenshot. The icon is used instead, zoomed to cover and blurred harder (`.art-icon`), everywhere art sits behind something (profile lists and tiles, profile header, achievement sheet, Completions)

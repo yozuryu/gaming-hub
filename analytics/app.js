@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useContext, createContext } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BarChart3, ChevronDown, Table } from 'lucide-react';
+import { BarChart3, ChevronDown, Table, Check, Plus } from 'lucide-react';
 import { TZ, dayKey, todayKey, addDays, keyToDate, splitByDay, fmtDayKey } from '../assets/time.js';
 import {
     RA_MEDIA, PLATFORMS, PLATFORM_COLOR, PLATFORM_LABEL, PLATFORM_SHORT, RARITY_TIERS, rarityTier, HEAT_RAMP,
@@ -882,35 +882,26 @@ const App = () => {
                             <BarChart3 size={22} className="text-[#66c0f4]" /> Analytics
                         </h1>
                     </div>
-                    {/* Period: scopes everything below */}
-                    <div className="flex flex-wrap items-center gap-2">
-                        <div className="flex p-[2px] rounded-[3px] border border-[#2a475e] bg-[#101214]" role="tablist">
+                    {/* Period and platform scope everything below; one chip row each (styles in assets/ui.css) */}
+                    <div className="flex flex-col gap-2">
+                        <div className="frow" role="group" aria-label="Period">
                             {PERIODS.map(p => (
-                                <button key={p.id} role="tab" aria-selected={period === p.id} onClick={() => choosePeriod(p.id)}
-                                    className={`text-[10px] font-semibold uppercase tracking-[0.07em] px-2.5 py-1 rounded-[2px] transition-colors ${
-                                        period === p.id ? 'bg-[#2a475e] text-white' : 'text-[#546270] hover:text-[#c6d4df]'
-                                    }`}>
-                                    {p.label}
-                                </button>
+                                <button key={p.id} onClick={() => choosePeriod(p.id)} aria-pressed={period === p.id}
+                                    className={`fchip ${period === p.id ? 'on' : ''}`}>{p.label}</button>
                             ))}
                         </div>
-                        {/* Platform: scopes everything below, like the period */}
-                        <div className="flex p-[2px] rounded-[3px] border border-[#2a475e] bg-[#101214]" role="tablist" aria-label="Platform">
+                        <div className="frow" role="group" aria-label="Platform">
                             {[['all', 'All'], ...PLATFORMS.map(p => [p, PLATFORM_SHORT[p]])].map(([id, label]) => (
-                                <button key={id} role="tab" aria-selected={platform === id} onClick={() => choosePlatform(id)}
-                                    className={`text-[10px] font-semibold uppercase tracking-[0.07em] px-2.5 py-1 rounded-[2px] transition-colors ${
-                                        platform === id ? 'bg-[#2a475e] text-white' : 'text-[#546270] hover:text-[#c6d4df]'
-                                    }`}>
-                                    {label}
-                                </button>
+                                <button key={id} onClick={() => choosePlatform(id)} aria-pressed={platform === id}
+                                    className={`fchip ${platform === id ? 'on' : ''}`}>{label}</button>
                             ))}
+                            <span className="fsep" />
+                            <button onClick={toggleFarms} aria-pressed={hideFarms} className={`fchip ${hideFarms ? 'on' : ''}`}
+                                title={`Steam games with ${FARM_MIN_UNLOCKS}+ unlocks earning more than ${FARM_PER_HOUR} achievements per hour of playtime${data ? `:\n${[...data.farms].map(k => data.meta.steam[k.slice(6)]?.name ?? k).join(', ')}` : ''}`}>
+                                {hideFarms ? <Check size={12} /> : <Plus size={12} />}Hide farms{data && <span className="n">{data.farms.size}</span>}
+                            </button>
                         </div>
-                        <label className="flex items-center gap-1.5 text-[10px] text-[#8f98a0] cursor-pointer select-none"
-                            title={`Steam games with ${FARM_MIN_UNLOCKS}+ unlocks earning more than ${FARM_PER_HOUR} achievements per hour of playtime${data ? `:\n${[...data.farms].map(k => data.meta.steam[k.slice(6)]?.name ?? k).join(', ')}` : ''}`}>
-                            <input type="checkbox" checked={hideFarms} onChange={toggleFarms} className="accent-[#66c0f4] w-3 h-3" />
-                            Hide achievement farms{data ? ` (${data.farms.size})` : ''}
-                        </label>
-                        <span className="text-[10px] text-[#546270]" title="Days and hours are shown in your timezone">
+                        <span className="fmeta" title="Days and hours are shown in your timezone">
                             {fmtDayKey(range.startKey)} – {fmtDayKey(range.endKey)} · {TZ}
                         </span>
                     </div>

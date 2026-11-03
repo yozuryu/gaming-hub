@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock, X, Medal , List, LayoutGrid } from 'lucide-react';
+import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock, X, Medal, List, LayoutGrid, Search, Check, Plus } from 'lucide-react';
 import { STEAM_STATUS, PROGRESS_SORTS } from './utils/constants.js';
 import { formatPlaytime, formatDate, formatTimeAgo, fmtDay, fmtTime, achIconUrl, capsuleUrl, headerUrl, heroUrl, libraryPortraitUrl, rarityLabel, rarityBorderColor } from './utils/helpers.js';
 import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap } from '../../assets/time.js';
@@ -235,28 +235,19 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo, loading 
                 </div>
 
                 {loading ? <ModalListSkeleton /> : (<>
-                {/* Filter bar */}
+                {/* Filter */}
                 <div className="flex items-center gap-2 px-4 py-2 border-b border-[#101214] shrink-0 anim-fade">
-                    {[
-                        { value: 'all',      label: 'All',      icon: null },
-                        { value: 'unlocked', label: 'Unlocked', icon: <Unlock size={9} /> },
-                        { value: 'locked',   label: 'Locked',   icon: <Lock size={9} /> },
-                    ].map(opt => (
-                        <button
-                            key={opt.value}
-                            onClick={() => setLockFilter(opt.value)}
-                            className={`text-[9px] font-semibold uppercase tracking-wider px-2 py-[3px] rounded-sm border transition-colors flex items-center gap-1 ${
-                                lockFilter === opt.value
-                                    ? 'bg-[#66c0f4] text-[#101214] border-[#66c0f4]'
-                                    : 'bg-[#101214] text-[#8f98a0] border-[#323f4c] hover:text-[#c6d4df] hover:border-[#546270]'
-                            }`}
-                        >
-                            {opt.icon}{opt.label}
-                        </button>
-                    ))}
-                    <span className="ml-auto text-[9px] text-[#546270]">
-                        {filteredAchs.length} / {achs.length}
-                    </span>
+                    <div className="frow flex-1 min-w-0" role="group" aria-label="Filter achievements">
+                        {[
+                            { value: 'all',      label: 'All',      icon: null },
+                            { value: 'unlocked', label: 'Unlocked', icon: <Unlock size={11} /> },
+                            { value: 'locked',   label: 'Locked',   icon: <Lock size={11} /> },
+                        ].map(opt => (
+                            <button key={opt.value} onClick={() => setLockFilter(opt.value)} aria-pressed={lockFilter === opt.value}
+                                className={`fchip ${lockFilter === opt.value ? 'on' : ''}`}>{opt.icon}{opt.label}</button>
+                        ))}
+                    </div>
+                    <span className="fmeta shrink-0 tabular-nums">{filteredAchs.length}/{achs.length}</span>
                 </div>
 
                 {/* Achievement list (re-keyed so a filter change fades the new list in) */}
@@ -651,64 +642,44 @@ const PROGRESS_VIEWS = [
 const NEARLY_PCT = 75;
 const STALE_MS   = 30 * 24 * 60 * 60 * 1000;
 
-const chipCls = (active, activeCls = 'bg-[#66c0f4] text-[#101214] border-[#66c0f4]') =>
-    `text-[9px] font-semibold uppercase tracking-wider rounded-[2px] border transition-colors ${
-        active ? activeCls : 'bg-[#101214] text-[#8f98a0] border-[#323f4c] hover:text-[#c6d4df] hover:border-[#546270]'
-    }`;
 
 const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, showCompleted, onShowCompleted, count, search, onSearch, viewToggle }) => {
     const hint = PROGRESS_VIEWS.find(v => v.value === view)?.hint;
     return (
-        <div className="flex flex-col gap-2 mb-4 anim-fade">
-            {/* View — full-width segmented control on mobile, inline chips on desktop */}
-            <div className="grid grid-cols-4 gap-1 md:flex md:items-center md:gap-1.5">
-                <span className="hidden md:inline text-[9px] text-[#546270] uppercase tracking-wider mr-0.5">View</span>
+        <div className="flex flex-col gap-2.5 mb-4 anim-fade">
+            {/* Views, plus the completed toggle in the All view: one row that scrolls sideways (chip styles in assets/ui.css) */}
+            <div className="frow" role="group" aria-label="Show">
                 {PROGRESS_VIEWS.map(v => (
-                    <button key={v.value} onClick={() => onView(v.value)}
-                        className={`${chipCls(view === v.value)} px-1 py-[6px] leading-tight text-center md:px-2 md:py-[3px]`}>
-                        {v.label}
-                    </button>
+                    <button key={v.value} onClick={() => onView(v.value)} aria-pressed={view === v.value}
+                        className={`fchip ${view === v.value ? 'on' : ''}`}>{v.label}</button>
                 ))}
-            </div>
-
-            {/* Sort + completed toggle (All view) or the view's rule, plus the game count */}
-            <div className="flex items-center gap-2 min-h-[22px]">
-                <div key={view === 'all' ? 'all' : view} className="flex items-center gap-2 min-w-0 anim-fade">
-                {view === 'all' ? (
+                {view === 'all' && (
                     <>
-                        <span className="text-[9px] text-[#546270] uppercase tracking-wider shrink-0">Sort</span>
-                        <div className="hidden md:flex items-center gap-1.5">
-                            {sorts.map(s => (
-                                <button key={s.value} onClick={() => onSort(s.value)}
-                                    className={`${chipCls(sort === s.value, s.activeCls)} px-2 py-[3px]`}>
-                                    {s.label}
-                                </button>
-                            ))}
-                        </div>
-                        <select value={sort} onChange={e => onSort(e.target.value)}
-                            className="md:hidden bg-[#101214] border border-[#323f4c] rounded-[2px] text-[10px] text-[#c6d4df] px-1.5 py-[3px] outline-none focus:border-[#546270]"
-                            style={{ colorScheme: 'dark' }}>
-                            {sorts.map(s => <option key={s.value} value={s.value}>{s.label}</option>)}
-                        </select>
-                        <div className="w-px h-3.5 bg-[#2a475e] mx-0.5 md:mx-1 shrink-0" />
-                        <button onClick={() => onShowCompleted(v => !v)}
-                            className={`${chipCls(showCompleted, 'bg-[#e5b143] text-[#101214] border-[#e5b143]')} px-2 py-[3px] shrink-0`}>
-                            {completedLabel}
+                        <span className="fsep" />
+                        <button onClick={() => onShowCompleted(v => !v)} aria-pressed={showCompleted} title={`Include ${completedLabel.toLowerCase()} games`}
+                            className={`fchip anim-fade ${showCompleted ? 'on' : ''}`}>
+                            {showCompleted ? <Check size={12} /> : <Plus size={12} />}{completedLabel}
                         </button>
                     </>
-                ) : (
-                    <span className="text-[9px] text-[#546270] leading-snug">{hint}</span>
                 )}
+            </div>
+
+            {/* Search, sort (All view only: the other views have a fixed order) and the list / tiles switch */}
+            <div className="fbar">
+                <div className="fsearch">
+                    <Search size={14} />
+                    <input type="text" inputMode="search" value={search} onChange={e => onSearch(e.target.value)} placeholder="Search games" aria-label="Search games" />
+                    {search && <button onClick={() => onSearch('')} aria-label="Clear search"><X size={13} /></button>}
                 </div>
-                <span className="ml-auto text-[9px] text-[#546270] shrink-0">{count} games</span>
+                {view === 'all' && (
+                    <select value={sort} onChange={e => onSort(e.target.value)} className="fselect anim-fade" aria-label="Sort">
+                        {sorts.map(s => <option key={s.value} value={s.value}>Sort: {s.label}</option>)}
+                    </select>
+                )}
                 {viewToggle}
             </div>
 
-            <div className="relative">
-                <input type="text" value={search} onChange={e => onSearch(e.target.value)} placeholder="Search games…"
-                    className="w-full bg-[#101214] border border-[#323f4c] rounded-[2px] px-2.5 py-1.5 text-[11px] text-[#c6d4df] placeholder-[#546270] outline-none focus:border-[#546270]" />
-                {search && <button onClick={() => onSearch('')} className="absolute right-2 top-1/2 -translate-y-1/2 text-[#546270] hover:text-[#c6d4df] text-[10px]">×</button>}
-            </div>
+            <div key={view} className="fmeta anim-fade"><b>{count.toLocaleString()}</b> games{hint && <> · {hint}</>}</div>
         </div>
     );
 };

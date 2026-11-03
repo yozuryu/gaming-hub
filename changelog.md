@@ -1,5 +1,40 @@
 # Changelog
 
+## v26.11.04
+
+Filters and search look the same on every page and take less room: sentence-case chips in one scrolling row, search with sort beside it, counts as plain text.
+
+### RetroAchievements
+
+- Completion Progress: the views (All · Nearly there · In progress · Abandoned) and the "+ Mastered" toggle are one chip row; search, the Sort dropdown and the list / tiles switch share the next row; the game count and the view's rule are one muted line below. The SORT label and the separate sort chips are gone
+- Watchlist: search and a Group dropdown on one row, then the status filters as chips with their counts (All · Not started · In progress · Mastered · No achievements), then one summary line with "Clear filters". It replaces three wrapped rows of uppercase buttons and the long stats line
+- Achievement modal: the Status and Type rows are one chip row (All · Unlocked · Locked │ Progression · Missable); tap an active type again to clear it
+
+### Steam
+
+- Completion Progress and the achievement modal filters in the same chip style as RA
+
+### Xbox
+
+- Completion Progress and the achievement modal filters in the same chip style as RA
+
+### Completions
+
+- One chip row: All · RA · Steam · Xbox │ Beaten · Hacks · Homebrew · Prototypes, where "+" means left out and "✓" included. The total in the header is plain text instead of a box
+
+### Activity
+
+- The header counts (unlocks, RA, Steam, Xbox; playtime totals; Playing groups) are a plain text line instead of boxes that looked like filters
+- The platform filter is a chip row under the section title instead of tiny boxes squeezed into it; the Unlocks / Playtime / Playing switch is in sentence case
+
+### Analytics
+
+- Period and platform are chip rows (no more two-line uppercase period buttons on phone); "Hide farms" is a toggle chip with the farm count; the date range is a muted line
+
+### Structure
+
+- Shared filter styles in `assets/ui.css` (`.frow`, `.fchip`, `.fsep`, `.fbar`, `.fsearch`, `.fselect`, `.fmeta`), now also linked from Activity and Analytics. A row that overflows fades out at its right edge until scrolled to the end (scroll-driven CSS, no script)
+
 ## v26.11.03
 
 Five pieces from the design review folded into the current look: the achievement modal opens as a swipe-up sheet on phone, the Hub's platform cards become one compact strip, profile headers show your latest game's art, game lists get a list/tiles switch, and Completions gets a new layout.

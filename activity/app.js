@@ -872,7 +872,8 @@ const App = () => {
         { id: 'xbox',  label: 'Xbox' },
     ], [view]);
 
-    const pill = "text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]";
+    // Header counts: a plain line, not chips (only filters look tappable)
+    const pill = "text-[12px] text-[#8f98a0] whitespace-nowrap";
 
     return (
         <div className="bg-[#171a21] text-[#c6d4df] min-h-screen flex flex-col font-sans selection:bg-[#66c0f4] selection:text-[#171a21]">
@@ -916,10 +917,10 @@ const App = () => {
                         <div className="grid grid-cols-3 basis-full md:flex md:basis-auto p-[2px] rounded-[3px] border border-[#2a475e] bg-[#101214] md:ml-auto" role="tablist">
                             {[['achievements', 'Unlocks', Trophy], ['playtime', 'Playtime', Clock], ['playing', 'Playing', Gamepad2]].map(([id, label, Icon]) => (
                                 <button key={id} role="tab" aria-selected={view === id} onClick={() => switchView(id)}
-                                    className={`flex items-center justify-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.07em] px-3 py-1.5 md:py-1 rounded-[2px] transition-colors ${
+                                    className={`flex items-center justify-center gap-1.5 text-[12px] font-medium px-3 py-1.5 md:py-1 rounded-[2px] transition-colors ${
                                         view === id ? 'bg-[#2a475e] text-white' : 'text-[#546270] hover:text-[#c6d4df]'
                                     }`}>
-                                    <Icon size={11} /> {label}
+                                    <Icon size={12} /> {label}
                                 </button>
                             ))}
                         </div>
@@ -931,9 +932,9 @@ const App = () => {
                         </div>
                     )}
                     {!loading && view === 'playtime' && playtime && (
-                        <div key="play-pills" className="flex flex-wrap gap-2 anim-fade">
+                        <div key="play-pills" className="flex flex-wrap gap-x-4 gap-y-1 anim-fade">
                             <span className={pill}><span className="text-[#c6d4df]">{fmtMinutes(playTotals.ra + playTotals.steam)}</span> past year</span>
-                            <span className={pill}><span className="text-[#e5b143]">{fmtMinutes(playTotals.ra)}</span> RetroAchievements</span>
+                            <span className={pill}><span className="text-[#e5b143]">{fmtMinutes(playTotals.ra)}</span> RA</span>
                             <span className={pill}><span className="text-[#66c0f4]">{fmtMinutes(playTotals.steam)}</span> Steam</span>
                             <span className={pill} title="Xbox doesn't report playtime">Xbox <span className="text-[#323f4c]">n/a</span></span>
                         </div>
@@ -944,7 +945,7 @@ const App = () => {
                         </div>
                     )}
                     {view === 'playing' && playing && (
-                        <div key="playing-pills" className="flex flex-wrap gap-2 anim-fade">
+                        <div key="playing-pills" className="flex flex-wrap gap-x-4 gap-y-1 anim-fade">
                             {PLAYING_GROUPS.map(grp => (
                                 <span key={grp.id} className={pill}>
                                     <span className={grp.id === 'playing' ? 'text-[#66c0f4]' : 'text-[#c6d4df]'}>{playing.groups[grp.id]?.length ?? 0}</span> {grp.label}
@@ -954,17 +955,17 @@ const App = () => {
                         </div>
                     )}
                     {!loading && view === 'achievements' && (
-                        <div key="ach-pills" className="flex flex-wrap gap-2 anim-fade">
-                            <span className="text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
-                                <span className="text-[#c6d4df]">{(raAchs.length + steamAchs.length + xboxAchs.length).toLocaleString()}</span> total
+                        <div key="ach-pills" className="flex flex-wrap gap-x-4 gap-y-1 anim-fade">
+                            <span className={pill}>
+                                <span className="text-[#c6d4df] font-semibold">{(raAchs.length + steamAchs.length + xboxAchs.length).toLocaleString()}</span> unlocks
                             </span>
-                            <span className="text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
-                                <span className="text-[#e5b143]">{raAchs.length.toLocaleString()}</span> RetroAchievements
+                            <span className={pill}>
+                                <span className="text-[#e5b143] font-semibold">{raAchs.length.toLocaleString()}</span> RA
                             </span>
-                            <span className="text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
+                            <span className={pill}>
                                 <span className="text-[#66c0f4]">{steamAchs.length.toLocaleString()}</span> Steam
                             </span>
-                            <span className="text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
+                            <span className={pill}>
                                 <span className="text-[#52b043]">{xboxAchs.length.toLocaleString()}</span> Xbox
                             </span>
                         </div>
@@ -980,22 +981,13 @@ const App = () => {
                         <div className="flex items-center gap-2 flex-wrap border-b border-[#2a475e] pb-1.5">
                             <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0" />
                             <span className="text-[13px] text-white tracking-wide uppercase font-medium">In Rotation</span>
-                            <div className="flex items-center gap-1.5 ml-2">
-                                {filters.map(f => (
-                                    <button
-                                        key={f.id}
-                                        onClick={() => setFilter(f.id)}
-                                        className={`text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[2px] rounded-[2px] border transition-colors ${
-                                            filter === f.id
-                                                ? 'bg-[#66c0f4] text-[#101214] border-[#66c0f4]'
-                                                : 'text-[#546270] border-[#2a475e] hover:border-[#66c0f4] hover:text-[#c6d4df]'
-                                        }`}
-                                    >
-                                        {f.label}
-                                    </button>
-                                ))}
-                            </div>
                             <span className="text-[10px] text-[#546270] ml-auto hidden sm:inline">Unfinished games you've put time into, last 13 weeks</span>
+                        </div>
+                        <div className="frow -mt-1" role="group" aria-label="Platform">
+                            {filters.map(f => (
+                                <button key={f.id} onClick={() => setFilter(f.id)} aria-pressed={filter === f.id}
+                                    className={`fchip ${filter === f.id ? 'on' : ''}`}>{f.label}</button>
+                            ))}
                         </div>
                         {!playing ? <PlayingSkeleton /> : playing.error ? (
                             <div className="text-[#8f98a0] text-[11px] py-4 italic text-center anim-fade">Could not load the games in rotation.</div>
@@ -1127,25 +1119,10 @@ const App = () => {
                             </div>
                         </div>
 
-                        {/* Filter + count */}
+                        {/* Section title + count, then the platform filter */}
                         <div className="flex items-center gap-2 flex-wrap border-b border-[#2a475e] pb-1.5">
                             <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0" />
                             <span className="text-[13px] text-white tracking-wide uppercase font-medium">{view === 'playtime' ? 'Play Sessions' : 'Recent Unlocks'}</span>
-                            <div className="flex items-center gap-1.5 ml-2">
-                                {filters.map(f => (
-                                    <button
-                                        key={f.id}
-                                        onClick={() => { setFilter(f.id); setSelectedDay(null); }}
-                                        className={`text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[2px] rounded-[2px] border transition-colors ${
-                                            filter === f.id
-                                                ? 'bg-[#66c0f4] text-[#101214] border-[#66c0f4]'
-                                                : 'text-[#546270] border-[#2a475e] hover:border-[#66c0f4] hover:text-[#c6d4df]'
-                                        }`}
-                                    >
-                                        {f.label}
-                                    </button>
-                                ))}
-                            </div>
                             <span className="text-[10px] text-[#546270] ml-auto">
                                 {view === 'playtime'
                                     ? (selectedDay
@@ -1155,6 +1132,12 @@ const App = () => {
                                     ? `${fmtDay(selectedDay)} · ${displayAchs.length} achievements`
                                     : `${displayAchs.length} total`}
                             </span>
+                        </div>
+                        <div className="frow -mt-1" role="group" aria-label="Platform">
+                            {filters.map(f => (
+                                <button key={f.id} onClick={() => { setFilter(f.id); setSelectedDay(null); }} aria-pressed={filter === f.id}
+                                    className={`fchip ${filter === f.id ? 'on' : ''}`}>{f.label}</button>
+                            ))}
                         </div>
 
                         {/* Timeline */}
