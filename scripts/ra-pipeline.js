@@ -376,8 +376,22 @@ function serializeLocally(payload) {
         };
     };
 
-    // Attach per-game playtime (minutes), screenshot and (beaten awards) the win condition to
-    // game awards so the Completions page can show them without loading games.json
+    // The rarest achievement of a mastered / completed game: lowest unlock rate among players
+    // of the award's mode, with its badge for the Completions highlight
+    const rarestOf = (game, hardcore) => {
+        const players = hardcore ? game.numDistinctPlayersHardcore : game.numDistinctPlayersCasual;
+        if (!(players > 0)) return null;
+        let best = null;
+        for (const a of Object.values(game.achievements || {})) {
+            const pct = Math.min(100, ((hardcore ? a.numAwardedHardcore : a.numAwarded) / players) * 100);
+            if (!best || pct < best.pct) best = { name: a.title, badge: a.badgeName, pct };
+        }
+        return best && { ...best, pct: Math.round(best.pct * 10) / 10 };
+    };
+
+    // Attach per-game playtime (minutes), screenshot, the win condition (beaten awards) and the
+    // rarest achievement (mastery awards) to game awards so the Completions page can show them
+    // without loading games.json
     const pageAwards = payload.pageAwards && {
         ...payload.pageAwards,
         visibleUserAwards: (payload.pageAwards.visibleUserAwards || []).map(award => {
@@ -385,11 +399,13 @@ function serializeLocally(payload) {
             if (!game) return award;
             const seconds = game.userTotalPlaytime;
             const winCondition = award.awardType === 'Game Beaten' ? winConditionOf(game, award.awardDataExtra === 1) : null;
+            const rarest = award.awardType === 'Mastery/Completion' ? rarestOf(game, award.awardDataExtra === 1) : null;
             return {
                 ...award,
                 ...(seconds ? { playtime: Math.round(seconds / 60) } : {}),
                 ...(game.imageIngame ? { imageIngame: game.imageIngame } : {}),
                 ...(winCondition ? { winCondition } : {}),
+                ...(rarest ? { rarest } : {}),
             };
         }),
     };

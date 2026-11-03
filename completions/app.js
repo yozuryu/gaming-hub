@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Star, Gem, ChevronDown, Flame, Feather, Check, Plus } from 'lucide-react';
+import { Star, Gem, ChevronDown, Flame, Feather, Check, Plus, Medal } from 'lucide-react';
 import { TZ, fmtDate, monthKey, yearOf, keyToDate } from '../assets/time.js';
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -74,6 +74,7 @@ const normalizeRA = (awards, showBeaten, totals = {}) =>
             total: totals[a.awardData] ?? null,
             console: a.consoleName,
             playtime: a.playtime,
+            rarest: a.rarest ? { r: a.rarest.pct, n: a.rarest.name, hc: a.awardDataExtra === 1, icon: a.rarest.badge ? `${RA_MEDIA}/Badge/${a.rarest.badge}.png` : null } : null,
             lastAchName: a.winCondition?.name ?? null,   // beaten: the win condition (RA pipeline)
             lastAchGlobalPct: a.winCondition?.pct ?? null,
             gameUrl: `${RA_SITE}/game/${a.awardData}`,
@@ -249,26 +250,29 @@ const HardcoreChip = () => (
     <span className={chipCls} style={{ color: '#ff6b6b', borderColor: 'rgba(255,107,107,0.45)', background: 'rgba(16,18,20,0.75)' }}><Flame size={10} />Hardcore</span>
 );
 
-// Rarest achievement of a game, from the unlock history (lowest r)
-const Rarest = ({ item, rare }) => {
-    if (!rare) return <span className="text-[#546270]">—</span>;
-    if (item.platform === 'ra') {
-        return (
-            <>
-                <span className="flex items-center gap-1 font-semibold" style={{ color: rare.hc ? '#ff6b6b' : '#8f98a0' }}>
-                    {rare.hc ? <Flame size={11} /> : <Feather size={11} />}{rare.r.toFixed(1)}%
-                </span>
-                <span className="text-[11px] text-[#8f98a0] truncate">{rare.n}</span>
-            </>
-        );
-    }
+// Rarest achievement: its icon, unlock rate (RA: hardcore red / softcore grey, like the modal;
+// Steam / Xbox: rarity tier colour) and name; "rarest" is in the tooltip, the icon + rate say it
+const RarestCell = ({ item, rare }) => {
+    if (!rare) return (
+        <div className="flex flex-col items-center justify-center gap-px px-2 py-1.5 min-w-0">
+            <b className="text-[12px] font-semibold text-[#323f4c]">–</b>
+            <span className="text-[11px] text-[#8f98a0]">Rarest</span>
+        </div>
+    );
+    const isRA = item.platform === 'ra';
+    const color = isRA ? (rare.hc ? '#ff6b6b' : '#8f98a0') : rarityColor(rare.r);
     return (
-        <>
-            <span className="flex items-center gap-1 font-semibold text-[12px] whitespace-nowrap min-w-0" style={{ color: rarityColor(rare.r) }}>
-                <Gem size={10} className="shrink-0" /><span className="shrink-0">{rare.r}%</span><span className="truncate font-normal">{rarityLabel(rare.r)}</span>
-            </span>
-            <span className="text-[11px] text-[#8f98a0] truncate">{rare.n}</span>
-        </>
+        <div className="flex items-center gap-2 px-2.5 py-1.5 min-w-0" title={`Rarest achievement: ${rare.n} · ${rare.r}%${isRA ? '' : ` (${rarityLabel(rare.r)})`}`}>
+            {rare.icon
+                ? <img src={rare.icon} alt="" loading="lazy" className="w-7 h-7 rounded-[2px] border border-[#2a475e] shrink-0 object-cover bg-[#101214]" />
+                : <span className="w-7 h-7 rounded-[2px] border border-[#2a475e] bg-[#101214] shrink-0 grid place-items-center" style={{ color }}>{isRA ? (rare.hc ? <Flame size={12} /> : <Feather size={12} />) : <Gem size={12} />}</span>}
+            <div className="flex flex-col gap-px min-w-0">
+                <b className="text-[12px] font-semibold tabular-nums whitespace-nowrap flex items-center gap-1" style={{ color }}>
+                    {isRA ? (rare.hc ? <Flame size={10} /> : <Feather size={10} />) : <Gem size={10} />}{rare.r}%
+                </b>
+                <span className="text-[11px] text-[#8f98a0] leading-tight truncate md:whitespace-normal md:line-clamp-2">{rare.n}</span>
+            </div>
+        </div>
     );
 };
 
@@ -304,28 +308,26 @@ const Highlight = ({ item, rare }) => (
             </div>
             <span className="absolute top-2 right-2 text-[11px] font-semibold text-white bg-[#101214]/85 px-1.5 py-[1px] rounded-[2px]">{fmtDayMonth(item.completedAt)}</span>
         </div>
-        <div className="flex items-center flex-wrap gap-x-2 gap-y-0.5 px-3 py-2 border-b border-[#22344a] min-w-0">
+        <div className="flex items-center flex-wrap gap-x-2 gap-y-0.5 px-3 py-2 min-w-0">
             <span className={chipCls} style={{ background: '#e5b143', borderColor: '#e5b143', color: '#101214' }}><Star size={10} fill="currentColor" />{STATUS_LABEL[item.type]}</span>
             <span className="text-[13px] font-semibold text-white truncate min-w-0 max-w-full">{item.baseTitle || item.gameName}</span>
             {item.tags?.length > 0 && <TildeTags tags={item.tags} />}
             {item.console && <span className="text-[11px] text-[#8f98a0] truncate min-w-0">{item.console}</span>}
         </div>
-        <div className="grid divide-x divide-[#22344a] text-[13px]"
+        {/* Stats band, in the Playing tile's style: darker strip, value above a small label */}
+        <div className="mt-auto grid border-t border-[#1a2535] bg-[#172333] divide-x divide-[#1a2535]"
             style={{ gridTemplateColumns: item.playtime > 0 ? 'auto auto minmax(0, 1fr)' : 'auto minmax(0, 1fr)' }}>
-            <div className="flex flex-col gap-0.5 px-3 py-2">
+            <div className="flex flex-col items-center justify-center gap-px px-3 py-1.5">
+                <b className="text-[12px] font-semibold text-[#e5b143] tabular-nums whitespace-nowrap">{item.total != null ? `${item.total}/${item.total}` : '–'}</b>
                 <span className="text-[11px] text-[#8f98a0]">Achievements</span>
-                <span className="font-semibold text-[#e5b143] tabular-nums">{item.total != null ? `${item.total}/${item.total}` : '—'}</span>
             </div>
             {item.playtime > 0 && (
-                <div className="flex flex-col gap-0.5 px-3 py-2">
+                <div className="flex flex-col items-center justify-center gap-px px-3 py-1.5">
+                    <b className="text-[12px] font-semibold text-[#c6d4df] tabular-nums whitespace-nowrap">{formatPlaytime(item.playtime)}</b>
                     <span className="text-[11px] text-[#8f98a0]">Played</span>
-                    <span className="font-semibold text-[#c6d4df] tabular-nums">{formatPlaytime(item.playtime)}</span>
                 </div>
             )}
-            <div className="flex flex-col gap-0.5 px-3 py-2 min-w-0">
-                <span className="text-[11px] text-[#8f98a0]">Rarest</span>
-                <Rarest item={item} rare={rare} />
-            </div>
+            <RarestCell item={item} rare={rare} />
         </div>
     </a>
 );
@@ -341,16 +343,16 @@ const BeatenRow = ({ item }) => (
             ? <img src={item.artUrl} alt="" loading="lazy" className="grow-banner" />
             : <img src={item.iconUrl} alt="" loading="lazy" className={`grow-icon ${item.platform === 'ra' ? 'px' : ''}`} />}
         <div className="grow-main">
-            <span className="grow-title" style={{ whiteSpace: 'normal' }}>{item.baseTitle || item.gameName}</span>
-            <div className="grow-sub" style={{ flexWrap: 'wrap', rowGap: '3px' }}>
+            <span className="grow-title" title={item.gameName}>{item.baseTitle || item.gameName}</span>
+            <div className="grow-sub">
                 <span className={chipCls} style={{ color: '#c6d4df', borderColor: 'rgba(184,196,206,0.35)', background: '#2a3440' }}>Beaten</span>
                 <PlatformChip platform={item.platform} />
-                {item.console && <span>{item.console}</span>}
                 {item.platform === 'ra' && item.hardcore && <Flame size={11} className="text-[#ff6b6b]" />}
+                {item.console && <span className="shrink">{item.console}</span>}
                 {item.tags?.length > 0 && <TildeTags tags={item.tags} />}
             </div>
             {item.lastAchName && (
-                <div className="grow-sub" style={{ flexWrap: 'wrap', rowGap: '2px', whiteSpace: 'normal' }}>
+                <div className="grow-sub" title={item.lastAchName}>
                     <span className="text-[#e5b143] shrink">{item.lastAchName}</span>
                     {item.lastAchGlobalPct != null && (item.platform === 'ra' ? (
                         // RA: unlock rate among players of the same mode, as in the achievement modal
@@ -358,8 +360,8 @@ const BeatenRow = ({ item }) => (
                             {item.hardcore ? <Flame size={10} /> : <Feather size={10} />}{item.lastAchGlobalPct}%
                         </span>
                     ) : (
-                        <span className="flex items-center gap-1" style={{ color: rarityColor(item.lastAchGlobalPct) }}>
-                            <Gem size={10} />{rarityLabel(item.lastAchGlobalPct)} · {item.lastAchGlobalPct}%
+                        <span className="flex items-center gap-1" style={{ color: rarityColor(item.lastAchGlobalPct) }} title={rarityLabel(item.lastAchGlobalPct)}>
+                            <Gem size={10} />{item.lastAchGlobalPct}%
                         </span>
                     ))}
                 </div>
@@ -399,7 +401,7 @@ const YearOpen = ({ year, items, rarest, onToggle }) => {
     const months = groupByMonth(items);
     const done = items.filter(isComplete);
     const beaten = items.filter(i => !isComplete(i));
-    const rare = item => rarest[`${item.platform}-${item.gameId}`];
+    const rare = item => item.rarest ?? rarest[`${item.platform}-${item.gameId}`];
     return (
         <section className="flex flex-col gap-4">
             <button onClick={onToggle} className="flex items-baseline gap-3 text-left group outline-none">
@@ -440,49 +442,71 @@ const YearOpen = ({ year, items, rarest, onToggle }) => {
     );
 };
 
-// A closed year: one line with its counts and a row of covers (★ on completed ones)
+// A closed year: one line with its counts (★ complete, medal beaten) and its covers (★ on
+// completed ones). The covers scroll sideways on phone; a tap anywhere opens the year.
 const YearClosed = ({ year, items, onToggle }) => {
     const done = items.filter(isComplete).length;
     const beaten = items.length - done;
     return (
-        <button onClick={onToggle} className="w-full flex items-center gap-3 py-2.5 border-t border-[#22344a] text-left group outline-none min-w-0">
+        <div role="button" tabIndex={0} onClick={onToggle} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onToggle(); } }}
+            aria-label={`${year}: ${done} complete, ${beaten} beaten. Show`}
+            className="w-full flex items-center gap-3 py-1.5 border-t border-[#22344a] text-left group outline-none cursor-pointer min-w-0 focus-visible:bg-[#1b2838]">
             <span className="text-[15px] font-semibold text-white w-11 shrink-0">{year}</span>
-            <span className="text-[12px] text-[#8f98a0] shrink-0">
-                {done > 0 && <span className="text-[#e5b143] font-semibold">{done} ★</span>}
-                {done > 0 && beaten > 0 && <span className="mx-1 text-[#546270]">·</span>}
-                {beaten > 0 && <><span className="text-[#c6d4df] font-semibold">{beaten}</span> beaten</>}
+            {/* Two fixed slots (complete, beaten), kept even when empty, so every strip starts at the same x */}
+            <span className="grid grid-cols-[34px_34px] gap-1.5 text-[12px] shrink-0 tabular-nums">
+                <span className="flex items-center gap-1 text-[#e5b143] font-semibold" title={done ? `${done} complete` : undefined}>{done > 0 && <><Star size={11} fill="currentColor" />{done}</>}</span>
+                <span className="flex items-center gap-1 text-[#b8c4ce] font-semibold" title={beaten ? `${beaten} beaten` : undefined}>{beaten > 0 && <><Medal size={12} />{beaten}</>}</span>
             </span>
-            <span className="flex items-center gap-1.5 overflow-hidden min-w-0 flex-1">
-                {items.slice(0, 12).map((item, i) => (
+            <span className="frow flex-1 min-w-0 gap-1.5 py-1.5 pr-1.5">
+                {items.map((item, i) => (
                     <span key={i} className="relative shrink-0">
                         <img src={item.platform === 'steam' ? item.artUrl : item.iconUrl} alt="" title={item.gameName} loading="lazy"
-                            className={`h-6 rounded-[2px] border border-[#101214] bg-[#2a475e] object-cover ${item.platform === 'steam' ? 'w-[51px]' : 'w-6'} ${item.platform === 'ra' ? 'px' : ''}`} />
+                            className={`block h-6 rounded-[2px] border border-[#101214] bg-[#2a475e] object-cover ${item.platform === 'steam' ? 'w-[51px]' : 'w-6'} ${item.platform === 'ra' ? 'px' : ''}`} />
                         {isComplete(item) && <span className="absolute -bottom-1 -right-1 w-3 h-3 rounded-full bg-[#e5b143] text-[#101214] grid place-items-center"><Star size={7} fill="currentColor" /></span>}
                     </span>
                 ))}
             </span>
             <ChevronDown size={14} className="shrink-0 text-[#546270] group-hover:text-[#c6d4df] transition-colors" />
-        </button>
+        </div>
     );
 };
 
-// Rarest unlocked achievement per game across the unlock history (history/{YYYY}.json),
-// loaded once for the platforms that have a completed game on screen
-const loadRarest = async platforms => {
+// Rarest achievement of completed games that don't carry it yet: Steam / Xbox from the game's
+// own file (icon + global rate), RA from the unlock history (no icon) until the RA pipeline
+// has written `rarest` on the award. Keys are `${platform}-${gameId}`.
+let raHistory = null;
+const loadRarest = async items => {
     const out = {};
-    await Promise.all(platforms.map(async pl => {
+    await Promise.all(items.map(async item => {
+        const key = `${item.platform}-${item.gameId}`;
         try {
-            const idx = await fetch(`../data/${pl}/history/index.json`).then(r => r.json());
-            const years = await Promise.all(Object.keys(idx.years || {}).map(y =>
-                fetch(`../data/${pl}/history/${y}.json`).then(r => r.json()).catch(() => ({ unlocks: [] }))));
-            for (const file of years) {
-                for (const u of file.unlocks || []) {
-                    if (u.r == null) continue;
-                    const key = `${pl}-${u.g}`;
-                    if (!out[key] || u.r < out[key].r) out[key] = { r: u.r, n: u.n, hc: u.hc };
-                }
+            if (item.platform === 'ra') {
+                raHistory ??= (async () => {
+                    const idx = await fetch('../data/ra/history/index.json').then(r => r.json());
+                    const files = await Promise.all(Object.keys(idx.years || {}).map(y =>
+                        fetch(`../data/ra/history/${y}.json`).then(r => r.json()).catch(() => ({ unlocks: [] }))));
+                    const best = {};
+                    for (const f of files) for (const u of f.unlocks || []) {
+                        if (u.r == null) continue;
+                        if (!best[u.g] || u.r < best[u.g].r) best[u.g] = { r: u.r, n: u.n, hc: u.hc };
+                    }
+                    return best;
+                })();
+                const hit = (await raHistory)[item.gameId];
+                if (hit) out[key] = hit;
+                return;
             }
-        } catch { /* no history for this platform: highlights show — */ }
+            const game = await fetch(`../data/${item.platform}/games/${item.gameId}.json`).then(r => r.json());
+            let best = null;
+            for (const a of game.achievements || []) {
+                if (!a.unlocked || a.globalPct == null) continue;
+                if (!best || a.globalPct < best.globalPct) best = a;
+            }
+            if (best) out[key] = {
+                r: best.globalPct, n: best.displayName,
+                icon: item.platform === 'steam' ? achIconUrl(item.gameId, best.iconUrl) : xboxImg(best.iconUrl, 64),
+            };
+        } catch { /* no data: the cell shows – */ }
     }));
     return out;
 };
@@ -587,19 +611,19 @@ const App = () => {
         return Object.entries(map).sort(([a], [b]) => +b - +a);
     }, [groups]);
 
-    // Rarest achievements come from the unlock history, fetched once a completed game is on screen
+    // Rarest achievements of the completed games on screen that don't carry one (see loadRarest)
     const [rarest, setRarest] = useState({});
     const rarestRequested = React.useRef(new Set());
     useEffect(() => {
-        const need = new Set();
+        const todo = [];
         byYear.forEach(([year, monthGroups]) => {
             if (!expandedYears.has(year)) return;
-            monthGroups.forEach(([, items]) => items.forEach(i => { if (isComplete(i)) need.add(i.platform); }));
+            monthGroups.forEach(([, items]) => items.forEach(i => {
+                const key = `${i.platform}-${i.gameId}`;
+                if (isComplete(i) && !i.rarest && !rarestRequested.current.has(key)) { rarestRequested.current.add(key); todo.push(i); }
+            }));
         });
-        const todo = [...need].filter(pl => !rarestRequested.current.has(pl));
-        if (!todo.length) return;
-        todo.forEach(pl => rarestRequested.current.add(pl));
-        loadRarest(todo).then(r => setRarest(prev => ({ ...prev, ...r })));
+        if (todo.length) loadRarest(todo).then(r => setRarest(prev => ({ ...prev, ...r })));
     }, [byYear, expandedYears]);
 
     return (
@@ -689,20 +713,25 @@ const App = () => {
                     <div className="text-center py-16 text-[#546270] text-[11px] anim-fade">No completions found.</div>
                 ) : (
                     // Fades in over the skeleton, and again when a filter changes the list.
-                    // Open years first in full, closed years as one line each (two columns on desktop).
+                    // Years stay in order: an open year in full, each run of closed years as one line each (two columns on desktop).
                     <div key={`${platform}-${showBeaten}-${[...hiddenTags].sort().join(',')}`} className="flex flex-col gap-8 anim-in">
-                        {byYear.filter(([year]) => expandedYears.has(year)).map(([year, monthGroups]) => (
-                            <div key={year} className="anim-fade">
-                                <YearOpen year={year} items={monthGroups.flatMap(([, items]) => items)} rarest={rarest} onToggle={() => toggleYear(year)} />
+                        {byYear.reduce((segs, [year, monthGroups]) => {
+                            const items = monthGroups.flatMap(([, list]) => list);
+                            if (expandedYears.has(year)) segs.push({ open: true, year, items });
+                            else if (segs.length && !segs[segs.length - 1].open) segs[segs.length - 1].years.push({ year, items });
+                            else segs.push({ open: false, years: [{ year, items }] });
+                            return segs;
+                        }, []).map(seg => seg.open ? (
+                            <div key={seg.year} className="anim-fade">
+                                <YearOpen year={seg.year} items={seg.items} rarest={rarest} onToggle={() => toggleYear(seg.year)} />
                             </div>
-                        ))}
-                        {byYear.some(([year]) => !expandedYears.has(year)) && (
-                            <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-8 border-b border-[#22344a]">
-                                {byYear.filter(([year]) => !expandedYears.has(year)).map(([year, monthGroups]) => (
-                                    <YearClosed key={year} year={year} items={monthGroups.flatMap(([, items]) => items)} onToggle={() => toggleYear(year)} />
+                        ) : (
+                            <div key={`closed-${seg.years[0].year}`} className="grid grid-cols-1 md:grid-cols-2 md:gap-x-8 border-b border-[#22344a]">
+                                {seg.years.map(({ year, items }) => (
+                                    <YearClosed key={year} year={year} items={items} onToggle={() => toggleYear(year)} />
                                 ))}
                             </div>
-                        )}
+                        ))}
                     </div>
                 )}
             </main>
