@@ -261,10 +261,20 @@ button.gtile:hover { transform: translateY(-2px); }
   .ptab { height: 44px; font-size: 12.5px; }
 }
 /* Carousel swipe: the neighbouring tab as a skeleton beside the content while dragging */
-.tab-peek { position: absolute; width: 100%; pointer-events: none; }
-.tab-peek-in { display: flex; flex-direction: column; gap: 8px; }
-.tab-peek-line { height: 14px; border-radius: 2px; margin-bottom: 4px; }
-.tab-peek-row { border-radius: 3px; }
+.tab-peek { position: absolute; width: 100%; overflow: hidden; pointer-events: none; }
+.tab-peek-in { display: flex; flex-direction: column; gap: 12px; }
+.tab-peek .grow, .tab-peek .wrow, .tab-peek .gtile, .tab-peek .stile { background: #1b2838; border-color: #22344a; }
+.tab-peek .grow-main, .tab-peek .wrow-main { gap: 7px; }
+.pk-line { height: 11px; border-radius: 2px; }
+.pk-h2 { padding-bottom: 7px; border-bottom: 1px solid #2a475e; }
+.pk-search { flex: 1; height: 34px; border-radius: 3px; }
+.pk-toggle { width: 72px; height: 34px; border-radius: 3px; flex-shrink: 0; }
+.pk-chip { height: 30px; border-radius: 3px; flex-shrink: 0; }
+.pk-card { display: flex; flex-direction: column; gap: 8px; padding: 10px; background: #1b2838; border: 1px solid #22344a; border-radius: 3px; }
+.pk-card-art { height: 64px; border-radius: 2px; }
+.pk-heat { height: 118px; border-radius: 3px; }
+.pk-tl { display: flex; align-items: center; gap: 10px; }
+.pk-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 
 /* ── Profile Overview ───────────────────────────────────────────────────────────────
    Last played is the regular game row (.grow) with one extra line inside it (.grow-extra):

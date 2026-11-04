@@ -1,5 +1,21 @@
 # Changelog
 
+## v26.11.05
+
+Swiping between profile tabs looks like turning to another page.
+
+### RetroAchievements
+
+- Swiping between tabs: the incoming tab slides in as its own page, a gap away from the current one, and its skeleton has the tab's real shape (Overview's rows and stat tiles, Recent's search row and game rows or tiles, Progress's chips, Watchlist's rows, Activity's heatmap and timeline), capped to the screen height
+
+### Steam
+
+- The same tab swipe, with skeletons shaped like Overview, Recent, Progress and Activity
+
+### Xbox
+
+- The same tab swipe, with skeletons shaped like Overview, Recent, Progress and Activity
+
 ## v26.11.04
 
 Filters and search look the same on every page: chips with their counts in one scrolling row, a roomy search with sort beside it, and one letter-case rule; Completions gets a stats band with the rarest achievement's icon.

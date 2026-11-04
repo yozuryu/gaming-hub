@@ -1425,7 +1425,17 @@ export default function App() {
   // Swipe between tabs on phones (assets/tabs.js); the order follows the tab bar
   const hasSeries = seriesData.some(s => s.showProgress);
   const tabIds = ['overview', 'recent', 'progress', ...(hasSeries ? ['series'] : []), 'activity', 'backlog'];
-  const [swipeDir, setSwipeDir] = useSwipeTabs(tabContentRef, tabIds, activeTab, setTab, !loadingProfile && !!PROFILE_DATA);
+  // Skeleton shape of each tab while it slides in (assets/tabs.js PEEK_PARTS)
+  const peekList = gameView === 'tiles' ? 'tiles' : 'list';
+  const tabPeeks = {
+    overview: ['h2', 'row', 'h2', 'unlock', 'h2', 'stats'],
+    recent:   ['fbar', peekList],
+    progress: ['chips', 'fbar', peekList],
+    series:   ['cards'],
+    activity: ['h2', 'heatmap', 'h2', 'timeline'],
+    backlog:  ['fbar', 'chips', 'wlist'],
+  };
+  const [swipeDir, setSwipeDir] = useSwipeTabs(tabContentRef, tabIds, activeTab, setTab, !loadingProfile && !!PROFILE_DATA, tabPeeks);
   const pickTab = id => { setSwipeDir(null); setTab(id); };
 
   if (loadingProfile) return <ProfileLoadingSkeleton />;

@@ -59,21 +59,37 @@ const blocksSwipe = el => {
   return false;
 };
 
-// Placeholder for the neighbouring tab while dragging: shimmer blocks only, so a drag never
-// waits for a heavy tab to render; the real tab renders once the swipe has landed
-const PEEK_HTML = '<div class="tab-peek-in">' +
-  '<div class="shimmer tab-peek-line" style="width:38%"></div>' +
-  [62, 62, 62, 62, 62].map(h => `<div class="shimmer tab-peek-row" style="height:${h}px"></div>`).join('') +
-  '</div>';
+// Placeholder for the neighbouring tab while dragging: shimmer blocks in the tab's own shape
+// (same layout classes as the real content), so a drag never waits for a heavy tab to render;
+// the real tab renders once the swipe has landed. Pages describe each tab as a list of parts.
+const sh = (cls, style = '') => `<div class="shimmer ${cls}" style="${style}"></div>`;
+const rows = (n, row) => Array.from({ length: n }, (_, i) => row(i)).join('');
+const PEEK_PARTS = {
+  h2:      () => `<div class="pk-h2">${sh('pk-line', 'width:42%;height:13px')}</div>`,
+  fbar:    () => `<div class="fbar">${sh('pk-search')}${sh('pk-toggle')}</div>`,
+  chips:   () => `<div class="frow">${[58, 92, 86, 84].map(w => sh('pk-chip', `width:${w}px`)).join('')}</div>`,
+  meta:    () => sh('pk-line', 'width:55%;height:10px'),
+  row:     () => `<div class="grow">${sh('grow-icon')}<div class="grow-main">${sh('pk-line', 'width:70%')}${sh('pk-line', 'width:45%;height:9px')}</div></div>`,
+  unlock:  () => `<div class="grow">${sh('grow-icon')}<div class="grow-main">${sh('pk-line', 'width:55%')}${sh('pk-line', 'width:80%;height:9px')}${sh('pk-line', 'width:40%;height:9px')}</div></div>`,
+  list:    () => `<div class="glist">${rows(6, i => `<div class="grow">${sh('grow-icon')}<div class="grow-main">${sh('pk-line', `width:${60 + (i % 3) * 10}%`)}${sh('pk-line', 'width:40%;height:9px')}</div><div class="grow-prog">${sh('pk-line', 'width:34px;height:10px')}${sh('pk-line', 'width:100%;height:4px')}</div></div>`)}</div>`,
+  tiles:   () => `<div class="gtiles">${rows(4, () => `<div class="gtile"><div class="gtile-art shimmer"></div><div class="gtile-body">${sh('pk-line', 'width:80%')}${sh('pk-line', 'width:50%;height:9px')}${sh('pk-line', 'width:100%;height:4px')}</div></div>`)}</div>`,
+  stats:   () => `<div class="stiles">${rows(6, () => `<div class="stile">${sh('pk-line', 'width:45%;height:15px')}${sh('pk-line', 'width:70%;height:9px')}</div>`)}</div>`,
+  wlist:   () => `<div class="wlist">${rows(6, i => `<div class="wrow">${sh('wrow-icon')}<div class="wrow-main">${sh('pk-line', `width:${55 + (i % 3) * 12}%`)}${sh('pk-line', 'width:35%;height:9px')}</div></div>`)}</div>`,
+  cards:   () => rows(3, () => `<div class="pk-card">${sh('pk-card-art')}${sh('pk-line', 'width:50%')}${sh('pk-line', 'width:100%;height:5px')}</div>`),
+  heatmap: () => sh('pk-heat'),
+  timeline:() => rows(5, () => `<div class="pk-tl">${sh('pk-dot')}<div class="grow" style="flex:1">${sh('grow-icon')}<div class="grow-main">${sh('pk-line', 'width:60%')}${sh('pk-line', 'width:40%;height:9px')}</div></div></div>`),
+};
+const peekHtml = parts => `<div class="tab-peek-in">${(parts?.length ? parts : ['row', 'list']).map(p => (PEEK_PARTS[p] ?? PEEK_PARTS.row)()).join('')}</div>`;
 
 // Carousel swipe between tabs on phones. ref: the stable wrapper around the keyed tab content
-// (it moves with the finger); ready: true once it is rendered (pages show a skeleton first).
+// (it moves with the finger); ready: true once it is rendered (pages show a skeleton first);
+// peeks: { tabId: [part, ...] } describing each tab's skeleton (PEEK_PARTS).
 // Returns [dir, setDir]: dir is 'swipe' right after a swiped change (the page shows the new tab
 // without its entrance animation, it has just slid in), null otherwise.
-export function useSwipeTabs(ref, ids, active, onChange, ready = true) {
+export function useSwipeTabs(ref, ids, active, onChange, ready = true, peeks = {}) {
   const [dir, setDir] = useState(null);
-  const state = useRef({ ids, active, onChange });
-  state.current = { ids, active, onChange };
+  const state = useRef({ ids, active, onChange, peeks });
+  state.current = { ids, active, onChange, peeks };
 
   useEffect(() => {
     const el = ref.current;
@@ -87,17 +103,21 @@ export function useSwipeTabs(ref, ids, active, onChange, ready = true) {
     let peek = null;
 
     const removePeek = () => { peek?.remove(); peek = null; };
-    const placePeek = side => {
-      if (peek && peek.dataset.side === side) return;
+    // The neighbouring tab, in its own box one page-gap away (so it reads as a separate tab sliding
+    // in), shaped like its content, placed where the user is looking and no taller than the screen
+    const GAP = 32;
+    const placePeek = (side, id) => {
+      if (peek && peek.dataset.id === id) return;
       removePeek();
       peek = document.createElement('div');
       peek.className = 'tab-peek';
-      peek.dataset.side = side;
-      peek.innerHTML = PEEK_HTML;
-      peek.style.left = side === 'next' ? '100%' : '-100%';
-      // Show the placeholder where the user is looking: just under the pinned tab bar
+      peek.dataset.id = id;
+      peek.innerHTML = peekHtml(state.current.peeks[id]);
+      peek.style.left = side === 'next' ? `calc(100% + ${GAP}px)` : `calc(-100% - ${GAP}px)`;
       const barBottom = document.querySelector('.ptabs')?.getBoundingClientRect().bottom ?? 0;
-      peek.style.top = `${Math.max(0, barBottom - el.getBoundingClientRect().top)}px`;
+      const top = Math.max(0, barBottom - el.getBoundingClientRect().top);
+      peek.style.top = `${top}px`;
+      peek.style.maxHeight = `${window.innerHeight - Math.max(barBottom, el.getBoundingClientRect().top) - 8}px`;
       el.appendChild(peek);
     };
     // Reduced motion: the content still follows the finger (that motion is the user's own), but a
@@ -129,7 +149,7 @@ export function useSwipeTabs(ref, ids, active, onChange, ready = true) {
       const { ids, active } = state.current;
       const i = ids.indexOf(active);
       const target = dx < 0 ? ids[i + 1] : ids[i - 1];
-      if (target) placePeek(dx < 0 ? 'next' : 'prev'); else removePeek();
+      if (target) placePeek(dx < 0 ? 'next' : 'prev', target); else removePeek();
       setX(target ? dx : dx * 0.25, false);   // past the first / last tab: a little rubber band
     };
     const end = () => {
@@ -141,7 +161,7 @@ export function useSwipeTabs(ref, ids, active, onChange, ready = true) {
       const w = el.offsetWidth;
       const commit = target && (Math.abs(dx) > w * COMMIT_SHARE || (Math.abs(dx) > 30 && Math.abs(speed) > COMMIT_SPEED && Math.sign(speed) === Math.sign(dx)));
       if (!commit) { setX(0, true); setTimeout(removePeek, slideMs()); return; }
-      setX(dx < 0 ? -w : w, true);
+      setX(dx < 0 ? -(w + GAP) : w + GAP, true);
       setTimeout(() => {
         setX(0, false);
         removePeek();

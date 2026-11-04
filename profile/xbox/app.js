@@ -985,7 +985,15 @@ const App = () => {
 
     // Swipe between tabs on phones (assets/tabs.js); the order follows the tab bar
     const tabIds = ['overview', 'recent', 'progress', 'activity'];
-    const [swipeDir, setSwipeDir] = useSwipeTabs(tabContentRef, tabIds, activeTab, setTab, !loading);
+    // Skeleton shape of each tab while it slides in (assets/tabs.js PEEK_PARTS)
+    const peekList = gameView === 'tiles' ? 'tiles' : 'list';
+    const tabPeeks = {
+        overview: ['h2', 'row', 'h2', 'unlock', 'h2', 'stats'],
+        recent:   ['fbar', peekList],
+        progress: ['chips', 'fbar', peekList],
+        activity: ['h2', 'heatmap', 'h2', 'timeline'],
+    };
+    const [swipeDir, setSwipeDir] = useSwipeTabs(tabContentRef, tabIds, activeTab, setTab, !loading, tabPeeks);
     const pickTab = id => { setSwipeDir(null); setTab(id); };
 
     // Load win conditions + beaten game data
