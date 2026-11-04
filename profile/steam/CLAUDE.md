@@ -14,7 +14,7 @@
 Four tabs: **Overview** (User, the default) · **Recent** (Clock) · **Progress** (BarChart2) · **Activity** (Activity), in the shared `TabBar` (`assets/tabs.js`)
 
 - Tab state persists in URL: `?tab=progress`
-- Overview holds what used to sit above the tabs (Most Recently Played, Most Recently Unlocked, User Stats, Completions); sticky bar and swipe as on RA
+- Overview holds what used to sit above the tabs: Last Played (`GameListRow` with the game's latest unlock as its `extra` line), Most Recently Unlocked, User Stats as `StatTiles` (header numbers left out), Completions. `games/index.json` loads on every tab, Overview included; sticky bar and swipe as on RA
 - Recent: a search over every game in `games/index.json`, newest played first (up to 50); empty = Steam's recently played list. Searches ignore accents and case (`fold()`)
 
 ## Completion Progress Filters

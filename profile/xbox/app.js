@@ -26,6 +26,13 @@ const withPlaceholders = (achs, data, limit = Infinity) => {
 };
 
 
+// ── Overview stat tiles (styles in assets/ui.css) ──────────────────────────────
+const StatTiles = ({ items }) => (
+    <div className="stiles">
+        {items.map(st => <div key={st.label} className="stile"><b title={st.value}>{st.value}</b><span>{st.label}</span></div>)}
+    </div>
+);
+
 // ── Game list: list / tiles views ────────────────────────────────────────────
 // Status colour on the card edge, same ladder as everywhere: complete gold, beaten silver,
 // started blue, not started, no achievements
@@ -50,7 +57,7 @@ const GameBar = ({ pct, done }) => (
 
 // One compact row: icon, title, gamerscore · last played, count and bar (Xbox reports no
 // playtime). Tap opens the achievement sheet.
-const GameListRow = ({ game, achievementData, onViewDetails, beatenInfo }) => {
+const GameListRow = ({ game, achievementData, onViewDetails, beatenInfo, extra = null }) => {
     const { hasAch, pct, done, color } = gameStatus(achievementData, beatenInfo);
     const ago = shortAgo(game.lastPlayedTs ? Date.parse(game.lastPlayedTs) : 0);
     const hero = achievementData?.heroUrl || game.heroUrl;
@@ -65,6 +72,7 @@ const GameListRow = ({ game, achievementData, onViewDetails, beatenInfo }) => {
                 <div className="grow-sub">
                     <span className="shrink">{[gs, ago].filter(Boolean).join(' · ')}</span>
                 </div>
+                {extra}
             </div>
             <div className="grow-prog">
                 {hasAch ? <>
@@ -1051,9 +1059,9 @@ const App = () => {
         if (achievementChunks[0] === null && loadingChunkIdx === null) loadAllChunks();
     }, [activeTab]);
 
-    // Load games.json when Recent or Progress tab opens
+    // Load games/index.json for every tab (Overview's Last played shows progress; Recent was the old default and loaded it too)
     useEffect(() => {
-        if (['recent', 'progress', 'activity'].includes(activeTab) && profileData && !gamesData) {
+        if (['overview', 'recent', 'progress', 'activity'].includes(activeTab) && profileData && !gamesData) {
             fetch('../../data/xbox/games/index.json')
                 .then(r => r.json())
                 .then(setGamesData)
@@ -1210,44 +1218,17 @@ const App = () => {
                         {/* Left column */}
                         <div className="flex flex-col gap-6">
 
-                            {/* Most Recently Played */}
+                            {/* Last played: the same row as Recent / Progress (tap opens the sheet), with that game's latest unlock inside it */}
                             <div>
                                 <h2 className="text-[13px] text-white tracking-wide uppercase font-medium border-b border-[#2a475e] pb-1.5 flex items-center gap-2 mb-3">
                                     <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0" />
-                                    <Activity size={15} className="text-[#66c0f4]" /> Most Recently Played
+                                    <Activity size={15} className="text-[#66c0f4]" /> Last Played
                                 </h2>
                                 {mostRecentGame ? (
-                                    <div className="bg-[#1b2838]/80 border border-[#323f4c] border-l-[3px] border-l-[#66c0f4] rounded-[3px] p-3 flex items-center gap-4 hover:bg-[#202d39] transition-colors shadow-sm">
-                                        <a href={xboxSearchUrl(mostRecentGame.name)} target="_blank" rel="noreferrer"
-                                            className="w-14 h-14 shrink-0 rounded-[2px] overflow-hidden border border-[#101214] bg-black block hover:scale-105 transition-transform">
-                                            <img src={xboxImg(mostRecentGame.iconUrl, 112)} alt={mostRecentGame.name} className="w-full h-full object-cover block"
-                                                onError={e => { e.target.style.display = 'none'; }} />
-                                        </a>
-                                        <div className="flex-1 min-w-0 flex flex-col">
-                                            <a href={xboxSearchUrl(mostRecentGame.name)} target="_blank" rel="noreferrer"
-                                                className="text-[#c6d4df] hover:text-[#66c0f4] font-medium text-[14px] truncate leading-tight transition-colors">
-                                                {mostRecentGame.name}
-                                            </a>
-                                            <div className="text-[10px] mt-1.5 flex items-center leading-none gap-1.5">
-                                                {mostRecentGame.totalGamerscore > 0 && (
-                                                    <span className="text-[#8f98a0]"><span className="text-[#c6d4df]">{mostRecentGame.gamerscore.toLocaleString()}</span> / {mostRecentGame.totalGamerscore.toLocaleString()} G</span>
-                                                )}
-                                                {mostRecentGame.lastPlayedTs && (
-                                                    <>
-                                                        {mostRecentGame.totalGamerscore > 0 && <span className="text-[#546270]">•</span>}
-                                                        <span className="text-[#546270]">{formatTimeAgo(mostRecentGame.lastPlayedTs)}</span>
-                                                    </>
-                                                )}
-                                            </div>
-                                            {mostRecentGameAch && (
-                                                <div className="flex items-center leading-none gap-1 text-[10px] mt-1.5 truncate anim-fade">
-                                                    <Trophy size={9} className="text-[#e5b143] shrink-0" />
-                                                    <span className="text-[#c6d4df] truncate">{mostRecentGameAch.displayName}</span>
-                                                    <span className="text-[#546270] shrink-0">· {formatTimeAgo(mostRecentGameAch.unlockedAt)}</span>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
+                                        <GameListRow game={{ ...mostRecentGame, storeUrl: xboxSearchUrl(mostRecentGame.name) }} achievementData={achProgress[mostRecentGame.titleId]}
+                                            onViewDetails={handleViewDetails} beatenInfo={beatenMap.get(mostRecentGame.titleId) ?? null} extra={mostRecentGameAch && (
+                                            <span className="grow-extra"><Trophy size={11} className="text-[#e5b143]" />{mostRecentGameAch.displayName} <em>· {formatTimeAgo(mostRecentGameAch.unlockedAt)}</em></span>
+                                        )} />
                                 ) : (
                                     <div className="text-[#8f98a0] text-[11px] py-2">No recently played games.</div>
                                 )}
@@ -1300,25 +1281,13 @@ const App = () => {
                                 )}
                             </div>
 
-                            {/* User Stats */}
+                            {/* User Stats: tiles, value over label; the header already shows the headline numbers */}
                             <div>
-                                <h2 className="text-[13px] text-white tracking-wide uppercase font-medium border-b border-[#2a475e] pb-1.5 flex items-center gap-2 mb-2">
+                                <h2 className="text-[13px] text-white tracking-wide uppercase font-medium border-b border-[#2a475e] pb-1.5 flex items-center gap-2 mb-3">
                                     <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0" />
                                     <BarChart2 size={15} className="text-[#66c0f4]" /> User Stats
                                 </h2>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 md:gap-x-8 px-1">
-                                    {[statsLeft, statsRight].map((col, ci) => (
-                                        <div key={ci} className="flex flex-col">
-                                            {col.map((stat, i) => (
-                                                <div key={i} className="flex items-end text-[11px] py-[3px] group hover:bg-[#202d39]/40 rounded-sm px-1 transition-colors">
-                                                    <span className="text-[#8f98a0] font-medium leading-tight whitespace-nowrap">{stat.label}</span>
-                                                    <div className="flex-1 border-b-[1.5px] border-dotted border-[#323f4c] mx-2 relative top-[-4px] opacity-60 group-hover:border-[#546270]" />
-                                                    <span className="text-[#c6d4df] font-medium whitespace-nowrap leading-tight text-right">{stat.value}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    ))}
-                                </div>
+                                <StatTiles items={[...statsLeft, ...statsRight].filter(st => !['Total games', 'Gamerscore'].includes(st.label))} />
                             </div>
 
                         </div>

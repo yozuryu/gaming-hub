@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, Trophy, Crown, Lock, Unlock, AlertTriangle, Flame, Feather, Medal, ShieldOff, CircleDashed, X, Clock, BookOpen, Youtube, ExternalLink, Layers, List, LayoutGrid, Search, Check, Plus, User } from 'lucide-react';
+import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, Trophy, Crown, Lock, Unlock, AlertTriangle, Flame, Feather, Medal, ShieldOff, CircleDashed, X, Clock, BookOpen, Youtube, ExternalLink, Layers, List, LayoutGrid, Search, Check, Plus, User, Radio } from 'lucide-react';
 import { MEDIA_URL, SITE_URL, TILDE_TAG_COLORS } from './utils/constants.js';
 import { getMediaUrl, parseTitle, formatTimeAgo, raShot } from './utils/helpers.js';
 import { transformData } from './utils/transform.js';
@@ -43,6 +43,19 @@ const useIconGridCols = () => {
 };
 
 // --- Components ---
+
+// ── Overview stat tiles (styles in assets/ui.css) ──────────────────────────────
+const StatTiles = ({ items }) => (
+  <div className="stiles">
+    {items.map(st => <div key={st.label} className="stile"><b title={st.value}>{st.value}</b><span>{st.label}</span></div>)}
+  </div>
+);
+// Shorter labels for the tiles
+const STAT_LABELS = {
+  'Points earned in the last 7 days': 'Points, last 7 days',
+  'Points earned in the last 30 days': 'Points, last 30 days',
+  'Average points per week': 'Avg points per week',
+};
 
 // ── Progress filter bar ─────────────────────────────────────────────────────
 // Views bucket started-but-unfinished games, first match wins:
@@ -221,7 +234,7 @@ const GameProgress = ({ game }) => (
 
 // One compact row: icon, title, console + mode + tags, playtime · last played, count and bar.
 // Tap opens the achievement sheet (badges, guides and the progression bar live there).
-const GameListRow = ({ game, onViewDetails }) => {
+const GameListRow = ({ game, onViewDetails, extra = null }) => {
   const hasAch = game.achievementsTotal > 0;
   const ago = shortAgo(raDateMs(game.lastPlayedStr));
   const Tag = hasAch ? 'button' : 'div';
@@ -238,6 +251,7 @@ const GameListRow = ({ game, onViewDetails }) => {
           <ModeIcon game={game} />
           <span className="shrink">{[game.playtime !== 'Unknown' ? game.playtime : null, ago].filter(Boolean).join(' · ')}</span>
         </div>
+        {extra}
       </div>
       <div className="grow-prog">
         {hasAch ? <GameProgress game={game} /> : <span className="text-[11px] text-[#546270]">No achievements</span>}
@@ -1534,48 +1548,20 @@ export default function App() {
           
               <div className="flex flex-col gap-6">
             
+                {/* Last played: the same row as Recent / Progress (tap opens the sheet), with the rich presence inside it */}
                 <div>
                   <h2 className="text-[13px] text-white tracking-wide uppercase font-medium border-b border-[#2a475e] pb-1.5 flex items-center gap-2 mb-3">
                     <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0"></span>
-                    <Activity size={15} className="text-[#66c0f4]"/> Most Recently Played
+                    <Activity size={15} className="text-[#66c0f4]"/> Last Played
                   </h2>
-              
-                  <div className="flex flex-col gap-2">
-                    {PROFILE_DATA.mostRecentGame ? (
-                      <div className="bg-[#1b2838]/80 border border-[#323f4c] border-l-[3px] border-l-[#66c0f4] rounded-[3px] p-3 flex gap-4 hover:bg-[#202d39] transition-colors shadow-sm">
-                        <a href={`${SITE_URL}/game/${PROFILE_DATA.mostRecentGame.id}`} target="_blank" rel="noreferrer" className="w-14 h-14 shrink-0 rounded-[2px] overflow-hidden border border-[#101214] bg-black block hover:scale-105 transition-transform">
-                          <img src={PROFILE_DATA.mostRecentGame.icon} alt="Icon" className="w-full h-full object-cover"/>
-                        </a>
-                        <div className="flex-1 min-w-0 flex flex-col justify-center">
-                          <div className="flex items-center gap-1.5 mb-0.5 flex-wrap">
-                            <a href={`${SITE_URL}/game/${PROFILE_DATA.mostRecentGame.id}`} target="_blank" rel="noreferrer" className="text-[#c6d4df] hover:text-[#66c0f4] font-medium text-[14px] truncate leading-tight">
-                              {PROFILE_DATA.mostRecentGame.baseTitle}
-                            </a>
-                            {PROFILE_DATA.mostRecentGame.isSubset && (
-                              <span className="text-[7px] font-bold uppercase tracking-[0.07em] px-1 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>
-                            )}
-                            {renderTildeTags(PROFILE_DATA.mostRecentGame.tags)}
-                          </div>
-                          {PROFILE_DATA.mostRecentGame.isSubset && (
-                            <div className="text-[10px] text-[#c8a84b] mb-0.5 truncate">{PROFILE_DATA.mostRecentGame.subsetName}</div>
-                          )}
-                          <div className="text-[10px] mb-1 flex items-center gap-1.5">
-                             <span className="text-[#66c0f4]">{PROFILE_DATA.mostRecentGame.console}</span>
-                             <span className="text-[#546270]">•</span>
-                             <span className="text-[#8f98a0]">{PROFILE_DATA.mostRecentGame.timeAgo}</span>
-                          </div>
-                      
-                          {PROFILE_DATA.richPresenceMsg && (
-                             <p className="text-[#c6d4df] text-[11px] leading-snug italic border-l-2 border-[#323f4c] pl-2 mt-1">
-                               {PROFILE_DATA.richPresenceMsg}
-                             </p>
-                          )}
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="text-[#8f98a0] text-[11px] py-2">No recent games found.</div>
-                    )}
-                  </div>
+                  {(() => {
+                    const g = PROFILE_DATA.mostRecentGame && ALL_GAMES.find(x => x.id === PROFILE_DATA.mostRecentGame.id);
+                    if (!g) return <div className="text-[#8f98a0] text-[11px] py-2">No recent games found.</div>;
+                    return (
+                      <GameListRow game={g} onViewDetails={setSelectedGame}
+                        extra={PROFILE_DATA.richPresenceMsg && <span className="grow-extra rp" title="Rich presence: what the game reports you're doing"><Radio size={11} className="text-[#57cbde]" />{PROFILE_DATA.richPresenceMsg}</span>} />
+                    );
+                  })()}
                 </div>
 
                 {/* Most Recently Unlocked Achievement */}
@@ -1625,38 +1611,12 @@ export default function App() {
                     <BarChart2 size={15} className="text-[#66c0f4]"/> User Stats
                   </h2>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 md:gap-x-8 px-1">
-
-                    <div className="flex flex-col">
-                      {PROFILE_DATA.statsLeft.map((stat, i) => (
-                        <div key={`left-${i}`} className="flex items-end text-[11px] py-[3px] group hover:bg-[#202d39]/40 rounded-sm px-1 transition-colors">
-                          <span className="text-[#8f98a0] font-medium leading-tight whitespace-nowrap">{stat.label}</span>
-                          <div className="flex-1 border-b-[1.5px] border-dotted border-[#323f4c] mx-2 relative top-[-4px] opacity-60 group-hover:border-[#546270]"></div>
-                          <span className="text-[#c6d4df] font-medium whitespace-nowrap leading-tight text-right">{stat.value}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Right column: always visible on sm+, hidden on mobile until expanded */}
-                    <div className={`flex flex-col ${statsExpanded ? 'anim-fade' : 'hidden sm:flex'}`}>
-                      {PROFILE_DATA.statsRight.map((stat, i) => (
-                        <div key={`right-${i}`} className="flex items-end text-[11px] py-[3px] group hover:bg-[#202d39]/40 rounded-sm px-1 transition-colors">
-                          <span className="text-[#8f98a0] font-medium leading-tight whitespace-nowrap">{stat.label}</span>
-                          <div className="flex-1 border-b-[1.5px] border-dotted border-[#323f4c] mx-2 relative top-[-4px] opacity-60 group-hover:border-[#546270]"></div>
-                          <span className="text-[#c6d4df] font-medium whitespace-nowrap leading-tight text-right">{stat.value}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                  </div>
-
-                  {/* Mobile-only expand/collapse toggle */}
-                  <button
-                    onClick={() => setStatsExpanded(v => !v)}
-                    className="sm:hidden mt-2 w-full flex items-center justify-center gap-1.5 py-1.5 text-[11px] font-semibold text-[#546270] hover:text-[#8f98a0] transition-colors border-t border-[#1e2d3a]"
-                  >
+                  {/* Tiles, value over label; the header already shows points, achievements and mastered */}
+                  <StatTiles items={PROFILE_DATA.statsLeft.filter(st => st.label !== 'Achievements unlocked').map(st => ({ ...st, label: STAT_LABELS[st.label] ?? st.label }))} />
+                  {statsExpanded && <div className="mt-2 anim-fade"><StatTiles items={PROFILE_DATA.statsRight} /></div>}
+                  <button onClick={() => setStatsExpanded(v => !v)} className="smore" aria-expanded={statsExpanded}>
+                    {statsExpanded ? 'Fewer stats' : 'More stats'}
                     <ChevronDown size={13} className={`transition-transform duration-200 ${statsExpanded ? 'rotate-180' : ''}`} />
-                    {statsExpanded ? 'Show less' : 'Show more'}
                   </button>
                 </div>
 
