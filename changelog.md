@@ -2,7 +2,7 @@
 
 ## v26.11.04
 
-Filters and search look the same on every page and take less room: sentence-case chips in one scrolling row, search with sort beside it, counts as plain text.
+Filters and search look the same on every page: chips with their counts in one scrolling row, a roomy search with sort beside it, and one letter-case rule; Completions gets a stats band with the rarest achievement's icon.
 
 ### RetroAchievements
 
