@@ -7,7 +7,8 @@ Filters and search look the same on every page: chips with their counts in one s
 ### RetroAchievements
 
 - Watchlist redesigned: a list in the style of the game rows instead of the dense table (bigger icons and titles, console · points on one line, the status once on the right, two columns on desktop), with group headers that open and close
-- Watchlist: a game's subsets stack under it as one card: the name and console on top, then a row per set, "Base set" first, each with its own icon, points and progress. Combined entries like "HeartGold | SoulSilver" collect the subsets of both games. New "Group: Subsets" option (with / without subsets)
+- Watchlist: a game's subsets stack under it as one card: the name and console on top, then a row per set, "Base set" first, each with its own icon, points and progress. Combined entries like "HeartGold | SoulSilver" collect the subsets of both games. New "Group: Subsets" option (with / without subsets; "Without subsets" starts closed)
+- Watchlist no longer blinks while scrolling: its rows were rebuilt (and replayed their fade-in) on every re-render, e.g. when the floating tab pill appeared
 - Profile header redesigned (same on Steam and Xbox): avatar beside the name, rank and last active, the motto under them, then the three headline numbers in a strip (Points · Achievements · Mastered) instead of small pills; on phone it's shorter and left-aligned with "member since" beside last active, on desktop the numbers sit on the right
 - The blurred header art could stay invisible when the image was already cached (the load event was missed); fixed for headers and the achievement sheet
 - Completion Progress: the views (All · Nearly there · In progress · Abandoned) and the "+ Mastered" toggle are one chip row; search, the Sort dropdown and the list / tiles switch share the next row; the game count and the view's rule are one muted line below. The SORT label and the separate sort chips are gone

@@ -1909,8 +1909,9 @@ export default function App() {
                 return st === 'mastered' ? '#e5b143' : g.isBeaten ? '#b8c4ce' : st === 'inprogress' ? '#66c0f4' : st === 'noach' ? '#1e2a35' : '#323f4c';
               };
 
-              // One watchlist row (styles in assets/ui.css): status once, on the right; colour on the left edge
-              const GameRow = ({ game }) => {
+              // One watchlist row (styles in assets/ui.css). Rows are render functions, not components: they
+              // live inside App's render, so as components every re-render (e.g. on scroll) remounted them all: status once, on the right; colour on the left edge
+              const gameRow = game => {
                 const status = getStatus(game);
                 const isMastered   = status === 'mastered';
                 const isInProgress = status === 'inprogress';
@@ -1918,7 +1919,7 @@ export default function App() {
                 const stripe = stripeOf(game);
                 const pct = game.achievementsTotal > 0 ? (game.numAwarded / game.achievementsTotal) * 100 : 0;
                 return (
-                  <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer" className={`wrow ${hasNoAch ? 'dim' : ''}`} style={{ borderLeftColor: stripe }}>
+                  <a key={game.id} href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer" className={`wrow ${hasNoAch ? 'dim' : ''}`} style={{ borderLeftColor: stripe }}>
                     <img src={game.icon} alt="" loading="lazy" className="wrow-icon" />
                     <div className="wrow-main">
                       <div className="wrow-title">
@@ -1973,16 +1974,16 @@ export default function App() {
                 const without  = entries.filter(e => !e.subsets.length && !e.game.isSubset);
                 groups = [
                   { key: 'with', label: 'With subsets', dot: '#c8a84b', count: withSubs.length, games: withSubs.flatMap(e => [e.game, ...e.subsets]), defaultOpen: true },
-                  { key: 'without', label: 'Without subsets', dot: '#546270', count: without.length, games: without.map(e => e.game), defaultOpen: true },
+                  { key: 'without', label: 'Without subsets', dot: '#546270', count: without.length, games: without.map(e => e.game), defaultOpen: false },
                 ].filter(g => g.games.length);
               }
 
               // One set inside a game's card: its icon, "Base set" or the subset name, points, status
-              const SetRow = ({ game, base = false }) => {
+              const setRow = (game, base = false) => {
                 const status = getStatus(game);
                 const pct = game.achievementsTotal > 0 ? (game.numAwarded / game.achievementsTotal) * 100 : 0;
                 return (
-                  <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer" title={game.title}
+                  <a key={game.id} href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer" title={game.title}
                     className={`wsub ${base ? '' : 'subset'} ${status === 'noach' ? 'dim' : ''}`} style={{ borderLeftColor: stripeOf(game) }}>
                     <img src={game.icon} alt="" loading="lazy" className="icon" />
                     <span className="name">{base ? 'Base set' : game.subsetName}</span>
@@ -1997,19 +1998,19 @@ export default function App() {
                 );
               };
               // A game with subsets: name and console once on top, then the base set and each subset
-              const StackCard = ({ game, subsets }) => (
-                <div className="wstack anim-fade">
+              const stackCard = (game, subsets) => (
+                <div key={game.id} className="wstack">
                   <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer" className="whead">
                     <span className="t"><span>{game.baseTitle || game.title}</span>{renderTildeTags(game.tags)}</span>
                     {watchlistGrouping !== 'console' && <span className="c">{game.console}</span>}
                   </a>
-                  <SetRow game={game} base />
-                  {subsets.map(sg => <SetRow key={sg.id} game={sg} />)}
+                  {setRow(game, true)}
+                  {subsets.map(sg => setRow(sg))}
                 </div>
               );
-              const Rows = ({ games }) => stackSubsets(games).map(({ game, subsets }) => subsets.length
-                ? <StackCard key={game.id} game={game} subsets={subsets} />
-                : <div key={game.id} className="anim-fade min-w-0"><GameRow game={game} /></div>);
+              const rows = games => stackSubsets(games).map(({ game, subsets }) => subsets.length
+                ? stackCard(game, subsets)
+                : gameRow(game));
 
               return (
                 <>
@@ -2062,7 +2063,7 @@ export default function App() {
                     {filtered.length === 0 ? (
                       <div className="text-center py-6 text-[#546270] text-[12px]" style={{ gridColumn: '1 / -1' }}>No games match the current filters.</div>
                     ) : watchlistGrouping === 'none' ? (
-                      <Rows games={filtered} />
+                      rows(filtered)
                     ) : (
                       groups.map(group => {
                         const isOpen = collapsedGroups.has(group.key)
@@ -2076,7 +2077,7 @@ export default function App() {
                               <span className="n">{(group.count ?? group.games.length).toLocaleString()}</span>
                               <ChevronDown size={14} className={`text-[#546270] transition-transform duration-200 shrink-0 ${isOpen ? 'rotate-180' : ''}`} />
                             </button>
-                            {isOpen && <Rows games={group.games} />}
+                            {isOpen && <div className="wlist anim-fade" style={{ gridColumn: '1 / -1' }}>{rows(group.games)}</div>}
                           </React.Fragment>
                         );
                       })

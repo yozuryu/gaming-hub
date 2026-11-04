@@ -220,6 +220,7 @@ button.gtile:hover { transform: translateY(-2px); }
   background: #172333; border: 1px solid #2a475e; border-radius: 3px; text-align: left; transition: background-color 150ms;
 }
 .wgroup:first-child { margin-top: 0; }
+.wlist > .wlist { margin-bottom: 2px; }
 .wgroup:hover { background: #1b2838; }
 .wgroup .mark { width: 8px; height: 8px; border-radius: 1px; flex-shrink: 0; }
 .wgroup .label { flex: 1; min-width: 0; font-size: 12.5px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
