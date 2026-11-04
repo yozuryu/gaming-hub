@@ -34,6 +34,11 @@ Recent Games and Completion Progress render `GameListRow` (icon, title, console,
 - **RA art fallback:** `raShot()` in `utils/helpers.js` treats RA's "no image" placeholder (`/Images/000002.png`, e.g. Poring Clicker) as missing. `transform.js` sets `game.artIsIcon` when the art fell back to the icon; the art then gets `.art-icon` (zoomed and blurred harder) wherever it sits behind something
 - Profile header: the most recently played game's screenshot (or icon) blurred behind it (`HeaderArt`)
 
+## Watchlist
+- A list in the profile game-row style (`.wlist` / `.wrow` in `assets/ui.css`), two columns on desktop: icon, title + subset / tilde tags, console · points, and the status once on the right (in progress: count + bar; Mastered tag; not started: trophy + achievement count; no achievements: dimmed). Status colour on the left edge
+- **Subsets stack under their base game** (`stackSubsets()`): same title and console; a combined base "A | B" counts as each of its names. A stacked game is one card (`.wstack`): the name · console on one line (`.whead`), then one row per set (`SetRow`): "Base set" first, then each subset (gold name, wraps to two lines), each with its own icon, points, status and edge colour. A subset whose base isn't listed stays a normal row
+- Grouping (Group dropdown): none · console (rows drop the repeated console) · status · series · subsets (With subsets / Without subsets; counts are games, not sets)
+
 ## Floating Tab Pill (mobile)
 - Shows when natural tab bar scrolls off screen
 - `showFloatingTabs` state + `pillLeaving` state for exit animation

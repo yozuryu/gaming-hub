@@ -167,6 +167,67 @@ button.gtile:hover { transform: translateY(-2px); }
   .phead-sub.phone-only { display: none; }
 }
 
+/* ── RA watchlist ───────────────────────────────────────────────────────────────────
+   One row per game: icon, title (+ subset / tags), console · points · achievements, and the
+   status once on the right; status colour on the left edge. Groups get a header row. */
+.wlist { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; }
+.wrow {
+  display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 7px 12px 7px 8px;
+  background: #1b2838; border: 1px solid #2a475e; border-left-width: 3px; border-radius: 3px; text-decoration: none;
+  transition: background-color 150ms;
+}
+.wrow:hover { background: #202d39; }
+.wrow.dim { opacity: 0.55; }
+.wrow-icon { width: 40px; height: 40px; flex-shrink: 0; border-radius: 2px; border: 1px solid #101214; background: #101214; object-fit: cover; image-rendering: pixelated; }
+.wrow-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.wrow-title { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.wrow-title > span:first-child { font-size: 13px; font-weight: 500; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.wrow-sub { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #8f98a0; white-space: nowrap; overflow: hidden; }
+.wrow-sub > * { flex-shrink: 0; }
+.wrow-sub > .shrink { flex-shrink: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.wrow-sub i { font-style: normal; color: #3d5060; }
+.wrow-end { flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 5px; width: 64px; }
+.wstack { display: flex; flex-direction: column; min-width: 0; }
+/* A game with subsets is one card: its name · console on one line on top (.whead), then one row per
+   set, "Base set" first, each with its own icon, points, status and status-coloured edge */
+.whead {
+  display: flex; align-items: baseline; gap: 6px; min-width: 0; padding: 7px 12px 6px 11px; text-decoration: none;
+  background: #1b2838; border: 1px solid #2a475e; border-radius: 3px 3px 0 0;
+}
+.whead:hover .t { color: #66c0f4; }
+.whead .t { display: flex; align-items: center; gap: 6px; min-width: 0; flex-shrink: 1; }
+.whead .t > span:first-child { font-size: 13px; font-weight: 500; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; transition: color 150ms; }
+/* Title and console on one line: the title truncates first, the console always shows */
+.whead .c { flex-shrink: 0; font-size: 11px; color: #66c0f4; white-space: nowrap; }
+.whead .c::before { content: "·"; color: #3d5060; margin-right: 6px; }
+.wsub {
+  display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 5px 12px 5px 8px;
+  background: #172333; border: 1px solid #2a475e; border-top: 1px solid #22344a; border-left-width: 3px; text-decoration: none;
+  transition: background-color 150ms;
+}
+.wsub:hover { background: #1b2838; }
+.wsub:last-child { border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; }
+.wsub.dim { opacity: 0.55; }
+.wsub .icon { width: 32px; height: 32px; flex-shrink: 0; border-radius: 2px; border: 1px solid #101214; background: #101214; object-fit: cover; image-rendering: pixelated; }
+/* Set names wrap to two lines: the end of a subset name is often what tells two apart ("… (HeartGold)") */
+.wsub .name { min-width: 0; font-size: 12.5px; font-weight: 500; color: #c6d4df; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.wsub.subset .name { color: #c8a84b; }
+.wsub .pts { flex-shrink: 0; font-size: 11px; color: #8f98a0; }
+.wsub .end { margin-left: auto; flex-shrink: 0; display: flex; align-items: center; gap: 6px; }
+.wsub .end .gbar { width: 44px; }
+.wgroup {
+  grid-column: 1 / -1; display: flex; align-items: center; gap: 8px; width: 100%; padding: 8px 10px; margin-top: 6px;
+  background: #172333; border: 1px solid #2a475e; border-radius: 3px; text-align: left; transition: background-color 150ms;
+}
+.wgroup:first-child { margin-top: 0; }
+.wgroup:hover { background: #1b2838; }
+.wgroup .mark { width: 8px; height: 8px; border-radius: 1px; flex-shrink: 0; }
+.wgroup .label { flex: 1; min-width: 0; font-size: 12.5px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wgroup .n { font-size: 11px; color: #8f98a0; font-variant-numeric: tabular-nums; }
+@media (min-width: 768px) {
+  .wlist { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+}
+
 /* ── Filters (every page) ─────────────────────────────────────────────────────────
    One look for every filter: sentence-case chips in one row that scrolls sideways
    instead of wrapping, a search field with its icon, and sort / group as a compact

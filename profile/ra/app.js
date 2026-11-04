@@ -1888,6 +1888,8 @@ export default function App() {
                   const games = filtered.filter(g => getStatus(g) === s);
                   if (games.length > 0) groups.push({ key: s, label: statusMeta[s].label, dot: statusMeta[s].dot, games, defaultOpen: statusMeta[s].defaultOpen });
                 });
+              } else if (watchlistGrouping === 'subsets') {
+                groups = null; // built below, once stackSubsets exists
               } else if (watchlistGrouping === 'series') {
                 [...seriesData].sort((a, b) => {
                   const key = n => /^[a-zA-Z]/.test(n) ? '2' + n.toLowerCase() : /^\d/.test(n) ? '1' + n.toLowerCase() : '0' + n.toLowerCase();
@@ -1901,55 +1903,113 @@ export default function App() {
                 if (otherGames.length > 0) groups.push({ key: '__other__', label: 'Other', dot: '#546270', games: otherGames, defaultOpen: false });
               }
 
-              // Table columns — responsive via CSS classes, not inline styles
-              const showConsole  = watchlistGrouping !== 'console';
-              const colClass = showConsole ? 'wl-row-full' : 'wl-row-noconsole';
-              const headers = [
-                { label: '', cls: '' },
-                { label: 'Title', cls: '' },
-                ...(showConsole ? [{ label: 'Console', cls: 'wl-hide-mobile' }] : []),
-                { label: 'Pts', cls: 'wl-hide-mobile text-right' },
-                { label: 'Progress', cls: 'text-right' },
-              ];
+              // Same stripe ladder as game cards: gold → silver (beaten) → blue → gray → near-black
+              const stripeOf = g => {
+                const st = getStatus(g);
+                return st === 'mastered' ? '#e5b143' : g.isBeaten ? '#b8c4ce' : st === 'inprogress' ? '#66c0f4' : st === 'noach' ? '#1e2a35' : '#323f4c';
+              };
 
+              // One watchlist row (styles in assets/ui.css): status once, on the right; colour on the left edge
               const GameRow = ({ game }) => {
                 const status = getStatus(game);
                 const isMastered   = status === 'mastered';
                 const isInProgress = status === 'inprogress';
                 const hasNoAch     = status === 'noach';
-                // Same stripe ladder as game cards: gold → silver (beaten) → blue → gray → near-black
-                const stripe = isMastered ? 'border-l-[#e5b143]' : game.isBeaten ? 'border-l-[#b8c4ce]' : isInProgress ? 'border-l-[#66c0f4]' : hasNoAch ? 'border-l-[#1e2a35]' : 'border-l-[#323f4c]';
+                const stripe = stripeOf(game);
+                const pct = game.achievementsTotal > 0 ? (game.numAwarded / game.achievementsTotal) * 100 : 0;
                 return (
-                  <div key={game.id} className={`grid gap-2 px-3 py-[5px] border-b border-[#1b2838] last:border-b-0 items-center hover:bg-[#1b2838] transition-colors border-l-[2px] ${stripe} ${hasNoAch ? 'opacity-50' : ''} ${colClass}`}>
-                    <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer" className="shrink-0 w-6 h-6 rounded-[2px] overflow-hidden border border-[#101214] bg-black block hover:scale-110 transition-transform">
-                      <img src={game.icon} alt={game.title} className="w-full h-full object-cover" />
-                    </a>
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-1.5 flex-wrap">
-                        <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer" className="text-[11px] text-[#c6d4df] font-medium hover:text-[#66c0f4] transition-colors truncate leading-tight">{game.baseTitle || game.title}</a>
+                  <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer" className={`wrow ${hasNoAch ? 'dim' : ''}`} style={{ borderLeftColor: stripe }}>
+                    <img src={game.icon} alt="" loading="lazy" className="wrow-icon" />
+                    <div className="wrow-main">
+                      <div className="wrow-title">
+                        <span title={game.title}>{game.baseTitle || game.title}</span>
                         {game.isSubset && <span className="text-[7px] font-bold uppercase tracking-[0.07em] px-1 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>}
                         {renderTildeTags(game.tags)}
                       </div>
-                      {game.isSubset && game.subsetName && <span className="text-[9px] text-[#c8a84b] truncate block">{game.subsetName}</span>}
-                      {watchlistGrouping === 'status' && <span className="text-[9px] text-[#546270]">{game.console}</span>}
-                      {watchlistGrouping !== 'status' && <>
-                        {isMastered   && <span className="text-[8px] text-[#e5b143] flex items-center gap-1"><Trophy size={8}/> Mastered</span>}
-                        {isInProgress && <span className="text-[8px] text-[#66c0f4] flex items-center gap-1"><Activity size={8}/> In progress</span>}
-                        {status === 'notstarted' && <span className="text-[8px] text-[#546270] flex items-center gap-1"><CircleDashed size={8}/> Not started</span>}
-                        {hasNoAch && <span className="text-[8px] text-[#323f4c] flex items-center gap-1"><ShieldOff size={8}/> No Achievements</span>}
+                      <div className="wrow-sub">
+                        {watchlistGrouping !== 'console' && <span className="text-[#66c0f4]">{game.console}</span>}
+                        {game.pointsTotal > 0 && <>{watchlistGrouping !== 'console' && <i>·</i>}<span>{game.pointsTotal.toLocaleString()} pts</span></>}
+                        {game.isSubset && game.subsetName && <><i>·</i><span className="text-[#c8a84b] shrink">{game.subsetName}</span></>}
+                      </div>
+                    </div>
+                    <div className="wrow-end">
+                      {isInProgress && <>
+                        <span className="gcount">{game.numAwarded}<span>/{game.achievementsTotal}</span></span>
+                        <div className="gbar"><i style={{ width: `${pct}%`, background: '#66c0f4' }} /></div>
                       </>}
+                      {isMastered && <span className="text-[9px] font-bold uppercase tracking-[0.07em] px-1.5 py-[1px] rounded-[2px] bg-[#e5b143] text-[#101214] flex items-center gap-1"><Trophy size={9} />Mastered</span>}
+                      {status === 'notstarted' && <span className="text-[11px] text-[#8f98a0] flex items-center gap-1 tabular-nums" title={`${game.achievementsTotal} achievements`}><Trophy size={11} className="text-[#546270]" />{game.achievementsTotal}</span>}
+                      {hasNoAch && <span className="text-[11px] text-[#546270] text-right leading-tight">No achievements</span>}
                     </div>
-                    {showConsole && <span className="wl-hide-mobile text-[10px] text-[#66c0f4] truncate">{game.console}</span>}
-                    <span className="wl-hide-mobile text-[10px] text-[#8f98a0] text-right">{game.pointsTotal > 0 ? game.pointsTotal.toLocaleString() : <span className="text-[#323f4c]">—</span>}</span>
-                    <div className="flex items-center justify-end">
-                      {hasNoAch ? <span className="text-[10px] text-[#323f4c]">—</span>
-                        : isMastered   ? <span className="text-[7px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px] bg-[#e5b143] text-[#101214]">Mastered</span>
-                        : isInProgress ? <span className="text-[7px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px] bg-[#66c0f4] text-[#101214]">{game.numAwarded}/{game.achievementsTotal}</span>
-                        : <span className="text-[10px] text-[#8f98a0]">{game.achievementsTotal}</span>}
-                    </div>
-                  </div>
+                  </a>
                 );
               };
+
+              // Subsets sit under their base game (same title and console) when both are in the list;
+              // a combined base like "A | B" counts as each of its names. A subset whose base isn't
+              // listed stays a row of its own
+              const stackSubsets = games => {
+                const keyOf = (title, consoleName) => `${title.toLowerCase()}|${consoleName}`;
+                const baseFor = new Map();
+                games.forEach(g => {
+                  if (g.isSubset) return;
+                  const title = g.baseTitle || g.title;
+                  [title, ...title.split(' | ')].forEach(n => { const k = keyOf(n.trim(), g.console); if (!baseFor.has(k)) baseFor.set(k, g.id); });
+                });
+                const subsOf = new Map();
+                const out = [];
+                games.forEach(g => {
+                  const baseId = g.isSubset ? baseFor.get(keyOf(g.baseTitle || g.title, g.console)) : undefined;
+                  if (baseId != null) { if (!subsOf.has(baseId)) subsOf.set(baseId, []); subsOf.get(baseId).push(g); }
+                  else out.push(g);
+                });
+                return out.map(g => ({ game: g, subsets: subsOf.get(g.id) ?? [] }));
+              };
+              // Subsets grouping: games with subsets (their stacked cards, plus subsets whose base isn't
+              // listed) vs games without; counts are games, not sets
+              if (watchlistGrouping === 'subsets') {
+                const entries = stackSubsets(filtered);
+                const withSubs = entries.filter(e => e.subsets.length || e.game.isSubset);
+                const without  = entries.filter(e => !e.subsets.length && !e.game.isSubset);
+                groups = [
+                  { key: 'with', label: 'With subsets', dot: '#c8a84b', count: withSubs.length, games: withSubs.flatMap(e => [e.game, ...e.subsets]), defaultOpen: true },
+                  { key: 'without', label: 'Without subsets', dot: '#546270', count: without.length, games: without.map(e => e.game), defaultOpen: true },
+                ].filter(g => g.games.length);
+              }
+
+              // One set inside a game's card: its icon, "Base set" or the subset name, points, status
+              const SetRow = ({ game, base = false }) => {
+                const status = getStatus(game);
+                const pct = game.achievementsTotal > 0 ? (game.numAwarded / game.achievementsTotal) * 100 : 0;
+                return (
+                  <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer" title={game.title}
+                    className={`wsub ${base ? '' : 'subset'} ${status === 'noach' ? 'dim' : ''}`} style={{ borderLeftColor: stripeOf(game) }}>
+                    <img src={game.icon} alt="" loading="lazy" className="icon" />
+                    <span className="name">{base ? 'Base set' : game.subsetName}</span>
+                    {game.pointsTotal > 0 && <span className="pts">· {game.pointsTotal.toLocaleString()} pts</span>}
+                    <span className="end">
+                      {status === 'inprogress' && <><span className="gcount">{game.numAwarded}<span>/{game.achievementsTotal}</span></span><div className="gbar"><i style={{ width: `${pct}%`, background: '#66c0f4' }} /></div></>}
+                      {status === 'mastered' && <span className="text-[9px] font-bold uppercase tracking-[0.07em] px-1.5 py-[1px] rounded-[2px] bg-[#e5b143] text-[#101214] flex items-center gap-1"><Trophy size={9} />Mastered</span>}
+                      {status === 'notstarted' && <span className="text-[11px] text-[#8f98a0] flex items-center gap-1 tabular-nums" title={`${game.achievementsTotal} achievements`}><Trophy size={11} className="text-[#546270]" />{game.achievementsTotal}</span>}
+                      {status === 'noach' && <span className="text-[11px] text-[#546270]">No achievements</span>}
+                    </span>
+                  </a>
+                );
+              };
+              // A game with subsets: name and console once on top, then the base set and each subset
+              const StackCard = ({ game, subsets }) => (
+                <div className="wstack anim-fade">
+                  <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer" className="whead">
+                    <span className="t"><span>{game.baseTitle || game.title}</span>{renderTildeTags(game.tags)}</span>
+                    {watchlistGrouping !== 'console' && <span className="c">{game.console}</span>}
+                  </a>
+                  <SetRow game={game} base />
+                  {subsets.map(sg => <SetRow key={sg.id} game={sg} />)}
+                </div>
+              );
+              const Rows = ({ games }) => stackSubsets(games).map(({ game, subsets }) => subsets.length
+                ? <StackCard key={game.id} game={game} subsets={subsets} />
+                : <div key={game.id} className="anim-fade min-w-0"><GameRow game={game} /></div>);
 
               return (
                 <>
@@ -1966,6 +2026,7 @@ export default function App() {
                         <option value="console">Group: Console</option>
                         <option value="status">Group: Status</option>
                         <option value="series">Group: Series</option>
+                        <option value="subsets">Group: Subsets</option>
                       </select>
                     </div>
                     <div className="frow" role="group" aria-label="Status">
@@ -1996,39 +2057,30 @@ export default function App() {
                     )}
                   </div>
 
-                  {/* Table */}
-                  <div className="border border-[#2a475e] rounded-[2px] overflow-hidden">
-                    {/* Header */}
-                    <div className={`grid gap-2 px-3 py-2 bg-[#172333] border-b border-[#2a475e] items-center ${colClass}`}>
-                      {headers.map((h, i) => (
-                        <span key={i} className={`text-[9px] font-bold uppercase tracking-[0.1em] text-[#8f98a0] whitespace-nowrap ${h.cls}`}>{h.label}</span>
-                      ))}
-                    </div>
-
-                    <div key={`${watchlistStatusFilter}-${watchlistGrouping}`} className="anim-fade">
+                  {/* List (two columns on desktop); groups get a header row that opens and closes */}
+                  <div key={`${watchlistStatusFilter}-${watchlistGrouping}`} className="wlist anim-fade">
                     {filtered.length === 0 ? (
-                      <div className="text-center py-6 text-[#546270] text-[11px]">No games match the current filters.</div>
+                      <div className="text-center py-6 text-[#546270] text-[12px]" style={{ gridColumn: '1 / -1' }}>No games match the current filters.</div>
                     ) : watchlistGrouping === 'none' ? (
-                      filtered.map(game => <GameRow key={game.id} game={game} />)
+                      <Rows games={filtered} />
                     ) : (
                       groups.map(group => {
                         const isOpen = collapsedGroups.has(group.key)
                           ? !group.defaultOpen  // toggled: flip from default
                           : (group.defaultOpen ?? true); // not toggled: use default
                         return (
-                          <div key={group.key}>
-                            <button onClick={() => toggleGroup(group.key)} className="w-full flex items-center gap-2 px-3 py-[6px] bg-[#1b2838] border-b border-[#2a475e] hover:bg-[#202d39] transition-colors group outline-none">
-                              <div className="w-2 h-2 rounded-[1px] shrink-0" style={{background: group.dot}}></div>
-                              <span className="text-[10px] text-white font-semibold flex-1 text-left">{group.label}</span>
-                              <span className="text-[9px] text-[#546270]">{group.games.length} game{group.games.length !== 1 ? 's' : ''}</span>
-                              <ChevronDown size={11} className={`text-[#546270] transition-transform duration-200 shrink-0 ${isOpen ? 'rotate-180' : ''}`} />
+                          <React.Fragment key={group.key}>
+                            <button onClick={() => toggleGroup(group.key)} className="wgroup" aria-expanded={isOpen}>
+                              <span className="mark" style={{ background: group.dot }} />
+                              <span className="label">{group.label}</span>
+                              <span className="n">{(group.count ?? group.games.length).toLocaleString()}</span>
+                              <ChevronDown size={14} className={`text-[#546270] transition-transform duration-200 shrink-0 ${isOpen ? 'rotate-180' : ''}`} />
                             </button>
-                            {isOpen && <div className="anim-fade">{group.games.map(game => <GameRow key={game.id} game={game} />)}</div>}
-                          </div>
+                            {isOpen && <Rows games={group.games} />}
+                          </React.Fragment>
                         );
                       })
                     )}
-                    </div>
                   </div>
                 </>
               );
@@ -2154,14 +2206,6 @@ export default function App() {
           border-radius: 2px;
         }
 
-        /* Watchlist responsive grid */
-        .wl-row-full    { grid-template-columns: 28px 1fr 90px 50px 80px; }
-        .wl-row-noconsole { grid-template-columns: 28px 1fr 50px 80px; }
-        @media (max-width: 639px) {
-          .wl-row-full      { grid-template-columns: 28px 1fr 80px; }
-          .wl-row-noconsole { grid-template-columns: 28px 1fr 80px; }
-          .wl-hide-mobile   { display: none !important; }
-        }
 
 
       `}</style>
