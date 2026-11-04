@@ -9,6 +9,7 @@
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
   <link rel="apple-touch-icon" href="./assets/icon-192.png">
   <link rel="stylesheet" href="./assets/motion.css">
+  <link rel="stylesheet" href="./assets/ui.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html, body { background-color: #171a21; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
@@ -19,7 +20,7 @@
     }
     /* Content fades in as it replaces the skeletons: innerHTML inserts new nodes, which
        replays the animation (keyframes in assets/motion.css) */
-    #ra-stats > *, #steam-stats > *, #xbox-stats > *,
+    #ra-stats > *, #steam-stats > *, #xbox-stats > *, #hub-totals > *,
     #ra-recent > *, #steam-recent > *, #xbox-recent > *,
     #activity-feed > *, #playing-list > *, #completions-strip-latest > *, #completions-strip-stats > *, #analytics-strip-stats > *, #header-tags > * {
       animation: motion-fade 200ms ease-out backwards;
@@ -29,7 +30,7 @@
     }
     @media (prefers-reduced-motion: reduce) {
       #completions-strip, #analytics-strip, #activity-section, #activity-toggle-btn, #playing-more { animation: none; }
-      #ra-stats > *, #steam-stats > *, #xbox-stats > *,
+      #ra-stats > *, #steam-stats > *, #xbox-stats > *, #hub-totals > *,
       #ra-recent > *, #steam-recent > *, #xbox-recent > *,
       #activity-feed > *, #playing-list > *, #completions-strip-latest > *, #completions-strip-stats > *, #analytics-strip-stats > *, #header-tags > * { animation: none; }
     }
@@ -72,9 +73,9 @@
     }
 
     /* Genre tags */
-    .tag { font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 6px; border-radius: 2px; border: 1px solid; display: inline-block; }
-    .tag-blue { color: #66c0f4; border-color: rgba(102,192,244,0.3); background: rgba(102,192,244,0.06); }
-    .tag-grey { color: #8f98a0; border-color: rgba(143,152,160,0.25); background: rgba(143,152,160,0.05); }
+    .tag { flex-shrink: 0; white-space: nowrap; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 3px 7px; border-radius: 2px; border: 1px solid; display: inline-block; text-shadow: none; }
+    .tag-blue { color: #66c0f4; border-color: rgba(102,192,244,0.35); background: rgba(16,18,20,0.65); }
+    .tag-grey { color: #8f98a0; border-color: rgba(143,152,160,0.3); background: rgba(16,18,20,0.65); }
 
     /* Mobile: flatten platform cards to header + stats only */
     @media (max-width: 767px) {
@@ -116,20 +117,34 @@
   </div>
 
   <!-- Header -->
-  <header class="bg-[#1b2838] border-b border-[#2a475e] px-4 md:px-8 pt-8 pb-5 md:pt-5 shadow-md">
-    <div class="max-w-5xl mx-auto flex items-center gap-5">
-      <div class="w-20 h-20 md:w-24 md:h-24 rounded-[2px] border border-[#4c9be8] shadow-[0_2px_12px_rgba(0,0,0,0.5)] flex-shrink-0 bg-[#101214] overflow-hidden">
-        <img id="avatar-img" src="./assets/avatar.png" alt="" class="w-full h-full object-cover" />
+  <!-- Header: same pattern as the profile headers (assets/ui.css .phead); the latest played game's
+       art (RA or Steam, whichever is newer) fades in behind it once the stats load -->
+  <header class="phead">
+    <div id="hub-art" class="art-bg art-header"></div>
+    <div class="phead-in art-shadow">
+      <div class="phead-main">
+        <div class="phead-top">
+          <div class="phead-av"><img id="avatar-img" src="./assets/avatar.png" alt="" /></div>
+          <div class="phead-id">
+            <div class="phead-name"><h1 id="header-username"><span class="skeleton" style="width:150px;height:22px"></span></h1></div>
+            <div class="phead-sub">Last change <b id="hub-updated" class="text-[#c6d4df]"><span class="skeleton align-middle" style="width:72px;height:10px"></span></b>
+              <!-- The changelog has no bottom-nav tab, and the footer is hidden on mobile -->
+              <span class="md:hidden"> · <a href="./changelog/" class="text-[#c6d4df] hover:text-[#66c0f4] transition-colors">Changelog</a></span>
+            </div>
+          </div>
+        </div>
+        <p id="header-motto" class="phead-motto"><span class="skeleton align-middle" style="width:220px;height:10px"></span></p>
+        <!-- Genre tags: one row that scrolls sideways -->
+        <div id="header-tags" class="phead-tags"></div>
       </div>
-      <div class="flex flex-col gap-2">
-        <h1 id="header-username" class="text-2xl md:text-[26px] text-white font-medium tracking-wide leading-none"><span class="skeleton" style="width:150px;height:24px"></span></h1>
-        <p id="header-motto" class="text-[10px] text-[#8f98a0] italic border-l-2 border-[#2a475e] pl-2 leading-snug"><span class="skeleton align-middle" style="width:220px;height:10px"></span></p>
-        <!-- Genre tags -->
-        <div id="header-tags" class="flex flex-wrap gap-1.5"></div>
-        <p class="text-[11px] text-[#546270]">Last change <span id="hub-updated" class="text-[#8f98a0]"><span class="skeleton align-middle" style="width:72px;height:10px"></span></span>
-          <!-- The changelog has no bottom-nav tab, and the footer is hidden on mobile -->
-          <span class="md:hidden"> · <a href="./changelog/" class="text-[#8f98a0] hover:text-[#66c0f4] transition-colors">Changelog</a></span>
-        </p>
+      <!-- Totals across platforms, filled in by the three stat loaders (fillHubTotals) -->
+      <div class="phead-side">
+        <div id="hub-totals" class="phead-stats">
+          <div class="phead-stat"><b><span class="skeleton" style="width:56px;height:18px"></span></b><span>Hours played</span></div>
+          <div class="phead-stat"><b><span class="skeleton" style="width:48px;height:18px"></span></b><span>Unlocks</span></div>
+          <div class="phead-stat"><b><span class="skeleton" style="width:28px;height:18px"></span></b><span>Completed</span></div>
+        </div>
+        <div class="phead-meta">RetroAchievements · Steam · Xbox</div>
       </div>
     </div>
   </header>
@@ -281,6 +296,38 @@
     // Times are stored in UTC. RA uses "YYYY-MM-DD HH:MM:SS" with no zone marker (a bare
     // string like that parses as local time, and Safari rejects it); Steam/Xbox use ISO.
     // Same parsing as assets/time.js, which this classic script can't import.
+    // Header art: the most recently played game across RA and Steam; each loader offers its latest
+    // game and the newer one wins. Tries each URL in turn, fades in once loaded (assets/ui.css .art-bg)
+    // Header totals: each platform loader reports { minutes, unlocks, completed }; the strip fills in
+    // once all three have answered (a failed platform reports zeros, so the totals still show)
+    const hubTotals = {};
+    function reportHubTotals(platform, t) {
+      hubTotals[platform] = t;
+      if (!['ra', 'steam', 'xbox'].every(p => hubTotals[p])) return;
+      const sum = k => Object.values(hubTotals).reduce((n, x) => n + (x[k] || 0), 0);
+      const hrs = Math.round(sum('minutes') / 60);
+      document.getElementById('hub-totals').innerHTML = [
+        [hrs >= 10000 ? `${(hrs / 1000).toFixed(1)}k` : hrs.toLocaleString(), 'Hours played', '#66c0f4'],
+        [sum('unlocks').toLocaleString(), 'Unlocks', '#66c0f4'],
+        [sum('completed').toLocaleString(), 'Completed', '#e5b143'],
+      ].map(([v, l, c]) => `<div class="phead-stat"><b style="color:${c}">${v}</b><span>${l}</span></div>`).join('');
+    }
+
+    let headerArtTs = 0;
+    function offerHeaderArt(ts, urls, isIcon) {
+      const t = toDate(ts).getTime();
+      if (!t || t <= headerArtTs || !urls.filter(Boolean).length) return;
+      headerArtTs = t;
+      const box = document.getElementById('hub-art');
+      const img = new Image();
+      const list = urls.filter(Boolean);
+      img.alt = '';
+      if (isIcon) img.className = 'px art-icon';
+      img.onload = () => img.classList.add('loaded');
+      img.onerror = () => { list.shift(); if (list.length) img.src = list[0]; else img.remove(); };
+      img.src = list[0];
+      box.replaceChildren(img);
+    }
     const toDate = (s) => new Date(typeof s === 'string' && /^\d{4}-\d{2}-\d{2} \d/.test(s) ? s.replace(' ', 'T') + 'Z' : s);
     // Whole calendar days between a timestamp and today, in the viewer's timezone
     const daysAgo = (s) => {
@@ -395,6 +442,7 @@
         const results      = d.gameAwardsAndProgress?.results ?? [];
         const mastered     = results.filter(g => g.highestAwardKind === 'mastered').length;
         const achievements = results.reduce((sum, g) => sum + (g.numAwarded ?? 0), 0);
+        reportHubTotals('ra', { minutes: results.reduce((sum, g) => sum + (g.playtime ?? 0), 0), unlocks: achievements, completed: mastered });
         document.getElementById('ra-stats').innerHTML = statCells([
           [totalPoints.toLocaleString(), 'Points', '#e5b143'],
           [mastered, 'Mastered', '#e5b143'],
@@ -403,11 +451,18 @@
 
         // Latest covers (desktop) — pipeline pre-sorts recentlyPlayedGames
         const MEDIA = 'https://media.retroachievements.org';
+        const latestRA = (d.recentlyPlayedGames ?? [])[0];
+        if (latestRA) {
+          // RA's "no image" placeholder counts as no screenshot: use the icon, zoomed and blurred
+          const shot = [latestRA.imageIngame, latestRA.imageTitle].find(x => x && !x.endsWith('/Images/000002.png'));
+          offerHeaderArt(latestRA.lastPlayed, [shot ? MEDIA + shot : MEDIA + latestRA.imageIcon], !shot);
+        }
         document.getElementById('ra-recent').innerHTML = (d.recentlyPlayedGames ?? []).slice(0, 3)
           .map(g => coverImg(`${MEDIA}${g.imageIcon}`, `${g.title} · ${g.consoleName}`, 'sq px')).join('');
 
       } catch (e) {
         setText('hub-updated', 'unavailable');
+        reportHubTotals('ra', { minutes: 0, unlocks: 0, completed: 0 });
         document.getElementById('ra-stats').innerHTML = statError;
         document.getElementById('ra-recent').innerHTML = '';
       }
@@ -434,16 +489,24 @@
         };
 
         const s = d.stats ?? {};
+        reportHubTotals('steam', { minutes: s.totalPlaytimeMin ?? 0, unlocks: s.unlockedAchievements ?? 0, completed: s.perfectCount ?? 0 });
         document.getElementById('steam-stats').innerHTML = statCells([
           [fmtHrs(s.totalPlaytimeMin ?? 0), 'Hours', '#66c0f4'],
           [(s.perfectCount ?? 0).toLocaleString(), 'Perfect', '#e5b143'],
           [(s.unlockedAchievements ?? 0).toLocaleString(), 'Unlocks', '#66c0f4'],
         ]);
 
+        const latestSteam = (d.recentlyPlayed ?? [])[0];
+        if (latestSteam?.lastPlayedTs) offerHeaderArt(latestSteam.lastPlayedTs, [
+          `https://cdn.akamai.steamstatic.com/steam/apps/${latestSteam.appId}/library_hero.jpg`,
+          `https://cdn.akamai.steamstatic.com/steam/apps/${latestSteam.appId}/header.jpg`,
+        ], false);
+
         document.getElementById('steam-recent').innerHTML = (d.recentlyPlayed ?? []).slice(0, 3)
           .map(g => coverImg(`https://cdn.akamai.steamstatic.com/steam/apps/${g.appId}/header.jpg`, g.name)).join('');
 
       } catch (e) {
+        reportHubTotals('steam', { minutes: 0, unlocks: 0, completed: 0 });
         document.getElementById('steam-stats').innerHTML = statError;
         document.getElementById('steam-recent').innerHTML = '';
       }
@@ -456,6 +519,7 @@
         const d = await res.json();
 
         const s = d.stats ?? {};
+        reportHubTotals('xbox', { minutes: 0, unlocks: s.unlockedAchievements ?? 0, completed: s.perfectCount ?? 0 });
         document.getElementById('xbox-stats').innerHTML = statCells([
           [(s.gamerscore ?? 0).toLocaleString(), 'Gamerscore', '#e5b143'],
           [(s.perfectCount ?? 0).toLocaleString(), 'Completed', '#e5b143'],
@@ -466,6 +530,7 @@
           .map(g => coverImg(xboxImg(g.iconUrl, 64) || '', g.name, 'sq')).join('');
 
       } catch (e) {
+        reportHubTotals('xbox', { minutes: 0, unlocks: 0, completed: 0 });
         document.getElementById('xbox-stats').innerHTML = statError;
         document.getElementById('xbox-recent').innerHTML = '';
       }

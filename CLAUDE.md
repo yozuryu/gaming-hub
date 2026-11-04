@@ -120,6 +120,8 @@ Vanilla JS, no React. Reads `data/hub/config.json`, `data/ra/profile.json`, `dat
 
 **Analytics strip** (desktop only, below the Completions strip; the header no longer links Analytics): last 30 days · hours played · unlocks · the part of the day with the most play, as its hours (`17:00–22:00`) · top game, linking to `analytics/`. `loadAnalyticsStrip()` repeats the Analytics page's default view (30 days, farms hidden, viewer's timezone) from `playtime/{YYYY}.json` and achievement chunk 1; farms use the same rule as `analytics/utils.js` but only fetch the per-game files of the Steam games active in the window (the Steam index is 1.8 MB). Keep both in sync. `fetchJsonOnce` shares the chunk requests with the activity feed
 
+**Header** (`.phead` in `assets/ui.css`, the same pattern as the profile headers): avatar, name, "Last change · Changelog", motto, the genre tags in one sideways-scrolling row, and a totals strip across platforms: Hours played (RA + Steam), Unlocks (all three), Completed (RA mastered + Steam perfect + Xbox completed). Each stat loader calls `reportHubTotals()`; the strip fills in once all three answered (a failed platform counts as zero). The latest played game's art (RA or Steam, whichever is newer, `offerHeaderArt()`) is blurred behind it.
+
 **Playing section** (first on the page, mobile and desktop): the 4 most recent games from the Playing group of `assets/playing.js` as mini tiles (Activity's tiles without the stats band: cover, chip, last played, title, progress, 13-week strip), 2×2 on mobile and one row on desktop, then one link line (`+N more playing · N on hold · N drifting`) to `activity/?view=playing`. Loaded with `import('./assets/playing.js')` from the classic script, sharing `fetchJsonOnce`. Shows its skeleton at once; hidden only when nothing is in rotation at all
 
 **Recent Activity feed** — up to 8 rows, combined RA + Steam + Xbox sorted by date. On mobile collapses to 4 rows with a "Show more / Show less" toggle button below the feed.
@@ -146,7 +148,8 @@ Self-contained IIFE injected into every page via `<script src="...assets/mobile-
 - **Refresh app** button clears all SW caches, calls `registration.update()` and reloads (data untouched). Lives in the Changelog page header (mobile + desktop) and the hub footer (desktop only — footer is hidden on mobile)
 
 ### Page headers (mobile)
-All page headers use `pt-8 pb-5 md:pt-5` — extra top padding on mobile compensates for the hidden breadcrumb bar. Desktop keeps the original `pt-5`. Apply this to any new pages.
+Page headers use `pt-8 pb-5 md:pt-5` — extra top padding on mobile compensates for the hidden breadcrumb bar. Desktop keeps the original `pt-5`. Apply this to any new pages.
+- The Hub and profile headers use the shared `.phead` pattern (`assets/ui.css`): avatar beside name and status lines, motto, a three-number strip, the latest game's art blurred behind. Phone: stacked and left-aligned, the meta fact ("Member since…", "Last change…") with the status lines (`.phone-only`); desktop: the numbers on the right with the meta line under them. Its top padding already covers the hidden breadcrumb
 
 ### Hub page (mobile)
 - Platform strip: one row per platform; the name and covers (`.pc-name`, `.pc-covers`) are hidden via `@media (max-width: 767px)` CSS in `index.html`

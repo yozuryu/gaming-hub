@@ -123,6 +123,50 @@ button.gtile:hover { transform: translateY(-2px); }
   .gtiles { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
 }
 
+/* ── Page header (hub + profiles) ─────────────────────────────────────────────────
+   One pattern: the latest game's art blurred behind (.art-bg.art-header), avatar with name
+   and status lines beside it, the motto under them, then three headline numbers in a strip
+   (same idea as the hub's platform strip) and a muted meta line. Phone: stacked, left
+   aligned. Desktop: identity on the left, the numbers on the right. */
+.phead { position: relative; overflow: hidden; background: #1b2838; border-bottom: 1px solid #2a475e; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+.phead-in { position: relative; max-width: 64rem; margin: 0 auto; padding: 28px 16px 16px; display: flex; flex-direction: column; gap: 14px; }
+.phead-main { display: flex; flex-direction: column; gap: 12px; min-width: 0; flex: 1; }
+.phead-top { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.phead-av { position: relative; flex-shrink: 0; width: 68px; height: 68px; border-radius: 2px; border: 1px solid #4c9be8; background: #101214; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5); }
+.phead-av img { width: 100%; height: 100%; object-fit: cover; border-radius: 1px; }
+.phead-av .dot { position: absolute; right: -3px; bottom: -3px; width: 12px; height: 12px; border-radius: 50%; border: 2px solid #1b2838; }
+.phead-id { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.phead-name { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.phead-name h1 { font-size: 22px; font-weight: 600; color: #fff; line-height: 1.1; letter-spacing: 0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.phead-link { flex-shrink: 0; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 2px; border: 1px solid #323f4c; background: rgba(16, 18, 20, 0.7); transition: border-color 150ms; }
+.phead-link:hover { border-color: #66c0f4; }
+.phead-link img { width: 14px; height: 14px; object-fit: contain; }
+.phead-sub { font-size: 12px; color: #8f98a0; line-height: 1.35; }
+.phead-sub b { font-weight: 600; }
+.phead-motto { font-size: 12.5px; font-style: italic; color: #b3bfca; line-height: 1.45; border-left: 2px solid #2a475e; padding-left: 9px; }
+.phead-side { display: flex; flex-direction: column; gap: 8px; }
+.phead-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: rgba(16, 18, 20, 0.6); border: 1px solid #2a475e; border-radius: 2px; }
+.phead-stat { padding: 8px 12px; min-width: 0; }
+.phead-stat + .phead-stat { border-left: 1px solid #22344a; }
+.phead-stat b { display: block; font-size: 18px; font-weight: 600; line-height: 1.2; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.phead-stat span { display: block; font-size: 11px; color: #8f98a0; margin-top: 1px; }
+.phead-meta { display: none; font-size: 11px; color: #546270; text-shadow: none; }
+/* Phone: the meta fact sits with the identity lines (.phead-sub.phone-only); desktop: under the numbers */
+.phead-sub.phone-only b { color: #c6d4df; font-weight: 500; }
+.phead-meta b { color: #8f98a0; font-weight: 500; }
+.phead-meta a { color: #8f98a0; transition: color 150ms; }
+.phead-meta a:hover { color: #66c0f4; }
+.phead-tags { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+.phead-tags::-webkit-scrollbar { display: none; }
+@media (min-width: 768px) {
+  .phead-in { flex-direction: row; align-items: center; gap: 32px; padding: 24px 32px; }
+  .phead-av { width: 92px; height: 92px; }
+  .phead-name h1 { font-size: 26px; }
+  .phead-side { width: 360px; flex-shrink: 0; }
+  .phead-meta { display: block; text-align: right; }
+  .phead-sub.phone-only { display: none; }
+}
+
 /* ── Filters (every page) ─────────────────────────────────────────────────────────
    One look for every filter: sentence-case chips in one row that scrolls sideways
    instead of wrapping, a search field with its icon, and sort / group as a compact

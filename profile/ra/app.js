@@ -299,7 +299,7 @@ const HeaderArt = ({ urls, icon = false }) => {
   if (!art.src) return null;
   return (
     <div className="art-bg art-header">
-      <img src={art.src} alt="" onLoad={art.onLoad} onError={art.onError}
+      <img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError}
         className={`${icon ? 'px art-icon' : 'px'} ${art.loaded ? 'loaded' : ''}`} />
     </div>
   );
@@ -389,7 +389,7 @@ const RAchievementModal = ({ game, guides, onClose }) => {
         <div ref={dragRef} className="sheet-head">
           {art.src && (
             <div className="art-bg art-sheet">
-              <img src={art.src} alt="" onLoad={art.onLoad} onError={art.onError} className={`px ${game.artIsIcon ? 'art-icon' : ''} ${art.loaded ? 'loaded' : ''}`} />
+              <img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`px ${game.artIsIcon ? 'art-icon' : ''} ${art.loaded ? 'loaded' : ''}`} />
             </div>
           )}
           <span className="sheet-grab" />
@@ -1479,73 +1479,43 @@ export default function App() {
       </div>
 
       {/* Header */}
-      <header className="relative overflow-hidden bg-[#1b2838] border-b border-[#2a475e] px-4 md:px-8 pt-8 pb-5 md:pt-5 shadow-md anim-fade">
+      <header className="phead anim-fade">
         <HeaderArt urls={[headerArt.url]} icon={headerArt.icon} />
-        <div className="relative art-shadow max-w-5xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-5">
-
-          {/* Avatar */}
-          <div className="relative shrink-0">
-            <div className="w-20 h-20 md:w-24 md:h-24 rounded-[2px] border border-[#4c9be8] shadow-[0_2px_12px_rgba(0,0,0,0.5)] overflow-hidden bg-[#101214]">
-              <img src={PROFILE_DATA.avatar} alt={PROFILE_DATA.username} className="w-full h-full object-cover" />
+        <div className="phead-in art-shadow">
+          <div className="phead-main">
+            <div className="phead-top">
+              <div className="phead-av">
+                <img src={PROFILE_DATA.avatar} alt={PROFILE_DATA.username} />
+                {['Online', 'Playing', 'Offline'].includes(PROFILE_DATA.status) && (
+                  <span className="dot" title={PROFILE_DATA.status}
+                    style={{ background: PROFILE_DATA.status === 'Online' ? '#57cbde' : PROFILE_DATA.status === 'Playing' ? '#6bcf7f' : '#546270' }} />
+                )}
+              </div>
+              <div className="phead-id">
+                <div className="phead-name">
+                  <h1>{PROFILE_DATA.username}</h1>
+                  <a href={`${SITE_URL}/user/${PROFILE_DATA.username}`} target="_blank" rel="noreferrer" title="View on RetroAchievements" className="phead-link">
+                    <img src="https://static.retroachievements.org/assets/images/favicon.webp" alt="RA"
+                      onError={(e) => { e.target.onerror = null; e.target.src = "https://avatars.githubusercontent.com/u/49842581?s=32&v=4"; }} />
+                  </a>
+                </div>
+                <div className="phead-sub">
+                  Rank <b className="text-[#e5b143]">#{PROFILE_DATA.rank}</b>
+                  {PROFILE_DATA.topPercentage !== '--%' && <> · Top <b className="text-[#e5b143]">{PROFILE_DATA.topPercentage}</b></>}
+                </div>
+                <div className="phead-sub">Last active {PROFILE_DATA.lastActivity}<span className="md:hidden"> · member since {PROFILE_DATA.memberSince}</span></div>
+              </div>
             </div>
-            {PROFILE_DATA.status === 'Online' && (
-              <span className="absolute bottom-1 right-1 w-3 h-3 rounded-full bg-[#57cbde] border-2 border-[#1b2838]"></span>
-            )}
-            {PROFILE_DATA.status === 'Playing' && (
-              <span className="absolute bottom-1 right-1 w-3 h-3 rounded-full bg-[#6bcf7f] border-2 border-[#1b2838]"></span>
-            )}
-            {PROFILE_DATA.status === 'Offline' && (
-              <span className="absolute bottom-1 right-1 w-3 h-3 rounded-full bg-[#546270] border-2 border-[#1b2838]"></span>
-            )}
+            {PROFILE_DATA.bio && <p className="phead-motto">"{PROFILE_DATA.bio}"</p>}
           </div>
 
-          {/* Meta */}
-          <div className="flex-1 flex flex-col gap-1.5 text-center md:text-left">
-
-            {/* Name row */}
-            <div className="flex items-center justify-center md:justify-start gap-2 flex-wrap">
-              <h1 className="text-2xl md:text-[26px] text-white font-medium tracking-wide leading-none">
-                {PROFILE_DATA.username}
-              </h1>
-              <a href={`${SITE_URL}/user/${PROFILE_DATA.username}`} target="_blank" rel="noreferrer" title="View on RetroAchievements" className="hover:opacity-80 transition-opacity bg-[#101214] p-1 rounded-[2px] border border-[#323f4c] flex items-center justify-center shrink-0">
-                <img
-                  src="https://static.retroachievements.org/assets/images/favicon.webp"
-                  onError={(e) => { e.target.onerror = null; e.target.src = "https://avatars.githubusercontent.com/u/49842581?s=32&v=4"; }}
-                  alt="RA"
-                  className="w-3.5 h-3.5 object-contain"
-                />
-              </a>
-              <span className="text-[10px] text-[#546270]">Last active <span className="text-[#8f98a0]">{PROFILE_DATA.lastActivity}</span></span>
+          <div className="phead-side">
+            <div className="phead-stats">
+              <div className="phead-stat"><b className="text-[#e5b143]">{PROFILE_DATA.totalPoints.toLocaleString()}</b><span>Points</span></div>
+              <div className="phead-stat"><b className="text-[#66c0f4]">{PROFILE_DATA.totalUnlocked.toLocaleString()}</b><span>Achievements</span></div>
+              <div className="phead-stat"><b className="text-[#e5b143]">{ALL_GAMES.filter(g => g.isMastered).length}</b><span>Mastered</span></div>
             </div>
-
-            {/* Rank */}
-            <div className="text-[11px] text-[#66c0f4]">
-              Rank <span className="text-[#e5b143] font-bold">#{PROFILE_DATA.rank}</span>
-              {PROFILE_DATA.topPercentage !== '--%' && (
-                <span className="text-[#66c0f4]"> · Top <span className="text-[#e5b143] font-bold">{PROFILE_DATA.topPercentage}</span></span>
-              )}
-            </div>
-
-            {/* Motto */}
-            {PROFILE_DATA.bio && (
-              <p className="text-[12px] text-[#8f98a0] italic border-l-2 border-[#2a475e] pl-2 leading-snug">
-                "{PROFILE_DATA.bio}"
-              </p>
-            )}
-
-            {/* Pills */}
-            <div className="flex flex-wrap justify-center md:justify-start gap-1.5 mt-0.5">
-              <span className="text-[11px] font-semibold px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
-                <span className="text-[#e5b143]">{PROFILE_DATA.totalPoints.toLocaleString()}</span> pts
-              </span>
-              <span className="text-[11px] font-semibold px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
-                <span className="text-[#c6d4df]">{PROFILE_DATA.totalUnlocked.toLocaleString()}</span> achievements
-              </span>
-              <span className="text-[11px] font-semibold px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
-                Member since <span className="text-[#c6d4df]">{PROFILE_DATA.memberSince}</span>
-              </span>
-            </div>
-
+            <div className="phead-meta">Member since <b>{PROFILE_DATA.memberSince}</b></div>
           </div>
         </div>
       </header>

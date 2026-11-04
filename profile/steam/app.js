@@ -121,7 +121,7 @@ const HeaderArt = ({ urls }) => {
     if (!art.src) return null;
     return (
         <div className="art-bg art-header">
-            <img src={art.src} alt="" onLoad={art.onLoad} onError={art.onError}
+            <img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError}
                 className={art.loaded ? 'loaded' : ''} />
         </div>
     );
@@ -188,7 +188,7 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo, loading 
                 <div ref={dragRef} className="sheet-head">
                     {art.src && (
                         <div className="art-bg art-sheet">
-                            <img src={art.src} alt="" onLoad={art.onLoad} onError={art.onError} className={art.loaded ? 'loaded' : ''} />
+                            <img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={art.loaded ? 'loaded' : ''} />
                         </div>
                     )}
                     <span className="sheet-grab" />
@@ -1171,58 +1171,38 @@ const App = () => {
             </div>
 
             {/* Header */}
-            <header className="relative overflow-hidden bg-[#1b2838] border-b border-[#2a475e] px-4 md:px-8 pt-8 pb-5 md:pt-5 shadow-md anim-fade">
+            <header className="phead anim-fade">
                 <HeaderArt urls={recentlyPlayed[0] ? [heroUrl(recentlyPlayed[0].appId), headerUrl(recentlyPlayed[0].appId)] : []} />
-                <div className="relative art-shadow max-w-5xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-5">
-
-                    {/* Avatar */}
-                    <div className="relative shrink-0">
-                        <div className="w-20 h-20 md:w-24 md:h-24 rounded-[2px] border border-[#4c9be8] shadow-[0_2px_12px_rgba(0,0,0,0.5)] overflow-hidden bg-[#101214]">
-                            <img src={profile.avatar} alt={profile.displayName} className="w-full h-full object-cover" />
+                <div className="phead-in art-shadow">
+                    <div className="phead-main">
+                        <div className="phead-top">
+                            <div className="phead-av">
+                                <img src={profile.avatar} alt={profile.displayName} />
+                                <span className="dot" title={status.label} style={{ background: status.color }} />
+                            </div>
+                            <div className="phead-id">
+                                <div className="phead-name">
+                                    <h1>{profile.displayName}</h1>
+                                    <a href={profile.profileUrl} target="_blank" rel="noreferrer" title="View on Steam" className="phead-link">
+                                        <img src="https://store.steampowered.com/favicon.ico" alt="Steam" />
+                                    </a>
+                                </div>
+                                <div className="phead-sub flex items-center gap-1.5 flex-wrap">
+                                    <span className="text-[10px] font-semibold uppercase tracking-[0.07em]" style={{ color: status.color }}>{status.label}</span>
+                                    {profile.lastOnline && profile.status !== 1 && <span>· Last online {formatTimeAgo(profile.lastOnline)}</span>}
+                                </div>
+                                <div className="phead-sub phone-only">Last change <b>{formatDate(metadata.extractionTimestamp)}</b></div>
+                            </div>
                         </div>
-                        <span className="absolute bottom-1 right-1 w-3 h-3 rounded-full border-2 border-[#1b2838]" style={{ background: status.color }} />
                     </div>
 
-                    {/* Meta */}
-                    <div className="flex-1 flex flex-col gap-1.5 text-center md:text-left">
-
-                        <div className="flex items-center justify-center md:justify-start gap-2 flex-wrap">
-                            <h1 className="text-2xl md:text-[26px] text-white font-medium tracking-wide leading-none">
-                                {profile.displayName}
-                            </h1>
-                            <a href={profile.profileUrl} target="_blank" rel="noreferrer"
-                                title="View on Steam"
-                                className="hover:opacity-80 transition-opacity bg-[#101214] p-1 rounded-[2px] border border-[#323f4c] flex items-center justify-center shrink-0">
-                                <img src="https://store.steampowered.com/favicon.ico" alt="Steam" className="w-3.5 h-3.5 object-contain" />
-                            </a>
-                            {profile.lastOnline && profile.status !== 1 && (
-                                <span className="text-[10px] text-[#546270]">
-                                    Last online <span className="text-[#8f98a0]">{formatTimeAgo(profile.lastOnline)}</span>
-                                </span>
-                            )}
+                    <div className="phead-side">
+                        <div className="phead-stats">
+                            <div className="phead-stat"><b className="text-[#66c0f4]">{stats.totalPlaytimeHrs.toLocaleString()}h</b><span>Played</span></div>
+                            <div className="phead-stat"><b className="text-[#c6d4df]">{stats.totalGames.toLocaleString()}</b><span>Games</span></div>
+                            <div className="phead-stat"><b className="text-[#66c0f4]">{stats.unlockedAchievements.toLocaleString()}</b><span>Achievements</span></div>
                         </div>
-
-                        <div className="flex items-center justify-center md:justify-start gap-1.5">
-                            <span className="text-[9px] uppercase tracking-[0.07em] font-semibold" style={{ color: status.color }}>
-                                {status.label}
-                            </span>
-                        </div>
-
-                        <div className="flex flex-wrap justify-center md:justify-start gap-1.5 mt-0.5">
-                            <span className="text-[11px] font-semibold px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
-                                <span className="text-[#e5b143]">{stats.totalPlaytimeHrs.toLocaleString()}h</span> played
-                            </span>
-                            <span className="text-[11px] font-semibold px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
-                                <span className="text-[#c6d4df]">{stats.totalGames.toLocaleString()}</span> games
-                            </span>
-                            <span className="text-[11px] font-semibold px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
-                                <span className="text-[#c6d4df]">{stats.unlockedAchievements.toLocaleString()}</span> achievements
-                            </span>
-                        </div>
-
-                        <p className="text-[9px] text-[#546270]">
-                            Last change <span className="text-[#8f98a0]">{formatDate(metadata.extractionTimestamp)}</span>
-                        </p>
+                        <div className="phead-meta">Last change <b>{formatDate(metadata.extractionTimestamp)}</b></div>
                     </div>
                 </div>
             </header>

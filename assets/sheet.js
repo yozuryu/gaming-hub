@@ -100,5 +100,7 @@ export function useArtSrc(urls) {
     loaded,
     onLoad: () => setLoaded(true),
     onError: () => setI(n => n + 1),
+    // A cached image can finish loading before React sees its load event: check on mount
+    ref: el => { if (el && el.complete && el.naturalWidth) setLoaded(true); },
   };
 }

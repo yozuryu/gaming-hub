@@ -6,16 +6,20 @@ Filters and search look the same on every page: chips with their counts in one s
 
 ### RetroAchievements
 
+- Profile header redesigned (same on Steam and Xbox): avatar beside the name, rank and last active, the motto under them, then the three headline numbers in a strip (Points · Achievements · Mastered) instead of small pills; on phone it's shorter and left-aligned with "member since" beside last active, on desktop the numbers sit on the right
+- The blurred header art could stay invisible when the image was already cached (the load event was missed); fixed for headers and the achievement sheet
 - Completion Progress: the views (All · Nearly there · In progress · Abandoned) and the "+ Mastered" toggle are one chip row; search, the Sort dropdown and the list / tiles switch share the next row; the game count and the view's rule are one muted line below. The SORT label and the separate sort chips are gone
 - Watchlist: search and a Group dropdown on one row, then the status filters as chips with their counts (All · Not started · In progress · Mastered · No achievements), then one summary line with "Clear filters". It replaces three wrapped rows of uppercase buttons and the long stats line
 - Achievement modal: the Status and Type rows are one chip row (All · Unlocked · Locked │ Progression · Missable); tap an active type again to clear it
 
 ### Steam
 
+- Profile header redesigned like RA's, with Played · Games · Achievements in the number strip
 - Completion Progress and the achievement modal filters in the same chip style as RA
 
 ### Xbox
 
+- Profile header redesigned like RA's, with Gamerscore · Games · Achievements in the number strip
 - Completion Progress and the achievement modal filters in the same chip style as RA
 
 ### Completions
@@ -39,6 +43,10 @@ Filters and search look the same on every page: chips with their counts in one s
 ### Analytics
 
 - Period and platform are chip rows (no more two-line uppercase period buttons on phone); "Hide farms" is a toggle chip with the farm count; the date range is a muted line
+
+### Hub
+
+- New header in the profiles' style: avatar beside the name and last change, the motto, the genre tags in one row that scrolls sideways, and a totals strip across platforms (hours played, unlocks, completed). Your latest played game's art (RA or Steam) is blurred behind it; on desktop the totals fill the right side
 
 ### All pages
 
