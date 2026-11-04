@@ -1542,7 +1542,7 @@ export default function App() {
         {/* Re-keyed per tab so each tab's content fades in */}
         {/* The swipe listener sits on this stable wrapper; the keyed child is replaced on every tab change */}
         <div ref={tabContentRef}>
-        <div key={activeTab} className={`flex flex-col gap-3 ${swipeDir === 'left' ? 'tab-from-right' : swipeDir === 'right' ? 'tab-from-left' : 'anim-in'}`}>
+        <div key={activeTab} className={`flex flex-col gap-3 ${swipeDir === 'swipe' ? '' : 'anim-in'}`}>
           {activeTab === 'overview' ? (
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6 lg:gap-8">
           

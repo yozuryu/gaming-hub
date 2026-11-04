@@ -1,9 +1,10 @@
 // Profile page tabs, shared by the three profile pages (ES module; styles in ui.css).
 // TabBar: one sticky row (icon + label), scrolls sideways when the tabs don't fit, keeps the
 // active tab in view, and slides its underline to the active tab.
-// useSwipeTabs: on phones, a clearly sideways swipe on the tab content moves to the next or
-// previous tab. Swipes that start on something that scrolls sideways (chip rows, heatmaps,
-// cover strips) or on a form control are left alone.
+// useSwipeTabs: on phones, the tab content follows a sideways drag like a carousel, with the
+// neighbouring tab sliding in as a skeleton; it renders for real once the swipe has landed.
+// Drags that start on something that scrolls sideways (chip rows, heatmaps, cover strips) or
+// on a form control, and mostly vertical drags, are left alone.
 import { createElement as h, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 export function TabBar({ tabs, active, onChange, barRef }) {
@@ -40,8 +41,11 @@ export function TabBar({ tabs, active, onChange, barRef }) {
 }
 
 const PHONE = '(max-width: 767px)';
-const SWIPE_MIN = 60;        // px sideways before a swipe counts
-const SWIPE_RATIO = 1.6;     // sideways must beat vertical by this much
+const LOCK_AT = 8;           // px of movement before the gesture picks an axis
+const LOCK_RATIO = 1.2;      // sideways must beat vertical by this much to count as a swipe
+const COMMIT_SHARE = 0.25;   // share of the width past which a release moves to the next tab
+const COMMIT_SPEED = 0.45;   // px/ms: a quick flick moves on from a shorter drag
+const SLIDE_MS = 220;
 
 // Something under the finger that scrolls sideways by itself, or takes input
 const blocksSwipe = el => {
@@ -55,9 +59,17 @@ const blocksSwipe = el => {
   return false;
 };
 
-// ref: the tab content wrapper; ready: true once it is rendered (pages show a skeleton first).
-// Returns the direction of the last swipe ('left' | 'right' | null) so the page can slide the
-// new tab in from that side.
+// Placeholder for the neighbouring tab while dragging: shimmer blocks only, so a drag never
+// waits for a heavy tab to render; the real tab renders once the swipe has landed
+const PEEK_HTML = '<div class="tab-peek-in">' +
+  '<div class="shimmer tab-peek-line" style="width:38%"></div>' +
+  [62, 62, 62, 62, 62].map(h => `<div class="shimmer tab-peek-row" style="height:${h}px"></div>`).join('') +
+  '</div>';
+
+// Carousel swipe between tabs on phones. ref: the stable wrapper around the keyed tab content
+// (it moves with the finger); ready: true once it is rendered (pages show a skeleton first).
+// Returns [dir, setDir]: dir is 'swipe' right after a swiped change (the page shows the new tab
+// without its entrance animation, it has just slid in), null otherwise.
 export function useSwipeTabs(ref, ids, active, onChange, ready = true) {
   const [dir, setDir] = useState(null);
   const state = useRef({ ids, active, onChange });
@@ -66,30 +78,88 @@ export function useSwipeTabs(ref, ids, active, onChange, ready = true) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    let start = null;
-    const down = e => {
-      if (!window.matchMedia(PHONE).matches || e.touches.length !== 1 || blocksSwipe(e.target)) { start = null; return; }
-      start = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    el.style.position = 'relative';
+    el.style.touchAction = 'pan-y';
+    // The dragged content and the skeleton beside it must not make the page scroll sideways
+    // (clip, unlike hidden, creates no scroll container, so the sticky tab bar keeps working)
+    if (el.parentElement) el.parentElement.style.overflowX = 'clip';
+    let g = null;   // the current gesture
+    let peek = null;
+
+    const removePeek = () => { peek?.remove(); peek = null; };
+    const placePeek = side => {
+      if (peek && peek.dataset.side === side) return;
+      removePeek();
+      peek = document.createElement('div');
+      peek.className = 'tab-peek';
+      peek.dataset.side = side;
+      peek.innerHTML = PEEK_HTML;
+      peek.style.left = side === 'next' ? '100%' : '-100%';
+      // Show the placeholder where the user is looking: just under the pinned tab bar
+      const barBottom = document.querySelector('.ptabs')?.getBoundingClientRect().bottom ?? 0;
+      peek.style.top = `${Math.max(0, barBottom - el.getBoundingClientRect().top)}px`;
+      el.appendChild(peek);
     };
-    const up = e => {
-      if (!start) return;
-      const t = e.changedTouches[0];
-      const dx = t.clientX - start.x, dy = t.clientY - start.y;
-      start = null;
-      if (Math.abs(dx) < SWIPE_MIN || Math.abs(dx) < Math.abs(dy) * SWIPE_RATIO) return;
-      const { ids, active, onChange } = state.current;
+    // Reduced motion: the content still follows the finger (that motion is the user's own), but a
+    // release switches or snaps back at once
+    const slideMs = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : SLIDE_MS;
+    const setX = (x, animate) => {
+      el.style.transition = animate && slideMs() ? `transform ${slideMs()}ms cubic-bezier(0.2, 0.8, 0.3, 1)` : 'none';
+      el.style.transform = x ? `translateX(${x}px)` : '';
+    };
+
+    const start = e => {
+      if (!window.matchMedia(PHONE).matches || e.touches.length !== 1 || blocksSwipe(e.target)) { g = null; return; }
+      const t = e.touches[0];
+      g = { x: t.clientX, y: t.clientY, axis: null, dx: 0, lastX: t.clientX, lastT: e.timeStamp, speed: 0 };
+    };
+    const move = e => {
+      if (!g) return;
+      const t = e.touches[0];
+      const dx = t.clientX - g.x, dy = t.clientY - g.y;
+      if (!g.axis) {
+        if (Math.abs(dx) < LOCK_AT && Math.abs(dy) < LOCK_AT) return;
+        g.axis = Math.abs(dx) > Math.abs(dy) * LOCK_RATIO ? 'x' : 'y';
+        if (g.axis === 'y') { g = null; return; }   // a vertical scroll: leave the whole gesture alone
+      }
+      e.preventDefault();
+      const dt = e.timeStamp - g.lastT;
+      if (dt > 0) g.speed = (t.clientX - g.lastX) / dt;
+      g.lastX = t.clientX; g.lastT = e.timeStamp; g.dx = dx;
+      const { ids, active } = state.current;
       const i = ids.indexOf(active);
-      const next = dx < 0 ? ids[i + 1] : ids[i - 1];
-      if (!next) return;
-      setDir(dx < 0 ? 'left' : 'right');
-      onChange(next);
+      const target = dx < 0 ? ids[i + 1] : ids[i - 1];
+      if (target) placePeek(dx < 0 ? 'next' : 'prev'); else removePeek();
+      setX(target ? dx : dx * 0.25, false);   // past the first / last tab: a little rubber band
     };
-    el.addEventListener('touchstart', down, { passive: true });
-    el.addEventListener('touchend', up, { passive: true });
-    el.addEventListener('touchcancel', () => { start = null; }, { passive: true });
+    const end = () => {
+      if (!g || g.axis !== 'x') { g = null; return; }
+      const { ids, active, onChange } = state.current;
+      const i = ids.indexOf(active), dx = g.dx, speed = g.speed;
+      g = null;
+      const target = dx < 0 ? ids[i + 1] : ids[i - 1];
+      const w = el.offsetWidth;
+      const commit = target && (Math.abs(dx) > w * COMMIT_SHARE || (Math.abs(dx) > 30 && Math.abs(speed) > COMMIT_SPEED && Math.sign(speed) === Math.sign(dx)));
+      if (!commit) { setX(0, true); setTimeout(removePeek, slideMs()); return; }
+      setX(dx < 0 ? -w : w, true);
+      setTimeout(() => {
+        setX(0, false);
+        removePeek();
+        setDir('swipe');
+        onChange(target);
+      }, slideMs());
+    };
+
+    el.addEventListener('touchstart', start, { passive: true });
+    el.addEventListener('touchmove', move, { passive: false });
+    el.addEventListener('touchend', end, { passive: true });
+    el.addEventListener('touchcancel', end, { passive: true });
     return () => {
-      el.removeEventListener('touchstart', down);
-      el.removeEventListener('touchend', up);
+      el.removeEventListener('touchstart', start);
+      el.removeEventListener('touchmove', move);
+      el.removeEventListener('touchend', end);
+      el.removeEventListener('touchcancel', end);
+      removePeek();
     };
   }, [ready]);
 
