@@ -262,7 +262,7 @@ const RarestCell = ({ item, rare }) => {
     const isRA = item.platform === 'ra';
     const color = isRA ? (rare.hc ? '#ff6b6b' : '#8f98a0') : rarityColor(rare.r);
     return (
-        <div className="flex items-center gap-2 px-2.5 py-1.5 min-w-0" title={`Rarest achievement: ${rare.n} · ${rare.r}%${isRA ? '' : ` (${rarityLabel(rare.r)})`}`}>
+        <div className="flex items-center justify-center gap-2 px-2.5 py-1.5 min-w-0" title={`Rarest achievement: ${rare.n} · ${rare.r}%${isRA ? '' : ` (${rarityLabel(rare.r)})`}`}>
             {rare.icon
                 ? <img src={rare.icon} alt="" loading="lazy" className="w-7 h-7 rounded-[2px] border border-[#2a475e] shrink-0 object-cover bg-[#101214]" />
                 : <span className="w-7 h-7 rounded-[2px] border border-[#2a475e] bg-[#101214] shrink-0 grid place-items-center" style={{ color }}>{isRA ? (rare.hc ? <Flame size={12} /> : <Feather size={12} />) : <Gem size={12} />}</span>}
@@ -270,7 +270,7 @@ const RarestCell = ({ item, rare }) => {
                 <b className="text-[12px] font-semibold tabular-nums whitespace-nowrap flex items-center gap-1" style={{ color }}>
                     {isRA ? (rare.hc ? <Flame size={10} /> : <Feather size={10} />) : <Gem size={10} />}{rare.r}%
                 </b>
-                <span className="text-[11px] text-[#8f98a0] leading-tight truncate md:whitespace-normal md:line-clamp-2">{rare.n}</span>
+                <span className="text-[11px] text-[#8f98a0] leading-tight line-clamp-2 break-words">{rare.n}</span>
             </div>
         </div>
     );
@@ -316,7 +316,7 @@ const Highlight = ({ item, rare }) => (
         </div>
         {/* Stats band, in the Playing tile's style: darker strip, value above a small label */}
         <div className="mt-auto grid border-t border-[#1a2535] bg-[#172333] divide-x divide-[#1a2535]"
-            style={{ gridTemplateColumns: item.playtime > 0 ? 'auto auto minmax(0, 1fr)' : 'auto minmax(0, 1fr)' }}>
+            style={{ gridTemplateColumns: `repeat(${item.playtime > 0 ? 3 : 2}, minmax(0, 1fr))` }}>
             <div className="flex flex-col items-center justify-center gap-px px-3 py-1.5">
                 <b className="text-[12px] font-semibold text-[#e5b143] tabular-nums whitespace-nowrap">{item.total != null ? `${item.total}/${item.total}` : '–'}</b>
                 <span className="text-[11px] text-[#8f98a0]">Achievements</span>

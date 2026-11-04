@@ -22,6 +22,7 @@ Filters and search look the same on every page and take less room: sentence-case
 
 - One chip row: All · RA · Steam · Xbox │ Beaten · Hacks · Homebrew · Prototypes, where "+" means left out and "✓" included. The total in the header is plain text instead of a box
 - Completed highlights end in a stats band like the Playing tiles (darker strip, value above its label): achievements, time played, and the rarest achievement with its icon, rate and name. Steam / Xbox take it from the game's own file, RA from the award (pipeline); bands line up at the bottom of each row
+- The stats band's columns are equal and centred, so short values (a 13-minute playtime, a short achievement name) no longer pile up on the left; the rarest achievement's name wraps to two lines before truncating (phones have no hover to show the rest)
 - Beaten rows stay one line per line: long titles and achievement names are truncated (full text on hover); Steam / Xbox rarity shows as the coloured rate, the tier in the tooltip
 - Closed years show their counts as ★ complete and a medal for beaten, in fixed columns so every cover strip starts at the same place; the covers (all of them now) scroll sideways on phone and the ★ badges are no longer cut off
 - Opening a closed year keeps it in its place between the others; before, open years jumped to the top
