@@ -11,11 +11,11 @@
 - Shows the first 2 rows of icons by default (perfect first, then beaten fill the remaining slots); "Show all N / Show less" button at the bottom reveals the rest. Row size follows the grid breakpoints via `useIconGridCols()` (5 / 8 at `sm` / 5 at `lg`).
 
 ## Tabs
-Three tabs: **Recent Games** (Clock) · **Completion Progress** (BarChart2) · **Activity** (Activity)
+Four tabs: **Overview** (User, the default) · **Recent** (Clock) · **Progress** (BarChart2) · **Activity** (Activity), in the shared `TabBar` (`assets/tabs.js`)
 
 - Tab state persists in URL: `?tab=progress`
-- On mobile: icon + short label. On desktop: full text label.
-- `tabBarRef` tracks the natural tab bar position. Same scroll-aware floating pill as RA profile.
+- Overview holds what used to sit above the tabs (Most Recently Played, Most Recently Unlocked, User Stats, Completions); sticky bar and swipe as on RA
+- Recent: a search over every game in `games/index.json`, newest played first (up to 50); empty = Steam's recently played list. Searches ignore accents and case (`fold()`)
 
 ## Completion Progress Filters
 - Shared `ProgressFilterBar` + `applyProgressView()` (duplicated in RA and Steam `app.js` — keep them in sync)
@@ -24,11 +24,7 @@ Three tabs: **Recent Games** (Clock) · **Completion Progress** (BarChart2) · *
 - Mobile: views are a full-width 4-column segmented control; sort is a native `<select>` (chips on desktop)
 - All-view sorts: `PROGRESS_SORTS` in `utils/constants.js` (Completion, Hours, Last Played)
 
-## Floating Tab Pill (mobile)
-Same architecture as RA profile:
-- `showFloatingTabs` + `pillLeaving` + `pillLeaveTimer` ref
-- `slideUpPill` / `slideDownPill` keyframes defined in inline `<style>` tag
-- All three tabs use `#66c0f4` (blue) — no gold accent tabs on Steam
+- All tabs use `#66c0f4` (blue) — no gold accent tabs on Steam
 
 ## Game list: list / tiles
 Recent Games and Completion Progress render `GameListRow` (full store banner, title, playtime · last played, count + bar, hero art faded on the right, status stripe) or `GameTile` (banner uncropped on top, last played, title, bar, count + playtime, status colour on the bottom edge), switched by `ViewToggle` and `useGameView()` (`assets/game-view.js`, `localStorage['gh:gameView']`, shared with RA and Xbox). Styles are the `.glist/.grow/.gtiles/.gtile` classes in `assets/ui.css`. Both only need `games/index.json` fields; full achievement data loads when the sheet opens.

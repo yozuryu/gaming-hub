@@ -1,6 +1,6 @@
 # Xbox Profile — Page Context
 
-Built from `profile/steam/` and kept structurally parallel to it. When changing shared behavior (Progress views, Completions panel, floating pill, Activity tab), check whether the Steam page needs the same change.
+Built from `profile/steam/` and kept structurally parallel to it. When changing shared behavior (Progress views, Completions panel, tabs, Activity tab), check whether the Steam page needs the same change.
 
 ## Data Sources
 - `../../data/xbox/profile.json` — fetched on mount (profile, stats, recentlyPlayed, perfectGames)
@@ -25,7 +25,7 @@ Built from `profile/steam/` and kept structurally parallel to it. When changing 
 - Progress sorts (`utils/constants.js`): Completion, Gamerscore, Last Played
 
 ## Colors
-- Same section scheme as RA and Steam: **blue `#66c0f4`** for general sections (Most Recently Played, User Stats, Activity), tabs, floating pill, links and filter chips; **gold `#e5b143`** for achievement sections (Most Recently Unlocked, Recent Unlocks, Completions)
+- Same section scheme as RA and Steam: **blue `#66c0f4`** for general sections (Most Recently Played, User Stats, Activity), links and filter chips; the tab bar's active icon and underline are Xbox green; **gold `#e5b143`** for achievement sections (Most Recently Unlocked, Recent Unlocks, Completions)
 - Heatmap: same blue ramp as Steam, gold peak
 - Xbox green `#52b043` (`XBOX_GREEN`) only marks Xbox: avatar border here; elsewhere the hub card, activity feed border, Activity-page Xbox filter, changelog section
 - Status colors: completed gold, beaten silver `#b8c4ce`, in progress blue

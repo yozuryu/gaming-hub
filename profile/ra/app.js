@@ -1,11 +1,12 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, Trophy, Crown, Lock, Unlock, AlertTriangle, Flame, Feather, Medal, ShieldOff, CircleDashed, X, Clock, BookOpen, Youtube, ExternalLink, Layers, List, LayoutGrid, Search, Check, Plus } from 'lucide-react';
+import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, Trophy, Crown, Lock, Unlock, AlertTriangle, Flame, Feather, Medal, ShieldOff, CircleDashed, X, Clock, BookOpen, Youtube, ExternalLink, Layers, List, LayoutGrid, Search, Check, Plus, User } from 'lucide-react';
 import { MEDIA_URL, SITE_URL, TILDE_TAG_COLORS } from './utils/constants.js';
 import { getMediaUrl, parseTitle, formatTimeAgo, raShot } from './utils/helpers.js';
 import { transformData } from './utils/transform.js';
 import { useSheet, useArtSrc } from '../../assets/sheet.js';
 import { useGameView, shortAgo } from '../../assets/game-view.js';
+import { TabBar, useSwipeTabs, scrollToTabs } from '../../assets/tabs.js';
 import { TZ, toMs, dayKey, addDays, keyToDate, fmtDate, fmtClock, buildHeatmap } from '../../assets/time.js';
 
 // --- JSX Helpers ---
@@ -54,6 +55,9 @@ const PROGRESS_VIEWS = [
   { value: 'abandoned',  label: 'Abandoned',    hint: 'Unfinished · not played for 30+ days' },
 ];
 const NEARLY_PCT = 75;
+// Search text without accents or case, so "pokemon" finds "Pokémon"
+const fold = str => (str ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
 const STALE_MS   = 30 * 24 * 60 * 60 * 1000;
 
 
@@ -1269,24 +1273,23 @@ export default function App() {
   const [loadingGames,   setLoadingGames]   = useState(false);
   const [error, setError] = useState(null);
 
-  const VALID_TABS = ['recent', 'progress', 'series', 'activity', 'backlog'];
+  const VALID_TABS = ['overview', 'recent', 'progress', 'series', 'activity', 'backlog'];
   const initialTab = (() => {
     const p = new URLSearchParams(window.location.search).get('tab');
-    return VALID_TABS.includes(p) ? p : 'recent';
+    return VALID_TABS.includes(p) ? p : 'overview';
   })();
 
   const [activeTab, setActiveTab] = useState(initialTab);
   const [progressSort,   setProgressSort]   = useState('overall');
   const [progressSearch, setProgressSearch] = useState('');
+  const [recentSearch,   setRecentSearch]   = useState('');
   const [progressView,   setProgressView]   = useState('all');
   const [gameView,       setGameView]       = useGameView();
   const [showMastered,   setShowMastered]   = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [showFloatingTabs, setShowFloatingTabs] = useState(false);
-  const [pillLeaving, setPillLeaving] = useState(false);
-  const pillLeaveTimer = useRef(null);
   const [statsExpanded, setStatsExpanded] = useState(false);
   const tabBarRef = useRef(null);
+  const tabContentRef = useRef(null);
   const [watchlistSearch, setWatchlistSearch] = useState('');
   const [watchlistStatusFilter, setWatchlistStatusFilter] = useState('all');
   const [watchlistGrouping, setWatchlistGrouping] = useState('none');
@@ -1320,6 +1323,7 @@ export default function App() {
     const url = new URL(window.location);
     url.searchParams.set('tab', tab);
     window.history.replaceState({}, '', url);
+    scrollToTabs(tabBarRef);
   };
 
   const toggleGroup = (key) => setCollapsedGroups(prev => {
@@ -1399,33 +1403,16 @@ export default function App() {
   const headerArt  = { url: latestGame ? getMediaUrl(latestShot || latestGame.imageIcon) : null, icon: !!latestGame && !latestShot };
 
   useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY;
-      setShowScrollTop(y > 400);
-      if (window.innerWidth < 768 && tabBarRef.current) {
-        const bottom = tabBarRef.current.getBoundingClientRect().bottom;
-        if (bottom < 0) {
-          if (pillLeaveTimer.current) { clearTimeout(pillLeaveTimer.current); pillLeaveTimer.current = null; }
-          setPillLeaving(false);
-          setShowFloatingTabs(true);
-        } else {
-          setShowFloatingTabs(prev => {
-            if (prev && !pillLeaveTimer.current) {
-              setPillLeaving(true);
-              pillLeaveTimer.current = setTimeout(() => {
-                setShowFloatingTabs(false);
-                setPillLeaving(false);
-                pillLeaveTimer.current = null;
-              }, 210);
-            }
-            return prev;
-          });
-        }
-      }
-    };
+    const onScroll = () => setShowScrollTop(window.scrollY > 400);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  // Swipe between tabs on phones (assets/tabs.js); the order follows the tab bar
+  const hasSeries = seriesData.some(s => s.showProgress);
+  const tabIds = ['overview', 'recent', 'progress', ...(hasSeries ? ['series'] : []), 'activity', 'backlog'];
+  const [swipeDir, setSwipeDir] = useSwipeTabs(tabContentRef, tabIds, activeTab, setTab, !loadingProfile && !!PROFILE_DATA);
+  const pickTab = id => { setSwipeDir(null); setTab(id); };
 
   if (loadingProfile) return <ProfileLoadingSkeleton />;
   if (error || !PROFILE_DATA) return (
@@ -1439,11 +1426,16 @@ export default function App() {
   let displayedGames = [...ALL_GAMES];
   let progressCounts = null;
   if (activeTab === 'recent') {
+    // Recent: the latest 15; a search looks through every game, newest played first (up to 50)
+    if (recentSearch) {
+      const q = fold(recentSearch);
+      displayedGames = displayedGames.filter(g => fold(g.baseTitle || g.title).includes(q) || fold(g.subsetName).includes(q));
+    }
     displayedGames.sort((a, b) => toMs(b.lastPlayedStr) - toMs(a.lastPlayedStr));
-    displayedGames = displayedGames.slice(0, 15);
+    displayedGames = displayedGames.slice(0, recentSearch ? 50 : 15);
   } else if (activeTab === 'progress') {
     displayedGames = displayedGames
-      .filter(g => g.achievementsUnlocked > 0 && g.achievementsTotal > 0 && (!progressSearch || (g.baseTitle || g.title || '').toLowerCase().includes(progressSearch.toLowerCase())));
+      .filter(g => g.achievementsUnlocked > 0 && g.achievementsTotal > 0 && (!progressSearch || fold(g.baseTitle || g.title).includes(fold(progressSearch))));
     const progressAcc = {
       pct:          g => g.rawProgress,
       left:         g => g.achievementsTotal - g.achievementsUnlocked,
@@ -1522,298 +1514,232 @@ export default function App() {
 
       <main className="max-w-5xl mx-auto px-4 md:px-8 py-6 flex-1 w-full anim-in">
         
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6 lg:gap-8 mb-8">
-          
-          <div className="flex flex-col gap-6">
-            
-            <div>
-              <h2 className="text-[13px] text-white tracking-wide uppercase font-medium border-b border-[#2a475e] pb-1.5 flex items-center gap-2 mb-3">
-                <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0"></span>
-                <Activity size={15} className="text-[#66c0f4]"/> Most Recently Played
-              </h2>
-              
-              <div className="flex flex-col gap-2">
-                {PROFILE_DATA.mostRecentGame ? (
-                  <div className="bg-[#1b2838]/80 border border-[#323f4c] border-l-[3px] border-l-[#66c0f4] rounded-[3px] p-3 flex gap-4 hover:bg-[#202d39] transition-colors shadow-sm">
-                    <a href={`${SITE_URL}/game/${PROFILE_DATA.mostRecentGame.id}`} target="_blank" rel="noreferrer" className="w-14 h-14 shrink-0 rounded-[2px] overflow-hidden border border-[#101214] bg-black block hover:scale-105 transition-transform">
-                      <img src={PROFILE_DATA.mostRecentGame.icon} alt="Icon" className="w-full h-full object-cover"/>
-                    </a>
-                    <div className="flex-1 min-w-0 flex flex-col justify-center">
-                      <div className="flex items-center gap-1.5 mb-0.5 flex-wrap">
-                        <a href={`${SITE_URL}/game/${PROFILE_DATA.mostRecentGame.id}`} target="_blank" rel="noreferrer" className="text-[#c6d4df] hover:text-[#66c0f4] font-medium text-[14px] truncate leading-tight">
-                          {PROFILE_DATA.mostRecentGame.baseTitle}
-                        </a>
-                        {PROFILE_DATA.mostRecentGame.isSubset && (
-                          <span className="text-[7px] font-bold uppercase tracking-[0.07em] px-1 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>
-                        )}
-                        {renderTildeTags(PROFILE_DATA.mostRecentGame.tags)}
-                      </div>
-                      {PROFILE_DATA.mostRecentGame.isSubset && (
-                        <div className="text-[10px] text-[#c8a84b] mb-0.5 truncate">{PROFILE_DATA.mostRecentGame.subsetName}</div>
-                      )}
-                      <div className="text-[10px] mb-1 flex items-center gap-1.5">
-                         <span className="text-[#66c0f4]">{PROFILE_DATA.mostRecentGame.console}</span>
-                         <span className="text-[#546270]">•</span>
-                         <span className="text-[#8f98a0]">{PROFILE_DATA.mostRecentGame.timeAgo}</span>
-                      </div>
-                      
-                      {PROFILE_DATA.richPresenceMsg && (
-                         <p className="text-[#c6d4df] text-[11px] leading-snug italic border-l-2 border-[#323f4c] pl-2 mt-1">
-                           {PROFILE_DATA.richPresenceMsg}
-                         </p>
-                      )}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="text-[#8f98a0] text-[11px] py-2">No recent games found.</div>
-                )}
-              </div>
-            </div>
-
-            {/* Most Recently Unlocked Achievement */}
-            <div>
-              <h2 className="text-[13px] text-white tracking-wide uppercase font-medium border-b border-[#2a475e] pb-1.5 flex items-center gap-2 mb-3">
-                <span className="w-[3px] h-[14px] bg-[#e5b143] rounded-[1px] shrink-0"></span>
-                <Trophy size={15} className="text-[#e5b143]"/> Most Recently Unlocked
-              </h2>
-              {PROFILE_DATA.mostRecentAchievement ? (
-                <div className="bg-[#1b2838]/80 border border-[#323f4c] border-l-[3px] border-l-[#e5b143] rounded-[3px] p-3 flex gap-3 hover:bg-[#202d39] transition-colors shadow-sm">
-                  <a href={`${SITE_URL}/achievement/${PROFILE_DATA.mostRecentAchievement.id}`} target="_blank" rel="noreferrer" className="shrink-0 w-12 h-12 rounded-[2px] overflow-hidden border border-[#101214] bg-black block hover:scale-105 transition-transform">
-                    <img src={`${MEDIA_URL}/Badge/${PROFILE_DATA.mostRecentAchievement.badgeName}.png`} alt={PROFILE_DATA.mostRecentAchievement.title} className="w-full h-full object-cover" />
-                  </a>
-                  <div className="flex-1 min-w-0 flex flex-col justify-center">
-                    <div className="flex items-center gap-2 flex-wrap mb-0.5">
-                      <a href={`${SITE_URL}/achievement/${PROFILE_DATA.mostRecentAchievement.id}`} target="_blank" rel="noreferrer" className="text-[13px] font-medium text-[#e5b143] hover:underline truncate leading-tight">
-                        {PROFILE_DATA.mostRecentAchievement.title}
-                      </a>
-                      <span className="text-[9px] font-bold text-[#66c0f4] bg-[#101214] border border-[#323f4c] px-1.5 py-[1px] rounded-sm shrink-0">{PROFILE_DATA.mostRecentAchievement.points} pts</span>
-                      {PROFILE_DATA.mostRecentAchievement.trueRatio > 0 && PROFILE_DATA.mostRecentAchievement.points > 0 && (() => {
-                        const ratio = PROFILE_DATA.mostRecentAchievement.trueRatio / PROFILE_DATA.mostRecentAchievement.points;
-                        return <span className="text-[9px] shrink-0" style={{ color: ratio >= 30 ? '#ff6b6b' : ratio >= 20 ? '#e5b143' : ratio >= 10 ? '#66c0f4' : '#8f98a0' }}>×{ratio.toFixed(1)}</span>;
-                      })()}
-                    </div>
-                    <p className="text-[10px] text-[#8f98a0] leading-snug mb-1 truncate">{PROFILE_DATA.mostRecentAchievement.description}</p>
-                    <div className="flex items-center gap-1.5 text-[10px]">
-                      <a href={`${SITE_URL}/game/${PROFILE_DATA.mostRecentAchievement.gameId}`} target="_blank" rel="noreferrer" className="flex items-center gap-1 group">
-                        <img src={PROFILE_DATA.mostRecentAchievement.gameIcon} alt="" className="w-3.5 h-3.5 rounded-[1px] border border-[#101214]" />
-                        <span className="text-[#66c0f4] group-hover:text-[#c6d4df] transition-colors">{PROFILE_DATA.mostRecentAchievement.baseTitle || PROFILE_DATA.mostRecentAchievement.gameTitle}</span>
-                        {renderTildeTags(PROFILE_DATA.mostRecentAchievement.tags)}
-                      </a>
-                      <span className="text-[#546270]">•</span>
-                      <span className="text-[#8f98a0]">{PROFILE_DATA.mostRecentAchievement.consoleName}</span>
-                      <span className="text-[#546270]">•</span>
-                      <span className="text-[#546270]">{PROFILE_DATA.mostRecentAchievement.timeAgo}</span>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div className="text-[#8f98a0] text-[11px] py-2 italic">No achievements unlocked in the last 1 year.</div>
-              )}
-            </div>
-
-            <div>
-              <h2 className="text-[13px] text-white tracking-wide uppercase font-medium border-b border-[#2a475e] pb-1.5 flex items-center gap-2 mb-2">
-                <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0"></span>
-                <BarChart2 size={15} className="text-[#66c0f4]"/> User Stats
-              </h2>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 md:gap-x-8 px-1">
-
-                <div className="flex flex-col">
-                  {PROFILE_DATA.statsLeft.map((stat, i) => (
-                    <div key={`left-${i}`} className="flex items-end text-[11px] py-[3px] group hover:bg-[#202d39]/40 rounded-sm px-1 transition-colors">
-                      <span className="text-[#8f98a0] font-medium leading-tight whitespace-nowrap">{stat.label}</span>
-                      <div className="flex-1 border-b-[1.5px] border-dotted border-[#323f4c] mx-2 relative top-[-4px] opacity-60 group-hover:border-[#546270]"></div>
-                      <span className="text-[#c6d4df] font-medium whitespace-nowrap leading-tight text-right">{stat.value}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Right column: always visible on sm+, hidden on mobile until expanded */}
-                <div className={`flex flex-col ${statsExpanded ? 'anim-fade' : 'hidden sm:flex'}`}>
-                  {PROFILE_DATA.statsRight.map((stat, i) => (
-                    <div key={`right-${i}`} className="flex items-end text-[11px] py-[3px] group hover:bg-[#202d39]/40 rounded-sm px-1 transition-colors">
-                      <span className="text-[#8f98a0] font-medium leading-tight whitespace-nowrap">{stat.label}</span>
-                      <div className="flex-1 border-b-[1.5px] border-dotted border-[#323f4c] mx-2 relative top-[-4px] opacity-60 group-hover:border-[#546270]"></div>
-                      <span className="text-[#c6d4df] font-medium whitespace-nowrap leading-tight text-right">{stat.value}</span>
-                    </div>
-                  ))}
-                </div>
-
-              </div>
-
-              {/* Mobile-only expand/collapse toggle */}
-              <button
-                onClick={() => setStatsExpanded(v => !v)}
-                className="sm:hidden mt-2 w-full flex items-center justify-center gap-1.5 py-1.5 text-[11px] font-semibold text-[#546270] hover:text-[#8f98a0] transition-colors border-t border-[#1e2d3a]"
-              >
-                <ChevronDown size={13} className={`transition-transform duration-200 ${statsExpanded ? 'rotate-180' : ''}`} />
-                {statsExpanded ? 'Show less' : 'Show more'}
-              </button>
-            </div>
-
-          </div>
-
-          <div className="flex flex-col gap-5">
-            
-            <div className="bg-[#1b2838] border border-[#2a475e] rounded-[3px] shadow-sm h-fit">
-              <div className="p-2.5 bg-[#172333] border-b border-[#2a475e] rounded-t-[2px] text-[#c6d4df] flex items-center gap-2">
-                <span className="w-[2px] h-[12px] bg-[#e5b143] rounded-[1px] shrink-0"></span>
-                <span className="text-[11px] uppercase tracking-wide font-semibold flex items-center gap-2 flex-1">
-                  <Star size={13} className="text-[#e5b143]" /> Game Awards
-                </span>
-                <div className="flex items-center gap-1.5">
-                  <Trophy size={9} className="text-[#e5b143]" />
-                  <span className="text-[10px] font-semibold text-[#e5b143]">{PROFILE_DATA.gameAwards.filter(a => a.type === 'Mastery/Completion').length}</span>
-                  <Medal size={9} className="text-[#b8c4ce]" />
-                  <span className="text-[10px] font-semibold text-[#b8c4ce]">{PROFILE_DATA.gameAwards.filter(a => a.type !== 'Mastery/Completion').length}</span>
-                </div>
-              </div>
-              <div className="p-3 grid grid-cols-5 sm:grid-cols-8 lg:grid-cols-5 gap-2 min-h-[60px]">
-                {PROFILE_DATA.gameAwards.length > 0 ? (awardsExpanded ? PROFILE_DATA.gameAwards : PROFILE_DATA.gameAwards.slice(0, iconLimit)).map(award => (
-                  <div key={award.id} className="relative group cursor-help anim-fade">
-                    <img
-                      src={award.icon}
-                      alt={award.title}
-                      className={`w-full aspect-square rounded-[2px] border transition-all duration-200 bg-black relative z-10 group-hover:scale-110 ${award.type === 'Mastery/Completion' ? 'border-2 border-[#e5b143]' : 'border border-[#b8c4ce]'}`}
-                    />
-
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[200px] bg-[#1b2838] border border-[#2a475e] rounded-[2px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100] shadow-xl pointer-events-none overflow-hidden">
-                      {/* Gold accent line */}
-                      <div className="h-[2px] bg-gradient-to-r from-[#e5b143] to-[#e5b143]/20"></div>
-                      {/* Header */}
-                      <div className="flex items-center gap-2 px-2.5 py-2 border-b border-[#2a475e] bg-[#172333]">
-                        <img src={award.icon} alt="" className="w-8 h-8 rounded-[2px] border border-[#e5b143]/30 bg-black shrink-0" />
-                        <div className="flex flex-col gap-0.5 min-w-0">
-                          <div className="flex items-center gap-1 flex-wrap">
-                            <span className="text-[11px] text-white font-semibold leading-tight">{award.baseTitle || award.title}</span>
-                            {award.isSubset && <span className="text-[8px] font-bold uppercase tracking-[0.07em] px-1.5 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>}
-                            {!award.isSubset && renderTildeTags(award.tags)}
-                          </div>
-                          {award.isSubset && award.subsetName && <span className="text-[9px] text-[#c8a84b] truncate">{award.subsetName}</span>}
-                        </div>
-                      </div>
-                      {/* Body */}
-                      <div className="px-2.5 py-2 flex flex-col gap-1.5">
-                        <div className="flex items-center justify-between">
-                          <span className="text-[11px] text-[#546270]">Console</span>
-                          <span className="text-[9px] text-[#66c0f4] font-medium">{award.console}</span>
-                        </div>
-                        <div className="h-px bg-[#2a475e]"></div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-[11px] text-[#546270]">Award</span>
-                          {award.type === 'Mastery/Completion'
-                            ? <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px] bg-[#e5b143] text-[#101214]">Mastered</span>
-                            : <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px] bg-[#2a3440] text-[#c6d4df] border border-[#b8c4ce]/30">Beaten</span>
-                          }
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-[11px] text-[#546270]">Earned</span>
-                          <span className="text-[9px] text-[#c6d4df]">{award.date}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )) : (
-                  <div className="col-span-full text-center text-[#546270] text-[10px] py-2">No game awards yet.</div>
-                )}
-              </div>
-              {PROFILE_DATA.gameAwards.length > iconLimit && (
-                <button
-                  onClick={() => setAwardsExpanded(v => !v)}
-                  className="w-full flex items-center justify-center gap-1 py-1.5 border-t border-[#2a475e] text-[11px] font-semibold text-[#546270] hover:text-[#c6d4df] hover:bg-[#202d39] transition-colors rounded-b-[2px] outline-none"
-                >
-                  {awardsExpanded ? 'Show less' : `Show all ${PROFILE_DATA.gameAwards.length}`}
-                  <ChevronDown size={11} className={`transition-transform duration-200 ${awardsExpanded ? 'rotate-180' : ''}`} />
-                </button>
-              )}
-            </div>
-
-          </div>
-        </div>
-
-        {/* ── Tab bar (natural in-flow position; desktop: sticky) ── */}
-        <div ref={tabBarRef} className="md:sticky md:top-[26px] z-40 bg-[#171a21] -mx-4 md:-mx-8 mb-4 border-b border-[#2a475e]">
-          <div className="flex items-center gap-1 md:gap-6 px-2 md:px-8 overflow-x-auto scrollbar-none" style={{ scrollbarWidth: 'none' }}>
-            <button onClick={() => setTab('recent')} className={`flex-1 md:flex-none flex flex-col md:flex-row items-center justify-center gap-1 md:gap-0 py-2.5 md:py-0 md:pb-2 px-1 md:px-0 transition-colors relative ${activeTab === 'recent' ? 'text-white' : 'text-[#546270] hover:text-[#c6d4df]'}`}>
-              <Clock size={18} className="block md:hidden shrink-0" />
-              <span className="block md:hidden text-[9px] font-semibold uppercase tracking-[0.06em] leading-none">Recent</span>
-              <span className="hidden md:inline text-[11px] md:text-[14px] uppercase tracking-wide font-medium whitespace-nowrap">Recent Games</span>
-              {activeTab === 'recent' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] anim-fade bg-[#66c0f4]" />}
-            </button>
-            <button onClick={() => setTab('progress')} className={`flex-1 md:flex-none flex flex-col md:flex-row items-center justify-center gap-1 md:gap-0 py-2.5 md:py-0 md:pb-2 px-1 md:px-0 transition-colors relative ${activeTab === 'progress' ? 'text-white' : 'text-[#546270] hover:text-[#c6d4df]'}`}>
-              <BarChart2 size={18} className="block md:hidden shrink-0" />
-              <span className="block md:hidden text-[9px] font-semibold uppercase tracking-[0.06em] leading-none">Progress</span>
-              <span className="hidden md:inline text-[11px] md:text-[14px] uppercase tracking-wide font-medium whitespace-nowrap">Completion Progress</span>
-              {activeTab === 'progress' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] anim-fade bg-[#66c0f4]" />}
-            </button>
-            {seriesData.some(s => s.showProgress) && (
-              <button onClick={() => setTab('series')} className={`anim-fade flex-1 md:flex-none flex flex-col md:flex-row items-center justify-center gap-1 md:gap-0 py-2.5 md:py-0 md:pb-2 px-1 md:px-0 transition-colors relative ${activeTab === 'series' ? 'text-white' : 'text-[#546270] hover:text-[#c6d4df]'}`}>
-                <Layers size={18} className="block md:hidden shrink-0" />
-                <span className="block md:hidden text-[9px] font-semibold uppercase tracking-[0.06em] leading-none">Series</span>
-                <span className="hidden md:inline text-[11px] md:text-[14px] uppercase tracking-wide font-medium whitespace-nowrap">Series Progress</span>
-                {activeTab === 'series' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] anim-fade bg-[#e5b143]" />}
-              </button>
-            )}
-            <button onClick={() => setTab('activity')} className={`flex-1 md:flex-none flex flex-col md:flex-row items-center justify-center gap-1 md:gap-0 py-2.5 md:py-0 md:pb-2 px-1 md:px-0 transition-colors relative ${activeTab === 'activity' ? 'text-white' : 'text-[#546270] hover:text-[#c6d4df]'}`}>
-              <Activity size={18} className="block md:hidden shrink-0" />
-              <span className="block md:hidden text-[9px] font-semibold uppercase tracking-[0.06em] leading-none">Activity</span>
-              <span className="hidden md:inline text-[11px] md:text-[14px] uppercase tracking-wide font-medium whitespace-nowrap">Activity</span>
-              {activeTab === 'activity' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] anim-fade bg-[#66c0f4]" />}
-            </button>
-            <button onClick={() => setTab('backlog')} className={`flex-1 md:flex-none flex flex-col md:flex-row items-center justify-center gap-1 md:gap-0 py-2.5 md:py-0 md:pb-2 px-1 md:px-0 transition-colors relative ${activeTab === 'backlog' ? 'text-white' : 'text-[#546270] hover:text-[#c6d4df]'}`}>
-              <Star size={18} className="block md:hidden shrink-0" />
-              <span className="block md:hidden text-[9px] font-semibold uppercase tracking-[0.06em] leading-none">Watchlist</span>
-              <span className="hidden md:inline text-[11px] md:text-[14px] uppercase tracking-wide font-medium whitespace-nowrap">Watchlist</span>
-              {activeTab === 'backlog' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] anim-fade bg-[#66c0f4]" />}
-            </button>
-          </div>
-        </div>
-
-        {/* ── Floating tab pill (mobile only, shown when natural bar scrolls off screen) ── */}
-        {(showFloatingTabs || pillLeaving) && (
-          <div
-            className="md:hidden fixed z-[190] flex items-center gap-0.5 px-1.5 py-1.5 rounded-full shadow-[0_4px_24px_rgba(0,0,0,0.7)]"
-            style={{
-              bottom: 'calc(68px + env(safe-area-inset-bottom, 0px))',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              background: 'rgba(19,26,34,0.92)',
-              border: '1px solid #2a475e',
-              backdropFilter: 'blur(8px)',
-              WebkitBackdropFilter: 'blur(8px)',
-              animation: pillLeaving ? 'slideDownPill 0.2s ease both' : 'slideUpPill 0.2s ease both',
-            }}
-          >
-            {[
-              { id: 'recent',   icon: <Clock size={17} />,    color: '#66c0f4', label: 'Recent' },
-              { id: 'progress', icon: <BarChart2 size={17} />, color: '#66c0f4', label: 'Progress' },
-              ...(seriesData.some(s => s.showProgress) ? [{ id: 'series', icon: <Layers size={17} />, color: '#e5b143', label: 'Series' }] : []),
-              { id: 'activity', icon: <Activity size={17} />, color: '#66c0f4', label: 'Activity' },
-              { id: 'backlog',  icon: <Star size={17} />,     color: '#66c0f4', label: 'Watchlist' },
-            ].map(({ id, icon, color, label }) => (
-              <button
-                key={id}
-                onClick={() => setTab(id)}
-                title={label}
-                className="relative w-10 h-10 flex items-center justify-center rounded-full transition-all"
-                style={{
-                  color: activeTab === id ? color : '#546270',
-                  background: activeTab === id ? `${color}22` : 'transparent',
-                }}
-              >
-                {icon}
-                {activeTab === id && (
-                  <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full" style={{ background: color }} />
-                )}
-              </button>
-            ))}
-          </div>
-        )}
+        {/* ── Tabs: sticky, scroll sideways, swipe between them on phones (assets/tabs.js) ── */}
+        <div className="ptabs-anchor" />
+        <TabBar barRef={tabBarRef} active={activeTab} onChange={pickTab} tabs={[
+          { id: 'overview', label: 'Overview',  icon: <User size={15} />,      color: '#66c0f4' },
+          { id: 'recent',   label: 'Recent',    icon: <Clock size={15} />,     color: '#66c0f4' },
+          { id: 'progress', label: 'Progress',  icon: <BarChart2 size={15} />, color: '#66c0f4' },
+          ...(hasSeries ? [{ id: 'series', label: 'Series', icon: <Layers size={15} />, color: '#e5b143' }] : []),
+          { id: 'activity', label: 'Activity',  icon: <Activity size={15} />,  color: '#66c0f4' },
+          { id: 'backlog',  label: 'Watchlist', icon: <Star size={15} />,      color: '#66c0f4' },
+        ]} />
 
         {/* Re-keyed per tab so each tab's content fades in */}
-        <div key={activeTab} className="flex flex-col gap-3 anim-in">
-          {activeTab === 'series' ? (
+        {/* The swipe listener sits on this stable wrapper; the keyed child is replaced on every tab change */}
+        <div ref={tabContentRef}>
+        <div key={activeTab} className={`flex flex-col gap-3 ${swipeDir === 'left' ? 'tab-from-right' : swipeDir === 'right' ? 'tab-from-left' : 'anim-in'}`}>
+          {activeTab === 'overview' ? (
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6 lg:gap-8">
+          
+              <div className="flex flex-col gap-6">
+            
+                <div>
+                  <h2 className="text-[13px] text-white tracking-wide uppercase font-medium border-b border-[#2a475e] pb-1.5 flex items-center gap-2 mb-3">
+                    <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0"></span>
+                    <Activity size={15} className="text-[#66c0f4]"/> Most Recently Played
+                  </h2>
+              
+                  <div className="flex flex-col gap-2">
+                    {PROFILE_DATA.mostRecentGame ? (
+                      <div className="bg-[#1b2838]/80 border border-[#323f4c] border-l-[3px] border-l-[#66c0f4] rounded-[3px] p-3 flex gap-4 hover:bg-[#202d39] transition-colors shadow-sm">
+                        <a href={`${SITE_URL}/game/${PROFILE_DATA.mostRecentGame.id}`} target="_blank" rel="noreferrer" className="w-14 h-14 shrink-0 rounded-[2px] overflow-hidden border border-[#101214] bg-black block hover:scale-105 transition-transform">
+                          <img src={PROFILE_DATA.mostRecentGame.icon} alt="Icon" className="w-full h-full object-cover"/>
+                        </a>
+                        <div className="flex-1 min-w-0 flex flex-col justify-center">
+                          <div className="flex items-center gap-1.5 mb-0.5 flex-wrap">
+                            <a href={`${SITE_URL}/game/${PROFILE_DATA.mostRecentGame.id}`} target="_blank" rel="noreferrer" className="text-[#c6d4df] hover:text-[#66c0f4] font-medium text-[14px] truncate leading-tight">
+                              {PROFILE_DATA.mostRecentGame.baseTitle}
+                            </a>
+                            {PROFILE_DATA.mostRecentGame.isSubset && (
+                              <span className="text-[7px] font-bold uppercase tracking-[0.07em] px-1 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>
+                            )}
+                            {renderTildeTags(PROFILE_DATA.mostRecentGame.tags)}
+                          </div>
+                          {PROFILE_DATA.mostRecentGame.isSubset && (
+                            <div className="text-[10px] text-[#c8a84b] mb-0.5 truncate">{PROFILE_DATA.mostRecentGame.subsetName}</div>
+                          )}
+                          <div className="text-[10px] mb-1 flex items-center gap-1.5">
+                             <span className="text-[#66c0f4]">{PROFILE_DATA.mostRecentGame.console}</span>
+                             <span className="text-[#546270]">•</span>
+                             <span className="text-[#8f98a0]">{PROFILE_DATA.mostRecentGame.timeAgo}</span>
+                          </div>
+                      
+                          {PROFILE_DATA.richPresenceMsg && (
+                             <p className="text-[#c6d4df] text-[11px] leading-snug italic border-l-2 border-[#323f4c] pl-2 mt-1">
+                               {PROFILE_DATA.richPresenceMsg}
+                             </p>
+                          )}
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="text-[#8f98a0] text-[11px] py-2">No recent games found.</div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Most Recently Unlocked Achievement */}
+                <div>
+                  <h2 className="text-[13px] text-white tracking-wide uppercase font-medium border-b border-[#2a475e] pb-1.5 flex items-center gap-2 mb-3">
+                    <span className="w-[3px] h-[14px] bg-[#e5b143] rounded-[1px] shrink-0"></span>
+                    <Trophy size={15} className="text-[#e5b143]"/> Most Recently Unlocked
+                  </h2>
+                  {PROFILE_DATA.mostRecentAchievement ? (
+                    <div className="bg-[#1b2838]/80 border border-[#323f4c] border-l-[3px] border-l-[#e5b143] rounded-[3px] p-3 flex gap-3 hover:bg-[#202d39] transition-colors shadow-sm">
+                      <a href={`${SITE_URL}/achievement/${PROFILE_DATA.mostRecentAchievement.id}`} target="_blank" rel="noreferrer" className="shrink-0 w-12 h-12 rounded-[2px] overflow-hidden border border-[#101214] bg-black block hover:scale-105 transition-transform">
+                        <img src={`${MEDIA_URL}/Badge/${PROFILE_DATA.mostRecentAchievement.badgeName}.png`} alt={PROFILE_DATA.mostRecentAchievement.title} className="w-full h-full object-cover" />
+                      </a>
+                      <div className="flex-1 min-w-0 flex flex-col justify-center">
+                        <div className="flex items-center gap-2 flex-wrap mb-0.5">
+                          <a href={`${SITE_URL}/achievement/${PROFILE_DATA.mostRecentAchievement.id}`} target="_blank" rel="noreferrer" className="text-[13px] font-medium text-[#e5b143] hover:underline truncate leading-tight">
+                            {PROFILE_DATA.mostRecentAchievement.title}
+                          </a>
+                          <span className="text-[9px] font-bold text-[#66c0f4] bg-[#101214] border border-[#323f4c] px-1.5 py-[1px] rounded-sm shrink-0">{PROFILE_DATA.mostRecentAchievement.points} pts</span>
+                          {PROFILE_DATA.mostRecentAchievement.trueRatio > 0 && PROFILE_DATA.mostRecentAchievement.points > 0 && (() => {
+                            const ratio = PROFILE_DATA.mostRecentAchievement.trueRatio / PROFILE_DATA.mostRecentAchievement.points;
+                            return <span className="text-[9px] shrink-0" style={{ color: ratio >= 30 ? '#ff6b6b' : ratio >= 20 ? '#e5b143' : ratio >= 10 ? '#66c0f4' : '#8f98a0' }}>×{ratio.toFixed(1)}</span>;
+                          })()}
+                        </div>
+                        <p className="text-[10px] text-[#8f98a0] leading-snug mb-1 truncate">{PROFILE_DATA.mostRecentAchievement.description}</p>
+                        <div className="flex items-center gap-1.5 text-[10px]">
+                          <a href={`${SITE_URL}/game/${PROFILE_DATA.mostRecentAchievement.gameId}`} target="_blank" rel="noreferrer" className="flex items-center gap-1 group">
+                            <img src={PROFILE_DATA.mostRecentAchievement.gameIcon} alt="" className="w-3.5 h-3.5 rounded-[1px] border border-[#101214]" />
+                            <span className="text-[#66c0f4] group-hover:text-[#c6d4df] transition-colors">{PROFILE_DATA.mostRecentAchievement.baseTitle || PROFILE_DATA.mostRecentAchievement.gameTitle}</span>
+                            {renderTildeTags(PROFILE_DATA.mostRecentAchievement.tags)}
+                          </a>
+                          <span className="text-[#546270]">•</span>
+                          <span className="text-[#8f98a0]">{PROFILE_DATA.mostRecentAchievement.consoleName}</span>
+                          <span className="text-[#546270]">•</span>
+                          <span className="text-[#546270]">{PROFILE_DATA.mostRecentAchievement.timeAgo}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="text-[#8f98a0] text-[11px] py-2 italic">No achievements unlocked in the last 1 year.</div>
+                  )}
+                </div>
+
+                <div>
+                  <h2 className="text-[13px] text-white tracking-wide uppercase font-medium border-b border-[#2a475e] pb-1.5 flex items-center gap-2 mb-2">
+                    <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0"></span>
+                    <BarChart2 size={15} className="text-[#66c0f4]"/> User Stats
+                  </h2>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 md:gap-x-8 px-1">
+
+                    <div className="flex flex-col">
+                      {PROFILE_DATA.statsLeft.map((stat, i) => (
+                        <div key={`left-${i}`} className="flex items-end text-[11px] py-[3px] group hover:bg-[#202d39]/40 rounded-sm px-1 transition-colors">
+                          <span className="text-[#8f98a0] font-medium leading-tight whitespace-nowrap">{stat.label}</span>
+                          <div className="flex-1 border-b-[1.5px] border-dotted border-[#323f4c] mx-2 relative top-[-4px] opacity-60 group-hover:border-[#546270]"></div>
+                          <span className="text-[#c6d4df] font-medium whitespace-nowrap leading-tight text-right">{stat.value}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Right column: always visible on sm+, hidden on mobile until expanded */}
+                    <div className={`flex flex-col ${statsExpanded ? 'anim-fade' : 'hidden sm:flex'}`}>
+                      {PROFILE_DATA.statsRight.map((stat, i) => (
+                        <div key={`right-${i}`} className="flex items-end text-[11px] py-[3px] group hover:bg-[#202d39]/40 rounded-sm px-1 transition-colors">
+                          <span className="text-[#8f98a0] font-medium leading-tight whitespace-nowrap">{stat.label}</span>
+                          <div className="flex-1 border-b-[1.5px] border-dotted border-[#323f4c] mx-2 relative top-[-4px] opacity-60 group-hover:border-[#546270]"></div>
+                          <span className="text-[#c6d4df] font-medium whitespace-nowrap leading-tight text-right">{stat.value}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                  </div>
+
+                  {/* Mobile-only expand/collapse toggle */}
+                  <button
+                    onClick={() => setStatsExpanded(v => !v)}
+                    className="sm:hidden mt-2 w-full flex items-center justify-center gap-1.5 py-1.5 text-[11px] font-semibold text-[#546270] hover:text-[#8f98a0] transition-colors border-t border-[#1e2d3a]"
+                  >
+                    <ChevronDown size={13} className={`transition-transform duration-200 ${statsExpanded ? 'rotate-180' : ''}`} />
+                    {statsExpanded ? 'Show less' : 'Show more'}
+                  </button>
+                </div>
+
+              </div>
+
+              <div className="flex flex-col gap-5">
+            
+                <div className="bg-[#1b2838] border border-[#2a475e] rounded-[3px] shadow-sm h-fit">
+                  <div className="p-2.5 bg-[#172333] border-b border-[#2a475e] rounded-t-[2px] text-[#c6d4df] flex items-center gap-2">
+                    <span className="w-[2px] h-[12px] bg-[#e5b143] rounded-[1px] shrink-0"></span>
+                    <span className="text-[11px] uppercase tracking-wide font-semibold flex items-center gap-2 flex-1">
+                      <Star size={13} className="text-[#e5b143]" /> Game Awards
+                    </span>
+                    <div className="flex items-center gap-1.5">
+                      <Trophy size={9} className="text-[#e5b143]" />
+                      <span className="text-[10px] font-semibold text-[#e5b143]">{PROFILE_DATA.gameAwards.filter(a => a.type === 'Mastery/Completion').length}</span>
+                      <Medal size={9} className="text-[#b8c4ce]" />
+                      <span className="text-[10px] font-semibold text-[#b8c4ce]">{PROFILE_DATA.gameAwards.filter(a => a.type !== 'Mastery/Completion').length}</span>
+                    </div>
+                  </div>
+                  <div className="p-3 grid grid-cols-5 sm:grid-cols-8 lg:grid-cols-5 gap-2 min-h-[60px]">
+                    {PROFILE_DATA.gameAwards.length > 0 ? (awardsExpanded ? PROFILE_DATA.gameAwards : PROFILE_DATA.gameAwards.slice(0, iconLimit)).map(award => (
+                      <div key={award.id} className="relative group cursor-help anim-fade">
+                        <img
+                          src={award.icon}
+                          alt={award.title}
+                          className={`w-full aspect-square rounded-[2px] border transition-all duration-200 bg-black relative z-10 group-hover:scale-110 ${award.type === 'Mastery/Completion' ? 'border-2 border-[#e5b143]' : 'border border-[#b8c4ce]'}`}
+                        />
+
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[200px] bg-[#1b2838] border border-[#2a475e] rounded-[2px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100] shadow-xl pointer-events-none overflow-hidden">
+                          {/* Gold accent line */}
+                          <div className="h-[2px] bg-gradient-to-r from-[#e5b143] to-[#e5b143]/20"></div>
+                          {/* Header */}
+                          <div className="flex items-center gap-2 px-2.5 py-2 border-b border-[#2a475e] bg-[#172333]">
+                            <img src={award.icon} alt="" className="w-8 h-8 rounded-[2px] border border-[#e5b143]/30 bg-black shrink-0" />
+                            <div className="flex flex-col gap-0.5 min-w-0">
+                              <div className="flex items-center gap-1 flex-wrap">
+                                <span className="text-[11px] text-white font-semibold leading-tight">{award.baseTitle || award.title}</span>
+                                {award.isSubset && <span className="text-[8px] font-bold uppercase tracking-[0.07em] px-1.5 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>}
+                                {!award.isSubset && renderTildeTags(award.tags)}
+                              </div>
+                              {award.isSubset && award.subsetName && <span className="text-[9px] text-[#c8a84b] truncate">{award.subsetName}</span>}
+                            </div>
+                          </div>
+                          {/* Body */}
+                          <div className="px-2.5 py-2 flex flex-col gap-1.5">
+                            <div className="flex items-center justify-between">
+                              <span className="text-[11px] text-[#546270]">Console</span>
+                              <span className="text-[9px] text-[#66c0f4] font-medium">{award.console}</span>
+                            </div>
+                            <div className="h-px bg-[#2a475e]"></div>
+                            <div className="flex items-center justify-between">
+                              <span className="text-[11px] text-[#546270]">Award</span>
+                              {award.type === 'Mastery/Completion'
+                                ? <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px] bg-[#e5b143] text-[#101214]">Mastered</span>
+                                : <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px] bg-[#2a3440] text-[#c6d4df] border border-[#b8c4ce]/30">Beaten</span>
+                              }
+                            </div>
+                            <div className="flex items-center justify-between">
+                              <span className="text-[11px] text-[#546270]">Earned</span>
+                              <span className="text-[9px] text-[#c6d4df]">{award.date}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )) : (
+                      <div className="col-span-full text-center text-[#546270] text-[10px] py-2">No game awards yet.</div>
+                    )}
+                  </div>
+                  {PROFILE_DATA.gameAwards.length > iconLimit && (
+                    <button
+                      onClick={() => setAwardsExpanded(v => !v)}
+                      className="w-full flex items-center justify-center gap-1 py-1.5 border-t border-[#2a475e] text-[11px] font-semibold text-[#546270] hover:text-[#c6d4df] hover:bg-[#202d39] transition-colors rounded-b-[2px] outline-none"
+                    >
+                      {awardsExpanded ? 'Show less' : `Show all ${PROFILE_DATA.gameAwards.length}`}
+                      <ChevronDown size={11} className={`transition-transform duration-200 ${awardsExpanded ? 'rotate-180' : ''}`} />
+                    </button>
+                  )}
+                </div>
+
+              </div>
+            </div>
+          ) : activeTab === 'series' ? (
             !seriesLoaded || (!gamesData && !gamesFailed)
               ? <>{[...Array(3)].map((_, i) => <GameCardSkeleton key={i} />)}</>
               : <SeriesProgressTab seriesData={seriesData} gamesData={gamesData} watchlistData={watchlistData} />
@@ -1856,14 +1782,14 @@ export default function App() {
               const filtered = BACKLOG.games.filter(g => {
                 const status = getStatus(g);
                 if (watchlistSearch) {
-                  const q = watchlistSearch.toLowerCase();
+                  const q = fold(watchlistSearch);
                   const searchable = [
                     g.baseTitle || g.title,
                     g.isSubset ? 'subset' : null,
                     g.subsetName,
                     ...(g.tags || []),
-                  ].filter(Boolean).join(' ').toLowerCase();
-                  if (!searchable.includes(q)) return false;
+                  ].filter(Boolean).join(' ');
+                  if (!fold(searchable).includes(q)) return false;
                 }
                 if (watchlistStatusFilter !== 'all' && status !== watchlistStatusFilter) return false;
                 return true;
@@ -2105,11 +2031,19 @@ export default function App() {
                   viewToggle={<ViewToggle view={gameView} onChange={setGameView} />}
                 />
               )}
+              {/* Recent: a search over the whole library (newest played first) and the list / tiles switch */}
               {activeTab === 'recent' && (
-                <div className="flex items-center gap-2 text-[11px] text-[#8f98a0]">
-                  <span>Recently played · <span className="text-[#c6d4df] font-semibold">{displayedGames.length} games</span></span>
-                  <span className="ml-auto"><ViewToggle view={gameView} onChange={setGameView} /></span>
+                <div className="fbar">
+                  <div className="fsearch">
+                    <Search size={14} />
+                    <input type="text" inputMode="search" value={recentSearch} onChange={e => setRecentSearch(e.target.value)} placeholder="Search games" aria-label="Search games" />
+                    {recentSearch && <button onClick={() => setRecentSearch('')} aria-label="Clear search"><X size={13} /></button>}
+                  </div>
+                  <ViewToggle view={gameView} onChange={setGameView} />
                 </div>
+              )}
+              {activeTab === 'recent' && recentSearch && displayedGames.length === 0 && (
+                <div className="text-center py-12 text-[#546270] text-[12px]">No games match your search.</div>
               )}
               {/* Re-keyed on sort/view/filter changes so the new order fades in (not on search keystrokes) */}
               <div key={`${progressSort}-${progressView}-${showMastered}-${gameView}`} className="anim-fade">
@@ -2126,6 +2060,7 @@ export default function App() {
               </div>
             </>
           )}
+        </div>
         </div>
 
       </main>
@@ -2148,7 +2083,7 @@ export default function App() {
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="scroll-top-btn anim-fade fixed right-4 z-[195] w-10 h-10 bg-[#131a22] border border-[#2a475e] hover:border-[#66c0f4] hover:text-[#66c0f4] text-[#8f98a0] rounded-full flex items-center justify-center shadow-lg transition-all duration-200 active:scale-90"
-          style={{ bottom: showFloatingTabs ? 'calc(120px + env(safe-area-inset-bottom, 0px))' : '3.5rem' }}
+          style={{ bottom: '3.5rem' }}
           title="Scroll to top"
         >
           <ChevronDown size={16} className="rotate-180" />
@@ -2184,15 +2119,6 @@ export default function App() {
         .mask-fade {
            mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
            -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
-        }
-
-        @keyframes slideUpPill {
-          from { opacity: 0; transform: translateX(-50%) translateY(12px); }
-          to   { opacity: 1; transform: translateX(-50%) translateY(0); }
-        }
-        @keyframes slideDownPill {
-          from { opacity: 1; transform: translateX(-50%) translateY(0); }
-          to   { opacity: 0; transform: translateX(-50%) translateY(12px); }
         }
 
         /* Shimmer skeleton */

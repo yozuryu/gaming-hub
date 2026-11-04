@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock, X, Medal, Gamepad2, List, LayoutGrid, Search, Check, Plus } from 'lucide-react';
+import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock, X, Medal, Gamepad2, List, LayoutGrid, Search, Check, Plus, User } from 'lucide-react';
 import { PROGRESS_SORTS } from './utils/constants.js';
 import { formatDate, formatTimeAgo, fmtDay, fmtTime, xboxSearchUrl, xboxProfileUrl, xboxImg, rarityLabel, rarityBorderColor } from './utils/helpers.js';
 import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap } from '../../assets/time.js';
 import { useSheet, useArtSrc } from '../../assets/sheet.js';
 import { useGameView, shortAgo } from '../../assets/game-view.js';
+import { TabBar, useSwipeTabs, scrollToTabs } from '../../assets/tabs.js';
 
 // Xbox 360 titles only return unlocked achievements (`partial: true`), but the
 // total is known, so the rest are filled in as locked placeholders.
@@ -674,6 +675,9 @@ const PROGRESS_VIEWS = [
     { value: 'abandoned',  label: 'Abandoned',    hint: 'Unfinished · not played for 30+ days' },
 ];
 const NEARLY_PCT = 75;
+// Search text without accents or case, so "pokemon" finds "Pokémon"
+const fold = str => (str ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
 const STALE_MS   = 30 * 24 * 60 * 60 * 1000;
 
 
@@ -745,7 +749,7 @@ const ProgressTab = ({ achievementProgress, onViewDetails, beatenMap, gameView, 
 
     const [games, counts] = useMemo(() => {
         const list = Object.values(achievementProgress)
-            .filter(d => d.hasAchievements && d.unlocked > 0 && d.total > 0 && (!search || (d.gameName ?? '').toLowerCase().includes(search.toLowerCase())))
+            .filter(d => d.hasAchievements && d.unlocked > 0 && d.total > 0 && (!search || fold(d.gameName).includes(fold(search))))
             .map(d => ({
                 ...d,
                 pct: (d.unlocked / d.total) * 100,
@@ -946,53 +950,35 @@ const App = () => {
     const [selectedGame,     setSelectedGame]     = useState(null);
     const [gameDetails,       setGameDetails]       = useState({});
     const [beatenGames,       setBeatenGames]       = useState([]);
-    const VALID_TABS = ['recent', 'progress', 'activity'];
+    const VALID_TABS = ['overview', 'recent', 'progress', 'activity'];
     const initialTab = (() => {
         const p = new URLSearchParams(window.location.search).get('tab');
-        return VALID_TABS.includes(p) ? p : 'recent';
+        return VALID_TABS.includes(p) ? p : 'overview';
     })();
     const [activeTab, setActiveTab] = useState(initialTab);
     const [gameView, setGameView] = useGameView();
+    const [recentSearch, setRecentSearch] = useState('');
     const [showScrollTop, setShowScrollTop] = useState(false);
-    const [showFloatingTabs, setShowFloatingTabs] = useState(false);
-    const [pillLeaving, setPillLeaving] = useState(false);
-    const pillLeaveTimer = useRef(null);
     const tabBarRef = useRef(null);
+    const tabContentRef = useRef(null);
     const setTab = (tab) => {
         setActiveTab(tab);
         const url = new URL(window.location);
         url.searchParams.set('tab', tab);
         window.history.replaceState({}, '', url);
+        scrollToTabs(tabBarRef);
     };
 
     useEffect(() => {
-        const onScroll = () => {
-            const y = window.scrollY;
-            setShowScrollTop(y > 400);
-            if (window.innerWidth < 768 && tabBarRef.current) {
-                const bottom = tabBarRef.current.getBoundingClientRect().bottom;
-                if (bottom < 0) {
-                    if (pillLeaveTimer.current) { clearTimeout(pillLeaveTimer.current); pillLeaveTimer.current = null; }
-                    setPillLeaving(false);
-                    setShowFloatingTabs(true);
-                } else {
-                    setShowFloatingTabs(prev => {
-                        if (prev && !pillLeaveTimer.current) {
-                            setPillLeaving(true);
-                            pillLeaveTimer.current = setTimeout(() => {
-                                setShowFloatingTabs(false);
-                                setPillLeaving(false);
-                                pillLeaveTimer.current = null;
-                            }, 210);
-                        }
-                        return prev;
-                    });
-                }
-            }
-        };
+        const onScroll = () => setShowScrollTop(window.scrollY > 400);
         window.addEventListener('scroll', onScroll, { passive: true });
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
+
+    // Swipe between tabs on phones (assets/tabs.js); the order follows the tab bar
+    const tabIds = ['overview', 'recent', 'progress', 'activity'];
+    const [swipeDir, setSwipeDir] = useSwipeTabs(tabContentRef, tabIds, activeTab, setTab, !loading);
+    const pickTab = id => { setSwipeDir(null); setTab(id); };
 
     // Load win conditions + beaten game data
     useEffect(() => {
@@ -1127,6 +1113,12 @@ const App = () => {
 
     const { profile, stats, metadata, mostRecentGame } = profileData;
     const recentlyPlayed = (profileData.recentlyPlayed ?? []).map(g => ({ ...g, storeUrl: xboxSearchUrl(g.name) }));
+    // Recent tab: the recently played list; a search looks through every game, newest played first (up to 50)
+    const recentShown = !recentSearch ? recentlyPlayed : Object.entries(achProgress)
+        .filter(([, d]) => fold(d.gameName).includes(fold(recentSearch)))
+        .map(([id, d]) => ({ titleId: id, name: d.gameName, storeUrl: xboxSearchUrl(d.gameName), lastPlayedTs: d.lastPlayedTs ?? null, heroUrl: d.heroUrl, iconUrl: d.iconUrl }))
+        .sort((a, b) => (b.lastPlayedTs || '').localeCompare(a.lastPlayedTs || ''))
+        .slice(0, 50);
     const profileUrl = xboxProfileUrl(profile.gamertag);
 
     const completionPct    = stats.completionPct ?? 0;
@@ -1151,14 +1143,6 @@ const App = () => {
     return (
         <div className="bg-[#171a21] text-[#c6d4df] min-h-screen flex flex-col font-sans selection:bg-[#66c0f4] selection:text-[#171a21]">
             <style>{`
-                @keyframes slideUpPill {
-                    from { opacity: 0; transform: translateX(-50%) translateY(12px); }
-                    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
-                }
-                @keyframes slideDownPill {
-                    from { opacity: 1; transform: translateX(-50%) translateY(0); }
-                    to   { opacity: 0; transform: translateX(-50%) translateY(12px); }
-                }
             `}</style>
 
             {/* Topbar */}
@@ -1206,326 +1190,282 @@ const App = () => {
             <main className="max-w-5xl mx-auto px-4 md:px-8 py-6 flex-1 w-full anim-in">
 
                 {/* ── Overview 2-column ── */}
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 lg:gap-8 mb-8">
+                {/* ── Tabs: sticky, scroll sideways, swipe between them on phones (assets/tabs.js) ── */}
+                <div className="ptabs-anchor" />
+                <TabBar barRef={tabBarRef} active={activeTab} onChange={pickTab} tabs={[
+                    { id: 'overview', label: 'Overview', icon: <User size={15} />,      color: '#52b043' },
+                    { id: 'recent',   label: 'Recent',   icon: <Clock size={15} />,     color: '#52b043' },
+                    { id: 'progress', label: 'Progress', icon: <BarChart2 size={15} />, color: '#52b043' },
+                    { id: 'activity', label: 'Activity', icon: <Activity size={15} />,  color: '#52b043' },
+                ]} />
 
-                    {/* Left column */}
-                    <div className="flex flex-col gap-6">
+                {/* ── Tab content ── (re-keyed per tab so each tab fades in; the swipe listener sits on the
+                    stable wrapper, the keyed child is replaced on every tab change) */}
+                <div ref={tabContentRef}>
+                <div key={activeTab} className={`flex flex-col gap-3 ${swipeDir === 'left' ? 'tab-from-right' : swipeDir === 'right' ? 'tab-from-left' : 'anim-in'}`}>
 
-                        {/* Most Recently Played */}
-                        <div>
-                            <h2 className="text-[13px] text-white tracking-wide uppercase font-medium border-b border-[#2a475e] pb-1.5 flex items-center gap-2 mb-3">
-                                <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0" />
-                                <Activity size={15} className="text-[#66c0f4]" /> Most Recently Played
-                            </h2>
-                            {mostRecentGame ? (
-                                <div className="bg-[#1b2838]/80 border border-[#323f4c] border-l-[3px] border-l-[#66c0f4] rounded-[3px] p-3 flex items-center gap-4 hover:bg-[#202d39] transition-colors shadow-sm">
-                                    <a href={xboxSearchUrl(mostRecentGame.name)} target="_blank" rel="noreferrer"
-                                        className="w-14 h-14 shrink-0 rounded-[2px] overflow-hidden border border-[#101214] bg-black block hover:scale-105 transition-transform">
-                                        <img src={xboxImg(mostRecentGame.iconUrl, 112)} alt={mostRecentGame.name} className="w-full h-full object-cover block"
-                                            onError={e => { e.target.style.display = 'none'; }} />
-                                    </a>
-                                    <div className="flex-1 min-w-0 flex flex-col">
+                    {activeTab === 'overview' && (
+                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 lg:gap-8">
+
+                        {/* Left column */}
+                        <div className="flex flex-col gap-6">
+
+                            {/* Most Recently Played */}
+                            <div>
+                                <h2 className="text-[13px] text-white tracking-wide uppercase font-medium border-b border-[#2a475e] pb-1.5 flex items-center gap-2 mb-3">
+                                    <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0" />
+                                    <Activity size={15} className="text-[#66c0f4]" /> Most Recently Played
+                                </h2>
+                                {mostRecentGame ? (
+                                    <div className="bg-[#1b2838]/80 border border-[#323f4c] border-l-[3px] border-l-[#66c0f4] rounded-[3px] p-3 flex items-center gap-4 hover:bg-[#202d39] transition-colors shadow-sm">
                                         <a href={xboxSearchUrl(mostRecentGame.name)} target="_blank" rel="noreferrer"
-                                            className="text-[#c6d4df] hover:text-[#66c0f4] font-medium text-[14px] truncate leading-tight transition-colors">
-                                            {mostRecentGame.name}
+                                            className="w-14 h-14 shrink-0 rounded-[2px] overflow-hidden border border-[#101214] bg-black block hover:scale-105 transition-transform">
+                                            <img src={xboxImg(mostRecentGame.iconUrl, 112)} alt={mostRecentGame.name} className="w-full h-full object-cover block"
+                                                onError={e => { e.target.style.display = 'none'; }} />
                                         </a>
-                                        <div className="text-[10px] mt-1.5 flex items-center leading-none gap-1.5">
-                                            {mostRecentGame.totalGamerscore > 0 && (
-                                                <span className="text-[#8f98a0]"><span className="text-[#c6d4df]">{mostRecentGame.gamerscore.toLocaleString()}</span> / {mostRecentGame.totalGamerscore.toLocaleString()} G</span>
+                                        <div className="flex-1 min-w-0 flex flex-col">
+                                            <a href={xboxSearchUrl(mostRecentGame.name)} target="_blank" rel="noreferrer"
+                                                className="text-[#c6d4df] hover:text-[#66c0f4] font-medium text-[14px] truncate leading-tight transition-colors">
+                                                {mostRecentGame.name}
+                                            </a>
+                                            <div className="text-[10px] mt-1.5 flex items-center leading-none gap-1.5">
+                                                {mostRecentGame.totalGamerscore > 0 && (
+                                                    <span className="text-[#8f98a0]"><span className="text-[#c6d4df]">{mostRecentGame.gamerscore.toLocaleString()}</span> / {mostRecentGame.totalGamerscore.toLocaleString()} G</span>
+                                                )}
+                                                {mostRecentGame.lastPlayedTs && (
+                                                    <>
+                                                        {mostRecentGame.totalGamerscore > 0 && <span className="text-[#546270]">•</span>}
+                                                        <span className="text-[#546270]">{formatTimeAgo(mostRecentGame.lastPlayedTs)}</span>
+                                                    </>
+                                                )}
+                                            </div>
+                                            {mostRecentGameAch && (
+                                                <div className="flex items-center leading-none gap-1 text-[10px] mt-1.5 truncate anim-fade">
+                                                    <Trophy size={9} className="text-[#e5b143] shrink-0" />
+                                                    <span className="text-[#c6d4df] truncate">{mostRecentGameAch.displayName}</span>
+                                                    <span className="text-[#546270] shrink-0">· {formatTimeAgo(mostRecentGameAch.unlockedAt)}</span>
+                                                </div>
                                             )}
-                                            {mostRecentGame.lastPlayedTs && (
-                                                <>
-                                                    {mostRecentGame.totalGamerscore > 0 && <span className="text-[#546270]">•</span>}
-                                                    <span className="text-[#546270]">{formatTimeAgo(mostRecentGame.lastPlayedTs)}</span>
-                                                </>
-                                            )}
-                                        </div>
-                                        {mostRecentGameAch && (
-                                            <div className="flex items-center leading-none gap-1 text-[10px] mt-1.5 truncate anim-fade">
-                                                <Trophy size={9} className="text-[#e5b143] shrink-0" />
-                                                <span className="text-[#c6d4df] truncate">{mostRecentGameAch.displayName}</span>
-                                                <span className="text-[#546270] shrink-0">· {formatTimeAgo(mostRecentGameAch.unlockedAt)}</span>
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-                            ) : (
-                                <div className="text-[#8f98a0] text-[11px] py-2">No recently played games.</div>
-                            )}
-                        </div>
-
-                        {/* Most Recently Unlocked */}
-                        <div>
-                            <h2 className="text-[13px] text-white tracking-wide uppercase font-medium border-b border-[#2a475e] pb-1.5 flex items-center gap-2 mb-3">
-                                <span className="w-[3px] h-[14px] bg-[#e5b143] rounded-[1px] shrink-0" />
-                                <Trophy size={15} className="text-[#e5b143]" /> Most Recently Unlocked
-                            </h2>
-                            {mostRecentUnlock ? (
-                                <div className="bg-[#1b2838]/80 border border-[#323f4c] border-l-[3px] border-l-[#e5b143] rounded-[3px] p-3 flex items-center gap-3 hover:bg-[#202d39] transition-colors shadow-sm">
-                                    <div className="shrink-0 w-12 h-12 rounded-[2px] overflow-hidden border border-[#101214] bg-black">
-                                        {mostRecentUnlock.iconUrl
-                                            ? <img src={xboxImg(mostRecentUnlock.iconUrl, 208)} alt={mostRecentUnlock.displayName} className="w-full h-full object-cover" />
-                                            : <div className="w-full h-full bg-[#2a475e]" />
-                                        }
-                                    </div>
-                                    <div className="flex-1 min-w-0 flex flex-col">
-                                        <div className="text-[13px] font-medium truncate leading-tight mb-0.5 text-[#e5b143]">
-                                            {mostRecentUnlock.displayName}
-                                        </div>
-                                        <p className="text-[10px] text-[#8f98a0] leading-snug mb-0.5 truncate">
-                                            {mostRecentUnlock.description || mostRecentUnlock.displayName}
-                                        </p>
-                                        {mostRecentUnlock.globalPct != null && (
-                                            <div className="flex items-center gap-1 text-[9px] font-medium mb-1" style={{ color: rarityBorderColor(mostRecentUnlock.globalPct) }}>
-                                                <Gem size={9} />
-                                                {rarityLabel(mostRecentUnlock.globalPct)} · {mostRecentUnlock.globalPct}%
-                                            </div>
-                                        )}
-                                        <div className="flex items-center gap-1.5 text-[10px]">
-                                            <img
-                                                src={xboxImg(achProgress[mostRecentUnlock.titleId]?.iconUrl, 64)}
-                                                alt=""
-                                                className="w-4 h-4 rounded-[1px] border border-[#101214] object-cover"
-                                                onError={e => { e.target.style.display = 'none'; }}
-                                            />
-                                            <a href={xboxSearchUrl(mostRecentUnlock.gameName)} target="_blank" rel="noreferrer" className="text-[#66c0f4] hover:text-[#c6d4df] transition-colors">{mostRecentUnlock.gameName}</a>
-                                            <span className="text-[#546270]">•</span>
-                                            <span className="text-[#546270]">{formatTimeAgo(mostRecentUnlock.unlockedAt)}</span>
                                         </div>
                                     </div>
-                                </div>
-                            ) : (
-                                <div className="text-[#8f98a0] text-[11px] py-2 italic">
-                                    No achievements unlocked in the last year.
-                                </div>
-                            )}
-                        </div>
-
-                        {/* User Stats */}
-                        <div>
-                            <h2 className="text-[13px] text-white tracking-wide uppercase font-medium border-b border-[#2a475e] pb-1.5 flex items-center gap-2 mb-2">
-                                <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0" />
-                                <BarChart2 size={15} className="text-[#66c0f4]" /> User Stats
-                            </h2>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 md:gap-x-8 px-1">
-                                {[statsLeft, statsRight].map((col, ci) => (
-                                    <div key={ci} className="flex flex-col">
-                                        {col.map((stat, i) => (
-                                            <div key={i} className="flex items-end text-[11px] py-[3px] group hover:bg-[#202d39]/40 rounded-sm px-1 transition-colors">
-                                                <span className="text-[#8f98a0] font-medium leading-tight whitespace-nowrap">{stat.label}</span>
-                                                <div className="flex-1 border-b-[1.5px] border-dotted border-[#323f4c] mx-2 relative top-[-4px] opacity-60 group-hover:border-[#546270]" />
-                                                <span className="text-[#c6d4df] font-medium whitespace-nowrap leading-tight text-right">{stat.value}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                    </div>
-
-                    {/* Sidebar: Completions */}
-                    <div className="flex flex-col gap-5">
-                        <div className="bg-[#1b2838] border border-[#2a475e] rounded-[3px] shadow-sm h-fit">
-                            <div className="p-2.5 bg-[#172333] border-b border-[#2a475e] rounded-t-[2px] flex items-center gap-2">
-                                <span className="w-[2px] h-[12px] bg-[#e5b143] rounded-[1px] shrink-0" />
-                                <span className="text-[11px] uppercase tracking-wide font-semibold text-[#c6d4df] flex items-center gap-2 flex-1">
-                                    <Star size={13} className="text-[#e5b143]" /> Completions
-                                </span>
-                                <div className="flex items-center gap-1.5">
-                                    <Star size={9} className="text-[#e5b143]" />
-                                    <span className="text-[10px] font-semibold text-[#e5b143]">{perfectGames.length}</span>
-                                    <Medal size={9} className="text-[#b8c4ce]" />
-                                    <span className="text-[10px] font-semibold text-[#b8c4ce]">{beatenOnly.length}</span>
-                                </div>
-                            </div>
-                            <div className="p-3 grid grid-cols-5 sm:grid-cols-8 lg:grid-cols-5 gap-2 min-h-[60px]">
-                                {(completionsExpanded ? perfectGames : perfectGames.slice(0, iconLimit)).map(g => (
-                                    <div key={g.titleId} className="relative group cursor-help anim-fade">
-                                        <a href={xboxSearchUrl(g.gameName)} target="_blank" rel="noreferrer">
-                                            <img
-                                                src={xboxImg(g.iconUrl, 128)}
-                                                alt={g.gameName}
-                                                className="w-full aspect-square object-cover rounded-[2px] border-2 border-[#e5b143] group-hover:scale-110 transition-all duration-200 bg-[#101214]"
-                                            />
-                                        </a>
-                                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[200px] bg-[#1b2838] border border-[#2a475e] rounded-[2px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100] shadow-xl pointer-events-none overflow-hidden">
-                                            <div className="h-[2px] bg-gradient-to-r from-[#e5b143] to-[#e5b143]/20" />
-                                            <div className="flex items-center gap-2 px-2.5 py-2 border-b border-[#2a475e] bg-[#172333]">
-                                                <img src={xboxImg(g.iconUrl, 128)} alt=""
-                                                    className="w-8 h-8 rounded-[2px] border border-[#e5b143]/30 bg-black shrink-0 object-cover" />
-                                                <div className="flex flex-col min-w-0">
-                                                    <span className="text-[11px] text-white font-semibold leading-tight line-clamp-2">{g.gameName}</span>
-                                                    {g.lastAchName && <span className="text-[9px] text-[#8f98a0] leading-tight truncate mt-0.5">{g.lastAchName}</span>}
-                                                </div>
-                                            </div>
-                                            <div className="px-2.5 py-2 flex flex-col gap-1.5">
-                                                <div className="flex items-center justify-between">
-                                                    <span className="text-[11px] text-[#546270]">Award</span>
-                                                    <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px] bg-[#e5b143] text-[#101214]">★ Completed</span>
-                                                </div>
-                                                <div className="h-px bg-[#2a475e]" />
-                                                <div className="flex items-center justify-between">
-                                                    <span className="text-[11px] text-[#546270]">Achievements</span>
-                                                    <span className="text-[9px] text-[#e5b143] font-medium">{g.total} / {g.total} · {(g.totalGamerscore ?? 0).toLocaleString()}G</span>
-                                                </div>
-                                                {g.lastAchGlobalPct != null && (<>
-                                                    <div className="h-px bg-[#2a475e]" />
-                                                    <div className="flex items-center justify-between">
-                                                        <span className="text-[11px] text-[#546270]">Rarity</span>
-                                                        <span className="text-[9px] font-medium" style={{ color: rarityBorderColor(g.lastAchGlobalPct) }}>
-                                                            {rarityLabel(g.lastAchGlobalPct)} · {g.lastAchGlobalPct}%
-                                                        </span>
-                                                    </div>
-                                                </>)}
-                                                {g.completedAt && (<>
-                                                    <div className="h-px bg-[#2a475e]" />
-                                                    <div className="flex items-center justify-between">
-                                                        <span className="text-[11px] text-[#546270]">Completed</span>
-                                                        <span className="text-[9px] text-[#c6d4df]">{formatDate(g.completedAt)}</span>
-                                                    </div>
-                                                </>)}
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                                {(completionsExpanded ? beatenOnly : beatenOnly.slice(0, Math.max(0, iconLimit - perfectGames.length))).map(g => (
-                                    <div key={g.titleId} className="relative group cursor-help anim-fade">
-                                        <a href={xboxSearchUrl(g.gameName)} target="_blank" rel="noreferrer">
-                                            <img
-                                                src={xboxImg(g.iconUrl, 128)}
-                                                alt={g.gameName}
-                                                className="w-full aspect-square object-cover rounded-[2px] border border-[#b8c4ce] group-hover:scale-110 transition-all duration-200 bg-[#101214]"
-                                            />
-                                        </a>
-                                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[200px] bg-[#1b2838] border border-[#2a475e] rounded-[2px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100] shadow-xl pointer-events-none overflow-hidden">
-                                            <div className="h-[2px] bg-gradient-to-r from-[#b8c4ce] to-[#b8c4ce]/20" />
-                                            <div className="flex items-center gap-2 px-2.5 py-2 border-b border-[#2a475e] bg-[#172333]">
-                                                <img src={xboxImg(g.iconUrl, 128)} alt=""
-                                                    className="w-8 h-8 rounded-[2px] border border-[#b8c4ce]/30 bg-black shrink-0 object-cover" />
-                                                <div className="flex flex-col min-w-0">
-                                                    <span className="text-[11px] text-white font-semibold leading-tight line-clamp-2">{g.gameName}</span>
-                                                    {g.winConditionName && <span className="text-[9px] text-[#8f98a0] leading-tight truncate mt-0.5">{g.winConditionName}</span>}
-                                                </div>
-                                            </div>
-                                            <div className="px-2.5 py-2 flex flex-col gap-1.5">
-                                                <div className="flex items-center justify-between">
-                                                    <span className="text-[11px] text-[#546270]">Award</span>
-                                                    <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px]" style={{ background: '#2a3440', color: '#c6d4df', border: '1px solid rgba(184,196,206,0.3)' }}>Beaten</span>
-                                                </div>
-                                                {g.winCondGlobalPct != null && (<>
-                                                    <div className="h-px bg-[#2a475e]" />
-                                                    <div className="flex items-center justify-between">
-                                                        <span className="text-[11px] text-[#546270]">Rarity</span>
-                                                        <span className="text-[9px] font-medium" style={{ color: rarityBorderColor(g.winCondGlobalPct) }}>
-                                                            {rarityLabel(g.winCondGlobalPct)} · {g.winCondGlobalPct}%
-                                                        </span>
-                                                    </div>
-                                                </>)}
-                                                {g.beatenAt && (<>
-                                                    <div className="h-px bg-[#2a475e]" />
-                                                    <div className="flex items-center justify-between">
-                                                        <span className="text-[11px] text-[#546270]">Beaten</span>
-                                                        <span className="text-[9px] text-[#c6d4df]">{formatDate(g.beatenAt)}</span>
-                                                    </div>
-                                                </>)}
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                                {perfectGames.length === 0 && beatenOnly.length === 0 && (
-                                    <div className="col-span-full text-center text-[#546270] text-[10px] py-2">No completions yet.</div>
+                                ) : (
+                                    <div className="text-[#8f98a0] text-[11px] py-2">No recently played games.</div>
                                 )}
                             </div>
-                            {perfectGames.length + beatenOnly.length > iconLimit && (
-                              <button
-                                onClick={() => setCompletionsExpanded(v => !v)}
-                                className="w-full flex items-center justify-center gap-1 py-1.5 border-t border-[#2a475e] text-[11px] font-semibold text-[#546270] hover:text-[#c6d4df] hover:bg-[#202d39] transition-colors rounded-b-[2px] outline-none anim-fade"
-                              >
-                                {completionsExpanded ? 'Show less' : `Show all ${perfectGames.length + beatenOnly.length}`}
-                                <ChevronDown size={11} className={`transition-transform duration-200 ${completionsExpanded ? 'rotate-180' : ''}`} />
-                              </button>
-                            )}
-                        </div>
-                    </div>
 
-                </div>
-
-                {/* ── Tab bar ── */}
-                <div ref={tabBarRef} className="md:sticky md:top-[26px] z-40 bg-[#171a21] -mx-4 md:-mx-8 mb-4 border-b border-[#2a475e]">
-                <div className="flex items-center gap-1 md:gap-6 px-2 md:px-8 overflow-x-auto scrollbar-none" style={{ scrollbarWidth: 'none' }}>
-                    <button onClick={() => setTab('recent')} className={`flex-1 md:flex-none flex flex-col md:flex-row items-center justify-center gap-1 md:gap-0 py-2.5 md:py-0 md:pb-2 px-1 md:px-0 transition-colors relative ${activeTab === 'recent' ? 'text-white' : 'text-[#546270] hover:text-[#c6d4df]'}`}>
-                        <Clock size={18} className="block md:hidden shrink-0" />
-                        <span className="block md:hidden text-[9px] font-semibold uppercase tracking-[0.06em] leading-none">Recent</span>
-                        <span className="hidden md:inline text-[11px] md:text-[14px] uppercase tracking-wide font-medium whitespace-nowrap">Recent Games</span>
-                        {activeTab === 'recent' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] anim-fade bg-[#66c0f4]" />}
-                    </button>
-                    <button onClick={() => setTab('progress')} className={`flex-1 md:flex-none flex flex-col md:flex-row items-center justify-center gap-1 md:gap-0 py-2.5 md:py-0 md:pb-2 px-1 md:px-0 transition-colors relative ${activeTab === 'progress' ? 'text-white' : 'text-[#546270] hover:text-[#c6d4df]'}`}>
-                        <BarChart2 size={18} className="block md:hidden shrink-0" />
-                        <span className="block md:hidden text-[9px] font-semibold uppercase tracking-[0.06em] leading-none">Progress</span>
-                        <span className="hidden md:inline text-[11px] md:text-[14px] uppercase tracking-wide font-medium whitespace-nowrap">Completion Progress</span>
-                        {activeTab === 'progress' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] anim-fade bg-[#66c0f4]" />}
-                    </button>
-                    <button onClick={() => setTab('activity')} className={`flex-1 md:flex-none flex flex-col md:flex-row items-center justify-center gap-1 md:gap-0 py-2.5 md:py-0 md:pb-2 px-1 md:px-0 transition-colors relative ${activeTab === 'activity' ? 'text-white' : 'text-[#546270] hover:text-[#c6d4df]'}`}>
-                        <Activity size={18} className="block md:hidden shrink-0" />
-                        <span className="block md:hidden text-[9px] font-semibold uppercase tracking-[0.06em] leading-none">Activity</span>
-                        <span className="hidden md:inline text-[11px] md:text-[14px] uppercase tracking-wide font-medium whitespace-nowrap">Activity</span>
-                        {activeTab === 'activity' && <div className="absolute bottom-[-1px] left-0 w-full h-[3px] anim-fade bg-[#66c0f4]" />}
-                    </button>
-                </div>
-                </div>
-
-                {/* ── Floating tab pill (mobile only) ── */}
-                {(showFloatingTabs || pillLeaving) && (
-                    <div
-                        className="md:hidden fixed z-[190] flex items-center gap-0.5 px-1.5 py-1.5 rounded-full shadow-[0_4px_24px_rgba(0,0,0,0.7)]"
-                        style={{
-                            bottom: 'calc(68px + env(safe-area-inset-bottom, 0px))',
-                            left: '50%',
-                            transform: 'translateX(-50%)',
-                            background: 'rgba(19,26,34,0.92)',
-                            border: '1px solid #2a475e',
-                            backdropFilter: 'blur(8px)',
-                            WebkitBackdropFilter: 'blur(8px)',
-                            animation: pillLeaving ? 'slideDownPill 0.2s ease both' : 'slideUpPill 0.2s ease both',
-                        }}
-                    >
-                        {[
-                            { id: 'recent',   icon: <Clock size={17} />,    label: 'Recent'   },
-                            { id: 'progress', icon: <BarChart2 size={17} />, label: 'Progress' },
-                            { id: 'activity', icon: <Activity size={17} />,  label: 'Activity' },
-                        ].map(({ id, icon, label }) => (
-                            <button
-                                key={id}
-                                onClick={() => setTab(id)}
-                                title={label}
-                                className="relative w-10 h-10 flex items-center justify-center rounded-full transition-all"
-                                style={{
-                                    color: activeTab === id ? '#66c0f4' : '#546270',
-                                    background: activeTab === id ? '#66c0f422' : 'transparent',
-                                }}
-                            >
-                                {icon}
-                                {activeTab === id && (
-                                    <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#66c0f4]" />
+                            {/* Most Recently Unlocked */}
+                            <div>
+                                <h2 className="text-[13px] text-white tracking-wide uppercase font-medium border-b border-[#2a475e] pb-1.5 flex items-center gap-2 mb-3">
+                                    <span className="w-[3px] h-[14px] bg-[#e5b143] rounded-[1px] shrink-0" />
+                                    <Trophy size={15} className="text-[#e5b143]" /> Most Recently Unlocked
+                                </h2>
+                                {mostRecentUnlock ? (
+                                    <div className="bg-[#1b2838]/80 border border-[#323f4c] border-l-[3px] border-l-[#e5b143] rounded-[3px] p-3 flex items-center gap-3 hover:bg-[#202d39] transition-colors shadow-sm">
+                                        <div className="shrink-0 w-12 h-12 rounded-[2px] overflow-hidden border border-[#101214] bg-black">
+                                            {mostRecentUnlock.iconUrl
+                                                ? <img src={xboxImg(mostRecentUnlock.iconUrl, 208)} alt={mostRecentUnlock.displayName} className="w-full h-full object-cover" />
+                                                : <div className="w-full h-full bg-[#2a475e]" />
+                                            }
+                                        </div>
+                                        <div className="flex-1 min-w-0 flex flex-col">
+                                            <div className="text-[13px] font-medium truncate leading-tight mb-0.5 text-[#e5b143]">
+                                                {mostRecentUnlock.displayName}
+                                            </div>
+                                            <p className="text-[10px] text-[#8f98a0] leading-snug mb-0.5 truncate">
+                                                {mostRecentUnlock.description || mostRecentUnlock.displayName}
+                                            </p>
+                                            {mostRecentUnlock.globalPct != null && (
+                                                <div className="flex items-center gap-1 text-[9px] font-medium mb-1" style={{ color: rarityBorderColor(mostRecentUnlock.globalPct) }}>
+                                                    <Gem size={9} />
+                                                    {rarityLabel(mostRecentUnlock.globalPct)} · {mostRecentUnlock.globalPct}%
+                                                </div>
+                                            )}
+                                            <div className="flex items-center gap-1.5 text-[10px]">
+                                                <img
+                                                    src={xboxImg(achProgress[mostRecentUnlock.titleId]?.iconUrl, 64)}
+                                                    alt=""
+                                                    className="w-4 h-4 rounded-[1px] border border-[#101214] object-cover"
+                                                    onError={e => { e.target.style.display = 'none'; }}
+                                                />
+                                                <a href={xboxSearchUrl(mostRecentUnlock.gameName)} target="_blank" rel="noreferrer" className="text-[#66c0f4] hover:text-[#c6d4df] transition-colors">{mostRecentUnlock.gameName}</a>
+                                                <span className="text-[#546270]">•</span>
+                                                <span className="text-[#546270]">{formatTimeAgo(mostRecentUnlock.unlockedAt)}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className="text-[#8f98a0] text-[11px] py-2 italic">
+                                        No achievements unlocked in the last year.
+                                    </div>
                                 )}
-                            </button>
-                        ))}
-                    </div>
-                )}
+                            </div>
 
-                {/* ── Tab content ── (re-keyed per tab so each tab fades in) */}
-                <div key={activeTab} className="flex flex-col gap-3 anim-in">
+                            {/* User Stats */}
+                            <div>
+                                <h2 className="text-[13px] text-white tracking-wide uppercase font-medium border-b border-[#2a475e] pb-1.5 flex items-center gap-2 mb-2">
+                                    <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0" />
+                                    <BarChart2 size={15} className="text-[#66c0f4]" /> User Stats
+                                </h2>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 md:gap-x-8 px-1">
+                                    {[statsLeft, statsRight].map((col, ci) => (
+                                        <div key={ci} className="flex flex-col">
+                                            {col.map((stat, i) => (
+                                                <div key={i} className="flex items-end text-[11px] py-[3px] group hover:bg-[#202d39]/40 rounded-sm px-1 transition-colors">
+                                                    <span className="text-[#8f98a0] font-medium leading-tight whitespace-nowrap">{stat.label}</span>
+                                                    <div className="flex-1 border-b-[1.5px] border-dotted border-[#323f4c] mx-2 relative top-[-4px] opacity-60 group-hover:border-[#546270]" />
+                                                    <span className="text-[#c6d4df] font-medium whitespace-nowrap leading-tight text-right">{stat.value}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                        </div>
+
+                        {/* Sidebar: Completions */}
+                        <div className="flex flex-col gap-5">
+                            <div className="bg-[#1b2838] border border-[#2a475e] rounded-[3px] shadow-sm h-fit">
+                                <div className="p-2.5 bg-[#172333] border-b border-[#2a475e] rounded-t-[2px] flex items-center gap-2">
+                                    <span className="w-[2px] h-[12px] bg-[#e5b143] rounded-[1px] shrink-0" />
+                                    <span className="text-[11px] uppercase tracking-wide font-semibold text-[#c6d4df] flex items-center gap-2 flex-1">
+                                        <Star size={13} className="text-[#e5b143]" /> Completions
+                                    </span>
+                                    <div className="flex items-center gap-1.5">
+                                        <Star size={9} className="text-[#e5b143]" />
+                                        <span className="text-[10px] font-semibold text-[#e5b143]">{perfectGames.length}</span>
+                                        <Medal size={9} className="text-[#b8c4ce]" />
+                                        <span className="text-[10px] font-semibold text-[#b8c4ce]">{beatenOnly.length}</span>
+                                    </div>
+                                </div>
+                                <div className="p-3 grid grid-cols-5 sm:grid-cols-8 lg:grid-cols-5 gap-2 min-h-[60px]">
+                                    {(completionsExpanded ? perfectGames : perfectGames.slice(0, iconLimit)).map(g => (
+                                        <div key={g.titleId} className="relative group cursor-help anim-fade">
+                                            <a href={xboxSearchUrl(g.gameName)} target="_blank" rel="noreferrer">
+                                                <img
+                                                    src={xboxImg(g.iconUrl, 128)}
+                                                    alt={g.gameName}
+                                                    className="w-full aspect-square object-cover rounded-[2px] border-2 border-[#e5b143] group-hover:scale-110 transition-all duration-200 bg-[#101214]"
+                                                />
+                                            </a>
+                                            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[200px] bg-[#1b2838] border border-[#2a475e] rounded-[2px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100] shadow-xl pointer-events-none overflow-hidden">
+                                                <div className="h-[2px] bg-gradient-to-r from-[#e5b143] to-[#e5b143]/20" />
+                                                <div className="flex items-center gap-2 px-2.5 py-2 border-b border-[#2a475e] bg-[#172333]">
+                                                    <img src={xboxImg(g.iconUrl, 128)} alt=""
+                                                        className="w-8 h-8 rounded-[2px] border border-[#e5b143]/30 bg-black shrink-0 object-cover" />
+                                                    <div className="flex flex-col min-w-0">
+                                                        <span className="text-[11px] text-white font-semibold leading-tight line-clamp-2">{g.gameName}</span>
+                                                        {g.lastAchName && <span className="text-[9px] text-[#8f98a0] leading-tight truncate mt-0.5">{g.lastAchName}</span>}
+                                                    </div>
+                                                </div>
+                                                <div className="px-2.5 py-2 flex flex-col gap-1.5">
+                                                    <div className="flex items-center justify-between">
+                                                        <span className="text-[11px] text-[#546270]">Award</span>
+                                                        <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px] bg-[#e5b143] text-[#101214]">★ Completed</span>
+                                                    </div>
+                                                    <div className="h-px bg-[#2a475e]" />
+                                                    <div className="flex items-center justify-between">
+                                                        <span className="text-[11px] text-[#546270]">Achievements</span>
+                                                        <span className="text-[9px] text-[#e5b143] font-medium">{g.total} / {g.total} · {(g.totalGamerscore ?? 0).toLocaleString()}G</span>
+                                                    </div>
+                                                    {g.lastAchGlobalPct != null && (<>
+                                                        <div className="h-px bg-[#2a475e]" />
+                                                        <div className="flex items-center justify-between">
+                                                            <span className="text-[11px] text-[#546270]">Rarity</span>
+                                                            <span className="text-[9px] font-medium" style={{ color: rarityBorderColor(g.lastAchGlobalPct) }}>
+                                                                {rarityLabel(g.lastAchGlobalPct)} · {g.lastAchGlobalPct}%
+                                                            </span>
+                                                        </div>
+                                                    </>)}
+                                                    {g.completedAt && (<>
+                                                        <div className="h-px bg-[#2a475e]" />
+                                                        <div className="flex items-center justify-between">
+                                                            <span className="text-[11px] text-[#546270]">Completed</span>
+                                                            <span className="text-[9px] text-[#c6d4df]">{formatDate(g.completedAt)}</span>
+                                                        </div>
+                                                    </>)}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                    {(completionsExpanded ? beatenOnly : beatenOnly.slice(0, Math.max(0, iconLimit - perfectGames.length))).map(g => (
+                                        <div key={g.titleId} className="relative group cursor-help anim-fade">
+                                            <a href={xboxSearchUrl(g.gameName)} target="_blank" rel="noreferrer">
+                                                <img
+                                                    src={xboxImg(g.iconUrl, 128)}
+                                                    alt={g.gameName}
+                                                    className="w-full aspect-square object-cover rounded-[2px] border border-[#b8c4ce] group-hover:scale-110 transition-all duration-200 bg-[#101214]"
+                                                />
+                                            </a>
+                                            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[200px] bg-[#1b2838] border border-[#2a475e] rounded-[2px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100] shadow-xl pointer-events-none overflow-hidden">
+                                                <div className="h-[2px] bg-gradient-to-r from-[#b8c4ce] to-[#b8c4ce]/20" />
+                                                <div className="flex items-center gap-2 px-2.5 py-2 border-b border-[#2a475e] bg-[#172333]">
+                                                    <img src={xboxImg(g.iconUrl, 128)} alt=""
+                                                        className="w-8 h-8 rounded-[2px] border border-[#b8c4ce]/30 bg-black shrink-0 object-cover" />
+                                                    <div className="flex flex-col min-w-0">
+                                                        <span className="text-[11px] text-white font-semibold leading-tight line-clamp-2">{g.gameName}</span>
+                                                        {g.winConditionName && <span className="text-[9px] text-[#8f98a0] leading-tight truncate mt-0.5">{g.winConditionName}</span>}
+                                                    </div>
+                                                </div>
+                                                <div className="px-2.5 py-2 flex flex-col gap-1.5">
+                                                    <div className="flex items-center justify-between">
+                                                        <span className="text-[11px] text-[#546270]">Award</span>
+                                                        <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px]" style={{ background: '#2a3440', color: '#c6d4df', border: '1px solid rgba(184,196,206,0.3)' }}>Beaten</span>
+                                                    </div>
+                                                    {g.winCondGlobalPct != null && (<>
+                                                        <div className="h-px bg-[#2a475e]" />
+                                                        <div className="flex items-center justify-between">
+                                                            <span className="text-[11px] text-[#546270]">Rarity</span>
+                                                            <span className="text-[9px] font-medium" style={{ color: rarityBorderColor(g.winCondGlobalPct) }}>
+                                                                {rarityLabel(g.winCondGlobalPct)} · {g.winCondGlobalPct}%
+                                                            </span>
+                                                        </div>
+                                                    </>)}
+                                                    {g.beatenAt && (<>
+                                                        <div className="h-px bg-[#2a475e]" />
+                                                        <div className="flex items-center justify-between">
+                                                            <span className="text-[11px] text-[#546270]">Beaten</span>
+                                                            <span className="text-[9px] text-[#c6d4df]">{formatDate(g.beatenAt)}</span>
+                                                        </div>
+                                                    </>)}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                    {perfectGames.length === 0 && beatenOnly.length === 0 && (
+                                        <div className="col-span-full text-center text-[#546270] text-[10px] py-2">No completions yet.</div>
+                                    )}
+                                </div>
+                                {perfectGames.length + beatenOnly.length > iconLimit && (
+                                  <button
+                                    onClick={() => setCompletionsExpanded(v => !v)}
+                                    className="w-full flex items-center justify-center gap-1 py-1.5 border-t border-[#2a475e] text-[11px] font-semibold text-[#546270] hover:text-[#c6d4df] hover:bg-[#202d39] transition-colors rounded-b-[2px] outline-none anim-fade"
+                                  >
+                                    {completionsExpanded ? 'Show less' : `Show all ${perfectGames.length + beatenOnly.length}`}
+                                    <ChevronDown size={11} className={`transition-transform duration-200 ${completionsExpanded ? 'rotate-180' : ''}`} />
+                                  </button>
+                                )}
+                            </div>
+                        </div>
+
+                    </div>
+                    )}
 
                     {activeTab === 'recent' && (
                         gamesData
                             ? <div className="flex flex-col gap-3 anim-fade">
-                                <div className="flex items-center gap-2 text-[11px] text-[#8f98a0]">
-                                    <span>Recently played · <span className="text-[#c6d4df] font-semibold">{recentlyPlayed.length} games</span></span>
-                                    <span className="ml-auto"><ViewToggle view={gameView} onChange={setGameView} /></span>
+                                {/* A search over the whole library (newest played first) and the list / tiles switch */}
+                                <div className="fbar">
+                                    <div className="fsearch">
+                                        <Search size={14} />
+                                        <input type="text" inputMode="search" value={recentSearch} onChange={e => setRecentSearch(e.target.value)} placeholder="Search games" aria-label="Search games" />
+                                        {recentSearch && <button onClick={() => setRecentSearch('')} aria-label="Clear search"><X size={13} /></button>}
+                                    </div>
+                                    <ViewToggle view={gameView} onChange={setGameView} />
                                 </div>
+                                {recentSearch && recentShown.length === 0 && <div className="text-center py-12 text-[#546270] text-[12px]">No games match your search.</div>}
                                 <div key={gameView} className={`${gameView === 'tiles' ? 'gtiles' : 'glist'} anim-fade`}>
-                                    {recentlyPlayed.map(game => {
+                                    {recentShown.map(game => {
                                         const Card = gameView === 'tiles' ? GameTile : GameListRow;
                                         return <Card key={game.titleId} game={game} achievementData={achProgress[game.titleId]} onViewDetails={handleViewDetails} beatenInfo={beatenMap.get(game.titleId) ?? null} />;
                                     })}
@@ -1553,6 +1493,7 @@ const App = () => {
                     )}
 
                 </div>
+                </div>
 
             </main>
 
@@ -1574,7 +1515,7 @@ const App = () => {
                 <button
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                     className="scroll-top-btn anim-fade fixed right-4 z-50 w-10 h-10 bg-[#131a22] border border-[#2a475e] hover:border-[#66c0f4] hover:text-[#66c0f4] text-[#8f98a0] rounded-full flex items-center justify-center shadow-lg transition-all duration-200 active:scale-90"
-                    style={{ bottom: (showFloatingTabs || pillLeaving) ? 'calc(120px + env(safe-area-inset-bottom, 0px))' : '3.5rem' }}
+                    style={{ bottom: '3.5rem' }}
                     title="Scroll to top"
                 >
                     <ChevronDown size={16} className="rotate-180" />

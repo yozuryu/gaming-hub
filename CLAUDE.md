@@ -31,6 +31,7 @@ gaming-hub/
 │   ├── mobile-nav.js               # Shared bottom nav bar, injected into all pages via <script>
 │   ├── playing.js                  # "Playing" games in rotation (ES module), used by the hub and Activity; see Playing
 │   ├── sheet.js                    # Achievement modal behaviour for the profile pages: sheet on phone, dialog on desktop, drag to close, art fallback chain (ES module)
+│   ├── tabs.js                     # Profile tab bar (sticky, sideways scroll, sliding underline) + swipe between tabs (ES module)
 │   ├── game-view.js                # Remembered list / tiles choice of the profile game lists (`gh:gameView`) + shortAgo (ES module)
 │   ├── ui.css                      # Shared component styles: sheet, blurred art backgrounds, game list rows and tiles (profile pages, Completions)
 │   ├── avatar.png                  # User avatar
@@ -138,7 +139,7 @@ Self-contained IIFE injected into every page via `<script src="...assets/mobile-
 - `BASE` is derived from `document.currentScript.src` — works on any host (GitHub Pages `/gaming-hub/`, local `/`, etc.)
 - Mobile CSS injected via `<style>`: hides `.page-topbar` and `footer`, adds `padding-bottom` to body, repositions `.scroll-top-btn`
 - All pages must have `class="page-topbar"` on the breadcrumb topbar div
-- Safe area: `env(safe-area-inset-bottom)` used on nav, body padding, scroll-top button, and floating pills
+- Safe area: `env(safe-area-inset-bottom)` used on nav, body padding, scroll-top button and floating pills; `env(safe-area-inset-top)` on the sticky profile tab bar
 
 ### PWA
 - `manifest.json` + `sw.js` at root
@@ -162,12 +163,12 @@ Page headers use `pt-8 pb-5 md:pt-5` — extra top padding on mobile compensates
 - `statsExpanded` state + "Show more / Show less" toggle button (`sm:hidden`) controls visibility
 - Toggle button has a rotating `ChevronDown` icon
 
-### Floating tab pill (RA and Steam profile pages)
-- Appears when the natural tab bar scrolls off screen (`getBoundingClientRect().bottom < 0`)
-- Slides up on appear (`slideUpPill` keyframe), slides down on disappear (`slideDownPill` keyframe)
-- Exit animation: `pillLeaving` state + 210ms deferred unmount so animation completes before DOM removal
-- Positioned above bottom nav: `bottom: calc(68px + env(safe-area-inset-bottom, 0px))`
-- Scroll-to-top button shifts up to `calc(120px + ...)` when pill is visible
+### Profile tabs (RA, Steam and Xbox)
+- `assets/tabs.js`: `TabBar` (one row, icon + label, active tab white with its icon in the platform colour, sliding underline, scrolls sideways when the tabs don't fit, keeps the active tab in view) and `useSwipeTabs()`; styles `.ptabs*` in `assets/ui.css`
+- **Sticky:** pins below the status bar on phones (`top: env(safe-area-inset-top)`) and below the breadcrumb bar on desktop (`top: 26px`). A `.ptabs-anchor` marks its natural spot; `scrollToTabs()` brings a newly picked tab to its top with the bar pinned
+- **Overview** is the first and default tab: the old top section (Most Recently Played, Most Recently Unlocked, User Stats, Game Awards / Completions)
+- **Swipe (phones):** a clearly sideways swipe on the tab content goes to the next / previous tab, which slides in from that side (`.tab-from-left/right`). Ignored when it starts on something that scrolls sideways itself (chip rows, heatmap, cover strips) or on a form control, or when the motion is mostly vertical. The listener sits on a stable wrapper around the keyed tab content (a keyed element is replaced on every switch)
+- There is no floating tab pill any more: the sticky bar replaced it
 
 ---
 

@@ -6,6 +6,8 @@ Filters and search look the same on every page: chips with their counts in one s
 
 ### RetroAchievements
 
+- Tabs reworked (same on Steam and Xbox): a new **Overview** tab, the default, holds what used to sit above the tabs (most recently played and unlocked, user stats, game awards). The tab bar is one compact row (icon + label) that stays pinned to the top while you scroll, scrolls sideways when the tabs don't fit, and slides its underline to the active tab; picking a tab starts it at its top. On phones, swipe the content left or right to move between tabs (swipes on rows that scroll sideways are left alone). The floating tab pill is gone
+- Recent: a search field (with the list / tiles switch at full size) instead of the "Recently played · 15 games" line; it searches every game, newest played first. All profile searches ignore accents ("pokemon" finds "Pokémon")
 - Watchlist redesigned: a list in the style of the game rows instead of the dense table (bigger icons and titles, console · points on one line, the status once on the right, two columns on desktop), with group headers that open and close
 - Watchlist: a game's subsets stack under it as one card: the name and console on top, then a row per set, "Base set" first, each with its own icon, points and progress. Combined entries like "HeartGold | SoulSilver" collect the subsets of both games. New "Group: Subsets" option (with / without subsets; "Without subsets" starts closed)
 - Watchlist no longer blinks while scrolling: its rows were rebuilt (and replayed their fade-in) on every re-render, e.g. when the floating tab pill appeared
@@ -17,11 +19,13 @@ Filters and search look the same on every page: chips with their counts in one s
 
 ### Steam
 
+- Overview tab, pinned tab bar, swipe between tabs and a search on Recent, as on RA
 - Profile header redesigned like RA's, with Played · Games · Achievements in the number strip
 - Completion Progress and the achievement modal filters in the same chip style as RA
 
 ### Xbox
 
+- Overview tab, pinned tab bar, swipe between tabs and a search on Recent, as on RA
 - Profile header redesigned like RA's, with Gamerscore · Games · Achievements in the number strip
 - Completion Progress and the achievement modal filters in the same chip style as RA
 
@@ -102,6 +106,7 @@ Five pieces from the design review folded into the current look: the achievement
 
 ### Structure
 
+- New `assets/tabs.js` (profile tab bar + swipe between tabs), precached
 - New `assets/game-view.js` (the remembered list/tiles choice, `gh:gameView`)
 - New `assets/sheet.js` (sheet behaviour: drag to close, close animation, Escape, scroll lock, art fallback chain) and `assets/ui.css` (sheet layout, blurred art backgrounds), shared by the profile pages; both precached (`CACHE_NAME` v10)
 

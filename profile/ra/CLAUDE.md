@@ -11,12 +11,13 @@
 Critical data layer — merges multiple API response shapes into what the UI expects. Takes `rawData` (profile + games + watchlist + achievements) and returns `{ profile: PROFILE_DATA, games: ALL_GAMES, backlog: BACKLOG }`. Do not bypass it or duplicate its logic.
 
 ## Tabs
-Five tabs: **Recent Games** (Clock) · **Completion Progress** (BarChart2) · **Series Progress** (Layers) · **Activity** (Activity) · **Watchlist** (Star)
+Six tabs: **Overview** (User, the default) · **Recent** (Clock) · **Progress** (BarChart2) · **Series** (Layers) · **Activity** (Activity) · **Watchlist** (Star), in the shared `TabBar` (`assets/tabs.js`, see the root CLAUDE.md "Profile tabs")
 
 - Series tab only renders if `seriesData.some(s => s.showProgress)`
 - Tab state persists in URL: `?tab=progress`
-- On mobile: icon + short label. On desktop: full text label.
-- `tabBarRef` tracks the natural tab bar position. Scroll handler watches `getBoundingClientRect().bottom < 0` to show/hide floating pill.
+- Overview holds what used to sit above the tabs: Most Recently Played, Most Recently Unlocked, User Stats, Game Awards
+- Sticky, scrolls sideways, swipe between tabs on phones (`useSwipeTabs`, order = `tabIds`)
+- Recent: a search over every game, newest played first (up to 50); empty search = the latest 15. All searches use `fold()` (no accents or case: "pokemon" finds "Pokémon")
 
 ## Completion Progress Filters
 - Shared `ProgressFilterBar` + `applyProgressView()` (duplicated in RA and Steam `app.js` — keep them in sync)
@@ -38,14 +39,7 @@ Recent Games and Completion Progress render `GameListRow` (icon, title, console,
 - A list in the profile game-row style (`.wlist` / `.wrow` in `assets/ui.css`), two columns on desktop: icon, title + subset / tilde tags, console · points, and the status once on the right (in progress: count + bar; Mastered tag; not started: trophy + achievement count; no achievements: dimmed). Status colour on the left edge
 - **Subsets stack under their base game** (`stackSubsets()`): same title and console; a combined base "A | B" counts as each of its names. A stacked game is one card (`.wstack`): the name · console on one line (`.whead`), then one row per set (`SetRow`): "Base set" first, then each subset (gold name, wraps to two lines), each with its own icon, points, status and edge colour. A subset whose base isn't listed stays a normal row
 - Grouping (Group dropdown): none · console (rows drop the repeated console) · status · series · subsets (With subsets open / Without subsets closed; counts are games, not sets)
-- The row builders (`gameRow`, `setRow`, `stackCard`, `rows`) are **render functions, not components**: they're defined inside App's render, and as components React would remount all rows on every re-render (scrolling toggles the floating pill), replaying their fade. Don't turn them back into `<Components />` without moving them to module level
-
-## Floating Tab Pill (mobile)
-- Shows when natural tab bar scrolls off screen
-- `showFloatingTabs` state + `pillLeaving` state for exit animation
-- `pillLeaveTimer` ref: 210ms delay before unmounting so `slideDownPill` animation completes
-- Positioned: `bottom: calc(68px + env(safe-area-inset-bottom, 0px))`
-- Render condition: `{(showFloatingTabs || pillLeaving) && <div ...>}`
+- The row builders (`gameRow`, `setRow`, `stackCard`, `rows`) are **render functions, not components**: they're defined inside App's render, and as components React would remount all rows on every re-render (e.g. on scroll), replaying their fade. Don't turn them back into `<Components />` without moving them to module level
 
 ## User Stats (mobile)
 - Stats split into `statsLeft` (Points, Rank, Beaten, Mastered) and `statsRight` (additional stats)
