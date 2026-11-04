@@ -177,6 +177,11 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo, loading 
         : null;
     const isPerfect = pct !== null && pct >= 100;
 
+    const achCounts = useMemo(() => {
+        const unlocked = achs.filter(a => a.unlocked).length;
+        return { all: achs.length, unlocked, locked: achs.length - unlocked };
+    }, [achs]);
+
     const filteredAchs = useMemo(() => {
         const unl = achs
             .filter(a => a.unlocked)
@@ -266,10 +271,9 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo, loading 
                             { value: 'locked',   label: 'Locked',   icon: <Lock size={11} /> },
                         ].map(opt => (
                             <button key={opt.value} onClick={() => setLockFilter(opt.value)} aria-pressed={lockFilter === opt.value}
-                                className={`fchip ${lockFilter === opt.value ? 'on' : ''}`}>{opt.icon}{opt.label}</button>
+                                className={`fchip ${lockFilter === opt.value ? 'on' : ''}`}>{opt.icon}{opt.label}<span className="n">{achCounts[opt.value]}</span></button>
                         ))}
                     </div>
-                    <span className="fmeta shrink-0 tabular-nums">{filteredAchs.length}/{achs.length}</span>
                 </div>
 
                 {/* Achievement list (re-keyed so a filter change fades the new list in) */}
@@ -524,7 +528,7 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
                             <span className="text-[8px] text-[#546270]">More</span>
                             <span className="text-[8px] text-[#e5b143] ml-2">● peak</span>
                             {selectedDay && (
-                                <button onClick={() => setSelectedDay(null)} className="ml-auto text-[8px] text-[#66c0f4] hover:text-[#c6d4df] uppercase tracking-wider anim-fade">
+                                <button onClick={() => setSelectedDay(null)} className="ml-auto text-[10px] text-[#66c0f4] hover:text-[#c6d4df] anim-fade">
                                     Clear filter ×
                                 </button>
                             )}
@@ -592,7 +596,7 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
                                                         onError={e => { e.target.style.display = 'none'; }}
                                                     />
                                                 </div>
-                                                <a href={xboxSearchUrl(session.gameName)} target="_blank" rel="noreferrer" className="text-[9px] text-[#c6d4df] hover:text-[#66c0f4] uppercase tracking-wider font-medium truncate flex-1 transition-colors">
+                                                <a href={xboxSearchUrl(session.gameName)} target="_blank" rel="noreferrer" className="text-[11px] text-[#c6d4df] hover:text-[#66c0f4] font-medium truncate flex-1 transition-colors">
                                                     {session.gameName}
                                                 </a>
                                                 <span className="text-[8px] text-[#546270] shrink-0">
@@ -673,7 +677,7 @@ const NEARLY_PCT = 75;
 const STALE_MS   = 30 * 24 * 60 * 60 * 1000;
 
 
-const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, showCompleted, onShowCompleted, count, search, onSearch, viewToggle }) => {
+const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, showCompleted, onShowCompleted, counts, search, onSearch, viewToggle }) => {
     const hint = PROGRESS_VIEWS.find(v => v.value === view)?.hint;
     return (
         <div className="flex flex-col gap-2.5 mb-4 anim-fade">
@@ -681,7 +685,7 @@ const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, 
             <div className="frow" role="group" aria-label="Show">
                 {PROGRESS_VIEWS.map(v => (
                     <button key={v.value} onClick={() => onView(v.value)} aria-pressed={view === v.value}
-                        className={`fchip ${view === v.value ? 'on' : ''}`}>{v.label}</button>
+                        className={`fchip ${view === v.value ? 'on' : ''}`}>{v.label}{counts && <span className="n">{counts[v.value].toLocaleString()}</span>}</button>
                 ))}
                 {view === 'all' && (
                     <>
@@ -703,13 +707,13 @@ const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, 
                 </div>
                 {view === 'all' && (
                     <select value={sort} onChange={e => onSort(e.target.value)} className="fselect anim-fade" aria-label="Sort">
-                        {sorts.map(s => <option key={s.value} value={s.value}>Sort: {s.label}</option>)}
+                        {sorts.map(s => <option key={s.value} value={s.value}>{s.label}</option>)}
                     </select>
                 )}
                 {viewToggle}
             </div>
 
-            <div key={view} className="fmeta anim-fade"><b>{count.toLocaleString()}</b> games{hint && <> · {hint}</>}</div>
+            {hint && <div key={view} className="fmeta anim-fade">{hint}</div>}
         </div>
     );
 };
@@ -727,6 +731,10 @@ const applyProgressView = (games, view, { pct, left, lastPlayedMs, isCompleted }
     return null; // 'all' — caller applies its own sort and completed toggle
 };
 
+// Games per view for the chips, from the same rules as the list (All honours the completed toggle)
+const progressViewCounts = (games, acc, showCompleted) => Object.fromEntries(PROGRESS_VIEWS.map(v => [v.value,
+    v.value === 'all' ? games.filter(g => showCompleted || !acc.isCompleted(g)).length : applyProgressView(games, v.value, acc).length]));
+
 // ── ProgressTab ───────────────────────────────────────────────────────────────
 
 const ProgressTab = ({ achievementProgress, onViewDetails, beatenMap, gameView, onGameView }) => {
@@ -735,7 +743,7 @@ const ProgressTab = ({ achievementProgress, onViewDetails, beatenMap, gameView, 
     const [view,          setView]          = useState('all');
     const [search,        setSearch]        = useState('');
 
-    const games = useMemo(() => {
+    const [games, counts] = useMemo(() => {
         const list = Object.values(achievementProgress)
             .filter(d => d.hasAchievements && d.unlocked > 0 && d.total > 0 && (!search || (d.gameName ?? '').toLowerCase().includes(search.toLowerCase())))
             .map(d => ({
@@ -743,15 +751,17 @@ const ProgressTab = ({ achievementProgress, onViewDetails, beatenMap, gameView, 
                 pct: (d.unlocked / d.total) * 100,
             }));
 
-        const bucketed = applyProgressView(list, view, {
+        const acc = {
             pct:          g => g.pct,
             left:         g => g.total - g.unlocked,
             lastPlayedMs: g => (g.lastPlayedTs ? Date.parse(g.lastPlayedTs) || 0 : 0),
             isCompleted:  g => g.unlocked >= g.total,
-        });
-        if (bucketed) return bucketed;
+        };
+        const counts = progressViewCounts(list, acc, showCompleted);
+        const bucketed = applyProgressView(list, view, acc);
+        if (bucketed) return [bucketed, counts];
 
-        return list
+        const sorted = list
             .filter(g => showCompleted || g.unlocked < g.total)
             .sort((a, b) => {
                 if (sort === 'gamerscore') return (b.gamerscore ?? 0) - (a.gamerscore ?? 0);
@@ -759,6 +769,7 @@ const ProgressTab = ({ achievementProgress, onViewDetails, beatenMap, gameView, 
                 if (b.pct !== a.pct) return b.pct - a.pct;
                 return (b.lastUnlockedAt || '').localeCompare(a.lastUnlockedAt || '');
             });
+        return [sorted, counts];
     }, [achievementProgress, sort, showCompleted, search, view]);
 
     return (
@@ -768,7 +779,7 @@ const ProgressTab = ({ achievementProgress, onViewDetails, beatenMap, gameView, 
                 sorts={PROGRESS_SORTS.map(s => ({ value: s.id, label: s.label }))}
                 sort={sort} onSort={setSort}
                 completedLabel="Completed" showCompleted={showCompleted} onShowCompleted={setShowCompleted}
-                count={games.length}
+                counts={counts}
                 search={search} onSearch={setSearch}
                 viewToggle={<ViewToggle view={gameView} onChange={onGameView} />}
             />
@@ -1125,16 +1136,16 @@ const App = () => {
         : null;
 
     const statsLeft = [
-        { label: 'Total Games',          value: stats.totalGames.toLocaleString() },
-        { label: 'Games w/ Achievements', value: stats.gamesWithAchievements.toLocaleString() },
-        { label: 'Games Started',        value: stats.gamesStarted.toLocaleString() },
+        { label: 'Total games',          value: stats.totalGames.toLocaleString() },
+        { label: 'Games w/ achievements', value: stats.gamesWithAchievements.toLocaleString() },
+        { label: 'Games started',        value: stats.gamesStarted.toLocaleString() },
         { label: 'Gamerscore',           value: `${stats.gamerscore.toLocaleString()} G` },
     ];
     const statsRight = [
         { label: 'Achievements',       value: `${stats.unlockedAchievements.toLocaleString()} / ${stats.totalAchievements.toLocaleString()}` },
-        { label: 'Overall Completion', value: `${completionPct}%` },
-        { label: 'Completed Games',    value: (stats.perfectCount ?? perfectGames.length).toString() },
-        { label: 'Beaten Games',       value: beatenOnly.length.toString() },
+        { label: 'Overall completion', value: `${completionPct}%` },
+        { label: 'Completed games',    value: (stats.perfectCount ?? perfectGames.length).toString() },
+        { label: 'Beaten games',       value: beatenOnly.length.toString() },
     ];
 
     return (
@@ -1191,13 +1202,13 @@ const App = () => {
                         </div>
 
                         <div className="flex flex-wrap justify-center md:justify-start gap-1.5 mt-0.5">
-                            <span className="text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
+                            <span className="text-[11px] font-semibold px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
                                 <span className="text-[#e5b143]">{stats.gamerscore.toLocaleString()}</span> gamerscore
                             </span>
-                            <span className="text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
+                            <span className="text-[11px] font-semibold px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
                                 <span className="text-[#c6d4df]">{stats.totalGames.toLocaleString()}</span> games
                             </span>
-                            <span className="text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
+                            <span className="text-[11px] font-semibold px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
                                 <span className="text-[#c6d4df]">{stats.unlockedAchievements.toLocaleString()}</span> achievements
                             </span>
                         </div>
@@ -1367,18 +1378,18 @@ const App = () => {
                                             </div>
                                             <div className="px-2.5 py-2 flex flex-col gap-1.5">
                                                 <div className="flex items-center justify-between">
-                                                    <span className="text-[9px] text-[#546270] uppercase tracking-[0.08em]">Award</span>
+                                                    <span className="text-[11px] text-[#546270]">Award</span>
                                                     <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px] bg-[#e5b143] text-[#101214]">★ Completed</span>
                                                 </div>
                                                 <div className="h-px bg-[#2a475e]" />
                                                 <div className="flex items-center justify-between">
-                                                    <span className="text-[9px] text-[#546270] uppercase tracking-[0.08em]">Achievements</span>
+                                                    <span className="text-[11px] text-[#546270]">Achievements</span>
                                                     <span className="text-[9px] text-[#e5b143] font-medium">{g.total} / {g.total} · {(g.totalGamerscore ?? 0).toLocaleString()}G</span>
                                                 </div>
                                                 {g.lastAchGlobalPct != null && (<>
                                                     <div className="h-px bg-[#2a475e]" />
                                                     <div className="flex items-center justify-between">
-                                                        <span className="text-[9px] text-[#546270] uppercase tracking-[0.08em]">Rarity</span>
+                                                        <span className="text-[11px] text-[#546270]">Rarity</span>
                                                         <span className="text-[9px] font-medium" style={{ color: rarityBorderColor(g.lastAchGlobalPct) }}>
                                                             {rarityLabel(g.lastAchGlobalPct)} · {g.lastAchGlobalPct}%
                                                         </span>
@@ -1387,7 +1398,7 @@ const App = () => {
                                                 {g.completedAt && (<>
                                                     <div className="h-px bg-[#2a475e]" />
                                                     <div className="flex items-center justify-between">
-                                                        <span className="text-[9px] text-[#546270] uppercase tracking-[0.08em]">Completed</span>
+                                                        <span className="text-[11px] text-[#546270]">Completed</span>
                                                         <span className="text-[9px] text-[#c6d4df]">{formatDate(g.completedAt)}</span>
                                                     </div>
                                                 </>)}
@@ -1416,13 +1427,13 @@ const App = () => {
                                             </div>
                                             <div className="px-2.5 py-2 flex flex-col gap-1.5">
                                                 <div className="flex items-center justify-between">
-                                                    <span className="text-[9px] text-[#546270] uppercase tracking-[0.08em]">Award</span>
+                                                    <span className="text-[11px] text-[#546270]">Award</span>
                                                     <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px]" style={{ background: '#2a3440', color: '#c6d4df', border: '1px solid rgba(184,196,206,0.3)' }}>Beaten</span>
                                                 </div>
                                                 {g.winCondGlobalPct != null && (<>
                                                     <div className="h-px bg-[#2a475e]" />
                                                     <div className="flex items-center justify-between">
-                                                        <span className="text-[9px] text-[#546270] uppercase tracking-[0.08em]">Rarity</span>
+                                                        <span className="text-[11px] text-[#546270]">Rarity</span>
                                                         <span className="text-[9px] font-medium" style={{ color: rarityBorderColor(g.winCondGlobalPct) }}>
                                                             {rarityLabel(g.winCondGlobalPct)} · {g.winCondGlobalPct}%
                                                         </span>
@@ -1431,7 +1442,7 @@ const App = () => {
                                                 {g.beatenAt && (<>
                                                     <div className="h-px bg-[#2a475e]" />
                                                     <div className="flex items-center justify-between">
-                                                        <span className="text-[9px] text-[#546270] uppercase tracking-[0.08em]">Beaten</span>
+                                                        <span className="text-[11px] text-[#546270]">Beaten</span>
                                                         <span className="text-[9px] text-[#c6d4df]">{formatDate(g.beatenAt)}</span>
                                                     </div>
                                                 </>)}
@@ -1446,7 +1457,7 @@ const App = () => {
                             {perfectGames.length + beatenOnly.length > iconLimit && (
                               <button
                                 onClick={() => setCompletionsExpanded(v => !v)}
-                                className="w-full flex items-center justify-center gap-1 py-1.5 border-t border-[#2a475e] text-[9px] font-semibold uppercase tracking-[0.07em] text-[#546270] hover:text-[#c6d4df] hover:bg-[#202d39] transition-colors rounded-b-[2px] outline-none anim-fade"
+                                className="w-full flex items-center justify-center gap-1 py-1.5 border-t border-[#2a475e] text-[11px] font-semibold text-[#546270] hover:text-[#c6d4df] hover:bg-[#202d39] transition-colors rounded-b-[2px] outline-none anim-fade"
                               >
                                 {completionsExpanded ? 'Show less' : `Show all ${perfectGames.length + beatenOnly.length}`}
                                 <ChevronDown size={11} className={`transition-transform duration-200 ${completionsExpanded ? 'rotate-180' : ''}`} />

@@ -222,7 +222,7 @@ const StreakPanel = ({ streakInfo, describe, cellLabel }) => (
                 <span style={{ fontSize: 22, fontWeight: 700, lineHeight: 1, color: streakInfo.current > 0 ? '#e5b143' : '#3d5060', animation: streakInfo.current > 0 ? 'streakGlow 3s ease-in-out infinite' : 'none' }}>
                     {streakInfo.current}
                 </span>
-                <span style={{ fontSize: 9, color: '#546270', textTransform: 'uppercase', letterSpacing: '0.07em' }}>
+                <span style={{ fontSize: 11, color: '#546270' }}>
                     day{streakInfo.current !== 1 ? 's' : ''}
                 </span>
             </div>
@@ -266,7 +266,7 @@ const StreakPanel = ({ streakInfo, describe, cellLabel }) => (
                                     <span style={{ fontSize: 12, color: '#3a1e28', lineHeight: 1, fontWeight: 700 }}>✕</span>
                                 )}
                             </div>
-                            <span style={{ fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: d.isToday ? 700 : 500, color: d.active ? '#8a6520' : d.isPending ? '#4a6070' : '#2a1e24' }}>
+                            <span style={{ fontSize: 10, fontWeight: d.isToday ? 700 : 500, color: d.active ? '#8a6520' : d.isPending ? '#4a6070' : '#2a1e24' }}>
                                 {d.isToday ? 'Today' : d.label}
                             </span>
                         </div>
@@ -325,7 +325,7 @@ const GameSession = ({ session }) => {
     const gameNameNode = isRA ? (
         <>
             <a href={session.gameUrl} target="_blank" rel="noreferrer"
-                className="text-[9px] text-[#c6d4df] hover:text-[#66c0f4] uppercase tracking-wider font-medium truncate transition-colors">
+                className="text-[11px] text-[#c6d4df] hover:text-[#66c0f4] font-medium truncate transition-colors">
                 {baseTitle}
             </a>
             {isSubset && (
@@ -338,7 +338,7 @@ const GameSession = ({ session }) => {
         </>
     ) : (
         <a href={session.gameUrl} target="_blank" rel="noreferrer"
-            className="text-[9px] text-[#c6d4df] hover:text-[#66c0f4] uppercase tracking-wider font-medium truncate transition-colors">
+            className="text-[11px] text-[#c6d4df] hover:text-[#66c0f4] font-medium truncate transition-colors">
             {session.gameName}
         </a>
     );
@@ -550,7 +550,7 @@ const PlayingTile = ({ game: g }) => {
                                 title={`${weeksAgo === 0 ? 'This week' : `${weeksAgo} week${weeksAgo !== 1 ? 's' : ''} ago`}: ${v ? fmtMinutes(v) : 'not played'}`} />;
                         })}
                     </div>
-                    <div className="flex items-center gap-[5px] text-[8px] text-[#546270] uppercase tracking-[0.06em]">
+                    <div className="flex items-center gap-[5px] text-[10px] text-[#546270]">
                         <span>13 weeks ago</span>
                         <i className="relative flex-1 h-px bg-[#2a3a4a] after:content-[''] after:absolute after:-right-px after:-top-[2px] after:border-l-4 after:border-l-[#2a3a4a] after:border-y-[2.5px] after:border-y-transparent" />
                         <span>now</span>
@@ -559,8 +559,8 @@ const PlayingTile = ({ game: g }) => {
             </div>
             {/* Stats: the first two cover the same 13 weeks as the strip */}
             <div className="mt-1.5 grid grid-cols-3 border-t border-[#1a2535] bg-[#172333]">
-                <div className="col-span-2 pt-1 text-center text-[7px] font-bold uppercase tracking-[0.1em] text-[#3f5368]">Last 13 weeks</div>
-                <div className="pt-1 text-center text-[7px] font-bold uppercase tracking-[0.1em] text-[#3f5368] border-l border-[#1a2535]">All time</div>
+                <div className="col-span-2 pt-1 text-center text-[9px] font-bold text-[#3f5368]">Last 13 weeks</div>
+                <div className="pt-1 text-center text-[9px] font-bold text-[#3f5368] border-l border-[#1a2535]">All time</div>
                 {[
                     { v: g.sessions ? fmtMinutes(Math.round(g.minutes / g.sessions)) : null, l: 'Avg session' },
                     { v: g.sessions, l: 'Sessions' },
@@ -568,7 +568,7 @@ const PlayingTile = ({ game: g }) => {
                 ].map(({ v, l, border }) => (
                     <div key={l} className={`flex flex-col items-center gap-px px-0.5 pt-0.5 pb-1.5 min-w-0 ${border ? 'border-l border-[#1a2535]' : ''}`}>
                         <b className={`text-[10px] font-semibold tabular-nums whitespace-nowrap ${v == null ? 'text-[#323f4c]' : 'text-[#c6d4df]'}`}>{v ?? '–'}</b>
-                        <span className="text-[7px] font-bold uppercase tracking-[0.08em] text-[#546270] whitespace-nowrap">{l}</span>
+                        <span className="text-[9px] font-bold text-[#546270] whitespace-nowrap">{l}</span>
                     </div>
                 ))}
             </div>
@@ -917,7 +917,7 @@ const App = () => {
                         <div className="grid grid-cols-3 basis-full md:flex md:basis-auto p-[2px] rounded-[3px] border border-[#2a475e] bg-[#101214] md:ml-auto" role="tablist">
                             {[['achievements', 'Unlocks', Trophy], ['playtime', 'Playtime', Clock], ['playing', 'Playing', Gamepad2]].map(([id, label, Icon]) => (
                                 <button key={id} role="tab" aria-selected={view === id} onClick={() => switchView(id)}
-                                    className={`flex items-center justify-center gap-1.5 text-[12px] font-medium px-3 py-1.5 md:py-1 rounded-[2px] transition-colors ${
+                                    className={`flex items-center justify-center gap-1.5 text-[12.5px] font-medium px-3 py-2 md:py-1.5 rounded-[2px] transition-colors ${
                                         view === id ? 'bg-[#2a475e] text-white' : 'text-[#546270] hover:text-[#c6d4df]'
                                     }`}>
                                     <Icon size={12} /> {label}
@@ -1202,7 +1202,7 @@ const App = () => {
                         {/* Scroll sentinel */}
                         {hasMore && (view === 'achievements' || !selectedDay) && (
                             <div ref={sentinelRef} className="py-4 flex justify-center">
-                                {loadingMore && <span className="text-[9px] text-[#546270] uppercase tracking-wider">Loading…</span>}
+                                {loadingMore && <span className="text-[11px] text-[#546270]">Loading…</span>}
                             </div>
                         )}
                     </div>

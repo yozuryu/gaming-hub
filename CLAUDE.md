@@ -363,7 +363,11 @@ One look on every page, from the classes in `assets/ui.css`:
 ### Typography
 - Font: `'Segoe UI', Arial, sans-serif`
 - Sizes: 7–15px (very compact, dashboard-style)
-- Labels: `uppercase tracking-[0.07em]` or `tracking-[0.1em]` with `font-semibold`
+- **Letter case follows the role**, the same on every page:
+  - UPPERCASE, small and letter-spaced (`uppercase tracking-[0.07em]`), only for **structure and status**: section headers, page tabs, table headers, chart/card titles, and status tags (Hardcore, Softcore, Mastered, Beaten, Perfect, platform chips, tilde tags, OFFLINE)
+  - Sentence case for **everything read or tapped**: filter chips, buttons, search placeholders, dropdown options, stat and field labels (Achievements, Played, Hours played, Member since), hints, empty states, day and axis labels
+  - Never Title Case ("Not Started", "Hours Played") except proper names (game titles, RetroAchievements, GameFAQs). Never uppercase a game name
+  - A label moved from uppercase to sentence case gets 1–2px more size: sentence case at 8–9px reads smaller than uppercase did
 - Border radius: mostly 2–3px (sharp, minimal)
 
 ### Section headers

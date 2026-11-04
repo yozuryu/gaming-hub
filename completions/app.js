@@ -583,7 +583,7 @@ const App = () => {
             .catch(() => setBeatenSteamGames([]));
     }, []);
 
-    const completions = useMemo(() => {
+    const pool = useMemo(() => {
         const raTotals     = Object.fromEntries((raProfile?.gameAwardsAndProgress?.results ?? []).map(g => [g.gameId, g.maxPossible]));
         const ra           = normalizeRA(raProfile?.pageAwards?.visibleUserAwards ?? [], showBeaten, raTotals);
         const steamPerfect = normalizeSteam(steamProfile?.perfectGames ?? []);
@@ -591,10 +591,15 @@ const App = () => {
         const xboxDone     = normalizeXbox(xboxProfile?.perfectGames ?? []);
         const xboxBeaten   = showBeaten ? normalizeXboxBeaten(beatenXboxGames ?? []) : [];
         let all = dedupeCompletions([...ra, ...steamPerfect, ...steamBeaten, ...xboxDone, ...xboxBeaten]);
-        if (platform !== 'all') all = all.filter(c => c.platform === platform);
         if (hiddenTags.size > 0)  all = all.filter(c => !c.tags?.some(t => hiddenTags.has(t)));
         return all.sort((a, b) => new Date(b.completedAt) - new Date(a.completedAt));
-    }, [raProfile, steamProfile, beatenSteamGames, xboxProfile, beatenXboxGames, platform, showBeaten, hiddenTags]);
+    }, [raProfile, steamProfile, beatenSteamGames, xboxProfile, beatenXboxGames, showBeaten, hiddenTags]);
+    const completions = useMemo(() => platform === 'all' ? pool : pool.filter(c => c.platform === platform), [pool, platform]);
+    const platformCounts = useMemo(() => {
+        const n = { all: pool.length, ra: 0, steam: 0, xbox: 0 };
+        pool.forEach(c => { n[c.platform] += 1; });
+        return n;
+    }, [pool]);
 
     const groups  = useMemo(() => groupByMonth(completions), [completions]);
     const loading = raProfile === null || steamProfile === null || beatenSteamGames === null
@@ -665,7 +670,7 @@ const App = () => {
                         { value: 'xbox',  label: 'Xbox'  },
                     ].map(opt => (
                         <button key={opt.value} onClick={() => setPlatform(opt.value)} aria-pressed={platform === opt.value}
-                            className={`fchip ${platform === opt.value ? 'on' : ''}`}>{opt.label}</button>
+                            className={`fchip ${platform === opt.value ? 'on' : ''}`}>{opt.label}{!loading && <span className="n">{platformCounts[opt.value]}</span>}</button>
                     ))}
                     <span className="fsep" />
                     <button onClick={() => setShowBeaten(v => !v)} aria-pressed={showBeaten} title="Include beaten games"

@@ -98,7 +98,7 @@ const Tooltip = ({ tip }) => {
     return (
         <div className="fixed z-[60] pointer-events-none bg-[#0e141b] border border-[#2a475e] rounded-[3px] px-2.5 py-2 shadow-lg min-w-[140px] max-w-[220px]"
             style={{ left, top }}>
-            <div className="text-[9px] uppercase tracking-[0.07em] text-[#8f98a0] mb-1">{tip.title}</div>
+            <div className="text-[11px] text-[#8f98a0] mb-1">{tip.title}</div>
             {tip.rows.map((r, i) => (
                 <div key={i} className="flex items-center gap-1.5 text-[11px] leading-[18px]">
                     {r.color && <span className="w-2.5 h-[2px] shrink-0 rounded-full" style={{ background: r.color }} />}
@@ -158,7 +158,7 @@ const SectionHeader = ({ title, gold, note }) => (
 const Legend = ({ items }) => (
     <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
         {items.map(it => (
-            <span key={it.label} className="flex items-center gap-1.5 text-[9px] text-[#8f98a0] uppercase tracking-[0.07em]">
+            <span key={it.label} className="flex items-center gap-1.5 text-[11px] text-[#8f98a0]">
                 <span className="w-2 h-2 rounded-[1px]" style={{ background: it.color }} /> {it.label}
             </span>
         ))}
@@ -177,10 +177,8 @@ const ChartCard = ({ title, subtitle, legend, table, children }) => {
                 </div>
                 {table && (
                     <button onClick={() => setShowTable(v => !v)}
-                        className={`ml-auto shrink-0 flex items-center gap-1 text-[9px] uppercase tracking-[0.07em] px-1.5 py-[2px] rounded-[2px] border transition-colors ${
-                            showTable ? 'border-[#66c0f4] text-[#c6d4df]' : 'border-[#2a475e] text-[#546270] hover:text-[#c6d4df]'
-                        }`}>
-                        <Table size={10} /> Table
+                        aria-pressed={showTable} className={`ml-auto fchip ${showTable ? 'on' : ''}`}>
+                        <Table size={12} /> Table
                     </button>
                 )}
             </div>
@@ -384,7 +382,7 @@ const PunchCell = ({ v, total, d, h, color }) => {
 
 const StatTile = ({ label, value, delta, note }) => (
     <div className="bg-[#1b2838] border border-[#2a475e] rounded-[3px] px-3 py-2.5 min-w-0">
-        <div className="text-[9px] text-[#8f98a0] uppercase tracking-[0.07em] truncate">{label}</div>
+        <div className="text-[11px] text-[#8f98a0] truncate">{label}</div>
         <div className="text-[20px] text-white font-semibold leading-tight mt-0.5 truncate">{value}</div>
         <div className="text-[9px] text-[#546270] mt-0.5 truncate h-[13px]">
             {delta != null ? (
@@ -1068,7 +1066,7 @@ const App = () => {
                                         : <div className="flex flex-col gap-2.5">{view.rarity.map(r => <RarityBar key={r.platform} row={r} />)}</div>}
                                     {view.rarest.length > 0 && (
                                         <div className="mt-4">
-                                            <div className="text-[9px] text-[#546270] uppercase tracking-[0.07em] mb-1.5">Rarest unlocks</div>
+                                            <div className="text-[11px] text-[#546270] mb-1.5">Rarest unlocks</div>
                                             <div className="flex flex-col gap-1">
                                                 {view.rarest.map(u => (
                                                     <div key={`${u.platform}-${u.g}-${u.a}`} className="flex items-center gap-2 text-[10px] min-w-0">

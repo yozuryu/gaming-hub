@@ -40,6 +40,13 @@ Filters and search look the same on every page and take less room: sentence-case
 
 - Period and platform are chip rows (no more two-line uppercase period buttons on phone); "Hide farms" is a toggle chip with the farm count; the date range is a muted line
 
+### All pages
+
+- Filters a size up, closer to the earlier redesign: 30px chips with 12.5px text, a 34px search field, the list / tiles switch at the same height, and sort / group as a button with a sliders icon
+- Counts inside the chips: Completion Progress (All 85 · Nearly there 4 · In progress 3 · Abandoned 78, from the same rules as the list), the achievement sheet (All · Unlocked · Locked · Progression · Missable), Completions (All · RA · Steam · Xbox); the separate count lines are gone. The watchlist search reads "Search 808 games"; its summary line only shows while a filter narrows the list
+- The achievement sheet's Guides / Videos links are regular chips
+- Letter case follows one rule: UPPERCASE only for section headers, tabs, table headers and status tags; sentence case for everything you read or tap. Changed: Analytics tile, tooltip and legend labels, the Table button; Activity game names in the day groups (no longer uppercased), streak days, the Playing tiles' labels; profile header pills, the sheet's progress-bar labels, award details, Show all buttons; Steam / Xbox user stats and watchlist statuses from Title Case ("Total Games" → "Total games")
+
 ### Structure
 
 - Shared filter styles in `assets/ui.css` (`.frow`, `.fchip`, `.fsep`, `.fbar`, `.fsearch`, `.fselect`, `.fmeta`), now also linked from Activity and Analytics. A row that overflows fades out at its right edge until scrolled to the end (scroll-driven CSS, no script)

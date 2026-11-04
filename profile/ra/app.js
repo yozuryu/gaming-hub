@@ -57,7 +57,7 @@ const NEARLY_PCT = 75;
 const STALE_MS   = 30 * 24 * 60 * 60 * 1000;
 
 
-const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, showCompleted, onShowCompleted, count, search, onSearch, viewToggle }) => {
+const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, showCompleted, onShowCompleted, counts, search, onSearch, viewToggle }) => {
   const hint = PROGRESS_VIEWS.find(v => v.value === view)?.hint;
   return (
     <div className="flex flex-col gap-2.5 mb-4 anim-fade">
@@ -65,7 +65,7 @@ const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, 
       <div className="frow" role="group" aria-label="Show">
         {PROGRESS_VIEWS.map(v => (
           <button key={v.value} onClick={() => onView(v.value)} aria-pressed={view === v.value}
-            className={`fchip ${view === v.value ? 'on' : ''}`}>{v.label}</button>
+            className={`fchip ${view === v.value ? 'on' : ''}`}>{v.label}{counts && <span className="n">{counts[v.value].toLocaleString()}</span>}</button>
         ))}
         {view === 'all' && (
           <>
@@ -87,13 +87,13 @@ const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, 
         </div>
         {view === 'all' && (
           <select value={sort} onChange={e => onSort(e.target.value)} className="fselect anim-fade" aria-label="Sort">
-            {sorts.map(s => <option key={s.value} value={s.value}>Sort: {s.label}</option>)}
+            {sorts.map(s => <option key={s.value} value={s.value}>{s.label}</option>)}
           </select>
         )}
         {viewToggle}
       </div>
 
-      <div key={view} className="fmeta anim-fade"><b>{count.toLocaleString()}</b> games{hint && <> · {hint}</>}</div>
+      {hint && <div key={view} className="fmeta anim-fade">{hint}</div>}
     </div>
   );
 };
@@ -111,6 +111,10 @@ const applyProgressView = (games, view, { pct, left, lastPlayedMs, isCompleted }
   return null; // 'all' — caller applies its own sort and completed toggle
 };
 
+// Games per view for the chips, from the same rules as the list (All honours the completed toggle)
+const progressViewCounts = (games, acc, showCompleted) => Object.fromEntries(PROGRESS_VIEWS.map(v => [v.value,
+  v.value === 'all' ? games.filter(g => showCompleted || !acc.isCompleted(g)).length : applyProgressView(games, v.value, acc).length]));
+
 // RA dates come as "YYYY-MM-DD HH:MM:SS" (UTC) or ISO; Safari can't parse the former
 const raDateMs = s => {
   if (!s) return 0;
@@ -126,9 +130,9 @@ const GuideStrip = ({ game, guides, isLast, inModal = false }) => {
   const searchTitle = encodeURIComponent(game.baseTitle || game.title);
   const categoryIcon = (cat) => {
     const c = cat.toLowerCase();
-    if (c === 'videos') return <Youtube size={9} />;
-    if (c === 'guides') return <BookOpen size={9} />;
-    return <ExternalLink size={9} />;
+    if (c === 'videos') return <Youtube size={inModal ? 12 : 9} />;
+    if (c === 'guides') return <BookOpen size={inModal ? 12 : 9} />;
+    return <ExternalLink size={inModal ? 12 : 9} />;
   };
   const fallbackCategories = [
     { category: 'Guides', links: [{ label: 'Search GameFAQs', url: `https://gamefaqs.gamespot.com/search?game=${searchTitle}` }] },
@@ -147,12 +151,14 @@ const GuideStrip = ({ game, guides, isLast, inModal = false }) => {
   }, [openCategory]);
 
   return (
-    <div ref={ref} className={`relative flex items-center gap-1 flex-wrap ${inModal ? 'px-4 py-1.5 border-b border-[#101214] shrink-0 z-20' : `px-3 py-1.5 bg-[#171a21] border-t border-[#323f4c] ${isLast ? 'rounded-b-[3px]' : ''}`}`}>
-      <span className="text-[9px] text-[#546270] uppercase tracking-[0.07em] font-semibold mr-1 shrink-0">Guides</span>
+    <div ref={ref} className={`relative flex items-center flex-wrap ${inModal ? 'gap-1.5 px-4 py-2 border-b border-[#101214] shrink-0 z-20' : 'gap-1 ' + `px-3 py-1.5 bg-[#171a21] border-t border-[#323f4c] ${isLast ? 'rounded-b-[3px]' : ''}`}`}>
+      {!inModal && <span className="text-[9px] text-[#546270] uppercase tracking-[0.07em] font-semibold mr-1 shrink-0">Guides</span>}
       {categories.map((cat) => {
         const isSingle = !cat.isCustom && cat.links.length === 1;
         const isOpen   = openCategory === cat.category;
-        const chipCls  = `flex items-center gap-1 text-[10px] px-1.5 py-[2px] rounded-[2px] border transition-colors bg-[#1b2838] outline-none ${isOpen ? 'text-[#66c0f4] border-[#66c0f4]/50' : 'text-[#8f98a0] border-[#2a475e] hover:text-[#66c0f4] hover:border-[#66c0f4]/50'}`;
+        const chipCls  = inModal
+          ? `fchip ${isOpen ? 'on' : ''}`
+          : `flex items-center gap-1 text-[10px] px-1.5 py-[2px] rounded-[2px] border transition-colors bg-[#1b2838] outline-none ${isOpen ? 'text-[#66c0f4] border-[#66c0f4]/50' : 'text-[#8f98a0] border-[#2a475e] hover:text-[#66c0f4] hover:border-[#66c0f4]/50'}`;
         return (
           <div key={cat.category} className="relative shrink-0">
             {isSingle ? (
@@ -352,6 +358,17 @@ const RAchievementModal = ({ game, guides, onClose }) => {
     });
   }, [game.achievements, lockFilter, typeFilter]);
 
+  // Chip counts, each over the whole set (not narrowed by the other filter)
+  const achCounts = useMemo(() => {
+    const all = game.achievements ?? [];
+    const unlocked = all.filter(a => a.isUnlocked).length;
+    return {
+      all: all.length, unlocked, locked: all.length - unlocked,
+      progression: all.filter(a => a.type === 'progression' || a.type === 'win_condition').length,
+      missable: all.filter(a => a.type === 'missable').length,
+    };
+  }, [game.achievements]);
+
   const progAchs     = game.achievements?.filter(a => a.type === 'progression' || a.type === 'win_condition') ?? [];
   const progUnlocked = progAchs.filter(a => a.isUnlocked).length;
   const progPct      = progAchs.length > 0 ? (progUnlocked / progAchs.length) * 100 : null;
@@ -416,7 +433,7 @@ const RAchievementModal = ({ game, guides, onClose }) => {
               <div className="flex flex-col gap-1">
                 {progPct !== null && (
                   <div className="flex items-center gap-2">
-                    <span className="w-[64px] shrink-0 text-[8px] text-[#546270] uppercase tracking-wider text-right">Progression</span>
+                    <span className="w-[64px] shrink-0 text-[10px] text-[#546270] text-right">Progression</span>
                     <div className="flex-1 bg-[#101214] h-[3px] rounded-sm overflow-hidden">
                       <div className="h-full rounded-sm bg-[#e5b143]" style={{ width: `${progPct}%` }} />
                     </div>
@@ -424,7 +441,7 @@ const RAchievementModal = ({ game, guides, onClose }) => {
                   </div>
                 )}
                 <div className="flex items-center gap-2">
-                  <span className="w-[64px] shrink-0 text-[8px] text-[#546270] uppercase tracking-wider text-right">Overall</span>
+                  <span className="w-[64px] shrink-0 text-[10px] text-[#546270] text-right">Overall</span>
                   <div className="flex-1 bg-[#101214] h-[3px] rounded-sm overflow-hidden">
                     <div className={`h-full rounded-sm ${game.isMastered ? 'bg-[#e5b143]' : 'bg-[#66c0f4]'}`} style={{ width: `${game.rawProgress}%` }} />
                   </div>
@@ -460,7 +477,7 @@ const RAchievementModal = ({ game, guides, onClose }) => {
               { value: 'locked',   label: 'Locked',   icon: <Lock size={11} /> },
             ].map(opt => (
               <button key={opt.value} onClick={() => setLockFilter(opt.value)} aria-pressed={lockFilter === opt.value}
-                className={`fchip ${lockFilter === opt.value ? 'on' : ''}`}>{opt.icon}{opt.label}</button>
+                className={`fchip ${lockFilter === opt.value ? 'on' : ''}`}>{opt.icon}{opt.label}<span className="n">{achCounts[opt.value]}</span></button>
             ))}
             <span className="fsep" />
             {[
@@ -468,10 +485,9 @@ const RAchievementModal = ({ game, guides, onClose }) => {
               { value: 'missable',    label: 'Missable',    icon: <AlertTriangle size={11} className="text-[#ff9800]" /> },
             ].map(opt => (
               <button key={opt.value} onClick={() => setTypeFilter(typeFilter === opt.value ? 'all' : opt.value)} aria-pressed={typeFilter === opt.value}
-                className={`fchip ${typeFilter === opt.value ? 'on' : ''}`}>{opt.icon}{opt.label}</button>
+                className={`fchip ${typeFilter === opt.value ? 'on' : ''}`}>{opt.icon}{opt.label}<span className="n">{achCounts[opt.value]}</span></button>
             ))}
           </div>
-          <span className="fmeta shrink-0 tabular-nums">{filteredAchs.length}/{game.achievements?.length ?? 0}</span>
         </div>
 
         {/* Achievement list */}
@@ -736,7 +752,7 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
               <span className="text-[8px] text-[#546270]">More</span>
               <span className="text-[8px] text-[#e5b143] ml-2">● peak</span>
               {selectedDay && (
-                <button onClick={() => setSelectedDay(null)} className="ml-auto text-[8px] text-[#66c0f4] hover:text-[#c6d4df] uppercase tracking-wider anim-fade">
+                <button onClick={() => setSelectedDay(null)} className="ml-auto text-[10px] text-[#66c0f4] hover:text-[#c6d4df] anim-fade">
                   Clear filter ×
                 </button>
               )}
@@ -800,7 +816,7 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
                       </a>
                       <div className="flex items-center gap-1.5 flex-1 min-w-0">
                         {(() => { const p = parseTitle(session.gameTitle); return (<>
-                          <a href={`${SITE_URL}/game/${session.gameId}`} target="_blank" rel="noreferrer" className="text-[9px] text-[#c6d4df] hover:text-[#66c0f4] transition-colors uppercase tracking-wider font-medium truncate">
+                          <a href={`${SITE_URL}/game/${session.gameId}`} target="_blank" rel="noreferrer" className="text-[11px] text-[#c6d4df] hover:text-[#66c0f4] transition-colors font-medium truncate">
                             {p.baseTitle}
                           </a>
                           {p.isSubset && (
@@ -892,13 +908,13 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
                   ))}
                 </>
               ) : (
-                <div className="text-center py-2 text-[9px] text-[#546270] uppercase tracking-wider">
+                <div className="text-center py-2 text-[11px] text-[#546270]">
                   Showing ~{loadedChunks * 3} of 12 months — scroll to load more
                 </div>
               )}
             </div>
           ) : achievements.length > 0 ? (
-            <div className="text-center py-3 mt-2 border-t border-[#1e2a35] text-[9px] text-[#546270] uppercase tracking-wider anim-fade">
+            <div className="text-center py-3 mt-2 border-t border-[#1e2a35] text-[11px] text-[#546270] anim-fade">
               {achievements.length} achievements · all 12 months loaded
             </div>
           ) : null
@@ -1421,18 +1437,21 @@ export default function App() {
   );
 
   let displayedGames = [...ALL_GAMES];
+  let progressCounts = null;
   if (activeTab === 'recent') {
     displayedGames.sort((a, b) => toMs(b.lastPlayedStr) - toMs(a.lastPlayedStr));
     displayedGames = displayedGames.slice(0, 15);
   } else if (activeTab === 'progress') {
     displayedGames = displayedGames
       .filter(g => g.achievementsUnlocked > 0 && g.achievementsTotal > 0 && (!progressSearch || (g.baseTitle || g.title || '').toLowerCase().includes(progressSearch.toLowerCase())));
-    const bucketed = applyProgressView(displayedGames, progressView, {
+    const progressAcc = {
       pct:          g => g.rawProgress,
       left:         g => g.achievementsTotal - g.achievementsUnlocked,
       lastPlayedMs: g => raDateMs(g.lastPlayedStr),
       isCompleted:  g => g.isMastered,
-    });
+    };
+    progressCounts = progressViewCounts(displayedGames, progressAcc, showMastered);
+    const bucketed = applyProgressView(displayedGames, progressView, progressAcc);
     displayedGames = bucketed ?? displayedGames
       .filter(g => showMastered || !g.isMastered)
       .sort((a, b) => {
@@ -1516,13 +1535,13 @@ export default function App() {
 
             {/* Pills */}
             <div className="flex flex-wrap justify-center md:justify-start gap-1.5 mt-0.5">
-              <span className="text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
+              <span className="text-[11px] font-semibold px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
                 <span className="text-[#e5b143]">{PROFILE_DATA.totalPoints.toLocaleString()}</span> pts
               </span>
-              <span className="text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
+              <span className="text-[11px] font-semibold px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
                 <span className="text-[#c6d4df]">{PROFILE_DATA.totalUnlocked.toLocaleString()}</span> achievements
               </span>
-              <span className="text-[9px] font-semibold uppercase tracking-[0.07em] px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
+              <span className="text-[11px] font-semibold px-2 py-[3px] rounded-[2px] border border-[#323f4c] bg-[#101214] text-[#546270]">
                 Member since <span className="text-[#c6d4df]">{PROFILE_DATA.memberSince}</span>
               </span>
             </div>
@@ -1656,7 +1675,7 @@ export default function App() {
               {/* Mobile-only expand/collapse toggle */}
               <button
                 onClick={() => setStatsExpanded(v => !v)}
-                className="sm:hidden mt-2 w-full flex items-center justify-center gap-1.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#546270] hover:text-[#8f98a0] transition-colors border-t border-[#1e2d3a]"
+                className="sm:hidden mt-2 w-full flex items-center justify-center gap-1.5 py-1.5 text-[11px] font-semibold text-[#546270] hover:text-[#8f98a0] transition-colors border-t border-[#1e2d3a]"
               >
                 <ChevronDown size={13} className={`transition-transform duration-200 ${statsExpanded ? 'rotate-180' : ''}`} />
                 {statsExpanded ? 'Show less' : 'Show more'}
@@ -1707,19 +1726,19 @@ export default function App() {
                       {/* Body */}
                       <div className="px-2.5 py-2 flex flex-col gap-1.5">
                         <div className="flex items-center justify-between">
-                          <span className="text-[9px] text-[#546270] uppercase tracking-[0.08em]">Console</span>
+                          <span className="text-[11px] text-[#546270]">Console</span>
                           <span className="text-[9px] text-[#66c0f4] font-medium">{award.console}</span>
                         </div>
                         <div className="h-px bg-[#2a475e]"></div>
                         <div className="flex items-center justify-between">
-                          <span className="text-[9px] text-[#546270] uppercase tracking-[0.08em]">Award</span>
+                          <span className="text-[11px] text-[#546270]">Award</span>
                           {award.type === 'Mastery/Completion'
                             ? <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px] bg-[#e5b143] text-[#101214]">Mastered</span>
                             : <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px] bg-[#2a3440] text-[#c6d4df] border border-[#b8c4ce]/30">Beaten</span>
                           }
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-[9px] text-[#546270] uppercase tracking-[0.08em]">Earned</span>
+                          <span className="text-[11px] text-[#546270]">Earned</span>
                           <span className="text-[9px] text-[#c6d4df]">{award.date}</span>
                         </div>
                       </div>
@@ -1732,7 +1751,7 @@ export default function App() {
               {PROFILE_DATA.gameAwards.length > iconLimit && (
                 <button
                   onClick={() => setAwardsExpanded(v => !v)}
-                  className="w-full flex items-center justify-center gap-1 py-1.5 border-t border-[#2a475e] text-[9px] font-semibold uppercase tracking-[0.07em] text-[#546270] hover:text-[#c6d4df] hover:bg-[#202d39] transition-colors rounded-b-[2px] outline-none"
+                  className="w-full flex items-center justify-center gap-1 py-1.5 border-t border-[#2a475e] text-[11px] font-semibold text-[#546270] hover:text-[#c6d4df] hover:bg-[#202d39] transition-colors rounded-b-[2px] outline-none"
                 >
                   {awardsExpanded ? 'Show less' : `Show all ${PROFILE_DATA.gameAwards.length}`}
                   <ChevronDown size={11} className={`transition-transform duration-200 ${awardsExpanded ? 'rotate-180' : ''}`} />
@@ -1882,9 +1901,9 @@ export default function App() {
 
               const statusMeta = {
                 mastered:   { dot: '#e5b143', label: 'Mastered',        defaultOpen: true  },
-                inprogress: { dot: '#66c0f4', label: 'In Progress',     defaultOpen: true  },
-                notstarted: { dot: '#546270', label: 'Not Started',     defaultOpen: false },
-                noach:      { dot: '#1e2a35', label: 'No Achievements', defaultOpen: false },
+                inprogress: { dot: '#66c0f4', label: 'In progress',     defaultOpen: true  },
+                notstarted: { dot: '#546270', label: 'Not started',     defaultOpen: false },
+                noach:      { dot: '#1e2a35', label: 'No achievements', defaultOpen: false },
               };
 
               // Build groups
@@ -1945,8 +1964,8 @@ export default function App() {
                       {watchlistGrouping === 'status' && <span className="text-[9px] text-[#546270]">{game.console}</span>}
                       {watchlistGrouping !== 'status' && <>
                         {isMastered   && <span className="text-[8px] text-[#e5b143] flex items-center gap-1"><Trophy size={8}/> Mastered</span>}
-                        {isInProgress && <span className="text-[8px] text-[#66c0f4] flex items-center gap-1"><Activity size={8}/> In Progress</span>}
-                        {status === 'notstarted' && <span className="text-[8px] text-[#546270] flex items-center gap-1"><CircleDashed size={8}/> Not Started</span>}
+                        {isInProgress && <span className="text-[8px] text-[#66c0f4] flex items-center gap-1"><Activity size={8}/> In progress</span>}
+                        {status === 'notstarted' && <span className="text-[8px] text-[#546270] flex items-center gap-1"><CircleDashed size={8}/> Not started</span>}
                         {hasNoAch && <span className="text-[8px] text-[#323f4c] flex items-center gap-1"><ShieldOff size={8}/> No Achievements</span>}
                       </>}
                     </div>
@@ -1969,7 +1988,7 @@ export default function App() {
                     <div className="fbar">
                       <div className="fsearch">
                         <Search size={14} />
-                        <input type="text" inputMode="search" placeholder="Search watchlist" aria-label="Search watchlist" value={watchlistSearch} onChange={e => setWatchlistSearch(e.target.value)} />
+                        <input type="text" inputMode="search" placeholder={`Search ${BACKLOG.games.length.toLocaleString()} games`} aria-label="Search watchlist" value={watchlistSearch} onChange={e => setWatchlistSearch(e.target.value)} />
                         {watchlistSearch && <button onClick={() => setWatchlistSearch('')} aria-label="Clear search"><X size={13} /></button>}
                       </div>
                       <select value={watchlistGrouping} onChange={e => { setWatchlistGrouping(e.target.value); setCollapsedGroups(new Set()); }} className="fselect" aria-label="Group">
@@ -1996,13 +2015,15 @@ export default function App() {
                         );
                       })}
                     </div>
-                    <div className="fmeta">
-                      {filtered.length !== BACKLOG.games.length ? <><b>{filtered.length.toLocaleString()}</b> of {BACKLOG.games.length.toLocaleString()} shown</> : <><b>{BACKLOG.total.toLocaleString()}</b> games in your want-to-play list</>}
-                      {BACKLOG.games.length < BACKLOG.total && <> · showing the first {BACKLOG.games.length.toLocaleString()}</>}
-                      {(watchlistSearch || watchlistStatusFilter !== 'all') && (
-                        <button onClick={() => { setWatchlistSearch(''); setWatchlistStatusFilter('all'); }} className="ml-2 text-[#66c0f4] hover:underline anim-fade">Clear filters</button>
-                      )}
-                    </div>
+                    {(filtered.length !== BACKLOG.games.length || BACKLOG.games.length < BACKLOG.total) && (
+                      <div className="fmeta anim-fade">
+                        {filtered.length !== BACKLOG.games.length && <><b>{filtered.length.toLocaleString()}</b> of {BACKLOG.games.length.toLocaleString()} shown</>}
+                        {BACKLOG.games.length < BACKLOG.total && <> · showing the first {BACKLOG.games.length.toLocaleString()} of {BACKLOG.total.toLocaleString()}</>}
+                        {(watchlistSearch || watchlistStatusFilter !== 'all') && (
+                          <button onClick={() => { setWatchlistSearch(''); setWatchlistStatusFilter('all'); }} className="ml-2 text-[#66c0f4] hover:underline">Clear filters</button>
+                        )}
+                      </div>
+                    )}
                   </div>
 
                   {/* Table */}
@@ -2056,7 +2077,7 @@ export default function App() {
                   ]}
                   sort={progressSort} onSort={setProgressSort}
                   completedLabel="Mastered" showCompleted={showMastered} onShowCompleted={setShowMastered}
-                  count={displayedGames.length}
+                  counts={progressCounts}
                   search={progressSearch} onSearch={setProgressSearch}
                   viewToggle={<ViewToggle view={gameView} onChange={setGameView} />}
                 />
