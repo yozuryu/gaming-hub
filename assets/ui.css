@@ -375,8 +375,6 @@ button.gtile:hover { transform: translateY(-2px); }
 /* …and nothing in a scrolling sheet shrinks: the mastered / perfect card (.smast, overflow hidden) collapsed onto its row in a long sheet */
 .sheet-scroll > * { flex-shrink: 0; }
 .sheet-panel .grow.compact { min-height: 48px; padding-top: 5px; padding-bottom: 5px; }
-/* In a series sheet, games often share a long prefix ("The Legend of Heroes: Trails …"): titles wrap to two lines */
-.sheet-panel .grow-title { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.25; }
 .sheet-panel .grow.compact .grow-icon { width: 36px; height: 36px; }
 .sheet-panel .grow.compact .grow-main { gap: 2px; }
 .sheet-panel .wrow { min-height: 48px; padding-top: 5px; padding-bottom: 5px; }
