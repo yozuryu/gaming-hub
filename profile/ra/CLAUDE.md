@@ -34,7 +34,8 @@ Recent Games and Completion Progress render `GameListRow` (icon, title, console,
 ## Achievement modal and header art
 - The modal shell is the shared sheet (`assets/sheet.js` `useSheet`, `.sheet-*` in `assets/ui.css`): bottom sheet below `md` that covers the bottom nav (z-index 210 > 200) and closes by dragging the header down; centred dialog from `md`
 - **RA art fallback:** `raShot()` in `utils/helpers.js` treats RA's "no image" placeholder (`/Images/000002.png`, e.g. Poring Clicker) as missing. `transform.js` sets `game.artIsIcon` when the art fell back to the icon; the art then gets `.art-icon` (zoomed and blurred harder) wherever it sits behind something
-- Profile header: the most recently played game's screenshot (or icon) blurred behind it (`HeaderArt`)
+- Profile header: the most recently played game's screenshot (or icon) blurred behind it (`HeaderArt`); its hero (or banner) when it has wide art
+- **Wide art** (`../../data/ra/art.json`, picked in the admin from SteamGridDB, URLs only): `ALL_GAMES` entries get `wide: { banner (grid thumb), art (hero thumb, else banner), header (hero, else banner, full size) }`. Tiles show the banner (`WideBanner`, falls back to the icon if it fails); rows and the achievement sheet keep the square icon, with `art` faded behind rows and `header` blurred behind the sheet header. A banner only goes where Steam shows its store header
 
 ## Series
 - **`data/ra/series.json` rules** (same as Steam / Xbox): only real games, no `[Subset …]` entries; `showProgress` on for every series with 3+ games, except sub-series fully nested in a bigger one (Mega Man X / Zero / Battle Network / Star Force, Final Fantasy Crystal Chronicles, Final Fantasy Tactics, Pokémon Mystery Dungeon, Summon Night Swordcraft Story), whose games are also in the parent

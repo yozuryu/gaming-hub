@@ -1,6 +1,6 @@
 # RA wide art from SteamGridDB
 
-**Status:** Admin built (2026-11-05), site not yet · **Priority:** 10 · Written 2026-11-04
+**Status:** Admin built (2026-11-05); site: RA profile tiles + backgrounds, hub / Activity Playing tiles, Completions highlights (2026-11-06). Rows and sheets keep the square icon (decided 2026-11-06) · **Priority:** 10 · Written 2026-11-04
 
 RA games only have a square icon and an in-game screenshot, so every wide spot on the site fakes a banner for them (icon over a blurred screenshot, or a zoomed icon when there's no screenshot). This adds an optional **wide image per RA game**, picked by hand in the admin from [SteamGridDB](https://www.steamgriddb.com/), used wherever a Steam game shows its store banner. A game without an override keeps today's design.
 

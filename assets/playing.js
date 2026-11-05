@@ -60,7 +60,7 @@ const beatenAt = (cond, achs) => {
 //   sessions, weeks, totalMinutes, progress: { unlocked, total } | null, beaten, group }.
 // `minutes`, `sessions` and `weeks` cover the 13 weeks; `weeks` holds minutes per week, oldest
 // first. `totalMinutes` is lifetime playtime (null for an RA game the pipeline hasn't written it
-// for). `cover` is the Steam header, or null for RA, whose files only carry the icon
+// for). `cover` is the Steam header, or for RA the banner picked in the admin (data/ra/art.json), else null
 export async function loadPlaying(fetchJson, base = './', now = Date.now()) {
     const today   = dayKey(now);
     const startMs = keyToDate(addDays(today, -(PLAYING_WINDOW_DAYS - 1))).getTime();
@@ -122,6 +122,8 @@ export async function loadPlaying(fetchJson, base = './', now = Date.now()) {
             raDone[id] = { beatenMs: Math.min(raDone[id]?.beatenMs ?? Infinity, toMs(aw.awardedAt)) };
         }
     }
+    // RA wide art picked in the admin (data/ra/art.json): the banner becomes the tile cover, like Steam's header
+    const raArt = (await fetchJson(`${base}data/ra/art.json`))?.games ?? {};
     // RA progress (unlocked / total) for every game with an unlock, from the same profile file
     const raProgress = Object.fromEntries((raProfile?.gameAwardsAndProgress?.results ?? []).map(r => [String(r.gameId), r]));
 
@@ -139,6 +141,7 @@ export async function loadPlaying(fetchJson, base = './', now = Date.now()) {
                 g.consoleName ??= r.consoleName ?? null;
                 totalMinutes = r.playtime ?? null;
             }
+            cover = raArt[g.gameId]?.grid?.thumb ?? null;
         } else {
             const file = await fetchJson(`${base}data/steam/games/${g.gameId}.json`);
             if (file) {

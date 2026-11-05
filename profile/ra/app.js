@@ -232,6 +232,16 @@ const GameProgress = ({ game }) => (
   </>
 );
 
+// Wide art picked in the admin (data/ra/art.json, SteamGridDB): game.wide = { banner, art, header }.
+// Tiles show the banner (like a Steam tile); rows and the sheet keep the square icon, with the hero
+// (or the banner) faded / blurred behind. Without art, or if the banner fails to load, today's look.
+const WideBanner = ({ game, cls }) => {
+  const [failed, setFailed] = useState(false);
+  return failed
+    ? <img src={game.icon} alt="" loading="lazy" className={cls === 'banner' ? 'icon px' : 'grow-icon px'} />
+    : <img src={game.wide.banner} alt="" loading="lazy" className={cls} onError={() => setFailed(true)} />;
+};
+
 // One compact row: icon, title, console + mode + tags, playtime · last played, count and bar.
 // Tap opens the achievement sheet (badges, guides and the progression bar live there).
 const GameListRow = ({ game, onViewDetails, extra = null, compact = false }) => {
@@ -240,7 +250,10 @@ const GameListRow = ({ game, onViewDetails, extra = null, compact = false }) => 
   const Tag = hasAch ? 'button' : 'div';
   return (
     <Tag onClick={hasAch ? () => onViewDetails(game) : undefined} className={`grow ${compact ? 'compact' : ''}`} style={{ borderLeftColor: gameStatusColor(game) }}>
-      {game.background && <div className="grow-art"><img src={game.background} alt="" loading="lazy" className={`px ${game.artIsIcon ? 'art-icon' : ''}`} /></div>}
+      {game.wide
+        ? <div className="grow-art"><img src={game.wide.art} alt="" loading="lazy" onError={e => { e.target.style.display = 'none'; }} /></div>
+        : game.background && <div className="grow-art"><img src={game.background} alt="" loading="lazy" className={`px ${game.artIsIcon ? 'art-icon' : ''}`} /></div>}
+      {/* Rows keep the square icon for a uniform list; only the art behind changes */}
       <img src={game.icon} alt="" loading="lazy" className="grow-icon px" />
       <div className="grow-main">
         <span className="grow-title">{game.baseTitle || game.title}</span>
@@ -269,8 +282,10 @@ const GameTile = ({ game, onViewDetails }) => {
   return (
     <Tag onClick={hasAch ? () => onViewDetails(game) : undefined} className="gtile" style={{ borderBottomColor: gameStatusColor(game) }}>
       <div className="gtile-art">
-        <img src={game.background || game.icon} alt="" loading="lazy" className={`bg px ${game.artIsIcon || !game.background ? 'art-icon' : ''}`} />
-        <img src={game.icon} alt="" loading="lazy" className="icon px" />
+        {game.wide ? <WideBanner game={game} cls="banner" /> : <>
+          <img src={game.background || game.icon} alt="" loading="lazy" className={`bg px ${game.artIsIcon || !game.background ? 'art-icon' : ''}`} />
+          <img src={game.icon} alt="" loading="lazy" className="icon px" />
+        </>}
         {ago && <span className="gtile-ago">{ago}</span>}
         {game.achievementsUnlocked > 0 && (
           <span className="gtile-mode" style={{ borderColor: game.hardcore ? 'rgba(255,107,107,0.45)' : '#323f4c' }}><ModeIcon game={game} /></span>
@@ -312,13 +327,13 @@ const GameViewSkeleton = ({ view, count = 4 }) => view === 'tiles' ? (
 
 // Profile header background: the latest game's art, blurred, fading into the header
 // (layers in assets/ui.css). Fades in once loaded; the header stays flat until then.
-const HeaderArt = ({ urls, icon = false }) => {
+const HeaderArt = ({ urls, icon = false, wide = false }) => {
   const art = useArtSrc(urls);
   if (!art.src) return null;
   return (
     <div className="art-bg art-header">
       <img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError}
-        className={`${icon ? 'px art-icon' : 'px'} ${art.loaded ? 'loaded' : ''}`} />
+        className={`${wide ? '' : icon ? 'px art-icon' : 'px'} ${art.loaded ? 'loaded' : ''}`} />
     </div>
   );
 };
@@ -409,7 +424,8 @@ const RAchievementModal = ({ game, guides, onClose, onBack = null, backLabel = '
   const rootRef = useRef(null);
   const dragRef = useRef(null);
   const close = useSheet({ panelRef, dragRef, rootRef, onClose });
-  const art = useArtSrc([game.background]);
+  const art = useArtSrc([game.wide?.header, game.background]);
+  const artIsWide = !!game.wide && art.src === game.wide.header;
 
   return (
     <div ref={rootRef} className="sheet-root" onClick={close}>
@@ -423,7 +439,7 @@ const RAchievementModal = ({ game, guides, onClose, onBack = null, backLabel = '
         <div ref={dragRef} className="sheet-head">
           {art.src && (
             <div className="art-bg art-sheet">
-              <img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`px ${game.artIsIcon ? 'art-icon' : ''} ${art.loaded ? 'loaded' : ''}`} />
+              <img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`${artIsWide ? '' : `px ${game.artIsIcon ? 'art-icon' : ''}`} ${art.loaded ? 'loaded' : ''}`} />
             </div>
           )}
           <span className="sheet-grab" />
@@ -1399,6 +1415,7 @@ export default function App() {
   const [seriesBack, setSeriesBack] = useState(null);           // series to return to from a game opened in it
   const [guidesData, setGuidesData] = useState({});
   const [seriesData, setSeriesData] = useState([]);
+  const [artData, setArtData] = useState({});             // data/ra/art.json games: wide art per game
   const [seriesLoaded, setSeriesLoaded] = useState(false);   // so "No series flagged" waits for series.json
   const [gamesFailed, setGamesFailed] = useState(false);
 
@@ -1442,6 +1459,10 @@ export default function App() {
     fetch('../../data/ra/guides.json')
       .then(r => r.ok ? r.json() : {})
       .then(data => setGuidesData(data))
+      .catch(() => {});
+    fetch('../../data/ra/art.json')
+      .then(r => r.ok ? r.json() : {})
+      .then(data => setArtData(data?.games ?? {}))
       .catch(() => {});
     fetch('../../data/ra/series.json')
       .then(r => r.ok ? r.json() : [])
@@ -1527,7 +1548,14 @@ export default function App() {
     };
   }, [profileData, watchlistData, gamesData, gameFiles]);
 
-  const { profile: PROFILE_DATA, games: ALL_GAMES, backlog: BACKLOG } = useMemo(() => transformData(rawData), [rawData]);
+  const { profile: PROFILE_DATA, games: RAW_GAMES, backlog: BACKLOG } = useMemo(() => transformData(rawData), [rawData]);
+  // Games with wide art (data/ra/art.json): banner = grid thumbnail (rows, tiles), art = hero thumbnail
+  // faded behind rows, header = full hero (or banner) blurred behind the sheet header
+  const ALL_GAMES = useMemo(() => RAW_GAMES.map(g => {
+    const a = artData[g.id];
+    if (!a?.grid) return g;
+    return { ...g, wide: { banner: a.grid.thumb, art: a.hero?.thumb ?? a.grid.thumb, header: a.hero?.url ?? a.grid.url } };
+  }), [RAW_GAMES, artData]);
   const beatenIds = useMemo(() => new Set((PROFILE_DATA?.gameAwards ?? []).filter(a => a.type === 'Game Beaten').map(a => a.gameId)), [PROFILE_DATA]);
   // ?game=<id> (from series/): open that game's sheet once the profile is in, then drop the parameter
   const deepGame = useRef(new URLSearchParams(location.search).get('game'));
@@ -1543,7 +1571,10 @@ export default function App() {
   // Header background: the most recently played game's screenshot, or its icon when it has none
   const latestGame = profileData?.recentlyPlayedGames?.[0];
   const latestShot = latestGame ? raShot(latestGame.imageIngame, latestGame.imageTitle) : null;
-  const headerArt  = { url: latestGame ? getMediaUrl(latestShot || latestGame.imageIcon) : null, icon: !!latestGame && !latestShot };
+  const latestArt  = latestGame ? artData[latestGame.gameId] : null;
+  const headerArt  = latestArt?.grid
+    ? { url: latestArt.hero?.url ?? latestArt.grid.url, icon: false, wide: true }
+    : { url: latestGame ? getMediaUrl(latestShot || latestGame.imageIcon) : null, icon: !!latestGame && !latestShot };
 
   useEffect(() => {
     const onScroll = () => setShowScrollTop(window.scrollY > 400);
@@ -1623,7 +1654,7 @@ export default function App() {
 
       {/* Header */}
       <header className="phead anim-fade">
-        <HeaderArt urls={[headerArt.url]} icon={headerArt.icon} />
+        <HeaderArt urls={[headerArt.url]} icon={headerArt.icon} wide={headerArt.wide} />
         <div className="phead-in art-shadow">
           <div className="phead-main">
             <div className="phead-top">

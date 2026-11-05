@@ -1,5 +1,21 @@
 # Changelog
 
+## v26.11.06
+
+RA games can have wide art from SteamGridDB, shown where Steam games show their store banner.
+
+### RetroAchievements
+
+- Wide art (picked in the admin, `data/ra/art.json`): a game with art shows its banner in tiles, like a Steam tile; rows (Recent, Progress, Last played, series sheets) and the achievement sheet keep the square icon, with the game's hero image faded behind rows and blurred behind the sheet and profile headers. Games without art, and any banner that fails to load, keep the icon-on-screenshot look
+
+### Hub
+
+- Playing tiles: an RA game with wide art uses its banner as the cover, like a Steam game (same in Activity's Playing view)
+
+### Completions
+
+- An RA highlight (Mastered) with wide art shows its banner, like a Steam store banner; beaten rows and the closed-year covers keep the square icon
+
 ## v26.11.05
 
 Swiping between profile tabs looks like turning to another page; the RA Series tab is redesigned, with a sheet per series; desktop pages use the wider screen with a side rail.

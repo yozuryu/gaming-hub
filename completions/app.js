@@ -279,6 +279,11 @@ const RarestCell = ({ item, rare }) => {
 // Art banner of a highlight: Steam store banner uncropped; RA screenshot with the icon over
 // it (or the icon zoomed and blurred when there's no screenshot); Xbox hero with its icon
 const HighlightArt = ({ item }) => {
+    // RA game with wide art (data/ra/art.json): its banner, like a Steam store banner
+    if (item.wideUrl) {
+        return <img src={item.wideUrl} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover"
+            onError={e => { e.target.style.display = 'none'; }} />;
+    }
     if (item.platform === 'steam') {
         return <img src={item.artUrl} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />;
     }
@@ -517,6 +522,7 @@ const App = () => {
     const currentYear = String(new Date().getFullYear());
 
     const [raProfile,        setRaProfile]        = useState(null);
+    const [raArt,            setRaArt]            = useState({});   // data/ra/art.json games: wide art for highlights
     const [steamProfile,     setSteamProfile]     = useState(null);
     const [beatenSteamGames, setBeatenSteamGames] = useState(null);
     const [xboxProfile,      setXboxProfile]      = useState(null);
@@ -536,6 +542,8 @@ const App = () => {
     useEffect(() => {
         fetch('../data/ra/profile.json')
             .then(r => r.json()).then(setRaProfile).catch(() => setRaProfile({}));
+        fetch('../data/ra/art.json')
+            .then(r => r.ok ? r.json() : {}).then(d => setRaArt(d?.games ?? {})).catch(() => {});
         fetch('../data/steam/profile.json')
             .then(r => r.json()).then(setSteamProfile).catch(() => setSteamProfile({}));
         fetch('../data/xbox/profile.json')
@@ -585,7 +593,8 @@ const App = () => {
 
     const pool = useMemo(() => {
         const raTotals     = Object.fromEntries((raProfile?.gameAwardsAndProgress?.results ?? []).map(g => [g.gameId, g.maxPossible]));
-        const ra           = normalizeRA(raProfile?.pageAwards?.visibleUserAwards ?? [], showBeaten, raTotals);
+        const ra           = normalizeRA(raProfile?.pageAwards?.visibleUserAwards ?? [], showBeaten, raTotals)
+            .map(c => raArt[c.gameId]?.grid ? { ...c, wideUrl: raArt[c.gameId].grid.thumb } : c);
         const steamPerfect = normalizeSteam(steamProfile?.perfectGames ?? []);
         const steamBeaten  = showBeaten ? normalizeSteamBeaten(beatenSteamGames ?? []) : [];
         const xboxDone     = normalizeXbox(xboxProfile?.perfectGames ?? []);
@@ -593,7 +602,7 @@ const App = () => {
         let all = dedupeCompletions([...ra, ...steamPerfect, ...steamBeaten, ...xboxDone, ...xboxBeaten]);
         if (hiddenTags.size > 0)  all = all.filter(c => !c.tags?.some(t => hiddenTags.has(t)));
         return all.sort((a, b) => new Date(b.completedAt) - new Date(a.completedAt));
-    }, [raProfile, steamProfile, beatenSteamGames, xboxProfile, beatenXboxGames, showBeaten, hiddenTags]);
+    }, [raProfile, raArt, steamProfile, beatenSteamGames, xboxProfile, beatenXboxGames, showBeaten, hiddenTags]);
     const completions = useMemo(() => platform === 'all' ? pool : pool.filter(c => c.platform === platform), [pool, platform]);
     const platformCounts = useMemo(() => {
         const n = { all: pool.length, ra: 0, steam: 0, xbox: 0 };
