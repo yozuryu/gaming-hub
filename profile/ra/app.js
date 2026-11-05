@@ -234,12 +234,12 @@ const GameProgress = ({ game }) => (
 
 // One compact row: icon, title, console + mode + tags, playtime · last played, count and bar.
 // Tap opens the achievement sheet (badges, guides and the progression bar live there).
-const GameListRow = ({ game, onViewDetails, extra = null }) => {
+const GameListRow = ({ game, onViewDetails, extra = null, compact = false }) => {
   const hasAch = game.achievementsTotal > 0;
   const ago = shortAgo(raDateMs(game.lastPlayedStr));
   const Tag = hasAch ? 'button' : 'div';
   return (
-    <Tag onClick={hasAch ? () => onViewDetails(game) : undefined} className="grow" style={{ borderLeftColor: gameStatusColor(game) }}>
+    <Tag onClick={hasAch ? () => onViewDetails(game) : undefined} className={`grow ${compact ? 'compact' : ''}`} style={{ borderLeftColor: gameStatusColor(game) }}>
       {game.background && <div className="grow-art"><img src={game.background} alt="" loading="lazy" className={`px ${game.artIsIcon ? 'art-icon' : ''}`} /></div>}
       <img src={game.icon} alt="" loading="lazy" className="grow-icon px" />
       <div className="grow-main">
@@ -355,7 +355,7 @@ const useAnimatedHeight = (ref, duration = 220) => {
   }, []);
 };
 
-const RAchievementModal = ({ game, guides, onClose }) => {
+const RAchievementModal = ({ game, guides, onClose, onBack = null, backLabel = '' }) => {
   const [lockFilter, setLockFilter] = useState('all');
   const [typeFilter, setTypeFilter] = useState('all');
   const panelRef = useRef(null);
@@ -402,6 +402,7 @@ const RAchievementModal = ({ game, guides, onClose }) => {
 
       <div ref={panelRef} className="sheet-panel" onClick={e => e.stopPropagation()}>
         <button onClick={close} className="sheet-close" aria-label="Close"><X size={15} /></button>
+        {onBack && <button onClick={onBack} className="sheet-back" aria-label={`Back to ${backLabel}`}><ChevronDown size={14} className="rotate-90" />{backLabel}</button>}
 
         {/* Header: blurred screenshot (or the zoomed icon) behind it; drag it down to close on phone */}
         <div ref={dragRef} className="sheet-head">
@@ -1075,200 +1076,227 @@ const ActivitySkeleton = () => (
 // SeriesProgressTab
 // ─────────────────────────────────────────────────────────────────────────────
 
-function SeriesProgressTab({ seriesData, gamesData, watchlistData }) {
-  const cards = useMemo(() => {
-    const visible = seriesData.filter(s => s.showProgress);
-
-    // Build a flat icon lookup from any source we have: detailedGameProgress + watchlist
-    const gameProgress = gamesData?.detailedGameProgress ?? {};
-    const wlMap = Object.fromEntries((watchlistData?.results ?? []).map(g => [g.id, g]));
-    const getGameInfo = (id) => gameProgress[id] ?? wlMap[id] ?? null;
-
-    return visible.map(series => {
-      const total = series.gameIds.length;
-
-      let tracked = 0, inProgress = 0, mastered = 0;
-      let pointsEarned = 0, pointsTotal = 0;
-      let achEarned = 0, achTotal = 0;
-      let latestAch = null; // { title, gameTitle, date }
-      const icons = [];
-
-      const iconsNoAch = [];
-      series.gameIds.forEach(id => {
-        const g  = gameProgress[id];
-        const wl = wlMap[id];
-
-        const numAchs = g?.numAchievements ?? wl?.achievementsPublished ?? 0;
-        const hasAch  = numAchs > 0;
-
-        if (hasAch) {
-          tracked++;
-          // Points total: sum from achievement data if available, else watchlist pointsTotal
-          if (g?.achievements) {
-            Object.values(g.achievements).forEach(a => {
-              pointsTotal += a.points ?? 0;
-              achTotal++;
-              if (a.dateEarned) {
-                pointsEarned += a.points ?? 0;
-                achEarned++;
-                if (!latestAch || toMs(a.dateEarned) > toMs(latestAch.date)) {
-                  latestAch = { title: a.title, badgeName: a.badgeName, achId: a.id, gameTitle: g.title, gameId: id, date: a.dateEarned };
-                }
-              }
-            });
-          } else if (wl) {
-            if (wl.pointsTotal)           pointsTotal += wl.pointsTotal;
-            if (wl.achievementsPublished) achTotal    += wl.achievementsPublished;
+// ── Series ─────────────────────────────────────────────────────────────────────
+// Per series: its games (played ones are ALL_GAMES entries, so they open the achievement sheet),
+// counts, points and achievements, the latest unlock and the cover art. Styles in assets/ui.css.
+const buildSeries = (seriesData, gamesData, watchlistData, allGames) => {
+  const gameProgress = gamesData?.detailedGameProgress ?? {};
+  const wlMap = Object.fromEntries((watchlistData?.results ?? []).map(g => [g.id, g]));
+  const byId = new Map(allGames.map(g => [g.id, g]));
+  return seriesData.filter(s => s.showProgress).map(series => {
+    let tracked = 0, started = 0, mastered = 0, pointsEarned = 0, pointsTotal = 0, achEarned = 0, achTotal = 0;
+    let latestAch = null;
+    const games = series.gameIds.map(id => {
+      const d = gameProgress[id], wl = wlMap[id], g = byId.get(id) ?? null;
+      const numAchs = d?.numAchievements ?? wl?.achievementsPublished ?? 0;
+      const awarded = d?.numAwardedToUser ?? 0;
+      if (numAchs > 0) tracked++;
+      if (d?.achievements) {
+        Object.values(d.achievements).forEach(a => {
+          pointsTotal += a.points ?? 0; achTotal++;
+          if (a.dateEarned) {
+            pointsEarned += a.points ?? 0; achEarned++;
+            if (!latestAch || toMs(a.dateEarned) > toMs(latestAch.date)) latestAch = { title: a.title, badgeName: a.badgeName, achId: a.id, gameTitle: d.title, gameId: id, date: a.dateEarned };
           }
-
-          if (g) {
-            const numAwarded = g.numAwardedToUser ?? 0;
-            if (numAwarded === g.numAchievements) mastered++;
-            else if (numAwarded > 0)              inProgress++;
-          }
-        }
-
-        const imageIcon    = g?.imageIcon ?? wl?.imageIcon ?? null;
-        const title        = g?.title ?? wl?.title ?? String(id);
-        const isMastered   = hasAch && g && g.numAwardedToUser === g.numAchievements && g.numAchievements > 0;
-        const isInProgress = hasAch && g && g.numAwardedToUser > 0 && !isMastered;
-        const lastUnlockDate = (isMastered || isInProgress) && g?.achievements
-          ? Math.max(...Object.values(g.achievements).filter(a => a.dateEarned).map(a => toMs(a.dateEarned)))
-          : 0;
-        const sortBucket = isMastered ? 0 : isInProgress ? 1 : hasAch ? 2 : 3;
-        if (imageIcon) {
-          const entry = { id, icon: getMediaUrl(imageIcon), title, hasAch, isMastered, lastUnlockDate, sortBucket };
-          if (hasAch) icons.push(entry);
-          else        iconsNoAch.push(entry);
-        }
-      });
-      const allIcons = [...icons, ...iconsNoAch].sort((a, b) => {
-        if (a.sortBucket !== b.sortBucket) return a.sortBucket - b.sortBucket;
-        if (a.sortBucket <= 1) return b.lastUnlockDate - a.lastUnlockDate;
-        return a.title.localeCompare(b.title);
-      });
-
-      // Cover game: explicitly set, or fall back to first game in series
-      // Check both detailedGameProgress and watchlist so unplayed games still resolve
-      const coverId   = series.coverGameId ?? series.gameIds[0];
-      const coverGame = getGameInfo(coverId);
-      const coverBg   = coverGame
-        ? getMediaUrl(raShot(coverGame.imageIngame, coverGame.imageTitle) || coverGame.imageIcon)
-        : null;
-      const coverIcon = coverGame ? getMediaUrl(coverGame.imageIcon) : null;
-
-      return { series, total, tracked, inProgress, mastered, pointsEarned, pointsTotal, achEarned, achTotal, latestAch, icons: allIcons, coverBg, coverIcon, coverId };
-    }).sort((a, b) => {
-      const key = n => /^[a-zA-Z]/.test(n) ? '2' + n.toLowerCase() : /^\d/.test(n) ? '1' + n.toLowerCase() : '0' + n.toLowerCase();
-      return key(a.series.name).localeCompare(key(b.series.name));
+        });
+      } else if (wl) { pointsTotal += wl.pointsTotal ?? 0; achTotal += wl.achievementsPublished ?? 0; }
+      const isMastered = numAchs > 0 && awarded === numAchs;
+      const isStarted  = awarded > 0 && !isMastered;
+      if (isMastered) mastered++; else if (isStarted) started++;
+      // Last activity: the latest unlock, or the last time it was played (recently played games)
+      const lastUnlock = d?.achievements ? Math.max(0, ...Object.values(d.achievements).filter(a => a.dateEarned).map(a => toMs(a.dateEarned))) : 0;
+      const lastMs = Math.max(lastUnlock, g ? raDateMs(g.lastPlayedStr) : 0);
+      const info = d ?? wl ?? null;
+      return {
+        id, g, hasAch: numAchs > 0, numAchs, awarded, isMastered, isStarted, lastMs, inWatchlist: !!wl,
+        title: info?.title ?? String(id), icon: info?.imageIcon ? getMediaUrl(info.imageIcon) : null,
+        console: info?.consoleName ?? g?.console ?? '', points: wl?.pointsTotal ?? 0,
+      };
     });
-  }, [seriesData, gamesData, watchlistData]);
+    const coverId = series.coverGameId ?? series.gameIds[0];
+    const cover = gameProgress[coverId] ?? wlMap[coverId] ?? null;
+    // Background art: the cover's screenshot, else the most recently active series game that has one
+    // (want-to-play entries only carry an icon), else the cover icon blurred
+    const shotOf = id => { const d = gameProgress[id]; return d ? raShot(d.imageIngame, d.imageTitle) : null; };
+    const shot = shotOf(coverId) ?? [...games].sort((a, b) => b.lastMs - a.lastMs).map(x => shotOf(x.id)).find(Boolean) ?? null;
+    const lastMs = Math.max(0, ...games.map(x => x.lastMs));
+    return {
+      series, games, total: games.length, tracked, started, mastered, pointsEarned, pointsTotal, achEarned, achTotal, latestAch, lastMs,
+      pct: achTotal > 0 ? (achEarned / achTotal) * 100 : 0,
+      coverIcon: cover?.imageIcon ? getMediaUrl(cover.imageIcon) : null,
+      coverArt: shot ? getMediaUrl(shot) : cover?.imageIcon ? getMediaUrl(cover.imageIcon) : null, coverArtIsIcon: !shot,
+    };
+  });
+};
+
+const seriesEdge = c => c.tracked > 0 && c.mastered === c.tracked ? '#e5b143' : c.started || c.mastered ? '#66c0f4' : '#323f4c';
+const pctLabel = p => p > 0 && p < 1 ? '<1%' : `${Math.floor(p)}%`;
+// Icons in the card strip: mastered and started first (latest first), then the rest by title
+const seriesIconOrder = games => [...games].sort((a, b) => {
+  const k = x => x.isMastered ? 0 : x.isStarted ? 1 : x.hasAch ? 2 : 3;
+  return (k(a) - k(b)) || (k(a) <= 1 ? b.lastMs - a.lastMs : a.title.localeCompare(b.title));
+});
+
+const SERIES_SORTS = [
+  { value: 'name', label: 'Name' },
+  { value: 'progress', label: 'Most progress' },
+  { value: 'recent', label: 'Last played' },
+];
+
+function SeriesProgressTab({ seriesData, gamesData, watchlistData, allGames, onOpen }) {
+  const [search, setSearch] = useState('');
+  const [sort, setSort] = useState('name');
+  const [filter, setFilter] = useState('all');
+  const cards = useMemo(() => buildSeries(seriesData, gamesData, watchlistData, allGames), [seriesData, gamesData, watchlistData, allGames]);
 
   if (cards.length === 0) {
     return (
       <div className="text-center py-12 text-[#546270] text-[12px] anim-fade">
         No series flagged for progress tracking yet.<br />
-        <span className="text-[11px]">Enable <strong className="text-[#8f98a0]">📊 Progress</strong> on a series in the admin panel.</span>
+        <span className="text-[11px]">Enable <strong className="text-[#8f98a0]">Progress</strong> on a series in the admin panel.</span>
       </div>
     );
   }
 
+  const isStarted = c => c.achEarned > 0;
+  const counts = { all: cards.length, started: cards.filter(isStarted).length, notstarted: cards.filter(c => !isStarted(c)).length };
+  const nameKey = n => /^[a-zA-Z]/.test(n) ? '2' + n.toLowerCase() : /^\d/.test(n) ? '1' + n.toLowerCase() : '0' + n.toLowerCase();
+  const shown = cards
+    .filter(c => filter === 'all' || (filter === 'started' ? isStarted(c) : !isStarted(c)))
+    .filter(c => !search || fold(c.series.name).includes(fold(search)) || c.games.some(x => fold(x.title).includes(fold(search))))
+    .sort((a, b) => sort === 'progress' ? (b.pct - a.pct) || nameKey(a.series.name).localeCompare(nameKey(b.series.name))
+      : sort === 'recent' ? (b.lastMs - a.lastMs) || nameKey(a.series.name).localeCompare(nameKey(b.series.name))
+      : nameKey(a.series.name).localeCompare(nameKey(b.series.name)));
+
   return (
     <div className="flex flex-col gap-3 anim-fade">
-      {cards.map(({ series, total, tracked, inProgress, mastered, pointsEarned, pointsTotal, achEarned, achTotal, latestAch, icons, coverBg, coverIcon, coverId }) => {
-        const achPct = achTotal > 0 ? (achEarned / achTotal) * 100 : 0;
-        const ICON_LIMIT   = 8;
-        const shownIcons   = icons.slice(0, ICON_LIMIT);
-        const extraIcons   = icons.length - ICON_LIMIT;
-        const latestAchTimeAgo = latestAch ? formatTimeAgo(latestAch.date) : null;
+      <div className="flex flex-col gap-2.5">
+        <div className="fbar">
+          <div className="fsearch">
+            <Search size={14} />
+            <input type="text" inputMode="search" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search series or games" aria-label="Search series" />
+            {search && <button onClick={() => setSearch('')} aria-label="Clear search"><X size={13} /></button>}
+          </div>
+          <select value={sort} onChange={e => setSort(e.target.value)} className="fselect" aria-label="Sort">
+            {SERIES_SORTS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+          </select>
+        </div>
+        <div className="frow" role="group" aria-label="Show">
+          {[['all', 'All'], ['started', 'Started'], ['notstarted', 'Not started']].map(([v, l]) => (
+            <button key={v} onClick={() => setFilter(v)} aria-pressed={filter === v} className={`fchip ${filter === v ? 'on' : ''}`}>{l}<span className="n">{counts[v]}</span></button>
+          ))}
+        </div>
+      </div>
 
-        return (
-          <div key={series.id} className="flex flex-col bg-[#202d39] rounded-[3px] border-l-[3px] border border-[#323f4c] shadow-md overflow-hidden" style={{ borderLeftColor: '#e5b143' }}>
-
-            {/* Top section: bg image + cover icon + title (game card header style) */}
-            <div className="relative flex flex-row p-3 gap-3 md:gap-4 items-center min-h-[90px] overflow-hidden rounded-t-[3px]">
-              {/* Background image */}
-              {coverBg && (
-                <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-t-[3px]">
-                  <img src={coverBg} alt="" className="absolute right-0 top-0 h-full w-full md:w-1/2 object-cover opacity-[0.55] object-center mix-blend-screen mask-fade" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#202d39] via-[#202d39]/95 to-transparent" />
-                </div>
-              )}
-
-              {/* Cover icon */}
-              <a href={`${SITE_URL}/game/${coverId}`} target="_blank" rel="noreferrer"
-                className="relative z-10 shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-[2px] shadow-sm border border-[#101214] overflow-hidden bg-[#101214] hover:scale-105 transition-transform">
-                {coverIcon
-                  ? <img src={coverIcon} alt={series.name} className="w-full h-full object-cover" />
-                  : <div className="w-full h-full bg-[#172333] flex items-center justify-center text-[#546270] text-[20px]">🗂</div>
-                }
-              </a>
-
-              {/* Title + points */}
-              <div className="relative z-10 flex-1 flex flex-col justify-center min-w-0 gap-1">
-                <span className="text-[15px] md:text-base text-white font-medium tracking-wide drop-shadow-sm truncate">{series.name}</span>
-                {pointsTotal > 0 && (
-                  <span className="text-[11px] text-[#e5b143] font-medium tabular-nums drop-shadow-sm">
-                    {pointsEarned.toLocaleString()} <span className="text-[#8f98a0] font-normal">/ {pointsTotal.toLocaleString()} pts</span>
+      <div key={`${sort}-${filter}`} className="slist anim-fade">
+        {shown.length === 0 && <div className="text-center py-10 text-[#546270] text-[12px]" style={{ gridColumn: '1 / -1' }}>No series match.</div>}
+        {shown.map(c => {
+          const icons = seriesIconOrder(c.games);
+          return (
+            <button key={c.series.id} onClick={() => onOpen(c)} className="scard" style={{ borderLeftColor: seriesEdge(c) }}>
+              {c.coverArt && <div className="scard-art"><img src={c.coverArt} alt="" loading="lazy" className={c.coverArtIsIcon ? 'art-icon' : ''} /></div>}
+              <div className="scard-top">
+                {c.coverIcon ? <img src={c.coverIcon} alt="" loading="lazy" className="scard-cover" /> : <span className="scard-cover" />}
+                <div className="scard-main">
+                  <span className="scard-name">{c.series.name}</span>
+                  <span className="scard-sub">
+                    <span>{c.total} games</span>
+                    {c.started > 0 && <><i>·</i><span className="text-[#66c0f4]">{c.started} started</span></>}
+                    {c.mastered > 0 && <><i>·</i><span className="text-[#e5b143]">★ {c.mastered} mastered</span></>}
                   </span>
-                )}
-                {latestAch && (
-                  <div className="flex items-center gap-1 min-w-0">
-                    <span className="shrink-0 w-3.5 h-3.5 rounded-[1px] overflow-hidden border border-[#101214] bg-black block">
-                      <img src={`${MEDIA_URL}/Badge/${latestAch.badgeName}.png`} alt="" className="w-full h-full object-cover" />
-                    </span>
-                    <a href={`${SITE_URL}/achievement/${latestAch.achId}`} target="_blank" rel="noreferrer"
-                      className="text-[9px] text-[#8f98a0] hover:text-[#c6d4df] truncate transition-colors">{latestAch.title}</a>
-                    <span className="text-[9px] text-[#546270] shrink-0">in</span>
-                    <a href={`${SITE_URL}/game/${latestAch.gameId}`} target="_blank" rel="noreferrer"
-                      className="text-[9px] text-[#66c0f4] hover:text-[#c6d4df] truncate transition-colors">{latestAch.gameTitle}</a>
-                    <span className="text-[9px] text-[#546270] shrink-0">at {latestAchTimeAgo}</span>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Progress bar */}
-            <div className="px-3 pb-3 pt-2 border-t border-[#2a475e]">
-              <div className="flex items-center gap-2 mb-2.5">
-                <div className="flex items-center gap-1.5 flex-1 flex-wrap">
-                  <span className="text-[9px] font-semibold uppercase tracking-wider text-[#8f98a0] border border-[#323f4c] bg-[#101214]/60 px-1.5 py-[1px] rounded-sm">{total} games</span>
-                  <span className="text-[9px] font-semibold uppercase tracking-wider text-[#c6d4df] border border-[#323f4c] bg-[#101214]/60 px-1.5 py-[1px] rounded-sm">{tracked} tracked</span>
-                  {inProgress > 0 && <span className="text-[9px] font-semibold uppercase tracking-wider text-[#66c0f4] border border-[#66c0f4]/30 bg-[#101214]/60 px-1.5 py-[1px] rounded-sm">{inProgress} in progress</span>}
-                  {mastered > 0 && <span className="text-[9px] font-bold uppercase tracking-wider text-[#101214] bg-[#e5b143] px-1.5 py-[1px] rounded-sm">{mastered} mastered</span>}
                 </div>
-                <span className="text-[10px] text-[#8f98a0] tabular-nums shrink-0">{achEarned.toLocaleString()} / {achTotal.toLocaleString()}</span>
-                <span className="text-[10px] font-semibold tabular-nums shrink-0" style={{ color: achPct > 0 ? '#e5b143' : '#546270' }}>
-                  {achPct.toFixed(2)}%
+                <span className="scard-end">
+                  <span className="scard-pct" style={{ color: c.pct > 0 ? '#e5b143' : '#546270' }}>{pctLabel(c.pct)}</span>
+                  {c.lastMs > 0 && <em title="Last activity in this series">{shortAgo(c.lastMs)}</em>}
                 </span>
               </div>
-              <div className="h-[7px] bg-[#101214] rounded-full overflow-hidden border border-[#0a0f14]">
-                <div style={{ width: `${achPct}%`, background: achPct === 100 ? 'linear-gradient(90deg,#e5b143,#f0c96a)' : '#e5b143' }}
-                  className="h-full rounded-full transition-all" />
+              <div className="gbar"><i style={{ width: `${c.pct}%`, background: '#e5b143' }} /></div>
+              <div className="sicons">
+                {icons.slice(0, 10).map(x => x.icon && <img key={x.id} src={x.icon} alt="" title={x.title} loading="lazy" className={x.isMastered ? 'mastered' : x.awarded > 0 ? '' : x.hasAch ? 'dim' : 'noach'} />)}
+                {icons.length > 10 && <span>+{icons.length - 10}</span>}
               </div>
-            </div>
-
-            {/* Icon strip */}
-            {shownIcons.length > 0 && (
-              <div className="flex items-center gap-1 px-3 pb-2.5 flex-wrap border-t border-[#2a475e] pt-2.5">
-                {shownIcons.map(g => (
-                  <a key={g.id} href={`${SITE_URL}/game/${g.id}`} target="_blank" rel="noreferrer"
-                    className={`shrink-0 w-8 h-8 rounded-[2px] overflow-hidden bg-black hover:scale-110 transition-transform block ${g.isMastered ? 'border-2 border-[#e5b143]' : 'border border-[#101214]'}`}>
-                    <img src={g.icon} alt={g.title} className={`w-full h-full object-cover ${g.hasAch ? '' : 'brightness-[0.35] grayscale'}`} />
-                  </a>
-                ))}
-                {extraIcons > 0 && (
-                  <span className="text-[10px] text-[#546270] ml-1 shrink-0">+{extraIcons}</span>
-                )}
-              </div>
-            )}
-
-          </div>
-        );
-      })}
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 }
+
+// Series sheet: the cover art blurred behind the header, the series' numbers, the latest unlock,
+// then its games grouped by state. A played game opens its achievement sheet (with a way back).
+const SeriesSheet = ({ card: c, onOpenGame, onClose }) => {
+  const panelRef = useRef(null), rootRef = useRef(null), dragRef = useRef(null);
+  useAnimatedHeight(panelRef);
+  const close = useSheet({ panelRef, dragRef, rootRef, onClose });
+  const art = useArtSrc([c.coverArt]);
+  const groups = [
+    { key: 'started',  label: 'In progress',     games: c.games.filter(x => x.isStarted).sort((a, b) => b.lastMs - a.lastMs) },
+    { key: 'mastered', label: 'Mastered',        games: c.games.filter(x => x.isMastered).sort((a, b) => b.lastMs - a.lastMs) },
+    { key: 'none',     label: 'Not started',     games: c.games.filter(x => x.hasAch && !x.awarded).sort((a, b) => a.title.localeCompare(b.title)) },
+    { key: 'noach',    label: 'No achievements', games: c.games.filter(x => !x.hasAch).sort((a, b) => a.title.localeCompare(b.title)) },
+  ].filter(gr => gr.games.length);
+  return (
+    <div ref={rootRef} className="sheet-root" onClick={close}>
+      <div className="sheet-backdrop anim-backdrop" />
+      <div ref={panelRef} className="sheet-panel" onClick={e => e.stopPropagation()}>
+        <button onClick={close} className="sheet-close" aria-label="Close"><X size={15} /></button>
+        <div ref={dragRef} className="sheet-head">
+          {art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`px ${c.coverArtIsIcon ? 'art-icon' : ''} ${art.loaded ? 'loaded' : ''}`} /></div>}
+          <span className="sheet-grab" />
+          <div className="relative flex flex-col gap-3 px-4 pt-[30px] pb-4">
+            <div className="flex items-end gap-3 pr-8">
+              {c.coverIcon && <img src={c.coverIcon} alt="" className="w-14 h-14 rounded-[3px] border-2 border-white/20 shadow-[0_6px_18px_rgba(0,0,0,0.55)] object-cover px shrink-0" />}
+              <div className="min-w-0 flex flex-col gap-1">
+                <span className="sheet-title text-[17px] font-semibold text-white leading-tight">{c.series.name}</span>
+                <span className="text-[11.5px] text-[#c6d4df] art-shadow">
+                  {c.total} games{c.started > 0 && <> · <span className="text-[#66c0f4]">{c.started} started</span></>}{c.mastered > 0 && <> · <span className="text-[#e5b143]">★ {c.mastered} mastered</span></>}
+                </span>
+              </div>
+            </div>
+            <div className="ssheet-stats">
+              <div><b className="text-[#e5b143]">{c.pointsEarned.toLocaleString()}<small> / {c.pointsTotal.toLocaleString()}</small></b><span>Points</span></div>
+              <div><b className="text-[#66c0f4]">{c.achEarned.toLocaleString()}<small> / {c.achTotal.toLocaleString()}</small></b><span>Achievements</span></div>
+              <div><b style={{ color: c.pct > 0 ? '#e5b143' : '#546270' }}>{pctLabel(c.pct)}</b><span>Complete</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div className="sheet-scroll overflow-y-auto overscroll-contain flex-1 min-h-0 px-4 pt-3 flex flex-col gap-2 anim-fade">
+          {c.latestAch && (
+            <a href={`${SITE_URL}/achievement/${c.latestAch.achId}`} target="_blank" rel="noreferrer" className="grow compact" style={{ borderLeftColor: '#e5b143' }} title="Latest unlock in this series">
+              <img src={`${MEDIA_URL}/Badge/${c.latestAch.badgeName}.png`} alt="" className="grow-icon px" />
+              <div className="grow-main">
+                <span className="grow-title" style={{ color: '#e5b143' }}><Trophy size={11} className="inline -mt-0.5 mr-1" />{c.latestAch.title}</span>
+                <div className="grow-sub"><span className="text-[#66c0f4] shrink">{c.latestAch.gameTitle}</span><span>· {formatTimeAgo(c.latestAch.date)}</span></div>
+              </div>
+            </a>
+          )}
+          {groups.map(gr => (
+            <React.Fragment key={gr.key}>
+              <div className="ssheet-group">{gr.label}<span className="n">{gr.games.length}</span></div>
+              {gr.games.map(x => x.g && x.hasAch
+                ? <GameListRow key={x.id} game={x.g} onViewDetails={onOpenGame} compact />
+                : (
+                  <a key={x.id} href={`${SITE_URL}/game/${x.id}`} target="_blank" rel="noreferrer" className={`wrow ${x.hasAch ? '' : 'dim'}`} style={{ borderLeftColor: x.hasAch ? '#323f4c' : '#1e2a35' }}>
+                    {x.icon ? <img src={x.icon} alt="" loading="lazy" className="wrow-icon" /> : <span className="wrow-icon" />}
+                    <div className="wrow-main">
+                      <div className="wrow-title"><span>{parseTitle(x.title).baseTitle || x.title}</span></div>
+                      <div className="wrow-sub"><span className="text-[#66c0f4]">{x.console}</span>{x.inWatchlist && <><i>·</i><span className="flex items-center gap-1"><Star size={10} className="text-[#8f98a0]" />Watchlist</span></>}</div>
+                    </div>
+                    <div className="wrow-end">
+                      {x.hasAch ? <span className="text-[11px] text-[#8f98a0] flex items-center gap-1 tabular-nums"><Trophy size={11} className="text-[#546270]" />{x.numAchs}</span>
+                        : <span className="text-[11px] text-[#546270] text-right leading-tight">No achievements</span>}
+                    </div>
+                  </a>
+                ))}
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default function App() {
   // ── Split data state ─────────────────────────────────────
@@ -1312,6 +1340,8 @@ export default function App() {
   const iconGridCols = useIconGridCols();
   const iconLimit = iconGridCols * 2;
   const [selectedGame, setSelectedGame] = useState(null);
+  const [selectedSeries, setSelectedSeries] = useState(null);   // series sheet
+  const [seriesBack, setSeriesBack] = useState(null);           // series to return to from a game opened in it
   const [guidesData, setGuidesData] = useState({});
   const [seriesData, setSeriesData] = useState([]);
   const [seriesLoaded, setSeriesLoaded] = useState(false);   // so "No series flagged" waits for series.json
@@ -1431,7 +1461,7 @@ export default function App() {
     overview: ['h2', 'row', 'h2', 'unlock', 'h2', 'stats'],
     recent:   ['fbar', peekList],
     progress: ['chips', 'fbar', peekList],
-    series:   ['cards'],
+    series:   ['fbar', 'chips', 'cards'],
     activity: ['h2', 'heatmap', 'h2', 'timeline'],
     backlog:  ['fbar', 'chips', 'wlist'],
   };
@@ -1712,7 +1742,7 @@ export default function App() {
           ) : activeTab === 'series' ? (
             !seriesLoaded || (!gamesData && !gamesFailed)
               ? <>{[...Array(3)].map((_, i) => <GameCardSkeleton key={i} />)}</>
-              : <SeriesProgressTab seriesData={seriesData} gamesData={gamesData} watchlistData={watchlistData} />
+              : <SeriesProgressTab seriesData={seriesData} gamesData={gamesData} watchlistData={watchlistData} allGames={ALL_GAMES} onOpen={setSelectedSeries} />
           ) : activeTab === 'activity' ? (
             loadedChunkCount === 0 && loadingChunkIdx !== null
               ? <ActivitySkeleton />
@@ -2107,7 +2137,12 @@ export default function App() {
 
       `}</style>
 
-      {selectedGame && <RAchievementModal game={selectedGame} guides={guidesData[selectedGame.id] ?? null} onClose={() => setSelectedGame(null)} />}
+      {selectedGame && <RAchievementModal game={selectedGame} guides={guidesData[selectedGame.id] ?? null}
+        onClose={() => { setSelectedGame(null); setSeriesBack(null); }}
+        onBack={seriesBack ? () => { setSelectedGame(null); setSelectedSeries(seriesBack); setSeriesBack(null); } : null}
+        backLabel={seriesBack?.series.name} />}
+      {selectedSeries && <SeriesSheet card={selectedSeries} onClose={() => setSelectedSeries(null)}
+        onOpenGame={g => { setSeriesBack(selectedSeries); setSelectedSeries(null); setSelectedGame(g); }} />}
     </div>
   );
 }

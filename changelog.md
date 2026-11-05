@@ -2,10 +2,13 @@
 
 ## v26.11.05
 
-Swiping between profile tabs looks like turning to another page.
+Swiping between profile tabs looks like turning to another page; the RA Series tab is redesigned, with a sheet per series.
 
 ### RetroAchievements
 
+- Series redesigned: one card per series (two columns on desktop) with the cover icon, name, games · started · mastered, the completion % and last activity on the right, a progress bar and the strip of game icons, and the series art faded behind it. Search (series or game titles) with a sort (name, progress, recent) and All / Started / Not started chips. The art is the cover game's screenshot, else the screenshot of the most recently active game in the series (want-to-play entries only have an icon), else the cover icon blurred
+- Icon strip: mastered games have a gold border, started ones full colour, not started ones grey, and games without achievements are faint with a dashed border
+- Tapping a series opens its sheet: points, achievements and % as value-over-label stats, the latest unlock, and the games grouped In progress / Mastered / Not started / No achievements in compact rows. A played game opens its achievement sheet, with a back arrow to the series; a want-to-play game links to RetroAchievements
 - Swiping between tabs: the incoming tab slides in as its own page, a gap away from the current one, and its skeleton has the tab's real shape (Overview's rows and stat tiles, Recent's search row and game rows or tiles, Progress's chips, Watchlist's rows, Activity's heatmap and timeline), capped to the screen height
 
 ### Steam

@@ -28,12 +28,18 @@ Six tabs: **Overview** (User, the default) · **Recent** (Clock) · **Progress**
 - `raDateMs()` parses RA's `YYYY-MM-DD HH:MM:SS` (UTC) dates — Safari/iOS can't parse that format with `new Date()` directly
 
 ## Game list: list / tiles
-Recent Games and Completion Progress render `GameListRow` (icon, title, console, Hardcore flame / Softcore feather, tags, playtime · last played, count + bar, screenshot faded on the right, status stripe) or `GameTile` (icon over the blurred screenshot, last played, mode, title, console, bar, count + playtime, status colour on the bottom edge), switched by `ViewToggle` + `useGameView()` (`assets/game-view.js`, shared with Steam and Xbox). Tap opens the achievement sheet; the guide links (`GuideStrip inModal`) live in the sheet under the genre line. The Series tab keeps its own layout.
+Recent Games and Completion Progress render `GameListRow` (icon, title, console, Hardcore flame / Softcore feather, tags, playtime · last played, count + bar, screenshot faded on the right, status stripe) or `GameTile` (icon over the blurred screenshot, last played, mode, title, console, bar, count + playtime, status colour on the bottom edge), switched by `ViewToggle` + `useGameView()` (`assets/game-view.js`, shared with Steam and Xbox). Tap opens the achievement sheet; the guide links (`GuideStrip inModal`) live in the sheet under the genre line. The Series tab has its own cards (see Series).
 
 ## Achievement modal and header art
 - The modal shell is the shared sheet (`assets/sheet.js` `useSheet`, `.sheet-*` in `assets/ui.css`): bottom sheet below `md` that covers the bottom nav (z-index 210 > 200) and closes by dragging the header down; centred dialog from `md`
 - **RA art fallback:** `raShot()` in `utils/helpers.js` treats RA's "no image" placeholder (`/Images/000002.png`, e.g. Poring Clicker) as missing. `transform.js` sets `game.artIsIcon` when the art fell back to the icon; the art then gets `.art-icon` (zoomed and blurred harder) wherever it sits behind something
 - Profile header: the most recently played game's screenshot (or icon) blurred behind it (`HeaderArt`)
+
+## Series
+- `buildSeries()` → one entry per `showProgress` series: per-game status (from `games.json`, else the watchlist entry), counts, points/achievement totals, `latestAch`, `lastMs` (latest unlock or last played)
+- Card (`.scard`): cover icon (`coverGameId`, else the first id), counts, % + `shortAgo(lastMs)`, bar, icon strip (`seriesIconOrder`: mastered, started by recency, not started, no achievements; classes `mastered` / `dim` / `noach`)
+- **Art:** the cover's screenshot, else the most recently active series game with a `raShot`, else the cover icon (`.art-icon`). Watchlist-only covers have no screenshot (watchlist entries only carry `imageIcon`)
+- `SeriesSheet` (shared sheet): stats, latest unlock, grouped games; played games are `GameListRow compact`, others `.wrow`. Opening a game sets `seriesBack`, so the achievement modal shows `.sheet-back` and returns to the series
 
 ## Watchlist
 - A list in the profile game-row style (`.wlist` / `.wrow` in `assets/ui.css`), two columns on desktop: icon, title + subset / tilde tags, console · points, and the status once on the right (in progress: count + bar; Mastered tag; not started: trophy + achievement count; no achievements: dimmed). Status colour on the left edge

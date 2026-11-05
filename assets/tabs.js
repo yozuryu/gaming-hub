@@ -75,7 +75,7 @@ const PEEK_PARTS = {
   tiles:   () => `<div class="gtiles">${rows(4, () => `<div class="gtile"><div class="gtile-art shimmer"></div><div class="gtile-body">${sh('pk-line', 'width:80%')}${sh('pk-line', 'width:50%;height:9px')}${sh('pk-line', 'width:100%;height:4px')}</div></div>`)}</div>`,
   stats:   () => `<div class="stiles">${rows(6, () => `<div class="stile">${sh('pk-line', 'width:45%;height:15px')}${sh('pk-line', 'width:70%;height:9px')}</div>`)}</div>`,
   wlist:   () => `<div class="wlist">${rows(6, i => `<div class="wrow">${sh('wrow-icon')}<div class="wrow-main">${sh('pk-line', `width:${55 + (i % 3) * 12}%`)}${sh('pk-line', 'width:35%;height:9px')}</div></div>`)}</div>`,
-  cards:   () => rows(3, () => `<div class="pk-card">${sh('pk-card-art')}${sh('pk-line', 'width:50%')}${sh('pk-line', 'width:100%;height:5px')}</div>`),
+  cards:   () => `<div class="slist">${rows(4, () => `<div class="scard"><div class="scard-top">${sh('scard-cover')}<div class="scard-main">${sh('pk-line', 'width:55%')}${sh('pk-line', 'width:40%;height:9px')}</div></div>${sh('pk-line', 'width:100%;height:5px')}<div class="sicons">${rows(5, () => sh('pk-icon'))}</div></div>`)}</div>`,
   heatmap: () => sh('pk-heat'),
   timeline:() => rows(5, () => `<div class="pk-tl">${sh('pk-dot')}<div class="grow" style="flex:1">${sh('grow-icon')}<div class="grow-main">${sh('pk-line', 'width:60%')}${sh('pk-line', 'width:40%;height:9px')}</div></div></div>`),
 };
