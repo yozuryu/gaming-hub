@@ -40,12 +40,22 @@ function raGames() {
             title: d.title, console: d.consoleName, icon: d.imageIcon ? RA_MEDIA + d.imageIcon : null, art: shot ? RA_MEDIA + shot : null,
             unlocked: d.numAwardedToUser ?? 0, total: d.numAchievements ?? 0, minutes: Math.round((d.userTotalPlaytime ?? 0) / 60),
             beaten: beaten.has(String(d.id)), lastMs: Math.max(lastUnlock, played[d.id] ?? 0),
-            sheet: (d.numAchievements ?? 0) > 0,   // in games.json with a set: the RA profile can open its sheet
+            sheet: (d.numAchievements ?? 0) > 0,   // has a set: the series page opens its achievements
+            last: lastOfRA(d),
             url: `https://retroachievements.org/game/${d.id}`,
         };
     }
     return out;
 }
+
+// A game's latest unlock: name, badge, date (RA from the index summary, else the full list)
+const lastOfRA = d => {
+    let a = d.summary?.lastUnlock;
+    if (!a && d.achievements) {
+        for (const x of Object.values(d.achievements)) if (x.dateEarned && (!a || x.dateEarned > a.date)) a = { title: x.title, badgeName: x.badgeName, date: x.dateEarned };
+    }
+    return a ? { name: a.title, icon: `${RA_MEDIA}/Badge/${a.badgeName}.png`, at: a.date } : null;
+};
 
 // Steam and Xbox: the index, plus win conditions (beaten) checked against the per-game files
 function indexGames(platform) {
@@ -71,6 +81,12 @@ function indexGames(platform) {
             unlocked: d.hasAchievements ? d.unlocked ?? 0 : 0, total: d.hasAchievements ? d.total ?? 0 : 0,
             minutes: steam ? d.playtimeForever ?? 0 : undefined, beaten: beaten.has(id),
             sheet: !!(d.hasAchievements && d.total > 0),
+            // Latest unlock: its name and date from the index, its icon from the preview (which always holds the newest unlocks)
+            last: d.lastUnlockedAt ? (() => {
+                const pv = (d.preview ?? []).find(a => a.displayName === d.lastUnlockName);
+                const icon = pv?.iconUrl ? (steam ? `https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/${id}/${pv.iconUrl}` : pv.iconUrl) : null;
+                return { name: d.lastUnlockName, icon, at: d.lastUnlockedAt };
+            })() : null,
             lastMs: Math.max(ms(d.lastUnlockedAt), ms(d.lastPlayedTs)),
             url: steam ? `https://store.steampowered.com/app/${id}` : `https://www.xbox.com/en-US/Search/Results?q=${encodeURIComponent(d.gameName ?? '')}`,
         };

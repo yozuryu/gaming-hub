@@ -25,6 +25,8 @@ const fold = str => (str ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLower
 const pctLabel = p => p > 0 && p < 1 ? '<1%' : `${Math.floor(p)}%`;
 const fmtMin = m => m >= 600 ? `${Math.round(m / 60).toLocaleString()}h` : m >= 60 ? `${Math.floor(m / 60)}h ${m % 60}m` : `${m}m`;
 const baseTitle = t => (t ?? '').replace(/~([^~]+)~\s*/g, '').trim();
+// RA dates are UTC without a zone ("2026-11-01 11:43:31"); Steam / Xbox are ISO
+const lastMsOf = g => { const s = g.last?.at; if (!s) return 0; const t = Date.parse(/^\d{4}-\d{2}-\d{2} \d/.test(s) ? s.replace(' ', 'T') + 'Z' : s); return isNaN(t) ? 0 : t; };
 
 // Per game: its status on the usual ladder (done gold, beaten silver, started blue, not started, no achievements)
 const withStatus = g => {
@@ -271,6 +273,8 @@ const SeriesSheet = ({ c, onClose, onOpenGame }) => {
         { key: 'none',    label: 'Not started',     games: c.games.filter(x => x.hasAch && !x.unlocked).sort((a, b) => a.title.localeCompare(b.title)) },
         { key: 'noach',   label: 'No achievements', games: c.games.filter(x => !x.hasAch).sort((a, b) => a.title.localeCompare(b.title)) },
     ].filter(gr => gr.games.length);
+    // The newest unlock across the series' games, any platform
+    const latest = c.games.filter(g => g.last?.at).sort((a, b) => lastMsOf(b) - lastMsOf(a))[0] ?? null;
     return (
         <div ref={rootRef} className="sheet-root" onClick={close}>
             <div className="sheet-backdrop anim-backdrop" />
@@ -297,7 +301,20 @@ const SeriesSheet = ({ c, onClose, onOpenGame }) => {
                     </div>
                 </div>
                 <div className="sheet-scroll overflow-y-auto overscroll-contain flex-1 min-h-0 px-4 pt-3 flex flex-col gap-2 anim-fade">
-                    <div className="ssheet-sec" style={{ '--c': '#66c0f4' }}>Games<span className="n">{c.total}</span></div>
+                    {latest && <div className="ssheet-sec" style={{ '--c': '#e5b143' }}>Latest unlock</div>}
+                    {latest && (
+                        <button onClick={() => onOpenGame(latest)} className="grow compact" style={{ borderLeftColor: '#e5b143' }} title="Latest unlock in this series">
+                            {latest.last.icon ? <img src={latest.p === 'xbox' ? xboxImg(latest.last.icon, 128) : latest.last.icon} alt="" className={`grow-icon ${latest.p === 'ra' ? 'px' : ''}`} onError={e => { e.target.style.visibility = 'hidden'; }} /> : <Cover g={latest} cls="grow-icon" />}
+                            <div className="grow-main">
+                                <span className="grow-title" style={{ color: '#e5b143' }}><Trophy size={11} className="inline -mt-0.5 mr-1" />{latest.last.name}</span>
+                                <div className="grow-sub">
+                                    <img src={PLATFORMS[latest.p].icon} alt={PLATFORMS[latest.p].label} className="w-3 h-3 object-contain" />
+                                    <span className="text-[#66c0f4] shrink">{baseTitle(latest.title)}</span><span>· {shortAgo(lastMsOf(latest))}</span>
+                                </div>
+                            </div>
+                        </button>
+                    )}
+                    <div className={`ssheet-sec ${latest ? 'next' : ''}`} style={{ '--c': '#66c0f4' }}>Games<span className="n">{c.total}</span></div>
                     {groups.map(gr => (
                         <React.Fragment key={gr.key}>
                             <div className="ssheet-group">{gr.label}<span className="n">{gr.games.length}</span></div>

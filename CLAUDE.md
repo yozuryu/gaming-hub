@@ -256,7 +256,7 @@ Every unlocked achievement, all time, rebuilt by each pipeline on every run from
 
 ## Shared Series
 Series across platforms, made by hand in the admin (General → Shared Series) in `data/hub/series.json` (on main): `{ id, name, gameIds, showProgress, coverGameId }` with ids prefixed by platform (`ra:2688`, `steam:223870`, `xbox:1297287153`), same editor as the platform series.
-- `scripts/build-series.js [siteRoot]` turns it into `data/hub/series-games.json` (~115 KB): each game's title, icon, art, unlocked / total, beaten, playtime and last activity, from the RA games index + watchlist + awards, the Steam / Xbox indexes + win conditions. The hub and the series cards read only that file, never the per-platform lists; a game opened on `series/` loads its own file (`data/{ra,steam,xbox}/games/{id}.json`) 
+- `scripts/build-series.js [siteRoot]` turns it into `data/hub/series-games.json` (~115 KB): each game's title, icon, art, unlocked / total, beaten, playtime, last activity and latest unlock (`last`: name, icon, date), from the RA games index + watchlist + awards, the Steam / Xbox indexes + win conditions. The hub and the series cards read only that file, never the per-platform lists; a game opened on `series/` loads its own file (`data/{ra,steam,xbox}/games/{id}.json`) 
 - Built in `deploy.yml` (after the site is assembled, so every data run and every push rebuilds it), by `npm run data:pull`, and by the admin server whenever the series file is saved. The output is gitignored
 - A series shows with 3+ games the platform data knows; games missing from it (unplayed Steam games aren't in the index) are left out
 

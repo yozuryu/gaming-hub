@@ -40,6 +40,7 @@ Swiping between profile tabs looks like turning to another page; the RA Series t
 
 ### Hub
 
+- Series page: the sheet shows the series' latest unlock across RA, Steam and Xbox (tap it to open that game)
 - Series page: a game opens its achievements right there (RA, Steam and Xbox in one list: points or gamerscore, rarity, unlock date), with a back button to the series and "Full details" to its profile sheet
 - Refresh: an icon button after "Last change" in the header on phone and desktop (the icon turns while it works), next to a Changelog (newspaper) icon on phones, both centred on the text, so the app can be refreshed from Home; the duplicate "Refresh app" in the desktop footer is gone (the Changelog page keeps its own)
 - Series page: a game opens its achievement sheet on its profile (RA, Steam or Xbox); want-to-play RA games and games without achievements still open their page on the platform. Profiles open a game's sheet from a link (`?game=`)
