@@ -548,7 +548,10 @@
         if (latestRA) {
           // RA's "no image" placeholder counts as no screenshot: use the icon, zoomed and blurred
           const shot = [latestRA.imageIngame, latestRA.imageTitle].find(x => x && !x.endsWith('/Images/000002.png'));
-          offerHeaderArt(latestRA.lastPlayed, [shot ? MEDIA + shot : MEDIA + latestRA.imageIcon], !shot);
+          // Wide art picked in the admin (data/ra/art.json): its hero (else banner), like the RA profile header
+          const wide = (await fetchJsonOnce('./data/ra/art.json'))?.games?.[latestRA.gameId];
+          if (wide?.grid) offerHeaderArt(latestRA.lastPlayed, [wide.hero?.url, wide.grid.url, shot && MEDIA + shot], false);
+          else offerHeaderArt(latestRA.lastPlayed, [shot ? MEDIA + shot : MEDIA + latestRA.imageIcon], !shot);
         }
         document.getElementById('ra-recent').innerHTML = (d.recentlyPlayedGames ?? []).slice(0, 3)
           .map(g => coverImg(`${MEDIA}${g.imageIcon}`, `${g.title} · ${g.consoleName}`, 'sq px')).join('');

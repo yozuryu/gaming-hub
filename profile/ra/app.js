@@ -1159,12 +1159,17 @@ const buildSeries = (seriesData, gamesData, watchlistData, allGames, beatenIds =
     // (want-to-play entries only carry an icon), else the cover icon blurred
     const shotOf = id => { const d = gameProgress[id]; return d ? raShot(d.imageIngame, d.imageTitle) : null; };
     const shot = shotOf(coverId) ?? [...games].sort((a, b) => b.lastMs - a.lastMs).map(x => shotOf(x.id)).find(Boolean) ?? null;
+    // Wide art (data/ra/art.json) wins over the screenshot, in the same order: the cover, else the most
+    // recently active series game that has it. { art: hero thumb (card), header: full hero (sheet) }
+    const wideOf = id => byId.get(id)?.wide ?? null;
+    const wide = wideOf(coverId) ?? [...games].sort((a, b) => b.lastMs - a.lastMs).map(x => wideOf(x.id)).find(Boolean) ?? null;
     const lastMs = Math.max(0, ...games.map(x => x.lastMs));
     return {
       series, games, total: games.length, tracked, started, beatenCount, mastered, pointsEarned, pointsTotal, achEarned, achTotal, latestAch, lastMs,
       pct: achTotal > 0 ? (achEarned / achTotal) * 100 : 0,
       coverIcon: cover?.imageIcon ? getMediaUrl(cover.imageIcon) : null,
       coverArt: shot ? getMediaUrl(shot) : cover?.imageIcon ? getMediaUrl(cover.imageIcon) : null, coverArtIsIcon: !shot,
+      coverWide: wide,
     };
   });
 };
@@ -1236,7 +1241,9 @@ function SeriesProgressTab({ seriesData, gamesData, watchlistData, allGames, bea
           const icons = seriesIconOrder(c.games);
           return (
             <button key={c.series.id} onClick={() => onOpen(c)} className="scard" style={{ borderLeftColor: seriesEdge(c) }}>
-              {c.coverArt && <div className="scard-art"><img src={c.coverArt} alt="" loading="lazy" className={c.coverArtIsIcon ? 'art-icon' : ''} /></div>}
+              {c.coverWide
+                ? <div className="scard-art"><img src={c.coverWide.art} alt="" loading="lazy" style={{ imageRendering: 'auto' }} onError={e => { e.target.style.display = 'none'; }} /></div>
+                : c.coverArt && <div className="scard-art"><img src={c.coverArt} alt="" loading="lazy" className={c.coverArtIsIcon ? 'art-icon' : ''} /></div>}
               <div className="scard-top">
                 {c.coverIcon ? <img src={c.coverIcon} alt="" loading="lazy" className="scard-cover" /> : <span className="scard-cover" />}
                 <div className="scard-main">
@@ -1295,7 +1302,8 @@ const SeriesSheet = ({ card: c, awards, onOpenGame, onClose }) => {
   const panelRef = useRef(null), rootRef = useRef(null), dragRef = useRef(null);
   useAnimatedHeight(panelRef);
   const close = useSheet({ panelRef, dragRef, rootRef, onClose });
-  const art = useArtSrc([c.coverArt]);
+  const art = useArtSrc([c.coverWide?.header, c.coverArt]);
+  const artIsWide = !!c.coverWide && art.src === c.coverWide.header;
   const groups = [
     { key: 'started',  label: 'In progress',     games: c.games.filter(x => x.isStarted && !x.beaten).sort((a, b) => b.lastMs - a.lastMs) },
     { key: 'mastered', label: 'Mastered',        games: c.games.filter(x => x.isMastered).sort((a, b) => b.lastMs - a.lastMs) },
@@ -1309,7 +1317,7 @@ const SeriesSheet = ({ card: c, awards, onOpenGame, onClose }) => {
       <div ref={panelRef} className="sheet-panel" onClick={e => e.stopPropagation()}>
         <button onClick={close} className="sheet-close" aria-label="Close"><X size={15} /></button>
         <div ref={dragRef} className="sheet-head">
-          {art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`px ${c.coverArtIsIcon ? 'art-icon' : ''} ${art.loaded ? 'loaded' : ''}`} /></div>}
+          {art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`${artIsWide ? '' : `px ${c.coverArtIsIcon ? 'art-icon' : ''}`} ${art.loaded ? 'loaded' : ''}`} /></div>}
           <span className="sheet-grab" />
           <div className="relative flex flex-col gap-3 px-4 pt-[30px] pb-4">
             <div className="flex items-end gap-3 pr-8">

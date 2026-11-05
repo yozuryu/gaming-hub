@@ -27,6 +27,7 @@ function raGames() {
     const awards = profile?.pageAwards?.visibleUserAwards ?? [];
     const beaten = new Set(awards.filter(a => a.awardType === 'Game Beaten').map(a => String(a.awardData)));
     const played = Object.fromEntries((profile?.recentlyPlayedGames ?? []).map(g => [String(g.gameId), ms(g.lastPlayed)]));
+    const wide = read('data/ra/art.json', {})?.games ?? {};   // SteamGridDB art picked in the admin
     const out = {};
     for (const w of watch) {
         out[w.id] = { title: w.title, console: w.consoleName, icon: w.imageIcon ? RA_MEDIA + w.imageIcon : null,
@@ -37,7 +38,12 @@ function raGames() {
         const lastUnlock = d.summary ? ms(d.summary.lastUnlock?.date) : Math.max(0, ...achs.filter(a => a.dateEarned).map(a => ms(a.dateEarned)));
         const shot = [d.imageIngame, d.imageTitle].find(x => x && !x.endsWith('/000002.png'));
         out[d.id] = {
-            title: d.title, console: d.consoleName, icon: d.imageIcon ? RA_MEDIA + d.imageIcon : null, art: shot ? RA_MEDIA + shot : null,
+            title: d.title, console: d.consoleName, icon: d.imageIcon ? RA_MEDIA + d.imageIcon : null,
+            // Background: the hero picked in the admin (thumbnail for rows and cards, full size behind sheet
+            // headers), else the screenshot
+            ...(wide[d.id]?.grid
+                ? { art: wide[d.id].hero?.thumb ?? wide[d.id].grid.thumb, artFull: wide[d.id].hero?.url ?? wide[d.id].grid.url, wide: true }
+                : { art: shot ? RA_MEDIA + shot : null }),
             unlocked: d.numAwardedToUser ?? 0, total: d.numAchievements ?? 0, minutes: Math.round((d.userTotalPlaytime ?? 0) / 60),
             beaten: beaten.has(String(d.id)), lastMs: Math.max(lastUnlock, played[d.id] ?? 0),
             sheet: (d.numAchievements ?? 0) > 0,   // has a set: the series page opens its achievements

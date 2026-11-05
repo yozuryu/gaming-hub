@@ -178,7 +178,7 @@ const normalize = (p, id, d) => {
 const GameSheet = ({ g, backLabel, onBack, onClose }) => {
     const panelRef = useRef(null), rootRef = useRef(null), dragRef = useRef(null);
     const close = useSheet({ panelRef, dragRef, rootRef, onClose });
-    const art = useArtSrc([g.art, g.icon]);
+    const art = useArtSrc([g.artFull, g.art, g.icon]);
     const [achs, setAchs] = useState(null);
     const [failed, setFailed] = useState(false);
     const [filter, setFilter] = useState('all');
@@ -202,7 +202,7 @@ const GameSheet = ({ g, backLabel, onBack, onClose }) => {
                 <button onClick={close} className="sheet-close" aria-label="Close"><X size={15} /></button>
                 <button onClick={onBack} className="sheet-back" aria-label={`Back to ${backLabel}`}><ChevronLeft size={14} />{backLabel}</button>
                 <div ref={dragRef} className="sheet-head">
-                    {art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`${g.p === 'ra' ? 'px' : ''} ${art.loaded ? 'loaded' : ''}`} /></div>}
+                    {art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`${g.p === 'ra' && !g.wide ? 'px' : ''} ${art.loaded ? 'loaded' : ''}`} /></div>}
                     <span className="sheet-grab" />
                     <div className="relative flex items-end gap-4 px-4 pt-[34px] md:pt-[54px] pb-4">
                         <Cover g={g} cls={g.p === 'steam' ? 'w-32 h-16 rounded-[2px] border border-[#101214] object-cover shrink-0' : 'w-16 h-16 rounded-[3px] border-2 border-white/20 object-cover shrink-0 px'} />
@@ -265,7 +265,7 @@ const GameSheet = ({ g, backLabel, onBack, onClose }) => {
 const SeriesSheet = ({ c, onClose, onOpenGame }) => {
     const panelRef = useRef(null), rootRef = useRef(null), dragRef = useRef(null);
     const close = useSheet({ panelRef, dragRef, rootRef, onClose });
-    const art = useArtSrc([c.cover?.art, c.cover?.icon]);
+    const art = useArtSrc([c.cover?.artFull, c.cover?.art, c.cover?.icon]);
     const groups = [
         { key: 'started', label: 'In progress',     games: c.games.filter(x => x.started && !x.beaten).sort((a, b) => b.lastMs - a.lastMs) },
         { key: 'done',    label: 'Completed',       games: c.games.filter(x => x.done).sort((a, b) => b.lastMs - a.lastMs) },
@@ -281,7 +281,7 @@ const SeriesSheet = ({ c, onClose, onOpenGame }) => {
             <div ref={panelRef} className="sheet-panel" onClick={e => e.stopPropagation()}>
                 <button onClick={close} className="sheet-close" aria-label="Close"><X size={15} /></button>
                 <div ref={dragRef} className="sheet-head">
-                    {art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`${c.cover?.p === 'ra' ? 'px' : ''} ${art.loaded ? 'loaded' : ''}`} /></div>}
+                    {art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`${c.cover?.p === 'ra' && !c.cover?.wide ? 'px' : ''} ${art.loaded ? 'loaded' : ''}`} /></div>}
                     <span className="sheet-grab" />
                     <div className="relative flex flex-col gap-3 px-4 pt-[30px] pb-4">
                         <div className="flex items-end gap-3 pr-8">
