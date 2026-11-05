@@ -13,6 +13,7 @@ Swiping between profile tabs looks like turning to another page; the RA Series t
 - Series sheet: a mastered game shows a band under its row with the mastery date and the rarest achievement (badge, % of players, name), from the same award data as Completions
 - Swiping between tabs: the incoming tab slides in as its own page, a gap away from the current one, and its skeleton has the tab's real shape (Overview's rows and stat tiles, Recent's search row and game rows or tiles, Progress's chips, Watchlist's rows, Activity's heatmap and timeline), capped to the screen height
 - Desktop (1024px and wider): the page is 1200px wide instead of 960, and Overview has two columns: Last played and Recent unlocks on the left, User stats (two across) and Game awards in a rail on the right. Recent unlocks shows the newest unlock and, on wide screens only, the next five as compact rows (badge, name, game, time, points) from the newest achievement file. The tab bar lines up with the header and content. Phones keep the same order; the section is now called "Recent unlocks"
+- Watchlist (two columns, tablet and desktop): a single game beside a game with subsets no longer stretches to the height of the subset card
 
 ### Steam
 

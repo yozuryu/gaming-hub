@@ -228,7 +228,7 @@ button.gtile:hover { transform: translateY(-2px); }
 .wgroup .label { flex: 1; min-width: 0; font-size: 12.5px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .wgroup .n { font-size: 11px; color: #8f98a0; font-variant-numeric: tabular-nums; }
 @media (min-width: 768px) {
-  .wlist { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .wlist { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; align-items: start; }
 }
 
 /* ── Profile tabs (assets/tabs.js) ──────────────────────────────────────────────────
