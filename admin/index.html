@@ -1519,6 +1519,262 @@ const RASeriesModule    = () => <SeriesModule cfg={SERIES_CONFIGS.ra} />;
 const SteamSeriesModule = () => <SeriesModule cfg={SERIES_CONFIGS.steam} />;
 const XboxSeriesModule  = () => <SeriesModule cfg={SERIES_CONFIGS.xbox} />;
 
+// ═══════════════════════════════════════════════════════════════════════════════
+// MODULE: RA Art (SteamGridDB)
+// Wide art for RA games, which only have a square icon and a screenshot: pick a banner grid
+// (thumb for rows and tiles) and optionally a hero (blurred behind sheet headers) per game.
+// data/ra/art.json stores URLs only: { games: { [raId]: { sgdbGameId, sgdbName, grid, hero } } }.
+// Lookups go through the admin server (scripts/lib/steamgriddb.js); the key never reaches this page.
+// ═══════════════════════════════════════════════════════════════════════════════
+
+const raBaseTitle = t => (t ?? '').replace(/~[^~]+~\s*/g, '').replace(/\s*\[Subset[^\]]*\]\s*$/, '').trim();
+const pickImage = x => x && { id: x.id, url: x.url, thumb: x.thumb, width: x.width, height: x.height };
+
+function RAArtModule() {
+    const [games,   setGames]   = useState([]);
+    const [art,     setArt]     = useState(null);
+    const [filter,  setFilter]  = useState('marked');
+    const [search,  setSearch]  = useState('');
+    const [selected, setSelected] = useState(null);
+    const [dirty,   setDirty]   = useState(false);
+    const [saving,  setSaving]  = useState(false);
+    const [saved,   setSaved]   = useState(false);
+    // SteamGridDB state for the selected game
+    const [query,   setQuery]   = useState('');
+    const [results, setResults] = useState(null);
+    const [sgGame,  setSgGame]  = useState(null);
+    const [grids,   setGrids]   = useState(null);
+    const [heroes,  setHeroes]  = useState(null);
+    const [error,   setError]   = useState(null);
+    const [busy,    setBusy]    = useState(false);
+    const [zoom,    setZoom]    = useState(null);   // { img, kind } shown full size in an overlay
+
+    useEffect(() => {
+        if (!zoom) return;
+        const onKey = e => { if (e.key === 'Escape') setZoom(null); };
+        window.addEventListener('keydown', onKey);
+        return () => window.removeEventListener('keydown', onKey);
+    }, [zoom]);
+
+    useEffect(() => {
+        Promise.all([apiGet(`${API}/games/ra`), apiData('data/ra/art.json')]).then(([g, a]) => {
+            // Played games first (they're on the profile lists), then want-to-play
+            setGames(g.map(x => ({ ...x, icon: `${RA_MEDIA}${x.imageIcon}`, url: `${RA_SITE}/game/${x.id}` }))
+                .sort((x, y) => (!!y.played - !!x.played) || x.title.localeCompare(y.title)));
+            setArt(a?.games ? a : { metadata: a?.metadata ?? {}, games: {} });
+        });
+    }, []);
+
+    const sgdb = (p) => apiGet(`${API}/sgdb/${p}`).then(d => { if (d?.error) throw new Error(d.error); return d; });
+    const loadImages = async (g) => {
+        setSgGame(g); setGrids(null); setHeroes(null); setError(null);
+        try {
+            const [gr, he] = await Promise.all([sgdb(`images?gameId=${g.id}&kind=grid`), sgdb(`images?gameId=${g.id}&kind=hero`)]);
+            setGrids(gr); setHeroes(he);
+        } catch (e) { setError(e.message); }
+    };
+    const runSearch = async (q) => {
+        if (!q.trim()) return;
+        setBusy(true); setResults(null); setSgGame(null); setGrids(null); setHeroes(null); setError(null);
+        try {
+            const r = await sgdb(`search?q=${encodeURIComponent(q.trim())}`);
+            setResults(r);
+            if (r[0]) await loadImages(r[0]);   // suggestion: the top match, nothing saved until Save
+        } catch (e) { setError(e.message); }
+        setBusy(false);
+    };
+
+    // Selecting a game searches SteamGridDB for its title (tags and subset names stripped)
+    useEffect(() => {
+        if (!selected) return;
+        const cur = art?.games?.[selected.id];
+        const q = cur?.sgdbName || raBaseTitle(selected.title);
+        setQuery(q);
+        runSearch(q);
+    }, [selected?.id]);
+
+    const entry = selected ? art?.games?.[selected.id] : null;
+    const setEntry = (patch) => {
+        setArt(a => {
+            const prev = a.games[selected.id] ?? {};
+            const next = { ...prev, ...patch };
+            const games = { ...a.games };
+            if (!next.grid && !next.hero) delete games[selected.id]; else games[selected.id] = next;
+            return { ...a, games };
+        });
+        setDirty(true); setSaved(false);
+    };
+    const choose = (kind, img) => setEntry({
+        sgdbGameId: sgGame?.id ?? entry?.sgdbGameId, sgdbName: sgGame?.name ?? entry?.sgdbName,
+        [kind]: entry?.[kind]?.id === img.id ? null : pickImage(img),   // tap the picked one again to clear it
+    });
+    const save = async () => {
+        setSaving(true);
+        await apiSave('data/ra/art.json', { ...art, metadata: { ...(art.metadata ?? {}), updatedAt: new Date().toISOString() } });
+        setSaving(false); setDirty(false); setSaved(true);
+    };
+
+    if (!art) return <div className="p-6 text-[#546270] text-[11px]">Loading…</div>;
+
+    const withArt = id => !!art.games[id];
+    // art.marked: games worth picking art for, with why (marked by Claude from the data, or by hand here)
+    const marks = art.marked ?? {};
+    const isMarked = id => !!marks[id];
+    const list = games.filter(g =>
+        (filter === 'all' || (filter === 'with' ? withArt(g.id) : filter === 'marked' ? isMarked(g.id) : !withArt(g.id))) &&
+        (!search || g.title.toLowerCase().includes(search.toLowerCase())))
+        // Marked: the ones still without art first
+        .sort((a, b) => filter === 'marked' ? (withArt(a.id) - withArt(b.id)) : 0);
+    const counts = { all: games.length, with: games.filter(g => withArt(g.id)).length, marked: Object.keys(marks).length };
+    counts.without = counts.all - counts.with;
+    const markedLeft = Object.keys(marks).filter(id => !withArt(id)).length;
+    // Clear the marks of games that already have art (they're done), and save at once: the Save button only
+    // shows with a game selected. Saving writes the whole file, so unsaved picks are saved along with it
+    const markedDone = Object.keys(marks).filter(id => withArt(id)).length;
+    const unmarkDone = async () => {
+        const next = { ...art, marked: Object.fromEntries(Object.entries(art.marked ?? {}).filter(([id]) => !art.games[id])),
+            metadata: { ...(art.metadata ?? {}), updatedAt: new Date().toISOString() } };
+        setArt(next); setSaving(true);
+        await apiSave('data/ra/art.json', next);
+        setSaving(false); setDirty(false); setSaved(true);
+    };
+    const toggleMark = () => {
+        setArt(a => {
+            const m = { ...(a.marked ?? {}) };
+            if (m[selected.id]) delete m[selected.id]; else m[selected.id] = ['Marked by hand'];
+            return { ...a, marked: m };
+        });
+        setDirty(true); setSaved(false);
+    };
+
+    const Thumb = ({ img, kind, wide }) => {
+        const on = entry?.[kind]?.id === img.id;
+        return (
+            <div className="relative group">
+            <button onClick={() => choose(kind, img)} title={`${img.width}×${img.height}${img.style ? ` · ${img.style}` : ''}${img.author ? ` · by ${img.author}` : ''}${img.score ? ` · ${img.score} votes` : ''}`}
+                className={`relative rounded-[2px] overflow-hidden border-2 transition-colors ${on ? 'border-[#e5b143]' : 'border-transparent hover:border-[#66c0f4]'}`}
+                style={{ aspectRatio: wide ? '1920 / 620' : '460 / 215' }}>
+                <img src={img.thumb} alt="" loading="lazy" className="w-full h-full object-cover bg-[#101214]" />
+                {on && <span className="absolute top-1 right-1 text-[9px] font-bold bg-[#e5b143] text-[#101214] px-1 rounded-[2px]">PICKED</span>}
+                <span className="absolute bottom-1 left-1 text-[9px] text-white bg-black/60 px-1 rounded-[2px]">{img.width}×{img.height}</span>
+            </button>
+            {/* Full size: its own button so a tap on the image still picks it */}
+            <button onClick={() => setZoom({ img, kind })} title="View full size"
+                className="absolute bottom-1 right-1 w-6 h-6 flex items-center justify-center rounded-[2px] bg-black/70 text-white text-[12px] opacity-70 group-hover:opacity-100 hover:bg-[#66c0f4] hover:text-[#101214] transition">⤢</button>
+            </div>
+        );
+    };
+
+    return (
+        <div className="flex h-full overflow-hidden">
+            {/* Full-size view: click outside or Escape closes; Pick / Unpick from here too */}
+            {zoom && (
+                <div className="fixed inset-0 z-50 bg-black/85 flex flex-col items-center justify-center gap-3 p-6 anim-backdrop" onClick={() => setZoom(null)}>
+                    <img src={zoom.img.url} alt="" className="max-w-full max-h-[80vh] object-contain rounded-[2px] shadow-2xl anim-pop" onClick={e => e.stopPropagation()} />
+                    <div className="flex items-center gap-3 text-[11px] text-[#c6d4df]" onClick={e => e.stopPropagation()}>
+                        <span>{zoom.img.width}×{zoom.img.height}{zoom.img.style ? ` · ${zoom.img.style}` : ''}{zoom.img.author ? ` · by ${zoom.img.author}` : ''}</span>
+                        <button className="btn-primary" onClick={() => { choose(zoom.kind, zoom.img); setZoom(null); }}>{entry?.[zoom.kind]?.id === zoom.img.id ? 'Unpick' : `Pick as ${zoom.kind === 'grid' ? 'banner' : 'hero'}`}</button>
+                        <button className="btn-ghost" onClick={() => setZoom(null)}>Close</button>
+                    </div>
+                </div>
+            )}
+
+            {/* ── Left: RA games ── */}
+            <div className="w-[300px] shrink-0 border-r border-[#2a475e] flex flex-col overflow-hidden">
+                <div className="p-3 flex flex-col gap-2 border-b border-[#2a475e]">
+                    <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search games…" className="input" />
+                    <div className="flex gap-1">
+                        {[['marked', 'Marked'], ['all', 'All'], ['with', 'With art'], ['without', 'Without']].map(([v, l]) => (
+                            <button key={v} onClick={() => setFilter(v)} title={v === 'marked' ? `${markedLeft} of ${counts.marked} still without art` : undefined}
+                                className={`text-[10px] px-2 py-[3px] rounded-[2px] border ${filter === v ? 'bg-[#2a475e] text-white border-[#66c0f4]' : 'text-[#8f98a0] border-[#323f4c] hover:text-white'}`}>{l} {v === 'marked' ? `${markedLeft}/${counts.marked}` : counts[v]}</button>
+                        ))}
+                    </div>
+                </div>
+                <div className="flex-1 overflow-y-auto">
+                    {list.map(g => (
+                        <button key={g.id} onClick={() => setSelected(g)}
+                            className={`w-full flex items-center gap-2 px-3 py-1.5 text-left border-b border-[#1a2535] ${selected?.id === g.id ? 'bg-[#2a475e]' : 'hover:bg-[#1b2838]'}`}>
+                            <img src={g.icon} alt="" className="w-6 h-6 rounded-[2px] border border-[#101214] object-cover bg-black shrink-0" />
+                            <div className="flex flex-col min-w-0 flex-1">
+                                <span className="text-[11px] text-[#c6d4df] truncate">{g.title}</span>
+                                <span className="text-[9px] text-[#546270] truncate">{g.consoleName}{g.played ? '' : ' · want to play'}</span>
+                                {isMarked(g.id) && <span className="text-[9px] text-[#e5b143] truncate">● {marks[g.id].join(' · ')}</span>}
+                            </div>
+                            {withArt(g.id) && <img src={art.games[g.id].grid?.thumb || art.games[g.id].hero?.thumb} alt="" className="w-[46px] h-[22px] rounded-[2px] object-cover shrink-0" />}
+                        </button>
+                    ))}
+                </div>
+                <div className="px-3 py-2 border-t border-[#2a475e] flex items-center gap-2 text-[10px] text-[#546270]">
+                    <span className="flex-1">{counts.with} games with art</span>
+                    {markedDone > 0 && <button className="btn-ghost text-[10px]" onClick={unmarkDone} title="Remove the mark from every game that already has art (saves at once)">Unmark {markedDone} done</button>}
+                </div>
+            </div>
+
+            {/* ── Right: the selected game ── */}
+            {!selected ? (
+                <div className="flex-1 flex items-center justify-center text-[#546270] text-[12px]">Select an RA game</div>
+            ) : (
+                <div className="flex-1 flex flex-col overflow-hidden">
+                    <div className="flex items-center gap-3 px-4 py-3 border-b border-[#2a475e]">
+                        <img src={selected.icon} alt="" className="w-10 h-10 rounded-[2px] border border-[#101214] object-cover" />
+                        <div className="flex flex-col min-w-0 flex-1">
+                            <a href={selected.url} target="_blank" rel="noreferrer" className="text-[13px] text-white font-medium truncate hover:text-[#66c0f4]">{selected.title}</a>
+                            <span className="text-[10px] text-[#546270]">{selected.consoleName}{entry?.sgdbName ? ` · SteamGridDB: ${entry.sgdbName}` : ''}</span>
+                        </div>
+                        {/* Current pick, at row size and as the header background */}
+                        {entry?.grid && <img src={entry.grid.thumb} alt="" title="Banner (rows, tiles)" className="w-[120px] h-[56px] rounded-[2px] object-cover border border-[#e5b143]" />}
+                        {entry?.hero && <img src={entry.hero.thumb} alt="" title="Hero (header background)" className="w-[150px] h-[48px] rounded-[2px] object-cover border border-[#e5b143]" />}
+                        <button className="btn-ghost text-[11px]" onClick={toggleMark} title={isMarked(selected.id) ? marks[selected.id].join(' · ') : 'Add to the Marked list'}>{isMarked(selected.id) ? 'Unmark' : 'Mark'}</button>
+                        {entry && <button className="btn-ghost btn-danger text-[11px]" onClick={() => setEntry({ grid: null, hero: null })}>Remove</button>}
+                        <span className="text-[#2a475e]">|</span>
+                        {saved && <span className="text-[10px] text-[#57cbde] anim-fade">Saved</span>}
+                        <button className="btn-primary" onClick={save} disabled={!dirty || saving}>{saving ? 'Saving…' : 'Save'}</button>
+                    </div>
+
+                    <div className="flex flex-1 overflow-hidden">
+                        {/* SteamGridDB search: the top match is loaded as a suggestion */}
+                        <div className="w-[260px] shrink-0 border-r border-[#2a475e] flex flex-col overflow-hidden">
+                            <form className="p-3 flex gap-2 border-b border-[#2a475e]" onSubmit={e => { e.preventDefault(); runSearch(query); }}>
+                                <input value={query} onChange={e => setQuery(e.target.value)} className="input flex-1" placeholder="SteamGridDB search…" />
+                                <button className="btn-primary" type="submit">Find</button>
+                            </form>
+                            <div className="flex-1 overflow-y-auto">
+                                {busy && !results && <div className="p-3 text-[11px] text-[#546270]">Searching…</div>}
+                                {results?.length === 0 && <div className="p-3 text-[11px] text-[#546270]">No match on SteamGridDB. Try a shorter or English title.</div>}
+                                {results?.map(r => (
+                                    <button key={r.id} onClick={() => loadImages(r)}
+                                        className={`w-full text-left px-3 py-1.5 border-b border-[#1a2535] text-[11px] ${sgGame?.id === r.id ? 'bg-[#2a475e] text-white' : 'text-[#c6d4df] hover:bg-[#1b2838]'}`}>
+                                        {r.name}<span className="text-[#546270]">{r.year ? ` · ${r.year}` : ''}{r.verified ? ' · ✓' : ''}</span>
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Images of the chosen SteamGridDB game: tap to pick, tap again to clear */}
+                        <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-4">
+                            {error && <div className="text-[11px] text-[#ff6b6b]">{error}</div>}
+                            {sgGame && (
+                                <>
+                                    <div>
+                                        <div className="text-[10px] text-[#8f98a0] font-semibold uppercase tracking-wider mb-2">Banner · {grids ? grids.length : '…'} <span className="normal-case font-normal text-[#546270]">rows, tiles, Playing (thumbnail)</span></div>
+                                        {grids?.length === 0 && <div className="text-[11px] text-[#546270]">No banner-shaped grids for this game.</div>}
+                                        <div className="grid grid-cols-3 gap-2">{grids?.map(img => <Thumb key={img.id} img={img} kind="grid" />)}</div>
+                                    </div>
+                                    <div>
+                                        <div className="text-[10px] text-[#8f98a0] font-semibold uppercase tracking-wider mb-2">Hero · {heroes ? heroes.length : '…'} <span className="normal-case font-normal text-[#546270]">blurred behind sheet headers (optional)</span></div>
+                                        {heroes?.length === 0 && <div className="text-[11px] text-[#546270]">No heroes for this game.</div>}
+                                        <div className="grid grid-cols-2 gap-2">{heroes?.map(img => <Thumb key={img.id} img={img} kind="hero" wide />)}</div>
+                                    </div>
+                                </>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+}
+
 const MODULES = [
     { id: 'config',      label: 'Site Config',  icon: '⚙️',  group: 'General',          component: SiteConfigModule },
     { id: 'credentials', label: 'Credentials',  icon: '🔑',  group: 'General',          component: CredentialsModule },
@@ -1527,6 +1783,7 @@ const MODULES = [
     { id: 'hub-series',  label: 'Shared Series', icon: '🗂️', group: 'General',          component: HubSeriesModule },
     { id: 'ra-guides',           label: 'Guides',         icon: '📖',  group: 'RetroAchievements', component: RAGuidesModule },
     { id: 'ra-series',           label: 'Series',         icon: '🗂️',  group: 'RetroAchievements', component: RASeriesModule },
+    { id: 'ra-art',              label: 'Art',            icon: '🖼️',  group: 'RetroAchievements', component: RAArtModule },
     { id: 'steam-win-conditions', label: 'Win Conditions', icon: '🏆',  group: 'Steam',             component: SteamWinConditionsModule },
     { id: 'steam-series',         label: 'Series',         icon: '🗂️',  group: 'Steam',             component: SteamSeriesModule },
     { id: 'xbox-win-conditions',  label: 'Win Conditions', icon: '🏆',  group: 'Xbox',              component: XboxWinConditionsModule },

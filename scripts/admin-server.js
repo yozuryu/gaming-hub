@@ -8,6 +8,7 @@ const fs     = require('fs');
 const path   = require('path');
 const { spawn } = require('child_process');
 const crypto = require('crypto');
+const { createClient: sgdbClient } = require('./lib/steamgriddb');
 
 const PORT       = 3131;
 const ROOT       = path.join(__dirname, '..');
@@ -18,6 +19,7 @@ const ALLOWED = [
     'data/hub/config.json',
     'data/ra/guides.json',
     'data/ra/series.json',
+    'data/ra/art.json',
     'data/hub/series.json',
     'data/steam/series.json',
     'data/xbox/series.json',
@@ -98,7 +100,7 @@ function resolveFile(fileParam) {
     return path.join(ROOT, fileParam);
 }
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
     const { method } = req;
     const { pathname, query } = parsePath(req.url);
     console.log(method, JSON.stringify(req.url), '->', JSON.stringify(pathname), JSON.stringify(query));
@@ -133,7 +135,7 @@ const server = http.createServer((req, res) => {
             const watchlistIds = new Set((watchlist.results || []).map(g => g.id));
             const map = new Map();
             Object.values(raw.detailedGameProgress).forEach(g => {
-                map.set(g.id, { id: g.id, title: g.title, imageIcon: g.imageIcon, consoleName: g.consoleName ?? null, fromWatchlist: watchlistIds.has(g.id) });
+                map.set(g.id, { id: g.id, title: g.title, imageIcon: g.imageIcon, consoleName: g.consoleName ?? null, fromWatchlist: watchlistIds.has(g.id), played: true });
             });
             (watchlist.results || []).forEach(g => {
                 if (!map.has(g.id)) map.set(g.id, { id: g.id, title: g.title, imageIcon: g.imageIcon, consoleName: g.consoleName ?? null, fromWatchlist: true });
@@ -299,6 +301,28 @@ const server = http.createServer((req, res) => {
             });
             });
         });
+        return;
+    }
+
+    // GET /api/sgdb/search?q=  ·  GET /api/sgdb/images?gameId=&kind=grid|hero
+    // SteamGridDB lookups for the RA Art module (scripts/lib/steamgriddb.js). The key is read from .env
+    // on every call, so a key saved in Credentials works at once; it never goes to the page.
+    if (method === 'GET' && (pathname === '/api/sgdb/search' || pathname === '/api/sgdb/images')) {
+        try {
+            const env = fs.existsSync(path.join(ROOT, '.env')) ? fs.readFileSync(path.join(ROOT, '.env'), 'utf8') : '';
+            const key = env.match(/^SGDB_API_KEY=(.*)$/m)?.[1]?.trim();
+            if (!key) { send(res, 400, { error: 'SGDB_API_KEY is not set (Credentials)' }); return; }
+            const sgdb = sgdbClient(key);
+            if (pathname === '/api/sgdb/search') {
+                if (!query.q) { send(res, 400, { error: 'Missing q' }); return; }
+                send(res, 200, await sgdb.search(query.q));
+            } else {
+                if (!/^\d+$/.test(query.gameId || '')) { send(res, 400, { error: 'Invalid gameId' }); return; }
+                send(res, 200, query.kind === 'hero' ? await sgdb.heroes(query.gameId) : await sgdb.grids(query.gameId));
+            }
+        } catch (e) {
+            send(res, 502, { error: e.message });
+        }
         return;
     }
 

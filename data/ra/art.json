@@ -1,0 +1,550 @@
+{
+  "metadata": {
+    "about": "Wide art for RA games from SteamGridDB, picked in the admin (RA Art). URLs only: thumb for rows and tiles, url behind sheet headers. `marked`: games worth picking art for, with why (admin filter); the site ignores it",
+    "updatedAt": "2026-11-05T16:57:13.087Z"
+  },
+  "games": {
+    "449": {
+      "sgdbGameId": 12891,
+      "sgdbName": "Breath of Fire",
+      "grid": {
+        "id": 841494,
+        "url": "https://cdn2.steamgriddb.com/grid/9b30fc5cd6d3a60bc562a7c815952838.jpg",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/9b30fc5cd6d3a60bc562a7c815952838.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 19802,
+        "url": "https://cdn2.steamgriddb.com/hero/aa7bed7356f6705718a75dda26c26614.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/aa7bed7356f6705718a75dda26c26614.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "575": {
+      "sgdbGameId": 5,
+      "sgdbName": "Mega Man Battle Network",
+      "grid": {
+        "id": 325840,
+        "url": "https://cdn2.steamgriddb.com/grid/99fc3cad1fd3ac0809f78139f815268c.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/99fc3cad1fd3ac0809f78139f815268c.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 13840,
+        "url": "https://cdn2.steamgriddb.com/hero/b1fb3726a5a825732f9a25e210426c4a.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/b1fb3726a5a825732f9a25e210426c4a.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "676": {
+      "sgdbGameId": 38450,
+      "sgdbName": "The Legend of Zelda: Oracle of Seasons",
+      "grid": {
+        "id": 79290,
+        "url": "https://cdn2.steamgriddb.com/grid/85e58e1fb1cff34ce08cd7a39292bd6f.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/85e58e1fb1cff34ce08cd7a39292bd6f.png",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 30988,
+        "url": "https://cdn2.steamgriddb.com/hero/781875806d0ec961e50faa879b057e97.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/781875806d0ec961e50faa879b057e97.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "782": {
+      "sgdbGameId": 38780,
+      "sgdbName": "Mega Man Zero",
+      "grid": {
+        "id": 105298,
+        "url": "https://cdn2.steamgriddb.com/grid/86fdcb20591e457a360e44952b342f3b.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/86fdcb20591e457a360e44952b342f3b.jpg",
+        "width": 460,
+        "height": 215
+      },
+      "hero": {
+        "id": 19066,
+        "url": "https://cdn2.steamgriddb.com/hero/7ed94938c403c962c1798fe420759807.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/7ed94938c403c962c1798fe420759807.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "1275": {
+      "sgdbGameId": 34783,
+      "sgdbName": "Fatal Frame / Project Zero",
+      "hero": {
+        "id": 5683,
+        "url": "https://cdn2.steamgriddb.com/hero/14db62200d8bf46551aa214accafe1df.jpg",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/14db62200d8bf46551aa214accafe1df.jpg",
+        "width": 3840,
+        "height": 1240
+      },
+      "grid": {
+        "id": 751124,
+        "url": "https://cdn2.steamgriddb.com/grid/d7b70f33bbaff6502ec0c443aa21b188.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/d7b70f33bbaff6502ec0c443aa21b188.jpg",
+        "width": 920,
+        "height": 430
+      }
+    },
+    "1392": {
+      "sgdbGameId": 38690,
+      "sgdbName": "Star Ocean",
+      "grid": {
+        "id": 10172,
+        "url": "https://cdn2.steamgriddb.com/grid/e447193f2b83d789c98a82a7ef958736.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/e447193f2b83d789c98a82a7ef958736.jpg",
+        "width": 460,
+        "height": 215
+      },
+      "hero": {
+        "id": 150337,
+        "url": "https://cdn2.steamgriddb.com/hero/cfb931bdc872cb2a5a7090e658f692a3.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/cfb931bdc872cb2a5a7090e658f692a3.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "2873": {
+      "sgdbGameId": 34924,
+      "sgdbName": "Disney's Donald Duck: Goin' Quackers",
+      "grid": {
+        "id": 5664,
+        "url": "https://cdn2.steamgriddb.com/grid/b24d21019de5e59da180f1661904f49a.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/b24d21019de5e59da180f1661904f49a.jpg",
+        "width": 460,
+        "height": 215
+      },
+      "hero": {
+        "id": 13517,
+        "url": "https://cdn2.steamgriddb.com/hero/088d6dc6ddb3113e9b902711ccdfafef.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/088d6dc6ddb3113e9b902711ccdfafef.jpg",
+        "width": 3840,
+        "height": 1240
+      }
+    },
+    "9334": {
+      "sgdbGameId": 38240,
+      "sgdbName": "Summon Night Craft Sword Monogatari: Hajimari no Ishi",
+      "grid": {
+        "id": 396700,
+        "url": "https://cdn2.steamgriddb.com/grid/d5a795fe49a6120a35acc87e01f6b146.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/d5a795fe49a6120a35acc87e01f6b146.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 95738,
+        "url": "https://cdn2.steamgriddb.com/hero/fb69e08f8287044d223f84331b53bf1d.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/fb69e08f8287044d223f84331b53bf1d.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "11253": {
+      "sgdbGameId": 25582,
+      "sgdbName": "Star Ocean: The Second Story",
+      "hero": {
+        "id": 129052,
+        "url": "https://cdn2.steamgriddb.com/hero/106b47f64dc24e620929b450827fc878.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/106b47f64dc24e620929b450827fc878.png",
+        "width": 3840,
+        "height": 1240
+      },
+      "grid": {
+        "id": 341123,
+        "url": "https://cdn2.steamgriddb.com/grid/cb6df72816e8f872870f834f305c4908.jpg",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/cb6df72816e8f872870f834f305c4908.jpg",
+        "width": 920,
+        "height": 430
+      }
+    },
+    "11299": {
+      "sgdbGameId": 37002,
+      "sgdbName": "Legend of Legaia",
+      "grid": {
+        "id": 567554,
+        "url": "https://cdn2.steamgriddb.com/grid/56fe8995dfdbdf8c3908611c8b9f5448.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/56fe8995dfdbdf8c3908611c8b9f5448.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 10531,
+        "url": "https://cdn2.steamgriddb.com/hero/b84a25d15d9d44f58640a485c1387df8.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/b84a25d15d9d44f58640a485c1387df8.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "11306": {
+      "sgdbGameId": 36291,
+      "sgdbName": "Tomba! 2: The Evil Swine Return",
+      "grid": {
+        "id": 265340,
+        "url": "https://cdn2.steamgriddb.com/grid/10cd6b997c060e85052878f9a58d1888.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/10cd6b997c060e85052878f9a58d1888.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 52737,
+        "url": "https://cdn2.steamgriddb.com/hero/75b0b63015303bd206170908b6f62b30.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/75b0b63015303bd206170908b6f62b30.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "11340": {
+      "sgdbGameId": 5138392,
+      "sgdbName": "Threads of Fate",
+      "grid": {
+        "id": 487453,
+        "url": "https://cdn2.steamgriddb.com/grid/5cd39415821095a09bdbfcb7d222530f.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/5cd39415821095a09bdbfcb7d222530f.jpg",
+        "width": 460,
+        "height": 215
+      },
+      "hero": {
+        "id": 48325,
+        "url": "https://cdn2.steamgriddb.com/hero/80af02f360a352b23cd28711ee5e2578.jpg",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/80af02f360a352b23cd28711ee5e2578.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "11415": {
+      "sgdbGameId": 33970,
+      "sgdbName": "Beyond the Beyond",
+      "grid": {
+        "id": 146656,
+        "url": "https://cdn2.steamgriddb.com/grid/1a6fe96579a1dd50596eb249637a030c.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/1a6fe96579a1dd50596eb249637a030c.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 167154,
+        "url": "https://cdn2.steamgriddb.com/hero/3e3681b6f1ca7bcd273b507634d15322.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/3e3681b6f1ca7bcd273b507634d15322.jpg",
+        "width": 3840,
+        "height": 1240
+      }
+    },
+    "12746": {
+      "sgdbGameId": 35806,
+      "sgdbName": "Clock Tower II: The Struggle Within",
+      "grid": {
+        "id": 535723,
+        "url": "https://cdn2.steamgriddb.com/grid/35974abb54bb1e70ae1b55cbc30c2f16.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/35974abb54bb1e70ae1b55cbc30c2f16.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 11878,
+        "url": "https://cdn2.steamgriddb.com/hero/b32a29fd7425fb6b46049bf9e240cda1.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/b32a29fd7425fb6b46049bf9e240cda1.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "13444": {
+      "sgdbGameId": 5173846,
+      "sgdbName": "Pepsiman",
+      "grid": {
+        "id": 33388,
+        "url": "https://cdn2.steamgriddb.com/grid/f76db9efd8037dc91175b255083fc623.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/f76db9efd8037dc91175b255083fc623.jpg",
+        "width": 460,
+        "height": 215
+      },
+      "hero": {
+        "id": 3428,
+        "url": "https://cdn2.steamgriddb.com/hero/4500e4037738e13c0c18db508e18d483.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/4500e4037738e13c0c18db508e18d483.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "14837": {
+      "sgdbGameId": 34805,
+      "sgdbName": "Final Fantasy: The 4 Heroes of Light",
+      "grid": {
+        "id": 263977,
+        "url": "https://cdn2.steamgriddb.com/grid/2cc630a999d08c08c075ac38708b9db1.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/2cc630a999d08c08c075ac38708b9db1.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 21878,
+        "url": "https://cdn2.steamgriddb.com/hero/1d60e7b563919b58c33441f825b64bd1.jpg",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/1d60e7b563919b58c33441f825b64bd1.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "16244": {
+      "sgdbGameId": 35083,
+      "sgdbName": "Final Fantasy: Crystal Chronicles - Ring of Fates",
+      "grid": {
+        "id": 827171,
+        "url": "https://cdn2.steamgriddb.com/grid/afc6fee402a8afb149c2666361f3f11f.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/afc6fee402a8afb149c2666361f3f11f.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 115433,
+        "url": "https://cdn2.steamgriddb.com/hero/9bac87f5e3a9e83836752ffa516785bf.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/9bac87f5e3a9e83836752ffa516785bf.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "16452": {
+      "sgdbGameId": 37449,
+      "sgdbName": "7th Dragon 2020",
+      "grid": {
+        "id": 287002,
+        "url": "https://cdn2.steamgriddb.com/grid/8a3f88f6a942fc63429bf9c9e9f0cccc.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/8a3f88f6a942fc63429bf9c9e9f0cccc.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 106002,
+        "url": "https://cdn2.steamgriddb.com/hero/65b6cd810f6a2f88340cc771ae1bcb64.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/65b6cd810f6a2f88340cc771ae1bcb64.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "19021": {
+      "sgdbGameId": 36175,
+      "sgdbName": ".hack//Infection",
+      "grid": {
+        "id": 229339,
+        "url": "https://cdn2.steamgriddb.com/grid/6bd4fbc54f8daa2f716c6671d920e0ce.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/6bd4fbc54f8daa2f716c6671d920e0ce.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 11898,
+        "url": "https://cdn2.steamgriddb.com/hero/4cf298280fa338aa99601829a948bf35.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/4cf298280fa338aa99601829a948bf35.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "19038": {
+      "sgdbGameId": 29906,
+      "sgdbName": "Ar tonelico II: Melody of Metafalica",
+      "hero": {
+        "id": 112567,
+        "url": "https://cdn2.steamgriddb.com/hero/60e4adeded85100062bb23324c15f8c0.jpg",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/60e4adeded85100062bb23324c15f8c0.jpg",
+        "width": 1920,
+        "height": 620
+      },
+      "grid": {
+        "id": 669559,
+        "url": "https://cdn2.steamgriddb.com/grid/bdbe2aa3a7641fc0e6c731513da4955d.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/bdbe2aa3a7641fc0e6c731513da4955d.jpg",
+        "width": 920,
+        "height": 430
+      }
+    },
+    "19046": {
+      "sgdbGameId": 36882,
+      "sgdbName": "Drakengard",
+      "hero": {
+        "id": 28286,
+        "url": "https://cdn2.steamgriddb.com/hero/2a201ed1dc9a6dd774652bd97b95509c.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/2a201ed1dc9a6dd774652bd97b95509c.jpg",
+        "width": 1920,
+        "height": 620
+      },
+      "grid": {
+        "id": 27158,
+        "url": "https://cdn2.steamgriddb.com/grid/d2b36aae8e6dba855dd0ab395058a493.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/d2b36aae8e6dba855dd0ab395058a493.jpg",
+        "width": 460,
+        "height": 215
+      }
+    },
+    "19070": {
+      "sgdbGameId": 35530,
+      "sgdbName": "Star Ocean: Till the End of Time",
+      "grid": {
+        "id": 242898,
+        "url": "https://cdn2.steamgriddb.com/grid/9894d6caf0ea98395af7815941cfc42a.jpg",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/9894d6caf0ea98395af7815941cfc42a.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 147497,
+        "url": "https://cdn2.steamgriddb.com/hero/cb605bcf2c880ac784cb1a694e5940e6.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/cb605bcf2c880ac784cb1a694e5940e6.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "22343": {
+      "sgdbGameId": 2330,
+      "sgdbName": "Cut the Rope",
+      "grid": {
+        "id": 247665,
+        "url": "https://cdn2.steamgriddb.com/grid/059171bfb1bceadac4be20f783516274.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/059171bfb1bceadac4be20f783516274.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 163288,
+        "url": "https://cdn2.steamgriddb.com/hero/6663a64907d1a3758b5adf4c9660ae70.jpg",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/6663a64907d1a3758b5adf4c9660ae70.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "30725": {
+      "sgdbGameId": 5494627,
+      "sgdbName": "Hatsune Miku Bomb Squad!",
+      "grid": {
+        "id": 592831,
+        "url": "https://cdn2.steamgriddb.com/grid/5a712baaa52ea64754285af3e7e6a7c9.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/5a712baaa52ea64754285af3e7e6a7c9.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 141020,
+        "url": "https://cdn2.steamgriddb.com/hero/524bee05cb79cef54dfb418997233184.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/524bee05cb79cef54dfb418997233184.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "32817": {
+      "sgdbGameId": 5475105,
+      "sgdbName": "Inventory Full",
+      "grid": {
+        "id": 525842,
+        "url": "https://cdn2.steamgriddb.com/grid/c651d807cee8b6d5435b5e47a124ea0c.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/c651d807cee8b6d5435b5e47a124ea0c.jpg",
+        "width": 460,
+        "height": 215
+      },
+      "hero": {
+        "id": 126574,
+        "url": "https://cdn2.steamgriddb.com/hero/6c41d7ee57f0d9067cc933cc8f6cdae6.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/6c41d7ee57f0d9067cc933cc8f6cdae6.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    }
+  },
+  "marked": {
+    "559": [
+      "1.2h played"
+    ],
+    "767": [
+      "6h played"
+    ],
+    "1449": [
+      "1.6h played"
+    ],
+    "2209": [
+      "Tales (want to play)"
+    ],
+    "3179": [
+      "Tales (want to play)"
+    ],
+    "3259": [
+      "Tales (want to play)"
+    ],
+    "3298": [
+      "Tales"
+    ],
+    "3517": [
+      "1.6h played"
+    ],
+    "3908": [
+      "Star Ocean (want to play)"
+    ],
+    "3909": [
+      "Star Ocean"
+    ],
+    "4130": [
+      "Tales (want to play)"
+    ],
+    "5056": [
+      "Tales (want to play)"
+    ],
+    "5111": [
+      "Tales (want to play)"
+    ],
+    "5228": [
+      "Star Ocean (want to play)"
+    ],
+    "6981": [
+      "Tales (want to play)"
+    ],
+    "9818": [
+      "1.6h played"
+    ],
+    "9931": [
+      "2h played"
+    ],
+    "11242": [
+      "2h played"
+    ],
+    "11274": [
+      "Tales"
+    ],
+    "11301": [
+      "1.7h played"
+    ],
+    "11324": [
+      "Tales (want to play)"
+    ],
+    "11328": [
+      "5h played"
+    ],
+    "11372": [
+      "4h played"
+    ],
+    "18574": [
+      "Tales (want to play)"
+    ],
+    "18582": [
+      "Tales (want to play)"
+    ],
+    "19139": [
+      "Tales (want to play)"
+    ],
+    "19250": [
+      "Tales (want to play)"
+    ],
+    "19368": [
+      "Tales (want to play)"
+    ],
+    "20626": [
+      "Tales (want to play)"
+    ],
+    "30125": [
+      "1.2h played"
+    ]
+  }
+}

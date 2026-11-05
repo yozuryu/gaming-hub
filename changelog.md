@@ -59,6 +59,7 @@ Swiping between profile tabs looks like turning to another page; the RA Series t
 
 ### Admin
 
+- RetroAchievements → Art: pick wide art for RA games from SteamGridDB (a banner, and optionally a hero for headers), searched by the game's title with the top match suggested; stored as image URLs in `data/ra/art.json`. Lookups go through the admin server (`scripts/lib/steamgriddb.js`, key `SGDB_API_KEY` in Credentials). A Marked filter (the default) lists the games worth doing first, with why: recently played, in Completions, or no screenshot (23 marked from the data); Mark / Unmark adds or removes any game, and "Unmark N done" clears the marks of games that already have art. The site doesn't use the art yet
 - Shared Series (General): the series editor with every platform's games in one list. Saving rebuilds the site's series file
 - Series editors for Steam and Xbox (same editor as RA, games from each platform's index; new series show on the site; a red count marks series under 3 games)
 - Switching modules could leave the previous module's title in the header (two elements shared a React key)

@@ -1,6 +1,6 @@
 # RA wide art from SteamGridDB
 
-**Status:** Planned · **Priority:** 10 · Written 2026-11-04
+**Status:** Admin built (2026-11-05), site not yet · **Priority:** 10 · Written 2026-11-04
 
 RA games only have a square icon and an in-game screenshot, so every wide spot on the site fakes a banner for them (icon over a blurred screenshot, or a zoomed icon when there's no screenshot). This adds an optional **wide image per RA game**, picked by hand in the admin from [SteamGridDB](https://www.steamgriddb.com/), used wherever a Steam game shows its store banner. A game without an override keeps today's design.
 
@@ -15,7 +15,7 @@ RA games only have a square icon and an in-game screenshot, so every wide spot o
 
 Recommended defaults, change before building if needed:
 
-1. **Copies, not hotlinks.** The admin downloads the chosen image into the repo, `assets/art/ra/{gameId}-grid.jpg` (and `-hero.jpg`), about 50 KB each. The site then doesn't depend on SteamGridDB's uptime or on an upload being deleted.
+1. ~~Copies, not hotlinks.~~ **Changed 2026-11-05: URLs only.** `cdn2.steamgriddb.com` serves images to any site (no hotlink check, `max-age` one year), so `data/ra/art.json` keeps `grid` / `hero` as `{ id, url, thumb, width, height }`; rows and tiles use `thumb` (~54 KB JPEG; the full 920×430 PNG is ~440 KB), headers `url`. Original plan: The admin downloads the chosen image into the repo, `assets/art/ra/{gameId}-grid.jpg` (and `-hero.jpg`), about 50 KB each. The site then doesn't depend on SteamGridDB's uptime or on an upload being deleted.
 2. **Used everywhere RA fakes a banner** (see [Where it shows](#where-it-shows)).
 3. **Picked by hand, with a suggestion.** The admin pre-fills the best match (top result for the title, then the top-voted 460×215 grid) for you to confirm or change. Hacks, homebrew, prototypes and subsets often aren't on SteamGridDB, so nothing is saved without a confirm.
 
@@ -37,6 +37,8 @@ New hand-edited file on `main`, next to `guides.json` and `series.json` (not pip
 - Subsets: keyed by the subset's own game id; an entry can point at the parent's image.
 
 ## Admin
+
+**Built:** `scripts/lib/steamgriddb.js` (`createClient(key)`: `search`, `grids` (920×430, 460×215, best voted first, no NSFW / humor), `heroes`), admin server routes `GET /api/sgdb/search?q=` and `GET /api/sgdb/images?gameId=&kind=grid|hero` (key read from `.env` per call), RetroAchievements → Art module (pick a banner and an optional hero per game, top match suggested, Save writes `data/ra/art.json`). Probed: grids are PNG, thumbs JPEG.
 
 `scripts/admin-server.js` (local only, port 3131) gets:
 - `SGDB_API_KEY` in `.env`, editable through the existing `/api/credentials` route (never printed, never sent to the page).
