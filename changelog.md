@@ -23,7 +23,7 @@ Swiping between profile tabs looks like turning to another page; the RA Series t
 - The same tab swipe, with skeletons shaped like Overview, Recent, Progress and Activity
 - Desktop: the wider layout with a side rail as on RA (User stats and Completions on the right); Recent unlocks lists the next five with their rarity
 - New Series tab, like RA's: series you make in the admin (Steam → Series), shown once 3 of their games are in the library. Cards with the store banner, % complete and the icon strip; the sheet has hours played, achievements and %, the latest unlock, and the games grouped In progress · Perfect · Beaten · Not started · No achievements, with the perfect date and final unlock under perfect games. A game opened from it has a back button to the series
-- 37 series to start with, from the library: franchises (Trails, Final Fantasy, Resident Evil, Ys, Gunvolt, Tales of, Mega Man, Neptunia, Batman: Arkham, Warhammer 40,000 and Fantasy…) and studios (Supergiant, PlatinumGames, FromSoftware, Nihon Falcom, Inti Creates, Arc System Works, Klei, Amplitude, To the Moon). 19 two-game series (Borderlands, Darksiders, Telltale, Hazelight…) are saved too and stay hidden while the minimum is 3
+- 37 series to start with, from the library: franchises (Trails, Final Fantasy, Resident Evil, Ys, Gunvolt, Tales of, Mega Man, Neptunia, Batman: Arkham, Warhammer 40,000 and Fantasy…) and studios (Supergiant, PlatinumGames, FromSoftware, Nihon Falcom, Inti Creates, Arc System Works, Klei, Amplitude, To the Moon).
 
 ### Xbox
 
