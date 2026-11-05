@@ -152,7 +152,7 @@ Self-contained IIFE injected into every page via `<script src="...assets/mobile-
 - `viewport-fit=cover` on every page's `index.html` viewport meta tag
 - Icons: `assets/icon-192.png` and `assets/icon-512.png` rendered from `assets/appicon.svg` (full-bleed; the OS applies its own mask). Every page links `favicon.ico` + `favicon.svg` and `icon-192.png` as the Apple touch icon
 - Service worker: network-first for `data/**` and `changelog.md`, stale-while-revalidate for all other static assets (cached copy served instantly, refreshed in the background — a deploy shows up on the next load). Bumping `CACHE_NAME` is no longer required for code changes; bump it only when the `PRECACHE` list changes
-- **Refresh app** button clears all SW caches, calls `registration.update()` and reloads (data untouched). Lives in the Changelog page header (mobile + desktop) and the hub footer (desktop only — footer is hidden on mobile)
+- **Refresh app** button clears all SW caches, calls `registration.update()` and reloads (data untouched). Lives in the hub header's status line as an icon button after "Last change" (`.hub-icons`, mobile + desktop; a Changelog icon beside it on mobile) and the Changelog page header
 
 ### Page headers (mobile)
 Page headers use `pt-8 pb-5 md:pt-5` — extra top padding on mobile compensates for the hidden breadcrumb bar. Desktop keeps the original `pt-5`. Apply this to any new pages.

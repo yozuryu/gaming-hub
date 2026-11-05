@@ -109,6 +109,18 @@
     .astrip .more { flex-shrink: 0; font-size: 10px; color: #8f98a0; padding: 0 2px; }
     .astrip .last { min-width: 0; margin-left: 5px; font-size: 11px; color: #c6d4df; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
+    /* Header icon buttons after "Last change" */
+    .hub-sub { display: flex; align-items: center; flex-wrap: wrap; }   /* text and icons centred on each other */
+    /* The text box trimmed to its letters (cap height to baseline), so centring uses the visible text, not the
+       descender space under it; browsers without text-box keep the plain box centre */
+    .hub-sub > span:first-child { text-box: trim-both cap alphabetic; }
+    .hub-icons { display: flex; align-items: center; gap: 2px; margin-left: 6px; }
+    .hub-icons > * { display: inline-flex; padding: 6px; margin: -6px 0; border-radius: 50%; color: #c6d4df; transition: color 150ms, background-color 150ms; }
+    .hub-icons > *:hover { color: #66c0f4; background: rgba(16, 18, 20, 0.5); }
+    .hub-icons > .spin svg { animation: hub-spin 700ms linear infinite; }
+    @keyframes hub-spin { to { transform: rotate(360deg); } }
+    @media (min-width: 768px) { .hub-icons > .md\:hidden { display: none; } }
+
     /* Hub series cards (.scard in assets/ui.css): phone 3 without the icon strip, desktop 4 in two columns */
     #series-list > * { animation: motion-fade 220ms ease-out backwards; }
     @media (max-width: 767px) {
@@ -179,9 +191,14 @@
           <div class="phead-av"><img id="avatar-img" src="./assets/avatar.png" alt="" /></div>
           <div class="phead-id">
             <div class="phead-name"><h1 id="header-username"><span class="skeleton" style="width:150px;height:22px"></span></h1></div>
-            <div class="phead-sub">Last change <b id="hub-updated" class="text-[#c6d4df]"><span class="skeleton align-middle" style="width:72px;height:10px"></span></b>
+            <div class="phead-sub hub-sub"><span>Last change <b id="hub-updated" class="text-[#c6d4df]"><span class="skeleton align-middle" style="width:72px;height:10px"></span></b></span>
               <!-- The changelog has no bottom-nav tab, and the footer is hidden on mobile -->
-              <span class="md:hidden"> · <a href="./changelog/" class="text-[#c6d4df] hover:text-[#66c0f4] transition-colors">Changelog</a></span>
+              <!-- Icon buttons: Changelog (phone only, the footer has it on desktop) and Refresh app (fetches
+                   the latest app files, data untouched). Padded to a finger-sized target -->
+              <span class="hub-icons">
+                <a href="./changelog/" class="md:hidden" aria-label="Changelog" title="Changelog"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg></a>
+                <button id="refresh-app-btn" type="button" aria-label="Refresh app" title="Refresh app: fetch the latest app files. Your data is not affected."><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg></button>
+              </span>
             </div>
           </div>
         </div>
@@ -367,8 +384,6 @@
       <span id="footer-site-url" class="text-[#8f98a0]"></span>
     </p>
     <a href="./changelog/" class="ml-auto text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">Changelog</a>
-    <span class="text-[10px] text-[#2a475e]">·</span>
-    <button id="refresh-app-btn" type="button" title="Fetch the latest app files. Your data is not affected." class="text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">Refresh app</button>
   </footer>
 
   <script>
@@ -1158,7 +1173,7 @@
 
   // Refresh app — clear cached app files (not data) and reload
   document.getElementById('refresh-app-btn').addEventListener('click', async e => {
-    e.currentTarget.textContent = 'Refreshing…';
+    e.currentTarget.classList.add('spin');   // the icon turns while the cache clears
     try {
       if ('caches' in window) {
         const keys = await caches.keys();
