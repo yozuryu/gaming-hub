@@ -1263,6 +1263,7 @@ const SeriesSheet = ({ card: c, onOpenGame, onClose }) => {
         </div>
 
         <div className="sheet-scroll overflow-y-auto overscroll-contain flex-1 min-h-0 px-4 pt-3 flex flex-col gap-2 anim-fade">
+          {c.latestAch && <div className="ssheet-sec" style={{ '--c': '#e5b143' }}>Latest unlock</div>}
           {c.latestAch && (
             <a href={`${SITE_URL}/achievement/${c.latestAch.achId}`} target="_blank" rel="noreferrer" className="grow compact" style={{ borderLeftColor: '#e5b143' }} title="Latest unlock in this series">
               <img src={`${MEDIA_URL}/Badge/${c.latestAch.badgeName}.png`} alt="" className="grow-icon px" />
@@ -1272,6 +1273,7 @@ const SeriesSheet = ({ card: c, onOpenGame, onClose }) => {
               </div>
             </a>
           )}
+          <div className={`ssheet-sec ${c.latestAch ? 'next' : ''}`} style={{ '--c': '#66c0f4' }}>Games<span className="n">{c.total}</span></div>
           {groups.map(gr => (
             <React.Fragment key={gr.key}>
               <div className="ssheet-group">{gr.label}<span className="n">{gr.games.length}</span></div>

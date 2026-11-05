@@ -336,13 +336,19 @@ button.gtile:hover { transform: translateY(-2px); }
 .ssheet-stats b { display: block; font-size: 14px; font-weight: 600; line-height: 1.2; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .ssheet-stats span { font-size: 11px; color: #8f98a0; }
 .ssheet-stats b small { font-size: 11px; font-weight: 500; color: #8f98a0; }
+/* .grow is also Tailwind's flex-grow utility: don't let rows stretch to fill a short sheet */
+.sheet-scroll > .grow { flex-grow: 0; }
 .sheet-panel .grow.compact { min-height: 48px; padding-top: 5px; padding-bottom: 5px; }
 .sheet-panel .grow.compact .grow-icon { width: 36px; height: 36px; }
 .sheet-panel .grow.compact .grow-main { gap: 2px; }
 .sheet-panel .wrow { min-height: 48px; padding-top: 5px; padding-bottom: 5px; }
 .sheet-panel .wrow .wrow-icon { width: 36px; height: 36px; }
 .sheet-panel .wrow .wrow-main { gap: 2px; }
-.ssheet-group { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: #fff; margin: 6px 0 2px; }
+.ssheet-sec { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; color: #fff; text-transform: uppercase; letter-spacing: 0.07em; }
+.ssheet-sec::before { content: ''; width: 3px; height: 13px; flex-shrink: 0; border-radius: 1px; background: var(--c); }
+.ssheet-sec .n { font-weight: 400; color: #8f98a0; letter-spacing: 0; }
+.ssheet-sec.next { margin-top: 10px; padding-top: 14px; border-top: 1px solid #22344a; }
+.ssheet-group { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: #c6d4df; margin: 4px 0 0; }
 .ssheet-group .n { font-weight: 400; color: #8f98a0; }
 .sheet-back { position: absolute; z-index: 3; top: 12px; left: 12px; height: 30px; padding: 0 10px 0 6px; border-radius: 15px; display: flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 500; color: #fff; background: rgba(16, 18, 20, 0.72); border: 1px solid rgba(255, 255, 255, 0.12); }
 .sheet-back:hover { background: rgba(16, 18, 20, 0.9); }
