@@ -6,7 +6,7 @@ RA games can have wide art from SteamGridDB, shown where Steam games show their 
 
 ### RetroAchievements
 
-- Wide art (picked in the admin, `data/ra/art.json`): a game with art shows its banner in tiles, like a Steam tile; rows (Recent, Progress, Last played, series sheets) and the achievement sheet keep the square icon, with the game's hero image faded behind rows and blurred behind the sheet header; the profile header blurs the latest game's banner (heroes are often pale). Games without art, and any banner that fails to load, keep the icon-on-screenshot look
+- Wide art (picked in the admin, `data/ra/art.json`): a game with art shows its banner in tiles, like a Steam tile; rows (Recent, Progress, Last played, series sheets) and the achievement sheet keep the square icon, with the game's hero image faded behind rows and blurred behind the sheet and profile headers. Games without art, and any banner that fails to load, keep the icon-on-screenshot look
 
 ### Hub
 
