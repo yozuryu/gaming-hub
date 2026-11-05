@@ -275,7 +275,9 @@ export const transformData = (data) => {
               type: a.awardType,
               console: a.consoleName || "Unknown Console",
               date: formatDate(a.awardedAt),
-              icon: getMediaUrl(a.imageIcon)
+              icon: getMediaUrl(a.imageIcon),
+              gameId: a.awardData, awardedAt: a.awardedAt, hardcore: a.awardDataExtra === 1,
+              rarest: a.rarest ?? null   // { name, badge, pct }, added by the RA pipeline
             }));
         })()
     },

@@ -1225,7 +1225,30 @@ function SeriesProgressTab({ seriesData, gamesData, watchlistData, allGames, onO
 
 // Series sheet: the cover art blurred behind the header, the series' numbers, the latest unlock,
 // then its games grouped by state. A played game opens its achievement sheet (with a way back).
-const SeriesSheet = ({ card: c, onOpenGame, onClose }) => {
+// A mastered game in the series sheet: its row, then a band with the mastery date and the
+// rarest achievement (from the award, like the Completions highlight)
+const MasteredRow = ({ x, award, onOpenGame }) => {
+  const rare = award?.rarest;
+  const color = award?.hardcore ? '#ff6b6b' : '#8f98a0';
+  return (
+    <div className="smast">
+      <GameListRow game={x.g} onViewDetails={onOpenGame} compact />
+      {award && (
+        <div className="smast-band">
+          <div className="c"><b className="text-[#e5b143]"><Star size={10} fill="currentColor" className="inline -mt-0.5 mr-1" />{fmtDate(award.awardedAt)}</b><span>Mastered</span></div>
+          {rare && (
+            <div className="c rare" title={`Rarest achievement: ${rare.name} · ${rare.pct}%`}>
+              {rare.badge && <img src={`${MEDIA_URL}/Badge/${rare.badge}.png`} alt="" loading="lazy" className="px" />}
+              <div><b style={{ color }}>{award.hardcore ? <Flame size={10} className="inline -mt-0.5 mr-0.5" /> : <Feather size={10} className="inline -mt-0.5 mr-0.5" />}{rare.pct}%</b><span>{rare.name}</span></div>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
+const SeriesSheet = ({ card: c, awards, onOpenGame, onClose }) => {
   const panelRef = useRef(null), rootRef = useRef(null), dragRef = useRef(null);
   useAnimatedHeight(panelRef);
   const close = useSheet({ panelRef, dragRef, rootRef, onClose });
@@ -1277,7 +1300,9 @@ const SeriesSheet = ({ card: c, onOpenGame, onClose }) => {
           {groups.map(gr => (
             <React.Fragment key={gr.key}>
               <div className="ssheet-group">{gr.label}<span className="n">{gr.games.length}</span></div>
-              {gr.games.map(x => x.g && x.hasAch
+              {gr.games.map(x => x.g && x.isMastered
+                ? <MasteredRow key={x.id} x={x} award={awards.get(x.id)} onOpenGame={onOpenGame} />
+                : x.g && x.hasAch
                 ? <GameListRow key={x.id} game={x.g} onViewDetails={onOpenGame} compact />
                 : (
                   <a key={x.id} href={`${SITE_URL}/game/${x.id}`} target="_blank" rel="noreferrer" className={`wrow ${x.hasAch ? '' : 'dim'}`} style={{ borderLeftColor: x.hasAch ? '#323f4c' : '#1e2a35' }}>
@@ -1442,6 +1467,7 @@ export default function App() {
   }, [profileData, watchlistData, gamesData]);
 
   const { profile: PROFILE_DATA, games: ALL_GAMES, backlog: BACKLOG } = useMemo(() => transformData(rawData), [rawData]);
+  const masteryAwards = useMemo(() => new Map((PROFILE_DATA?.gameAwards ?? []).filter(a => a.type === 'Mastery/Completion').map(a => [a.gameId, a])), [PROFILE_DATA]);
 
   // Header background: the most recently played game's screenshot, or its icon when it has none
   const latestGame = profileData?.recentlyPlayedGames?.[0];
@@ -2143,7 +2169,7 @@ export default function App() {
         onClose={() => { setSelectedGame(null); setSeriesBack(null); }}
         onBack={seriesBack ? () => { setSelectedGame(null); setSelectedSeries(seriesBack); setSeriesBack(null); } : null}
         backLabel={seriesBack?.series.name} />}
-      {selectedSeries && <SeriesSheet card={selectedSeries} onClose={() => setSelectedSeries(null)}
+      {selectedSeries && <SeriesSheet card={selectedSeries} awards={masteryAwards} onClose={() => setSelectedSeries(null)}
         onOpenGame={g => { setSeriesBack(selectedSeries); setSelectedSeries(null); setSelectedGame(g); }} />}
     </div>
   );

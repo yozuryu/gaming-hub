@@ -344,6 +344,16 @@ button.gtile:hover { transform: translateY(-2px); }
 .sheet-panel .wrow { min-height: 48px; padding-top: 5px; padding-bottom: 5px; }
 .sheet-panel .wrow .wrow-icon { width: 36px; height: 36px; }
 .sheet-panel .wrow .wrow-main { gap: 2px; }
+.smast { border: 1px solid #323f4c; border-left: 3px solid #e5b143; border-radius: 3px; overflow: hidden; background: #202d39; }
+.smast > .grow { border: 0; border-radius: 0; }
+.smast-band { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr); border-top: 1px solid #1a2535; background: #172333; }
+.smast-band .c { display: flex; flex-direction: column; justify-content: center; gap: 1px; padding: 6px 10px; min-width: 0; }
+.smast-band .c + .c { border-left: 1px solid #1a2535; }
+.smast-band .c.rare { flex-direction: row; justify-content: flex-start; align-items: center; gap: 8px; }
+.smast-band .rare img { width: 28px; height: 28px; flex-shrink: 0; border-radius: 2px; border: 1px solid #2a475e; background: #101214; }
+.smast-band .rare > div { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.smast-band b { font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.smast-band span { font-size: 11px; color: #8f98a0; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .ssheet-sec { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; color: #fff; text-transform: uppercase; letter-spacing: 0.07em; }
 .ssheet-sec::before { content: ''; width: 3px; height: 13px; flex-shrink: 0; border-radius: 1px; background: var(--c); }
 .ssheet-sec .n { font-weight: 400; color: #8f98a0; letter-spacing: 0; }

@@ -10,6 +10,7 @@ Swiping between profile tabs looks like turning to another page; the RA Series t
 - Icon strip: mastered games have a gold border, started ones full colour, not started ones grey, and games without achievements are faint with a dashed border
 - Tapping a series opens its sheet: points, achievements and % as value-over-label stats, the latest unlock, and the games grouped In progress / Mastered / Not started / No achievements in compact rows. A played game opens its achievement sheet, with a back arrow to the series; a want-to-play game links to RetroAchievements
 - Series sheet: "Latest unlock" and "Games" are separate sections with the site's section headers (the status groups sit under Games), and game rows no longer stretch to fill a short sheet (the row class shares its name with Tailwind's `grow` utility)
+- Series sheet: a mastered game shows a band under its row with the mastery date and the rarest achievement (badge, % of players, name), from the same award data as Completions
 - Swiping between tabs: the incoming tab slides in as its own page, a gap away from the current one, and its skeleton has the tab's real shape (Overview's rows and stat tiles, Recent's search row and game rows or tiles, Progress's chips, Watchlist's rows, Activity's heatmap and timeline), capped to the screen height
 
 ### Steam
