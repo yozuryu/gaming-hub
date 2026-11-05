@@ -281,7 +281,7 @@ const RarestCell = ({ item, rare }) => {
 const HighlightArt = ({ item }) => {
     // RA game with wide art (data/ra/art.json): its banner, like a Steam store banner
     if (item.wideUrl) {
-        return <img src={item.wideUrl} alt="" loading="lazy" className="absolute left-0 w-full top-1/2 -translate-y-1/2"
+        return <img src={item.wideUrl} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover"
             onError={e => { e.target.style.display = 'none'; }} />;
     }
     if (item.platform === 'steam') {

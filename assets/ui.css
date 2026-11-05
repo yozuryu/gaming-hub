@@ -233,11 +233,6 @@ button.gtile:hover { transform: translateY(-2px); }
   .wlist { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; align-items: start; }
 }
 
-/* ── RA cover (SteamGridDB banner, data/ra/art.json) ─────────────────────────────────
-   The banner always shows its full width, centred, cropped top and bottom only (heroes keep cover) */
-.grow-art img.wfit, .gtile-art img.wfit { position: absolute; left: 0; width: 100%; height: auto; top: 50%; transform: translateY(-50%); object-fit: fill; }
-.art-bg img.wfit { height: auto; top: 50%; transform: translateY(-50%); }
-
 /* ── Achievement row in the shared series game sheet (series/app.js GameSheet) ──────────
    One look for RA, Steam and Xbox: icon, name (gold when unlocked), description, points / gamerscore,
    rarity and the unlock date */
