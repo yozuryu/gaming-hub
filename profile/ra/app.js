@@ -1573,7 +1573,8 @@ export default function App() {
   const latestShot = latestGame ? raShot(latestGame.imageIngame, latestGame.imageTitle) : null;
   const latestArt  = latestGame ? artData[latestGame.gameId] : null;
   const headerArt  = latestArt?.grid
-    ? { url: latestArt.hero?.url ?? latestArt.grid.url, icon: false, wide: true }
+    // The banner, not the hero: heroes are often pale or mostly empty, which washed the header out
+    ? { url: latestArt.grid.url, icon: false, wide: true }
     : { url: latestGame ? getMediaUrl(latestShot || latestGame.imageIcon) : null, icon: !!latestGame && !latestShot };
 
   useEffect(() => {
