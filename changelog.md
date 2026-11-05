@@ -14,7 +14,7 @@ RA games can have wide art from SteamGridDB, shown where Steam games show their 
 
 ### Completions
 
-- An RA highlight (Mastered) with wide art shows its banner, like a Steam store banner; beaten rows and the closed-year covers keep the square icon
+- An RA highlight (Mastered) with wide art shows its banner, like a Steam store banner; beaten rows keep the square icon with the hero faded behind (as on the RA profile rows), and the closed-year covers keep the icon
 
 ## v26.11.05
 

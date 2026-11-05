@@ -341,7 +341,10 @@ const Highlight = ({ item, rare }) => (
 // every row shows the achievement that beat the game (RA: its win condition)
 const BeatenRow = ({ item }) => (
     <a href={item.gameUrl} target="_blank" rel="noreferrer" className="grow" style={{ background: '#1b2838', borderColor: '#2a475e', borderLeftColor: '#b8c4ce' }}>
-        {(item.artUrl || item.platform === 'ra') && (
+        {/* RA with wide art: its hero (else banner) faded behind, as on the RA profile rows */}
+        {item.wideArt
+            ? <div className="grow-art"><img src={item.wideArt} alt="" loading="lazy" onError={e => { e.target.style.display = 'none'; }} /></div>
+            : (item.artUrl || item.platform === 'ra') && (
             <div className="grow-art"><img src={item.artUrl || item.iconUrl} alt="" loading="lazy" className={`${item.platform === 'ra' ? 'px' : ''} ${item.artUrl ? '' : 'art-icon'}`} /></div>
         )}
         {item.platform === 'steam'
@@ -594,7 +597,7 @@ const App = () => {
     const pool = useMemo(() => {
         const raTotals     = Object.fromEntries((raProfile?.gameAwardsAndProgress?.results ?? []).map(g => [g.gameId, g.maxPossible]));
         const ra           = normalizeRA(raProfile?.pageAwards?.visibleUserAwards ?? [], showBeaten, raTotals)
-            .map(c => raArt[c.gameId]?.grid ? { ...c, wideUrl: raArt[c.gameId].grid.thumb } : c);
+            .map(c => { const a = raArt[c.gameId]; return a?.grid ? { ...c, wideUrl: a.grid.thumb, wideArt: a.hero?.thumb ?? a.grid.thumb } : c; });
         const steamPerfect = normalizeSteam(steamProfile?.perfectGames ?? []);
         const steamBeaten  = showBeaten ? normalizeSteamBeaten(beatenSteamGames ?? []) : [];
         const xboxDone     = normalizeXbox(xboxProfile?.perfectGames ?? []);

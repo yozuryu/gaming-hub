@@ -10,7 +10,7 @@
 ## Normalization
 Two normalizers in `app.js`:
 - `normalizeRA(awards, showBeaten, totals)` — returns entries with `type: 'mastered'` or `type: 'beaten'`, keyed by `gameId: a.awardData`; `artUrl` is the screenshot (null for RA's `000002.png` placeholder or a missing field), `hardcore` from `awardDataExtra`
-- Every entry has `artUrl`: RA screenshot, Steam `header.jpg`, Xbox `heroUrl` (if any). RA entries with wide art (`../data/ra/art.json`) also get `wideUrl` (the banner thumbnail): `HighlightArt` shows it like a Steam banner; beaten rows and closed-year covers keep the icon
+- Every entry has `artUrl`: RA screenshot, Steam `header.jpg`, Xbox `heroUrl` (if any). RA entries with wide art (`../data/ra/art.json`) also get `wideUrl` (the banner thumbnail): `HighlightArt` shows it like a Steam banner; beaten rows keep the icon with `wideArt` (hero thumbnail, else the banner) faded behind, closed-year covers keep the icon
 - `normalizeSteam(perfectGames)` — returns entries with `type: 'perfect'`
 - `normalizeXbox(perfectGames)` — returns entries with `type: 'completed'` (label "Completed"); `normalizeXboxBeaten()` for beaten
 
