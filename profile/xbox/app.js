@@ -992,6 +992,7 @@ const SERIES_SORTS = [
     { value: 'name', label: 'Name' },
     { value: 'progress', label: 'Most progress' },
     { value: 'recent', label: 'Last played' },
+    { value: 'games', label: 'Most games' },
 ];
 
 const SeriesTab = ({ cards, onOpen }) => {
@@ -1011,6 +1012,7 @@ const SeriesTab = ({ cards, onOpen }) => {
         .filter(c => !search || fold(c.series.name).includes(fold(search)) || c.games.some(x => fold(x.title).includes(fold(search))))
         .sort((a, b) => sort === 'progress' ? (b.pct - a.pct) || nameKey(a.series.name).localeCompare(nameKey(b.series.name))
             : sort === 'recent' ? (b.lastMs - a.lastMs) || nameKey(a.series.name).localeCompare(nameKey(b.series.name))
+            : sort === 'games' ? (b.total - a.total) || nameKey(a.series.name).localeCompare(nameKey(b.series.name))
             : nameKey(a.series.name).localeCompare(nameKey(b.series.name)));
 
     return (
