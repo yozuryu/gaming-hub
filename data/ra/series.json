@@ -12,7 +12,7 @@
       19013,
       19019
     ],
-    "showProgress": false,
+    "showProgress": true,
     "coverGameId": 19021
   },
   {
@@ -32,9 +32,22 @@
     "name": "Animal Crossing",
     "gameIds": [
       34566,
-      38074,
       9594
-    ]
+    ],
+    "showProgress": false
+  },
+  {
+    "id": "aae408f7",
+    "name": "Ape Escape",
+    "gameIds": [
+      11283,
+      2688,
+      2689,
+      3512,
+      3514
+    ],
+    "showProgress": true,
+    "coverGameId": 11283
   },
   {
     "id": "mnnbx925",
@@ -43,7 +56,8 @@
       11348,
       3316,
       3308
-    ]
+    ],
+    "showProgress": true
   },
   {
     "id": "mnnbxg6m",
@@ -51,8 +65,11 @@
     "gameIds": [
       19228,
       19188,
-      19227
-    ]
+      19227,
+      19058,
+      19060
+    ],
+    "showProgress": true
   },
   {
     "id": "mnnbxq3k",
@@ -60,8 +77,10 @@
     "gameIds": [
       446,
       2705,
-      14502
-    ]
+      14502,
+      7962
+    ],
+    "showProgress": true
   },
   {
     "id": "mnlypqtr",
@@ -87,8 +106,10 @@
       2805,
       2679,
       689,
-      5137
-    ]
+      5137,
+      3165
+    ],
+    "showProgress": true
   },
   {
     "id": "mnncb6kk",
@@ -96,8 +117,21 @@
     "gameIds": [
       7300,
       11352,
-      13183
-    ]
+      13183,
+      16633
+    ],
+    "showProgress": true
+  },
+  {
+    "id": "aae408ff",
+    "name": "Chrono",
+    "gameIds": [
+      11258,
+      319,
+      13049
+    ],
+    "showProgress": true,
+    "coverGameId": 11258
   },
   {
     "id": "mnlys8zk",
@@ -119,14 +153,27 @@
       10434,
       10432,
       10433,
-      21740,
       19043,
-      33170,
       10907,
       16382,
       20852,
-      10438
-    ]
+      10438,
+      18160,
+      3192,
+      18161
+    ],
+    "showProgress": true
+  },
+  {
+    "id": "aae408fe",
+    "name": "Deception",
+    "gameIds": [
+      8409,
+      835,
+      837
+    ],
+    "showProgress": true,
+    "coverGameId": 8409
   },
   {
     "id": "mnndi0k4",
@@ -148,6 +195,18 @@
     "showProgress": true
   },
   {
+    "id": "aae408fa",
+    "name": "Devil May Cry",
+    "gameIds": [
+      2791,
+      7153,
+      32480,
+      2936
+    ],
+    "showProgress": true,
+    "coverGameId": 2791
+  },
+  {
     "id": "mnlzbhcd",
     "name": "Digimon",
     "gameIds": [
@@ -166,10 +225,37 @@
       16153,
       16152,
       3935,
-      11307
+      11307,
+      18366
     ],
     "coverGameId": 16152,
     "showProgress": true
+  },
+  {
+    "id": "aae40903",
+    "name": "Disgaea",
+    "gameIds": [
+      3597,
+      22482,
+      3979,
+      10846
+    ],
+    "showProgress": true,
+    "coverGameId": 3597
+  },
+  {
+    "id": "aae408f4",
+    "name": "DJMax",
+    "gameIds": [
+      18157,
+      18153,
+      22370,
+      18154,
+      18155,
+      22549
+    ],
+    "showProgress": true,
+    "coverGameId": 18157
   },
   {
     "id": "mnlyodzf",
@@ -187,8 +273,10 @@
       11289,
       2721,
       1405,
-      3818
-    ]
+      3818,
+      34676
+    ],
+    "showProgress": true
   },
   {
     "id": "mnntu37w",
@@ -196,8 +284,21 @@
     "gameIds": [
       12889,
       5142,
-      1795
-    ]
+      1795,
+      4706
+    ],
+    "showProgress": true
+  },
+  {
+    "id": "aae40900",
+    "name": "Etrian Odyssey",
+    "gameIds": [
+      9914,
+      10412,
+      6979
+    ],
+    "showProgress": true,
+    "coverGameId": 9914
   },
   {
     "id": "mnlzmhpi",
@@ -218,7 +319,8 @@
       18159,
       18760,
       25384
-    ]
+    ],
+    "showProgress": true
   },
   {
     "id": "mnlzcbfp",
@@ -240,7 +342,41 @@
       14837,
       2713,
       3515,
-      3517
+      3517,
+      10387,
+      3215,
+      14435,
+      14434,
+      17526,
+      762,
+      259,
+      3822,
+      5527,
+      3216,
+      4663,
+      5553,
+      3528,
+      9994,
+      763,
+      3169,
+      11247,
+      11332,
+      1386,
+      764,
+      341,
+      765,
+      11242,
+      11270,
+      29090,
+      2779,
+      2778,
+      5802,
+      5803,
+      16572,
+      909,
+      112,
+      7741,
+      11246
     ],
     "showProgress": true,
     "coverGameId": 16244
@@ -252,8 +388,11 @@
       3885,
       16632,
       16244,
-      34679
-    ]
+      34679,
+      112,
+      7741
+    ],
+    "showProgress": false
   },
   {
     "id": "mnlzcnro",
@@ -261,8 +400,10 @@
     "gameIds": [
       4958,
       519,
-      3236
-    ]
+      3236,
+      11246
+    ],
+    "showProgress": false
   },
   {
     "id": "mnnbxtzu",
@@ -294,7 +435,19 @@
       7994,
       9049,
       5579
-    ]
+    ],
+    "showProgress": true
+  },
+  {
+    "id": "aae408f5",
+    "name": "Hatsune Miku: Project DIVA",
+    "gameIds": [
+      3921,
+      3923,
+      3516
+    ],
+    "showProgress": true,
+    "coverGameId": 3921
   },
   {
     "id": "mnmlhhju",
@@ -319,15 +472,29 @@
     "gameIds": [
       11330,
       11297,
-      9685
-    ]
+      9685,
+      9686,
+      8656
+    ],
+    "showProgress": true
+  },
+  {
+    "id": "aae408fb",
+    "name": "Medabots",
+    "gameIds": [
+      4723,
+      7367,
+      16080,
+      16081
+    ],
+    "showProgress": true,
+    "coverGameId": 4723
   },
   {
     "id": "mnlz2ufb",
     "name": "Mega Man",
     "gameIds": [
       11280,
-      28162,
       11262,
       3219,
       15656,
@@ -347,9 +514,6 @@
       773,
       774,
       775,
-      33632,
-      30129,
-      29784,
       776,
       777,
       567,
@@ -373,13 +537,9 @@
       713,
       4912,
       782,
-      22099,
       783,
-      30059,
       625,
-      31768,
       784,
-      32800,
       9818
     ],
     "coverGameId": 17729,
@@ -393,9 +553,6 @@
       773,
       774,
       775,
-      33632,
-      30129,
-      29784,
       776,
       777,
       23908,
@@ -406,7 +563,8 @@
       567,
       17889,
       4909
-    ]
+    ],
+    "showProgress": false
   },
   {
     "id": "mnlyqcj8",
@@ -419,7 +577,8 @@
       17890,
       15334,
       17894
-    ]
+    ],
+    "showProgress": false
   },
   {
     "id": "mnlz367d",
@@ -441,24 +600,72 @@
       2680,
       713,
       4912
-    ]
+    ],
+    "showProgress": false
   },
   {
     "id": "mnne0jjm",
     "name": "Mega Man Zero",
     "gameIds": [
       782,
-      22099,
       783,
-      30059,
       625,
-      31768,
       784,
-      32800,
       8376,
       9818,
       8306
-    ]
+    ],
+    "showProgress": false
+  },
+  {
+    "id": "aae408f3",
+    "name": "Metal Gear",
+    "gameIds": [
+      3585,
+      3940,
+      11244,
+      10533,
+      3589,
+      2355
+    ],
+    "showProgress": true,
+    "coverGameId": 3585
+  },
+  {
+    "id": "aae408f2",
+    "name": "Monster Hunter",
+    "gameIds": [
+      19113,
+      19249,
+      3732,
+      17976,
+      208
+    ],
+    "showProgress": true,
+    "coverGameId": 19113
+  },
+  {
+    "id": "aae408f9",
+    "name": "Mother",
+    "gameIds": [
+      264,
+      3814,
+      2595,
+      677
+    ],
+    "showProgress": true,
+    "coverGameId": 264
+  },
+  {
+    "id": "aae40901",
+    "name": "Paper Mario",
+    "gameIds": [
+      10154,
+      4000,
+      187
+    ],
+    "showProgress": true,
+    "coverGameId": 10154
   },
   {
     "id": "mnlzk6sc",
@@ -478,7 +685,8 @@
       10525,
       3506,
       3507
-    ]
+    ],
+    "showProgress": true
   },
   {
     "id": "mnlzlt0u",
@@ -493,7 +701,8 @@
       3738,
       18762,
       19096
-    ]
+    ],
+    "showProgress": true
   },
   {
     "id": "mnnbyc6h",
@@ -507,11 +716,29 @@
       5853,
       810,
       668,
-      24186,
       515,
       11732,
       16211,
-      723
+      723,
+      3887,
+      586,
+      14860,
+      9852,
+      576,
+      7212,
+      788,
+      25369,
+      789,
+      726,
+      16295,
+      16163,
+      16296,
+      724,
+      790,
+      722,
+      16197,
+      16293,
+      16292
     ],
     "coverGameId": 668,
     "showProgress": true
@@ -522,8 +749,22 @@
     "gameIds": [
       17492,
       14853,
-      2816
-    ]
+      2816,
+      16293,
+      16292
+    ],
+    "showProgress": false
+  },
+  {
+    "id": "aae408fc",
+    "name": "Ragnarok",
+    "gameIds": [
+      45053,
+      9931,
+      3963
+    ],
+    "showProgress": true,
+    "coverGameId": 45053
   },
   {
     "id": "mnlypgal",
@@ -540,7 +781,8 @@
       12934,
       34703,
       16995
-    ]
+    ],
+    "showProgress": true
   },
   {
     "id": "mnmlqjfk",
@@ -562,7 +804,8 @@
       11268,
       5133,
       11419,
-      34766
+      34766,
+      19030
     ],
     "coverGameId": 11245,
     "showProgress": true
@@ -576,7 +819,27 @@
       12704,
       34776,
       34707
-    ]
+    ],
+    "showProgress": true
+  },
+  {
+    "id": "aae408f0",
+    "name": "SaGa",
+    "gameIds": [
+      14602,
+      3423,
+      3424,
+      3425,
+      19066,
+      3894,
+      3895,
+      11349,
+      11390,
+      2478,
+      19075
+    ],
+    "showProgress": true,
+    "coverGameId": 3894
   },
   {
     "id": "mnlzj17k",
@@ -600,7 +863,8 @@
       2989,
       7899,
       8425
-    ]
+    ],
+    "showProgress": true
   },
   {
     "id": "mnlyrydm",
@@ -610,12 +874,19 @@
       3496,
       9483,
       2646,
-      2652
-    ]
+      2652,
+      3736,
+      3495,
+      7285,
+      3891,
+      3737,
+      3164
+    ],
+    "showProgress": true
   },
   {
     "id": "mnnbws4f",
-    "name": "Shining Force",
+    "name": "Shining",
     "gameIds": [
       65,
       75,
@@ -624,8 +895,14 @@
       12639,
       10569,
       19363,
-      12640
-    ]
+      12640,
+      192,
+      4703,
+      7095,
+      14545,
+      14544
+    ],
+    "showProgress": true
   },
   {
     "id": "mnlzmcqc",
@@ -636,7 +913,8 @@
       1335,
       1336,
       19179
-    ]
+    ],
+    "showProgress": true
   },
   {
     "id": "mnlyrdmv",
@@ -658,9 +936,7 @@
     "gameIds": [
       18320,
       11255,
-      10536,
       11241,
-      20352,
       2609,
       2617,
       2621,
@@ -696,7 +972,8 @@
       2588,
       2589,
       9334
-    ]
+    ],
+    "showProgress": false
   },
   {
     "id": "mnlznhs4",
@@ -714,10 +991,36 @@
       3298,
       5111,
       3179,
-      3259
+      3259,
+      2209,
+      18582,
+      6981,
+      18574
     ],
     "coverGameId": 11301,
     "showProgress": true
+  },
+  {
+    "id": "aae408f1",
+    "name": "Tetris",
+    "gameIds": [
+      508,
+      2022,
+      12798,
+      2021,
+      1260,
+      2024,
+      815,
+      7040,
+      9878,
+      4939,
+      3145,
+      5075,
+      503,
+      836
+    ],
+    "showProgress": true,
+    "coverGameId": 2021
   },
   {
     "id": "mnmljwrh",
@@ -730,7 +1033,8 @@
       10479,
       10481,
       3568,
-      10513
+      10513,
+      3999
     ],
     "coverGameId": 10479,
     "showProgress": true
@@ -745,10 +1049,39 @@
       559,
       9190,
       204,
-      3934
+      3934,
+      748,
+      676,
+      202
     ],
     "coverGameId": 559,
     "showProgress": true
+  },
+  {
+    "id": "aae408f6",
+    "name": "The Sims",
+    "gameIds": [
+      17320,
+      17318,
+      5854,
+      6184,
+      5057,
+      16240
+    ],
+    "showProgress": true,
+    "coverGameId": 17320
+  },
+  {
+    "id": "aae408f8",
+    "name": "The Tower of Druaga",
+    "gameIds": [
+      12826,
+      22364,
+      3709,
+      7993
+    ],
+    "showProgress": true,
+    "coverGameId": 12826
   },
   {
     "id": "mnlzn7yv",
@@ -758,7 +1091,31 @@
       3142,
       6004,
       14169
-    ]
+    ],
+    "showProgress": true
+  },
+  {
+    "id": "aae408fd",
+    "name": "Vanillaware",
+    "gameIds": [
+      1282,
+      43,
+      2666,
+      14543
+    ],
+    "showProgress": true,
+    "coverGameId": 2666
+  },
+  {
+    "id": "aae40902",
+    "name": "Viewtiful Joe",
+    "gameIds": [
+      2996,
+      2997,
+      3257
+    ],
+    "showProgress": true,
+    "coverGameId": 2996
   },
   {
     "id": "mnlyrm7o",
@@ -784,7 +1141,8 @@
       3155,
       3157,
       3212
-    ]
+    ],
+    "showProgress": true
   },
   {
     "id": "mnntw2ol",
@@ -804,8 +1162,11 @@
       4705,
       2760,
       3300,
-      3132
-    ]
+      3132,
+      9896,
+      6700
+    ],
+    "showProgress": true
   },
   {
     "id": "mnnd34m8",
@@ -815,6 +1176,7 @@
       8671,
       4951,
       30277
-    ]
+    ],
+    "showProgress": true
   }
 ]

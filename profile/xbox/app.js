@@ -961,7 +961,7 @@ const buildSeries = (seriesData, achProgress, perfectMap, beatenMap) => seriesDa
             if (hasAch) { achEarned += d.unlocked; achTotal += d.total; }
             gs += d.gamerscore ?? 0; gsTotal += d.totalGamerscore ?? 0;
             const unlockMs = d.lastUnlockedAt ? toMs(d.lastUnlockedAt) : 0;
-            if (unlockMs && (!latest || unlockMs > latest.ms)) latest = { ms: unlockMs, name: d.lastUnlockName, icon: d.iconUrl, gameName: d.gameName, at: d.lastUnlockedAt };
+            if (unlockMs && (!latest || unlockMs > latest.ms)) latest = { ms: unlockMs, name: d.lastUnlockName, icon: (d.preview ?? []).find(a => a.displayName === d.lastUnlockName)?.iconUrl ?? d.iconUrl, gameName: d.gameName, at: d.lastUnlockedAt };
             const lastMs = Math.max(unlockMs, d.lastPlayedTs ? toMs(d.lastPlayedTs) : 0);
             return {
                 id, title: d.gameName ?? id, icon: d.iconUrl ? xboxImg(d.iconUrl, 64) : null, hero: d.heroUrl ?? null, hasAch, isPerfect, isStarted, beaten,

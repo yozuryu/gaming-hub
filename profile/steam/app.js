@@ -958,7 +958,7 @@ const buildSeries = (seriesData, achProgress, perfectMap, beatenMap) => seriesDa
             if (hasAch) { achEarned += d.unlocked; achTotal += d.total; }
             minutes += d.playtimeForever ?? 0;
             const unlockMs = d.lastUnlockedAt ? toMs(d.lastUnlockedAt) : 0;
-            if (unlockMs && (!latest || unlockMs > latest.ms)) latest = { ms: unlockMs, name: d.lastUnlockName, appId: Number(id), gameName: d.gameName, at: d.lastUnlockedAt };
+            if (unlockMs && (!latest || unlockMs > latest.ms)) latest = { ms: unlockMs, name: d.lastUnlockName, appId: Number(id), gameName: d.gameName, at: d.lastUnlockedAt, icon: (d.preview ?? []).find(a => a.displayName === d.lastUnlockName)?.iconUrl ?? null };
             const lastMs = Math.max(unlockMs, d.lastPlayedTs ? toMs(d.lastPlayedTs) : 0);
             return {
                 id: Number(id), title: d.gameName ?? `App ${id}`, icon: d.iconUrl ?? null, hasAch, isPerfect, isStarted, beaten,
@@ -1130,7 +1130,7 @@ const SeriesSheet = ({ card: c, onOpenGame, onClose }) => {
                     {L && <div className="ssheet-sec" style={{ '--c': '#e5b143' }}>Latest unlock</div>}
                     {L && (
                         <div className="grow compact" style={{ borderLeftColor: '#e5b143' }} title="Latest unlock in this series">
-                            <img src={headerUrl(L.appId)} alt="" className="grow-banner" onError={e => { e.target.style.visibility = 'hidden'; }} />
+                            {L.icon ? <img src={achIconUrl(L.appId, L.icon)} alt="" className="grow-icon" onError={e => { e.target.style.visibility = 'hidden'; }} /> : <img src={headerUrl(L.appId)} alt="" className="grow-banner" onError={e => { e.target.style.visibility = 'hidden'; }} />}
                             <div className="grow-main">
                                 <span className="grow-title" style={{ color: '#e5b143' }}><Trophy size={11} className="inline -mt-0.5 mr-1" />{L.name}</span>
                                 <div className="grow-sub"><span className="text-[#66c0f4] shrink">{L.gameName}</span><span>· {formatTimeAgo(L.at)}</span></div>

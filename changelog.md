@@ -11,6 +11,7 @@ Swiping between profile tabs looks like turning to another page; the RA Series t
 - Tapping a series opens its sheet: points, achievements and % as value-over-label stats, the latest unlock, and the games grouped In progress / Mastered / Not started / No achievements in compact rows. A played game opens its achievement sheet, with a back arrow to the series; a want-to-play game links to RetroAchievements
 - Series sheet: "Latest unlock" and "Games" are separate sections with the site's section headers (the status groups sit under Games), and game rows no longer stretch to fill a short sheet (the row class shares its name with Tailwind's `grow` utility)
 - Series sheet: a mastered game shows a band under its row with the mastery date and the rarest achievement (badge, % of players, name), from the same award data as Completions
+- Series rechecked: 66 shown instead of 22. Every series with 3+ games shows; 20 new ones (SaGa, Tetris, Monster Hunter, Metal Gear, DJMax, Ape Escape, Mother, Devil May Cry, Vanillaware, Chrono, Etrian Odyssey, Paper Mario, Disgaea…); missing games added to existing ones (about 30 Final Fantasy, 17 Pokémon, Persona and SMT, Tales, Zelda, Shining…). Subsets are no longer counted as games in a series, and a dead RA page left Mega Man. Sub-series nested in a bigger one (Mega Man X / Zero / Battle Network / Star Force, Crystal Chronicles, FF Tactics, Pokémon Mystery Dungeon, Swordcraft Story) stay hidden so games don't show twice
 - Series sheet: beaten games have their own group under Mastered (In progress · Mastered · Beaten · Not started · No achievements), and the card and sheet count them ("2 started · ★ 1 mastered · 1 beaten")
 - Series sheet: a long sheet no longer squashes the mastered band onto its row, and game titles wrap to two lines
 - Desktop: the back button to the series no longer overlaps the game icon in the achievement sheet
@@ -22,7 +23,7 @@ Swiping between profile tabs looks like turning to another page; the RA Series t
 
 - The same tab swipe, with skeletons shaped like Overview, Recent, Progress and Activity
 - Desktop: the wider layout with a side rail as on RA (User stats and Completions on the right); Recent unlocks lists the next five with their rarity
-- New Series tab, like RA's: series you make in the admin (Steam → Series), shown once 3 of their games are in the library. Cards with the store banner, % complete and the icon strip; the sheet has hours played, achievements and %, the latest unlock, and the games grouped In progress · Perfect · Beaten · Not started · No achievements, with the perfect date and final unlock under perfect games. A game opened from it has a back button to the series
+- New Series tab, like RA's: series you make in the admin (Steam → Series), shown once 3 of their games are in the library. Cards with the store banner, % complete and the icon strip; the sheet has hours played, achievements and %, the latest unlock (with the achievement's icon), and the games grouped In progress · Perfect · Beaten · Not started · No achievements, with the perfect date and final unlock under perfect games. A game opened from it has a back button to the series
 - 37 series to start with, from the library: franchises (Trails, Final Fantasy, Resident Evil, Ys, Gunvolt, Tales of, Mega Man, Neptunia, Batman: Arkham, Warhammer 40,000 and Fantasy…) and studios (Supergiant, PlatinumGames, FromSoftware, Nihon Falcom, Inti Creates, Arc System Works, Klei, Amplitude, To the Moon).
 
 ### Xbox
@@ -30,6 +31,7 @@ Swiping between profile tabs looks like turning to another page; the RA Series t
 - The same tab swipe, with skeletons shaped like Overview, Recent, Progress and Activity
 - Desktop: the wider layout with a side rail as on RA (User stats and Completions on the right); Recent unlocks lists the next five with their gamerscore
 - New Series tab, as on Steam (admin: Xbox → Series, 3+ games in the library), with gamerscore in place of hours and Completed for 100%
+- 4 series to start with: Fable (II, III, Anniversary), Final Fantasy, BioShock and Ninja Theory (Enslaved, both Hellblades)
 
 ### Hub
 

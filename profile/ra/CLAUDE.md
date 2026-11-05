@@ -36,6 +36,7 @@ Recent Games and Completion Progress render `GameListRow` (icon, title, console,
 - Profile header: the most recently played game's screenshot (or icon) blurred behind it (`HeaderArt`)
 
 ## Series
+- **`data/ra/series.json` rules** (same as Steam / Xbox): only real games, no `[Subset …]` entries; `showProgress` on for every series with 3+ games, except sub-series fully nested in a bigger one (Mega Man X / Zero / Battle Network / Star Force, Final Fantasy Crystal Chronicles, Final Fantasy Tactics, Pokémon Mystery Dungeon, Summon Night Swordcraft Story), whose games are also in the parent
 - `buildSeries()` → one entry per `showProgress` series: per-game status (from `games.json`, else the watchlist entry), counts, points/achievement totals, `latestAch`, `lastMs` (latest unlock or last played)
 - Card (`.scard`): cover icon (`coverGameId`, else the first id), counts, % + `shortAgo(lastMs)`, bar, icon strip (`seriesIconOrder`: mastered, started by recency, not started, no achievements; classes `mastered` / `dim` / `noach`)
 - **Art:** the cover's screenshot, else the most recently active series game with a `raShot`, else the cover icon (`.art-icon`). Watchlist-only covers have no screenshot (watchlist entries only carry `imageIcon`)
