@@ -355,7 +355,22 @@ const useAnimatedHeight = (ref, duration = 220) => {
   }, []);
 };
 
-const RAchievementModal = ({ game, guides, onClose, onBack = null, backLabel = '' }) => {
+// Achievement list placeholder while games.json loads (same as Steam / Xbox)
+const ModalListSkeleton = () => (
+  <div className="px-4 py-3 flex flex-col gap-1.5" aria-busy="true">
+    {[...Array(6)].map((_, i) => (
+      <div key={i} className="flex items-center gap-3 p-2 bg-[#202d39] border border-[#2a475e] rounded-[2px]">
+        <div className="shimmer w-10 h-10 rounded-[2px] shrink-0" />
+        <div className="flex-1 flex flex-col gap-1.5">
+          <div className="shimmer h-2.5 rounded" style={{ width: `${40 + (i % 3) * 15}%` }} />
+          <div className="shimmer h-2 rounded" style={{ width: `${60 + (i % 2) * 20}%` }} />
+        </div>
+      </div>
+    ))}
+  </div>
+);
+
+const RAchievementModal = ({ game, guides, onClose, onBack = null, backLabel = '', loading = false }) => {
   const [lockFilter, setLockFilter] = useState('all');
   const [typeFilter, setTypeFilter] = useState('all');
   const panelRef = useRef(null);
@@ -487,7 +502,10 @@ const RAchievementModal = ({ game, guides, onClose, onBack = null, backLabel = '
         {/* Guides (moved here from the game cards) */}
         <GuideStrip game={game} guides={guides} inModal />
 
+        {loading && <ModalListSkeleton />}
+
         {/* Filters: status (one of three), then the type toggles; tap an active type again to clear it */}
+        {!loading && <>
         <div className="flex items-center gap-2 px-4 py-2 border-b border-[#101214] shrink-0">
           <div className="frow flex-1 min-w-0" role="group" aria-label="Filter achievements">
             {[
@@ -565,6 +583,7 @@ const RAchievementModal = ({ game, guides, onClose, onBack = null, backLabel = '
             <div className="text-center py-8 text-[#546270] text-[11px]">No achievements match the current filters.</div>
           )}
         </div>
+        </>}
       </div>
 
       {/* Fixed-position tooltip — escapes scroll container, always above hovered element */}
@@ -1443,16 +1462,23 @@ export default function App() {
     if (achievementChunks[0] === null && loadingChunkIdx === null) loadAllChunks();
   }, [activeTab]);
 
-  // ── Fetch games.json when Recent or Progress tab is opened ─
+  // ── Fetch games.json (5 MB) when Recent, Progress or Series opens, or a game is opened from Overview ─
+  const gamesRequested = useRef(false);
+  const loadGames = () => {
+    if (gamesData || gamesRequested.current) return;
+    gamesRequested.current = true;
+    setLoadingGames(true);
+    fetch('../../data/ra/games.json')
+      .then(r => { if (!r.ok) throw new Error('Failed to load games.json'); return r.json(); })
+      .then(data => { setGamesData(data); setLoadingGames(false); })
+      .catch(err => { console.error(err); setLoadingGames(false); setGamesFailed(true); });
+  };
   useEffect(() => {
-    if (['recent', 'progress', 'series'].includes(activeTab) && !gamesData && !loadingGames) {
-      setLoadingGames(true);
-      fetch('../../data/ra/games.json')
-        .then(r => { if (!r.ok) throw new Error('Failed to load games.json'); return r.json(); })
-        .then(data => { setGamesData(data); setLoadingGames(false); })
-        .catch(err => { console.error(err); setLoadingGames(false); setGamesFailed(true); });
-    }
+    if (['recent', 'progress', 'series'].includes(activeTab)) loadGames();
   }, [activeTab]);
+  // A game opened before games.json arrived (Overview's Last played) has no achievement list yet:
+  // open the sheet with a skeleton, load the file, and show the full entry once it's there
+  const openGame = g => { setSelectedGame(g); if (!g.achievements?.length) loadGames(); };
 
   // ── Merge loaded achievement chunks (newest first) ────────
   const allLoadedAchievements = useMemo(() => {
@@ -1642,7 +1668,7 @@ export default function App() {
                     const g = PROFILE_DATA.mostRecentGame && ALL_GAMES.find(x => x.id === PROFILE_DATA.mostRecentGame.id);
                     if (!g) return <div className="text-[#8f98a0] text-[11px] py-2">No recent games found.</div>;
                     return (
-                      <GameListRow game={g} onViewDetails={setSelectedGame}
+                      <GameListRow game={g} onViewDetails={openGame}
                         extra={PROFILE_DATA.richPresenceMsg && <span className="grow-extra rp" title="Rich presence: what the game reports you're doing"><Radio size={11} className="text-[#57cbde]" />{PROFILE_DATA.richPresenceMsg}</span>} />
                     );
                   })()}
@@ -2197,7 +2223,8 @@ export default function App() {
 
       `}</style>
 
-      {selectedGame && <RAchievementModal game={selectedGame} guides={guidesData[selectedGame.id] ?? null}
+      {selectedGame && <RAchievementModal game={(gamesData && ALL_GAMES.find(x => x.id === selectedGame.id)) || selectedGame} guides={guidesData[selectedGame.id] ?? null}
+        loading={!gamesData && !gamesFailed && !selectedGame.achievements?.length}
         onClose={() => { setSelectedGame(null); setSeriesBack(null); }}
         onBack={seriesBack ? () => { setSelectedGame(null); setSelectedSeries(seriesBack); setSeriesBack(null); } : null}
         backLabel={seriesBack?.series.name} />}

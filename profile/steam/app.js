@@ -1087,7 +1087,7 @@ const PerfectRow = ({ x, onOpenGame }) => {
                     {p.lastAchName && (
                         <div className="c rare" title={`Last achievement: ${p.lastAchName}`}>
                             {p.lastAchIconUrl && <img src={p.lastAchIconUrl} alt="" loading="lazy" />}
-                            <div><b style={{ color: rarityBorderColor(p.lastAchGlobalPct) }}>{p.lastAchGlobalPct != null ? `${p.lastAchGlobalPct}%` : 'Last'}</b><span>Final unlock: {p.lastAchName.replace(/^"|"$/g, '')}</span></div>
+                            <div><b style={{ color: rarityBorderColor(p.lastAchGlobalPct) }}>{p.lastAchGlobalPct != null ? `${p.lastAchGlobalPct}%` : 'Last'}</b><span>{p.lastAchName.replace(/^"|"$/g, '')}</span></div>
                         </div>
                     )}
                 </div>

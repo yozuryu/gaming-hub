@@ -31,16 +31,18 @@ export function useSheet({ panelRef, dragRef, rootRef, onClose }) {
     setTimeout(() => onCloseRef.current(), CLOSE_MS);
   }, []);
 
-  // Escape closes; the page behind doesn't scroll (html too, for iOS)
+  // Escape closes; the page behind doesn't scroll. Only <html> is locked: with <body> hidden too,
+  // body becomes its own scroll container and the pinned tab bar (position: sticky) jumps back to
+  // its place in the page, out of view behind the sheet
   useEffect(() => {
     const onKey = e => { if (e.key === 'Escape') close(); };
     window.addEventListener('keydown', onKey);
-    const html = document.documentElement, body = document.body;
-    const prev = [html.style.overflow, body.style.overflow];
-    html.style.overflow = body.style.overflow = 'hidden';
+    const html = document.documentElement;
+    const prev = html.style.overflow;
+    html.style.overflow = 'hidden';
     return () => {
       window.removeEventListener('keydown', onKey);
-      [html.style.overflow, body.style.overflow] = prev;
+      html.style.overflow = prev;
     };
   }, [close]);
 
