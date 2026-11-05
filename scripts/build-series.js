@@ -63,6 +63,8 @@ function indexGames(platform) {
         out[id] = {
             title: d.gameName ?? id,
             icon: steam ? `${STEAM_CDN}/${id}/header.jpg` : d.iconUrl ?? null,
+            // Square game icon for the small icon strips (Steam's icon is the community one; the header is wide)
+            ...(steam && d.iconUrl ? { square: d.iconUrl } : {}),
             art: steam ? `${STEAM_CDN}/${id}/library_hero.jpg` : d.heroUrl ?? null,
             unlocked: d.hasAchievements ? d.unlocked ?? 0 : 0, total: d.hasAchievements ? d.total ?? 0 : 0,
             minutes: steam ? d.playtimeForever ?? 0 : undefined, beaten: beaten.has(id),

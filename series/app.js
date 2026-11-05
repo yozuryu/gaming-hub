@@ -34,6 +34,7 @@ const withStatus = g => {
     return {
         ...g, hasAch, done, started, beatenOnly: started && g.beaten,
         icon: g.p === 'xbox' ? xboxImg(g.icon, 128) : g.icon,
+        square: g.p === 'xbox' ? xboxImg(g.icon, 64) : g.square ?? g.icon,
         art: g.p === 'xbox' ? xboxImg(g.art, 640) : g.art,
         color: done ? '#e5b143' : g.beaten ? '#b8c4ce' : started ? '#66c0f4' : hasAch ? '#323f4c' : '#1e2a35',
     };
@@ -111,7 +112,7 @@ const SeriesCard = ({ c, onOpen }) => {
             </div>
             <div className="gbar"><i style={{ width: `${c.pct}%`, background: '#e5b143' }} /></div>
             <div className="sicons">
-                {icons.slice(0, 10).map(x => x.icon && <img key={x.key} src={x.icon} alt="" title={`${x.title} · ${PLATFORMS[x.p].label}`} loading="lazy" className={x.done ? 'mastered' : x.unlocked > 0 ? '' : x.hasAch ? 'dim' : 'noach'} />)}
+                {icons.slice(0, 10).map(x => x.square && <img key={x.key} src={x.square} alt="" title={`${x.title} · ${PLATFORMS[x.p].label}`} loading="lazy" className={x.done ? 'mastered' : x.unlocked > 0 ? '' : x.hasAch ? 'dim' : 'noach'} />)}
                 {icons.length > 10 && <span>+{icons.length - 10}</span>}
             </div>
         </button>

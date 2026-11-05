@@ -1037,7 +1037,7 @@
         const art = c.cover?.art ? `<div class="scard-art"><img src="${esc(c.cover.p === 'xbox' ? xboxImg(c.cover.art, 640) : c.cover.art)}" alt="" loading="lazy" onerror="this.style.display='none'" /></div>` : '';
         const split = c.split.map(([p, n]) => `<span style="display:inline-flex;align-items:center;gap:3px;"><img src="${ICON[p]}" alt="" style="width:12px;height:12px;object-fit:contain;" />${n}</span>`).join(' ');
         const icons = [...c.games].sort((a, b) => (b.unlocked > 0) - (a.unlocked > 0) || b.lastMs - a.lastMs).slice(0, 10)
-          .map(g => `<img src="${esc(img(g, 64))}" alt="" loading="lazy" class="${g.total && g.unlocked >= g.total ? 'mastered' : g.unlocked > 0 ? '' : g.total ? 'dim' : 'noach'}" />`).join('');
+          .map(g => `<img src="${esc(g.square ?? img(g, 64))}" alt="" loading="lazy" class="${g.total && g.unlocked >= g.total ? 'mastered' : g.unlocked > 0 ? '' : g.total ? 'dim' : 'noach'}" />`).join('');
         const ago = c.lastMs ? (() => { const dd = Math.floor((Date.now() - c.lastMs) / 86400000); return dd < 1 ? 'today' : dd < 7 ? `${dd}d` : dd < 30 ? `${Math.floor(dd / 7)}w` : dd < 365 ? `${Math.floor(dd / 30)}mo` : `${Math.floor(dd / 365)}y`; })() : '';
         return `
           <a href="./series/?open=${encodeURIComponent(c.s.id)}" class="scard smooth${i >= 3 ? ' hub-desk' : ''}" style="border-left-color:${edge};">
