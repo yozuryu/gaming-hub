@@ -38,6 +38,13 @@ const GameBar = ({ pct, done }) => (
     <div className="gbar"><i style={{ width: `${pct}%`, background: done ? '#e5b143' : '#66c0f4' }} /></div>
 );
 
+// Faded art behind rows and series cards: the library hero, else the store cover (some games
+// have no hero), else nothing
+const heroFallback = appId => e => {
+    const img = e.currentTarget, header = headerUrl(appId);
+    if (img.src !== header) img.src = header; else img.style.display = 'none';
+};
+
 // One compact row: full store banner, title, playtime · last played, count and bar.
 // Tap opens the achievement sheet.
 const GameListRow = ({ game, achievementData, onViewDetails, beatenInfo, extra = null }) => {
@@ -46,7 +53,7 @@ const GameListRow = ({ game, achievementData, onViewDetails, beatenInfo, extra =
     const Tag = hasAch ? 'button' : 'div';
     return (
         <Tag onClick={hasAch ? () => onViewDetails({ game, achievementData, beatenInfo }) : undefined} className="grow" style={{ borderLeftColor: color }}>
-            <div className="grow-art"><img src={heroUrl(game.appId)} alt="" loading="lazy" onError={e => { e.target.style.display = 'none'; }} /></div>
+            <div className="grow-art"><img src={heroUrl(game.appId)} alt="" loading="lazy" onError={heroFallback(game.appId)} /></div>
             <img src={headerUrl(game.appId)} alt="" loading="lazy" className="grow-banner" onError={e => { e.target.style.visibility = 'hidden'; }} />
             <div className="grow-main">
                 <span className="grow-title">{game.name}</span>
@@ -1038,7 +1045,7 @@ const SeriesTab = ({ cards, onOpen }) => {
                     const icons = seriesIconOrder(c.games);
                     return (
                         <button key={c.series.id} onClick={() => onOpen(c)} className="scard smooth" style={{ borderLeftColor: seriesEdge(c) }}>
-                            <div className="scard-art"><img src={heroUrl(c.coverId)} alt="" loading="lazy" onError={e => { e.target.style.display = 'none'; }} /></div>
+                            <div className="scard-art"><img src={heroUrl(c.coverId)} alt="" loading="lazy" onError={heroFallback(c.coverId)} /></div>
                             <div className="scard-top">
                                 <img src={headerUrl(c.coverId)} alt="" loading="lazy" className="scard-cover banner" onError={e => { e.target.style.visibility = 'hidden'; }} />
                                 <div className="scard-main">
