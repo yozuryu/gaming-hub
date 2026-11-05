@@ -41,7 +41,7 @@ Swiping between profile tabs looks like turning to another page; the RA Series t
 
 ### All pages
 
-- Achievement and series sheets: the game art behind the header is sharper and darker (blur 1.5px instead of 6px, brightness 55% instead of 80%); art that falls back to an RA icon keeps the strong blur. The profile headers are unchanged
+- Achievement and series sheets: the game art behind the header is sharper and darker (blur 3px instead of 6px, brightness 55% instead of 80%); art that falls back to an RA icon keeps the strong blur. The profile headers are unchanged
 
 ### Admin
 
