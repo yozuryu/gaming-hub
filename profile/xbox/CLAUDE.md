@@ -30,3 +30,8 @@ Built from `profile/steam/` and kept structurally parallel to it. When changing 
 - Heatmap: same blue ramp as Steam, gold peak
 - Xbox green `#52b043` (`XBOX_GREEN`) only marks Xbox: avatar border here; elsewhere the hub card, activity feed border, Activity-page Xbox filter, changelog section
 - Status colors: completed gold, beaten silver `#b8c4ce`, in progress blue
+
+## Series
+- `data/xbox/series.json` (hand-made in the admin, Xbox → Series; same shape as RA's: `{ id, name, gameIds, showProgress, coverGameId }`, ids are titleIds). The tab only appears when a series has `SERIES_MIN` (3) of its games in `games/index.json`
+- `buildSeries()` → cards (`.scard`, the square title icon, hero art behind, `.smooth` = no pixelated scaling) and `SeriesSheet` (gamerscore · achievements · %, latest unlock from the index's `lastUnlockName`, groups In progress · Completed · Beaten · Not started · No achievements). Beaten = the win-condition games (`beatenGames`). Completed games use `CompletedRow` (`.smast` band: `perfectGames[].completedAt` and the final unlock, which is not the rarest). Opening a game sets `seriesBack`; `AchievementModal` then shows `.sheet-back`
+- Same code as the Steam page (keep them in step), RA's version in `profile/ra/app.js`

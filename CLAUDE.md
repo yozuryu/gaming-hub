@@ -42,7 +42,7 @@ gaming-hub/
 │
 ├── data/                           # JSON read by the browser. Pipeline output is NOT on main: it lives on the `data` branch
 │                                   #   (scripts/data-paths.json, gitignored here, `npm run data:pull` to get it locally).
-│                                   #   On main: hub/config.json, ra/series.json, ra/guides.json, {steam,xbox}/win-conditions.json
+│                                   #   On main: hub/config.json, {ra,steam,xbox}/series.json, ra/guides.json, {steam,xbox}/win-conditions.json
 │   ├── hub/config.json             # Username, motto, tags, platform visibility flags
 │   ├── ra/
 │   │   ├── profile.json            # RA profile, stats, awards, recently played

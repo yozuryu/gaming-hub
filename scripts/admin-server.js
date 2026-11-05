@@ -18,6 +18,8 @@ const ALLOWED = [
     'data/hub/config.json',
     'data/ra/guides.json',
     'data/ra/series.json',
+    'data/steam/series.json',
+    'data/xbox/series.json',
     'data/steam/games/index.json',
     'data/xbox/games/index.json',
     'data/xbox/win-conditions.json',

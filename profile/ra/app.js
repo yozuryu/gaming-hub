@@ -412,7 +412,7 @@ const RAchievementModal = ({ game, guides, onClose, onBack = null, backLabel = '
             </div>
           )}
           <span className="sheet-grab" />
-          <div className="relative flex items-end gap-4 px-4 pt-[34px] pb-4">
+          <div className={`relative flex items-end gap-4 px-4 pt-[34px] pb-4 ${onBack ? 'md:pt-[54px]' : ''}`}>
             <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer"
               className="shrink-0 w-16 h-16 rounded-[3px] overflow-hidden border-2 border-white/20 bg-[#101214] shadow-[0_6px_18px_rgba(0,0,0,0.55)] hover:scale-105 transition-transform">
               <img src={game.icon} alt={game.title} className="w-full h-full object-cover" />
@@ -1079,12 +1079,12 @@ const ActivitySkeleton = () => (
 // ── Series ─────────────────────────────────────────────────────────────────────
 // Per series: its games (played ones are ALL_GAMES entries, so they open the achievement sheet),
 // counts, points and achievements, the latest unlock and the cover art. Styles in assets/ui.css.
-const buildSeries = (seriesData, gamesData, watchlistData, allGames) => {
+const buildSeries = (seriesData, gamesData, watchlistData, allGames, beatenIds = new Set()) => {
   const gameProgress = gamesData?.detailedGameProgress ?? {};
   const wlMap = Object.fromEntries((watchlistData?.results ?? []).map(g => [g.id, g]));
   const byId = new Map(allGames.map(g => [g.id, g]));
   return seriesData.filter(s => s.showProgress).map(series => {
-    let tracked = 0, started = 0, mastered = 0, pointsEarned = 0, pointsTotal = 0, achEarned = 0, achTotal = 0;
+    let tracked = 0, started = 0, beatenCount = 0, mastered = 0, pointsEarned = 0, pointsTotal = 0, achEarned = 0, achTotal = 0;
     let latestAch = null;
     const games = series.gameIds.map(id => {
       const d = gameProgress[id], wl = wlMap[id], g = byId.get(id) ?? null;
@@ -1102,13 +1102,14 @@ const buildSeries = (seriesData, gamesData, watchlistData, allGames) => {
       } else if (wl) { pointsTotal += wl.pointsTotal ?? 0; achTotal += wl.achievementsPublished ?? 0; }
       const isMastered = numAchs > 0 && awarded === numAchs;
       const isStarted  = awarded > 0 && !isMastered;
-      if (isMastered) mastered++; else if (isStarted) started++;
+      const beaten     = isStarted && beatenIds.has(id);
+      if (isMastered) mastered++; else if (beaten) beatenCount++; else if (isStarted) started++;
       // Last activity: the latest unlock, or the last time it was played (recently played games)
       const lastUnlock = d?.achievements ? Math.max(0, ...Object.values(d.achievements).filter(a => a.dateEarned).map(a => toMs(a.dateEarned))) : 0;
       const lastMs = Math.max(lastUnlock, g ? raDateMs(g.lastPlayedStr) : 0);
       const info = d ?? wl ?? null;
       return {
-        id, g, hasAch: numAchs > 0, numAchs, awarded, isMastered, isStarted, lastMs, inWatchlist: !!wl,
+        id, g, hasAch: numAchs > 0, numAchs, awarded, isMastered, isStarted, beaten, lastMs, inWatchlist: !!wl,
         title: info?.title ?? String(id), icon: info?.imageIcon ? getMediaUrl(info.imageIcon) : null,
         console: info?.consoleName ?? g?.console ?? '', points: wl?.pointsTotal ?? 0,
       };
@@ -1121,7 +1122,7 @@ const buildSeries = (seriesData, gamesData, watchlistData, allGames) => {
     const shot = shotOf(coverId) ?? [...games].sort((a, b) => b.lastMs - a.lastMs).map(x => shotOf(x.id)).find(Boolean) ?? null;
     const lastMs = Math.max(0, ...games.map(x => x.lastMs));
     return {
-      series, games, total: games.length, tracked, started, mastered, pointsEarned, pointsTotal, achEarned, achTotal, latestAch, lastMs,
+      series, games, total: games.length, tracked, started, beatenCount, mastered, pointsEarned, pointsTotal, achEarned, achTotal, latestAch, lastMs,
       pct: achTotal > 0 ? (achEarned / achTotal) * 100 : 0,
       coverIcon: cover?.imageIcon ? getMediaUrl(cover.imageIcon) : null,
       coverArt: shot ? getMediaUrl(shot) : cover?.imageIcon ? getMediaUrl(cover.imageIcon) : null, coverArtIsIcon: !shot,
@@ -1129,7 +1130,7 @@ const buildSeries = (seriesData, gamesData, watchlistData, allGames) => {
   });
 };
 
-const seriesEdge = c => c.tracked > 0 && c.mastered === c.tracked ? '#e5b143' : c.started || c.mastered ? '#66c0f4' : '#323f4c';
+const seriesEdge = c => c.tracked > 0 && c.mastered === c.tracked ? '#e5b143' : c.started || c.beatenCount || c.mastered ? '#66c0f4' : '#323f4c';
 const pctLabel = p => p > 0 && p < 1 ? '<1%' : `${Math.floor(p)}%`;
 // Icons in the card strip: mastered and started first (latest first), then the rest by title
 const seriesIconOrder = games => [...games].sort((a, b) => {
@@ -1143,11 +1144,11 @@ const SERIES_SORTS = [
   { value: 'recent', label: 'Last played' },
 ];
 
-function SeriesProgressTab({ seriesData, gamesData, watchlistData, allGames, onOpen }) {
+function SeriesProgressTab({ seriesData, gamesData, watchlistData, allGames, beatenIds, onOpen }) {
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState('name');
   const [filter, setFilter] = useState('all');
-  const cards = useMemo(() => buildSeries(seriesData, gamesData, watchlistData, allGames), [seriesData, gamesData, watchlistData, allGames]);
+  const cards = useMemo(() => buildSeries(seriesData, gamesData, watchlistData, allGames, beatenIds), [seriesData, gamesData, watchlistData, allGames, beatenIds]);
 
   if (cards.length === 0) {
     return (
@@ -1203,6 +1204,7 @@ function SeriesProgressTab({ seriesData, gamesData, watchlistData, allGames, onO
                     <span>{c.total} games</span>
                     {c.started > 0 && <><i>·</i><span className="text-[#66c0f4]">{c.started} started</span></>}
                     {c.mastered > 0 && <><i>·</i><span className="text-[#e5b143]">★ {c.mastered} mastered</span></>}
+                    {c.beatenCount > 0 && <><i>·</i><span className="text-[#b8c4ce]">{c.beatenCount} beaten</span></>}
                   </span>
                 </div>
                 <span className="scard-end">
@@ -1254,8 +1256,9 @@ const SeriesSheet = ({ card: c, awards, onOpenGame, onClose }) => {
   const close = useSheet({ panelRef, dragRef, rootRef, onClose });
   const art = useArtSrc([c.coverArt]);
   const groups = [
-    { key: 'started',  label: 'In progress',     games: c.games.filter(x => x.isStarted).sort((a, b) => b.lastMs - a.lastMs) },
+    { key: 'started',  label: 'In progress',     games: c.games.filter(x => x.isStarted && !x.beaten).sort((a, b) => b.lastMs - a.lastMs) },
     { key: 'mastered', label: 'Mastered',        games: c.games.filter(x => x.isMastered).sort((a, b) => b.lastMs - a.lastMs) },
+    { key: 'beaten',   label: 'Beaten',          games: c.games.filter(x => x.beaten).sort((a, b) => b.lastMs - a.lastMs) },
     { key: 'none',     label: 'Not started',     games: c.games.filter(x => x.hasAch && !x.awarded).sort((a, b) => a.title.localeCompare(b.title)) },
     { key: 'noach',    label: 'No achievements', games: c.games.filter(x => !x.hasAch).sort((a, b) => a.title.localeCompare(b.title)) },
   ].filter(gr => gr.games.length);
@@ -1273,7 +1276,7 @@ const SeriesSheet = ({ card: c, awards, onOpenGame, onClose }) => {
               <div className="min-w-0 flex flex-col gap-1">
                 <span className="sheet-title text-[17px] font-semibold text-white leading-tight">{c.series.name}</span>
                 <span className="text-[11.5px] text-[#c6d4df] art-shadow">
-                  {c.total} games{c.started > 0 && <> · <span className="text-[#66c0f4]">{c.started} started</span></>}{c.mastered > 0 && <> · <span className="text-[#e5b143]">★ {c.mastered} mastered</span></>}
+                  {c.total} games{c.started > 0 && <> · <span className="text-[#66c0f4]">{c.started} started</span></>}{c.mastered > 0 && <> · <span className="text-[#e5b143]">★ {c.mastered} mastered</span></>}{c.beatenCount > 0 && <> · <span className="text-[#b8c4ce]">{c.beatenCount} beaten</span></>}
                 </span>
               </div>
             </div>
@@ -1477,6 +1480,7 @@ export default function App() {
   }, [profileData, watchlistData, gamesData]);
 
   const { profile: PROFILE_DATA, games: ALL_GAMES, backlog: BACKLOG } = useMemo(() => transformData(rawData), [rawData]);
+  const beatenIds = useMemo(() => new Set((PROFILE_DATA?.gameAwards ?? []).filter(a => a.type === 'Game Beaten').map(a => a.gameId)), [PROFILE_DATA]);
   const masteryAwards = useMemo(() => new Map((PROFILE_DATA?.gameAwards ?? []).filter(a => a.type === 'Mastery/Completion').map(a => [a.gameId, a])), [PROFILE_DATA]);
 
   // Header background: the most recently played game's screenshot, or its icon when it has none
@@ -1796,7 +1800,7 @@ export default function App() {
           ) : activeTab === 'series' ? (
             !seriesLoaded || (!gamesData && !gamesFailed)
               ? <>{[...Array(3)].map((_, i) => <GameCardSkeleton key={i} />)}</>
-              : <SeriesProgressTab seriesData={seriesData} gamesData={gamesData} watchlistData={watchlistData} allGames={ALL_GAMES} onOpen={setSelectedSeries} />
+              : <SeriesProgressTab seriesData={seriesData} gamesData={gamesData} watchlistData={watchlistData} allGames={ALL_GAMES} beatenIds={beatenIds} onOpen={setSelectedSeries} />
           ) : activeTab === 'activity' ? (
             loadedChunkCount === 0 && loadingChunkIdx !== null
               ? <ActivitySkeleton />

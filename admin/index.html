@@ -493,7 +493,7 @@ function computeRecommendations(allGames, series) {
         .sort((a, b) => b.games.length - a.games.length);
 }
 
-function RASeriesModule() {
+function SeriesModule({ cfg }) {
     const [allGames,        setAllGames]        = useState([]);
     const [series,          setSeries]          = useState(null);
     const [selectedId,      setSelectedId]      = useState(null);
@@ -510,8 +510,8 @@ function RASeriesModule() {
 
     useEffect(() => {
         Promise.all([
-            apiGet(`${API}/games/ra`),
-            apiData('data/ra/series.json'),
+            cfg.loadGames(),
+            apiData(cfg.file),
         ]).then(([g, s]) => {
             setAllGames(g);
             setSeries((Array.isArray(s) ? s : []).sort((a, b) => seriesSortKey(a.name).localeCompare(seriesSortKey(b.name))));
@@ -522,7 +522,7 @@ function RASeriesModule() {
 
     const save = async () => {
         setSaving(true);
-        await apiSave('data/ra/series.json', series);
+        await apiSave(cfg.file, series);
         setSaving(false); setDirty(false); setSaved(true);
     };
 
@@ -531,7 +531,7 @@ function RASeriesModule() {
     const handleModalConfirm = (value) => {
         const { mode, id, suggestedGameIds } = modal;
         if (mode === 'add') {
-            const newEntry = { id: Date.now().toString(36), name: value, gameIds: suggestedGameIds ?? [] };
+            const newEntry = { id: Date.now().toString(36), name: value, gameIds: suggestedGameIds ?? [], ...(cfg.minGames ? { showProgress: true } : {}) };
             update([...(series || []), newEntry].sort((a, b) => seriesSortKey(a.name).localeCompare(seriesSortKey(b.name))));
             setSelectedId(newEntry.id);
             setShowSuggestions(false);
@@ -543,7 +543,7 @@ function RASeriesModule() {
             const next = series.filter(s => s.id !== id);
             update(next);
             if (selectedId === id) setSelectedId(null);
-            apiSave('data/ra/series.json', next);
+            apiSave(cfg.file, next);
         }
         setModal(null);
     };
@@ -626,7 +626,7 @@ function RASeriesModule() {
                                 className={`w-full flex items-center gap-2 px-3 py-1.5 text-left transition-colors ${isSel ? 'bg-[#2a475e]' : 'hover:bg-[#1b2838]'}`}>
                                 <span className={`text-[11px] flex-1 truncate ${isSel ? 'text-white' : 'text-[#8f98a0]'}`}>{s.name}</span>
                                 {s.showProgress && <span className="w-1.5 h-1.5 rounded-full bg-[#e5b143] shrink-0" />}
-                                <span className="text-[9px] text-[#546270] shrink-0">{s.gameIds.length}</span>
+                                <span className={`text-[9px] shrink-0 ${cfg.minGames && s.gameIds.length < cfg.minGames ? 'text-[#ff6b6b]' : 'text-[#546270]'}`} title={cfg.minGames && s.gameIds.length < cfg.minGames ? `Shown on the site from ${cfg.minGames} games` : undefined}>{s.gameIds.length}</span>
                             </button>
                         );
                     })}
@@ -673,9 +673,9 @@ function RASeriesModule() {
                             )}
                             {filteredUnassigned.map(g => (
                                 <div key={g.id} className="flex items-center gap-2 px-3 py-1.5 hover:bg-[#1b2838] border-b border-[#1a2535]">
-                                    <img src={`${RA_MEDIA}${g.imageIcon}`} alt="" className="w-6 h-6 rounded-[2px] border border-[#101214] object-cover bg-black shrink-0" />
+                                    <img src={g.icon} alt="" className="w-6 h-6 rounded-[2px] border border-[#101214] object-cover bg-black shrink-0" />
                                     <div className="flex-1 flex flex-col min-w-0">
-                                        <a href={`${RA_SITE}/game/${g.id}`} target="_blank" rel="noreferrer" className="text-[11px] text-[#c6d4df] hover:text-[#66c0f4] truncate transition-colors" onClick={e => e.stopPropagation()}>{g.title}</a>
+                                        <a href={g.url} target="_blank" rel="noreferrer" className="text-[11px] text-[#c6d4df] hover:text-[#66c0f4] truncate transition-colors" onClick={e => e.stopPropagation()}>{g.title}</a>
                                         {g.consoleName && <span className="text-[9px] text-[#546270] truncate">{g.consoleName}</span>}
                                     </div>
                                     {g.fromWatchlist && <span className="text-[8px] text-[#66c0f4] border border-[#66c0f4]/30 px-1 py-[1px] rounded-[2px] shrink-0 leading-none">WL</span>}
@@ -710,8 +710,8 @@ function RASeriesModule() {
                                     <div className="p-2 flex flex-col gap-0">
                                         {rec.games.map(g => (
                                             <div key={g.id} className="flex items-center gap-2 px-1 py-1">
-                                                <img src={`${RA_MEDIA}${g.imageIcon}`} alt="" className="w-5 h-5 rounded-[2px] border border-[#101214] object-cover bg-black shrink-0" />
-                                                <a href={`${RA_SITE}/game/${g.id}`} target="_blank" rel="noreferrer" className="text-[11px] text-[#8f98a0] hover:text-[#66c0f4] truncate flex-1 transition-colors">{g.title}</a>
+                                                <img src={g.icon} alt="" className="w-5 h-5 rounded-[2px] border border-[#101214] object-cover bg-black shrink-0" />
+                                                <a href={g.url} target="_blank" rel="noreferrer" className="text-[11px] text-[#8f98a0] hover:text-[#66c0f4] truncate flex-1 transition-colors">{g.title}</a>
                                                 {g.fromWatchlist && <span className="text-[8px] text-[#66c0f4] border border-[#66c0f4]/30 px-1 py-[1px] rounded-[2px] shrink-0 leading-none">WL</span>}
                                             </div>
                                         ))}
@@ -727,6 +727,7 @@ function RASeriesModule() {
                         {/* Header */}
                         <div className="flex items-center gap-3 px-4 py-3 border-b border-[#2a475e]">
                             <span className="text-[13px] text-white font-medium flex-1 truncate">{selected.name}</span>
+                            {cfg.minGames && selected.gameIds.length < cfg.minGames && <span className="text-[10px] text-[#ff6b6b] shrink-0">Needs {cfg.minGames}+ games to show on the site</span>}
                             <button
                                 onClick={() => update(series.map(s => s.id === selectedId ? { ...s, showProgress: !s.showProgress } : s))}
                                 title="Show in Series Progress tab"
@@ -762,9 +763,9 @@ function RASeriesModule() {
                                         const isCover = g.id === selected.coverGameId;
                                         return (
                                         <div key={g.id} className="flex items-center gap-2 px-3 py-1.5 hover:bg-[#1b2838] border-b border-[#1a2535] group">
-                                            <img src={`${RA_MEDIA}${g.imageIcon}`} alt="" className="w-6 h-6 rounded-[2px] border border-[#101214] object-cover bg-black shrink-0" />
+                                            <img src={g.icon} alt="" className="w-6 h-6 rounded-[2px] border border-[#101214] object-cover bg-black shrink-0" />
                                             <div className="flex-1 flex flex-col min-w-0">
-                                                <a href={`${RA_SITE}/game/${g.id}`} target="_blank" rel="noreferrer" className="text-[11px] text-[#c6d4df] hover:text-[#66c0f4] truncate transition-colors" onClick={e => e.stopPropagation()}>{g.title}</a>
+                                                <a href={g.url} target="_blank" rel="noreferrer" className="text-[11px] text-[#c6d4df] hover:text-[#66c0f4] truncate transition-colors" onClick={e => e.stopPropagation()}>{g.title}</a>
                                                 {g.consoleName && <span className="text-[9px] text-[#546270] truncate">{g.consoleName}</span>}
                                             </div>
                                             {g.fromWatchlist && <span className="text-[8px] text-[#66c0f4] border border-[#66c0f4]/30 px-1 py-[1px] rounded-[2px] shrink-0 leading-none">WL</span>}
@@ -798,9 +799,9 @@ function RASeriesModule() {
                                             {seriesSuggestions.map(g => (
                                                 <button key={g.id} onClick={() => addGame(g.id)}
                                                     className="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-[#1b2838] border-b border-[#1a2535] border-l-2 border-l-[#e5b143]/40 text-left">
-                                                    <img src={`${RA_MEDIA}${g.imageIcon}`} alt="" className="w-6 h-6 rounded-[2px] border border-[#101214] object-cover bg-black shrink-0" />
+                                                    <img src={g.icon} alt="" className="w-6 h-6 rounded-[2px] border border-[#101214] object-cover bg-black shrink-0" />
                                                     <div className="flex-1 flex flex-col min-w-0">
-                                                        <a href={`${RA_SITE}/game/${g.id}`} target="_blank" rel="noreferrer" className="text-[11px] text-[#c6d4df] hover:text-[#66c0f4] truncate transition-colors" onClick={e => e.stopPropagation()}>{g.title}</a>
+                                                        <a href={g.url} target="_blank" rel="noreferrer" className="text-[11px] text-[#c6d4df] hover:text-[#66c0f4] truncate transition-colors" onClick={e => e.stopPropagation()}>{g.title}</a>
                                                         {g.consoleName && <span className="text-[9px] text-[#546270] truncate">{g.consoleName}</span>}
                                                     </div>
                                                     {g.fromWatchlist && <span className="text-[8px] text-[#66c0f4] border border-[#66c0f4]/30 px-1 py-[1px] rounded-[2px] shrink-0 leading-none">WL</span>}
@@ -822,9 +823,9 @@ function RASeriesModule() {
                                     {addSearch !== '' && addCandidates.map(g => (
                                         <button key={g.id} onClick={() => addGame(g.id)}
                                             className="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-[#1b2838] border-b border-[#1a2535] text-left">
-                                            <img src={`${RA_MEDIA}${g.imageIcon}`} alt="" className="w-6 h-6 rounded-[2px] border border-[#101214] object-cover bg-black shrink-0" />
+                                            <img src={g.icon} alt="" className="w-6 h-6 rounded-[2px] border border-[#101214] object-cover bg-black shrink-0" />
                                             <div className="flex-1 flex flex-col min-w-0">
-                                                <a href={`${RA_SITE}/game/${g.id}`} target="_blank" rel="noreferrer" className="text-[11px] text-[#8f98a0] hover:text-[#66c0f4] truncate transition-colors" onClick={e => e.stopPropagation()}>{g.title}</a>
+                                                <a href={g.url} target="_blank" rel="noreferrer" className="text-[11px] text-[#8f98a0] hover:text-[#66c0f4] truncate transition-colors" onClick={e => e.stopPropagation()}>{g.title}</a>
                                                 {g.consoleName && <span className="text-[9px] text-[#546270] truncate">{g.consoleName}</span>}
                                             </div>
                                             {g.fromWatchlist && <span className="text-[8px] text-[#66c0f4] border border-[#66c0f4]/30 px-1 py-[1px] rounded-[2px] shrink-0 leading-none">WL</span>}
@@ -1485,6 +1486,30 @@ function CredentialsModule() {
     );
 }
 
+// Series editors: one per platform, same file shape ({ id, name, gameIds, showProgress, coverGameId }).
+// Games are normalised to { id, title, icon, url, consoleName, fromWatchlist }
+const SERIES_CONFIGS = {
+    ra: {
+        file: 'data/ra/series.json',
+        loadGames: () => apiGet(`${API}/games/ra`).then(gs => gs.map(g => ({ ...g, icon: `${RA_MEDIA}${g.imageIcon}`, url: `${RA_SITE}/game/${g.id}` }))),
+    },
+    steam: {
+        file: 'data/steam/series.json', minGames: 3,
+        loadGames: () => apiData('data/steam/games/index.json').then(d => Object.values(d.achievementProgress ?? {})
+            .map(g => ({ id: g.appId, title: g.gameName ?? `App ${g.appId}`, icon: g.iconUrl, url: `https://store.steampowered.com/app/${g.appId}`, consoleName: null }))
+            .sort((a, b) => a.title.localeCompare(b.title))),
+    },
+    xbox: {
+        file: 'data/xbox/series.json', minGames: 3,
+        loadGames: () => apiData('data/xbox/games/index.json').then(d => Object.values(d.achievementProgress ?? {})
+            .map(g => ({ id: g.titleId, title: g.gameName ?? String(g.titleId), icon: g.iconUrl ? xboxImg(g.iconUrl, 64) : '', url: `https://www.xbox.com/en-US/Search/Results?q=${encodeURIComponent(g.gameName ?? '')}`, consoleName: null }))
+            .sort((a, b) => a.title.localeCompare(b.title))),
+    },
+};
+const RASeriesModule    = () => <SeriesModule cfg={SERIES_CONFIGS.ra} />;
+const SteamSeriesModule = () => <SeriesModule cfg={SERIES_CONFIGS.steam} />;
+const XboxSeriesModule  = () => <SeriesModule cfg={SERIES_CONFIGS.xbox} />;
+
 const MODULES = [
     { id: 'config',      label: 'Site Config',  icon: '⚙️',  group: 'General',          component: SiteConfigModule },
     { id: 'credentials', label: 'Credentials',  icon: '🔑',  group: 'General',          component: CredentialsModule },
@@ -1493,7 +1518,9 @@ const MODULES = [
     { id: 'ra-guides',           label: 'Guides',         icon: '📖',  group: 'RetroAchievements', component: RAGuidesModule },
     { id: 'ra-series',           label: 'Series',         icon: '🗂️',  group: 'RetroAchievements', component: RASeriesModule },
     { id: 'steam-win-conditions', label: 'Win Conditions', icon: '🏆',  group: 'Steam',             component: SteamWinConditionsModule },
+    { id: 'steam-series',         label: 'Series',         icon: '🗂️',  group: 'Steam',             component: SteamSeriesModule },
     { id: 'xbox-win-conditions',  label: 'Win Conditions', icon: '🏆',  group: 'Xbox',              component: XboxWinConditionsModule },
+    { id: 'xbox-series',          label: 'Series',         icon: '🗂️',  group: 'Xbox',              component: XboxSeriesModule },
 ];
 
 const GROUPS = [...new Set(MODULES.map(m => m.group))];
@@ -1602,7 +1629,7 @@ export default function App() {
             {/* Main content */}
             <div className="flex-1 flex flex-col overflow-hidden">
                 {/* Page title */}
-                <div key={activeId} className="px-5 py-3 border-b border-[#2a475e] shrink-0 anim-fade">
+                <div key={`head-${activeId}`} className="px-5 py-3 border-b border-[#2a475e] shrink-0 anim-fade">
                     <div className="text-[13px] text-white font-medium">{active?.icon} {active?.label}</div>
                     <div className="text-[10px] text-[#546270]">{active?.group}</div>
                 </div>

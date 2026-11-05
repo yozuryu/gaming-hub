@@ -11,6 +11,9 @@ Swiping between profile tabs looks like turning to another page; the RA Series t
 - Tapping a series opens its sheet: points, achievements and % as value-over-label stats, the latest unlock, and the games grouped In progress / Mastered / Not started / No achievements in compact rows. A played game opens its achievement sheet, with a back arrow to the series; a want-to-play game links to RetroAchievements
 - Series sheet: "Latest unlock" and "Games" are separate sections with the site's section headers (the status groups sit under Games), and game rows no longer stretch to fill a short sheet (the row class shares its name with Tailwind's `grow` utility)
 - Series sheet: a mastered game shows a band under its row with the mastery date and the rarest achievement (badge, % of players, name), from the same award data as Completions
+- Series sheet: beaten games have their own group under Mastered (In progress · Mastered · Beaten · Not started · No achievements), and the card and sheet count them ("2 started · ★ 1 mastered · 1 beaten")
+- Series sheet: a long sheet no longer squashes the mastered band onto its row, and game titles wrap to two lines
+- Desktop: the back button to the series no longer overlaps the game icon in the achievement sheet
 - Swiping between tabs: the incoming tab slides in as its own page, a gap away from the current one, and its skeleton has the tab's real shape (Overview's rows and stat tiles, Recent's search row and game rows or tiles, Progress's chips, Watchlist's rows, Activity's heatmap and timeline), capped to the screen height
 - Desktop (1024px and wider): the page is 1200px wide instead of 960, and Overview has two columns: Last played and Recent unlocks on the left, User stats (two across) and Game awards in a rail on the right. Recent unlocks shows the newest unlock and, on wide screens only, the next five as compact rows (badge, name, game, time, points) from the newest achievement file. The tab bar lines up with the header and content. Phones keep the same order; the section is now called "Recent unlocks"
 - Watchlist (two columns, tablet and desktop): a single game beside a game with subsets no longer stretches to the height of the subset card
@@ -19,17 +22,25 @@ Swiping between profile tabs looks like turning to another page; the RA Series t
 
 - The same tab swipe, with skeletons shaped like Overview, Recent, Progress and Activity
 - Desktop: the wider layout with a side rail as on RA (User stats and Completions on the right); Recent unlocks lists the next five with their rarity
+- New Series tab, like RA's: series you make in the admin (Steam → Series), shown once 3 of their games are in the library. Cards with the store banner, % complete and the icon strip; the sheet has hours played, achievements and %, the latest unlock, and the games grouped In progress · Perfect · Beaten · Not started · No achievements, with the perfect date and final unlock under perfect games. A game opened from it has a back button to the series
+- 37 series to start with, from the library: franchises (Trails, Final Fantasy, Resident Evil, Ys, Gunvolt, Tales of, Mega Man, Neptunia, Batman: Arkham, Warhammer 40,000 and Fantasy…) and studios (Supergiant, PlatinumGames, FromSoftware, Nihon Falcom, Inti Creates, Arc System Works, Klei, Amplitude, To the Moon). 19 two-game series (Borderlands, Darksiders, Telltale, Hazelight…) are saved too and stay hidden while the minimum is 3
 
 ### Xbox
 
 - The same tab swipe, with skeletons shaped like Overview, Recent, Progress and Activity
 - Desktop: the wider layout with a side rail as on RA (User stats and Completions on the right); Recent unlocks lists the next five with their gamerscore
+- New Series tab, as on Steam (admin: Xbox → Series, 3+ games in the library), with gamerscore in place of hours and Completed for 100%
 
 ### Hub
 
 - Desktop (1024px and wider): 1200px wide, with Playing and Recent activity in the main column and a rail on the right with the platforms stacked, then Completions and Analytics as cards (counts on one line with the latest completion below; the last-30-days numbers two across). The page is about a third shorter. Tablets and phones keep the single column
 - Recent activity: one row per game per day instead of one per unlock, under day labels (Today, Yesterday, Sat 31 Oct). Each row has the game icon, the time played that day (RA and Steam play sessions), the unlock count, the unlocked badges with the newest one's name, and a Mastered / Beaten / Perfect tag on the day it happened. Games played without unlocking anything now show up. 6 rows, 4 on phones behind "Show more" (now in sentence case)
 - The hub loads each platform's profile file once instead of up to three times
+
+### Admin
+
+- Series editors for Steam and Xbox (same editor as RA, games from each platform's index; new series show on the site; a red count marks series under 3 games)
+- Switching modules could leave the previous module's title in the header (two elements shared a React key)
 
 ## v26.11.04
 

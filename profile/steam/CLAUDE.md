@@ -11,7 +11,7 @@
 - Shows the first 2 rows of icons by default (perfect first, then beaten fill the remaining slots); "Show all N / Show less" button at the bottom reveals the rest. Row size follows the grid breakpoints via `useIconGridCols()` (5 / 8 at `sm` / 5 at `lg`).
 
 ## Tabs
-Four tabs: **Overview** (User, the default) · **Recent** (Clock) · **Progress** (BarChart2) · **Activity** (Activity), in the shared `TabBar` (`assets/tabs.js`)
+Five tabs: **Overview** (User, the default) · **Recent** (Clock) · **Progress** (BarChart2) · **Series** (Layers, only with a series of 3+ owned games) · **Activity** (Activity), in the shared `TabBar` (`assets/tabs.js`)
 
 - Tab state persists in URL: `?tab=progress`
 - Overview holds what used to sit above the tabs: Last Played (`GameListRow` with the game's latest unlock as its `extra` line), Recent unlocks (plus the `ovUnlocks` rows with rarity % on wide screens), User Stats as `StatTiles` (header numbers left out), Completions; on ≥1024px stats and Completions sit in the right rail. `games/index.json` loads on every tab, Overview included; sticky bar and swipe as on RA
@@ -36,3 +36,8 @@ Recent Games and Completion Progress render `GameListRow` (full store banner, ti
 - Do not change the modal game banner (`w-32 h-16` image) — previous attempts to resize it were rejected
 - The modal shell is the shared sheet (`assets/sheet.js` `useSheet`, `.sheet-*` in `assets/ui.css`): bottom sheet below `md` (drag the header down to close), centred dialog from `md`. Header art: `library_hero.jpg`, falling back to `header.jpg` (`useArtSrc`)
 - Profile header: the most recently played game's hero art blurred behind it (`HeaderArt`)
+
+## Series
+- `data/steam/series.json` (hand-made in the admin, Steam → Series; same shape as RA's: `{ id, name, gameIds, showProgress, coverGameId }`, ids are appIds). The tab only appears when a series has `SERIES_MIN` (3) of its games in `games/index.json`
+- `buildSeries()` → cards (`.scard`, store banner as `.scard-cover.banner`, hero art behind, `.smooth` = no pixelated scaling) and `SeriesSheet` (hours played · achievements · %, latest unlock from the index's `lastUnlockName`, groups In progress · Perfect · Beaten · Not started · No achievements). Beaten = the win-condition games (`beatenGames`). Perfect games use `PerfectRow` (`.smast` band: `perfectGames[].completedAt` and the final unlock, which is not the rarest). Opening a game sets `seriesBack`; `AchievementModal` then shows `.sheet-back`
+- Same code in the Xbox page (keep them in step), RA's version in `profile/ra/app.js`

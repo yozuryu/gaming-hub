@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock, X, Medal, Gamepad2, List, LayoutGrid, Search, Check, Plus, User } from 'lucide-react';
+import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock, X, Medal, Gamepad2, List, LayoutGrid, Search, Check, Plus, User, Layers } from 'lucide-react';
 import { PROGRESS_SORTS } from './utils/constants.js';
 import { formatDate, formatTimeAgo, fmtDay, fmtTime, xboxSearchUrl, xboxProfileUrl, xboxImg, rarityLabel, rarityBorderColor } from './utils/helpers.js';
 import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap } from '../../assets/time.js';
@@ -175,7 +175,7 @@ const ModalListSkeleton = () => (
 
 // Opens straight away; while `loading` (the game's file is being fetched) the header uses the
 // card's summary and the list is a skeleton, then the panel grows to the real list.
-const AchievementModal = ({ game, achievementData, onClose, beatenInfo, loading = false }) => {
+const AchievementModal = ({ game, achievementData, onClose, beatenInfo, loading = false, onBack = null, backLabel = '' }) => {
     const [lockFilter, setLockFilter] = useState('all');
     const panelRef = useRef(null);
     useAnimatedHeight(panelRef);
@@ -214,6 +214,7 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo, loading 
             {/* Panel (height animates as the content changes on desktop) */}
             <div ref={panelRef} className="sheet-panel" onClick={e => e.stopPropagation()}>
                 <button onClick={close} className="sheet-close" aria-label="Close"><X size={15} /></button>
+                {onBack && <button onClick={onBack} className="sheet-back" aria-label={`Back to ${backLabel}`}><ChevronDown size={14} className="rotate-90" />{backLabel}</button>}
 
                 {/* Modal header: blurred hero art behind it; drag it down to close on phone */}
                 <div ref={dragRef} className="sheet-head">
@@ -223,7 +224,7 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo, loading 
                         </div>
                     )}
                     <span className="sheet-grab" />
-                    <div className="relative flex items-end gap-4 px-4 pt-[34px] pb-4">
+                    <div className={`relative flex items-end gap-4 px-4 pt-[34px] pb-4 ${onBack ? 'md:pt-[54px]' : ''}`}>
                         <a
                             href={game.storeUrl}
                             target="_blank"
@@ -941,6 +942,219 @@ const useIconGridCols = () => {
     return cols;
 };
 
+// ── Series (data/xbox/series.json, edited in the admin) ───────────────────────
+// Same cards and sheet as the RA Series tab (styles in assets/ui.css). A series shows once
+// SERIES_MIN of its games are in the library; Xbox reports no playtime, so the sheet counts gamerscore.
+const SERIES_MIN = 3;
+
+const buildSeries = (seriesData, achProgress, perfectMap, beatenMap) => seriesData
+    .filter(s => s.showProgress !== false)
+    .map(series => {
+        let started = 0, beatenCount = 0, perfect = 0, achEarned = 0, achTotal = 0, gs = 0, gsTotal = 0, latest = null;
+        const games = series.gameIds.map(String).filter(id => achProgress[id]).map(id => {
+            const d = achProgress[id];
+            const hasAch = !!(d.hasAchievements && d.total > 0);
+            const isPerfect = hasAch && d.unlocked >= d.total;
+            const beaten = beatenMap.get(id) ?? null;
+            const isStarted = hasAch && d.unlocked > 0 && !isPerfect;
+            if (isPerfect) perfect++; else if (isStarted && beaten) beatenCount++; else if (isStarted) started++;
+            if (hasAch) { achEarned += d.unlocked; achTotal += d.total; }
+            gs += d.gamerscore ?? 0; gsTotal += d.totalGamerscore ?? 0;
+            const unlockMs = d.lastUnlockedAt ? toMs(d.lastUnlockedAt) : 0;
+            if (unlockMs && (!latest || unlockMs > latest.ms)) latest = { ms: unlockMs, name: d.lastUnlockName, icon: d.iconUrl, gameName: d.gameName, at: d.lastUnlockedAt };
+            const lastMs = Math.max(unlockMs, d.lastPlayedTs ? toMs(d.lastPlayedTs) : 0);
+            return {
+                id, title: d.gameName ?? id, icon: d.iconUrl ? xboxImg(d.iconUrl, 64) : null, hero: d.heroUrl ?? null, hasAch, isPerfect, isStarted, beaten,
+                awarded: hasAch ? d.unlocked : 0, lastMs, perfectInfo: perfectMap.get(id) ?? null,
+                game: { titleId: id, name: d.gameName ?? id, storeUrl: xboxSearchUrl(d.gameName), lastPlayedTs: d.lastPlayedTs ?? null, heroUrl: d.heroUrl, iconUrl: d.iconUrl },
+                data: d,
+            };
+        });
+        const tracked = games.filter(x => x.hasAch).length;
+        const cover = games.find(x => x.id === String(series.coverGameId)) ?? games[0];
+        return {
+            series, games, total: games.length, tracked, started, beatenCount, perfect, achEarned, achTotal, gs, gsTotal, latest,
+            coverIcon: cover?.icon ?? null, coverHero: cover?.hero ? xboxImg(cover.hero, 640) : null,
+            lastMs: Math.max(0, ...games.map(x => x.lastMs)),
+            pct: achTotal > 0 ? (achEarned / achTotal) * 100 : 0,
+        };
+    })
+    .filter(c => c.total >= SERIES_MIN);
+
+const seriesEdge = c => c.tracked > 0 && c.perfect === c.tracked ? '#e5b143' : c.started || c.beatenCount || c.perfect ? '#66c0f4' : '#323f4c';
+const pctLabel = p => p > 0 && p < 1 ? '<1%' : `${Math.floor(p)}%`;
+// Icons in the card strip: perfect and started first (latest first), then the rest by title
+const seriesIconOrder = games => [...games].sort((a, b) => {
+    const k = x => x.isPerfect ? 0 : x.isStarted ? 1 : x.hasAch ? 2 : 3;
+    return (k(a) - k(b)) || (k(a) <= 1 ? b.lastMs - a.lastMs : a.title.localeCompare(b.title));
+});
+const SERIES_SORTS = [
+    { value: 'name', label: 'Name' },
+    { value: 'progress', label: 'Most progress' },
+    { value: 'recent', label: 'Last played' },
+];
+
+const SeriesTab = ({ cards, onOpen }) => {
+    const [search, setSearch] = useState('');
+    const [sort, setSort] = useState('name');
+    const [filter, setFilter] = useState('all');
+
+    if (cards.length === 0) return (
+        <div className="text-center py-12 text-[#546270] text-[12px] anim-fade">No series yet.</div>
+    );
+
+    const isStarted = c => c.achEarned > 0;
+    const counts = { all: cards.length, started: cards.filter(isStarted).length, notstarted: cards.filter(c => !isStarted(c)).length };
+    const nameKey = n => /^[a-zA-Z]/.test(n) ? '2' + n.toLowerCase() : /^\d/.test(n) ? '1' + n.toLowerCase() : '0' + n.toLowerCase();
+    const shown = cards
+        .filter(c => filter === 'all' || (filter === 'started' ? isStarted(c) : !isStarted(c)))
+        .filter(c => !search || fold(c.series.name).includes(fold(search)) || c.games.some(x => fold(x.title).includes(fold(search))))
+        .sort((a, b) => sort === 'progress' ? (b.pct - a.pct) || nameKey(a.series.name).localeCompare(nameKey(b.series.name))
+            : sort === 'recent' ? (b.lastMs - a.lastMs) || nameKey(a.series.name).localeCompare(nameKey(b.series.name))
+            : nameKey(a.series.name).localeCompare(nameKey(b.series.name)));
+
+    return (
+        <div className="flex flex-col gap-3 anim-fade">
+            <div className="flex flex-col gap-2.5">
+                <div className="fbar">
+                    <div className="fsearch">
+                        <Search size={14} />
+                        <input type="text" inputMode="search" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search series or games" aria-label="Search series" />
+                        {search && <button onClick={() => setSearch('')} aria-label="Clear search"><X size={13} /></button>}
+                    </div>
+                    <select value={sort} onChange={e => setSort(e.target.value)} className="fselect" aria-label="Sort">
+                        {SERIES_SORTS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+                    </select>
+                </div>
+                <div className="frow" role="group" aria-label="Show">
+                    {[['all', 'All'], ['started', 'Started'], ['notstarted', 'Not started']].map(([v, l]) => (
+                        <button key={v} onClick={() => setFilter(v)} aria-pressed={filter === v} className={`fchip ${filter === v ? 'on' : ''}`}>{l}<span className="n">{counts[v]}</span></button>
+                    ))}
+                </div>
+            </div>
+
+            <div key={`${sort}-${filter}`} className="slist anim-fade">
+                {shown.length === 0 && <div className="text-center py-10 text-[#546270] text-[12px]" style={{ gridColumn: '1 / -1' }}>No series match.</div>}
+                {shown.map(c => {
+                    const icons = seriesIconOrder(c.games);
+                    return (
+                        <button key={c.series.id} onClick={() => onOpen(c)} className="scard smooth" style={{ borderLeftColor: seriesEdge(c) }}>
+                            {c.coverHero && <div className="scard-art"><img src={c.coverHero} alt="" loading="lazy" onError={e => { e.target.style.display = 'none'; }} /></div>}
+                            <div className="scard-top">
+                                {c.coverIcon ? <img src={c.coverIcon} alt="" loading="lazy" className="scard-cover" onError={e => { e.target.style.visibility = 'hidden'; }} /> : <span className="scard-cover" />}
+                                <div className="scard-main">
+                                    <span className="scard-name">{c.series.name}</span>
+                                    <span className="scard-sub">
+                                        <span>{c.total} games</span>
+                                        {c.started > 0 && <><i>·</i><span className="text-[#66c0f4]">{c.started} started</span></>}
+                                        {c.perfect > 0 && <><i>·</i><span className="text-[#e5b143]">★ {c.perfect} completed</span></>}
+                                        {c.beatenCount > 0 && <><i>·</i><span className="text-[#b8c4ce]">{c.beatenCount} beaten</span></>}
+                                    </span>
+                                </div>
+                                <span className="scard-end">
+                                    <span className="scard-pct" style={{ color: c.pct > 0 ? '#e5b143' : '#546270' }}>{pctLabel(c.pct)}</span>
+                                    {c.lastMs > 0 && <em title="Last activity in this series">{shortAgo(c.lastMs)}</em>}
+                                </span>
+                            </div>
+                            <div className="gbar"><i style={{ width: `${c.pct}%`, background: '#e5b143' }} /></div>
+                            <div className="sicons">
+                                {icons.slice(0, 10).map(x => x.icon && <img key={x.id} src={x.icon} alt="" title={x.title} loading="lazy" className={x.isPerfect ? 'mastered' : x.awarded > 0 ? '' : x.hasAch ? 'dim' : 'noach'} />)}
+                                {icons.length > 10 && <span>+{icons.length - 10}</span>}
+                            </div>
+                        </button>
+                    );
+                })}
+            </div>
+        </div>
+    );
+};
+
+// A completed game in the series sheet: its row, then a band with the date and the last achievement
+const CompletedRow = ({ x, onOpenGame }) => {
+    const p = x.perfectInfo;
+    return (
+        <div className="smast">
+            <GameListRow game={x.game} achievementData={x.data} onViewDetails={onOpenGame} beatenInfo={x.beaten} />
+            {p?.completedAt && (
+                <div className="smast-band">
+                    <div className="c"><b className="text-[#e5b143]"><Star size={10} fill="currentColor" className="inline -mt-0.5 mr-1" />{formatDate(p.completedAt)}</b><span>Completed</span></div>
+                    {p.lastAchName && (
+                        <div className="c rare" title={`Last achievement: ${p.lastAchName}`}>
+                            {p.lastAchIconUrl && <img src={xboxImg(p.lastAchIconUrl, 64)} alt="" loading="lazy" />}
+                            <div><b style={{ color: rarityBorderColor(p.lastAchGlobalPct) }}>{p.lastAchGlobalPct != null ? `${p.lastAchGlobalPct}%` : 'Last'}</b><span>{p.lastAchName.replace(/^"|"$/g, '')}</span></div>
+                        </div>
+                    )}
+                </div>
+            )}
+        </div>
+    );
+};
+
+const SeriesSheet = ({ card: c, onOpenGame, onClose }) => {
+    const panelRef = useRef(null), rootRef = useRef(null), dragRef = useRef(null);
+    useAnimatedHeight(panelRef);
+    const close = useSheet({ panelRef, dragRef, rootRef, onClose });
+    const art = useArtSrc([c.coverHero || c.coverIcon]);
+    const groups = [
+        { key: 'started', label: 'In progress',     games: c.games.filter(x => x.isStarted && !x.beaten).sort((a, b) => b.lastMs - a.lastMs) },
+        { key: 'perfect', label: 'Completed',         games: c.games.filter(x => x.isPerfect).sort((a, b) => b.lastMs - a.lastMs) },
+        { key: 'beaten',  label: 'Beaten',          games: c.games.filter(x => x.isStarted && x.beaten).sort((a, b) => b.lastMs - a.lastMs) },
+        { key: 'none',    label: 'Not started',     games: c.games.filter(x => x.hasAch && !x.awarded).sort((a, b) => a.title.localeCompare(b.title)) },
+        { key: 'noach',   label: 'No achievements', games: c.games.filter(x => !x.hasAch).sort((a, b) => a.title.localeCompare(b.title)) },
+    ].filter(gr => gr.games.length);
+    const L = c.latest;
+    return (
+        <div ref={rootRef} className="sheet-root" onClick={close}>
+            <div className="sheet-backdrop anim-backdrop" />
+            <div ref={panelRef} className="sheet-panel" onClick={e => e.stopPropagation()}>
+                <button onClick={close} className="sheet-close" aria-label="Close"><X size={15} /></button>
+                <div ref={dragRef} className="sheet-head">
+                    {art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={art.loaded ? 'loaded' : ''} /></div>}
+                    <span className="sheet-grab" />
+                    <div className="relative flex flex-col gap-3 px-4 pt-[30px] pb-4">
+                        <div className="flex items-end gap-3 pr-8">
+                            {c.coverIcon && <img src={c.coverIcon} alt="" className="w-14 h-14 rounded-[3px] border-2 border-white/20 shadow-[0_6px_18px_rgba(0,0,0,0.55)] object-cover shrink-0" />}
+                            <div className="min-w-0 flex flex-col gap-1">
+                                <span className="sheet-title text-[17px] font-semibold text-white leading-tight">{c.series.name}</span>
+                                <span className="text-[11.5px] text-[#c6d4df] art-shadow">
+                                    {c.total} games{c.started > 0 && <> · <span className="text-[#66c0f4]">{c.started} started</span></>}{c.perfect > 0 && <> · <span className="text-[#e5b143]">★ {c.perfect} completed</span></>}{c.beatenCount > 0 && <> · <span className="text-[#b8c4ce]">{c.beatenCount} beaten</span></>}
+                                </span>
+                            </div>
+                        </div>
+                        <div className="ssheet-stats">
+                            <div><b className="text-[#e5b143]">{c.gs.toLocaleString()}<small> / {c.gsTotal.toLocaleString()}</small></b><span>Gamerscore</span></div>
+                            <div><b className="text-[#66c0f4]">{c.achEarned.toLocaleString()}<small> / {c.achTotal.toLocaleString()}</small></b><span>Achievements</span></div>
+                            <div><b style={{ color: c.pct > 0 ? '#e5b143' : '#546270' }}>{pctLabel(c.pct)}</b><span>Complete</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="sheet-scroll overflow-y-auto overscroll-contain flex-1 min-h-0 px-4 pt-3 flex flex-col gap-2 anim-fade">
+                    {L && <div className="ssheet-sec" style={{ '--c': '#e5b143' }}>Latest unlock</div>}
+                    {L && (
+                        <div className="grow compact" style={{ borderLeftColor: '#e5b143' }} title="Latest unlock in this series">
+                            {L.icon ? <img src={xboxImg(L.icon, 128)} alt="" className="grow-icon" onError={e => { e.target.style.visibility = 'hidden'; }} /> : <span className="grow-icon" />}
+                            <div className="grow-main">
+                                <span className="grow-title" style={{ color: '#e5b143' }}><Trophy size={11} className="inline -mt-0.5 mr-1" />{L.name}</span>
+                                <div className="grow-sub"><span className="text-[#66c0f4] shrink">{L.gameName}</span><span>· {formatTimeAgo(L.at)}</span></div>
+                            </div>
+                        </div>
+                    )}
+                    <div className={`ssheet-sec ${L ? 'next' : ''}`} style={{ '--c': '#66c0f4' }}>Games<span className="n">{c.total}</span></div>
+                    {groups.map(gr => (
+                        <React.Fragment key={gr.key}>
+                            <div className="ssheet-group">{gr.label}<span className="n">{gr.games.length}</span></div>
+                            {gr.games.map(x => x.isPerfect
+                                ? <CompletedRow key={x.id} x={x} onOpenGame={onOpenGame} />
+                                : <GameListRow key={x.id} game={x.game} achievementData={x.data} onViewDetails={onOpenGame} beatenInfo={x.beaten} />)}
+                        </React.Fragment>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
 const App = () => {
     const [profileData,       setProfileData]       = useState(null);
     const [completionsExpanded, setCompletionsExpanded] = useState(false);
@@ -958,7 +1172,10 @@ const App = () => {
     const [selectedGame,     setSelectedGame]     = useState(null);
     const [gameDetails,       setGameDetails]       = useState({});
     const [beatenGames,       setBeatenGames]       = useState([]);
-    const VALID_TABS = ['overview', 'recent', 'progress', 'activity'];
+    const [seriesData,        setSeriesData]        = useState([]);
+    const [selectedSeries,    setSelectedSeries]    = useState(null);   // series sheet
+    const [seriesBack,        setSeriesBack]        = useState(null);   // series to return to from a game opened in it
+    const VALID_TABS = ['overview', 'recent', 'progress', 'series', 'activity'];
     const initialTab = (() => {
         const p = new URLSearchParams(window.location.search).get('tab');
         return VALID_TABS.includes(p) ? p : 'overview';
@@ -993,13 +1210,24 @@ const App = () => {
     }, []);
 
     // Swipe between tabs on phones (assets/tabs.js); the order follows the tab bar
-    const tabIds = ['overview', 'recent', 'progress', 'activity'];
+    // Series (admin-made); shown once SERIES_MIN of a series' games are in the library
+    useEffect(() => {
+        fetch('../../data/xbox/series.json').then(r => r.ok ? r.json() : []).then(d => setSeriesData(Array.isArray(d) ? d : [])).catch(() => {});
+    }, []);
+    const seriesCards = useMemo(() => gamesData ? buildSeries(
+        seriesData, gamesData.achievementProgress ?? {},
+        new Map((profileData?.perfectGames ?? []).map(g => [String(g.titleId), g])),
+        new Map(beatenGames.map(g => [String(g.titleId), g])),
+    ) : [], [seriesData, gamesData, profileData, beatenGames]);
+    const hasSeries = seriesCards.length > 0;
+    const tabIds = ['overview', 'recent', 'progress', ...(hasSeries ? ['series'] : []), 'activity'];
     // Skeleton shape of each tab while it slides in (assets/tabs.js PEEK_PARTS)
     const peekList = gameView === 'tiles' ? 'tiles' : 'list';
     const tabPeeks = {
         overview: ['h2', 'row', 'h2', 'unlock', 'h2', 'stats'],
         recent:   ['fbar', peekList],
         progress: ['chips', 'fbar', peekList],
+        series:   ['fbar', 'chips', 'cards'],
         activity: ['h2', 'heatmap', 'h2', 'timeline'],
     };
     const [swipeDir, setSwipeDir] = useSwipeTabs(tabContentRef, tabIds, activeTab, setTab, !loading, tabPeeks);
@@ -1078,7 +1306,7 @@ const App = () => {
 
     // Load games/index.json for every tab (Overview's Last played shows progress; Recent was the old default and loaded it too)
     useEffect(() => {
-        if (['overview', 'recent', 'progress', 'activity'].includes(activeTab) && profileData && !gamesData) {
+        if (['overview', 'recent', 'progress', 'series', 'activity'].includes(activeTab) && profileData && !gamesData) {
             fetch('../../data/xbox/games/index.json')
                 .then(r => r.json())
                 .then(setGamesData)
@@ -1221,6 +1449,7 @@ const App = () => {
                     { id: 'overview', label: 'Overview', icon: <User size={15} />,      color: '#52b043' },
                     { id: 'recent',   label: 'Recent',   icon: <Clock size={15} />,     color: '#52b043' },
                     { id: 'progress', label: 'Progress', icon: <BarChart2 size={15} />, color: '#52b043' },
+                    ...(hasSeries || activeTab === 'series' ? [{ id: 'series', label: 'Series', icon: <Layers size={15} />, color: '#52b043' }] : []),
                     { id: 'activity', label: 'Activity', icon: <Activity size={15} />,  color: '#52b043' },
                 ]} />
 
@@ -1480,6 +1709,12 @@ const App = () => {
                             : <GameViewSkeleton view={gameView} />
                     )}
 
+                    {activeTab === 'series' && (
+                        gamesData
+                            ? <SeriesTab cards={seriesCards} onOpen={setSelectedSeries} />
+                            : <GameViewSkeleton view="list" />
+                    )}
+
                     {activeTab === 'activity' && (
                         <ActivityTab
                             achievements={recentAchs}
@@ -1529,8 +1764,16 @@ const App = () => {
                     achievementData={selectedGame.achievementData}
                     beatenInfo={selectedGame.beatenInfo}
                     loading={!!selectedGame.loading}
-                    onClose={() => setSelectedGame(null)}
+                    onClose={() => { setSelectedGame(null); setSeriesBack(null); }}
+                    onBack={seriesBack ? () => { setSelectedGame(null); setSelectedSeries(seriesBack); setSeriesBack(null); } : null}
+                    backLabel={seriesBack?.series.name}
                 />
+            )}
+
+            {/* Series sheet: a game opened from it gets a way back */}
+            {selectedSeries && (
+                <SeriesSheet card={selectedSeries} onClose={() => setSelectedSeries(null)}
+                    onOpenGame={arg => { setSeriesBack(selectedSeries); setSelectedSeries(null); handleViewDetails(arg); }} />
             )}
 
         </div>
