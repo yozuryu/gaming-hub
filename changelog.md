@@ -2,7 +2,7 @@
 
 ## v26.11.05
 
-Swiping between profile tabs looks like turning to another page; the RA Series tab is redesigned, with a sheet per series.
+Swiping between profile tabs looks like turning to another page; the RA Series tab is redesigned, with a sheet per series; desktop pages use the wider screen with a side rail.
 
 ### RetroAchievements
 
@@ -12,14 +12,21 @@ Swiping between profile tabs looks like turning to another page; the RA Series t
 - Series sheet: "Latest unlock" and "Games" are separate sections with the site's section headers (the status groups sit under Games), and game rows no longer stretch to fill a short sheet (the row class shares its name with Tailwind's `grow` utility)
 - Series sheet: a mastered game shows a band under its row with the mastery date and the rarest achievement (badge, % of players, name), from the same award data as Completions
 - Swiping between tabs: the incoming tab slides in as its own page, a gap away from the current one, and its skeleton has the tab's real shape (Overview's rows and stat tiles, Recent's search row and game rows or tiles, Progress's chips, Watchlist's rows, Activity's heatmap and timeline), capped to the screen height
+- Desktop (1024px and wider): the page is 1200px wide instead of 960, and Overview has two columns: Last played and Recent unlocks on the left, User stats (two across) and Game awards in a rail on the right. Recent unlocks shows the newest unlock and, on wide screens only, the next five as compact rows (badge, name, game, time, points) from the newest achievement file. The tab bar lines up with the header and content. Phones keep the same order; the section is now called "Recent unlocks"
 
 ### Steam
 
 - The same tab swipe, with skeletons shaped like Overview, Recent, Progress and Activity
+- Desktop: the wider layout with a side rail as on RA (User stats and Completions on the right); Recent unlocks lists the next five with their rarity
 
 ### Xbox
 
 - The same tab swipe, with skeletons shaped like Overview, Recent, Progress and Activity
+- Desktop: the wider layout with a side rail as on RA (User stats and Completions on the right); Recent unlocks lists the next five with their gamerscore
+
+### Hub
+
+- Desktop (1024px and wider): 1200px wide, with Playing and Recent activity in the main column and a rail on the right with the platforms stacked, then Completions and Analytics as cards (counts on one line with the latest completion below; the last-30-days numbers two across). The page is about a third shorter. Tablets and phones keep the single column
 
 ## v26.11.04
 

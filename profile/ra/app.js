@@ -969,8 +969,8 @@ const ProfileLoadingSkeleton = () => (
       </div>
     </div>
     {/* Main */}
-    <main className="max-w-5xl mx-auto px-4 md:px-8 py-6 w-full flex-1">
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6 mb-8">
+    <main className="max-w-5xl lg:max-w-[79rem] mx-auto px-4 md:px-8 py-6 w-full flex-1">
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_360px] gap-6 mb-8">
         <div className="flex flex-col gap-6">
           {/* Recently played */}
           <div><Sk w="w-40" h="h-3" cls="mb-3" />
@@ -1422,6 +1422,16 @@ export default function App() {
       .finally(() => setSeriesLoaded(true));
   }, []);
 
+  // ── Overview, wide screens only: the latest unlocks for the list under the newest one ──
+  const [ovUnlocks, setOvUnlocks] = useState(null);
+  useEffect(() => {
+    if (activeTab !== 'overview' || ovUnlocks || !window.matchMedia('(min-width: 1024px)').matches) return;
+    fetch('../../data/ra/achievements/1.json')
+      .then(r => r.ok ? r.json() : { recentAchievements: [] })
+      .then(d => setOvUnlocks([...(d.recentAchievements ?? [])].sort((a, b) => toMs(b.date) - toMs(a.date)).slice(0, 6)))
+      .catch(() => setOvUnlocks([]));
+  }, [activeTab]);
+
   // ── Load all achievement chunks when Activity tab is opened ──
   useEffect(() => {
     if (activeTab !== 'activity') return;
@@ -1594,7 +1604,7 @@ export default function App() {
         </div>
       </header>
 
-      <main className="max-w-5xl mx-auto px-4 md:px-8 py-6 flex-1 w-full anim-in">
+      <main className="max-w-5xl lg:max-w-[79rem] mx-auto px-4 md:px-8 py-6 flex-1 w-full anim-in">
         
         {/* ── Tabs: sticky, scroll sideways, swipe between them on phones (assets/tabs.js) ── */}
         <div className="ptabs-anchor" />
@@ -1612,7 +1622,7 @@ export default function App() {
         <div ref={tabContentRef}>
         <div key={activeTab} className={`flex flex-col gap-3 ${swipeDir === 'swipe' ? '' : 'anim-in'}`}>
           {activeTab === 'overview' ? (
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6 lg:gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_360px] gap-6 lg:gap-8">
           
               <div className="flex flex-col gap-6">
             
@@ -1636,7 +1646,7 @@ export default function App() {
                 <div>
                   <h2 className="text-[13px] text-white tracking-wide uppercase font-medium border-b border-[#2a475e] pb-1.5 flex items-center gap-2 mb-3">
                     <span className="w-[3px] h-[14px] bg-[#e5b143] rounded-[1px] shrink-0"></span>
-                    <Trophy size={15} className="text-[#e5b143]"/> Most Recently Unlocked
+                    <Trophy size={15} className="text-[#e5b143]"/> Recent unlocks
                   </h2>
                   {PROFILE_DATA.mostRecentAchievement ? (
                     <div className="bg-[#1b2838]/80 border border-[#323f4c] border-l-[3px] border-l-[#e5b143] rounded-[3px] p-3 flex gap-3 hover:bg-[#202d39] transition-colors shadow-sm">
@@ -1671,8 +1681,28 @@ export default function App() {
                   ) : (
                     <div className="text-[#8f98a0] text-[11px] py-2 italic">No achievements unlocked in the last 1 year.</div>
                   )}
+                  {/* Wide screens: the next few unlocks as compact rows */}
+                  {ovUnlocks?.some(a => a.achievementId !== PROFILE_DATA.mostRecentAchievement?.id) && (
+                    <div className="ulist anim-fade">
+                      {ovUnlocks.filter(a => a.achievementId !== PROFILE_DATA.mostRecentAchievement?.id).slice(0, 5).map(a => (
+                        <a key={`${a.achievementId}-${a.date}`} href={`${SITE_URL}/achievement/${a.achievementId}`} target="_blank" rel="noreferrer" className="urow">
+                          <img src={`${MEDIA_URL}/Badge/${a.badgeName}.png`} alt="" loading="lazy" className="px" />
+                          <div className="urow-main">
+                            <span className="urow-title">{a.title}</span>
+                            <span className="urow-sub"><span className="text-[#66c0f4]">{parseTitle(a.gameTitle).baseTitle || a.gameTitle}</span> · {formatTimeAgo(a.date)}</span>
+                          </div>
+                          <span className="urow-end">{a.points} pts</span>
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
+
+              </div>
+
+              {/* Rail (wide screens): user stats, then game awards. Phone: below the left column, same order */}
+              <div className="prail flex flex-col gap-5">
                 <div>
                   <h2 className="text-[13px] text-white tracking-wide uppercase font-medium border-b border-[#2a475e] pb-1.5 flex items-center gap-2 mb-2">
                     <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0"></span>
@@ -1688,10 +1718,6 @@ export default function App() {
                   </button>
                 </div>
 
-              </div>
-
-              <div className="flex flex-col gap-5">
-            
                 <div className="bg-[#1b2838] border border-[#2a475e] rounded-[3px] shadow-sm h-fit">
                   <div className="p-2.5 bg-[#172333] border-b border-[#2a475e] rounded-t-[2px] text-[#c6d4df] flex items-center gap-2">
                     <span className="w-[2px] h-[12px] bg-[#e5b143] rounded-[1px] shrink-0"></span>

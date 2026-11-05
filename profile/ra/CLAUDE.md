@@ -15,7 +15,7 @@ Six tabs: **Overview** (User, the default) · **Recent** (Clock) · **Progress**
 
 - Series tab only renders if `seriesData.some(s => s.showProgress)`
 - Tab state persists in URL: `?tab=progress`
-- Overview holds what used to sit above the tabs: Last Played (the `GameListRow` with an `extra` line: rich presence with a cyan `Radio` marker), Most Recently Unlocked, User Stats as `StatTiles` (`STAT_LABELS` shortens the labels; `statsRight` behind "More stats"), Game Awards
+- Overview holds what used to sit above the tabs: Last Played (the `GameListRow` with an `extra` line: rich presence with a cyan `Radio` marker), Recent unlocks (plus the `ovUnlocks` rows on wide screens, excluding the newest one by id), User Stats as `StatTiles` (`STAT_LABELS` shortens the labels; `statsRight` behind "More stats"), Game Awards. On ≥1024px User Stats and Game Awards sit in the right rail (`.prail`, see the root CLAUDE.md "Profile tabs")
 - Sticky, scrolls sideways, swipe between tabs on phones (`useSwipeTabs`, order = `tabIds`)
 - Recent: a search over every game, newest played first (up to 50); empty search = the latest 15. All searches use `fold()` (no accents or case: "pokemon" finds "Pokémon")
 

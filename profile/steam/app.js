@@ -889,8 +889,8 @@ const ProfileLoadingSkeleton = () => (
                 </div>
             </div>
         </header>
-        <main className="max-w-5xl mx-auto px-4 md:px-8 py-6 w-full flex-1">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 mb-8">
+        <main className="max-w-5xl lg:max-w-[79rem] mx-auto px-4 md:px-8 py-6 w-full flex-1">
+            <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_360px] gap-6 mb-8">
                 <div className="flex flex-col gap-6">
                     <div><Sk w="w-40" h="h-3" cls="mb-3" /><div className="shimmer h-[80px] rounded-[3px]" /></div>
                     <div><Sk w="w-48" h="h-3" cls="mb-3" /><div className="shimmer h-[80px] rounded-[3px]" /></div>
@@ -961,6 +961,15 @@ const App = () => {
         return VALID_TABS.includes(p) ? p : 'overview';
     })();
     const [activeTab, setActiveTab] = useState(initialTab);
+    // Overview, wide screens only: the latest unlocks for the list under the newest one
+    const [ovUnlocks, setOvUnlocks] = useState(null);
+    useEffect(() => {
+        if (activeTab !== 'overview' || ovUnlocks || !window.matchMedia('(min-width: 1024px)').matches) return;
+        fetch('../../data/steam/achievements/1.json')
+            .then(r => r.ok ? r.json() : { recentAchievements: [] })
+            .then(d => setOvUnlocks([...(d.recentAchievements ?? [])].sort((a, b) => toMs(b.unlockedAt) - toMs(a.unlockedAt)).slice(0, 6)))
+            .catch(() => setOvUnlocks([]));
+    }, [activeTab]);
     const [gameView, setGameView] = useGameView();
     const [recentSearch, setRecentSearch] = useState('');
     const [showScrollTop, setShowScrollTop] = useState(false);
@@ -1207,7 +1216,7 @@ const App = () => {
                 </div>
             </header>
 
-            <main className="max-w-5xl mx-auto px-4 md:px-8 py-6 flex-1 w-full anim-in">
+            <main className="max-w-5xl lg:max-w-[79rem] mx-auto px-4 md:px-8 py-6 flex-1 w-full anim-in">
 
                 {/* ── Overview 2-column ── */}
                 {/* ── Tabs: sticky, scroll sideways, swipe between them on phones (assets/tabs.js) ── */}
@@ -1225,7 +1234,7 @@ const App = () => {
                 <div key={activeTab} className={`flex flex-col gap-3 ${swipeDir === 'swipe' ? '' : 'anim-in'}`}>
 
                     {activeTab === 'overview' && (
-                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 lg:gap-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_360px] gap-6 lg:gap-8">
 
                         {/* Left column */}
                         <div className="flex flex-col gap-6">
@@ -1250,7 +1259,7 @@ const App = () => {
                             <div>
                                 <h2 className="text-[13px] text-white tracking-wide uppercase font-medium border-b border-[#2a475e] pb-1.5 flex items-center gap-2 mb-3">
                                     <span className="w-[3px] h-[14px] bg-[#e5b143] rounded-[1px] shrink-0" />
-                                    <Trophy size={15} className="text-[#e5b143]" /> Most Recently Unlocked
+                                    <Trophy size={15} className="text-[#e5b143]" /> Recent unlocks
                                 </h2>
                                 {mostRecentUnlock ? (
                                     <div className="bg-[#1b2838]/80 border border-[#323f4c] border-l-[3px] border-l-[#e5b143] rounded-[3px] p-3 flex items-center gap-3 hover:bg-[#202d39] transition-colors shadow-sm">
@@ -1291,8 +1300,27 @@ const App = () => {
                                         No achievements unlocked in the last year.
                                     </div>
                                 )}
+                                {/* Wide screens: the next few unlocks as compact rows */}
+                                {ovUnlocks?.some(a => !(mostRecentUnlock && a.appId === mostRecentUnlock.appId && a.apiName === mostRecentUnlock.apiName)) && (
+                                    <div className="ulist anim-fade">
+                                        {ovUnlocks.filter(a => !(mostRecentUnlock && a.appId === mostRecentUnlock.appId && a.apiName === mostRecentUnlock.apiName)).slice(0, 5).map(a => (
+                                            <div key={`${a.appId}-${a.apiName}`} className="urow">
+                                                {a.iconUrl ? <img src={a.iconUrl} alt="" loading="lazy" /> : <span className="w-8 h-8 shrink-0 rounded-[2px] bg-[#2a475e]" />}
+                                                <div className="urow-main">
+                                                    <span className="urow-title">{a.displayName}</span>
+                                                    <span className="urow-sub"><span className="text-[#66c0f4]">{a.gameName}</span> · {formatTimeAgo(a.unlockedAt)}</span>
+                                                </div>
+                                                <span className="urow-end" style={{ color: rarityBorderColor(a.globalPct) }}>{a.globalPct}%</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
 
+                        </div>
+
+                        {/* Rail (wide screens): user stats, then completions. Phone: below the left column, same order */}
+                        <div className="prail flex flex-col gap-5">
                             {/* User Stats: tiles, value over label; the header already shows the headline numbers */}
                             <div>
                                 <h2 className="text-[13px] text-white tracking-wide uppercase font-medium border-b border-[#2a475e] pb-1.5 flex items-center gap-2 mb-3">
@@ -1301,11 +1329,6 @@ const App = () => {
                                 </h2>
                                 <StatTiles items={[...statsLeft, ...statsRight].filter(st => !['Total games', 'Hours played'].includes(st.label))} />
                             </div>
-
-                        </div>
-
-                        {/* Sidebar: Completions */}
-                        <div className="flex flex-col gap-5">
                             <div className="bg-[#1b2838] border border-[#2a475e] rounded-[3px] shadow-sm h-fit">
                                 <div className="p-2.5 bg-[#172333] border-b border-[#2a475e] rounded-t-[2px] flex items-center gap-2">
                                     <span className="w-[2px] h-[12px] bg-[#e5b143] rounded-[1px] shrink-0" />

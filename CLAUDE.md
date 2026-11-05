@@ -107,7 +107,9 @@ gaming-hub/
 
 Vanilla JS, no React. Reads `data/hub/config.json`, `data/ra/profile.json`, `data/steam/profile.json`.
 
-**Platform strip** (`.pstrip`, one `a.pcell` per platform): three headline numbers per platform. On mobile one row each (icon, numbers, chevron); on desktop three cells side by side with the name on top and the three most recently played covers below. A platform is hidden if `platforms[key].visible` is false in config.json (the strip then uses fewer columns). The other counts (rank, beaten, games…) are on the profiles.
+**Desktop layout (≥1024px):** main `lg:max-w-[79rem]`; `.hub-grid` puts `#playing-section` and `#activity-section` in the main column and `.hub-rail` (340px, spans both rows) on the right with the Platforms header, `.pstrip` stacked one cell per row, and the Completions and Analytics strips restyled as cards (CSS in `index.html`). DOM order is the phone order, so below 1024px it is one column as before
+
+**Platform strip** (`.pstrip`, one `a.pcell` per platform): three headline numbers per platform. On mobile one row each (icon, numbers, chevron); on tablets three cells side by side with the name on top (stacked in the rail at ≥1024px) and the three most recently played covers below. A platform is hidden if `platforms[key].visible` is false in config.json (the strip then uses fewer columns). The other counts (rank, beaten, games…) are on the profiles.
 
 **Numbers and colors:**
 - RA: Points (gold) · Mastered (gold) · Unlocks (blue)
@@ -166,7 +168,8 @@ Page headers use `pt-8 pb-5 md:pt-5` — extra top padding on mobile compensates
 ### Profile tabs (RA, Steam and Xbox)
 - `assets/tabs.js`: `TabBar` (one row, icon + label, active tab white with its icon in the platform colour, sliding underline, scrolls sideways when the tabs don't fit, keeps the active tab in view) and `useSwipeTabs()`; styles `.ptabs*` in `assets/ui.css`
 - **Sticky:** pins below the status bar on phones (`top: env(safe-area-inset-top)`) and below the breadcrumb bar on desktop (`top: 26px`). A `.ptabs-anchor` marks its natural spot; `scrollToTabs()` brings a newly picked tab to its top with the bar pinned
-- **Overview** is the first and default tab: the old top section (Most Recently Played, Most Recently Unlocked, User Stats, Game Awards / Completions)
+- **Overview** is the first and default tab: the old top section (Last played, Recent unlocks, User stats, Game Awards / Completions)
+- **Desktop (≥1024px):** main `lg:max-w-[79rem]` (header `.phead-in` matches); Overview is `lg:grid-cols-[minmax(0,1fr)_360px]` with Last played + Recent unlocks on the left and a `.prail` (User stats two across, then Awards / Completions) on the right. Recent unlocks adds up to 5 compact `.urow` rows (`.ulist`, hidden below 1024px) from achievement chunk 1, fetched by an `ovUnlocks` effect only when `matchMedia('(min-width: 1024px)')` matches, so phones download nothing extra. The tab bar on md+ lines up with the content (`.ptabs` margin 0)
 - **Swipe (phones), carousel style:** the tab content follows a sideways drag (`touchmove` non-passive, axis locked after 8px, `touch-action: pan-y`); the neighbouring tab slides in one page-gap (32px) beside it as a skeleton (`.tab-peek`, placed under the pinned bar, capped to the screen height) in that tab's own shape: each page passes `tabPeeks` ({ tabId: [part, …] }, parts from `PEEK_PARTS` in `assets/tabs.js`: `h2`, `fbar`, `chips`, `row`, `unlock`, `list`, `tiles`, `stats`, `wlist`, `cards`, `heatmap`, `timeline`). The real tab renders only after the swipe lands, so a drag never waits on a heavy tab. Release past 25% of the width or with a flick commits, otherwise it springs back; rubber band past the first / last tab. Ignored when it starts on something that scrolls sideways itself (chip rows, heatmap, cover strips) or on a form control, or when it's mostly vertical. The listener sits on a stable wrapper around the keyed tab content (a keyed element is replaced on every switch); the wrapper's parent gets `overflow-x: clip`. Reduced motion: follows the finger, release is instant
 - There is no floating tab pill any more: the sticky bar replaced it
 
@@ -380,7 +383,7 @@ Consistent pattern across all pages:
 <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0" />
 <span className="text-[13px] text-white tracking-wide uppercase font-medium">Title</span>
 ```
-General sections (Most Recently Played, User Stats, Activity) use `#66c0f4` on every profile page; achievement sections (Most Recently Unlocked, Recent Unlocks, Completions/Game Awards) use `#e5b143`. Xbox green is not a section color.
+General sections (Most Recently Played, User Stats, Activity) use `#66c0f4` on every profile page; achievement sections (Recent unlocks, Completions/Game Awards) use `#e5b143`. Xbox green is not a section color.
 
 ### Shimmer skeleton
 Defined in each `index.html` `<style>` block (not in app.js). Class name: `.shimmer`. Used on loading placeholders before data arrives.

@@ -166,6 +166,8 @@ button.gtile:hover { transform: translateY(-2px); }
   .phead-meta { display: block; text-align: right; }
   .phead-sub.phone-only { display: none; }
 }
+/* Wide screens: header content as wide as the pages' 1200px content */
+@media (min-width: 1024px) { .phead-in { max-width: 79rem; } }
 
 /* ── RA watchlist ───────────────────────────────────────────────────────────────────
    One row per game: icon, title (+ subset / tags), console · points · achievements, and the
@@ -256,8 +258,8 @@ button.gtile:hover { transform: translateY(-2px); }
 .ptab-icon svg { width: 15px; height: 15px; }
 .ptabs-ind { position: absolute; left: 0; bottom: 0; height: 3px; border-radius: 2px 2px 0 0; transition: transform 250ms cubic-bezier(0.2, 0.8, 0.3, 1), width 250ms cubic-bezier(0.2, 0.8, 0.3, 1), background-color 250ms; }
 @media (min-width: 768px) {
-  .ptabs { top: 26px; margin: 0 -32px 20px; }
-  .ptabs-row { gap: 8px; padding: 0 22px; }
+  .ptabs { top: 26px; margin: 0 0 20px; }
+  .ptabs-row { gap: 8px; padding: 0; margin: 0 -10px; }
   .ptab { height: 44px; font-size: 12.5px; }
 }
 /* Carousel swipe: the neighbouring tab as a skeleton beside the content while dragging */
@@ -286,6 +288,19 @@ button.gtile:hover { transform: translateY(-2px); }
 .grow-extra.rp { font-style: italic; }
 .grow-extra svg { display: inline; vertical-align: -1px; margin-right: 4px; }
 .grow-extra em { font-style: normal; color: #546270; }
+/* Overview, wide screens: compact rows of the latest unlocks under the newest one (hidden on phones) */
+.ulist { display: none; }
+@media (min-width: 1024px) {
+  .ulist { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+  .prail .stiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.urow { display: flex; align-items: center; gap: 10px; min-height: 46px; padding: 6px 12px 6px 8px; background: #1b2838; border: 1px solid #2a475e; border-left: 3px solid #5a4a20; border-radius: 3px; text-decoration: none; transition: background-color 150ms; }
+.urow:hover { background: #202d39; }
+.urow > img { width: 32px; height: 32px; flex-shrink: 0; border-radius: 2px; border: 1px solid #101214; object-fit: cover; background: #101214; }
+.urow-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.urow-title { font-size: 12.5px; font-weight: 500; color: #e5b143; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.urow-sub { font-size: 11px; color: #8f98a0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.urow-end { flex-shrink: 0; font-size: 11px; color: #8f98a0; font-variant-numeric: tabular-nums; }
 .stiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .stile { display: flex; flex-direction: column; gap: 2px; min-width: 0; padding: 9px 11px; background: #1b2838; border: 1px solid #2a475e; border-radius: 3px; }
 .stile b { font-size: 15px; font-weight: 600; color: #c6d4df; line-height: 1.25; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

@@ -25,7 +25,8 @@ Built from `profile/steam/` and kept structurally parallel to it. When changing 
 - Progress sorts (`utils/constants.js`): Completion, Gamerscore, Last Played
 
 ## Colors
-- Same section scheme as RA and Steam: **blue `#66c0f4`** for general sections (Most Recently Played, User Stats, Activity), links and filter chips; the tab bar's active icon and underline are Xbox green; **gold `#e5b143`** for achievement sections (Most Recently Unlocked, Recent Unlocks, Completions)
+- Same section scheme as RA and Steam: **blue `#66c0f4`** for general sections (Most Recently Played, User Stats, Activity), links and filter chips; the tab bar's active icon and underline are Xbox green; **gold `#e5b143`** for achievement sections (Recent unlocks, Completions)
+- Overview on ≥1024px: User Stats and Completions in the right rail; Recent unlocks adds the `ovUnlocks` rows (gamerscore, icons through `xboxImg`) from chunk 1, as on RA
 - Heatmap: same blue ramp as Steam, gold peak
 - Xbox green `#52b043` (`XBOX_GREEN`) only marks Xbox: avatar border here; elsewhere the hub card, activity feed border, Activity-page Xbox filter, changelog section
 - Status colors: completed gold, beaten silver `#b8c4ce`, in progress blue
