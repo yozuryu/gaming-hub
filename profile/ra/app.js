@@ -239,7 +239,7 @@ const WideBanner = ({ game, cls }) => {
   const [failed, setFailed] = useState(false);
   return failed
     ? <img src={game.icon} alt="" loading="lazy" className={cls === 'banner' ? 'icon px' : 'grow-icon px'} />
-    : <img src={game.wide.banner} alt="" loading="lazy" className={cls} onError={() => setFailed(true)} />;
+    : <img src={game.wide.banner} alt="" loading="lazy" className={`${cls} wfit`} onError={() => setFailed(true)} />;
 };
 
 // One compact row: icon, title, console + mode + tags, playtime · last played, count and bar.
@@ -333,7 +333,7 @@ const HeaderArt = ({ urls, icon = false, wide = false }) => {
   return (
     <div className="art-bg art-header">
       <img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError}
-        className={`${wide ? '' : icon ? 'px art-icon' : 'px'} ${art.loaded ? 'loaded' : ''}`} />
+        className={`${wide ? 'wfit' : icon ? 'px art-icon' : 'px'} ${art.loaded ? 'loaded' : ''}`} />
     </div>
   );
 };
