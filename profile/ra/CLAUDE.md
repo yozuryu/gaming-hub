@@ -2,7 +2,8 @@
 
 ## Data Sources
 - `../../data/ra/profile.json` — fetched on mount; passed through `transform.js`
-- `../../data/ra/games.json` — fetched on mount alongside profile
+- `../../data/ra/games/index.json` — every played game without its achievement list (+ `summary`), loaded when Recent, Progress or Series opens (`loadGames`; falls back to the old `games.json`)
+- `../../data/ra/games/{id}.json` — one game with its achievements, loaded when its sheet opens (`openGame` → `loadGameFile`, from any tab); merged over the index entry in `rawData`, so `transform.js` gives that game its `achievements`. Until then the sheet shows `ModalListSkeleton`. Progress's progression sort and the Series totals use `summary` (`progTotal` / `progEarned`, points, `lastUnlock`)
 - `../../data/ra/watchlist.json` — fetched separately (split from profile.json)
 - `../../data/ra/series.json` — fetched for Series tab
 - `../../data/ra/achievements/1–4.json` — all four fetched when Activity tab opens (the heatmap is built in the browser from these chunks, in the viewer's timezone); the timeline reveals them one at a time (`shownChunks`) as the user scrolls
@@ -37,7 +38,7 @@ Recent Games and Completion Progress render `GameListRow` (icon, title, console,
 
 ## Series
 - **`data/ra/series.json` rules** (same as Steam / Xbox): only real games, no `[Subset …]` entries; `showProgress` on for every series with 3+ games, except sub-series fully nested in a bigger one (Mega Man X / Zero / Battle Network / Star Force, Final Fantasy Crystal Chronicles, Final Fantasy Tactics, Pokémon Mystery Dungeon, Summon Night Swordcraft Story), whose games are also in the parent
-- `buildSeries()` → one entry per `showProgress` series: per-game status (from `games.json`, else the watchlist entry), counts, points/achievement totals, `latestAch`, `lastMs` (latest unlock or last played)
+- `buildSeries()` → one entry per `showProgress` series: per-game status (from the games index, else the watchlist entry), counts, points/achievement totals, `latestAch`, `lastMs` (latest unlock or last played)
 - Card (`.scard`): cover icon (`coverGameId`, else the first id), counts, % + `shortAgo(lastMs)`, bar, icon strip (`seriesIconOrder`: mastered, started by recency, not started, no achievements; classes `mastered` / `dim` / `noach`)
 - **Art:** the cover's screenshot, else the most recently active series game with a `raShot`, else the cover icon (`.art-icon`). Watchlist-only covers have no screenshot (watchlist entries only carry `imageIcon`)
 - `SeriesSheet` (shared sheet): stats, latest unlock, grouped games; played games are `GameListRow compact`, others `.wrow`. Mastered games use `MasteredRow` (`.smast`): the row plus a band with the award date and `rarest` (from `PROFILE_DATA.gameAwards`, which carries `gameId`, `awardedAt`, `hardcore`, `rarest`). Sections `.ssheet-sec` (Latest unlock gold, Games blue) with the status groups (`.ssheet-group`: In progress · Mastered · Beaten · Not started · No achievements; beaten = a Game Beaten award, `beatenIds`) under Games. `.sheet-scroll > *` never shrinks (the `.smast` card collapsed onto its row in long sheets). `.grow` is also Tailwind's `flex-grow: 1` utility, so `.sheet-scroll > .grow` resets it (rows stretched in short sheets). Opening a game sets `seriesBack`, so the achievement modal shows `.sheet-back` and returns to the series

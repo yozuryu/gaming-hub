@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Layers, Search, X, Trophy, Star } from 'lucide-react';
+import { Layers, Search, X, Trophy, Star, ChevronLeft } from 'lucide-react';
 import { useSheet, useArtSrc } from '../assets/sheet.js';
 import { shortAgo } from '../assets/game-view.js';
 
@@ -120,9 +120,12 @@ const SeriesCard = ({ c, onOpen }) => {
 };
 
 // One game in the sheet: icon (Steam banner), title, platform · console · playtime · last played, count + bar.
-// Opens the game's achievement sheet on its profile (?game=), or its page on the platform when it has no set there
-const GameRow = ({ g }) => (
-    <a href={g.sheet ? `../profile/${g.p}/?game=${encodeURIComponent(g.id)}` : g.url} {...(g.sheet ? {} : { target: '_blank', rel: 'noreferrer' })} className="grow compact" style={{ borderLeftColor: g.color }}>
+// Opens the game's achievements here (GameSheet), or its page on the platform when it has no set
+const GameRow = ({ g, onOpen }) => {
+    const Tag = g.sheet ? 'button' : 'a';
+    const props = g.sheet ? { onClick: () => onOpen(g) } : { href: g.url, target: '_blank', rel: 'noreferrer' };
+    return (
+    <Tag {...props} className="grow compact" style={{ borderLeftColor: g.color }}>
         {g.art && <div className="grow-art"><img src={g.art} alt="" loading="lazy" onError={e => { if (g.p === 'steam' && !e.target.src.endsWith('header.jpg')) e.target.src = g.icon; else e.target.style.display = 'none'; }} /></div>}
         <Cover g={g} cls={g.p === 'steam' ? 'grow-banner' : 'grow-icon px'} />
         <div className="grow-main">
@@ -138,10 +141,126 @@ const GameRow = ({ g }) => (
                 <div className="gbar"><i style={{ width: `${(g.unlocked / g.total) * 100}%`, background: g.done ? '#e5b143' : '#66c0f4' }} /></div>
             </> : <span className="text-[11px] text-[#546270]">No achievements</span>}
         </div>
-    </a>
-);
+    </Tag>
+    );
+};
 
-const SeriesSheet = ({ c, onClose }) => {
+// ── A game's achievements, opened from a series ────────────────────────────────
+// Reads the game's own file on its platform (data/ra/games/{id}.json, data/{steam,xbox}/games/{id}.json)
+// and shows one list for all three: icon, name, description, points / gamerscore, rarity, unlock date.
+// The full sheet (RA guides, progression and missable filters, Steam rarity tiers) stays on the profile,
+// one tap away ("Full details").
+const RA_MEDIA = 'https://media.retroachievements.org';
+const fmtDay = s => { if (!s) return ''; const d = new Date(/^\d{4}-\d{2}-\d{2} \d/.test(s) ? s.replace(' ', 'T') + 'Z' : s); return isNaN(d) ? '' : d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }); };
+const rarityColor = p => p == null ? '#546270' : p < 5 ? '#e5b143' : p < 10 ? '#c8901a' : p < 25 ? '#66c0f4' : p < 50 ? '#8f98a0' : '#546270';
+
+const normalize = (p, id, d) => {
+    if (p === 'ra') {
+        const players = d.numDistinctPlayersCasual || 0;
+        return Object.values(d.achievements ?? {}).map(a => ({
+            key: a.id, name: a.title, desc: a.description, unlocked: !!a.dateEarned, at: a.dateEarned, hardcore: !!a.dateEarnedHardcore,
+            icon: `${RA_MEDIA}/Badge/${a.badgeName}${a.dateEarned ? '' : '_lock'}.png`, value: a.points ? `${a.points} pts` : null,
+            pct: players ? Math.min(100, (a.numAwarded / players) * 100) : null, order: a.displayOrder ?? 0, pixel: true,
+            type: a.type,
+        }));
+    }
+    const steam = p === 'steam';
+    const cdn = h => h ? `https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/${id}/${h}` : null;
+    return (d.achievements ?? []).map((a, i) => ({
+        key: a.apiName ?? i, name: a.displayName, desc: a.description, unlocked: !!a.unlocked, at: a.unlockedAt,
+        icon: steam ? (a.unlocked ? cdn(a.iconUrl) : cdn(a.iconGrayUrl) || cdn(a.iconUrl)) : xboxImg(a.iconUrl, 128),
+        value: !steam && a.gamerscore ? `${a.gamerscore}G` : null, pct: a.globalPct ?? null, order: i,
+    }));
+};
+
+const GameSheet = ({ g, backLabel, onBack, onClose }) => {
+    const panelRef = useRef(null), rootRef = useRef(null), dragRef = useRef(null);
+    const close = useSheet({ panelRef, dragRef, rootRef, onClose });
+    const art = useArtSrc([g.art, g.icon]);
+    const [achs, setAchs] = useState(null);
+    const [failed, setFailed] = useState(false);
+    const [filter, setFilter] = useState('all');
+    useEffect(() => {
+        fetch(`../data/${g.p}/games/${g.id}.json`).then(r => { if (!r.ok) throw new Error(); return r.json(); })
+            .then(d => setAchs({ list: normalize(g.p, g.id, d), hidden: d.partial ? Math.max(0, (d.total ?? 0) - (d.achievements?.length ?? 0)) : 0 }))
+            .catch(() => setFailed(true));
+    }, [g.key]);
+    const list = useMemo(() => {
+        if (!achs) return [];
+        const unl = achs.list.filter(a => a.unlocked).sort((a, b) => String(b.at).localeCompare(String(a.at)));
+        const lck = achs.list.filter(a => !a.unlocked).sort((a, b) => a.order - b.order);
+        return filter === 'unlocked' ? unl : filter === 'locked' ? lck : [...unl, ...lck];
+    }, [achs, filter]);
+    const counts = achs ? { all: achs.list.length + achs.hidden, unlocked: achs.list.filter(a => a.unlocked).length, locked: achs.list.filter(a => !a.unlocked).length + achs.hidden } : null;
+    const pct = g.total ? (g.unlocked / g.total) * 100 : 0;
+    return (
+        <div ref={rootRef} className="sheet-root" onClick={close}>
+            <div className="sheet-backdrop anim-backdrop" />
+            <div ref={panelRef} className="sheet-panel" onClick={e => e.stopPropagation()}>
+                <button onClick={close} className="sheet-close" aria-label="Close"><X size={15} /></button>
+                <button onClick={onBack} className="sheet-back" aria-label={`Back to ${backLabel}`}><ChevronLeft size={14} />{backLabel}</button>
+                <div ref={dragRef} className="sheet-head">
+                    {art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`${g.p === 'ra' ? 'px' : ''} ${art.loaded ? 'loaded' : ''}`} /></div>}
+                    <span className="sheet-grab" />
+                    <div className="relative flex items-end gap-4 px-4 pt-[34px] md:pt-[54px] pb-4">
+                        <Cover g={g} cls={g.p === 'steam' ? 'w-32 h-16 rounded-[2px] border border-[#101214] object-cover shrink-0' : 'w-16 h-16 rounded-[3px] border-2 border-white/20 object-cover shrink-0 px'} />
+                        <div className="flex-1 min-w-0 flex flex-col gap-1.5">
+                            <span className="sheet-title text-[15px] md:text-[17px] font-medium text-white leading-tight">{baseTitle(g.title)}</span>
+                            <span className="flex items-center gap-1.5 text-[11px] text-[#c6d4df] art-shadow">
+                                <img src={PLATFORMS[g.p].icon} alt="" className="w-3 h-3 object-contain" />{g.console ?? PLATFORMS[g.p].label}
+                                <a href={`../profile/${g.p}/?game=${encodeURIComponent(g.id)}`} className="ml-auto text-[#66c0f4] hover:text-white transition-colors">Full details ›</a>
+                            </span>
+                            {g.hasAch && (
+                                <div className="flex items-center gap-2">
+                                    <div className="gbar flex-1"><i style={{ width: `${pct}%`, background: g.done ? '#e5b143' : '#66c0f4' }} /></div>
+                                    <span className="text-[11px] text-[#c6d4df] tabular-nums shrink-0"><b className="text-white">{g.unlocked}</b>/{g.total}</span>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+                {counts && (
+                    <div className="flex items-center gap-2 px-4 py-2 border-b border-[#101214] shrink-0">
+                        <div className="frow flex-1 min-w-0" role="group" aria-label="Filter achievements">
+                            {[['all', 'All'], ['unlocked', 'Unlocked'], ['locked', 'Locked']].map(([v, l]) => (
+                                <button key={v} onClick={() => setFilter(v)} aria-pressed={filter === v} className={`fchip ${filter === v ? 'on' : ''}`}>{l}<span className="n">{counts[v]}</span></button>
+                            ))}
+                        </div>
+                    </div>
+                )}
+                <div key={filter} className="sheet-scroll overflow-y-auto overscroll-contain flex-1 min-h-0 px-4 pt-3 flex flex-col gap-1.5 anim-fade">
+                    {failed ? <div className="text-center py-8 text-[#546270] text-[12px]">Could not load this game's achievements. <a href={`../profile/${g.p}/?game=${encodeURIComponent(g.id)}`} className="text-[#66c0f4]">Open on the profile</a></div>
+                    : !achs ? [...Array(6)].map((_, i) => (
+                        <div key={i} className="flex items-center gap-3 p-2 bg-[#202d39] border border-[#2a475e] rounded-[2px]">
+                            <div className="shimmer w-10 h-10 rounded-[2px] shrink-0" />
+                            <div className="flex-1 flex flex-col gap-1.5"><div className="shimmer h-2.5 rounded" style={{ width: `${40 + (i % 3) * 15}%` }} /><div className="shimmer h-2 rounded" style={{ width: `${60 + (i % 2) * 20}%` }} /></div>
+                        </div>
+                    )) : <>
+                        {list.map(a => (
+                            <div key={a.key} className={`gach ${a.unlocked ? 'on' : ''}`}>
+                                {a.icon ? <img src={a.icon} alt="" loading="lazy" className={a.pixel ? 'px' : ''} onError={e => { e.target.style.visibility = 'hidden'; }} /> : <span className="ph" />}
+                                <div className="gach-main">
+                                    <span className="gach-name">{a.name}</span>
+                                    {a.desc && <span className="gach-desc">{a.desc}</span>}
+                                    <span className="gach-meta">
+                                        {a.value && <b>{a.value}</b>}
+                                        {a.pct != null && <span style={{ color: rarityColor(a.pct) }}>{a.pct < 0.1 ? '<0.1' : a.pct.toFixed(1)}%</span>}
+                                        {a.hardcore && <span className="text-[#ff6b6b]">Hardcore</span>}
+                                        {a.unlocked && a.at && <span className="ml-auto text-[#66c0f4]">{fmtDay(a.at)}</span>}
+                                    </span>
+                                </div>
+                            </div>
+                        ))}
+                        {filter !== 'unlocked' && achs.hidden > 0 && <div className="text-center py-3 text-[#546270] text-[11px]">{achs.hidden} locked achievements aren't listed for Xbox 360 games</div>}
+                        {list.length === 0 && <div className="text-center py-8 text-[#546270] text-[11px]">No achievements here.</div>}
+                    </>}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const SeriesSheet = ({ c, onClose, onOpenGame }) => {
     const panelRef = useRef(null), rootRef = useRef(null), dragRef = useRef(null);
     const close = useSheet({ panelRef, dragRef, rootRef, onClose });
     const art = useArtSrc([c.cover?.art, c.cover?.icon]);
@@ -182,7 +301,7 @@ const SeriesSheet = ({ c, onClose }) => {
                     {groups.map(gr => (
                         <React.Fragment key={gr.key}>
                             <div className="ssheet-group">{gr.label}<span className="n">{gr.games.length}</span></div>
-                            {gr.games.map(g => <GameRow key={g.key} g={g} />)}
+                            {gr.games.map(g => <GameRow key={g.key} g={g} onOpen={onOpenGame} />)}
                         </React.Fragment>
                     ))}
                 </div>
@@ -198,6 +317,7 @@ const App = () => {
     const [sort, setSort] = useState('recent');
     const [filter, setFilter] = useState('all');
     const [open, setOpen] = useState(null);
+    const [game, setGame] = useState(null);       // { g, from }: a game opened from a series sheet
 
     useEffect(() => {
         fetch('../data/hub/series-games.json').then(r => { if (!r.ok) throw new Error(); return r.json(); })
@@ -279,7 +399,8 @@ const App = () => {
                 <a href="../" className="ml-auto text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">← Back to hub</a>
             </footer>
 
-            {open && <SeriesSheet c={open} onClose={() => setOpen(null)} />}
+            {open && <SeriesSheet c={open} onClose={() => setOpen(null)} onOpenGame={g => { setGame({ g, from: open }); setOpen(null); }} />}
+            {game && <GameSheet g={game.g} backLabel={game.from.name} onBack={() => { setOpen(game.from); setGame(null); }} onClose={() => setGame(null)} />}
         </div>
     );
 };

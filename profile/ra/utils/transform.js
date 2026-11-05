@@ -105,8 +105,25 @@ export const transformData = (data) => {
       game.developer = details.developer || null;
       game.released = details.released ? details.released.substring(0, 4) : null;
 
+      // Index entries (games/index.json) carry a summary instead of the achievement list; the list
+      // arrives with the game's own file (games/{id}.json) when its sheet opens
+      const sum = details.summary;
+      if (sum) {
+        if (!game.achievementsTotal && sum.count > 0) {
+          game.achievementsTotal = sum.count;
+          game.achievementsUnlocked = sum.earned;
+          game.rawProgress = (sum.earned / sum.count) * 100;
+          game.progress = Math.floor(game.rawProgress);
+        }
+        game.progTotal = sum.prog;
+        game.progEarned = sum.progEarned;
+      }
+
       if (details.achievements && Object.keys(details.achievements).length > 0) {
         const achs = Object.values(details.achievements);
+        const isProg = a => a.type === 'progression' || a.type === 'win_condition';
+        game.progTotal = achs.filter(isProg).length;
+        game.progEarned = achs.filter(a => isProg(a) && a.dateEarned).length;
         const maxPossibleFromDetails = achs.length;
         const unlockedFromDetails = achs.filter(a => a.dateEarned).length;
 

@@ -20,7 +20,8 @@ const RA_MEDIA = 'https://media.retroachievements.org';
 const STEAM_CDN = 'https://cdn.akamai.steamstatic.com/steam/apps';
 
 function raGames() {
-    const games = read('data/ra/games.json', {})?.detailedGameProgress ?? {};
+    // games/index.json (per-game split, with a summary), else the old single games.json
+    const games = read('data/ra/games/index.json', null)?.games ?? read('data/ra/games.json', {})?.detailedGameProgress ?? {};
     const watch = read('data/ra/watchlist.json', {})?.results ?? [];
     const profile = read('data/ra/profile.json', {});
     const awards = profile?.pageAwards?.visibleUserAwards ?? [];
@@ -33,7 +34,7 @@ function raGames() {
     }
     for (const d of Object.values(games)) {
         const achs = Object.values(d.achievements ?? {});
-        const lastUnlock = Math.max(0, ...achs.filter(a => a.dateEarned).map(a => ms(a.dateEarned)));
+        const lastUnlock = d.summary ? ms(d.summary.lastUnlock?.date) : Math.max(0, ...achs.filter(a => a.dateEarned).map(a => ms(a.dateEarned)));
         const shot = [d.imageIngame, d.imageTitle].find(x => x && !x.endsWith('/000002.png'));
         out[d.id] = {
             title: d.title, console: d.consoleName, icon: d.imageIcon ? RA_MEDIA + d.imageIcon : null, art: shot ? RA_MEDIA + shot : null,

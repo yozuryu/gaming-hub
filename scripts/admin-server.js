@@ -124,7 +124,11 @@ const server = http.createServer((req, res) => {
     // GET /api/games/ra
     if (method === 'GET' && pathname === '/api/games/ra') {
         try {
-            const raw       = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/ra/games.json'), 'utf8'));
+            // games/index.json (split per game), else the old single games.json
+            const indexPath = path.join(ROOT, 'data/ra/games/index.json');
+            const raw = fs.existsSync(indexPath)
+                ? { detailedGameProgress: JSON.parse(fs.readFileSync(indexPath, 'utf8')).games }
+                : JSON.parse(fs.readFileSync(path.join(ROOT, 'data/ra/games.json'), 'utf8'));
             const watchlist = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/ra/watchlist.json'), 'utf8'));
             const watchlistIds = new Set((watchlist.results || []).map(g => g.id));
             const map = new Map();

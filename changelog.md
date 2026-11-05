@@ -6,6 +6,7 @@ Swiping between profile tabs looks like turning to another page; the RA Series t
 
 ### RetroAchievements
 
+- Recent, Progress and Series load a 12 KB game list instead of the 5 MB one (about 440 KB less to download on a phone); a game's achievements load when its sheet opens, with a skeleton meanwhile
 - Series redesigned: one card per series (two columns on desktop) with the cover icon, name, games · started · mastered, the completion % and last activity on the right, a progress bar and the strip of game icons, and the series art faded behind it. Search (series or game titles) with a sort (name, progress, recent) and All / Started / Not started chips. The art is the cover game's screenshot, else the screenshot of the most recently active game in the series (want-to-play entries only have an icon), else the cover icon blurred
 - Icon strip: mastered games have a gold border, started ones full colour, not started ones grey, and games without achievements are faint with a dashed border
 - Tapping a series opens its sheet: points, achievements and % as value-over-label stats, the latest unlock, and the games grouped In progress / Mastered / Not started / No achievements in compact rows. A played game opens its achievement sheet, with a back arrow to the series; a want-to-play game links to RetroAchievements
@@ -39,6 +40,7 @@ Swiping between profile tabs looks like turning to another page; the RA Series t
 
 ### Hub
 
+- Series page: a game opens its achievements right there (RA, Steam and Xbox in one list: points or gamerscore, rarity, unlock date), with a back button to the series and "Full details" to its profile sheet
 - Refresh: an icon button after "Last change" in the header on phone and desktop (the icon turns while it works), next to a Changelog (newspaper) icon on phones, both centred on the text, so the app can be refreshed from Home; the duplicate "Refresh app" in the desktop footer is gone (the Changelog page keeps its own)
 - Series page: a game opens its achievement sheet on its profile (RA, Steam or Xbox); want-to-play RA games and games without achievements still open their page on the platform. Profiles open a game's sheet from a link (`?game=`)
 - New Series section after Playing, and a Series page: series across RA, Steam and Xbox (Final Fantasy = 51 RA + 9 Steam + 5 Xbox games, FromSoftware with Elden Ring and Sekiro from Xbox, Armored Core from RA…), with the platform split on each card and a sheet of every game with its platform. Phone: the 3 most recently active series; desktop: 4 in two columns. 31 series to start with, edited in the admin
@@ -49,6 +51,10 @@ Swiping between profile tabs looks like turning to another page; the RA Series t
 ### All pages
 
 - Achievement and series sheets: the game art behind the header is sharper and darker (blur 3px instead of 6px, brightness 55% instead of 80%); art that falls back to an RA icon keeps the strong blur. The profile headers are unchanged
+
+### Pipelines
+
+- RA: games are written as `games/index.json` (no achievement lists, with a summary per game) plus one file per game, like Steam; the old single `games.json` is removed on the first run
 
 ### Admin
 

@@ -89,7 +89,7 @@ const fmtDate = (d) => d.toISOString().substring(0, 10);
 // --refresh-games   : re-fetch all game details (full refresh)
 // --watchlist-only  : only fetch + write watchlist.json, skip everything else
 // --debug           : verbose output; skips file writes (dry run)
-// (default)         : load existing games.json, only fetch new games
+// (default)         : load the cached games (games/{id}.json), only fetch new and recently played games
 const REFRESH_GAMES    = process.argv.includes('--refresh-games');
 const WATCHLIST_ONLY   = process.argv.includes('--watchlist-only');
 
@@ -270,23 +270,14 @@ async function executeProfileExtraction(targetUser) {
         // ── Detailed game progress ────────────────────────────────────────
         const progressGames = profilePayload.gameAwardsAndProgress?.results || [];
 
-        // Seed from existing games.json. Incremental mode only fetches new and
-        // recently played games; full refresh re-fetches everything but keeps the
-        // cached entry for any game whose fetch fails.
-        const gamesJsonPath = path.join(__dirname, '..', 'data', 'ra', 'games.json');
-        if (fs.existsSync(gamesJsonPath)) {
-            try {
-                const existing = JSON.parse(fs.readFileSync(gamesJsonPath, 'utf8'));
-                const cached = existing.detailedGameProgress || {};
-                const cachedCount = Object.keys(cached).length;
-                Object.assign(profilePayload.detailedGameProgress, cached);
-                log.ok(`Loaded ${cachedCount} cached game(s) from games.json`);
-            } catch (e) {
-                log.fail(`Could not read games.json — will fetch all: ${e.message}`);
-            }
-        } else {
-            log.skip('No existing games.json found — will fetch all games');
-        }
+        // Seed from the previous run's games (games/{id}.json, or the old single games.json).
+        // Incremental mode only fetches new and recently played games; full refresh re-fetches
+        // everything but keeps the cached entry for any game whose fetch fails.
+        const cached = readCachedGames();
+        Object.assign(profilePayload.detailedGameProgress, cached);
+        const cachedCount = Object.keys(cached).length;
+        if (cachedCount) log.ok(`Loaded ${cachedCount} cached game(s)`);
+        else log.skip('No cached games found — will fetch all games');
         if (REFRESH_GAMES) log.ok('Full refresh — all games will be re-fetched');
 
         const progressGameIds = new Set(progressGames.map(g => g.gameId));
@@ -459,7 +450,7 @@ function serializeLocally(payload) {
         write(`${i + 1}.json`, { recentAchievements: chunk }, ACH_DIR);
     }
 
-    // games.json — detailed per-game data, loaded for Recent/Progress tabs
+    // Per-game data, split into games/index.json + games/{id}.json below
     // Strip fields unused by the frontend to reduce file size (~1MB saved).
     const UNUSED_GAME_FIELDS = ['richPresencePatch', 'imageBoxArt',
         'forumTopicId', 'flags', 'isFinal', 'releasedAtGranularity',
@@ -482,7 +473,58 @@ function serializeLocally(payload) {
         }
         cleanedProgress[id] = cleanGame;
     }
-    write('games.json', { detailedGameProgress: cleanedProgress });
+
+    // games/index.json — every game without its achievement list, plus the few numbers the site
+    // used to work out from the lists (points, progression, latest unlock). ~55 KB instead of 5 MB.
+    // games/{id}.json — one game with its achievements, loaded when its sheet opens.
+    fs.mkdirSync(GAMES_DIR, { recursive: true });
+    const index = {};
+    for (const [id, game] of Object.entries(cleanedProgress)) {
+        const { achievements, ...rest } = game;
+        index[id] = { ...rest, summary: summarizeGame(achievements) };
+        write(`${id}.json`, game, GAMES_DIR);
+    }
+    write('index.json', { metadata: payload.metadata, games: index }, GAMES_DIR);
+    // Games no longer tracked lose their file; the old single file goes once the split exists
+    for (const f of fs.readdirSync(GAMES_DIR)) {
+        if (f !== 'index.json' && f.endsWith('.json') && !index[f.slice(0, -5)]) fs.rmSync(path.join(GAMES_DIR, f));
+    }
+    const legacy = path.join(__dirname, '..', 'data', 'ra', 'games.json');
+    if (fs.existsSync(legacy)) { fs.rmSync(legacy); log.ok('games.json (old single file) removed'); }
+}
+
+// Per-game files (data/ra/games/): see serializeLocally
+const GAMES_DIR = path.join(__dirname, '..', 'data', 'ra', 'games');
+
+// The numbers the site needs from a game's achievement list without loading it
+function summarizeGame(achievements) {
+    const achs = Object.values(achievements || {});
+    const isProg = a => a.type === 'progression' || a.type === 'win_condition';
+    let last = null;
+    for (const a of achs) if (a.dateEarned && (!last || a.dateEarned > last.dateEarned)) last = a;
+    return {
+        count: achs.length,
+        earned: achs.filter(a => a.dateEarned).length,
+        points: achs.reduce((n, a) => n + (a.points ?? 0), 0),
+        pointsEarned: achs.reduce((n, a) => n + (a.dateEarned ? a.points ?? 0 : 0), 0),
+        prog: achs.filter(isProg).length,
+        progEarned: achs.filter(a => isProg(a) && a.dateEarned).length,
+        lastUnlock: last && { id: last.id, title: last.title, badgeName: last.badgeName, date: last.dateEarned },
+    };
+}
+
+// The previous run's games: the per-game files, else the old single games.json
+function readCachedGames() {
+    const out = {};
+    try {
+        const ids = Object.keys(JSON.parse(fs.readFileSync(path.join(GAMES_DIR, 'index.json'), 'utf8')).games || {});
+        for (const id of ids) {
+            try { out[id] = JSON.parse(fs.readFileSync(path.join(GAMES_DIR, `${id}.json`), 'utf8')); } catch { /* refetched */ }
+        }
+        if (ids.length) return out;
+    } catch { /* no split yet */ }
+    try { return JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'ra', 'games.json'), 'utf8')).detailedGameProgress || {}; }
+    catch { return {}; }
 }
 
 // =========================================================
@@ -586,7 +628,8 @@ const sameIgnoringMetadata = (filePath, data) => {
 // (an unlock, playtime / last played, a want-to-play edit), otherwise null.
 function detectActivity(payload) {
     const dir = path.join(__dirname, '..', 'data', 'ra');
-    const games   = readJsonFile(path.join(dir, 'games.json'))?.detailedGameProgress;
+    // No index yet (first run after the split) counts as activity, so the new files get written
+    const games   = readJsonFile(path.join(dir, 'games', 'index.json'))?.games;
     const profile = readJsonFile(path.join(dir, 'profile.json'));
     if (!games || !profile) return 'no previous data';
 
@@ -619,7 +662,7 @@ function detectActivity(payload) {
 // =========================================================
 
 // Turns per-game userTotalPlaytime (seconds) into sessions (scripts/lib/playtime.js).
-// Every game in games.json goes in the snapshot so the baseline knows all of them;
+// Every tracked game goes in the snapshot so the baseline knows all of them;
 // last-played is only known for recently played games (the only ones re-fetched).
 function logPlaytime(payload) {
     log.section('Phase 4a — Playtime Log');

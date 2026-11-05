@@ -1110,21 +1110,25 @@ const buildSeries = (seriesData, gamesData, watchlistData, allGames, beatenIds =
       const numAchs = d?.numAchievements ?? wl?.achievementsPublished ?? 0;
       const awarded = d?.numAwardedToUser ?? 0;
       if (numAchs > 0) tracked++;
-      if (d?.achievements) {
-        Object.values(d.achievements).forEach(a => {
-          pointsTotal += a.points ?? 0; achTotal++;
-          if (a.dateEarned) {
-            pointsEarned += a.points ?? 0; achEarned++;
-            if (!latestAch || toMs(a.dateEarned) > toMs(latestAch.date)) latestAch = { title: a.title, badgeName: a.badgeName, achId: a.id, gameTitle: d.title, gameId: id, date: a.dateEarned };
-          }
-        });
+      // Totals and the latest unlock from the index summary (games/index.json); the old single
+      // games.json had the full lists instead
+      const sum = d?.summary ?? (d?.achievements ? (() => {
+        const achs = Object.values(d.achievements), won = achs.filter(a => a.dateEarned);
+        const last = won.reduce((b, a) => !b || toMs(a.dateEarned) > toMs(b.dateEarned) ? a : b, null);
+        return { count: achs.length, earned: won.length, points: achs.reduce((n, a) => n + (a.points ?? 0), 0), pointsEarned: won.reduce((n, a) => n + (a.points ?? 0), 0),
+          lastUnlock: last && { id: last.id, title: last.title, badgeName: last.badgeName, date: last.dateEarned } };
+      })() : null);
+      if (sum) {
+        pointsTotal += sum.points; achTotal += sum.count; pointsEarned += sum.pointsEarned; achEarned += sum.earned;
+        const L = sum.lastUnlock;
+        if (L && (!latestAch || toMs(L.date) > toMs(latestAch.date))) latestAch = { title: L.title, badgeName: L.badgeName, achId: L.id, gameTitle: d.title, gameId: id, date: L.date };
       } else if (wl) { pointsTotal += wl.pointsTotal ?? 0; achTotal += wl.achievementsPublished ?? 0; }
       const isMastered = numAchs > 0 && awarded === numAchs;
       const isStarted  = awarded > 0 && !isMastered;
       const beaten     = isStarted && beatenIds.has(id);
       if (isMastered) mastered++; else if (beaten) beatenCount++; else if (isStarted) started++;
       // Last activity: the latest unlock, or the last time it was played (recently played games)
-      const lastUnlock = d?.achievements ? Math.max(0, ...Object.values(d.achievements).filter(a => a.dateEarned).map(a => toMs(a.dateEarned))) : 0;
+      const lastUnlock = sum?.lastUnlock ? toMs(sum.lastUnlock.date) : 0;
       const lastMs = Math.max(lastUnlock, g ? raDateMs(g.lastPlayedStr) : 0);
       const info = d ?? wl ?? null;
       return {
@@ -1462,23 +1466,38 @@ export default function App() {
     if (achievementChunks[0] === null && loadingChunkIdx === null) loadAllChunks();
   }, [activeTab]);
 
-  // ── Fetch games.json (5 MB) when Recent, Progress or Series opens, or a game is opened from Overview ─
+  // ── Games: games/index.json (every game without its achievements, ~12 KB) when Recent, Progress
+  //    or Series opens; a game's own games/{id}.json when its sheet opens. Until the pipeline has
+  //    written the split, the old single games.json (5 MB, achievements included) is the fallback ─
   const gamesRequested = useRef(false);
   const loadGames = () => {
     if (gamesData || gamesRequested.current) return;
     gamesRequested.current = true;
     setLoadingGames(true);
-    fetch('../../data/ra/games.json')
-      .then(r => { if (!r.ok) throw new Error('Failed to load games.json'); return r.json(); })
+    fetch('../../data/ra/games/index.json')
+      .then(r => { if (!r.ok) throw new Error('no index'); return r.json(); })
+      .then(d => ({ detailedGameProgress: d.games ?? {} }))
+      .catch(() => fetch('../../data/ra/games.json').then(r => { if (!r.ok) throw new Error('Failed to load games'); return r.json(); }))
       .then(data => { setGamesData(data); setLoadingGames(false); })
       .catch(err => { console.error(err); setLoadingGames(false); setGamesFailed(true); });
   };
   useEffect(() => {
     if (['recent', 'progress', 'series'].includes(activeTab)) loadGames();
   }, [activeTab]);
-  // A game opened before games.json arrived (Overview's Last played) has no achievement list yet:
-  // open the sheet with a skeleton, load the file, and show the full entry once it's there
-  const openGame = g => { setSelectedGame(g); if (!g.achievements?.length) loadGames(); };
+  const [gameFiles, setGameFiles] = useState({});      // id → games/{id}.json, or false if it failed
+  const gameFileRequested = useRef(new Set());
+  const loadGameFile = id => {
+    if (gameFileRequested.current.has(id)) return;
+    gameFileRequested.current.add(id);
+    fetch(`../../data/ra/games/${id}.json`)
+      .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+      .then(d => setGameFiles(prev => ({ ...prev, [id]: d })))
+      // No per-game file (before the pipeline wrote the split): the old single games.json has it
+      .catch(() => { setGameFiles(prev => ({ ...prev, [id]: false })); loadGames(); });
+  };
+  // Opening a game: its sheet shows a skeleton until the game's file is in (from any tab, Overview's
+  // Last played included), then the full entry
+  const openGame = g => { setSelectedGame(g); if (!g.achievements?.length) loadGameFile(g.id); };
 
   // ── Merge loaded achievement chunks (newest first) ────────
   const allLoadedAchievements = useMemo(() => {
@@ -1503,22 +1522,22 @@ export default function App() {
       ...profileData,
       wantToPlayList:       watchlistData,  // from watchlist.json
       recentAchievements:   [],             // loaded separately in chunks for Activity tab
-      detailedGameProgress: gamesData?.detailedGameProgress ?? {},
+      // Index entries, with the full file of each game opened so far on top
+      detailedGameProgress: { ...(gamesData?.detailedGameProgress ?? {}), ...Object.fromEntries(Object.entries(gameFiles).filter(([, d]) => d)) },
     };
-  }, [profileData, watchlistData, gamesData]);
+  }, [profileData, watchlistData, gamesData, gameFiles]);
 
   const { profile: PROFILE_DATA, games: ALL_GAMES, backlog: BACKLOG } = useMemo(() => transformData(rawData), [rawData]);
   const beatenIds = useMemo(() => new Set((PROFILE_DATA?.gameAwards ?? []).filter(a => a.type === 'Game Beaten').map(a => a.gameId)), [PROFILE_DATA]);
-  // ?game=<id> (from series/): open that game's sheet once games.json is in, then drop the parameter
+  // ?game=<id> (from series/): open that game's sheet once the profile is in, then drop the parameter
   const deepGame = useRef(new URLSearchParams(location.search).get('game'));
-  useEffect(() => { if (deepGame.current) loadGames(); }, []);
   useEffect(() => {
-    if (!deepGame.current || !gamesData) return;
+    if (!deepGame.current || !ALL_GAMES.length) return;
     const g = ALL_GAMES.find(x => String(x.id) === deepGame.current);
     deepGame.current = null;
     const u = new URL(location.href); u.searchParams.delete('game'); history.replaceState({}, '', u);
-    if (g) setSelectedGame(g);
-  }, [gamesData, ALL_GAMES]);
+    if (g) openGame(g);
+  }, [ALL_GAMES]);
   const masteryAwards = useMemo(() => new Map((PROFILE_DATA?.gameAwards ?? []).filter(a => a.type === 'Mastery/Completion').map(a => [a.gameId, a])), [PROFILE_DATA]);
 
   // Header background: the most recently played game's screenshot, or its icon when it has none
@@ -1582,10 +1601,8 @@ export default function App() {
       .filter(g => showMastered || !g.isMastered)
       .sort((a, b) => {
         if (progressSort === 'progression') {
-          const getProg = g => {
-            const achs = g.achievements.filter(a => a.type === 'progression' || a.type === 'win_condition');
-            return achs.length > 0 ? achs.filter(a => a.isUnlocked).length / achs.length : -1;
-          };
+          // Progression % from the index summary (or the full list once a game's file is in)
+          const getProg = g => g.progTotal > 0 ? g.progEarned / g.progTotal : -1;
           return getProg(b) - getProg(a);
         }
         return b.rawProgress - a.rawProgress;
@@ -2150,8 +2167,8 @@ export default function App() {
                 )}
                 <div className={gameView === 'tiles' ? 'gtiles' : 'glist'}>
                   {displayedGames.map(game => gameView === 'tiles'
-                    ? <GameTile key={game.id} game={game} onViewDetails={setSelectedGame} />
-                    : <GameListRow key={game.id} game={game} onViewDetails={setSelectedGame} />)}
+                    ? <GameTile key={game.id} game={game} onViewDetails={openGame} />
+                    : <GameListRow key={game.id} game={game} onViewDetails={openGame} />)}
                 </div>
               </div>
             </>
@@ -2233,13 +2250,16 @@ export default function App() {
 
       `}</style>
 
-      {selectedGame && <RAchievementModal game={(gamesData && ALL_GAMES.find(x => x.id === selectedGame.id)) || selectedGame} guides={guidesData[selectedGame.id] ?? null}
-        loading={!gamesData && !gamesFailed && !selectedGame.achievements?.length}
+      {selectedGame && (() => {
+        const shown = ALL_GAMES.find(x => x.id === selectedGame.id) || selectedGame;
+        return <RAchievementModal game={shown} guides={guidesData[selectedGame.id] ?? null}
+        loading={!shown.achievements?.length && (shown.achievementsTotal ?? 0) > 0 && !(gameFiles[selectedGame.id] === false && (gamesData || gamesFailed))}
         onClose={() => { setSelectedGame(null); setSeriesBack(null); }}
         onBack={seriesBack ? () => { setSelectedGame(null); setSelectedSeries(seriesBack); setSeriesBack(null); } : null}
-        backLabel={seriesBack?.series.name} />}
+        backLabel={seriesBack?.series.name} />;
+      })()}
       {selectedSeries && <SeriesSheet card={selectedSeries} awards={masteryAwards} onClose={() => setSelectedSeries(null)}
-        onOpenGame={g => { setSeriesBack(selectedSeries); setSelectedSeries(null); setSelectedGame(g); }} />}
+        onOpenGame={g => { setSeriesBack(selectedSeries); setSelectedSeries(null); openGame(g); }} />}
     </div>
   );
 }

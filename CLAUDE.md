@@ -47,7 +47,7 @@ gaming-hub/
 │   ├── hub/series.json             # Shared series across platforms (admin: Shared Series); hub/series-games.json is built from it (gitignored, see Shared Series)
 │   ├── ra/
 │   │   ├── profile.json            # RA profile, stats, awards, recently played
-│   │   ├── games.json              # All RA games with per-achievement details
+│   │   ├── games/                  # index.json (every played game, no achievement lists, + `summary`) and {gameId}.json (one game with its achievements)
 │   │   ├── watchlist.json          # Want-to-play list (fetched separately by profile page)
 │   │   ├── series.json             # Named series with game ID arrays
 │   │   ├── playtime/               # Play sessions: {YYYY}.json + state.json (pipeline-only baseline); see Playtime Log
@@ -172,7 +172,7 @@ Page headers use `pt-8 pb-5 md:pt-5` — extra top padding on mobile compensates
 ### Profile tabs (RA, Steam and Xbox)
 - `assets/tabs.js`: `TabBar` (one row, icon + label, active tab white with its icon in the platform colour, sliding underline, scrolls sideways when the tabs don't fit, keeps the active tab in view) and `useSwipeTabs()`; styles `.ptabs*` in `assets/ui.css`
 - **Sticky:** pins below the status bar on phones (`top: env(safe-area-inset-top)`) and below the breadcrumb bar on desktop (`top: 26px`). A `.ptabs-anchor` marks its natural spot; `scrollToTabs()` brings a newly picked tab to its top with the bar pinned
-- **`?game=<id>`** opens that game's achievement sheet on load (RA waits for `games.json`, Steam / Xbox for the index), then the parameter is dropped with `replaceState`; the shared series page links games this way
+- **`?game=<id>`** opens that game's achievement sheet on load (RA loads the game's own file, Steam / Xbox wait for the index), then the parameter is dropped with `replaceState`; the shared series page links games this way
 - **Overview** is the first and default tab: the old top section (Last played, Recent unlocks, User stats, Game Awards / Completions)
 - **Desktop (≥1024px):** main `lg:max-w-[79rem]` (header `.phead-in` matches); Overview is `lg:grid-cols-[minmax(0,1fr)_360px]` with Last played + Recent unlocks on the left and a `.prail` (User stats two across, then Awards / Completions) on the right. Recent unlocks adds up to 5 compact `.urow` rows (`.ulist`, hidden below 1024px) from achievement chunk 1, fetched by an `ovUnlocks` effect only when `matchMedia('(min-width: 1024px)')` matches, so phones download nothing extra. The tab bar on md+ lines up with the content (`.ptabs` margin 0)
 - **Swipe (phones), carousel style:** the tab content follows a sideways drag (`touchmove` non-passive, axis locked after 8px, `touch-action: pan-y`); the neighbouring tab slides in one page-gap (32px) beside it as a skeleton (`.tab-peek`, placed under the pinned bar, capped to the screen height) in that tab's own shape: each page passes `tabPeeks` ({ tabId: [part, …] }, parts from `PEEK_PARTS` in `assets/tabs.js`: `h2`, `fbar`, `chips`, `row`, `unlock`, `list`, `tiles`, `stats`, `wlist`, `cards`, `heatmap`, `timeline`). The real tab renders only after the swipe lands, so a drag never waits on a heavy tab. Release past 25% of the width or with a flick commits, otherwise it springs back; rubber band past the first / last tab. Ignored when it starts on something that scrolls sideways itself (chip rows, heatmap, cover strips) or on a form control, or when it's mostly vertical. The listener sits on a stable wrapper around the keyed tab content (a keyed element is replaced on every switch); the wrapper's parent gets `overflow-x: clip`. Reduced motion: follows the finger, release is instant
@@ -188,7 +188,8 @@ Env vars: `RA_USERNAME`, `RA_API_KEY`. Uses `@retroachievements/api` package.
 - `--refresh-games`: re-fetches per-game achievement details
 - `--watchlist-only`: fetches only want-to-play list → `watchlist.json`
 - Game details cached in Firestore to avoid re-fetching unchanged games
-- Outputs: `profile.json`, `games.json`, `watchlist.json`, `achievements/1-4.json`
+- Outputs: `profile.json`, `games/index.json` + `games/{gameId}.json`, `watchlist.json`, `achievements/1-4.json`
+- **Per-game split** (like Steam): `games/index.json` holds every game without its achievement list plus a `summary` (`count`, `earned`, `points`, `pointsEarned`, `prog`, `progEarned`, `lastUnlock`), ~12 KB compressed instead of the old 5 MB `games.json`; each `games/{id}.json` is the full game, loaded when its sheet opens. The cache is read back from these files (the old `games.json` is the fallback and is deleted once the split is written). Files of games no longer tracked are removed
 
 ### Steam Pipeline (`scripts/steam-pipeline.js`)
 Env vars: `STEAM_API_KEY`, `STEAM_USER_ID`.
@@ -223,7 +224,7 @@ Steam and RA only (Xbox has no playtime). Each run compares lifetime playtime pe
 - **Not play:** a negative change, or a change while last-played didn't move (RA corrections), only updates the baseline. Under a minute is carried until it adds up
 - **Unknown games** count as new play only when last-played is after `state.asOf`; otherwise they're added to the baseline silently. The first run with no `state.json` only seeds it
 - Store sessions, never daily totals: the frontend groups them into the viewer's local days. No rollups; one file per year
-- RA's snapshot is every game in `games.json`, but last-played is only known for recently played games (the only ones re-fetched)
+- RA's snapshot is every tracked game, but last-played is only known for recently played games (the only ones re-fetched)
 - `state.json` is pipeline-only (`private` in `scripts/data-paths.json`: on the data branch, never deployed) and only rewritten when it changes
 - `scripts/backfill-playtime.js [--ref origin/backup/main-2026-11-01] [--platform steam|ra] [--dry-run]` replays the hourly snapshots in git through the same diff and replaces the playtime files. History starts 2026-03-25 (Steam) / 2026-03-27 (RA) and ends 2026-11-01: since then data lives on the `data` branch, squashed daily, so the backup branch (and the local bundle in `~/projects/personal/gaming-hub-backups/`) holds the only snapshots
 
@@ -255,7 +256,7 @@ Every unlocked achievement, all time, rebuilt by each pipeline on every run from
 
 ## Shared Series
 Series across platforms, made by hand in the admin (General → Shared Series) in `data/hub/series.json` (on main): `{ id, name, gameIds, showProgress, coverGameId }` with ids prefixed by platform (`ra:2688`, `steam:223870`, `xbox:1297287153`), same editor as the platform series.
-- `scripts/build-series.js [siteRoot]` turns it into `data/hub/series-games.json` (~115 KB): each game's title, icon, art, unlocked / total, beaten, playtime and last activity, from RA `games.json` + watchlist + awards, the Steam / Xbox indexes + win conditions. The hub and `series/` read only that file, never the per-platform lists (RA `games.json` is 5 MB)
+- `scripts/build-series.js [siteRoot]` turns it into `data/hub/series-games.json` (~115 KB): each game's title, icon, art, unlocked / total, beaten, playtime and last activity, from the RA games index + watchlist + awards, the Steam / Xbox indexes + win conditions. The hub and the series cards read only that file, never the per-platform lists; a game opened on `series/` loads its own file (`data/{ra,steam,xbox}/games/{id}.json`) 
 - Built in `deploy.yml` (after the site is assembled, so every data run and every push rebuilds it), by `npm run data:pull`, and by the admin server whenever the series file is saved. The output is gitignored
 - A series shows with 3+ games the platform data knows; games missing from it (unplayed Steam games aren't in the index) are left out
 
