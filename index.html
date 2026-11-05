@@ -86,6 +86,29 @@
       .activity-row-hidden { display: none !important; }
     }
 
+    /* Recent activity: one row per game per day, under a day label */
+    .aday { padding: 6px 12px 5px; font-size: 11px; font-weight: 600; color: #8f98a0; background: #172333; border-bottom: 1px solid #22344a; }
+    .aday:not(:first-child) { border-top: 1px solid #22344a; }
+    .arow { display: flex; align-items: flex-start; gap: 12px; padding: 10px 12px 10px 10px; border-left: 3px solid; text-decoration: none; transition: background-color 150ms; }
+    .arow + .arow { border-top: 1px solid #1a2535; }
+    .arow:hover { background: #1e2d3a; }
+    .arow.done { background: linear-gradient(90deg, rgba(229,177,67,0.09), rgba(229,177,67,0) 60%); }
+    .aicon { width: 40px; height: 40px; flex-shrink: 0; border-radius: 2px; border: 1px solid #101214; background: #101214; object-fit: cover; image-rendering: pixelated; }
+    .amain { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+    .atitle { display: flex; align-items: center; gap: 6px; min-width: 0; }
+    .atitle .t { min-width: 0; font-size: 13px; font-weight: 500; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .atitle .when { margin-left: auto; padding-left: 6px; flex-shrink: 0; font-size: 11px; color: #546270; font-variant-numeric: tabular-nums; }
+    .atag { flex-shrink: 0; font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 1px 4px; border: 1px solid; border-radius: 2px; }
+    .asubset { flex-shrink: 1; min-width: 0; font-size: 11px; color: #c8a84b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .asub { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #8f98a0; white-space: nowrap; }
+    .asub img { width: 12px; height: 12px; object-fit: contain; }
+    .asub .n { color: #e5b143; }
+    .asub i { font-style: normal; color: #3d5060; }
+    .astrip { display: flex; align-items: center; gap: 3px; min-width: 0; margin-top: 2px; }
+    .astrip img { width: 22px; height: 22px; flex-shrink: 0; border-radius: 2px; border: 1px solid #101214; background: #101214; object-fit: cover; }
+    .astrip .more { flex-shrink: 0; font-size: 10px; color: #8f98a0; padding: 0 2px; }
+    .astrip .last { min-width: 0; margin-left: 5px; font-size: 11px; color: #c6d4df; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
     #activity-toggle-btn {
       display: none; /* shown by JS only on mobile after feed loads */
       width: 100%;
@@ -95,10 +118,8 @@
       border-top: 1px solid #2a475e;
       color: #8f98a0;
       font-family: 'Segoe UI', Arial, sans-serif;
-      font-size: 9px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      font-size: 11px;
+      font-weight: 600;
       cursor: pointer;
       text-align: center;
       transition: color 0.15s, background 0.15s;
@@ -280,30 +301,32 @@
     </div>
     <div id="activity-feed" class="bg-[#1b2838] border border-[#2a475e] rounded-[2px] overflow-hidden" style="border-bottom-left-radius:0;border-bottom-right-radius:0;">
       <!-- skeleton -->
-      <div style="border-left:3px solid #2a475e;" class="flex items-center gap-3 px-3 py-2.5 border-b border-[#1a2535]">
-        <div class="skeleton w-4 h-4 rounded-[1px] flex-shrink-0"></div>
-        <div class="skeleton w-8 h-8 rounded-[2px] flex-shrink-0"></div>
-        <div class="flex-1 min-w-0 flex flex-col gap-1.5">
-          <div class="skeleton h-2.5 rounded" style="width:55%"></div>
-          <div class="skeleton h-2 rounded" style="width:38%"></div>
+      <span><span class="aday" style="display:block;"><span class="skeleton inline-block h-2.5 w-12 rounded"></span></span>
+      <div class="arow" style="border-left-color:#2a475e;">
+        <div class="skeleton aicon"></div>
+        <div class="amain">
+          <div class="skeleton h-3 rounded" style="width:55%"></div>
+          <div class="skeleton h-2.5 rounded" style="width:35%"></div>
+          <div class="skeleton h-[22px] rounded" style="width:45%"></div>
         </div>
       </div>
-      <div style="border-left:3px solid #2a475e;" class="flex items-center gap-3 px-3 py-2.5 border-b border-[#1a2535]">
-        <div class="skeleton w-4 h-4 rounded-[1px] flex-shrink-0"></div>
-        <div class="skeleton w-8 h-8 rounded-[2px] flex-shrink-0"></div>
-        <div class="flex-1 min-w-0 flex flex-col gap-1.5">
-          <div class="skeleton h-2.5 rounded" style="width:65%"></div>
-          <div class="skeleton h-2 rounded" style="width:45%"></div>
+      <div class="arow" style="border-left-color:#2a475e;">
+        <div class="skeleton aicon"></div>
+        <div class="amain">
+          <div class="skeleton h-3 rounded" style="width:65%"></div>
+          <div class="skeleton h-2.5 rounded" style="width:40%"></div>
+          <div class="skeleton h-[22px] rounded" style="width:60%"></div>
         </div>
       </div>
-      <div style="border-left:3px solid #2a475e;" class="flex items-center gap-3 px-3 py-2.5">
-        <div class="skeleton w-4 h-4 rounded-[1px] flex-shrink-0"></div>
-        <div class="skeleton w-8 h-8 rounded-[2px] flex-shrink-0"></div>
-        <div class="flex-1 min-w-0 flex flex-col gap-1.5">
-          <div class="skeleton h-2.5 rounded" style="width:48%"></div>
-          <div class="skeleton h-2 rounded" style="width:32%"></div>
+      <div class="arow" style="border-left-color:#2a475e;">
+        <div class="skeleton aicon"></div>
+        <div class="amain">
+          <div class="skeleton h-3 rounded" style="width:48%"></div>
+          <div class="skeleton h-2.5 rounded" style="width:30%"></div>
+          <div class="skeleton h-[22px] rounded" style="width:25%"></div>
         </div>
       </div>
+      </span>
     </div>
     <button id="activity-toggle-btn" onclick="toggleActivityFeed()">Show more</button>
     </div><!-- /activity-section -->
@@ -458,9 +481,8 @@
 
     async function loadRAStats() {
       try {
-        const res = await fetch('./data/ra/profile.json');
-        if (!res.ok) throw new Error('not found');
-        const d = await res.json();
+        const d = await fetchJsonOnce('./data/ra/profile.json');
+        if (!d) throw new Error('not found');
 
         // Timestamp
         const ts = d.metadata?.extractionTimestamp;
@@ -510,9 +532,8 @@
 
     async function loadSteamStats() {
       try {
-        const res = await fetch('./data/steam/profile.json');
-        if (!res.ok) throw new Error('not found');
-        const d = await res.json();
+        const d = await fetchJsonOnce('./data/steam/profile.json');
+        if (!d) throw new Error('not found');
 
         const fmtHrs = (min) => {
           const h = Math.floor(min / 60);
@@ -545,9 +566,8 @@
 
     async function loadXboxStats() {
       try {
-        const res = await fetch('./data/xbox/profile.json');
-        if (!res.ok) throw new Error('not found');
-        const d = await res.json();
+        const d = await fetchJsonOnce('./data/xbox/profile.json');
+        if (!d) throw new Error('not found');
 
         const s = d.stats ?? {};
         reportHubTotals('xbox', { minutes: 0, unlocks: s.unlockedAchievements ?? 0, completed: s.perfectCount ?? 0 });
@@ -585,7 +605,6 @@
         'Prototype': { bg: 'rgba(143,152,160,0.08)', border: 'rgba(143,152,160,0.3)',  color: '#8f98a0' },
         'Hack':      { bg: 'rgba(255,107,107,0.08)', border: 'rgba(255,107,107,0.3)',  color: '#ff6b6b' },
       };
-      const BADGE_S = 'font-size:7px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;padding:1px 4px;border-radius:2px;flex-shrink:0;';
 
       const parseTitle = (title) => {
         if (!title) return { baseTitle: title, subsetName: null, isSubset: false, tags: [] };
@@ -610,99 +629,125 @@
         return `${Math.floor(days / 30)}mo ago`;
       };
 
+      // One row per game per local day: play time (RA, Steam sessions) + the unlocks of that day,
+      // and a completion tag when the game was mastered / beaten / perfected that day
+      const esc = (s) => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+      const localKey = (ms) => { const d = new Date(ms); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+      const dayLabel = (key) => {
+        const now = new Date();
+        if (key === localKey(now.getTime())) return 'Today';
+        if (key === localKey(new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1).getTime())) return 'Yesterday';
+        const [y, m, d] = key.split('-').map(Number);
+        const date = new Date(y, m - 1, d);
+        return date.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', ...(y !== now.getFullYear() ? { year: 'numeric' } : {}) });
+      };
+      const clock = (ms) => { const d = new Date(ms); return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`; };
+      const fmtMin = (m) => m < 60 ? `${m}m` : `${Math.floor(m / 60)}h${m % 60 ? ` ${String(m % 60).padStart(2, '0')}m` : ''}`;
+      const ROWS = 6, PHONE_ROWS = 4;
+      const PLATFORM = {
+        ra:    { color: '#e5b143', icon: './assets/icon-ra.png',    url: id => `https://retroachievements.org/game/${id}` },
+        steam: { color: '#66c0f4', icon: './assets/icon-steam.png', url: id => `https://store.steampowered.com/app/${id}` },
+        xbox:  { color: '#52b043', icon: './assets/icon-xbox.png',  url: (id, name) => `https://www.xbox.com/en-US/Search/Results?q=${encodeURIComponent(name)}` },
+      };
+
       try {
-        const [raChunks, steamChunks, xboxChunks] = await Promise.all([
-          Promise.all([1, 2, 3, 4].map(i =>
-            fetchJsonOnce(`./data/ra/achievements/${i}.json`).then(d => d ?? { recentAchievements: [] })
-          )),
-          Promise.all([1, 2, 3, 4].map(i =>
-            fetchJsonOnce(`./data/steam/achievements/${i}.json`).then(d => d ?? { recentAchievements: [] })
-          )),
-          Promise.all([1, 2, 3, 4].map(i =>
-            fetchJsonOnce(`./data/xbox/achievements/${i}.json`).then(d => d ?? { recentAchievements: [] })
-          )),
+        const now = new Date();
+        const years = [...new Set([now.getFullYear() - 1, now.getFullYear()])].filter(y => y === now.getFullYear() || now.getMonth() < 3);
+        const [raProfile, steamProfile, xboxProfile, ...playFiles] = await Promise.all([
+          fetchJsonOnce('./data/ra/profile.json'),
+          fetchJsonOnce('./data/steam/profile.json'),
+          fetchJsonOnce('./data/xbox/profile.json'),
+          ...['ra', 'steam'].flatMap(p => years.map(y => fetchJsonOnce(`./data/${p}/playtime/${y}.json`).then(f => ({ p, f })))),
         ]);
 
-        const raAchs = raChunks.flatMap(d => (d.recentAchievements ?? []).map(a => ({
-          platform: 'ra',
-          achievementName: a.title,
-          description: a.description || a.title,
-          achievementIcon: `${RA_MEDIA}/Badge/${a.badgeName}.png`,
-          gameName: a.gameTitle,
-          gameUrl: `https://retroachievements.org/game/${a.gameId}`,
-          unlockedAt: a.date.replace(' ', 'T') + 'Z',
-        })));
+        const games = { ra: {}, steam: {}, xbox: {} };
+        for (const { p, f } of playFiles) for (const [id, g] of Object.entries(f?.games ?? {})) games[p][id] = { ...games[p][id], name: g.name, icon: g.icon ? (p === 'ra' ? RA_MEDIA + g.icon : g.icon) : null };
 
-        const steamAchs = steamChunks.flatMap(d => (d.recentAchievements ?? []).map(a => ({
-          platform: 'steam',
-          achievementName: a.displayName,
-          description: a.description || a.displayName,
-          achievementIcon: a.iconUrl,
-          gameName: a.gameName,
-          gameUrl: `https://store.steampowered.com/app/${a.appId}`,
-          unlockedAt: a.unlockedAt,
-        })));
+        const groups = new Map();
+        const group = (platform, gameId, ms) => {
+          const key = `${platform}:${gameId}:${localKey(ms)}`;
+          if (!groups.has(key)) groups.set(key, { platform, gameId, day: localKey(ms), lastMs: 0, minutes: 0, unlocks: [], done: null });
+          const g = groups.get(key); g.lastMs = Math.max(g.lastMs, ms); return g;
+        };
+        for (const { p, f } of playFiles) for (const s of f?.sessions ?? []) {
+          const ms = Date.parse(s.end);
+          if (now - ms < 91 * 86400000) group(p, String(s.gameId), ms).minutes += s.minutes;
+        }
 
-        const xboxAchs = xboxChunks.flatMap(d => (d.recentAchievements ?? []).map(a => ({
-          platform: 'xbox',
-          achievementName: a.displayName,
-          description: a.description || a.displayName,
-          achievementIcon: xboxImg(a.iconUrl, 128),
-          gameName: a.gameName,
-          gameUrl: `https://www.xbox.com/en-US/Search/Results?q=${encodeURIComponent(a.gameName)}`,
-          unlockedAt: a.unlockedAt,
-        })));
-
-        const all = [...raAchs, ...steamAchs, ...xboxAchs]
-          .sort((a, b) => new Date(b.unlockedAt) - new Date(a.unlockedAt))
-          .slice(0, 8);
-
-        const rows = all.map((a, idx) => {
-          const hiddenAttr = idx >= 4 ? ' data-activity-extra="1"' : '';
-          const isRA = a.platform === 'ra';
-          const isXbox = a.platform === 'xbox';
-          const borderColor = isRA ? '#e5b143' : isXbox ? '#52b043' : '#66c0f4';
-          const iconSrc = isRA ? './assets/icon-ra.png' : isXbox ? './assets/icon-xbox.png' : './assets/icon-steam.png';
-
-          let inlineBadges = '';
-          let gameLabel;
-          if (isRA) {
-            const { baseTitle, subsetName, isSubset, tags } = parseTitle(a.gameName);
-            gameLabel = baseTitle;
-            if (isSubset) {
-              inlineBadges = `<span style="${BADGE_S}border:1px solid rgba(229,177,67,0.3);background:rgba(229,177,67,0.08);color:#c8a84b;">Subset</span>`
-                + (subsetName ? `<span style="font-size:9px;color:#c8a84b;flex-shrink:0;">${subsetName}</span>` : '');
-            } else if (tags.length > 0) {
-              inlineBadges = tags.map(tag => {
-                const s = TILDE_TAG_COLORS[tag] || TILDE_TAG_COLORS['Prototype'];
-                return `<span style="${BADGE_S}border:1px solid ${s.border};background:${s.bg};color:${s.color};">${tag}</span>`;
-              }).join('');
-            }
-          } else {
-            gameLabel = a.gameName;
+        // Unlocks: chunk 1 (91 days), older chunks only when that leaves fewer rows than shown
+        const addChunk = async (i) => {
+          const [ra, steam, xbox] = await Promise.all(['ra', 'steam', 'xbox'].map(p => fetchJsonOnce(`./data/${p}/achievements/${i}.json`)));
+          for (const a of ra?.recentAchievements ?? []) {
+            const g = group('ra', String(a.gameId), toDate(a.date).getTime());
+            games.ra[a.gameId] ??= { name: a.gameTitle, icon: a.gameIcon ? RA_MEDIA + a.gameIcon : null };
+            g.unlocks.push({ name: a.title, icon: `${RA_MEDIA}/Badge/${a.badgeName}.png`, ms: toDate(a.date).getTime() });
           }
+          for (const a of steam?.recentAchievements ?? []) {
+            const g = group('steam', String(a.appId), Date.parse(a.unlockedAt));
+            games.steam[a.appId] ??= { name: a.gameName, icon: null };
+            g.unlocks.push({ name: a.displayName, icon: a.iconUrl, ms: Date.parse(a.unlockedAt) });
+          }
+          for (const a of xbox?.recentAchievements ?? []) {
+            const g = group('xbox', String(a.titleId), Date.parse(a.unlockedAt));
+            games.xbox[a.titleId] ??= { name: a.gameName, icon: null };
+            g.unlocks.push({ name: a.displayName, icon: xboxImg(a.iconUrl, 64), ms: Date.parse(a.unlockedAt) });
+          }
+        };
+        await addChunk(1);
+        for (let i = 2; i <= 4 && groups.size < ROWS; i++) await addChunk(i);
 
-          return `
-            <div${hiddenAttr} style="border-left:3px solid ${borderColor};border-bottom:1px solid #1a2535;" class="flex items-center gap-3 px-3 py-2.5 hover:bg-[#1e2d3a] transition-colors">
-              <img src="${iconSrc}" alt="" style="width:16px;height:16px;flex-shrink:0;object-fit:contain;" onerror="this.style.display='none'" />
-              <img src="${a.achievementIcon}" alt="" style="width:32px;height:32px;border-radius:2px;flex-shrink:0;background:#101214;object-fit:cover;" onerror="this.style.display='none'" />
-              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;">
-                <div style="font-size:11px;color:#c6d4df;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${a.achievementName}</div>
-                <div style="font-size:9px;color:#8f98a0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${a.description || a.achievementName}</div>
-                <div style="display:flex;align-items:center;gap:4px;overflow:hidden;">
-                  <a href="${a.gameUrl}" target="_blank" rel="noreferrer" style="font-size:9px;color:#66c0f4;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:1;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#66c0f4'">${gameLabel}</a>
-                  ${inlineBadges}
-                </div>
+        // Completions on the day they happened
+        const mark = (platform, gameId, iso, label, color) => {
+          const g = groups.get(`${platform}:${gameId}:${localKey(Date.parse(iso))}`);
+          if (g && (!g.done || label !== 'Beaten')) g.done = { label, color };
+        };
+        for (const a of raProfile?.pageAwards?.visibleUserAwards ?? []) {
+          if (a.awardType === 'Mastery/Completion') mark('ra', a.awardData, a.awardedAt, a.awardDataExtra === 1 ? 'Mastered' : 'Completed', '#e5b143');
+          else if (a.awardType === 'Game Beaten') mark('ra', a.awardData, a.awardedAt, 'Beaten', '#b8c4ce');
+        }
+        for (const g of steamProfile?.perfectGames ?? []) if (g.completedAt) mark('steam', g.appId, g.completedAt, 'Perfect', '#e5b143');
+        for (const g of xboxProfile?.perfectGames ?? []) if (g.completedAt) mark('xbox', g.titleId, g.completedAt, 'Completed', '#e5b143');
+
+        const rows = [...groups.values()].sort((a, b) => b.lastMs - a.lastMs).slice(0, ROWS);
+        const todayKey = localKey(Date.now());
+        let html = '', lastDay = null;
+        rows.forEach((r, idx) => {
+          const extra = idx >= PHONE_ROWS ? ' data-activity-extra="1"' : '';
+          // A day header belongs to the phone's hidden part when its first row does
+          if (r.day !== lastDay) { html += `<div class="aday"${extra}>${dayLabel(r.day)}</div>`; lastDay = r.day; }
+          const P = PLATFORM[r.platform];
+          const info = games[r.platform][r.gameId] ?? {};
+          const unlocks = r.unlocks.sort((a, b) => b.ms - a.ms);
+          const icon = info.icon || unlocks[0]?.icon || '';
+          let title = esc(info.name), tags = '';
+          if (r.platform === 'ra') {
+            const { baseTitle, subsetName, isSubset, tags: tt } = parseTitle(info.name);
+            title = esc(baseTitle);
+            if (isSubset) tags = `<span class="asubset">${esc(subsetName ?? 'Subset')}</span>`;
+            else tags = tt.map(t => { const s = TILDE_TAG_COLORS[t] || TILDE_TAG_COLORS.Prototype; return `<span class="atag" style="border-color:${s.border};background:${s.bg};color:${s.color};">${esc(t)}</span>`; }).join('');
+          }
+          if (r.done) tags += `<span class="atag" style="border-color:${r.done.color}55;background:${r.done.color}14;color:${r.done.color};">${r.done.label}</span>`;
+          const facts = [
+            r.minutes ? `<span>${fmtMin(r.minutes)} played</span>` : '',
+            unlocks.length ? `<span class="n">${unlocks.length} unlock${unlocks.length > 1 ? 's' : ''}</span>` : '',
+          ].filter(Boolean).join('<i>·</i>');
+          const strip = unlocks.length ? `<div class="astrip">${unlocks.slice(0, 10).map(u => `<img src="${esc(u.icon)}" alt="" title="${esc(u.name)}" loading="lazy" onerror="this.style.visibility='hidden'">`).join('')}${unlocks.length > 10 ? `<span class="more">+${unlocks.length - 10}</span>` : ''}<span class="last">${esc(unlocks[0].name)}</span></div>` : '';
+          html += `
+            <a${extra} class="arow${r.done ? ' done' : ''}" style="border-left-color:${P.color};" href="${P.url(r.gameId, info.name)}" target="_blank" rel="noreferrer">
+              <img class="aicon" src="${esc(icon)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+              <div class="amain">
+                <div class="atitle"><span class="t">${title}</span>${tags}<span class="when">${r.day === todayKey ? timeAgo(new Date(r.lastMs).toISOString()) : clock(r.lastMs)}</span></div>
+                <div class="asub"><img src="${P.icon}" alt="">${facts}</div>
+                ${strip}
               </div>
-              <span style="font-size:9px;color:#546270;flex-shrink:0;">${timeAgo(a.unlockedAt)}</span>
-            </div>`;
-        }).join('');
+            </a>`;
+        });
 
-        document.getElementById('activity-feed').innerHTML = rows ||
-          '<div style="padding:16px;text-align:center;font-size:10px;color:#546270;">No recent activity</div>';
+        document.getElementById('activity-feed').innerHTML = html ||
+          '<div style="padding:16px;text-align:center;font-size:11px;color:#546270;">No recent activity</div>';
 
-        // Mobile collapse: hide rows 4+ and show toggle button
-        if (window.innerWidth < 768 && all.length > 4) {
+        // Mobile collapse: hide rows 5+ and show toggle button
+        if (window.innerWidth < 768 && rows.length > PHONE_ROWS) {
           document.querySelectorAll('[data-activity-extra]').forEach(el => el.classList.add('activity-row-hidden'));
           const btn = document.getElementById('activity-toggle-btn');
           btn.style.display = 'block';
@@ -711,20 +756,13 @@
 
       } catch (e) {
         document.getElementById('activity-feed').innerHTML =
-          '<div style="padding:16px;text-align:center;font-size:10px;color:#546270;">Could not load activity</div>';
+          '<div style="padding:16px;text-align:center;font-size:11px;color:#546270;">Could not load activity</div>';
       }
     }
 
     async function loadCompletionsStrip() {
       try {
-        const [raRes, steamRes, xboxRes] = await Promise.all([
-          fetch('./data/ra/profile.json'),
-          fetch('./data/steam/profile.json'),
-          fetch('./data/xbox/profile.json').catch(() => ({ ok: false })),
-        ]);
-        const ra    = raRes.ok    ? await raRes.json()    : {};
-        const steam = steamRes.ok ? await steamRes.json() : {};
-        const xbox  = xboxRes.ok  ? await xboxRes.json()  : {};
+        const [ra, steam, xbox] = (await Promise.all(['ra', 'steam', 'xbox'].map(p => fetchJsonOnce(`./data/${p}/profile.json`)))).map(d => d ?? {});
 
         const awards = ra.pageAwards?.visibleUserAwards ?? [];
         const mastered = awards.filter(a => a.awardType === 'Mastery/Completion').length;

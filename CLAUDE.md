@@ -127,7 +127,7 @@ Vanilla JS, no React. Reads `data/hub/config.json`, `data/ra/profile.json`, `dat
 
 **Playing section** (first on the page, mobile and desktop): the 4 most recent games from the Playing group of `assets/playing.js` as mini tiles (Activity's tiles without the stats band: cover, chip, last played, title, progress, 13-week strip), 2×2 on mobile and one row on desktop, then one link line (`+N more playing · N on hold · N drifting`) to `activity/?view=playing`. Loaded with `import('./assets/playing.js')` from the classic script, sharing `fetchJsonOnce`. Shows its skeleton at once; hidden only when nothing is in rotation at all
 
-**Recent Activity feed** — up to 8 rows, combined RA + Steam + Xbox sorted by date. On mobile collapses to 4 rows with a "Show more / Show less" toggle button below the feed.
+**Recent Activity feed** (`loadActivityFeed()`, `.aday` / `.arow` CSS in `index.html`): one row per game per local day, newest first, under day labels. A row adds up that day's play sessions (`playtime/{YYYY}.json`, RA + Steam) and unlocks (achievement chunk 1; chunks 2–4 only when that gives fewer than 6 rows), shows the badges (up to 10, then `+N`) with the newest unlock's name, and a Mastered / Completed / Beaten (RA awards) or Perfect (Steam/Xbox `perfectGames`) tag on the day it happened. Left border in the platform colour; the row links to the game's page on RA / Steam / Xbox. 6 rows; on mobile 4, with a "Show more / Show less" toggle (rows and day labels past 4 carry `data-activity-extra`). Profiles, chunks and playtime files go through `fetchJsonOnce`, shared with the stats loaders, Completions and Analytics strips
 
 ---
 

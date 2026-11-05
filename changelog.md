@@ -28,6 +28,8 @@ Swiping between profile tabs looks like turning to another page; the RA Series t
 ### Hub
 
 - Desktop (1024px and wider): 1200px wide, with Playing and Recent activity in the main column and a rail on the right with the platforms stacked, then Completions and Analytics as cards (counts on one line with the latest completion below; the last-30-days numbers two across). The page is about a third shorter. Tablets and phones keep the single column
+- Recent activity: one row per game per day instead of one per unlock, under day labels (Today, Yesterday, Sat 31 Oct). Each row has the game icon, the time played that day (RA and Steam play sessions), the unlock count, the unlocked badges with the newest one's name, and a Mastered / Beaten / Perfect tag on the day it happened. Games played without unlocking anything now show up. 6 rows, 4 on phones behind "Show more" (now in sentence case)
+- The hub loads each platform's profile file once instead of up to three times
 
 ## v26.11.04
 
