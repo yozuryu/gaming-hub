@@ -1334,6 +1334,20 @@ const App = () => {
         }
     }, [gameDetails]);
 
+    // ?game=<titleId> (from series/): open that game's sheet once the index is in, then drop the parameter
+    const deepGame = useRef(new URLSearchParams(location.search).get('game'));
+    useEffect(() => {
+        if (!deepGame.current || !gamesData) return;
+        const id = deepGame.current, d = gamesData.achievementProgress?.[id];
+        deepGame.current = null;
+        const u = new URL(location.href); u.searchParams.delete('game'); history.replaceState({}, '', u);
+        if (!d) return;
+        handleViewDetails({
+            game: { titleId: id, name: d.gameName, storeUrl: xboxSearchUrl(d.gameName), lastPlayedTs: d.lastPlayedTs ?? null, heroUrl: d.heroUrl, iconUrl: d.iconUrl },
+            achievementData: d, beatenInfo: beatenGames.find(g => String(g.titleId) === id) ?? null,
+        });
+    }, [gamesData]);
+
     // Derived state — read pre-computed fields from JSON, no client-side iteration needed
     const achProgress  = gamesData?.achievementProgress ?? {};
     const recentAchs   = useMemo(() =>

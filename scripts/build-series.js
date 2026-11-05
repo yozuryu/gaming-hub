@@ -39,6 +39,7 @@ function raGames() {
             title: d.title, console: d.consoleName, icon: d.imageIcon ? RA_MEDIA + d.imageIcon : null, art: shot ? RA_MEDIA + shot : null,
             unlocked: d.numAwardedToUser ?? 0, total: d.numAchievements ?? 0, minutes: Math.round((d.userTotalPlaytime ?? 0) / 60),
             beaten: beaten.has(String(d.id)), lastMs: Math.max(lastUnlock, played[d.id] ?? 0),
+            sheet: (d.numAchievements ?? 0) > 0,   // in games.json with a set: the RA profile can open its sheet
             url: `https://retroachievements.org/game/${d.id}`,
         };
     }
@@ -68,6 +69,7 @@ function indexGames(platform) {
             art: steam ? `${STEAM_CDN}/${id}/library_hero.jpg` : d.heroUrl ?? null,
             unlocked: d.hasAchievements ? d.unlocked ?? 0 : 0, total: d.hasAchievements ? d.total ?? 0 : 0,
             minutes: steam ? d.playtimeForever ?? 0 : undefined, beaten: beaten.has(id),
+            sheet: !!(d.hasAchievements && d.total > 0),
             lastMs: Math.max(ms(d.lastUnlockedAt), ms(d.lastPlayedTs)),
             url: steam ? `https://store.steampowered.com/app/${id}` : `https://www.xbox.com/en-US/Search/Results?q=${encodeURIComponent(d.gameName ?? '')}`,
         };

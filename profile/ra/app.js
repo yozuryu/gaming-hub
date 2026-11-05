@@ -1509,6 +1509,16 @@ export default function App() {
 
   const { profile: PROFILE_DATA, games: ALL_GAMES, backlog: BACKLOG } = useMemo(() => transformData(rawData), [rawData]);
   const beatenIds = useMemo(() => new Set((PROFILE_DATA?.gameAwards ?? []).filter(a => a.type === 'Game Beaten').map(a => a.gameId)), [PROFILE_DATA]);
+  // ?game=<id> (from series/): open that game's sheet once games.json is in, then drop the parameter
+  const deepGame = useRef(new URLSearchParams(location.search).get('game'));
+  useEffect(() => { if (deepGame.current) loadGames(); }, []);
+  useEffect(() => {
+    if (!deepGame.current || !gamesData) return;
+    const g = ALL_GAMES.find(x => String(x.id) === deepGame.current);
+    deepGame.current = null;
+    const u = new URL(location.href); u.searchParams.delete('game'); history.replaceState({}, '', u);
+    if (g) setSelectedGame(g);
+  }, [gamesData, ALL_GAMES]);
   const masteryAwards = useMemo(() => new Map((PROFILE_DATA?.gameAwards ?? []).filter(a => a.type === 'Mastery/Completion').map(a => [a.gameId, a])), [PROFILE_DATA]);
 
   // Header background: the most recently played game's screenshot, or its icon when it has none

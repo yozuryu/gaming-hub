@@ -120,9 +120,9 @@ const SeriesCard = ({ c, onOpen }) => {
 };
 
 // One game in the sheet: icon (Steam banner), title, platform · console · playtime · last played, count + bar.
-// Opens the game's page on its platform.
+// Opens the game's achievement sheet on its profile (?game=), or its page on the platform when it has no set there
 const GameRow = ({ g }) => (
-    <a href={g.url} target="_blank" rel="noreferrer" className="grow compact" style={{ borderLeftColor: g.color }}>
+    <a href={g.sheet ? `../profile/${g.p}/?game=${encodeURIComponent(g.id)}` : g.url} {...(g.sheet ? {} : { target: '_blank', rel: 'noreferrer' })} className="grow compact" style={{ borderLeftColor: g.color }}>
         {g.art && <div className="grow-art"><img src={g.art} alt="" loading="lazy" onError={e => { if (g.p === 'steam' && !e.target.src.endsWith('header.jpg')) e.target.src = g.icon; else e.target.style.display = 'none'; }} /></div>}
         <Cover g={g} cls={g.p === 'steam' ? 'grow-banner' : 'grow-icon px'} />
         <div className="grow-main">

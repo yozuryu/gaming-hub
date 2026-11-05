@@ -1340,6 +1340,20 @@ const App = () => {
         }
     }, [gameDetails]);
 
+    // ?game=<appId> (from series/): open that game's sheet once the index is in, then drop the parameter
+    const deepGame = useRef(new URLSearchParams(location.search).get('game'));
+    useEffect(() => {
+        if (!deepGame.current || !gamesData) return;
+        const id = deepGame.current, d = gamesData.achievementProgress?.[id];
+        deepGame.current = null;
+        const u = new URL(location.href); u.searchParams.delete('game'); history.replaceState({}, '', u);
+        if (!d) return;
+        handleViewDetails({
+            game: { appId: Number(id), name: d.gameName ?? `App ${id}`, storeUrl: `https://store.steampowered.com/app/${id}`, playtimeForever: d.playtimeForever ?? 0, playtime2Weeks: d.playtime2Weeks ?? 0, lastPlayedTs: d.lastPlayedTs ?? null },
+            achievementData: d, beatenInfo: beatenGames.find(g => String(g.appId) === id) ?? null,
+        });
+    }, [gamesData]);
+
     // Derived state — read pre-computed fields from JSON, no client-side iteration needed
     const achProgress  = gamesData?.achievementProgress ?? {};
     const recentAchs   = useMemo(() =>
