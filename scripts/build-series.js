@@ -1,0 +1,93 @@
+// Shared series (all platforms): data/hub/series.json (hand-made in the admin) → data/hub/series-games.json,
+// one small file with every series game's progress, so the hub and series/ never load the per-platform
+// game lists (RA games.json is 5 MB, the Steam index 1.8 MB).
+//   node scripts/build-series.js [siteRoot]     (default: the repo; deploy.yml passes _site)
+// Runs in deploy.yml after the site is assembled, and in the admin server after the series file is saved.
+const fs   = require('fs');
+const path = require('path');
+
+const ROOT = path.resolve(process.argv[2] || path.join(__dirname, '..'));
+const read = (rel, fallback = null) => {
+    try { return JSON.parse(fs.readFileSync(path.join(ROOT, rel), 'utf8')); } catch { return fallback; }
+};
+const ms = s => {
+    if (!s) return 0;
+    const t = Date.parse(/^\d{4}-\d{2}-\d{2} \d/.test(s) ? s.replace(' ', 'T') + 'Z' : s);
+    return Number.isNaN(t) ? 0 : t;
+};
+
+const RA_MEDIA = 'https://media.retroachievements.org';
+const STEAM_CDN = 'https://cdn.akamai.steamstatic.com/steam/apps';
+
+function raGames() {
+    const games = read('data/ra/games.json', {})?.detailedGameProgress ?? {};
+    const watch = read('data/ra/watchlist.json', {})?.results ?? [];
+    const profile = read('data/ra/profile.json', {});
+    const awards = profile?.pageAwards?.visibleUserAwards ?? [];
+    const beaten = new Set(awards.filter(a => a.awardType === 'Game Beaten').map(a => String(a.awardData)));
+    const played = Object.fromEntries((profile?.recentlyPlayedGames ?? []).map(g => [String(g.gameId), ms(g.lastPlayed)]));
+    const out = {};
+    for (const w of watch) {
+        out[w.id] = { title: w.title, console: w.consoleName, icon: w.imageIcon ? RA_MEDIA + w.imageIcon : null,
+            unlocked: 0, total: w.achievementsPublished ?? 0, lastMs: 0, url: `https://retroachievements.org/game/${w.id}` };
+    }
+    for (const d of Object.values(games)) {
+        const achs = Object.values(d.achievements ?? {});
+        const lastUnlock = Math.max(0, ...achs.filter(a => a.dateEarned).map(a => ms(a.dateEarned)));
+        const shot = [d.imageIngame, d.imageTitle].find(x => x && !x.endsWith('/000002.png'));
+        out[d.id] = {
+            title: d.title, console: d.consoleName, icon: d.imageIcon ? RA_MEDIA + d.imageIcon : null, art: shot ? RA_MEDIA + shot : null,
+            unlocked: d.numAwardedToUser ?? 0, total: d.numAchievements ?? 0, minutes: Math.round((d.userTotalPlaytime ?? 0) / 60),
+            beaten: beaten.has(String(d.id)), lastMs: Math.max(lastUnlock, played[d.id] ?? 0),
+            url: `https://retroachievements.org/game/${d.id}`,
+        };
+    }
+    return out;
+}
+
+// Steam and Xbox: the index, plus win conditions (beaten) checked against the per-game files
+function indexGames(platform) {
+    const idx = read(`data/${platform}/games/index.json`, {})?.achievementProgress ?? {};
+    const wc = read(`data/${platform}/win-conditions.json`, {}) ?? {};
+    const beaten = new Set();
+    for (const [id, w] of Object.entries(wc)) {
+        const names = Array.isArray(w) ? w : (w.achievements ?? []);
+        const mode = Array.isArray(w) ? 'or' : (w.mode || 'or');
+        const g = read(`data/${platform}/games/${id}.json`);
+        const hit = (g?.achievements ?? []).filter(a => names.includes(a.apiName) && a.unlocked);
+        if (mode === 'and' ? hit.length === names.length && names.length : hit.length) beaten.add(id);
+    }
+    const out = {};
+    for (const [id, d] of Object.entries(idx)) {
+        const steam = platform === 'steam';
+        out[id] = {
+            title: d.gameName ?? id,
+            icon: steam ? `${STEAM_CDN}/${id}/header.jpg` : d.iconUrl ?? null,
+            art: steam ? `${STEAM_CDN}/${id}/library_hero.jpg` : d.heroUrl ?? null,
+            unlocked: d.hasAchievements ? d.unlocked ?? 0 : 0, total: d.hasAchievements ? d.total ?? 0 : 0,
+            minutes: steam ? d.playtimeForever ?? 0 : undefined, beaten: beaten.has(id),
+            lastMs: Math.max(ms(d.lastUnlockedAt), ms(d.lastPlayedTs)),
+            url: steam ? `https://store.steampowered.com/app/${id}` : `https://www.xbox.com/en-US/Search/Results?q=${encodeURIComponent(d.gameName ?? '')}`,
+        };
+    }
+    return out;
+}
+
+const series = read('data/hub/series.json', []) ?? [];
+const sources = { ra: raGames(), steam: indexGames('steam'), xbox: indexGames('xbox') };
+const out = {
+    metadata: { builtAt: new Date().toISOString() },
+    series: series.filter(s => s.showProgress !== false).map(s => ({
+        id: s.id, name: s.name, cover: s.coverGameId ?? s.gameIds[0] ?? null,
+        // Games the platform data doesn't know (sold, hidden, not yet synced) are left out
+        games: s.gameIds.map(key => {
+            const [p, id] = key.split(':');
+            const g = sources[p]?.[id];
+            return g ? { key, p, id, ...g } : null;
+        }).filter(Boolean),
+    })),
+};
+const file = path.join(ROOT, 'data/hub/series-games.json');
+fs.mkdirSync(path.dirname(file), { recursive: true });
+fs.writeFileSync(file, JSON.stringify(out) + '\n');
+console.log(`series-games.json: ${out.series.length} series, ${out.series.reduce((n, s) => n + s.games.length, 0)} games, ${(fs.statSync(file).size / 1024).toFixed(0)} KB`);

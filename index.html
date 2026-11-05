@@ -109,6 +109,13 @@
     .astrip .more { flex-shrink: 0; font-size: 10px; color: #8f98a0; padding: 0 2px; }
     .astrip .last { min-width: 0; margin-left: 5px; font-size: 11px; color: #c6d4df; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
+    /* Hub series cards (.scard in assets/ui.css): phone 3 without the icon strip, desktop 4 in two columns */
+    #series-list > * { animation: motion-fade 220ms ease-out backwards; }
+    @media (max-width: 767px) {
+      .hub-slist .sicons { display: none; }
+      .hub-slist .hub-desk { display: none; }
+    }
+
     #activity-toggle-btn {
       display: none; /* shown by JS only on mobile after feed loads */
       width: 100%;
@@ -129,11 +136,12 @@
 
     /* Wide screens: main column + rail */
     @media (min-width: 1024px) {
-      .hub-grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; grid-template-rows: auto 1fr; column-gap: 28px; }
+      .hub-grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; grid-template-rows: auto auto 1fr; column-gap: 28px; }
       #playing-section { grid-column: 1; grid-row: 1; }
-      #activity-section { grid-column: 1; grid-row: 2; align-self: start; }
+      #series-section { grid-column: 1; grid-row: 2; }
+      #activity-section { grid-column: 1; grid-row: 3; align-self: start; }
       #activity-section > :first-child { margin-top: 0; }
-      .hub-rail { grid-column: 2; grid-row: 1 / span 2; align-self: start; }
+      .hub-rail { grid-column: 2; grid-row: 1 / span 3; align-self: start; }
       /* Platforms stacked: name, numbers, latest covers */
       .hub-rail .pstrip { grid-template-columns: 1fr !important; }
       .hub-rail .pcell + .pcell { border-left: none; border-top: 1px solid #22344a; }
@@ -229,6 +237,23 @@
     <a id="playing-more" href="./activity/?view=playing" style="display:none;"
       class="flex items-center gap-2 mt-2 px-3 py-2 text-[10px] text-[#546270] bg-[#172333] border border-[#2a475e] rounded-[2px] hover:text-[#66c0f4] transition-colors"></a>
     </div><!-- /playing-section -->
+
+    <!-- Series across platforms (data/hub/series.json, admin Shared Series): the most recently active ones;
+         one column on a phone (no icon strip), two on desktop. Each card opens its sheet on series/ -->
+    <div id="series-section" class="mb-8">
+    <div class="flex items-center gap-2 border-b border-[#2a475e] pb-[7px] mb-4">
+      <span class="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] flex-shrink-0"></span>
+      <span class="text-[13px] text-white uppercase tracking-[0.1em] font-semibold">Series</span>
+      <a href="./series/" class="ml-auto flex p-1 -m-1 text-[#546270] hover:text-[#66c0f4] transition-colors" aria-label="All series" title="All series"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+    </div>
+    <div id="series-list" class="slist hub-slist">
+      <span class="scard" style="border-left-color:#2a475e;"><span class="skeleton block h-[48px] rounded"></span><span class="skeleton block h-[5px] rounded"></span></span>
+      <span class="scard" style="border-left-color:#2a475e;"><span class="skeleton block h-[48px] rounded"></span><span class="skeleton block h-[5px] rounded"></span></span>
+      <span class="scard hub-desk" style="border-left-color:#2a475e;"><span class="skeleton block h-[48px] rounded"></span><span class="skeleton block h-[5px] rounded"></span></span>
+    </div>
+    <a id="series-more" href="./series/" style="display:none;"
+      class="flex items-center gap-2 mt-2 px-3 py-2 text-[10px] text-[#546270] bg-[#172333] border border-[#2a475e] rounded-[2px] hover:text-[#66c0f4] transition-colors"></a>
+    </div><!-- /series-section -->
 
     <div class="hub-rail">
 
@@ -981,6 +1006,61 @@
     // Playing section: games with play or unlocks in the last 2 weeks, from assets/playing.js (an
     // ES module, so import() from this classic script). Shares the chunk and playtime requests
     // with the activity feed and the Analytics strip through fetchJsonOnce
+    // Series across platforms: built by scripts/build-series.js (series/ has the same numbers)
+    async function loadSeriesSection() {
+      const section = document.getElementById('series-section');
+      const list = document.getElementById('series-list');
+      const more = document.getElementById('series-more');
+      const d = await fetchJsonOnce('./data/hub/series-games.json');
+      const esc = (t) => String(t ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+      const ICON = { ra: './assets/icon-ra.png', steam: './assets/icon-steam.png', xbox: './assets/icon-xbox.png' };
+      const img = (g, w) => g?.p === 'xbox' ? xboxImg(g.icon, w) : g?.icon;
+      const cards = (d?.series ?? []).map(s => {
+        const games = s.games;
+        const tracked = games.filter(g => g.total > 0);
+        const done = tracked.filter(g => g.unlocked >= g.total).length;
+        const started = tracked.filter(g => g.unlocked > 0 && g.unlocked < g.total).length;
+        const earned = tracked.reduce((n, g) => n + g.unlocked, 0), total = tracked.reduce((n, g) => n + g.total, 0);
+        const split = ['ra', 'steam', 'xbox'].map(p => [p, games.filter(g => g.p === p).length]).filter(([, n]) => n);
+        return { s, games, cover: games.find(g => g.key === s.cover) ?? games[0], done, started, tracked: tracked.length, split,
+          pct: total ? earned / total * 100 : 0, lastMs: Math.max(0, ...games.map(g => g.lastMs || 0)) };
+      }).filter(c => c.games.length >= 3).sort((a, b) => b.lastMs - a.lastMs);
+      if (!cards.length) { section.style.display = 'none'; return; }
+
+      const MAX = 4;   // the 4th only shows on desktop (two full rows)
+      const pctLabel = p => p > 0 && p < 1 ? '<1%' : `${Math.floor(p)}%`;
+      const card = (c, i) => {
+        const edge = c.tracked && c.done === c.tracked ? '#e5b143' : c.started || c.done ? '#66c0f4' : '#323f4c';
+        const cover = c.cover?.p === 'steam'
+          ? `<img src="${esc(c.cover.icon)}" alt="" loading="lazy" class="scard-cover banner" />`
+          : `<img src="${esc(img(c.cover, 128))}" alt="" loading="lazy" class="scard-cover" />`;
+        const art = c.cover?.art ? `<div class="scard-art"><img src="${esc(c.cover.p === 'xbox' ? xboxImg(c.cover.art, 640) : c.cover.art)}" alt="" loading="lazy" onerror="this.style.display='none'" /></div>` : '';
+        const split = c.split.map(([p, n]) => `<span style="display:inline-flex;align-items:center;gap:3px;"><img src="${ICON[p]}" alt="" style="width:12px;height:12px;object-fit:contain;" />${n}</span>`).join(' ');
+        const icons = [...c.games].sort((a, b) => (b.unlocked > 0) - (a.unlocked > 0) || b.lastMs - a.lastMs).slice(0, 10)
+          .map(g => `<img src="${esc(img(g, 64))}" alt="" loading="lazy" class="${g.total && g.unlocked >= g.total ? 'mastered' : g.unlocked > 0 ? '' : g.total ? 'dim' : 'noach'}" />`).join('');
+        const ago = c.lastMs ? (() => { const dd = Math.floor((Date.now() - c.lastMs) / 86400000); return dd < 1 ? 'today' : dd < 7 ? `${dd}d` : dd < 30 ? `${Math.floor(dd / 7)}w` : dd < 365 ? `${Math.floor(dd / 30)}mo` : `${Math.floor(dd / 365)}y`; })() : '';
+        return `
+          <a href="./series/?open=${encodeURIComponent(c.s.id)}" class="scard smooth${i >= 3 ? ' hub-desk' : ''}" style="border-left-color:${edge};">
+            ${art}
+            <div class="scard-top">
+              ${cover}
+              <div class="scard-main">
+                <span class="scard-name">${esc(c.s.name)}</span>
+                <span class="scard-sub"><span>${c.games.length} games</span><i>·</i>${split}</span>
+              </div>
+              <span class="scard-end"><span class="scard-pct" style="color:${c.pct > 0 ? '#e5b143' : '#546270'};">${pctLabel(c.pct)}</span>${ago ? `<em>${ago}</em>` : ''}</span>
+            </div>
+            <div class="gbar"><i style="width:${c.pct}%;background:#e5b143;"></i></div>
+            <div class="sicons">${icons}</div>
+          </a>`;
+      };
+      list.innerHTML = cards.slice(0, MAX).map(card).join('');
+      if (cards.length > 3) {
+        more.innerHTML = `<span class="flex-1 min-w-0">All <b style="color:#c6d4df;font-weight:600;">${cards.length}</b> series across RA, Steam and Xbox</span><span class="flex shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>`;
+        more.style.display = 'flex';
+      }
+    }
+
     async function loadPlayingSection() {
       const section = document.getElementById('playing-section');
       const list = document.getElementById('playing-list');
@@ -1063,6 +1143,7 @@
     }
 
     loadPlayingSection();
+    loadSeriesSection();
     loadHubProfile();
     loadRAStats();
     loadSteamStats();

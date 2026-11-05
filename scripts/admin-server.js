@@ -18,6 +18,7 @@ const ALLOWED = [
     'data/hub/config.json',
     'data/ra/guides.json',
     'data/ra/series.json',
+    'data/hub/series.json',
     'data/steam/series.json',
     'data/xbox/series.json',
     'data/steam/games/index.json',
@@ -163,6 +164,8 @@ const server = http.createServer((req, res) => {
             try {
                 const data = JSON.parse(body);
                 fs.writeFileSync(filePath, JSON.stringify(data, null, 2) + '\n', 'utf8');
+                // Shared series: rebuild the site's progress file (deploy.yml does the same)
+                if (query.file === 'data/hub/series.json') require('child_process').execFile('node', [path.join(ROOT, 'scripts/build-series.js')], () => {});
                 send(res, 200, { ok: true });
             } catch (e) {
                 send(res, 400, { error: e.message });

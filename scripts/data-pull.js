@@ -24,3 +24,6 @@ for (const dest of [ROOT, SNAPSHOT]) {
 
 const ref = execFileSync('git', ['log', '-1', '--format=%h %s', 'origin/data'], { cwd: ROOT }).toString().trim();
 console.log(`data/ updated from the data branch (${ref})`);
+
+// The shared series progress file is built from this data (deploy.yml builds it for the site)
+execFileSync('node', [path.join(__dirname, 'build-series.js')], { cwd: ROOT, stdio: 'inherit' });

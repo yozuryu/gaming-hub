@@ -44,6 +44,7 @@ gaming-hub/
 │                                   #   (scripts/data-paths.json, gitignored here, `npm run data:pull` to get it locally).
 │                                   #   On main: hub/config.json, {ra,steam,xbox}/series.json, ra/guides.json, {steam,xbox}/win-conditions.json
 │   ├── hub/config.json             # Username, motto, tags, platform visibility flags
+│   ├── hub/series.json             # Shared series across platforms (admin: Shared Series); hub/series-games.json is built from it (gitignored, see Shared Series)
 │   ├── ra/
 │   │   ├── profile.json            # RA profile, stats, awards, recently played
 │   │   ├── games.json              # All RA games with per-achievement details
@@ -80,6 +81,7 @@ gaming-hub/
 ├── activity/                       # CLAUDE.md in this directory
 ├── analytics/                      # CLAUDE.md in this directory
 ├── completions/                    # CLAUDE.md in this directory
+├── series/                         # Shared series page (CLAUDE.md in this directory)
 ├── changelog/                      # CLAUDE.md in this directory
 │
 ├── admin/
@@ -126,6 +128,8 @@ Vanilla JS, no React. Reads `data/hub/config.json`, `data/ra/profile.json`, `dat
 **Header** (`.phead` in `assets/ui.css`, the same pattern as the profile headers): avatar, name, "Last change · Changelog", motto, the genre tags in one sideways-scrolling row, and a totals strip across platforms: Hours played (RA + Steam), Unlocks (all three), Completed (RA mastered + Steam perfect + Xbox completed). Each stat loader calls `reportHubTotals()`; the strip fills in once all three answered (a failed platform counts as zero). The latest played game's art (RA or Steam, whichever is newer, `offerHeaderArt()`) is blurred behind it.
 
 **Playing section** (first on the page, mobile and desktop): the 4 most recent games from the Playing group of `assets/playing.js` as mini tiles (Activity's tiles without the stats band: cover, chip, last played, title, progress, 13-week strip), 2×2 on mobile and one row on desktop, then one link line (`+N more playing · N on hold · N drifting`) to `activity/?view=playing`. Loaded with `import('./assets/playing.js')` from the classic script, sharing `fetchJsonOnce`. Shows its skeleton at once; hidden only when nothing is in rotation at all
+
+**Series section** (after Playing; `loadSeriesSection()`): the shared series (see Shared Series) from `data/hub/series-games.json`, most recently active first, as `.scard` cards from `assets/ui.css`: 3 on a phone without the icon strip (`.hub-slist`), 4 in two columns on desktop (the 4th has `.hub-desk`), then "All N series" to `series/`. Each card links to `series/?open=<id>`. Hidden when there are none
 
 **Recent Activity feed** (`loadActivityFeed()`, `.aday` / `.arow` CSS in `index.html`): one row per game per local day, newest first, under day labels. A row adds up that day's play sessions (`playtime/{YYYY}.json`, RA + Steam) and unlocks (achievement chunk 1; chunks 2–4 only when that gives fewer than 6 rows), shows the badges (up to 10, then `+N`) with the newest unlock's name, and a Mastered / Completed / Beaten (RA awards) or Perfect (Steam/Xbox `perfectGames`) tag on the day it happened. Left border in the platform colour; the row links to the game's page on RA / Steam / Xbox. 6 rows; on mobile 4, with a "Show more / Show less" toggle (rows and day labels past 4 carry `data-activity-extra`). Profiles, chunks and playtime files go through `fetchJsonOnce`, shared with the stats loaders, Completions and Analytics strips
 
@@ -247,6 +251,12 @@ Every unlocked achievement, all time, rebuilt by each pipeline on every run from
 - Chunk files split by 91-day windows anchored at the next UTC midnight (boundaries move once a day): chunk 1 = 0–91 days, chunk 2 = 91–182, etc. RA chunks drop the unused `cumulScore`
 
 ---
+
+## Shared Series
+Series across platforms, made by hand in the admin (General → Shared Series) in `data/hub/series.json` (on main): `{ id, name, gameIds, showProgress, coverGameId }` with ids prefixed by platform (`ra:2688`, `steam:223870`, `xbox:1297287153`), same editor as the platform series.
+- `scripts/build-series.js [siteRoot]` turns it into `data/hub/series-games.json` (~115 KB): each game's title, icon, art, unlocked / total, beaten, playtime and last activity, from RA `games.json` + watchlist + awards, the Steam / Xbox indexes + win conditions. The hub and `series/` read only that file, never the per-platform lists (RA `games.json` is 5 MB)
+- Built in `deploy.yml` (after the site is assembled, so every data run and every push rebuilds it), by `npm run data:pull`, and by the admin server whenever the series file is saved. The output is gitignored
+- A series shows with 3+ games the platform data knows; games missing from it (unplayed Steam games aren't in the index) are left out
 
 ## Publishing / Private Files
 

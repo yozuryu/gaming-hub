@@ -63,6 +63,8 @@ jobs:
           EOF
           cp -R _data/data/. _site/data/
           for f in $(node -p "require('./scripts/data-paths.json').private.join(' ')"); do rm -f "_site/$f"; done
+          # Shared series progress, from the hand-made data/hub/series.json and the platform data
+          node scripts/build-series.js _site
           echo "Site: $(find _site -type f | wc -l) files, $(du -sh _site | cut -f1)"
 
       - uses: actions/configure-pages@v5

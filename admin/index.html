@@ -1506,6 +1506,15 @@ const SERIES_CONFIGS = {
             .sort((a, b) => a.title.localeCompare(b.title))),
     },
 };
+// Shared series: one list of every platform's games, ids prefixed with the platform ("ra:2688")
+const PLATFORM_LABEL = { ra: 'RA', steam: 'Steam', xbox: 'Xbox' };
+SERIES_CONFIGS.hub = {
+    file: 'data/hub/series.json', minGames: 3,
+    loadGames: () => Promise.all(['ra', 'steam', 'xbox'].map(p => SERIES_CONFIGS[p].loadGames().catch(() => []).then(gs => gs.map(g => ({
+        ...g, id: `${p}:${g.id}`, consoleName: g.consoleName ? `${PLATFORM_LABEL[p]} · ${g.consoleName}` : PLATFORM_LABEL[p],
+    }))))).then(lists => lists.flat().sort((a, b) => a.title.localeCompare(b.title))),
+};
+const HubSeriesModule   = () => <SeriesModule cfg={SERIES_CONFIGS.hub} />;
 const RASeriesModule    = () => <SeriesModule cfg={SERIES_CONFIGS.ra} />;
 const SteamSeriesModule = () => <SeriesModule cfg={SERIES_CONFIGS.steam} />;
 const XboxSeriesModule  = () => <SeriesModule cfg={SERIES_CONFIGS.xbox} />;
@@ -1515,6 +1524,7 @@ const MODULES = [
     { id: 'credentials', label: 'Credentials',  icon: '🔑',  group: 'General',          component: CredentialsModule },
     { id: 'pipelines',   label: 'Pipelines',    icon: '▶',   group: 'General',          component: PipelinesModule },
     { id: 'data-diff',   label: 'Data Diff',    icon: '±',   group: 'General',          component: DataDiffModule },
+    { id: 'hub-series',  label: 'Shared Series', icon: '🗂️', group: 'General',          component: HubSeriesModule },
     { id: 'ra-guides',           label: 'Guides',         icon: '📖',  group: 'RetroAchievements', component: RAGuidesModule },
     { id: 'ra-series',           label: 'Series',         icon: '🗂️',  group: 'RetroAchievements', component: RASeriesModule },
     { id: 'steam-win-conditions', label: 'Win Conditions', icon: '🏆',  group: 'Steam',             component: SteamWinConditionsModule },
