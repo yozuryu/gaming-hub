@@ -12,6 +12,7 @@ export const normalizeRA = (a) => ({
     gameIcon: `${RA_MEDIA}${a.gameIcon}`,
     gameUrl: `https://retroachievements.org/game/${a.gameId}`,
     consoleName: a.consoleName,
+    points: a.points,
     unlockedAt: a.date.replace(' ', 'T') + 'Z',
 });
 
@@ -43,6 +44,7 @@ export const normalizeSteam = (a) => ({
     gameId: a.appId,
     gameIcon: `https://cdn.akamai.steamstatic.com/steam/apps/${a.appId}/capsule_184x69.jpg`,
     gameUrl: `https://store.steampowered.com/app/${a.appId}`,
+    rarity: a.globalPct,
     unlockedAt: a.unlockedAt,
 });
 

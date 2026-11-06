@@ -2,7 +2,7 @@
 
 ## v26.11.06
 
-RA games can have wide art from SteamGridDB, shown where Steam games show their store banner.
+RA games can have wide art from SteamGridDB, shown where Steam games show their store banner; Activity's Unlocks and Playtime views are redesigned.
 
 ### RetroAchievements
 
@@ -19,6 +19,14 @@ RA games can have wide art from SteamGridDB, shown where Steam games show their 
 ### Completions
 
 - An RA highlight (Mastered) with wide art shows its banner, like a Steam store banner; beaten rows keep the square icon with the hero faded behind (as on the RA profile rows), and the closed-year covers keep the icon
+
+### Activity
+
+- Unlocks and Playtime redesigned. The platform filter sits at the top and drives the whole page
+- A summary card replaces the header counts, the heatmap section and the streak circles: three past-year numbers (unlocks or hours played, active days, best day), a bar with each platform's share, the last 14 days as bars (the current streak in gold, tap a bar to show that day) with the current and best streak as two small tiles (the current one gold while it runs), and the year heatmap. Folded by default on phones (a row with the last 14 days' total and the games played in them, the past-year total from tablet width up, and the 14 days as small bars at a fixed shape; tap to open, Less to fold, remembered per device) so the timeline starts on the first screen; open by default on desktop
+- The header unlock count was only the unlocks loaded so far (the last 91 days); the summary counts the whole year
+- Day headings stick to the top while scrolling and say Today / Yesterday. Unlocks: one card per game run with its achievements as compact rows (RA points, Steam rarity %); runs longer than 5 fold after 4 with "Show N more". Days no longer collapse
+- Playtime: one row per game per day instead of one card per session, with a 24-hour track showing when each session ran (estimated starts hatched), the day's time and the unlocks it produced
 
 ## v26.11.05
 

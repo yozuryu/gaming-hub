@@ -208,222 +208,336 @@ const computeStreak = (heatmapData, minValue) => {
     return { current, longest, longestStart, longestEnd, last14 };
 };
 
-// Streak circles for the last 14 days (5 on mobile); `cellLabel(day)` is the number in a lit circle
-const StreakPanel = ({ streakInfo, describe, cellLabel }) => (
-    <div style={{ marginTop: 14, background: 'linear-gradient(160deg, #1c2130 0%, #1b2838 100%)', border: '1px solid #263545', borderRadius: 5, padding: '12px 16px 11px' }}>
-        {/* Header */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
-                <span style={{ width: 3, height: 14, background: '#e5b143', borderRadius: 1, flexShrink: 0, display: 'block' }} />
-                <Flame size={13} color="#e5b143" style={{ animation: 'flameFlicker 1.8s ease-in-out infinite' }} />
-                <span style={{ fontSize: 11, color: '#8f98a0', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>Streak</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
-                <span style={{ fontSize: 22, fontWeight: 700, lineHeight: 1, color: streakInfo.current > 0 ? '#e5b143' : '#3d5060', animation: streakInfo.current > 0 ? 'streakGlow 3s ease-in-out infinite' : 'none' }}>
-                    {streakInfo.current}
-                </span>
-                <span style={{ fontSize: 11, color: '#546270' }}>
-                    day{streakInfo.current !== 1 ? 's' : ''}
-                </span>
-            </div>
+const PLATFORM_NAME = { ra: 'RA', steam: 'Steam', xbox: 'Xbox' };
+
+const PlatformTag = ({ platform }) => (
+    <span className="ptag" style={{ color: PLATFORM_COLOR[platform] }}>{PLATFORM_NAME[platform]}</span>
+);
+
+// Game name: RA titles lose their ~Tag~ and [Subset - …] syntax (shown as tags instead)
+const GameName = ({ platform, name }) => {
+    if (platform !== 'ra') return <span className="truncate">{name}</span>;
+    const { baseTitle, isSubset, tags } = parseTitle(name);
+    return (
+        <>
+            <span className="truncate">{baseTitle}</span>
+            {isSubset && <span className="subset-tag">Subset</span>}
+            {!isSubset && renderTildeTags(tags)}
+        </>
+    );
+};
+
+// "Sat 01 Nov" (+ the year when it isn't this year), and Today / Yesterday beside it
+const DayLabel = ({ day }) => {
+    const today = todayKey();
+    const rel = day === today ? 'Today' : day === addDays(today, -1) ? 'Yesterday' : null;
+    const sameYear = day.slice(0, 4) === today.slice(0, 4);
+    return (
+        <span className="tday-name">
+            {fmtDay(day, { weekday: 'short', day: '2-digit', month: 'short', ...(sameYear ? {} : { year: 'numeric' }) })}
+            {rel && <em>{rel}</em>}
+        </span>
+    );
+};
+
+// ── Summary card ──────────────────────────────────────────────────────────────
+
+// Last 14 days as bars: height against the busiest of the 14; the current streak gold,
+// other days that count blue, days under the streak minimum dim. Tap a bar to filter.
+const RecentDays = ({ streakInfo, heatmapData, cellLabel, describe, selectedDay, onSelectDay, slim }) => {
+    const days = streakInfo.last14;
+    const vals = days.map(d => heatmapData[d.key]?.count ?? 0);
+    const max = Math.max(1, ...vals);
+    const inStreak = new Set();
+    let k = days.length - 1;
+    if (!days[k].active) k--;   // today doesn't break a streak until it's over
+    while (k >= 0 && days[k].active) inStreak.add(days[k--].key);
+    return (
+        <div className={`rdays ${slim ? 'slim' : ''}`}>
+            {days.map((d, i) => {
+                const v = vals[i];
+                const cls = inStreak.has(d.key) ? 'streak' : d.active ? 'on' : v ? 'low' : '';
+                return (
+                    <button key={d.key} title={describe(d.key)} disabled={!v}
+                        onClick={() => onSelectDay(selectedDay === d.key ? null : d.key)}
+                        className={`rday ${cls} ${selectedDay === d.key ? 'sel' : ''} ${d.isToday ? 'today' : ''}`}>
+                        {!slim && <span className="rday-v">{v ? cellLabel(d.key) : ''}</span>}
+                        <span className="rday-bar"><i style={{ height: v ? `${Math.max(10, v / max * 100)}%` : 0 }} /></span>
+                        {!slim && <span className="rday-l">{d.label.slice(0, 2)}</span>}
+                    </button>
+                );
+            })}
         </div>
-        {/* 14-day circles (7 on mobile, 14 on desktop) */}
-        <div style={{ overflowX: 'auto' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-                {(window.innerWidth < 768 ? streakInfo.last14.slice(-5) : streakInfo.last14).map((d, i, arr) => (
-                    <React.Fragment key={d.key}>
-                        {i > 0 && (
-                            <div style={{ flex: 1, minWidth: 6, paddingTop: 24, display: 'flex', alignItems: 'flex-start' }}>
-                                <div style={{ width: '100%', height: 1.5, background: arr[i - 1].active && d.active ? 'rgba(229,177,67,0.35)' : 'transparent' }} />
-                            </div>
-                        )}
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5 }}>
-                            <div
-                                title={describe(d.key)}
-                                style={{
-                                    width: 48, height: 48, borderRadius: '50%', flexShrink: 0,
-                                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6,
-                                    background: d.active
-                                        ? 'linear-gradient(145deg, #2e1f02, #1c1200)'
-                                        : d.isPending
-                                        ? 'linear-gradient(145deg, #0d1825, #0a1018)'
-                                        : '#0e0c10',
-                                    border: `1.5px solid ${d.active ? '#9a7020' : d.isPending ? '#253545' : '#1c1520'}`,
-                                    boxShadow: d.active ? '0 0 10px rgba(229,177,67,0.2), inset 0 1px 0 rgba(229,177,67,0.08)' : 'none',
-                                    animation: d.isPending ? 'pendingPulse 2.5s ease-in-out infinite' : 'none',
-                                }}
-                            >
-                                {d.active ? (
-                                    <>
-                                        <Flame size={16} color="#e5b143" style={{ animation: 'flameFlicker 1.8s ease-in-out infinite', animationDelay: `${i * 0.18}s`, flexShrink: 0 }} />
-                                        <span style={{ fontSize: 9, lineHeight: 1, color: '#c8880a', fontWeight: 700 }}>
-                                            {cellLabel(d.key)}
-                                        </span>
-                                    </>
-                                ) : d.isPending ? (
-                                    <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#2a475e', display: 'block', opacity: 0.7 }} />
-                                ) : (
-                                    <span style={{ fontSize: 12, color: '#3a1e28', lineHeight: 1, fontWeight: 700 }}>✕</span>
-                                )}
-                            </div>
-                            <span style={{ fontSize: 10, fontWeight: d.isToday ? 700 : 500, color: d.active ? '#8a6520' : d.isPending ? '#4a6070' : '#2a1e24' }}>
-                                {d.isToday ? 'Today' : d.label}
-                            </span>
-                        </div>
-                    </React.Fragment>
+    );
+};
+
+// Current and best streak as two small tiles; the current one lights up gold while it runs
+const StreakTiles = ({ streakInfo, minLabel }) => {
+    const on = streakInfo.current > 0;
+    const days = n => `${n} day${n !== 1 ? 's' : ''}`;
+    return (
+        <div className="sktiles">
+            <div className={`sktile ${on ? 'on' : ''}`}>
+                <span className="sktile-ic">
+                    <Flame size={16} style={on ? { animation: 'flameFlicker 1.8s ease-in-out infinite' } : undefined} />
+                </span>
+                <span className="sktile-txt">
+                    <b>{on ? days(streakInfo.current) : 'None'}</b>
+                    <span>Current streak</span>
+                </span>
+            </div>
+            {streakInfo.longestStart && (
+                <div className="sktile best">
+                    <span className="sktile-ic"><Trophy size={15} /></span>
+                    <span className="sktile-txt">
+                        <b>{days(streakInfo.longest)}</b>
+                        <span>Best · {fmtDay(streakInfo.longestStart, { day: 'numeric', month: 'short' })} – {fmtDay(streakInfo.longestEnd, { day: 'numeric', month: 'short' })}</span>
+                    </span>
+                </div>
+            )}
+        </div>
+    );
+};
+
+// Share of the year per platform; the filtered platform stays lit, the rest dim
+const SplitBar = ({ parts, filter }) => {
+    const total = parts.reduce((a, p) => a + (p.value ?? 0), 0);
+    return (
+        <div className="split">
+            <div className="split-bar">
+                {total > 0 && parts.filter(p => p.value).map(p => (
+                    <i key={p.id} style={{ width: `${p.value / total * 100}%`, background: PLATFORM_COLOR[p.id], opacity: filter === 'all' || filter === p.id ? 1 : 0.25 }} />
+                ))}
+            </div>
+            <div className="split-legend">
+                {parts.map(p => (
+                    <span key={p.id} className={filter !== 'all' && filter !== p.id ? 'dim' : ''}>
+                        <i style={{ background: PLATFORM_COLOR[p.id] }} />
+                        {p.value == null ? <>{PLATFORM_NAME[p.id]} <span className="text-[#3d5060]">n/a</span></> : <><b>{p.label}</b> {PLATFORM_NAME[p.id]}</>}
+                    </span>
                 ))}
             </div>
         </div>
-        {/* Longest streak */}
-        {streakInfo.longestStart && (
-            <div style={{ marginTop: 10, paddingTop: 9, borderTop: '1px solid #1e2a38', display: 'flex', alignItems: 'center', gap: 5 }}>
-                <Flame size={10} color="#5a7a40" />
-                <span style={{ fontSize: 10, color: '#3d5060', letterSpacing: '0.04em' }}>
-                    Best streak: <span style={{ color: '#546270' }}>{streakInfo.longest} day{streakInfo.longest !== 1 ? 's' : ''}</span>
-                    <span style={{ color: '#2a3a48', margin: '0 4px' }}>·</span>
-                    {fmtDay(streakInfo.longestStart)} – {fmtDay(streakInfo.longestEnd)}
-                </span>
+    );
+};
+
+// Collapsed (the default on phones): one line with the headline number and the streak, and
+// the last 14 days as slim bars, so the timeline starts on the first screen. Expanded: the
+// three numbers and the platform split, the 14 days with the streak, the year heatmap.
+const SummaryCard = ({ open, onToggle, headline, stats, split, filter, streakInfo, minLabel, heatmap, recent, selectedDay, onClear }) => (
+    <section className={`asum ${open ? '' : 'closed'}`}>
+        {!open ? (
+            // Folded: the last 14 days first (what this page is read for), then the year
+            <div className="asum-fold">
+                <button className="afold-stats" onClick={onToggle} aria-expanded={false}>
+                    <span className="astat">
+                        <b style={{ color: '#66c0f4' }}>{headline.recent}</b>
+                        <span>{headline.l}</span>
+                    </span>
+                    <span className="astat">
+                        <b>{headline.games}</b>
+                        <span>Game{headline.games !== 1 ? 's' : ''}</span>
+                    </span>
+                    <span className="astat afold-year hidden sm:flex">
+                        <b>{headline.year}</b>
+                        <span>Past year</span>
+                    </span>
+                </button>
+                <div className="afold-days">{recent(true)}<span>Last 14 days</span></div>
+                <button className="afold-btn" onClick={onToggle} aria-label="Show the year">
+                    <ChevronDown size={16} />
+                </button>
+            </div>
+        ) : (
+            <div className="anim-fade relative">
+                <button className="asum-less" onClick={onToggle} aria-expanded={true}>Less<ChevronDown size={13} className="rotate-180" /></button>
+                <div className="asum-top">
+                    <div className="asum-sec">
+                        <div className="asum-h"><span>Past year</span></div>
+                        <div className="astats">
+                            {stats.map(s => (
+                                <div key={s.l} className="astat">
+                                    <b style={{ color: s.color ?? '#c6d4df' }}>{s.v}</b>
+                                    <span>{s.l}</span>
+                                    {s.sub && <em>{s.sub}</em>}
+                                </div>
+                            ))}
+                        </div>
+                        <SplitBar parts={split} filter={filter} />
+                    </div>
+                    <div className="asum-sec">
+                        <div className="asum-h">
+                            <span>Last 14 days</span>
+                            {minLabel && <em className="md:mr-12" title="A day counts toward the streak with this much play">Streak: {minLabel}</em>}
+                        </div>
+                        {recent(false)}
+                        <StreakTiles streakInfo={streakInfo} minLabel={minLabel} />
+                    </div>
+                </div>
+                <div className="asum-sec">
+                    <div className="asum-h">
+                        <span>Heatmap</span>
+                        <em title="Days and times are shown in your timezone">{TZ}</em>
+                        {selectedDay
+                            ? <button onClick={onClear} className="fchip on anim-fade" style={{ height: 22 }}>{fmtDay(selectedDay, { day: '2-digit', month: 'short' })} ✕</button>
+                            : <em className="hidden sm:inline">· tap a day to filter</em>}
+                    </div>
+                    {heatmap}
+                </div>
             </div>
         )}
+    </section>
+);
+
+// ── Unlock timeline ───────────────────────────────────────────────────────────
+
+// Steam rarity tiers (global unlock %), same colours as the profiles
+const rarityColor = (p) => p < 5 ? '#e5b143' : p < 10 ? '#c8901a' : p < 25 ? '#66c0f4' : p < 50 ? '#8f98a0' : '#546270';
+
+const AchievementRow = ({ ach }) => (
+    <div className="trow">
+        {ach.achievementIcon
+            ? <img src={ach.achievementIcon} alt="" loading="lazy" />
+            : <span className="trow-ph" />}
+        <div className="trow-main">
+            <span className="trow-title">{ach.achievementName}</span>
+            {ach.description && ach.description !== ach.achievementName && <span className="trow-sub">{ach.description}</span>}
+        </div>
+        <span className="trow-end">
+            {fmtTime(ach.unlockedAt)}
+            {ach.points != null && <em>{ach.points} pts</em>}
+            {ach.rarity != null && <em style={{ color: rarityColor(ach.rarity) }}>{ach.rarity < 10 ? ach.rarity.toFixed(1) : Math.round(ach.rarity)}%</em>}
+        </span>
     </div>
 );
 
-// ── Achievement row ───────────────────────────────────────────────────────────
+// Runs longer than this fold after SESSION_FOLD - 1 rows
+const SESSION_FOLD = 5;
 
-const AchievementRow = ({ ach }) => {
-    const color = PLATFORM_COLOR[ach.platform];
-    return (
-        <div className="flex items-center gap-2 p-2 rounded-[2px] border border-[#2a475e] border-l-[2px] bg-[#1b2838] hover:bg-[#2a475e] transition-colors"
-            style={{ borderLeftColor: color }}>
-            <div className="shrink-0 w-8 h-8 rounded-[2px] overflow-hidden border border-[#101214] bg-black">
-                {ach.achievementIcon
-                    ? <img src={ach.achievementIcon} alt={ach.achievementName} className="w-full h-full object-cover" />
-                    : <div className="w-full h-full bg-[#2a475e]" />
-                }
-            </div>
-            <div className="flex-1 min-w-0">
-                <div className="text-[11px] font-medium text-[#c6d4df] truncate">{ach.achievementName}</div>
-                <p className="text-[9px] text-[#8f98a0] truncate">{ach.description}</p>
-            </div>
-            <span className="text-[9px] text-[#546270] shrink-0">{fmtTime(ach.unlockedAt)}</span>
-        </div>
-    );
-};
-
-// ── Game session ──────────────────────────────────────────────────────────────
-
+// One run of consecutive unlocks in one game: the game, then its unlocks newest first
 const GameSession = ({ session }) => {
-    const isRA   = session.platform === 'ra';
-    const sorted = [...session.achs].sort((a, b) => new Date(b.unlockedAt) - new Date(a.unlockedAt));
-
-    const times  = session.achs.map(a => new Date(a.unlockedAt).getTime());
-    const startT = fmtTime(new Date(Math.min(...times)).toISOString());
-    const endT   = fmtTime(new Date(Math.max(...times)).toISOString());
-    const timeStr = startT === endT ? startT : `${startT}–${endT}`;
-
-    const { baseTitle, subsetName, isSubset, tags } = isRA ? parseTitle(session.gameName) : {};
-    const gameNameNode = isRA ? (
-        <>
-            <a href={session.gameUrl} target="_blank" rel="noreferrer"
-                className="text-[11px] text-[#c6d4df] hover:text-[#66c0f4] font-medium truncate transition-colors">
-                {baseTitle}
-            </a>
-            {isSubset && (
-                <>
-                    <span className="text-[7px] font-bold uppercase tracking-[0.07em] px-1 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>
-                    <span className="text-[8px] text-[#c8a84b] truncate">{subsetName}</span>
-                </>
-            )}
-            {!isSubset && renderTildeTags(tags)}
-        </>
-    ) : (
-        <a href={session.gameUrl} target="_blank" rel="noreferrer"
-            className="text-[11px] text-[#c6d4df] hover:text-[#66c0f4] font-medium truncate transition-colors">
-            {session.gameName}
-        </a>
-    );
-
+    const [open, setOpen] = useState(false);
+    const sorted = [...session.achs].sort((a, b) => toMs(b.unlockedAt) - toMs(a.unlockedAt));
+    const startT = fmtTime(sorted[sorted.length - 1].unlockedAt);
+    const endT   = fmtTime(sorted[0].unlockedAt);
+    const fold = sorted.length > SESSION_FOLD && !open;
+    const shown = fold ? sorted.slice(0, SESSION_FOLD - 1) : sorted;
+    const subset = session.platform === 'ra' ? parseTitle(session.gameName).subsetName : null;
     return (
-        <div className="ml-4 border-l border-[#2a475e] pl-3 mb-3">
-            <div className="flex items-center gap-2 mb-1.5">
-                <img
-                    src={isRA ? '../assets/icon-ra.png' : session.platform === 'xbox' ? '../assets/icon-xbox.png' : '../assets/icon-steam.png'}
-                    alt=""
-                    className="w-3 h-3 shrink-0 object-contain opacity-60"
-                    onError={e => { e.target.style.display = 'none'; }}
-                />
-                <a href={session.gameUrl} target="_blank" rel="noreferrer"
-                    className="w-4 h-4 rounded-[1px] overflow-hidden border border-[#101214] bg-black block hover:scale-110 transition-transform shrink-0">
-                    <img src={session.gameIcon} alt="" className="w-full h-full object-cover" />
-                </a>
-                <div className="flex items-center gap-1.5 flex-1 min-w-0">
-                    {gameNameNode}
-                    {isRA && session.consoleName && (
-                        <span className="text-[8px] text-[#546270] shrink-0">· {session.consoleName}</span>
-                    )}
+        <div className="tcard" style={{ borderLeftColor: PLATFORM_COLOR[session.platform] }}>
+            <a href={session.gameUrl} target="_blank" rel="noreferrer" className="tcard-head">
+                {session.gameIcon ? <img src={session.gameIcon} alt="" loading="lazy" /> : <span className="trow-ph" />}
+                <div className="tcard-main">
+                    <span className="tcard-title"><GameName platform={session.platform} name={session.gameName} /></span>
+                    <span className="tcard-sub">
+                        <PlatformTag platform={session.platform} />
+                        {subset && <span className="shrink text-[#c8a84b]">{subset}</span>}
+                        {!subset && session.consoleName && <span className="shrink">{session.consoleName}</span>}
+                        <span>{startT === endT ? startT : `${startT}–${endT}`}</span>
+                    </span>
                 </div>
-                <span className="text-[8px] text-[#546270] shrink-0 ml-auto">{timeStr}</span>
+                <span className="tcard-n"><Trophy size={11} /> {sorted.length}</span>
+            </a>
+            <div className="tlist">
+                {shown.map(a => <AchievementRow key={a.id} ach={a} />)}
             </div>
-            <div className="flex flex-col gap-1">
-                {sorted.map(ach => <AchievementRow key={ach.id} ach={ach} />)}
-            </div>
+            {sorted.length > SESSION_FOLD && (
+                <button className="tmore" onClick={() => setOpen(o => !o)}>
+                    {open ? 'Show less' : `Show ${sorted.length - shown.length} more`}
+                    <ChevronDown size={12} className={open ? 'rotate-180' : ''} />
+                </button>
+            )}
         </div>
     );
 };
 
-// ── Play session ──────────────────────────────────────────────────────────────
+// ── Playtime timeline ─────────────────────────────────────────────────────────
 
-// One play session (playtime view). `day` is the timeline day it's listed under: a
-// session crossing midnight is listed under both days and shows where it started.
-const PlaySessionRow = ({ session: s, day }) => {
-    const isRA = s.platform === 'ra';
-    const { baseTitle, subsetName, isSubset, tags } = isRA ? parseTitle(s.gameName) : { baseTitle: s.gameName };
-    const start = new Date(s.startMs);
-    const startedEarlier = dayKey(start) !== day;
+const HOUR_TICKS = ['00', '06', '12', '18', '24'];
+
+// One game's play on one day: a 24-hour track with a segment per session (clipped to
+// the day), the day's share of its time and the unlocks those sessions produced
+const PlayGameRow = ({ game: g, day }) => {
+    const n = g.sessions.length;
+    const first = g.sessions[0], last = g.sessions[n - 1];
+    const startedEarlier = dayKey(new Date(first.startMs)) !== day;
+    const from = `${startedEarlier ? new Date(first.startMs).toLocaleDateString('en-GB', { weekday: 'short' }) + ' ' : ''}${fmtTime(new Date(first.startMs))}`;
+    const approx = g.sessions.some(s => s.approx);
     return (
-        <div className="flex items-center gap-2 p-2 rounded-[2px] border border-[#2a475e] border-l-[2px] bg-[#1b2838] hover:bg-[#202d39] transition-colors"
-            style={{ borderLeftColor: PLATFORM_COLOR[s.platform] }}>
-            <a href={s.gameUrl} target="_blank" rel="noreferrer"
-                className="shrink-0 w-8 h-8 rounded-[2px] overflow-hidden border border-[#101214] bg-black block">
-                {s.gameIcon
-                    ? <img src={s.gameIcon} alt="" className="w-full h-full object-cover" />
-                    : <div className="w-full h-full bg-[#2a475e]" />}
-            </a>
-            <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-1.5 min-w-0">
-                    <img src={isRA ? '../assets/icon-ra.png' : '../assets/icon-steam.png'} alt=""
-                        className="w-3 h-3 shrink-0 object-contain opacity-60"
-                        onError={e => { e.target.style.display = 'none'; }} />
-                    <a href={s.gameUrl} target="_blank" rel="noreferrer"
-                        className="text-[11px] font-medium text-[#c6d4df] hover:text-[#66c0f4] truncate transition-colors">
-                        {baseTitle}
-                    </a>
-                    {isSubset && (
-                        <>
-                            <span className="text-[7px] font-bold uppercase tracking-[0.07em] px-1 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>
-                            <span className="text-[8px] text-[#c8a84b] truncate">{subsetName}</span>
-                        </>
-                    )}
-                    {!isSubset && renderTildeTags(tags)}
+        <a href={g.gameUrl} target="_blank" rel="noreferrer" className="prow">
+            {g.gameIcon ? <img src={g.gameIcon} alt="" loading="lazy" /> : <span className="trow-ph" />}
+            <div className="prow-main">
+                <span className="tcard-title"><GameName platform={g.platform} name={g.gameName} /></span>
+                <div className="ptrack">
+                    {g.segments.map((sg, i) => (
+                        <i key={i} className={sg.approx ? 'approx' : ''} title={sg.title}
+                            style={{ left: `${sg.left}%`, width: `${sg.width}%`, background: PLATFORM_COLOR[g.platform] }} />
+                    ))}
                 </div>
-                <p className="text-[9px] text-[#8f98a0] truncate mt-0.5"
-                    title={s.approx ? 'Start time estimated: the playtime was reported late (offline play, or a session spanning two updates)' : undefined}>
-                    {s.approx && <span className="text-[#546270]">≈ </span>}
-                    {startedEarlier && `${start.toLocaleDateString('en-GB', { weekday: 'short' })} `}
-                    {fmtTime(start)} – {fmtTime(new Date(s.endMs))}
-                </p>
-            </div>
-            <div className="shrink-0 flex flex-col items-end gap-0.5">
-                <span className="text-[11px] font-semibold text-[#c6d4df]">{fmtMinutes(s.minutes)}</span>
-                {s.unlocks > 0 && (
-                    <span className="text-[9px] text-[#e5b143] flex items-center gap-0.5" title={`${s.unlocks} achievement${s.unlocks !== 1 ? 's' : ''} unlocked in this session`}>
-                        <Trophy size={9} /> {s.unlocks}
+                <span className="tcard-sub"
+                    title={approx ? 'Start time estimated: the playtime was reported late (offline play, or a session spanning two updates)' : undefined}>
+                    <PlatformTag platform={g.platform} />
+                    <span className="shrink">
+                        {approx && '≈ '}{n > 1 ? `${n} sessions · ` : ''}{from} – {fmtTime(new Date(last.endMs))}
                     </span>
+                </span>
+            </div>
+            <div className="prow-end">
+                <b>{fmtMinutes(g.minutes)}</b>
+                {g.unlocks > 0 && (
+                    <span className="tcard-n" title={`${g.unlocks} achievement${g.unlocks !== 1 ? 's' : ''} unlocked while playing`}><Trophy size={10} /> {g.unlocks}</span>
                 )}
             </div>
+        </a>
+    );
+};
+
+// A day's sessions grouped per game (latest played first), with the 24-hour axis on top
+const playDayGames = (day, sessions) => {
+    const dayStart = keyToDate(day).getTime();
+    const dayLen = keyToDate(addDays(day, 1)).getTime() - dayStart;
+    const byGame = new Map();
+    for (const s of [...sessions].sort((a, b) => a.startMs - b.startMs)) {
+        const key = `${s.platform}-${s.gameId}`;
+        const g = byGame.get(key) ?? { ...s, key, sessions: [], segments: [], minutes: 0, unlocks: 0 };
+        // This day's share of the session's minutes (same split as the heatmap)
+        const parts = splitByDay(s.startMs, s.endMs);
+        const span = parts.reduce((a, p) => a + p.ms, 0);
+        const part = parts.find(p => p.key === day);
+        g.minutes += span ? s.minutes * ((part?.ms ?? 0) / span) : s.minutes;
+        g.unlocks += s.unlocks;
+        g.sessions.push(s);
+        const a = Math.max(s.startMs, dayStart) - dayStart, b = Math.min(s.endMs, dayStart + dayLen) - dayStart;
+        g.segments.push({
+            left: a / dayLen * 100, width: Math.max(0, b - a) / dayLen * 100, approx: s.approx,
+            title: `${fmtTime(new Date(s.startMs))} – ${fmtTime(new Date(s.endMs))} · ${fmtMinutes(s.minutes)}`,
+        });
+        byGame.set(key, g);
+    }
+    return [...byGame.values()].sort((a, b) => b.sessions.at(-1).endMs - a.sessions.at(-1).endMs);
+};
+
+const PlayDay = ({ day, sessions }) => {
+    const games = useMemo(() => playDayGames(day, sessions), [day, sessions]);
+    return (
+        <div className="tcard pday">
+            <div className="paxis" aria-hidden="true">
+                <span />
+                <div>{HOUR_TICKS.map((t, i) => <i key={t} style={{ left: `${i * 25}%` }}>{t}</i>)}</div>
+                <span />
+            </div>
+            {games.map(g => <PlayGameRow key={g.key} game={g} day={day} />)}
         </div>
     );
 };
+
+// Sticky day heading of both timelines
+const DayHead = ({ day, children }) => (
+    <div className="tday">
+        <DayLabel day={day} />
+        <span className="tday-meta">{children}</span>
+    </div>
+);
 
 // { day: { count: minutes } } in local days; sessions crossing midnight are split
 const buildPlaytimeHeatmap = (sessions) => {
@@ -444,28 +558,35 @@ const buildPlaytimeHeatmap = (sessions) => {
     return map;
 };
 
-// Placeholder while the playtime files load (normally only a moment after the page)
-const PlaySessionsSkeleton = () => (
-    <div className="flex flex-col gap-4">
-        {[...Array(3)].map((_, i) => (
-            <div key={i}>
-                <div className="flex items-center gap-2 mb-2">
-                    <div className="shimmer w-2 h-2 rounded-full" />
-                    <div className="shimmer h-2.5 w-24 rounded" />
-                    <div className="flex-1 h-px bg-[#1e2d3a]" />
-                    <div className="shimmer h-2 w-20 rounded" />
+// Placeholders: the summary card while the chunks load, timeline days while the
+// chunks or the playtime files load
+const SummarySkeleton = () => (
+    <div className="asum">
+        <div className="asum-top">
+            <div className="asum-sec flex flex-col gap-3">
+                <div className="grid grid-cols-3 gap-3">
+                    {[0, 1, 2].map(i => <div key={i} className="flex flex-col gap-1.5"><div className="shimmer h-5 w-14" /><div className="shimmer h-2.5 w-16" /></div>)}
                 </div>
-                <div className="ml-4 border-l border-[#2a475e] pl-3 flex flex-col gap-1">
-                    {[...Array(2)].map((_, j) => (
-                        <div key={j} className="flex items-center gap-2 p-2 bg-[#1b2838] border border-[#2a475e] rounded-[2px]">
-                            <div className="shimmer w-8 h-8 rounded-[2px] shrink-0" />
-                            <div className="flex-1 flex flex-col gap-1.5">
-                                <div className="shimmer h-2.5 rounded" style={{ width: `${45 + j * 20}%` }} />
-                                <div className="shimmer h-2 w-20 rounded" />
-                            </div>
-                            <div className="shimmer h-3 w-10 rounded" />
-                        </div>
-                    ))}
+                <div className="shimmer h-1.5 w-full" />
+            </div>
+            <div className="asum-sec"><div className="shimmer h-[86px] w-full" /></div>
+        </div>
+        <div className="asum-sec"><div className="shimmer h-[104px] w-full" /></div>
+    </div>
+);
+
+const TimelineSkeleton = () => (
+    <div className="flex flex-col gap-4">
+        {[0, 1, 2].map(i => (
+            <div key={i} className="flex flex-col gap-2">
+                <div className="flex justify-between py-1"><div className="shimmer h-3 w-24" /><div className="shimmer h-2.5 w-20" /></div>
+                <div className="tcard">
+                    <div className="tcard-head"><div className="shimmer w-9 h-9 shrink-0" /><div className="flex-1 flex flex-col gap-1.5"><div className="shimmer h-3" style={{ width: `${50 + i * 12}%` }} /><div className="shimmer h-2.5 w-24" /></div></div>
+                    <div className="tlist">
+                        {[0, 1].map(j => (
+                            <div key={j} className="trow"><div className="shimmer w-8 h-8 shrink-0" /><div className="flex-1 flex flex-col gap-1.5"><div className="shimmer h-2.5" style={{ width: `${40 + j * 20}%` }} /><div className="shimmer h-2 w-1/2" /></div></div>
+                        ))}
+                    </div>
                 </div>
             </div>
         ))}
@@ -620,14 +741,17 @@ const App = () => {
     const [visibleDays, setVisibleDays] = useState(30);
     const [filter,      setFilter]      = useState('all');
     const [selectedDay, setSelectedDay] = useState(null);
-    const [collapsedDays, setCollapsedDays] = useState(new Set());
     const [showScrollTop, setShowScrollTop] = useState(false);
     const sentinelRef = useRef(null);
-
-    const toggleDay = (day) => setCollapsedDays(prev => {
-        const next = new Set(prev);
-        next.has(day) ? next.delete(day) : next.add(day);
-        return next;
+    // Summary card open or folded, remembered per device; folded by default on phones so
+    // the timeline starts on the first screen
+    const [summaryOpen, setSummaryOpen] = useState(() => {
+        try { const v = localStorage.getItem('gh:activitySummary'); if (v) return v === 'open'; } catch {}
+        return window.matchMedia('(min-width: 768px)').matches;
+    });
+    const toggleSummary = () => setSummaryOpen(o => {
+        try { localStorage.setItem('gh:activitySummary', o ? 'closed' : 'open'); } catch {}
+        return !o;
     });
 
     const switchView = (next) => {
@@ -718,10 +842,6 @@ const App = () => {
     }, [playtime, chunks]);
     const raPlayHeatmap    = useMemo(() => buildPlaytimeHeatmap(sessions.ra),    [sessions]);
     const steamPlayHeatmap = useMemo(() => buildPlaytimeHeatmap(sessions.steam), [sessions]);
-    const firstSessionMs = useMemo(() => {
-        const all = [...sessions.ra, ...sessions.steam];
-        return all.length ? Math.min(...all.map(s => s.startMs)) : null;
-    }, [sessions]);
 
     const loadMore = useCallback(() => {
         if (view === 'playtime') { setVisibleDays(prev => prev + 30); return; }
@@ -776,6 +896,56 @@ const App = () => {
         () => computeStreak(heatmapData, view === 'playtime' ? PLAYTIME_STREAK_MIN : 1),
         [heatmapData, view]
     );
+
+    // Summary card: past-year total, active days and busiest day of the filtered heatmap,
+    // and each platform's share of the year
+    const yearFrom = addDays(todayKey(), -364);
+    const sumYear = (h) => Object.entries(h).reduce((a, [k, d]) => k >= yearFrom ? a + (d.count ?? 0) : a, 0);
+    const summaryStats = useMemo(() => {
+        const min = view === 'playtime' ? PLAYTIME_STREAK_MIN : 1;
+        let total = 0, active = 0, best = null;
+        for (const [k, d] of Object.entries(heatmapData)) {
+            if (k < yearFrom) continue;
+            total += d.count;
+            if (d.count >= min) active++;
+            if (!best || d.count > best.count) best = { key: k, count: d.count };
+        }
+        const bestDay = { l: 'Best day', sub: best ? fmtDay(best.key, { day: '2-digit', month: 'short' }) : null };
+        return view === 'playtime' ? [
+            { v: fmtTotal(total), l: 'Played', color: '#66c0f4' },
+            { v: active, l: 'Days played' },
+            { ...bestDay, v: best ? fmtMinutes(best.count) : '–' },
+        ] : [
+            { v: total.toLocaleString(), l: 'Unlocks', color: '#66c0f4' },
+            { v: active, l: 'Active days' },
+            { ...bestDay, v: best ? best.count : '–' },
+        ];
+    }, [heatmapData, view]);
+    const recentTotal = useMemo(
+        () => streakInfo.last14.reduce((a, d) => a + (heatmapData[d.key]?.count ?? 0), 0),
+        [streakInfo, heatmapData]
+    );
+    // Games touched in the last 14 days (the folded summary), for the filtered platforms
+    const recentGames = useMemo(() => {
+        const from = addDays(todayKey(), -13);
+        const on = p => filter === 'all' || filter === p;
+        const keys = new Set();
+        if (view === 'playtime') {
+            for (const p of ['ra', 'steam']) if (on(p)) for (const s of sessions[p]) if (dayKey(new Date(s.endMs)) >= from) keys.add(`${p}-${s.gameId}`);
+        } else if (chunks) {
+            for (const p of ['ra', 'steam', 'xbox']) if (on(p)) for (const a of chunks[p][0]) if (dayKey(a.unlockedAt) >= from) keys.add(`${p}-${a.gameId}`);
+        }
+        return keys.size;
+    }, [view, filter, sessions, chunks]);
+    const splitParts = useMemo(() => view === 'playtime' ? [
+        { id: 'ra',    value: sumYear(raPlayHeatmap),    label: fmtTotal(sumYear(raPlayHeatmap)) },
+        { id: 'steam', value: sumYear(steamPlayHeatmap), label: fmtTotal(sumYear(steamPlayHeatmap)) },
+        { id: 'xbox',  value: null },
+    ] : [
+        { id: 'ra',    value: sumYear(raHeatmap),    label: sumYear(raHeatmap).toLocaleString() },
+        { id: 'steam', value: sumYear(steamHeatmap), label: sumYear(steamHeatmap).toLocaleString() },
+        { id: 'xbox',  value: sumYear(xboxHeatmap),  label: sumYear(xboxHeatmap).toLocaleString() },
+    ], [view, raHeatmap, steamHeatmap, xboxHeatmap, raPlayHeatmap, steamPlayHeatmap]);
 
     const sourceAchs = useMemo(() => {
         const base = filter === 'ra' ? raAchs
@@ -841,13 +1011,6 @@ const App = () => {
             .map(([day, list]) => ({ day, minutes: heatmapData[day]?.count ?? 0, sessions: [...list].sort((a, b) => b.endMs - a.endMs) }));
     }, [sessions, filter, selectedDay, heatmapData]);
 
-    // Last 365 days of playtime per platform, for the header
-    const playTotals = useMemo(() => {
-        const cutoff = Date.now() - 365 * 86400000;
-        const sum = list => list.filter(s => s.endMs >= cutoff).reduce((a, s) => a + s.minutes, 0);
-        return { ra: sum(sessions.ra), steam: sum(sessions.steam) };
-    }, [sessions]);
-
     // Scroll sentinel — reveal the next chunk (achievements) or 30 more days (playtime)
     const hasMore = view === 'playtime' ? visibleDays < playGroups.length : nextChunk <= 4;
     useEffect(() => {
@@ -885,14 +1048,6 @@ const App = () => {
                 75%  { transform: scale(1.10) rotate(2deg);  opacity: 0.88; }
                 100% { transform: scale(1)    rotate(0deg);  opacity: 1;    }
             }
-            @keyframes pendingPulse {
-                0%,100% { border-color: #253545; box-shadow: none; }
-                50%     { border-color: #4a7fa0; box-shadow: 0 0 8px rgba(102,192,244,0.18); }
-            }
-            @keyframes streakGlow {
-                0%,100% { text-shadow: none; }
-                50%     { text-shadow: 0 0 12px rgba(229,177,67,0.5); }
-            }
         `}</style>
 
             {/* Topbar */}
@@ -925,20 +1080,6 @@ const App = () => {
                             ))}
                         </div>
                     </div>
-                    {/* Playtime pills wait for the playtime files (skeleton until then); both pill rows fade in and swap with a fade */}
-                    {!loading && view === 'playtime' && !playtime && (
-                        <div className="flex flex-wrap gap-2">
-                            {[86, 132, 72, 60].map(w => <span key={w} className="shimmer h-[19px] rounded-[2px]" style={{ width: w }} />)}
-                        </div>
-                    )}
-                    {!loading && view === 'playtime' && playtime && (
-                        <div key="play-pills" className="flex flex-wrap gap-x-4 gap-y-1 anim-fade">
-                            <span className={pill}><span className="text-[#c6d4df]">{fmtMinutes(playTotals.ra + playTotals.steam)}</span> past year</span>
-                            <span className={pill}><span className="text-[#e5b143]">{fmtMinutes(playTotals.ra)}</span> RA</span>
-                            <span className={pill}><span className="text-[#66c0f4]">{fmtMinutes(playTotals.steam)}</span> Steam</span>
-                            <span className={pill} title="Xbox doesn't report playtime">Xbox <span className="text-[#323f4c]">n/a</span></span>
-                        </div>
-                    )}
                     {view === 'playing' && !playing && (
                         <div className="flex flex-wrap gap-2">
                             {[78, 70, 74, 92].map((w, i) => <span key={i} className="shimmer h-[19px] rounded-[2px]" style={{ width: w }} />)}
@@ -952,22 +1093,6 @@ const App = () => {
                                 </span>
                             ))}
                             <span className={pill}>Last 13 weeks</span>
-                        </div>
-                    )}
-                    {!loading && view === 'achievements' && (
-                        <div key="ach-pills" className="flex flex-wrap gap-x-4 gap-y-1 anim-fade">
-                            <span className={pill}>
-                                <span className="text-[#c6d4df] font-semibold">{(raAchs.length + steamAchs.length + xboxAchs.length).toLocaleString()}</span> unlocks
-                            </span>
-                            <span className={pill}>
-                                <span className="text-[#e5b143] font-semibold">{raAchs.length.toLocaleString()}</span> RA
-                            </span>
-                            <span className={pill}>
-                                <span className="text-[#66c0f4]">{steamAchs.length.toLocaleString()}</span> Steam
-                            </span>
-                            <span className={pill}>
-                                <span className="text-[#52b043]">{xboxAchs.length.toLocaleString()}</span> Xbox
-                            </span>
                         </div>
                     )}
                 </div>
@@ -1021,193 +1146,91 @@ const App = () => {
                             )
                         )}
                     </div>
-                ) : loading ? (
-                    <div className="flex flex-col gap-6">
-                        {/* Heatmap skeleton */}
-                        <div>
-                            <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 mb-3">
-                                <div className="shimmer w-[3px] h-[14px] rounded-[1px]" />
-                                <div className="shimmer h-3 w-24 rounded" />
-                            </div>
-                            <div className="flex gap-[3px] flex-wrap">
-                                {[...Array(53)].map((_, i) => (
-                                    <div key={i} className="flex flex-col gap-[3px]">
-                                        {[...Array(7)].map((_, j) => (
-                                            <div key={j} className="shimmer w-[11px] h-[11px] rounded-[2px]" />
-                                        ))}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        {/* Filter bar skeleton */}
-                        <div className="flex items-center gap-2">
-                            {[...Array(3)].map((_, i) => <div key={i} className="shimmer h-5 w-12 rounded-sm" />)}
-                        </div>
-                        {/* Timeline skeleton */}
-                        <div className="flex flex-col gap-4">
-                            {[...Array(3)].map((_, i) => (
-                                <div key={i}>
-                                    {/* Day header */}
-                                    <div className="flex items-center gap-2 mb-3">
-                                        <div className="shimmer h-3 w-24 rounded" />
-                                        <div className="flex-1 h-px bg-[#1e2d3a]" />
-                                        <div className="shimmer h-2.5 w-16 rounded" />
-                                    </div>
-                                    {/* Sessions */}
-                                    <div className="ml-4 border-l border-[#2a475e] pl-3 flex flex-col gap-3">
-                                        {[...Array(2)].map((_, j) => (
-                                            <div key={j}>
-                                                <div className="flex items-center gap-2 mb-1.5">
-                                                    <div className="shimmer w-3 h-3 rounded-[1px]" />
-                                                    <div className="shimmer w-4 h-4 rounded-[1px]" />
-                                                    <div className="shimmer h-2.5 w-32 rounded" />
-                                                </div>
-                                                <div className="flex flex-col gap-1.5">
-                                                    {[...Array(2)].map((_, k) => (
-                                                        <div key={k} className="flex items-center gap-2 py-1">
-                                                            <div className="shimmer w-6 h-6 rounded-[2px]" />
-                                                            <div className="flex flex-col gap-1 flex-1">
-                                                                <div className="shimmer h-2.5 rounded" style={{ width: `${55 + k * 15}%` }} />
-                                                                <div className="shimmer h-2 rounded" style={{ width: `${35 + k * 10}%` }} />
-                                                            </div>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
                 ) : (
-                    // Fades in over the skeleton, and again on each Achievements/Playtime switch
-                    <div key={view} className="anim-in flex flex-col gap-6">
-                        {/* Heatmap */}
-                        <div>
-                            <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 mb-3">
-                                <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0" />
-                                <span className="text-[13px] text-white tracking-wide uppercase font-medium flex items-center gap-2">
-                                    {view === 'playtime'
-                                        ? <><Clock size={15} className="text-[#66c0f4]" /> Playtime</>
-                                        : <><Activity size={15} className="text-[#66c0f4]" /> Heatmap</>}
-                                </span>
-                                {view === 'playtime' && firstSessionMs && (
-                                    <span className="text-[10px] text-[#546270] hidden sm:block anim-fade">since {fmtDay(dayKey(new Date(firstSessionMs)))}</span>
-                                )}
-                                <span className="text-[10px] text-[#546270] ml-auto" title="Days and times are shown in your timezone">{TZ}</span>
-                                <span className="text-[10px] text-[#546270] hidden sm:block">· click a day to filter</span>
-                                {selectedDay && (
-                                    <button
-                                        onClick={() => setSelectedDay(null)}
-                                        className="text-[9px] text-[#546270] hover:text-[#c6d4df] border border-[#2a475e] px-2 py-0.5 rounded-[2px] transition-colors sm:ml-2 anim-fade"
-                                    >
-                                        Clear ×
-                                    </button>
-                                )}
-                            </div>
-                            {/* Heatmap and streaks fade together on a platform filter change */}
-                            <div key={filter} className="anim-fade">
-                                <Heatmap
-                                    heatmapData={heatmapData}
-                                    filter={filter}
-                                    selectedDay={selectedDay}
-                                    onSelectDay={setSelectedDay}
-                                    describe={describeDay}
-                                />
-                                <StreakPanel streakInfo={streakInfo} describe={describeDay} cellLabel={cellLabel} />
-                            </div>
-                        </div>
-
-                        {/* Section title + count, then the platform filter */}
-                        <div className="flex items-center gap-2 flex-wrap border-b border-[#2a475e] pb-1.5">
-                            <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0" />
-                            <span className="text-[13px] text-white tracking-wide uppercase font-medium">{view === 'playtime' ? 'Play Sessions' : 'Recent Unlocks'}</span>
-                            <span className="text-[10px] text-[#546270] ml-auto">
-                                {view === 'playtime'
-                                    ? (selectedDay
-                                        ? `${fmtDay(selectedDay)} · ${fmtMinutes(heatmapData[selectedDay]?.count ?? 0)}`
-                                        : <span className="hidden sm:inline">Xbox doesn't report playtime</span>)
-                                    : selectedDay
-                                    ? `${fmtDay(selectedDay)} · ${displayAchs.length} achievements`
-                                    : `${displayAchs.length} total`}
-                            </span>
-                        </div>
-                        <div className="frow -mt-1" role="group" aria-label="Platform">
+                    // Fades in on each Unlocks/Playtime switch
+                    <div key={view} className="anim-in flex flex-col gap-4">
+                        {/* The platform filter drives everything below it */}
+                        <div className="frow" role="group" aria-label="Platform">
                             {filters.map(f => (
                                 <button key={f.id} onClick={() => { setFilter(f.id); setSelectedDay(null); }} aria-pressed={filter === f.id}
                                     className={`fchip ${filter === f.id ? 'on' : ''}`}>{f.label}</button>
                             ))}
+                            {view === 'playtime' && <span className="fmeta ml-1 whitespace-nowrap">Xbox doesn't report playtime</span>}
+                        </div>
+
+                        {loading || (view === 'playtime' && !playtime) ? <SummarySkeleton /> : (
+                            <div key={filter} className="anim-fade">
+                                <SummaryCard
+                                    open={summaryOpen}
+                                    onToggle={toggleSummary}
+                                    headline={{ recent: view === 'playtime' ? fmtTotal(recentTotal) : recentTotal, l: view === 'playtime' ? 'Played' : 'Unlocks', year: summaryStats[0].v, games: recentGames }}
+                                    stats={summaryStats}
+                                    split={splitParts}
+                                    filter={filter}
+                                    streakInfo={streakInfo}
+                                    minLabel={view === 'playtime' ? `${PLAYTIME_STREAK_MIN} min+ a day` : null}
+                                    selectedDay={selectedDay}
+                                    onClear={() => setSelectedDay(null)}
+                                    recent={slim => <RecentDays slim={slim} streakInfo={streakInfo} heatmapData={heatmapData} cellLabel={cellLabel} describe={describeDay}
+                                        selectedDay={selectedDay} onSelectDay={setSelectedDay} />}
+                                    heatmap={<Heatmap heatmapData={heatmapData} filter={filter} selectedDay={selectedDay} onSelectDay={setSelectedDay} describe={describeDay} />}
+                                />
+                            </div>
+                        )}
+
+                        {/* Section title + what's listed */}
+                        <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 mt-2">
+                            <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0" />
+                            <span className="text-[13px] text-white tracking-wide uppercase font-medium">{view === 'playtime' ? 'Play Sessions' : 'Recent Unlocks'}</span>
+                            {selectedDay && (
+                                <button onClick={() => setSelectedDay(null)} className="ml-auto fchip on anim-fade" style={{ height: 22 }}>
+                                    {fmtDay(selectedDay, { day: '2-digit', month: 'short' })} ✕
+                                </button>
+                            )}
                         </div>
 
                         {/* Timeline */}
                         {view === 'playtime' ? (
-                            !playtime ? (
-                                <PlaySessionsSkeleton />
-                            ) : playGroups.length === 0 ? (
+                            !playtime || loading ? <TimelineSkeleton /> : playGroups.length === 0 ? (
                                 <div key={`${filter}-${selectedDay}`} className="text-[#8f98a0] text-[11px] py-4 italic text-center anim-fade">No play sessions found.</div>
                             ) : (
-                                <div key={`${filter}-${selectedDay}`} className="flex flex-col gap-0">
-                                    {playGroups.slice(0, selectedDay ? undefined : visibleDays).map(({ day, minutes, sessions: daySessions }) => {
-                                        const isCollapsed = collapsedDays.has(day);
-                                        return (
-                                            <div key={day} className="mb-4 anim-fade">
-                                                <button onClick={() => toggleDay(day)} className="w-full flex items-center gap-2 mb-2 group outline-none">
-                                                    <div className="w-2 h-2 rounded-full bg-[#2a475e] border border-[#66c0f4] shrink-0" />
-                                                    <span className="text-[10px] text-[#66c0f4] font-semibold group-hover:text-[#c6d4df] transition-colors">{fmtDay(day)}</span>
-                                                    <div className="flex-1 h-px bg-[#2a475e] opacity-40" />
-                                                    <span className="text-[9px] text-[#546270]">
-                                                        {fmtMinutes(minutes)} · {daySessions.length} session{daySessions.length !== 1 ? 's' : ''}
-                                                    </span>
-                                                    <ChevronDown size={11} className={`text-[#546270] transition-transform duration-200 shrink-0 ${isCollapsed ? '' : 'rotate-180'}`} />
-                                                </button>
-                                                {!isCollapsed && (
-                                                    <div className="ml-4 border-l border-[#2a475e] pl-3 flex flex-col gap-1 anim-fade">
-                                                        {daySessions.map(session => <PlaySessionRow key={session.id} session={session} day={day} />)}
-                                                    </div>
-                                                )}
-                                            </div>
-                                        );
-                                    })}
+                                <div key={`${filter}-${selectedDay}`} className="flex flex-col gap-4">
+                                    {playGroups.slice(0, selectedDay ? undefined : visibleDays).map(({ day, minutes, sessions: daySessions }) => (
+                                        <section key={day} className="anim-fade">
+                                            <DayHead day={day}>
+                                                <b>{fmtMinutes(minutes)}</b> · {new Set(daySessions.map(s => `${s.platform}-${s.gameId}`)).size} game{new Set(daySessions.map(s => `${s.platform}-${s.gameId}`)).size !== 1 ? 's' : ''}
+                                            </DayHead>
+                                            <PlayDay day={day} sessions={daySessions} />
+                                        </section>
+                                    ))}
                                 </div>
                             )
-                        ) : groups.length === 0 ? (
+                        ) : loading ? <TimelineSkeleton /> : groups.length === 0 ? (
                             <div key={`${filter}-${selectedDay}`} className="text-[#8f98a0] text-[11px] py-4 italic text-center anim-fade">No achievements found.</div>
                         ) : (
-                            <div key={`${filter}-${selectedDay}`} className="flex flex-col gap-0">
+                            <div key={`${filter}-${selectedDay}`} className="flex flex-col gap-4">
                                 {groups.map(({ day, achCount, sessions }) => {
-                                    const isCollapsed = collapsedDays.has(day);
+                                    const games = new Set(sessions.map(s => `${s.platform}-${s.gameId}`)).size;
                                     return (
-                                        <div key={day} className="mb-4 anim-fade">
-                                            <button onClick={() => toggleDay(day)} className="w-full flex items-center gap-2 mb-2 group outline-none">
-                                                <div className="w-2 h-2 rounded-full bg-[#2a475e] border border-[#66c0f4] shrink-0" />
-                                                <span className="text-[10px] text-[#66c0f4] font-semibold group-hover:text-[#c6d4df] transition-colors">{fmtDay(day)}</span>
-                                                <div className="flex-1 h-px bg-[#2a475e] opacity-40" />
-                                                <span className="text-[9px] text-[#546270]">
-                                                    {achCount} achievement{achCount !== 1 ? 's' : ''}
-                                                </span>
-                                                <ChevronDown size={11} className={`text-[#546270] transition-transform duration-200 shrink-0 ${isCollapsed ? '' : 'rotate-180'}`} />
-                                            </button>
-                                            {!isCollapsed && (
-                                                <div className="anim-fade">
-                                                    {sessions.map((session) => <GameSession key={session.achs[0].id} session={session} />)}
-                                                </div>
-                                            )}
-                                        </div>
+                                        <section key={day} className="anim-fade">
+                                            <DayHead day={day}>
+                                                <b>{achCount}</b> unlock{achCount !== 1 ? 's' : ''}{games > 1 ? ` · ${games} games` : ''}
+                                            </DayHead>
+                                            <div className="flex flex-col gap-2">
+                                                {sessions.map(session => <GameSession key={session.achs[0].id} session={session} />)}
+                                            </div>
+                                        </section>
                                     );
                                 })}
                             </div>
                         )}
 
                         {/* Scroll sentinel */}
-                        {hasMore && (view === 'achievements' || !selectedDay) && (
-                            <div ref={sentinelRef} className="py-4 flex justify-center">
-                                {loadingMore && <span className="text-[11px] text-[#546270]">Loading…</span>}
-                            </div>
+                        {!loading && hasMore && (view === 'achievements' || !selectedDay) && (
+                            <div ref={sentinelRef} className="py-4" />
                         )}
                     </div>
                 )}
-
             </main>
 
             {/* Footer */}
