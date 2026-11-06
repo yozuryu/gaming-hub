@@ -413,6 +413,21 @@ const AchievementRow = ({ ach }) => (
 
 const STEAM_CDN = 'https://cdn.akamai.steamstatic.com/steam/apps';
 
+// Art behind a game strip: the first of `sources` that loads (Steam has no hero for some
+// games), else the icon blurred, else nothing
+const StripArt = ({ sources, icon }) => {
+    const [i, setI] = useState(0);
+    const src = sources[i];
+    if (!src && !icon) return null;
+    return (
+        <span className="tcard-art">
+            {src
+                ? <img key={src} src={src} alt="" loading="lazy" onError={() => setI(n => n + 1)} />
+                : <img src={icon} alt="" loading="lazy" className="art-icon" />}
+        </span>
+    );
+};
+
 // Runs longer than this fold after SESSION_FOLD - 1 rows
 const SESSION_FOLD = 5;
 
@@ -425,20 +440,17 @@ const GameSession = ({ session, raArt }) => {
     const fold = sorted.length > SESSION_FOLD && !open;
     const shown = fold ? sorted.slice(0, SESSION_FOLD - 1) : sorted;
     const subset = session.platform === 'ra' ? parseTitle(session.gameName).subsetName : null;
-    // Steam's store banner; RA the hero picked in the admin (data/ra/art.json), else its banner
+    // Wide art, best first: Steam's library hero (no logo) then its store banner; RA the hero
+    // picked in the admin (data/ra/art.json) then its banner
     const ra = session.platform === 'ra' ? raArt?.[session.gameId] : null;
-    const wideArt = session.platform === 'steam' ? `${STEAM_CDN}/${session.gameId}/header.jpg` : ra?.hero?.thumb ?? ra?.grid?.thumb ?? null;
+    const wideArt = session.platform === 'steam'
+        ? [`${STEAM_CDN}/${session.gameId}/library_hero.jpg`, `${STEAM_CDN}/${session.gameId}/header.jpg`]
+        : [ra?.hero?.thumb, ra?.grid?.thumb].filter(Boolean);
     return (
         <div className="tcard" style={{ borderLeftColor: PLATFORM_COLOR[session.platform] }}>
             <a href={session.gameUrl} target="_blank" rel="noreferrer" className="tcard-head">
                 {/* The game's art faded in from the right: Steam's store banner, else the icon blurred */}
-                {(wideArt || session.gameIcon) && (
-                    <span className="tcard-art">
-                        {wideArt
-                            ? <img src={wideArt} alt="" loading="lazy" onError={e => { e.target.style.display = 'none'; }} />
-                            : <img src={session.gameIcon} alt="" loading="lazy" className="art-icon" />}
-                    </span>
-                )}
+                <StripArt sources={wideArt} icon={session.gameIcon} />
                 {session.gameIcon ? <img src={session.gameIcon} alt="" loading="lazy" className="tcard-icon" /> : <span className="trow-ph tcard-icon" />}
                 <div className="tcard-main">
                     <span className="tcard-title"><GameName platform={session.platform} name={session.gameName} /></span>

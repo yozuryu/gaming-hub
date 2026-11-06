@@ -27,6 +27,7 @@ RA games can have wide art from SteamGridDB, shown where Steam games show their 
 - The header unlock count was only the unlocks loaded so far (the last 91 days); the summary counts the whole year
 - Day headings stick to the top while scrolling and say Today / Yesterday. Unlocks: one card per game run, headed by a band with the game's art faded in (Steam banner, the RA hero picked in the admin, else the icon blurred), a small icon and a bold title, with its achievements under it as rows with bigger badges (RA points, Steam rarity %), so game and achievement never look alike; runs longer than 5 fold after 4 with "Show N more". Days no longer collapse
 - Playtime: one row per game per day instead of one card per session, with a 24-hour track showing when each session ran (estimated starts hatched), the day's time and the unlocks it produced
+- Unlocks: Steam game strips use the game's library hero (art without the logo, like RA's hero) instead of the store banner, falling back to the banner when Steam has no hero
 
 ## v26.11.05
 
