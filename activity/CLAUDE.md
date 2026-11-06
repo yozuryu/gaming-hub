@@ -9,6 +9,7 @@ Games in rotation from `loadPlaying()` in `assets/playing.js` (rules in the root
 ## Data Sources
 - `../data/{ra,steam,xbox}/achievements/1–4.json` — all four fetched on mount (the heatmap is built in the browser from these chunks, in the viewer's timezone)
 - `../data/{steam,xbox}/games/index.json` — game icons for Steam and Xbox sessions
+- `../data/ra/art.json` — RA wide art picked in the admin (hero, else banner) behind the unlock cards' game strip
 - `../data/{ra,steam}/playtime/{YYYY}.json` — play sessions for the current and previous UTC year (covers the 365-day heatmap), fetched on mount; a missing year is treated as empty. Normalized by `normalizeSession()` (`startMs`, `endMs`, `minutes`, `approx`, game name/icon/url from the file's `games` map; RA icons get the `RA_MEDIA` prefix)
 
 All RA/Steam/Xbox achievements are normalized to a unified shape via `utils/normalizers.js`:
@@ -34,7 +35,7 @@ Platform filter (`.frow`) at the top, then `SummaryCard`, then the timeline. Sty
 
 ### Timeline
 - Achievement groups: by day → session → individual achievements. A session is a run of consecutive unlocks in the same platform + game (same as cheevo-tracker), so A → B → A is three sessions; sessions and achievements are newest first. Never merge all of a game's unlocks for a day into one group — that breaks timeline order
-- `GameSession`: one `.tcard` per session (game header with platform, console or subset, time range, count), achievements as `.trow`s (RA points, Steam rarity % in the tier colour). More than `SESSION_FOLD` (5) folds after 4 with "Show N more"
+- `GameSession`: one `.tcard` per session. The header (`.tcard-head`) must read as a heading, not another row: a darker-blue band with the game's art faded in from the right (`.tcard-art`: Steam `header.jpg`; RA the hero picked in the admin, `data/ra/art.json`, else its banner; otherwise the icon blurred; at most 380px wide), a 28px icon and a 13.5px bold title, a subset's name on its own gold line under the title (`.tcard-subset`), and a sub-line with platform, console, time range and the unlock count (kept on the plain left side, never over the art where it washes out). Achievements are `.trow`s with 36px badges, bigger than the game icon (RA points, Steam rarity % in the tier colour). More than `SESSION_FOLD` (5) folds after 4 with "Show N more"
 - Reveals chunks 2–4 one at a time via IntersectionObserver with sentinel `ref` at bottom of list (already in memory; `nextChunk - 1` = chunks shown). The summary uses every chunk
 - Days, streaks and times use the viewer's timezone via `assets/time.js`; never group by `unlockedAt.substring(0, 10)` (that's the UTC day)
 

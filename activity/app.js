@@ -411,11 +411,13 @@ const AchievementRow = ({ ach }) => (
     </div>
 );
 
+const STEAM_CDN = 'https://cdn.akamai.steamstatic.com/steam/apps';
+
 // Runs longer than this fold after SESSION_FOLD - 1 rows
 const SESSION_FOLD = 5;
 
 // One run of consecutive unlocks in one game: the game, then its unlocks newest first
-const GameSession = ({ session }) => {
+const GameSession = ({ session, raArt }) => {
     const [open, setOpen] = useState(false);
     const sorted = [...session.achs].sort((a, b) => toMs(b.unlockedAt) - toMs(a.unlockedAt));
     const startT = fmtTime(sorted[sorted.length - 1].unlockedAt);
@@ -423,20 +425,32 @@ const GameSession = ({ session }) => {
     const fold = sorted.length > SESSION_FOLD && !open;
     const shown = fold ? sorted.slice(0, SESSION_FOLD - 1) : sorted;
     const subset = session.platform === 'ra' ? parseTitle(session.gameName).subsetName : null;
+    // Steam's store banner; RA the hero picked in the admin (data/ra/art.json), else its banner
+    const ra = session.platform === 'ra' ? raArt?.[session.gameId] : null;
+    const wideArt = session.platform === 'steam' ? `${STEAM_CDN}/${session.gameId}/header.jpg` : ra?.hero?.thumb ?? ra?.grid?.thumb ?? null;
     return (
         <div className="tcard" style={{ borderLeftColor: PLATFORM_COLOR[session.platform] }}>
             <a href={session.gameUrl} target="_blank" rel="noreferrer" className="tcard-head">
-                {session.gameIcon ? <img src={session.gameIcon} alt="" loading="lazy" /> : <span className="trow-ph" />}
+                {/* The game's art faded in from the right: Steam's store banner, else the icon blurred */}
+                {(wideArt || session.gameIcon) && (
+                    <span className="tcard-art">
+                        {wideArt
+                            ? <img src={wideArt} alt="" loading="lazy" onError={e => { e.target.style.display = 'none'; }} />
+                            : <img src={session.gameIcon} alt="" loading="lazy" className="art-icon" />}
+                    </span>
+                )}
+                {session.gameIcon ? <img src={session.gameIcon} alt="" loading="lazy" className="tcard-icon" /> : <span className="trow-ph tcard-icon" />}
                 <div className="tcard-main">
                     <span className="tcard-title"><GameName platform={session.platform} name={session.gameName} /></span>
+                    {/* A subset's name is part of which game it is: its own line under the title */}
+                    {subset && <span className="tcard-subset">{subset}</span>}
                     <span className="tcard-sub">
                         <PlatformTag platform={session.platform} />
-                        {subset && <span className="shrink text-[#c8a84b]">{subset}</span>}
-                        {!subset && session.consoleName && <span className="shrink">{session.consoleName}</span>}
+                        {session.consoleName && <span className="shrink">{session.consoleName}</span>}
                         <span>{startT === endT ? startT : `${startT}–${endT}`}</span>
+                        <span className="tcard-n"><Trophy size={11} /> {sorted.length}</span>
                     </span>
                 </div>
-                <span className="tcard-n"><Trophy size={11} /> {sorted.length}</span>
             </a>
             <div className="tlist">
                 {shown.map(a => <AchievementRow key={a.id} ach={a} />)}
@@ -725,6 +739,7 @@ const App = () => {
     // reveals one chunk at a time (nextChunk - 1 = chunks shown).
     const [chunks,        setChunks]        = useState(null);   // { ra, steam, xbox: [c1, c2, c3, c4] }
     const [steamGameIcons, setSteamGameIcons] = useState({});
+    const [raArt,         setRaArt]         = useState({});   // RA wide art picked in the admin
     const [xboxGameIcons, setXboxGameIcons] = useState({});
     const [loading,       setLoading]       = useState(true);
     const loadingMore = false;
@@ -788,6 +803,11 @@ const App = () => {
             .then(d => setXboxGameIcons(Object.fromEntries(
                 Object.entries(d.achievementProgress ?? {}).map(([id, g]) => [id, xboxImg(g.iconUrl, 64)])
             )))
+            .catch(() => {});
+
+        fetch('../data/ra/art.json')
+            .then(r => r.ok ? r.json() : null)
+            .then(d => setRaArt(d?.games ?? {}))
             .catch(() => {});
 
         fetch('../data/steam/games/index.json')
@@ -1217,7 +1237,7 @@ const App = () => {
                                                 <b>{achCount}</b> unlock{achCount !== 1 ? 's' : ''}{games > 1 ? ` · ${games} games` : ''}
                                             </DayHead>
                                             <div className="flex flex-col gap-2">
-                                                {sessions.map(session => <GameSession key={session.achs[0].id} session={session} />)}
+                                                {sessions.map(session => <GameSession key={session.achs[0].id} session={session} raArt={raArt} />)}
                                             </div>
                                         </section>
                                     );
