@@ -1,7 +1,7 @@
 {
   "metadata": {
     "about": "Wide art for RA games from SteamGridDB, picked in the admin (RA Art). URLs only: thumb for rows and tiles, url behind sheet headers. `marked`: games worth picking art for, with why (admin filter); the site ignores it",
-    "updatedAt": "2026-11-05T16:57:13.087Z"
+    "updatedAt": "2026-11-06T01:15:41.565Z"
   },
   "games": {
     "449": {
@@ -130,6 +130,24 @@
         "height": 1240
       }
     },
+    "3909": {
+      "sgdbGameId": 36327,
+      "sgdbName": "Star Ocean: Second Evolution",
+      "grid": {
+        "id": 27598,
+        "url": "https://cdn2.steamgriddb.com/grid/db68424c064838f1bfdd2380c06b1ee6.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/db68424c064838f1bfdd2380c06b1ee6.png",
+        "width": 460,
+        "height": 215
+      },
+      "hero": {
+        "id": 60002,
+        "url": "https://cdn2.steamgriddb.com/hero/cac029e0ca8add40d4d2aebd45308572.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/cac029e0ca8add40d4d2aebd45308572.jpg",
+        "width": 3840,
+        "height": 1240
+      }
+    },
     "9334": {
       "sgdbGameId": 38240,
       "sgdbName": "Summon Night Craft Sword Monogatari: Hajimari no Ishi",
@@ -146,6 +164,24 @@
         "thumb": "https://cdn2.steamgriddb.com/hero_thumb/fb69e08f8287044d223f84331b53bf1d.jpg",
         "width": 1920,
         "height": 620
+      }
+    },
+    "9931": {
+      "sgdbGameId": 37973,
+      "sgdbName": "Ragnarok DS",
+      "hero": {
+        "id": 141857,
+        "url": "https://cdn2.steamgriddb.com/hero/204453609b38abf5762fadf06f424221.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/204453609b38abf5762fadf06f424221.jpg",
+        "width": 1920,
+        "height": 620
+      },
+      "grid": {
+        "id": 595673,
+        "url": "https://cdn2.steamgriddb.com/grid/e599510855bd1645f71c0300e005b9e9.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/e599510855bd1645f71c0300e005b9e9.jpg",
+        "width": 920,
+        "height": 430
       }
     },
     "11253": {
@@ -166,6 +202,24 @@
         "height": 430
       }
     },
+    "11292": {
+      "sgdbGameId": 38973,
+      "sgdbName": "Breath of Fire IV",
+      "grid": {
+        "id": 566634,
+        "url": "https://cdn2.steamgriddb.com/grid/ba692174b20094719b9009fd1c8676be.jpg",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/ba692174b20094719b9009fd1c8676be.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 130837,
+        "url": "https://cdn2.steamgriddb.com/hero/c088f0fd10f86109b3a764e50af8b9b4.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/c088f0fd10f86109b3a764e50af8b9b4.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
     "11299": {
       "sgdbGameId": 37002,
       "sgdbName": "Legend of Legaia",
@@ -180,6 +234,24 @@
         "id": 10531,
         "url": "https://cdn2.steamgriddb.com/hero/b84a25d15d9d44f58640a485c1387df8.png",
         "thumb": "https://cdn2.steamgriddb.com/hero_thumb/b84a25d15d9d44f58640a485c1387df8.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "11301": {
+      "sgdbGameId": 37692,
+      "sgdbName": "Tales of Phantasia",
+      "grid": {
+        "id": 571237,
+        "url": "https://cdn2.steamgriddb.com/grid/faade9b3a458424e03854c8e5f05ae2d.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/faade9b3a458424e03854c8e5f05ae2d.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 22137,
+        "url": "https://cdn2.steamgriddb.com/hero/306be5c84f4338ff865ca4793fb328f3.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/306be5c84f4338ff865ca4793fb328f3.jpg",
         "width": 1920,
         "height": 620
       }
@@ -218,6 +290,24 @@
         "thumb": "https://cdn2.steamgriddb.com/hero_thumb/80af02f360a352b23cd28711ee5e2578.jpg",
         "width": 1920,
         "height": 620
+      }
+    },
+    "11372": {
+      "sgdbGameId": 38838,
+      "sgdbName": "Thousand Arms",
+      "grid": {
+        "id": 773508,
+        "url": "https://cdn2.steamgriddb.com/grid/b55f7675af177d056dde2131f9424908.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/b55f7675af177d056dde2131f9424908.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 43587,
+        "url": "https://cdn2.steamgriddb.com/hero/c662dcc3767481450092bfb1e6ab9419.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/c662dcc3767481450092bfb1e6ab9419.jpg",
+        "width": 3840,
+        "height": 1240
       }
     },
     "11415": {
@@ -483,9 +573,6 @@
     "3908": [
       "Star Ocean (want to play)"
     ],
-    "3909": [
-      "Star Ocean"
-    ],
     "4130": [
       "Tales (want to play)"
     ],
@@ -504,26 +591,17 @@
     "9818": [
       "1.6h played"
     ],
-    "9931": [
-      "2h played"
-    ],
     "11242": [
       "2h played"
     ],
     "11274": [
       "Tales"
     ],
-    "11301": [
-      "1.7h played"
-    ],
     "11324": [
       "Tales (want to play)"
     ],
     "11328": [
       "5h played"
-    ],
-    "11372": [
-      "4h played"
     ],
     "18574": [
       "Tales (want to play)"
