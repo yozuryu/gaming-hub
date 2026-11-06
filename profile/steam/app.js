@@ -7,6 +7,7 @@ import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap } from '..
 import { useSheet, useArtSrc } from '../../assets/sheet.js';
 import { useGameView, shortAgo } from '../../assets/game-view.js';
 import { TabBar, useSwipeTabs, scrollToTabs } from '../../assets/tabs.js';
+import { computeStreak, useSummaryOpen, ActivitySummary, yearOf, DayHead, RunCard, RunCount, UnlockRow } from '../../assets/activity-ui.js';
 
 
 // ── Overview stat tiles (styles in assets/ui.css) ──────────────────────────────
@@ -332,16 +333,16 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo, loading 
 
 // ── ActivityTab ───────────────────────────────────────────────────────────────
 
-const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, loadingMore, onLoadMore }) => {
+const ActivityTab = ({ achievements, heatmapData, gameIcons, gameArt, loading, hasMore, loadingMore, onLoadMore }) => {
     const [selectedDay,   setSelectedDay]   = useState(null);
-    const [collapsedDays, setCollapsedDays] = useState(new Set());
+    const [summaryOpen, toggleSummary] = useSummaryOpen();
     const sentinelRef  = useRef(null);
     const heatmapScrollRef = useRef(null);
     const heatmapKeys = Object.keys(heatmapData).length;
     useEffect(() => {
         if (!heatmapScrollRef.current || heatmapKeys === 0) return;
         requestAnimationFrame(() => { heatmapScrollRef.current.scrollLeft = heatmapScrollRef.current.scrollWidth; });
-    }, [heatmapKeys]);
+    }, [heatmapKeys, summaryOpen]);
     const onLoadMoreRef = useRef(onLoadMore);
     useEffect(() => { onLoadMoreRef.current = onLoadMore; }, [onLoadMore]);
     useEffect(() => {
@@ -361,12 +362,6 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
         if (!selectedDay || !heatmapData[selectedDay] || loadedDays.has(selectedDay) || !hasMore || loadingMore) return;
         onLoadMoreRef.current();
     }, [selectedDay, loadedDays, hasMore, loadingMore]);
-
-    const toggleDay = (day) => setCollapsedDays(prev => {
-        const next = new Set(prev);
-        next.has(day) ? next.delete(day) : next.add(day);
-        return next;
-    });
 
     // 365 local days ending today
     const days = useMemo(() => {
@@ -440,6 +435,16 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
             });
     }, [achievements, selectedDay]);
 
+    // Summary numbers: the last 14 days (folded row) and the past year (open card)
+    const streak = useMemo(() => computeStreak(heatmapData, 1), [heatmapData]);
+    const year = useMemo(() => yearOf(heatmapData), [heatmapData]);
+    const recent = useMemo(() => {
+        const from = addDays(todayKey(), -13);
+        const recentAchs = achievements.filter(a => dayKey(a.unlockedAt) >= from);
+        return { n: recentAchs.length, games: new Set(recentAchs.map(a => a.appId)).size };
+    }, [achievements]);
+    const describe = key => heatmapData[key] ? `${key} · ${heatmapData[key].count} achievement${heatmapData[key].count !== 1 ? 's' : ''}` : key;
+
     if (loading) {
         return <ActivitySkeleton />;
     }
@@ -452,91 +457,87 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
         );
     }
 
-    return (
-        <div className="flex flex-col gap-6 anim-fade">
 
-            {/* ── Heatmap ── */}
-            <div>
-                <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 mb-3">
-                    <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0" />
-                    <span className="text-[13px] text-white tracking-wide uppercase font-medium flex items-center gap-2">
-                        <Activity size={15} className="text-[#66c0f4]" /> Activity
-                    </span>
-                    <span className="crits ml-auto justify-end">
-                        <span className="crit"><Trophy /><b>{achievements.length.toLocaleString()}</b> unlocks</span>
-                        <span className="crit hidden sm:inline-flex" title="Days and times are shown in your timezone"><Clock />{TZ}</span>
-                    </span>
+    const heatmap = (
+        <div className="overflow-x-auto" ref={heatmapScrollRef}>
+            <div style={{ minWidth: `${53 * 14}px` }}>
+                {/* Month labels */}
+                <div className="flex mb-1" style={{ paddingLeft: '28px' }}>
+                    {weeks.map((_, wi) => {
+                        const ml = monthLabels.find(m => m.wi === wi);
+                        return (
+                            <div key={wi} style={{ flex: 1, fontSize: '8px', color: '#546270', whiteSpace: 'nowrap', overflow: 'hidden' }}>
+                                {ml ? ml.label : ''}
+                            </div>
+                        );
+                    })}
                 </div>
 
-                <div className="overflow-x-auto" ref={heatmapScrollRef}>
-                    <div style={{ minWidth: `${53 * 14}px` }}>
-                        {/* Month labels */}
-                        <div className="flex mb-1" style={{ paddingLeft: '28px' }}>
-                            {weeks.map((_, wi) => {
-                                const ml = monthLabels.find(m => m.wi === wi);
-                                return (
-                                    <div key={wi} style={{ flex: 1, fontSize: '8px', color: '#546270', whiteSpace: 'nowrap', overflow: 'hidden' }}>
-                                        {ml ? ml.label : ''}
-                                    </div>
-                                );
-                            })}
-                        </div>
+                <div className="flex gap-0">
+                    {/* Day labels */}
+                    <div className="flex flex-col gap-[2px] mr-1" style={{ paddingTop: '1px' }}>
+                        {['M','','W','','F','','S'].map((l, i) => (
+                            <div key={i} style={{ height: '12px', width: '20px', fontSize: '7px', lineHeight: '12px', textAlign: 'right', color: '#546270', flexShrink: 0 }}>{l}</div>
+                        ))}
+                    </div>
 
-                        <div className="flex gap-0">
-                            {/* Day labels */}
-                            <div className="flex flex-col gap-[2px] mr-1" style={{ paddingTop: '1px' }}>
-                                {['M','','W','','F','','S'].map((l, i) => (
-                                    <div key={i} style={{ height: '12px', width: '20px', fontSize: '7px', lineHeight: '12px', textAlign: 'right', color: '#546270', flexShrink: 0 }}>{l}</div>
+                    {/* Grid */}
+                    <div className="flex flex-1 gap-[2px]">
+                        {weeks.map((week, wi) => (
+                            <div key={wi} className="flex flex-col gap-[2px] flex-1" style={{ minWidth: '10px' }}>
+                                {week.map(({ key }) => (
+                                    <div
+                                        key={key}
+                                        onClick={() => setSelectedDay(selectedDay === key ? null : key)}
+                                        title={`${key}${heatmapData[key] ? ` · ${heatmapData[key].count} achievement${heatmapData[key].count !== 1 ? 's' : ''}` : ''}`}
+                                        style={{ height: '12px', borderRadius: '1px', background: getColor(key), cursor: heatmapData[key] ? 'pointer' : 'default', outline: selectedDay === key ? '2px solid #66c0f4' : 'none' }}
+                                    />
                                 ))}
                             </div>
-
-                            {/* Grid */}
-                            <div className="flex flex-1 gap-[2px]">
-                                {weeks.map((week, wi) => (
-                                    <div key={wi} className="flex flex-col gap-[2px] flex-1" style={{ minWidth: '10px' }}>
-                                        {week.map(({ key }) => (
-                                            <div
-                                                key={key}
-                                                onClick={() => setSelectedDay(selectedDay === key ? null : key)}
-                                                title={`${key}${heatmapData[key] ? ` · ${heatmapData[key].count} achievement${heatmapData[key].count !== 1 ? 's' : ''}` : ''}`}
-                                                style={{ height: '12px', borderRadius: '1px', background: getColor(key), cursor: heatmapData[key] ? 'pointer' : 'default', outline: selectedDay === key ? '2px solid #66c0f4' : 'none' }}
-                                            />
-                                        ))}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Legend */}
-                        <div className="flex items-center gap-1 mt-2" style={{ paddingLeft: '28px' }}>
-                            <span className="text-[8px] text-[#546270]">Less</span>
-                            {['#101214','#1a4a70','#2a6b9e','#66c0f4','#e5b143'].map(c => (
-                                <div key={c} style={{ width: '10px', height: '10px', borderRadius: '1px', background: c, flexShrink: 0 }} />
-                            ))}
-                            <span className="text-[8px] text-[#546270]">More</span>
-                            <span className="text-[8px] text-[#e5b143] ml-2">● peak</span>
-                            {selectedDay && (
-                                <button onClick={() => setSelectedDay(null)} className="ml-auto text-[10px] text-[#66c0f4] hover:text-[#c6d4df] anim-fade">
-                                    Clear filter ×
-                                </button>
-                            )}
-                        </div>
+                        ))}
                     </div>
                 </div>
+
+                {/* Legend */}
+                <div className="flex items-center justify-end gap-1 mt-2" style={{ paddingLeft: '28px' }}>
+                    <span className="text-[8px] text-[#546270]">Less</span>
+                    {['#101214','#1a4a70','#2a6b9e','#66c0f4','#e5b143'].map(c => (
+                        <div key={c} style={{ width: '10px', height: '10px', borderRadius: '1px', background: c, flexShrink: 0 }} />
+                    ))}
+                    <span className="text-[8px] text-[#546270]">More</span>
+                    <span className="text-[8px] text-[#e5b143] ml-2">● peak</span>
+                </div>
             </div>
+        </div>
+    );
+
+    return (
+        <div className="flex flex-col gap-4 anim-fade tl-tabs">
+            <ActivitySummary
+                open={summaryOpen} onToggle={toggleSummary}
+                fold={[
+                    { v: recent.n, l: recent.n === 1 ? 'Unlock' : 'Unlocks', color: '#66c0f4' },
+                    { v: recent.games, l: recent.games === 1 ? 'Game' : 'Games' },
+                    { v: year.total.toLocaleString(), l: 'Past year' },
+                ]}
+                stats={[
+                    { v: year.total.toLocaleString(), l: 'Unlocks', color: '#66c0f4' },
+                    { v: year.active, l: 'Active days' },
+                    { v: year.best ? year.best.count : '–', l: 'Best day', sub: year.best ? fmtDay(year.best.key) : null },
+                ]}
+                streak={streak} heatmapData={heatmapData}
+                cellLabel={key => heatmapData[key]?.count ?? ''} describe={describe}
+                selectedDay={selectedDay} onSelectDay={setSelectedDay}
+                heatmap={heatmap} />
 
             {/* ── Timeline ── */}
             <div>
-                <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 mb-3">
+                <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 mt-2 mb-1">
                     <span className="w-[3px] h-[14px] bg-[#e5b143] rounded-[1px] shrink-0" />
-                    <span className="text-[13px] text-white tracking-wide uppercase font-medium flex items-center gap-2">
-                        <Trophy size={15} className="text-[#e5b143]" /> Recent Unlocks
-                    </span>
-                    <span className="text-[10px] text-[#546270] ml-auto">
-                        {selectedDay
-                            ? `${fmtDay(selectedDay)} · ${timelineGroups[0]?.achCount || 0} achievements`
-                            : `${achievements.length} total`}
-                    </span>
+                    <span className="text-[13px] text-white tracking-wide uppercase font-medium">Recent Unlocks</span>
+                    {selectedDay && (
+                        <button onClick={() => setSelectedDay(null)} className="ml-auto fchip on anim-fade" style={{ height: 22 }}>{fmtDay(selectedDay)} ✕</button>
+                    )}
                 </div>
 
                 {timelineGroups.length === 0 ? (
@@ -544,103 +545,45 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
                         {selectedDay ? 'No achievements on this day.' : 'No achievements unlocked in the last year.'}
                     </div>
                 ) : (
-                    <div className="flex flex-col gap-0">
-                        {timelineGroups.map(({ day, achCount, sessions }) => {
-                            const isCollapsed = collapsedDays.has(day);
-                            return (
-                            <div key={`${selectedDay}-${day}`} className="mb-4 anim-fade">
-                                <button onClick={() => toggleDay(day)} className="w-full flex items-center gap-2 mb-2 group outline-none">
-                                    <div className="w-2 h-2 rounded-full bg-[#2a475e] border border-[#66c0f4] shrink-0" />
-                                    <span className="text-[10px] text-[#66c0f4] font-semibold group-hover:text-[#c6d4df] transition-colors">{fmtDay(day)}</span>
-                                    <div className="flex-1 h-px bg-[#2a475e] opacity-40" />
-                                    <span className="text-[9px] text-[#546270]">
-                                        {achCount} achievement{achCount !== 1 ? 's' : ''}
-                                    </span>
-                                    <ChevronDown size={11} className={`text-[#546270] transition-transform duration-200 shrink-0 ${isCollapsed ? '' : 'rotate-180'}`} />
-                                </button>
-
-                                {!isCollapsed && sessions.map((session, si) => {
-                                    const sorted = [...session.achievements].sort(
-                                        (a, b) => new Date(b.unlockedAt) - new Date(a.unlockedAt)
-                                    );
-                                    const startT = fmtTime(session.achievements.reduce(
-                                        (min, a) => a.unlockedAt < min ? a.unlockedAt : min,
-                                        session.achievements[0].unlockedAt
-                                    ));
-                                    const endT = fmtTime(session.achievements.reduce(
-                                        (max, a) => a.unlockedAt > max ? a.unlockedAt : max,
-                                        session.achievements[0].unlockedAt
-                                    ));
-
-                                    return (
-                                        <div key={si} className="ml-4 border-l border-[#2a475e] pl-3 mb-3 anim-fade">
-                                            {/* Session header */}
-                                            <div className="flex items-center gap-2 mb-1.5">
-                                                <div className="w-4 h-4 rounded-[1px] overflow-hidden border border-[#101214] bg-[#1b2838] shrink-0">
-                                                    <img
-                                                        src={gameIcons?.[session.appId]}
-                                                        alt=""
-                                                        className="w-full h-full object-cover"
-                                                        onError={e => { e.target.style.display = 'none'; }}
-                                                    />
-                                                </div>
-                                                <a href={`https://store.steampowered.com/app/${session.appId}`} target="_blank" rel="noreferrer" className="text-[11px] text-[#c6d4df] hover:text-[#66c0f4] font-medium truncate flex-1 transition-colors">
-                                                    {session.gameName}
-                                                </a>
-                                                <span className="text-[8px] text-[#546270] shrink-0">
-                                                    {startT}{startT !== endT ? `–${endT}` : ''}
-                                                </span>
-                                            </div>
-
-                                            {/* Achievements in session */}
-                                            <div className="flex flex-col gap-1">
-                                                {sorted.map((ach, ai) => (
-                                                    <div key={ai} className="flex items-center gap-2 p-2 rounded-[2px] border border-[#2a475e] border-l-[2px] bg-[#1b2838] hover:bg-[#2a475e] transition-colors" style={{ borderLeftColor: rarityBorderColor(ach.globalPct) }}>
-                                                        <div className="shrink-0 w-8 h-8 rounded-[2px] overflow-hidden border border-[#101214] bg-black">
-                                                            {ach.iconUrl
-                                                                ? <img src={ach.iconUrl} alt={ach.displayName} className="w-full h-full object-cover" />
-                                                                : <div className="w-full h-full bg-[#2a475e]" />
-                                                            }
-                                                        </div>
-                                                        <div className="flex-1 min-w-0">
-                                                            <div className="text-[11px] font-medium truncate" style={{ color: rarityBorderColor(ach.globalPct) }}>{ach.displayName}</div>
-                                                            <p className="text-[9px] text-[#8f98a0] truncate">{ach.description || ach.displayName}</p>
-                                                            {ach.globalPct != null && (
-                                                                <div className="flex items-center gap-1 text-[9px] font-medium" style={{ color: rarityBorderColor(ach.globalPct) }}>
-                                                                    <Gem size={8} />
-                                                                    {rarityLabel(ach.globalPct)} · {ach.globalPct}%
-                                                                </div>
-                                                            )}
-                                                        </div>
-                                                        <span className="text-[9px] text-[#546270] shrink-0">{fmtTime(ach.unlockedAt)}</span>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        );
-                        })}
+                    <div key={selectedDay ?? 'all'} className="flex flex-col gap-4">
+                        {timelineGroups.map(({ day, achCount, sessions }) => (
+                            <section key={day} className="anim-fade">
+                                <DayHead day={day}>
+                                    <b>{achCount}</b> unlock{achCount !== 1 ? 's' : ''}{sessions.length > 1 ? ` · ${new Set(sessions.map(x => x.appId)).size} games` : ''}
+                                </DayHead>
+                                <div className="flex flex-col gap-2">
+                                    {sessions.map(session => {
+                                        const sorted = [...session.achievements].sort((a, b) => toMs(b.unlockedAt) - toMs(a.unlockedAt));
+                                        const t0 = fmtTime(sorted[sorted.length - 1].unlockedAt), t1 = fmtTime(sorted[0].unlockedAt);
+                                        return (
+                                            <RunCard key={`${session.appId}-${sorted[0].unlockedAt}`}
+                                                accent="#66c0f4" href={`https://store.steampowered.com/app/${session.appId}`} icon={gameIcons?.[session.appId]}
+                                                art={[`https://cdn.akamai.steamstatic.com/steam/apps/${session.appId}/library_hero.jpg`, `https://cdn.akamai.steamstatic.com/steam/apps/${session.appId}/header.jpg`]}
+                                                title={<span className="truncate">{session.gameName}</span>}
+                                                sub={<>
+                                                    <span>{t0 === t1 ? t0 : `${t0}–${t1}`}</span>
+                                                    <RunCount n={sorted.length} />
+                                                </>}
+                                                rows={sorted.map((ach, ai) => (
+                                                    <UnlockRow key={`${ach.apiName ?? ai}-${ach.unlockedAt}`}
+                                                        icon={ach.iconUrl}
+                                                        title={ach.displayName}
+                                                        desc={ach.description && ach.description !== ach.displayName ? ach.description : null}
+                                                        time={fmtTime(ach.unlockedAt)}
+                                                        value={<em>{ach.globalPct != null && <span style={{ color: rarityBorderColor(ach.globalPct) }} title={rarityLabel(ach.globalPct)}>{ach.globalPct}%</span>}</em>} />
+                                                ))} />
+                                        );
+                                    })}
+                                </div>
+                            </section>
+                        ))}
                     </div>
                 )}
 
                 {/* Scroll sentinel */}
                 {!selectedDay && hasMore && (
-                    <div ref={sentinelRef} className="pt-2">
-                        {loadingMore && (
-                            <div className="flex flex-col gap-2 w-full">
-                                {[...Array(2)].map((_, i) => (
-                                    <div key={i} className="flex items-center gap-2 p-2 rounded-[2px] border border-[#2a475e] bg-[#1b2838]">
-                                        <div className="shimmer w-8 h-8 rounded-[2px] shrink-0" />
-                                        <div className="flex-1 flex flex-col gap-1.5">
-                                            <div className="shimmer h-2.5 w-3/4 rounded" />
-                                            <div className="shimmer h-2 w-1/2 rounded" />
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
+                    <div ref={sentinelRef} className="pt-2 flex flex-col gap-2">
+                        {loadingMore && [...Array(2)].map((_, i) => <div key={i} className="shimmer h-[86px] rounded-[3px]" />)}
                     </div>
                 )}
             </div>

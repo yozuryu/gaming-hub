@@ -67,3 +67,6 @@ Game titles use special syntax:
 - `~Tag~` prefix → tag (Homebrew, Demo, Prototype, Hack) — rendered as colored badge
 - `[Subset - Name]` suffix → subset game; extract parent title and subset name
 Handled by `utils/helpers.js:parseTitle()`.
+
+## Activity tab
+Same design as the Activity page, from `assets/activity-ui.js`: `ActivitySummary` (folded by default on phones: the last 14 days' unlocks and games and the 14 days as bars; open: past-year numbers, the 14 days with streak tiles, this page's heatmap), sticky `DayHead`s under the tab bar (`.tl-tabs`), one `RunCard` per run of unlocks in one game (art band, icon, title, time range, trophy count; long runs fold after 4) with `UnlockRow`s. RA rows keep hardcore gold titles, points and ratio, and the progression / win-condition / missable icons; the strip art is the hero picked in the admin (`artData`), else the blurred icon; day headings add the day's points. The hooks sit above the early loading / empty returns (React error #310 otherwise)

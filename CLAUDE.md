@@ -32,6 +32,7 @@ gaming-hub/
 │   ├── playing.js                  # "Playing" games in rotation (ES module), used by the hub and Activity; see Playing
 │   ├── sheet.js                    # Achievement modal behaviour for the profile pages: sheet on phone, dialog on desktop, drag to close, art fallback chain (ES module)
 │   ├── tabs.js                     # Profile tab bar (sticky, sideways scroll, sliding underline) + swipe between tabs (ES module)
+│   ├── activity-ui.js              # Activity timeline pieces for the profile Activity tabs (computeStreak, useSummaryOpen, ActivitySummary, DayHead, RunCard, UnlockRow; no JSX). Styles: the "Activity timelines" block in ui.css, shared with the Activity page
 │   ├── game-view.js                # Remembered list / tiles choice of the profile game lists (`gh:gameView`) + shortAgo (ES module)
 │   ├── ui.css                      # Shared component styles: sheet, blurred art backgrounds, game list rows and tiles (profile pages, Completions)
 │   ├── avatar.png                  # User avatar

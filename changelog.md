@@ -1,5 +1,26 @@
 # Changelog
 
+## v26.11.07
+
+The profile Activity tabs get the Activity page's design.
+
+### RetroAchievements
+
+- Activity tab redesigned like the Activity page: a summary card (folded by default on phones: the last 14 days' unlocks and games with the 14 days as bars; open: past-year unlocks, points and best day, the 14 days with streak tiles, the heatmap), day headings that stay under the tab bar while scrolling, one card per run of unlocks in a game headed by its art (the hero picked in the admin), and compact rows that keep hardcore gold, points, ratio and the progression / win / missable icons. Days no longer collapse
+
+### Steam
+
+- Activity tab redesigned the same way: summary card, sticky day headings, game strips with the library hero, rows with rarity % in the tier colour
+
+### Xbox
+
+- Activity tab redesigned the same way (game strips use the title's hero art; rows show gamerscore and rarity)
+
+### Structure
+
+- `assets/activity-ui.js`: the timeline pieces shared by the three profile Activity tabs; the timeline styles moved from the Activity page into `assets/ui.css`
+- Heatmap legends on the profiles sit on the right, so they stay in view once the heatmap scrolls to the latest weeks
+
 ## v26.11.06
 
 RA games can have wide art from SteamGridDB, shown where Steam games show their store banner; Activity's Unlocks and Playtime views are redesigned.
