@@ -1153,7 +1153,10 @@ const buildSeries = (seriesData, gamesData, watchlistData, allGames, beatenIds =
         console: info?.consoleName ?? g?.console ?? '', points: wl?.pointsTotal ?? 0,
       };
     });
-    const coverId = series.coverGameId ?? series.gameIds[0];
+    // Cover: your ★ pick (admin), else the game with the most achievements you've unlocked, else the first
+    // game that has achievements (nothing played yet), else the first game
+    const mostUnlocked = games.filter(x => x.awarded > 0).sort((a, b) => b.awarded - a.awarded)[0];
+    const coverId = series.coverGameId ?? mostUnlocked?.id ?? games.find(x => x.hasAch)?.id ?? series.gameIds[0];
     const cover = gameProgress[coverId] ?? wlMap[coverId] ?? null;
     // Background art: the cover's screenshot, else the most recently active series game that has one
     // (want-to-play entries only carry an icon), else the cover icon blurred

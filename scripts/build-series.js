@@ -104,15 +104,19 @@ const series = read('data/hub/series.json', []) ?? [];
 const sources = { ra: raGames(), steam: indexGames('steam'), xbox: indexGames('xbox') };
 const out = {
     metadata: { builtAt: new Date().toISOString() },
-    series: series.filter(s => s.showProgress !== false).map(s => ({
-        id: s.id, name: s.name, cover: s.coverGameId ?? s.gameIds[0] ?? null,
+    series: series.filter(s => s.showProgress !== false).map(s => {
         // Games the platform data doesn't know (sold, hidden, not yet synced) are left out
-        games: s.gameIds.map(key => {
+        const games = s.gameIds.map(key => {
             const [p, id] = key.split(':');
             const g = sources[p]?.[id];
             return g ? { key, p, id, ...g } : null;
-        }).filter(Boolean),
-    })),
+        }).filter(Boolean);
+        // Cover: the ★ pick (admin), else the game with the most achievements unlocked, else the first
+        // game that has achievements (nothing played yet), else the first game
+        const mostUnlocked = games.filter(g => g.unlocked > 0).sort((a, b) => b.unlocked - a.unlocked)[0];
+        const cover = s.coverGameId ?? mostUnlocked?.key ?? games.find(g => g.total > 0)?.key ?? s.gameIds[0] ?? null;
+        return { id: s.id, name: s.name, cover, games };
+    }),
 };
 const file = path.join(ROOT, 'data/hub/series-games.json');
 fs.mkdirSync(path.dirname(file), { recursive: true });

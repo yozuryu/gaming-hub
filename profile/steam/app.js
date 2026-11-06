@@ -975,7 +975,11 @@ const buildSeries = (seriesData, achProgress, perfectMap, beatenMap) => seriesDa
             };
         });
         const tracked = games.filter(x => x.hasAch).length;
-        const coverId = games.some(x => x.id === Number(series.coverGameId)) ? Number(series.coverGameId) : games[0]?.id;
+        // Cover: your ★ pick (admin), else the game with the most achievements you've unlocked, else the first
+        // game that has achievements (nothing played yet), else the first game
+        const mostUnlocked = games.filter(x => x.awarded > 0).sort((a, b) => b.awarded - a.awarded)[0];
+        const coverId = games.some(x => x.id === Number(series.coverGameId)) ? Number(series.coverGameId)
+            : mostUnlocked?.id ?? games.find(x => x.hasAch)?.id ?? games[0]?.id;
         return {
             series, games, total: games.length, tracked, started, beatenCount, perfect, achEarned, achTotal, minutes, latest, coverId,
             lastMs: Math.max(0, ...games.map(x => x.lastMs)),
