@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock, X, Medal, Gamepad2, List, LayoutGrid, Search, Check, Plus, User, Layers } from 'lucide-react';
+import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock, X, Medal, Gamepad2, List, LayoutGrid, Search, Check, Plus, User, Layers, ArrowDown, Hourglass } from 'lucide-react';
 import { PROGRESS_SORTS } from './utils/constants.js';
 import { formatDate, formatTimeAgo, fmtDay, fmtTime, xboxSearchUrl, xboxProfileUrl, xboxImg, rarityLabel, rarityBorderColor } from './utils/helpers.js';
 import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap } from '../../assets/time.js';
@@ -482,11 +482,9 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
                     <span className="text-[13px] text-white tracking-wide uppercase font-medium flex items-center gap-2">
                         <Activity size={15} className="text-[#66c0f4]" /> Activity
                     </span>
-                    <span className="text-[10px] text-[#546270] ml-auto hidden sm:block">
-                        {achievements.length} achievements · <span title="Days and times are shown in your timezone">{TZ}</span> · click a day to filter
-                    </span>
-                    <span className="text-[10px] text-[#546270] ml-auto sm:hidden">
-                        {achievements.length} achievements
+                    <span className="crits ml-auto justify-end">
+                        <span className="crit"><Trophy /><b>{achievements.length.toLocaleString()}</b> unlocks</span>
+                        <span className="crit hidden sm:inline-flex" title="Days and times are shown in your timezone"><Clock />{TZ}</span>
                     </span>
                 </div>
 
@@ -679,9 +677,9 @@ const ActivityTab = ({ achievements, heatmapData, gameIcons, loading, hasMore, l
 // purpose — a game dropped at 80% is the one most worth picking back up.
 const PROGRESS_VIEWS = [
     { value: 'all',        label: 'All'          },
-    { value: 'nearly',     label: 'Nearly there', hint: '75%+ done · fewest achievements left first' },
-    { value: 'inprogress', label: 'In progress',  hint: 'Played in the last 30 days · most recent first' },
-    { value: 'abandoned',  label: 'Abandoned',    hint: 'Unfinished · not played for 30+ days' },
+    { value: 'nearly',     label: 'Nearly there', rules: [[Trophy, <><b>75%+</b> done</>], [ArrowDown, 'Fewest left first']] },
+    { value: 'inprogress', label: 'In progress',  rules: [[Clock, <>Played in the last <b>30</b> days</>], [ArrowDown, 'Most recent first']] },
+    { value: 'abandoned',  label: 'Abandoned',    rules: [[Hourglass, 'Unfinished'], [Clock, <>Idle <b>30+</b> days</>]] },
 ];
 const NEARLY_PCT = 75;
 // Search text without accents or case, so "pokemon" finds "Pokémon"
@@ -691,7 +689,7 @@ const STALE_MS   = 30 * 24 * 60 * 60 * 1000;
 
 
 const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, showCompleted, onShowCompleted, counts, search, onSearch, viewToggle }) => {
-    const hint = PROGRESS_VIEWS.find(v => v.value === view)?.hint;
+    const rules = PROGRESS_VIEWS.find(v => v.value === view)?.rules;
     return (
         <div className="flex flex-col gap-2.5 mb-4 anim-fade">
             {/* Views, plus the completed toggle in the All view: one row that scrolls sideways (chip styles in assets/ui.css) */}
@@ -726,7 +724,7 @@ const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, 
                 {viewToggle}
             </div>
 
-            {hint && <div key={view} className="fmeta anim-fade">{hint}</div>}
+            {rules && <div key={view} className="crits anim-fade">{rules.map(([Icon, text], i) => <span key={i} className="crit"><Icon />{text}</span>)}</div>}
         </div>
     );
 };

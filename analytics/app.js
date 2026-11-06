@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useContext, createContext } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BarChart3, ChevronDown, Table, Check, Plus } from 'lucide-react';
+import { BarChart3, ChevronDown, Table, Check, Plus, CalendarDays, ListChecks, Star, Trophy, Users, Gamepad2 } from 'lucide-react';
 import { TZ, dayKey, todayKey, addDays, keyToDate, splitByDay, fmtDayKey } from '../assets/time.js';
 import {
     RA_MEDIA, PLATFORMS, PLATFORM_COLOR, PLATFORM_LABEL, PLATFORM_SHORT, RARITY_TIERS, rarityTier, HEAT_RAMP,
@@ -147,13 +147,38 @@ const TitleMarks = ({ platform, name }) => {
     );
 };
 
-const SectionHeader = ({ title, gold, note }) => (
-    <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 mb-3">
-        <span className="w-[3px] h-[14px] rounded-[1px] shrink-0" style={{ background: gold ? '#e5b143' : '#66c0f4' }} />
-        <span className="text-[13px] text-white tracking-wide uppercase font-medium">{title}</span>
-        {note && <span className="text-[10px] text-[#546270] ml-auto text-right">{note}</span>}
-    </div>
-);
+// What a card or section counts, as criteria chips (styles .crits / .crit in assets/ui.css):
+// [{ icon, text, gold }], falsy entries skipped
+const Crits = ({ items }) => {
+    const list = (items ?? []).filter(Boolean);
+    if (!list.length) return null;
+    return (
+        <div className="crits">
+            {list.map((c, i) => {
+                const Icon = c.icon;
+                return <span key={i} className={`crit ${c.gold ? 'gold' : ''}`}>{Icon && <Icon />}{c.text}</span>;
+            })}
+        </div>
+    );
+};
+
+// `note` is data (a count, a median); `rules` what the section counts, as chips: a single rule
+// with no note sits at the end of the header line (like Activity's Playing groups), more wrap under it
+const SectionHeader = ({ title, gold, note, rules }) => {
+    const list = (rules ?? []).filter(Boolean);
+    const inline = list.length === 1 && !note;
+    return (
+        <div className="mb-3">
+            <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 min-h-[29px]">
+                <span className="w-[3px] h-[14px] rounded-[1px] shrink-0" style={{ background: gold ? '#e5b143' : '#66c0f4' }} />
+                <span className="text-[13px] text-white tracking-wide uppercase font-medium">{title}</span>
+                {note && <span className="text-[10.5px] text-[#8f98a0] ml-auto text-right">{note}</span>}
+                {inline && <span className="ml-auto"><Crits items={list} /></span>}
+            </div>
+            {list.length > 0 && !inline && <div className="mt-2"><Crits items={list} /></div>}
+        </div>
+    );
+};
 
 const Legend = ({ items }) => (
     <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
@@ -166,14 +191,20 @@ const Legend = ({ items }) => (
 );
 
 // A chart card with a Table toggle, so no value is only reachable by hovering
-const ChartCard = ({ title, subtitle, legend, table, children }) => {
+// `subtitle` is data shown under the title (the longest session); `pill` a small fact beside it
+// (a scope); `rules` what the card counts, as chips under the title
+const ChartCard = ({ title, subtitle, pill, rules, legend, table, children }) => {
     const [showTable, setShowTable] = useState(false);
     return (
         <div className="bg-[#1b2838] border border-[#2a475e] rounded-[3px] p-3 min-w-0">
             <div className="flex items-start gap-2 mb-3">
                 <div className="min-w-0">
-                    <div className="text-[11px] text-[#c6d4df] font-semibold uppercase tracking-[0.07em]">{title}</div>
-                    {subtitle && <div className="text-[9px] text-[#546270] mt-0.5">{subtitle}</div>}
+                    <div className="flex items-center gap-1.5 flex-wrap min-h-[18px]">
+                        <span className="text-[11px] text-[#c6d4df] font-semibold uppercase tracking-[0.07em]">{title}</span>
+                        {pill && <span className="cpill">{pill}</span>}
+                    </div>
+                    {subtitle && <div className="text-[10.5px] text-[#8f98a0] mt-1">{subtitle}</div>}
+                    {rules && <div className="mt-1.5"><Crits items={rules} /></div>}
                 </div>
                 {table && (
                     <button onClick={() => setShowTable(v => !v)}
@@ -912,7 +943,14 @@ const App = () => {
                     <div key={`${period}-${platform}-${hideFarms}`} className="anim-in flex flex-col gap-7">
                         {/* Overview */}
                         <section>
-                            <SectionHeader title="Overview" note={range.prevLabel ? `change vs ${range.prevLabel}` : null} />
+                            <SectionHeader title="Overview"
+                                rules={[
+                                    // The key to the ▲ ▼ under each number
+                                    range.prevLabel && { text: <><span className="crit-arrows"><span className="up">▲</span><span className="down">▼</span></span>vs <b>{range.prevLabel}</b></> },
+                                    ...(hasPlay
+                                        ? [platform === 'all' && { icon: Gamepad2, text: <>Playtime: <b>RA + Steam</b></> }, view.playNote && { icon: CalendarDays, text: `Playtime ${view.playNote}` }]
+                                        : [{ icon: Gamepad2, text: 'Xbox reports no playtime: achievements only' }]),
+                                ]} />
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                                 {hasPlay && <StatTile label="Hours played" value={fmtHours(view.cur.minutes)} delta={d('minutes', true)} note={view.playNote} />}
                                 <StatTile label="Active days" value={fmtNum(view.cur.activeDays)} delta={d('activeDays', true)} />
@@ -923,9 +961,6 @@ const App = () => {
                                 {units.includes('xbox') && <StatTile label="Gamerscore" value={fmtNum(view.cur.gamerscore)} delta={d('gamerscore')} />}
                                 <StatTile label="Completed" value={fmtNum(view.cur.completions)} delta={d('completions')} />
                             </div>
-                            <p className="text-[9px] text-[#546270] mt-2">{hasPlay
-                                ? <>Playtime is {platform === 'all' ? "RetroAchievements and Steam only (Xbox doesn't report it)" : PLATFORM_LABEL[platform]}, tracked since {fmtDayKey(base.trackingKey)}.</>
-                                : <>Xbox doesn't report playtime, so this view covers achievements only.</>}</p>
                         </section>
 
                         {/* Trends */}
@@ -934,14 +969,13 @@ const App = () => {
                             <div className={`grid gap-3 ${hasPlay ? 'md:grid-cols-2' : ''}`}>
                                 {hasPlay && <ChartCard
                                     title="Hours played"
-                                    subtitle={`Per ${view.playUnit}${view.playNote ? ` · ${view.playNote}` : ''}`}
+                                    pill={view.playNote}
                                     legend={seriesLegend(plays)}
                                     table={seriesTable(view.playUnit, [...view.playBuckets].reverse(), plays, fmtMinutes)}>
                                     <StackedColumns buckets={view.playBuckets} series={plays} format={v => (v >= 60 ? `${Math.round(v / 60)}h` : `${Math.round(v)}m`)} />
                                 </ChartCard>}
                                 <ChartCard
                                     title="Achievements unlocked"
-                                    subtitle={`Per ${view.unit}`}
                                     legend={seriesLegend(units)}
                                     table={seriesTable(view.unit, [...view.unlockBuckets].reverse(), units, fmtNum)}>
                                     <StackedColumns buckets={view.unlockBuckets} series={units} format={fmtNum} />
@@ -951,27 +985,26 @@ const App = () => {
 
                         {/* When you play: direct answers first, the hour-by-hour grids below */}
                         <section>
-                            <SectionHeader title="When you play" note={hasPlay
-                                ? `${platform === 'all' ? 'RA + Steam' : PLATFORM_SHORT[platform]} playtime${view.playNote ? ` ${view.playNote}` : ''} · ${TZ}`
-                                : `Unlocks only · Xbox doesn't report playtime · ${TZ}`} />
+                            <SectionHeader title="When you play"
+                                rules={hasPlay ? null : [{ icon: Gamepad2, text: 'Unlocks only: Xbox reports no playtime' }]} />
                             {hasPlay && <>
                             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 mb-3">
                                 <StatTile label="Peak time" value={view.peak?.label ?? '–'} note={view.peak ? `${view.peak.share}% of play` : null} />
                                 <StatTile label="Favorite day" value={view.favDay != null ? WEEKDAY_NAMES[view.favDay] : '–'} note={view.favDay != null ? `${view.favDayShare}% of play` : null} />
                                 <StatTile label="Weekends" value={view.playTotal ? `${view.weekendShare}%` : '–'} note="of play · 29% of days" />
                                 <StatTile label="After midnight" value={view.playTotal ? `${view.lateShare}%` : '–'} note="of play · 00–05" />
-                                <StatTile label="Typical start" value={view.typicalStart != null ? `${hh(Math.floor(view.typicalStart / 60))}:${String(view.typicalStart % 60).padStart(2, '0')}` : '–'} note="median session start" />
+                                <StatTile label="Typical start" value={view.typicalStart != null ? `${hh(Math.floor(view.typicalStart / 60))}:${String(view.typicalStart % 60).padStart(2, '0')}` : '–'} note="median start" />
                                 <StatTile label="Busiest day" value={view.busiest ? fmtMinutes(view.busiest[1]) : '–'} note={view.busiest ? fmtDayKey(view.busiest[0]) : null} />
                             </div>
                             <div className="grid md:grid-cols-2 gap-3 mb-3">
-                                <ChartCard title="Time of day" subtitle="Share of playtime"
+                                <ChartCard title="Time of day"
                                     legend={DAY_PARTS.map(p => ({ label: `${p.label} ${p.range}`, color: p.color }))}
                                     table={{ columns: ['Part', 'Hours', ...view.dayParts.map(r => r.id === 'all' ? 'Total' : PLATFORM_SHORT[r.id])], rows: DAY_PARTS.map((p, i) => [p.label, p.range, ...view.dayParts.map(r => `${fmtMinutes(r.parts[i].minutes)} (${Math.round((r.parts[i].minutes / r.total) * 100)}%)`)]) }}>
                                     {view.dayParts.length === 0
                                         ? <div className="text-[10px] text-[#546270] italic py-2">No playtime in this period.</div>
                                         : <div className="flex flex-col gap-3">{view.dayParts.map(r => <DayPartBar key={r.id} row={r} labels={r.id === 'all' || platform !== 'all'} />)}</div>}
                                 </ChartCard>
-                                <ChartCard title="Average per weekday" subtitle={`Playtime on an average day of each kind${view.playNote ? ` · ${view.playNote}` : ''}`}
+                                <ChartCard title="Average per weekday" pill={view.playNote}
                                     legend={seriesLegend(plays)}
                                     table={seriesTable('Day', view.weekdayAvg.map(b => ({ ...b, label: WEEKDAY_NAMES[WEEKDAYS.indexOf(b.label)] })), plays, fmtMinutes)}>
                                     <StackedColumns buckets={view.weekdayAvg} series={plays} format={v => fmtMinutes(v)} height={110} />
@@ -980,7 +1013,7 @@ const App = () => {
                             {/* Average per hour: weekdays and weekends in their own cards, same scale so they compare */}
                             <div className="grid md:grid-cols-2 gap-3 mb-3">
                                 {HOUR_SERIES.map(s => (
-                                    <ChartCard key={s.id} title={`${s.label} by hour`} subtitle={`Average playtime per hour of a ${s.id === 'weekdays' ? 'weekday' : 'weekend day'} · ${view.kindDays[s.id]} days${view.playNote ? ` · ${view.playNote}` : ''}`}
+                                    <ChartCard key={s.id} title={`${s.label} by hour`} pill={`${s.id === 'weekdays' ? 'Mon–Fri' : 'Sat–Sun'} · ${view.kindDays[s.id]} days${view.playNote ? ` · ${view.playNote}` : ''}`}
                                         table={{ columns: ['Hour', 'Played'], rows: view.hourAvg.map(r => [`${hh(r.hour)}:00`, fmtMinutes(r[s.id])]) }}>
                                         <HourBars rows={view.hourAvg} series={s} max={view.hourMax} />
                                     </ChartCard>
@@ -988,11 +1021,11 @@ const App = () => {
                             </div>
                             </>}
                             <div className="grid md:grid-cols-2 gap-3">
-                                <ChartCard title="Unlocks by hour" subtitle={`Average achievements per weekday-hour · ${platform === 'all' ? 'all platforms' : PLATFORM_LABEL[platform]}`}
+                                <ChartCard title="Unlocks by hour"
                                     table={{ columns: ['Day', ...Array.from({ length: 24 }, (_, h) => String(h).padStart(2, '0'))], rows: view.unlockGrid.map((r, i) => [WEEKDAYS[i], ...r.map(v => (v ? fmtAvg(v) : ''))]) }}>
                                     <Punchcard cells={view.unlockGrid} totals={view.unlockTotals} />
                                 </ChartCard>
-                                <ChartCard title="Top unlock hours" subtitle={`Unlocks per day in each hour · ${platform === 'all' ? 'all platforms' : PLATFORM_LABEL[platform]} · peak = the weekday busiest in that hour`}
+                                <ChartCard title="Top unlock hours"
                                     table={{ columns: ['Hour', 'Per day', 'Total', 'Peak day'], rows: view.unlockHourTable }}>
                                     <TopHoursDial top={view.topUnlockHours} byHour={view.unlockByHour} />
                                 </ChartCard>
@@ -1001,16 +1034,16 @@ const App = () => {
 
                         {/* Top games */}
                         <section>
-                            <SectionHeader title="Top games" note={`${periodLabel}${view.farmsHidden ? ` · ${view.farmsHidden} achievement farms hidden` : ''}`} />
+                            <SectionHeader title="Top games" />
                             <div className="grid md:grid-cols-2 gap-3">
                                 {hasPlay && <ChartCard title="Most played"><BarList rows={view.topHours} format={fmtMinutes} /></ChartCard>}
-                                <ChartCard title="Most progress" subtitle={<>Share of the game's achievements earned · sets of 10+ · <span className="text-[#e5b143]">★</span> completed</>}>
+                                <ChartCard title="Most progress" rules={[{ icon: ListChecks, text: <>Sets of <b>10+</b></> }, { icon: Star, text: 'Completed', gold: true }]}>
                                     <BarList rows={view.mostProgress} format={v => `${Math.round(v)}%`} max={100} />
                                 </ChartCard>
-                                <ChartCard title="Almost complete" subtitle={`Current progress${period === 'all' ? '' : ' of games played in this period'} · sets of 10+`}>
+                                <ChartCard title="Almost complete">
                                     <BarList rows={view.almostComplete} format={v => `${Math.floor(v)}%`} max={100} empty={period === 'all' ? 'No unfinished games.' : 'No unfinished games played in this period.'} />
                                 </ChartCard>
-                                {hasPlay && <ChartCard title="Hardest earned" subtitle="Most playtime per achievement · 3+ unlocks and 30m+ played">
+                                {hasPlay && <ChartCard title="Hardest earned" pill="per unlock" rules={[{ icon: Trophy, text: <><b>3+</b> unlocks · <b>30m+</b> played</> }]}>
                                     <BarList rows={view.perAch} format={v => fmtMinutes(v)} empty="No game with 3+ unlocks and 30m+ played." />
                                 </ChartCard>}
                             </div>
@@ -1018,19 +1051,19 @@ const App = () => {
 
                         {/* Focus: how play spreads across games */}
                         <section>
-                            <SectionHeader title="Focus" note={periodLabel} />
+                            <SectionHeader title="Focus" />
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-3">
                                 {hasPlay && <StatTile label="Top game share" value={view.topShare != null ? `${view.topShare}%` : '–'}
                                     note={view.topGame ? view.topGame.label : 'of playtime'} />}
-                                <StatTile label="Games per week" value={view.gamesPerWeek ? view.gamesPerWeek.toFixed(1) : '–'} note="played or unlocked in" />
+                                <StatTile label="Games per week" value={view.gamesPerWeek ? view.gamesPerWeek.toFixed(1) : '–'} note="played or unlocked" />
                                 <StatTile label="New games" value={fmtNum(view.newCount)} note={`${fmtNum(view.newDone)} completed`} />
                                 {hasPlay && <StatTile label="Tried and dropped" value={fmtNum(view.droppedCount)} note={`<1h, idle ${DROPPED_IDLE_DAYS}+ days`} />}
                             </div>
                             <div className="grid md:grid-cols-2 gap-3">
-                                <ChartCard title="New games" subtitle={<>First played or unlocked in this period · time played so far · <span className="text-[#e5b143]">★</span> completed</>}>
+                                <ChartCard title="New games" rules={[{ icon: Star, text: 'Completed', gold: true }]}>
                                     <BarList rows={view.newRows} format={fmtMinutes} empty="No new games in this period." />
                                 </ChartCard>
-                                {hasPlay && <ChartCard title="Tried and dropped" subtitle={`New in this period, under 1h played in total, untouched for ${DROPPED_IDLE_DAYS}+ days · ${platform === 'all' ? 'RA + Steam' : PLATFORM_SHORT[platform]}`}>
+                                {hasPlay && <ChartCard title="Tried and dropped">
                                     <BarList rows={view.droppedRows} format={fmtMinutes} max={DROPPED_MAX_MINUTES}
                                         empty={period === '30d' ? `None yet: a game needs ${DROPPED_IDLE_DAYS} idle days to count.` : 'No dropped games in this period.'} />
                                 </ChartCard>}
@@ -1056,7 +1089,7 @@ const App = () => {
                                 </ChartCard>
                             </div>}
                             <div className={`min-w-0 ${hasPlay ? '' : 'md:col-span-2'}`}>
-                                <SectionHeader title="Rarity" gold note="share of players who have it" />
+                                <SectionHeader title="Rarity" gold rules={[{ icon: Users, text: '% of players who have it' }]} />
                                 <ChartCard
                                     title="Unlocks by rarity"
                                     legend={RARITY_TIERS.map(t => ({ label: t.label, color: t.color }))}
@@ -1087,10 +1120,11 @@ const App = () => {
                         {/* Completion */}
                         <section>
                             <SectionHeader title="Completion" gold
-                                note={view.daysToComplete.length ? `${periodLabel}: ${view.periodCompletions.length} completed · median ${Math.round(median(view.daysToComplete))} days from first unlock` : `${periodLabel}: ${view.periodCompletions.length} completed`} />
+                                note={view.daysToComplete.length ? `${view.periodCompletions.length} completed · median ${Math.round(median(view.daysToComplete))} days` : `${view.periodCompletions.length} completed`}
+                                />
                             <div className="grid md:grid-cols-3 gap-3">
                                 {units.map(p => (
-                                    <ChartCard key={p} title={PLATFORM_LABEL[p]} subtitle="All time"
+                                    <ChartCard key={p} title={PLATFORM_LABEL[p]} pill="All time"
                                         table={{ columns: ['Stage', 'Games', '% of first'], rows: data.funnel[p].map(([label, n]) => [label, fmtNum(n), data.funnel[p][0][1] ? `${Math.round((n / data.funnel[p][0][1]) * 100)}%` : '–']) }}>
                                         <Funnel stages={data.funnel[p]} color={PLATFORM_COLOR[p]} />
                                     </ChartCard>
@@ -1100,7 +1134,7 @@ const App = () => {
 
                         {/* RA by console */}
                         {units.includes('ra') && <section>
-                            <SectionHeader title="RetroAchievements by console" note={periodLabel} />
+                            <SectionHeader title="RetroAchievements by console" />
                             <div className="grid md:grid-cols-2 gap-3">
                                 <ChartCard title="Hours played"><BarList rows={view.consoleHours} format={fmtMinutes} /></ChartCard>
                                 <ChartCard title="Achievements"><BarList rows={view.consoleUnlocks} format={fmtNum} /></ChartCard>

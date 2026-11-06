@@ -373,7 +373,29 @@ One look on every page, from the classes in `assets/ui.css`:
 - Filters = `.fchip` (28px, sentence case, `.on` = blue tint) in a `.frow` that scrolls sideways instead of wrapping; `.fsep` between groups. Include-toggles show `+` off and `✓` on
 - Search = `.fsearch` (icon + clear button) with sort / group as a `.fselect` beside it in a `.fbar`
 - Counts and hints = `.fmeta`, a plain muted line. Never draw a count as a chip, or a filter in the small uppercase tag style
+- Explanations, rules and scope are never a grey sentence: see **Info text** below
 - View switches (Unlocks / Playtime / Playing, list / tiles) stay segmented controls
+
+### Info text
+**Rule: never write information as a bland grey sentence.** Anything that explains (what a card counts, its rules and thresholds, which platforms it covers, how much is loaded, what a colour or arrow means) gets a real visual treatment, or is removed. First ask whether it's needed at all; then pick the treatment that fits *what the information is*. Chips are one tool, not the answer to everything: a page where every heading grows a chip row is as monotonous as one full of grey lines.
+
+| The information is… | Treatment | Example |
+|---|---|---|
+| A repeat of the title, the filter chips or the period | **Remove it** | "30 days · 7 farms hidden" under chips that already say both |
+| Rules / thresholds of a list (2–3 short facts) | **Criteria chips**: `.crits` row of `.crit` (icon + short text, number in `<b>`; `.gold` for ★ completed, `<i>` dot for a group colour, `<img>` for a platform icon) | Most progress: `Sets of 10+` `★ Completed` |
+| One rule on a heading with a divider line | **One chip at the end of the heading line** | Playing groups `Idle 2–6 weeks`; Analytics Rarity |
+| Which platforms something covers | **Platform icons**, not their names in a sentence | Hub "All 31 series" + the three icons |
+| How much of something is loaded / done | **A small meter or segmented bar** with a short label | RA activity "3 of 12 months" as four 3-month steps |
+| What colours, arrows or marks mean | **A key drawn with the real marks** | Overview: stacked green ▲ / red ▼ "vs previous 30 days" |
+| A scope beside a title | **`.cpill`** | "All time" on the funnels |
+| Data (a count, a median, a date) | **Plain text is fine**, sized and coloured as data, not as a hint | "37 · median 42m" |
+| Nothing to show | **Empty state text** stays, short and specific | "None yet: a game needs 30 idle days to count" |
+| A how-to ("tap a day to filter", "scroll to load more") | **Remove**: make the thing look tappable or show the meter instead | — |
+
+- **Vary it.** Before adding chips, look at what's already on the screen: if the section above already has a chip row, prefer another treatment (an icon, a key, a meter, folding it into the data's own label) or nothing. More than two chip rows in one phone screen is too many
+- Chips hold short facts (2–4 words each, at most 3 in a row). If it needs a sentence, the design is wrong: split it into facts or drop it
+- No info behind a tap-only icon either (the ⓘ button was tried and dropped): what matters is visible, what doesn't is removed
+- Check it at 450px like everything else: chips must not wrap into a second line under a heading on the phone
 
 ### Game art behind things
 - Blurred art backgrounds (`.art-bg` in `assets/ui.css`) bleed 30px past every edge so the blur never shows a dark rim; `max-width: none` beats Tailwind's img reset

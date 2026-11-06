@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, Trophy, Crown, Lock, Unlock, AlertTriangle, Flame, Feather, Medal, ShieldOff, CircleDashed, X, Clock, BookOpen, Youtube, ExternalLink, Layers, List, LayoutGrid, Search, Check, Plus, User, Radio } from 'lucide-react';
+import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, Trophy, Crown, Lock, Unlock, AlertTriangle, Flame, Feather, Medal, ShieldOff, CircleDashed, X, Clock, BookOpen, Youtube, ExternalLink, Layers, List, LayoutGrid, Search, Check, Plus, User, Radio, ArrowDown, Hourglass } from 'lucide-react';
 import { MEDIA_URL, SITE_URL, TILDE_TAG_COLORS } from './utils/constants.js';
 import { getMediaUrl, parseTitle, formatTimeAgo, raShot } from './utils/helpers.js';
 import { transformData } from './utils/transform.js';
@@ -63,9 +63,9 @@ const STAT_LABELS = {
 // purpose — a game dropped at 80% is the one most worth picking back up.
 const PROGRESS_VIEWS = [
   { value: 'all',        label: 'All'          },
-  { value: 'nearly',     label: 'Nearly there', hint: '75%+ done · fewest achievements left first' },
-  { value: 'inprogress', label: 'In progress',  hint: 'Played in the last 30 days · most recent first' },
-  { value: 'abandoned',  label: 'Abandoned',    hint: 'Unfinished · not played for 30+ days' },
+  { value: 'nearly',     label: 'Nearly there', rules: [[Trophy, <><b>75%+</b> done</>], [ArrowDown, 'Fewest left first']] },
+  { value: 'inprogress', label: 'In progress',  rules: [[Clock, <>Played in the last <b>30</b> days</>], [ArrowDown, 'Most recent first']] },
+  { value: 'abandoned',  label: 'Abandoned',    rules: [[Hourglass, 'Unfinished'], [Clock, <>Idle <b>30+</b> days</>]] },
 ];
 const NEARLY_PCT = 75;
 // Search text without accents or case, so "pokemon" finds "Pokémon"
@@ -75,7 +75,7 @@ const STALE_MS   = 30 * 24 * 60 * 60 * 1000;
 
 
 const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, showCompleted, onShowCompleted, counts, search, onSearch, viewToggle }) => {
-  const hint = PROGRESS_VIEWS.find(v => v.value === view)?.hint;
+  const rules = PROGRESS_VIEWS.find(v => v.value === view)?.rules;
   return (
     <div className="flex flex-col gap-2.5 mb-4 anim-fade">
       {/* Views, plus the completed toggle in the All view: one row that scrolls sideways (chip styles in assets/ui.css) */}
@@ -110,7 +110,7 @@ const ProgressFilterBar = ({ view, onView, sorts, sort, onSort, completedLabel, 
         {viewToggle}
       </div>
 
-      {hint && <div key={view} className="fmeta anim-fade">{hint}</div>}
+      {rules && <div key={view} className="crits anim-fade">{rules.map(([Icon, text], i) => <span key={i} className="crit"><Icon />{text}</span>)}</div>}
     </div>
   );
 };
@@ -618,6 +618,18 @@ const RAchievementModal = ({ game, guides, onClose, onBack = null, backLabel = '
 
 // ── ActivityTab Component ──────────────────────────────────────────────────
 
+// How much of the year the timeline holds: a bar of 3-month steps, filled as you scroll
+const LoadMeter = ({ done, total }) => (
+  <div className="flex flex-col items-center gap-1.5 py-3">
+    <div className="flex gap-[3px]">
+      {Array.from({ length: total }, (_, i) => (
+        <i key={i} className="block w-7 h-[5px] rounded-[2px]" style={{ background: i < done ? '#66c0f4' : '#22344a' }} />
+      ))}
+    </div>
+    <span className="text-[10.5px] text-[#8f98a0]"><b className="text-[#c6d4df] font-semibold">{done * 3}</b> of 12 months · more as you scroll</span>
+  </div>
+);
+
 const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalChunks, hasMore, loadingMore, onLoadMore }) => {
   const [selectedDay, setSelectedDay] = useState(null);
   const [collapsedDays, setCollapsedDays] = useState(new Set());
@@ -757,9 +769,10 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
         <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 mb-3">
           <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0"></span>
           <span className="text-[13px] text-white tracking-wide uppercase font-medium flex items-center gap-2"><Activity size={15} className="text-[#66c0f4]" /> Activity</span>
-          <span className="text-[10px] text-[#546270] ml-auto" title="Days and times are shown in your timezone">{TZ}</span>
-          <span className="text-[10px] text-[#546270] hidden sm:block">· {loadedChunks < totalChunks ? `~${loadedChunks * 3} months` : '1 year'} · {achievements.length} achievements · click a day to filter</span>
-          <span className="text-[10px] text-[#546270] ml-auto sm:hidden">{achievements.length} achievements</span>
+          <span className="crits ml-auto justify-end">
+            <span className="crit"><Trophy /><b>{achievements.length.toLocaleString()}</b> unlocks</span>
+            <span className="crit hidden sm:inline-flex" title="Days and times are shown in your timezone"><Clock />{TZ}</span>
+          </span>
         </div>
 
         <div className="overflow-x-auto" ref={heatmapScrollRef}>
@@ -823,9 +836,7 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
           <span className="text-[10px] text-[#546270] ml-auto">
             {selectedDay
               ? `${fmtDay(selectedDay)} · ${dayMap[selectedDay]?.count || 0} achievements`
-              : loadedChunks < totalChunks
-              ? `Last ~${loadedChunks * 3} months · ${achievements.length} loaded`
-              : `${achievements.length} total`}
+              : null}
           </span>
         </div>
 
@@ -962,14 +973,12 @@ const ActivityTab = ({ achievements, refTime, heatmapData, loadedChunks, totalCh
                   ))}
                 </>
               ) : (
-                <div className="text-center py-2 text-[11px] text-[#546270]">
-                  Showing ~{loadedChunks * 3} of 12 months — scroll to load more
-                </div>
+                <LoadMeter done={loadedChunks} total={totalChunks} />
               )}
             </div>
           ) : achievements.length > 0 ? (
-            <div className="text-center py-3 mt-2 border-t border-[#1e2a35] text-[11px] text-[#546270] anim-fade">
-              {achievements.length} achievements · all 12 months loaded
+            <div className="flex justify-center py-3 mt-2 border-t border-[#1e2a35] anim-fade">
+              <span className="crit"><Trophy /><b>{achievements.length.toLocaleString()}</b> unlocks · the whole year</span>
             </div>
           ) : null
         )}

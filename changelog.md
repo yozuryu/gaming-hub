@@ -15,6 +15,7 @@ RA games can have wide art from SteamGridDB, shown where Steam games show their 
 - Shared series: an RA cover game with wide art shows its hero behind the card and sheet (and RA rows and game sheets there too)
 - Header: when the latest game is an RA game with wide art, its hero is blurred behind the header instead of the screenshot, as on the RA profile
 - Playing tiles: an RA game with wide art uses its banner as the cover, like a Steam game (same in Activity's Playing view)
+- "All 31 series across RA, Steam and Xbox" is now "All 31 series" with the three platform icons; the Playing link is chips with each group's colour dot (`+3 playing`, `2 on hold`); the desktop header's "RetroAchievements · Steam · Xbox" is platform chips with their icons
 
 ### Completions
 
@@ -28,6 +29,19 @@ RA games can have wide art from SteamGridDB, shown where Steam games show their 
 - Day headings stick to the top while scrolling and say Today / Yesterday. Unlocks: one card per game run, headed by a band with the game's art faded in (Steam banner, the RA hero picked in the admin, else the icon blurred), a small icon and a bold title, with its achievements under it as rows with bigger badges (RA points, Steam rarity %), so game and achievement never look alike; runs longer than 5 fold after 4 with "Show N more". Days no longer collapse
 - Playtime: one row per game per day instead of one card per session, with a 24-hour track showing when each session ran (estimated starts hatched), the day's time and the unlocks it produced
 - Unlocks: Steam game strips use the game's library hero (art without the logo, like RA's hero) instead of the store banner, falling back to the banner when Steam has no hero
+- Info text: "Xbox doesn't report playtime" beside the filter and "tap a day to filter" removed (the split says Xbox n/a, the bars and heatmap are tappable). Playing's group rules are one chip at the end of each group heading (`Last 2 weeks, or 5h+ in 6`, `Idle 2–6 weeks`…) and "In rotation" has its own (`Unfinished · 1h+ played · Last 13 weeks`); the streak rule is a flame chip
+
+### Analytics
+
+- Info text redesigned: the grey sentence under each card title is gone. Rules show as a few small chips where they matter (Most progress `Sets of 10+ · ★ Completed`, Hardest earned `3+ unlocks · 30m+ played`), scopes as a pill beside the title (`Mon–Fri · 22 days`, `per unlock`), and cards whose list or legend already explains them carry nothing; lines that only restated the title are gone
+- Overview: "change vs previous 30 days" is a chip with stacked green ▲ / red ▼ (`vs previous 30 days`), beside the playtime chip (`Playtime: RA + Steam`) that replaced the footnote
+- Notes that repeated the filter chips are gone (the period beside Top games, Focus and RA by console, "7 achievement farms hidden", the timezone beside When you play); tile notes "median start", "played or unlocked"
+
+### All pages
+
+- Series page: "across RA, Steam and Xbox" is platform chips
+- Profile Progress tabs: the grey line under the Nearly there / In progress / Abandoned views is chips (`75%+ done` · `Fewest left first`, `Played in the last 30 days` · `Most recent first`, `Unfinished` · `Idle 30+ days`)
+- Profile Activity tabs: the unlock count and timezone are chips ("click a day to filter" gone); RA: "Showing ~3 of 12 months — scroll to load more" is a bar of 3-month steps filling as you scroll, and the end of the year a chip with the year's unlocks
 
 ## v26.11.05
 
@@ -296,7 +310,6 @@ Chevron icons and an Analytics strip on the hub; every component now animates.
 ### Admin
 
 - Motion classes copied into the admin page (its local server only serves that page): module switches, loaded views, detail panes on each selection, the series modal, Saved/Saving, added tags/groups/links, win-condition controls, server status and pipeline buttons now animate
-
 
 ## v26.10.10
 

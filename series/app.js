@@ -368,12 +368,12 @@ const App = () => {
             </div>
 
             <header className="bg-[#1b2838] border-b border-[#2a475e] px-4 md:px-8 pt-8 pb-5 md:pt-5 shadow-md">
-                <div className="max-w-5xl lg:max-w-[79rem] mx-auto flex items-center gap-3">
+                <div className="max-w-5xl lg:max-w-[79rem] mx-auto flex items-center gap-3 flex-wrap">
                     <span className="w-[3px] h-6 bg-[#66c0f4] rounded-[1px] shrink-0" />
                     <h1 className="text-2xl md:text-[26px] text-white font-medium tracking-wide leading-none flex items-center gap-3">
                         <Layers size={22} className="text-[#66c0f4]" /> Series
                     </h1>
-                    {data && <span className="ml-1 text-[12px] text-[#8f98a0] anim-fade">across RA, Steam and Xbox</span>}
+                    {data && <span className="crits ml-1 anim-fade">{[['ra', 'RA'], ['steam', 'Steam'], ['xbox', 'Xbox']].map(([p, l]) => <span key={p} className="crit"><img src={`../assets/icon-${p}.png`} alt="" />{l}</span>)}</span>}
                 </div>
             </header>
 

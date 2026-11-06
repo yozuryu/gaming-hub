@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Activity, ChevronDown, Clock, Flame, Gamepad2, Trophy } from 'lucide-react';
+import { Activity, ChevronDown, Clock, Flame, Gamepad2, Hourglass, Trophy } from 'lucide-react';
 import { PLATFORM_COLOR, TILDE_TAG_COLORS } from './utils/constants.js';
 import { fmtDay, fmtTime, fmtMinutes, fmtMinutesShort, parseTitle, xboxImg } from './utils/helpers.js';
 import { normalizeRA, normalizeSteam, normalizeXbox, normalizeSession } from './utils/normalizers.js';
@@ -368,7 +368,7 @@ const SummaryCard = ({ open, onToggle, headline, stats, split, filter, streakInf
                     <div className="asum-sec">
                         <div className="asum-h">
                             <span>Last 14 days</span>
-                            {minLabel && <em className="md:mr-12" title="A day counts toward the streak with this much play">Streak: {minLabel}</em>}
+                            {minLabel && <span className="crit md:mr-12" title="A day counts toward the streak with this much play"><Flame />{minLabel}</span>}
                         </div>
                         {recent(false)}
                         <StreakTiles streakInfo={streakInfo} minLabel={minLabel} />
@@ -380,7 +380,7 @@ const SummaryCard = ({ open, onToggle, headline, stats, split, filter, streakInf
                         <em title="Days and times are shown in your timezone">{TZ}</em>
                         {selectedDay
                             ? <button onClick={onClear} className="fchip on anim-fade" style={{ height: 22 }}>{fmtDay(selectedDay, { day: '2-digit', month: 'short' })} ✕</button>
-                            : <em className="hidden sm:inline">· tap a day to filter</em>}
+                            : null}
                     </div>
                     {heatmap}
                 </div>
@@ -630,6 +630,12 @@ const PLATFORM_LABEL = { ra: 'RA', steam: 'Steam' };
 const PLATFORM_RGB = { ra: '229,177,67', steam: '102,192,244' };
 // Group heading colours: in progress blue, fading as the game goes untouched
 const GROUP_COLOR = { playing: '#66c0f4', onhold: '#b8c4ce', drifting: '#8f98a0' };
+// Each group's rule as chips under its heading (same thresholds as assets/playing.js)
+const GROUP_RULES = {
+    playing:  <span className="crit"><Clock />Last <b>2</b> weeks, or <b>5h+</b> in <b>6</b></span>,
+    onhold:   <span className="crit"><Clock />Idle <b>2–6</b> weeks</span>,
+    drifting: <span className="crit"><Clock />Idle <b>6+</b> weeks</span>,
+};
 // Silver "Beaten" badge, like the profile pages' second-tier status
 const BEATEN_CLS = 'text-[7px] font-bold uppercase tracking-[0.08em] px-[5px] py-[2px] rounded-[2px] shrink-0 whitespace-nowrap text-[#c6d4df] bg-[#2a3440] border border-[rgba(184,196,206,0.25)]';
 
@@ -1138,7 +1144,11 @@ const App = () => {
                         <div className="flex items-center gap-2 flex-wrap border-b border-[#2a475e] pb-1.5">
                             <span className="w-[3px] h-[14px] bg-[#66c0f4] rounded-[1px] shrink-0" />
                             <span className="text-[13px] text-white tracking-wide uppercase font-medium">In Rotation</span>
-                            <span className="text-[10px] text-[#546270] ml-auto hidden sm:inline">Unfinished games you've put time into, last 13 weeks</span>
+                        </div>
+                        <div className="crits -mt-2">
+                            <span className="crit"><Gamepad2 />Unfinished</span>
+                            <span className="crit"><Hourglass /><b>1h+</b> played</span>
+                            <span className="crit"><Clock />Last <b>13</b> weeks</span>
                         </div>
                         <div className="frow -mt-1" role="group" aria-label="Platform">
                             {filters.map(f => (
@@ -1165,8 +1175,8 @@ const App = () => {
                                                         <span className="text-[10px] font-semibold uppercase tracking-[0.08em]" style={{ color: GROUP_COLOR[grp.id] }}>{grp.label}</span>
                                                         <span className="text-[10px] text-[#546270] tabular-nums">{list.length}</span>
                                                         <span className="flex-1 h-px bg-[#2a475e] opacity-40" />
+                                                        {GROUP_RULES[grp.id]}
                                                     </div>
-                                                    <span className="text-[9px] text-[#546270] pl-4">{grp.hint}</span>
                                                 </div>
                                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-2.5">
                                                     {list.map(g => <PlayingTile key={g.key} game={g} />)}
@@ -1187,7 +1197,6 @@ const App = () => {
                                 <button key={f.id} onClick={() => { setFilter(f.id); setSelectedDay(null); }} aria-pressed={filter === f.id}
                                     className={`fchip ${filter === f.id ? 'on' : ''}`}>{f.label}</button>
                             ))}
-                            {view === 'playtime' && <span className="fmeta ml-1 whitespace-nowrap">Xbox doesn't report playtime</span>}
                         </div>
 
                         {loading || (view === 'playtime' && !playtime) ? <SummarySkeleton /> : (
