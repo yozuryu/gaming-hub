@@ -147,6 +147,10 @@ export const useAnimatedHeight = (ref, duration = 220) => {
 //   bar    { pct, color }                     overall progress
 //   steps  { done, total, icon, pending? }    RA progression: a gold segmented meter in the card;
 //                                             pending = a shimmer row until the file is in
+//   games  { items: [{ state, pct }], icon }  a series: one segment per game with achievements, in its
+//                                             status colour (done gold, beaten silver, started blue lit
+//                                             to its %, none dim), done first; over MAX_SEG games, one
+//                                             segment per status sized by its count; the count is games done
 // Up to MAX_SEG segments, one per achievement; a longer chain groups them (52 → 18 segments of 3),
 // the segment in progress lit by the share of its group already done
 const MAX_SEG = 20;
@@ -172,9 +176,36 @@ const Steps = ({ steps }) => {
     h('b', null, done, h('span', null, '/', n)));
 };
 
-const Fill = ({ bar }) => bar.pct > 0 && h('i', { style: { width: `max(${Math.min(100, bar.pct)}%, 8px)`, '--c': bar.color } });
+const STATE_ORDER = { done: 0, beaten: 1, started: 2, none: 3 };
+const Games = ({ games }) => {
+  const items = games.items.filter(g => g.state !== 'noach').sort((a, b) => (STATE_ORDER[a.state] - STATE_ORDER[b.state]) || (b.pct - a.pct));
+  // Over MAX_SEG games the segments would be hairlines: one segment per status instead, as wide as its
+  // number of games (started lit to their average %)
+  const segs = items.length <= MAX_SEG ? items : Object.keys(STATE_ORDER).map(state => {
+    const of = items.filter(g => g.state === state);
+    return of.length && { state, n: of.length, pct: of.reduce((t, g) => t + g.pct, 0) / of.length };
+  }).filter(Boolean);
+  return h('div', { className: 'shd-steps shd-games' },
+    games.icon, h('span', { className: 'shd-steps-l' }, 'Games'),
+    h('span', { className: 'shd-meter' }, segs.map((g, i) => h('i', { key: i, className: g.state, style: g.n > 1 ? { flex: g.n } : undefined },
+      g.state !== 'done' && g.pct > 0 && h('u', { style: { width: `${Math.min(100, g.pct)}%` } })))),
+    h('b', null, items.filter(g => g.state === 'done').length, h('span', null, '/', items.length)));
+};
 
-export function SheetHead({ dragRef, back, art, cover, title, sub, meta = [], tags = [], stats = [], bar, steps }) {
+// Status counts of a series as the sheet's tags (sentence counts, the usual colours): ★ done gold,
+// beaten silver, in progress blue
+const TAG = 'shrink-0 text-[9px] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider flex items-center gap-1';
+export const seriesTags = ({ done, doneLabel, beaten, started }) => [
+  done > 0 && h('span', { key: 'd', className: `${TAG} text-[#101214] bg-[#e5b143]` }, `★ ${done} ${doneLabel}`),
+  beaten > 0 && h('span', { key: 'b', className: TAG, style: { background: '#2a3440', color: '#c6d4df', border: '1px solid rgba(184,196,206,0.3)' } }, `${beaten} Beaten`),
+  started > 0 && h('span', { key: 's', className: `${TAG} text-[#66c0f4] border border-[#66c0f4]/30 bg-[#101214]/60` }, `${started} In progress`),
+];
+
+// Under 1% (shown as 0%) nothing is lit: no fill nub, no tint edge
+const lit = bar => !!bar && Math.floor(bar.pct) > 0;
+const Fill = ({ bar }) => lit(bar) && h('i', { style: { width: `max(${Math.min(100, bar.pct)}%, 8px)`, '--c': bar.color } });
+
+export function SheetHead({ dragRef, back, art, cover, title, sub, meta = [], tags = [], stats = [], bar, steps, games }) {
   const metaLine = meta.filter(Boolean);
   const tagLine = tags.filter(Boolean);
   const hasSteps = steps && (steps.total > 0 || steps.pending);
@@ -188,7 +219,7 @@ export function SheetHead({ dragRef, back, art, cover, title, sub, meta = [], ta
         sub && h('div', { className: 'shd-sub' }, sub),
         metaLine.length > 0 && h('div', { className: 'shd-meta' }, metaLine.map((m, i) => h('span', { key: i, className: 'shd-m' }, m))),
         tagLine.length > 0 && h('div', { className: 'shd-tags' }, tagLine))),
-    (bar || stats.length > 0) && h('div', { className: `shd-card${bar ? ' wash' : ''}`, style: bar ? { '--p': `${Math.min(100, bar.pct)}%`, '--c': bar.color } : null },
+    (bar || stats.length > 0) && h('div', { className: `shd-card${lit(bar) ? ' wash' : ''}`, style: bar ? { '--p': `${Math.min(100, bar.pct)}%`, '--c': bar.color } : null },
       h('div', { className: 'shd-hrow' },
         bar && h('div', { className: 'shd-big' },
           h('b', { style: { color: bar.color } }, Math.floor(bar.pct), h('small', null, '%')), h('span', null, 'Complete')),
@@ -199,5 +230,6 @@ export function SheetHead({ dragRef, back, art, cover, title, sub, meta = [], ta
               : h('div', { key: 'v', className: 'shd-v anim-fade' }, h('b', { style: { color: st.color } }, st.value), st.total != null && h('em', null, '/', st.total)),
             h('div', { className: 'shd-l' }, st.label))))),
       hasSteps && h(Steps, { steps }),
+      games?.items.length > 0 && h(Games, { games }),
       bar && h('span', { className: 'shd-track' }, h(Fill, { bar }))));
 }

@@ -4,7 +4,7 @@ import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, T
 import { MEDIA_URL, SITE_URL, TILDE_TAG_COLORS } from './utils/constants.js';
 import { getMediaUrl, parseTitle, formatTimeAgo, raShot } from './utils/helpers.js';
 import { transformData } from './utils/transform.js';
-import { useSheet, useArtSrc, useAnimatedHeight, SheetHead } from '../../assets/sheet.js';
+import { useSheet, useArtSrc, useAnimatedHeight, SheetHead, seriesTags } from '../../assets/sheet.js';
 import { useGameView, shortAgo } from '../../assets/game-view.js';
 import { TabBar, useSwipeTabs, scrollToTabs } from '../../assets/tabs.js';
 import { computeStreak, useSummaryOpen, ActivitySummary, yearOf, DayHead, RunCard, RunCount, UnlockRow, ActivitySkeleton } from '../../assets/activity-ui.js';
@@ -1097,27 +1097,19 @@ const SeriesSheet = ({ card: c, awards, onOpenGame, onClose }) => {
       <div className="sheet-backdrop anim-backdrop" />
       <div ref={panelRef} className="sheet-panel" onClick={e => e.stopPropagation()}>
         <button onClick={close} className="sheet-close" aria-label="Close"><X size={15} /></button>
-        <div ref={dragRef} className="sheet-head">
-          {art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`${artIsWide ? '' : `px ${c.coverArtIsIcon ? 'art-icon' : ''}`} ${art.loaded ? 'loaded' : ''}`} /></div>}
-          <span className="sheet-grab" />
-          <div className="relative flex flex-col gap-3 px-4 pt-[30px] pb-4">
-            <div className="flex items-end gap-3 pr-8">
-              {c.coverIcon && <img src={c.coverIcon} alt="" className="w-14 h-14 rounded-[3px] border-2 border-white/20 shadow-[0_6px_18px_rgba(0,0,0,0.55)] object-cover px shrink-0" />}
-              <div className="min-w-0 flex flex-col gap-1">
-                <span className="sheet-title text-[17px] font-semibold text-white leading-tight">{c.series.name}</span>
-                <span className="text-[11.5px] text-[#c6d4df] art-shadow">
-                  {c.total} games{c.started > 0 && <> · <span className="text-[#66c0f4]">{c.started} started</span></>}{c.mastered > 0 && <> · <span className="text-[#e5b143]">★ {c.mastered} mastered</span></>}{c.beatenCount > 0 && <> · <span className="text-[#b8c4ce]">{c.beatenCount} beaten</span></>}
-                </span>
-              </div>
-            </div>
-            <div className="ssheet-stats">
-              <div><b className="text-[#e5b143]">{c.pointsEarned.toLocaleString()}<small> / {c.pointsTotal.toLocaleString()}</small></b><span>Points</span></div>
-              <div><b className="text-[#66c0f4]">{c.achEarned.toLocaleString()}<small> / {c.achTotal.toLocaleString()}</small></b><span>Achievements</span></div>
-              <div><b style={{ color: c.pct > 0 ? '#e5b143' : '#546270' }}>{pctLabel(c.pct)}</b><span>Complete</span></div>
-            </div>
-          </div>
-        </div>
-
+        <SheetHead dragRef={dragRef}
+          art={art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`${artIsWide ? '' : `px ${c.coverArtIsIcon ? 'art-icon' : ''}`} ${art.loaded ? 'loaded' : ''}`} /></div>}
+          cover={c.coverIcon && <img src={c.coverIcon} alt="" className="relative shrink-0 w-16 h-16 rounded-[3px] border-2 border-white/20 bg-[#101214] shadow-[0_6px_18px_rgba(0,0,0,0.55)] object-cover px" />}
+          title={c.series.name}
+          meta={[<span className="inline-flex items-center gap-1 text-[#66c0f4]"><Layers size={11} />{c.total} games</span>]}
+          tags={seriesTags({ done: c.mastered, doneLabel: 'Mastered', beaten: c.beatenCount, started: c.started })}
+          stats={[
+            { value: c.achEarned.toLocaleString(), total: c.achTotal.toLocaleString(), label: 'Achievements', color: '#66c0f4' },
+            { value: c.pointsEarned.toLocaleString(), total: c.pointsTotal.toLocaleString(), label: 'Points', color: '#e5b143' },
+          ]}
+          bar={c.achTotal > 0 ? { pct: c.pct, color: c.pct >= 100 ? '#e5b143' : '#66c0f4' } : null}
+          games={{ icon: <Layers size={11} />, items: c.games.map(x => ({ state: !x.hasAch ? 'noach' : x.isMastered ? 'done' : x.beaten ? 'beaten' : x.isStarted ? 'started' : 'none', pct: x.numAchs ? (x.awarded / x.numAchs) * 100 : 0 })) }}
+        />
         <div className="sheet-scroll overflow-y-auto overscroll-contain flex-1 min-h-0 px-4 pt-3 flex flex-col gap-2 anim-fade">
           {c.latestAch && <div className="ssheet-sec" style={{ '--c': '#e5b143' }}>Latest unlock</div>}
           {c.latestAch && (

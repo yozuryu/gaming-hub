@@ -87,6 +87,17 @@
 .shd-card > * { position: relative; }
 .shd-steps b { min-width: 34px; text-align: right; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
 .shd-steps b span { color: #8f98a0; font-weight: 400; }
+/* a series: one segment per game in its status colour (done gold, beaten silver, started dim blue lit to its %) */
+.shd-games .shd-meter i.done { background: #e5b143; box-shadow: 0 0 6px rgba(229, 177, 67, 0.5); }
+.shd-games .shd-meter i.beaten { background: #b8c4ce; }
+.shd-games .shd-meter i.started { background: rgba(102, 192, 244, 0.32); }
+.shd-games .shd-meter i.started u { background: #66c0f4; }
+.shd-games .shd-meter i.beaten u { display: none; }
+/* opening a sheet: the bar and the tint fill from 0 once, as the sheet settles; later changes slide */
+.shd-track i { animation: shd-fill 650ms cubic-bezier(0.2, 0.7, 0.3, 1) 120ms backwards; transition: width 300ms ease-out; }
+.shd-card.wash::before { animation: shd-fill 650ms cubic-bezier(0.2, 0.7, 0.3, 1) 120ms backwards; transition: width 300ms ease-out; }
+@keyframes shd-fill { from { width: 0; } }
+@media (prefers-reduced-motion: reduce) { .shd-track i, .shd-card.wash::before { animation: none; transition: none; } }
 /* values not known until the game's file loads (RA opened before the games index) */
 .shd-sk { display: inline-block; width: 52px; height: 12px; margin: 3px 0 2px; vertical-align: top; }
 .shd-sk.n { width: 30px; height: 10px; margin: 0; vertical-align: middle; }
@@ -412,12 +423,6 @@ button.gtile:hover { transform: translateY(-2px); }
 .sicons img.noach { filter: grayscale(1); opacity: 0.25; border: 1px dashed #8f98a0; }
 .sicons span { align-self: center; font-size: 11px; color: #546270; padding-left: 2px; flex-shrink: 0; }
 /* Series sheet body */
-.ssheet-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: rgba(16, 18, 20, 0.6); border: 1px solid #2a475e; border-radius: 2px; }
-.ssheet-stats > div { padding: 7px 10px; min-width: 0; }
-.ssheet-stats > div + div { border-left: 1px solid #22344a; }
-.ssheet-stats b { display: block; font-size: 14px; font-weight: 600; line-height: 1.2; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.ssheet-stats span { font-size: 11px; color: #8f98a0; }
-.ssheet-stats b small { font-size: 11px; font-weight: 500; color: #8f98a0; }
 /* .grow is also Tailwind's flex-grow utility: don't let rows stretch to fill a short sheet */
 .sheet-scroll > .grow { flex-grow: 0; }
 /* …and nothing in a scrolling sheet shrinks: the mastered / perfect card (.smast, overflow hidden) collapsed onto its row in a long sheet */

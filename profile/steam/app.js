@@ -4,7 +4,7 @@ import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Cloc
 import { STEAM_STATUS, PROGRESS_SORTS } from './utils/constants.js';
 import { formatPlaytime, formatDate, formatTimeAgo, fmtDay, fmtTime, achIconUrl, capsuleUrl, headerUrl, heroUrl, libraryPortraitUrl, rarityLabel, rarityBorderColor } from './utils/helpers.js';
 import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap } from '../../assets/time.js';
-import { useSheet, useArtSrc, useAnimatedHeight, SheetHead } from '../../assets/sheet.js';
+import { useSheet, useArtSrc, useAnimatedHeight, SheetHead, seriesTags } from '../../assets/sheet.js';
 import { useGameView, shortAgo } from '../../assets/game-view.js';
 import { TabBar, useSwipeTabs, scrollToTabs } from '../../assets/tabs.js';
 import { computeStreak, useSummaryOpen, ActivitySummary, yearOf, DayHead, RunCard, RunCount, UnlockRow, ActivitySkeleton } from '../../assets/activity-ui.js';
@@ -819,7 +819,7 @@ const buildSeries = (seriesData, achProgress, perfectMap, beatenMap) => seriesDa
             const lastMs = Math.max(unlockMs, d.lastPlayedTs ? toMs(d.lastPlayedTs) : 0);
             return {
                 id: Number(id), title: d.gameName ?? `App ${id}`, icon: d.iconUrl ?? null, hasAch, isPerfect, isStarted, beaten,
-                awarded: hasAch ? d.unlocked : 0, lastMs, perfectInfo: perfectMap.get(Number(id)) ?? null,
+                awarded: hasAch ? d.unlocked : 0, numAchs: hasAch ? d.total : 0, lastMs, perfectInfo: perfectMap.get(Number(id)) ?? null,
                 game: { appId: Number(id), name: d.gameName ?? `App ${id}`, storeUrl: `https://store.steampowered.com/app/${id}`, playtimeForever: d.playtimeForever ?? 0, playtime2Weeks: d.playtime2Weeks ?? 0, lastPlayedTs: d.lastPlayedTs ?? null },
                 data: d,
             };
@@ -968,27 +968,19 @@ const SeriesSheet = ({ card: c, onOpenGame, onClose }) => {
             <div className="sheet-backdrop anim-backdrop" />
             <div ref={panelRef} className="sheet-panel" onClick={e => e.stopPropagation()}>
                 <button onClick={close} className="sheet-close" aria-label="Close"><X size={15} /></button>
-                <div ref={dragRef} className="sheet-head">
-                    {art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={art.loaded ? 'loaded' : ''} /></div>}
-                    <span className="sheet-grab" />
-                    <div className="relative flex flex-col gap-3 px-4 pt-[30px] pb-4">
-                        <div className="flex items-end gap-3 pr-8">
-                            <img src={headerUrl(c.coverId)} alt="" className="w-[118px] h-[55px] rounded-[2px] border border-white/20 shadow-[0_6px_18px_rgba(0,0,0,0.55)] object-cover shrink-0" onError={e => { e.target.style.display = 'none'; }} />
-                            <div className="min-w-0 flex flex-col gap-1">
-                                <span className="sheet-title text-[17px] font-semibold text-white leading-tight">{c.series.name}</span>
-                                <span className="text-[11.5px] text-[#c6d4df] art-shadow">
-                                    {c.total} games{c.started > 0 && <> · <span className="text-[#66c0f4]">{c.started} started</span></>}{c.perfect > 0 && <> · <span className="text-[#e5b143]">★ {c.perfect} perfect</span></>}{c.beatenCount > 0 && <> · <span className="text-[#b8c4ce]">{c.beatenCount} beaten</span></>}
-                                </span>
-                            </div>
-                        </div>
-                        <div className="ssheet-stats">
-                            <div><b className="text-[#66c0f4]">{hoursLabel(c.minutes)}</b><span>Played</span></div>
-                            <div><b className="text-[#66c0f4]">{c.achEarned.toLocaleString()}<small> / {c.achTotal.toLocaleString()}</small></b><span>Achievements</span></div>
-                            <div><b style={{ color: c.pct > 0 ? '#e5b143' : '#546270' }}>{pctLabel(c.pct)}</b><span>Complete</span></div>
-                        </div>
-                    </div>
-                </div>
-
+                <SheetHead dragRef={dragRef}
+                    art={art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={art.loaded ? 'loaded' : ''} /></div>}
+                    cover={<img src={headerUrl(c.coverId)} alt="" className="relative shrink-0 w-32 h-16 rounded-[2px] border border-[#101214] bg-[#2a475e] shadow-[0_6px_18px_rgba(0,0,0,0.55)] object-cover" onError={e => { e.target.style.visibility = 'hidden'; }} />}
+                    title={c.series.name}
+                    meta={[<span className="inline-flex items-center gap-1 text-[#66c0f4]"><Layers size={11} />{c.total} games</span>]}
+                    tags={seriesTags({ done: c.perfect, doneLabel: 'Perfect', beaten: c.beatenCount, started: c.started })}
+                    stats={[
+                        { value: c.achEarned.toLocaleString(), total: c.achTotal.toLocaleString(), label: 'Achievements', color: '#66c0f4' },
+                        { value: hoursLabel(c.minutes), label: 'Played', color: '#66c0f4' },
+                    ]}
+                    bar={c.achTotal > 0 ? { pct: c.pct, color: c.pct >= 100 ? '#e5b143' : '#66c0f4' } : null}
+                    games={{ icon: <Layers size={11} />, items: c.games.map(x => ({ state: !x.hasAch ? 'noach' : x.isPerfect ? 'done' : x.isStarted && x.beaten ? 'beaten' : x.isStarted ? 'started' : 'none', pct: x.numAchs ? (x.awarded / x.numAchs) * 100 : 0 })) }}
+                />
                 <div className="sheet-scroll overflow-y-auto overscroll-contain flex-1 min-h-0 px-4 pt-3 flex flex-col gap-2 anim-fade">
                     {L && <div className="ssheet-sec" style={{ '--c': '#e5b143' }}>Latest unlock</div>}
                     {L && (

@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Layers, Search, X, Trophy, Star, ChevronLeft, Medal } from 'lucide-react';
-import { useSheet, useArtSrc, useAnimatedHeight, SheetHead } from '../assets/sheet.js';
+import { useSheet, useArtSrc, useAnimatedHeight, SheetHead, seriesTags } from '../assets/sheet.js';
 import { shortAgo } from '../assets/game-view.js';
 
 // ── Shared series (every platform) ─────────────────────────────────────────────
@@ -272,6 +272,7 @@ const GameSheet = ({ g, backLabel, onBack, onClose }) => {
 const SeriesSheet = ({ c, onClose, onOpenGame }) => {
     const panelRef = useRef(null), rootRef = useRef(null), dragRef = useRef(null);
     const close = useSheet({ panelRef, dragRef, rootRef, onClose });
+    useAnimatedHeight(panelRef);
     const art = useArtSrc([c.cover?.artFull, c.cover?.art, c.cover?.icon]);
     const groups = [
         { key: 'started', label: 'In progress',     games: c.games.filter(x => x.started && !x.beaten).sort((a, b) => b.lastMs - a.lastMs) },
@@ -287,26 +288,19 @@ const SeriesSheet = ({ c, onClose, onOpenGame }) => {
             <div className="sheet-backdrop anim-backdrop" />
             <div ref={panelRef} className="sheet-panel" onClick={e => e.stopPropagation()}>
                 <button onClick={close} className="sheet-close" aria-label="Close"><X size={15} /></button>
-                <div ref={dragRef} className="sheet-head">
-                    {art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`${c.cover?.p === 'ra' && !c.cover?.wide ? 'px' : ''} ${art.src === c.cover?.icon ? 'art-icon' : ''} ${art.loaded ? 'loaded' : ''}`} /></div>}
-                    <span className="sheet-grab" />
-                    <div className="relative flex flex-col gap-3 px-4 pt-[30px] pb-4">
-                        <div className="flex items-end gap-3 pr-8">
-                            <Cover g={c.cover} cls={c.cover?.p === 'steam' ? 'w-[118px] h-[55px] rounded-[2px] border border-white/20 object-cover shrink-0' : 'w-14 h-14 rounded-[3px] border-2 border-white/20 object-cover shrink-0'} />
-                            <div className="min-w-0 flex flex-col gap-1">
-                                <span className="sheet-title text-[17px] font-semibold text-white leading-tight">{c.name}</span>
-                                <span className="text-[11.5px] text-[#c6d4df] art-shadow flex items-center gap-2 flex-wrap">
-                                    <span>{c.total} games</span><PlatformSplit items={c.byPlatform} />
-                                </span>
-                            </div>
-                        </div>
-                        <div className="ssheet-stats">
-                            <div><b className="text-[#66c0f4]">{c.achEarned.toLocaleString()}<small> / {c.achTotal.toLocaleString()}</small></b><span>Achievements</span></div>
-                            <div><b className="text-[#e5b143]">{c.done}<small> / {c.tracked}</small></b><span>Completed</span></div>
-                            <div><b style={{ color: c.pct > 0 ? '#e5b143' : '#546270' }}>{pctLabel(c.pct)}</b><span>Complete</span></div>
-                        </div>
-                    </div>
-                </div>
+                <SheetHead dragRef={dragRef}
+                    art={art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`${c.cover?.p === 'ra' && !c.cover?.wide ? 'px' : ''} ${art.src === c.cover?.icon ? 'art-icon' : ''} ${art.loaded ? 'loaded' : ''}`} /></div>}
+                    cover={<Cover g={c.cover} cls={c.cover?.p === 'steam' ? 'relative w-32 h-16 rounded-[2px] border border-[#101214] object-cover shrink-0 shadow-[0_6px_18px_rgba(0,0,0,0.55)]' : 'relative w-16 h-16 rounded-[3px] border-2 border-white/20 object-cover shrink-0 shadow-[0_6px_18px_rgba(0,0,0,0.55)]'} />}
+                    title={c.name}
+                    meta={[<span className="inline-flex items-center gap-1 text-[#66c0f4]"><Layers size={11} />{c.total} games</span>, <PlatformSplit items={c.byPlatform} />]}
+                    tags={seriesTags({ done: c.done, doneLabel: 'Completed', beaten: c.beaten, started: c.started })}
+                    stats={[
+                        { value: c.achEarned.toLocaleString(), total: c.achTotal.toLocaleString(), label: 'Achievements', color: '#66c0f4' },
+                        c.minutes > 0 && { value: fmtMin(c.minutes), label: 'Played', color: '#66c0f4' },
+                    ].filter(Boolean)}
+                    bar={c.achTotal > 0 ? { pct: c.pct, color: c.pct >= 100 ? '#e5b143' : '#66c0f4' } : null}
+                    games={{ icon: <Layers size={11} />, items: c.games.map(x => ({ state: !x.hasAch ? 'noach' : x.done ? 'done' : x.beatenOnly ? 'beaten' : x.started ? 'started' : 'none', pct: x.total ? (x.unlocked / x.total) * 100 : 0 })) }}
+                />
                 <div className="sheet-scroll overflow-y-auto overscroll-contain flex-1 min-h-0 px-4 pt-3 flex flex-col gap-2 anim-fade">
                     {latest && <div className="ssheet-sec" style={{ '--c': '#e5b143' }}>Latest unlock</div>}
                     {latest && (
