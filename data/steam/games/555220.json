@@ -1,0 +1,158 @@
+{
+    "appId": 555220,
+    "hasAchievements": true,
+    "total": 8,
+    "unlocked": 0,
+    "gameName": "Detention",
+    "achievements": [
+        {
+            "apiName": "ACH_CALL_OUT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "What made you think this would work?",
+            "description": "Dial 119 or 110 with the phone.",
+            "iconUrl": "f1ec6b703713795ef8298ce4c28cc6cbe11a561e.jpg",
+            "iconGrayUrl": "07949d4d77302108037d00eb567465531decbd08.jpg",
+            "hidden": false,
+            "globalPct": 22.8
+        },
+        {
+            "apiName": "ACH_GET_ALL_NOTES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Collector",
+            "description": "Picked up all the notes.",
+            "iconUrl": "e2393e5c5bf195046bb76eaa4204b7f3bf45b7e0.jpg",
+            "iconGrayUrl": "8818c7cc2bc66c64684b0c5746c10febf18fb5d9.jpg",
+            "hidden": false,
+            "globalPct": 19.2
+        },
+        {
+            "apiName": "ACH_OBSERVE_ALL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Outstanding observer",
+            "description": "Find more than 90% of all observation points.",
+            "iconUrl": "c04db1496403b938e6f043861bb7c4b0bef3afe4.jpg",
+            "iconGrayUrl": "0f42904a4ea605909f0873e02e48c207819c5d44.jpg",
+            "hidden": false,
+            "globalPct": 12.1
+        },
+        {
+            "apiName": "ACH_TO_CHAPTER2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Foreign land",
+            "description": "",
+            "iconUrl": "463a070d4fe30ed745fe67c325f00f83db31749e.jpg",
+            "iconGrayUrl": "1a1ed1ac81dec320084f69ae1f13825566eac2e1.jpg",
+            "hidden": true,
+            "globalPct": 61.2
+        },
+        {
+            "apiName": "ACH_CH3_GET_NECKLACE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "More than a teacher",
+            "description": "",
+            "iconUrl": "dd734d6ca96484a04858cdb2824c0ede2ea6c1f2.jpg",
+            "iconGrayUrl": "e85b1f8d1cfccae70aada99f14edea29036969fa.jpg",
+            "hidden": true,
+            "globalPct": 50.4
+        },
+        {
+            "apiName": "ACH_CH4_FIRST_CHANGE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I am who I am",
+            "description": "",
+            "iconUrl": "9c744382cd2f9d3b3676075865e24abd93969df6.jpg",
+            "iconGrayUrl": "8649a55970f33fe65e801bd83d168bb64154d417.jpg",
+            "hidden": true,
+            "globalPct": 50
+        },
+        {
+            "apiName": "ACH_ENDING_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Back to school",
+            "description": "",
+            "iconUrl": "d384c61a1006369526be0604063f01442f98c6d0.jpg",
+            "iconGrayUrl": "f587344b201533bbc45f6e21b8f59342f0944406.jpg",
+            "hidden": true,
+            "globalPct": 29.4
+        },
+        {
+            "apiName": "ACH_ENDING_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Everyone loves you",
+            "description": "",
+            "iconUrl": "9f3a8d9beb204b5d3108e980f436e09ca9144f3c.jpg",
+            "iconGrayUrl": "6e5146778103090ba225a95edc368885808985df.jpg",
+            "hidden": true,
+            "globalPct": 33.5
+        }
+    ],
+    "playtimeForever": 245,
+    "lastPlayedTs": "2024-05-28T14:14:00.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/555220/b10a1243ef3d405cfb0f3b037e3fef9a330b7fe9.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACH_CALL_OUT",
+            "displayName": "What made you think this would work?",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f1ec6b703713795ef8298ce4c28cc6cbe11a561e.jpg",
+            "iconGrayUrl": "07949d4d77302108037d00eb567465531decbd08.jpg",
+            "globalPct": 22.8
+        },
+        {
+            "apiName": "ACH_GET_ALL_NOTES",
+            "displayName": "Collector",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "e2393e5c5bf195046bb76eaa4204b7f3bf45b7e0.jpg",
+            "iconGrayUrl": "8818c7cc2bc66c64684b0c5746c10febf18fb5d9.jpg",
+            "globalPct": 19.2
+        },
+        {
+            "apiName": "ACH_OBSERVE_ALL",
+            "displayName": "Outstanding observer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c04db1496403b938e6f043861bb7c4b0bef3afe4.jpg",
+            "iconGrayUrl": "0f42904a4ea605909f0873e02e48c207819c5d44.jpg",
+            "globalPct": 12.1
+        },
+        {
+            "apiName": "ACH_TO_CHAPTER2",
+            "displayName": "Foreign land",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "463a070d4fe30ed745fe67c325f00f83db31749e.jpg",
+            "iconGrayUrl": "1a1ed1ac81dec320084f69ae1f13825566eac2e1.jpg",
+            "globalPct": 61.2
+        },
+        {
+            "apiName": "ACH_CH3_GET_NECKLACE",
+            "displayName": "More than a teacher",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "dd734d6ca96484a04858cdb2824c0ede2ea6c1f2.jpg",
+            "iconGrayUrl": "e85b1f8d1cfccae70aada99f14edea29036969fa.jpg",
+            "globalPct": 50.4
+        },
+        {
+            "apiName": "ACH_CH4_FIRST_CHANGE",
+            "displayName": "I am who I am",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9c744382cd2f9d3b3676075865e24abd93969df6.jpg",
+            "iconGrayUrl": "8649a55970f33fe65e801bd83d168bb64154d417.jpg",
+            "globalPct": 50
+        }
+    ]
+}

@@ -1,0 +1,246 @@
+{
+    "appId": 234160,
+    "hasAchievements": true,
+    "total": 16,
+    "unlocked": 0,
+    "gameName": "Strike Suit Infinity",
+    "achievements": [
+        {
+            "apiName": "ELITE_PILOTS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "ELITE PILOTS",
+            "description": "Max out pilot upgrades",
+            "iconUrl": "ea3748622b940fa638d0644e0957fc3927a6161b.jpg",
+            "iconGrayUrl": "d1d1028b9f01636ac0ac866453595d5898814e65.jpg",
+            "hidden": false,
+            "globalPct": 5.1
+        },
+        {
+            "apiName": "FLIGHT_LEADER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "FLIGHT LEADER",
+            "description": "Max out all fighter craft for a round",
+            "iconUrl": "f89e4355f13e0fab85a3fbfc7d6b143cf59f7307.jpg",
+            "iconGrayUrl": "4839eab2d4c92c6ef0b8dc673bed58c47962f301.jpg",
+            "hidden": false,
+            "globalPct": 5
+        },
+        {
+            "apiName": "ADMIRAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "ADMIRAL",
+            "description": "Max out all reinforcement options",
+            "iconUrl": "4a7f925f0a9663af2c28dfb6090b8fe94b62a253.jpg",
+            "iconGrayUrl": "c30953e231b935489cf51ce209560dbebd1fb909.jpg",
+            "hidden": false,
+            "globalPct": 2.3
+        },
+        {
+            "apiName": "CIRCUS_TRICKS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "CIRCUS TRICKS",
+            "description": "Destroy 7 enemies with the Strike Suits circus missiles in one barrage!",
+            "iconUrl": "4f72af5a6d015a5d4883173eb7567c16a5dcef83.jpg",
+            "iconGrayUrl": "8b53f4d35211ddfec6ddb67b5189bde6ffbcc8b5.jpg",
+            "hidden": false,
+            "globalPct": 14.9
+        },
+        {
+            "apiName": "PACIFIST",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "PACIFIST",
+            "description": " Complete an entire round without shooting",
+            "iconUrl": "c85e51781a670aaa7569b5c7cc2ec7a277ce1aed.jpg",
+            "iconGrayUrl": "800e4c2a92089e98889885eb3ae73b9aa1ea81f0.jpg",
+            "hidden": false,
+            "globalPct": 2
+        },
+        {
+            "apiName": "GOING_SOLO",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "GOING SOLO",
+            "description": "Fly alone for 4 rounds",
+            "iconUrl": "0c39ddd6e6d8654d37066549dd91895fe6466b83.jpg",
+            "iconGrayUrl": "436a250445c0b6c3b6e7a8b3b38093b7c0c132f0.jpg",
+            "hidden": false,
+            "globalPct": 4.3
+        },
+        {
+            "apiName": "PRIVATEER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "PRIVATEER",
+            "description": "Don’t let any shuttles escape for 5 rounds ",
+            "iconUrl": "c126871ea5ee332fc1219a9bc45d8c89b2b55e0e.jpg",
+            "iconGrayUrl": "8d5c1cf9f5cbe7b6b40a2a4709a57542ac4eedba.jpg",
+            "hidden": false,
+            "globalPct": 9.6
+        },
+        {
+            "apiName": "MONOPOLY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "MONOPOLY",
+            "description": "Have 50,000 or more reinforcement credits in the bank ",
+            "iconUrl": "04cd7b1775fa72a119f31e9fcd74e2c4abe56a1d.jpg",
+            "iconGrayUrl": "9e8705701ed635eadb06abfff17c08b2bbab6fde.jpg",
+            "hidden": false,
+            "globalPct": 4.7
+        },
+        {
+            "apiName": "INFINITE_ARSENAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "INFINITE ARSENAL",
+            "description": "Unlock every single weapon, missile and player upgrade",
+            "iconUrl": "72c318e374b60ea8638aa5a29386dfd913bbbd50.jpg",
+            "iconGrayUrl": "a92db38ef215aa25b0ef209422bd0ddbcd3098cb.jpg",
+            "hidden": false,
+            "globalPct": 4.6
+        },
+        {
+            "apiName": "GO_FORTH_AND_MULTIPLY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "GO FORTH AND MULTIPLY",
+            "description": "Achieve a multiplier of x9",
+            "iconUrl": "6cf16edb015b89828bf2061490b568a087fb5ba2.jpg",
+            "iconGrayUrl": "09fb6bc375a81781df38ffc77ab87e95c692be93.jpg",
+            "hidden": false,
+            "globalPct": 20
+        },
+        {
+            "apiName": "GOING_SOMEWHERE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "GOING SOMEWHERE?",
+            "description": "Don’t let any capital ships escape for 10 rounds",
+            "iconUrl": "9f25af73b9e2acad7da4b0587f0ee1efda11f9de.jpg",
+            "iconGrayUrl": "e6f678d32f45a70c6312029a6d9ce378086edea5.jpg",
+            "hidden": false,
+            "globalPct": 8.5
+        },
+        {
+            "apiName": "TOP_GUN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "SUIT FREE ZONE",
+            "description": "Complete 3 rounds in a row without switching into Strike mode",
+            "iconUrl": "5f083eae5b8b2502e1bd816264afed6e41924f3c.jpg",
+            "iconGrayUrl": "8f65433e03cbea0baf50040c1c90bb59daf30963.jpg",
+            "hidden": false,
+            "globalPct": 2.4
+        },
+        {
+            "apiName": "KILL_SHUTTLE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "SHUTTLE CROCK",
+            "description": "Destroy a shuttle",
+            "iconUrl": "da5dea3085a22d9f97b49d448e30210ac4e1d94e.jpg",
+            "iconGrayUrl": "d9dcae9e10bc012bd244cda3f251847c70ca5e67.jpg",
+            "hidden": false,
+            "globalPct": 26.4
+        },
+        {
+            "apiName": "KILL_CRUISER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "BATTLESHIP DOWN",
+            "description": "Destroy a cruiser",
+            "iconUrl": "74306eebe330c6273917700cab949e1bbfef49b2.jpg",
+            "iconGrayUrl": "9ff1b9f0786cf1267c0fac15af5120a35c9175d8.jpg",
+            "hidden": false,
+            "globalPct": 8.9
+        },
+        {
+            "apiName": "KILL_CARRIER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "KILL A WHALE",
+            "description": "Destroy a carrier",
+            "iconUrl": "5b1425fcbc6741091631bccc6350bf6ea69f4d63.jpg",
+            "iconGrayUrl": "24e41786a7a8a05aeb3404c1919f28df544a2098.jpg",
+            "hidden": false,
+            "globalPct": 5.7
+        },
+        {
+            "apiName": "KILL_FRIGATE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "FRAG A FRIGATE",
+            "description": "Destroy a frigate",
+            "iconUrl": "dafa1f693ab777af69126d319717c8ddf420bf6d.jpg",
+            "iconGrayUrl": "a5742cbe556c4b68536ed9f4c8fbf806e2fa8413.jpg",
+            "hidden": false,
+            "globalPct": 23.6
+        }
+    ],
+    "playtimeForever": 230,
+    "lastPlayedTs": "2024-07-01T15:59:59.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/234160/85857cf90b843259e1e7b91e3b6830071f1f0fa6.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ELITE_PILOTS",
+            "displayName": "ELITE PILOTS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "ea3748622b940fa638d0644e0957fc3927a6161b.jpg",
+            "iconGrayUrl": "d1d1028b9f01636ac0ac866453595d5898814e65.jpg",
+            "globalPct": 5.1
+        },
+        {
+            "apiName": "FLIGHT_LEADER",
+            "displayName": "FLIGHT LEADER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f89e4355f13e0fab85a3fbfc7d6b143cf59f7307.jpg",
+            "iconGrayUrl": "4839eab2d4c92c6ef0b8dc673bed58c47962f301.jpg",
+            "globalPct": 5
+        },
+        {
+            "apiName": "ADMIRAL",
+            "displayName": "ADMIRAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "4a7f925f0a9663af2c28dfb6090b8fe94b62a253.jpg",
+            "iconGrayUrl": "c30953e231b935489cf51ce209560dbebd1fb909.jpg",
+            "globalPct": 2.3
+        },
+        {
+            "apiName": "CIRCUS_TRICKS",
+            "displayName": "CIRCUS TRICKS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "4f72af5a6d015a5d4883173eb7567c16a5dcef83.jpg",
+            "iconGrayUrl": "8b53f4d35211ddfec6ddb67b5189bde6ffbcc8b5.jpg",
+            "globalPct": 14.9
+        },
+        {
+            "apiName": "PACIFIST",
+            "displayName": "PACIFIST",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c85e51781a670aaa7569b5c7cc2ec7a277ce1aed.jpg",
+            "iconGrayUrl": "800e4c2a92089e98889885eb3ae73b9aa1ea81f0.jpg",
+            "globalPct": 2
+        },
+        {
+            "apiName": "GOING_SOLO",
+            "displayName": "GOING SOLO",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "0c39ddd6e6d8654d37066549dd91895fe6466b83.jpg",
+            "iconGrayUrl": "436a250445c0b6c3b6e7a8b3b38093b7c0c132f0.jpg",
+            "globalPct": 4.3
+        }
+    ]
+}

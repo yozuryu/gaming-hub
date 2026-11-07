@@ -1,0 +1,290 @@
+{
+    "appId": 294750,
+    "hasAchievements": true,
+    "total": 20,
+    "unlocked": 0,
+    "gameName": "Anomaly Defenders",
+    "achievements": [
+        {
+            "apiName": "BUILD_20_BLASTERS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Master of Puppets",
+            "description": "Build 20 Blasters in one mission",
+            "iconUrl": "9b138ed0952e1c8e0d216440351394cabcc85b6e.jpg",
+            "iconGrayUrl": "9e885217dec0f056ee800b74fef03e603cac8b34.jpg",
+            "hidden": false,
+            "globalPct": 16.6
+        },
+        {
+            "apiName": "BUILD_10_SCORCHERS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fire Walk with Me",
+            "description": "Build 10 Scorchers in one mission",
+            "iconUrl": "5601d2660b50f8a9815e75cf9f18fe5214065b43.jpg",
+            "iconGrayUrl": "31d5291bb87fa8dff15dcaf751840b8731882c26.jpg",
+            "hidden": false,
+            "globalPct": 5.6
+        },
+        {
+            "apiName": "BUILD_10_STORMERS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Storm Bringer",
+            "description": "Build 10 Stormers in one mission.",
+            "iconUrl": "fbe0c1d928b05c5413a41b69609c80a925e414d0.jpg",
+            "iconGrayUrl": "336ec884ba5681cd6fa8d4f23297564526c08e46.jpg",
+            "hidden": false,
+            "globalPct": 7.6
+        },
+        {
+            "apiName": "TECH_ENERGYMANAGEMENT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pure Energy Life Form",
+            "description": "Acquire technology of Energy Management 3",
+            "iconUrl": "85ac8ef1965edea18b44aa07fe6252930fcf4e83.jpg",
+            "iconGrayUrl": "84b7ebe92366b174ad991f21cd5deda923086265.jpg",
+            "hidden": false,
+            "globalPct": 9.4
+        },
+        {
+            "apiName": "TECH_ENFORCERS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sniper Wannabe",
+            "description": "Acquire technology of Enforcers Top Level Upgrade",
+            "iconUrl": "87912bc3c8a3cc218ab43ec01bfd2ea4c37896b2.jpg",
+            "iconGrayUrl": "3c891c01f1546db685200925de10669e3f23cfd2.jpg",
+            "hidden": false,
+            "globalPct": 11.1
+        },
+        {
+            "apiName": "TECH_HARVESTERS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Inhuman Miner",
+            "description": "Acquire technology of Harvesters Top Level Upgrade",
+            "iconUrl": "3512b59d5ea878cd371771da283f8fa7ea0d6e9b.jpg",
+            "iconGrayUrl": "6dd802ad3cb3e8cfd0b4c54016ab5dab7085feb0.jpg",
+            "hidden": false,
+            "globalPct": 9.1
+        },
+        {
+            "apiName": "TECH_RAGE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Natural Born Berserker",
+            "description": "Acquire technology of Rage 3rd Level",
+            "iconUrl": "e9e8f0edeb17306eb8c95221562eea1af0c1f0ea.jpg",
+            "iconGrayUrl": "073f5ffd73c63cc37c4ee34787e72167a6cc5b54.jpg",
+            "hidden": false,
+            "globalPct": 6.7
+        },
+        {
+            "apiName": "FUNC_RAGE_BEHEMOTH_30",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Alien of Prey",
+            "description": "Use Rage function on Behemoth 30 times",
+            "iconUrl": "c7b90d8b2dcec5d5d86d642d1fa933fe04cc314f.jpg",
+            "iconGrayUrl": "62aa5d59efaf015ca284e9864a15bb6313e0640b.jpg",
+            "hidden": false,
+            "globalPct": 7
+        },
+        {
+            "apiName": "FUNC_EXPLODE_BLASTER_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pyromaly Anomaniac",
+            "description": "Use Explode function on Blaster 10 times",
+            "iconUrl": "5420d645b679156e01af96d6827619e24026a321.jpg",
+            "iconGrayUrl": "4b060695e335417454d40f25b3553e6fedfbc4bb.jpg",
+            "hidden": false,
+            "globalPct": 4.9
+        },
+        {
+            "apiName": "FUNC_SNIPER_SRORCHER_20",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Extraterrestrial Camper",
+            "description": "Use Sniper function on Scorcher 20 times",
+            "iconUrl": "aa7b52fd7043c862a7e8b2a703355b18611c7509.jpg",
+            "iconGrayUrl": "c76c3a13d26f0db6f17abc20943b588b3190ef08.jpg",
+            "hidden": false,
+            "globalPct": 5.1
+        },
+        {
+            "apiName": "NO_TOWER_LOST_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Anomanager",
+            "description": "Do not lose any tower in 2 consecutive missions",
+            "iconUrl": "cafcfad3c1fa8016d0e61a4e5d5a2dfe7834a78b.jpg",
+            "iconGrayUrl": "0d3890f0ce9bc47bbec624a666a47b5f59a0511c.jpg",
+            "hidden": false,
+            "globalPct": 23.5
+        },
+        {
+            "apiName": "NO_TOWER_LOST_6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Lucky Alien",
+            "description": "Do not lose any tower in 6 consecutive missions",
+            "iconUrl": "4ea28f13dcaf5c6ab83a8f93919664074208d305.jpg",
+            "iconGrayUrl": "71afe64b7a0d05bfe1e61b033e2d120ce0845e21.jpg",
+            "hidden": false,
+            "globalPct": 7.9
+        },
+        {
+            "apiName": "NO_TOWER_LOST_12",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Serious Commander",
+            "description": "Do not lose any tower in 12 consecutive missions",
+            "iconUrl": "4a4d9e12f9f31742d797f048fb9aa0fe2bc0baed.jpg",
+            "iconGrayUrl": "afbbfb45c0ba2877f83982fd54b3af77e0dff2f8.jpg",
+            "hidden": false,
+            "globalPct": 4.9
+        },
+        {
+            "apiName": "MISSIONS_5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Defender of the Vacuum",
+            "description": "Accomplish 5 missions",
+            "iconUrl": "dfbc828abf2372bf8feb99af64f4915461c81b23.jpg",
+            "iconGrayUrl": "c04ac9fe45d86a09c5076ee40f0fb31d2e044fd8.jpg",
+            "hidden": false,
+            "globalPct": 21.1
+        },
+        {
+            "apiName": "MISSIONS_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Defender of the Rock",
+            "description": "Accomplish 10 missions",
+            "iconUrl": "9d0e0d8b689c852736eb89eaa92e7f7aa4939ae2.jpg",
+            "iconGrayUrl": "cfca2f39bca2d82a7bc1aeda025278a5ffbe2d59.jpg",
+            "hidden": false,
+            "globalPct": 13.6
+        },
+        {
+            "apiName": "MISSIONS_15",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Defender of the Steel",
+            "description": "Accomplish 15 missions",
+            "iconUrl": "9fec338eb8070ef6d8a4e221acf8e216a11fc372.jpg",
+            "iconGrayUrl": "b9f9463e1fba26e4d98a6848858b8044d536b592.jpg",
+            "hidden": false,
+            "globalPct": 10.4
+        },
+        {
+            "apiName": "MISSIONS_ALL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Anomaly Defender",
+            "description": "Accomplish all missions",
+            "iconUrl": "0edbe4216dcaf8de73c3357f1580329d9e4d06fe.jpg",
+            "iconGrayUrl": "1929d35c1ec5bfb94a1348334e70b18784acabd1.jpg",
+            "hidden": false,
+            "globalPct": 7.3
+        },
+        {
+            "apiName": "MISSIONS_ALL_HARD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Tower Master",
+            "description": "Accomplish all missions in hard diffuculty setting",
+            "iconUrl": "4308ec0cb148db7a7c1392aeb1bb555a8a116f98.jpg",
+            "iconGrayUrl": "24f27edd8aa0678b41e2a29e39eaa97ac9e7b1fc.jpg",
+            "hidden": false,
+            "globalPct": 4.4
+        },
+        {
+            "apiName": "TECH_POINTS_ALL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Technology Freak",
+            "description": "Earn 225 Technology Points",
+            "iconUrl": "1cfbed981c98cf7db27b76f50b792c2b7bc85db7.jpg",
+            "iconGrayUrl": "d187ff529deb51ddfcf78dc1b0939f42648a3c65.jpg",
+            "hidden": false,
+            "globalPct": 4.3
+        },
+        {
+            "apiName": "MISSIONS_ALL_EACH_DIFFICULTY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Alien Nolife Form",
+            "description": "Accomplish all missions in all difficulty settings",
+            "iconUrl": "95efe08681adcac491ec6cb3297e7c3434bc805f.jpg",
+            "iconGrayUrl": "c9617dd868f28571f88a5b7958355edc01c96839.jpg",
+            "hidden": false,
+            "globalPct": 4.1
+        }
+    ],
+    "playtimeForever": 228,
+    "lastPlayedTs": "2024-05-18T19:08:38.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/294750/f732fdbf2db714e12846b635cabbb32e953684a9.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "BUILD_20_BLASTERS",
+            "displayName": "Master of Puppets",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9b138ed0952e1c8e0d216440351394cabcc85b6e.jpg",
+            "iconGrayUrl": "9e885217dec0f056ee800b74fef03e603cac8b34.jpg",
+            "globalPct": 16.6
+        },
+        {
+            "apiName": "BUILD_10_SCORCHERS",
+            "displayName": "Fire Walk with Me",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "5601d2660b50f8a9815e75cf9f18fe5214065b43.jpg",
+            "iconGrayUrl": "31d5291bb87fa8dff15dcaf751840b8731882c26.jpg",
+            "globalPct": 5.6
+        },
+        {
+            "apiName": "BUILD_10_STORMERS",
+            "displayName": "Storm Bringer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "fbe0c1d928b05c5413a41b69609c80a925e414d0.jpg",
+            "iconGrayUrl": "336ec884ba5681cd6fa8d4f23297564526c08e46.jpg",
+            "globalPct": 7.6
+        },
+        {
+            "apiName": "TECH_ENERGYMANAGEMENT",
+            "displayName": "Pure Energy Life Form",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "85ac8ef1965edea18b44aa07fe6252930fcf4e83.jpg",
+            "iconGrayUrl": "84b7ebe92366b174ad991f21cd5deda923086265.jpg",
+            "globalPct": 9.4
+        },
+        {
+            "apiName": "TECH_ENFORCERS",
+            "displayName": "Sniper Wannabe",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "87912bc3c8a3cc218ab43ec01bfd2ea4c37896b2.jpg",
+            "iconGrayUrl": "3c891c01f1546db685200925de10669e3f23cfd2.jpg",
+            "globalPct": 11.1
+        },
+        {
+            "apiName": "TECH_HARVESTERS",
+            "displayName": "Inhuman Miner",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "3512b59d5ea878cd371771da283f8fa7ea0d6e9b.jpg",
+            "iconGrayUrl": "6dd802ad3cb3e8cfd0b4c54016ab5dab7085feb0.jpg",
+            "globalPct": 9.1
+        }
+    ]
+}

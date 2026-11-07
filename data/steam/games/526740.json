@@ -1,0 +1,116 @@
+{
+    "appId": 526740,
+    "hasAchievements": true,
+    "total": 5,
+    "unlocked": 0,
+    "gameName": "hack_me",
+    "achievements": [
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_0",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hello World!",
+            "description": "Enter your PC",
+            "iconUrl": "e99663699c6c9ce72663508d2f01289f3091c0ae.jpg",
+            "iconGrayUrl": "e99663699c6c9ce72663508d2f01289f3091c0ae.jpg",
+            "hidden": false,
+            "globalPct": 26.4
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pro gamer",
+            "description": "Win a mini game",
+            "iconUrl": "96f8c1662d75373790bd4a0cceba7500f8cf3972.jpg",
+            "iconGrayUrl": "96f8c1662d75373790bd4a0cceba7500f8cf3972.jpg",
+            "hidden": false,
+            "globalPct": 10.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Money is a lie",
+            "description": "Complete 1st chapter",
+            "iconUrl": "4eada66fbc6a6b6df62aa9bb3608463b9d659fe6.jpg",
+            "iconGrayUrl": "4eada66fbc6a6b6df62aa9bb3608463b9d659fe6.jpg",
+            "hidden": false,
+            "globalPct": 13.8
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "One million",
+            "description": "Complete 2nd chapter",
+            "iconUrl": "0e195b68a29323415971fc87abacd2fac23dc0bb.jpg",
+            "iconGrayUrl": "0e195b68a29323415971fc87abacd2fac23dc0bb.jpg",
+            "hidden": false,
+            "globalPct": 9.7
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "GN Dalve",
+            "description": "Complete 3rd chapter",
+            "iconUrl": "604349191919fac41d5297b4c9bd2fc200bdff2a.jpg",
+            "iconGrayUrl": "604349191919fac41d5297b4c9bd2fc200bdff2a.jpg",
+            "hidden": false,
+            "globalPct": 8.9
+        }
+    ],
+    "playtimeForever": 259,
+    "lastPlayedTs": "2024-06-26T05:44:10.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/526740/a95a2d4072c78db326a77695eee618952ab4cc5d.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_0",
+            "displayName": "Hello World!",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "e99663699c6c9ce72663508d2f01289f3091c0ae.jpg",
+            "iconGrayUrl": "e99663699c6c9ce72663508d2f01289f3091c0ae.jpg",
+            "globalPct": 26.4
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_1",
+            "displayName": "Pro gamer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "96f8c1662d75373790bd4a0cceba7500f8cf3972.jpg",
+            "iconGrayUrl": "96f8c1662d75373790bd4a0cceba7500f8cf3972.jpg",
+            "globalPct": 10.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_2",
+            "displayName": "Money is a lie",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "4eada66fbc6a6b6df62aa9bb3608463b9d659fe6.jpg",
+            "iconGrayUrl": "4eada66fbc6a6b6df62aa9bb3608463b9d659fe6.jpg",
+            "globalPct": 13.8
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_3",
+            "displayName": "One million",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "0e195b68a29323415971fc87abacd2fac23dc0bb.jpg",
+            "iconGrayUrl": "0e195b68a29323415971fc87abacd2fac23dc0bb.jpg",
+            "globalPct": 9.7
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_4",
+            "displayName": "GN Dalve",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "604349191919fac41d5297b4c9bd2fc200bdff2a.jpg",
+            "iconGrayUrl": "604349191919fac41d5297b4c9bd2fc200bdff2a.jpg",
+            "globalPct": 8.9
+        }
+    ]
+}

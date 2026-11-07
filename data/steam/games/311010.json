@@ -1,0 +1,389 @@
+{
+    "appId": 311010,
+    "hasAchievements": true,
+    "total": 29,
+    "unlocked": 0,
+    "gameName": "The Way",
+    "achievements": [
+        {
+            "apiName": "STORY_1_FIRST_STEP",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "First Step",
+            "description": "Set your plan in motion",
+            "iconUrl": "d8306e24a103ec8c92b40a05e9e36e29b4a6c345.jpg",
+            "iconGrayUrl": "a62b2d03076960a6b9daf537be35441b5d6e34fd.jpg",
+            "hidden": false,
+            "globalPct": 57.8
+        },
+        {
+            "apiName": "STORY_2_SAY_HELLO_TO_MY_LITTLE_FRIEND",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Say Hello to My Little Friend!",
+            "description": "Get a gun",
+            "iconUrl": "5f427b77a2ec58745cbc04bc1d55af3faf95149c.jpg",
+            "iconGrayUrl": "4fae711da9eb227f1a2735aa7c34a4ecb1bb3f79.jpg",
+            "hidden": false,
+            "globalPct": 35.1
+        },
+        {
+            "apiName": "STORY_3_MAJOR_TOM_TO_GROUND_CONTROL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Major Tom to Ground Control",
+            "description": "Land on an alien planet",
+            "iconUrl": "6fc0eeb29fd79f7c211316206565cdea08284ace.jpg",
+            "iconGrayUrl": "89313cc8f661f2bfcbf0cb2b7d2080a98d4f38fb.jpg",
+            "hidden": false,
+            "globalPct": 32.3
+        },
+        {
+            "apiName": "STORY_4_THE_BIG_NOPE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Big Nope",
+            "description": "Kill the nope",
+            "iconUrl": "82c4f1e816725edc8123c44e3a55fe80eb44741e.jpg",
+            "iconGrayUrl": "d84e264f728dcd9f0412473142266708fd2f5453.jpg",
+            "hidden": false,
+            "globalPct": 26.4
+        },
+        {
+            "apiName": "STORY_5_FASTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Do it FASTER",
+            "description": "Unlock teleportation mode",
+            "iconUrl": "badaf78840e96eeab578a13994f33932c407886b.jpg",
+            "iconGrayUrl": "283d22b517391c47bfdcce8d1a1a02b8a7a6236a.jpg",
+            "hidden": false,
+            "globalPct": 19.8
+        },
+        {
+            "apiName": "STORY_6_STRONGER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Makes us STRONGER",
+            "description": "Unlock telekinesis mode",
+            "iconUrl": "5991c6cdba3ebf08d905b76f47dbc7ae9ed526b5.jpg",
+            "iconGrayUrl": "4d8f1ed7311f387a01e49f7f4fe9044362526ed0.jpg",
+            "hidden": false,
+            "globalPct": 21.9
+        },
+        {
+            "apiName": "STORY_7_HARDER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Work it HARDER",
+            "description": "Unlock shield mode",
+            "iconUrl": "a0fd3d1cbb31460196d296b4d2db00553592cf67.jpg",
+            "iconGrayUrl": "fe7759daab732893b8404aaff7835a1a667ebd77.jpg",
+            "hidden": false,
+            "globalPct": 22.1
+        },
+        {
+            "apiName": "STORY_8_WANTED_DEAD_OR_ALIVE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Wanted: Dead or Alive",
+            "description": "He's after you!",
+            "iconUrl": "2ef84d91c72c80727a89d6d8181690db581dd6b3.jpg",
+            "iconGrayUrl": "b3bae344611aa5649c21b43b983aee369a4a2991.jpg",
+            "hidden": false,
+            "globalPct": 19.1
+        },
+        {
+            "apiName": "STORY_9_NEEDLE_IN_A_HAYSTACK",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Needle in a Haystack",
+            "description": "Find the place mentioned by an alien map",
+            "iconUrl": "633d12f5e36e368b798881959024542e58c77d37.jpg",
+            "iconGrayUrl": "69b2f52114fc3c7b50bdd0995c624e71ddcfd218.jpg",
+            "hidden": false,
+            "globalPct": 17.3
+        },
+        {
+            "apiName": "STORY_10_LIQUID_LIFE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Liquid Life",
+            "description": "Bring a gift of water to locals",
+            "iconUrl": "4c0948d0f10bee72e002a1e67e137f22e694d7c3.jpg",
+            "iconGrayUrl": "f37c79a310afb2dcfc38762dddc735b0770ac73c.jpg",
+            "hidden": false,
+            "globalPct": 14.2
+        },
+        {
+            "apiName": "STORY_11_I_WANT_TO_BELIVE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I Want to Belive",
+            "description": "Find an alien city",
+            "iconUrl": "26e5af6edf1a32a282ed4cdf306830ef715fc2de.jpg",
+            "iconGrayUrl": "72350d468a9f4380993e7a5ac9ff68ff5ab8cf0f.jpg",
+            "hidden": false,
+            "globalPct": 14.1
+        },
+        {
+            "apiName": "STORY_12_DIGGY_DIGGY_HOLE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Diggy Diggy Hole",
+            "description": "Dig a very long tunnel",
+            "iconUrl": "211e5be7423789f0f4425ece7b65c2f6c4bb50da.jpg",
+            "iconGrayUrl": "ae279d6105898538dd4744bedbcbfc72afa0d9f2.jpg",
+            "hidden": false,
+            "globalPct": 13.8
+        },
+        {
+            "apiName": "STORY_13_PIECE_OF_CAKE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Piece of Cake",
+            "description": "Beat the Boss",
+            "iconUrl": "f69a1f8e97072ea7f3305dd9e75c2f153c53b0be.jpg",
+            "iconGrayUrl": "c21257208a9fbf05252f4aa7afce4a3fad1c66a3.jpg",
+            "hidden": false,
+            "globalPct": 13.2
+        },
+        {
+            "apiName": "STORY_14_EVER_AFTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ever After",
+            "description": "",
+            "iconUrl": "76afe870d7baa6bee62624d6a5e634d517b6ccc4.jpg",
+            "iconGrayUrl": "e16b2448f4c690d2b4f4d72bef3378e15d5d9a20.jpg",
+            "hidden": true,
+            "globalPct": 10.7
+        },
+        {
+            "apiName": "STROY_15_TAKE_ME_WITH_YOU",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Take Me With You!",
+            "description": "",
+            "iconUrl": "61cc4d201f754573a3c8c14531d1b43d534f631d.jpg",
+            "iconGrayUrl": "3f0012d36b85a9a45c2a65a5fbde55231cdae125.jpg",
+            "hidden": true,
+            "globalPct": 11.2
+        },
+        {
+            "apiName": "OPTIONAL_1_REMEMBER_ME",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Remember Me",
+            "description": "Collect all memories",
+            "iconUrl": "9638dc3d3ce6b59dea32c790adff73712d4443ae.jpg",
+            "iconGrayUrl": "fb0a671e22b0521e2c57e0dc327fec57515a84e4.jpg",
+            "hidden": false,
+            "globalPct": 12.1
+        },
+        {
+            "apiName": "OPTIONAL_2_QUICK_WITTED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Quick Witted",
+            "description": "Well...That was fast",
+            "iconUrl": "a32023d6a525d208dd00def579de39bc06d3e197.jpg",
+            "iconGrayUrl": "f47a66094a9da6a986e47dbb9564733cafb9c968.jpg",
+            "hidden": false,
+            "globalPct": 24.2
+        },
+        {
+            "apiName": "OPTIONAL_3_SLOW_THINKER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Slow Thinker",
+            "description": "Take your time and do it right",
+            "iconUrl": "30e2cfbde24bb617eb172348917929225cf39bea.jpg",
+            "iconGrayUrl": "731d498df922d93b12398891308e878db7b97e51.jpg",
+            "hidden": false,
+            "globalPct": 8.8
+        },
+        {
+            "apiName": "OPTIONAL_4_RECKLESS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Reckless",
+            "description": "Yup, keep trying... Maybe you'll get lucky next time",
+            "iconUrl": "c602958c5750db30d9e1308408fbf029ea6a8891.jpg",
+            "iconGrayUrl": "4076ef58c32f3bd0cce232fe29af157f4b8848b7.jpg",
+            "hidden": false,
+            "globalPct": 30
+        },
+        {
+            "apiName": "OPTIONAL_5_BLIND_SPOT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Blind Spot",
+            "description": "Seems those ground drones have a blind spot",
+            "iconUrl": "d519687b9547f5289abe834ebaf3245771c428bc.jpg",
+            "iconGrayUrl": "0ab41fe311cb0eb7afb9cf08566a62422f53eba7.jpg",
+            "hidden": false,
+            "globalPct": 13
+        },
+        {
+            "apiName": "OPTIONAL_6_YOU_CALL_THAT_A_BULLET_HELL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "You Call That a Bullet Hell?",
+            "description": "Beat the Boss...Without dying even once.",
+            "iconUrl": "caa843fe517347f4e5f6d893e3c0feae6ffccfbd.jpg",
+            "iconGrayUrl": "5238855872c9dc1d9e85f2159c49e32a913eee75.jpg",
+            "hidden": false,
+            "globalPct": 7.4
+        },
+        {
+            "apiName": "OPTIONAL_7_IT_NEVER_HIT_THE_GROUND",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "It Never Hit the Ground",
+            "description": "Bounce, bounce, bounce...",
+            "iconUrl": "15578c03a68832daa36ebdce22230fdab98cd843.jpg",
+            "iconGrayUrl": "27dabec2fb9087a7dc84f38c9ab31208dc28d5ca.jpg",
+            "hidden": false,
+            "globalPct": 8.1
+        },
+        {
+            "apiName": "OPTIONAL_8_APPARATE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Apparate!",
+            "description": "Did you just apparate to the same spot? ",
+            "iconUrl": "1b9839ac2f6c1169e5bf595b8883b11751e4659b.jpg",
+            "iconGrayUrl": "b9bed3b8e702dbbe9742962c8f92b0ced3ef48c6.jpg",
+            "hidden": false,
+            "globalPct": 18.4
+        },
+        {
+            "apiName": "OPTIONAL_9_CLOSE_ENOUGH",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Close Enough",
+            "description": "It fits but it doesn't work",
+            "iconUrl": "c8fb3766db16c7714b1c99e9617eb19361374262.jpg",
+            "iconGrayUrl": "868fff9ad8120a13647f192a2ab3a77abd4f0f2e.jpg",
+            "hidden": false,
+            "globalPct": 9
+        },
+        {
+            "apiName": "OPTIONAL_10_PATTERN_WHAT_PATTERN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pattern? What Pattern?",
+            "description": "You can't brute force the steam vents...",
+            "iconUrl": "858b72a52f6ffa51577530ee260b5fde56fcde2a.jpg",
+            "iconGrayUrl": "0571d30343a4b31897ef0bc3856b701dea1c2510.jpg",
+            "hidden": false,
+            "globalPct": 14.6
+        },
+        {
+            "apiName": "OPTIONAL_11_STOP_HITTING_YOURSELF",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stop Hitting Yourself!",
+            "description": "Your head probably hurts like hell...",
+            "iconUrl": "93301eb8b2ab70229d96465e1239a28124ee2d59.jpg",
+            "iconGrayUrl": "44fc24e46f69550a7019b3f009d4387d93f07768.jpg",
+            "hidden": false,
+            "globalPct": 24.8
+        },
+        {
+            "apiName": "OPTIONAL_12_NO_TIME_FOR_THIS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "No Time For This!",
+            "description": "Why climb when you can jump?",
+            "iconUrl": "c760b9a7b6f68e4204bb3ccaa20f39cd044f6df4.jpg",
+            "iconGrayUrl": "c7f103bfd89cd6cd8aaa882bf4d8b42adab9a269.jpg",
+            "hidden": false,
+            "globalPct": 19.5
+        },
+        {
+            "apiName": "OPTIONAL_13_PLAY_IT_SAFE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Play It Safe",
+            "description": "Why jump when you can climb?",
+            "iconUrl": "1db86bd2a4770053928c145d74eac4d07c8912b5.jpg",
+            "iconGrayUrl": "037e80b1108b169e9dba9bb21dc550ff41df1104.jpg",
+            "hidden": false,
+            "globalPct": 46.2
+        },
+        {
+            "apiName": "OPTIONAL_14_I_THOUGHT_IT_WOULD_WORK",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I thought it would work...",
+            "description": "...but the explosion killed me",
+            "iconUrl": "5bfdcce9a0fc91b0747ac86704a820a581de67c4.jpg",
+            "iconGrayUrl": "48d47e97085ddde24854f076f48c83d228bbb7fa.jpg",
+            "hidden": false,
+            "globalPct": 14.3
+        }
+    ],
+    "playtimeForever": 253,
+    "lastPlayedTs": "2024-07-04T00:48:42.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/311010/8b6775c8aacd4d5d2e23353ac109187ffc152149.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "STORY_1_FIRST_STEP",
+            "displayName": "First Step",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d8306e24a103ec8c92b40a05e9e36e29b4a6c345.jpg",
+            "iconGrayUrl": "a62b2d03076960a6b9daf537be35441b5d6e34fd.jpg",
+            "globalPct": 57.8
+        },
+        {
+            "apiName": "STORY_2_SAY_HELLO_TO_MY_LITTLE_FRIEND",
+            "displayName": "Say Hello to My Little Friend!",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "5f427b77a2ec58745cbc04bc1d55af3faf95149c.jpg",
+            "iconGrayUrl": "4fae711da9eb227f1a2735aa7c34a4ecb1bb3f79.jpg",
+            "globalPct": 35.1
+        },
+        {
+            "apiName": "STORY_3_MAJOR_TOM_TO_GROUND_CONTROL",
+            "displayName": "Major Tom to Ground Control",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "6fc0eeb29fd79f7c211316206565cdea08284ace.jpg",
+            "iconGrayUrl": "89313cc8f661f2bfcbf0cb2b7d2080a98d4f38fb.jpg",
+            "globalPct": 32.3
+        },
+        {
+            "apiName": "STORY_4_THE_BIG_NOPE",
+            "displayName": "The Big Nope",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "82c4f1e816725edc8123c44e3a55fe80eb44741e.jpg",
+            "iconGrayUrl": "d84e264f728dcd9f0412473142266708fd2f5453.jpg",
+            "globalPct": 26.4
+        },
+        {
+            "apiName": "STORY_5_FASTER",
+            "displayName": "Do it FASTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "badaf78840e96eeab578a13994f33932c407886b.jpg",
+            "iconGrayUrl": "283d22b517391c47bfdcce8d1a1a02b8a7a6236a.jpg",
+            "globalPct": 19.8
+        },
+        {
+            "apiName": "STORY_6_STRONGER",
+            "displayName": "Makes us STRONGER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "5991c6cdba3ebf08d905b76f47dbc7ae9ed526b5.jpg",
+            "iconGrayUrl": "4d8f1ed7311f387a01e49f7f4fe9044362526ed0.jpg",
+            "globalPct": 21.9
+        }
+    ]
+}

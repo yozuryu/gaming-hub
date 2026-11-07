@@ -1,0 +1,301 @@
+{
+    "appId": 587100,
+    "hasAchievements": true,
+    "total": 21,
+    "unlocked": 0,
+    "gameName": "Ys SEVEN",
+    "achievements": [
+        {
+            "apiName": "Bestiorator",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bestiorator",
+            "description": "Unlock all bestiary entries for all non-boss, non-titano foes.",
+            "iconUrl": "b3e252f5efe5d75aed4faaa55272de4584680d0f.jpg",
+            "iconGrayUrl": "87a717dcf30e117082c467a3a9b58606eebf4e68.jpg",
+            "hidden": false,
+            "globalPct": 19.3
+        },
+        {
+            "apiName": "GetAllPikkard",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pikkard-Upper",
+            "description": "Find all the missing pikkards.",
+            "iconUrl": "f0a65a4dfe4fa6f931548e969167a637bf5765a8.jpg",
+            "iconGrayUrl": "12ed1838cd84fc029732bf1d999ce13079306c69.jpg",
+            "hidden": false,
+            "globalPct": 23.8
+        },
+        {
+            "apiName": "NoTiasShed",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "No Tias Shed",
+            "description": "Escort Tia back to Altago City completely unscathed, and without using any healing items.",
+            "iconUrl": "0e136700ab63df7f2840229b7440e215801d68bd.jpg",
+            "iconGrayUrl": "06e945098ad83485d82c815179bbea319d8959cf.jpg",
+            "hidden": false,
+            "globalPct": 48.2
+        },
+        {
+            "apiName": "DieBreathless",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Breathless and Aghast",
+            "description": "Die by drowning.",
+            "iconUrl": "2a7b4e085e618c579c640bb0e86125e508e3e3c8.jpg",
+            "iconGrayUrl": "f41af304559b5145163af7e3cb9758e1a061d65a.jpg",
+            "hidden": false,
+            "globalPct": 48.1
+        },
+        {
+            "apiName": "DieWalkingDisaster",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Walking Disaster",
+            "description": "Die by walking over thorns.",
+            "iconUrl": "6b288417ee01a203d91e8f94e17d8f516042791e.jpg",
+            "iconGrayUrl": "c1b031fecb95cde2690aeb016190e55fb9096201.jpg",
+            "hidden": false,
+            "globalPct": 33
+        },
+        {
+            "apiName": "GetAllSkill",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stealer of Weapons' Souls",
+            "description": "Learn every skill.",
+            "iconUrl": "a2530c71dcbd3e2cb2a17e362714bb2b0b104b6e.jpg",
+            "iconGrayUrl": "217efdb9e5e57f35ac98af832508e4c2a9da924f.jpg",
+            "hidden": false,
+            "globalPct": 11
+        },
+        {
+            "apiName": "MaxSkillLv",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stroker of Weapons' Souls",
+            "description": "Raise all of any one character's skills to max level.",
+            "iconUrl": "681ac02b88c3bfdcd52f3f657938fb09efac75cc.jpg",
+            "iconGrayUrl": "370a3b571cc55cc698149f9b89f1064f0e92a6bf.jpg",
+            "hidden": false,
+            "globalPct": 6.9
+        },
+        {
+            "apiName": "BigSpender",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Big Spender",
+            "description": "Buy every item from the Zanzibar Firm.",
+            "iconUrl": "36025c8b62cb22dab381f508942fa588d9b04bcd.jpg",
+            "iconGrayUrl": "6ae8cb1814fca0aa8a1222169bdba5a0a6ca2c66.jpg",
+            "hidden": false,
+            "globalPct": 11.9
+        },
+        {
+            "apiName": "LiquefierofGhosts",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Liquefier of Ghosts",
+            "description": "Synthesize each Spirit Elixir at least once.",
+            "iconUrl": "28189154d4909b116b4cccfbb5bff12eea920764.jpg",
+            "iconGrayUrl": "a754e51eb8151186b2ef716dbc32022ae1659f85.jpg",
+            "hidden": false,
+            "globalPct": 17.7
+        },
+        {
+            "apiName": "AllKillTitanos",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sinking of the Titanos",
+            "description": "Defeat all titanos.",
+            "iconUrl": "b75b5ca1497b81b5f4118899e2f1dca2c73a00e1.jpg",
+            "iconGrayUrl": "d3b225826ece5e18ae550a0a7f9957e3d3f7e297.jpg",
+            "hidden": false,
+            "globalPct": 33.9
+        },
+        {
+            "apiName": "CodeGeis",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Code Geis",
+            "description": "Defeat Geis in one-on-one combat.",
+            "iconUrl": "2a18afbd900be4742414c756ad725e1b318ed7ff.jpg",
+            "iconGrayUrl": "3733abf6ea2417699324b23e86e368fb471264cd.jpg",
+            "hidden": false,
+            "globalPct": 47.2
+        },
+        {
+            "apiName": "IWillSurvive",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I Will Survive",
+            "description": "Survive against a beast intended specifically to kill you.",
+            "iconUrl": "ba42daa9526edacf9fa16e3c214ec0fd37f5a441.jpg",
+            "iconGrayUrl": "e77a17ce8afb24948dbed29893494d981657d636.jpg",
+            "hidden": false,
+            "globalPct": 46.8
+        },
+        {
+            "apiName": "Buried",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Buried",
+            "description": "Conquer the Earth Dragon, Rada-Manj.",
+            "iconUrl": "455b65b20f5c04a0c5e7879e140e34799737e91a.jpg",
+            "iconGrayUrl": "065bc5dde8a500575a062e04a2d31760da6fa56b.jpg",
+            "hidden": false,
+            "globalPct": 45.1
+        },
+        {
+            "apiName": "Extinguished",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Extinguished",
+            "description": "Conquer the Flame Dragon, Angue-Barl.",
+            "iconUrl": "e7f6c19fe79bf0b82f5eea64da954e1dc821cee3.jpg",
+            "iconGrayUrl": "c34d481d31a4ec7f18f42c74851eee76cc9bd234.jpg",
+            "hidden": false,
+            "globalPct": 44
+        },
+        {
+            "apiName": "Silenced",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Silenced",
+            "description": "Conquer the Wind Dragon, Mu-Anti.",
+            "iconUrl": "383a5651ebbc9e073a1c002e2bf0083a63849910.jpg",
+            "iconGrayUrl": "7f39fe83c7f23babf6e1a3a64a29dd4efb7fa272.jpg",
+            "hidden": false,
+            "globalPct": 43.5
+        },
+        {
+            "apiName": "Desiccated",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Desiccated",
+            "description": "Conquer the Sea Dragon, O-Balon.",
+            "iconUrl": "76210c7948e2d1557799aae00100cf3138b040f8.jpg",
+            "iconGrayUrl": "2175de7b780cf13f0d69cee4faa1602d1e708d53.jpg",
+            "hidden": false,
+            "globalPct": 42.4
+        },
+        {
+            "apiName": "Eclipsed",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Eclipsed",
+            "description": "Conquer the Moon Dragon, Ze-Kalion.",
+            "iconUrl": "357740f7b6b899f1ba5e7c32de81ce21414bd105.jpg",
+            "iconGrayUrl": "d1a481a096ab8ef797e12658e60739e24fae2965.jpg",
+            "hidden": false,
+            "globalPct": 42.1
+        },
+        {
+            "apiName": "DragonBaller",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dragon Baller",
+            "description": "Synthesize all Dragon Stone weapons.",
+            "iconUrl": "2d48176e316c29c47ce977d2b58d97a32ef9223d.jpg",
+            "iconGrayUrl": "aa2e15a60e642403d50d602447c14a7bfeed75be.jpg",
+            "hidden": false,
+            "globalPct": 17.2
+        },
+        {
+            "apiName": "ClearAnyDifficult",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dragon Warrior's Quest 'Nixed",
+            "description": "Complete the game on any difficulty.",
+            "iconUrl": "e66851ea6ba53dcb1c881e3d70f2dc1291fb3cfb.jpg",
+            "iconGrayUrl": "e8e6aea677151708d38141df748aa6125e590d4a.jpg",
+            "hidden": false,
+            "globalPct": 38.6
+        },
+        {
+            "apiName": "ClearNightmare",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Not Dragon Your Feet",
+            "description": "Complete the game on Nightmare difficulty.",
+            "iconUrl": "630b38fa986b94ed2c0190d987030f928082dd33.jpg",
+            "iconGrayUrl": "2bd1cbbb3fb1a900483bd70b3afc3acf2436d13f.jpg",
+            "hidden": false,
+            "globalPct": 6.8
+        },
+        {
+            "apiName": "UnlockAll",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Taking It All Ta-go",
+            "description": "Obtain all other achievements.",
+            "iconUrl": "0f5b290da22b257711bb36cabc0ecb48f8e6cad3.jpg",
+            "iconGrayUrl": "1d7e46b7ab325b0fa58c04167fc62f7c8d19b1aa.jpg",
+            "hidden": false,
+            "globalPct": 4.4
+        }
+    ],
+    "playtimeForever": 218,
+    "lastPlayedTs": "2025-08-03T13:53:15.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/587100/398ea481ed1ed4fb945c40e909904dc7e3ebbc11.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "Bestiorator",
+            "displayName": "Bestiorator",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "b3e252f5efe5d75aed4faaa55272de4584680d0f.jpg",
+            "iconGrayUrl": "87a717dcf30e117082c467a3a9b58606eebf4e68.jpg",
+            "globalPct": 19.3
+        },
+        {
+            "apiName": "GetAllPikkard",
+            "displayName": "Pikkard-Upper",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f0a65a4dfe4fa6f931548e969167a637bf5765a8.jpg",
+            "iconGrayUrl": "12ed1838cd84fc029732bf1d999ce13079306c69.jpg",
+            "globalPct": 23.8
+        },
+        {
+            "apiName": "NoTiasShed",
+            "displayName": "No Tias Shed",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "0e136700ab63df7f2840229b7440e215801d68bd.jpg",
+            "iconGrayUrl": "06e945098ad83485d82c815179bbea319d8959cf.jpg",
+            "globalPct": 48.2
+        },
+        {
+            "apiName": "DieBreathless",
+            "displayName": "Breathless and Aghast",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "2a7b4e085e618c579c640bb0e86125e508e3e3c8.jpg",
+            "iconGrayUrl": "f41af304559b5145163af7e3cb9758e1a061d65a.jpg",
+            "globalPct": 48.1
+        },
+        {
+            "apiName": "DieWalkingDisaster",
+            "displayName": "Walking Disaster",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "6b288417ee01a203d91e8f94e17d8f516042791e.jpg",
+            "iconGrayUrl": "c1b031fecb95cde2690aeb016190e55fb9096201.jpg",
+            "globalPct": 33
+        },
+        {
+            "apiName": "GetAllSkill",
+            "displayName": "Stealer of Weapons' Souls",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a2530c71dcbd3e2cb2a17e362714bb2b0b104b6e.jpg",
+            "iconGrayUrl": "217efdb9e5e57f35ac98af832508e4c2a9da924f.jpg",
+            "globalPct": 11
+        }
+    ]
+}

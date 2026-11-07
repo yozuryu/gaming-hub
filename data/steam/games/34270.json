@@ -1,0 +1,345 @@
+{
+    "appId": 34270,
+    "hasAchievements": true,
+    "total": 25,
+    "unlocked": 0,
+    "gameName": "SEGA Mega Drive & Genesis Classics",
+    "achievements": [
+        {
+            "apiName": "7¬Achievement¬Columns - High Score 5000 [Easy]",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Five Large",
+            "description": "Columns - Gain a high score of at least 5000 on easy",
+            "iconUrl": "c0d73205b1b5c6ed423c05bce741f666ccab66f9.jpg",
+            "iconGrayUrl": "c8de9505e56ad0b36d42a53b3f179d7c3e3e0c5e.jpg",
+            "hidden": false,
+            "globalPct": 1.7
+        },
+        {
+            "apiName": "39¬Achievement¬Sonic 1 - All Chaos Emeralds",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Commitment",
+            "description": "Sonic The Hedgehog - Collect all 6 Chaos Emeralds",
+            "iconUrl": "922aa77533954e76db8ba6469faed2723aa96617.jpg",
+            "iconGrayUrl": "513073a2d5cde991f86459a20754226f1e0e6a61.jpg",
+            "hidden": false,
+            "globalPct": 1.8
+        },
+        {
+            "apiName": "25¬Achievement¬Golden Axe 3 - Get max magic",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "To the Brim",
+            "description": "Golden Axe 3 - Max out your magic",
+            "iconUrl": "2c42bbf69e09db96eec816778777dd9089b287d3.jpg",
+            "iconGrayUrl": "6fdc451c1e462bb8580a32d3835a37eab2981953.jpg",
+            "hidden": false,
+            "globalPct": 1.5
+        },
+        {
+            "apiName": "51¬Achievement¬Toejam and Earl - Secret Island found",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Relaxin' all cool",
+            "description": "Toejam and Earl - Find the Secret Island",
+            "iconUrl": "fef351ba098f490c63df46810958ac75007d72e6.jpg",
+            "iconGrayUrl": "9c6076e4ad0941f434434b15a0af077513cf8f28.jpg",
+            "hidden": false,
+            "globalPct": 1
+        },
+        {
+            "apiName": "1¬Achievement¬Alien Soldier - Use 4 different weapon modes",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Multitool",
+            "description": "Alien Soldier - Use 4 Different Weapon Modes in one Session",
+            "iconUrl": "bdb2435634acc60c0fdd0314c1675b61a20b4eda.jpg",
+            "iconGrayUrl": "40c5e55537b6d35601962ed0b4abdb56cd5e27aa.jpg",
+            "hidden": false,
+            "globalPct": 1.3
+        },
+        {
+            "apiName": "23¬Achievement¬Golden Axe 1 - Use magic when no enemies are present",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "What are the Buttons?",
+            "description": "Golden Axe - Use Magic When No Enemies are Present",
+            "iconUrl": "45dad2bde4ce693b7afef83922f49eab96c4b9d5.jpg",
+            "iconGrayUrl": "d4ec3cb566ae3b6d208e4280e87a68462dc342c5.jpg",
+            "hidden": false,
+            "globalPct": 5.7
+        },
+        {
+            "apiName": "44¬Achievement¬Space Harrier 2 - Score 5,000,000",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Power Through",
+            "description": "Space Harrier 2 - Reach a Score of 5,000,000",
+            "iconUrl": "30858727b2fa7c838b748274c2b71d5ded14bebe.jpg",
+            "iconGrayUrl": "7d636f4f2b1b30db20e2a41952f95aa76bc54487.jpg",
+            "hidden": false,
+            "globalPct": 1
+        },
+        {
+            "apiName": "51¬Achievement¬Toejam and Earl - Dance the Hula",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Chillin' out Maxin'",
+            "description": "Toejam and Earl - Dance the Hula",
+            "iconUrl": "1f4804738bd06b461032a1c48d6f8049e37854f3.jpg",
+            "iconGrayUrl": "3d93b9fcb5fd53d22157c656b1253779434caec6.jpg",
+            "hidden": false,
+            "globalPct": 1.5
+        },
+        {
+            "apiName": "43¬Achievement¬Sonic Spinball - Collect all 3 Emeralds",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Spin for the Win",
+            "description": "Sonic Spinball - Collect all 3 Chaos Emeralds",
+            "iconUrl": "1bedfb117f4bd2b7ece018c3606bbbfa86b2993a.jpg",
+            "iconGrayUrl": "e029d84790b850acf87458cf30e033385a24332e.jpg",
+            "hidden": false,
+            "globalPct": 1.5
+        },
+        {
+            "apiName": "-1¬Achievement¬Sonic Games - Collect 500 Rings",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "500 Rings to Rule them All",
+            "description": "Sonic Games - Get 500 rings",
+            "iconUrl": "f5c33c64c48e3ddadfc864312efcd5541205a62c.jpg",
+            "iconGrayUrl": "5435e54907ab7c22465ae601426f5340ab06775d.jpg",
+            "hidden": false,
+            "globalPct": 11.6
+        },
+        {
+            "apiName": "24¬Achievement¬Golden Axe 2 - Knock enemies off the environment",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fly you Fools!",
+            "description": "Golden Axe 2- Kill 25 enemies by throwing/knocking them off the environment in a single play through",
+            "iconUrl": "27e84152da8cae4afae6b72e4e844f56c1490c4a.jpg",
+            "iconGrayUrl": "cdbba80bcde4bd94cd9bf6e06c164d7ee42b58de.jpg",
+            "hidden": false,
+            "globalPct": 1.1
+        },
+        {
+            "apiName": "13¬Achievement¬Dynamite Headdy - Defeat the robo-collector",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dance the Robo",
+            "description": "Dynamite Headdy - Defeat the Robo Collector",
+            "iconUrl": "c2be475acfc1aa419325a352bd964d2073cdfc68.jpg",
+            "iconGrayUrl": "747407d73e0c66e891ae8fa60106d46197853151.jpg",
+            "hidden": false,
+            "globalPct": 1.1
+        },
+        {
+            "apiName": "40¬Achievement¬Sonic 2 - Finish Emerald Hills with 5 lives",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Extra Hedgehogs",
+            "description": "Sonic 2 - Finish Emerald Hills with 5 Lives",
+            "iconUrl": "9c3d85af73a64e4bd8daea37cb5cf73ec8ceabeb.jpg",
+            "iconGrayUrl": "29386537b0f5f1a8b55d33c60897a345a90b0dd0.jpg",
+            "hidden": false,
+            "globalPct": 3.1
+        },
+        {
+            "apiName": "36¬Achievement¬Shining Force - Reached Alterone",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Eagle has Landed",
+            "description": "Shining Force - Make it to Alterone",
+            "iconUrl": "a6438ba16816d294fc497869106de710b211e599.jpg",
+            "iconGrayUrl": "df0d3bf53b8db6dc60b7621b4176e421ac2c8450.jpg",
+            "hidden": false,
+            "globalPct": 1.6
+        },
+        {
+            "apiName": "-1¬Achievement¬All Games - 1 Challenge Complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Challenge Accepted",
+            "description": "Complete 1 Challenge",
+            "iconUrl": "d5d28ca8d472fb0cc4e6992fcf7f7ef61bd4cb30.jpg",
+            "iconGrayUrl": "fe465ccf1b483e213ccb2abc9f28f89c7c9ab237.jpg",
+            "hidden": false,
+            "globalPct": 1.7
+        },
+        {
+            "apiName": "-1¬Achievement¬All Games - 10 Challenges Complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Challenge X",
+            "description": "Complete 10 Challenges",
+            "iconUrl": "feacb55a72fa2b82af5faea0f5add235d5ba2620.jpg",
+            "iconGrayUrl": "96fdbf37af10bc817fee9eac3ad4d9737a446f47.jpg",
+            "hidden": false,
+            "globalPct": 1
+        },
+        {
+            "apiName": "38¬Achievement¬Shinobi 3 - Earn a Shinobi bonus",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Keep your powder dry",
+            "description": "Shinobi 3 - Get a Shinobi bonus (complete a level without throwing a shuriken)",
+            "iconUrl": "012ae22aea218e2bc1ea0622740edc9a43283389.jpg",
+            "iconGrayUrl": "cfca0c9baebea1cb9a41947caa352550d057b7d5.jpg",
+            "hidden": false,
+            "globalPct": 1
+        },
+        {
+            "apiName": "45¬Achievement¬Streets of Rage - Get to last boss without using a continue",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sore Knuckles",
+            "description": "Streets of Rage - Get to the final boss without using a continue",
+            "iconUrl": "514e51666331e006d6fdf762ee9e2837aa6f9073.jpg",
+            "iconGrayUrl": "32c9aa8ac2e7e64353a4b0d9c2283fe81e845d10.jpg",
+            "hidden": false,
+            "globalPct": 1.1
+        },
+        {
+            "apiName": "0¬Achievement¬Alex Kidd - Win 50 Games of Rock,Paper,Scissor",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "One in Three",
+            "description": "Alex Kidd - Win 50 Games of Rock, Paper, Scissors",
+            "iconUrl": "efb2533f0e23d4d8a265cc4cef2f2d61dec7505c.jpg",
+            "iconGrayUrl": "5011468e91b34b02884c61fd74b6771862a0f1a3.jpg",
+            "hidden": false,
+            "globalPct": 1
+        },
+        {
+            "apiName": "34¬Achievement¬Shadow Dancer - First 2 acts without magic",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Demonstrate Restraint",
+            "description": "Shadow Dancer - Complete the first two stages without using magic",
+            "iconUrl": "de902c4f1a1a68452ba65d0a661c55c2a9ea4ac2.jpg",
+            "iconGrayUrl": "46d1c63ffc2a494f808f943f203936842a098eb4.jpg",
+            "hidden": false,
+            "globalPct": 1.1
+        },
+        {
+            "apiName": "47¬Achievement¬Streets of Rage 3 - Finish the game",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Good Job",
+            "description": "Streets of Rage 3 - Finish the game on Normal or Hard difficulty",
+            "iconUrl": "80bbb8f14ad666dba03dc922dfe46d1e26482a42.jpg",
+            "iconGrayUrl": "9c7d2b246a44f4d1e320cc0968617a919658ce9a.jpg",
+            "hidden": false,
+            "globalPct": 1
+        },
+        {
+            "apiName": "-1¬Achievement¬Golden Axe Games - Collect magic",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "All the Magics",
+            "description": "Golden Axe Games - Collect 200 magic",
+            "iconUrl": "45dad2bde4ce693b7afef83922f49eab96c4b9d5.jpg",
+            "iconGrayUrl": "d4ec3cb566ae3b6d208e4280e87a68462dc342c5.jpg",
+            "hidden": false,
+            "globalPct": 1
+        },
+        {
+            "apiName": "-1¬Achievement¬All Games - All Challenges Complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Clean Sweep",
+            "description": "All Challenges Complete",
+            "iconUrl": "feacb55a72fa2b82af5faea0f5add235d5ba2620.jpg",
+            "iconGrayUrl": "96fdbf37af10bc817fee9eac3ad4d9737a446f47.jpg",
+            "hidden": false,
+            "globalPct": 0.9
+        },
+        {
+            "apiName": "-1¬Achievement¬All Games - 20 Games Played",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Experiencing History",
+            "description": "Play 20 Games",
+            "iconUrl": "d5d28ca8d472fb0cc4e6992fcf7f7ef61bd4cb30.jpg",
+            "iconGrayUrl": "fe465ccf1b483e213ccb2abc9f28f89c7c9ab237.jpg",
+            "hidden": false,
+            "globalPct": 1.7
+        },
+        {
+            "apiName": "-1¬Achievement¬All Games - 50 Games Played",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "It's a lovely day outside",
+            "description": "Play 50 games",
+            "iconUrl": "d5d28ca8d472fb0cc4e6992fcf7f7ef61bd4cb30.jpg",
+            "iconGrayUrl": "fe465ccf1b483e213ccb2abc9f28f89c7c9ab237.jpg",
+            "hidden": false,
+            "globalPct": 1
+        }
+    ],
+    "playtimeForever": 275,
+    "lastPlayedTs": "2024-06-28T06:48:30.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/34270/2cda9462fbaf9309e5aedce99ad8452adf8a40bd.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "7¬Achievement¬Columns - High Score 5000 [Easy]",
+            "displayName": "Five Large",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c0d73205b1b5c6ed423c05bce741f666ccab66f9.jpg",
+            "iconGrayUrl": "c8de9505e56ad0b36d42a53b3f179d7c3e3e0c5e.jpg",
+            "globalPct": 1.7
+        },
+        {
+            "apiName": "39¬Achievement¬Sonic 1 - All Chaos Emeralds",
+            "displayName": "Commitment",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "922aa77533954e76db8ba6469faed2723aa96617.jpg",
+            "iconGrayUrl": "513073a2d5cde991f86459a20754226f1e0e6a61.jpg",
+            "globalPct": 1.8
+        },
+        {
+            "apiName": "25¬Achievement¬Golden Axe 3 - Get max magic",
+            "displayName": "To the Brim",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "2c42bbf69e09db96eec816778777dd9089b287d3.jpg",
+            "iconGrayUrl": "6fdc451c1e462bb8580a32d3835a37eab2981953.jpg",
+            "globalPct": 1.5
+        },
+        {
+            "apiName": "51¬Achievement¬Toejam and Earl - Secret Island found",
+            "displayName": "Relaxin' all cool",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "fef351ba098f490c63df46810958ac75007d72e6.jpg",
+            "iconGrayUrl": "9c6076e4ad0941f434434b15a0af077513cf8f28.jpg",
+            "globalPct": 1
+        },
+        {
+            "apiName": "1¬Achievement¬Alien Soldier - Use 4 different weapon modes",
+            "displayName": "Multitool",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "bdb2435634acc60c0fdd0314c1675b61a20b4eda.jpg",
+            "iconGrayUrl": "40c5e55537b6d35601962ed0b4abdb56cd5e27aa.jpg",
+            "globalPct": 1.3
+        },
+        {
+            "apiName": "23¬Achievement¬Golden Axe 1 - Use magic when no enemies are present",
+            "displayName": "What are the Buttons?",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "45dad2bde4ce693b7afef83922f49eab96c4b9d5.jpg",
+            "iconGrayUrl": "d4ec3cb566ae3b6d208e4280e87a68462dc342c5.jpg",
+            "globalPct": 5.7
+        }
+    ]
+}

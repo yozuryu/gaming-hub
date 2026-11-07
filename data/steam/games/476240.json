@@ -1,0 +1,290 @@
+{
+    "appId": 476240,
+    "hasAchievements": true,
+    "total": 20,
+    "unlocked": 7,
+    "gameName": "KNIGHTS",
+    "achievements": [
+        {
+            "apiName": "PAWNS",
+            "unlocked": true,
+            "unlockedAt": "2017-08-13T17:59:08.000Z",
+            "displayName": "Pawn and Move",
+            "description": "Clear the PAWN Level Pack",
+            "iconUrl": "d365f1cf0ac6f399b51fcd4678422a3d3a420b04.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "hidden": false,
+            "globalPct": 17.9
+        },
+        {
+            "apiName": "ROOKS",
+            "unlocked": true,
+            "unlockedAt": "2017-08-17T05:32:37.000Z",
+            "displayName": "Rook Odds",
+            "description": "Clear the ROOK Level Pack",
+            "iconUrl": "b49168a8b65d8141a511de9c8831228a17cea702.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "hidden": false,
+            "globalPct": 10.1
+        },
+        {
+            "apiName": "BISHOPS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Two Minor Pieces",
+            "description": "Clear the BISHOP Level Pack",
+            "iconUrl": "1b608cdd9360c137e1020683276af6ec4793ff52.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "hidden": false,
+            "globalPct": 7.6
+        },
+        {
+            "apiName": "QUEENS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Queenside Odds",
+            "description": "Clear the QUEEN Level Pack",
+            "iconUrl": "f27281241b79e39814de133c771738619e57bca6.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "hidden": false,
+            "globalPct": 4.8
+        },
+        {
+            "apiName": "KINGS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Strong King",
+            "description": "Clear the KING Level Pack",
+            "iconUrl": "3dc862d5641b4cda2ae725c67a1a24998e4996b8.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "hidden": false,
+            "globalPct": 4.3
+        },
+        {
+            "apiName": "ALORIL",
+            "unlocked": true,
+            "unlockedAt": "2017-08-13T17:56:00.000Z",
+            "displayName": "Aloril",
+            "description": "Clear a 3x3 Level",
+            "iconUrl": "399fcf46401f4d6980fb4db169a7bc314d843d94.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "hidden": false,
+            "globalPct": 19.6
+        },
+        {
+            "apiName": "KRYUKOV",
+            "unlocked": true,
+            "unlockedAt": "2017-08-13T18:00:19.000Z",
+            "displayName": "Kryukov",
+            "description": "Clear a 4x3 Level",
+            "iconUrl": "a3e469fb426461550c4f3e92fa914d18815ac05a.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "hidden": false,
+            "globalPct": 16.7
+        },
+        {
+            "apiName": "SILVERMAN",
+            "unlocked": true,
+            "unlockedAt": "2017-08-17T05:33:13.000Z",
+            "displayName": "Silverman",
+            "description": "Clear a 4x4 Level",
+            "iconUrl": "95729b3b43412e5dac70952f71233d15d4df4366.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "hidden": false,
+            "globalPct": 10.9
+        },
+        {
+            "apiName": "GLIMNE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Glimne",
+            "description": "Clear a 5x4 Level",
+            "iconUrl": "5eef8ce1cceece17161307522fe11beecc922d79.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "hidden": false,
+            "globalPct": 8.1
+        },
+        {
+            "apiName": "GARDNER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Gardner",
+            "description": "Clear a 5x5 Level",
+            "iconUrl": "b35b8cec89e955338f08ec0e94d368bdf77a50e8.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "hidden": false,
+            "globalPct": 4.9
+        },
+        {
+            "apiName": "MOVE40",
+            "unlocked": true,
+            "unlockedAt": "2017-08-13T17:57:14.000Z",
+            "displayName": "Opening",
+            "description": "Move 40 Pieces",
+            "iconUrl": "5966474da4787e66cd63b738b4baea8c29f2ed25.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "hidden": false,
+            "globalPct": 18.7
+        },
+        {
+            "apiName": "MOVE400",
+            "unlocked": true,
+            "unlockedAt": "2017-08-17T05:28:06.000Z",
+            "displayName": "Middle Game",
+            "description": "Move 400 Pieces",
+            "iconUrl": "a720c35fc429caaa9f55a3d234526d72de8b1064.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "hidden": false,
+            "globalPct": 12.2
+        },
+        {
+            "apiName": "MOVE4000",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "End Game",
+            "description": "Move 4000 Pieces",
+            "iconUrl": "1dcad8b5e93394ceb88c6976433b4c7fc8fb5e4e.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "hidden": false,
+            "globalPct": 4.4
+        },
+        {
+            "apiName": "DAILY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Scholar's Mate",
+            "description": "Unlock Daily Levels",
+            "iconUrl": "9490dc8f2ca7fe5c8e98c6de5e64fd10efaa1049.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "hidden": false,
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "DAILY1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "1. E2-E4, E7-E5",
+            "description": "Clear A Daily Level",
+            "iconUrl": "95c2134a2796950c10b9248a91c1bf9614281cbc.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "hidden": false,
+            "globalPct": 4.4
+        },
+        {
+            "apiName": "DAILY5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "2. D1-H5, B8-C6",
+            "description": "Clear 5 Daily Levels (Total, Does Not Have to Be on the Same Day)",
+            "iconUrl": "df89c44ece981303171e2408c7a995c12a52a6b1.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "hidden": false,
+            "globalPct": 3.9
+        },
+        {
+            "apiName": "DAILY10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "3. F1-C4, G8-F6",
+            "description": "Clear 10 Daily Levels (Total,  Does Not Have to Be on the Same Day)",
+            "iconUrl": "240eac0786ebfa1a36c5b9fee0e766bc9ff4743e.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "hidden": false,
+            "globalPct": 3.8
+        },
+        {
+            "apiName": "DAILY25",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "4. H5-F7#",
+            "description": "Clear 25 Daily Levels (Total,  Does Not Have to Be on the Same Day)",
+            "iconUrl": "b6b7e922e2037cef5ed113eaf5137fa29154c1ac.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "hidden": false,
+            "globalPct": 3.7
+        },
+        {
+            "apiName": "SHAAK",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Shaak Would Be Proud",
+            "description": "Clear Level KING-B1 Without Touching Any Yellow Pieces (For Clarification, the KING Level Pack is the Last One)",
+            "iconUrl": "c4a89e6dba0315428668bde56364093dff9596fd.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "hidden": false,
+            "globalPct": 4.5
+        },
+        {
+            "apiName": "KNIGHTS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "KNIGHTS of the Square Table",
+            "description": "Obtain All Achievements",
+            "iconUrl": "1b93196a1087209953c93194e2201c53da3122dc.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "hidden": false,
+            "globalPct": 3.7
+        }
+    ],
+    "playtimeForever": 46,
+    "lastPlayedTs": "2017-08-18T12:45:33.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/476240/da91cffcc7568a604cc90ffe12d87df98a0da727.jpg",
+    "lastUnlockedAt": "2017-08-17T05:33:13.000Z",
+    "lastUnlockName": "Silverman",
+    "preview": [
+        {
+            "apiName": "SILVERMAN",
+            "displayName": "Silverman",
+            "unlocked": true,
+            "unlockedAt": "2017-08-17T05:33:13.000Z",
+            "iconUrl": "95729b3b43412e5dac70952f71233d15d4df4366.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "globalPct": 10.9
+        },
+        {
+            "apiName": "ROOKS",
+            "displayName": "Rook Odds",
+            "unlocked": true,
+            "unlockedAt": "2017-08-17T05:32:37.000Z",
+            "iconUrl": "b49168a8b65d8141a511de9c8831228a17cea702.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "globalPct": 10.1
+        },
+        {
+            "apiName": "MOVE400",
+            "displayName": "Middle Game",
+            "unlocked": true,
+            "unlockedAt": "2017-08-17T05:28:06.000Z",
+            "iconUrl": "a720c35fc429caaa9f55a3d234526d72de8b1064.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "globalPct": 12.2
+        },
+        {
+            "apiName": "KRYUKOV",
+            "displayName": "Kryukov",
+            "unlocked": true,
+            "unlockedAt": "2017-08-13T18:00:19.000Z",
+            "iconUrl": "a3e469fb426461550c4f3e92fa914d18815ac05a.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "globalPct": 16.7
+        },
+        {
+            "apiName": "PAWNS",
+            "displayName": "Pawn and Move",
+            "unlocked": true,
+            "unlockedAt": "2017-08-13T17:59:08.000Z",
+            "iconUrl": "d365f1cf0ac6f399b51fcd4678422a3d3a420b04.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "globalPct": 17.9
+        },
+        {
+            "apiName": "MOVE40",
+            "displayName": "Opening",
+            "unlocked": true,
+            "unlockedAt": "2017-08-13T17:57:14.000Z",
+            "iconUrl": "5966474da4787e66cd63b738b4baea8c29f2ed25.jpg",
+            "iconGrayUrl": "119f79e5a4d1700c25b6120ee7317c868fd61c21.jpg",
+            "globalPct": 18.7
+        }
+    ]
+}

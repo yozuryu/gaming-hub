@@ -1,0 +1,400 @@
+{
+    "appId": 421120,
+    "hasAchievements": true,
+    "total": 30,
+    "unlocked": 0,
+    "gameName": "Samorost 3",
+    "achievements": [
+        {
+            "apiName": "Kvitky",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Blossoms",
+            "description": "",
+            "iconUrl": "643c00b2bbed755648c6089f9a5a0330ead07845.jpg",
+            "iconGrayUrl": "98adda7abc9fdebd6cd77e656d83ff18cd7dfe12.jpg",
+            "hidden": false,
+            "globalPct": 46.2
+        },
+        {
+            "apiName": "Kudla",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Knife",
+            "description": "",
+            "iconUrl": "9ffdb32ce68d8a9ba698026b91e4c4f970c63117.jpg",
+            "iconGrayUrl": "4b5507103fe890203bc4fc861852df9e39cf04c2.jpg",
+            "hidden": false,
+            "globalPct": 64.7
+        },
+        {
+            "apiName": "Kamzik",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Chamois",
+            "description": "",
+            "iconUrl": "c2caa74ae7a5a8222fbc28299cbd20bd46628d3e.jpg",
+            "iconGrayUrl": "eaa5fa8cfc8d90b88f4d1581daa62cc94ed6f97f.jpg",
+            "hidden": false,
+            "globalPct": 52.8
+        },
+        {
+            "apiName": "Xicht",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Rockheads",
+            "description": "",
+            "iconUrl": "829fb6a767d7db815d5c4ff8744899f0e2d2f0db.jpg",
+            "iconGrayUrl": "9f61ee1ba2c82a34dcce86044b8fce80c5d21f63.jpg",
+            "hidden": false,
+            "globalPct": 27.1
+        },
+        {
+            "apiName": "Pejsek",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dog",
+            "description": "",
+            "iconUrl": "138e61077fad02b590afc0cabb7c58acc13fad38.jpg",
+            "iconGrayUrl": "34eca88628937b13ca50ecac04be547cec332afa.jpg",
+            "hidden": false,
+            "globalPct": 25.6
+        },
+        {
+            "apiName": "Rybka",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Goldfish",
+            "description": "",
+            "iconUrl": "e701175fb3b1813b6f2f372c0cf3c2f875618e04.jpg",
+            "iconGrayUrl": "0b633e718593f3031b3502c848964c7ce351bad5.jpg",
+            "hidden": false,
+            "globalPct": 25.3
+        },
+        {
+            "apiName": "Cervotoc",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Woodworm",
+            "description": "",
+            "iconUrl": "eaf0b1eaf3669f8462beec0e4e40ea96a107d80f.jpg",
+            "iconGrayUrl": "a65a49d3bcb9fcd90258fbd7c0455936e0aacb63.jpg",
+            "hidden": false,
+            "globalPct": 21.4
+        },
+        {
+            "apiName": "Zelvak",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Goldbug",
+            "description": "",
+            "iconUrl": "6ccc7e2573f9a76ec38333445eb52ca0ce6668a5.jpg",
+            "iconGrayUrl": "3749bb6e091706aafe03b113fcc19c55db59bb36.jpg",
+            "hidden": false,
+            "globalPct": 20.2
+        },
+        {
+            "apiName": "Netopyrek",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Liana Bats",
+            "description": "",
+            "iconUrl": "7b0ac4a62d1dfb4a4b4614e373f1f529e0a889dc.jpg",
+            "iconGrayUrl": "0f3b6ace6e2656830de67696be885bda1f241395.jpg",
+            "hidden": false,
+            "globalPct": 30.7
+        },
+        {
+            "apiName": "Jing",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Jing Jang",
+            "description": "",
+            "iconUrl": "671005e7267e54c257395d5ff9c45325926d118f.jpg",
+            "iconGrayUrl": "c8f4a5aa67697313ebacc5bf1c8ead41e4360925.jpg",
+            "hidden": false,
+            "globalPct": 48.7
+        },
+        {
+            "apiName": "Termit",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Saint Termite",
+            "description": "",
+            "iconUrl": "0e719c0812f50e46d00696de180bd6b6db2e4e00.jpg",
+            "iconGrayUrl": "489241cff1f7b2ff50b0f025d0688fb16a98e02c.jpg",
+            "hidden": false,
+            "globalPct": 31.7
+        },
+        {
+            "apiName": "Cikady",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cicadas",
+            "description": "",
+            "iconUrl": "6ca9df55561b3dc86c22dba7d6dcda2bf138f58e.jpg",
+            "iconGrayUrl": "ae954b418b3bb4852dac896c5faa28f8adc26c9b.jpg",
+            "hidden": false,
+            "globalPct": 27.3
+        },
+        {
+            "apiName": "Kour",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Spiral Smoke",
+            "description": "",
+            "iconUrl": "52888a8ca283a1cf86cf3ba0d98e7ffb85b86d2a.jpg",
+            "iconGrayUrl": "af665b68d7f6f9d9c47b66ed82dc562e1e563519.jpg",
+            "hidden": false,
+            "globalPct": 29.8
+        },
+        {
+            "apiName": "ZpivajiciHouba",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dancing Fungus",
+            "description": "",
+            "iconUrl": "7491b22a2801d97bce01fc8eff2b632f5ca09737.jpg",
+            "iconGrayUrl": "dcc6e8dc0322b5f0e8543efb02870dcece7c80aa.jpg",
+            "hidden": false,
+            "globalPct": 38.5
+        },
+        {
+            "apiName": "Strom",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sprouting Tree",
+            "description": "",
+            "iconUrl": "c5a86662a38633b5ade40c4a31a1ee6a09b063bc.jpg",
+            "iconGrayUrl": "3b33c15d63a53a1d69592ca63a137df8fde7b210.jpg",
+            "hidden": false,
+            "globalPct": 16.4
+        },
+        {
+            "apiName": "MluviciPapouch",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mimicking Parrot",
+            "description": "",
+            "iconUrl": "ded03700c689dfe06aae23e76c4aa945f5df04ef.jpg",
+            "iconGrayUrl": "ee74d26882da2065b74d22902884a071c9a421d4.jpg",
+            "hidden": false,
+            "globalPct": 24.2
+        },
+        {
+            "apiName": "SpiciPapouch",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sleeping Parrot",
+            "description": "",
+            "iconUrl": "3123054e70a2a075392190b474c820fa89da1466.jpg",
+            "iconGrayUrl": "e7867f46919d03c1d396ddd9916ec45016ebb2ed.jpg",
+            "hidden": false,
+            "globalPct": 39.6
+        },
+        {
+            "apiName": "Poustevnik",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hermit Crabs",
+            "description": "",
+            "iconUrl": "7d522906ba25b807c5a9da1b6e56828a9a3fc53d.jpg",
+            "iconGrayUrl": "aa7df19ef283fff7a0a979284ffd3011619cdc78.jpg",
+            "hidden": false,
+            "globalPct": 15.2
+        },
+        {
+            "apiName": "KrabiPyramida",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Crab Pyramid",
+            "description": "",
+            "iconUrl": "ddcb9efca05c1f79e91abb187b4006122a6578cc.jpg",
+            "iconGrayUrl": "772cd6585355bafd8c6a829a6d8b430ecc315c71.jpg",
+            "hidden": false,
+            "globalPct": 22.6
+        },
+        {
+            "apiName": "Stonozka",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Centipede",
+            "description": "",
+            "iconUrl": "c0c21c472e8fd7ea69009c76e5e6b820af74f32c.jpg",
+            "iconGrayUrl": "f68a514480c99d7dd0d5bf25a4e8daac6c5c020f.jpg",
+            "hidden": false,
+            "globalPct": 30.6
+        },
+        {
+            "apiName": "Sputnik2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sputnik",
+            "description": "",
+            "iconUrl": "03a1ddf64146953149f902a6742da0358840efc5.jpg",
+            "iconGrayUrl": "2b2f1c433da76e47c289b3ad947779bfec344aec.jpg",
+            "hidden": false,
+            "globalPct": 36.5
+        },
+        {
+            "apiName": "Netopyrci",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cave Bats",
+            "description": "",
+            "iconUrl": "4ade8a1d3620be822f7c4d80aade132fb13344e4.jpg",
+            "iconGrayUrl": "5b45fcd0f574d4e6fec042a38d2ce95cdca79f17.jpg",
+            "hidden": false,
+            "globalPct": 19.1
+        },
+        {
+            "apiName": "Dusici",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Young Spirits",
+            "description": "",
+            "iconUrl": "9a1601bc654e86634a98b9105489fa50313a9ebe.jpg",
+            "iconGrayUrl": "6826ad19686c38f691cc23bb4a665a6c534b42e7.jpg",
+            "hidden": false,
+            "globalPct": 20.5
+        },
+        {
+            "apiName": "Myska",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Singing Mouse",
+            "description": "",
+            "iconUrl": "feba9580076315340932a84a030fed6a946137e9.jpg",
+            "iconGrayUrl": "762998d806a4abeae56f34a8a22d0cf4ade1ff67.jpg",
+            "hidden": false,
+            "globalPct": 23.6
+        },
+        {
+            "apiName": "Destilat",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Distilled Spirits",
+            "description": "",
+            "iconUrl": "a6a2170f9f57a441dd077cdd34dc8dea04715260.jpg",
+            "iconGrayUrl": "752dfea5554e685b89ea9f94582beb5d4195ed53.jpg",
+            "hidden": false,
+            "globalPct": 14.6
+        },
+        {
+            "apiName": "Fletny",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Four Flutes",
+            "description": "",
+            "iconUrl": "69f724298d233301f5da736f8fd5de528322e948.jpg",
+            "iconGrayUrl": "c10aff7507897d67583e15fd0778fff76104c0a2.jpg",
+            "hidden": false,
+            "globalPct": 30.7
+        },
+        {
+            "apiName": "Truhlice",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Shem Is Home",
+            "description": "",
+            "iconUrl": "99a52cb2af38cc540afd9b2e4585500b33282df1.jpg",
+            "iconGrayUrl": "10072b405db774d268f6bba24d9d5b31700773c8.jpg",
+            "hidden": false,
+            "globalPct": 23.4
+        },
+        {
+            "apiName": "Sova",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Owl",
+            "description": "",
+            "iconUrl": "2e69b6eb57428ddcc4c30c6fa34fb2eac7fc538b.jpg",
+            "iconGrayUrl": "e8a7eaeba412f24e9e1a1c3771accee5b899f971.jpg",
+            "hidden": false,
+            "globalPct": 23.5
+        },
+        {
+            "apiName": "Prstenec",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cosmic Ring",
+            "description": "",
+            "iconUrl": "6007e36e3c88b3013d52d5ad8233c1342524823c.jpg",
+            "iconGrayUrl": "279c2713ead100e59957e96a504deabed46cc3b0.jpg",
+            "hidden": false,
+            "globalPct": 29.8
+        },
+        {
+            "apiName": "Houby",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mushrooms",
+            "description": "",
+            "iconUrl": "3bc776db0230c95c0332101080624255f33bfefd.jpg",
+            "iconGrayUrl": "ac8aa05a91f1a3ca9778598468a3a87a4dc761e2.jpg",
+            "hidden": false,
+            "globalPct": 25.9
+        }
+    ],
+    "playtimeForever": 281,
+    "lastPlayedTs": "2024-06-27T20:28:29.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/421120/abef8e1de0c23cbbe719b2734be1f041d1dbfe11.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "Kvitky",
+            "displayName": "Blossoms",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "643c00b2bbed755648c6089f9a5a0330ead07845.jpg",
+            "iconGrayUrl": "98adda7abc9fdebd6cd77e656d83ff18cd7dfe12.jpg",
+            "globalPct": 46.2
+        },
+        {
+            "apiName": "Kudla",
+            "displayName": "Knife",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9ffdb32ce68d8a9ba698026b91e4c4f970c63117.jpg",
+            "iconGrayUrl": "4b5507103fe890203bc4fc861852df9e39cf04c2.jpg",
+            "globalPct": 64.7
+        },
+        {
+            "apiName": "Kamzik",
+            "displayName": "Chamois",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c2caa74ae7a5a8222fbc28299cbd20bd46628d3e.jpg",
+            "iconGrayUrl": "eaa5fa8cfc8d90b88f4d1581daa62cc94ed6f97f.jpg",
+            "globalPct": 52.8
+        },
+        {
+            "apiName": "Xicht",
+            "displayName": "Rockheads",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "829fb6a767d7db815d5c4ff8744899f0e2d2f0db.jpg",
+            "iconGrayUrl": "9f61ee1ba2c82a34dcce86044b8fce80c5d21f63.jpg",
+            "globalPct": 27.1
+        },
+        {
+            "apiName": "Pejsek",
+            "displayName": "Dog",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "138e61077fad02b590afc0cabb7c58acc13fad38.jpg",
+            "iconGrayUrl": "34eca88628937b13ca50ecac04be547cec332afa.jpg",
+            "globalPct": 25.6
+        },
+        {
+            "apiName": "Rybka",
+            "displayName": "Goldfish",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "e701175fb3b1813b6f2f372c0cf3c2f875618e04.jpg",
+            "iconGrayUrl": "0b633e718593f3031b3502c848964c7ce351bad5.jpg",
+            "globalPct": 25.3
+        }
+    ]
+}

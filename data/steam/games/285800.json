@@ -1,0 +1,301 @@
+{
+    "appId": 285800,
+    "hasAchievements": true,
+    "total": 21,
+    "unlocked": 0,
+    "gameName": "Braveland",
+    "achievements": [
+        {
+            "apiName": "first_follower",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "First Follower",
+            "description": "Peasants have joined you.",
+            "iconUrl": "1c56c2ad933b2835d3a17aedd0e9778e960d5c37.jpg",
+            "iconGrayUrl": "cfaed4493b4df53dcf5aaf8bdc8d7b3d833aff31.jpg",
+            "hidden": false,
+            "globalPct": 21.4
+        },
+        {
+            "apiName": "social",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "New Horizons",
+            "description": "Page on Facebook or Twitter visited.",
+            "iconUrl": "c8dc4cf86dec6af05ef0a2bfe686491167aaa6de.jpg",
+            "iconGrayUrl": "a03ea015e1fa50a827191521f6e908272a5eb8f5.jpg",
+            "hidden": false,
+            "globalPct": 13
+        },
+        {
+            "apiName": "flawless",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Flawless Victory",
+            "description": "You defeated the army without losing a single warrior.",
+            "iconUrl": "068f5535959b7da5fdc6c65ae30be296454d15b2.jpg",
+            "iconGrayUrl": "e975824aadfcd963c8ad0e2df3e912e0f23af617.jpg",
+            "hidden": false,
+            "globalPct": 21.2
+        },
+        {
+            "apiName": "fromm_dead",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Crime and Punishment",
+            "description": "",
+            "iconUrl": "c1fa67ecf89226ea0cb2a74b509c7cb7ae0a499b.jpg",
+            "iconGrayUrl": "0f5a470be9016a9faea9ad8e1ab523144e3a11c9.jpg",
+            "hidden": true,
+            "globalPct": 19.4
+        },
+        {
+            "apiName": "arakin_dead",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Woe from Wit",
+            "description": "",
+            "iconUrl": "f9df5086320a09aa253908e22dd0eb9b1805d7ff.jpg",
+            "iconGrayUrl": "b25e28e4ee939792d1c72d96e197b6a73bb9c94c.jpg",
+            "hidden": true,
+            "globalPct": 16.4
+        },
+        {
+            "apiName": "sigurd_dead",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "War and Peace",
+            "description": "",
+            "iconUrl": "3bb2e726896bccbce64e96926382c48bf982eabf.jpg",
+            "iconGrayUrl": "9777507fc7f7fb1999bfcf5df6c82c3519ac48f1.jpg",
+            "hidden": true,
+            "globalPct": 15.3
+        },
+        {
+            "apiName": "champion",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Champion",
+            "description": "Game completed without using the easy level of difficulty.",
+            "iconUrl": "45b1c0f69afc30851c1fc2953c80bcebf7058eb3.jpg",
+            "iconGrayUrl": "bb6486e5714d0e02b86ddd2d2e7235f5a271d303.jpg",
+            "hidden": false,
+            "globalPct": 14
+        },
+        {
+            "apiName": "legend",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Legend",
+            "description": "Game completed using only the hard level of difficulty.",
+            "iconUrl": "9ca024e414c78bda40770f6842d758ceb34078c5.jpg",
+            "iconGrayUrl": "4cfc1b921f5f682b7b11a6afc68629449aa40343.jpg",
+            "hidden": false,
+            "globalPct": 12.3
+        },
+        {
+            "apiName": "chest",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Lucky",
+            "description": "Treasure chest collected.",
+            "iconUrl": "754416166c9bd7249b7ed81445441f4fa4611c33.jpg",
+            "iconGrayUrl": "4173d40e810bf282b306e77d54937d14b9ebf879.jpg",
+            "hidden": false,
+            "globalPct": 19.2
+        },
+        {
+            "apiName": "chest_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Treasure Hunter",
+            "description": "Three treasure chests collected.",
+            "iconUrl": "919f917353d5886f530d6060248dd68fecfc2f72.jpg",
+            "iconGrayUrl": "1102778a8d4580261d377cf114fa9ef563156d3f.jpg",
+            "hidden": false,
+            "globalPct": 14.7
+        },
+        {
+            "apiName": "equipped_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Shopping",
+            "description": "Equipment item on.",
+            "iconUrl": "3a399d306eb6639e54fd7625740b5d5a4c9bc5f8.jpg",
+            "iconGrayUrl": "9b30c11ae2d78fd51b78db96ec4f1292ace93748.jpg",
+            "hidden": false,
+            "globalPct": 19.8
+        },
+        {
+            "apiName": "equipped_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Equipped",
+            "description": "All four equipment items on.",
+            "iconUrl": "99cbf5fd94f5d10b19d289098f8f9c1a6a4650ae.jpg",
+            "iconGrayUrl": "c8b68e466c4b9aed13066d8c7d798e867e179875.jpg",
+            "hidden": false,
+            "globalPct": 16.2
+        },
+        {
+            "apiName": "equipped_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Juggernaut",
+            "description": "The best equipment of all four types on.",
+            "iconUrl": "21cc1e38177fdd58cb21c1e59f4db5f69d9e3572.jpg",
+            "iconGrayUrl": "4a34b1e9eccba50618899195a9634cb8980f4f1d.jpg",
+            "hidden": false,
+            "globalPct": 14.4
+        },
+        {
+            "apiName": "skill_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Student",
+            "description": "Warrior ability learned.",
+            "iconUrl": "fd087212bfc132fd2c7d6eb2927135794a63d7f0.jpg",
+            "iconGrayUrl": "81a05b7b798a60b73c255503369d508184fadaa9.jpg",
+            "hidden": false,
+            "globalPct": 20.8
+        },
+        {
+            "apiName": "skill_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bachelor",
+            "description": "Two warrior abilities learned.",
+            "iconUrl": "db510d45ff4608b32cdbb6226483cef16302daf7.jpg",
+            "iconGrayUrl": "56924d984d44391e7bb172fc7f6feca14861f0c2.jpg",
+            "hidden": false,
+            "globalPct": 19.4
+        },
+        {
+            "apiName": "skill_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Professor",
+            "description": "All warrior abilities learned.",
+            "iconUrl": "9f06d11f5772bc09e1deb4aaa4544539eda60575.jpg",
+            "iconGrayUrl": "904d962a7bb9df61f24847a7d79caedb89016322.jpg",
+            "hidden": false,
+            "globalPct": 15.1
+        },
+        {
+            "apiName": "speed",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Faster Than The Wind",
+            "description": "Acceleration spell used 10 times.",
+            "iconUrl": "9682c8bacf05282ee139e30f35dea26792f1b176.jpg",
+            "iconGrayUrl": "e15949dbd4c3ab0f25fd54aaea1f6ec5fa41b8ea.jpg",
+            "hidden": false,
+            "globalPct": 13.5
+        },
+        {
+            "apiName": "fire_arrow",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Burn Heretic!",
+            "description": "1000 damage inflicted to the enemies with Fire Arrow.",
+            "iconUrl": "eefca36a606ac5800fa4211b10940f0fbd75d5b1.jpg",
+            "iconGrayUrl": "0f65c50a75d4dd9f433cd90e2ab3e0ce89ea78e8.jpg",
+            "hidden": false,
+            "globalPct": 15.2
+        },
+        {
+            "apiName": "defense",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Defender",
+            "description": "Defense spell used 10 times.",
+            "iconUrl": "b8986a2fd887e67821cf0bfd16a1b38e9929746a.jpg",
+            "iconGrayUrl": "246fe1824d6d484f08750973a23251d3300102ca.jpg",
+            "hidden": false,
+            "globalPct": 13.2
+        },
+        {
+            "apiName": "inspiration",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "To Arms!",
+            "description": "100 units encouraged.",
+            "iconUrl": "ecd7f098ba8f092769ad9d0481823d66d1c37239.jpg",
+            "iconGrayUrl": "b8c82d99c5769dd4d154439051feda4fe3c92200.jpg",
+            "hidden": false,
+            "globalPct": 12.2
+        },
+        {
+            "apiName": "fire_rain",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Firebender",
+            "description": "Rain of Fire spell learned.",
+            "iconUrl": "a8da54355a36829fcfffbf8e24b789f700a73ee1.jpg",
+            "iconGrayUrl": "1937cfb035c8be47c075c4c0cea048832b6efd2f.jpg",
+            "hidden": false,
+            "globalPct": 15.3
+        }
+    ],
+    "playtimeForever": 246,
+    "lastPlayedTs": "2024-05-23T01:09:07.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/285800/1a951bc30680a965a9cad9f689b0d1ff6a0c3f70.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "first_follower",
+            "displayName": "First Follower",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1c56c2ad933b2835d3a17aedd0e9778e960d5c37.jpg",
+            "iconGrayUrl": "cfaed4493b4df53dcf5aaf8bdc8d7b3d833aff31.jpg",
+            "globalPct": 21.4
+        },
+        {
+            "apiName": "social",
+            "displayName": "New Horizons",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c8dc4cf86dec6af05ef0a2bfe686491167aaa6de.jpg",
+            "iconGrayUrl": "a03ea015e1fa50a827191521f6e908272a5eb8f5.jpg",
+            "globalPct": 13
+        },
+        {
+            "apiName": "flawless",
+            "displayName": "Flawless Victory",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "068f5535959b7da5fdc6c65ae30be296454d15b2.jpg",
+            "iconGrayUrl": "e975824aadfcd963c8ad0e2df3e912e0f23af617.jpg",
+            "globalPct": 21.2
+        },
+        {
+            "apiName": "fromm_dead",
+            "displayName": "Crime and Punishment",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c1fa67ecf89226ea0cb2a74b509c7cb7ae0a499b.jpg",
+            "iconGrayUrl": "0f5a470be9016a9faea9ad8e1ab523144e3a11c9.jpg",
+            "globalPct": 19.4
+        },
+        {
+            "apiName": "arakin_dead",
+            "displayName": "Woe from Wit",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f9df5086320a09aa253908e22dd0eb9b1805d7ff.jpg",
+            "iconGrayUrl": "b25e28e4ee939792d1c72d96e197b6a73bb9c94c.jpg",
+            "globalPct": 16.4
+        },
+        {
+            "apiName": "sigurd_dead",
+            "displayName": "War and Peace",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "3bb2e726896bccbce64e96926382c48bf982eabf.jpg",
+            "iconGrayUrl": "9777507fc7f7fb1999bfcf5df6c82c3519ac48f1.jpg",
+            "globalPct": 15.3
+        }
+    ]
+}

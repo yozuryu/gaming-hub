@@ -1,0 +1,213 @@
+{
+    "appId": 543260,
+    "hasAchievements": true,
+    "total": 13,
+    "unlocked": 0,
+    "gameName": "Wonder Boy: The Dragon's Trap",
+    "achievements": [
+        {
+            "apiName": "ACH_00_MEKA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Meka Dragon",
+            "description": "Slew the Meka Dragon.",
+            "iconUrl": "f67c083cfb5ace583fbb2b75e2e2e5b76d8d50fe.jpg",
+            "iconGrayUrl": "a8b41b8101b433093f8eac188f3527f42028b7ce.jpg",
+            "hidden": false,
+            "globalPct": 83.9
+        },
+        {
+            "apiName": "ACH_01_MUMMY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mummy Dragon",
+            "description": "Slew the Mummy Dragon.",
+            "iconUrl": "a3c4cabd69a1014590b3ae78a5e694efcd6ee5b8.jpg",
+            "iconGrayUrl": "096fd6c5c49081a26f152c9da8120b3d645c0b25.jpg",
+            "hidden": false,
+            "globalPct": 46.2
+        },
+        {
+            "apiName": "ACH_02_ZOMBIE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dragon Zombie",
+            "description": "Slew the Dragon Zombie.",
+            "iconUrl": "c7b95e9675daef0e5adea9f355b2787d04b2039c.jpg",
+            "iconGrayUrl": "2c67e372594e93c410861381c3f81ef4abaef29d.jpg",
+            "hidden": false,
+            "globalPct": 36.8
+        },
+        {
+            "apiName": "ACH_03_CAPTAIN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Captain Dragon",
+            "description": "Slew the Captain Dragon.",
+            "iconUrl": "5e410ae888733b672ed22492b42e60ae2fdeff90.jpg",
+            "iconGrayUrl": "8505170d263507cc4e2fb9a4986be4ef36cd6411.jpg",
+            "hidden": false,
+            "globalPct": 28.3
+        },
+        {
+            "apiName": "ACH_04_DAIMYO",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Daimyo Dragon",
+            "description": "Slew the Daimyo Dragon.",
+            "iconUrl": "ac498ac15660889dd793230caa2b8cd058f4a400.jpg",
+            "iconGrayUrl": "53c2274a6c2e5932cca0c521053c904ebed44844.jpg",
+            "hidden": false,
+            "globalPct": 25.3
+        },
+        {
+            "apiName": "ACH_05_VAMPIRE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Vampire Dragon",
+            "description": "Slew the Vampire Dragon.",
+            "iconUrl": "19ab7f426a3735406cc87967202278fd25600c61.jpg",
+            "iconGrayUrl": "db01befa71140cdbe32858d579ff7a53d0f44836.jpg",
+            "hidden": false,
+            "globalPct": 20.4
+        },
+        {
+            "apiName": "ACH_06_HARD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hard Earned",
+            "description": "Cleared the game (Hard mode).",
+            "iconUrl": "04d6bbc2bf0e54b6ed4b212d487ebdde79443c30.jpg",
+            "iconGrayUrl": "7d7661d943c555994216e40c24d840a0500dd67d.jpg",
+            "hidden": false,
+            "globalPct": 4.9
+        },
+        {
+            "apiName": "ACH_07_STONE1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Lizard-Man Stone",
+            "description": "Found Charm Stone in Lizard-Man's secret location.",
+            "iconUrl": "eda8aade3d805242431e638e499cbab448eaae76.jpg",
+            "iconGrayUrl": "296d485c515f941d4744ee7830c449dc55616b28.jpg",
+            "hidden": false,
+            "globalPct": 15.5
+        },
+        {
+            "apiName": "ACH_08_STONE2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Mouse-Man Stone",
+            "description": "Found Charm Stone in Mouse-Man's secret location.",
+            "iconUrl": "5891e6497f001733c963ce903b8bec6866f40a28.jpg",
+            "iconGrayUrl": "ecf55095cc24832471458b070333e3b26768655e.jpg",
+            "hidden": false,
+            "globalPct": 12.9
+        },
+        {
+            "apiName": "ACH_09_STONE3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Piranha-Man Stone",
+            "description": "Found Charm Stone in Piranha-Man's secret location.",
+            "iconUrl": "298bc68221e45cd2c808d1f446bd6f3013c9ae16.jpg",
+            "iconGrayUrl": "c88c5f9069e3c98daa7b142fd077af499737671e.jpg",
+            "hidden": false,
+            "globalPct": 14.2
+        },
+        {
+            "apiName": "ACH_10_STONE4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Lion-Man Stone",
+            "description": "Found Charm Stone in Lion-Man's secret location.",
+            "iconUrl": "bc8f27a87b024178b48947601ac919baf9468e51.jpg",
+            "iconGrayUrl": "af0eadf07353d4858b1d387858e1af0389a9d273.jpg",
+            "hidden": false,
+            "globalPct": 12.8
+        },
+        {
+            "apiName": "ACH_11_STONE5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Hawk-Man Stone",
+            "description": "Found Charm Stone in Hawk-Man's secret location.",
+            "iconUrl": "546076782d0f54d96c33ac5c94c23a7963730b04.jpg",
+            "iconGrayUrl": "6055d769ac1f827f7cd73cad5898b33280ee7415.jpg",
+            "hidden": false,
+            "globalPct": 16.9
+        },
+        {
+            "apiName": "ACH_12_STONE6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Hu-Man Stone",
+            "description": "Found Charm Stone in Hu-Man's secret location.",
+            "iconUrl": "3c6874b3ed7e252625e166a4ed06682a4fce2e00.jpg",
+            "iconGrayUrl": "693cf3b271700af788018b628767e68c252d41b8.jpg",
+            "hidden": false,
+            "globalPct": 12.5
+        }
+    ],
+    "playtimeForever": 244,
+    "lastPlayedTs": "2024-07-05T08:54:05.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/543260/3d827477e304911205ec8c5dfb6837497c7f9736.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACH_00_MEKA",
+            "displayName": "Meka Dragon",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f67c083cfb5ace583fbb2b75e2e2e5b76d8d50fe.jpg",
+            "iconGrayUrl": "a8b41b8101b433093f8eac188f3527f42028b7ce.jpg",
+            "globalPct": 83.9
+        },
+        {
+            "apiName": "ACH_01_MUMMY",
+            "displayName": "Mummy Dragon",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a3c4cabd69a1014590b3ae78a5e694efcd6ee5b8.jpg",
+            "iconGrayUrl": "096fd6c5c49081a26f152c9da8120b3d645c0b25.jpg",
+            "globalPct": 46.2
+        },
+        {
+            "apiName": "ACH_02_ZOMBIE",
+            "displayName": "Dragon Zombie",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c7b95e9675daef0e5adea9f355b2787d04b2039c.jpg",
+            "iconGrayUrl": "2c67e372594e93c410861381c3f81ef4abaef29d.jpg",
+            "globalPct": 36.8
+        },
+        {
+            "apiName": "ACH_03_CAPTAIN",
+            "displayName": "Captain Dragon",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "5e410ae888733b672ed22492b42e60ae2fdeff90.jpg",
+            "iconGrayUrl": "8505170d263507cc4e2fb9a4986be4ef36cd6411.jpg",
+            "globalPct": 28.3
+        },
+        {
+            "apiName": "ACH_04_DAIMYO",
+            "displayName": "Daimyo Dragon",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "ac498ac15660889dd793230caa2b8cd058f4a400.jpg",
+            "iconGrayUrl": "53c2274a6c2e5932cca0c521053c904ebed44844.jpg",
+            "globalPct": 25.3
+        },
+        {
+            "apiName": "ACH_05_VAMPIRE",
+            "displayName": "Vampire Dragon",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "19ab7f426a3735406cc87967202278fd25600c61.jpg",
+            "iconGrayUrl": "db01befa71140cdbe32858d579ff7a53d0f44836.jpg",
+            "globalPct": 20.4
+        }
+    ]
+}

@@ -1,0 +1,235 @@
+{
+    "appId": 539670,
+    "hasAchievements": true,
+    "total": 15,
+    "unlocked": 0,
+    "gameName": "Sakura Nova",
+    "achievements": [
+        {
+            "apiName": "A_START",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The adventure begins!",
+            "description": "Are you ready to experience Sakura Nova?",
+            "iconUrl": "75500fef137dc62e0e34c38fa269754cbc5c7096.jpg",
+            "iconGrayUrl": "d7d683afc4ce5c16817f7c1c7d3b40b776359e28.jpg",
+            "hidden": false,
+            "globalPct": 60.4
+        },
+        {
+            "apiName": "E_ARISA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cheerful charmed",
+            "description": "Arisa ending",
+            "iconUrl": "b5925b36fa62f74dee7f3c0c34b38264b065e692.jpg",
+            "iconGrayUrl": "1e6ca4f06bf53d8302249826edfc7dc7c38db144.jpg",
+            "hidden": false,
+            "globalPct": 30.7
+        },
+        {
+            "apiName": "E_KAGUYA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Calm one charmed",
+            "description": "Kaguya ending",
+            "iconUrl": "a45561fee24b0e3420ca48079aeadf6bde3e4f70.jpg",
+            "iconGrayUrl": "e3a7e0200e627e642f11286c8265d01d5b37c499.jpg",
+            "hidden": false,
+            "globalPct": 30.1
+        },
+        {
+            "apiName": "E_BOTH",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Duo charmed",
+            "description": "Both girls ending",
+            "iconUrl": "8751fe18158f3bc0bc043e8ab057b7ae66a6ec4a.jpg",
+            "iconGrayUrl": "ee3670ee910573834a83f2a9aa4add94566a1d7c.jpg",
+            "hidden": false,
+            "globalPct": 38.5
+        },
+        {
+            "apiName": "E_ALL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "All roads wandered",
+            "description": "Every ending achieved",
+            "iconUrl": "8c48b75af47d5991a3d23b5b8b47bd0698cb9f5c.jpg",
+            "iconGrayUrl": "b708ee28aa9d5a87fb836d509dcda87ffffa3d94.jpg",
+            "hidden": false,
+            "globalPct": 26.7
+        },
+        {
+            "apiName": "G_ENGLISH",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Do you understand?",
+            "description": "You played the English version of the game",
+            "iconUrl": "dba7bb554fbff075d287d4fab4ad3e0d76f3d7ae.jpg",
+            "iconGrayUrl": "c4ac78d7f3e0d2edb03627dc6d6ee357e1fd7e8f.jpg",
+            "hidden": false,
+            "globalPct": 32.5
+        },
+        {
+            "apiName": "G_JAPANESE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Wakarimasu ka?",
+            "description": "You played the Japanese version of the game",
+            "iconUrl": "e650c1958d0485baa39afaaa598c3e401ae8836a.jpg",
+            "iconGrayUrl": "6b95ee6cf504a4eb8abd01e47cbd528f703fe78a.jpg",
+            "hidden": false,
+            "globalPct": 28.1
+        },
+        {
+            "apiName": "G_BOTH",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bilingual",
+            "description": "You played the game in both languages",
+            "iconUrl": "a52fc1c8464762d6d11a0d2868563becbba06d99.jpg",
+            "iconGrayUrl": "cc98fb2081892ad3139e9996469b025490d75510.jpg",
+            "hidden": false,
+            "globalPct": 25.9
+        },
+        {
+            "apiName": "G_SPEEDRUN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Speedrunner",
+            "description": "You finished the game super fast!",
+            "iconUrl": "06d8515cdcb8aa697fe0a6dc2ad85a10cc56612e.jpg",
+            "iconGrayUrl": "5e2be6993356b2d184e47ff1ef767113424e85c2.jpg",
+            "hidden": false,
+            "globalPct": 37.7
+        },
+        {
+            "apiName": "A_DEMON",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Demon slayer",
+            "description": "",
+            "iconUrl": "b0420320d5254ec08a6dd406e5d932534cfbe607.jpg",
+            "iconGrayUrl": "680576e9cf36f79925b2fa3f70745413acfd0693.jpg",
+            "hidden": true,
+            "globalPct": 43.2
+        },
+        {
+            "apiName": "A_SLIME",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Slime slayer",
+            "description": "You defeated the enemy!",
+            "iconUrl": "c26e3934eca5d4920230673ba0007ef99360c8f3.jpg",
+            "iconGrayUrl": "56995a7b3d45fdf9cf15c108d8f01564af8600fe.jpg",
+            "hidden": false,
+            "globalPct": 54
+        },
+        {
+            "apiName": "A_GOBLIN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Goblin slayer",
+            "description": "You defeated the enemies!",
+            "iconUrl": "727536fe2bee249e42d36b595a06b5a18b940068.jpg",
+            "iconGrayUrl": "dee5924838b554a2eb8e73edeee81b150a5462da.jpg",
+            "hidden": false,
+            "globalPct": 45.8
+        },
+        {
+            "apiName": "A_TENTACLE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Monster slayer",
+            "description": "You defeated the enemy!",
+            "iconUrl": "63186e046d36c5e1166a2d3854f031e528c28be1.jpg",
+            "iconGrayUrl": "5e641c3ddd7d9c8037bf88cd546d694a452a57ec.jpg",
+            "hidden": false,
+            "globalPct": 49.3
+        },
+        {
+            "apiName": "A_MARRIAGE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dressed up",
+            "description": "You saw one of Kaguya's gorgeous appearances in a dress!",
+            "iconUrl": "0d701564e7af41ddab2f5d77a5d73fa8ddc1481a.jpg",
+            "iconGrayUrl": "84b43f24778c0415064358569b181b5cf18cfced.jpg",
+            "hidden": false,
+            "globalPct": 30.1
+        },
+        {
+            "apiName": "E_REIKA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Taming the teacher",
+            "description": "",
+            "iconUrl": "604651c3f233b2fe2ee8300dea2088cc426e4a13.jpg",
+            "iconGrayUrl": "182d521692e21c3e69e14e2be75e854a469e2a4e.jpg",
+            "hidden": true,
+            "globalPct": 38.7
+        }
+    ],
+    "playtimeForever": 96,
+    "lastPlayedTs": "2018-01-10T13:06:58.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/539670/2b3c3d4546b4e0c4d3040ed405121b1b8fa7c340.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "A_START",
+            "displayName": "The adventure begins!",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "75500fef137dc62e0e34c38fa269754cbc5c7096.jpg",
+            "iconGrayUrl": "d7d683afc4ce5c16817f7c1c7d3b40b776359e28.jpg",
+            "globalPct": 60.4
+        },
+        {
+            "apiName": "E_ARISA",
+            "displayName": "Cheerful charmed",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "b5925b36fa62f74dee7f3c0c34b38264b065e692.jpg",
+            "iconGrayUrl": "1e6ca4f06bf53d8302249826edfc7dc7c38db144.jpg",
+            "globalPct": 30.7
+        },
+        {
+            "apiName": "E_KAGUYA",
+            "displayName": "Calm one charmed",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a45561fee24b0e3420ca48079aeadf6bde3e4f70.jpg",
+            "iconGrayUrl": "e3a7e0200e627e642f11286c8265d01d5b37c499.jpg",
+            "globalPct": 30.1
+        },
+        {
+            "apiName": "E_BOTH",
+            "displayName": "Duo charmed",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "8751fe18158f3bc0bc043e8ab057b7ae66a6ec4a.jpg",
+            "iconGrayUrl": "ee3670ee910573834a83f2a9aa4add94566a1d7c.jpg",
+            "globalPct": 38.5
+        },
+        {
+            "apiName": "E_ALL",
+            "displayName": "All roads wandered",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "8c48b75af47d5991a3d23b5b8b47bd0698cb9f5c.jpg",
+            "iconGrayUrl": "b708ee28aa9d5a87fb836d509dcda87ffffa3d94.jpg",
+            "globalPct": 26.7
+        },
+        {
+            "apiName": "G_ENGLISH",
+            "displayName": "Do you understand?",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "dba7bb554fbff075d287d4fab4ad3e0d76f3d7ae.jpg",
+            "iconGrayUrl": "c4ac78d7f3e0d2edb03627dc6d6ee357e1fd7e8f.jpg",
+            "globalPct": 32.5
+        }
+    ]
+}

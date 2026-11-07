@@ -1,0 +1,323 @@
+{
+    "appId": 251290,
+    "hasAchievements": true,
+    "total": 23,
+    "unlocked": 3,
+    "gameName": "The Legend of Heroes: Trails in the Sky SC",
+    "achievements": [
+        {
+            "apiName": "FINDPIGEONS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Breakfast Safari",
+            "description": "Find \"Bacon,\" \"Eggs,\" and \"Golden Toast.\"",
+            "iconUrl": "152d564ba777ab7a6e1a578a5382d08a37438d56.jpg",
+            "iconGrayUrl": "33ffba4fb14e40a7bb6f6beb30c3970a47ef82dc.jpg",
+            "hidden": false,
+            "globalPct": 17.5
+        },
+        {
+            "apiName": "FOLLOWANTON",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Odyssey of Anton",
+            "description": "Follow Anton across Liberl and complete his story.",
+            "iconUrl": "d0776c9296d41ff40095ef1fbdbba0097f85636a.jpg",
+            "iconGrayUrl": "3819c5506c9605712a3977dffaa88879b7c5266f.jpg",
+            "hidden": false,
+            "globalPct": 16.4
+        },
+        {
+            "apiName": "ALLTREASURETALKS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Baby, Come Back",
+            "description": "Leave no chest unmolested.",
+            "iconUrl": "d9597af22f69e9f2563c21cf7ea77d14bbd16253.jpg",
+            "iconGrayUrl": "cd91e7555631ab3618635e1c55bcecf1898cdcbd.jpg",
+            "hidden": false,
+            "globalPct": 8.7
+        },
+        {
+            "apiName": "ALLFISHING",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Master Fisher",
+            "description": "Conquer the aquatic denizens of Liberl.",
+            "iconUrl": "8634e677868fdbaf7a73632fe05e039845695596.jpg",
+            "iconGrayUrl": "a305a88b72317249b9f53c7dc7644c886515af43.jpg",
+            "hidden": false,
+            "globalPct": 10.4
+        },
+        {
+            "apiName": "ALLCOOKED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Master Chef",
+            "description": "Cook your way through the Recipe Book.",
+            "iconUrl": "4f12520b7296dd1cf4a55970bf5f9d27672b2e2c.jpg",
+            "iconGrayUrl": "4dc51e24e3cc29702bf18c938b7653697944ca88.jpg",
+            "hidden": false,
+            "globalPct": 8.1
+        },
+        {
+            "apiName": "FOODKILLS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Doom Baker",
+            "description": "Kill 10 enemies with food. That's right. Food.",
+            "iconUrl": "fb732f506e7a87e25eef23470686b3bb5071b767.jpg",
+            "iconGrayUrl": "06e3fdc2408768742b23324b1e8eed717f8856fc.jpg",
+            "hidden": false,
+            "globalPct": 15.1
+        },
+        {
+            "apiName": "MAXBRACERRANK",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "League of Extraordinary Bracers",
+            "description": "Make it to the top of the class.",
+            "iconUrl": "33e6e4f94e402c4c8be1d86401e97d56834d4f4f.jpg",
+            "iconGrayUrl": "705ced42ac2da77975a495758d9a82e85c85036c.jpg",
+            "hidden": false,
+            "globalPct": 19
+        },
+        {
+            "apiName": "ALLPENGUINS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Penguin de Samba",
+            "description": "Show those evil penguins who's boss.",
+            "iconUrl": "7f0fe5ad6277710ed63378c1d9f2c8a11403c764.jpg",
+            "iconGrayUrl": "7a43d0bf829d6f4cee8afa30c14bea5a5e61b368.jpg",
+            "hidden": false,
+            "globalPct": 32.6
+        },
+        {
+            "apiName": "GAMBLER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ramblin' Gambler",
+            "description": "Read up on famous gamblers and win big at the casino.",
+            "iconUrl": "b36c6ae6a31976c1c595dddf86e3e4526cab8646.jpg",
+            "iconGrayUrl": "b08c9c0a539a9d41fef5bd80c34b96b13d01e7fb.jpg",
+            "hidden": false,
+            "globalPct": 8.8
+        },
+        {
+            "apiName": "ALLDOLLKNIGHT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Blue Knight",
+            "description": "Read the entire Doll Knight series.",
+            "iconUrl": "718c3dd26898c8e0451b6438e01b9f4fb435b3de.jpg",
+            "iconGrayUrl": "47396f1f7c8d1b00fe8bcbd9027b752b45cf0ab2.jpg",
+            "hidden": false,
+            "globalPct": 29.6
+        },
+        {
+            "apiName": "RECIPEQUEST",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "That Damn Recipe",
+            "description": "Complete the \"Nostalgic Recipe\" quest.",
+            "iconUrl": "dbdfc655446c463938a76715a897d599a3ac09f0.jpg",
+            "iconGrayUrl": "0c533bffabbf4a6b709baab0caaabfc002b7089a.jpg",
+            "hidden": false,
+            "globalPct": 50.6
+        },
+        {
+            "apiName": "NOGILBERTLOSS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "\"Blorf\"",
+            "description": "Gilbert is the best, but don't ever lose to him.",
+            "iconUrl": "cfe19b97ebc7dd1aa3c4bc650b3ba4c5229eeeb8.jpg",
+            "iconGrayUrl": "1bc361e9df63fc984938a51f5da2df52ded527f8.jpg",
+            "hidden": false,
+            "globalPct": 36.6
+        },
+        {
+            "apiName": "KILLALLBIGMONSTERS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bounty Hunter",
+            "description": "Exterminate all wanted monsters.",
+            "iconUrl": "5cfca68fb16c50eb10a940f06c038555013d425c.jpg",
+            "iconGrayUrl": "3f565f7916136d9d348fb71ac93398df676f1117.jpg",
+            "hidden": false,
+            "globalPct": 49.5
+        },
+        {
+            "apiName": "CLEARPROLOGUE",
+            "unlocked": true,
+            "unlockedAt": "2019-06-12T18:11:07.000Z",
+            "displayName": "A Maiden's Resolve",
+            "description": "",
+            "iconUrl": "00b6f039ef820c0c8544ae40a2d46e673633424d.jpg",
+            "iconGrayUrl": "5c87a65bbf5a9a4d7c8ea1b230a7310f10d4b2e2.jpg",
+            "hidden": true,
+            "globalPct": 77.5
+        },
+        {
+            "apiName": "CLEARCHAPTER1",
+            "unlocked": true,
+            "unlockedAt": "2019-06-21T16:26:27.000Z",
+            "displayName": "Sneaking Shadows",
+            "description": "",
+            "iconUrl": "f0d05f3e57ed6389510d390c15f54e2bc902d838.jpg",
+            "iconGrayUrl": "bef7437702783d584eedf9721f9987eae663d94a.jpg",
+            "hidden": true,
+            "globalPct": 68.1
+        },
+        {
+            "apiName": "CLEARCHAPTER2",
+            "unlocked": true,
+            "unlockedAt": "2019-07-02T15:23:29.000Z",
+            "displayName": "The Raging Land",
+            "description": "",
+            "iconUrl": "5f7beefb4d6484d8f345b08fe148dccf45bed688.jpg",
+            "iconGrayUrl": "74079f3ae41bfcaca25c98553c99889c5c7b7272.jpg",
+            "hidden": true,
+            "globalPct": 63.2
+        },
+        {
+            "apiName": "CLEARCHAPTER3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Mad Tea Party",
+            "description": "",
+            "iconUrl": "516e1bd5be1c9fae054494bc7405c6855a48c667.jpg",
+            "iconGrayUrl": "dc88d3296922f414ada101953b4d59d145f7caee.jpg",
+            "hidden": true,
+            "globalPct": 59.4
+        },
+        {
+            "apiName": "CLEARCHAPTER4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Mist Demon's Target",
+            "description": "",
+            "iconUrl": "c8e10ddb4202de31f44f5087247633a42f0c30d4.jpg",
+            "iconGrayUrl": "95d9472a5b239508c7dfb8ef27ad8132b04b5980.jpg",
+            "hidden": true,
+            "globalPct": 57.7
+        },
+        {
+            "apiName": "CLEARCHAPTER5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "That Which One Must Protect",
+            "description": "",
+            "iconUrl": "afce326507ac55df8ba3c944cf786e837b63de55.jpg",
+            "iconGrayUrl": "2727a75d37cd835bfd44e400f13315078cf03b43.jpg",
+            "hidden": true,
+            "globalPct": 57.4
+        },
+        {
+            "apiName": "CLEARCHAPTER6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Whereabouts of Bonds",
+            "description": "",
+            "iconUrl": "ca93682337ee4c778c84554bf150281407c39ddd.jpg",
+            "iconGrayUrl": "6cd7a0c50a0969234854e4e47c58ba1d65ef86b7.jpg",
+            "hidden": true,
+            "globalPct": 55.3
+        },
+        {
+            "apiName": "CLEARCHAPTER7",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Tetracyclic Towers",
+            "description": "",
+            "iconUrl": "6b24cf982c7fefcf05aff23fba8245adee65156c.jpg",
+            "iconGrayUrl": "14a1559a426e98fe7d86de9d8396f5e8ee114529.jpg",
+            "hidden": true,
+            "globalPct": 54.4
+        },
+        {
+            "apiName": "CLEARCHAPTER8",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Land of Chaos",
+            "description": "",
+            "iconUrl": "2dea711d9b6ead85caf9d593108fd7ef963f3b8c.jpg",
+            "iconGrayUrl": "905c5bb17eb28da7d798a7cda561054bbc74257c.jpg",
+            "hidden": true,
+            "globalPct": 53
+        },
+        {
+            "apiName": "CLEARCHAPTER9",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Trails in the Sky",
+            "description": "",
+            "iconUrl": "bc340c3623a352aebab649adff5369a7421032ba.jpg",
+            "iconGrayUrl": "f796c200fceeb684a005b57594b444b81b6fe4da.jpg",
+            "hidden": true,
+            "globalPct": 52.4
+        }
+    ],
+    "playtimeForever": 1503,
+    "lastPlayedTs": "2020-06-30T17:09:00.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/251290/c0a3778f947e731d3a55e2efc13198fbd57a73e8.jpg",
+    "lastUnlockedAt": "2019-07-02T15:23:29.000Z",
+    "lastUnlockName": "The Raging Land",
+    "preview": [
+        {
+            "apiName": "CLEARCHAPTER2",
+            "displayName": "The Raging Land",
+            "unlocked": true,
+            "unlockedAt": "2019-07-02T15:23:29.000Z",
+            "iconUrl": "5f7beefb4d6484d8f345b08fe148dccf45bed688.jpg",
+            "iconGrayUrl": "74079f3ae41bfcaca25c98553c99889c5c7b7272.jpg",
+            "globalPct": 63.2
+        },
+        {
+            "apiName": "CLEARCHAPTER1",
+            "displayName": "Sneaking Shadows",
+            "unlocked": true,
+            "unlockedAt": "2019-06-21T16:26:27.000Z",
+            "iconUrl": "f0d05f3e57ed6389510d390c15f54e2bc902d838.jpg",
+            "iconGrayUrl": "bef7437702783d584eedf9721f9987eae663d94a.jpg",
+            "globalPct": 68.1
+        },
+        {
+            "apiName": "CLEARPROLOGUE",
+            "displayName": "A Maiden's Resolve",
+            "unlocked": true,
+            "unlockedAt": "2019-06-12T18:11:07.000Z",
+            "iconUrl": "00b6f039ef820c0c8544ae40a2d46e673633424d.jpg",
+            "iconGrayUrl": "5c87a65bbf5a9a4d7c8ea1b230a7310f10d4b2e2.jpg",
+            "globalPct": 77.5
+        },
+        {
+            "apiName": "FINDPIGEONS",
+            "displayName": "Breakfast Safari",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "152d564ba777ab7a6e1a578a5382d08a37438d56.jpg",
+            "iconGrayUrl": "33ffba4fb14e40a7bb6f6beb30c3970a47ef82dc.jpg",
+            "globalPct": 17.5
+        },
+        {
+            "apiName": "FOLLOWANTON",
+            "displayName": "Odyssey of Anton",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d0776c9296d41ff40095ef1fbdbba0097f85636a.jpg",
+            "iconGrayUrl": "3819c5506c9605712a3977dffaa88879b7c5266f.jpg",
+            "globalPct": 16.4
+        },
+        {
+            "apiName": "ALLTREASURETALKS",
+            "displayName": "Baby, Come Back",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d9597af22f69e9f2563c21cf7ea77d14bbd16253.jpg",
+            "iconGrayUrl": "cd91e7555631ab3618635e1c55bcecf1898cdcbd.jpg",
+            "globalPct": 8.7
+        }
+    ]
+}

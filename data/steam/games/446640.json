@@ -1,0 +1,180 @@
+{
+    "appId": 446640,
+    "hasAchievements": true,
+    "total": 10,
+    "unlocked": 0,
+    "gameName": "Space Pilgrim Episode IV: Sol",
+    "achievements": [
+        {
+            "apiName": "ACH_PROLOGUE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "First Night",
+            "description": "Complete the prologue.",
+            "iconUrl": "4149caa5d12de56adc92f2986dde8d9143887f51.jpg",
+            "iconGrayUrl": "faf92ad7897058b443b631866dfece641330d69b.jpg",
+            "hidden": false,
+            "globalPct": 3.7
+        },
+        {
+            "apiName": "ACH_ZAP",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cruel and Unusual",
+            "description": "Hit a man when he's down.",
+            "iconUrl": "a0dcf2531ead7b4183874fe57226cb3514598354.jpg",
+            "iconGrayUrl": "73bb3074766e35d83d555cbcfc1de0e3bebb6038.jpg",
+            "hidden": false,
+            "globalPct": 3.2
+        },
+        {
+            "apiName": "ACH_ACT1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Broken Chain",
+            "description": "Complete act one of Episode Four.",
+            "iconUrl": "42dd9a3de6b1790dde526a32b62bc9ac465b9522.jpg",
+            "iconGrayUrl": "3d1808a280e0311429f0ef5a10427eb2bbf6fcff.jpg",
+            "hidden": false,
+            "globalPct": 3.3
+        },
+        {
+            "apiName": "ACH_MATCHMAKER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Matchmaker",
+            "description": "Bring two people together.",
+            "iconUrl": "6f9ebb7a9c993140ee1baae598a4f07694a3dc3a.jpg",
+            "iconGrayUrl": "5ab84b4c2fd6dc28997ce68c72660d030b20d9d6.jpg",
+            "hidden": false,
+            "globalPct": 2.9
+        },
+        {
+            "apiName": "ACH_SABINA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Co-Pilot",
+            "description": "Share a special moment with Sabina.",
+            "iconUrl": "57def26ae2e5099a5964bf9baa3cc7e4a7679f17.jpg",
+            "iconGrayUrl": "bc3643b8e96ab7c3e4eec2bd374198d0a65d6388.jpg",
+            "hidden": false,
+            "globalPct": 3.2
+        },
+        {
+            "apiName": "ACH_JOJO",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Engineer",
+            "description": "Share a special moment with Jojo.",
+            "iconUrl": "98a46b0f983c3ff68c8b62f18279043371dc2ca2.jpg",
+            "iconGrayUrl": "994ce1999adc265a8ccdefd22a019a8d69cb1760.jpg",
+            "hidden": false,
+            "globalPct": 2.8
+        },
+        {
+            "apiName": "ACH_ACT2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cities in the Clouds",
+            "description": "Complete act two of Episode Four.",
+            "iconUrl": "8239a3fe9c0d7d6d6e2de51ab26a8a53f3fb71c7.jpg",
+            "iconGrayUrl": "1006476d8e879edd05b1c0d28efdcb6e095cfba4.jpg",
+            "hidden": false,
+            "globalPct": 3.2
+        },
+        {
+            "apiName": "ACH_DOPPELGANGER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Doppelgangers",
+            "description": "Make an unnerving discovery.",
+            "iconUrl": "5d99a7c7040d89958afab0f13daa650beb5e1dbb.jpg",
+            "iconGrayUrl": "a9cc7469322b27ac5814f656ac81758093516c3f.jpg",
+            "hidden": false,
+            "globalPct": 3.1
+        },
+        {
+            "apiName": "ACH_ACT3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Being and Breath",
+            "description": "Complete act three of Episode Four.",
+            "iconUrl": "7b2e4c727c6099105c574f71fe00c902ec55c177.jpg",
+            "iconGrayUrl": "a55721d5cbbc1478db1de758849cd39f4df710f1.jpg",
+            "hidden": false,
+            "globalPct": 3.2
+        },
+        {
+            "apiName": "ACH_SAGA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Galactic Pilgrim",
+            "description": "Complete the Space Pilgrim saga.",
+            "iconUrl": "06e5e3a1fb71e4660fc61445212a8f7eef8b7f4a.jpg",
+            "iconGrayUrl": "2bc0c45ff4ce9197d88120f855cfc8f7e6adeb4e.jpg",
+            "hidden": false,
+            "globalPct": 3.2
+        }
+    ],
+    "playtimeForever": 275,
+    "lastPlayedTs": "2024-06-30T10:08:29.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/446640/d45ef39cd09b11b9d77a1ecc3ef99d0780f62c0c.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACH_PROLOGUE",
+            "displayName": "First Night",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "4149caa5d12de56adc92f2986dde8d9143887f51.jpg",
+            "iconGrayUrl": "faf92ad7897058b443b631866dfece641330d69b.jpg",
+            "globalPct": 3.7
+        },
+        {
+            "apiName": "ACH_ZAP",
+            "displayName": "Cruel and Unusual",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a0dcf2531ead7b4183874fe57226cb3514598354.jpg",
+            "iconGrayUrl": "73bb3074766e35d83d555cbcfc1de0e3bebb6038.jpg",
+            "globalPct": 3.2
+        },
+        {
+            "apiName": "ACH_ACT1",
+            "displayName": "A Broken Chain",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "42dd9a3de6b1790dde526a32b62bc9ac465b9522.jpg",
+            "iconGrayUrl": "3d1808a280e0311429f0ef5a10427eb2bbf6fcff.jpg",
+            "globalPct": 3.3
+        },
+        {
+            "apiName": "ACH_MATCHMAKER",
+            "displayName": "The Matchmaker",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "6f9ebb7a9c993140ee1baae598a4f07694a3dc3a.jpg",
+            "iconGrayUrl": "5ab84b4c2fd6dc28997ce68c72660d030b20d9d6.jpg",
+            "globalPct": 2.9
+        },
+        {
+            "apiName": "ACH_SABINA",
+            "displayName": "The Co-Pilot",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "57def26ae2e5099a5964bf9baa3cc7e4a7679f17.jpg",
+            "iconGrayUrl": "bc3643b8e96ab7c3e4eec2bd374198d0a65d6388.jpg",
+            "globalPct": 3.2
+        },
+        {
+            "apiName": "ACH_JOJO",
+            "displayName": "The Engineer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "98a46b0f983c3ff68c8b62f18279043371dc2ca2.jpg",
+            "iconGrayUrl": "994ce1999adc265a8ccdefd22a019a8d69cb1760.jpg",
+            "globalPct": 2.8
+        }
+    ]
+}

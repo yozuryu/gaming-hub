@@ -1,0 +1,246 @@
+{
+    "appId": 375820,
+    "hasAchievements": true,
+    "total": 16,
+    "unlocked": 1,
+    "gameName": "Human Resource Machine",
+    "achievements": [
+        {
+            "apiName": "OPTIMIZATION_GREEN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Green Optimization Award",
+            "description": "green path fully optimized",
+            "iconUrl": "a525d10a52f2940d44a8e7630dae3ae11ed41569.jpg",
+            "iconGrayUrl": "be49fb2f09779be61890ce92be3db68ee25140f6.jpg",
+            "hidden": false,
+            "globalPct": 4.6
+        },
+        {
+            "apiName": "OPTIMIZATION_BLUE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Blue Optimization Award",
+            "description": "blue path fully optimized",
+            "iconUrl": "9e379e6fa702e5489919c5748ca5ef38d495ed5b.jpg",
+            "iconGrayUrl": "6515821de7d1980d5830f6653210f1d9ff14c110.jpg",
+            "hidden": false,
+            "globalPct": 6
+        },
+        {
+            "apiName": "OPTIMIZATION_ORANGE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Orange Optimization Award",
+            "description": "orange path fully optimized",
+            "iconUrl": "53111058b68fff922d59e12ba6e7eb39a11b0b92.jpg",
+            "iconGrayUrl": "f803e77d27808979c1482f18503e6a347b9eedfa.jpg",
+            "hidden": false,
+            "globalPct": 35.8
+        },
+        {
+            "apiName": "SOCIAL_ENGINEER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Social Engineer",
+            "description": "ask all bosses to tell you more",
+            "iconUrl": "1e9a7908c470bfbe9e46cab6112bda5b32936e6c.jpg",
+            "iconGrayUrl": "96101ca18c22fe1f9c77f72a03956acd8b129500.jpg",
+            "hidden": false,
+            "globalPct": 5.6
+        },
+        {
+            "apiName": "INEFFICIENCY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Queen of Inefficiency",
+            "description": "solve any puzzle with at least 4x the number of steps required by the speed challenge",
+            "iconUrl": "eecd407fdb136f864ea4ec94c13cf28796b05bbd.jpg",
+            "iconGrayUrl": "02ede9fd7e297cdf02cb4479ecf8a5fcd4d9d069.jpg",
+            "hidden": false,
+            "globalPct": 8
+        },
+        {
+            "apiName": "VERBOSITY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "King of Verbosity",
+            "description": "solve any puzzle with at least 4x the number of commands required by the size challenge",
+            "iconUrl": "dcb7c814cba252950affde4450600c5d933fddf6.jpg",
+            "iconGrayUrl": "bd1763c1acb1253ffcc6c362eeb46c505659c7a7.jpg",
+            "hidden": false,
+            "globalPct": 28.4
+        },
+        {
+            "apiName": "CAREER_MILESTONE_1",
+            "unlocked": true,
+            "unlockedAt": "2024-11-22T11:25:30.000Z",
+            "displayName": "Career Milestone 1",
+            "description": "coffee time",
+            "iconUrl": "dd4bd5f1417ad3fd1db767686b11343715bc9989.jpg",
+            "iconGrayUrl": "cd2ec0198710c9f1992d5a1dcba00d13acbabe06.jpg",
+            "hidden": false,
+            "globalPct": 89
+        },
+        {
+            "apiName": "CAREER_MILESTONE_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Career Milestone 2",
+            "description": "employee morale insertion",
+            "iconUrl": "6ed1cdcf645d9bc1d00572f05f83c8745e642658.jpg",
+            "iconGrayUrl": "504e2963708b259ad533bc3e1ed5ae63b032ad3d.jpg",
+            "hidden": false,
+            "globalPct": 66.5
+        },
+        {
+            "apiName": "CAREER_MILESTONE_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Career Milestone 3",
+            "description": "sabbatical beach",
+            "iconUrl": "b8e02d8337b926d7c620c40127441fd3434fac5b.jpg",
+            "iconGrayUrl": "d75b00cb3c585a10443708fdf6dd95a1343a0e7d.jpg",
+            "hidden": false,
+            "globalPct": 58.7
+        },
+        {
+            "apiName": "CAREER_MILESTONE_4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Career Milestone 4",
+            "description": "midnight petroleum",
+            "iconUrl": "3d2ff8f09bf15c231883174f41dc866d58f3558c.jpg",
+            "iconGrayUrl": "7afdbf1cb3d92ce3106b61ef1fb4881352bfc1f6.jpg",
+            "hidden": false,
+            "globalPct": 28
+        },
+        {
+            "apiName": "CAREER_MILESTONE_5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Career Milestone 5",
+            "description": "where's carol?",
+            "iconUrl": "36b74661f475a7021ec12ee439505fd2d0153707.jpg",
+            "iconGrayUrl": "e6aebc3031743c51466c22c50902ac28290ec974.jpg",
+            "hidden": false,
+            "globalPct": 24.5
+        },
+        {
+            "apiName": "CAREER_MILESTONE_6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Career Milestone 6",
+            "description": "end program",
+            "iconUrl": "c3b4a6bac5d5545d4b9e2c6cef599743b06770c8.jpg",
+            "iconGrayUrl": "760776da4df83c9cfd3a096510a6916ad138fc66.jpg",
+            "hidden": false,
+            "globalPct": 13.1
+        },
+        {
+            "apiName": "FAILURE_OVERFLOW",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Glorious Failure: Overflow",
+            "description": "attempt to generate a number that is too big to store in green boxes",
+            "iconUrl": "e9b2fb5b26b2e0975ec1d68db93931ce01ad1cd1.jpg",
+            "iconGrayUrl": "db5eb7f7950bb6f1a23e1e34a9f715f9117ab331.jpg",
+            "hidden": false,
+            "globalPct": 21.3
+        },
+        {
+            "apiName": "FAILURE_BOUNDS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Glorious Failure: Out of Bounds",
+            "description": "attempt to read or write with a tile on the floor that does not exist",
+            "iconUrl": "e9b2fb5b26b2e0975ec1d68db93931ce01ad1cd1.jpg",
+            "iconGrayUrl": "db5eb7f7950bb6f1a23e1e34a9f715f9117ab331.jpg",
+            "hidden": false,
+            "globalPct": 20.2
+        },
+        {
+            "apiName": "FAILURE_ROBUST",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Glorious Failure: Solution Not Robust",
+            "description": "solve a puzzle for a specific set of inputs, while still failing with other possible inputs",
+            "iconUrl": "e9b2fb5b26b2e0975ec1d68db93931ce01ad1cd1.jpg",
+            "iconGrayUrl": "db5eb7f7950bb6f1a23e1e34a9f715f9117ab331.jpg",
+            "hidden": false,
+            "globalPct": 54
+        },
+        {
+            "apiName": "ALL_LEVELS_COMPLETE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Excellent Instruction Follower",
+            "description": "all levels complete. congratulations.",
+            "iconUrl": "b99407ac79124b287c210a520f343e9ca8855a29.jpg",
+            "iconGrayUrl": "3af96a02ea4a7d6ab65f9f87602d6ca017349dc2.jpg",
+            "hidden": false,
+            "globalPct": 8.1
+        }
+    ],
+    "playtimeForever": 197,
+    "lastPlayedTs": "2025-02-16T12:37:11.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/375820/16097a08c881abe08531e7d31dcf29e962581149.jpg",
+    "lastUnlockedAt": "2024-11-22T11:25:30.000Z",
+    "lastUnlockName": "Career Milestone 1",
+    "preview": [
+        {
+            "apiName": "CAREER_MILESTONE_1",
+            "displayName": "Career Milestone 1",
+            "unlocked": true,
+            "unlockedAt": "2024-11-22T11:25:30.000Z",
+            "iconUrl": "dd4bd5f1417ad3fd1db767686b11343715bc9989.jpg",
+            "iconGrayUrl": "cd2ec0198710c9f1992d5a1dcba00d13acbabe06.jpg",
+            "globalPct": 89
+        },
+        {
+            "apiName": "OPTIMIZATION_GREEN",
+            "displayName": "Green Optimization Award",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a525d10a52f2940d44a8e7630dae3ae11ed41569.jpg",
+            "iconGrayUrl": "be49fb2f09779be61890ce92be3db68ee25140f6.jpg",
+            "globalPct": 4.6
+        },
+        {
+            "apiName": "OPTIMIZATION_BLUE",
+            "displayName": "Blue Optimization Award",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9e379e6fa702e5489919c5748ca5ef38d495ed5b.jpg",
+            "iconGrayUrl": "6515821de7d1980d5830f6653210f1d9ff14c110.jpg",
+            "globalPct": 6
+        },
+        {
+            "apiName": "OPTIMIZATION_ORANGE",
+            "displayName": "Orange Optimization Award",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "53111058b68fff922d59e12ba6e7eb39a11b0b92.jpg",
+            "iconGrayUrl": "f803e77d27808979c1482f18503e6a347b9eedfa.jpg",
+            "globalPct": 35.8
+        },
+        {
+            "apiName": "SOCIAL_ENGINEER",
+            "displayName": "Social Engineer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1e9a7908c470bfbe9e46cab6112bda5b32936e6c.jpg",
+            "iconGrayUrl": "96101ca18c22fe1f9c77f72a03956acd8b129500.jpg",
+            "globalPct": 5.6
+        },
+        {
+            "apiName": "INEFFICIENCY",
+            "displayName": "Queen of Inefficiency",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "eecd407fdb136f864ea4ec94c13cf28796b05bbd.jpg",
+            "iconGrayUrl": "02ede9fd7e297cdf02cb4479ecf8a5fcd4d9d069.jpg",
+            "globalPct": 8
+        }
+    ]
+}

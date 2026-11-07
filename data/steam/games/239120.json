@@ -1,0 +1,268 @@
+{
+    "appId": 239120,
+    "hasAchievements": true,
+    "total": 18,
+    "unlocked": 0,
+    "gameName": "Final Fantasy III (3D Remake)",
+    "achievements": [
+        {
+            "apiName": "FF3_ACHIEVEMENT_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Gone Adventuring with the Wind",
+            "description": "Defeat Djinn and obtain the Wind Crystal.",
+            "iconUrl": "9d3fc3c73dd2e81b60afb3bc3654995fc2c1e9eb.jpg",
+            "iconGrayUrl": "9d3fc3c73dd2e81b60afb3bc3654995fc2c1e9eb.jpg",
+            "hidden": false,
+            "globalPct": 58.9
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Some Like It Hot",
+            "description": "Defeat Salamander and obtain the Fire Crystal.",
+            "iconUrl": "8650d220b5da5904e2ec23cc5bb40878f2f01204.jpg",
+            "iconGrayUrl": "8650d220b5da5904e2ec23cc5bb40878f2f01204.jpg",
+            "hidden": false,
+            "globalPct": 34
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Release the Kraken",
+            "description": "Defeat Kraken and obtain the Water Crystal.",
+            "iconUrl": "cf6a4215bc7b6dca16902b9b5ef8f92c4f6a3424.jpg",
+            "iconGrayUrl": "cf6a4215bc7b6dca16902b9b5ef8f92c4f6a3424.jpg",
+            "hidden": false,
+            "globalPct": 29.2
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Quelling the Tremors",
+            "description": "Defeat Titan and obtain the Earth Crystal.",
+            "iconUrl": "dbacbc8c96349bf843472b8536d994648582eebe.jpg",
+            "iconGrayUrl": "dbacbc8c96349bf843472b8536d994648582eebe.jpg",
+            "hidden": false,
+            "globalPct": 20.5
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Warriors of Light",
+            "description": "Defeat the Cloud of Darkness.",
+            "iconUrl": "77898b4c99a2e7831d41a030c79f10e265291d78.jpg",
+            "iconGrayUrl": "77898b4c99a2e7831d41a030c79f10e265291d78.jpg",
+            "hidden": false,
+            "globalPct": 14.2
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Glutton for Arms",
+            "description": "Obtain every weapon in Eureka, the Forbidden Land.",
+            "iconUrl": "efebf497c54193236611eaf1baf7914ffe92a564.jpg",
+            "iconGrayUrl": "efebf497c54193236611eaf1baf7914ffe92a564.jpg",
+            "hidden": false,
+            "globalPct": 17.5
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_7",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "For a Rainy Day",
+            "description": "Save up 50,000 gil.",
+            "iconUrl": "d4cb515129a604a2367c0a0287814dcebde02e17.jpg",
+            "iconGrayUrl": "d4cb515129a604a2367c0a0287814dcebde02e17.jpg",
+            "hidden": false,
+            "globalPct": 30.4
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_8",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Who Wants to Be a Gillionaire?",
+            "description": "Save up 500,000 gil.",
+            "iconUrl": "bc5750304e5373a2476fb14c49b1ad63d6f37f74.jpg",
+            "iconGrayUrl": "bc5750304e5373a2476fb14c49b1ad63d6f37f74.jpg",
+            "hidden": false,
+            "globalPct": 20.6
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_9",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "My Little Esper",
+            "description": "Obtain a summonable creature.",
+            "iconUrl": "22a9f69c5615efbb0647c011ee841e0fdf8580fa.jpg",
+            "iconGrayUrl": "22a9f69c5615efbb0647c011ee841e0fdf8580fa.jpg",
+            "hidden": false,
+            "globalPct": 23.5
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "No Such Thing as Too Many",
+            "description": "Obtain all the summonable creatures.",
+            "iconUrl": "1d18a61aef72dc60baee800854711e9fe01c324a.jpg",
+            "iconGrayUrl": "1d18a61aef72dc60baee800854711e9fe01c324a.jpg",
+            "hidden": false,
+            "globalPct": 14.4
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_11",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Nose for Treasure",
+            "description": "Open 50% of all treasure chests.",
+            "iconUrl": "477b2ecb6aaa588b527f584a821c3814b8bcbe98.jpg",
+            "iconGrayUrl": "477b2ecb6aaa588b527f584a821c3814b8bcbe98.jpg",
+            "hidden": false,
+            "globalPct": 23.2
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_12",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I, My, Me, Mine",
+            "description": "Open every treasure chest.",
+            "iconUrl": "729469a41497e5843f7752d0361398ebc1366cfa.jpg",
+            "iconGrayUrl": "729469a41497e5843f7752d0361398ebc1366cfa.jpg",
+            "hidden": false,
+            "globalPct": 3.3
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_13",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Collecting is Half the Battle",
+            "description": "Complete 50% of the Bestiary.",
+            "iconUrl": "30f5583047a1a2a4dd71ad15171adf718f2e5e2c.jpg",
+            "iconGrayUrl": "30f5583047a1a2a4dd71ad15171adf718f2e5e2c.jpg",
+            "hidden": false,
+            "globalPct": 22.5
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_14",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Filling Up the Grotesquerie",
+            "description": "Complete the entire Bestiary.",
+            "iconUrl": "4e2950e08b11743db268cb5e5e78ceef93087fc3.jpg",
+            "iconGrayUrl": "4e2950e08b11743db268cb5e5e78ceef93087fc3.jpg",
+            "hidden": false,
+            "globalPct": 2.9
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_15",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "One Sword to Slay Them All",
+            "description": "Obtain the Ultima Weapon from the Legendary Smith.",
+            "iconUrl": "e9c1e741f39256ded04003c128fbc032db011fd4.jpg",
+            "iconGrayUrl": "5551ef393107a39893ddb7a59b301d23b953a79f.jpg",
+            "hidden": false,
+            "globalPct": 11
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_16",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Steely Resolve",
+            "description": "Defeat Iron Giant.",
+            "iconUrl": "0b46eb94f9096fa096e670af61e00d802581b46c.jpg",
+            "iconGrayUrl": "0b46eb94f9096fa096e670af61e00d802581b46c.jpg",
+            "hidden": false,
+            "globalPct": 3.9
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_17",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "When I Grow Up I Want to Be...",
+            "description": "Attain level 99 with any job.",
+            "iconUrl": "ffee7a6a694821a77378d0fe2fc9c487ffed9429.jpg",
+            "iconGrayUrl": "ffee7a6a694821a77378d0fe2fc9c487ffed9429.jpg",
+            "hidden": false,
+            "globalPct": 16.5
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_18",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Jack of All Trades",
+            "description": "Attain level 99 with all jobs for all characters.",
+            "iconUrl": "2a7238c92042d7e939f23d5d22d2a417496ea176.jpg",
+            "iconGrayUrl": "2a7238c92042d7e939f23d5d22d2a417496ea176.jpg",
+            "hidden": false,
+            "globalPct": 2.8
+        }
+    ],
+    "playtimeForever": 322,
+    "lastPlayedTs": "2025-02-12T14:24:56.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/239120/5bbca76709ace7907b51b0f0dd9e04a400587b71.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "FF3_ACHIEVEMENT_1",
+            "displayName": "Gone Adventuring with the Wind",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9d3fc3c73dd2e81b60afb3bc3654995fc2c1e9eb.jpg",
+            "iconGrayUrl": "9d3fc3c73dd2e81b60afb3bc3654995fc2c1e9eb.jpg",
+            "globalPct": 58.9
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_2",
+            "displayName": "Some Like It Hot",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "8650d220b5da5904e2ec23cc5bb40878f2f01204.jpg",
+            "iconGrayUrl": "8650d220b5da5904e2ec23cc5bb40878f2f01204.jpg",
+            "globalPct": 34
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_3",
+            "displayName": "Release the Kraken",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "cf6a4215bc7b6dca16902b9b5ef8f92c4f6a3424.jpg",
+            "iconGrayUrl": "cf6a4215bc7b6dca16902b9b5ef8f92c4f6a3424.jpg",
+            "globalPct": 29.2
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_4",
+            "displayName": "Quelling the Tremors",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "dbacbc8c96349bf843472b8536d994648582eebe.jpg",
+            "iconGrayUrl": "dbacbc8c96349bf843472b8536d994648582eebe.jpg",
+            "globalPct": 20.5
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_5",
+            "displayName": "Warriors of Light",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "77898b4c99a2e7831d41a030c79f10e265291d78.jpg",
+            "iconGrayUrl": "77898b4c99a2e7831d41a030c79f10e265291d78.jpg",
+            "globalPct": 14.2
+        },
+        {
+            "apiName": "FF3_ACHIEVEMENT_6",
+            "displayName": "Glutton for Arms",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "efebf497c54193236611eaf1baf7914ffe92a564.jpg",
+            "iconGrayUrl": "efebf497c54193236611eaf1baf7914ffe92a564.jpg",
+            "globalPct": 17.5
+        }
+    ]
+}

@@ -1,0 +1,334 @@
+{
+    "appId": 760620,
+    "hasAchievements": true,
+    "total": 24,
+    "unlocked": 0,
+    "gameName": "Deiland",
+    "achievements": [
+        {
+            "apiName": "FARMER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "PEASANT",
+            "description": "Harvest 15 crops.",
+            "iconUrl": "7611f29c63a8f7a26cd5076b4ef2f0036dd0ac58.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 34.2
+        },
+        {
+            "apiName": "MASTER_FARMER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "FARMER",
+            "description": "Harvest 100 crops.",
+            "iconUrl": "349d517f281127e5e63d913f625b0fb59a5df858.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 17.5
+        },
+        {
+            "apiName": "MINER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "MINER",
+            "description": "Chop the mine stones.",
+            "iconUrl": "4412b005763e4bee9979ae9a1a14ca4a382173d3.jpg",
+            "iconGrayUrl": "d81e5e6804d5728cb85c161e8d7b528814d07194.jpg",
+            "hidden": false,
+            "globalPct": 17.1
+        },
+        {
+            "apiName": "FISHER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "FISHERMAN",
+            "description": "Get 20 fishes in the lake.",
+            "iconUrl": "2c60cb49123b2855734aa6c719d0886493810e5f.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 14.2
+        },
+        {
+            "apiName": "GREAT_FISHER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "MASTER FISHERMAN",
+            "description": "Get 50 fishes in the lake.",
+            "iconUrl": "9a1a0c2c54f9fce0c9dc707e4fdcf5682f8b4ce9.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 9.8
+        },
+        {
+            "apiName": "WOODCUTTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "LUMBERJACK",
+            "description": "Cut 50 trees/bushes.",
+            "iconUrl": "1c04e68118bfa71168b3a1bbb8cf38f45095dfa9.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 29.2
+        },
+        {
+            "apiName": "GARDENER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "GARDENER",
+            "description": "Plant 30 flowers.",
+            "iconUrl": "1fb584c5024ccb08296075fb46ae13348f83c56e.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 12.7
+        },
+        {
+            "apiName": "MASTER_GARDENER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "MASTER GARDENER",
+            "description": "Plant 90 flowers.",
+            "iconUrl": "d6a99b39fd26b75e8a02a58f1ffe25ec8d20a00f.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 9.3
+        },
+        {
+            "apiName": "BLACKSMITH",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "BLACKSMITH",
+            "description": "Craft 15 items in the workshop.",
+            "iconUrl": "c13af872951ba7bbf69d1bfdbec5beb786f3611e.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 26.9
+        },
+        {
+            "apiName": "MASTER_BLACKSMITH",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "MASTER BLACKSMITH",
+            "description": "Craft 30 items in the workshop.",
+            "iconUrl": "be9cf6f522acf561d4afc2907dc86458e8965184.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 21.6
+        },
+        {
+            "apiName": "COOK",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "COOK",
+            "description": "Cook 15 dishes in the kitchen.",
+            "iconUrl": "d0233c408fa2f45bfe1253bab44ba8075b4a2600.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 17.8
+        },
+        {
+            "apiName": "CHEF",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "CHEF",
+            "description": "Cook 40 dishes in the kitchen.",
+            "iconUrl": "29db57af4e5992634c2d61a1a33e0fae7b62adb0.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 12.1
+        },
+        {
+            "apiName": "MASTER_CHEF",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "MASTER CHEF",
+            "description": "Cook 100 dishes in the kitchen.",
+            "iconUrl": "24dc5e2f192c44a7ab7fdaeb34547e5ff8c7b56c.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 8.5
+        },
+        {
+            "apiName": "ALCHEMIST",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "ALCHEMIST",
+            "description": "Create 10 potions in the laboratory.",
+            "iconUrl": "1b1f222dd99aeadb8abd22913375b03687f6291d.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 11.6
+        },
+        {
+            "apiName": "MASTER_ALCHEMIST",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "MASTER ALCHEMIST",
+            "description": "Create 40 potions in the laboratory.",
+            "iconUrl": "c297d5b69bacad9d8ab748c4f5500730f11f8726.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 7.8
+        },
+        {
+            "apiName": "BUILDER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "ARCHITECT",
+            "description": "Build 30 structures in the planet.",
+            "iconUrl": "8358b6fd363d0ddb0b0293987a7eb9e99c8b3034.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 14.4
+        },
+        {
+            "apiName": "EXPLORER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "EXPLORER",
+            "description": "Travel to planet Ankora.",
+            "iconUrl": "2034359d9bbf8311e5c280f51f20dbdbb34efbac.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 19.6
+        },
+        {
+            "apiName": "TAMER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "HUNTER",
+            "description": "Defeat 30 monsters.",
+            "iconUrl": "2f33df3bf963a9590c24768d69f8ff38f923ed7b.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 22
+        },
+        {
+            "apiName": "HUNTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "BIG GAME HUNTER",
+            "description": "Defeat 80 monsters.",
+            "iconUrl": "c3ca1d1c25a5ab52ea1b825af8391aa0ac227342.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 15.8
+        },
+        {
+            "apiName": "MASTER_HUNTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "MASTER HUNTER",
+            "description": "Defeat 150 monsters.",
+            "iconUrl": "229982d9c14244c0a4fa018570fd1cb0dac94845.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 11.8
+        },
+        {
+            "apiName": "MERCHANT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "MERCHANT",
+            "description": "Collect 5 crab claws for Brram.",
+            "iconUrl": "2c4e68f9d3ef86e378dc17e374a53f88e1646827.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 12.8
+        },
+        {
+            "apiName": "WHITE_WIZARD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "WHITE WIZARD",
+            "description": "Talk with Mûn about your new white cloak.",
+            "iconUrl": "8a065350963949c3950371eeb3575bbdf9b3c678.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 12.5
+        },
+        {
+            "apiName": "RANCHER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "SHEPHERD",
+            "description": "Complete the barn with 4 sheeps.",
+            "iconUrl": "1f3e00be6ddfdd89d8a988ced17b8ee6fb2a19d4.jpg",
+            "iconGrayUrl": "d81e5e6804d5728cb85c161e8d7b528814d07194.jpg",
+            "hidden": false,
+            "globalPct": 11.6
+        },
+        {
+            "apiName": "PRINCE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "PRINCE",
+            "description": "Complete all the achievements.",
+            "iconUrl": "acfade8e689098658e8d91974fd1cb73404eaa64.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "hidden": false,
+            "globalPct": 7.6
+        }
+    ],
+    "playtimeForever": 1,
+    "lastPlayedTs": "2025-02-12T14:24:47.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/760620/7c4a8c6b0b7e25dbdee9b18abf230e0f62dd684d.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "FARMER",
+            "displayName": "PEASANT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "7611f29c63a8f7a26cd5076b4ef2f0036dd0ac58.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "globalPct": 34.2
+        },
+        {
+            "apiName": "MASTER_FARMER",
+            "displayName": "FARMER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "349d517f281127e5e63d913f625b0fb59a5df858.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "globalPct": 17.5
+        },
+        {
+            "apiName": "MINER",
+            "displayName": "MINER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "4412b005763e4bee9979ae9a1a14ca4a382173d3.jpg",
+            "iconGrayUrl": "d81e5e6804d5728cb85c161e8d7b528814d07194.jpg",
+            "globalPct": 17.1
+        },
+        {
+            "apiName": "FISHER",
+            "displayName": "FISHERMAN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "2c60cb49123b2855734aa6c719d0886493810e5f.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "globalPct": 14.2
+        },
+        {
+            "apiName": "GREAT_FISHER",
+            "displayName": "MASTER FISHERMAN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9a1a0c2c54f9fce0c9dc707e4fdcf5682f8b4ce9.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "globalPct": 9.8
+        },
+        {
+            "apiName": "WOODCUTTER",
+            "displayName": "LUMBERJACK",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1c04e68118bfa71168b3a1bbb8cf38f45095dfa9.jpg",
+            "iconGrayUrl": "c0e7aab5264476497f6c1b68f1215dcbd870791a.jpg",
+            "globalPct": 29.2
+        }
+    ]
+}
