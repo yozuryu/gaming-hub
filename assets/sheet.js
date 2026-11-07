@@ -154,7 +154,7 @@ export const useAnimatedHeight = (ref, duration = 220) => {
 // Up to MAX_SEG segments, one per achievement; a longer chain groups them (52 → 18 segments of 3),
 // the segment in progress lit by the share of its group already done
 const MAX_SEG = 20;
-const Steps = ({ steps }) => {
+const Steps = ({ steps, fade }) => {
   const n = steps.total, done = steps.done;
   if (steps.pending) {
     return h('div', { className: 'shd-steps' },
@@ -171,7 +171,7 @@ const Steps = ({ steps }) => {
       return h('i', { key: i, className: part >= 1 ? 'on' : '' }, part > 0 && part < 1 && h('u', { style: { width: `${part * 100}%` } }));
     }));
   }
-  return h('div', { className: 'shd-steps anim-fade' },
+  return h('div', { className: `shd-steps ${fade ? 'anim-fade' : ''}` },
     steps.icon, h('span', { className: 'shd-steps-l' }, 'Progression'), meter,
     h('b', null, done, h('span', null, '/', n)));
 };
@@ -206,6 +206,10 @@ const lit = bar => !!bar && Math.floor(bar.pct) > 0;
 const Fill = ({ bar }) => lit(bar) && h('i', { style: { width: `max(${Math.min(100, bar.pct)}%, 8px)`, '--c': bar.color } });
 
 export function SheetHead({ dragRef, back, art, cover, title, sub, meta = [], tags = [], stats = [], bar, steps, games }) {
+  // Values fade in only when they replace a shimmer; on a normal open they're simply there
+  const hadPending = useRef(false);
+  if (stats.some(st => st.value == null) || steps?.pending) hadPending.current = true;
+  const fade = hadPending.current;
   const metaLine = meta.filter(Boolean);
   const tagLine = tags.filter(Boolean);
   const hasSteps = steps && (steps.total > 0 || steps.pending);
@@ -227,9 +231,9 @@ export function SheetHead({ dragRef, back, art, cover, title, sub, meta = [], ta
           stats.map((st, i) => h('div', { key: i, className: 'shd-stat' },
             st.value == null
               ? h('div', { className: 'shd-v' }, h('span', { className: 'shimmer shd-sk' }))
-              : h('div', { key: 'v', className: 'shd-v anim-fade' }, h('b', { style: { color: st.color } }, st.value), st.total != null && h('em', null, '/', st.total)),
+              : h('div', { key: 'v', className: `shd-v ${fade ? 'anim-fade' : ''}` }, h('b', { style: { color: st.color } }, st.value), st.total != null && h('em', null, '/', st.total)),
             h('div', { className: 'shd-l' }, st.label))))),
-      hasSteps && h(Steps, { steps }),
+      hasSteps && h(Steps, { steps, fade }),
       games?.items.length > 0 && h(Games, { games }),
       bar && h('span', { className: 'shd-track' }, h(Fill, { bar }))));
 }
