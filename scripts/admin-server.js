@@ -17,7 +17,6 @@ const ADMIN_HTML = path.join(ROOT, 'admin', 'index.html');
 // Whitelist of JSON files the admin is allowed to read/write
 const ALLOWED = [
     'data/hub/config.json',
-    'data/ra/guides.json',
     'data/ra/series.json',
     'data/ra/art.json',
     'data/hub/series.json',

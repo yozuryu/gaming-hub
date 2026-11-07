@@ -30,7 +30,7 @@ gaming-hub/
 ├── assets/
 │   ├── mobile-nav.js               # Shared bottom nav bar, injected into all pages via <script>
 │   ├── playing.js                  # "Playing" games in rotation (ES module), used by the hub and Activity; see Playing
-│   ├── sheet.js                    # Achievement modal behaviour for the profile pages: sheet on phone, dialog on desktop, drag to close, art fallback chain (ES module)
+│   ├── sheet.js                    # Achievement modal behaviour for the profile pages: sheet on phone, dialog on desktop, drag to close, art fallback chain, the shared sheet header `SheetHead` (ES module)
 │   ├── tabs.js                     # Profile tab bar (sticky, sideways scroll, sliding underline) + swipe between tabs (ES module)
 │   ├── art-fallback.js             # Offsets the shared art-fallback mosaic per game (classic script, every page with art); see Game art behind things
 │   ├── art-fallback.webp           # Library icon mosaic behind games with no art (scripts/build-fallback-art.js)
@@ -45,7 +45,7 @@ gaming-hub/
 │
 ├── data/                           # JSON read by the browser. Pipeline output is NOT on main: it lives on the `data` branch
 │                                   #   (scripts/data-paths.json, gitignored here, `npm run data:pull` to get it locally).
-│                                   #   On main: hub/config.json, {ra,steam,xbox}/series.json, ra/guides.json, {steam,xbox}/win-conditions.json
+│                                   #   On main: hub/config.json, {ra,steam,xbox}/series.json, {steam,xbox}/win-conditions.json
 │   ├── hub/config.json             # Username, motto, tags, platform visibility flags
 │   ├── hub/series.json             # Shared series across platforms (admin: Shared Series); hub/series-games.json is built from it (gitignored, see Shared Series)
 │   ├── ra/
@@ -88,7 +88,7 @@ gaming-hub/
 ├── changelog/                      # CLAUDE.md in this directory
 │
 ├── admin/
-│   └── index.html                  # Admin panel (series management, guides, config)
+│   └── index.html                  # Admin panel (series management, config)
 │
 ├── scripts/
 │   ├── ra-pipeline.js              # RA ETL: API → data/ra/ (~600 LOC)
@@ -437,7 +437,7 @@ Linked from every page's `index.html`. Short and quiet: fades with a few pixels 
 - **Classes:** `.anim-in` (content replacing a skeleton, a new tab/view/period), `.anim-fade` (lists changing in place, expanded sections), `.anim-pop` (modal panels), `.anim-backdrop` (modal backdrops). Fill mode is `backwards`, never `both`/`forwards`: a transform animation left in effect makes the element the containing block for `position: fixed` children (it broke the floating tab pill)
 - **Re-run on change** by giving the container a React `key` tied to what changed (e.g. `key={activeTab}` on profile tab content, `key={view}` on Activity, `key={`${period}-${hideFarms}`}` on Analytics, filters on Completions)
 - The hub (vanilla) animates children of its filled containers in CSS: `innerHTML` inserts new nodes, which replays the animation
-- **Achievement modals** use the shared sheet (`assets/sheet.js` + `.sheet-*` in `assets/ui.css`): below `md` the panel slides up from the bottom (`sheet-up`, covers the bottom nav at z-index 210) and slides back down on close (✕, backdrop, Escape, or dragging the header down: 120px or a fling); from `md` it stays a centred dialog with `motion-pop`. The header has the game's art blurred behind it and a round close button. The page behind is locked by `overflow: hidden` on `<html>` only: hiding `<body>` too makes it a scroll container and the pinned tab bar jumps out of view
+- **Achievement modals** use the shared sheet (`assets/sheet.js` + `.sheet-*` in `assets/ui.css`): below `md` the panel slides up from the bottom (`sheet-up`, covers the bottom nav at z-index 210) and slides back down on close (✕, backdrop, Escape, or dragging the header down: 120px or a fling); from `md` it stays a centred dialog with `motion-pop`. The header has the game's art blurred behind it and a round close button. Its content is the shared `SheetHead` (`assets/sheet.js`, `.shd-*`): cover, title, meta line, status tags, then one card with the completion % big on the left, up to three numbers beside it (Achievements first), RA's progression as a gold segmented meter (one segment per achievement up to 20; longer chains in equal groups, `ceil(n / 20)` per segment, the group in progress lit partly), the card tinted up to the % in the status colour with a hard edge (`.shd-card.wash`, gold over the whole card when complete), and the progress bar along the card's bottom edge (lit track, glowing fill in the status colour, min 8px). Every game sheet uses it (RA, Steam, Xbox, the Series page); pages pass their nodes (art, cover, tags) and data (stats, bar, steps) The page behind is locked by `overflow: hidden` on `<html>` only: hiding `<body>` too makes it a scroll container and the pinned tab bar jumps out of view
 - **Modal height:** `useAnimatedHeight(ref)` (defined in each profile `app.js`) animates a panel's height whenever its content grows or shrinks: loading done, filter change. FLIP via ResizeObserver (runs after layout, before paint), so there is no jump. Used on all three achievement modals
 - Steam/Xbox achievement modals open immediately in a loading state (skeleton list) and fill in place when the game file arrives, so one panel animates from skeleton to list
 - **Filter changes** re-key the list they change so it fades: modal lock/type filters, profile Progress sort/view/completed toggles (not search, to avoid a fade per keystroke), RA watchlist status/grouping, Activity and profile Activity day selection, Activity heatmap platform filter, Analytics chart ↔ table toggle. "Show all"/"Show more" items fade in as they appear

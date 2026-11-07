@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Layers, Search, X, Trophy, Star, ChevronLeft } from 'lucide-react';
-import { useSheet, useArtSrc } from '../assets/sheet.js';
+import { Layers, Search, X, Trophy, Star, ChevronLeft, Medal } from 'lucide-react';
+import { useSheet, useArtSrc, SheetHead } from '../assets/sheet.js';
 import { shortAgo } from '../assets/game-view.js';
 
 // ── Shared series (every platform) ─────────────────────────────────────────────
@@ -153,7 +153,7 @@ const GameRow = ({ g, onOpen }) => {
 // ── A game's achievements, opened from a series ────────────────────────────────
 // Reads the game's own file on its platform (data/ra/games/{id}.json, data/{steam,xbox}/games/{id}.json)
 // and shows one list for all three: icon, name, description, points / gamerscore, rarity, unlock date.
-// The full sheet (RA guides, progression and missable filters, Steam rarity tiers) stays on the profile,
+// The full sheet (RA progression and missable filters, Steam rarity tiers) stays on the profile,
 // one tap away ("Full details").
 const RA_MEDIA = 'https://media.retroachievements.org';
 const fmtDay = s => { if (!s) return ''; const d = new Date(/^\d{4}-\d{2}-\d{2} \d/.test(s) ? s.replace(' ', 'T') + 'Z' : s); return isNaN(d) ? '' : d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }); };
@@ -164,7 +164,7 @@ const normalize = (p, id, d) => {
         const players = d.numDistinctPlayersCasual || 0;
         return Object.values(d.achievements ?? {}).map(a => ({
             key: a.id, name: a.title, desc: a.description, unlocked: !!a.dateEarned, at: a.dateEarned, hardcore: !!a.dateEarnedHardcore,
-            icon: `${RA_MEDIA}/Badge/${a.badgeName}${a.dateEarned ? '' : '_lock'}.png`, value: a.points ? `${a.points} pts` : null,
+            icon: `${RA_MEDIA}/Badge/${a.badgeName}${a.dateEarned ? '' : '_lock'}.png`, value: a.points ? `${a.points} pts` : null, pts: a.points || 0,
             pct: players ? Math.min(100, (a.numAwarded / players) * 100) : null, order: a.displayOrder ?? 0, pixel: true,
             type: a.type,
         }));
@@ -174,7 +174,7 @@ const normalize = (p, id, d) => {
     return (d.achievements ?? []).map((a, i) => ({
         key: a.apiName ?? i, name: a.displayName, desc: a.description, unlocked: !!a.unlocked, at: a.unlockedAt,
         icon: steam ? (a.unlocked ? cdn(a.iconUrl) : cdn(a.iconGrayUrl) || cdn(a.iconUrl)) : xboxImg(a.iconUrl, 128),
-        value: !steam && a.gamerscore ? `${a.gamerscore}G` : null, pct: a.globalPct ?? null, order: i,
+        value: !steam && a.gamerscore ? `${a.gamerscore}G` : null, pts: steam ? 0 : a.gamerscore || 0, pct: a.globalPct ?? null, order: i,
     }));
 };
 
@@ -198,32 +198,33 @@ const GameSheet = ({ g, backLabel, onBack, onClose }) => {
     }, [achs, filter]);
     const counts = achs ? { all: achs.list.length + achs.hidden, unlocked: achs.list.filter(a => a.unlocked).length, locked: achs.list.filter(a => !a.unlocked).length + achs.hidden } : null;
     const pct = g.total ? (g.unlocked / g.total) * 100 : 0;
+    const points = achs && { earned: achs.list.reduce((n, a) => n + (a.unlocked ? a.pts : 0), 0), total: achs.list.reduce((n, a) => n + a.pts, 0) };
     return (
         <div ref={rootRef} className="sheet-root" onClick={close}>
             <div className="sheet-backdrop anim-backdrop" />
             <div ref={panelRef} className="sheet-panel" onClick={e => e.stopPropagation()}>
                 <button onClick={close} className="sheet-close" aria-label="Close"><X size={15} /></button>
                 <button onClick={onBack} className="sheet-back" aria-label={`Back to ${backLabel}`}><ChevronLeft size={14} />{backLabel}</button>
-                <div ref={dragRef} className="sheet-head">
-                    {art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`${g.p === 'ra' && !g.wide ? 'px' : ''} ${art.src === g.icon ? 'art-icon' : ''} ${art.loaded ? 'loaded' : ''}`} /></div>}
-                    <span className="sheet-grab" />
-                    <div className="relative flex items-end gap-4 px-4 pt-[34px] md:pt-[54px] pb-4">
-                        <Cover g={g} cls={g.p === 'steam' ? 'w-32 h-16 rounded-[2px] border border-[#101214] object-cover shrink-0' : 'w-16 h-16 rounded-[3px] border-2 border-white/20 object-cover shrink-0 px'} />
-                        <div className="flex-1 min-w-0 flex flex-col gap-1.5">
-                            <span className="sheet-title text-[15px] md:text-[17px] font-medium text-white leading-tight">{baseTitle(g.title)}</span>
-                            <span className="flex items-center gap-1.5 text-[11px] text-[#c6d4df] art-shadow">
-                                <img src={PLATFORMS[g.p].icon} alt="" className="w-3 h-3 object-contain" />{g.console ?? PLATFORMS[g.p].label}
-                                <a href={`../profile/${g.p}/?game=${encodeURIComponent(g.id)}`} className="ml-auto text-[#66c0f4] hover:text-white transition-colors">Full details ›</a>
-                            </span>
-                            {g.hasAch && (
-                                <div className="flex items-center gap-2">
-                                    <div className="gbar flex-1"><i style={{ width: `${pct}%`, background: g.done ? '#e5b143' : '#66c0f4' }} /></div>
-                                    <span className="text-[11px] text-[#c6d4df] tabular-nums shrink-0"><b className="text-white">{g.unlocked}</b>/{g.total}</span>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                </div>
+                <SheetHead dragRef={dragRef} back
+                    art={art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`${g.p === 'ra' && !g.wide ? 'px' : ''} ${art.src === g.icon ? 'art-icon' : ''} ${art.loaded ? 'loaded' : ''}`} /></div>}
+                    cover={<Cover g={g} cls={g.p === 'steam' ? 'relative w-32 h-16 rounded-[2px] border border-[#101214] object-cover shrink-0 shadow-[0_6px_18px_rgba(0,0,0,0.55)]' : 'relative w-16 h-16 rounded-[3px] border-2 border-white/20 object-cover shrink-0 px shadow-[0_6px_18px_rgba(0,0,0,0.55)]'} />}
+                    title={baseTitle(g.title)}
+                    meta={[
+                        <span className="inline-flex items-center gap-1.5 text-[#c6d4df]"><img src={PLATFORMS[g.p].icon} alt="" className="w-3 h-3 object-contain" />{g.console ?? PLATFORMS[g.p].label}</span>,
+                        <a href={`../profile/${g.p}/?game=${encodeURIComponent(g.id)}`} className="text-[#66c0f4] hover:text-white transition-colors">Full details ›</a>,
+                    ]}
+                    tags={[
+                        g.done && <span key="d" className="shrink-0 text-[9px] text-[#101214] bg-[#e5b143] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider flex items-center gap-1"><Trophy size={9} /> {doneLabel[g.p]}</span>,
+                        !g.done && g.beaten && <span key="b" className="shrink-0 text-[9px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-sm flex items-center gap-1" style={{ background: '#2a3440', color: '#c6d4df', border: '1px solid rgba(184,196,206,0.3)' }}><Medal size={9} /> Beaten</span>,
+                    ]}
+                    stats={[
+                        g.hasAch && { value: g.unlocked, total: g.total, label: 'Achievements', color: '#66c0f4' },
+                        g.p !== 'steam' && points && points.total > 0 && { value: points.earned.toLocaleString(), total: points.total.toLocaleString(), label: g.p === 'ra' ? 'Points' : 'Gamerscore', color: '#e5b143' },
+                        g.minutes ? { value: fmtMin(g.minutes), label: 'Played', color: '#66c0f4' }
+                            : g.lastMs ? { value: `${shortAgo(g.lastMs)} ago`, label: 'Last played', color: '#c6d4df' } : null,
+                    ].filter(Boolean)}
+                    bar={g.hasAch ? { pct, color: g.done ? '#e5b143' : '#66c0f4' } : null}
+                />
                 {counts && (
                     <div className="flex items-center gap-2 px-4 py-2 border-b border-[#101214] shrink-0">
                         <div className="frow flex-1 min-w-0" role="group" aria-label="Filter achievements">

@@ -1,10 +1,10 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, Trophy, Crown, Lock, Unlock, AlertTriangle, Flame, Feather, Medal, ShieldOff, CircleDashed, X, Clock, BookOpen, Youtube, ExternalLink, Layers, List, LayoutGrid, Search, Check, Plus, User, Radio, ArrowDown, Hourglass } from 'lucide-react';
+import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, Trophy, Crown, Lock, Unlock, AlertTriangle, Flame, Feather, Medal, ShieldOff, CircleDashed, X, Clock, Layers, List, LayoutGrid, Search, Check, Plus, User, Radio, ArrowDown, Hourglass } from 'lucide-react';
 import { MEDIA_URL, SITE_URL, TILDE_TAG_COLORS } from './utils/constants.js';
 import { getMediaUrl, parseTitle, formatTimeAgo, raShot } from './utils/helpers.js';
 import { transformData } from './utils/transform.js';
-import { useSheet, useArtSrc } from '../../assets/sheet.js';
+import { useSheet, useArtSrc, SheetHead } from '../../assets/sheet.js';
 import { useGameView, shortAgo } from '../../assets/game-view.js';
 import { TabBar, useSwipeTabs, scrollToTabs } from '../../assets/tabs.js';
 import { computeStreak, useSummaryOpen, ActivitySummary, yearOf, DayHead, RunCard, RunCount, UnlockRow } from '../../assets/activity-ui.js';
@@ -141,76 +141,6 @@ const raDateMs = s => {
 };
 
 
-const GuideStrip = ({ game, guides, isLast, inModal = false }) => {
-  const [openCategory, setOpenCategory] = useState(null);
-  const ref = useRef(null);
-
-  const searchTitle = encodeURIComponent(game.baseTitle || game.title);
-  const categoryIcon = (cat) => {
-    const c = cat.toLowerCase();
-    if (c === 'videos') return <Youtube size={inModal ? 12 : 9} />;
-    if (c === 'guides') return <BookOpen size={inModal ? 12 : 9} />;
-    return <ExternalLink size={inModal ? 12 : 9} />;
-  };
-  const fallbackCategories = [
-    { category: 'Guides', links: [{ label: 'Search GameFAQs', url: `https://gamefaqs.gamespot.com/search?game=${searchTitle}` }] },
-    { category: 'Videos', links: [{ label: 'Search YouTube',  url: `https://www.youtube.com/results?search_query=${searchTitle}+longplay` }] },
-  ];
-  const customCategoryNames = new Set((guides ?? []).map(g => g.category));
-  const categories = guides
-    ? [...guides.map(g => ({ ...g, isCustom: true })), ...fallbackCategories.filter(f => !customCategoryNames.has(f.category))]
-    : fallbackCategories;
-
-  useEffect(() => {
-    if (!openCategory) return;
-    const handler = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpenCategory(null); };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
-  }, [openCategory]);
-
-  return (
-    <div ref={ref} className={`relative flex items-center flex-wrap ${inModal ? 'gap-1.5 px-4 py-2 border-b border-[#101214] shrink-0 z-20' : 'gap-1 ' + `px-3 py-1.5 bg-[#171a21] border-t border-[#323f4c] ${isLast ? 'rounded-b-[3px]' : ''}`}`}>
-      {!inModal && <span className="text-[9px] text-[#546270] uppercase tracking-[0.07em] font-semibold mr-1 shrink-0">Guides</span>}
-      {categories.map((cat) => {
-        const isSingle = !cat.isCustom && cat.links.length === 1;
-        const isOpen   = openCategory === cat.category;
-        const chipCls  = inModal
-          ? `fchip ${isOpen ? 'on' : ''}`
-          : `flex items-center gap-1 text-[10px] px-1.5 py-[2px] rounded-[2px] border transition-colors bg-[#1b2838] outline-none ${isOpen ? 'text-[#66c0f4] border-[#66c0f4]/50' : 'text-[#8f98a0] border-[#2a475e] hover:text-[#66c0f4] hover:border-[#66c0f4]/50'}`;
-        return (
-          <div key={cat.category} className="relative shrink-0">
-            {isSingle ? (
-              <a href={cat.links[0].url} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()} className={chipCls}>
-                {categoryIcon(cat.category)}{cat.category}
-              </a>
-            ) : (
-              <button onClick={e => { e.stopPropagation(); setOpenCategory(isOpen ? null : cat.category); }} className={chipCls}>
-                {categoryIcon(cat.category)}{cat.category}<ChevronDown size={8} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-              </button>
-            )}
-            {isOpen && (
-              <div className="absolute top-full left-0 mt-1 z-50 min-w-[140px] bg-[#101214] border border-[#2a475e] rounded-[3px] shadow-lg py-0.5 anim-pop">
-                {cat.links.map((link, i) => (
-                  <a
-                    key={i}
-                    href={link.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    onClick={e => { e.stopPropagation(); setOpenCategory(null); }}
-                    className="flex items-center gap-1.5 px-2.5 py-1.5 text-[10px] text-[#8f98a0] hover:text-[#66c0f4] hover:bg-[#1b2838] transition-colors whitespace-nowrap"
-                  >
-                    <ExternalLink size={8} className="shrink-0 opacity-60" />{link.label}
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
-        );
-      })}
-    </div>
-  );
-};
-
 // ── Game list: list / tiles views ────────────────────────────────────────────
 // Status colour on the card edge, same ladder as everywhere: mastered gold, beaten silver,
 // started blue, not started, no achievements
@@ -244,7 +174,7 @@ const WideBanner = ({ game, cls }) => {
 };
 
 // One compact row: icon, title, console + mode + tags, playtime · last played, count and bar.
-// Tap opens the achievement sheet (badges, guides and the progression bar live there).
+// Tap opens the achievement sheet (badges and the progression bar live there).
 const GameListRow = ({ game, onViewDetails, extra = null, compact = false }) => {
   const hasAch = game.achievementsTotal > 0;
   const ago = shortAgo(raDateMs(game.lastPlayedStr));
@@ -386,7 +316,7 @@ const ModalListSkeleton = () => (
   </div>
 );
 
-const RAchievementModal = ({ game, guides, onClose, onBack = null, backLabel = '', loading = false }) => {
+const RAchievementModal = ({ game, onClose, onBack = null, backLabel = '', loading = false }) => {
   const [lockFilter, setLockFilter] = useState('all');
   const [typeFilter, setTypeFilter] = useState('all');
   const panelRef = useRef(null);
@@ -421,6 +351,11 @@ const RAchievementModal = ({ game, guides, onClose, onBack = null, backLabel = '
   const progAchs     = game.achievements?.filter(a => a.type === 'progression' || a.type === 'win_condition') ?? [];
   const progUnlocked = progAchs.filter(a => a.isUnlocked).length;
   const progPct      = progAchs.length > 0 ? (progUnlocked / progAchs.length) * 100 : null;
+  const lastAgo = game.lastPlayed && game.lastPlayed !== 'Never' ? game.lastPlayed : null;
+  // Points: from the achievements once the game's file is in, else the games index summary
+  const points = game.achievements?.length
+    ? { earned: game.achievements.reduce((n, a) => n + (a.isUnlocked ? a.points || 0 : 0), 0), total: game.achievements.reduce((n, a) => n + (a.points || 0), 0) }
+    : game.summary?.points ? { earned: game.summary.pointsEarned ?? 0, total: game.summary.points } : null;
 
   const rootRef = useRef(null);
   const dragRef = useRef(null);
@@ -436,88 +371,44 @@ const RAchievementModal = ({ game, guides, onClose, onBack = null, backLabel = '
         <button onClick={close} className="sheet-close" aria-label="Close"><X size={15} /></button>
         {onBack && <button onClick={onBack} className="sheet-back" aria-label={`Back to ${backLabel}`}><ChevronDown size={14} className="rotate-90" />{backLabel}</button>}
 
-        {/* Header: blurred screenshot (or the zoomed icon) behind it; drag it down to close on phone */}
-        <div ref={dragRef} className="sheet-head">
-          {art.src && (
+        {/* Header (shared SheetHead): blurred screenshot or wide art behind it; drag it down to close on phone */}
+        <SheetHead dragRef={dragRef} back={!!onBack}
+          art={art.src && (
             <div className="art-bg art-sheet">
               <img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`${artIsWide ? '' : `px ${game.artIsIcon ? 'art-icon' : ''}`} ${art.loaded ? 'loaded' : ''}`} />
             </div>
           )}
-          <span className="sheet-grab" />
-          <div className={`relative flex items-end gap-4 px-4 pt-[34px] pb-4 ${onBack ? 'md:pt-[54px]' : ''}`}>
+          cover={
             <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer"
-              className="shrink-0 w-16 h-16 rounded-[3px] overflow-hidden border-2 border-white/20 bg-[#101214] shadow-[0_6px_18px_rgba(0,0,0,0.55)] hover:scale-105 transition-transform">
+              className="relative shrink-0 w-16 h-16 rounded-[3px] overflow-hidden border-2 border-white/20 bg-[#101214] shadow-[0_6px_18px_rgba(0,0,0,0.55)] hover:scale-105 transition-transform">
               <img src={game.icon} alt={game.title} className="w-full h-full object-cover" />
             </a>
-            <div className="flex-1 min-w-0">
-              <div className="flex flex-col mb-1 pr-8">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer"
-                    className="sheet-title text-[15px] md:text-[17px] font-medium text-white hover:text-[#66c0f4] transition-colors leading-tight">
-                    {game.baseTitle || game.title}
-                  </a>
-                  {game.isSubset && (
-                    <span className="text-[8px] font-bold uppercase tracking-[0.07em] px-1.5 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>
-                  )}
-                  {renderTildeTags(game.tags)}
-                </div>
-                {game.isSubset && game.subsetName && (
-                  <span className="text-[10px] text-[#c8a84b] truncate">{game.subsetName}</span>
-                )}
-              </div>
-              <div className="flex items-center gap-2 flex-wrap mb-2 text-[10px]">
-                <span className="text-[#66c0f4] flex items-center gap-1"><Gamepad2 size={10} />{game.console}</span>
-                <span className="text-[#546270]">·</span>
-                {!game.achievementsUnlocked ? null : game.hardcore ? (
-                  <span className="shrink-0 text-[9px] text-[#ff6b6b] border border-[#ff6b6b]/30 bg-[#101214]/60 px-1.5 py-[1px] rounded-sm font-semibold uppercase tracking-wider flex items-center gap-1"><Flame size={10} /> Hardcore</span>
-                ) : (
-                  <span className="shrink-0 text-[9px] text-[#8f98a0] border border-[#323f4c] bg-[#101214]/60 px-1.5 py-[1px] rounded-sm font-semibold uppercase tracking-wider flex items-center gap-1"><Feather size={10} /> Softcore</span>
-                )}
-                {game.isMastered && (
-                  <span className="shrink-0 text-[9px] text-[#101214] bg-[#e5b143] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider flex items-center gap-1"><Trophy size={10} /> Mastered</span>
-                )}
-                {game.isBeaten && !game.isMastered && (
-                  <span className="shrink-0 text-[9px] text-[#c6d4df] bg-[#2a3440] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider border border-[#b8c4ce]/30 flex items-center gap-1"><Medal size={10} /> Beaten</span>
-                )}
-              </div>
-              {/* Progress bars */}
-              <div className="flex flex-col gap-1">
-                {progPct !== null && (
-                  <div className="flex items-center gap-2">
-                    <span className="w-[64px] shrink-0 text-[10px] text-[#546270] text-right">Progression</span>
-                    <div className="flex-1 bg-[#101214] h-[3px] rounded-sm overflow-hidden">
-                      <div className="h-full rounded-sm bg-[#e5b143]" style={{ width: `${progPct}%` }} />
-                    </div>
-                    <span className="text-[9px] text-[#e5b143] shrink-0">{progUnlocked}/{progAchs.length}</span>
-                  </div>
-                )}
-                <div className="flex items-center gap-2">
-                  <span className="w-[64px] shrink-0 text-[10px] text-[#546270] text-right">Overall</span>
-                  <div className="flex-1 bg-[#101214] h-[3px] rounded-sm overflow-hidden">
-                    <div className={`h-full rounded-sm ${game.isMastered ? 'bg-[#e5b143]' : 'bg-[#66c0f4]'}`} style={{ width: `${game.rawProgress}%` }} />
-                  </div>
-                  <span className="text-[9px] text-[#8f98a0] shrink-0">
-                    <span className="text-[#c6d4df]">{game.achievementsUnlocked}</span>/{game.achievementsTotal}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Game meta row */}
-        {(game.genre || game.developer || game.released) && (
-          <div className="flex items-center gap-2 px-4 py-1.5 border-b border-[#101214] flex-wrap shrink-0">
-            {game.genre    && <span className="text-[9px] text-[#8f98a0] flex items-center gap-1"><Gamepad2 size={9} className="text-[#546270]" />{game.genre}</span>}
-            {game.genre    && (game.developer || game.released) && <span className="text-[#323f4c] text-[9px]">·</span>}
-            {game.developer && <span className="text-[9px] text-[#8f98a0] flex items-center gap-1"><BarChart2 size={9} className="text-[#546270]" />{game.developer}</span>}
-            {game.developer && game.released && <span className="text-[#323f4c] text-[9px]">·</span>}
-            {game.released  && <span className="text-[9px] text-[#8f98a0]">{game.released}</span>}
-          </div>
-        )}
-
-        {/* Guides (moved here from the game cards) */}
-        <GuideStrip game={game} guides={guides} inModal />
+          }
+          title={<a href={`${SITE_URL}/game/${game.id}`} target="_blank" rel="noreferrer" className="transition-colors">{game.baseTitle || game.title}</a>}
+          sub={game.isSubset && game.subsetName ? game.subsetName : null}
+          meta={[
+            <span className="text-[#66c0f4] inline-flex items-center gap-1"><Gamepad2 size={11} />{game.console}</span>,
+            game.released, game.developer, game.genre,
+          ]}
+          tags={[
+            game.isMastered && <span key="m" className="shrink-0 text-[9px] text-[#101214] bg-[#e5b143] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider flex items-center gap-1"><Trophy size={10} /> Mastered</span>,
+            game.isBeaten && !game.isMastered && <span key="b" className="shrink-0 text-[9px] text-[#c6d4df] bg-[#2a3440] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider border border-[#b8c4ce]/30 flex items-center gap-1"><Medal size={10} /> Beaten</span>,
+            game.achievementsUnlocked > 0 && (game.hardcore
+              ? <span key="h" className="shrink-0 text-[9px] text-[#ff6b6b] border border-[#ff6b6b]/30 bg-[#101214]/60 px-1.5 py-[1px] rounded-sm font-semibold uppercase tracking-wider flex items-center gap-1"><Flame size={10} /> Hardcore</span>
+              : <span key="s" className="shrink-0 text-[9px] text-[#8f98a0] border border-[#323f4c] bg-[#101214]/60 px-1.5 py-[1px] rounded-sm font-semibold uppercase tracking-wider flex items-center gap-1"><Feather size={10} /> Softcore</span>),
+            game.isSubset && <span key="sub" className="text-[8px] font-bold uppercase tracking-[0.07em] px-1.5 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>,
+            ...(game.tags?.length ? [<React.Fragment key="t">{renderTildeTags(game.tags)}</React.Fragment>] : []),
+          ]}
+          stats={[
+            { value: game.achievementsUnlocked ?? 0, total: game.achievementsTotal ?? 0, label: 'Achievements', color: '#66c0f4' },
+            points && { value: points.earned.toLocaleString(), total: points.total.toLocaleString(), label: 'Points', color: '#e5b143' },
+            game.playtime && game.playtime !== 'Unknown'
+              ? { value: game.playtime.replace(/^0h /, ''), label: 'Played', color: '#c6d4df' }
+              : lastAgo && { value: lastAgo, label: 'Last played', color: '#c6d4df' },
+          ].filter(Boolean)}
+          bar={game.achievementsTotal > 0 ? { pct: game.rawProgress, color: game.isMastered ? '#e5b143' : '#66c0f4' } : null}
+          steps={progAchs.length > 0 ? { done: progUnlocked, total: progAchs.length, icon: <Trophy size={11} /> } : null}
+        />
 
         {loading && <ModalListSkeleton />}
 
@@ -1369,7 +1260,6 @@ export default function App() {
   const [selectedGame, setSelectedGame] = useState(null);
   const [selectedSeries, setSelectedSeries] = useState(null);   // series sheet
   const [seriesBack, setSeriesBack] = useState(null);           // series to return to from a game opened in it
-  const [guidesData, setGuidesData] = useState({});
   const [seriesData, setSeriesData] = useState([]);
   const [artData, setArtData] = useState({});             // data/ra/art.json games: wide art per game
   const [seriesLoaded, setSeriesLoaded] = useState(false);   // so "No series flagged" waits for series.json
@@ -1402,7 +1292,7 @@ export default function App() {
     const next = new Set(prev); next.has(key) ? next.delete(key) : next.add(key); return next;
   });
 
-  // ── Fetch profile.json + watchlist.json + guides.json on mount ──
+  // ── Fetch profile.json + watchlist.json on mount ──
   useEffect(() => {
     fetch('../../data/ra/profile.json')
       .then(r => { if (!r.ok) throw new Error('Failed to load profile.json'); return r.json(); })
@@ -1412,10 +1302,6 @@ export default function App() {
       .then(r => r.ok ? r.json() : { total: 0, results: [] })
       .then(data => setWatchlistData(data))
       .catch(() => setWatchlistData({ total: 0, results: [] }));
-    fetch('../../data/ra/guides.json')
-      .then(r => r.ok ? r.json() : {})
-      .then(data => setGuidesData(data))
-      .catch(() => {});
     fetch('../../data/ra/art.json')
       .then(r => r.ok ? r.json() : {})
       .then(data => setArtData(data?.games ?? {}))
@@ -2240,7 +2126,7 @@ export default function App() {
 
       {selectedGame && (() => {
         const shown = ALL_GAMES.find(x => x.id === selectedGame.id) || selectedGame;
-        return <RAchievementModal game={shown} guides={guidesData[selectedGame.id] ?? null}
+        return <RAchievementModal game={shown}
         loading={!shown.achievements?.length && (shown.achievementsTotal ?? 0) > 0 && !(gameFiles[selectedGame.id] === false && (gamesData || gamesFailed))}
         onClose={() => { setSelectedGame(null); setSeriesBack(null); }}
         onBack={seriesBack ? () => { setSelectedGame(null); setSelectedSeries(seriesBack); setSeriesBack(null); } : null}

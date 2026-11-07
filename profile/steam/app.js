@@ -4,7 +4,7 @@ import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Cloc
 import { STEAM_STATUS, PROGRESS_SORTS } from './utils/constants.js';
 import { formatPlaytime, formatDate, formatTimeAgo, fmtDay, fmtTime, achIconUrl, capsuleUrl, headerUrl, heroUrl, libraryPortraitUrl, rarityLabel, rarityBorderColor } from './utils/helpers.js';
 import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap } from '../../assets/time.js';
-import { useSheet, useArtSrc } from '../../assets/sheet.js';
+import { useSheet, useArtSrc, SheetHead } from '../../assets/sheet.js';
 import { useGameView, shortAgo } from '../../assets/game-view.js';
 import { TabBar, useSwipeTabs, scrollToTabs } from '../../assets/tabs.js';
 import { computeStreak, useSummaryOpen, ActivitySummary, yearOf, DayHead, RunCard, RunCount, UnlockRow } from '../../assets/activity-ui.js';
@@ -171,6 +171,7 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo, loading 
         ? (achievementData.unlocked / achievementData.total) * 100
         : null;
     const isPerfect = pct !== null && pct >= 100;
+    const lastAgo = shortAgo(game.lastPlayedTs ? Date.parse(game.lastPlayedTs) : 0);
 
     const achCounts = useMemo(() => {
         const unlocked = achs.filter(a => a.unlocked).length;
@@ -202,60 +203,29 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo, loading 
                 <button onClick={close} className="sheet-close" aria-label="Close"><X size={15} /></button>
                 {onBack && <button onClick={onBack} className="sheet-back" aria-label={`Back to ${backLabel}`}><ChevronDown size={14} className="rotate-90" />{backLabel}</button>}
 
-                {/* Modal header: blurred hero art behind it; drag it down to close on phone */}
-                <div ref={dragRef} className="sheet-head">
-                    {art.src && (
-                        <div className="art-bg art-sheet">
-                            <img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={art.loaded ? 'loaded' : ''} />
-                        </div>
-                    )}
-                    <span className="sheet-grab" />
-                    <div className={`relative flex items-end gap-4 px-4 pt-[34px] pb-4 ${onBack ? 'md:pt-[54px]' : ''}`}>
-                        <a
-                            href={game.storeUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="shrink-0 w-32 h-16 rounded-[2px] overflow-hidden border border-[#101214] bg-[#2a475e] hover:scale-105 transition-transform"
-                        >
+                {/* Header (shared SheetHead): blurred hero art behind it; drag it down to close on phone */}
+                <SheetHead dragRef={dragRef} back={!!onBack}
+                    art={art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={art.loaded ? 'loaded' : ''} /></div>}
+                    cover={
+                        <a href={game.storeUrl} target="_blank" rel="noreferrer"
+                            className="relative shrink-0 w-32 h-16 rounded-[2px] overflow-hidden border border-[#101214] bg-[#2a475e] shadow-[0_6px_18px_rgba(0,0,0,0.55)] hover:scale-105 transition-transform">
                             <img src={headerUrl(game.appId)} alt={game.name} className="w-full h-full object-cover" onError={e => { e.target.style.display = 'none'; }} />
                         </a>
-                        <div className="flex-1 min-w-0">
-                            <a
-                                href={game.storeUrl}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="sheet-title text-[15px] md:text-[17px] font-medium text-white hover:text-[#66c0f4] transition-colors leading-tight block pr-8"
-                            >
-                                {game.name}
-                            </a>
-                            {(isPerfect || beatenInfo) && (
-                                <div className="flex items-center gap-1.5 mt-1">
-                                    {isPerfect && (
-                                        <span className="shrink-0 text-[9px] text-[#101214] bg-[#e5b143] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider flex items-center gap-1">
-                                            <Star size={9} /> Perfect
-                                        </span>
-                                    )}
-                                    {!isPerfect && beatenInfo && (
-                                        <span className="shrink-0 text-[9px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-sm flex items-center gap-1" style={{ background: '#2a3440', color: '#c6d4df', border: '1px solid rgba(184,196,206,0.3)' }}>
-                                            <Medal size={9} /> Beaten
-                                        </span>
-                                    )}
-                                </div>
-                            )}
-                            {pct !== null && (
-                                <div className="flex items-center gap-2 mt-1.5">
-                                    <div className="flex-1 bg-[#101214] h-[3px] rounded-sm overflow-hidden">
-                                        <div className="h-full rounded-sm" style={{ width: `${pct}%`, background: isPerfect ? '#e5b143' : '#66c0f4' }} />
-                                    </div>
-                                    <span className="text-[10px] shrink-0" style={{ color: isPerfect ? '#e5b143' : '#8f98a0' }}>
-                                        <span className="text-[#c6d4df]">{achievementData.unlocked}</span>/{achievementData.total}
-                                        <span className="ml-0.5">({Math.floor(pct)}%)</span>
-                                    </span>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                </div>
+                    }
+                    title={<a href={game.storeUrl} target="_blank" rel="noreferrer" className="transition-colors">{game.name}</a>}
+                    tags={[
+                        isPerfect && <span key="p" className="shrink-0 text-[9px] text-[#101214] bg-[#e5b143] px-1.5 py-[1px] rounded-sm font-bold uppercase tracking-wider flex items-center gap-1"><Star size={9} /> Perfect</span>,
+                        !isPerfect && beatenInfo && <span key="b" className="shrink-0 text-[9px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-sm flex items-center gap-1" style={{ background: '#2a3440', color: '#c6d4df', border: '1px solid rgba(184,196,206,0.3)' }}><Medal size={9} /> Beaten</span>,
+                    ]}
+                    stats={[
+                        achievementData?.total > 0 && { value: achievementData.unlocked, total: achievementData.total, label: 'Achievements', color: '#66c0f4' },
+                        game.playtimeForever > 0
+                            ? { value: formatPlaytime(game.playtimeForever), label: 'Played', color: '#66c0f4' }
+                            : { value: '–', label: 'Played', color: '#546270' },
+                        { value: lastAgo ? `${lastAgo} ago` : 'Never', label: 'Last played', color: lastAgo ? '#c6d4df' : '#546270' },
+                    ].filter(Boolean)}
+                    bar={pct !== null ? { pct, color: isPerfect ? '#e5b143' : '#66c0f4' } : null}
+                />
 
                 {loading ? <ModalListSkeleton /> : (<>
                 {/* Filter */}

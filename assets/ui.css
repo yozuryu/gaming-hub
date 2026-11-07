@@ -42,6 +42,52 @@
 .sheet-title { text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7); }
 @media (min-width: 768px) { .sheet-grab { display: none; } }
 
+/* Sheet header (SheetHead in sheet.js): cover + title, meta line, status tags; then one card with
+   the % big on the left, the numbers beside it, RA progression, and the bar along its bottom edge */
+.shd-top { position: relative; display: flex; align-items: flex-end; gap: 14px; padding: 30px 16px 14px; }
+@media (min-width: 768px) { .shd-top { padding-top: 22px; } .shd.has-back .shd-top { padding-top: 54px; } }
+.shd-id { flex: 1; min-width: 0; }
+.shd-title { font-size: 16px; font-weight: 600; line-height: 1.25; color: #fff; padding-right: 30px; overflow-wrap: anywhere; }
+.shd-title a { color: inherit; }
+.shd-title a:hover { color: #66c0f4; }
+@media (min-width: 768px) { .shd-title { font-size: 18px; } }
+.shd-sub { margin-top: 2px; font-size: 11px; color: #e5b143; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8); }
+.shd-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 0; margin-top: 5px; font-size: 11px; color: #a9b4bd; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8); }
+.shd-m { display: inline-flex; align-items: center; gap: 4px; }
+.shd-m + .shd-m::before { content: "·"; margin: 0 6px; color: #6b7a88; }
+.shd-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; }
+.shd-card { position: relative; margin: 0 16px 14px; background: rgba(14, 18, 24, 0.72); border: 1px solid rgba(255, 255, 255, 0.09); border-radius: 4px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35); overflow: hidden; }
+.shd-hrow { display: flex; align-items: stretch; }
+.shd-big { display: flex; flex-direction: column; justify-content: center; flex-shrink: 0; padding: 8px 12px 9px; border-right: 1px solid rgba(255, 255, 255, 0.07); }
+.shd-big b { font-size: 24px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+.shd-big b small { font-size: 13px; font-weight: 600; margin-left: 1px; }
+.shd-big span { margin-top: 3px; font-size: 10px; color: #8f98a0; }
+.shd-cells { flex: 1; min-width: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.shd-cells.n2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.shd-cells.n1 { grid-template-columns: minmax(0, 1fr); }
+.shd-stat { padding: 8px 10px 9px; min-width: 0; }
+.shd-stat + .shd-stat { border-left: 1px solid rgba(255, 255, 255, 0.07); }
+.shd-v { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-variant-numeric: tabular-nums; }
+.shd-v b { font-size: 15px; font-weight: 600; }
+.shd-v em { font-style: normal; font-size: 11px; color: #8f98a0; }
+.shd-l { margin-top: 2px; font-size: 10px; color: #8f98a0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (min-width: 768px) { .shd-big { padding: 9px 16px 10px; } .shd-stat { padding: 9px 14px 10px; } .shd-v b { font-size: 16px; } }
+/* the bar: a lit track along the bottom edge, the fill fading into the status colour with a glow */
+.shd-track { position: relative; display: block; height: 8px; background: rgba(255, 255, 255, 0.08); border-top: 1px solid rgba(255, 255, 255, 0.06); }
+.shd-track i { position: absolute; inset: 0 auto 0 0; border-radius: 0 4px 4px 0; background: linear-gradient(90deg, color-mix(in srgb, var(--c) 50%, #0e1218), var(--c)); box-shadow: 0 0 12px color-mix(in srgb, var(--c) 65%, transparent); }
+/* RA progression: one gold segment per progression achievement */
+.shd-steps { display: flex; align-items: center; gap: 8px; padding: 8px 12px 9px; border-top: 1px solid rgba(255, 255, 255, 0.07); font-size: 11px; color: #e5b143; }
+.shd-steps-l { color: #a9b4bd; }
+.shd-meter { flex: 1; display: flex; gap: 2px; height: 6px; }
+.shd-meter i { position: relative; flex: 1; overflow: hidden; border-radius: 1px; background: rgba(255, 255, 255, 0.1); }
+.shd-meter i.on { background: #e5b143; box-shadow: 0 0 6px rgba(229, 177, 67, 0.5); }
+.shd-meter i u { position: absolute; inset: 0 auto 0 0; background: #e5b143; }
+/* the card tinted up to the completion %, in the status colour, with a hard edge */
+.shd-card.wash::before { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--p); background: linear-gradient(90deg, color-mix(in srgb, var(--c) 4%, transparent), color-mix(in srgb, var(--c) 20%, transparent)); border-right: 1px solid color-mix(in srgb, var(--c) 45%, transparent); pointer-events: none; }
+.shd-card > * { position: relative; }
+.shd-steps b { min-width: 34px; text-align: right; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.shd-steps b span { color: #8f98a0; font-weight: 400; }
+
 /* ── Blurred art background (modal header, profile header) ──────────────────────────
    .art-bg holds one <img>, covering the whole box and bleeding 30px past every edge
    (more than the blur radius), so the blur's soft edge never shows as a dark rim.

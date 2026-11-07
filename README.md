@@ -110,7 +110,7 @@ The service worker is scoped to `/gaming-hub/`, the GitHub Pages path. To test i
 npm run admin             # http://localhost:3131
 ```
 
-A local-only panel for editing the hub config, RetroAchievements guides and series, and Steam/Xbox win conditions, running pipelines, and reviewing data changes before committing them.
+A local-only panel for editing the hub config, RetroAchievements series, and Steam/Xbox win conditions, running pipelines, and reviewing data changes before committing them.
 
 ## Deployment
 

@@ -2,7 +2,7 @@
 // Below the md breakpoint the modal is a bottom sheet: it slides up, and slides back down
 // when closed (✕, backdrop, Escape, or dragging the header down). From md up it stays a
 // centred dialog that closes at once. Closing always goes through the returned function.
-import { useEffect, useRef, useCallback, useState } from 'react';
+import { createElement as h, useEffect, useRef, useCallback, useState } from 'react';
 
 const PHONE = '(max-width: 767px)';
 const isPhone = () => window.matchMedia(PHONE).matches;
@@ -105,4 +105,59 @@ export function useArtSrc(urls) {
     // A cached image can finish loading before React sees its load event: check on mount
     ref: el => { if (el && el.complete && el.naturalWidth) setLoaded(true); },
   };
+}
+
+// Header of a game's achievement sheet, the same on every page (styles: .shd-* in ui.css): cover,
+// title, meta line and status tags, then one card with the % big on the left, the numbers beside it
+// and the progress bar along its bottom edge. Pages pass ready-made nodes for what differs (art,
+// cover, tags) and plain data for the rest:
+//   stats  [{ value, total?, label, color }]  up to three numbers, Achievements first
+//   bar    { pct, color }                     overall progress
+//   steps  { done, total, icon }              RA progression: a gold segmented meter in the card
+// Up to MAX_SEG segments, one per achievement; a longer chain groups them (52 → 18 segments of 3),
+// the segment in progress lit by the share of its group already done
+const MAX_SEG = 20;
+const Steps = ({ steps }) => {
+  const n = steps.total, done = steps.done;
+  let meter;
+  if (n <= MAX_SEG) {
+    meter = h('span', { className: 'shd-meter' }, Array.from({ length: n }, (_, i) => h('i', { key: i, className: i < done ? 'on' : '' })));
+  } else {
+    const per = Math.ceil(n / MAX_SEG), segs = Math.ceil(n / per);
+    meter = h('span', { className: 'shd-meter' }, Array.from({ length: segs }, (_, i) => {
+      const size = Math.min(per, n - i * per), part = Math.max(0, Math.min(size, done - i * per)) / size;
+      return h('i', { key: i, className: part >= 1 ? 'on' : '' }, part > 0 && part < 1 && h('u', { style: { width: `${part * 100}%` } }));
+    }));
+  }
+  return h('div', { className: 'shd-steps' },
+    steps.icon, h('span', { className: 'shd-steps-l' }, 'Progression'), meter,
+    h('b', null, done, h('span', null, '/', n)));
+};
+
+const Fill = ({ bar }) => bar.pct > 0 && h('i', { style: { width: `max(${Math.min(100, bar.pct)}%, 8px)`, '--c': bar.color } });
+
+export function SheetHead({ dragRef, back, art, cover, title, sub, meta = [], tags = [], stats = [], bar, steps }) {
+  const metaLine = meta.filter(Boolean);
+  const tagLine = tags.filter(Boolean);
+  const hasSteps = steps && steps.total > 0;
+  return h('div', { ref: dragRef, className: `sheet-head shd ${back ? 'has-back' : ''}` },
+    art,
+    h('span', { className: 'sheet-grab' }),
+    h('div', { className: 'shd-top' },
+      cover,
+      h('div', { className: 'shd-id' },
+        h('div', { className: 'shd-title sheet-title' }, title),
+        sub && h('div', { className: 'shd-sub' }, sub),
+        metaLine.length > 0 && h('div', { className: 'shd-meta' }, metaLine.map((m, i) => h('span', { key: i, className: 'shd-m' }, m))),
+        tagLine.length > 0 && h('div', { className: 'shd-tags' }, tagLine))),
+    (bar || stats.length > 0) && h('div', { className: `shd-card${bar ? ' wash' : ''}`, style: bar ? { '--p': `${Math.min(100, bar.pct)}%`, '--c': bar.color } : null },
+      h('div', { className: 'shd-hrow' },
+        bar && h('div', { className: 'shd-big' },
+          h('b', { style: { color: bar.color } }, Math.floor(bar.pct), h('small', null, '%')), h('span', null, 'Complete')),
+        stats.length > 0 && h('div', { className: `shd-cells n${stats.length}` },
+          stats.map((st, i) => h('div', { key: i, className: 'shd-stat' },
+            h('div', { className: 'shd-v' }, h('b', { style: { color: st.color } }, st.value), st.total != null && h('em', null, '/', st.total)),
+            h('div', { className: 'shd-l' }, st.label))))),
+      hasSteps && h(Steps, { steps }),
+      bar && h('span', { className: 'shd-track' }, h(Fill, { bar }))));
 }
