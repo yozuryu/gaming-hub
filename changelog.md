@@ -31,7 +31,7 @@ The profile Activity tabs get the Activity page's design; Analytics is reworked 
 
 ### Structure
 
-- Games with no screenshot or wide art no longer show their own icon blown up and blurred behind cards, rows, strips and headers: they show one shared mosaic of art from the library (`assets/art-fallback.webp`): big and small RA / Xbox icons and wide Steam covers, uneven on purpose, tilted, each game at its own patch of it (`assets/art-fallback.js`) so neighbouring cards differ. Also the Playing tiles (hub and Activity) and the shared Series page's cards and sheets. One image for every page, cached once. `scripts/build-fallback-art.js` rebuilds it from the current library (`sharp` added as a dev dependency)
+- Games with no screenshot or wide art no longer show their own icon blown up and blurred behind cards, rows, strips and headers: they show one shared mosaic of art from the library (`assets/art-fallback.webp`): big and small RA / Xbox icons and wide Steam covers, uneven on purpose, tilted, each game at its own patch of it (`assets/art-fallback.js`) so neighbouring cards differ. Also the Playing tiles (hub and Activity) and the shared Series page's cards and sheets. One image for every page, cached once. `scripts/build-fallback-art.js` rebuilds it from the current library (`sharp` added as a dev dependency). In achievement sheets and page headers, where real art is blurred, the mosaic is blurred to match
 - `assets/activity-ui.js`: the timeline pieces shared by the three profile Activity tabs; the timeline styles moved from the Activity page into `assets/ui.css`
 - Heatmap legends on the profiles sit on the right, so they stay in view once the heatmap scrolls to the latest weeks
 

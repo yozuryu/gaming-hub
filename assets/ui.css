@@ -635,3 +635,7 @@ img.art-icon {
   transform: rotate(-12deg) scale(2.3) !important;
 }
 .art-bg img.art-icon { filter: brightness(0.45) saturate(0.8) !important; }
+/* Sheets and page headers blur their real art (3px / 6px), so the mosaic blurs there too. The blur
+   runs before the 2.3× scale, so these radii look the same as the real art's on screen */
+.art-bg.art-sheet img.art-icon { filter: blur(1.3px) brightness(0.45) saturate(0.8) !important; }
+.art-bg.art-header img.art-icon { filter: blur(2.6px) brightness(0.5) saturate(0.8) !important; }
