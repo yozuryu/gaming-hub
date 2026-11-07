@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useMemo, useContext, createContext } from 'react';
+import React, { useState, useEffect, useMemo, useContext, createContext, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BarChart3, ChevronDown, Table, Check, Plus, CalendarDays, ListChecks, Star, Trophy, Users, Gamepad2 } from 'lucide-react';
+import { BarChart3, ChevronDown, ChevronRight, Table, Check, Plus, CalendarDays, ListChecks, Star, Trophy, Users, Gamepad2, LayoutDashboard, Clock, Sparkles, Gem, Timer } from 'lucide-react';
+import { TabBar, useSwipeTabs, scrollToTabs } from '../assets/tabs.js';
 import { TZ, dayKey, todayKey, addDays, keyToDate, splitByDay, fmtDayKey } from '../assets/time.js';
 import {
     RA_MEDIA, PLATFORMS, PLATFORM_COLOR, PLATFORM_LABEL, PLATFORM_SHORT, RARITY_TIERS, rarityTier, HEAT_RAMP,
@@ -162,24 +163,6 @@ const Crits = ({ items }) => {
     );
 };
 
-// `note` is data (a count, a median); `rules` what the section counts, as chips: a single rule
-// with no note sits at the end of the header line (like Activity's Playing groups), more wrap under it
-const SectionHeader = ({ title, gold, note, rules }) => {
-    const list = (rules ?? []).filter(Boolean);
-    const inline = list.length === 1 && !note;
-    return (
-        <div className="mb-3">
-            <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 min-h-[29px]">
-                <span className="w-[3px] h-[14px] rounded-[1px] shrink-0" style={{ background: gold ? '#e5b143' : '#66c0f4' }} />
-                <span className="text-[13px] text-white tracking-wide uppercase font-medium">{title}</span>
-                {note && <span className="text-[10.5px] text-[#8f98a0] ml-auto text-right">{note}</span>}
-                {inline && <span className="ml-auto"><Crits items={list} /></span>}
-            </div>
-            {list.length > 0 && !inline && <div className="mt-2"><Crits items={list} /></div>}
-        </div>
-    );
-};
-
 const Legend = ({ items }) => (
     <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
         {items.map(it => (
@@ -190,26 +173,27 @@ const Legend = ({ items }) => (
     </div>
 );
 
-// A chart card with a Table toggle, so no value is only reachable by hovering
+// A card with an optional Table toggle (a small icon button), so no value is only reachable by hovering
 // `subtitle` is data shown under the title (the longest session); `pill` a small fact beside it
-// (a scope); `rules` what the card counts, as chips under the title
-const ChartCard = ({ title, subtitle, pill, rules, legend, table, children }) => {
+// (a scope); `rules` what the card counts, as chips under the title; `right` a control (a switch)
+const ChartCard = ({ title, subtitle, pill, rules, legend, table, right, className = '', children }) => {
     const [showTable, setShowTable] = useState(false);
     return (
-        <div className="bg-[#1b2838] border border-[#2a475e] rounded-[3px] p-3 min-w-0">
-            <div className="flex items-start gap-2 mb-3">
-                <div className="min-w-0">
-                    <div className="flex items-center gap-1.5 flex-wrap min-h-[18px]">
-                        <span className="text-[11px] text-[#c6d4df] font-semibold uppercase tracking-[0.07em]">{title}</span>
+        <div className={`an-card ${className}`}>
+            <div className="an-chead">
+                <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-1.5 flex-wrap min-h-[24px]">
+                        <span className="an-ctitle">{title}</span>
                         {pill && <span className="cpill">{pill}</span>}
                     </div>
-                    {subtitle && <div className="text-[10.5px] text-[#8f98a0] mt-1">{subtitle}</div>}
+                    {subtitle && <div className="text-[10.5px] text-[#8f98a0] mt-0.5">{subtitle}</div>}
                     {rules && <div className="mt-1.5"><Crits items={rules} /></div>}
                 </div>
+                {right}
                 {table && (
-                    <button onClick={() => setShowTable(v => !v)}
-                        aria-pressed={showTable} className={`ml-auto fchip ${showTable ? 'on' : ''}`}>
-                        <Table size={12} /> Table
+                    <button onClick={() => setShowTable(v => !v)} aria-pressed={showTable} aria-label="Show as table" title="Show as table"
+                        className={`an-tbtn ${showTable ? 'on' : ''}`}>
+                        <Table size={13} />
                     </button>
                 )}
             </div>
@@ -220,6 +204,119 @@ const ChartCard = ({ title, subtitle, pill, rules, legend, table, children }) =>
             </div>
         </div>
     );
+};
+
+// Segmented switch inside a card (one list or chart at a time)
+const Seg = ({ items, value, onChange }) => (
+    <div className="an-seg" role="tablist">
+        {items.map(([id, label]) => (
+            <button key={id} role="tab" aria-selected={value === id} className={value === id ? 'on' : ''} onClick={() => onChange(id)}>{label}</button>
+        ))}
+    </div>
+);
+
+const Delta = ({ v }) => (v == null ? null : (
+    <span className={`an-delta ${v > 0 ? 'up' : v < 0 ? 'down' : ''}`}>{v > 0 ? '▲' : v < 0 ? '▼' : '='} {Math.abs(v)}%</span>
+));
+
+const STEAM_CDN = 'https://cdn.akamai.steamstatic.com/steam/apps';
+// Wide art, best source first (a failing one moves to the next), else the icon zoomed and blurred
+const ArtBg = ({ sources, icon }) => {
+    const list = sources.filter(Boolean);
+    const [i, setI] = useState(0);
+    if (list[i]) return <img src={list[i]} alt="" className="an-art" onError={() => setI(i + 1)} />;
+    // No wide art: the shared library mosaic (.art-icon in assets/ui.css)
+    return icon ? <img src={icon} alt="" className="an-art art-icon" /> : null;
+};
+
+// Numbers in a row (no tiles): label, value, change
+const Facts = ({ items }) => (
+    <div className={`an-facts n${items.length}`}>
+        {items.map(f => (
+            <div key={f.label} className="an-fact">
+                <span className="an-fact-l">{f.label}</span>
+                <span className={`an-fact-v ${f.gold ? 'gold' : ''}`}>{f.value}</span>
+                <span className="an-fact-s">{f.delta != null ? <Delta v={f.delta} /> : f.note}</span>
+            </div>
+        ))}
+    </div>
+);
+
+// Tiny bars for a highlight card; `hi` lit in the accent, the rest dim
+const MiniBars = ({ values, hi, labels }) => {
+    const max = Math.max(...values) || 1;
+    return (
+        <div className="an-mini">
+            <div className="an-mini-bars">
+                {values.map((v, i) => <span key={i} className={hi.includes(i) ? 'hi' : ''} style={{ height: `${Math.max(v ? 8 : 0, (v / max) * 100)}%` }} />)}
+            </div>
+            {labels && <div className="an-mini-ax">{labels.map((l, i) => <span key={i}>{l}</span>)}</div>}
+        </div>
+    );
+};
+
+// 24-hour ring of play (00 at the top, clockwise), each hour shaded by its minutes (√, like the
+// unlock grid); the typical start time in the middle with a tick on the ring
+const PlayClock = ({ byHour, start }) => {
+    const max = Math.max(...byHour) || 1;
+    const shade = (v) => { if (!v) return HEAT_RAMP[0]; const r = Math.sqrt(v / max); return r >= 0.75 ? HEAT_RAMP[4] : r >= 0.5 ? HEAT_RAMP[3] : r >= 0.25 ? HEAT_RAMP[2] : HEAT_RAMP[1]; };
+    const C = 60, R1 = 38, R2 = 56;
+    const pt = (r, h) => { const a = (h / 24) * 2 * Math.PI - Math.PI / 2; return [C + r * Math.cos(a), C + r * Math.sin(a)]; };
+    const wedge = (h) => {
+        const [a, b, c, d] = [pt(R2, h + 0.05), pt(R2, h + 0.95), pt(R1, h + 0.95), pt(R1, h + 0.05)];
+        return `M${a} A${R2},${R2} 0 0 1 ${b} L${c} A${R1},${R1} 0 0 0 ${d} Z`;
+    };
+    const s = start != null ? start / 60 : null;
+    return (
+        <svg viewBox="0 0 120 120" className="an-clock" role="img" aria-label="Play by hour of the day">
+            {byHour.map((v, h) => <ClockWedge key={h} h={h} v={v} d={wedge(h)} fill={shade(v)} />)}
+            {[0, 6, 12, 18].map(h => { const [x, y] = pt(R1 - 7, h); return <text key={h} x={x} y={y} fontSize="6.5" fill="#546270" textAnchor="middle" dominantBaseline="middle">{hh(h)}</text>; })}
+            {s != null && (() => { const [x1, y1] = pt(R1 - 2, s), [x2, y2] = pt(R2 + 3, s); return <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#e5b143" strokeWidth="1.6" strokeLinecap="round" />; })()}
+            {s != null && <>
+                <text x={C} y={C - 2} fontSize="13" fontWeight="600" fill="#fff" textAnchor="middle">{hh(Math.floor(start / 60))}:{String(start % 60).padStart(2, '0')}</text>
+                <text x={C} y={C + 10} fontSize="6.5" fill="#8f98a0" textAnchor="middle">typical start</text>
+            </>}
+        </svg>
+    );
+};
+const ClockWedge = ({ h, v, d, fill }) => {
+    const tip = useTip(() => ({ title: `${hh(h)}:00–${hh(h + 1)}:00`, rows: [{ value: fmtMinutes(v), label: 'played in total' }] }));
+    return <path d={d} fill={fill} className="outline-none hover:brightness-150 focus:brightness-150" {...tip} />;
+};
+
+// Average minutes in each hour, weekdays and weekends as two lines on one scale (weekends filled)
+const HourLines = ({ rows, max, height = 120 }) => {
+    const y = (v) => height - (v / max) * height;
+    const line = (id) => rows.map(r => `${r.hour + 0.5},${y(r[id])}`).join(' ');
+    return (
+        <div className="flex gap-1.5">
+            <div className="flex flex-col justify-between text-[8px] text-[#546270] text-right tabular-nums shrink-0" style={{ height }}>
+                <span>{fmtMinutes(max)}</span><span>{fmtMinutes(max / 2)}</span><span>0</span>
+            </div>
+            <div className="flex-1 min-w-0">
+                <div className="relative" style={{ height }}>
+                    {[0, 0.5, 1].map(f => <div key={f} className="absolute left-0 right-0 h-px bg-[#202d39]" style={{ top: `${f * 100}%` }} />)}
+                    <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none" viewBox={`0 0 24 ${height}`} preserveAspectRatio="none">
+                        <polygon points={`0.5,${height} ${line('weekends')} 23.5,${height}`} fill="rgba(102,192,244,0.16)" />
+                        {HOUR_SERIES.map(s => <polyline key={s.id} points={line(s.id)} fill="none" stroke={s.color} strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" />)}
+                    </svg>
+                    <div className="absolute inset-0 flex">
+                        {rows.map(r => <HourCol key={r.hour} row={r} />)}
+                    </div>
+                </div>
+                <div className="flex mt-1">
+                    {rows.map(r => <div key={r.hour} className="flex-1 text-center text-[8px] text-[#546270]">{r.hour % 3 === 0 ? hh(r.hour) : ''}</div>)}
+                </div>
+            </div>
+        </div>
+    );
+};
+const HourCol = ({ row }) => {
+    const tip = useTip(() => ({
+        title: `${hh(row.hour)}:00–${hh(row.hour + 1)}:00`,
+        rows: HOUR_SERIES.map(s => ({ color: s.color, value: fmtMinutes(row[s.id]), label: `per ${s.label.toLowerCase().replace(/s$/, '')} day` })),
+    }));
+    return <div className="flex-1 h-full outline-none hover:bg-[rgba(198,212,223,0.06)] focus:bg-[rgba(198,212,223,0.06)]" {...tip} />;
 };
 
 const DataTable = ({ columns, rows }) => (
@@ -297,28 +394,26 @@ const Column = ({ bucket, series, max, height, format }) => {
 // Horizontal bars for ranked lists: rows [{ key, label, sub, value, color, icon, href }]
 // `max` fixes the scale (e.g. 100 for percentages); otherwise bars are relative to the top row
 const BarList = ({ rows, format, max: fixedMax, empty = 'Nothing in this period.' }) => {
-    if (!rows.length) return <div className="text-[10px] text-[#546270] italic py-2">{empty}</div>;
+    if (!rows.length) return <div className="an-empty">{empty}</div>;
     const max = fixedMax ?? Math.max(...rows.map(r => r.value));
     return (
-        <div className="flex flex-col gap-1.5">
-            {rows.map(r => (
-                <div key={r.key} className="flex items-center gap-2 min-w-0">
+        <div className="an-blist">
+            {rows.map((r, i) => (
+                <div key={r.key} className="an-brow">
                     {r.icon !== undefined && (
-                        <div className="w-5 h-5 shrink-0 rounded-[2px] overflow-hidden border border-[#101214] bg-black">
-                            {r.icon ? <img src={r.icon} alt="" className="w-full h-full object-cover" loading="lazy" /> : <div className="w-full h-full bg-[#2a475e]" />}
-                        </div>
+                        r.icon ? <img src={r.icon} alt="" className="an-bicon" loading="lazy" /> : <span className="an-bicon" />
                     )}
                     <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-1.5 min-w-0">
                             {r.href
-                                ? <a href={r.href} target="_blank" rel="noreferrer" className="text-[10px] text-[#c6d4df] hover:text-[#66c0f4] truncate min-w-0 transition-colors">{r.label}</a>
-                                : <span className="text-[10px] text-[#c6d4df] truncate">{r.label}</span>}
+                                ? <a href={r.href} target="_blank" rel="noreferrer" className="an-bname">{r.label}</a>
+                                : <span className="an-bname">{r.label}</span>}
                             {r.marks}
-                            {r.sub && <span className="text-[9px] text-[#546270] truncate min-w-0">{r.sub}</span>}
-                            <span className="ml-auto text-[10px] text-[#c6d4df] font-semibold shrink-0">{format(r.value)}</span>
+                            <span className="ml-auto an-bval">{format(r.value)}</span>
                         </div>
-                        <div className="h-[3px] mt-0.5 bg-[#101214] rounded-[1px]">
-                            <div className="h-full rounded-[1px]" style={{ width: `${Math.max(2, (r.value / max) * 100)}%`, background: r.color }} />
+                        {r.sub && <div className="an-bsub">{r.sub}</div>}
+                        <div className="an-btrack">
+                            <div style={{ width: `${Math.max(2, (r.value / max) * 100)}%`, background: r.color }} />
                         </div>
                     </div>
                 </div>
@@ -329,47 +424,13 @@ const BarList = ({ rows, format, max: fixedMax, empty = 'Nothing in this period.
 
 // Day-of-week × hour grid; cells: [7][24] numbers
 // Average unlocks: 0.43 → "0.43", 2.5 → "2.5"
-const fmtAvg = (v) => (v >= 10 ? v.toFixed(0) : v >= 1 ? v.toFixed(1) : v.toFixed(2));
-
-// ── Top unlock hours ──
-const DayChip = ({ d }) => (
-    <span className="text-[8px] font-bold uppercase tracking-[0.07em] px-1.5 py-[2px] rounded-[2px] border border-[#2a475e] bg-[#101214] text-[#c6d4df] shrink-0 w-[34px] text-center">{WEEKDAYS[d]}</span>
-);
-// 24-hour clock (00 at the top, clockwise), each hour shaded by its unlocks per day (square root,
-// like the grid); the top hours' wedges are outlined and numbered, with the ranked list beside it
-const TopHoursDial = ({ top, byHour }) => {
-    if (!top.length) return <div className="text-[10px] text-[#546270] italic py-2">No unlocks in this period.</div>;
-    const max = Math.max(...byHour) || 1;
-    const shade = (v) => { if (!v) return HEAT_RAMP[0]; const r = Math.sqrt(v / max); return r >= 0.75 ? HEAT_RAMP[4] : r >= 0.5 ? HEAT_RAMP[3] : r >= 0.25 ? HEAT_RAMP[2] : HEAT_RAMP[1]; };
-    const C = 60, R1 = 34, R2 = 54;
-    const pt = (r, h) => { const a = (h / 24) * 2 * Math.PI - Math.PI / 2; return [C + r * Math.cos(a), C + r * Math.sin(a)]; };
-    const wedge = (h) => {
-        const [a, b, c, d] = [pt(R2, h + 0.04), pt(R2, h + 0.96), pt(R1, h + 0.96), pt(R1, h + 0.04)];
-        return `M${a} A${R2},${R2} 0 0 1 ${b} L${c} A${R1},${R1} 0 0 0 ${d} Z`;
-    };
-    const rankOf = Object.fromEntries(top.map((x, i) => [x.h, i + 1]));
-    return (
-        <div className="flex items-center gap-4">
-            <svg viewBox="0 0 120 120" className="w-[150px] h-[150px] shrink-0">
-                {byHour.map((v, h) => <path key={h} d={wedge(h)} fill={shade(v)} stroke={h in rankOf ? '#c6d4df' : 'none'} strokeWidth={h in rankOf ? 1 : 0} />)}
-                {[0, 6, 12, 18].map(h => { const [x, y] = pt(R1 - 8, h + 0.5); return <text key={h} x={x} y={y} fontSize="7" fill="#546270" textAnchor="middle" dominantBaseline="middle">{hh(h)}</text>; })}
-                {Object.entries(rankOf).map(([h, r]) => { const [x, y] = pt(R2 + 5, Number(h) + 0.5); return <text key={h} x={x} y={y} fontSize="6" fontWeight="700" fill="#c6d4df" textAnchor="middle" dominantBaseline="middle">{r}</text>; })}
-            </svg>
-            <div className="flex-1 min-w-0 flex flex-col gap-1.5">
-                {top.map((x, i) => (
-                    <div key={x.h} className="flex items-center gap-2 min-w-0">
-                        <span className="text-[9px] text-[#546270] w-3 text-right shrink-0">{i + 1}</span>
-                        <span className="text-[10px] text-[#c6d4df] tabular-nums shrink-0">{hh(x.h)}:00–{hh(x.h + 1)}:00</span>
-                        <span className="text-[9px] text-[#546270] shrink-0">peak</span>
-                        <DayChip d={x.peakDay} />
-                        <span className="text-[9px] text-[#546270] truncate">{fmtNum(x.total)} in total</span>
-                        <span className="ml-auto text-[11px] text-white font-semibold tabular-nums shrink-0">{fmtAvg(x.v)}<span className="text-[8px] text-[#546270] font-normal"> /day</span></span>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
+// 3 → "3 days ago", 40 → "1 month ago", 400 → "1 year ago"
+const agoLabel = (ms) => {
+    const days = Math.floor((Date.now() - ms) / 86400000);
+    const [n, unit] = days < 1 ? [0, 'today'] : days < 30 ? [days, 'day'] : days < 365 ? [Math.floor(days / 30), 'month'] : [Math.floor(days / 365), 'year'];
+    return n ? `${n} ${unit}${n === 1 ? '' : 's'} ago` : 'today';
 };
+const fmtAvg = (v) => (v >= 10 ? v.toFixed(0) : v >= 1 ? v.toFixed(1) : v.toFixed(2));
 
 // Day-of-week × hour grid of average unlocks; cells: [7][24]. Colors by rank, not linear:
 // the non-empty cells split into four equal groups, so one burst hour can't turn every
@@ -408,35 +469,16 @@ const PunchCell = ({ v, total, d, h, color }) => {
         title: `${WEEKDAY_NAMES[d]} ${hh(h)}:00–${hh(h + 1)}:00`,
         rows: [{ value: v ? fmtAvg(v) : '0', label: `per ${WEEKDAY_NAMES[d]}` }, { value: fmtNum(total), label: 'in total' }],
     }));
-    return <div className="flex-1 aspect-square rounded-[2px] outline-none hover:brightness-150 focus:brightness-150" style={{ background: color }} {...tip} />;
+    return <div className="an-pcell outline-none hover:brightness-150 focus:brightness-150" style={{ background: color }} {...tip} />;
 };
 
-const StatTile = ({ label, value, delta, note }) => (
-    <div className="bg-[#1b2838] border border-[#2a475e] rounded-[3px] px-3 py-2.5 min-w-0">
-        <div className="text-[11px] text-[#8f98a0] truncate">{label}</div>
-        <div className="text-[20px] text-white font-semibold leading-tight mt-0.5 truncate">{value}</div>
-        <div className="text-[9px] text-[#546270] mt-0.5 truncate h-[13px]">
-            {delta != null ? (
-                <span className={delta > 0 ? 'text-[#8fbf6a]' : delta < 0 ? 'text-[#c87a6a]' : ''}>
-                    {delta > 0 ? '▲' : delta < 0 ? '▼' : '='} {Math.abs(delta)}%
-                </span>
-            ) : null}
-            {delta != null && note ? <span> · {note}</span> : note}
-        </div>
-    </div>
-);
-
 const Skeleton = () => (
-    <div className="flex flex-col gap-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-            {[...Array(8)].map((_, i) => <div key={i} className="shimmer h-[66px] rounded-[3px]" />)}
+    <div className="flex flex-col gap-3">
+        <div className="shimmer h-[250px] rounded-[3px]" />
+        <div className="an-hls">
+            <div className="shimmer h-[96px] rounded-[3px] an-hl wide" />
+            {[...Array(4)].map((_, i) => <div key={i} className="shimmer h-[110px] rounded-[3px]" />)}
         </div>
-        {[...Array(3)].map((_, i) => (
-            <div key={i} className="grid md:grid-cols-2 gap-3">
-                <div className="shimmer h-[210px] rounded-[3px]" />
-                <div className="shimmer h-[210px] rounded-[3px]" />
-            </div>
-        ))}
     </div>
 );
 
@@ -453,6 +495,8 @@ async function loadAll() {
         fetchJson('../data/xbox/win-conditions.json'),
         ...PLATFORMS.map(p => fetchJson(`../data/${p}/history/index.json`)),
     ]);
+    // RA wide art picked in the admin (hero, else banner), behind the top game card
+    const raArt = (await fetchJson('../data/ra/art.json'))?.games ?? {};
 
     // Unlocks, all years listed in each history index
     const unlockFiles = await Promise.all(PLATFORMS.flatMap((p, i) =>
@@ -475,7 +519,7 @@ async function loadAll() {
         put(p, id, { name: g.name, icon: g.icon ? (p === 'ra' ? `${RA_MEDIA}${g.icon}` : g.icon) : null, console: g.console });
     }
     for (const [id, g] of Object.entries(steamIndex?.achievementProgress ?? {})) put('steam', id, { name: g.gameName, icon: g.iconUrl });
-    for (const [id, g] of Object.entries(xboxIndex?.achievementProgress ?? {})) put('xbox', id, { name: g.gameName, icon: xboxImg(g.iconUrl, 64) });
+    for (const [id, g] of Object.entries(xboxIndex?.achievementProgress ?? {})) put('xbox', id, { name: g.gameName, icon: xboxImg(g.iconUrl, 64), art: xboxImg(g.heroUrl, 424) });
     const raGames = [...(raProfile?.gameAwardsAndProgress?.results ?? []), ...(raProfile?.recentlyPlayedGames ?? [])];
     for (const g of raGames) put('ra', g.gameId, { name: g.title, icon: g.imageIcon ? `${RA_MEDIA}${g.imageIcon}` : null, console: g.consoleName });
 
@@ -538,7 +582,7 @@ async function loadAll() {
         .filter(([, g]) => g.unlocked >= FARM_MIN_UNLOCKS && g.unlocked / Math.max((g.playtimeForever ?? 0) / 60, 0.1) > FARM_PER_HOUR)
         .map(([id]) => `steam-${id}`));
 
-    return { unlocks, sessions, meta, completions, funnel, progress, farms };
+    return { unlocks, sessions, meta, completions, funnel, progress, farms, raArt };
 }
 
 // Session minutes split into local days: [{ key, minutes, s }]
@@ -715,16 +759,6 @@ const App = () => {
         const rangeWeekdays = Array(7).fill(0);
         for (let k = startKey; k <= endKey; k = addDays(k, 1)) rangeWeekdays[(keyToDate(k).getDay() + 6) % 7]++;
         const unlockGrid = unlockTotals.map((r, d) => r.map(v => (rangeWeekdays[d] ? v / rangeWeekdays[d] : 0)));
-        // Per hour of the day (all days): unlocks in that hour ÷ days in the range, for the dial,
-        // plus the weekday that peaks in it
-        const rangeDays = rangeWeekdays.reduce((a, n) => a + n, 0);
-        const unlockByHour = Array.from({ length: 24 }, (_, h) => (rangeDays ? unlockTotals.reduce((a, r) => a + r[h], 0) / rangeDays : 0));
-        const hourTotal = (h) => unlockTotals.reduce((a, r) => a + r[h], 0);
-        const hourPeak = (h) => unlockGrid.reduce((best, r, d) => (r[h] > unlockGrid[best][h] ? d : best), 0);
-        const unlockHourTable = unlockByHour.map((v, h) => [`${hh(h)}:00`, v ? fmtAvg(v) : '', fmtNum(hourTotal(h)), v ? WEEKDAY_NAMES[hourPeak(h)] : '']);
-        const topUnlockHours = unlockByHour.map((v, h) => ({ h, v }))
-            .filter(x => x.v > 0).sort((a, b) => b.v - a.v).slice(0, 6)
-            .map(x => ({ ...x, total: hourTotal(x.h), peakDay: hourPeak(x.h) }));
 
         // Habits, all from the playtime grid (RA + Steam)
         const playTotal = playGrid.flat().reduce((a, v) => a + v, 0);
@@ -774,18 +808,24 @@ const App = () => {
         const g = (p, id) => (perGame[`${p}-${id}`] ??= { platform: p, id: String(id), minutes: 0, unlocks: 0 });
         for (const x of days) if (inRange(x.key, startKey, endKey)) g(x.s.platform, x.s.gameId).minutes += x.minutes;
         for (const u of periodUnlocks) g(u.platform, u.g).unlocks++;
+        // Sub line: platform dot + short name (RA: the console), then the list's own fact
         const gameRow = (x, value, sub) => ({
             key: `${x.platform}-${x.id}`,
             label: parseTitle(nameOf(x.platform, x.id)).baseTitle,
             marks: <TitleMarks platform={x.platform} name={nameOf(x.platform, x.id)} />,
-            sub, value,
+            sub: <>
+                <i className="an-pdot" style={{ background: PLATFORM_COLOR[x.platform] }} />
+                <span className="shrink-0">{x.platform === 'ra' ? (data.meta.ra[x.id]?.console ?? 'RA') : PLATFORM_SHORT[x.platform]}</span>
+                {sub != null && sub !== '' && <><span className="text-[#3a5068]">·</span><span className="truncate">{sub}</span></>}
+            </>,
+            value,
             color: PLATFORM_COLOR[x.platform],
             icon: data.meta[x.platform][x.id]?.icon ?? null,
             href: gameUrl(x.platform, x.id, nameOf(x.platform, x.id)),
         });
         const games = Object.values(perGame);
         const topHours = games.filter(x => x.minutes >= 1).sort((a, b) => b.minutes - a.minutes).slice(0, 8)
-            .map(x => gameRow(x, x.minutes, PLATFORM_SHORT[x.platform]));
+            .map(x => gameRow(x, x.minutes, null));
         // Most progress: share of each game's set earned in the period (sets of 10+), bigger sets first on ties
         const doneInPeriod = new Set(completions.filter(c => inRange(c.key, startKey, endKey)).map(c => `${c.platform}-${c.gameId}`));
         const mostProgress = games
@@ -823,7 +863,7 @@ const App = () => {
             .map(([k, x]) => { const [platform, ...id] = k.split('-'); return { platform, id: id.join('-'), key: k, ...x }; });
         const newDone = newGames.filter(x => doneInPeriod.has(x.key)).length;
         const newRows = [...newGames].sort((a, b) => b.minutes - a.minutes || b.last - a.last).slice(0, 8)
-            .map(x => gameRow(x, x.minutes, <>{x.platform === 'xbox' ? 'no playtime' : PLATFORM_SHORT[x.platform]}{doneInPeriod.has(x.key) && <span className="text-[#e5b143]" title="Completed in this period"> ★</span>}</>));
+            .map(x => gameRow(x, x.minutes, x.platform === 'xbox' || doneInPeriod.has(x.key) ? <>{x.platform === 'xbox' && 'no playtime'}{doneInPeriod.has(x.key) && <span className="text-[#e5b143]" title="Completed in this period">★ Completed</span>}</> : null));
         // Tried and dropped: first played in the period (after tracking began), under an hour in total,
         // and untouched for DROPPED_IDLE_DAYS. RA/Steam only: it needs playtime.
         const idleBefore = Date.now() - DROPPED_IDLE_DAYS * 86400000;
@@ -853,6 +893,10 @@ const App = () => {
 
         // ── Completions & time to complete
         const periodCompletions = completions.filter(c => inRange(c.key, startKey, endKey));
+        // The latest completion (any time, same filters), shown when the period has none
+        const lastDone = completions.reduce((m, c) => (!m || c.ms > m.ms ? c : m), null);
+        const doneCard = (c) => c && ({ key: `${c.platform}-${c.gameId}`, ms: c.ms, platform: c.platform,
+            name: parseTitle(nameOf(c.platform, c.gameId)).baseTitle, icon: data.meta[c.platform][c.gameId]?.icon ?? null });
         const daysToComplete = periodCompletions
             .map(c => { const f = base.firstUnlock[`${c.platform}-${c.gameId}`]; return f != null ? (c.ms - f) / 86400000 : null; })
             .filter(v => v != null && v >= 0);
@@ -866,11 +910,20 @@ const App = () => {
             .sort(([, a], [, b]) => b[field] - a[field]).slice(0, 8)
             .map(([name, v]) => ({ key: name, label: name, value: v[field], color: PLATFORM_COLOR.ra }));
 
+        // ── Highlights: wide art for the top game, play per hour of the day (all days), icons of new games
+        const artOf = (p, id) => (p === 'steam' ? [`${STEAM_CDN}/${id}/library_hero.jpg`, `${STEAM_CDN}/${id}/header.jpg`]
+            : p === 'ra' ? [data.raArt[id]?.hero?.thumb, data.raArt[id]?.grid?.thumb] : [data.meta.xbox[id]?.art]);
+        const topGameFull = topHours[0] ? { ...topHours[0], platform: topHours[0].key.split('-')[0], id: topHours[0].key.split('-').slice(1).join('-') } : null;
+        const hourAll = Array.from({ length: 24 }, (_, h) => playGrid.reduce((a, r) => a + r[h], 0));
+        const newIcons = [...newGames].sort((a, b) => b.minutes - a.minutes || b.last - a.last).slice(0, 5)
+            .map(x => ({ key: x.key, icon: data.meta[x.platform][x.id]?.icon ?? null }));
+
         return {
+            artOf, topGameFull, hourAll, newIcons, weekdayMinutes, peakAt: peakMinutes ? peakAt : null,
             cur, prev, prevPlayTracked, playNote,
             playBuckets, unlockBuckets, playUnit, unit,
             unlockGrid, unlockTotals, topHours,
-            unlockByHour, topUnlockHours, unlockHourTable, mostProgress, almostComplete, perAch,
+            mostProgress, almostComplete, perAch,
             peak, favDay: weekdayMinutes[favDay] ? favDay : null, favDayShare: share(weekdayMinutes[favDay]), weekendShare, lateShare,
             typicalStart, busiest, dayParts, playTotal, weekdayAvg, hourAvg, kindDays,
             hourMax: niceMax(Math.max(0, ...hourAvg.flatMap(r => [r.weekdays, r.weekends]))),
@@ -881,13 +934,334 @@ const App = () => {
             lengthBuckets, longest, sessionCount: periodSessions.length,
             medianSession: median(periodSessions.map(s => s.minutes)),
             rarity, rarest, periodCompletions, daysToComplete,
+            lastDone: doneCard(lastDone), doneGames: [...periodCompletions].sort((a, b) => b.ms - a.ms).slice(0, 6).map(doneCard),
             consoleHours: consoleRows('minutes'), consoleUnlocks: consoleRows('unlocks'),
             nameOf,
         };
     }, [base, range, data, hideFarms, period, platform]);
 
     const d = (k, play) => (view?.prev && (!play || view.prevPlayTracked) ? pct(view.cur[k], view.prev[k]) : null);
-    const periodLabel = PERIODS.find(p => p.id === period).label;
+
+    // Tabs (assets/tabs.js): sticky bar, swipe on phones, kept in the URL as ?tab= (absent = overview)
+    const TABS = [
+        { id: 'overview', label: 'Overview', icon: <LayoutDashboard size={15} />, color: '#66c0f4' },
+        { id: 'time',     label: 'Time',     icon: <Clock size={15} />,           color: '#66c0f4' },
+        { id: 'games',    label: 'Games',    icon: <Gamepad2 size={15} />,        color: '#66c0f4' },
+        { id: 'achievements', label: 'Achievements', icon: <Trophy size={15} />,  color: '#e5b143' },
+    ];
+    const [tab, setTabState] = useState(() => {
+        const q = new URLSearchParams(location.search).get('tab');
+        return TABS.some(t => t.id === q) ? q : 'overview';
+    });
+    const tabBarRef = useRef(null);
+    const tabContentRef = useRef(null);
+    const setTab = (id) => {
+        setTabState(id);
+        const url = new URL(location.href);
+        if (id === 'overview') url.searchParams.delete('tab'); else url.searchParams.set('tab', id);
+        history.replaceState(null, '', url);
+        scrollToTabs(tabBarRef);
+    };
+    const tabPeeks = {
+        overview: ['heatmap', 'stats'],
+        time: ['heatmap', 'heatmap'],
+        games: ['stats', 'list'],
+        achievements: ['heatmap', 'list'],
+    };
+    const [swipeDir, setSwipeDir] = useSwipeTabs(tabContentRef, TABS.map(t => t.id), tab, setTab, !!view, tabPeeks);
+    const pickTab = (id) => { setSwipeDir(null); setTab(id); };
+
+    // The Overview's metric (the two big numbers switch the chart under them) and the cards' switches
+    const [metricPick, setMetric] = useState('hours');
+    const metric = hasPlay ? metricPick : 'unlocks';
+    const [topList, setTopList] = useState('played');
+    const [newList, setNewList] = useState('new');
+    const [consoleList, setConsoleList] = useState('hours');
+
+    const fmtShortHours = (v) => (v >= 60 ? `${Math.round(v / 60)}h` : `${Math.round(v)}m`);
+
+    // ── Tab bodies (render functions, called only once `view` exists) ──
+    const overview = () => {
+        const facts = [
+            { label: 'Active days', value: fmtNum(view.cur.activeDays), delta: d('activeDays', true) },
+            hasPlay && { label: 'Sessions', value: fmtNum(view.cur.sessions), delta: d('sessions', true) },
+            hasPlay && { label: 'Avg session', value: fmtMinutes(view.cur.avgSession), delta: d('avgSession', true) },
+            // Points, gamerscore and completions only when there is something to show or compare
+            units.includes('ra') && (view.cur.raPoints || view.prev?.raPoints) && { label: 'RA points', value: fmtNum(view.cur.raPoints), delta: d('raPoints') },
+            units.includes('xbox') && (view.cur.gamerscore || view.prev?.gamerscore) && { label: 'Gamerscore', value: fmtNum(view.cur.gamerscore), delta: d('gamerscore') },
+            (view.cur.completions || view.prev?.completions) && { label: 'Completed', value: fmtNum(view.cur.completions), delta: d('completions'), gold: view.cur.completions > 0 },
+        ].filter(Boolean);
+        const tg = view.topGameFull;
+        const rare = view.rarest[0];
+        const series = metric === 'hours' ? plays : units;
+        return (
+            <div className="flex flex-col gap-3">
+                {/* Recap: the two numbers are the switch for the trend chart under them */}
+                <div className="an-card">
+                    <div className={`an-metrics ${hasPlay ? '' : 'one'}`} role="tablist">
+                        {hasPlay && (
+                            <button role="tab" aria-selected={metric === 'hours'} className={`an-metric ${metric === 'hours' ? 'on' : ''}`} onClick={() => setMetric('hours')}>
+                                <span className="an-metric-l">Hours played</span>
+                                <span className="an-metric-v">{fmtHours(view.cur.minutes)}</span>
+                                <span className="an-metric-s"><Delta v={d('minutes', true)} />{view.playNote && <span>{view.playNote}</span>}</span>
+                            </button>
+                        )}
+                        <button role="tab" aria-selected={metric === 'unlocks'} className={`an-metric ${metric === 'unlocks' ? 'on' : ''}`} onClick={() => setMetric('unlocks')}>
+                            <span className="an-metric-l">Unlocks</span>
+                            <span className="an-metric-v">{fmtNum(view.cur.unlocks)}</span>
+                            <span className="an-metric-s"><Delta v={d('unlocks')} /></span>
+                        </button>
+                    </div>
+                    <div key={metric} className="anim-fade mt-3">
+                        {!hasPlay && <div className="mb-2.5"><Crits items={[{ icon: Gamepad2, text: 'Unlocks only: Xbox reports no playtime' }]} /></div>}
+                        {(metric === 'hours' ? view.cur.minutes < 1 : !view.cur.unlocks)
+                            ? <div className="an-empty">{metric === 'hours' ? 'No play in this period.' : 'No unlocks in this period.'}</div>
+                            : <>
+                        {series.length > 1 && <div className="mb-2"><Legend items={seriesLegend(series)} /></div>}
+                        {metric === 'hours'
+                            ? <StackedColumns buckets={view.playBuckets} series={plays} format={fmtShortHours} height={110} />
+                            : <StackedColumns buckets={view.unlockBuckets} series={units} format={fmtNum} height={110} />}
+                        </>}
+                    </div>
+                    {facts.length > 0 && <div className="an-sep"><Facts items={facts} /></div>}
+                    {/* The key to the ▲ ▼ above, drawn with the real marks */}
+                    {range.prevLabel && [d('minutes', true), d('unlocks'), ...facts.map(f => f.delta)].some(v => v != null) && (
+                        <div className="an-key"><span className="crit-arrows"><span className="up">▲</span><span className="down">▼</span></span>vs {range.prevLabel}</div>
+                    )}
+                </div>
+
+                {/* Highlights: one answer each, tapping opens the tab with the detail */}
+                <div className="an-hls">
+                    {tg && (
+                        <button className="an-hl wide" onClick={() => pickTab('games')}>
+                            <ArtBg key={tg.key} sources={view.artOf(tg.platform, tg.id)} icon={tg.icon} />
+                            <span className="an-hl-l"><Gamepad2 size={12} /> Top game</span>
+                            <span className="an-hl-game">
+                                {tg.icon ? <img src={tg.icon} alt="" /> : <span />}
+                                <span className="min-w-0">
+                                    <span className="an-hl-name">{tg.label}</span>
+                                    <span className="an-hl-s"><b>{fmtMinutes(tg.value)}</b> · {view.topShare}% of play</span>
+                                </span>
+                            </span>
+                            <span className="an-share"><span style={{ width: `${view.topShare}%`, background: PLATFORM_COLOR[tg.platform] }} /></span>
+                            <ChevronRight size={14} className="an-hl-go" />
+                        </button>
+                    )}
+                    {view.peak && (
+                        <button className="an-hl" onClick={() => pickTab('time')}>
+                            <span className="an-hl-l"><Clock size={12} /> Peak time</span>
+                            <span className="an-hl-v">{view.peak.label}</span>
+                            <span className="an-hl-s">{view.peak.share}% of play</span>
+                            <MiniBars values={view.hourAll} hi={view.peakAt != null ? [view.peakAt % 24, (view.peakAt + 1) % 24] : []} labels={['00', '06', '12', '18', '24']} />
+                        </button>
+                    )}
+                    {view.favDay != null && (
+                        <button className="an-hl" onClick={() => pickTab('time')}>
+                            <span className="an-hl-l"><CalendarDays size={12} /> Favorite day</span>
+                            <span className="an-hl-v">{WEEKDAY_NAMES[view.favDay]}</span>
+                            <span className="an-hl-s">{view.favDayShare}% of play</span>
+                            <MiniBars values={view.weekdayMinutes} hi={[view.favDay]} labels={WEEKDAYS.map(w => w[0])} />
+                        </button>
+                    )}
+                    <button className="an-hl" onClick={() => pickTab('games')}>
+                        <span className="an-hl-l"><Sparkles size={12} /> New games</span>
+                        <span className="an-hl-v">{fmtNum(view.newCount)}</span>
+                        <span className="an-hl-s">{view.newDone ? <span className="text-[#e5b143]">★ {view.newDone} completed</span> : view.newCount ? 'first played' : 'none this period'}</span>
+                        {view.newIcons.length > 0 && <span className="an-hl-icons">{view.newIcons.map(x => x.icon ? <img key={x.key} src={x.icon} alt="" /> : <span key={x.key} />)}</span>}
+                    </button>
+                    {rare && (
+                        <button className="an-hl" onClick={() => pickTab('achievements')}>
+                            <span className="an-hl-l"><Gem size={12} /> Rarest unlock</span>
+                            <span className="an-hl-v" style={{ color: rarityTier(rare.r).color }}>{rare.r}%</span>
+                            <span className="an-hl-s an-hl-clamp"><span className="text-[#c6d4df]">{rare.n}</span> · {parseTitle(view.nameOf(rare.platform, rare.g)).baseTitle}</span>
+                        </button>
+                    )}
+                </div>
+            </div>
+        );
+    };
+
+    const timeTab = () => (
+        <div className="an-grid">
+            {hasPlay ? <>
+                <ChartCard title="Daily rhythm" pill={view.playNote} className="an-span"
+                    table={{ columns: ['Hour', 'Played'], rows: view.hourAll.map((m, h) => [`${hh(h)}:00`, fmtMinutes(m)]) }}>
+                    {view.playTotal ? <div className="an-rhythm-wrap">
+                        <div className="an-rhythm">
+                            <PlayClock byHour={view.hourAll} start={view.typicalStart} />
+                            <div className="an-flist">
+                                {[
+                                    view.peak && ['Peak time', view.peak.label, `${view.peak.share}% of play`],
+                                    view.favDay != null && ['Favorite day', WEEKDAY_NAMES[view.favDay], `${view.favDayShare}% of play`],
+                                    ['Weekends', `${view.weekendShare}%`, 'of play · 29% of days'],
+                                    ['After midnight', `${view.lateShare}%`, 'of play · 00–05'],
+                                    view.busiest && ['Busiest day', fmtMinutes(view.busiest[1]), fmtDayKey(view.busiest[0])],
+                                ].filter(Boolean).map(([l, v, s]) => (
+                                    <div key={l} className="an-frow"><span className="an-frow-l">{l}</span><span className="an-frow-v">{v}</span><span className="an-frow-s">{s}</span></div>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="an-sep an-parts flex flex-col gap-3">
+                            <Legend items={DAY_PARTS.map(p => ({ label: `${p.label} ${p.range}`, color: p.color }))} />
+                            {view.dayParts.map(r => <DayPartBar key={r.id} row={r} labels={r.id === 'all' || platform !== 'all'} />)}
+                        </div>
+                    </div> : <div className="an-empty">No playtime in this period.</div>}
+                </ChartCard>
+                <ChartCard title="By hour" pill={view.playNote}
+                    legend={HOUR_SERIES.map(s => ({ label: `${s.label} · ${view.kindDays[s.id]} days`, color: s.color }))}
+                    table={{ columns: ['Hour', 'Weekdays', 'Weekends'], rows: view.hourAvg.map(r => [`${hh(r.hour)}:00`, fmtMinutes(r.weekdays), fmtMinutes(r.weekends)]) }}>
+                    <HourLines rows={view.hourAvg} max={view.hourMax} />
+                </ChartCard>
+                <ChartCard title="Per weekday" pill={view.playNote}
+                    legend={plays.length > 1 ? seriesLegend(plays) : null}
+                    table={seriesTable('Day', view.weekdayAvg.map(b => ({ ...b, label: WEEKDAY_NAMES[WEEKDAYS.indexOf(b.label)] })), plays, fmtMinutes)}>
+                    <StackedColumns buckets={view.weekdayAvg} series={plays} format={v => fmtMinutes(v)} height={120} />
+                </ChartCard>
+                <ChartCard title="Sessions" className="an-span"
+                    subtitle={view.sessionCount ? (
+                        <span className="flex items-center gap-1.5 min-w-0 flex-wrap">
+                            <span><b className="text-white font-semibold">{fmtNum(view.sessionCount)}</b> · median <b className="text-white font-semibold">{fmtMinutes(view.medianSession)}</b> · longest <b className="text-white font-semibold">{fmtMinutes(view.longest.minutes)}</b>, {parseTitle(view.nameOf(view.longest.platform, view.longest.gameId)).baseTitle}</span>
+                            <TitleMarks platform={view.longest.platform} name={view.nameOf(view.longest.platform, view.longest.gameId)} />
+                        </span>
+                    ) : null}
+                    legend={plays.length > 1 && view.sessionCount ? seriesLegend(plays) : null}
+                    table={seriesTable('Length', view.lengthBuckets, plays, fmtNum, false)}>
+                    {view.sessionCount ? <StackedColumns buckets={view.lengthBuckets} series={plays} format={fmtNum} height={100} /> : <div className="an-empty">No sessions in this period.</div>}
+                </ChartCard>
+            </> : (
+                <div className="an-span"><Crits items={[{ icon: Gamepad2, text: 'Unlocks only: Xbox reports no playtime' }]} /></div>
+            )}
+            <ChartCard title="Unlocks by hour" className="an-span"
+                table={{ columns: ['Day', ...Array.from({ length: 24 }, (_, h) => String(h).padStart(2, '0'))], rows: view.unlockGrid.map((r, i) => [WEEKDAYS[i], ...r.map(v => (v ? fmtAvg(v) : ''))]) }}>
+                <Punchcard cells={view.unlockGrid} totals={view.unlockTotals} />
+            </ChartCard>
+        </div>
+    );
+
+    const gamesTab = () => {
+        const lists = [
+            hasPlay && { id: 'played', label: 'Most played', rows: view.topHours, format: fmtMinutes },
+            { id: 'progress', label: 'Progress', rows: view.mostProgress, format: v => `${Math.round(v)}%`, max: 100,
+                rules: [{ icon: ListChecks, text: <>Sets of <b>10+</b></> }, { icon: Star, text: 'Completed', gold: true }] },
+            { id: 'almost', label: 'Almost done', rows: view.almostComplete, format: v => `${Math.floor(v)}%`, max: 100,
+                empty: period === 'all' ? 'No unfinished games.' : 'No unfinished games played in this period.' },
+            hasPlay && { id: 'hardest', label: 'Hardest', rows: view.perAch, format: v => fmtMinutes(v),
+                rules: [{ icon: Timer, text: 'Time per unlock' }, { icon: Trophy, text: <><b>3+</b> unlocks · <b>30m+</b></> }], empty: 'No game with 3+ unlocks and 30m+ played.' },
+        ].filter(Boolean);
+        const list = lists.find(l => l.id === topList) ?? lists[0];
+        const nl = hasPlay ? newList : 'new';
+        return (
+            <div className="flex flex-col gap-3">
+                <div className="an-card">
+                    <Facts items={[
+                        hasPlay && { label: 'Top game share', value: view.topShare != null ? `${view.topShare}%` : '–', note: 'of playtime' },
+                        { label: 'Games per week', value: view.gamesPerWeek ? view.gamesPerWeek.toFixed(1) : '–', note: 'played or unlocked' },
+                        { label: 'New games', value: fmtNum(view.newCount), note: view.newDone ? <span className="text-[#e5b143]">★ {view.newDone} completed</span> : 'first played' },
+                        hasPlay && { label: 'Tried and dropped', value: fmtNum(view.droppedCount), note: `<1h, idle ${DROPPED_IDLE_DAYS}d+` },
+                    ].filter(Boolean)} />
+                </div>
+                <div className="an-grid">
+                    <ChartCard title="Top games">
+                        <Seg items={lists.map(l => [l.id, l.label])} value={list.id} onChange={setTopList} />
+                        <div key={list.id} className="anim-fade">
+                            {list.rules && <div className="mb-2.5"><Crits items={list.rules} /></div>}
+                            <BarList rows={list.rows} format={list.format} max={list.max} empty={list.empty} />
+                        </div>
+                    </ChartCard>
+                    <ChartCard title="New games">
+                        {hasPlay && <Seg items={[['new', <>New <span className="n">{view.newCount}</span></>], ['dropped', <>Tried and dropped <span className="n">{view.droppedCount}</span></>]]} value={nl} onChange={setNewList} />}
+                        <div key={nl} className="anim-fade">
+                            {nl === 'new'
+                                ? <BarList rows={view.newRows} format={fmtMinutes} empty="No new games in this period." />
+                                : <BarList rows={view.droppedRows} format={fmtMinutes} max={DROPPED_MAX_MINUTES}
+                                    empty={period === '30d' ? `None yet: a game needs ${DROPPED_IDLE_DAYS} idle days to count.` : 'No dropped games in this period.'} />}
+                        </div>
+                    </ChartCard>
+                </div>
+            </div>
+        );
+    };
+
+    const achievementsTab = () => {
+        const cl = hasPlay ? consoleList : 'unlocks';
+        const done = view.periodCompletions.length;
+        return (
+            <div className="an-grid">
+                <ChartCard title="Rarity" rules={[{ icon: Users, text: '% of players who have it' }]}
+                    legend={RARITY_TIERS.map(t => ({ label: t.label, color: t.color }))}
+                    table={{ columns: ['Platform', ...RARITY_TIERS.map(t => t.label)], rows: view.rarity.map(r => [PLATFORM_SHORT[r.platform], ...RARITY_TIERS.map(t => r.counts[t.id])]) }}>
+                    {view.rarity.length === 0
+                        ? <div className="an-empty">No unlocks in this period.</div>
+                        : <div className="flex flex-col gap-2.5">{view.rarity.map(r => <RarityBar key={r.platform} row={r} />)}</div>}
+                    {view.rarest.length > 0 && (
+                        <div className="an-sep">
+                            <div className="an-sub">Rarest unlocks</div>
+                            <div className="an-blist">
+                                {view.rarest.map(u => {
+                                    const icon = data.meta[u.platform][String(u.g)]?.icon;
+                                    return (
+                                        <div key={`${u.platform}-${u.g}-${u.a}`} className="an-brow">
+                                            {icon ? <img src={icon} alt="" className="an-bicon" loading="lazy" /> : <span className="an-bicon" />}
+                                            <div className="flex-1 min-w-0">
+                                                <div className="flex items-center gap-1.5 min-w-0">
+                                                    <span className="an-bname">{u.n}</span>
+                                                    <span className="ml-auto an-bval" style={{ color: rarityTier(u.r).color }}>{u.r}%</span>
+                                                </div>
+                                                <div className="an-bsub">
+                                                    <i className="an-pdot" style={{ background: PLATFORM_COLOR[u.platform] }} />
+                                                    <span className="truncate">{parseTitle(view.nameOf(u.platform, u.g)).baseTitle}</span>
+                                                    <TitleMarks platform={u.platform} name={view.nameOf(u.platform, u.g)} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    )}
+                </ChartCard>
+                <ChartCard title="Completion"
+                    table={{ columns: ['Platform', 'Stage', 'Games', 'Kept'], rows: units.flatMap(p => data.funnel[p].map(([label, n], i) => [PLATFORM_SHORT[p], label, fmtNum(n), i && data.funnel[p][i - 1][1] ? `${Math.round((n / data.funnel[p][i - 1][1]) * 100)}%` : '–'])) }}>
+                    {done ? (
+                        <div className="an-done">
+                            <span className="an-done-ic on"><Star size={16} /></span>
+                            <div className="min-w-0 flex-1">
+                                <div className="an-done-v">{fmtNum(done)} <span>completed</span></div>
+                                <div className="an-hl-s">{view.daysToComplete.length ? <>median <b>{Math.round(median(view.daysToComplete))} days</b> from first unlock</> : 'in this period'}</div>
+                            </div>
+                            <span className="an-done-icons">{view.doneGames.map(g => g.icon ? <img key={g.key} src={g.icon} alt="" title={g.name} /> : <span key={g.key} />)}</span>
+                        </div>
+                    ) : view.lastDone ? (
+                        // None in the period: the latest one instead of a lone zero
+                        <div className="an-done">
+                            {view.lastDone.icon ? <img src={view.lastDone.icon} alt="" className="an-done-game" /> : <span className="an-done-game" />}
+                            <div className="min-w-0">
+                                <div className="an-hl-s">Last completed</div>
+                                <div className="an-done-name">{view.lastDone.name}</div>
+                                <div className="an-hl-s"><span className="text-[#e5b143]">★ {agoLabel(view.lastDone.ms)}</span> · none in this period</div>
+                            </div>
+                        </div>
+                    ) : <div className="an-empty">No completions yet.</div>}
+                    <div className="an-sep">
+                        <div className="an-sub">Funnel <span className="cpill">All time</span></div>
+                        <div className="flex flex-col gap-4">
+                            {units.map(p => <Funnel key={p} platform={p} stages={data.funnel[p]} color={PLATFORM_COLOR[p]} />)}
+                        </div>
+                    </div>
+                </ChartCard>
+                {units.includes('ra') && (view.consoleHours.length > 0 || view.consoleUnlocks.length > 0) && (
+                    <ChartCard title="RetroAchievements by console" className="an-span">
+                        {hasPlay && <Seg items={[['hours', 'Hours played'], ['unlocks', 'Achievements']]} value={cl} onChange={setConsoleList} />}
+                        <div key={cl} className="anim-fade">
+                            {cl === 'hours'
+                                ? <BarList rows={view.consoleHours} format={fmtMinutes} />
+                                : <BarList rows={view.consoleUnlocks} format={fmtNum} />}
+                        </div>
+                    </ChartCard>
+                )}
+            </div>
+        );
+    };
 
     return (
         <TipContext.Provider value={tipApi}>
@@ -902,16 +1276,18 @@ const App = () => {
                 <span className="text-[#c6d4df]">Analytics</span>
             </div>
 
-            {/* Header */}
-            <header className="bg-[#1b2838] border-b border-[#2a475e] px-4 md:px-8 pt-8 pb-5 md:pt-5 shadow-md">
+            {/* Header: title and the dates, then period and platform, which scope every tab */}
+            <header className="bg-[#1b2838] border-b border-[#2a475e] px-4 md:px-8 pt-8 pb-4 md:pt-5 shadow-md">
                 <div className="max-w-5xl mx-auto">
                     <div className="flex items-center gap-3 mb-3">
                         <span className="w-[3px] h-6 bg-[#66c0f4] rounded-[1px] shrink-0" />
                         <h1 className="text-2xl md:text-[26px] text-white font-medium tracking-wide leading-none flex items-center gap-3">
                             <BarChart3 size={22} className="text-[#66c0f4]" /> Analytics
                         </h1>
+                        <span className="ml-auto an-range" title={`Days and hours are shown in your timezone (${TZ})`}>
+                            <CalendarDays size={12} /> {fmtDayKey(range.startKey)} – {fmtDayKey(range.endKey)}
+                        </span>
                     </div>
-                    {/* Period and platform scope everything below; one chip row each (styles in assets/ui.css) */}
                     <div className="flex flex-col gap-2">
                         <div className="frow" role="group" aria-label="Period">
                             {PERIODS.map(p => (
@@ -930,218 +1306,25 @@ const App = () => {
                                 {hideFarms ? <Check size={12} /> : <Plus size={12} />}Hide farms{data && <span className="n">{data.farms.size}</span>}
                             </button>
                         </div>
-                        <span className="fmeta" title="Days and hours are shown in your timezone">
-                            {fmtDayKey(range.startKey)} – {fmtDayKey(range.endKey)} · {TZ}
-                        </span>
                     </div>
                 </div>
             </header>
 
-            <main className="max-w-5xl mx-auto px-4 md:px-8 py-6 flex-1 w-full flex flex-col gap-7">
-                {!view ? <Skeleton /> : (
-                    // Fades in over the skeleton, and again when the period, platform or farm filter changes
-                    <div key={`${period}-${platform}-${hideFarms}`} className="anim-in flex flex-col gap-7">
-                        {/* Overview */}
-                        <section>
-                            <SectionHeader title="Overview"
-                                rules={[
-                                    // The key to the ▲ ▼ under each number
-                                    range.prevLabel && { text: <><span className="crit-arrows"><span className="up">▲</span><span className="down">▼</span></span>vs <b>{range.prevLabel}</b></> },
-                                    ...(hasPlay
-                                        ? [platform === 'all' && { icon: Gamepad2, text: <>Playtime: <b>RA + Steam</b></> }, view.playNote && { icon: CalendarDays, text: `Playtime ${view.playNote}` }]
-                                        : [{ icon: Gamepad2, text: 'Xbox reports no playtime: achievements only' }]),
-                                ]} />
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                                {hasPlay && <StatTile label="Hours played" value={fmtHours(view.cur.minutes)} delta={d('minutes', true)} note={view.playNote} />}
-                                <StatTile label="Active days" value={fmtNum(view.cur.activeDays)} delta={d('activeDays', true)} />
-                                {hasPlay && <StatTile label="Play sessions" value={fmtNum(view.cur.sessions)} delta={d('sessions', true)} note={view.playNote} />}
-                                {hasPlay && <StatTile label="Avg session" value={fmtMinutes(view.cur.avgSession)} delta={d('avgSession', true)} />}
-                                <StatTile label="Achievements" value={fmtNum(view.cur.unlocks)} delta={d('unlocks')} />
-                                {units.includes('ra') && <StatTile label="RA points" value={fmtNum(view.cur.raPoints)} delta={d('raPoints')} />}
-                                {units.includes('xbox') && <StatTile label="Gamerscore" value={fmtNum(view.cur.gamerscore)} delta={d('gamerscore')} />}
-                                <StatTile label="Completed" value={fmtNum(view.cur.completions)} delta={d('completions')} />
-                            </div>
-                        </section>
-
-                        {/* Trends */}
-                        <section>
-                            <SectionHeader title="Trends" />
-                            <div className={`grid gap-3 ${hasPlay ? 'md:grid-cols-2' : ''}`}>
-                                {hasPlay && <ChartCard
-                                    title="Hours played"
-                                    pill={view.playNote}
-                                    legend={seriesLegend(plays)}
-                                    table={seriesTable(view.playUnit, [...view.playBuckets].reverse(), plays, fmtMinutes)}>
-                                    <StackedColumns buckets={view.playBuckets} series={plays} format={v => (v >= 60 ? `${Math.round(v / 60)}h` : `${Math.round(v)}m`)} />
-                                </ChartCard>}
-                                <ChartCard
-                                    title="Achievements unlocked"
-                                    legend={seriesLegend(units)}
-                                    table={seriesTable(view.unit, [...view.unlockBuckets].reverse(), units, fmtNum)}>
-                                    <StackedColumns buckets={view.unlockBuckets} series={units} format={fmtNum} />
-                                </ChartCard>
-                            </div>
-                        </section>
-
-                        {/* When you play: direct answers first, the hour-by-hour grids below */}
-                        <section>
-                            <SectionHeader title="When you play"
-                                rules={hasPlay ? null : [{ icon: Gamepad2, text: 'Unlocks only: Xbox reports no playtime' }]} />
-                            {hasPlay && <>
-                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 mb-3">
-                                <StatTile label="Peak time" value={view.peak?.label ?? '–'} note={view.peak ? `${view.peak.share}% of play` : null} />
-                                <StatTile label="Favorite day" value={view.favDay != null ? WEEKDAY_NAMES[view.favDay] : '–'} note={view.favDay != null ? `${view.favDayShare}% of play` : null} />
-                                <StatTile label="Weekends" value={view.playTotal ? `${view.weekendShare}%` : '–'} note="of play · 29% of days" />
-                                <StatTile label="After midnight" value={view.playTotal ? `${view.lateShare}%` : '–'} note="of play · 00–05" />
-                                <StatTile label="Typical start" value={view.typicalStart != null ? `${hh(Math.floor(view.typicalStart / 60))}:${String(view.typicalStart % 60).padStart(2, '0')}` : '–'} note="median start" />
-                                <StatTile label="Busiest day" value={view.busiest ? fmtMinutes(view.busiest[1]) : '–'} note={view.busiest ? fmtDayKey(view.busiest[0]) : null} />
-                            </div>
-                            <div className="grid md:grid-cols-2 gap-3 mb-3">
-                                <ChartCard title="Time of day"
-                                    legend={DAY_PARTS.map(p => ({ label: `${p.label} ${p.range}`, color: p.color }))}
-                                    table={{ columns: ['Part', 'Hours', ...view.dayParts.map(r => r.id === 'all' ? 'Total' : PLATFORM_SHORT[r.id])], rows: DAY_PARTS.map((p, i) => [p.label, p.range, ...view.dayParts.map(r => `${fmtMinutes(r.parts[i].minutes)} (${Math.round((r.parts[i].minutes / r.total) * 100)}%)`)]) }}>
-                                    {view.dayParts.length === 0
-                                        ? <div className="text-[10px] text-[#546270] italic py-2">No playtime in this period.</div>
-                                        : <div className="flex flex-col gap-3">{view.dayParts.map(r => <DayPartBar key={r.id} row={r} labels={r.id === 'all' || platform !== 'all'} />)}</div>}
-                                </ChartCard>
-                                <ChartCard title="Average per weekday" pill={view.playNote}
-                                    legend={seriesLegend(plays)}
-                                    table={seriesTable('Day', view.weekdayAvg.map(b => ({ ...b, label: WEEKDAY_NAMES[WEEKDAYS.indexOf(b.label)] })), plays, fmtMinutes)}>
-                                    <StackedColumns buckets={view.weekdayAvg} series={plays} format={v => fmtMinutes(v)} height={110} />
-                                </ChartCard>
-                            </div>
-                            {/* Average per hour: weekdays and weekends in their own cards, same scale so they compare */}
-                            <div className="grid md:grid-cols-2 gap-3 mb-3">
-                                {HOUR_SERIES.map(s => (
-                                    <ChartCard key={s.id} title={`${s.label} by hour`} pill={`${s.id === 'weekdays' ? 'Mon–Fri' : 'Sat–Sun'} · ${view.kindDays[s.id]} days${view.playNote ? ` · ${view.playNote}` : ''}`}
-                                        table={{ columns: ['Hour', 'Played'], rows: view.hourAvg.map(r => [`${hh(r.hour)}:00`, fmtMinutes(r[s.id])]) }}>
-                                        <HourBars rows={view.hourAvg} series={s} max={view.hourMax} />
-                                    </ChartCard>
-                                ))}
-                            </div>
-                            </>}
-                            <div className="grid md:grid-cols-2 gap-3">
-                                <ChartCard title="Unlocks by hour"
-                                    table={{ columns: ['Day', ...Array.from({ length: 24 }, (_, h) => String(h).padStart(2, '0'))], rows: view.unlockGrid.map((r, i) => [WEEKDAYS[i], ...r.map(v => (v ? fmtAvg(v) : ''))]) }}>
-                                    <Punchcard cells={view.unlockGrid} totals={view.unlockTotals} />
-                                </ChartCard>
-                                <ChartCard title="Top unlock hours"
-                                    table={{ columns: ['Hour', 'Per day', 'Total', 'Peak day'], rows: view.unlockHourTable }}>
-                                    <TopHoursDial top={view.topUnlockHours} byHour={view.unlockByHour} />
-                                </ChartCard>
-                            </div>
-                        </section>
-
-                        {/* Top games */}
-                        <section>
-                            <SectionHeader title="Top games" />
-                            <div className="grid md:grid-cols-2 gap-3">
-                                {hasPlay && <ChartCard title="Most played"><BarList rows={view.topHours} format={fmtMinutes} /></ChartCard>}
-                                <ChartCard title="Most progress" rules={[{ icon: ListChecks, text: <>Sets of <b>10+</b></> }, { icon: Star, text: 'Completed', gold: true }]}>
-                                    <BarList rows={view.mostProgress} format={v => `${Math.round(v)}%`} max={100} />
-                                </ChartCard>
-                                <ChartCard title="Almost complete">
-                                    <BarList rows={view.almostComplete} format={v => `${Math.floor(v)}%`} max={100} empty={period === 'all' ? 'No unfinished games.' : 'No unfinished games played in this period.'} />
-                                </ChartCard>
-                                {hasPlay && <ChartCard title="Hardest earned" pill="per unlock" rules={[{ icon: Trophy, text: <><b>3+</b> unlocks · <b>30m+</b> played</> }]}>
-                                    <BarList rows={view.perAch} format={v => fmtMinutes(v)} empty="No game with 3+ unlocks and 30m+ played." />
-                                </ChartCard>}
-                            </div>
-                        </section>
-
-                        {/* Focus: how play spreads across games */}
-                        <section>
-                            <SectionHeader title="Focus" />
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-3">
-                                {hasPlay && <StatTile label="Top game share" value={view.topShare != null ? `${view.topShare}%` : '–'}
-                                    note={view.topGame ? view.topGame.label : 'of playtime'} />}
-                                <StatTile label="Games per week" value={view.gamesPerWeek ? view.gamesPerWeek.toFixed(1) : '–'} note="played or unlocked" />
-                                <StatTile label="New games" value={fmtNum(view.newCount)} note={`${fmtNum(view.newDone)} completed`} />
-                                {hasPlay && <StatTile label="Tried and dropped" value={fmtNum(view.droppedCount)} note={`<1h, idle ${DROPPED_IDLE_DAYS}+ days`} />}
-                            </div>
-                            <div className="grid md:grid-cols-2 gap-3">
-                                <ChartCard title="New games" rules={[{ icon: Star, text: 'Completed', gold: true }]}>
-                                    <BarList rows={view.newRows} format={fmtMinutes} empty="No new games in this period." />
-                                </ChartCard>
-                                {hasPlay && <ChartCard title="Tried and dropped">
-                                    <BarList rows={view.droppedRows} format={fmtMinutes} max={DROPPED_MAX_MINUTES}
-                                        empty={period === '30d' ? `None yet: a game needs ${DROPPED_IDLE_DAYS} idle days to count.` : 'No dropped games in this period.'} />
-                                </ChartCard>}
-                            </div>
-                        </section>
-
-                        {/* Sessions + rarity */}
-                        <section className="grid md:grid-cols-2 gap-3">
-                            {hasPlay && <div className="min-w-0">
-                                <SectionHeader title="Sessions" note={`${fmtNum(view.sessionCount)} · median ${fmtMinutes(view.medianSession)}`} />
-                                <ChartCard
-                                    title="Session length"
-                                    subtitle={view.longest ? (
-                                        <span className="flex items-center gap-1.5 min-w-0 flex-wrap">
-                                            <span>Longest: {fmtMinutes(view.longest.minutes)}, {parseTitle(view.nameOf(view.longest.platform, view.longest.gameId)).baseTitle}</span>
-                                            <TitleMarks platform={view.longest.platform} name={view.nameOf(view.longest.platform, view.longest.gameId)} />
-                                            <span>({fmtDayKey(dayKey(new Date(view.longest.endMs)))})</span>
-                                        </span>
-                                    ) : 'No sessions in this period'}
-                                    legend={seriesLegend(plays)}
-                                    table={seriesTable('Length', view.lengthBuckets, plays, fmtNum, false)}>
-                                    <StackedColumns buckets={view.lengthBuckets} series={plays} format={fmtNum} height={130} />
-                                </ChartCard>
-                            </div>}
-                            <div className={`min-w-0 ${hasPlay ? '' : 'md:col-span-2'}`}>
-                                <SectionHeader title="Rarity" gold rules={[{ icon: Users, text: '% of players who have it' }]} />
-                                <ChartCard
-                                    title="Unlocks by rarity"
-                                    legend={RARITY_TIERS.map(t => ({ label: t.label, color: t.color }))}
-                                    table={{ columns: ['Platform', ...RARITY_TIERS.map(t => t.label)], rows: view.rarity.map(r => [PLATFORM_SHORT[r.platform], ...RARITY_TIERS.map(t => r.counts[t.id])]) }}>
-                                    {view.rarity.length === 0
-                                        ? <div className="text-[10px] text-[#546270] italic py-2">No unlocks in this period.</div>
-                                        : <div className="flex flex-col gap-2.5">{view.rarity.map(r => <RarityBar key={r.platform} row={r} />)}</div>}
-                                    {view.rarest.length > 0 && (
-                                        <div className="mt-4">
-                                            <div className="text-[11px] text-[#546270] mb-1.5">Rarest unlocks</div>
-                                            <div className="flex flex-col gap-1">
-                                                {view.rarest.map(u => (
-                                                    <div key={`${u.platform}-${u.g}-${u.a}`} className="flex items-center gap-2 text-[10px] min-w-0">
-                                                        <span className="w-[3px] h-3 rounded-[1px] shrink-0" style={{ background: PLATFORM_COLOR[u.platform] }} />
-                                                        <span className="text-[#c6d4df] truncate">{u.n}</span>
-                                                        <span className="text-[#546270] truncate">{parseTitle(view.nameOf(u.platform, u.g)).baseTitle}</span>
-                                                        <TitleMarks platform={u.platform} name={view.nameOf(u.platform, u.g)} />
-                                                        <span className="ml-auto shrink-0 font-semibold" style={{ color: rarityTier(u.r).color }}>{u.r}%</span>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
-                                </ChartCard>
-                            </div>
-                        </section>
-
-                        {/* Completion */}
-                        <section>
-                            <SectionHeader title="Completion" gold
-                                note={view.daysToComplete.length ? `${view.periodCompletions.length} completed · median ${Math.round(median(view.daysToComplete))} days` : `${view.periodCompletions.length} completed`}
-                                />
-                            <div className="grid md:grid-cols-3 gap-3">
-                                {units.map(p => (
-                                    <ChartCard key={p} title={PLATFORM_LABEL[p]} pill="All time"
-                                        table={{ columns: ['Stage', 'Games', '% of first'], rows: data.funnel[p].map(([label, n]) => [label, fmtNum(n), data.funnel[p][0][1] ? `${Math.round((n / data.funnel[p][0][1]) * 100)}%` : '–']) }}>
-                                        <Funnel stages={data.funnel[p]} color={PLATFORM_COLOR[p]} />
-                                    </ChartCard>
-                                ))}
-                            </div>
-                        </section>
-
-                        {/* RA by console */}
-                        {units.includes('ra') && <section>
-                            <SectionHeader title="RetroAchievements by console" />
-                            <div className="grid md:grid-cols-2 gap-3">
-                                <ChartCard title="Hours played"><BarList rows={view.consoleHours} format={fmtMinutes} /></ChartCard>
-                                <ChartCard title="Achievements"><BarList rows={view.consoleUnlocks} format={fmtNum} /></ChartCard>
-                            </div>
-                        </section>}
-                    </div>
-                )}
+            <main className="max-w-5xl mx-auto px-4 md:px-8 pt-3 md:pt-5 pb-6 flex-1 w-full">
+                <div className="ptabs-anchor" />
+                <TabBar barRef={tabBarRef} active={tab} onChange={pickTab} tabs={TABS} />
+                {/* The swipe listener sits on the stable wrapper; the keyed child is replaced on every tab,
+                    period, platform or farm change, so each fades in */}
+                <div ref={tabContentRef}>
+                    {!view ? <Skeleton /> : (
+                        <div key={`${tab}-${period}-${platform}-${hideFarms}`} className={swipeDir === 'swipe' ? '' : 'anim-in'}>
+                            {tab === 'overview' && overview()}
+                            {tab === 'time' && timeTab()}
+                            {tab === 'games' && gamesTab()}
+                            {tab === 'achievements' && achievementsTab()}
+                        </div>
+                    )}
+                </div>
             </main>
 
             {/* Footer */}
@@ -1179,46 +1362,6 @@ const HOUR_SERIES = [
     { id: 'weekdays', label: 'Weekdays', color: '#c6d4df' },
     { id: 'weekends', label: 'Weekends', color: '#66c0f4' },
 ];
-
-// One series as 24 bars (dimmed) with a line through the same values in the full color; `max` is shared with the other series' card so they compare
-const HourBars = ({ rows, series, max, height = 110 }) => (
-    <div className="flex gap-1.5">
-        <div className="flex flex-col justify-between text-[8px] text-[#546270] text-right tabular-nums shrink-0" style={{ height }}>
-            <span>{fmtMinutes(max)}</span><span>{fmtMinutes(max / 2)}</span><span>0</span>
-        </div>
-        <div className="flex-1 min-w-0">
-            <div className="relative" style={{ height }}>
-                {[0, 0.5, 1].map(f => <div key={f} className="absolute left-0 right-0 h-px bg-[#202d39]" style={{ top: `${f * 100}%` }} />)}
-                {/* Bars: how much is played in each hour */}
-                <div className="absolute inset-0 flex items-end gap-[2px]">
-                    {rows.map(r => <HourBar key={r.hour} row={r} series={series} max={max} height={height} />)}
-                </div>
-                {/* Line through the same values: when play picks up and when it winds down */}
-                <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none" viewBox={`0 0 24 ${height}`} preserveAspectRatio="none">
-                    <polyline points={rows.map(r => `${r.hour + 0.5},${height - (r[series.id] / max) * height}`).join(' ')}
-                        fill="none" stroke={series.color} strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
-                </svg>
-            </div>
-            <div className="flex gap-[2px] mt-1">
-                {rows.map(r => <div key={r.hour} className="flex-1 text-center text-[8px] text-[#546270]">{r.hour % 3 === 0 ? hh(r.hour) : ''}</div>)}
-            </div>
-        </div>
-    </div>
-);
-
-const HourBar = ({ row, series, max, height }) => {
-    const tip = useTip(() => ({
-        title: `${hh(row.hour)}:00–${hh(row.hour + 1)}:00`,
-        rows: [{ color: series.color, value: fmtMinutes(row[series.id]), label: `on ${series.label.toLowerCase()}` }],
-    }));
-    return (
-        <div className="flex-1 min-w-0 h-full flex items-end justify-center outline-none group" {...tip}>
-            {/* Bars dimmed so the line in the full color reads on top */}
-            <div className="w-full max-w-[24px] rounded-t-[2px] opacity-50 group-hover:opacity-80 group-focus:opacity-80"
-                style={{ height: row[series.id] ? Math.max(1, (row[series.id] / max) * height) : 0, background: series.color }} />
-        </div>
-    );
-};
 
 // 100% bar of playtime by part of the day, 2px gaps; `labels` adds percentages under each part
 const DayPartBar = ({ row, labels }) => {
@@ -1267,23 +1410,23 @@ const RaritySegment = ({ tier, n, total, platform }) => {
     return <div className="h-full first:rounded-l-[2px] last:rounded-r-[2px] outline-none hover:brightness-125 focus:brightness-125" style={{ width: `${(n / total) * 100}%`, minWidth: 3, background: tier.color }} {...tip} />;
 };
 
-// Stages from widest to narrowest, each bar relative to the first stage
-const Funnel = ({ stages, color }) => {
+// One platform's funnel: its stages as rows, each bar relative to the first stage, with the share
+// kept from the stage before
+const Funnel = ({ platform, stages, color }) => {
     const first = stages[0]?.[1] || 1;
     return (
-        <div className="flex flex-col gap-2">
-            {stages.map(([label, n], i) => (
-                <div key={label}>
-                    <div className="flex items-baseline text-[10px] mb-0.5">
-                        <span className="text-[#8f98a0]">{label}</span>
-                        <span className="ml-auto text-[#c6d4df] font-semibold">{fmtNum(n)}</span>
-                        {i > 0 && <span className="text-[9px] text-[#546270] w-9 text-right">{stages[i - 1][1] ? `${Math.round((n / stages[i - 1][1]) * 100)}%` : '–'}</span>}
+        <div>
+            <div className="an-fun-h"><i className="an-pdot" style={{ background: color }} />{PLATFORM_LABEL[platform]}</div>
+            <div className="flex flex-col gap-1.5">
+                {stages.map(([label, n], i) => (
+                    <div key={label} className="an-fun-row">
+                        <span className="an-fun-l">{label}</span>
+                        <span className="an-fun-track"><span style={{ width: `${n ? Math.max(1.5, (n / first) * 100) : 0}%`, background: color, opacity: 1 - i * 0.16 }} /></span>
+                        <span className="an-fun-n">{fmtNum(n)}</span>
+                        <span className="an-fun-p">{i > 0 ? (stages[i - 1][1] ? `${Math.round((n / stages[i - 1][1]) * 100)}%` : '–') : ''}</span>
                     </div>
-                    <div className="h-[6px] bg-[#101214] rounded-[1px]">
-                        <div className="h-full rounded-[1px]" style={{ width: `${n ? Math.max(1.5, (n / first) * 100) : 0}%`, background: color, opacity: 1 - i * 0.18 }} />
-                    </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     );
 };

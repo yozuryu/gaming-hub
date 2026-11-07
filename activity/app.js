@@ -647,7 +647,7 @@ const fmtTotal = (m) => m >= 600 ? `${Math.round(m / 60).toLocaleString()}h` : f
 const weekAlpha = (minutes) => !minutes ? 0 : minutes >= 300 ? 1 : minutes >= 150 ? 0.75 : minutes >= 60 ? 0.5 : 0.3;
 
 // Wide cover: the Steam header. RA files only carry the square icon, so RA (and a Steam
-// game without a header) shows the icon centered on a blurred, enlarged copy of itself
+// game without a header) shows the icon centered on the library mosaic (.art-icon in assets/ui.css)
 const TileCover = ({ game: g }) => {
     const [failed, setFailed] = useState(false);
     const wide = g.cover && !failed ? g.cover : null;
@@ -656,7 +656,7 @@ const TileCover = ({ game: g }) => {
     if (!icon) return <div className="absolute inset-0 bg-[#2a475e]" />;
     return (
         <>
-            <img src={icon} alt="" className="absolute -inset-[20%] w-[140%] h-[140%] max-w-none object-cover blur-[14px] saturate-[1.2] opacity-70" />
+            <img src={icon} alt="" className="art-icon absolute inset-0 w-full h-full max-w-none object-cover opacity-70" />
             <img src={icon} alt="" className="absolute top-[11%] left-1/2 -translate-x-1/2 h-[78%] w-auto aspect-square object-cover rounded-[3px] border border-[rgba(0,0,0,0.6)] shadow-[0_4px_14px_rgba(0,0,0,0.6)]" />
         </>
     );

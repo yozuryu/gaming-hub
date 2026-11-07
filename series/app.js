@@ -91,7 +91,10 @@ const SeriesCard = ({ c, onOpen }) => {
     const icons = iconOrder(c.games);
     return (
         <button onClick={() => onOpen(c)} className="scard smooth" style={{ borderLeftColor: edgeOf(c) }}>
-            {c.cover?.art && <div className="scard-art"><img src={c.cover.art} alt="" loading="lazy" onError={e => { if (c.cover.p === 'steam' && !e.target.src.endsWith('header.jpg')) e.target.src = c.cover.icon; else e.target.style.display = 'none'; }} /></div>}
+            {/* The cover's art, else the library mosaic (.art-icon) for a cover with only an icon */}
+            {c.cover?.art
+                ? <div className="scard-art"><img src={c.cover.art} alt="" loading="lazy" onError={e => { if (c.cover.p === 'steam' && !e.target.src.endsWith('header.jpg') && c.cover.icon) { e.target.src = c.cover.icon; e.target.classList.add('art-icon'); } else e.target.style.display = 'none'; }} /></div>
+                : c.cover?.icon && <div className="scard-art"><img src={c.cover.icon} alt="" loading="lazy" className="art-icon" /></div>}
             <div className="scard-top">
                 <Cover g={c.cover} cls="scard-cover" />
                 <div className="scard-main">
@@ -202,7 +205,7 @@ const GameSheet = ({ g, backLabel, onBack, onClose }) => {
                 <button onClick={close} className="sheet-close" aria-label="Close"><X size={15} /></button>
                 <button onClick={onBack} className="sheet-back" aria-label={`Back to ${backLabel}`}><ChevronLeft size={14} />{backLabel}</button>
                 <div ref={dragRef} className="sheet-head">
-                    {art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`${g.p === 'ra' && !g.wide ? 'px' : ''} ${art.loaded ? 'loaded' : ''}`} /></div>}
+                    {art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`${g.p === 'ra' && !g.wide ? 'px' : ''} ${art.src === g.icon ? 'art-icon' : ''} ${art.loaded ? 'loaded' : ''}`} /></div>}
                     <span className="sheet-grab" />
                     <div className="relative flex items-end gap-4 px-4 pt-[34px] md:pt-[54px] pb-4">
                         <Cover g={g} cls={g.p === 'steam' ? 'w-32 h-16 rounded-[2px] border border-[#101214] object-cover shrink-0' : 'w-16 h-16 rounded-[3px] border-2 border-white/20 object-cover shrink-0 px'} />
@@ -281,7 +284,7 @@ const SeriesSheet = ({ c, onClose, onOpenGame }) => {
             <div ref={panelRef} className="sheet-panel" onClick={e => e.stopPropagation()}>
                 <button onClick={close} className="sheet-close" aria-label="Close"><X size={15} /></button>
                 <div ref={dragRef} className="sheet-head">
-                    {art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`${c.cover?.p === 'ra' && !c.cover?.wide ? 'px' : ''} ${art.loaded ? 'loaded' : ''}`} /></div>}
+                    {art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`${c.cover?.p === 'ra' && !c.cover?.wide ? 'px' : ''} ${art.src === c.cover?.icon ? 'art-icon' : ''} ${art.loaded ? 'loaded' : ''}`} /></div>}
                     <span className="sheet-grab" />
                     <div className="relative flex flex-col gap-3 px-4 pt-[30px] pb-4">
                         <div className="flex items-end gap-3 pr-8">

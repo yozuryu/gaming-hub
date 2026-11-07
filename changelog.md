@@ -2,7 +2,7 @@
 
 ## v26.11.07
 
-The profile Activity tabs get the Activity page's design.
+The profile Activity tabs get the Activity page's design; Analytics is reworked into tabs, and the hub's Analytics card gets real visuals.
 
 ### RetroAchievements
 
@@ -16,8 +16,22 @@ The profile Activity tabs get the Activity page's design.
 
 - Activity tab redesigned the same way (game strips use the title's hero art; rows show gamerscore and rarity)
 
+### Hub
+
+- Analytics card (desktop): hours played and unlocks in big numbers with their change vs the 30 days before, the 30 days as small bars (RA and Steam), a time-of-day bar with the busiest part named, and the top game with its icon, time and share. On tablets it's one row
+
+### Analytics
+
+- Split into four tabs with the profiles' sticky tab bar and swipe: **Overview**, **Time**, **Games**, **Achievements**. Each is one or two phone screens instead of one ~6,200px page
+- Overview: a Recap card where the two big numbers (hours, unlocks) switch the trend chart under them, the other numbers in one row (points, gamerscore and completions only when there are any), then highlight cards that open the detail: top game over its art, peak time and favourite day with tiny bars, new games with their icons, rarest unlock
+- Time: Daily rhythm (a 24-hour clock of play with the typical start in the middle, the answers beside it, the time-of-day bars), weekdays and weekends as two lines in one By hour chart, per weekday, sessions, and the unlock punchcard (cells no longer balloon on desktop). The Top unlock hours dial is gone: it repeated the punchcard
+- Games and Achievements: the lists sit behind switches in one card (Most played · Progress · Almost done · Hardest; New · Tried and dropped; console hours · achievements), rows have bigger icons and the RA console or platform under the name; rarest unlocks show the game icon; the three funnels share one Completion card
+- The Table toggle is a small icon in each card's corner; the dates sit beside the title
+- A top game without wide art shows the shared library mosaic (see Structure); Completion with none in the period shows the last completed game and when, and the period's completed games as icons when there are some; on desktop, Daily rhythm puts the time-of-day bars beside the clock
+
 ### Structure
 
+- Games with no screenshot or wide art no longer show their own icon blown up and blurred behind cards, rows, strips and headers: they show one shared mosaic of art from the library (`assets/art-fallback.webp`): big and small RA / Xbox icons and wide Steam covers, uneven on purpose, tilted, each game at its own patch of it (`assets/art-fallback.js`) so neighbouring cards differ. Also the Playing tiles (hub and Activity) and the shared Series page's cards and sheets. One image for every page, cached once. `scripts/build-fallback-art.js` rebuilds it from the current library (`sharp` added as a dev dependency)
 - `assets/activity-ui.js`: the timeline pieces shared by the three profile Activity tabs; the timeline styles moved from the Activity page into `assets/ui.css`
 - Heatmap legends on the profiles sit on the right, so they stay in view once the heatmap scrolls to the latest weeks
 
