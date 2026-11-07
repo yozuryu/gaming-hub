@@ -112,6 +112,9 @@
 }
 .art-bg img.loaded { opacity: 1; }
 /* Sheet headers: less blur, dimmer, so the art reads while the title and stats stay legible */
+/* In sheets the art fades in only after the panel's opening animation (.settled, sheet.js): fading it
+   while the panel slides blinked on Android. Art already there by then just shows */
+.sheet-panel:not(.settled) .art-bg img { transition: none; }
 .art-bg.art-sheet img:not(.art-icon) { filter: blur(3px) saturate(1.1) brightness(0.55); }
 .art-bg.art-sheet::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(27, 40, 56, 0) 0%, rgba(27, 40, 56, 0.35) 50%, #1b2838 100%); }
 .art-bg.art-header img { filter: blur(6px) saturate(1.1) brightness(0.6); }
@@ -692,10 +695,3 @@ img.art-icon {
    runs before the 2.3× scale, so these radii look the same as the real art's on screen */
 .art-bg.art-sheet img.art-icon { filter: blur(1.3px) brightness(0.45) saturate(0.8) !important; }
 .art-bg.art-header img.art-icon { filter: blur(2.6px) brightness(0.5) saturate(0.8) !important; }
-
-/* DEBUG blink bisect (temporary, remove once the sheet blink is found) */
-html.dbg-nbd .sheet-backdrop { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
-html.dbg-nfade .art-bg img { transition: none !important; }
-html.dbg-nblur .art-bg.art-sheet img { filter: brightness(0.55) !important; }
-html.dbg-nslide .sheet-panel { animation: none !important; }
-html.dbg-ncard .shd-card { box-shadow: none !important; background: rgb(14, 18, 24) !important; }

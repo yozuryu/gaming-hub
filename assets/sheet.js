@@ -4,9 +4,6 @@
 // centred dialog that closes at once. Closing always goes through the returned function.
 import { createElement as h, useEffect, useRef, useCallback, useState } from 'react';
 
-// DEBUG blink bisect (temporary, remove once the sheet blink is found): ?dbg=nbd,nfade,nblur,nslide,ncard
-{ const d = new URLSearchParams(location.search).get('dbg'); if (d) d.split(',').forEach(c => document.documentElement.classList.add('dbg-' + c)); }
-
 const PHONE = '(max-width: 767px)';
 const isPhone = () => window.matchMedia(PHONE).matches;
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -49,6 +46,16 @@ export function useSheet({ panelRef, dragRef, rootRef, onClose }) {
     };
   }, [close]);
 
+  // .settled once the panel's opening animation is over: only then may the header art fade in.
+  // The art fading (blurred, opacity) while the panel slides blinked on Android
+  useEffect(() => {
+    const el = panelRef.current;
+    if (!el) return;
+    const end = e => { if (e.target === el) el.classList.add('settled'); };
+    el.addEventListener('animationend', end);
+    return () => el.removeEventListener('animationend', end);
+  }, []);
+
   // Drag the header down to close (phone only). Links and buttons in the header keep
   // working: a drag never starts on them.
   useEffect(() => {
@@ -61,6 +68,7 @@ export function useSheet({ panelRef, dragRef, rootRef, onClose }) {
       try { area.setPointerCapture(pointer); } catch { /* pointer already gone */ }
       el.style.animation = 'none';
       el.style.transition = 'none';
+      el.classList.add('settled');
     };
     const move = e => {
       if (startY === null || e.pointerId !== pointer) return;
