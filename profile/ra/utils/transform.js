@@ -117,6 +117,7 @@ export const transformData = (data) => {
         }
         game.progTotal = sum.prog;
         game.progEarned = sum.progEarned;
+        game.summary = sum;   // points for the sheet header before the game's file loads
       }
 
       if (details.achievements && Object.keys(details.achievements).length > 0) {

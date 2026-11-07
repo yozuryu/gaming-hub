@@ -7,6 +7,8 @@
 //   DayHead                               sticky day heading
 //   RunCard                               one run of unlocks in one game: art band + rows, long runs fold
 //   UnlockRow                             one unlock
+//   SummarySkeleton / TimelineSkeleton / ActivitySkeleton   loading placeholders in the same shapes
+//                                         (the summary folded or open, as it will open)
 import { createElement as h, Fragment, useState } from 'react';
 import { todayKey, addDays, keyToDate, fmtDayKey, TZ } from './time.js';
 
@@ -55,11 +57,12 @@ export function computeStreak(heatmapData, minValue = 1) {
 // ── Summary ───────────────────────────────────────────────────────────────────
 
 const OPEN_KEY = 'gh:activitySummary';   // same choice as the Activity page
+const initialOpen = () => {
+  try { const v = localStorage.getItem(OPEN_KEY); if (v) return v === 'open'; } catch {}
+  return window.matchMedia('(min-width: 768px)').matches;
+};
 export function useSummaryOpen() {
-  const [open, setOpen] = useState(() => {
-    try { const v = localStorage.getItem(OPEN_KEY); if (v) return v === 'open'; } catch {}
-    return window.matchMedia('(min-width: 768px)').matches;
-  });
+  const [open, setOpen] = useState(initialOpen);
   const toggle = () => setOpen(o => {
     try { localStorage.setItem(OPEN_KEY, o ? 'closed' : 'open'); } catch {}
     return !o;
@@ -115,7 +118,7 @@ export function ActivitySummary({ open, onToggle, fold, stats, streak, heatmapDa
   const recent = slim => h(RecentDays, { slim, streak, heatmapData, cellLabel, describe, selectedDay, onSelectDay });
   if (!open) {
     return h('section', { className: 'asum closed' },
-      h('div', { className: 'asum-fold' },
+      h('div', { className: 'asum-fold anim-fade' },
         h('button', { className: 'afold-stats', onClick: onToggle, 'aria-expanded': false },
           fold.map((s, i) => h(Stat, { key: s.l, s, cls: i === 2 ? 'afold-year hidden sm:flex' : '' }))),
         h('div', { className: 'afold-days' }, recent(true), h('span', null, 'Last 14 days')),
@@ -195,7 +198,7 @@ export function RunCard({ accent, href, icon, art, title, subset, sub, rows }) {
         h('span', { className: 'tcard-title' }, title),
         subset && h('span', { className: 'tcard-subset' }, subset),
         h('span', { className: 'tcard-sub' }, sub))),
-    h('div', { className: 'tlist' }, shown),
+    h('div', { className: `tlist ${open ? 'open' : ''}` }, shown),
     rows.length > FOLD && h('button', { className: 'tmore', onClick: () => setOpen(o => !o) },
       open ? 'Show less' : `Show ${rows.length - shown.length} more`,
       h(Icon, { name: 'chevron', size: 12, style: open ? { transform: 'rotate(180deg)' } : undefined })));
@@ -216,3 +219,52 @@ export function UnlockRow({ href, icon, title, titleStyle, marks, desc, time, va
 }
 
 export { Fragment };
+
+// ── Loading placeholders ──────────────────────────────────────────────────────
+// Same boxes as the real summary (folded on phones unless opened before) and run cards, so nothing
+// jumps when the data lands
+
+const sk = (style, cls = '') => h('div', { className: `shimmer ${cls}`, style: { borderRadius: 2, ...style } });
+
+export function SummarySkeleton() {
+  if (!initialOpen()) {
+    return h('section', { className: 'asum closed', 'aria-busy': true },
+      h('div', { className: 'asum-fold' },
+        h('div', { className: 'afold-stats' },
+          [0, 1, 2].map(i => h('div', { key: i, className: `astat ${i === 2 ? 'afold-year hidden sm:flex' : ''}` },
+            sk({ width: 34, height: 21 }), sk({ width: 44, height: 10, marginTop: 4 })))),
+        h('div', { className: 'afold-days' }, sk({ width: '100%', maxWidth: 336, height: 28 }), h('span', null, 'Last 14 days')),
+        h('span', { className: 'afold-btn' })));
+  }
+  return h('section', { className: 'asum', 'aria-busy': true },
+    h('div', { className: 'asum-top' },
+      h('div', { className: 'asum-sec flex flex-col gap-3' },
+        h('div', { className: 'grid grid-cols-3 gap-3' },
+          [0, 1, 2].map(i => h('div', { key: i, className: 'flex flex-col gap-1.5' }, sk({ height: 20, width: 56 }), sk({ height: 10, width: 64 })))),
+        sk({ height: 6, width: '100%' })),
+      h('div', { className: 'asum-sec' }, sk({ height: 86, width: '100%' }))),
+    h('div', { className: 'asum-sec' }, sk({ height: 104, width: '100%' })));
+}
+
+export function TimelineSkeleton() {
+  return h('div', { className: 'flex flex-col gap-4' },
+    [0, 1, 2].map(i => h('div', { key: i, className: 'flex flex-col gap-2' },
+      h('div', { className: 'flex justify-between py-1' }, sk({ height: 12, width: 96 }), sk({ height: 10, width: 80 })),
+      h('div', { className: 'tcard' },
+        h('div', { className: 'tcard-head' }, sk({ width: 28, height: 28, flexShrink: 0 }),
+          h('div', { className: 'flex-1 flex flex-col gap-1.5' }, sk({ height: 12, width: `${50 + i * 12}%` }), sk({ height: 10, width: 96 }))),
+        h('div', { className: 'tlist' },
+          [0, 1].map(j => h('div', { key: j, className: 'trow' }, sk({ width: 36, height: 36, flexShrink: 0 }),
+            h('div', { className: 'flex-1 flex flex-col gap-1.5' }, sk({ height: 10, width: `${40 + j * 20}%` }), sk({ height: 8, width: '50%' })))))))));
+}
+
+// A profile Activity tab while its chunks load: summary, the section heading, run cards
+export function ActivitySkeleton() {
+  return h('div', { className: 'flex flex-col gap-4 tl-tabs' },
+    h(SummarySkeleton),
+    h('div', null,
+      h('div', { className: 'flex items-center gap-2 border-b border-[#2a475e] pb-1.5 mt-2 mb-3' },
+        h('span', { className: 'w-[3px] h-[14px] bg-[#e5b143] rounded-[1px] shrink-0' }),
+        h('span', { className: 'text-[13px] text-white tracking-wide uppercase font-medium' }, 'Recent Unlocks')),
+      h(TimelineSkeleton)));
+}

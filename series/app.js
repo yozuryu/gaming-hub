@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Layers, Search, X, Trophy, Star, ChevronLeft, Medal } from 'lucide-react';
-import { useSheet, useArtSrc, SheetHead } from '../assets/sheet.js';
+import { useSheet, useArtSrc, useAnimatedHeight, SheetHead } from '../assets/sheet.js';
 import { shortAgo } from '../assets/game-view.js';
 
 // ── Shared series (every platform) ─────────────────────────────────────────────
@@ -181,6 +181,7 @@ const normalize = (p, id, d) => {
 const GameSheet = ({ g, backLabel, onBack, onClose }) => {
     const panelRef = useRef(null), rootRef = useRef(null), dragRef = useRef(null);
     const close = useSheet({ panelRef, dragRef, rootRef, onClose });
+    useAnimatedHeight(panelRef);
     const art = useArtSrc([g.artFull, g.art, g.icon]);
     const [achs, setAchs] = useState(null);
     const [failed, setFailed] = useState(false);
@@ -198,7 +199,8 @@ const GameSheet = ({ g, backLabel, onBack, onClose }) => {
     }, [achs, filter]);
     const counts = achs ? { all: achs.list.length + achs.hidden, unlocked: achs.list.filter(a => a.unlocked).length, locked: achs.list.filter(a => !a.unlocked).length + achs.hidden } : null;
     const pct = g.total ? (g.unlocked / g.total) * 100 : 0;
-    const points = achs && { earned: achs.list.reduce((n, a) => n + (a.unlocked ? a.pts : 0), 0), total: achs.list.reduce((n, a) => n + a.pts, 0) };
+    // Points / gamerscore and RA progression come with the series data, so the header is whole before the list loads
+    const points = g.pts && { earned: g.pts[0], total: g.pts[1] };
     return (
         <div ref={rootRef} className="sheet-root" onClick={close}>
             <div className="sheet-backdrop anim-backdrop" />
@@ -224,9 +226,10 @@ const GameSheet = ({ g, backLabel, onBack, onClose }) => {
                             : g.lastMs ? { value: `${shortAgo(g.lastMs)} ago`, label: 'Last played', color: '#c6d4df' } : null,
                     ].filter(Boolean)}
                     bar={g.hasAch ? { pct, color: g.done ? '#e5b143' : '#66c0f4' } : null}
+                    steps={g.prog?.[1] > 0 ? { done: g.prog[0], total: g.prog[1], icon: <Trophy size={11} /> } : null}
                 />
                 {counts && (
-                    <div className="flex items-center gap-2 px-4 py-2 border-b border-[#101214] shrink-0">
+                    <div className="flex items-center gap-2 px-4 py-2 border-b border-[#101214] shrink-0 anim-fade">
                         <div className="frow flex-1 min-w-0" role="group" aria-label="Filter achievements">
                             {[['all', 'All'], ['unlocked', 'Unlocked'], ['locked', 'Locked']].map(([v, l]) => (
                                 <button key={v} onClick={() => setFilter(v)} aria-pressed={filter === v} className={`fchip ${filter === v ? 'on' : ''}`}>{l}<span className="n">{counts[v]}</span></button>

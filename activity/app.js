@@ -6,6 +6,7 @@ import { fmtDay, fmtTime, fmtMinutes, fmtMinutesShort, parseTitle, xboxImg } fro
 import { normalizeRA, normalizeSteam, normalizeXbox, normalizeSession } from './utils/normalizers.js';
 import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap, splitByDay } from '../assets/time.js';
 import { loadPlaying, PLAYING_GROUPS } from '../assets/playing.js';
+import { SummarySkeleton, TimelineSkeleton } from '../assets/activity-ui.js';
 
 // A day counts toward the playtime streak with at least this much play
 const PLAYTIME_STREAK_MIN = 15;
@@ -328,7 +329,7 @@ const SummaryCard = ({ open, onToggle, headline, stats, split, filter, streakInf
     <section className={`asum ${open ? '' : 'closed'}`}>
         {!open ? (
             // Folded: the last 14 days first (what this page is read for), then the year
-            <div className="asum-fold">
+            <div className="asum-fold anim-fade">
                 <button className="afold-stats" onClick={onToggle} aria-expanded={false}>
                     <span className="astat">
                         <b style={{ color: '#66c0f4' }}>{headline.recent}</b>
@@ -464,7 +465,7 @@ const GameSession = ({ session, raArt }) => {
                     </span>
                 </div>
             </a>
-            <div className="tlist">
+            <div className={`tlist ${open ? 'open' : ''}`}>
                 {shown.map(a => <AchievementRow key={a.id} ach={a} />)}
             </div>
             {sorted.length > SESSION_FOLD && (
@@ -584,41 +585,6 @@ const buildPlaytimeHeatmap = (sessions) => {
     return map;
 };
 
-// Placeholders: the summary card while the chunks load, timeline days while the
-// chunks or the playtime files load
-const SummarySkeleton = () => (
-    <div className="asum">
-        <div className="asum-top">
-            <div className="asum-sec flex flex-col gap-3">
-                <div className="grid grid-cols-3 gap-3">
-                    {[0, 1, 2].map(i => <div key={i} className="flex flex-col gap-1.5"><div className="shimmer h-5 w-14" /><div className="shimmer h-2.5 w-16" /></div>)}
-                </div>
-                <div className="shimmer h-1.5 w-full" />
-            </div>
-            <div className="asum-sec"><div className="shimmer h-[86px] w-full" /></div>
-        </div>
-        <div className="asum-sec"><div className="shimmer h-[104px] w-full" /></div>
-    </div>
-);
-
-const TimelineSkeleton = () => (
-    <div className="flex flex-col gap-4">
-        {[0, 1, 2].map(i => (
-            <div key={i} className="flex flex-col gap-2">
-                <div className="flex justify-between py-1"><div className="shimmer h-3 w-24" /><div className="shimmer h-2.5 w-20" /></div>
-                <div className="tcard">
-                    <div className="tcard-head"><div className="shimmer w-9 h-9 shrink-0" /><div className="flex-1 flex flex-col gap-1.5"><div className="shimmer h-3" style={{ width: `${50 + i * 12}%` }} /><div className="shimmer h-2.5 w-24" /></div></div>
-                    <div className="tlist">
-                        {[0, 1].map(j => (
-                            <div key={j} className="trow"><div className="shimmer w-8 h-8 shrink-0" /><div className="flex-1 flex flex-col gap-1.5"><div className="shimmer h-2.5" style={{ width: `${40 + j * 20}%` }} /><div className="shimmer h-2 w-1/2" /></div></div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        ))}
-    </div>
-);
-
 // ── Playing view ──────────────────────────────────────────────────────────────
 
 // RA and Steam only (assets/playing.js leaves Xbox out: no playtime)
@@ -729,20 +695,30 @@ const PlayingTile = ({ game: g }) => {
     );
 };
 
+// Same boxes as a group section of PlayingTiles (heading line; cover, 76px body, 56px stats band)
 const PlayingSkeleton = () => (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-2.5">
-        {[...Array(8)].map((_, i) => (
-            <div key={i} className="flex flex-col bg-[#1b2838] border border-[#2a475e] rounded-[2px] overflow-hidden">
-                <div className="shimmer aspect-[460/215]" style={{ borderRadius: 0 }} />
-                <div className="flex flex-col gap-2 p-2">
-                    <div className="shimmer h-2.5 rounded" style={{ width: `${55 + (i % 3) * 15}%` }} />
-                    <div className="shimmer h-1 rounded" />
-                    <div className="shimmer h-[9px] rounded" />
-                    <div className="shimmer h-6 rounded" />
+    <section className="flex flex-col gap-2">
+        <div className="flex items-center gap-2 h-5">
+            <span className="shimmer w-2 h-2 rounded-full shrink-0" />
+            <span className="shimmer h-2.5 w-16 rounded" />
+            <span className="flex-1 h-px bg-[#2a475e] opacity-40" />
+            <span className="shimmer h-[19px] w-28 rounded-[2px]" />
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-2.5">
+            {[...Array(8)].map((_, i) => (
+                <div key={i} className="flex flex-col bg-[#1b2838] border border-[#2a475e] rounded-[2px] overflow-hidden">
+                    <div className="shimmer aspect-[460/215]" style={{ borderRadius: 0 }} />
+                    <div className="flex flex-col justify-center gap-2 px-2 h-[76px]">
+                        <div className="shimmer h-2.5 rounded" style={{ width: `${55 + (i % 3) * 15}%` }} />
+                        <div className="shimmer h-1 rounded" />
+                        <div className="shimmer h-[9px] rounded" />
+                        <div className="shimmer h-2 w-full rounded opacity-60" />
+                    </div>
+                    <div className="shimmer mt-1.5 h-[56px]" style={{ borderRadius: 0, opacity: 0.6 }} />
                 </div>
-            </div>
-        ))}
-    </div>
+            ))}
+        </div>
+    </section>
 );
 
 // Shared fetch for loadPlaying: one request per file, missing files resolve to null

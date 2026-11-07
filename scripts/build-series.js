@@ -47,12 +47,24 @@ function raGames() {
             unlocked: d.numAwardedToUser ?? 0, total: d.numAchievements ?? 0, minutes: Math.round((d.userTotalPlaytime ?? 0) / 60),
             beaten: beaten.has(String(d.id)), lastMs: Math.max(lastUnlock, played[d.id] ?? 0),
             sheet: (d.numAchievements ?? 0) > 0,   // has a set: the series page opens its achievements
+            // Points and progression [earned, total] for the sheet header, so it is complete before the game's file loads
+            ...raSums(d, achs),
             last: lastOfRA(d),
             url: `https://retroachievements.org/game/${d.id}`,
         };
     }
     return out;
 }
+
+const raSums = (d, achs) => {
+    const sum = d.summary;
+    if (sum) return { pts: [sum.pointsEarned ?? 0, sum.points ?? 0], prog: [sum.progEarned ?? 0, sum.prog ?? 0] };
+    const isProg = a => a.type === 'progression' || a.type === 'win_condition';
+    return {
+        pts: [achs.reduce((n, a) => n + (a.dateEarned ? a.points || 0 : 0), 0), achs.reduce((n, a) => n + (a.points || 0), 0)],
+        prog: [achs.filter(a => isProg(a) && a.dateEarned).length, achs.filter(isProg).length],
+    };
+};
 
 // A game's latest unlock: name, badge, date (RA from the index summary, else the full list)
 const lastOfRA = d => {
@@ -86,6 +98,7 @@ function indexGames(platform) {
             art: steam ? `${STEAM_CDN}/${id}/library_hero.jpg` : d.heroUrl ?? null,
             unlocked: d.hasAchievements ? d.unlocked ?? 0 : 0, total: d.hasAchievements ? d.total ?? 0 : 0,
             minutes: steam ? d.playtimeForever ?? 0 : undefined, beaten: beaten.has(id),
+            ...(!steam && d.totalGamerscore > 0 ? { pts: [d.gamerscore ?? 0, d.totalGamerscore] } : {}),
             sheet: !!(d.hasAchievements && d.total > 0),
             // Latest unlock: its name and date from the index, its icon from the preview (which always holds the newest unlocks)
             last: d.lastUnlockedAt ? (() => {

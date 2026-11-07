@@ -7,6 +7,7 @@ The profile Activity tabs get the Activity page's design; Analytics is reworked 
 ### RetroAchievements
 
 - Achievement sheet: the guide links (GameFAQs / YouTube and the custom guides) are gone, along with `data/ra/guides.json`; the genre, developer and year joined the console in the header's meta line
+- Achievement sheet header is complete before the game's file loads: points and the progression meter come from the games index, so nothing pops in (points used to appear only once the file was in). Opened before the index (a `?game=` link, Overview), shimmers hold the places of points, played and progression until the file arrives. The filter bar fades in
 - Activity tab redesigned like the Activity page: a summary card (folded by default on phones: the last 14 days' unlocks and games with the 14 days as bars; open: past-year unlocks, points and best day, the 14 days with streak tiles, the heatmap), day headings that stay under the tab bar while scrolling, one card per run of unlocks in a game headed by its art (the hero picked in the admin), and compact rows that keep hardcore gold, points, ratio and the progression / win / missable icons. Days no longer collapse
 
 ### Steam
@@ -21,6 +22,11 @@ The profile Activity tabs get the Activity page's design; Analytics is reworked 
 
 - Analytics card (desktop): hours played and unlocks in big numbers with their change vs the 30 days before, the 30 days as small bars (RA and Steam), a time-of-day bar with the busiest part named, and the top game with its icon, time and share. On tablets it's one row
 
+### Activity
+
+- Rows revealed by "Show N more" fade in, here and on the profile Activity tabs; folding the summary card back fades too
+- Loading placeholders in the new shapes: the summary skeleton is folded or open as the card will be (it was the full open card, so the page jumped up ~290px on phones), the Playing view's skeleton has the group heading and tiles as tall as real ones, and the profile Activity tabs show the summary, heading and run cards instead of the old heatmap-and-list shape. One set for all four pages (`SummarySkeleton`, `TimelineSkeleton`, `ActivitySkeleton` in `assets/activity-ui.js`)
+
 ### Analytics
 
 - Split into four tabs with the profiles' sticky tab bar and swipe: **Overview**, **Time**, **Games**, **Achievements**. Each is one or two phone screens instead of one ~6,200px page
@@ -28,11 +34,13 @@ The profile Activity tabs get the Activity page's design; Analytics is reworked 
 - Time: Daily rhythm (a 24-hour clock of play with the typical start in the middle, the answers beside it, the time-of-day bars), weekdays and weekends as two lines in one By hour chart, per weekday, sessions, and the unlock punchcard (cells no longer balloon on desktop). The Top unlock hours dial is gone: it repeated the punchcard
 - Games and Achievements: the lists sit behind switches in one card (Most played · Progress · Almost done · Hardest; New · Tried and dropped; console hours · achievements), rows have bigger icons and the RA console or platform under the name; rarest unlocks show the game icon; the three funnels share one Completion card
 - The Table toggle is a small icon in each card's corner; the dates sit beside the title
+- Each tab loads with a skeleton in its own shape, its cards drawn with their insides (title, numbers, ring, chart, list rows, bars) (Overview's plain blocks were used for all four, so a page opened on Time, Games or Achievements jumped when the data landed); the Hide farms count fades in
 - A top game without wide art shows the shared library mosaic (see Structure); Completion with none in the period shows the last completed game and when, and the period's completed games as icons when there are some; on desktop, Daily rhythm puts the time-of-day bars beside the clock
 
 ### Structure
 
 - New achievement sheet header on RA, Steam, Xbox and the shared Series page (`SheetHead` in `assets/sheet.js`, `.shd-*` in `assets/ui.css`): cover, title, meta line and status tags, then one card with the completion % big on the left and the numbers beside it (RA: achievements, points, played; Steam: achievements, played, last played; Xbox: achievements, gamerscore, last played), RA's progression as a gold segmented meter (a chain over 20 is drawn in equal groups, 52 → 18 segments of 3, the one in progress partly lit), the card tinted up to the completion % with a hard edge (the whole card gold once complete), and the progress bar along the card's bottom edge: a lit track, the fill glowing blue or gold, never smaller than a nub so 1% still shows
+- Series page game sheet: points / gamerscore and RA's progression meter are in the header from the start (`build-series.js` adds `pts` and `prog` to each game), the panel height animates from the skeleton to the list, and the filter bar fades in. `useAnimatedHeight` moved from the three profile pages into `assets/sheet.js`, shared by all four sheets
 - Games with no screenshot or wide art no longer show their own icon blown up and blurred behind cards, rows, strips and headers: they show one shared mosaic of art from the library (`assets/art-fallback.webp`): big and small RA / Xbox icons and wide Steam covers, uneven on purpose, tilted, each game at its own patch of it (`assets/art-fallback.js`) so neighbouring cards differ. Also the Playing tiles (hub and Activity) and the shared Series page's cards and sheets. One image for every page, cached once. `scripts/build-fallback-art.js` rebuilds it from the current library (`sharp` added as a dev dependency). In achievement sheets and page headers, where real art is blurred, the mosaic is blurred to match
 - `assets/activity-ui.js`: the timeline pieces shared by the three profile Activity tabs; the timeline styles moved from the Activity page into `assets/ui.css`
 - Heatmap legends on the profiles sit on the right, so they stay in view once the heatmap scrolls to the latest weeks

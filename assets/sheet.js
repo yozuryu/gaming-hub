@@ -107,18 +107,56 @@ export function useArtSrc(urls) {
   };
 }
 
+// Animates a sheet panel's height when its content grows or shrinks (loading done,
+// a filter change). FLIP: the ResizeObserver callback runs after layout and before
+// paint, so the old height is restored and transitioned to the new one with no jump.
+export const useAnimatedHeight = (ref, duration = 220) => {
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !window.ResizeObserver || reducedMotion()) return;
+    let prev = el.offsetHeight, run = 0;
+    const ro = new ResizeObserver(() => {
+      if (el.style.height) return;   // our own animation is resizing it
+      const next = el.offsetHeight;
+      if (Math.abs(next - prev) < 2) { prev = next; return; }
+      const from = prev, id = ++run;
+      prev = next;
+      el.style.overflow = 'hidden';
+      el.style.height = `${from}px`;
+      void el.offsetHeight;
+      el.style.transition = `height ${duration}ms cubic-bezier(0.2, 0.7, 0.3, 1)`;
+      el.style.height = `${next}px`;
+      setTimeout(() => {
+        if (id !== run) return;
+        el.style.height = el.style.transition = el.style.overflow = '';
+        prev = el.offsetHeight;
+      }, duration + 30);
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+};
+
+
 // Header of a game's achievement sheet, the same on every page (styles: .shd-* in ui.css): cover,
 // title, meta line and status tags, then one card with the % big on the left, the numbers beside it
 // and the progress bar along its bottom edge. Pages pass ready-made nodes for what differs (art,
 // cover, tags) and plain data for the rest:
-//   stats  [{ value, total?, label, color }]  up to three numbers, Achievements first
+//   stats  [{ value, total?, label, color }]  up to three numbers, Achievements first; value null =
+//                                             not known yet (the game's file is loading): a shimmer
 //   bar    { pct, color }                     overall progress
-//   steps  { done, total, icon }              RA progression: a gold segmented meter in the card
+//   steps  { done, total, icon, pending? }    RA progression: a gold segmented meter in the card;
+//                                             pending = a shimmer row until the file is in
 // Up to MAX_SEG segments, one per achievement; a longer chain groups them (52 → 18 segments of 3),
 // the segment in progress lit by the share of its group already done
 const MAX_SEG = 20;
 const Steps = ({ steps }) => {
   const n = steps.total, done = steps.done;
+  if (steps.pending) {
+    return h('div', { className: 'shd-steps' },
+      steps.icon, h('span', { className: 'shd-steps-l' }, 'Progression'),
+      h('span', { className: 'shd-meter shimmer' }), h('b', null, h('span', { className: 'shimmer shd-sk n' })));
+  }
   let meter;
   if (n <= MAX_SEG) {
     meter = h('span', { className: 'shd-meter' }, Array.from({ length: n }, (_, i) => h('i', { key: i, className: i < done ? 'on' : '' })));
@@ -129,7 +167,7 @@ const Steps = ({ steps }) => {
       return h('i', { key: i, className: part >= 1 ? 'on' : '' }, part > 0 && part < 1 && h('u', { style: { width: `${part * 100}%` } }));
     }));
   }
-  return h('div', { className: 'shd-steps' },
+  return h('div', { className: 'shd-steps anim-fade' },
     steps.icon, h('span', { className: 'shd-steps-l' }, 'Progression'), meter,
     h('b', null, done, h('span', null, '/', n)));
 };
@@ -139,7 +177,7 @@ const Fill = ({ bar }) => bar.pct > 0 && h('i', { style: { width: `max(${Math.mi
 export function SheetHead({ dragRef, back, art, cover, title, sub, meta = [], tags = [], stats = [], bar, steps }) {
   const metaLine = meta.filter(Boolean);
   const tagLine = tags.filter(Boolean);
-  const hasSteps = steps && steps.total > 0;
+  const hasSteps = steps && (steps.total > 0 || steps.pending);
   return h('div', { ref: dragRef, className: `sheet-head shd ${back ? 'has-back' : ''}` },
     art,
     h('span', { className: 'sheet-grab' }),
@@ -156,7 +194,9 @@ export function SheetHead({ dragRef, back, art, cover, title, sub, meta = [], ta
           h('b', { style: { color: bar.color } }, Math.floor(bar.pct), h('small', null, '%')), h('span', null, 'Complete')),
         stats.length > 0 && h('div', { className: `shd-cells n${stats.length}` },
           stats.map((st, i) => h('div', { key: i, className: 'shd-stat' },
-            h('div', { className: 'shd-v' }, h('b', { style: { color: st.color } }, st.value), st.total != null && h('em', null, '/', st.total)),
+            st.value == null
+              ? h('div', { className: 'shd-v' }, h('span', { className: 'shimmer shd-sk' }))
+              : h('div', { key: 'v', className: 'shd-v anim-fade' }, h('b', { style: { color: st.color } }, st.value), st.total != null && h('em', null, '/', st.total)),
             h('div', { className: 'shd-l' }, st.label))))),
       hasSteps && h(Steps, { steps }),
       bar && h('span', { className: 'shd-track' }, h(Fill, { bar }))));

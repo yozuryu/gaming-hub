@@ -472,15 +472,104 @@ const PunchCell = ({ v, total, d, h, color }) => {
     return <div className="an-pcell outline-none hover:brightness-150 focus:brightness-150" style={{ background: color }} {...tip} />;
 };
 
-const Skeleton = () => (
+// Loading skeleton in the shape of the tab being opened: the real card frames (heights measured at phone
+// and desktop width) with their insides drawn as shimmers, so a page opened on ?tab=time doesn't show
+// Overview's shape and nothing jumps when the data lands
+const S = ({ w = '100%', h = 10, r = 2, cls = '', style }) => <div className={`shimmer shrink-0 ${cls}`} style={{ width: w, height: h, borderRadius: r, ...style }} />;
+const SkCard = ({ h, span, children }) => (
+    <div className={`an-card flex flex-col gap-3 overflow-hidden ${h} ${span ? 'an-span' : ''}`}>{children}</div>
+);
+const SkTitle = ({ w = 90 }) => <div className="flex items-center justify-between"><S w={w} h={10} /><S w={14} h={14} /></div>;
+const SkRows = ({ n, icon = 24 }) => (
     <div className="flex flex-col gap-3">
-        <div className="shimmer h-[250px] rounded-[3px]" />
-        <div className="an-hls">
-            <div className="shimmer h-[96px] rounded-[3px] an-hl wide" />
-            {[...Array(4)].map((_, i) => <div key={i} className="shimmer h-[110px] rounded-[3px]" />)}
-        </div>
+        {[...Array(n)].map((_, i) => (
+            <div key={i} className="flex items-center gap-2.5">
+                <S w={icon} h={icon} />
+                <div className="flex-1 flex flex-col gap-1.5"><S w={`${70 - (i % 3) * 12}%`} h={9} /><S w={`${30 + (i % 2) * 15}%`} h={7} /></div>
+                <S w={34} h={10} />
+            </div>
+        ))}
     </div>
 );
+const SkBars = ({ n, label = true }) => (
+    <div className="flex flex-col gap-2.5">
+        {[...Array(n)].map((_, i) => (
+            <div key={i} className="flex flex-col gap-1.5">
+                {label && <div className="flex justify-between"><S w={`${28 + (i % 3) * 10}%`} h={8} /><S w={30} h={8} /></div>}
+                <S h={6} />
+            </div>
+        ))}
+    </div>
+);
+const SkFacts = ({ n }) => (
+    <div className={`an-facts n${n}`}>
+        {[...Array(n)].map((_, i) => <div key={i} className="flex flex-col gap-1.5"><S w={60} h={8} /><S w={44} h={16} /><S w={32} h={7} /></div>)}
+    </div>
+);
+const SkSeg = () => <S h={28} r={3} />;
+const SkChart = () => <S cls="flex-1" h="auto" style={{ minHeight: 90 }} />;
+const Skeleton = ({ tab }) => {
+    if (tab === 'time') return (
+        <div className="an-grid an-sk" aria-busy="true">
+            <SkCard span h="h-[473px] md:h-[235px]">
+                <SkTitle w={100} />
+                <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
+                    <div className="flex items-center gap-4 md:flex-1">
+                        <S w={120} h={120} r={999} />
+                        <div className="flex-1 flex flex-col gap-3">{[...Array(5)].map((_, i) => <div key={i} className="flex justify-between"><S w={`${40 + (i % 2) * 15}%`} h={9} /><S w={40} h={11} /></div>)}</div>
+                    </div>
+                    <div className="flex flex-col gap-3 md:flex-1"><S w="70%" h={8} /><SkBars n={3} /></div>
+                </div>
+            </SkCard>
+            <SkCard h="h-[225px]"><SkTitle w={70} /><S w="60%" h={8} /><SkChart /></SkCard>
+            <SkCard h="h-[225px]"><SkTitle w={80} /><SkChart /></SkCard>
+            <SkCard span h="h-[220px]"><SkTitle w={70} /><SkChart /></SkCard>
+            <SkCard span h="h-[202px] md:h-[250px]"><SkTitle w={110} /><SkChart /></SkCard>
+        </div>
+    );
+    if (tab === 'games') return (
+        <div className="flex flex-col gap-3 an-sk" aria-busy="true">
+            <SkCard h="h-[140px] md:h-[78px]"><SkFacts n={4} /></SkCard>
+            <div className="an-grid">
+                <SkCard h="h-[499px]"><SkTitle w={80} /><SkSeg /><SkRows n={8} /></SkCard>
+                <SkCard h="h-[299px] md:h-[499px]"><SkTitle w={80} /><SkSeg /><SkRows n={6} /></SkCard>
+            </div>
+        </div>
+    );
+    if (tab === 'achievements') return (
+        <div className="an-grid an-sk" aria-busy="true">
+            <SkCard h="h-[479px] md:h-[522px]">
+                <SkTitle w={60} /><S w={130} h={18} r={9} /><S w="80%" h={8} /><SkBars n={2} /><S w={80} h={8} /><SkRows n={6} icon={22} />
+            </SkCard>
+            <SkCard h="h-[522px]">
+                <SkTitle w={90} />
+                <div className="flex items-center gap-3"><S w={44} h={44} /><div className="flex-1 flex flex-col gap-1.5"><S w="40%" h={8} /><S w="55%" h={13} /><S w="65%" h={8} /></div></div>
+                <S w={90} h={14} />
+                <SkBars n={6} />
+            </SkCard>
+            <SkCard span h="h-[201px]"><SkTitle w={100} /><SkBars n={3} /></SkCard>
+        </div>
+    );
+    return (
+        <div className="flex flex-col gap-3 an-sk" aria-busy="true">
+            <SkCard h="h-[443px] md:h-[380px]">
+                <div className="grid grid-cols-2 gap-2">{[0, 1].map(i => <div key={i} className="flex flex-col gap-1.5 p-2.5 border border-[#2a475e] rounded-[3px]"><S w={70} h={9} /><S w={60} h={24} /><S w={36} h={8} /></div>)}</div>
+                <S w={90} h={8} />
+                <SkChart />
+                <SkFacts n={4} />
+            </SkCard>
+            <div className="an-hls">
+                <div className="an-hl wide gap-2 h-[101px] md:h-auto"><S w={70} h={8} /><div className="flex items-center gap-2 w-full"><S w={26} h={26} /><div className="flex-1 flex flex-col gap-1.5"><S w="55%" h={11} /><S w="35%" h={8} /></div></div><S h={4} /></div>
+                {[130, 130, 114, 114].map((hh, i) => (
+                    <div key={i} className="an-hl gap-2" style={{ height: hh }}>
+                        <S w={60} h={8} /><S w={`${55 + (i % 2) * 15}%`} h={15} /><S w={40} h={7} />
+                        {i < 2 && <div className="flex items-end gap-[2px] w-full mt-auto">{[6, 10, 7, 14, 9, 18, 12].map((b, j) => <S key={j} cls="flex-1" w="auto" h={b} r={1} />)}</div>}
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
 
 // ── Data loading ──────────────────────────────────────────────────────────────
 
@@ -1303,7 +1392,7 @@ const App = () => {
                             <span className="fsep" />
                             <button onClick={toggleFarms} aria-pressed={hideFarms} className={`fchip ${hideFarms ? 'on' : ''}`}
                                 title={`Steam games with ${FARM_MIN_UNLOCKS}+ unlocks earning more than ${FARM_PER_HOUR} achievements per hour of playtime${data ? `:\n${[...data.farms].map(k => data.meta.steam[k.slice(6)]?.name ?? k).join(', ')}` : ''}`}>
-                                {hideFarms ? <Check size={12} /> : <Plus size={12} />}Hide farms{data && <span className="n">{data.farms.size}</span>}
+                                {hideFarms ? <Check size={12} /> : <Plus size={12} />}Hide farms{data && <span className="n anim-fade">{data.farms.size}</span>}
                             </button>
                         </div>
                     </div>
@@ -1316,7 +1405,7 @@ const App = () => {
                 {/* The swipe listener sits on the stable wrapper; the keyed child is replaced on every tab,
                     period, platform or farm change, so each fades in */}
                 <div ref={tabContentRef}>
-                    {!view ? <Skeleton /> : (
+                    {!view ? <Skeleton tab={tab} /> : (
                         <div key={`${tab}-${period}-${platform}-${hideFarms}`} className={swipeDir === 'swipe' ? '' : 'anim-in'}>
                             {tab === 'overview' && overview()}
                             {tab === 'time' && timeTab()}

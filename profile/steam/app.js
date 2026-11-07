@@ -4,10 +4,10 @@ import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Cloc
 import { STEAM_STATUS, PROGRESS_SORTS } from './utils/constants.js';
 import { formatPlaytime, formatDate, formatTimeAgo, fmtDay, fmtTime, achIconUrl, capsuleUrl, headerUrl, heroUrl, libraryPortraitUrl, rarityLabel, rarityBorderColor } from './utils/helpers.js';
 import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap } from '../../assets/time.js';
-import { useSheet, useArtSrc, SheetHead } from '../../assets/sheet.js';
+import { useSheet, useArtSrc, useAnimatedHeight, SheetHead } from '../../assets/sheet.js';
 import { useGameView, shortAgo } from '../../assets/game-view.js';
 import { TabBar, useSwipeTabs, scrollToTabs } from '../../assets/tabs.js';
-import { computeStreak, useSummaryOpen, ActivitySummary, yearOf, DayHead, RunCard, RunCount, UnlockRow } from '../../assets/activity-ui.js';
+import { computeStreak, useSummaryOpen, ActivitySummary, yearOf, DayHead, RunCard, RunCount, UnlockRow, ActivitySkeleton } from '../../assets/activity-ui.js';
 
 
 // ── Overview stat tiles (styles in assets/ui.css) ──────────────────────────────
@@ -100,36 +100,6 @@ const GameTile = ({ game, achievementData, onViewDetails, beatenInfo }) => {
 const GameCardFor = ({ view, ...props }) => view === 'tiles' ? <GameTile {...props} /> : <GameListRow {...props} />;
 
 // ── AchievementModal ───────────────────────────────────────────────────────────
-
-// Animates an element's height when its content grows or shrinks (loading done,
-// a filter change). FLIP: the ResizeObserver callback runs after layout and before
-// paint, so the old height is restored and transitioned to the new one with no jump.
-const useAnimatedHeight = (ref, duration = 220) => {
-    useEffect(() => {
-        const el = ref.current;
-        if (!el || !window.ResizeObserver || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        let prev = el.offsetHeight, run = 0;
-        const ro = new ResizeObserver(() => {
-            if (el.style.height) return;   // our own animation is resizing it
-            const next = el.offsetHeight;
-            if (Math.abs(next - prev) < 2) { prev = next; return; }
-            const from = prev, id = ++run;
-            prev = next;
-            el.style.overflow = 'hidden';
-            el.style.height = `${from}px`;
-            void el.offsetHeight;
-            el.style.transition = `height ${duration}ms cubic-bezier(0.2, 0.7, 0.3, 1)`;
-            el.style.height = `${next}px`;
-            setTimeout(() => {
-                if (id !== run) return;
-                el.style.height = el.style.transition = el.style.overflow = '';
-                prev = el.offsetHeight;
-            }, duration + 30);
-        });
-        ro.observe(el);
-        return () => ro.disconnect();
-    }, []);
-};
 
 // Profile header background: the latest game's art, blurred, fading into the header
 // (layers in assets/ui.css). Fades in once loaded; the header stays flat until then.
@@ -757,37 +727,6 @@ const GameViewSkeleton = ({ view, count = 5 }) => view === 'tiles' ? (
         {[...Array(count)].map((_, i) => (
             <div key={i} className="grow"><div className="grow-icon shimmer" /><div className="grow-main"><div className="shimmer h-3 w-2/3 rounded-[2px]" /><div className="shimmer h-2.5 w-1/2 rounded-[2px]" /></div></div>
         ))}
-    </div>
-);
-
-const ActivitySkeleton = () => (
-    <div className="flex flex-col gap-6">
-        <div>
-            <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 mb-3">
-                <div className="shimmer w-[3px] h-[14px] rounded-[1px]" />
-                <Sk w="w-24" h="h-3.5" /><Sk w="w-48" h="h-2.5" cls="ml-auto" />
-            </div>
-            <div className="shimmer w-full h-[96px] rounded-[2px]" />
-        </div>
-        <div>
-            <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 mb-3">
-                <div className="shimmer w-[3px] h-[14px] rounded-[1px]" />
-                <Sk w="w-32" h="h-3.5" />
-            </div>
-            {[...Array(3)].map((_, i) => (
-                <div key={i} className="mb-4">
-                    <div className="flex items-center gap-2 mb-2"><div className="shimmer w-2 h-2 rounded-full" /><Sk w="w-32" h="h-2.5" /></div>
-                    <div className="ml-4 border-l border-[#2a475e] pl-3 flex flex-col gap-1.5">
-                        {[...Array(2)].map((_, j) => (
-                            <div key={j} className="flex items-center gap-2 p-2 bg-[#1b2838] border border-[#2a475e] rounded-[2px]">
-                                <div className="shimmer w-8 h-8 rounded-[2px] flex-shrink-0" />
-                                <div className="flex-1 flex flex-col gap-1.5"><Sk w="w-3/4" h="h-2.5" /><Sk w="w-1/2" h="h-2" /></div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            ))}
-        </div>
     </div>
 );
 

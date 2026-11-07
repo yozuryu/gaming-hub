@@ -4,10 +4,10 @@ import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, T
 import { MEDIA_URL, SITE_URL, TILDE_TAG_COLORS } from './utils/constants.js';
 import { getMediaUrl, parseTitle, formatTimeAgo, raShot } from './utils/helpers.js';
 import { transformData } from './utils/transform.js';
-import { useSheet, useArtSrc, SheetHead } from '../../assets/sheet.js';
+import { useSheet, useArtSrc, useAnimatedHeight, SheetHead } from '../../assets/sheet.js';
 import { useGameView, shortAgo } from '../../assets/game-view.js';
 import { TabBar, useSwipeTabs, scrollToTabs } from '../../assets/tabs.js';
-import { computeStreak, useSummaryOpen, ActivitySummary, yearOf, DayHead, RunCard, RunCount, UnlockRow } from '../../assets/activity-ui.js';
+import { computeStreak, useSummaryOpen, ActivitySummary, yearOf, DayHead, RunCard, RunCount, UnlockRow, ActivitySkeleton } from '../../assets/activity-ui.js';
 import { TZ, toMs, dayKey, addDays, keyToDate, fmtDate, fmtClock, buildHeatmap } from '../../assets/time.js';
 
 // --- JSX Helpers ---
@@ -271,36 +271,6 @@ const HeaderArt = ({ urls, icon = false, wide = false }) => {
 
 // ── RAchievementModal ─────────────────────────────────────────────────────────
 
-// Animates an element's height when its content grows or shrinks (e.g. a filter
-// change). FLIP: the ResizeObserver callback runs after layout and before paint, so
-// the old height is restored and transitioned to the new one with no jump.
-const useAnimatedHeight = (ref, duration = 220) => {
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || !window.ResizeObserver || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    let prev = el.offsetHeight, run = 0;
-    const ro = new ResizeObserver(() => {
-      if (el.style.height) return;   // our own animation is resizing it
-      const next = el.offsetHeight;
-      if (Math.abs(next - prev) < 2) { prev = next; return; }
-      const from = prev, id = ++run;
-      prev = next;
-      el.style.overflow = 'hidden';
-      el.style.height = `${from}px`;
-      void el.offsetHeight;
-      el.style.transition = `height ${duration}ms cubic-bezier(0.2, 0.7, 0.3, 1)`;
-      el.style.height = `${next}px`;
-      setTimeout(() => {
-        if (id !== run) return;
-        el.style.height = el.style.transition = el.style.overflow = '';
-        prev = el.offsetHeight;
-      }, duration + 30);
-    });
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
-};
-
 // Achievement list placeholder while games.json loads (same as Steam / Xbox)
 const ModalListSkeleton = () => (
   <div className="px-4 py-3 flex flex-col gap-1.5" aria-busy="true">
@@ -348,9 +318,12 @@ const RAchievementModal = ({ game, onClose, onBack = null, backLabel = '', loadi
     };
   }, [game.achievements]);
 
-  const progAchs     = game.achievements?.filter(a => a.type === 'progression' || a.type === 'win_condition') ?? [];
-  const progUnlocked = progAchs.filter(a => a.isUnlocked).length;
-  const progPct      = progAchs.length > 0 ? (progUnlocked / progAchs.length) * 100 : null;
+  // Progression from the games index summary (transform.js), so the meter is there before the game's file loads
+  const progTotal    = game.progTotal ?? 0;
+  const progUnlocked = game.progEarned ?? 0;
+  // Opened before the games index (a ?game= link, Overview): points, playtime and progression are
+  // unknown until the game's file is in, so the header holds their places with shimmers
+  const pending = loading && game.progTotal == null;
   const lastAgo = game.lastPlayed && game.lastPlayed !== 'Never' ? game.lastPlayed : null;
   // Points: from the achievements once the game's file is in, else the games index summary
   const points = game.achievements?.length
@@ -401,20 +374,22 @@ const RAchievementModal = ({ game, onClose, onBack = null, backLabel = '', loadi
           ]}
           stats={[
             { value: game.achievementsUnlocked ?? 0, total: game.achievementsTotal ?? 0, label: 'Achievements', color: '#66c0f4' },
-            points && { value: points.earned.toLocaleString(), total: points.total.toLocaleString(), label: 'Points', color: '#e5b143' },
-            game.playtime && game.playtime !== 'Unknown'
+            points ? { value: points.earned.toLocaleString(), total: points.total.toLocaleString(), label: 'Points', color: '#e5b143' }
+              : pending && { value: null, label: 'Points' },
+            pending ? { value: null, label: 'Played' }
+            : game.playtime && game.playtime !== 'Unknown'
               ? { value: game.playtime.replace(/^0h /, ''), label: 'Played', color: '#c6d4df' }
               : lastAgo && { value: lastAgo, label: 'Last played', color: '#c6d4df' },
           ].filter(Boolean)}
           bar={game.achievementsTotal > 0 ? { pct: game.rawProgress, color: game.isMastered ? '#e5b143' : '#66c0f4' } : null}
-          steps={progAchs.length > 0 ? { done: progUnlocked, total: progAchs.length, icon: <Trophy size={11} /> } : null}
+          steps={progTotal > 0 ? { done: progUnlocked, total: progTotal, icon: <Trophy size={11} /> } : pending ? { pending: true, icon: <Trophy size={11} /> } : null}
         />
 
         {loading && <ModalListSkeleton />}
 
         {/* Filters: status (one of three), then the type toggles; tap an active type again to clear it */}
         {!loading && <>
-        <div className="flex items-center gap-2 px-4 py-2 border-b border-[#101214] shrink-0">
+        <div className="flex items-center gap-2 px-4 py-2 border-b border-[#101214] shrink-0 anim-fade">
           <div className="frow flex-1 min-w-0" role="group" aria-label="Filter achievements">
             {[
               { value: 'all',      label: 'All',      icon: null },
@@ -906,39 +881,6 @@ const GameCardSkeleton = () => (
     <div className="flex-1 flex flex-col gap-2 justify-center">
       <Sk w="w-3/4" h="h-3.5" /><Sk w="w-1/2" h="h-2.5" />
       <div className="flex gap-2 mt-1"><Sk w="w-20" h="h-2" /><Sk w="w-16" h="h-2" /></div>
-    </div>
-  </div>
-);
-
-const ActivitySkeleton = () => (
-  <div className="flex flex-col gap-6">
-    {/* Heatmap */}
-    <div>
-      <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 mb-3">
-        <div className="shimmer w-[3px] h-[14px] rounded-[1px]" />
-        <Sk w="w-24" h="h-3.5" /><Sk w="w-48" h="h-2.5" cls="ml-auto" />
-      </div>
-      <div className="shimmer w-full h-[96px] rounded-[2px]" />
-    </div>
-    {/* Timeline */}
-    <div>
-      <div className="flex items-center gap-2 border-b border-[#2a475e] pb-1.5 mb-3">
-        <div className="shimmer w-[3px] h-[14px] rounded-[1px]" />
-        <Sk w="w-32" h="h-3.5" />
-      </div>
-      {[...Array(3)].map((_, i) => (
-        <div key={i} className="mb-4">
-          <div className="flex items-center gap-2 mb-2"><div className="shimmer w-2 h-2 rounded-full" /><Sk w="w-32" h="h-2.5" /></div>
-          <div className="ml-4 border-l border-[#2a475e] pl-3 flex flex-col gap-1.5">
-            {[...Array(2)].map((_, j) => (
-              <div key={j} className="flex items-center gap-2 p-2 bg-[#1b2838] border border-[#2a475e] rounded-[2px]">
-                <div className="shimmer w-8 h-8 rounded-[2px] flex-shrink-0" />
-                <div className="flex-1 flex flex-col gap-1.5"><Sk w="w-3/4" h="h-2.5" /><Sk w="w-1/2" h="h-2" /></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
     </div>
   </div>
 );
