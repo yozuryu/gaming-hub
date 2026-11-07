@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-11-07T14:46:50.214Z"
+        "extractionTimestamp": "2026-11-07T15:16:51.587Z"
     },
     "profile": {
         "steamId": "76561198188939413",
@@ -13,11 +13,11 @@
     },
     "stats": {
         "totalGames": 1292,
-        "totalPlaytimeMin": 351130,
-        "totalPlaytimeHrs": 5852,
+        "totalPlaytimeMin": 351160,
+        "totalPlaytimeHrs": 5853,
         "gamesWithPlaytime": 820,
         "totalAchievements": 10178,
-        "unlockedAchievements": 2857,
+        "unlockedAchievements": 2861,
         "gamesWithAchievements": 172,
         "perfectCount": 17,
         "completionPct": 28,
@@ -27,12 +27,12 @@
         {
             "appId": 1658290,
             "name": "Eiyuden Chronicle: Rising",
-            "playtime2Weeks": 41,
-            "playtimeForever": 60,
+            "playtime2Weeks": 71,
+            "playtimeForever": 90,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1658290/449ec8f09bf72c9f8e00c113c1e12a7c70a86de4.jpg",
             "storeUrl": "https://store.steampowered.com/app/1658290",
-            "lastPlayedTs": "2026-11-07T14:41:45.000Z",
-            "achUnlocked": 2,
+            "lastPlayedTs": "2026-11-07T15:11:46.000Z",
+            "achUnlocked": 6,
             "achTotal": 50
         },
         {
@@ -83,21 +83,21 @@
     "mostRecentGame": {
         "appId": 1658290,
         "name": "Eiyuden Chronicle: Rising",
-        "playtime2Weeks": 41,
-        "playtimeForever": 60,
+        "playtime2Weeks": 71,
+        "playtimeForever": 90,
         "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1658290/449ec8f09bf72c9f8e00c113c1e12a7c70a86de4.jpg",
         "storeUrl": "https://store.steampowered.com/app/1658290",
-        "lastPlayedTs": "2026-11-07T14:41:45.000Z"
+        "lastPlayedTs": "2026-11-07T15:11:46.000Z"
     },
     "mostRecentUnlock": {
         "appId": 1658290,
         "gameName": "Eiyuden Chronicle: Rising",
-        "apiName": "ACHIEVEMENT004",
-        "displayName": "All Bark, No Bite",
+        "apiName": "ACHIEVEMENT002",
+        "displayName": "Partners?",
         "description": "",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/1658290/924d1737b63a1f77822da49a85c47189ecb963b5.jpg",
-        "unlockedAt": "2026-11-01T10:08:58.000Z",
-        "globalPct": 70.5
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/1658290/f11f05dd5563baa760d0451753feeb410a70dd9d.jpg",
+        "unlockedAt": "2026-11-07T15:03:44.000Z",
+        "globalPct": 60.8
     },
     "perfectGames": [
         {

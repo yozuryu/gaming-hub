@@ -33520,7 +33520,7 @@
                     "unlockedAt": null,
                     "iconUrl": "2f5917feb40bd711b1236215467f9bc94236b34b.jpg",
                     "iconGrayUrl": "f725611c1cfaed2d2d9b812fab07a30aaa040ce8.jpg",
-                    "globalPct": 25.2
+                    "globalPct": 27.6
                 },
                 {
                     "apiName": "A02_TotemOcean",
@@ -33529,7 +33529,7 @@
                     "unlockedAt": null,
                     "iconUrl": "4a334413079e9ece22dc00f40bb3df84359ee7a0.jpg",
                     "iconGrayUrl": "041da3feb7e5dce30c00551f5e3c65d5c85fd186.jpg",
-                    "globalPct": 28.4
+                    "globalPct": 30
                 },
                 {
                     "apiName": "A03_TotemJungle",
@@ -33538,7 +33538,7 @@
                     "unlockedAt": null,
                     "iconUrl": "3f11809705f6e57072e3e1dc9308aecd0f127d28.jpg",
                     "iconGrayUrl": "66e04d28136ef011f08b96431f768f31e6970f50.jpg",
-                    "globalPct": 22.1
+                    "globalPct": 23.8
                 },
                 {
                     "apiName": "A04_TotemDesert",
@@ -33547,7 +33547,7 @@
                     "unlockedAt": null,
                     "iconUrl": "891cc116879295431117397954d32eec4f491f9f.jpg",
                     "iconGrayUrl": "1bf2423baea762b168ef2f983dd448e062999fb5.jpg",
-                    "globalPct": 20.8
+                    "globalPct": 22.5
                 },
                 {
                     "apiName": "A05_TotemClouds",
@@ -33556,7 +33556,7 @@
                     "unlockedAt": null,
                     "iconUrl": "8708fa274b447e8cea7d0801aab710e45b8dc599.jpg",
                     "iconGrayUrl": "909698dc418d2a5bd809513dd4063550cff394a3.jpg",
-                    "globalPct": 18.1
+                    "globalPct": 19.8
                 },
                 {
                     "apiName": "A06_TotemMaster",
@@ -33565,7 +33565,7 @@
                     "unlockedAt": null,
                     "iconUrl": "93f731e4f258ae63d852e104d9af764b4d854965.jpg",
                     "iconGrayUrl": "49b48d6327d3f261a23eb7d2700b01639d47297b.jpg",
-                    "globalPct": 15.9
+                    "globalPct": 17.3
                 }
             ]
         },
@@ -34757,7 +34757,7 @@
                     "unlockedAt": "2026-10-04T16:12:02.000Z",
                     "iconUrl": "c006c34a2734ce340a992cf55f2c7c3e24dbe778.jpg",
                     "iconGrayUrl": "416fdee27b613f4bed9bc25e5a144a279dffe974.jpg",
-                    "globalPct": 29.4
+                    "globalPct": 29.5
                 },
                 {
                     "apiName": "ACHIEVEMENT_046",
@@ -34784,7 +34784,7 @@
                     "unlockedAt": "2026-10-03T15:05:37.000Z",
                     "iconUrl": "3ca8fa454bd33f98380391fb36e2a9689f6346d5.jpg",
                     "iconGrayUrl": "aaecb6d3e7fbe1f5d0c9112f649c1020bd13d6ac.jpg",
-                    "globalPct": 34
+                    "globalPct": 34.1
                 },
                 {
                     "apiName": "ACHIEVEMENT_018",
@@ -38113,14 +38113,50 @@
             "appId": 1658290,
             "hasAchievements": true,
             "total": 50,
-            "unlocked": 2,
+            "unlocked": 6,
             "gameName": "Eiyuden Chronicle: Rising",
-            "playtimeForever": 60,
-            "lastPlayedTs": "2026-11-07T14:41:45.000Z",
+            "playtimeForever": 90,
+            "lastPlayedTs": "2026-11-07T15:11:46.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1658290/449ec8f09bf72c9f8e00c113c1e12a7c70a86de4.jpg",
-            "lastUnlockedAt": "2026-11-01T10:08:58.000Z",
-            "lastUnlockName": "All Bark, No Bite",
+            "lastUnlockedAt": "2026-11-07T15:03:44.000Z",
+            "lastUnlockName": "Partners?",
             "preview": [
+                {
+                    "apiName": "ACHIEVEMENT002",
+                    "displayName": "Partners?",
+                    "unlocked": true,
+                    "unlockedAt": "2026-11-07T15:03:44.000Z",
+                    "iconUrl": "f11f05dd5563baa760d0451753feeb410a70dd9d.jpg",
+                    "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
+                    "globalPct": 60.8
+                },
+                {
+                    "apiName": "ACHIEVEMENT009",
+                    "displayName": "The Road to Recovery",
+                    "unlocked": true,
+                    "unlockedAt": "2026-11-07T14:56:54.000Z",
+                    "iconUrl": "698113d14201052b0919e671e6e7a7b5f48cb717.jpg",
+                    "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
+                    "globalPct": 61.3
+                },
+                {
+                    "apiName": "ACHIEVEMENT024",
+                    "displayName": "Amateur Adventurer",
+                    "unlocked": true,
+                    "unlockedAt": "2026-11-07T14:53:56.000Z",
+                    "iconUrl": "95601da0358307b95831f856f7a4bf0ffbcbf425.jpg",
+                    "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
+                    "globalPct": 61.6
+                },
+                {
+                    "apiName": "ACHIEVEMENT025",
+                    "displayName": "Hopeful Hunter",
+                    "unlocked": true,
+                    "unlockedAt": "2026-11-07T14:52:18.000Z",
+                    "iconUrl": "9d1799fe36b7ad45fe0fbe04093903db4f8a7bb3.jpg",
+                    "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
+                    "globalPct": 63.3
+                },
                 {
                     "apiName": "ACHIEVEMENT004",
                     "displayName": "All Bark, No Bite",
@@ -38138,42 +38174,6 @@
                     "iconUrl": "e795de25f1ee60903ebcc66b28a3a79bdbb0fc84.jpg",
                     "iconGrayUrl": "c52f0941e8a0fa43a6e36a9bbb333928d9d03acc.jpg",
                     "globalPct": 80.4
-                },
-                {
-                    "apiName": "ACHIEVEMENT002",
-                    "displayName": "Partners?",
-                    "unlocked": false,
-                    "unlockedAt": null,
-                    "iconUrl": "f11f05dd5563baa760d0451753feeb410a70dd9d.jpg",
-                    "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
-                    "globalPct": 60.8
-                },
-                {
-                    "apiName": "ACHIEVEMENT003",
-                    "displayName": "...And Your Tax Money",
-                    "unlocked": false,
-                    "unlockedAt": null,
-                    "iconUrl": "5ef5bbbf3d1de10a39c0b40ffd4371bb417c7ea8.jpg",
-                    "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
-                    "globalPct": 46.3
-                },
-                {
-                    "apiName": "ACHIEVEMENT005",
-                    "displayName": "Magical Mineral Golem",
-                    "unlocked": false,
-                    "unlockedAt": null,
-                    "iconUrl": "05c7846bef15486bfd5d86531139998aa8244f8e.jpg",
-                    "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
-                    "globalPct": 53.7
-                },
-                {
-                    "apiName": "ACHIEVEMENT006",
-                    "displayName": "The Lords of the Snowpeak",
-                    "unlocked": false,
-                    "unlockedAt": null,
-                    "iconUrl": "52be66b2c35ea0e3c2fe1d71c53c8d6dbd66123f.jpg",
-                    "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
-                    "globalPct": 40.8
                 }
             ]
         },

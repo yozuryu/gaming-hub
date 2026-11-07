@@ -2,7 +2,7 @@
     "appId": 1658290,
     "hasAchievements": true,
     "total": 50,
-    "unlocked": 2,
+    "unlocked": 6,
     "gameName": "Eiyuden Chronicle: Rising",
     "achievements": [
         {
@@ -18,8 +18,8 @@
         },
         {
             "apiName": "ACHIEVEMENT002",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-11-07T15:03:44.000Z",
             "displayName": "Partners?",
             "description": "",
             "iconUrl": "f11f05dd5563baa760d0451753feeb410a70dd9d.jpg",
@@ -95,8 +95,8 @@
         },
         {
             "apiName": "ACHIEVEMENT009",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-11-07T14:56:54.000Z",
             "displayName": "The Road to Recovery",
             "description": "Completed your first side-quest",
             "iconUrl": "698113d14201052b0919e671e6e7a7b5f48cb717.jpg",
@@ -260,8 +260,8 @@
         },
         {
             "apiName": "ACHIEVEMENT024",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-11-07T14:53:56.000Z",
             "displayName": "Amateur Adventurer",
             "description": "Obtained a total of 100 resources",
             "iconUrl": "95601da0358307b95831f856f7a4bf0ffbcbf425.jpg",
@@ -271,14 +271,14 @@
         },
         {
             "apiName": "ACHIEVEMENT025",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-11-07T14:52:18.000Z",
             "displayName": "Hopeful Hunter",
             "description": "Defeated 100 enemies",
             "iconUrl": "9d1799fe36b7ad45fe0fbe04093903db4f8a7bb3.jpg",
             "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
             "hidden": false,
-            "globalPct": 63.4
+            "globalPct": 63.3
         },
         {
             "apiName": "ACHIEVEMENT026",
@@ -556,12 +556,48 @@
             "globalPct": 14
         }
     ],
-    "playtimeForever": 60,
-    "lastPlayedTs": "2026-11-07T14:41:45.000Z",
+    "playtimeForever": 90,
+    "lastPlayedTs": "2026-11-07T15:11:46.000Z",
     "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1658290/449ec8f09bf72c9f8e00c113c1e12a7c70a86de4.jpg",
-    "lastUnlockedAt": "2026-11-01T10:08:58.000Z",
-    "lastUnlockName": "All Bark, No Bite",
+    "lastUnlockedAt": "2026-11-07T15:03:44.000Z",
+    "lastUnlockName": "Partners?",
     "preview": [
+        {
+            "apiName": "ACHIEVEMENT002",
+            "displayName": "Partners?",
+            "unlocked": true,
+            "unlockedAt": "2026-11-07T15:03:44.000Z",
+            "iconUrl": "f11f05dd5563baa760d0451753feeb410a70dd9d.jpg",
+            "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
+            "globalPct": 60.8
+        },
+        {
+            "apiName": "ACHIEVEMENT009",
+            "displayName": "The Road to Recovery",
+            "unlocked": true,
+            "unlockedAt": "2026-11-07T14:56:54.000Z",
+            "iconUrl": "698113d14201052b0919e671e6e7a7b5f48cb717.jpg",
+            "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
+            "globalPct": 61.3
+        },
+        {
+            "apiName": "ACHIEVEMENT024",
+            "displayName": "Amateur Adventurer",
+            "unlocked": true,
+            "unlockedAt": "2026-11-07T14:53:56.000Z",
+            "iconUrl": "95601da0358307b95831f856f7a4bf0ffbcbf425.jpg",
+            "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
+            "globalPct": 61.6
+        },
+        {
+            "apiName": "ACHIEVEMENT025",
+            "displayName": "Hopeful Hunter",
+            "unlocked": true,
+            "unlockedAt": "2026-11-07T14:52:18.000Z",
+            "iconUrl": "9d1799fe36b7ad45fe0fbe04093903db4f8a7bb3.jpg",
+            "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
+            "globalPct": 63.3
+        },
         {
             "apiName": "ACHIEVEMENT004",
             "displayName": "All Bark, No Bite",
@@ -579,42 +615,6 @@
             "iconUrl": "e795de25f1ee60903ebcc66b28a3a79bdbb0fc84.jpg",
             "iconGrayUrl": "c52f0941e8a0fa43a6e36a9bbb333928d9d03acc.jpg",
             "globalPct": 80.4
-        },
-        {
-            "apiName": "ACHIEVEMENT002",
-            "displayName": "Partners?",
-            "unlocked": false,
-            "unlockedAt": null,
-            "iconUrl": "f11f05dd5563baa760d0451753feeb410a70dd9d.jpg",
-            "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
-            "globalPct": 60.8
-        },
-        {
-            "apiName": "ACHIEVEMENT003",
-            "displayName": "...And Your Tax Money",
-            "unlocked": false,
-            "unlockedAt": null,
-            "iconUrl": "5ef5bbbf3d1de10a39c0b40ffd4371bb417c7ea8.jpg",
-            "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
-            "globalPct": 46.3
-        },
-        {
-            "apiName": "ACHIEVEMENT005",
-            "displayName": "Magical Mineral Golem",
-            "unlocked": false,
-            "unlockedAt": null,
-            "iconUrl": "05c7846bef15486bfd5d86531139998aa8244f8e.jpg",
-            "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
-            "globalPct": 53.7
-        },
-        {
-            "apiName": "ACHIEVEMENT006",
-            "displayName": "The Lords of the Snowpeak",
-            "unlocked": false,
-            "unlockedAt": null,
-            "iconUrl": "52be66b2c35ea0e3c2fe1d71c53c8d6dbd66123f.jpg",
-            "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
-            "globalPct": 40.8
         }
     ]
 }
