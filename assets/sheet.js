@@ -4,6 +4,9 @@
 // centred dialog that closes at once. Closing always goes through the returned function.
 import { createElement as h, useEffect, useRef, useCallback, useState } from 'react';
 
+// DEBUG blink bisect (temporary, remove once the sheet blink is found): ?dbg=nbd,nfade,nblur,nslide,ncard
+{ const d = new URLSearchParams(location.search).get('dbg'); if (d) d.split(',').forEach(c => document.documentElement.classList.add('dbg-' + c)); }
+
 const PHONE = '(max-width: 767px)';
 const isPhone = () => window.matchMedia(PHONE).matches;
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
