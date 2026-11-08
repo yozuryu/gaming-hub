@@ -221,6 +221,8 @@ Swiping between profile tabs looks like turning to another page; the RA Series t
 ### Pipelines
 
 - RA: games are written as `games/index.json` (no achievement lists, with a summary per game) plus one file per game, like Steam; the old single `games.json` is removed on the first run
+- RA: a game removed or reset on RetroAchievements now leaves the site. A game with unlocks that RA no longer lists is dropped from the games, its file and the unlock history, and counts as activity, so the next regular run publishes it. Before, every run started from the previous files and only ever added games, so a deleted game stayed for good (the Professor Oak Challenge hack)
+- RA: `--debug` really writes nothing now; it used to write the game files and skip only playtime and history
 
 ### Admin
 

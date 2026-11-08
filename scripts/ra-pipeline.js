@@ -315,6 +315,17 @@ async function executeProfileExtraction(targetUser) {
             await sleep(2000);
         }
 
+        // A game with unlocks that RA no longer lists was reset or removed on RA: drop it.
+        // Games without unlocks only come from recently played, so they stay once seen
+        if (progressGames.length) {
+            const listed = new Set(allGamesToFetch.map(g => String(g.gameId)));
+            for (const [id, g] of Object.entries(profilePayload.detailedGameProgress)) {
+                if (listed.has(String(id)) || !((g.numAwardedToUser ?? 0) > 0)) continue;
+                delete profilePayload.detailedGameProgress[id];
+                log.ok(`[${id}] ${g.title} — no longer on RA, removed`);
+            }
+        }
+
         return profilePayload;
 
     } catch (error) {
@@ -640,6 +651,9 @@ function detectActivity(payload) {
         if ((prev.userTotalPlaytime ?? 0) !== (g.userTotalPlaytime ?? 0)) return `playtime in ${g.title}`;
     }
 
+    const gone = Object.entries(games).find(([id]) => !payload.detailedGameProgress?.[id]);
+    if (gone) return `removed game ${gone[1].title}`;
+
     const prevUnlocks = new Set();
     for (let i = 1; i <= 4; i++) {
         for (const a of readJsonFile(path.join(dir, 'achievements', `${i}.json`))?.recentAchievements ?? []) prevUnlocks.add(`${a.achievementId}|${a.date}`);
@@ -755,7 +769,8 @@ async function runPipeline() {
             log.ok(`Activity: ${activity}`);
         }
 
-        serializeLocally(payload);
+        if (DEBUG) log.skip('Debug mode: game files not written');
+        else serializeLocally(payload);
         logPlaytime(payload);
         logHistory(payload);
         await synchronizeWithFirestore(false, payload);

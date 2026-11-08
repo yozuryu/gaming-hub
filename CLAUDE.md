@@ -197,6 +197,7 @@ Env vars: `RA_USERNAME`, `RA_API_KEY`. Uses `@retroachievements/api` package.
 - Game details cached in Firestore to avoid re-fetching unchanged games
 - Outputs: `profile.json`, `games/index.json` + `games/{gameId}.json`, `watchlist.json`, `achievements/1-4.json`
 - **Per-game split** (like Steam): `games/index.json` holds every game without its achievement list plus a `summary` (`count`, `earned`, `points`, `pointsEarned`, `prog`, `progEarned`, `lastUnlock`), ~12 KB compressed instead of the old 5 MB `games.json`; each `games/{id}.json` is the full game, loaded when its sheet opens. The cache is read back from these files (the old `games.json` is the fallback and is deleted once the split is written). Files of games no longer tracked are removed
+- **Removed games:** a cached game with unlocks that RA no longer lists (not in completion progress or recently played) was reset or removed on RA, and is dropped (index, file, history) and counted as activity. Games without unlocks come only from recently played, so they stay once seen. Skipped if completion progress comes back empty
 
 ### Steam Pipeline (`scripts/steam-pipeline.js`)
 Env vars: `STEAM_API_KEY`, `STEAM_USER_ID`.
