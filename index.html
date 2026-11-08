@@ -535,8 +535,14 @@
           document.getElementById('completions-strip').style.display = '';
           loadCompletionsStrip();
         }
-        document.getElementById('analytics-strip').style.display = '';
-        loadAnalyticsStrip();
+        if (p.analytics?.visible !== false) {
+          document.getElementById('analytics-strip').style.display = '';
+          loadAnalyticsStrip();
+        }
+        // Playing and Series start loading before the config arrives (their skeletons show at once);
+        // switched off in the admin, they're hidden again here
+        if (p.playing?.visible === false) document.getElementById('playing-section').style.display = 'none';
+        if (p.series?.visible === false) document.getElementById('series-section').style.display = 'none';
       } catch (e) {
         console.warn('Could not load hub profile:', e);
       }

@@ -2,7 +2,11 @@
 
 ## v26.11.08
 
-Analytics: Most days, Binged and Comebacks lists, idle games can be hidden, and farms can be marked by hand
+Analytics: Most days, Binged and Comebacks lists, idle games can be hidden, farms can be marked by hand; the admin gets a new look
+
+### Hub
+
+- Playing, Series and the Analytics strip can be switched off in the admin (Site Config → Hub sections), like the Activity feed and Completions strip already could
 
 ### Analytics
 
@@ -15,6 +19,35 @@ Analytics: Most days, Binged and Comebacks lists, idle games can be hidden, and 
 
 - New **Idle Games** page (General): search RA and Steam games and mark the ones left running; saved to `data/hub/idle-games.json`
 - New **Farm Games** page (General): the Steam games the farm rule detects (unlocks, hours and rate per hour), each can be marked as not a farm, and any RA, Steam or Xbox game can be marked as a farm by hand; saved to `data/hub/farm-games.json`. Analytics' Hide farms, the hub's Analytics strip and Playing follow it. 8-Bit Bayonetta, Hell Girls and WayOut (21–51 unlocks an hour) are marked as not farms: they're real games the rule caught
+- **New look**, same palette and sharp corners as the site:
+  - Sidebar with the app icon, the RA, Steam and Xbox icons on their sections, a Lists section (Shared Series, Idle Games, Farm Games), a link to the live site, and the server status (online, restarting, stopped) with restart / stop.
+  - Lucide icons instead of emoji throughout.
+  - Every page has a header: its icon, what it edits and the file it writes.
+  - Save sits in that header on every page, flags unsaved changes, and ⌘S / Ctrl+S saves.
+  - Shared parts: search fields with an icon and a clear button, buttons with icons, sentence-case field labels, larger text (10–12px floor instead of 8–11px), shimmer skeletons instead of "Loading…", and empty states that say what to do instead of "Select a series".
+  - Site Config and Credentials are cards (platform icons, show / hide key buttons). Pipelines get a button per mode with its icon and a log panel with Running / Done / Failed. Win conditions use an Any / All switch. Idle and Farm Games are two cards each.
+- The admin server serves the site's images (`/assets/*.png|svg|ico|webp`) for the icons; restart it once to pick this up
+- **Site Config:** the Platforms card drops the Active switch (nothing read it) and shows each platform's sync instead: every 30 min, or Sync paused for Xbox (read from `XBOX_ENABLED` in `fetch-data.yml`). "Pages" becomes **Hub sections** with switches for Playing, Series, Recent activity, Completions and Analytics, marked phone + desktop or desktop only.
+- **Credentials:** every key in `.env`, each card saying what uses it. New: SteamGridDB (the Art page), Scheduling (the GitHub token and the cron-job.org key), and the optional Xbox XUID.
+- **Pipelines:**
+  - **Run on GitHub** starts a real data run: incremental, midnight, full refresh or watchlist, for all platforms or one, after a confirm step.
+  - The right side lists the last 12 runs: status, how it started, when, how long, and a link to the run. It refreshes while one is running.
+  - **Local tools:** pull live data (`data:pull`) and rebuild the shared series.
+  - The local pipeline runs are labelled as test runs that never reach the live site.
+  - **Schedule:** the two cron-job.org jobs (every 30 min, midnight), each with its last result, next run, a switch to pause or resume it, and **Run now**. cron-job.org has no run-now call, so Run now sends the job's own request (its mode and platforms) to GitHub. The job's headers, which hold the GitHub token, never leave the admin server.
+- **Data Diff:**
+  - Three groups:
+    - **Not committed:** hand-edited data files changed on this laptop.
+    - **Ready to push:** every commit GitHub's main doesn't have, data or code. Click one to see its diff, file by file.
+    - **Local only:** pipeline output from local runs, compared with the last pull; it's never published.
+  - Three buttons:
+    - **Commit:** the data files only (other uncommitted work is left alone), not pushed.
+    - **Push:** the waiting commits to main, which redeploys the site.
+    - **Publish:** both in one go.
+  - Each button has a confirm step listing what it commits and pushes. Push and Publish refuse when GitHub's main has commits this laptop lacks, and Commit refuses when the files changed since the comparison.
+  - The bottom of the list shows who commits and who pushes:
+    - The commit author comes from git config, and the label says whether that's the repo's config or the global one.
+    - For pushes, the SSH key the remote's host resolves to and the GitHub account that key signs in as (`ssh -T`).
 
 ## v26.11.07
 

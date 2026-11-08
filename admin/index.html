@@ -3,32 +3,114 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin</title>
-  <link rel="icon" href="../assets/favicon.ico" sizes="48x48">
-  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <link rel="apple-touch-icon" href="../assets/icon-192.png">
+  <title>Admin · gaming-hub</title>
+  <link rel="icon" href="/assets/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="apple-touch-icon" href="/assets/icon-192.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script type="importmap">
     { "imports": {
         "react":            "https://esm.sh/react@18.2.0",
         "react-dom":        "https://esm.sh/react-dom@18.2.0",
-        "react-dom/client": "https://esm.sh/react-dom@18.2.0/client"
+        "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+        "lucide-react":     "https://esm.sh/lucide-react@0.263.1"
     } }
   </script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <style>
-    body { background:#171a21; color:#c6d4df; font-family:'Segoe UI',Arial,sans-serif; }
-    ::-webkit-scrollbar{width:6px} ::-webkit-scrollbar-track{background:#171a21} ::-webkit-scrollbar-thumb{background:#2a475e;border-radius:3px}
-    input,textarea,select{color-scheme:dark}
-    .input { background:#202d39; border:1px solid #2a475e; border-radius:2px; padding:4px 8px; font-size:11px; color:#c6d4df; outline:none; width:100%; }
-    .input:focus { border-color:#66c0f4; }
-    .input::placeholder { color:#546270; }
-    .btn-primary { background:#66c0f4; color:#101214; border-radius:2px; padding:4px 12px; font-size:11px; font-weight:600; cursor:pointer; transition:background .15s; }
-    .btn-primary:hover { background:#57cbde; }
-    .btn-primary:disabled { background:#2a475e; color:#546270; cursor:not-allowed; }
-    .btn-ghost { color:#546270; background:transparent; border:none; cursor:pointer; font-size:11px; transition:color .15s; }
-    .btn-ghost:hover { color:#c6d4df; }
-    .btn-danger:hover { color:#ff6b6b !important; }
+    /* Admin shell: the site's own palette (CLAUDE.md design system), sharp 3px corners, the site font.
+       Sidebar | page header (icon, title, what it edits, Save) | page body: panes of lists and editors */
+    :root {
+      --bg: #171a21; --panel: #1b2838; --panel2: #202d39; --deep: #131a22; --ink: #101214;
+      --line: #2a475e; --line2: #1f2f3d; --text: #c6d4df; --dim: #8f98a0; --mute: #546270;
+      --blue: #66c0f4; --gold: #e5b143; --green: #52b043; --red: #ff6b6b; --cyan: #57cbde;
+    }
+    body { background: var(--bg); color: var(--text); font: 13px/1.45 'Segoe UI', Arial, sans-serif; margin: 0; }
+    ::-webkit-scrollbar { width: 8px; height: 8px } ::-webkit-scrollbar-track { background: transparent }
+    ::-webkit-scrollbar-thumb { background: #2a475e; border-radius: 4px; border: 2px solid var(--bg) }
+    input, textarea, select { color-scheme: dark }
+    button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
+
+    .input { height: 32px; background: var(--deep); border: 1px solid var(--line); border-radius: 3px; padding: 0 10px; font-size: 12px; color: var(--text); outline: none; width: 100%; transition: border-color .15s, box-shadow .15s; }
+    .input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(102,192,244,0.14); }
+    .input::placeholder { color: var(--mute); }
+    .search { position: relative; display: flex; align-items: center; width: 100%; }
+    .search > svg { position: absolute; left: 9px; color: var(--mute); pointer-events: none; }
+    .search .input { padding-left: 30px; padding-right: 28px; }
+    .search > button { position: absolute; right: 6px; width: 20px; height: 20px; display: grid; place-items: center; color: var(--mute); border-radius: 2px; }
+    .search > button:hover { color: var(--text); background: var(--panel2); }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 30px; padding: 0 12px; border-radius: 3px; font-size: 12px; font-weight: 600; white-space: nowrap; cursor: pointer; transition: background .15s, color .15s, border-color .15s; border: 1px solid transparent; }
+    .btn:disabled { cursor: not-allowed; opacity: 0.45; }
+    .btn-sm { height: 26px; padding: 0 9px; font-size: 11px; gap: 5px; }
+    .btn-primary { background: var(--blue); color: var(--ink); }
+    .btn-primary:not(:disabled):hover { background: #84ceff; }
+    .btn-primary:disabled { background: var(--line); color: var(--mute); opacity: 1; }
+    .btn-outline { border-color: var(--line); color: var(--text); background: transparent; }
+    .btn-outline:not(:disabled):hover { border-color: var(--blue); color: #fff; background: rgba(102,192,244,0.06); }
+    .btn-ghost { color: var(--dim); background: transparent; border: none; cursor: pointer; font-size: 12px; transition: color .15s, background .15s; }
+    .btn-ghost.btn { font-weight: 500; }
+    .btn-ghost:hover { color: #fff; }
+    .btn-ghost.btn:hover { background: var(--panel2); }
+    .btn-danger:hover { color: var(--red) !important; }
+    .btn-danger.btn-outline:not(:disabled):hover { border-color: rgba(255,107,107,0.6); background: rgba(255,107,107,0.08); }
+    .btn-red { background: #c0392b; color: #fff; }
+    .btn-red:hover { background: #d9473a; }
+    .icon-btn { width: 28px; height: 28px; display: inline-grid; place-items: center; border-radius: 3px; color: var(--mute); transition: color .15s, background .15s; flex-shrink: 0; }
+    .icon-btn:hover { color: #fff; background: var(--panel2); }
+
+    /* Panes: a list beside an editor. .pane-h is the 48px strip on top of each */
+    .pane { display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
+    .pane-side { border-right: 1px solid var(--line); background: #182230; }
+    .pane-h { display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 8px 14px; border-bottom: 1px solid var(--line); flex-shrink: 0; }
+    .pane-f { display: flex; align-items: center; gap: 8px; padding: 8px 14px; border-top: 1px solid var(--line); font-size: 11px; color: var(--mute); flex-shrink: 0; }
+    .pane-t { font-size: 14px; font-weight: 600; color: #fff; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .sub-h { display: flex; align-items: center; gap: 6px; padding: 7px 14px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--dim); background: var(--deep); border-bottom: 1px solid var(--line2); }
+
+    /* List rows: icon, two lines of text, trailing marks. .on = selected */
+    .lrow { width: 100%; display: flex; align-items: center; gap: 10px; padding: 7px 14px 7px 12px; text-align: left; border-left: 2px solid transparent; border-bottom: 1px solid var(--line2); transition: background .12s; }
+    .lrow:hover { background: rgba(32,45,57,0.7); }
+    .lrow.on { background: rgba(102,192,244,0.09); border-left-color: var(--blue); }
+    .lrow.on .lrow-t { color: #fff; }
+    .lrow-i { width: 28px; height: 28px; border-radius: 2px; object-fit: cover; background: var(--ink); border: 1px solid var(--ink); flex-shrink: 0; }
+    .lrow-b { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+    .lrow-t { font-size: 12px; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .lrow-s { font-size: 11px; color: var(--mute); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: 3px; }
+    .card-h { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+    .card-b { padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+    .label { font-size: 12px; font-weight: 500; color: var(--dim); }
+    .hint { font-size: 11px; color: var(--mute); }
+    .chip { display: inline-flex; align-items: center; gap: 4px; height: 20px; padding: 0 7px; border-radius: 3px; font-size: 11px; border: 1px solid var(--line); color: var(--dim); background: var(--deep); white-space: nowrap; }
+    .chip-gold { color: var(--gold); border-color: rgba(229,177,67,0.4); background: rgba(229,177,67,0.08); }
+    .chip-blue { color: var(--blue); border-color: rgba(102,192,244,0.35); background: rgba(102,192,244,0.08); }
+    .chip-red { color: var(--red); border-color: rgba(255,107,107,0.35); background: rgba(255,107,107,0.08); }
+    .tag-up { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; }
+    .mono { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; }
+    .seg { display: inline-flex; padding: 2px; gap: 2px; background: var(--deep); border: 1px solid var(--line); border-radius: 3px; }
+    .seg button { height: 24px; padding: 0 9px; border-radius: 2px; font-size: 11px; font-weight: 600; color: var(--mute); display: inline-flex; align-items: center; gap: 5px; }
+    .seg button:hover { color: var(--text); }
+    .seg button.on { background: var(--line); color: #fff; }
+
+    .empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 32px; text-align: center; }
+    .empty-i { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: var(--panel); border: 1px solid var(--line); color: var(--mute); margin-bottom: 4px; }
+    .empty-t { font-size: 13px; font-weight: 600; color: var(--dim); }
+    .empty-h { font-size: 12px; color: var(--mute); max-width: 320px; }
+
+    .shimmer { background: linear-gradient(90deg, #1b2838 0%, #243445 50%, #1b2838 100%); background-size: 200% 100%; animation: shimmer 1.4s linear infinite; border-radius: 2px; }
+    @keyframes shimmer { from { background-position: 200% 0 } to { background-position: -200% 0 } }
+
+    .nav-i { width: 100%; display: flex; align-items: center; gap: 10px; height: 32px; padding: 0 10px; border-radius: 3px; font-size: 12px; color: var(--dim); transition: background .12s, color .12s; position: relative; }
+    .nav-i:hover { color: #fff; background: rgba(42,71,94,0.45); }
+    .nav-i.on { color: #fff; background: rgba(102,192,244,0.12); }
+    .nav-i.on::before { content: ""; position: absolute; left: -8px; top: 7px; bottom: 7px; width: 3px; border-radius: 0 2px 2px 0; background: var(--blue); }
+    .nav-i.on svg { color: var(--blue); }
+    .nav-g { display: flex; align-items: center; gap: 7px; padding: 14px 10px 6px; font-size: 10px; font-weight: 700; color: var(--mute); text-transform: uppercase; letter-spacing: 0.08em; }
+    .nav-g img { width: 14px; height: 14px; border-radius: 2px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .kbd { font-size: 10px; color: var(--mute); border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 3px; padding: 0 4px; line-height: 15px; }
+
     /* Motion: copy of the .anim-* classes in assets/motion.css (admin-server.js serves only this page) */
     .anim-in       { animation: motion-in 240ms cubic-bezier(0.2, 0.7, 0.3, 1) backwards; }
     .anim-fade     { animation: motion-fade 180ms ease-out backwards; }
@@ -37,14 +119,21 @@
     @keyframes motion-in   { from { opacity: 0; transform: translateY(6px); } }
     @keyframes motion-fade { from { opacity: 0; } }
     @keyframes motion-pop  { from { opacity: 0; transform: translateY(4px) scale(0.97); } }
-    @media (prefers-reduced-motion: reduce) { .anim-in, .anim-fade, .anim-pop, .anim-backdrop { animation: none; } }
+    @media (prefers-reduced-motion: reduce) { .anim-in, .anim-fade, .anim-pop, .anim-backdrop, .shimmer { animation: none; } }
   </style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel" data-type="module">
-import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo, useContext, createContext } from 'react';
 import { createRoot } from 'react-dom/client';
+import { createPortal } from 'react-dom';
+import {
+    Settings, KeyRound, Play, FileDiff, Layers, Hourglass, Sprout, Image as ImageIcon, Trophy, Save, RotateCw, Power,
+    Search, X, Plus, Star, Eye, EyeOff, Lock, ExternalLink, ChevronLeft, Lightbulb, Inbox, Check, Terminal, RefreshCw,
+    Download, Bug, ListPlus, FileJson, Clock, Github, Smartphone, Monitor, DownloadCloud, Pause, Loader2, XCircle, CheckCircle2, MinusCircle, Maximize2, Trash2, Pencil, Tag, Globe, LayoutGrid, Server, Square, CircleSlash, Bookmark,
+    UploadCloud, GitCommit, CalendarClock, AlertTriangle,
+} from 'lucide-react';
 
 const API       = 'http://localhost:3131/api';
 const RA_MEDIA  = 'https://media.retroachievements.org';
@@ -62,19 +151,90 @@ const apiSave = (file, data) => fetch(`${API}/data?file=${encodeURIComponent(fil
 
 // ── Shared small components ───────────────────────────────────────────────────
 
-const SectionHeader = ({ color = '#66c0f4', children }) => (
+const SectionHeader = ({ color = '#66c0f4', children, right }) => (
     <div className="flex items-center gap-2 mb-3">
         <span className="w-[3px] h-[14px] rounded-[1px] shrink-0" style={{ background: color }} />
-        <span className="text-[13px] text-white tracking-wide uppercase font-medium">{children}</span>
+        <span className="text-[13px] text-white tracking-wide uppercase font-medium flex-1">{children}</span>
+        {right}
     </div>
 );
 
-const SaveBar = ({ dirty, saving, saved, onSave }) => (
-    <div className="flex items-center gap-3 px-4 py-2.5 border-b border-[#2a475e] bg-[#171a21]">
+// The page header has a slot on the right (App puts it there); modules render their Save into it,
+// so every page saves from the same place
+const HeaderSlot = createContext(null);
+const HeaderActions = ({ children }) => {
+    const slot = useContext(HeaderSlot);
+    return slot ? createPortal(children, slot) : null;
+};
+
+// Save in the page header: unsaved changes are flagged beside it, ⌘S / Ctrl+S saves
+const SaveBar = ({ dirty, saving, saved, onSave, extra }) => {
+    const ref = useRef({});
+    ref.current = { dirty, saving, onSave };
+    useEffect(() => {
+        const onKey = e => {
+            if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 's') {
+                e.preventDefault();
+                if (ref.current.dirty && !ref.current.saving) ref.current.onSave();
+            }
+        };
+        window.addEventListener('keydown', onKey);
+        return () => window.removeEventListener('keydown', onKey);
+    }, []);
+    return (
+        <HeaderActions>
+            {extra}
+            {dirty && !saving && <span className="flex items-center gap-1.5 text-[12px] text-[#e5b143] anim-fade"><span className="dot bg-[#e5b143]" />Unsaved changes</span>}
+            {saved && !dirty && <span className="flex items-center gap-1 text-[12px] text-[#57cbde] anim-fade"><Check size={14} />Saved</span>}
+            <button className="btn btn-primary" onClick={onSave} disabled={!dirty || saving} title="Save (⌘S)">
+                {saving ? <RotateCw size={14} className="animate-spin" /> : <Save size={14} />}{saving ? 'Saving…' : 'Save'}
+            </button>
+        </HeaderActions>
+    );
+};
+
+// Search field with an icon and a clear button
+const SearchInput = ({ value, onChange, placeholder, className = '', autoFocus }) => (
+    <div className={`search ${className}`}>
+        <Search size={14} />
+        <input className="input" value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder} autoFocus={autoFocus} />
+        {value && <button onClick={() => onChange('')} aria-label="Clear"><X size={13} /></button>}
+    </div>
+);
+
+// Nothing selected / nothing to show: an icon, a short title and what to do
+const Empty = ({ icon: Icon, title, hint, children }) => (
+    <div className="empty anim-fade">
+        {Icon && <div className="empty-i"><Icon size={20} /></div>}
+        <div className="empty-t">{title}</div>
+        {hint && <div className="empty-h">{hint}</div>}
+        {children}
+    </div>
+);
+
+// Loading: shimmer rows in the shape of a list (or cards), never "Loading…"
+const SkRows = ({ n = 10, icon = true }) => (
+    <div className="flex flex-col" aria-busy="true">
+        {Array.from({ length: n }, (_, i) => (
+            <div key={i} className="flex items-center gap-2.5 px-3.5 py-2 border-b border-[#1f2f3d]">
+                {icon && <div className="shimmer w-7 h-7 shrink-0" />}
+                <div className="flex-1 flex flex-col gap-1.5"><div className="shimmer h-2.5" style={{ width: `${45 + ((i * 37) % 40)}%` }} /><div className="shimmer h-2 w-1/4" /></div>
+            </div>
+        ))}
+    </div>
+);
+const SkPage = () => (
+    <div className="p-6 flex flex-col gap-4 max-w-[860px]" aria-busy="true">
+        {[180, 120, 160].map((h, i) => <div key={i} className="shimmer w-full" style={{ height: h, borderRadius: 3 }} />)}
+    </div>
+);
+const SkSplit = ({ side = 260 }) => (
+    <div className="flex h-full">
+        <div className="pane pane-side shrink-0" style={{ width: side }}>
+            <div className="pane-h"><div className="shimmer h-8 w-full" /></div>
+            <SkRows n={14} />
+        </div>
         <div className="flex-1" />
-        {saved  && <span className="text-[10px] text-[#57cbde] anim-fade">Saved</span>}
-        {saving && <span className="text-[10px] text-[#546270] anim-fade">Saving…</span>}
-        <button className="btn-primary" onClick={onSave} disabled={!dirty || saving}>Save</button>
     </div>
 );
 
@@ -108,133 +268,152 @@ const TagList = ({ tags, onChange }) => {
         setInput('');
     };
     return (
-        <div>
-            <div className="flex flex-wrap gap-1 mb-1.5">
-                {tags.map((t, i) => (
-                    <span key={t} className="flex items-center gap-1 text-[10px] bg-[#202d39] border border-[#2a475e] rounded-[2px] px-1.5 py-0.5 text-[#c6d4df] anim-fade">
-                        {t}
-                        <button className="btn-ghost btn-danger text-[12px] leading-none" onClick={() => onChange(tags.filter((_, j) => j !== i))}>×</button>
-                    </span>
-                ))}
-            </div>
-            <div className="flex gap-1">
-                <input className="input flex-1" value={input} onChange={e => setInput(e.target.value)}
-                    onKeyDown={e => e.key === 'Enter' && add()} placeholder="Add tag…" />
-                <button className="btn-primary shrink-0" onClick={add}>Add</button>
-            </div>
+        <div className="flex flex-wrap items-center gap-1.5 p-1.5 min-h-[38px] bg-[#131a22] border border-[#2a475e] rounded-[3px] focus-within:border-[#66c0f4]">
+            {tags.map((t, i) => (
+                <span key={t} className="flex items-center gap-1 h-[24px] pl-2 pr-1 text-[12px] bg-[#202d39] border border-[#2a475e] rounded-[3px] text-[#c6d4df] anim-fade">
+                    {t}
+                    <button className="icon-btn !w-[18px] !h-[18px] hover:!text-[#ff6b6b]" onClick={() => onChange(tags.filter((_, j) => j !== i))} aria-label={`Remove ${t}`}><X size={12} /></button>
+                </span>
+            ))}
+            <input className="flex-1 min-w-[120px] h-[24px] bg-transparent outline-none text-[12px] px-1 placeholder:text-[#546270]" value={input}
+                onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && add()} placeholder="Add a tag and press Enter" />
         </div>
     );
 };
 
 const Toggle = ({ checked, onChange, label }) => (
-    <label className="flex items-center gap-2 cursor-pointer select-none">
-        <div
-            className={`w-8 h-4 rounded-full transition-colors relative ${checked ? 'bg-[#66c0f4]' : 'bg-[#2a475e]'}`}
-            onClick={() => onChange(!checked)}
-        >
-            <div className={`absolute top-0.5 w-3 h-3 rounded-full bg-white shadow transition-transform ${checked ? 'translate-x-4' : 'translate-x-0.5'}`} />
-        </div>
-        {label && <span className="text-[11px] text-[#8f98a0]">{label}</span>}
-    </label>
+    <button type="button" role="switch" aria-checked={checked} onClick={() => onChange(!checked)} className="flex items-center gap-2 select-none group">
+        <span className={`inline-block w-[34px] h-[18px] rounded-full transition-colors relative shrink-0 ${checked ? 'bg-[#66c0f4]' : 'bg-[#2a475e] group-hover:bg-[#35576f]'}`}>
+            <span className={`block absolute top-[2px] left-0 w-[14px] h-[14px] rounded-full bg-white shadow transition-transform ${checked ? 'translate-x-[18px]' : 'translate-x-[2px]'}`} />
+        </span>
+        {label && <span className={`text-[12px] ${checked ? 'text-[#c6d4df]' : 'text-[#546270]'}`}>{label}</span>}
+    </button>
 );
 
-const Field = ({ label, children }) => (
-    <div className="flex flex-col gap-1">
-        <label className="text-[9px] text-[#546270] uppercase tracking-[0.07em] font-semibold">{label}</label>
+const Field = ({ label, hint, children }) => (
+    <div className="flex flex-col gap-1.5">
+        <label className="label">{label}</label>
         {children}
+        {hint && <span className="hint">{hint}</span>}
     </div>
 );
 
+// A card with a header: an icon (Lucide component or image URL), a title and an optional note on the right
+const Card = ({ icon: Icon, img, title, note, children, className = '' }) => (
+    <section className={`card ${className}`}>
+        <div className="card-h">
+            {img ? <img src={img} alt="" className="w-[18px] h-[18px] rounded-[2px]" /> : Icon && <Icon size={16} className="text-[#66c0f4]" />}
+            <span className="text-[13px] text-white font-semibold flex-1">{title}</span>
+            {note}
+        </div>
+        <div className="card-b">{children}</div>
+    </section>
+);
+
+const PLATFORM_META = {
+    retroachievements: { label: 'RetroAchievements', img: '/assets/icon-ra.png' },
+    ra:                { label: 'RetroAchievements', img: '/assets/icon-ra.png' },
+    steam:             { label: 'Steam',             img: '/assets/icon-steam.png' },
+    xbox:              { label: 'Xbox',              img: '/assets/icon-xbox.png' },
+};
+
+// Hub sections that can be switched off (config.json `<id>.visible`, read by loadHubProfile() in index.html)
+const HUB_SECTIONS = [
+    { id: 'playing',     label: 'Playing',         hint: 'Games in rotation, first on the hub',      where: 'all' },
+    { id: 'series',      label: 'Series',          hint: 'Shared series cards',                      where: 'all' },
+    { id: 'activity',    label: 'Recent activity', hint: 'The feed of play and unlocks per day',     where: 'all' },
+    { id: 'completions', label: 'Completions',     hint: 'Totals and the latest completion',         where: 'desktop' },
+    { id: 'analytics',   label: 'Analytics',       hint: '30 days of play, unlocks and top game',    where: 'desktop' },
+];
+
 function SiteConfigModule() {
     const { data, load, update, dirty, saving, saved, save } = useSaver('data/hub/config.json');
+    const [sync, setSync] = useState(null);
 
     useEffect(() => {
         apiData('data/hub/config.json').then(d => load(d));
+        apiGet(`${API}/sync-state`).then(setSync).catch(() => {});
     }, []);
 
-    if (!data || !data.tags) return <div className="p-6 text-[#546270] text-[11px]">Loading…</div>;
+    if (!data || !data.tags) return <SkPage />;
 
     const set = (path, val) => {
         const next = JSON.parse(JSON.stringify(data));
         const keys = path.split('.');
         let obj = next;
-        keys.slice(0, -1).forEach(k => { obj = obj[k]; });
+        keys.slice(0, -1).forEach(k => { obj = (obj[k] ??= {}); });
         obj[keys[keys.length - 1]] = val;
         update(next);
     };
 
     return (
-        <div className="flex flex-col h-full">
+        <div className="h-full overflow-y-auto">
             <SaveBar dirty={dirty} saving={saving} saved={saved} onSave={save} />
-            <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-6 anim-in">
+            <div className="p-6 grid gap-4 max-w-[1100px] lg:grid-cols-2 items-start">
+                <Card icon={Globe} title="Identity">
+                    <Field label="Username"><input className="input" value={data.username} onChange={e => set('username', e.target.value)} /></Field>
+                    <Field label="Motto" hint="Under the name in the hub header"><input className="input" value={data.motto} onChange={e => set('motto', e.target.value)} /></Field>
+                    <Field label="Site URL"><input className="input" value={data.siteUrl} onChange={e => set('siteUrl', e.target.value)} /></Field>
+                </Card>
 
-                {/* Identity */}
-                <div>
-                    <SectionHeader color="#e5b143">Identity</SectionHeader>
-                    <div className="flex flex-col gap-3">
-                        <Field label="Username">
-                            <input className="input" value={data.username} onChange={e => set('username', e.target.value)} />
-                        </Field>
-                        <Field label="Motto">
-                            <input className="input" value={data.motto} onChange={e => set('motto', e.target.value)} />
-                        </Field>
-                        <Field label="Site URL">
-                            <input className="input" value={data.siteUrl} onChange={e => set('siteUrl', e.target.value)} />
-                        </Field>
-                    </div>
-                </div>
+                <Card icon={Tag} title="Tags" note={
+                    <button className="btn btn-ghost btn-sm" onClick={() => {
+                        const name = prompt('Group name (e.g. "genre"):');
+                        if (name?.trim()) set('tags', { ...data.tags, [name.trim()]: [] });
+                    }}><Plus size={13} />Group</button>
+                }>
+                    {Object.entries(data.tags).map(([group, tags]) => (
+                        <div key={group} className="flex flex-col gap-1.5 anim-fade">
+                            <div className="flex items-center gap-2">
+                                <span className="label capitalize flex-1">{group}</span>
+                                <button className="icon-btn !w-6 !h-6 hover:!text-[#ff6b6b]" title={`Remove the ${group} group`} onClick={() => {
+                                    const next = { ...data.tags };
+                                    delete next[group];
+                                    set('tags', next);
+                                }}><Trash2 size={13} /></button>
+                            </div>
+                            <TagList tags={tags} onChange={v => set(`tags.${group}`, v)} />
+                        </div>
+                    ))}
+                </Card>
 
-                {/* Tags */}
-                <div>
-                    <SectionHeader color="#e5b143">Tags</SectionHeader>
-                    <div className="flex flex-col gap-4">
-                        {Object.entries(data.tags).map(([group, tags]) => (
-                            <div key={group} className="anim-fade">
-                                <div className="flex items-center gap-2 mb-1.5">
-                                    <span className="text-[11px] text-[#8f98a0] capitalize font-medium">{group}</span>
-                                    <button className="btn-ghost btn-danger text-[11px]" onClick={() => {
-                                        const next = { ...data.tags };
-                                        delete next[group];
-                                        set('tags', next);
-                                    }}>Remove group</button>
+                <Card icon={LayoutGrid} title="Platforms">
+                    <div className="flex flex-col -my-1">
+                        {Object.entries(data.platforms).map(([key, cfg]) => {
+                            const synced = sync?.[key === 'retroachievements' ? 'ra' : key];
+                            return (
+                                <div key={key} className="flex items-center gap-3 py-2.5 border-b border-[#1f2f3d] last:border-0">
+                                    <img src={PLATFORM_META[key]?.img} alt="" className="w-5 h-5 rounded-[2px]" />
+                                    <span className="flex flex-col flex-1 min-w-0">
+                                        <span className="text-[13px] text-white">{PLATFORM_META[key]?.label ?? key}</span>
+                                        <span className="hint">Hub card, profile and the bottom nav</span>
+                                    </span>
+                                    {sync && (synced
+                                        ? <span className="chip anim-fade" title="Synced by the scheduled GitHub runs"><Clock size={11} />Every 30 min</span>
+                                        : <span className="chip chip-gold anim-fade" title="XBOX_ENABLED is 'false' in .github/workflows/fetch-data.yml: scheduled runs skip it, a run with platforms = xbox still syncs it"><Pause size={11} />Sync paused</span>)}
+                                    <Toggle checked={cfg.visible} onChange={v => set(`platforms.${key}.visible`, v)} label="Visible" />
                                 </div>
-                                <TagList tags={tags} onChange={v => set(`tags.${group}`, v)} />
-                            </div>
-                        ))}
-                        <button className="btn-ghost text-left text-[11px] text-[#546270] hover:text-[#66c0f4]" onClick={() => {
-                            const name = prompt('Group name (e.g. "genre"):');
-                            if (name?.trim()) set('tags', { ...data.tags, [name.trim()]: [] });
-                        }}>+ add tag group</button>
+                            );
+                        })}
                     </div>
-                </div>
+                </Card>
 
-                {/* Platforms */}
-                <div>
-                    <SectionHeader color="#e5b143">Platforms</SectionHeader>
-                    <div className="flex flex-col gap-3">
-                        {Object.entries(data.platforms).map(([key, cfg]) => (
-                            <div key={key} className="flex items-center gap-4 bg-[#1b2838] border border-[#2a475e] rounded-[3px] px-3 py-2">
-                                <span className="text-[11px] text-white capitalize font-medium w-[140px] shrink-0">{key}</span>
-                                <Toggle checked={cfg.visible} onChange={v => set(`platforms.${key}.visible`, v)} label="Visible" />
-                                <Toggle checked={cfg.active}  onChange={v => set(`platforms.${key}.active`,  v)} label="Active" />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Pages */}
-                <div>
-                    <SectionHeader color="#e5b143">Pages</SectionHeader>
-                    <div className="flex flex-col gap-3">
-                        {['activity', 'completions'].map(page => (
-                            <div key={page} className="flex items-center gap-4 bg-[#1b2838] border border-[#2a475e] rounded-[3px] px-3 py-2">
-                                <span className="text-[11px] text-white capitalize font-medium w-[140px] shrink-0">{page}</span>
-                                <Toggle checked={data[page]?.visible ?? true} onChange={v => set(`${page}.visible`, v)} label="Visible" />
+                <Card icon={Eye} title="Hub sections">
+                    <div className="flex flex-col -my-1">
+                        {HUB_SECTIONS.map(sec => (
+                            <div key={sec.id} className="flex items-center gap-3 py-2.5 border-b border-[#1f2f3d] last:border-0">
+                                <span className="flex flex-col flex-1 min-w-0">
+                                    <span className="text-[13px] text-white">{sec.label}</span>
+                                    <span className="hint">{sec.hint}</span>
+                                </span>
+                                <span className="chip" title={sec.where === 'desktop' ? 'Hidden on phones: the Done and Stats tabs cover it' : 'Phone and desktop'}>
+                                    {sec.where === 'desktop' ? <><Monitor size={11} />Desktop</> : <><Smartphone size={11} /><Monitor size={11} /></>}
+                                </span>
+                                <Toggle checked={data[sec.id]?.visible ?? true} onChange={v => set(`${sec.id}.visible`, v)} label="Visible" />
                             </div>
                         ))}
                     </div>
-                </div>
-
+                </Card>
             </div>
         </div>
     );
@@ -259,33 +438,30 @@ function SeriesModal({ mode, seriesName, initialValue, onConfirm, onCancel }) {
         if (e.key === 'Escape') onCancel();
     };
 
+    const title = mode === 'add' ? 'New series' : mode === 'rename' ? 'Rename series' : 'Delete series';
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center" onKeyDown={onKey}>
-            <div className="absolute inset-0 bg-black/60 anim-backdrop" onClick={onCancel} />
-            <div className="relative z-10 bg-[#1b2838] border border-[#2a475e] rounded-[3px] shadow-xl w-[320px] flex flex-col anim-pop">
-                <div className="flex items-center justify-between px-4 py-3 border-b border-[#2a475e]">
-                    <span className="text-[12px] text-white font-medium">
-                        {mode === 'add' ? 'New Series' : mode === 'rename' ? 'Rename Series' : 'Delete Series'}
-                    </span>
-                    <button className="btn-ghost text-[16px] leading-none" onClick={onCancel}>×</button>
+            <div className="absolute inset-0 bg-black/65 anim-backdrop" onClick={onCancel} />
+            <div className="relative z-10 card shadow-2xl w-[380px] flex flex-col anim-pop">
+                <div className="card-h">
+                    {mode === 'delete' ? <Trash2 size={16} className="text-[#ff6b6b]" /> : mode === 'rename' ? <Pencil size={16} className="text-[#66c0f4]" /> : <Layers size={16} className="text-[#66c0f4]" />}
+                    <span className="text-[14px] text-white font-semibold flex-1">{title}</span>
+                    <button className="icon-btn" onClick={onCancel} aria-label="Close"><X size={15} /></button>
                 </div>
-                <div className="px-4 py-4 flex flex-col gap-3">
+                <div className="card-b">
                     {mode === 'delete' ? (
-                        <p className="text-[12px] text-[#8f98a0]">
-                            Delete <span className="text-white font-medium">"{seriesName}"</span>? This cannot be undone.
+                        <p className="text-[13px] text-[#8f98a0]">
+                            Delete <span className="text-white font-medium">{seriesName}</span>? It's saved at once and can't be undone.
                         </p>
                     ) : (
-                        <input ref={inputRef} className="input" value={value} onChange={e => setValue(e.target.value)}
-                            placeholder="Series name…" />
+                        <Field label="Name"><input ref={inputRef} className="input" value={value} onChange={e => setValue(e.target.value)} placeholder="Series name" /></Field>
                     )}
                     <div className="flex justify-end gap-2">
-                        <button className="btn-ghost" onClick={onCancel}>Cancel</button>
+                        <button className="btn btn-ghost" onClick={onCancel}>Cancel</button>
                         {mode === 'delete'
-                            ? <button className="btn-primary" style={{background:'#c0392b'}}
-                                onClick={() => onConfirm()}>Delete</button>
-                            : <button className="btn-primary" disabled={!value.trim()}
-                                onClick={() => onConfirm(value.trim())}>
-                                {mode === 'add' ? 'Create' : 'Rename'}
+                            ? <button className="btn btn-red" onClick={() => onConfirm()}><Trash2 size={13} />Delete</button>
+                            : <button className="btn btn-primary" disabled={!value.trim()} onClick={() => onConfirm(value.trim())}>
+                                {mode === 'add' ? <><Plus size={13} />Create</> : <><Check size={13} />Rename</>}
                               </button>
                         }
                     </div>
@@ -335,6 +511,22 @@ function computeRecommendations(allGames, series) {
         .filter(r => r.games.length >= 3)
         .sort((a, b) => b.games.length - a.games.length);
 }
+
+// One game row: icon, title (links out), console, watchlist mark, then the row's own controls
+const GameRow = ({ g, children, onClick, accent }) => {
+    const Tag = onClick ? 'button' : 'div';
+    return (
+        <Tag onClick={onClick} className={`lrow group ${accent ? '!border-l-[#e5b143]/50' : ''}`}>
+            <img src={g.icon} alt="" className="lrow-i" />
+            <span className="lrow-b">
+                <a href={g.url} target="_blank" rel="noreferrer" className="lrow-t hover:!text-[#66c0f4]" onClick={e => e.stopPropagation()}>{g.title}</a>
+                {g.consoleName && <span className="lrow-s">{g.consoleName}</span>}
+            </span>
+            {g.fromWatchlist && <Bookmark size={12} className="text-[#66c0f4]/70 shrink-0" aria-label="On the want-to-play list"><title>On the want-to-play list</title></Bookmark>}
+            {children}
+        </Tag>
+    );
+};
 
 function SeriesModule({ cfg }) {
     const [allGames,        setAllGames]        = useState([]);
@@ -438,12 +630,15 @@ function SeriesModule({ cfg }) {
           })
         : [];
 
-    if (!series) return <div className="p-6 text-[#546270] text-[11px]">Loading…</div>;
+    if (!series) return <SkSplit side={260} />;
 
     const modalSeries = modal?.id ? series.find(s => s.id === modal.id) : null;
+    const short = cfg.minGames ? (n) => n < cfg.minGames : () => false;
+    const openList = (which) => { setShowUnassigned(which === 'unassigned'); setShowSuggestions(which === 'suggestions'); if (which) setSelectedId(null); setUnassignedSearch(''); };
 
     return (
-        <div className="flex h-full overflow-hidden relative anim-in">
+        <div className="flex h-full overflow-hidden relative">
+            <SaveBar dirty={dirty} saving={saving} saved={saved} onSave={save} />
             {modal && (
                 <SeriesModal
                     mode={modal.mode}
@@ -455,107 +650,84 @@ function SeriesModule({ cfg }) {
             )}
 
             {/* ── Left: series list ── */}
-            <div className="w-[220px] shrink-0 flex flex-col border-r border-[#2a475e]">
-                <div className="px-3 pt-3 pb-2 border-b border-[#2a475e] flex flex-col gap-2">
-                    <input value={listSearch} onChange={e => setListSearch(e.target.value)}
-                        placeholder="Search series…" className="input" />
-                    <button className="btn-primary w-full" onClick={() => setModal({ mode: 'add' })}>+ New Series</button>
+            <div className="pane pane-side w-[260px] shrink-0">
+                <div className="pane-h">
+                    <SearchInput value={listSearch} onChange={setListSearch} placeholder="Search series" />
+                    <button className="btn btn-primary !px-2.5 shrink-0" onClick={() => setModal({ mode: 'add' })} title="New series"><Plus size={15} /></button>
                 </div>
-                <div className="flex-1 overflow-y-auto py-1">
+                <div className="flex-1 overflow-y-auto">
                     {filteredList.map(s => {
                         const isSel = s.id === selectedId && !showSuggestions && !showUnassigned;
                         return (
                             <button key={s.id} onClick={() => { setSelectedId(s.id); setShowSuggestions(false); setShowUnassigned(false); setAddSearch(''); setGameSearch(''); }}
-                                className={`w-full flex items-center gap-2 px-3 py-1.5 text-left transition-colors ${isSel ? 'bg-[#2a475e]' : 'hover:bg-[#1b2838]'}`}>
-                                <span className={`text-[11px] flex-1 truncate ${isSel ? 'text-white' : 'text-[#8f98a0]'}`}>{s.name}</span>
-                                {s.showProgress && <span className="w-1.5 h-1.5 rounded-full bg-[#e5b143] shrink-0" />}
-                                <span className={`text-[9px] shrink-0 ${cfg.minGames && s.gameIds.length < cfg.minGames ? 'text-[#ff6b6b]' : 'text-[#546270]'}`} title={cfg.minGames && s.gameIds.length < cfg.minGames ? `Shown on the site from ${cfg.minGames} games` : undefined}>{s.gameIds.length}</span>
+                                className={`lrow !py-2 ${isSel ? 'on' : ''}`}>
+                                <span className="lrow-t flex-1">{s.name}</span>
+                                {s.showProgress && <Star size={11} className="text-[#e5b143] shrink-0" fill="currentColor" aria-label="Shows progress" />}
+                                <span className={`text-[11px] tabular-nums shrink-0 min-w-[16px] text-right ${short(s.gameIds.length) ? 'text-[#ff6b6b]' : 'text-[#546270]'}`}
+                                    title={short(s.gameIds.length) ? `Shown on the site from ${cfg.minGames} games` : undefined}>{s.gameIds.length}</span>
                             </button>
                         );
                     })}
-                    {filteredList.length === 0 && !showSuggestions && !showUnassigned && <div className="text-[11px] text-[#546270] text-center py-6">No series yet</div>}
+                    {filteredList.length === 0 && <Empty icon={Layers} title={listSearch ? 'No match' : 'No series yet'} hint={listSearch ? undefined : 'Create one with +, or start from a suggestion below'} />}
                 </div>
-                <div className="px-3 py-2 border-t border-[#2a475e] flex items-center gap-2">
-                    <span className="text-[10px] text-[#546270] flex-1">
-                        {series.length} series · {series.reduce((n, s) => n + s.gameIds.length, 0)} assigned
-                    </span>
+                <div className="pane-f">
+                    <span className="flex-1">{series.length} series · {series.reduce((n, s) => n + s.gameIds.length, 0)} games</span>
                     {allUnassigned.length > 0 && (
-                        <button
-                            onClick={() => { if (showUnassigned) { setShowUnassigned(false); } else { setShowUnassigned(true); setShowSuggestions(false); setSelectedId(null); setUnassignedSearch(''); } }}
-                            className={`flex items-center gap-1 text-[9px] font-semibold px-2 py-[3px] rounded-[2px] border transition-colors ${showUnassigned ? 'bg-[#8f98a0] text-[#101214] border-[#8f98a0]' : 'text-[#8f98a0] border-[#8f98a0]/40 hover:border-[#8f98a0]'}`}>
-                            📋 {allUnassigned.length}
+                        <button onClick={() => openList(showUnassigned ? null : 'unassigned')} title="Games in no series"
+                            className={`chip cursor-pointer ${showUnassigned ? '!bg-[#8f98a0] !text-[#101214] !border-[#8f98a0]' : 'hover:!border-[#8f98a0]'}`}>
+                            <Inbox size={11} />{allUnassigned.length}
                         </button>
                     )}
                     {recommendations.length > 0 && (
-                        <button
-                            onClick={() => { if (showSuggestions) { setShowSuggestions(false); } else { setShowSuggestions(true); setShowUnassigned(false); } }}
-                            className={`flex items-center gap-1 text-[9px] font-semibold px-2 py-[3px] rounded-[2px] border transition-colors ${showSuggestions ? 'bg-[#e5b143] text-[#101214] border-[#e5b143]' : 'text-[#e5b143] border-[#e5b143]/40 hover:border-[#e5b143]'}`}>
-                            💡 {recommendations.length}
+                        <button onClick={() => openList(showSuggestions ? null : 'suggestions')} title="Suggested series"
+                            className={`chip chip-gold cursor-pointer ${showSuggestions ? '!bg-[#e5b143] !text-[#101214]' : 'hover:!border-[#e5b143]'}`}>
+                            <Lightbulb size={11} />{recommendations.length}
                         </button>
                     )}
                 </div>
             </div>
 
             {/* ── Right: editor, unassigned, or suggestions (fades in when it switches) ── */}
-            <div key={showUnassigned ? 'unassigned' : showSuggestions ? 'suggestions' : selectedId ?? 'none'} className="flex-1 flex flex-col overflow-hidden anim-fade">
+            <div key={showUnassigned ? 'unassigned' : showSuggestions ? 'suggestions' : selectedId ?? 'none'} className="pane flex-1 anim-fade">
                 {showUnassigned ? (
                     <>
-                        <div className="flex items-center gap-3 px-4 py-3 border-b border-[#2a475e]">
-                            <span className="text-[13px] text-white font-medium flex-1">Unassigned — {allUnassigned.length} game{allUnassigned.length !== 1 ? 's' : ''}</span>
-                            <button className="btn-ghost text-[11px]" onClick={() => setShowUnassigned(false)}>← Back</button>
-                        </div>
-                        <div className="px-3 py-2 border-b border-[#2a475e]">
-                            <input value={unassignedSearch} onChange={e => setUnassignedSearch(e.target.value)}
-                                placeholder="Search unassigned games…" className="input" />
+                        <div className="pane-h">
+                            <button className="icon-btn" onClick={() => setShowUnassigned(false)} title="Back"><ChevronLeft size={16} /></button>
+                            <Inbox size={16} className="text-[#8f98a0]" />
+                            <span className="pane-t flex-1">In no series <span className="text-[#546270] font-normal">· {allUnassigned.length} game{allUnassigned.length !== 1 ? 's' : ''}</span></span>
+                            <SearchInput value={unassignedSearch} onChange={setUnassignedSearch} placeholder="Search these games" className="!w-[260px]" />
                         </div>
                         <div className="flex-1 overflow-y-auto">
-                            {filteredUnassigned.length === 0 && (
-                                <div className="text-[11px] text-[#546270] text-center py-6">
-                                    {unassignedSearch ? 'No matches' : 'All games are assigned to a series!'}
-                                </div>
-                            )}
+                            {filteredUnassigned.length === 0 && <Empty icon={Check} title={unassignedSearch ? 'No match' : 'Every game is in a series'} />}
                             {filteredUnassigned.map(g => (
-                                <div key={g.id} className="flex items-center gap-2 px-3 py-1.5 hover:bg-[#1b2838] border-b border-[#1a2535]">
-                                    <img src={g.icon} alt="" className="w-6 h-6 rounded-[2px] border border-[#101214] object-cover bg-black shrink-0" />
-                                    <div className="flex-1 flex flex-col min-w-0">
-                                        <a href={g.url} target="_blank" rel="noreferrer" className="text-[11px] text-[#c6d4df] hover:text-[#66c0f4] truncate transition-colors" onClick={e => e.stopPropagation()}>{g.title}</a>
-                                        {g.consoleName && <span className="text-[9px] text-[#546270] truncate">{g.consoleName}</span>}
-                                    </div>
-                                    {g.fromWatchlist && <span className="text-[8px] text-[#66c0f4] border border-[#66c0f4]/30 px-1 py-[1px] rounded-[2px] shrink-0 leading-none">WL</span>}
-                                    <button className="btn-primary shrink-0 text-[9px] py-[2px] px-2 whitespace-nowrap"
-                                        onClick={() => setModal({ mode: 'add', initialValue: g.title, suggestedGameIds: [g.id] })}>
-                                        New Series
-                                    </button>
-                                </div>
+                                <GameRow key={g.id} g={g}>
+                                    <button className="btn btn-outline btn-sm shrink-0" onClick={() => setModal({ mode: 'add', initialValue: g.title, suggestedGameIds: [g.id] })}><Plus size={12} />New series</button>
+                                </GameRow>
                             ))}
                         </div>
                     </>
                 ) : showSuggestions ? (
                     <>
-                        <div className="flex items-center gap-3 px-4 py-3 border-b border-[#2a475e]">
-                            <span className="text-[13px] text-white font-medium flex-1">Suggestions — {recommendations.length} potential series</span>
-                            <button className="btn-ghost text-[11px]" onClick={() => setShowSuggestions(false)}>← Back</button>
+                        <div className="pane-h">
+                            <button className="icon-btn" onClick={() => setShowSuggestions(false)} title="Back"><ChevronLeft size={16} /></button>
+                            <Lightbulb size={16} className="text-[#e5b143]" />
+                            <span className="pane-t flex-1">Suggestions <span className="text-[#546270] font-normal">· {recommendations.length} possible series</span></span>
+                            <span className="hint">Games in no series that share a name</span>
                         </div>
-                        <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-3">
-                            <p className="text-[10px] text-[#546270]">
-                                Games not yet in any series, grouped by shared name prefix. Click <strong className="text-[#8f98a0]">Create Series</strong> to add one — games will be pre-assigned.
-                            </p>
+                        <div className="flex-1 overflow-y-auto p-4 grid gap-3 content-start" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))' }}>
                             {recommendations.map((rec, i) => (
-                                <div key={i} className="border border-[#2a475e] rounded-[3px] bg-[#1b2838]">
-                                    <div className="flex items-center gap-3 px-3 py-2 border-b border-[#2a475e]">
-                                        <span className="text-[12px] text-white font-medium flex-1 truncate">{rec.name}</span>
-                                        <span className="text-[9px] text-[#546270] shrink-0">{rec.games.length} games</span>
-                                        <button className="btn-primary shrink-0 text-[10px] py-[3px]"
-                                            onClick={() => setModal({ mode: 'add', initialValue: rec.name, suggestedGameIds: rec.games.map(g => g.id) })}>
-                                            Create Series
-                                        </button>
+                                <div key={i} className="card overflow-hidden flex flex-col">
+                                    <div className="flex items-center gap-2 px-3 py-2.5 border-b border-[#2a475e]">
+                                        <span className="text-[13px] text-white font-semibold flex-1 truncate">{rec.name}</span>
+                                        <span className="chip">{rec.games.length} games</span>
+                                        <button className="btn btn-primary btn-sm shrink-0" onClick={() => setModal({ mode: 'add', initialValue: rec.name, suggestedGameIds: rec.games.map(g => g.id) })}><Plus size={12} />Create</button>
                                     </div>
-                                    <div className="p-2 flex flex-col gap-0">
+                                    <div className="flex flex-col py-1">
                                         {rec.games.map(g => (
-                                            <div key={g.id} className="flex items-center gap-2 px-1 py-1">
-                                                <img src={g.icon} alt="" className="w-5 h-5 rounded-[2px] border border-[#101214] object-cover bg-black shrink-0" />
-                                                <a href={g.url} target="_blank" rel="noreferrer" className="text-[11px] text-[#8f98a0] hover:text-[#66c0f4] truncate flex-1 transition-colors">{g.title}</a>
-                                                {g.fromWatchlist && <span className="text-[8px] text-[#66c0f4] border border-[#66c0f4]/30 px-1 py-[1px] rounded-[2px] shrink-0 leading-none">WL</span>}
+                                            <div key={g.id} className="flex items-center gap-2 px-3 py-1">
+                                                <img src={g.icon} alt="" className="w-5 h-5 rounded-[2px] object-cover bg-black shrink-0" />
+                                                <a href={g.url} target="_blank" rel="noreferrer" className="text-[12px] text-[#8f98a0] hover:text-[#66c0f4] truncate flex-1">{g.title}</a>
+                                                {g.fromWatchlist && <Bookmark size={11} className="text-[#66c0f4] shrink-0" />}
                                             </div>
                                         ))}
                                     </div>
@@ -564,116 +736,68 @@ function SeriesModule({ cfg }) {
                         </div>
                     </>
                 ) : !selected ? (
-                    <div className="flex items-center justify-center h-full text-[#546270] text-[12px]">Select a series</div>
+                    <Empty icon={Layers} title="Pick a series" hint={`${series.length} series on the left.${allUnassigned.length ? ` ${allUnassigned.length} games are in none yet.` : ''}`}>
+                        <div className="flex gap-2 mt-3">
+                            <button className="btn btn-primary btn-sm" onClick={() => setModal({ mode: 'add' })}><Plus size={12} />New series</button>
+                            {recommendations.length > 0 && <button className="btn btn-outline btn-sm" onClick={() => openList('suggestions')}><Lightbulb size={12} />{recommendations.length} suggestions</button>}
+                        </div>
+                    </Empty>
                 ) : (
                     <>
                         {/* Header */}
-                        <div className="flex items-center gap-3 px-4 py-3 border-b border-[#2a475e]">
-                            <span className="text-[13px] text-white font-medium flex-1 truncate">{selected.name}</span>
-                            {cfg.minGames && selected.gameIds.length < cfg.minGames && <span className="text-[10px] text-[#ff6b6b] shrink-0">Needs {cfg.minGames}+ games to show on the site</span>}
-                            <button
-                                onClick={() => update(series.map(s => s.id === selectedId ? { ...s, showProgress: !s.showProgress } : s))}
-                                title="Show in Series Progress tab"
-                                className={`flex items-center gap-1 text-[9px] font-semibold px-2 py-[3px] rounded-[2px] border transition-colors ${selected.showProgress ? 'bg-[#e5b143] text-[#101214] border-[#e5b143]' : 'text-[#546270] border-[#323f4c] hover:text-[#8f98a0] hover:border-[#546270]'}`}>
-                                Show Progress
+                        <div className="pane-h">
+                            <span className="pane-t flex-1">{selected.name}</span>
+                            {short(selected.gameIds.length) && <span className="chip chip-red">Needs {cfg.minGames}+ games to show</span>}
+                            <button onClick={() => update(series.map(s => s.id === selectedId ? { ...s, showProgress: !s.showProgress } : s))}
+                                title="Show in the Series Progress tab"
+                                className={`btn btn-sm ${selected.showProgress ? 'bg-[#e5b143] text-[#101214]' : 'btn-outline'}`}>
+                                <Star size={12} fill={selected.showProgress ? 'currentColor' : 'none'} />Show progress
                             </button>
-                            <button className="btn-ghost text-[11px]" onClick={() => setModal({ mode: 'rename', id: selected.id })}>Rename</button>
-                            <button className="btn-ghost btn-danger text-[11px]" onClick={() => setModal({ mode: 'delete', id: selected.id })}>Delete</button>
-                            <span className="text-[#2a475e]">|</span>
-                            {saved  && <span className="text-[10px] text-[#57cbde] anim-fade">Saved</span>}
-                            <button className="btn-primary" onClick={save} disabled={!dirty || saving}>
-                                {saving ? 'Saving…' : 'Save'}
-                            </button>
+                            <button className="icon-btn" onClick={() => setModal({ mode: 'rename', id: selected.id })} title="Rename"><Pencil size={14} /></button>
+                            <button className="icon-btn hover:!text-[#ff6b6b]" onClick={() => setModal({ mode: 'delete', id: selected.id })} title="Delete"><Trash2 size={14} /></button>
                         </div>
 
                         <div className="flex flex-1 overflow-hidden">
                             {/* Assigned games */}
-                            <div className="flex-1 flex flex-col overflow-hidden border-r border-[#2a475e]">
-                                <div className="px-3 py-2 border-b border-[#2a475e] flex items-center gap-2">
-                                    <span className="text-[10px] text-[#8f98a0] font-semibold uppercase tracking-wider flex-1">
-                                        Assigned — {selected.gameIds.length} game{selected.gameIds.length !== 1 ? 's' : ''}
-                                    </span>
-                                    <input value={gameSearch} onChange={e => setGameSearch(e.target.value)}
-                                        placeholder="Filter…" className="input w-[120px]" />
+                            <div className="pane flex-1 border-r border-[#2a475e]">
+                                <div className="sub-h">
+                                    <span className="flex-1">In this series · {selected.gameIds.length}</span>
+                                    <SearchInput value={gameSearch} onChange={setGameSearch} placeholder="Filter" className="!w-[160px] normal-case tracking-normal font-normal" />
                                 </div>
                                 <div className="flex-1 overflow-y-auto">
-                                    {filteredAssigned.length === 0 && (
-                                        <div className="text-[11px] text-[#546270] text-center py-6">
-                                            {selected.gameIds.length === 0 ? 'No games assigned yet' : 'No matches'}
-                                        </div>
-                                    )}
+                                    {filteredAssigned.length === 0 && <Empty icon={Plus} title={selected.gameIds.length === 0 ? 'No games yet' : 'No match'} hint={selected.gameIds.length === 0 ? 'Add games from the panel on the right' : undefined} />}
                                     {filteredAssigned.map(g => {
                                         const isCover = g.id === selected.coverGameId;
                                         return (
-                                        <div key={g.id} className="flex items-center gap-2 px-3 py-1.5 hover:bg-[#1b2838] border-b border-[#1a2535] group">
-                                            <img src={g.icon} alt="" className="w-6 h-6 rounded-[2px] border border-[#101214] object-cover bg-black shrink-0" />
-                                            <div className="flex-1 flex flex-col min-w-0">
-                                                <a href={g.url} target="_blank" rel="noreferrer" className="text-[11px] text-[#c6d4df] hover:text-[#66c0f4] truncate transition-colors" onClick={e => e.stopPropagation()}>{g.title}</a>
-                                                {g.consoleName && <span className="text-[9px] text-[#546270] truncate">{g.consoleName}</span>}
-                                            </div>
-                                            {g.fromWatchlist && <span className="text-[8px] text-[#66c0f4] border border-[#66c0f4]/30 px-1 py-[1px] rounded-[2px] shrink-0 leading-none">WL</span>}
-                                            <button
-                                                title={isCover ? 'Cover game' : 'Set as cover'}
-                                                onClick={() => update(series.map(s => s.id === selectedId ? { ...s, coverGameId: isCover ? null : g.id } : s))}
-                                                className={`shrink-0 text-[13px] leading-none transition-opacity ${isCover ? 'text-[#e5b143]' : 'opacity-0 group-hover:opacity-100 text-[#546270] hover:text-[#e5b143]'}`}>
-                                                ★
-                                            </button>
-                                            <button className="btn-ghost btn-danger opacity-0 group-hover:opacity-100 transition-opacity text-[16px] leading-none shrink-0"
-                                                onClick={() => removeGame(g.id)}>×</button>
-                                        </div>
+                                            <GameRow key={g.id} g={g}>
+                                                <button title={isCover ? 'Cover game (click to unset)' : 'Use as cover'}
+                                                    onClick={() => update(series.map(s => s.id === selectedId ? { ...s, coverGameId: isCover ? null : g.id } : s))}
+                                                    className={`icon-btn !w-7 !h-7 ${isCover ? '!text-[#e5b143]' : 'opacity-0 group-hover:opacity-100 hover:!text-[#e5b143]'}`}>
+                                                    <Star size={14} fill={isCover ? 'currentColor' : 'none'} />
+                                                </button>
+                                                <button className="icon-btn !w-7 !h-7 opacity-0 group-hover:opacity-100 hover:!text-[#ff6b6b]" title="Remove from the series" onClick={() => removeGame(g.id)}><X size={14} /></button>
+                                            </GameRow>
                                         );
                                     })}
                                 </div>
                             </div>
 
                             {/* Add games panel */}
-                            <div className="w-[280px] shrink-0 flex flex-col overflow-hidden">
-                                <div className="px-3 py-2 border-b border-[#2a475e]">
-                                    <input value={addSearch} onChange={e => setAddSearch(e.target.value)}
-                                        placeholder="Search to add…" className="input" />
-                                </div>
+                            <div className="pane w-[320px] shrink-0 bg-[#182230]">
+                                <div className="pane-h"><SearchInput value={addSearch} onChange={setAddSearch} placeholder="Search games to add" /></div>
                                 <div className="flex-1 overflow-y-auto">
                                     {addSearch === '' && seriesSuggestions.length > 0 && (
                                         <>
-                                            <div className="px-3 py-1.5 bg-[#172333] border-b border-[#2a475e] flex items-center gap-1.5">
-                                                <span className="text-[9px] font-semibold uppercase tracking-wider text-[#e5b143]">Suggested</span>
-                                                <span className="text-[9px] text-[#546270]">{seriesSuggestions.length} possible match{seriesSuggestions.length !== 1 ? 'es' : ''}</span>
-                                            </div>
+                                            <div className="sub-h !text-[#e5b143]"><Lightbulb size={12} />Suggested <span className="normal-case tracking-normal font-normal text-[#546270]">· {seriesSuggestions.length} with a matching name</span></div>
                                             {seriesSuggestions.map(g => (
-                                                <button key={g.id} onClick={() => addGame(g.id)}
-                                                    className="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-[#1b2838] border-b border-[#1a2535] border-l-2 border-l-[#e5b143]/40 text-left">
-                                                    <img src={g.icon} alt="" className="w-6 h-6 rounded-[2px] border border-[#101214] object-cover bg-black shrink-0" />
-                                                    <div className="flex-1 flex flex-col min-w-0">
-                                                        <a href={g.url} target="_blank" rel="noreferrer" className="text-[11px] text-[#c6d4df] hover:text-[#66c0f4] truncate transition-colors" onClick={e => e.stopPropagation()}>{g.title}</a>
-                                                        {g.consoleName && <span className="text-[9px] text-[#546270] truncate">{g.consoleName}</span>}
-                                                    </div>
-                                                    {g.fromWatchlist && <span className="text-[8px] text-[#66c0f4] border border-[#66c0f4]/30 px-1 py-[1px] rounded-[2px] shrink-0 leading-none">WL</span>}
-                                                    <span className="text-[11px] text-[#e5b143]/60 shrink-0">+</span>
-                                                </button>
+                                                <GameRow key={g.id} g={g} accent onClick={() => addGame(g.id)}><Plus size={14} className="text-[#e5b143] shrink-0" /></GameRow>
                                             ))}
-                                            <div className="px-3 py-1.5 bg-[#172333] border-b border-[#2a475e]">
-                                                <span className="text-[9px] font-semibold uppercase tracking-wider text-[#546270]">Search</span>
-                                            </div>
-                                            <div className="text-[11px] text-[#546270] text-center py-3">Type to search all games</div>
                                         </>
                                     )}
-                                    {addSearch === '' && seriesSuggestions.length === 0 && (
-                                        <div className="text-[11px] text-[#546270] text-center py-4">Type to search games</div>
-                                    )}
-                                    {addSearch !== '' && addCandidates.length === 0 && (
-                                        <div className="text-[11px] text-[#546270] text-center py-4">No matches</div>
-                                    )}
+                                    {addSearch === '' && seriesSuggestions.length === 0 && <Empty icon={Search} title="Find games to add" hint="Type a title above" />}
+                                    {addSearch !== '' && addCandidates.length === 0 && <Empty icon={Search} title="No match" />}
                                     {addSearch !== '' && addCandidates.map(g => (
-                                        <button key={g.id} onClick={() => addGame(g.id)}
-                                            className="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-[#1b2838] border-b border-[#1a2535] text-left">
-                                            <img src={g.icon} alt="" className="w-6 h-6 rounded-[2px] border border-[#101214] object-cover bg-black shrink-0" />
-                                            <div className="flex-1 flex flex-col min-w-0">
-                                                <a href={g.url} target="_blank" rel="noreferrer" className="text-[11px] text-[#8f98a0] hover:text-[#66c0f4] truncate transition-colors" onClick={e => e.stopPropagation()}>{g.title}</a>
-                                                {g.consoleName && <span className="text-[9px] text-[#546270] truncate">{g.consoleName}</span>}
-                                            </div>
-                                            {g.fromWatchlist && <span className="text-[8px] text-[#66c0f4] border border-[#66c0f4]/30 px-1 py-[1px] rounded-[2px] shrink-0 leading-none">WL</span>}
-                                            <span className="text-[11px] text-[#546270] shrink-0">+</span>
-                                        </button>
+                                        <GameRow key={g.id} g={g} onClick={() => addGame(g.id)}><Plus size={14} className="text-[#546270] group-hover:text-[#66c0f4] shrink-0" /></GameRow>
                                     ))}
                                 </div>
                             </div>
@@ -796,124 +920,97 @@ function WinConditionsModule({ cfg }) {
     const currentMode     = currentEntry.mode;
     const winCondCount = winConditions ? Object.keys(winConditions).length : 0;
 
-    if (!gameIndex || !winConditions) return <div className="p-6 text-[#546270] text-[11px]">Loading…</div>;
+    if (!gameIndex || !winConditions) return <SkSplit side={280} />;
 
     return (
-        <div className="flex h-full overflow-hidden anim-in">
-            {/* Sidebar */}
-            <div className="w-[240px] shrink-0 flex flex-col border-r border-[#2a475e]">
-                <div className="px-3 pt-3 pb-2 border-b border-[#2a475e]">
-                    <input value={search} onChange={e => setSearch(e.target.value)}
-                        placeholder="Search games…" className="input" />
-                </div>
-                <div className="flex-1 overflow-y-auto py-1">
+        <div className="flex h-full overflow-hidden">
+            <SaveBar dirty={dirty} saving={saving} saved={saved} onSave={save} />
+            {/* Games */}
+            <div className="pane pane-side w-[280px] shrink-0">
+                <div className="pane-h"><SearchInput value={search} onChange={setSearch} placeholder={`Search ${games.length} games`} /></div>
+                <div className="flex-1 overflow-y-auto">
                     {filtered.map(g => {
                         const hasWC = getEntry(g[cfg.idKey]).achievements.length > 0;
                         const isSel = selected?.[cfg.idKey] === g[cfg.idKey];
                         return (
-                            <button key={g[cfg.idKey]} onClick={() => setSelected(g)}
-                                className={`w-full flex items-center gap-2 px-3 py-1.5 text-left transition-colors ${isSel ? 'bg-[#2a475e]' : 'hover:bg-[#1b2838]'}`}>
-                                <img src={g.iconUrl} alt="" className="w-6 h-6 rounded-[2px] border border-[#101214] object-cover bg-black shrink-0" />
-                                <span className={`text-[11px] flex-1 truncate ${isSel ? 'text-white' : 'text-[#8f98a0]'}`}>{g.gameName}</span>
-                                {hasWC && <span className="w-1.5 h-1.5 rounded-full bg-[#e5b143] shrink-0" />}
+                            <button key={g[cfg.idKey]} onClick={() => setSelected(g)} className={`lrow ${isSel ? 'on' : ''}`}>
+                                <img src={g.iconUrl} alt="" className="lrow-i" />
+                                <span className="lrow-b">
+                                    <span className="lrow-t">{g.gameName}</span>
+                                    <span className="lrow-s tabular-nums">{g.unlocked ?? 0} / {g.total} unlocked</span>
+                                </span>
+                                {hasWC && <Trophy size={13} className="text-[#e5b143] shrink-0" aria-label="Has a win condition" />}
                             </button>
                         );
                     })}
-                    {filtered.length === 0 && <div className="text-[11px] text-[#546270] text-center py-6">No games found</div>}
+                    {filtered.length === 0 && <Empty icon={Search} title="No match" />}
                 </div>
-                <div className="px-3 py-2 border-t border-[#2a475e] text-[10px] text-[#546270]">
-                    {winCondCount} win condition{winCondCount !== 1 ? 's' : ''} set · <span className="text-[#e5b143]">●</span> = has condition
-                </div>
+                <div className="pane-f"><Trophy size={12} className="text-[#e5b143]" />{winCondCount} game{winCondCount !== 1 ? 's' : ''} with a win condition</div>
             </div>
 
             {/* Detail (fades in on each selection) */}
-            <div key={selected?.[cfg.idKey] ?? 'none'} className="flex-1 flex flex-col overflow-hidden anim-fade">
+            <div key={selected?.[cfg.idKey] ?? 'none'} className="pane flex-1 anim-fade">
                 {!selected ? (
-                    <div className="flex items-center justify-center h-full text-[#546270] text-[12px]">Select a game to set a win condition</div>
+                    <Empty icon={Trophy} title="Pick a game" hint="Then tap the achievements that mean you beat it: the ending, the final boss. Beaten games show silver on the site." />
                 ) : (
                     <>
                         <div className="flex items-center gap-3 px-4 py-3 border-b border-[#2a475e] shrink-0">
-                            <img src={selected.iconUrl} alt={selected.gameName}
-                                className="w-10 h-10 rounded-[2px] border border-[#101214] object-cover bg-black shrink-0" />
+                            <img src={selected.iconUrl} alt={selected.gameName} className="w-11 h-11 rounded-[2px] border border-[#101214] object-cover bg-black shrink-0" />
                             <div className="flex-1 min-w-0">
-                                <div className="text-[13px] text-white font-medium truncate">{selected.gameName}</div>
-                                <div className="flex items-center gap-3 mt-0.5">
-                                    <span className="text-[10px] text-[#546270]">{cfg.idLabel} {selected[cfg.idKey]}</span>
-                                    <span className="text-[10px] text-[#546270]">{selected.total} achievements</span>
-                                    {currentWinConds.length > 0 && <span className="text-[10px] text-[#e5b143] font-medium anim-fade">{currentWinConds.length} win condition{currentWinConds.length !== 1 ? 's' : ''} set</span>}
+                                <div className="text-[15px] text-white font-semibold truncate">{selected.gameName}</div>
+                                <div className="flex items-center gap-2 mt-1">
+                                    <span className="chip mono h-[18px] text-[10px]">{cfg.idLabel} {selected[cfg.idKey]}</span>
+                                    <span className="text-[12px] text-[#546270]">{selected.total} achievements</span>
+                                    {currentWinConds.length > 0 && <span className="chip chip-gold h-[18px] text-[10px] anim-fade"><Trophy size={10} />{currentWinConds.length} win condition{currentWinConds.length !== 1 ? 's' : ''}</span>}
                                 </div>
-                            </div>
-                            <div className="flex items-center gap-2 shrink-0">
-                                {saved && <span className="text-[10px] text-[#57cbde] anim-fade">Saved</span>}
-                                <button className="btn-primary" onClick={save} disabled={!dirty || saving}>
-                                    {saving ? 'Saving…' : 'Save'}
-                                </button>
                             </div>
                         </div>
 
                         {loadingGame ? (
-                            <div className="flex items-center justify-center flex-1 text-[#546270] text-[11px]">Loading achievements…</div>
+                            <SkRows n={8} />
                         ) : !gameData?.achievements?.length ? (
-                            <div className="flex flex-col items-center justify-center flex-1 gap-2 text-center px-8">
-                                <div className="text-[12px] text-[#546270]">No achievement data available.</div>
-                                <div className="text-[10px] text-[#323f4c]">Run a pipeline refresh to load achievements for this game.</div>
-                            </div>
+                            <Empty icon={CircleSlash} title="No achievement data" hint="Run a full pipeline refresh to load this game's achievements." />
                         ) : (
                             <>
-                                <div className="px-3 py-2 border-b border-[#2a475e] shrink-0 flex items-center gap-2">
-                                    <input value={achSearch} onChange={e => setAchSearch(e.target.value)}
-                                        placeholder={`Search ${gameData.achievements.length} achievements…`} className="input flex-1" />
-                                    {currentWinConds.length > 0 && (<>
-                                        <div className="flex items-center shrink-0 border border-[#2a475e] rounded-[2px] overflow-hidden text-[10px] font-bold uppercase tracking-wider anim-fade">
-                                            {['or', 'and'].map(m => (
-                                                <button key={m} onClick={() => toggleMode(selected[cfg.idKey])}
-                                                    className={`px-2 py-1 transition-colors ${currentMode === m ? 'bg-[#66c0f4] text-[#101214]' : 'text-[#546270] hover:text-[#8f98a0]'}`}>
-                                                    {m}
-                                                </button>
+                                <div className="pane-h">
+                                    <SearchInput value={achSearch} onChange={setAchSearch} placeholder={`Search ${gameData.achievements.length} achievements`} />
+                                    {currentWinConds.length > 1 && (
+                                        <div className="seg shrink-0 anim-fade" title="Any one of them, or all of them">
+                                            {[['or', 'Any'], ['and', 'All']].map(([m, l]) => (
+                                                <button key={m} onClick={() => currentMode !== m && toggleMode(selected[cfg.idKey])} className={currentMode === m ? 'on' : ''}>{l}</button>
                                             ))}
                                         </div>
-                                        <button onClick={() => clearWinConds(selected[cfg.idKey])}
-                                            className="shrink-0 text-[10px] text-[#ff6b6b] border border-[#ff6b6b]/30 hover:border-[#ff6b6b] px-2 py-1 rounded-[2px] transition-colors whitespace-nowrap anim-fade">
-                                            Clear all
-                                        </button>
-                                    </>)}
+                                    )}
+                                    {currentWinConds.length > 0 && (
+                                        <button onClick={() => clearWinConds(selected[cfg.idKey])} className="btn btn-outline btn-danger btn-sm shrink-0 anim-fade"><X size={12} />Clear</button>
+                                    )}
                                 </div>
                                 <div className="flex-1 overflow-y-auto anim-fade">
-                                    {filteredAch.length === 0 && (
-                                        <div className="text-[11px] text-[#546270] text-center py-6">No matches</div>
-                                    )}
+                                    {filteredAch.length === 0 && <Empty icon={Search} title="No match" />}
                                     {filteredAch.map(ach => {
                                         const isWC = currentWinConds.includes(ach.apiName);
                                         const iconSrc = cfg.achIcon(selected, ach);
                                         return (
                                             <button key={ach.apiName}
                                                 onClick={() => toggleWinCond(selected[cfg.idKey], ach.apiName)}
-                                                className={`w-full flex items-center gap-3 px-3 py-2 text-left transition-colors border-b border-[#1a2535] ${isWC ? 'bg-[#e5b143]/10 hover:bg-[#e5b143]/15' : 'hover:bg-[#1b2838]'}`}>
+                                                className={`lrow !py-2 ${isWC ? '!bg-[#e5b143]/10 !border-l-[#e5b143]' : ''}`}>
                                                 {iconSrc
-                                                    ? <img src={iconSrc} alt="" className="w-8 h-8 rounded-[2px] shrink-0 object-cover bg-black" style={{ opacity: ach.unlocked ? 1 : 0.35 }} />
-                                                    : <div className="w-8 h-8 rounded-[2px] shrink-0 bg-[#2a475e]" />
+                                                    ? <img src={iconSrc} alt="" className="w-9 h-9 rounded-[2px] shrink-0 object-cover bg-black" style={{ opacity: ach.unlocked ? 1 : 0.35 }} />
+                                                    : <div className="w-9 h-9 rounded-[2px] shrink-0 bg-[#2a475e]" />
                                                 }
-                                                <div className="flex-1 min-w-0">
-                                                    <div className={`text-[12px] truncate ${isWC ? 'text-[#e5b143] font-medium' : 'text-[#c6d4df]'}`}>
-                                                        {ach.displayName}
-                                                    </div>
-                                                    {ach.description && (
-                                                        <div className="text-[10px] text-[#546270] truncate">{ach.description}</div>
-                                                    )}
-                                                </div>
-                                                <div className="flex items-center gap-2 shrink-0">
+                                                <span className="lrow-b">
+                                                    <span className={`lrow-t !text-[13px] ${isWC ? '!text-[#e5b143] font-medium' : ''}`}>{ach.displayName}</span>
+                                                    {ach.description && <span className="lrow-s">{ach.description}</span>}
+                                                </span>
+                                                <span className="flex items-center gap-2.5 shrink-0">
                                                     {ach.unlocked && ach.unlockedAt && (
-                                                        <span className="text-[9px] text-[#57cbde]">
+                                                        <span className="text-[11px] text-[#57cbde] tabular-nums">
                                                             {new Date(ach.unlockedAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
                                                         </span>
                                                     )}
-                                                    {ach.globalPct != null && (
-                                                        <span className="text-[10px] text-[#546270]">{ach.globalPct.toFixed(1)}%</span>
-                                                    )}
-                                                    {isWC && (
-                                                        <span className="text-[9px] font-bold text-[#e5b143] border border-[#e5b143]/40 px-1.5 py-[1px] rounded-[2px] uppercase tracking-wider whitespace-nowrap anim-fade">Win Cond</span>
-                                                    )}
-                                                </div>
+                                                    {ach.globalPct != null && <span className="text-[11px] text-[#546270] tabular-nums w-[38px] text-right">{ach.globalPct.toFixed(1)}%</span>}
+                                                    <span className={`w-6 h-6 grid place-items-center rounded-[3px] border ${isWC ? 'bg-[#e5b143] border-[#e5b143] text-[#101214]' : 'border-[#2a475e] text-transparent'}`}><Trophy size={12} /></span>
+                                                </span>
                                             </button>
                                         );
                                     })}
@@ -959,44 +1056,233 @@ const XboxWinConditionsModule  = () => <WinConditionsModule cfg={WC_CONFIG.xbox}
 // MODULE: Pipelines
 // ═══════════════════════════════════════════════════════════════════════════════
 
+// Local runs write into this checkout's data/ only: real data is published by GitHub Actions (fetch-data.yml)
 const PIPELINE_MODES = [
-    { platform: 'RetroAchievements', color: '#e5b143', modes: [
-        { id: 'ra',            label: 'Incremental',    desc: 'Profile + recent achievements' },
-        { id: 'ra-watchlist',  label: 'Watchlist Only', desc: 'Fetch want-to-play list only' },
-        { id: 'ra-full',       label: 'Full Refresh',   desc: 'Re-fetch all game details' },
-        { id: 'ra-debug',      label: 'Debug',          desc: 'Print API responses, no writes' },
+    { platform: 'Local tools', icon: Download, modes: [
+        { id: 'data-pull',     label: 'Pull live data',        icon: DownloadCloud, desc: 'The data branch into data/ (npm run data:pull)' },
+        { id: 'build-series',  label: 'Rebuild shared series', icon: Layers,        desc: 'data/hub/series-games.json from the platform data' },
     ]},
-    { platform: 'Steam', color: '#66c0f4', modes: [
-        { id: 'steam',            label: 'Incremental',         desc: 'Recently played only' },
-        { id: 'steam-unlocked',   label: 'Refresh Unlocked',    desc: 'Re-fetch games with unlocks' },
-        { id: 'steam-full',       label: 'Full Refresh',        desc: 'All owned games' },
-        { id: 'steam-debug',      label: 'Debug',               desc: 'Print API responses, no writes' },
+    { platform: 'RetroAchievements', img: '/assets/icon-ra.png', test: true, modes: [
+        { id: 'ra',            label: 'Incremental',    icon: Play,      desc: 'Profile and recent achievements' },
+        { id: 'ra-watchlist',  label: 'Watchlist only', icon: ListPlus,  desc: 'The want-to-play list only' },
+        { id: 'ra-full',       label: 'Full refresh',   icon: RefreshCw, desc: 'Re-fetch every game' },
+        { id: 'ra-debug',      label: 'Debug',          icon: Bug,       desc: 'Print API responses, no writes' },
     ]},
-    { platform: 'Xbox', color: '#52b043', modes: [
-        { id: 'xbox',             label: 'Incremental',         desc: 'Only titles that changed' },
-        { id: 'xbox-full',        label: 'Full Refresh',        desc: 'All titles (~85 of 150 requests/hour)' },
-        { id: 'xbox-debug',       label: 'Debug',               desc: 'Dry run, no writes' },
+    { platform: 'Steam', img: '/assets/icon-steam.png', test: true, modes: [
+        { id: 'steam',            label: 'Incremental',      icon: Play,      desc: 'Recently played only' },
+        { id: 'steam-unlocked',   label: 'Refresh unlocked', icon: Download,  desc: 'Games with unlocks' },
+        { id: 'steam-full',       label: 'Full refresh',     icon: RefreshCw, desc: 'Every owned game' },
+        { id: 'steam-debug',      label: 'Debug',            icon: Bug,       desc: 'Print API responses, no writes' },
+    ]},
+    { platform: 'Xbox', img: '/assets/icon-xbox.png', test: true, modes: [
+        { id: 'xbox',             label: 'Incremental',      icon: Play,      desc: 'Only titles that changed' },
+        { id: 'xbox-full',        label: 'Full refresh',     icon: RefreshCw, desc: 'Every title (~85 of 150 requests/hour)' },
+        { id: 'xbox-debug',       label: 'Debug',            icon: Bug,       desc: 'Dry run, no writes' },
     ]},
 ];
+const PIPELINE_LABEL = Object.fromEntries(PIPELINE_MODES.flatMap(g => g.modes.map(m => [m.id, `${g.platform} · ${m.label}`])));
+
+// GitHub runs: the workflow's own choices (fetch-data.yml inputs)
+const GH_MODES = [
+    { id: 'incremental',    label: 'Incremental',  desc: 'Writes only when something was played or unlocked' },
+    { id: 'midnight',       label: 'Midnight',     desc: 'RA full, Steam unlock refresh, Xbox full; refreshes rarity' },
+    { id: 'full-refresh',   label: 'Full refresh', desc: 'Every game on every platform: slow, uses a lot of API quota' },
+    { id: 'watchlist-only', label: 'Watchlist',    desc: 'The RA want-to-play list only' },
+];
+const GH_PLATFORMS = [['all', 'All'], ['ra', 'RA'], ['steam', 'Steam'], ['xbox', 'Xbox']];
+
+const ago = (iso) => {
+    const m = Math.round((Date.now() - Date.parse(iso)) / 60000);
+    return m < 1 ? 'just now' : m < 60 ? `${m}m ago` : m < 1440 ? `${Math.floor(m / 60)}h ${m % 60 ? `${m % 60}m ` : ''}ago` : `${Math.floor(m / 1440)}d ago`;
+};
+const runTime = (r) => {
+    if (!r.started) return null;
+    const s = Math.round(((r.status === 'completed' ? Date.parse(r.updated) : Date.now()) - Date.parse(r.started)) / 1000);
+    return s < 60 ? `${s}s` : `${Math.floor(s / 60)}m ${s % 60}s`;
+};
+const RUN_STATE = (r) => r.status !== 'completed'
+    ? { icon: Loader2, color: '#66c0f4', label: r.status === 'queued' ? 'Queued' : 'Running', spin: true }
+    : r.conclusion === 'success' ? { icon: CheckCircle2, color: '#57cbde', label: 'Success' }
+    : r.conclusion === 'failure' ? { icon: XCircle, color: '#ff6b6b', label: 'Failed' }
+    : { icon: MinusCircle, color: '#8f98a0', label: r.conclusion ? r.conclusion[0].toUpperCase() + r.conclusion.slice(1).replace('_', ' ') : 'Done' };
+const EVENT_LABEL = { workflow_dispatch: 'Dispatched', schedule: 'Fallback schedule', push: 'Push' };
+
+function GitHubRuns({ runs, error, onRefresh, loading }) {
+    return (
+        <>
+            <div className="pane-h">
+                <Github size={16} className="text-[#c6d4df]" />
+                <span className="pane-t flex-1">Data runs on GitHub <span className="text-[#546270] font-normal">· fetch-data.yml</span></span>
+                <a className="btn btn-ghost btn-sm" href="https://github.com/yozuryu/gaming-hub/actions/workflows/fetch-data.yml" target="_blank" rel="noreferrer"><ExternalLink size={12} />All runs</a>
+                <button className="icon-btn" onClick={onRefresh} title="Refresh"><RotateCw size={14} className={loading ? 'animate-spin' : ''} /></button>
+            </div>
+            <div className="flex-1 overflow-y-auto">
+                {error && <Empty icon={XCircle} title="Couldn't read the runs" hint={error} />}
+                {!error && !runs && <SkRows n={8} />}
+                {runs?.map(r => {
+                    const st = RUN_STATE(r), Icon = st.icon;
+                    return (
+                        <a key={r.id} href={r.url} target="_blank" rel="noreferrer" className="lrow group">
+                            <Icon size={18} style={{ color: st.color }} className={`shrink-0 ${st.spin ? 'animate-spin' : ''}`} />
+                            <span className="lrow-b">
+                                <span className="lrow-t">{r.title.replace(/^Data — /, '')}</span>
+                                <span className="lrow-s">{st.label} · {EVENT_LABEL[r.event] ?? r.event}{r.attempt > 1 ? ` · attempt ${r.attempt}` : ''}</span>
+                            </span>
+                            <span className="flex flex-col items-end shrink-0">
+                                <span className="text-[12px] text-[#8f98a0] tabular-nums">{ago(r.created)}</span>
+                                {runTime(r) && <span className="text-[11px] text-[#546270] tabular-nums">{runTime(r)}</span>}
+                            </span>
+                            <ExternalLink size={13} className="text-[#546270] opacity-0 group-hover:opacity-100 shrink-0" />
+                        </a>
+                    );
+                })}
+            </div>
+        </>
+    );
+}
+
+// cron-job.org: the schedule that starts the data runs. lastStatus codes from its API
+const CRON_STATUS = { 0: null, 1: { ok: true, label: 'OK' }, 2: 'DNS error', 3: "Couldn't connect", 4: 'HTTP error', 5: 'Timed out', 6: 'Response too large', 7: 'Invalid URL', 8: 'cron-job.org error', 9: 'Failed' };
+const pad2 = (n) => String(n).padStart(2, '0');
+const cronWhen = (sch) => {
+    const mins = sch.minutes.filter(m => m >= 0);
+    if (sch.hours[0] === -1) return `Every hour at ${mins.map(m => `:${pad2(m)}`).join(' and ')}`;
+    const d = new Date(Date.UTC(2000, 0, 1, sch.hours[0], mins[0] ?? 0));
+    return `Daily ${pad2(sch.hours[0])}:${pad2(mins[0] ?? 0)} UTC · ${pad2(d.getHours())}:${pad2(d.getMinutes())} here`;
+};
+const untilText = (sec) => {
+    const m = Math.round((sec * 1000 - Date.now()) / 60000);
+    return m < 1 ? 'any moment' : m < 60 ? `in ${m}m` : `in ${Math.floor(m / 60)}h ${m % 60 ? `${m % 60}m` : ''}`.trim();
+};
+
+function CronJobs({ onStarted }) {
+    const [jobs,    setJobs]    = useState(null);
+    const [err,     setErr]     = useState(null);
+    const [confirm, setConfirm] = useState(null);   // job id waiting for Run now
+    const [busy,    setBusy]    = useState({});     // id → 'run' | 'toggle'
+    const [msg,     setMsg]     = useState({});     // id → { ok, text }
+
+    const load = useCallback(() => {
+        apiGet(`${API}/cron/jobs`).then(d => { if (d?.error) setErr(d.error); else { setJobs(d); setErr(null); } }).catch(e => setErr(e.message));
+    }, []);
+    useEffect(() => { load(); }, []);
+
+    const post = (url, body) => fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }).then(r => r.json()).then(r => { if (r.error) throw new Error(r.error); return r; });
+
+    const runNow = async (j) => {
+        setConfirm(null); setBusy(b => ({ ...b, [j.id]: 'run' }));
+        try { await post(`${API}/cron/run`, { id: j.id }); setMsg(m => ({ ...m, [j.id]: { ok: true, text: 'Started on GitHub' } })); onStarted(); }
+        catch (e) { setMsg(m => ({ ...m, [j.id]: { ok: false, text: e.message } })); }
+        setBusy(b => ({ ...b, [j.id]: null }));
+    };
+    const toggle = async (j, enabled) => {
+        setBusy(b => ({ ...b, [j.id]: 'toggle' }));
+        try { await post(`${API}/cron/enable`, { id: j.id, enabled }); setJobs(js => js.map(x => x.id === j.id ? { ...x, enabled } : x)); setMsg(m => ({ ...m, [j.id]: null })); }
+        catch (e) { setMsg(m => ({ ...m, [j.id]: { ok: false, text: e.message } })); }
+        setBusy(b => ({ ...b, [j.id]: null }));
+    };
+
+    return (
+        <div className="p-3 border-b border-[#2a475e] flex flex-col gap-2.5">
+            <div className="flex items-center gap-2 px-0.5">
+                <CalendarClock size={14} className="text-[#c6d4df]" />
+                <span className="text-[11px] text-[#8f98a0] font-bold uppercase tracking-[0.07em] flex-1">Schedule</span>
+                <a className="text-[11px] text-[#546270] hover:text-[#66c0f4] flex items-center gap-1" href="https://console.cron-job.org/jobs" target="_blank" rel="noreferrer">cron-job.org<ExternalLink size={10} /></a>
+                <button className="icon-btn !w-6 !h-6" onClick={load} title="Refresh"><RotateCw size={12} /></button>
+            </div>
+            {err && <span className="chip chip-red !h-auto py-1 whitespace-normal">{err}</span>}
+            {!err && !jobs && <div className="flex flex-col gap-1.5">{[0, 1].map(i => <div key={i} className="shimmer h-[74px] rounded-[3px]" />)}</div>}
+            {jobs?.map(j => {
+                const st = CRON_STATUS[j.lastStatus];
+                const mode = GH_MODES.find(m => m.id === j.inputs?.mode);
+                return (
+                    <div key={j.id} className={`flex flex-col gap-2 p-2.5 rounded-[3px] border bg-[#1b2838] anim-fade ${j.enabled ? 'border-[#2a475e]' : 'border-[#e5b143]/40'}`}>
+                        <div className="flex items-start gap-2">
+                            <span className="flex flex-col min-w-0 flex-1">
+                                <span className="text-[12px] text-white font-medium">{mode?.label ?? j.title}{j.inputs?.platforms && j.inputs.platforms !== 'all' ? ` · ${j.inputs.platforms}` : ''}</span>
+                                <span className="text-[11px] text-[#546270]">{cronWhen(j.schedule)}</span>
+                            </span>
+                            <span title={j.enabled ? 'Pause this schedule' : 'Resume this schedule'} className={busy[j.id] === 'toggle' ? 'opacity-50 pointer-events-none' : ''}>
+                                <Toggle checked={j.enabled} onChange={v => toggle(j, v)} />
+                            </span>
+                        </div>
+                        <div className="flex items-center gap-2 text-[11px] tabular-nums">
+                            {j.lastExecution ? (
+                                <span className="flex items-center gap-1" style={{ color: st?.ok ? '#57cbde' : st ? '#ff6b6b' : '#8f98a0' }} title={j.lastDuration ? `${j.lastDuration} ms` : undefined}>
+                                    {st?.ok ? <CheckCircle2 size={12} /> : st ? <XCircle size={12} /> : <MinusCircle size={12} />}
+                                    {st?.ok ? 'Sent' : st ?? 'Ran'} {ago(new Date(j.lastExecution * 1000).toISOString())}
+                                </span>
+                            ) : <span className="text-[#546270]">Never ran</span>}
+                            <span className="flex-1" />
+                            {j.enabled
+                                ? <span className="text-[#8f98a0] flex items-center gap-1"><Clock size={11} />{untilText(j.nextExecution)}</span>
+                                : <span className="text-[#e5b143] flex items-center gap-1"><Pause size={11} />Paused</span>}
+                        </div>
+                        {confirm === j.id ? (
+                            <div className="flex flex-col gap-2 anim-fade">
+                                <span className="text-[11px] text-[#c6d4df]">Send this job's request to GitHub now? It starts a {mode?.label.toLowerCase() ?? ''} run, same as the schedule.</span>
+                                <div className="flex gap-1.5">
+                                    <button className="btn btn-primary btn-sm flex-1" onClick={() => runNow(j)}><Play size={12} />Run now</button>
+                                    <button className="btn btn-ghost btn-sm" onClick={() => setConfirm(null)}>Cancel</button>
+                                </div>
+                            </div>
+                        ) : (
+                            <button className="btn btn-outline btn-sm w-full" disabled={busy[j.id] === 'run' || !j.inputs} onClick={() => { setMsg(m => ({ ...m, [j.id]: null })); setConfirm(j.id); }}>
+                                {busy[j.id] === 'run' ? <Loader2 size={12} className="animate-spin" /> : <Play size={12} />}Run now
+                            </button>
+                        )}
+                        {msg[j.id] && <span className={`chip ${msg[j.id].ok ? 'chip-blue' : 'chip-red'} self-start !h-auto py-1 whitespace-normal anim-fade`}>{msg[j.id].ok && <Check size={11} />}{msg[j.id].text}</span>}
+                    </div>
+                );
+            })}
+        </div>
+    );
+}
 
 function PipelinesModule() {
     const [status,   setStatus]   = useState(null); // null = not yet loaded
     const [log,      setLog]      = useState([]);
     const [running,  setRunning]  = useState(false);
     const [jobId,    setJobId]    = useState(null);
+    const [mode,     setMode]     = useState(null);
+    const [view,     setView]     = useState('github');   // right pane: GitHub runs or the local log
+    const [runs,     setRuns]     = useState(null);
+    const [runsErr,  setRunsErr]  = useState(null);
+    const [runsBusy, setRunsBusy] = useState(false);
+    const [ghMode,   setGhMode]   = useState('incremental');
+    const [ghPlat,   setGhPlat]   = useState('all');
+    const [confirm,  setConfirm]  = useState(false);
+    const [dispatch, setDispatch] = useState(null);     // null | 'sending' | 'sent' | error text
+    const [sync,     setSync]     = useState(null);
     const logRef  = useRef(null);
     const esRef   = useRef(null);
+
+    const loadRuns = useCallback(() => {
+        setRunsBusy(true);
+        apiGet(`${API}/gh/runs`).then(d => { if (d?.error) { setRunsErr(d.error); setRuns(null); } else { setRuns(d); setRunsErr(null); } })
+            .catch(e => setRunsErr(e.message)).finally(() => setRunsBusy(false));
+    }, []);
 
     // Load current status on mount
     useEffect(() => {
         fetch(`${API}/pipeline/status`).then(r => r.json()).then(s => {
             setStatus(s);
             setRunning(s.running);
-            if (s.id) { setJobId(s.id); setLog(s.lines ?? []); }
-            if (s.running) connectStream(s.id);
+            if (s.id) { setJobId(s.id); setLog(s.lines ?? []); setMode(s.mode ?? null); }
+            if (s.running) { connectStream(s.id); setView('local'); }
         });
+        loadRuns();
+        apiGet(`${API}/sync-state`).then(setSync).catch(() => {});
         return () => esRef.current?.close();
     }, []);
+
+    // While a GitHub run is queued or running, check again every 15 s
+    const active = runs?.some(r => r.status !== 'completed');
+    useEffect(() => {
+        if (!active) return;
+        const t = setInterval(loadRuns, 15000);
+        return () => clearInterval(t);
+    }, [active]);
 
     // Auto-scroll log
     useEffect(() => {
@@ -1015,13 +1301,14 @@ function PipelinesModule() {
         es.onerror = () => { setRunning(false); es.close(); };
     };
 
-    const run = async (mode) => {
+    const run = async (id) => {
+        setMode(id); setView('local');
         setLog([]);
         setRunning(true);
         const res = await fetch(`${API}/pipeline/start`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ mode }),
+            body: JSON.stringify({ mode: id }),
         });
         const data = await res.json();
         if (data.error) { setLog([{ type: 'err', text: data.error }]); setRunning(false); return; }
@@ -1031,56 +1318,136 @@ function PipelinesModule() {
 
     const stop = () => fetch(`${API}/pipeline/stop`, { method: 'POST' });
 
+    // Start a run on GitHub, after a confirm step (it publishes data and uses API quota)
+    const sendDispatch = async () => {
+        setConfirm(false); setDispatch('sending'); setView('github');
+        try {
+            const r = await fetch(`${API}/gh/dispatch`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mode: ghMode, platforms: ghPlat }) }).then(r => r.json());
+            if (r.error) throw new Error(r.error);
+            setDispatch('sent');
+            setTimeout(loadRuns, 4000);   // GitHub lists the new run after a few seconds
+            setTimeout(() => setDispatch(d => (d === 'sent' ? null : d)), 8000);
+        } catch (e) { setDispatch(e.message); }
+    };
+
     const lineColor = (type) => {
         if (type === 'err')  return '#ff6b6b';
         if (type === 'exit') return '#8f98a0';
         return '#c6d4df';
     };
+    const exit = log.find(l => l.type === 'exit');
+    const failed = exit && !/code 0\b/.test(exit.text);
+    const ghModeInfo = GH_MODES.find(m => m.id === ghMode);
+    const xboxSkipped = sync && !sync.xbox && ghPlat === 'all' && ghMode !== 'watchlist-only';
 
     return (
         <div className="flex h-full overflow-hidden">
-            {/* Left: run buttons */}
-            <div className="w-[240px] shrink-0 flex flex-col border-r border-[#2a475e] overflow-y-auto">
-                {PIPELINE_MODES.map(({ platform, color, modes }) => (
+            {/* Left: start a run */}
+            <div className="pane pane-side w-[300px] shrink-0 overflow-y-auto">
+                {/* cron-job.org: what starts the runs on its own */}
+                <CronJobs onStarted={() => { setView('github'); setTimeout(loadRuns, 4000); }} />
+
+                {/* GitHub Actions: the real runs, published to the data branch */}
+                <div className="p-3 border-b border-[#2a475e] flex flex-col gap-2.5">
+                    <div className="flex items-center gap-2 px-0.5">
+                        <Github size={14} className="text-[#c6d4df]" />
+                        <span className="text-[11px] text-[#8f98a0] font-bold uppercase tracking-[0.07em] flex-1">Run on GitHub</span>
+                        <span className="chip chip-blue h-[18px] text-[10px]">Publishes</span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-1.5">
+                        {GH_MODES.map(m => (
+                            <button key={m.id} onClick={() => { setGhMode(m.id); setConfirm(false); }}
+                                className={`h-8 rounded-[3px] border text-[12px] font-medium transition-colors ${ghMode === m.id ? 'border-[#66c0f4] bg-[#66c0f4]/10 text-white' : 'border-[#2a475e] text-[#8f98a0] hover:text-white'}`}>{m.label}</button>
+                        ))}
+                    </div>
+                    <span className="hint px-0.5 -mt-1 min-h-[30px]">{ghModeInfo.desc}</span>
+                    <div className={`seg w-full ${ghMode === 'watchlist-only' ? 'opacity-40 pointer-events-none' : ''}`}>
+                        {GH_PLATFORMS.map(([id, l]) => (
+                            <button key={id} onClick={() => { setGhPlat(id); setConfirm(false); }} className={`flex-1 justify-center ${ghPlat === id ? 'on' : ''}`}>{l}</button>
+                        ))}
+                    </div>
+                    {xboxSkipped && <span className="hint px-0.5 flex items-center gap-1.5"><Pause size={11} className="text-[#e5b143]" />Xbox sync is paused: All skips it, pick Xbox to run it</span>}
+                    {!confirm ? (
+                        <button className="btn btn-primary w-full" disabled={dispatch === 'sending'} onClick={() => setConfirm(true)}>
+                            {dispatch === 'sending' ? <Loader2 size={14} className="animate-spin" /> : <Play size={14} />}Run {ghModeInfo.label.toLowerCase()}{ghMode !== 'watchlist-only' && ghPlat !== 'all' ? ` · ${GH_PLATFORMS.find(p => p[0] === ghPlat)[1]}` : ''}
+                        </button>
+                    ) : (
+                        <div className="flex flex-col gap-2 p-2.5 rounded-[3px] border border-[#e5b143]/40 bg-[#e5b143]/[0.06] anim-fade">
+                            <span className="text-[12px] text-[#c6d4df]">Start <b className="text-white">{ghModeInfo.label.toLowerCase()}</b> ({ghMode === 'watchlist-only' ? 'RA' : GH_PLATFORMS.find(p => p[0] === ghPlat)[1]}) on GitHub? When data changes it commits to the data branch and redeploys the site.</span>
+                            <div className="flex gap-1.5">
+                                <button className="btn btn-primary btn-sm flex-1" onClick={sendDispatch}><Play size={12} />Start</button>
+                                <button className="btn btn-ghost btn-sm" onClick={() => setConfirm(false)}>Cancel</button>
+                            </div>
+                        </div>
+                    )}
+                    {dispatch === 'sent' && <span className="chip chip-blue self-start anim-fade"><Check size={11} />Started: it shows up in the list in a few seconds</span>}
+                    {dispatch && dispatch !== 'sending' && dispatch !== 'sent' && <span className="chip chip-red self-start !h-auto py-1 whitespace-normal anim-fade">{dispatch}</span>}
+                </div>
+
+                {/* Local: tools, then test runs that write data/ here only */}
+                {PIPELINE_MODES.map(({ platform, img, icon: GIcon, test, modes }, gi) => (
                     <div key={platform} className="p-3 border-b border-[#2a475e]">
-                        <div className="flex items-center gap-2 mb-2">
-                            <span className="w-[3px] h-[13px] rounded-[1px] shrink-0" style={{ background: color }} />
-                            <span className="text-[11px] text-white font-medium uppercase tracking-wide">{platform}</span>
+                        {gi === 1 && (
+                            <div className="flex items-start gap-2 mb-3 -mt-0.5 px-2.5 py-2 rounded-[3px] bg-[#131a22] border border-[#2a475e] text-[11px] text-[#8f98a0]">
+                                <Terminal size={13} className="shrink-0 mt-[1px]" />
+                                <span>Local test runs: they write <code className="mono text-[#66c0f4]">data/</code> in this checkout only, never the live site</span>
+                            </div>
+                        )}
+                        <div className="flex items-center gap-2 mb-2.5 px-0.5">
+                            {img ? <img src={img} alt="" className="w-4 h-4 rounded-[2px]" /> : GIcon && <GIcon size={14} className="text-[#c6d4df]" />}
+                            <span className="text-[11px] text-[#8f98a0] font-bold uppercase tracking-[0.07em] flex-1">{platform}</span>
+                            {platform === 'Xbox' && sync && !sync.xbox && <span className="chip chip-gold h-[18px] text-[10px]" title="XBOX_ENABLED is 'false' in fetch-data.yml"><Pause size={10} />Paused on GitHub</span>}
                         </div>
                         <div className="flex flex-col gap-1.5">
-                            {modes.map(m => (
-                                <button key={m.id} onClick={() => run(m.id)} disabled={running}
-                                    className={`flex flex-col items-start px-2.5 py-2 rounded-[3px] border text-left transition-colors ${running ? 'opacity-40 cursor-not-allowed border-[#2a475e]' : 'border-[#2a475e] hover:border-[#66c0f4] hover:bg-[#1b2838]'}`}>
-                                    <span className="text-[11px] text-white font-medium">{m.label}</span>
-                                    <span className="text-[9px] text-[#546270]">{m.desc}</span>
-                                </button>
-                            ))}
+                            {modes.map(m => {
+                                const Icon = m.icon;
+                                return (
+                                    <button key={m.id} onClick={() => run(m.id)} disabled={running}
+                                        className={`group flex items-center gap-3 px-3 py-2 rounded-[3px] border text-left transition-colors ${running ? 'opacity-40 cursor-not-allowed border-[#2a475e]' : 'border-[#2a475e] bg-[#1b2838] hover:border-[#66c0f4] hover:bg-[#202d39]'}`}>
+                                        <span className={`w-7 h-7 rounded-[3px] grid place-items-center shrink-0 ${m.id.endsWith('debug') ? 'bg-[#131a22] text-[#8f98a0]' : 'bg-[#66c0f4]/10 text-[#66c0f4]'}`}><Icon size={14} /></span>
+                                        <span className="flex flex-col min-w-0">
+                                            <span className="text-[12px] text-white font-medium">{m.label}</span>
+                                            <span className="text-[11px] text-[#546270] truncate">{m.desc}</span>
+                                        </span>
+                                    </button>
+                                );
+                            })}
                         </div>
                     </div>
                 ))}
             </div>
 
-            {/* Right: log */}
-            <div className="flex-1 flex flex-col overflow-hidden">
-                <div className="flex items-center gap-3 px-4 py-2 border-b border-[#2a475e] shrink-0">
-                    <span className="text-[11px] text-[#546270] flex-1">
-                        {running ? <span className="text-[#57cbde]">● Running…</span>
-                         : log.length ? <span>Done</span>
-                         : <span>Select a pipeline to run</span>}
-                    </span>
-                    {running && (
-                        <button onClick={stop} className="text-[10px] text-[#ff6b6b] border border-[#ff6b6b]/40 hover:bg-[#ff6b6b]/10 px-2 py-1 rounded-[2px] transition-colors anim-fade">
-                            Stop
-                        </button>
-                    )}
-                    {log.length > 0 && !running && (
-                        <button onClick={() => setLog([])} className="btn-ghost text-[10px] anim-fade">Clear</button>
-                    )}
+            {/* Right: GitHub runs or the local log */}
+            <div className="pane flex-1">
+                <div className="flex items-center gap-2 px-3.5 pt-3">
+                    <div className="seg">
+                        <button className={view === 'github' ? 'on' : ''} onClick={() => setView('github')}><Github size={12} />GitHub runs{active && <span className="dot bg-[#66c0f4] animate-pulse !w-1.5 !h-1.5" />}</button>
+                        <button className={view === 'local' ? 'on' : ''} onClick={() => setView('local')}><Terminal size={12} />Local log{running && <span className="dot bg-[#66c0f4] animate-pulse !w-1.5 !h-1.5" />}</button>
+                    </div>
                 </div>
-                <div ref={logRef} className="flex-1 overflow-y-auto p-3 font-mono text-[11px] leading-relaxed">
-                    {log.map((line, i) => (
-                        <div key={i} style={{ color: lineColor(line.type) }}>{line.text}</div>
-                    ))}
+                <div key={view} className="pane flex-1 anim-fade">
+                    {view === 'github' ? <GitHubRuns runs={runs} error={runsErr} onRefresh={loadRuns} loading={runsBusy} /> : (
+                        <>
+                            <div className="pane-h">
+                                {running ? <span className="chip chip-blue anim-fade"><span className="dot bg-[#66c0f4] animate-pulse" />Running</span>
+                                 : exit ? <span className={`chip ${failed ? 'chip-red' : 'chip-gold'} anim-fade`}>{failed ? <X size={12} /> : <Check size={12} />}{failed ? 'Failed' : 'Done'}</span>
+                                 : null}
+                                <span className="pane-t flex-1">{mode ? PIPELINE_LABEL[mode] ?? mode : log.length ? 'Last run' : 'Log'}</span>
+                                {running && <button onClick={stop} className="btn btn-outline btn-danger btn-sm anim-fade"><Square size={11} />Stop</button>}
+                                {log.length > 0 && !running && <button onClick={() => { setLog([]); setMode(null); }} className="btn btn-ghost btn-sm anim-fade"><Trash2 size={13} />Clear</button>}
+                            </div>
+                            {log.length === 0 && !running
+                                ? <Empty icon={Terminal} title="No local run yet" hint="Local tools and test runs on the left stream their output here. Files they write show up in Data Diff." />
+                                : (
+                                    <div ref={logRef} className="flex-1 overflow-y-auto px-4 py-3 mono text-[12px] leading-relaxed bg-[#101214]">
+                                        {log.map((line, i) => (
+                                            <div key={i} className="whitespace-pre-wrap break-words" style={{ color: lineColor(line.type) }}>{line.text}</div>
+                                        ))}
+                                        {running && <span className="inline-block w-2 h-3.5 bg-[#66c0f4] align-middle animate-pulse" />}
+                                    </div>
+                                )}
+                        </>
+                    )}
                 </div>
             </div>
         </div>
@@ -1153,7 +1520,7 @@ const BG = {
 const SideBySideRow = ({ row }) => {
     if (row.type === 'hunk') return (
         <tr style={{ background: BG.hunk.cell }}>
-            <td colSpan={4} className="px-3 py-0.5 font-mono text-[10px]" style={{ color: '#e5b143' }}>{row.left}</td>
+            <td colSpan={4} className="px-3 py-0.5 mono text-[11px]" style={{ color: '#e5b143' }}>{row.left}</td>
         </tr>
     );
     const bg     = BG[row.type];
@@ -1163,88 +1530,284 @@ const SideBySideRow = ({ row }) => {
     const rightLn= row.type === 'same' ? 'transparent' : (bg.rightLine ?? 'transparent');
     return (
         <tr>
-            <td className="select-none text-right pr-2 pl-1 font-mono text-[10px] w-[32px] shrink-0" style={{ color: '#546270', background: leftLn, borderRight: '1px solid #2a475e' }}>
+            <td className="select-none text-right pr-2 pl-1 mono text-[11px] w-[32px] shrink-0" style={{ color: '#546270', background: leftLn, borderRight: '1px solid #2a475e' }}>
                 {row.leftNo ?? ''}
             </td>
-            <td className="font-mono text-[10px] px-2 whitespace-pre" style={{ color: row.left === null ? '#546270' : '#c6d4df', background: leftBg, borderRight: '1px solid #2a475e', minWidth: 0, maxWidth: '50%', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            <td className="mono text-[11px] px-2 whitespace-pre" style={{ color: row.left === null ? '#546270' : '#c6d4df', background: leftBg, borderRight: '1px solid #2a475e', minWidth: 0, maxWidth: '50%', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 {row.left ?? ''}
             </td>
-            <td className="select-none text-right pr-2 pl-1 font-mono text-[10px] w-[32px] shrink-0" style={{ color: '#546270', background: rightLn, borderRight: '1px solid #2a475e' }}>
+            <td className="select-none text-right pr-2 pl-1 mono text-[11px] w-[32px] shrink-0" style={{ color: '#546270', background: rightLn, borderRight: '1px solid #2a475e' }}>
                 {row.rightNo ?? ''}
             </td>
-            <td className="font-mono text-[10px] px-2 whitespace-pre" style={{ color: row.right === null ? '#546270' : '#c6d4df', background: rightBg, minWidth: 0 }}>
+            <td className="mono text-[11px] px-2 whitespace-pre" style={{ color: row.right === null ? '#546270' : '#c6d4df', background: rightBg, minWidth: 0 }}>
                 {row.right ?? ''}
             </td>
         </tr>
     );
 };
 
-function DataDiffModule() {
-    const [files,    setFiles]    = useState([]);
-    const [loading,  setLoading]  = useState(true);
-    const [selected, setSelected] = useState(null);
+// Data Diff shows three kinds of change: hand-edited data files not committed yet, commits GitHub's
+// main doesn't have (a push sends them all and deploys the site), and pipeline output from local
+// runs (on the data branch, never published from here)
+const DiffTable = ({ lines }) => (
+    <table className="w-full border-collapse" style={{ tableLayout: 'fixed' }}>
+        <colgroup><col style={{ width: 40 }} /><col style={{ width: '50%' }} /><col style={{ width: 40 }} /><col style={{ width: '50%' }} /></colgroup>
+        <tbody>{parseSideBySide(lines).map((row, i) => <SideBySideRow key={i} row={row} />)}</tbody>
+    </table>
+);
+const diffCounts = (lines) => {
+    const rows = parseSideBySide(lines);
+    return { adds: rows.filter(r => r.type === 'add' || r.type === 'change').length, dels: rows.filter(r => r.type === 'del' || r.type === 'change').length };
+};
+const AddDel = ({ lines }) => {
+    const { adds, dels } = diffCounts(lines);
+    return <><span className="chip mono" style={{ color: '#57cbde', borderColor: 'rgba(87,203,222,0.35)' }}>+{adds}</span><span className="chip chip-red mono">−{dels}</span></>;
+};
+const GroupHead = ({ icon: GIcon, color, title, count }) => (
+    <div className="flex items-center gap-2 px-3.5 pt-3 pb-1.5">
+        <GIcon size={13} style={{ color }} />
+        <span className="text-[11px] text-[#8f98a0] font-bold uppercase tracking-[0.07em] flex-1">{title}</span>
+        <span className="text-[11px] text-[#546270] tabular-nums">{count}</span>
+    </div>
+);
 
-    const load = () => {
-        setLoading(true);
-        fetch(`${API}/diff`).then(r => r.json()).then(d => {
-            setFiles(d.files ?? []);
-            setSelected(d.files?.[0] ?? null);
-            setLoading(false);
-        });
+// Who commits and who pushes, as this checkout would
+function GitIdentity() {
+    const [id, setId] = useState(null);
+    useEffect(() => { apiGet(`${API}/git/identity`).then(setId).catch(e => setId({ error: e.message })); }, []);
+    const key = id?.keys?.[0]?.split('/').pop();
+    return (
+        <div className="p-3 border-t border-[#2a475e] flex flex-col gap-2 text-[11px]">
+            {!id ? <><div className="shimmer h-[14px] rounded-[2px]" /><div className="shimmer h-[14px] w-2/3 rounded-[2px]" /></> : id.error ? <span className="text-[#ff6b6b]">{id.error}</span> : (
+                <>
+                    <span className="flex items-start gap-2 anim-fade" title={`git config user.name / user.email (${id.scope ?? 'not set'})`}>
+                        <GitCommit size={13} className="text-[#546270] shrink-0 mt-[1px]" />
+                        <span className="min-w-0">
+                            <span className="text-[#8f98a0]">Commits as </span>
+                            {id.name ? <b className="text-white font-medium">{id.name}</b> : <b className="text-[#ff6b6b]">no name set</b>}
+                            <span className="block text-[#546270] truncate">{id.email ?? 'no email set'}{id.scope ? ` · ${id.scope === 'local' ? 'this repo' : id.scope} config` : ''}</span>
+                        </span>
+                    </span>
+                    <span className="flex items-start gap-2 anim-fade" title={id.remote}>
+                        <KeyRound size={13} className="text-[#546270] shrink-0 mt-[1px]" />
+                        <span className="min-w-0">
+                            <span className="text-[#8f98a0]">Pushes as </span>
+                            {id.transport === 'ssh'
+                                ? (id.githubUser ? <b className="text-white font-medium">@{id.githubUser}</b> : <b className="text-[#ff6b6b]">unknown</b>)
+                                : <b className="text-white font-medium">{id.transport === 'https' ? 'HTTPS' : 'a local folder'}</b>}
+                            <span className="block text-[#546270] truncate">
+                                {id.transport === 'ssh' ? `SSH key ${key ?? '(default)'} · ${id.sshHost}` : id.transport === 'https' ? `credential helper ${id.helper ?? 'none'}` : id.remote}
+                            </span>
+                            {id.sshError && <span className="block text-[#ff6b6b] whitespace-normal">{id.sshError}</span>}
+                        </span>
+                    </span>
+                </>
+            )}
+        </div>
+    );
+}
+
+const GIT_ACTIONS = {
+    publish: { label: 'Publish', icon: UploadCloud, url: 'publish',    busy: 'Publishing…', text: 'Commit and push to main: the site redeploys in about a minute.' },
+    commit:  { label: 'Commit',  icon: GitCommit,   url: 'git/commit', busy: 'Committing…', text: 'Commit on this laptop only. Push later to make it live.' },
+    push:    { label: 'Push',    icon: UploadCloud, url: 'git/push',   busy: 'Pushing…',    text: 'Push to main: the site redeploys in about a minute.' },
+};
+
+function GitActions({ edits, st, onDone }) {
+    const [open,  setOpen]  = useState(null);   // action waiting for its confirm
+    const [state, setState] = useState(null);   // null | { busy } | { ok, action, commit, pushed } | { error }
+    const commits = st?.commits ?? [];
+    const pushBlock = !st ? 'Checking GitHub…' : st.branch !== 'main' ? `On branch ${st.branch}` : st.behind ? `GitHub has ${st.behind} newer commit${st.behind > 1 ? 's' : ''}: pull first` : null;
+    const can = { commit: !!st && edits.length > 0, push: !!st && !pushBlock && commits.length > 0, publish: !!st && !pushBlock && (edits.length > 0 || commits.length > 0) };
+    const busy = state?.busy;
+
+    const go = async (action) => {
+        setOpen(null); setState({ busy: action });
+        try {
+            const r = await fetch(`${API}/${GIT_ACTIONS[action].url}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ files: action === 'push' ? [] : edits }) }).then(r => r.json());
+            if (r.error) throw new Error(r.error);
+            setState({ ok: true, action, ...r });
+            onDone();
+        } catch (e) { setState({ error: e.message }); }
     };
 
+    const btn = (action, cls, extra = '') => {
+        const A = GIT_ACTIONS[action], Icon = busy === action || (!st && action !== 'commit') ? Loader2 : A.icon;
+        return (
+            <button className={`btn ${cls}`} disabled={!can[action] || !!busy} onClick={() => { setState(null); setOpen(action); }}>
+                <Icon size={13} className={Icon === Loader2 ? 'animate-spin' : ''} />{busy === action ? A.busy : `${A.label}${extra}`}
+            </button>
+        );
+    };
+
+    return (
+        <div className="p-3 border-b border-[#2a475e] flex flex-col gap-2">
+            {btn('publish', 'btn-primary w-full', edits.length ? ` ${edits.length} file${edits.length > 1 ? 's' : ''}` : commits.length ? ` ${commits.length} commit${commits.length > 1 ? 's' : ''}` : '')}
+            <div className="grid grid-cols-2 gap-1.5">
+                {btn('commit', 'btn-outline btn-sm', edits.length ? ` ${edits.length}` : '')}
+                {btn('push', 'btn-outline btn-sm', commits.length ? ` ${commits.length}` : '')}
+            </div>
+            {pushBlock && st && <span className="chip chip-gold !h-auto py-1 whitespace-normal anim-fade"><AlertTriangle size={11} className="shrink-0" />{pushBlock}</span>}
+            {open && (
+                <div className="flex flex-col gap-2 p-2.5 rounded-[3px] border border-[#e5b143]/40 bg-[#e5b143]/[0.06] anim-fade">
+                    <span className="text-[12px] text-[#c6d4df]">{GIT_ACTIONS[open].text}</span>
+                    {open !== 'push' && edits.length > 0 && (
+                        <div className="flex flex-col gap-0.5">
+                            <span className="text-[10px] text-[#8f98a0] uppercase tracking-[0.07em] font-bold">Commits</span>
+                            {edits.map(f => <span key={f} className="mono text-[11px] text-[#66c0f4] truncate">{f.replace(/^data\//, '')}</span>)}
+                        </div>
+                    )}
+                    {open !== 'commit' && commits.length > 0 && (
+                        <div className="flex flex-col gap-0.5">
+                            <span className="text-[10px] text-[#8f98a0] uppercase tracking-[0.07em] font-bold">{open === 'push' ? 'Pushes' : 'Also pushes'} {commits.length} commit{commits.length > 1 ? 's' : ''}</span>
+                            {commits.slice(0, 5).map(c => <span key={c.sha} className="mono text-[10px] text-[#c6d4df] truncate"><span className="text-[#546270]">{c.sha}</span> {c.subject}</span>)}
+                            {commits.length > 5 && <span className="text-[10px] text-[#546270]">+{commits.length - 5} more</span>}
+                        </div>
+                    )}
+                    <div className="flex gap-1.5">
+                        <button className="btn btn-primary btn-sm flex-1" onClick={() => go(open)}>{React.createElement(GIT_ACTIONS[open].icon, { size: 12 })}{GIT_ACTIONS[open].label}</button>
+                        <button className="btn btn-ghost btn-sm" onClick={() => setOpen(null)}>Cancel</button>
+                    </div>
+                </div>
+            )}
+            {state?.ok && (state.action === 'commit'
+                ? <span className="chip chip-blue self-start anim-fade"><Check size={11} />Committed {state.commit} · not pushed</span>
+                : <a className="chip chip-blue self-start anim-fade" href="https://github.com/yozuryu/gaming-hub/actions/workflows/deploy.yml" target="_blank" rel="noreferrer">
+                    <Check size={11} />Pushed {state.pushed} commit{state.pushed > 1 ? 's' : ''} · deploying<ExternalLink size={10} />
+                  </a>)}
+            {state?.error && <span className="chip chip-red !h-auto py-1 whitespace-normal anim-fade">{state.error}</span>}
+        </div>
+    );
+}
+
+function CommitView({ sha }) {
+    const [c, setC] = useState(null);
+    useEffect(() => { setC(null); apiGet(`${API}/git/show?sha=${sha}`).then(setC).catch(e => setC({ error: e.message })); }, [sha]);
+    if (!c) return <SkPage />;
+    if (c.error) return <Empty icon={XCircle} title="Couldn't read the commit" hint={c.error} />;
+    return (
+        <>
+            <div className="pane-h">
+                <GitCommit size={15} className="text-[#e5b143] shrink-0" />
+                <span className="pane-t flex-1 truncate">{c.subject}</span>
+                <span className="text-[11px] text-[#546270] mono shrink-0">{c.sha} · {c.author} · {ago(c.date)}</span>
+            </div>
+            <div className="flex-1 overflow-auto bg-[#131a22]">
+                {c.diffs.map(d => (
+                    <div key={d.file}>
+                        <div className="sticky top-0 z-[1] flex items-center gap-2 px-3 py-1.5 bg-[#1b2838] border-y border-[#2a475e]">
+                            <FileJson size={13} className="text-[#546270]" />
+                            <span className="mono text-[11px] text-[#c6d4df] flex-1 truncate">{d.file}</span>
+                            <AddDel lines={d.lines} />
+                        </div>
+                        <DiffTable lines={d.lines} />
+                    </div>
+                ))}
+            </div>
+        </>
+    );
+}
+
+function DataDiffModule() {
+    const [files,    setFiles]    = useState([]);
+    const [st,       setSt]       = useState(null);   // /publish/status: commits not pushed (fetches first: a few seconds)
+    const [loading,  setLoading]  = useState(true);
+    const [selected, setSelected] = useState(null);   // { file } | { sha }
+
+    const load = () => {
+        setLoading(true); setSt(null);
+        fetch(`${API}/diff`).then(r => r.json()).then(d => {
+            const list = d.files ?? [];
+            setFiles(list);
+            setSelected(sel => (sel?.file && list.find(f => f.file === sel.file)) ? { file: sel.file } : list.find(f => f.kind === 'edit') ? { file: list.find(f => f.kind === 'edit').file } : list[0] ? { file: list[0].file } : null);
+            setLoading(false);
+        });
+        apiGet(`${API}/publish/status`).then(s => {
+            setSt(s);
+            setSelected(sel => sel ?? (s.commits?.[0] ? { sha: s.commits[0].sha } : null));
+        }).catch(e => setSt({ error: e.message, commits: [] }));
+    };
     useEffect(() => { load(); }, []);
 
-    const rows = selected ? parseSideBySide(selected.lines) : [];
-    const adds = rows.filter(r => r.type === 'add' || r.type === 'change').length;
-    const dels = rows.filter(r => r.type === 'del' || r.type === 'change').length;
+    const edits  = files.filter(f => f.kind === 'edit');
+    const local  = files.filter(f => f.kind === 'local');
+    const commits = st?.commits ?? [];
+    const file = selected?.file ? files.find(f => f.file === selected.file) : null;
+    const total = edits.length + commits.length + local.length;
+
+    const FileRow = ({ f }) => {
+        const parts = f.file.replace('data/', '').split('/');
+        return (
+            <button onClick={() => setSelected({ file: f.file })} className={`lrow ${selected?.file === f.file ? 'on' : ''}`}>
+                <FileJson size={15} className={`shrink-0 ${f.kind === 'edit' ? 'text-[#e5b143]' : 'text-[#546270]'}`} />
+                <span className="lrow-b">
+                    <span className="lrow-t mono text-[11px]">{parts.pop()}</span>
+                    <span className="lrow-s mono text-[10px]">{parts.join('/') || 'data'}{f.isNew ? ' · new' : ''}</span>
+                </span>
+            </button>
+        );
+    };
 
     return (
         <div className="flex h-full overflow-hidden">
-            {/* File list */}
-            <div className="w-[220px] shrink-0 flex flex-col border-r border-[#2a475e]">
-                <div className="flex items-center gap-2 px-3 py-2 border-b border-[#2a475e]">
-                    <span className="text-[11px] text-[#546270] flex-1">{loading ? 'Loading…' : `${files.length} file${files.length !== 1 ? 's' : ''} changed`}</span>
-                    <button onClick={load} className="btn-ghost text-[10px]">↺</button>
+            <div className="pane pane-side w-[280px] shrink-0">
+                <div className="pane-h">
+                    <span className="text-[12px] text-[#8f98a0] flex-1">{loading ? 'Comparing…' : total ? `${total} change${total !== 1 ? 's' : ''}` : 'No changes'}</span>
+                    <button onClick={load} className="icon-btn" title="Compare again"><RotateCw size={14} className={loading || !st ? 'animate-spin' : ''} /></button>
                 </div>
-                <div className="flex-1 overflow-y-auto py-1">
-                    {!loading && files.length === 0 && (
-                        <div className="text-[11px] text-[#546270] text-center py-8">No changes in data/</div>
+                {!loading && <GitActions edits={edits.map(f => f.file)} st={st?.error ? null : st} onDone={load} />}
+                {st?.error && <span className="chip chip-red m-3 !h-auto py-1 whitespace-normal">{st.error}</span>}
+                <div className="flex-1 overflow-y-auto">
+                    {loading && <SkRows n={6} icon={false} />}
+                    {!loading && edits.length > 0 && (
+                        <div className="anim-fade">
+                            <GroupHead icon={FileDiff} color="#e5b143" title="Not committed" count={edits.length} />
+                            {edits.map(f => <FileRow key={f.file} f={f} />)}
+                        </div>
                     )}
-                    {files.map(f => (
-                        <button key={f.file} onClick={() => setSelected(f)}
-                            className={`w-full text-left px-3 py-1.5 text-[10px] font-mono transition-colors ${selected?.file === f.file ? 'bg-[#2a475e] text-white' : 'text-[#8f98a0] hover:bg-[#1b2838]'}`}>
-                            {f.file.replace('data/', '')}
-                        </button>
-                    ))}
+                    {!loading && !st && <><GroupHead icon={UploadCloud} color="#66c0f4" title="Ready to push" count="…" /><SkRows n={2} icon={false} /></>}
+                    {!loading && commits.length > 0 && (
+                        <div className="anim-fade">
+                            <GroupHead icon={UploadCloud} color="#66c0f4" title="Ready to push" count={commits.length} />
+                            {commits.map(c => {
+                                const data = c.files.every(f => f.startsWith('data/'));
+                                return (
+                                    <button key={c.sha} onClick={() => setSelected({ sha: c.sha })} className={`lrow ${selected?.sha === c.sha ? 'on' : ''}`} title={c.files.join('\n')}>
+                                        <GitCommit size={15} className={`shrink-0 ${data ? 'text-[#66c0f4]' : 'text-[#8f98a0]'}`} />
+                                        <span className="lrow-b">
+                                            <span className="lrow-t text-[12px]">{c.subject}</span>
+                                            <span className="lrow-s mono text-[10px]">{c.sha} · {c.files.length} file{c.files.length !== 1 ? 's' : ''}{data ? '' : ' · code'} · {ago(c.date)}</span>
+                                        </span>
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    )}
+                    {!loading && local.length > 0 && (
+                        <div className="anim-fade">
+                            <GroupHead icon={Terminal} color="#546270" title="Local only" count={local.length} />
+                            {local.map(f => <FileRow key={f.file} f={f} />)}
+                        </div>
+                    )}
+                    {!loading && st && !total && <Empty icon={Check} title="No changes" hint="Everything is on GitHub, data/ matches the last pull" />}
                 </div>
+                <GitIdentity />
             </div>
 
-            {/* Diff view (fades in on each selection) */}
-            <div key={selected?.file ?? 'none'} className="flex-1 flex flex-col overflow-hidden anim-fade">
-                {selected ? (
+            <div key={selected?.file ?? selected?.sha ?? 'none'} className="pane flex-1 anim-fade">
+                {selected?.sha ? <CommitView sha={selected.sha} /> : file ? (
                     <>
-                        <div className="flex items-center gap-3 px-4 py-2 border-b border-[#2a475e] shrink-0">
-                            <span className="text-[11px] font-mono text-white flex-1">{selected.file}</span>
-                            <span className="text-[10px] text-[#57cbde]">+{adds}</span>
-                            <span className="text-[10px] text-[#ff6b6b]">-{dels}</span>
+                        <div className="pane-h">
+                            <span className="pane-t mono text-[12px] flex-1">{file.file}</span>
+                            {file.kind === 'edit'
+                                ? <span className="chip chip-gold"><FileDiff size={11} />Not committed</span>
+                                : <span className="chip"><Terminal size={11} />Local only: never published</span>}
+                            <AddDel lines={file.lines} />
                         </div>
-                        <div className="flex-1 overflow-auto">
-                            <table className="w-full border-collapse" style={{ tableLayout: 'fixed' }}>
-                                <colgroup>
-                                    <col style={{ width: 32 }} />
-                                    <col style={{ width: '50%' }} />
-                                    <col style={{ width: 32 }} />
-                                    <col style={{ width: '50%' }} />
-                                </colgroup>
-                                <tbody>
-                                    {rows.map((row, i) => <SideBySideRow key={i} row={row} />)}
-                                </tbody>
-                            </table>
-                        </div>
+                        <div className="flex-1 overflow-auto bg-[#131a22]"><DiffTable lines={file.lines} /></div>
                     </>
                 ) : (
-                    !loading && <div className="flex items-center justify-center h-full text-[#546270] text-[11px]">Select a file</div>
+                    !loading && <Empty icon={FileDiff} title={total ? 'Pick a change' : 'Nothing to compare'} hint="Data edits not committed, commits not on GitHub yet, and local pipeline output" />
                 )}
             </div>
         </div>
@@ -1255,17 +1818,26 @@ function DataDiffModule() {
 // MODULE: Credentials
 // ═══════════════════════════════════════════════════════════════════════════════
 
+// Every key in .env, grouped by what uses it. Keys not listed here are still kept when saving
 const CREDENTIAL_FIELDS = [
-    { group: 'RetroAchievements', fields: [
+    { group: 'RetroAchievements', img: '/assets/icon-ra.png', uses: 'RA pipeline', fields: [
         { key: 'RA_USERNAME', label: 'Username',  type: 'text',     hint: 'Your RA username' },
-        { key: 'RA_API_KEY',  label: 'API Key',   type: 'password', hint: 'Settings → API Key on retroachievements.org' },
+        { key: 'RA_API_KEY',  label: 'API key',   type: 'password', hint: 'Settings → Keys on retroachievements.org' },
     ]},
-    { group: 'Steam', fields: [
+    { group: 'Steam', img: '/assets/icon-steam.png', uses: 'Steam pipeline', fields: [
         { key: 'STEAM_USER_ID', label: 'User ID',  type: 'text',     hint: '17-digit Steam ID (steamid.io)' },
-        { key: 'STEAM_API_KEY', label: 'API Key',  type: 'password', hint: 'steamcommunity.com/dev/apikey' },
+        { key: 'STEAM_API_KEY', label: 'API key',  type: 'password', hint: 'steamcommunity.com/dev/apikey' },
     ]},
-    { group: 'Xbox', fields: [
-        { key: 'XBOX_API_KEY', label: 'OpenXBL API Key', type: 'password', hint: 'xbl.io dashboard' },
+    { group: 'Xbox', img: '/assets/icon-xbox.png', uses: 'Xbox pipeline (OpenXBL)', fields: [
+        { key: 'XBOX_API_KEY', label: 'OpenXBL API key', type: 'password', hint: 'xbl.io dashboard' },
+        { key: 'XBOX_XUID',    label: 'XUID (optional)', type: 'text',     hint: 'Read from the account; only compared with this when set' },
+    ]},
+    { group: 'SteamGridDB', icon: ImageIcon, uses: 'Admin → RetroAchievements → Art', fields: [
+        { key: 'SGDB_API_KEY', label: 'API key', type: 'password', hint: 'steamgriddb.com → Preferences → API' },
+    ]},
+    { group: 'Scheduling', icon: Clock, uses: 'cron-job.org and Admin → Pipelines', fields: [
+        { key: 'GH_DISPATCH_TOKEN', label: 'GitHub token', type: 'password', hint: 'Starts and reads fetch-data.yml runs. cron-job.org sends the same token: change it in both jobs too' },
+        { key: 'CRON_JOB_API_KEY',  label: 'cron-job.org API key', type: 'password', hint: 'Manages the two jobs that start the data runs (every 30 min and midnight)' },
     ]},
 ];
 
@@ -1292,38 +1864,36 @@ function CredentialsModule() {
     };
 
     return (
-        <div className="flex flex-col h-full">
+        <div className="h-full overflow-y-auto">
             <SaveBar dirty={dirty} saving={saving} saved={saved} onSave={save} />
-            <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-6 anim-in">
-                {CREDENTIAL_FIELDS.map(({ group, fields }) => (
-                    <div key={group}>
-                        <SectionHeader color={group === 'Steam' ? '#66c0f4' : '#e5b143'}>{group}</SectionHeader>
-                        <div className="flex flex-col gap-3">
-                            {fields.map(({ key, label, type, hint }) => (
-                                <Field key={key} label={label}>
-                                    <div className="relative">
-                                        <input
-                                            className="input pr-8"
-                                            type={type === 'password' && !show[key] ? 'password' : 'text'}
-                                            value={values[key] ?? ''}
-                                            onChange={e => update(key, e.target.value)}
-                                            placeholder={hint}
-                                        />
-                                        {type === 'password' && (
-                                            <button onClick={() => toggleShow(key)}
-                                                className="absolute right-2 top-1/2 -translate-y-1/2 text-[#546270] hover:text-[#c6d4df] text-[10px]">
-                                                {show[key] ? 'hide' : 'show'}
-                                            </button>
-                                        )}
-                                    </div>
-                                </Field>
-                            ))}
-                        </div>
-                    </div>
-                ))}
-                <div className="text-[10px] text-[#546270] border border-[#2a475e] rounded-[3px] px-3 py-2">
-                    Writes to <code className="text-[#66c0f4]">.env</code> in the repo root. This file is gitignored and never deployed.
+            <div className="p-6 grid gap-4 max-w-[1100px] lg:grid-cols-2 items-start">
+                <div className="lg:col-span-2 flex items-center gap-2.5 px-3.5 py-2.5 rounded-[3px] border border-[#2a475e] bg-[#131a22] text-[12px] text-[#8f98a0]">
+                    <Lock size={14} className="text-[#57cbde] shrink-0" />
+                    <span>Saved to <code className="mono text-[#66c0f4]">.env</code> in the repo root: gitignored, never deployed. The live pipelines use the GitHub secrets instead.</span>
                 </div>
+                {CREDENTIAL_FIELDS.map(({ group, img, icon, uses, fields }) => (
+                    <Card key={group} img={img} icon={icon} title={group} note={<span className="hint">Used by {uses}</span>}>
+                        {fields.map(({ key, label, type, hint }) => (
+                            <Field key={key} label={label} hint={hint}>
+                                <div className="relative">
+                                    <input
+                                        className="input mono pr-9"
+                                        type={type === 'password' && !show[key] ? 'password' : 'text'}
+                                        value={values[key] ?? ''}
+                                        onChange={e => update(key, e.target.value)}
+                                        spellCheck={false}
+                                    />
+                                    {type === 'password' && (
+                                        <button onClick={() => toggleShow(key)} title={show[key] ? 'Hide' : 'Show'}
+                                            className="icon-btn absolute right-1 top-1/2 -translate-y-1/2 !w-7 !h-7">
+                                            {show[key] ? <EyeOff size={14} /> : <Eye size={14} />}
+                                        </button>
+                                    )}
+                                </div>
+                            </Field>
+                        ))}
+                    </Card>
+                ))}
             </div>
         </div>
     );
@@ -1381,35 +1951,32 @@ function IdleGamesModule() {
         }))))).then(lists => setGames(lists.flat().sort((a, b) => a.title.localeCompare(b.title))));
     }, []);
 
-    if (!data || !games) return <div className="p-6 text-[#546270] text-[11px]">Loading…</div>;
+    if (!data || !games) return <SkPage />;
     const marked = new Set(data.games);
     const toggle = id => update({ ...data, games: marked.has(id) ? data.games.filter(x => x !== id) : [...data.games, id] });
     const q = search.trim().toLowerCase();
-    const shown = q ? games.filter(g => g.title.toLowerCase().includes(q)).slice(0, 60) : games.filter(g => marked.has(g.id));
+    const byId = Object.fromEntries(games.map(g => [g.id, g]));
+    const found = q ? games.filter(g => g.title.toLowerCase().includes(q)).slice(0, 60) : [];
 
     return (
-        <div className="flex flex-col h-full">
+        <div className="h-full overflow-y-auto">
             <SaveBar dirty={dirty} saving={saving} saved={saved} onSave={save} />
-            <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-4 anim-in">
-                <div>
-                    <SectionHeader color="#66c0f4">Idle Games</SectionHeader>
-                    <div className="text-[11px] text-[#8f98a0]">Left running, so their playtime isn't play. Analytics hides them by default.</div>
-                </div>
-                <input className="input" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search RA and Steam games to mark" />
-                {!q && shown.length === 0 && <div className="text-[11px] text-[#546270]">No idle games marked.</div>}
-                <div key={q ? 'search' : 'marked'} className="flex flex-col gap-1 anim-fade">
-                    {shown.map(g => (
-                        <button key={g.id} onClick={() => toggle(g.id)}
-                            className={`flex items-center gap-2.5 px-2 py-1.5 rounded-[2px] text-left border ${marked.has(g.id) ? 'border-[#66c0f4]/50 bg-[#66c0f4]/10' : 'border-transparent hover:bg-[#202d39]'}`}>
-                            {g.icon ? <img src={g.icon} alt="" className="w-7 h-7 rounded-[2px] shrink-0" /> : <span className="w-7 h-7 shrink-0 bg-[#202d39] rounded-[2px]" />}
-                            <span className="flex-1 min-w-0">
-                                <span className="block text-[12px] text-[#c6d4df] truncate">{g.title}</span>
-                                <span className="block text-[10px] text-[#546270]">{g.consoleName}</span>
-                            </span>
-                            <span className={`text-[10px] ${marked.has(g.id) ? 'text-[#66c0f4]' : 'text-[#546270]'}`}>{marked.has(g.id) ? '✓ Idle' : '+ Mark'}</span>
-                        </button>
-                    ))}
-                </div>
+            <div className="p-6 grid gap-4 max-w-[1100px] lg:grid-cols-2 items-start">
+                <Card icon={Hourglass} title="Marked as idle" note={<span className="chip">{data.games.length}</span>}>
+                    <p className="text-[12px] text-[#8f98a0] -mt-1">Their playtime is left out of Analytics and the hub's Analytics card while <b className="text-[#c6d4df] font-medium">Hide idle</b> is on (the default).</p>
+                    <div className="flex flex-col -mx-4 -mb-4 border-t border-[#1f2f3d]">
+                        {data.games.length === 0 && <Empty icon={Hourglass} title="None marked" hint="Search for a game on the right" />}
+                        {data.games.map(id => <GameFlagRow key={id} g={byId[id] ?? { title: id, consoleName: '' }} on label="Idle" onClick={() => toggle(id)} />)}
+                    </div>
+                </Card>
+                <Card icon={Search} title="Mark a game" note={<span className="hint">RA and Steam: Xbox has no playtime</span>}>
+                    <SearchInput value={search} onChange={setSearch} placeholder="Search RA and Steam games" />
+                    <div key={q} className="flex flex-col -mx-4 -mb-4 border-t border-[#1f2f3d] anim-fade">
+                        {!q && <Empty icon={Search} title="Type a title" />}
+                        {q && found.length === 0 && <Empty icon={Search} title="No match" />}
+                        {found.map(g => <GameFlagRow key={g.id} g={g} on={marked.has(g.id)} label={marked.has(g.id) ? 'Idle' : 'Mark'} onClick={() => toggle(g.id)} />)}
+                    </div>
+                </Card>
             </div>
         </div>
     );
@@ -1424,15 +1991,17 @@ function IdleGamesModule() {
 
 const FARM_PER_HOUR = 15, FARM_MIN_UNLOCKS = 10;   // keep in step with analytics/utils.js and assets/playing.js
 
-const GameFlagRow = ({ g, on, label, onClick, extra }) => (
-    <button onClick={onClick}
-        className={`flex items-center gap-2.5 px-2 py-1.5 rounded-[2px] text-left border ${on ? 'border-[#66c0f4]/50 bg-[#66c0f4]/10' : 'border-transparent hover:bg-[#202d39]'}`}>
-        {g.icon ? <img src={g.icon} alt="" className="w-7 h-7 rounded-[2px] shrink-0 object-cover" /> : <span className="w-7 h-7 shrink-0 bg-[#202d39] rounded-[2px]" />}
-        <span className="flex-1 min-w-0">
-            <span className="block text-[12px] text-[#c6d4df] truncate">{g.title}</span>
-            <span className="block text-[10px] text-[#546270]">{g.consoleName}{extra && <> · {extra}</>}</span>
+// A game that can be flagged (idle, farm): tap toggles it; the right side says its state
+const GameFlagRow = ({ g, on, label, onClick, extra, tone = 'blue' }) => (
+    <button onClick={onClick} className={`lrow group ${on ? (tone === 'gold' ? '!border-l-[#e5b143]' : '!border-l-[#66c0f4]') : ''}`}>
+        {g.icon ? <img src={g.icon} alt="" className="lrow-i" /> : <span className="lrow-i" />}
+        <span className="lrow-b">
+            <span className="lrow-t">{g.title}</span>
+            <span className="lrow-s">{g.consoleName}{extra && <> · {extra}</>}</span>
         </span>
-        <span className={`text-[10px] shrink-0 ${on ? 'text-[#66c0f4]' : 'text-[#546270]'}`}>{label}</span>
+        <span className={`chip shrink-0 ${on ? (tone === 'gold' ? 'chip-gold' : 'chip-blue') : 'group-hover:!text-white'}`}>
+            {on ? <Check size={11} /> : <Plus size={11} />}{label}
+        </span>
     </button>
 );
 
@@ -1455,42 +2024,37 @@ function FarmGamesModule() {
         }))))).then(lists => setGames(lists.flat().sort((a, b) => a.title.localeCompare(b.title))));
     }, []);
 
-    if (!data || !games || !detected) return <div className="p-6 text-[#546270] text-[11px]">Loading…</div>;
+    if (!data || !games || !detected) return <SkPage />;
     const marked = new Set(data.farms), overruled = new Set(data.notFarms), auto = new Set(detected.map(g => g.id));
     const toggleList = (key, id) => update({ ...data, [key]: data[key].includes(id) ? data[key].filter(x => x !== id) : [...data[key], id] });
     const byId = Object.fromEntries(games.map(g => [g.id, g]));
     const q = search.trim().toLowerCase();
     const found = q ? games.filter(g => g.title.toLowerCase().includes(q) && !auto.has(g.id)).slice(0, 60) : [];
+    const farmCount = detected.length - detected.filter(g => overruled.has(g.id)).length + data.farms.length;
 
     return (
-        <div className="flex flex-col h-full">
-            <SaveBar dirty={dirty} saving={saving} saved={saved} onSave={save} />
-            <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-6 anim-in">
-                <div>
-                    <SectionHeader color="#66c0f4">Detected</SectionHeader>
-                    <div className="text-[11px] text-[#8f98a0] mb-2">Steam games with {FARM_MIN_UNLOCKS}+ unlocks earning more than {FARM_PER_HOUR} an hour. Tap one that isn't a farm.</div>
-                    <div className="flex flex-col gap-1">
+        <div className="h-full overflow-y-auto">
+            <SaveBar dirty={dirty} saving={saving} saved={saved} extra={<span className="chip"><Sprout size={11} />{farmCount} farms</span>} onSave={save} />
+            <div className="p-6 grid gap-4 max-w-[1100px] lg:grid-cols-2 items-start">
+                <Card icon={Sprout} title="Detected" note={<span className="chip mono">Steam · {FARM_MIN_UNLOCKS}+ unlocks · &gt;{FARM_PER_HOUR}/h</span>}>
+                    <p className="text-[12px] text-[#8f98a0] -mt-1">Found by the rule. Tap one that's a real game to keep it in the numbers.</p>
+                    <div className="flex flex-col -mx-4 -mb-4 border-t border-[#1f2f3d]">
+                        {detected.length === 0 && <Empty icon={Check} title="Nothing detected" />}
                         {detected.map(g => (
-                            <GameFlagRow key={g.id} g={g} extra={g.extra} on={!overruled.has(g.id)}
-                                label={overruled.has(g.id) ? 'Not a farm' : '✓ Farm'} onClick={() => toggleList('notFarms', g.id)} />
+                            <GameFlagRow key={g.id} g={g} extra={g.extra} on={!overruled.has(g.id)} tone="gold"
+                                label={overruled.has(g.id) ? 'Not a farm' : 'Farm'} onClick={() => toggleList('notFarms', g.id)} />
                         ))}
                     </div>
-                </div>
-                <div>
-                    <SectionHeader color="#66c0f4">Marked by hand</SectionHeader>
-                    <div className="flex flex-col gap-1 mb-3">
-                        {data.farms.length === 0 && <div className="text-[11px] text-[#546270]">None marked.</div>}
-                        {data.farms.map(id => (
-                            <GameFlagRow key={id} g={byId[id] ?? { title: id, consoleName: '' }} on label="✓ Farm" onClick={() => toggleList('farms', id)} />
-                        ))}
+                </Card>
+                <Card icon={Plus} title="Marked by hand" note={<span className="hint">Any platform</span>}>
+                    <SearchInput value={search} onChange={setSearch} placeholder="Search RA, Steam and Xbox games" />
+                    <div key={q} className="flex flex-col -mx-4 -mb-4 border-t border-[#1f2f3d] anim-fade">
+                        {!q && data.farms.length === 0 && <Empty icon={Sprout} title="None marked" hint="Search for a game the rule misses, like an easy 1,000G Xbox game" />}
+                        {!q && data.farms.map(id => <GameFlagRow key={id} g={byId[id] ?? { title: id, consoleName: '' }} on tone="gold" label="Farm" onClick={() => toggleList('farms', id)} />)}
+                        {q && found.length === 0 && <Empty icon={Search} title="No match" />}
+                        {found.map(g => <GameFlagRow key={g.id} g={g} on={marked.has(g.id)} tone="gold" label={marked.has(g.id) ? 'Farm' : 'Mark'} onClick={() => toggleList('farms', g.id)} />)}
                     </div>
-                    <input className="input" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search RA, Steam and Xbox games to mark" />
-                    <div key={q} className="flex flex-col gap-1 mt-2 anim-fade">
-                        {found.map(g => (
-                            <GameFlagRow key={g.id} g={g} on={marked.has(g.id)} label={marked.has(g.id) ? '✓ Farm' : '+ Mark'} onClick={() => toggleList('farms', g.id)} />
-                        ))}
-                    </div>
-                </div>
+                </Card>
             </div>
         </div>
     );
@@ -1591,7 +2155,7 @@ function RAArtModule() {
         setSaving(false); setDirty(false); setSaved(true);
     };
 
-    if (!art) return <div className="p-6 text-[#546270] text-[11px]">Loading…</div>;
+    if (!art) return <SkSplit side={320} />;
 
     const withArt = id => !!art.games[id];
     // art.marked: games worth picking art for, with why (marked by Claude from the data, or by hand here)
@@ -1628,118 +2192,124 @@ function RAArtModule() {
         const on = entry?.[kind]?.id === img.id;
         return (
             <div className="relative group">
-            <button onClick={() => choose(kind, img)} title={`${img.width}×${img.height}${img.style ? ` · ${img.style}` : ''}${img.author ? ` · by ${img.author}` : ''}${img.score ? ` · ${img.score} votes` : ''}`}
-                className={`relative rounded-[2px] overflow-hidden border-2 transition-colors ${on ? 'border-[#e5b143]' : 'border-transparent hover:border-[#66c0f4]'}`}
-                style={{ aspectRatio: wide ? '1920 / 620' : '460 / 215' }}>
-                <img src={img.thumb} alt="" loading="lazy" className="w-full h-full object-cover bg-[#101214]" />
-                {on && <span className="absolute top-1 right-1 text-[9px] font-bold bg-[#e5b143] text-[#101214] px-1 rounded-[2px]">PICKED</span>}
-                <span className="absolute bottom-1 left-1 text-[9px] text-white bg-black/60 px-1 rounded-[2px]">{img.width}×{img.height}</span>
-            </button>
-            {/* Full size: its own button so a tap on the image still picks it */}
-            <button onClick={() => setZoom({ img, kind })} title="View full size"
-                className="absolute bottom-1 right-1 w-6 h-6 flex items-center justify-center rounded-[2px] bg-black/70 text-white text-[12px] opacity-70 group-hover:opacity-100 hover:bg-[#66c0f4] hover:text-[#101214] transition">⤢</button>
+                <button onClick={() => choose(kind, img)} title={`${img.width}×${img.height}${img.style ? ` · ${img.style}` : ''}${img.author ? ` · by ${img.author}` : ''}${img.score ? ` · ${img.score} votes` : ''}`}
+                    className={`relative w-full rounded-[3px] overflow-hidden border-2 transition-colors ${on ? 'border-[#e5b143]' : 'border-transparent hover:border-[#66c0f4]'}`}
+                    style={{ aspectRatio: wide ? '1920 / 620' : '460 / 215' }}>
+                    <img src={img.thumb} alt="" loading="lazy" className="w-full h-full object-cover bg-[#101214]" />
+                    {on && <span className="absolute top-1.5 left-1.5 chip !h-[18px] !bg-[#e5b143] !text-[#101214] !border-[#e5b143] tag-up"><Check size={10} />Picked</span>}
+                    <span className="absolute bottom-1.5 left-1.5 text-[10px] text-white bg-black/65 px-1.5 rounded-[2px] tabular-nums">{img.width}×{img.height}</span>
+                </button>
+                {/* Full size: its own button so a tap on the image still picks it */}
+                <button onClick={() => setZoom({ img, kind })} title="View full size"
+                    className="absolute bottom-1.5 right-1.5 w-7 h-7 grid place-items-center rounded-[3px] bg-black/70 text-white opacity-0 group-hover:opacity-100 hover:bg-[#66c0f4] hover:text-[#101214] transition"><Maximize2 size={13} /></button>
             </div>
         );
     };
 
     return (
         <div className="flex h-full overflow-hidden">
+            <SaveBar dirty={dirty} saving={saving} saved={saved} onSave={save} />
             {/* Full-size view: click outside or Escape closes; Pick / Unpick from here too */}
             {zoom && (
                 <div className="fixed inset-0 z-50 bg-black/85 flex flex-col items-center justify-center gap-3 p-6 anim-backdrop" onClick={() => setZoom(null)}>
-                    <img src={zoom.img.url} alt="" className="max-w-full max-h-[80vh] object-contain rounded-[2px] shadow-2xl anim-pop" onClick={e => e.stopPropagation()} />
-                    <div className="flex items-center gap-3 text-[11px] text-[#c6d4df]" onClick={e => e.stopPropagation()}>
+                    <img src={zoom.img.url} alt="" className="max-w-full max-h-[80vh] object-contain rounded-[3px] shadow-2xl anim-pop" onClick={e => e.stopPropagation()} />
+                    <div className="flex items-center gap-3 text-[12px] text-[#c6d4df]" onClick={e => e.stopPropagation()}>
                         <span>{zoom.img.width}×{zoom.img.height}{zoom.img.style ? ` · ${zoom.img.style}` : ''}{zoom.img.author ? ` · by ${zoom.img.author}` : ''}</span>
-                        <button className="btn-primary" onClick={() => { choose(zoom.kind, zoom.img); setZoom(null); }}>{entry?.[zoom.kind]?.id === zoom.img.id ? 'Unpick' : `Pick as ${zoom.kind === 'grid' ? 'banner' : 'hero'}`}</button>
-                        <button className="btn-ghost" onClick={() => setZoom(null)}>Close</button>
+                        <button className="btn btn-primary btn-sm" onClick={() => { choose(zoom.kind, zoom.img); setZoom(null); }}><Check size={12} />{entry?.[zoom.kind]?.id === zoom.img.id ? 'Unpick' : `Pick as ${zoom.kind === 'grid' ? 'banner' : 'hero'}`}</button>
+                        <button className="btn btn-ghost btn-sm" onClick={() => setZoom(null)}><X size={12} />Close</button>
                     </div>
                 </div>
             )}
 
             {/* ── Left: RA games ── */}
-            <div className="w-[300px] shrink-0 border-r border-[#2a475e] flex flex-col overflow-hidden">
+            <div className="pane pane-side w-[320px] shrink-0">
                 <div className="p-3 flex flex-col gap-2 border-b border-[#2a475e]">
-                    <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search games…" className="input" />
-                    <div className="flex gap-1">
-                        {[['marked', 'Marked'], ['all', 'All'], ['with', 'With art'], ['without', 'Without']].map(([v, l]) => (
+                    <SearchInput value={search} onChange={setSearch} placeholder={`Search ${games.length} RA games`} />
+                    <div className="seg w-full">
+                        {[['marked', 'Marked'], ['all', 'All'], ['with', 'Art'], ['without', 'No art']].map(([v, l]) => (
                             <button key={v} onClick={() => setFilter(v)} title={v === 'marked' ? `${markedLeft} of ${counts.marked} still without art` : undefined}
-                                className={`text-[10px] px-2 py-[3px] rounded-[2px] border ${filter === v ? 'bg-[#2a475e] text-white border-[#66c0f4]' : 'text-[#8f98a0] border-[#323f4c] hover:text-white'}`}>{l} {v === 'marked' ? `${markedLeft}/${counts.marked}` : counts[v]}</button>
+                                className={`flex-1 justify-center !px-1.5 whitespace-nowrap ${filter === v ? 'on' : ''}`}>{l}<span className="text-[10px] opacity-60 tabular-nums">{v === 'marked' ? `${markedLeft}/${counts.marked}` : counts[v]}</span></button>
                         ))}
                     </div>
                 </div>
-                <div className="flex-1 overflow-y-auto">
+                <div key={filter} className="flex-1 overflow-y-auto anim-fade">
+                    {list.length === 0 && <Empty icon={ImageIcon} title="No games here" />}
                     {list.map(g => (
-                        <button key={g.id} onClick={() => setSelected(g)}
-                            className={`w-full flex items-center gap-2 px-3 py-1.5 text-left border-b border-[#1a2535] ${selected?.id === g.id ? 'bg-[#2a475e]' : 'hover:bg-[#1b2838]'}`}>
-                            <img src={g.icon} alt="" className="w-6 h-6 rounded-[2px] border border-[#101214] object-cover bg-black shrink-0" />
-                            <div className="flex flex-col min-w-0 flex-1">
-                                <span className="text-[11px] text-[#c6d4df] truncate">{g.title}</span>
-                                <span className="text-[9px] text-[#546270] truncate">{g.consoleName}{g.played ? '' : ' · want to play'}</span>
-                                {isMarked(g.id) && <span className="text-[9px] text-[#e5b143] truncate">● {marks[g.id].join(' · ')}</span>}
-                            </div>
-                            {withArt(g.id) && <img src={art.games[g.id].grid?.thumb || art.games[g.id].hero?.thumb} alt="" className="w-[46px] h-[22px] rounded-[2px] object-cover shrink-0" />}
+                        <button key={g.id} onClick={() => setSelected(g)} className={`lrow ${selected?.id === g.id ? 'on' : ''}`}>
+                            <img src={g.icon} alt="" className="lrow-i" />
+                            <span className="lrow-b">
+                                <span className="lrow-t">{g.title}</span>
+                                <span className="lrow-s">{g.consoleName}{g.played ? '' : ' · want to play'}</span>
+                                {isMarked(g.id) && <span className="lrow-s !text-[#e5b143]">{marks[g.id].join(' · ')}</span>}
+                            </span>
+                            {withArt(g.id) && <img src={art.games[g.id].grid?.thumb || art.games[g.id].hero?.thumb} alt="" className="w-[52px] h-[24px] rounded-[2px] object-cover shrink-0 border border-[#101214]" />}
                         </button>
                     ))}
                 </div>
-                <div className="px-3 py-2 border-t border-[#2a475e] flex items-center gap-2 text-[10px] text-[#546270]">
-                    <span className="flex-1">{counts.with} games with art</span>
-                    {markedDone > 0 && <button className="btn-ghost text-[10px]" onClick={unmarkDone} title="Remove the mark from every game that already has art (saves at once)">Unmark {markedDone} done</button>}
+                <div className="pane-f">
+                    <ImageIcon size={12} /><span className="flex-1">{counts.with} games with art</span>
+                    {markedDone > 0 && <button className="btn btn-ghost btn-sm" onClick={unmarkDone} title="Remove the mark from every game that already has art (saves at once)"><Check size={12} />Unmark {markedDone} done</button>}
                 </div>
             </div>
 
             {/* ── Right: the selected game ── */}
             {!selected ? (
-                <div className="flex-1 flex items-center justify-center text-[#546270] text-[12px]">Select an RA game</div>
+                <Empty icon={ImageIcon} title="Pick an RA game" hint="RA games only have a square icon and a screenshot. Pick a banner (rows, tiles, Playing) and optionally a hero (blurred behind sheet headers) from SteamGridDB." />
             ) : (
-                <div className="flex-1 flex flex-col overflow-hidden">
+                <div key={selected.id} className="pane flex-1 anim-fade">
                     <div className="flex items-center gap-3 px-4 py-3 border-b border-[#2a475e]">
-                        <img src={selected.icon} alt="" className="w-10 h-10 rounded-[2px] border border-[#101214] object-cover" />
+                        <img src={selected.icon} alt="" className="w-11 h-11 rounded-[2px] border border-[#101214] object-cover" />
                         <div className="flex flex-col min-w-0 flex-1">
-                            <a href={selected.url} target="_blank" rel="noreferrer" className="text-[13px] text-white font-medium truncate hover:text-[#66c0f4]">{selected.title}</a>
-                            <span className="text-[10px] text-[#546270]">{selected.consoleName}{entry?.sgdbName ? ` · SteamGridDB: ${entry.sgdbName}` : ''}</span>
+                            <a href={selected.url} target="_blank" rel="noreferrer" className="text-[15px] text-white font-semibold truncate hover:text-[#66c0f4]">{selected.title}</a>
+                            <span className="text-[12px] text-[#546270] truncate">{selected.consoleName}{entry?.sgdbName ? ` · SteamGridDB: ${entry.sgdbName}` : ''}</span>
                         </div>
                         {/* Current pick, at row size and as the header background */}
                         {entry?.grid && <img src={entry.grid.thumb} alt="" title="Banner (rows, tiles)" className="w-[120px] h-[56px] rounded-[2px] object-cover border border-[#e5b143]" />}
                         {entry?.hero && <img src={entry.hero.thumb} alt="" title="Hero (header background)" className="w-[150px] h-[48px] rounded-[2px] object-cover border border-[#e5b143]" />}
-                        <button className="btn-ghost text-[11px]" onClick={toggleMark} title={isMarked(selected.id) ? marks[selected.id].join(' · ') : 'Add to the Marked list'}>{isMarked(selected.id) ? 'Unmark' : 'Mark'}</button>
-                        {entry && <button className="btn-ghost btn-danger text-[11px]" onClick={() => setEntry({ grid: null, hero: null })}>Remove</button>}
-                        <span className="text-[#2a475e]">|</span>
-                        {saved && <span className="text-[10px] text-[#57cbde] anim-fade">Saved</span>}
-                        <button className="btn-primary" onClick={save} disabled={!dirty || saving}>{saving ? 'Saving…' : 'Save'}</button>
+                        <button className={`btn btn-sm ${isMarked(selected.id) ? 'chip-gold border' : 'btn-outline'}`} onClick={toggleMark} title={isMarked(selected.id) ? marks[selected.id].join(' · ') : 'Add to the Marked list'}>
+                            <Bookmark size={12} fill={isMarked(selected.id) ? 'currentColor' : 'none'} />{isMarked(selected.id) ? 'Marked' : 'Mark'}
+                        </button>
+                        {entry && <button className="icon-btn hover:!text-[#ff6b6b]" onClick={() => setEntry({ grid: null, hero: null })} title="Remove the picked art"><Trash2 size={14} /></button>}
                     </div>
 
                     <div className="flex flex-1 overflow-hidden">
                         {/* SteamGridDB search: the top match is loaded as a suggestion */}
-                        <div className="w-[260px] shrink-0 border-r border-[#2a475e] flex flex-col overflow-hidden">
-                            <form className="p-3 flex gap-2 border-b border-[#2a475e]" onSubmit={e => { e.preventDefault(); runSearch(query); }}>
-                                <input value={query} onChange={e => setQuery(e.target.value)} className="input flex-1" placeholder="SteamGridDB search…" />
-                                <button className="btn-primary" type="submit">Find</button>
+                        <div className="pane w-[270px] shrink-0 border-r border-[#2a475e] bg-[#182230]">
+                            <form className="pane-h" onSubmit={e => { e.preventDefault(); runSearch(query); }}>
+                                <SearchInput value={query} onChange={setQuery} placeholder="Search SteamGridDB" />
+                                <button className="btn btn-primary btn-sm !h-8" type="submit">Find</button>
                             </form>
                             <div className="flex-1 overflow-y-auto">
-                                {busy && !results && <div className="p-3 text-[11px] text-[#546270]">Searching…</div>}
-                                {results?.length === 0 && <div className="p-3 text-[11px] text-[#546270]">No match on SteamGridDB. Try a shorter or English title.</div>}
+                                {busy && !results && <SkRows n={5} icon={false} />}
+                                {results?.length === 0 && <Empty icon={Search} title="No match on SteamGridDB" hint="Try a shorter or English title" />}
                                 {results?.map(r => (
-                                    <button key={r.id} onClick={() => loadImages(r)}
-                                        className={`w-full text-left px-3 py-1.5 border-b border-[#1a2535] text-[11px] ${sgGame?.id === r.id ? 'bg-[#2a475e] text-white' : 'text-[#c6d4df] hover:bg-[#1b2838]'}`}>
-                                        {r.name}<span className="text-[#546270]">{r.year ? ` · ${r.year}` : ''}{r.verified ? ' · ✓' : ''}</span>
+                                    <button key={r.id} onClick={() => loadImages(r)} className={`lrow ${sgGame?.id === r.id ? 'on' : ''}`}>
+                                        <span className="lrow-b">
+                                            <span className="lrow-t">{r.name}</span>
+                                            {(r.year || r.verified) && <span className="lrow-s">{r.year}{r.year && r.verified ? ' · ' : ''}{r.verified ? 'verified' : ''}</span>}
+                                        </span>
+                                        {r.verified && <Check size={13} className="text-[#57cbde] shrink-0" />}
                                     </button>
                                 ))}
                             </div>
                         </div>
 
                         {/* Images of the chosen SteamGridDB game: tap to pick, tap again to clear */}
-                        <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-4">
-                            {error && <div className="text-[11px] text-[#ff6b6b]">{error}</div>}
+                        <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-5">
+                            {error && <div className="chip chip-red self-start">{error}</div>}
+                            {!sgGame && !error && !busy && <Empty icon={ImageIcon} title="Pick a SteamGridDB match" />}
                             {sgGame && (
                                 <>
                                     <div>
-                                        <div className="text-[10px] text-[#8f98a0] font-semibold uppercase tracking-wider mb-2">Banner · {grids ? grids.length : '…'} <span className="normal-case font-normal text-[#546270]">rows, tiles, Playing (thumbnail)</span></div>
-                                        {grids?.length === 0 && <div className="text-[11px] text-[#546270]">No banner-shaped grids for this game.</div>}
+                                        <SectionHeader color="#66c0f4" right={<span className="hint">rows, tiles, Playing</span>}>Banner · {grids ? grids.length : '…'}</SectionHeader>
+                                        {!grids && <div className="grid grid-cols-3 gap-2">{[0, 1, 2].map(i => <div key={i} className="shimmer" style={{ aspectRatio: '460 / 215' }} />)}</div>}
+                                        {grids?.length === 0 && <div className="hint">No banner-shaped grids for this game.</div>}
                                         <div className="grid grid-cols-3 gap-2">{grids?.map(img => <Thumb key={img.id} img={img} kind="grid" />)}</div>
                                     </div>
                                     <div>
-                                        <div className="text-[10px] text-[#8f98a0] font-semibold uppercase tracking-wider mb-2">Hero · {heroes ? heroes.length : '…'} <span className="normal-case font-normal text-[#546270]">blurred behind sheet headers (optional)</span></div>
-                                        {heroes?.length === 0 && <div className="text-[11px] text-[#546270]">No heroes for this game.</div>}
+                                        <SectionHeader color="#66c0f4" right={<span className="hint">blurred behind sheet headers · optional</span>}>Hero · {heroes ? heroes.length : '…'}</SectionHeader>
+                                        {!heroes && <div className="grid grid-cols-2 gap-2">{[0, 1].map(i => <div key={i} className="shimmer" style={{ aspectRatio: '1920 / 620' }} />)}</div>}
+                                        {heroes?.length === 0 && <div className="hint">No heroes for this game.</div>}
                                         <div className="grid grid-cols-2 gap-2">{heroes?.map(img => <Thumb key={img.id} img={img} kind="hero" wide />)}</div>
                                     </div>
                                 </>
@@ -1753,22 +2323,36 @@ function RAArtModule() {
 }
 
 const MODULES = [
-    { id: 'config',      label: 'Site Config',  icon: '⚙️',  group: 'General',          component: SiteConfigModule },
-    { id: 'credentials', label: 'Credentials',  icon: '🔑',  group: 'General',          component: CredentialsModule },
-    { id: 'pipelines',   label: 'Pipelines',    icon: '▶',   group: 'General',          component: PipelinesModule },
-    { id: 'data-diff',   label: 'Data Diff',    icon: '±',   group: 'General',          component: DataDiffModule },
-    { id: 'hub-series',  label: 'Shared Series', icon: '🗂️', group: 'General',          component: HubSeriesModule },
-    { id: 'idle-games',  label: 'Idle Games',   icon: '💤',  group: 'General',          component: IdleGamesModule },
-    { id: 'farm-games',  label: 'Farm Games',   icon: '🚜',  group: 'General',          component: FarmGamesModule },
-    { id: 'ra-series',           label: 'Series',         icon: '🗂️',  group: 'RetroAchievements', component: RASeriesModule },
-    { id: 'ra-art',              label: 'Art',            icon: '🖼️',  group: 'RetroAchievements', component: RAArtModule },
-    { id: 'steam-win-conditions', label: 'Win Conditions', icon: '🏆',  group: 'Steam',             component: SteamWinConditionsModule },
-    { id: 'steam-series',         label: 'Series',         icon: '🗂️',  group: 'Steam',             component: SteamSeriesModule },
-    { id: 'xbox-win-conditions',  label: 'Win Conditions', icon: '🏆',  group: 'Xbox',              component: XboxWinConditionsModule },
-    { id: 'xbox-series',          label: 'Series',         icon: '🗂️',  group: 'Xbox',              component: XboxSeriesModule },
+    { id: 'config',      label: 'Site Config',   icon: Settings,  group: 'General', component: SiteConfigModule,
+      desc: 'Name, motto, genre tags and which platforms and pages show', file: 'data/hub/config.json' },
+    { id: 'credentials', label: 'Credentials',   icon: KeyRound,  group: 'General', component: CredentialsModule,
+      desc: 'API keys the pipelines use', file: '.env' },
+    { id: 'pipelines',   label: 'Pipelines',     icon: Terminal,  group: 'General', component: PipelinesModule,
+      desc: 'The schedule, data runs on GitHub, live data pulls and local test runs' },
+    { id: 'data-diff',   label: 'Data Diff',     icon: FileDiff,  group: 'General', component: DataDiffModule,
+      desc: 'Data edits to commit, commits to push to GitHub, and local pipeline output' },
+    { id: 'hub-series',  label: 'Shared Series', icon: Layers,    group: 'Lists', component: HubSeriesModule,
+      desc: 'Series across platforms, for the hub and the Series page', file: 'data/hub/series.json' },
+    { id: 'idle-games',  label: 'Idle Games',    icon: Hourglass, group: 'Lists', component: IdleGamesModule,
+      desc: 'Games left running: Analytics hides their playtime', file: 'data/hub/idle-games.json' },
+    { id: 'farm-games',  label: 'Farm Games',    icon: Sprout,    group: 'Lists', component: FarmGamesModule,
+      desc: 'Achievement farms: detected on Steam, marked or overruled here', file: 'data/hub/farm-games.json' },
+    { id: 'ra-series',            label: 'Series',         icon: Layers,    group: 'RetroAchievements', component: RASeriesModule,
+      desc: 'Series on the RA profile', file: 'data/ra/series.json' },
+    { id: 'ra-art',               label: 'Art',            icon: ImageIcon, group: 'RetroAchievements', component: RAArtModule,
+      desc: 'Wide art from SteamGridDB for RA games', file: 'data/ra/art.json' },
+    { id: 'steam-win-conditions', label: 'Win Conditions', icon: Trophy,    group: 'Steam', component: SteamWinConditionsModule,
+      desc: 'The achievements that mean a Steam game is beaten', file: 'data/steam/win-conditions.json' },
+    { id: 'steam-series',         label: 'Series',         icon: Layers,    group: 'Steam', component: SteamSeriesModule,
+      desc: 'Series on the Steam profile', file: 'data/steam/series.json' },
+    { id: 'xbox-win-conditions',  label: 'Win Conditions', icon: Trophy,    group: 'Xbox', component: XboxWinConditionsModule,
+      desc: 'The achievements that mean an Xbox game is beaten', file: 'data/xbox/win-conditions.json' },
+    { id: 'xbox-series',          label: 'Series',         icon: Layers,    group: 'Xbox', component: XboxSeriesModule,
+      desc: 'Series on the Xbox profile', file: 'data/xbox/series.json' },
 ];
 
 const GROUPS = [...new Set(MODULES.map(m => m.group))];
+const GROUP_ICON = { RetroAchievements: '/assets/icon-ra.png', Steam: '/assets/icon-steam.png', Xbox: '/assets/icon-xbox.png' };
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // App shell
@@ -1782,6 +2366,7 @@ export default function App() {
     const [activeId,      setActiveId]      = useState(getIdFromHash);
     const [error,         setError]         = useState(null);
     const [serverStatus,  setServerStatus]  = useState('online'); // 'online' | 'stopping' | 'restarting' | 'offline'
+    const [slot,          setSlot]          = useState(null);    // header actions (Save), filled by the module
 
     useEffect(() => {
         const onHash = () => setActiveId(getIdFromHash());
@@ -1810,78 +2395,88 @@ export default function App() {
 
     useEffect(() => {
         fetch(`${API}/data?file=data/hub/config.json`)
-            .catch(() => setError('Could not connect to admin server. Is it running?'));
+            .catch(() => setError('Could not connect to the admin server. Is it running?'));
     }, []);
 
     const active = MODULES.find(m => m.id === activeId);
     const ActiveComponent = active?.component;
+    const ActiveIcon = active?.icon;
 
     if (error) return (
-        <div className="flex items-center justify-center h-screen text-center px-6">
-            <div className="anim-in">
-                <div className="text-[#ff6b6b] text-[14px] font-medium mb-2">Connection error</div>
-                <div className="text-[#8f98a0] text-[12px] mb-3">{error}</div>
-                <code className="text-[#66c0f4] text-[11px]">npm run admin</code>
-            </div>
+        <div className="flex items-center justify-center h-screen">
+            <Empty icon={Server} title="Connection error" hint={error}>
+                <code className="mono text-[#66c0f4] text-[12px] mt-2 px-2 py-1 bg-[#131a22] border border-[#2a475e] rounded-[3px]">npm run admin</code>
+            </Empty>
         </div>
     );
 
+    const status = {
+        online:     { color: '#52b043', text: 'Server online' },
+        stopping:   { color: '#e5b143', text: 'Stopping…' },
+        restarting: { color: '#e5b143', text: 'Restarting…' },
+        offline:    { color: '#ff6b6b', text: 'Server stopped' },
+    }[serverStatus];
+
     return (
         <div className="flex h-screen overflow-hidden">
-            {/* Sidebar nav */}
-            <div className="w-[200px] shrink-0 flex flex-col border-r border-[#2a475e] bg-[#1b2838]">
-                <div className="px-4 py-3 border-b border-[#2a475e]">
-                    <div className="text-[13px] text-white font-medium tracking-wide">Admin</div>
-                    <div className="text-[10px] text-[#546270]">gaming-hub</div>
+            {/* Sidebar */}
+            <aside className="w-[232px] shrink-0 flex flex-col border-r border-[#2a475e] bg-[#131a22]">
+                <div className="flex items-center gap-2.5 px-4 h-[60px] border-b border-[#2a475e] shrink-0">
+                    <img src="/assets/appicon.svg" alt="" className="w-8 h-8 rounded-[4px]" />
+                    <div className="flex flex-col leading-tight min-w-0">
+                        <span className="text-[14px] text-white font-semibold">Admin</span>
+                        <span className="text-[11px] text-[#546270]">gaming-hub</span>
+                    </div>
+                    <a href="https://yozuryu.github.io/gaming-hub/" target="_blank" rel="noreferrer" className="icon-btn ml-auto" title="Open the live site"><ExternalLink size={14} /></a>
                 </div>
-                <nav className="flex-1 overflow-y-auto py-2 min-h-0">
+                <nav className="flex-1 overflow-y-auto px-2 pb-3 min-h-0">
                     {GROUPS.map(group => (
-                        <div key={group} className="mb-2">
-                            <div className="px-3 py-1 text-[9px] text-[#546270] uppercase tracking-[0.1em] font-semibold">{group}</div>
-                            {MODULES.filter(m => m.group === group).map(m => (
-                                <button key={m.id} onClick={() => { location.hash = m.id; }}
-                                    className={`w-full flex items-center gap-2 px-3 py-1.5 text-left text-[11px] transition-colors rounded-[2px] mx-1 ${activeId === m.id ? 'bg-[#2a475e] text-white' : 'text-[#8f98a0] hover:text-white hover:bg-[#202d39]'}`}
-                                    style={{ width: 'calc(100% - 8px)' }}>
-                                    <span>{m.icon}</span>{m.label}
-                                </button>
-                            ))}
+                        <div key={group}>
+                            <div className="nav-g">{GROUP_ICON[group] && <img src={GROUP_ICON[group]} alt="" />}{group}</div>
+                            {MODULES.filter(m => m.group === group).map(m => {
+                                const Icon = m.icon;
+                                return (
+                                    <button key={m.id} data-nav onClick={() => { location.hash = m.id; }} className={`nav-i ${activeId === m.id ? 'on' : ''}`}>
+                                        <Icon size={15} />{m.label}
+                                    </button>
+                                );
+                            })}
                         </div>
                     ))}
                 </nav>
-                {/* Server controls */}
-                <div className="px-3 py-2 border-t border-[#2a475e] flex flex-col gap-1.5">
-                    {serverStatus === 'offline' && (
-                        <div className="text-[10px] text-[#ff6b6b] text-center py-1 anim-fade">Server stopped</div>
-                    )}
-                    {serverStatus === 'restarting' && (
-                        <div className="text-[10px] text-[#e5b143] text-center py-1 anim-fade">Restarting…</div>
-                    )}
-                    {(serverStatus === 'online' || serverStatus === 'stopping') && (
-                        <div className="flex gap-1.5 anim-fade">
-                            <button onClick={restartServer} disabled={serverStatus !== 'online'}
-                                className="flex-1 py-1 text-[10px] rounded-[2px] border border-[#2a475e] text-[#8f98a0] hover:text-white hover:border-[#66c0f4] transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
-                                Restart
-                            </button>
-                            <button onClick={stopServer} disabled={serverStatus !== 'online'}
-                                className="flex-1 py-1 text-[10px] rounded-[2px] border border-[#2a475e] text-[#8f98a0] hover:text-[#ff6b6b] hover:border-[#ff6b6b]/50 transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
-                                Stop
-                            </button>
-                        </div>
-                    )}
+                {/* Server status and controls */}
+                <div className="px-3 py-3 border-t border-[#2a475e] flex items-center gap-2">
+                    <span className="dot" style={{ background: status.color, boxShadow: `0 0 0 3px ${status.color}22` }} />
+                    <span className="flex-1 text-[11px] text-[#8f98a0] anim-fade" key={serverStatus}>{status.text}<span className="text-[#546270]"> · :3131</span></span>
+                    <button onClick={restartServer} disabled={serverStatus !== 'online'} className="icon-btn disabled:opacity-40" title="Restart the server (reloads its code)"><RotateCw size={14} /></button>
+                    <button onClick={stopServer} disabled={serverStatus !== 'online'} className="icon-btn hover:!text-[#ff6b6b] disabled:opacity-40" title="Stop the server"><Power size={14} /></button>
                 </div>
-            </div>
+            </aside>
 
-            {/* Main content */}
-            <div className="flex-1 flex flex-col overflow-hidden">
-                {/* Page title */}
-                <div key={`head-${activeId}`} className="px-5 py-3 border-b border-[#2a475e] shrink-0 anim-fade">
-                    <div className="text-[13px] text-white font-medium">{active?.icon} {active?.label}</div>
-                    <div className="text-[10px] text-[#546270]">{active?.group}</div>
-                </div>
-                <div key={activeId} className="flex-1 overflow-hidden anim-in">
-                    {ActiveComponent && <ActiveComponent />}
-                </div>
-            </div>
+            {/* Main: page header (icon, title, what it edits, Save), then the page */}
+            <main className="flex-1 flex flex-col overflow-hidden min-w-0">
+                <header className="flex items-center gap-3 px-5 h-[60px] border-b border-[#2a475e] shrink-0 bg-[#171a21]">
+                    <div key={`head-${activeId}`} className="flex items-center gap-3 min-w-0 flex-1 anim-fade">
+                        <span className="w-9 h-9 rounded-[3px] grid place-items-center bg-[#1b2838] border border-[#2a475e] text-[#66c0f4] shrink-0">{ActiveIcon && <ActiveIcon size={17} />}</span>
+                        <div className="flex flex-col min-w-0">
+                            <div className="flex items-center gap-2 min-w-0">
+                                <span className="text-[15px] text-white font-semibold truncate">{active?.label}</span>
+                                <span className="text-[11px] text-[#546270] shrink-0">{active?.group}</span>
+                            </div>
+                            <div className="flex items-center gap-2 min-w-0 text-[12px] text-[#8f98a0]">
+                                <span className="truncate">{active?.desc}</span>
+                                {active?.file && <span className="chip mono shrink-0 h-[18px] text-[10px]"><FileJson size={11} />{active.file}</span>}
+                            </div>
+                        </div>
+                    </div>
+                    <div ref={setSlot} className="flex items-center gap-3 shrink-0" />
+                </header>
+                <HeaderSlot.Provider value={slot}>
+                    <div key={activeId} className="flex-1 overflow-hidden anim-in">
+                        {ActiveComponent && <ActiveComponent />}
+                    </div>
+                </HeaderSlot.Provider>
+            </main>
         </div>
     );
 }

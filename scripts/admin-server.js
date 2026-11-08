@@ -43,7 +43,124 @@ const PIPELINES = {
     'xbox':             { script: 'scripts/xbox-pipeline.js',  args: [] },
     'xbox-full':        { script: 'scripts/xbox-pipeline.js',  args: ['--refresh-games'] },
     'xbox-debug':       { script: 'scripts/xbox-pipeline.js',  args: ['--debug'] },
+    // Local tools
+    'data-pull':        { script: 'scripts/data-pull.js',      args: [] },
+    'build-series':     { script: 'scripts/build-series.js',   args: [] },
 };
+
+// GitHub Actions: the real data runs (fetch-data.yml). Reads and dispatches with GH_DISPATCH_TOKEN from .env,
+// the same token cron-job.org uses. Inputs are checked against the workflow's own choices.
+const GH_REPO     = 'yozuryu/gaming-hub';
+const GH_WORKFLOW = 'fetch-data.yml';
+const GH_MODES     = ['incremental', 'midnight', 'full-refresh', 'watchlist-only'];
+const GH_PLATFORMS = ['all', 'ra', 'steam', 'xbox'];
+const envValue = (key) => {
+    const file = path.join(ROOT, '.env');
+    const env = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : '';
+    return env.match(new RegExp(`^${key}=(.*)$`, 'm'))?.[1]?.trim() || null;
+};
+async function gh(pathPart, init = {}) {
+    const token = envValue('GH_DISPATCH_TOKEN');
+    if (!token) throw new Error('GH_DISPATCH_TOKEN is not set (Credentials)');
+    const r = await fetch(`https://api.github.com/repos/${GH_REPO}${pathPart}`, {
+        ...init,
+        headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'gaming-hub-admin', ...(init.body ? { 'Content-Type': 'application/json' } : {}) },
+    });
+    if (!r.ok) throw new Error(`GitHub ${r.status}: ${(await r.text()).slice(0, 200)}`);
+    return r.status === 204 ? null : r.json();
+}
+
+// cron-job.org jobs (CRON_JOB_API_KEY). A job's request headers hold the GitHub token: they never leave
+// the server, only the dispatch inputs from its body do (cached, the body rarely changes)
+async function cron(pathPart, init = {}) {
+    const key = envValue('CRON_JOB_API_KEY');
+    if (!key) throw new Error('CRON_JOB_API_KEY is not set (Credentials)');
+    const r = await fetch(`https://api.cron-job.org${pathPart}`, {
+        ...init,
+        headers: { Authorization: `Bearer ${key}`, ...(init.body ? { 'Content-Type': 'application/json' } : {}) },
+    });
+    if (!r.ok) throw new Error(`cron-job.org ${r.status}: ${(await r.text()).slice(0, 200)}`);
+    return r.json();
+}
+const cronInputCache = new Map();
+async function cronInputs(id) {
+    if (!cronInputCache.has(id)) {
+        const { jobDetails } = await cron(`/jobs/${id}`);
+        const inputs = JSON.parse(jobDetails?.extendedData?.body || '{}').inputs ?? null;
+        cronInputCache.set(id, inputs);
+    }
+    return cronInputCache.get(id);
+}
+
+// Git for Data Diff's Commit / Push / Publish. Hand-edited data files are the ones tracked on main under data/
+const git = (args, timeout = 30000) => new Promise((resolve, reject) => {
+    require('child_process').execFile('git', args, { cwd: ROOT, timeout, maxBuffer: 1 << 26 }, (err, out, errOut) => err ? reject(new Error(errOut || err.message)) : resolve(out));
+});
+const isGeneratedPath = (f) => require('./data-paths.json').paths.some(p => f === p || f.startsWith(p + '/'));
+async function publishStatus(fetchFirst) {
+    let fetched = false;
+    if (fetchFirst) { try { await git(['fetch', '-q', 'origin', 'main'], 20000); fetched = true; } catch {} }
+    const branch = (await git(['rev-parse', '--abbrev-ref', 'HEAD'])).trim();
+    const [behind, ahead] = (await git(['rev-list', '--left-right', '--count', 'origin/main...HEAD'])).trim().split(/\s+/).map(Number);
+    // Not committed: hand-edited data files changed in the working tree, or new
+    const untracked = (await git(['ls-files', '--others', '--exclude-standard', 'data/'])).split('\n').filter(Boolean);
+    const changed = (await git(['diff', 'HEAD', '--name-only', '--', 'data/'])).split('\n').filter(Boolean);
+    const uncommitted = [...new Set([...changed, ...untracked])].filter(f => !isGeneratedPath(f));
+    // Ready to push: every commit GitHub's main doesn't have (data or not: a push sends them all)
+    const commits = [];
+    if (ahead) {
+        const log = await git(['log', '--name-only', '--format=@@%h%x09%H%x09%s%x09%an%x09%cI', 'origin/main..HEAD']);
+        for (const line of log.split('\n')) {
+            if (line.startsWith('@@')) { const [sha, full, subject, author, date] = line.slice(2).split('\t'); commits.push({ sha, full, subject, author, date, files: [] }); }
+            else if (line.trim() && commits.length) commits[commits.length - 1].files.push(line.trim());
+        }
+    }
+    return { branch, ahead, behind, fetched, uncommitted, commits };
+}
+const assertCanPush = (st) => {
+    if (st.branch !== 'main') throw new Error(`This checkout is on ${st.branch}, not main`);
+    if (st.behind > 0) throw new Error(`GitHub's main has ${st.behind} commit${st.behind > 1 ? 's' : ''} this checkout doesn't: pull first (git pull --rebase)`);
+};
+// Commits exactly the files the page showed: a file changed since then means compare again
+async function commitEdits(files, st) {
+    if (!files.length) throw new Error('Nothing to commit');
+    if ([...files].sort().join('\n') !== [...st.uncommitted].sort().join('\n')) throw new Error('The data files changed since you compared: compare again');
+    await git(['add', '--', ...files]);
+    const names = files.map(f => f.replace(/^data\//, '')).join(', ');
+    await git(['commit', '--only', '-m', `chore(data): update ${names} from the admin`, '--', ...files]);
+    return (await git(['rev-parse', '--short', 'HEAD'])).trim();
+}
+const gitError = (e) => e.message.trim().split('\n').slice(-3).join(' ');
+
+// Who commits and who pushes: the git identity in effect here, and for an SSH remote the key
+// `ssh -G` resolves and the GitHub account it signs in as (asked once, cached 10 min)
+let ghUserCache = null;
+async function gitIdentity() {
+    const cfg = async (key) => { try { const [scope, ...v] = (await git(['config', '--show-scope', '--get', key])).trim().split('\t'); return { value: v.join('\t'), scope }; } catch { return null; } };
+    const [name, email] = await Promise.all([cfg('user.name'), cfg('user.email')]);
+    const url = (await git(['remote', 'get-url', '--push', 'origin'])).trim();
+    const transport = /^https?:/.test(url) ? 'https' : /^(\/|\.|file:)/.test(url) ? 'local' : 'ssh';
+    const out = { name: name?.value ?? null, email: email?.value ?? null, scope: name?.scope ?? email?.scope ?? null, remote: url, transport };
+    const m = url.match(/^(?:ssh:\/\/)?(?:([^@/]+)@)?([^:/]+)[:/]/);
+    if (transport === 'ssh' && m) {
+        out.transport = 'ssh';
+        const host = m[2];
+        const sshExec = (args, timeout) => new Promise(r => require('child_process').execFile('ssh', args, { timeout }, (err, so, se) => r({ so: so || '', se: se || '' })));
+        const g = (await sshExec(['-G', host], 5000)).so;
+        out.sshHost = host;
+        out.hostname = g.match(/^hostname (.+)$/m)?.[1] ?? host;
+        out.keys = [...g.matchAll(/^identityfile (.+)$/gm)].map(x => x[1]);
+        if (!ghUserCache || Date.now() - ghUserCache.at > 600000) {
+            const t = await sshExec(['-T', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=8', `${m[1] || 'git'}@${host}`], 12000);
+            const who = (t.so + t.se).match(/Hi ([^!]+)!/)?.[1] ?? null;
+            ghUserCache = { at: Date.now(), user: who, error: who ? null : (t.se.trim().split('\n').pop() || 'No answer') };
+        }
+        out.githubUser = ghUserCache.user; out.sshError = ghUserCache.error;
+    } else if (transport === 'https') {
+        try { out.helper = (await git(['config', '--get', 'credential.helper'])).trim(); } catch { out.helper = null; }
+    }
+    return out;
+}
 
 // Active job state — only one pipeline runs at a time
 let activeJob = null; // { id, mode, proc, lines[], sseClients[], exitCode }
@@ -110,6 +227,16 @@ const server = http.createServer(async (req, res) => {
     if (pathname === '/' || pathname === '/index.html') {
         res.writeHead(200, { 'Content-Type': 'text/html' });
         res.end(fs.readFileSync(ADMIN_HTML, 'utf8'));
+        return;
+    }
+
+    // Site images for the admin UI (app icon, platform icons, favicon): /assets/<file>, images only
+    if (method === 'GET' && pathname.startsWith('/assets/')) {
+        const name = path.basename(pathname);
+        const type = { '.png': 'image/png', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.webp': 'image/webp' }[path.extname(name)];
+        const file = path.join(ROOT, 'assets', name);
+        if (type && fs.existsSync(file)) { res.writeHead(200, { 'Content-Type': type }); res.end(fs.readFileSync(file)); }
+        else { res.writeHead(404); res.end(); }
         return;
     }
 
@@ -272,12 +399,16 @@ const server = http.createServer(async (req, res) => {
         // data branch) diffs against the untouched copy that `npm run data:pull` keeps in .data-snapshot/
         const GENERATED = require('./data-paths.json').paths;
         const isGenerated = (file) => GENERATED.some(p => file === p || file.startsWith(p + '/'));
-        execFile('git', ['diff', '--', 'data/'], { cwd: ROOT }, (_err, diffOut) => {
+        // Against HEAD: not committed yet. Committed but not pushed shows as commits (/api/publish/status)
+        execFile('git', ['diff', 'HEAD', '--', 'data/'], { cwd: ROOT }, (_err, diffOut) => {
             execFile('git', ['diff', '--no-index', '--', '.data-snapshot/data', 'data'], { cwd: ROOT, maxBuffer: 1 << 28 }, (_errG, genOut) => {
             const generated = fs.existsSync(path.join(ROOT, '.data-snapshot'))
                 ? splitDiff(genOut || '').map(c => ({ ...c, file: c.file.replace(/^\.data-snapshot\//, '') })).filter(c => isGenerated(c.file))
                 : [];
-            const tracked = [...splitDiff(diffOut), ...generated];
+            const tracked = [
+                ...splitDiff(diffOut).filter(c => !isGenerated(c.file)).map(c => ({ ...c, kind: 'edit' })),
+                ...generated.map(c => ({ ...c, kind: 'local' })),
+            ];
 
             execFile('git', ['ls-files', '--others', '--exclude-standard', 'data/'], { cwd: ROOT }, (_err2, untrackedOut) => {
                 const untrackedFiles = untrackedOut.trim().split('\n').filter(Boolean);
@@ -292,9 +423,9 @@ const server = http.createServer(async (req, res) => {
                             `@@ -0,0 +1,${lines.length} @@`,
                             ...lines.map(l => `+${l}`),
                         ];
-                        return { file, lines: diffLines, isNew: true };
+                        return { file, lines: diffLines, isNew: true, kind: 'edit' };
                     } catch {
-                        return { file, lines: [], isNew: true };
+                        return { file, lines: [], isNew: true, kind: 'edit' };
                     }
                 });
 
@@ -324,6 +455,142 @@ const server = http.createServer(async (req, res) => {
         } catch (e) {
             send(res, 502, { error: e.message });
         }
+        return;
+    }
+
+    // GET /api/gh/runs — the latest data runs on GitHub Actions
+    if (method === 'GET' && pathname === '/api/gh/runs') {
+        try {
+            const d = await gh(`/actions/workflows/${GH_WORKFLOW}/runs?per_page=12`);
+            send(res, 200, (d.workflow_runs ?? []).map(r => ({
+                id: r.id, title: r.display_title, status: r.status, conclusion: r.conclusion, event: r.event,
+                created: r.created_at, started: r.run_started_at, updated: r.updated_at, url: r.html_url, attempt: r.run_attempt,
+            })));
+        } catch (e) { send(res, 502, { error: e.message }); }
+        return;
+    }
+
+    // POST /api/gh/dispatch { mode, platforms } — start a data run on GitHub Actions
+    if (method === 'POST' && pathname === '/api/gh/dispatch') {
+        let body = '';
+        req.on('data', chunk => { body += chunk; });
+        req.on('end', async () => {
+            try {
+                const { mode, platforms } = JSON.parse(body || '{}');
+                if (!GH_MODES.includes(mode) || !GH_PLATFORMS.includes(platforms)) { send(res, 400, { error: 'Invalid mode or platforms' }); return; }
+                await gh(`/actions/workflows/${GH_WORKFLOW}/dispatches`, { method: 'POST', body: JSON.stringify({ ref: 'main', inputs: { mode, platforms } }) });
+                send(res, 200, { ok: true });
+            } catch (e) { send(res, 502, { error: e.message }); }
+        });
+        return;
+    }
+
+    // GET /api/sync-state — which platforms the scheduled runs sync (XBOX_ENABLED in fetch-data.yml)
+    if (method === 'GET' && pathname === '/api/sync-state') {
+        try {
+            const yml = fs.readFileSync(path.join(ROOT, '.github/workflows', GH_WORKFLOW), 'utf8');
+            const xbox = yml.match(/XBOX_ENABLED:\s*'(\w+)'/)?.[1] === 'true';
+            send(res, 200, { ra: true, steam: true, xbox });
+        } catch (e) { send(res, 500, { error: e.message }); }
+        return;
+    }
+
+    // GET /api/publish/status — where this checkout stands against GitHub's main (fetches first):
+    // data files not committed, commits not pushed
+    if (method === 'GET' && pathname === '/api/publish/status') {
+        try { send(res, 200, await publishStatus(true)); } catch (e) { send(res, 500, { error: e.message }); }
+        return;
+    }
+
+    // GET /api/git/identity — who commits (git config) and who pushes (SSH key → GitHub account)
+    if (method === 'GET' && pathname === '/api/git/identity') {
+        try { send(res, 200, await gitIdentity()); } catch (e) { send(res, 500, { error: e.message }); }
+        return;
+    }
+
+    // GET /api/git/show?sha= — one commit that isn't on GitHub yet, as per-file diffs
+    if (method === 'GET' && pathname === '/api/git/show') {
+        try {
+            const sha = new URL(req.url, 'http://x').searchParams.get('sha') || '';
+            const st = await publishStatus(false);
+            const c = st.commits.find(x => x.sha === sha || x.full === sha);
+            if (!c) { send(res, 404, { error: 'Not a commit waiting to be pushed' }); return; }
+            const out = await git(['show', '--format=', c.full]);
+            const files = []; let cur = null;
+            for (const line of out.split('\n')) {
+                if (line.startsWith('diff --git ')) { cur = { file: line.match(/ b\/(.+)$/)?.[1] ?? line, lines: [] }; files.push(cur); }
+                else if (cur) cur.lines.push(line);
+            }
+            send(res, 200, { ...c, diffs: files });
+        } catch (e) { send(res, 500, { error: e.message }); }
+        return;
+    }
+
+    // POST /api/git/commit { files } · /api/git/push · /api/publish { files } (both) — hand-edited data
+    // files only (git commit --only leaves everything else alone); a push sends every commit main lacks
+    // and deploys the site. Pipeline output is never pushed from here: it lives on the data branch
+    if (method === 'POST' && ['/api/git/commit', '/api/git/push', '/api/publish'].includes(pathname)) {
+        let body = '';
+        req.on('data', chunk => { body += chunk; });
+        req.on('end', async () => {
+            try {
+                const { files = [] } = JSON.parse(body || '{}');
+                const st = await publishStatus(pathname !== '/api/git/commit');
+                if (pathname !== '/api/git/commit') assertCanPush(st);
+                let commit = null;
+                if (pathname !== '/api/git/push' && (files.length || pathname === '/api/git/commit')) commit = await commitEdits(files, st);
+                if (pathname === '/api/git/commit') { send(res, 200, { ok: true, commit }); return; }
+                const count = st.ahead + (commit ? 1 : 0);
+                if (!count) throw new Error('Nothing to push');
+                await git(['push', 'origin', 'HEAD:main'], 60000);
+                send(res, 200, { ok: true, commit, pushed: count });
+            } catch (e) { send(res, 409, { error: gitError(e) }); }
+        });
+        return;
+    }
+
+    // GET /api/cron/jobs — the cron-job.org jobs that start the data runs (100 API calls a day: no polling)
+    if (method === 'GET' && pathname === '/api/cron/jobs') {
+        try {
+            const { jobs = [] } = await cron('/jobs');
+            const out = await Promise.all(jobs.map(async j => ({
+                id: j.jobId, title: j.title, enabled: j.enabled, schedule: j.schedule,
+                lastStatus: j.lastStatus, lastExecution: j.lastExecution, lastDuration: j.lastDuration, nextExecution: j.nextExecution,
+                inputs: (await cronInputs(j.jobId).catch(() => null)),
+            })));
+            send(res, 200, out);
+        } catch (e) { send(res, 502, { error: e.message }); }
+        return;
+    }
+
+    // POST /api/cron/run { id } — cron-job.org has no "run now": send the job's own request to GitHub
+    if (method === 'POST' && pathname === '/api/cron/run') {
+        let body = '';
+        req.on('data', chunk => { body += chunk; });
+        req.on('end', async () => {
+            try {
+                const { id } = JSON.parse(body || '{}');
+                const inputs = await cronInputs(Number(id));
+                if (!inputs || !GH_MODES.includes(inputs.mode) || !GH_PLATFORMS.includes(inputs.platforms)) throw new Error("The job's request isn't a fetch-data.yml dispatch");
+                await gh(`/actions/workflows/${GH_WORKFLOW}/dispatches`, { method: 'POST', body: JSON.stringify({ ref: 'main', inputs }) });
+                send(res, 200, { ok: true, inputs });
+            } catch (e) { send(res, 502, { error: e.message }); }
+        });
+        return;
+    }
+
+    // POST /api/cron/enable { id, enabled } — pause or resume a job's schedule
+    if (method === 'POST' && pathname === '/api/cron/enable') {
+        let body = '';
+        req.on('data', chunk => { body += chunk; });
+        req.on('end', async () => {
+            try {
+                const { id, enabled } = JSON.parse(body || '{}');
+                if (!Number.isInteger(id) || typeof enabled !== 'boolean') { send(res, 400, { error: 'Invalid job or state' }); return; }
+                await cron(`/jobs/${id}`, { method: 'PATCH', body: JSON.stringify({ job: { enabled } }) });
+                send(res, 200, { ok: true });
+            } catch (e) { send(res, 502, { error: e.message }); }
+        });
         return;
     }
 
