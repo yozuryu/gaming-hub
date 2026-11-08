@@ -635,11 +635,25 @@
         ]
       },
       {
+        "id": "magvel",
+        "name": "Magvel",
+        "gameIds": [
+          2482
+        ]
+      },
+      {
         "id": "tellius",
         "name": "Tellius",
         "gameIds": [
           8231,
           38
+        ]
+      },
+      {
+        "id": "ylisse",
+        "name": "Ylisse",
+        "gameIds": [
+          4635
         ]
       },
       {
@@ -1458,6 +1472,13 @@
           11349,
           11390
         ]
+      },
+      {
+        "id": "unlimited-saga",
+        "name": "Unlimited Saga",
+        "gameIds": [
+          19075
+        ]
       }
     ]
   },
@@ -1665,14 +1686,20 @@
         ]
       },
       {
+        "id": "suikogaiden",
+        "name": "Suikogaiden",
+        "gameIds": [
+          14370,
+          14371
+        ]
+      },
+      {
         "id": "spinoff",
         "name": "Spinoff",
         "gameIds": [
           2622,
           9077,
-          3523,
-          14370,
-          14371
+          3523
         ]
       }
     ]
