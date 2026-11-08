@@ -156,6 +156,8 @@ button.grow:hover { background: #253444; }
 .gcount > span { color: #8f98a0; font-weight: 400; }
 .gbar { width: 100%; height: 4px; background: #101214; border-radius: 2px; overflow: hidden; }
 .gbar > i { display: block; height: 100%; min-width: 2px; border-radius: 2px; }
+/* 2px keeps a sliver of progress visible; nothing at all at 0 (and no full bar when the % couldn't be worked out) */
+.gbar > i[style*="width: 0%"], .gbar > i[style*="width:0%"], .gbar > i[style*="NaN"] { min-width: 0; width: 0 !important; }
 
 .gtiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .gtile {
@@ -792,3 +794,45 @@ img.art-icon {
 .cmp-empty { font-size: 12px; color: #546270; padding: 6px 0 2px; }
 .cmp-sk-tier { height: 52px; border-radius: 3px; }
 .cmp-sk-latest { height: 90px; border-radius: 3px; margin-bottom: 12px; }
+
+/* ── Sub-series (assets/subseries.js): list bar + rows under a series card, sheet strip + chips ────────────── */
+.subfold { display: flex; flex-direction: column; min-width: 0; }
+.subfold > .scard { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.subbar { display: flex; align-items: center; gap: 8px; width: 100%; padding: 7px 12px; background: #16202b; border: 1px solid #22344a; border-top: 0; border-radius: 0 0 3px 3px; text-align: left; font-size: 11.5px; color: #8f98a0; transition: background-color 150ms; }
+.subbar:hover { background: #1b2838; }
+.subbar b { color: #c6d4df; font-weight: 600; }
+.sub-chev { flex-shrink: 0; color: #546270; transition: transform .18s; }
+.subbar .sub-chev { margin-left: auto; }
+.subbar .sub-stack + .sub-chev { margin-left: 0; }
+.subfold.open .subbar .sub-chev, .sub-tog .sub-chev { transform: rotate(90deg); }
+.sub-stack { display: flex; margin-left: auto; min-width: 0; overflow: hidden; }
+.sub-stack > * { width: 26px; height: 26px; flex-shrink: 0; border-radius: 3px; object-fit: cover; border: 2px solid #1b2838; box-shadow: 0 0 0 1px #2a475e; background: #101214; }
+.sub-stack > * + * { margin-left: -9px; }
+.sub-stack.sm > * { width: 20px; height: 20px; border-color: #16202b; }
+.sub-stack.sm > * + * { margin-left: -7px; }
+.subtree { display: flex; flex-direction: column; gap: 4px; margin: 4px 0 0 14px; padding-left: 10px; border-left: 2px solid #22344a; }
+.subrow { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 48px; padding: 6px 10px 6px 8px; background: #1b2838; border: 1px solid #2a475e; border-left-width: 3px; border-radius: 3px; text-align: left; transition: background-color 150ms; }
+.subrow:hover { background: #202d39; }
+.subrow > img, .subrow-i { width: 34px; height: 34px; flex-shrink: 0; border-radius: 2px; border: 1px solid #101214; background: #101214; object-fit: cover; }
+.subrow-b { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.subrow-t { font-size: 13px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.subrow-s { display: flex; flex-wrap: wrap; gap: 0 7px; font-size: 11px; color: #8f98a0; }
+.subrow-e { width: 64px; flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+.subrow-e b { font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.substrip { display: flex; align-items: center; gap: 8px; width: 100%; padding: 9px 12px; background: #1b2838; border: 1px solid #2a475e; border-left: 3px solid #66c0f4; border-radius: 3px; text-align: left; transition: background-color 150ms; }
+.substrip:hover { background: #202d39; }
+.substrip .lb { font-size: 12px; color: #fff; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; }
+.substrip .n { font-size: 12px; color: #8f98a0; }
+.ssheet-sec.sub-tog { width: 100%; text-align: left; }
+.ssheet-sec.sub-tog .sub-chev { margin-left: auto; }
+.sub-chips { flex-shrink: 0; padding: 12px 16px 0; }
+/* Two-column list (desktop): an unfolded series spans both columns with its rows three across, and the next
+   card moves up beside the one it left (dense), instead of stretching its neighbour to the open tree's height */
+@media (min-width: 768px) {
+  .slist { grid-auto-flow: row dense; }
+  .slist > .subfold.open { grid-column: 1 / -1; }
+  .subfold.open .subtree { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+}
+.sub-chips .fchip { position: relative; overflow: hidden; }
+.sub-chip-bar { position: absolute; left: 0; bottom: 0; height: 2px; background: #e5b143; }
+.sub-chip-bar.some { min-width: 4px; }

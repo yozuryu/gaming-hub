@@ -475,7 +475,7 @@ const BarList = ({ rows, format, max: fixedMax, empty = 'Nothing in this period.
                         </div>
                         {r.sub && <div className="an-bsub">{r.sub}</div>}
                         <div className="an-btrack">
-                            <div style={{ width: `${Math.max(2, (r.value / max) * 100)}%`, background: r.color }} />
+                            <div style={{ width: r.value > 0 ? `${Math.max(2, (r.value / max) * 100)}%` : 0, background: r.color }} />
                         </div>
                     </div>
                 </div>

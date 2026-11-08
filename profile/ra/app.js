@@ -1,12 +1,13 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, Trophy, Crown, Lock, Unlock, AlertTriangle, Flame, Feather, Medal, ShieldOff, CircleDashed, X, Clock, Layers, List, LayoutGrid, Search, Check, Plus, User, Radio, ArrowDown, Hourglass } from 'lucide-react';
+import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, Trophy, Crown, Lock, Unlock, AlertTriangle, Flame, Feather, Medal, ShieldOff, CircleDashed, X, Clock, Layers, List, LayoutGrid, Search, Check, Plus, User, Radio, ArrowDown, Hourglass, ChevronLeft } from 'lucide-react';
 import { MEDIA_URL, SITE_URL, TILDE_TAG_COLORS } from './utils/constants.js';
 import { getMediaUrl, parseTitle, formatTimeAgo, raShot } from './utils/helpers.js';
 import { transformData } from './utils/transform.js';
 import { useSheet, useArtSrc, useAnimatedHeight, SheetHead, seriesTags } from '../../assets/sheet.js';
 import { useGameView, shortAgo } from '../../assets/game-view.js';
 import { CompletionsPanel } from '../../assets/completions.js';
+import { SubFold, SubStrip, SubChips, subsMatch } from '../../assets/subseries.js';
 import { TabBar, useSwipeTabs, scrollToTabs } from '../../assets/tabs.js';
 import { computeStreak, useSummaryOpen, ActivitySummary, yearOf, DayHead, RunCard, RunCount, UnlockRow, ActivitySkeleton } from '../../assets/activity-ui.js';
 import { TZ, toMs, dayKey, addDays, keyToDate, fmtDate, fmtClock, buildHeatmap } from '../../assets/time.js';
@@ -876,11 +877,26 @@ const GameCardSkeleton = () => (
 // ── Series ─────────────────────────────────────────────────────────────────────
 // Per series: its games (played ones are ALL_GAMES entries, so they open the achievement sheet),
 // counts, points and achievements, the latest unlock and the cover art. Styles in assets/ui.css.
+// Sub-series (admin, `groups`): each gets the same card from its own games, plus "Other" for games in none
 const buildSeries = (seriesData, gamesData, watchlistData, allGames, beatenIds = new Set()) => {
+  const cards = buildSeriesCards(seriesData.filter(s => s.showProgress), gamesData, watchlistData, allGames, beatenIds);
+  return cards.map(card => {
+    const groups = card.series.groups ?? [];
+    if (!groups.length) return card;
+    const inGroup = new Set(groups.flatMap(g => g.gameIds));
+    const rest = card.series.gameIds.filter(id => !inGroup.has(id));
+    const defs = [...groups, ...(rest.length ? [{ id: '_other', name: 'Other', gameIds: rest, other: true }] : [])]
+      .map(g => ({ ...g, gameIds: g.gameIds.filter(id => card.series.gameIds.includes(id)) })).filter(g => g.gameIds.length);
+    const subCards = buildSeriesCards(defs.map(g => ({ id: `${card.series.id}/${g.id}`, name: g.name, gameIds: g.gameIds })), gamesData, watchlistData, allGames, beatenIds);
+    return { ...card, subs: subCards.map((sc, i) => ({ ...sc, key: defs[i].id, groupId: defs[i].id, other: !!defs[i].other, name: defs[i].name,
+      icon: sc.coverIcon, px: true, done: sc.mastered, beaten: sc.beatenCount })) };
+  });
+};
+const buildSeriesCards = (seriesList, gamesData, watchlistData, allGames, beatenIds) => {
   const gameProgress = gamesData?.detailedGameProgress ?? {};
   const wlMap = Object.fromEntries((watchlistData?.results ?? []).map(g => [g.id, g]));
   const byId = new Map(allGames.map(g => [g.id, g]));
-  return seriesData.filter(s => s.showProgress).map(series => {
+  return seriesList.map(series => {
     let tracked = 0, started = 0, beatenCount = 0, mastered = 0, pointsEarned = 0, pointsTotal = 0, achEarned = 0, achTotal = 0;
     let latestAch = null;
     const games = series.gameIds.map(id => {
@@ -974,7 +990,7 @@ function SeriesProgressTab({ seriesData, gamesData, watchlistData, allGames, bea
   const nameKey = n => /^[a-zA-Z]/.test(n) ? '2' + n.toLowerCase() : /^\d/.test(n) ? '1' + n.toLowerCase() : '0' + n.toLowerCase();
   const shown = cards
     .filter(c => filter === 'all' || (filter === 'started' ? isStarted(c) : !isStarted(c)))
-    .filter(c => !search || fold(c.series.name).includes(fold(search)) || c.games.some(x => fold(x.title).includes(fold(search))))
+    .filter(c => !search || fold(c.series.name).includes(fold(search)) || subsMatch(c.subs, fold(search), fold) || c.games.some(x => fold(x.title).includes(fold(search))))
     .sort((a, b) => sort === 'progress' ? (b.pct - a.pct) || nameKey(a.series.name).localeCompare(nameKey(b.series.name))
       : sort === 'recent' ? (b.lastMs - a.lastMs) || nameKey(a.series.name).localeCompare(nameKey(b.series.name))
       : sort === 'games' ? (b.total - a.total) || nameKey(a.series.name).localeCompare(nameKey(b.series.name))
@@ -1004,7 +1020,7 @@ function SeriesProgressTab({ seriesData, gamesData, watchlistData, allGames, bea
         {shown.length === 0 && <div className="text-center py-10 text-[#546270] text-[12px]" style={{ gridColumn: '1 / -1' }}>No series match.</div>}
         {shown.map(c => {
           const icons = seriesIconOrder(c.games);
-          return (
+          const card = (
             <button key={c.series.id} onClick={() => onOpen(c)} className="scard" style={{ borderLeftColor: seriesEdge(c) }}>
               {c.coverWide
                 ? <div className="scard-art"><img src={c.coverWide.art} alt="" loading="lazy" style={{ imageRendering: 'auto' }} onError={e => { e.target.style.display = 'none'; }} /></div>
@@ -1032,6 +1048,7 @@ function SeriesProgressTab({ seriesData, gamesData, watchlistData, allGames, bea
               </div>
             </button>
           );
+          return c.subs ? <SubFold key={c.series.id} subs={c.subs} onOpen={i => onOpen({ ...c, __sub: i })}>{card}</SubFold> : card;
         })}
       </div>
     </div>
@@ -1063,7 +1080,11 @@ const MasteredRow = ({ x, award, onOpenGame }) => {
   );
 };
 
-const SeriesSheet = ({ card: c, awards, onOpenGame, onClose }) => {
+// card.__sub: the sub-series picked (index into card.subs) or null for All; kept on the page's card, so a game
+// opened from a sub-series comes back to it
+const SeriesSheet = ({ card: series, awards, onOpenGame, onClose, onScope }) => {
+  const sub = series.subs && series.__sub != null ? series.__sub : null;
+  const c = sub != null ? series.subs[sub] : series;
   const panelRef = useRef(null), rootRef = useRef(null), dragRef = useRef(null);
   useAnimatedHeight(panelRef);
   const close = useSheet({ panelRef, dragRef, rootRef, onClose });
@@ -1085,7 +1106,7 @@ const SeriesSheet = ({ card: c, awards, onOpenGame, onClose }) => {
           art={art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`${artIsWide ? '' : `px ${c.coverArtIsIcon ? 'art-icon' : ''}`} ${art.loaded ? 'loaded' : ''}`} /></div>}
           cover={c.coverIcon && <img src={c.coverIcon} alt="" className="relative shrink-0 w-16 h-16 rounded-[3px] border-2 border-white/20 bg-[#101214] shadow-[0_6px_18px_rgba(0,0,0,0.55)] object-cover px" />}
           title={c.series.name}
-          meta={[<span className="inline-flex items-center gap-1 text-[#66c0f4]"><Layers size={11} />{c.total} games</span>]}
+          meta={[sub != null && <button onClick={() => onScope(null)} className="inline-flex items-center gap-0.5 text-[#8f98a0] hover:text-[#c6d4df]"><ChevronLeft size={11} />{series.series.name}</button>, <span className="inline-flex items-center gap-1 text-[#66c0f4]"><Layers size={11} />{c.total} games</span>].filter(Boolean)}
           tags={seriesTags({ done: c.mastered, doneLabel: 'Mastered', beaten: c.beatenCount, started: c.started })}
           stats={[
             { value: c.achEarned.toLocaleString(), total: c.achTotal.toLocaleString(), label: 'Achievements', color: '#66c0f4' },
@@ -1094,8 +1115,10 @@ const SeriesSheet = ({ card: c, awards, onOpenGame, onClose }) => {
           bar={c.achTotal > 0 ? { pct: c.pct, color: c.pct >= 100 ? '#e5b143' : '#66c0f4' } : null}
           games={{ icon: <Layers size={11} />, items: c.games.map(x => ({ state: !x.hasAch ? 'noach' : x.isMastered ? 'done' : x.beaten ? 'beaten' : x.isStarted ? 'started' : 'none', pct: x.numAchs ? (x.awarded / x.numAchs) * 100 : 0 })) }}
         />
-        <div className="sheet-scroll overflow-y-auto overscroll-contain flex-1 min-h-0 px-4 pt-3 flex flex-col gap-2 anim-fade">
-          {c.latestAch && <div className="ssheet-sec" style={{ '--c': '#e5b143' }}>Latest unlock</div>}
+        {series.subs && <SubChips subs={series.subs} total={series.total} allPct={series.pct} active={sub} onPick={onScope} />}
+        <div key={sub ?? 'all'} className="sheet-scroll overflow-y-auto overscroll-contain flex-1 min-h-0 px-4 pt-3 flex flex-col gap-2 anim-fade">
+          {series.subs && sub == null && <SubStrip subs={series.subs} onPick={onScope} />}
+          {c.latestAch && <div className={`ssheet-sec ${series.subs && sub == null ? 'next' : ''}`} style={{ '--c': '#e5b143' }}>Latest unlock</div>}
           {c.latestAch && (
             <a href={`${SITE_URL}/achievement/${c.latestAch.achId}`} target="_blank" rel="noreferrer" className="grow compact" style={{ borderLeftColor: '#e5b143' }} title="Latest unlock in this series">
               <img src={`${MEDIA_URL}/Badge/${c.latestAch.badgeName}.png`} alt="" className="grow-icon px" />
@@ -1105,7 +1128,7 @@ const SeriesSheet = ({ card: c, awards, onOpenGame, onClose }) => {
               </div>
             </a>
           )}
-          <div className={`ssheet-sec ${c.latestAch ? 'next' : ''}`} style={{ '--c': '#66c0f4' }}>Games<span className="n">{c.total}</span></div>
+          <div className={`ssheet-sec ${c.latestAch || (series.subs && sub == null) ? 'next' : ''}`} style={{ '--c': '#66c0f4' }}>Games<span className="n">{c.total}</span></div>
           {groups.map(gr => (
             <React.Fragment key={gr.key}>
               <div className="ssheet-group">{gr.label}<span className="n">{gr.games.length}</span></div>
@@ -1989,7 +2012,7 @@ export default function App() {
         onBack={seriesBack ? () => { setSelectedGame(null); setSelectedSeries(seriesBack); setSeriesBack(null); } : null}
         backLabel={seriesBack?.series.name} />;
       })()}
-      {selectedSeries && <SeriesSheet card={selectedSeries} awards={masteryAwards} onClose={() => setSelectedSeries(null)}
+      {selectedSeries && <SeriesSheet card={selectedSeries} awards={masteryAwards} onClose={() => setSelectedSeries(null)} onScope={i => setSelectedSeries(s => s && { ...s, __sub: i })}
         onOpenGame={g => { setSeriesBack(selectedSeries); setSelectedSeries(null); openGame(g); }} />}
     </div>
   );

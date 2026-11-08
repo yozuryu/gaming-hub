@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { Layers, Search, X, Trophy, Star, ChevronLeft, Medal } from 'lucide-react';
 import { useSheet, useArtSrc, useAnimatedHeight, SheetHead, seriesTags } from '../assets/sheet.js';
 import { shortAgo } from '../assets/game-view.js';
+import { SubFold, SubStrip, SubChips, subsMatch } from '../assets/subseries.js';
 
 // ── Shared series (every platform) ─────────────────────────────────────────────
 // data/hub/series.json is made by hand in the admin (Shared Series); scripts/build-series.js turns
@@ -43,12 +44,13 @@ const withStatus = g => {
 };
 const doneLabel = { ra: 'Mastered', steam: 'Perfect', xbox: 'Completed' };
 
-const buildCards = data => (data?.series ?? []).map(s => {
-    const games = s.games.map(withStatus);
+// One card from a series' games; sub-series (groups) get the same card from their own games
+const buildCard = (s, games) => {
     const count = f => games.filter(f).length;
     const achEarned = games.reduce((n, x) => n + (x.hasAch ? x.unlocked : 0), 0);
     const achTotal = games.reduce((n, x) => n + x.total, 0);
-    const cover = games.find(x => x.key === s.cover) ?? games[0];
+    // Sub-series cover: the game with the most unlocks, else the first with achievements
+    const cover = games.find(x => x.key === s.cover) ?? [...games].filter(x => x.unlocked > 0).sort((a, b) => b.unlocked - a.unlocked)[0] ?? games.find(x => x.hasAch) ?? games[0];
     const byPlatform = Object.keys(PLATFORMS).map(p => [p, count(x => x.p === p)]).filter(([, n]) => n);
     return {
         id: s.id, name: s.name, games, cover, byPlatform, total: games.length,
@@ -57,6 +59,20 @@ const buildCards = data => (data?.series ?? []).map(s => {
         minutes: games.reduce((n, x) => n + (x.minutes ?? 0), 0),
         lastMs: Math.max(0, ...games.map(x => x.lastMs || 0)),
     };
+};
+const buildCards = data => (data?.series ?? []).map(s => {
+    const games = s.games.map(withStatus);
+    const card = buildCard(s, games);
+    if (!s.groups?.length) return card;
+    // Games in no sub-series go to a last "Other" one
+    const inGroup = new Set(s.groups.flatMap(g => g.keys));
+    const rest = games.filter(x => !inGroup.has(x.key));
+    const defs = [...s.groups, ...(rest.length ? [{ id: '_other', name: 'Other', keys: rest.map(x => x.key), other: true }] : [])];
+    card.subs = defs.map(g => {
+        const sub = buildCard({ id: `${s.id}/${g.id}`, name: g.name }, g.keys.map(k => games.find(x => x.key === k)).filter(Boolean));
+        return { ...sub, key: g.id, groupId: g.id, other: !!g.other, icon: sub.cover?.square ?? sub.cover?.icon, done: sub.done, started: sub.started, beaten: sub.beaten };
+    });
+    return card;
 }).filter(c => c.total >= 3);
 
 const edgeOf = c => c.tracked > 0 && c.done === c.tracked ? '#e5b143' : c.started || c.beaten || c.done ? '#66c0f4' : '#323f4c';
@@ -269,7 +285,11 @@ const GameSheet = ({ g, backLabel, onBack, onClose }) => {
     );
 };
 
-const SeriesSheet = ({ c, onClose, onOpenGame }) => {
+// series.__sub: the sub-series picked (index into series.subs) or null for All; the page keeps it on the
+// series it opened, so a game opened from a sub-series comes back to it
+const SeriesSheet = ({ c: series, onClose, onOpenGame, onScope }) => {
+    const sub = series.subs && series.__sub != null ? series.__sub : null;
+    const c = sub != null ? series.subs[sub] : series;
     const panelRef = useRef(null), rootRef = useRef(null), dragRef = useRef(null);
     const close = useSheet({ panelRef, dragRef, rootRef, onClose });
     useAnimatedHeight(panelRef);
@@ -292,7 +312,7 @@ const SeriesSheet = ({ c, onClose, onOpenGame }) => {
                     art={art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={`${c.cover?.p === 'ra' && !c.cover?.wide ? 'px' : ''} ${art.src === c.cover?.icon ? 'art-icon' : ''} ${art.loaded ? 'loaded' : ''}`} /></div>}
                     cover={<Cover g={c.cover} cls={c.cover?.p === 'steam' ? 'relative w-32 h-16 rounded-[2px] border border-[#101214] object-cover shrink-0 shadow-[0_6px_18px_rgba(0,0,0,0.55)]' : 'relative w-16 h-16 rounded-[3px] border-2 border-white/20 object-cover shrink-0 shadow-[0_6px_18px_rgba(0,0,0,0.55)]'} />}
                     title={c.name}
-                    meta={[<span className="inline-flex items-center gap-1 text-[#66c0f4]"><Layers size={11} />{c.total} games</span>, <PlatformSplit items={c.byPlatform} />]}
+                    meta={[sub != null && <button onClick={() => onScope(null)} className="inline-flex items-center gap-0.5 text-[#8f98a0] hover:text-[#c6d4df]"><ChevronLeft size={11} />{series.name}</button>, <span className="inline-flex items-center gap-1 text-[#66c0f4]"><Layers size={11} />{c.total} games</span>, <PlatformSplit items={c.byPlatform} />].filter(Boolean)}
                     tags={seriesTags({ done: c.done, doneLabel: 'Completed', beaten: c.beaten, started: c.started })}
                     stats={[
                         { value: c.achEarned.toLocaleString(), total: c.achTotal.toLocaleString(), label: 'Achievements', color: '#66c0f4' },
@@ -301,8 +321,10 @@ const SeriesSheet = ({ c, onClose, onOpenGame }) => {
                     bar={c.achTotal > 0 ? { pct: c.pct, color: c.pct >= 100 ? '#e5b143' : '#66c0f4' } : null}
                     games={{ icon: <Layers size={11} />, items: c.games.map(x => ({ state: !x.hasAch ? 'noach' : x.done ? 'done' : x.beatenOnly ? 'beaten' : x.started ? 'started' : 'none', pct: x.total ? (x.unlocked / x.total) * 100 : 0 })) }}
                 />
-                <div className="sheet-scroll overflow-y-auto overscroll-contain flex-1 min-h-0 px-4 pt-3 flex flex-col gap-2 anim-fade">
-                    {latest && <div className="ssheet-sec" style={{ '--c': '#e5b143' }}>Latest unlock</div>}
+                {series.subs && <SubChips subs={series.subs} total={series.total} allPct={series.pct} active={sub} onPick={onScope} />}
+                <div key={sub ?? 'all'} className="sheet-scroll overflow-y-auto overscroll-contain flex-1 min-h-0 px-4 pt-3 flex flex-col gap-2 anim-fade">
+                    {series.subs && sub == null && <SubStrip subs={series.subs} onPick={onScope} />}
+                    {latest && <div className={`ssheet-sec ${series.subs && sub == null ? 'next' : ''}`} style={{ '--c': '#e5b143' }}>Latest unlock</div>}
                     {latest && (
                         <button onClick={() => onOpenGame(latest)} className="grow compact" style={{ borderLeftColor: '#e5b143' }} title="Latest unlock in this series">
                             {latest.last.icon ? <img src={latest.p === 'xbox' ? xboxImg(latest.last.icon, 128) : latest.last.icon} alt="" className={`grow-icon ${latest.p === 'ra' ? 'px' : ''}`} onError={e => { e.target.style.visibility = 'hidden'; }} /> : <Cover g={latest} cls="grow-icon" />}
@@ -315,7 +337,7 @@ const SeriesSheet = ({ c, onClose, onOpenGame }) => {
                             </div>
                         </button>
                     )}
-                    <div className={`ssheet-sec ${latest ? 'next' : ''}`} style={{ '--c': '#66c0f4' }}>Games<span className="n">{c.total}</span></div>
+                    <div className={`ssheet-sec ${latest || (series.subs && sub == null) ? 'next' : ''}`} style={{ '--c': '#66c0f4' }}>Games<span className="n">{c.total}</span></div>
                     {groups.map(gr => (
                         <React.Fragment key={gr.key}>
                             <div className="ssheet-group">{gr.label}<span className="n">{gr.games.length}</span></div>
@@ -345,14 +367,17 @@ const App = () => {
     // ?open=<id> opens a series straight away (the hub links each card that way)
     useEffect(() => {
         const id = new URLSearchParams(location.search).get('open');
-        if (id && cards.length) setOpen(cards.find(c => c.id === id) ?? null);
+        if (!id || !cards.length) return;
+        const c = cards.find(c => c.id === id);
+        const sub = c?.subs?.findIndex(s => s.groupId === new URLSearchParams(location.search).get('sub'));
+        setOpen(c ? { ...c, __sub: sub >= 0 ? sub : null } : null);
     }, [cards]);
 
     const isStarted = c => c.achEarned > 0;
     const counts = { all: cards.length, started: cards.filter(isStarted).length, notstarted: cards.filter(c => !isStarted(c)).length };
     const shown = cards
         .filter(c => filter === 'all' || (filter === 'started' ? isStarted(c) : !isStarted(c)))
-        .filter(c => !search || fold(c.name).includes(fold(search)) || c.games.some(x => fold(x.title).includes(fold(search))))
+        .filter(c => !search || fold(c.name).includes(fold(search)) || subsMatch(c.subs, fold(search), fold) || c.games.some(x => fold(x.title).includes(fold(search))))
         .sort((a, b) => sort === 'progress' ? (b.pct - a.pct) || nameKey(a.name).localeCompare(nameKey(b.name))
             : sort === 'recent' ? (b.lastMs - a.lastMs) || nameKey(a.name).localeCompare(nameKey(b.name))
             : sort === 'games' ? (b.total - a.total) || nameKey(a.name).localeCompare(nameKey(b.name))
@@ -406,7 +431,9 @@ const App = () => {
                 ) : (
                     <div key={`${sort}-${filter}`} className="slist anim-in">
                         {shown.length === 0 && <div className="text-center py-10 text-[#546270] text-[12px]" style={{ gridColumn: '1 / -1' }}>{cards.length ? 'No series match.' : 'No series yet. Add them in the admin (Shared Series).'}</div>}
-                        {shown.map(c => <SeriesCard key={c.id} c={c} onOpen={setOpen} />)}
+                        {shown.map(c => c.subs
+                            ? <SubFold key={c.id} subs={c.subs} onOpen={i => setOpen({ ...c, __sub: i })}><SeriesCard c={c} onOpen={setOpen} /></SubFold>
+                            : <SeriesCard key={c.id} c={c} onOpen={setOpen} />)}
                     </div>
                 )}
             </main>
@@ -417,7 +444,7 @@ const App = () => {
                 <a href="../" className="ml-auto text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">← Back to hub</a>
             </footer>
 
-            {open && <SeriesSheet c={open} onClose={() => setOpen(null)} onOpenGame={g => { setGame({ g, from: open }); setOpen(null); }} />}
+            {open && <SeriesSheet c={open} onClose={() => setOpen(null)} onScope={i => setOpen(o => o && { ...o, __sub: i })} onOpenGame={g => { setGame({ g, from: open }); setOpen(null); }} />}
             {game && <GameSheet g={game.g} backLabel={game.from.name} onBack={() => { setOpen(game.from); setGame(null); }} onClose={() => setGame(null)} />}
         </div>
     );

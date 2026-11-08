@@ -132,7 +132,7 @@ import {
     Settings, KeyRound, Play, FileDiff, Layers, Hourglass, Sprout, Image as ImageIcon, Trophy, Save, RotateCw, Power,
     Search, X, Plus, Star, Eye, EyeOff, Lock, ExternalLink, ChevronLeft, Lightbulb, Inbox, Check, Terminal, RefreshCw,
     Download, Bug, ListPlus, FileJson, Clock, Github, Smartphone, Monitor, DownloadCloud, Pause, Loader2, XCircle, CheckCircle2, MinusCircle, Maximize2, Trash2, Pencil, Tag, Globe, LayoutGrid, Server, Square, CircleSlash, Bookmark,
-    UploadCloud, GitCommit, CalendarClock, AlertTriangle,
+    UploadCloud, GitCommit, CalendarClock, AlertTriangle, ChevronUp, ChevronDown, FolderTree, Wand2,
 } from 'lucide-react';
 
 const API       = 'http://localhost:3131/api';
@@ -528,6 +528,54 @@ const GameRow = ({ g, children, onClick, accent }) => {
     );
 };
 
+// Sub-series (`groups: [{ id, name, gameIds }]` on a series; the Series page and the RA Series tab show them).
+// Suggestions: other series whose games sit (80%+) inside this one, then words the titles share after the
+// series name, one level finer when the next real word splits them into arcs ("Trails in the Sky", "Trails of Cold Steel")
+const suggestSubs = (sel, gameMap, platformSeries) => {
+    const taken = new Set((sel.groups ?? []).flatMap(g => g.gameIds));
+    const free = sel.gameIds.filter(id => !taken.has(id));
+    const out = [], used = new Set();
+    const SKIP = /^(the|of|in|to|from|a|an)$/i;
+    const esc = t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    for (const ps of platformSeries) {
+        const inside = ps.gameIds.filter(id => free.includes(id) && !used.has(id));
+        // The same series on a platform ("Tales" in "Tales of") is not a sub-series of it
+        const a = ps.name.toLowerCase(), b = sel.name.toLowerCase();
+        if (a.startsWith(b) && a.length === b.length || b.startsWith(a) || inside.length < 2 || inside.length < ps.gameIds.length * 0.8 || inside.length > sel.gameIds.length * 0.7) continue;
+        inside.forEach(id => used.add(id));
+        out.push({ name: ps.name.replace(new RegExp(`^${esc(sel.name)}\\s*`, 'i'), '') || ps.name, gameIds: inside, why: `Series "${ps.name}"` });
+    }
+    const words = id => {
+        const t = (gameMap[id]?.title ?? '').replace(/~[^~]+~\s*/g, '');
+        const rest = t.toLowerCase().startsWith(sel.name.toLowerCase()) ? t.slice(sel.name.length) : t.replace(/^[^:]*:/, '');
+        const ws = rest.replace(/^[\s:\-–]+/, '').split(/\s+/).map(w => w.replace(/[^\p{L}]+$/u, '').replace(/\d+$/, '')).filter(Boolean);
+        while (ws.length > 1 && SKIP.test(ws[0])) ws.shift();   // "Tales of the Abyss" groups on "Abyss"
+        return ws;
+    };
+    // Keep adding words while every game shares the next one ("Cold" → "Cold Steel")
+    const extend = (ids, name, i) => { while (true) { const next = ids.map(id => words(id)[i]); if (next[0] && next.every(x => x?.toLowerCase() === next[0].toLowerCase()) && !SKIP.test(next[0])) { name = [...name, next[0]]; i++; } else return [name, i]; } };
+    const byKey = {};
+    for (const id of free.filter(id => !used.has(id))) { const w = words(id)[0]; if (w) (byKey[w.toLowerCase()] ??= { w, ids: [] }).ids.push(id); }
+    // A numbered entry with its ports and subsets ("Final Fantasy IV") isn't a sub-series: skip Roman numerals
+    // (except X, a sub-series name in its own right) and title groups under 3 games
+    const NUMERAL = /^(?!x$)[ivxlc]+$/i;
+    for (const { w, ids } of Object.values(byKey)) {
+        if (ids.length < 3 || NUMERAL.test(w)) continue;
+        const [name, i] = extend(ids, [w], 1);
+        const arcs = {};
+        for (const id of ids) {
+            const ws = words(id).slice(i); let k = 0; while (ws[k] && SKIP.test(ws[k])) k++;
+            if (ws[k]) (arcs[ws[k].toLowerCase()] ??= { pre: [...name, ...ws.slice(0, k + 1)], at: i + k + 1, ids: [] }).ids.push(id);
+        }
+        const big = Object.values(arcs).filter(a => a.ids.length >= 2);
+        if (big.length >= 2) { for (const a of big) if (a.ids.length >= 3 || big.every(b => b.ids.length >= 2)) out.push({ name: extend(a.ids, a.pre, a.at)[0].join(' '), gameIds: a.ids, why: 'Same words in the title' }); continue; }
+        const label = name.join(' ');
+        if (label.toLowerCase() === sel.name.toLowerCase()) continue;
+        out.push({ name: label.length <= 2 ? `${sel.name} ${label}` : label, gameIds: ids, why: 'Same words in the title' });
+    }
+    return out.sort((a, b) => b.gameIds.length - a.gameIds.length);
+};
+
 function SeriesModule({ cfg }) {
     const [allGames,        setAllGames]        = useState([]);
     const [series,          setSeries]          = useState(null);
@@ -542,6 +590,14 @@ function SeriesModule({ cfg }) {
     const [showSuggestions,  setShowSuggestions]  = useState(false);
     const [showUnassigned,   setShowUnassigned]   = useState(false);
     const [unassignedSearch, setUnassignedSearch] = useState('');
+    const [picked,  setPicked]  = useState(() => new Set());   // games ticked to move between sub-series
+    const [editing, setEditing] = useState(null);              // sub-series whose name is being edited
+    const [subSug,  setSubSug]  = useState(false);
+    const [suggestFrom, setSuggestFrom] = useState([]);        // shared series: the RA series, as "ra:<id>"
+    useEffect(() => {
+        if (cfg.subSuggestFrom) apiData(cfg.subSuggestFrom.file).then(d => setSuggestFrom((Array.isArray(d) ? d : []).map(x => ({ ...x, gameIds: x.gameIds.map(cfg.subSuggestFrom.id) })))).catch(() => {});
+    }, []);
+    useEffect(() => { setPicked(new Set()); setSubSug(false); setEditing(null); }, [selectedId]);
 
     useEffect(() => {
         Promise.all([
@@ -589,10 +645,17 @@ function SeriesModule({ cfg }) {
     };
 
     const removeGame = (gameId) => {
-        update(series.map(s => s.id === selectedId ? { ...s, gameIds: s.gameIds.filter(id => id !== gameId) } : s));
+        update(series.map(s => s.id === selectedId ? { ...s, gameIds: s.gameIds.filter(id => id !== gameId), ...(s.groups ? { groups: s.groups.map(g => ({ ...g, gameIds: g.gameIds.filter(id => id !== gameId) })) } : {}) } : s));
     };
 
     const gameMap = Object.fromEntries(allGames.map(g => [g.id, g]));
+    const groups = selected?.groups ?? [];
+    // An empty list is stored as no `groups` at all
+    const setGroups = fn => update(series.map(s => { if (s.id !== selectedId) return s; const { groups: g0, ...rest } = s; const g = fn(g0 ?? []); return g.length ? { ...rest, groups: g } : rest; }));
+    const moveTo = (ids, gid) => setGroups(gs => gs.map(g => ({ ...g, gameIds: [...g.gameIds.filter(x => !ids.includes(x)), ...(g.id === gid ? ids : [])] })));
+    const addGroup = (name = 'New sub-series', ids = []) => { const id = Date.now().toString(36) + Math.random().toString(36).slice(2, 5); setGroups(gs => [...gs.map(g => ({ ...g, gameIds: g.gameIds.filter(x => !ids.includes(x)) })), { id, name, gameIds: ids }]); return id; };
+    const moveGroup = (gid, d) => setGroups(gs => { const i = gs.findIndex(g => g.id === gid), j = i + d; if (j < 0 || j >= gs.length) return gs; const n = [...gs]; [n[i], n[j]] = [n[j], n[i]]; return n; });
+    const togglePick = id => setPicked(p => { const n = new Set(p); n.has(id) ? n.delete(id) : n.add(id); return n; });
 
     const filteredList = (series || []).filter(s =>
         !listSearch || s.name.toLowerCase().includes(listSearch.toLowerCase())
@@ -663,6 +726,7 @@ function SeriesModule({ cfg }) {
                                 className={`lrow !py-2 ${isSel ? 'on' : ''}`}>
                                 <span className="lrow-t flex-1">{s.name}</span>
                                 {s.showProgress && <Star size={11} className="text-[#e5b143] shrink-0" fill="currentColor" aria-label="Shows progress" />}
+                                {s.groups?.length > 0 && <FolderTree size={11} className="text-[#66c0f4]/70 shrink-0" aria-label={`${s.groups.length} sub-series`} />}
                                 <span className={`text-[11px] tabular-nums shrink-0 min-w-[16px] text-right ${short(s.gameIds.length) ? 'text-[#ff6b6b]' : 'text-[#546270]'}`}
                                     title={short(s.gameIds.length) ? `Shown on the site from ${cfg.minGames} games` : undefined}>{s.gameIds.length}</span>
                             </button>
@@ -758,7 +822,92 @@ function SeriesModule({ cfg }) {
                         </div>
 
                         <div className="flex flex-1 overflow-hidden">
-                            {/* Assigned games */}
+                            {/* Assigned games: in their sub-series where the site shows them (shared, RA), else one list */}
+                            {cfg.subSeries ? (
+                            <div className="pane flex-1 border-r border-[#2a475e]">
+                                <div className="sub-h">
+                                    {picked.size > 0 ? <>
+                                        <span className="text-[#66c0f4] normal-case tracking-normal">{picked.size} selected</span>
+                                        <select className="input !h-7 !w-[170px] !text-[12px] normal-case tracking-normal font-normal" value="" onChange={e => { const v = e.target.value; const ids = [...picked]; if (v === '__new') { setEditing(addGroup('New sub-series', ids)); } else moveTo(ids, v || null); setPicked(new Set()); }}>
+                                            <option value="" disabled>Move to…</option>
+                                            {groups.map(g => <option key={g.id} value={g.id}>{g.name}</option>)}
+                                            <option value="">No sub-series</option>
+                                            <option value="__new">+ New sub-series</option>
+                                        </select>
+                                        <button className="btn btn-sm btn-outline normal-case tracking-normal" onClick={() => setPicked(new Set())}>Clear</button>
+                                        <span className="flex-1" />
+                                    </> : <>
+                                        <span className="flex-1 whitespace-nowrap">{selected.gameIds.length} games{groups.length > 0 && <span className="normal-case tracking-normal font-normal text-[#546270]"> · {groups.length} sub</span>}</span>
+                                        <button className={`btn btn-sm normal-case tracking-normal ${subSug ? 'bg-[#e5b143] text-[#101214]' : 'btn-outline'}`} onClick={() => setSubSug(v => !v)}><Wand2 size={12} />Suggest</button>
+                                        <button className="btn btn-sm btn-outline normal-case tracking-normal" onClick={() => setEditing(addGroup())}><Plus size={12} />Sub-series</button>
+                                    </>}
+                                    <SearchInput value={gameSearch} onChange={setGameSearch} placeholder="Filter" className="!w-[110px] normal-case tracking-normal font-normal" />
+                                </div>
+                                <div className="flex-1 overflow-y-auto">
+                                    {subSug && (() => {
+                                        const sug = suggestSubs(selected, gameMap, cfg.subSuggestFrom ? suggestFrom : series);
+                                        return (
+                                            <div className="p-3 flex flex-col gap-2 border-b border-[#2a475e] bg-[#182230] anim-fade">
+                                                <div className="flex items-center gap-2 text-[12px]"><Wand2 size={13} className="text-[#e5b143]" /><span className="text-white font-semibold flex-1">Suggested sub-series · {sug.length}</span>
+                                                    {sug.length > 0 && <button className="btn btn-sm btn-primary" onClick={() => { sug.forEach(x => addGroup(x.name, x.gameIds)); setSubSug(false); }}><Check size={12} />Add all</button>}</div>
+                                                {sug.length === 0 && <span className="text-[12px] text-[#546270]">Nothing to suggest: every game is in a sub-series, or no names repeat.</span>}
+                                                {sug.map(x => (
+                                                    <div key={x.name} className="card flex items-center gap-2 px-3 py-2">
+                                                        <span className="flex -space-x-1.5 shrink-0">{x.gameIds.slice(0, 4).map(id => <img key={id} src={gameMap[id]?.icon} alt="" className="w-6 h-6 rounded-[2px] object-cover border border-[#101214] bg-black" />)}</span>
+                                                        <span className="flex flex-col min-w-0 flex-1"><span className="text-[12px] text-white truncate">{x.name} <span className="text-[#546270]">· {x.gameIds.length} games</span></span><span className="text-[11px] text-[#8f98a0] truncate">{x.why} · {x.gameIds.slice(0, 3).map(id => gameMap[id]?.title).join(', ')}{x.gameIds.length > 3 ? '…' : ''}</span></span>
+                                                        <button className="btn btn-sm btn-outline shrink-0" onClick={() => addGroup(x.name, x.gameIds)}><Plus size={12} />Add</button>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        );
+                                    })()}
+                                    {selected.gameIds.length === 0 && <Empty icon={Plus} title="No games yet" hint="Add games from the panel on the right" />}
+                                    {[...groups.map(g => ({ ...g, real: true })), { id: '', name: groups.length ? 'No sub-series' : null, gameIds: selected.gameIds.filter(id => !groups.some(g => g.gameIds.includes(id))) }].map((gr, gi) => {
+                                        const rows = gr.gameIds.map(id => gameMap[id]).filter(g => g && (!gameSearch || g.title.toLowerCase().includes(gameSearch.toLowerCase())));
+                                        if (!gr.real && !rows.length && groups.length) return null;
+                                        return (
+                                            <div key={gr.id || 'none'}>
+                                                {gr.name && (
+                                                    <div className="flex items-center gap-1.5 px-3 h-9 bg-[#131a22] border-b border-[#2a475e] group">
+                                                        <FolderTree size={13} className={gr.real ? 'text-[#66c0f4]' : 'text-[#546270]'} />
+                                                        {editing === gr.id
+                                                            ? <input autoFocus className="input !h-7 !text-[12px] !w-[220px]" defaultValue={gr.name} onFocus={e => e.target.select()} onBlur={e => { const v = e.target.value.trim(); setGroups(gs => gs.map(g => g.id === gr.id ? { ...g, name: v || g.name } : g)); setEditing(null); }} onKeyDown={e => { if (e.key === 'Enter') e.target.blur(); if (e.key === 'Escape') setEditing(null); }} />
+                                                            : <span className={`text-[12px] font-semibold ${gr.real ? 'text-white' : 'text-[#8f98a0]'}`} onDoubleClick={() => gr.real && setEditing(gr.id)}>{gr.name}</span>}
+                                                        <span className="text-[11px] text-[#546270] tabular-nums">{gr.gameIds.length}</span>
+                                                        <span className="flex-1" />
+                                                        {gr.real && <>
+                                                            <button className="icon-btn !w-7 !h-7" title="Move up" disabled={gi === 0} onClick={() => moveGroup(gr.id, -1)}><ChevronUp size={14} /></button>
+                                                            <button className="icon-btn !w-7 !h-7" title="Move down" disabled={gi === groups.length - 1} onClick={() => moveGroup(gr.id, 1)}><ChevronDown size={14} /></button>
+                                                            <button className="icon-btn !w-7 !h-7" title="Rename" onClick={() => setEditing(gr.id)}><Pencil size={13} /></button>
+                                                            <button className="icon-btn !w-7 !h-7 hover:!text-[#ff6b6b]" title="Remove the sub-series (its games stay in the series)" onClick={() => setGroups(gs => gs.filter(g => g.id !== gr.id))}><Trash2 size={13} /></button>
+                                                        </>}
+                                                    </div>
+                                                )}
+                                                {gr.real && !rows.length && <div className="px-4 py-3 text-[12px] text-[#546270] border-b border-[#1e2a35]">No games yet: select games below and move them here</div>}
+                                                {rows.map(g => {
+                                                    const isCover = g.id === selected.coverGameId;
+                                                    return (
+                                                        <div key={g.id} className={`flex items-center ${picked.has(g.id) ? 'bg-[rgba(102,192,244,0.08)]' : ''}`}>
+                                                            <input type="checkbox" className="ml-3 shrink-0 accent-[#66c0f4]" checked={picked.has(g.id)} onChange={() => togglePick(g.id)} aria-label={`Select ${g.title}`} />
+                                                            <div className="flex-1 min-w-0">
+                                                                <GameRow g={g}>
+                                                                    <button title={isCover ? 'Cover game (click to unset)' : 'Use as cover'}
+                                                                        onClick={() => update(series.map(s => s.id === selectedId ? { ...s, coverGameId: isCover ? null : g.id } : s))}
+                                                                        className={`icon-btn !w-7 !h-7 ${isCover ? '!text-[#e5b143]' : 'opacity-0 group-hover:opacity-100 hover:!text-[#e5b143]'}`}>
+                                                                        <Star size={14} fill={isCover ? 'currentColor' : 'none'} />
+                                                                    </button>
+                                                                    <button className="icon-btn !w-7 !h-7 opacity-0 group-hover:opacity-100 hover:!text-[#ff6b6b]" title="Remove from the series" onClick={() => removeGame(g.id)}><X size={14} /></button>
+                                                                </GameRow>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                            ) : (
                             <div className="pane flex-1 border-r border-[#2a475e]">
                                 <div className="sub-h">
                                     <span className="flex-1">In this series · {selected.gameIds.length}</span>
@@ -781,6 +930,7 @@ function SeriesModule({ cfg }) {
                                     })}
                                 </div>
                             </div>
+                            )}
 
                             {/* Add games panel */}
                             <div className="pane w-[320px] shrink-0 bg-[#182230]">
@@ -1942,7 +2092,7 @@ function CredentialsModule() {
 // Games are normalised to { id, title, icon, url, consoleName, fromWatchlist }
 const SERIES_CONFIGS = {
     ra: {
-        file: 'data/ra/series.json',
+        file: 'data/ra/series.json', subSeries: true,
         loadGames: () => apiGet(`${API}/games/ra`).then(gs => gs.map(g => ({ ...g, icon: `${RA_MEDIA}${g.imageIcon}`, url: `${RA_SITE}/game/${g.id}` }))),
     },
     steam: {
@@ -1961,7 +2111,8 @@ const SERIES_CONFIGS = {
 // Shared series: one list of every platform's games, ids prefixed with the platform ("ra:2688")
 const PLATFORM_LABEL = { ra: 'RA', steam: 'Steam', xbox: 'Xbox' };
 SERIES_CONFIGS.hub = {
-    file: 'data/hub/series.json', minGames: 3,
+    file: 'data/hub/series.json', minGames: 3, subSeries: true,
+    subSuggestFrom: { file: 'data/ra/series.json', id: id => `ra:${id}` },
     loadGames: () => Promise.all(['ra', 'steam', 'xbox'].map(p => SERIES_CONFIGS[p].loadGames().catch(() => []).then(gs => gs.map(g => ({
         ...g, id: `${p}:${g.id}`, consoleName: g.consoleName ? `${PLATFORM_LABEL[p]} · ${g.consoleName}` : PLATFORM_LABEL[p],
     }))))).then(lists => lists.flat().sort((a, b) => a.title.localeCompare(b.title))),

@@ -128,7 +128,10 @@ const out = {
         // game that has achievements (nothing played yet), else the first game
         const mostUnlocked = games.filter(g => g.unlocked > 0).sort((a, b) => b.unlocked - a.unlocked)[0];
         const cover = s.coverGameId ?? mostUnlocked?.key ?? games.find(g => g.total > 0)?.key ?? s.gameIds[0] ?? null;
-        return { id: s.id, name: s.name, cover, games };
+        // Sub-series (admin): only games that made it into `games`, empty ones dropped
+        const known = new Set(games.map(g => g.key));
+        const groups = (s.groups ?? []).map(g => ({ id: g.id, name: g.name, keys: g.gameIds.filter(k => known.has(k)) })).filter(g => g.keys.length);
+        return { id: s.id, name: s.name, cover, games, ...(groups.length ? { groups } : {}) };
     }),
 };
 const file = path.join(ROOT, 'data/hub/series-games.json');

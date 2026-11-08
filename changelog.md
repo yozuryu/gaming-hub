@@ -2,7 +2,7 @@
 
 ## v26.11.08
 
-Profiles: new Completions and Game awards; Analytics: Most days, Binged and Comebacks lists, idle games can be hidden, farms can be marked by hand; the admin gets a new look
+Profiles: new Completions and Game awards; series get sub-series; Analytics: Most days, Binged and Comebacks lists, idle games can be hidden, farms can be marked by hand; the admin gets a new look
 
 ### RetroAchievements
 
@@ -13,6 +13,12 @@ Profiles: new Completions and Game awards; Analytics: Most days, Binged and Come
   - A **list** view, switched in the section header and remembered: one row per game with its name, console, tier and date. Before, the name and date were only in a hover tooltip, so a phone never showed them.
   - Tapping a game opens its achievement sheet.
   - Two rows folded. Show all opens a box that scrolls; with 9 awards everything fits, so there's no button.
+- **Final Fantasy** series (RA and shared) loses four games that were only sold under the Final Fantasy name in the US: Final Fantasy Adventure (Seiken Densetsu 1) moves to **Seiken Densetsu**, Final Fantasy Legend II and III (SaGa 2 and 3) to **SaGa**'s Original next to their remakes, and Final Fantasy Chronicles: Chrono Trigger to **Chrono**
+- **Harvest Moon / Rune Factory** series (RA and shared): the twelve Harvest Moon games just added to the want-to-play list; split into Harvest Moon / Story of Seasons and Rune Factory, Innocent Life in Other
+- **Shin Megami Tensei** series (RA and shared): the eight games it was missing: Nocturne, IV, IV: Apocalypse, Strange Journey and its Redux, the PS1 Shin Megami Tensei and II, and Raidou Kuzunoha vs. the Soulless Army. Strange Journey and If... are spin-offs (Atlus calls Strange Journey one); Soul Hackers 2 is the fifth Devil Summoner game
+- **Summon Night** series: Summon Night 2 and 3, EX-These and Granthese, just added to the want-to-play list
+- **Metal Gear** series: the seven games the shared series had and RA's didn't (Metal Gear, Ghost Babel, Integral, VR Missions, MGS2 Substance, MGS3 Subsistence, The Twin Snakes). Every other RA series matches its shared one
+- **Sub-series** on the Series tab, the same as the Series page (see Hub), set on 20 series: .hack (IMOQ, G.U.), Crash Bandicoot, Digimon, Final Fantasy, Fire Emblem (Archanea, Valentia, Jugdral, Elibe, Tellius, Fates), Harvest Moon / Rune Factory, Kingdom Hearts, Mega Man, Metal Gear, Phantasy Star (Mainline, Online), Pokémon (Mainline, Mystery Dungeon, Ranger, Spinoff), Rayman (Mainline, Raving Rabbids), Resident Evil, SaGa (Original, Romancing SaGa, SaGa Frontier), Shin Megami Tensei, Shining (Shining Force, Shining Soul), Suikoden, Summon Night (Mainline, Swordcraft Story, Spinoff), Tales and The Legend of Heroes. The same names everywhere: **Mainline** for the main line (Classic for Mega Man, where every line is a main one), **Spinoff** for the spin-offs that aren't a named line of their own. A sub-series needs 2+ of the games (Mainline may hold one); the rest show as Other. Series that are one numbered line plus ports (Dragon Quest, Ys, Breath of Fire, Tetris, Zelda) have none
 
 ### Steam
 
@@ -26,6 +32,14 @@ Profiles: new Completions and Game awards; Analytics: Most days, Binged and Come
 
 ### Hub
 
+- New shared series **.hack**: the eight RA games and .hack//G.U. Last Recode on Steam
+- **Sub-series** on the Series page, set on 13 shared series: .hack (IMOQ, G.U.), Mega Man (Classic, Mega Man X, Zero / ZX, Battle Network, Star Force, Legends), The Legend of Heroes (Gagharv, Liberl, Crossbell, Erebonia), Final Fantasy (Mainline, Crystal Chronicles, Tactics, Dissidia, FF7 Universe, Spinoff), Resident Evil (Mainline, Gun Survivor, Chronicles, Outbreak, Revelations, Spinoff), Tales of, Kingdom Hearts (Mainline, Spinoff), Shin Megami Tensei (Mainline, Persona, Devil Summoner, Devil Survivor, Digital Devil Saga, Spinoff), Metal Gear (Mainline, Acid, Spinoff), Crash Bandicoot (Mainline, Party Game), Digimon (Digimon World, Digimon Story, Rumble Arena, Spinoff), FromSoftware (Armored Core, Souls) and Harvest Moon / Rune Factory (Harvest Moon / Story of Seasons, Rune Factory):
+  - In the list, a series with sub-series gets a bar under its card: the count and their icons stacked. It's folded by default; tapped, it opens one row per sub-series (cover, games, started / completed / beaten, %, bar). On desktop an open series takes the full width with its rows three across, and the next card moves up beside the one it left.
+  - Tapping a row opens the series sheet on that sub-series: the header, Latest unlock and games cover only those games, with a link back to the whole series.
+  - In the sheet, a chip row under the header: All, then each sub-series with its game count and a thin gold bar along its bottom edge showing its achievement %. The picked chip scrolls into view.
+  - On All, a Sub-series strip (same look as the list bar) above Latest unlock opens the rows; each row opens its chip.
+  - Search finds sub-series names ("Zero" finds Mega Man). `?open=<series>&sub=<sub-series id>` opens one directly.
+  - Games in no sub-series are grouped as Other.
 - Playing, Series and the Analytics strip can be switched off in the admin (Site Config → Hub sections), like the Activity feed and Completions strip already could
 
 ### Analytics
@@ -36,8 +50,13 @@ Profiles: new Completions and Game awards; Analytics: Most days, Binged and Come
 - **Hide idle** next to Hide farms, on by default: games marked as idle in the admin (left running, so their playtime isn't play) are left out of every number. Poring Clicker is the first one. The hub's Analytics strip leaves them out too
 - One **Hide** chip instead of two: it opens a checklist with Achievement farms and Idle games, both ticked by default. Each option shows its count and names its first 3 games, then "+N more". The names are ordered by playtime in the selected period, then unlocks, so the games that would move the numbers most come first. The names were only in a tooltip before, so a phone couldn't see them. The chip counts the games hidden right now
 
+### Structure
+
+- A progress bar at 0% is empty everywhere now. The shared bar (game rows, series cards, sub-series, lists) kept a 2px sliver even at 0, so an untouched game looked barely started; it keeps the sliver only for real progress under 1%. Analytics' bar charts do the same for a 0 value
+
 ### Admin
 
+- **Sub-series** in the Shared Series and RA Series editors: the series' games are listed in their sub-series, each with a header to rename, reorder or remove it (its games stay in the series), and No sub-series last. Tick games and **Move to…** a sub-series, none, or a new one made from them. **Suggest** proposes sub-series to add one by one or all at once: series that sit almost entirely inside this one (RA's Mega Man X inside Mega Man; for shared series, the RA series), then words the titles share after the series name, split by arc ("Trails in the Sky", "Trails of Cold Steel"). Steam and Xbox series don't show sub-series on the site yet, so their editor stays as it was
 - New **Idle Games** page (General): search RA and Steam games and mark the ones left running; saved to `data/hub/idle-games.json`
 - New **Farm Games** page (General): the Steam games the farm rule detects (unlocks, hours and rate per hour), each can be marked as not a farm, and any RA, Steam or Xbox game can be marked as a farm by hand; saved to `data/hub/farm-games.json`. Analytics' Hide farms, the hub's Analytics strip and Playing follow it. 8-Bit Bayonetta, Hell Girls and WayOut (21–51 unlocks an hour) are marked as not farms: they're real games the rule caught
 - **New look**, same palette and sharp corners as the site:
