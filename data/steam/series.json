@@ -70,7 +70,30 @@
       2515020
     ],
     "showProgress": true,
-    "coverGameId": 595520
+    "coverGameId": 595520,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          239120,
+          312750,
+          346830,
+          377840,
+          359870,
+          595520,
+          292120,
+          2515020
+        ]
+      },
+      {
+        "id": "spinoff",
+        "name": "Spinoff",
+        "gameIds": [
+          340170
+        ]
+      }
+    ]
   },
   {
     "id": "staadb2ad2",
@@ -106,7 +129,33 @@
       774651
     ],
     "showProgress": true,
-    "coverGameId": 388800
+    "coverGameId": 388800,
+    "groups": [
+      {
+        "id": "azure-striker",
+        "name": "Azure Striker Gunvolt",
+        "gameIds": [
+          388800,
+          1065180
+        ]
+      },
+      {
+        "id": "luminous-avenger",
+        "name": "Luminous Avenger iX",
+        "gameIds": [
+          1085180,
+          1733880
+        ]
+      },
+      {
+        "id": "mighty",
+        "name": "Mighty Gunvolt",
+        "gameIds": [
+          394600,
+          774651
+        ]
+      }
+    ]
   },
   {
     "id": "staacf7a85",
@@ -165,7 +214,27 @@
       415480
     ],
     "showProgress": true,
-    "coverGameId": 282900
+    "coverGameId": 282900,
+    "groups": [
+      {
+        "id": "rebirth",
+        "name": "Re;Birth",
+        "gameIds": [
+          282900,
+          351710,
+          353270
+        ]
+      },
+      {
+        "id": "spinoff",
+        "name": "Spinoff",
+        "gameIds": [
+          387340,
+          1037590,
+          415480
+        ]
+      }
+    ]
   },
   {
     "id": "staadb2ad5",
@@ -178,7 +247,25 @@
       322290
     ],
     "showProgress": true,
-    "coverGameId": 427700
+    "coverGameId": 427700,
+    "groups": [
+      {
+        "id": "xanadu",
+        "name": "Xanadu",
+        "gameIds": [
+          587260,
+          312560
+        ]
+      },
+      {
+        "id": "zwei",
+        "name": "Zwei",
+        "gameIds": [
+          427680,
+          427700
+        ]
+      }
+    ]
   },
   {
     "id": "staacf7a79",
@@ -219,7 +306,36 @@
       390340
     ],
     "showProgress": true,
-    "coverGameId": 222480
+    "coverGameId": 222480,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          304240,
+          339340,
+          254700,
+          21690,
+          221040,
+          418370
+        ]
+      },
+      {
+        "id": "revelations",
+        "name": "Revelations",
+        "gameIds": [
+          222480,
+          287290
+        ]
+      },
+      {
+        "id": "spinoff",
+        "name": "Spinoff",
+        "gameIds": [
+          390340
+        ]
+      }
+    ]
   },
   {
     "id": "staacf7a7d",
@@ -316,7 +432,36 @@
       1668520
     ],
     "showProgress": true,
-    "coverGameId": 748490
+    "coverGameId": 748490,
+    "groups": [
+      {
+        "id": "liberl",
+        "name": "Liberl",
+        "gameIds": [
+          251150,
+          251290,
+          436670
+        ]
+      },
+      {
+        "id": "crossbell",
+        "name": "Crossbell",
+        "gameIds": [
+          1668510,
+          1668520
+        ]
+      },
+      {
+        "id": "erebonia",
+        "name": "Erebonia",
+        "gameIds": [
+          538680,
+          748490,
+          991270,
+          1198090
+        ]
+      }
+    ]
   },
   {
     "id": "staacf7a71",

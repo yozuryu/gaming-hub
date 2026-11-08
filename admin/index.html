@@ -528,7 +528,7 @@ const GameRow = ({ g, children, onClick, accent }) => {
     );
 };
 
-// Sub-series (`groups: [{ id, name, gameIds }]` on a series; the Series page and the RA Series tab show them).
+// Sub-series (`groups: [{ id, name, gameIds }]` on a series; the Series page and the RA and Steam Series tabs show them).
 // Suggestions: other series whose games sit (80%+) inside this one, then words the titles share after the
 // series name, one level finer when the next real word splits them into arcs ("Trails in the Sky", "Trails of Cold Steel")
 const suggestSubs = (sel, gameMap, platformSeries) => {
@@ -593,9 +593,13 @@ function SeriesModule({ cfg }) {
     const [picked,  setPicked]  = useState(() => new Set());   // games ticked to move between sub-series
     const [editing, setEditing] = useState(null);              // sub-series whose name is being edited
     const [subSug,  setSubSug]  = useState(false);
-    const [suggestFrom, setSuggestFrom] = useState([]);        // shared series: the RA series, as "ra:<id>"
+    const [suggestFrom, setSuggestFrom] = useState([]);        // shared: the RA series as "ra:<id>"; Steam: the shared sub-series
     useEffect(() => {
-        if (cfg.subSuggestFrom) apiData(cfg.subSuggestFrom.file).then(d => setSuggestFrom((Array.isArray(d) ? d : []).map(x => ({ ...x, gameIds: x.gameIds.map(cfg.subSuggestFrom.id) })))).catch(() => {});
+        const from = cfg.subSuggestFrom;
+        if (from) apiData(from.file).then(d => setSuggestFrom((Array.isArray(d) ? d : [])
+            // Steam: the shared series' sub-series, their Steam games only ("steam:223870" → 223870)
+            .flatMap(x => from.groupsOf ? (x.groups ?? []).map(g => ({ name: g.name, gameIds: g.gameIds.filter(id => id.startsWith(`${from.groupsOf}:`)).map(id => Number(id.split(':')[1])) })) : [x])
+            .map(x => ({ ...x, gameIds: from.id ? x.gameIds.map(from.id) : x.gameIds })))).catch(() => {});
     }, []);
     useEffect(() => { setPicked(new Set()); setSubSug(false); setEditing(null); }, [selectedId]);
 
@@ -822,7 +826,7 @@ function SeriesModule({ cfg }) {
                         </div>
 
                         <div className="flex flex-1 overflow-hidden">
-                            {/* Assigned games: in their sub-series where the site shows them (shared, RA), else one list */}
+                            {/* Assigned games: in their sub-series where the site shows them (shared, RA, Steam), else one list */}
                             {cfg.subSeries ? (
                             <div className="pane flex-1 border-r border-[#2a475e]">
                                 <div className="sub-h">
@@ -2096,7 +2100,8 @@ const SERIES_CONFIGS = {
         loadGames: () => apiGet(`${API}/games/ra`).then(gs => gs.map(g => ({ ...g, icon: `${RA_MEDIA}${g.imageIcon}`, url: `${RA_SITE}/game/${g.id}` }))),
     },
     steam: {
-        file: 'data/steam/series.json', minGames: 3,
+        file: 'data/steam/series.json', minGames: 3, subSeries: true,
+        subSuggestFrom: { file: 'data/hub/series.json', groupsOf: 'steam' },
         loadGames: () => apiData('data/steam/games/index.json').then(d => Object.values(d.achievementProgress ?? {})
             .map(g => ({ id: g.appId, title: g.gameName ?? `App ${g.appId}`, icon: g.iconUrl, url: `https://store.steampowered.com/app/${g.appId}`, consoleName: null }))
             .sort((a, b) => a.title.localeCompare(b.title))),

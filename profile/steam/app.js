@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock, X, Medal, List, LayoutGrid, Search, Check, Plus, User, Layers, ArrowDown, Hourglass } from 'lucide-react';
+import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock, X, Medal, List, LayoutGrid, Search, Check, Plus, User, Layers, ArrowDown, Hourglass, ChevronLeft } from 'lucide-react';
 import { STEAM_STATUS, PROGRESS_SORTS } from './utils/constants.js';
 import { formatPlaytime, formatDate, formatTimeAgo, fmtDay, fmtTime, achIconUrl, capsuleUrl, headerUrl, heroUrl, setMovedHeaders, bannerError, libraryPortraitUrl, rarityLabel, rarityBorderColor } from './utils/helpers.js';
 import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap } from '../../assets/time.js';
 import { useSheet, useArtSrc, useAnimatedHeight, SheetHead, seriesTags, statusPills } from '../../assets/sheet.js';
+import { SubFold, SubStrip, SubChips, subsMatch } from '../../assets/subseries.js';
 import { useGameView, shortAgo } from '../../assets/game-view.js';
 import { CompletionsPanel } from '../../assets/completions.js';
 import { TabBar, useSwipeTabs, scrollToTabs } from '../../assets/tabs.js';
@@ -785,42 +786,58 @@ const ProfileLoadingSkeleton = () => (
 // SERIES_MIN of its games are in the library; Steam has no points, so the sheet counts hours.
 const SERIES_MIN = 3;
 
+// Sub-series (admin, `groups`): each gets the same card from its own games, plus "Other" for games in none
 const buildSeries = (seriesData, achProgress, perfectMap, beatenMap) => seriesData
     .filter(s => s.showProgress !== false)
-    .map(series => {
-        let started = 0, beatenCount = 0, perfect = 0, achEarned = 0, achTotal = 0, minutes = 0, latest = null;
-        const games = series.gameIds.filter(id => achProgress[id]).map(id => {
-            const d = achProgress[id];
-            const hasAch = !!(d.hasAchievements && d.total > 0);
-            const isPerfect = hasAch && d.unlocked >= d.total;
-            const beaten = beatenMap.get(Number(id)) ?? null;
-            const isStarted = hasAch && d.unlocked > 0 && !isPerfect;
-            if (isPerfect) perfect++; else if (isStarted && beaten) beatenCount++; else if (isStarted) started++;
-            if (hasAch) { achEarned += d.unlocked; achTotal += d.total; }
-            minutes += d.playtimeForever ?? 0;
-            const unlockMs = d.lastUnlockedAt ? toMs(d.lastUnlockedAt) : 0;
-            if (unlockMs && (!latest || unlockMs > latest.ms)) latest = { ms: unlockMs, name: d.lastUnlockName, appId: Number(id), gameName: d.gameName, at: d.lastUnlockedAt, icon: (d.preview ?? []).find(a => a.displayName === d.lastUnlockName)?.iconUrl ?? null };
-            const lastMs = Math.max(unlockMs, d.lastPlayedTs ? toMs(d.lastPlayedTs) : 0);
-            return {
-                id: Number(id), title: d.gameName ?? `App ${id}`, icon: d.iconUrl ?? null, hasAch, isPerfect, isStarted, beaten,
-                awarded: hasAch ? d.unlocked : 0, numAchs: hasAch ? d.total : 0, lastMs, perfectInfo: perfectMap.get(Number(id)) ?? null,
-                game: { appId: Number(id), name: d.gameName ?? `App ${id}`, storeUrl: `https://store.steampowered.com/app/${id}`, playtimeForever: d.playtimeForever ?? 0, playtime2Weeks: d.playtime2Weeks ?? 0, lastPlayedTs: d.lastPlayedTs ?? null },
-                data: d,
-            };
-        });
-        const tracked = games.filter(x => x.hasAch).length;
-        // Cover: your ★ pick (admin), else the game with the most achievements you've unlocked, else the first
-        // game that has achievements (nothing played yet), else the first game
-        const mostUnlocked = games.filter(x => x.awarded > 0).sort((a, b) => b.awarded - a.awarded)[0];
-        const coverId = games.some(x => x.id === Number(series.coverGameId)) ? Number(series.coverGameId)
-            : mostUnlocked?.id ?? games.find(x => x.hasAch)?.id ?? games[0]?.id;
+    .map(series => buildSeriesCard(series, achProgress, perfectMap, beatenMap))
+    .filter(c => c.total >= SERIES_MIN)
+    .map(card => {
+        const groups = card.series.groups ?? [];
+        if (!groups.length) return card;
+        const ids = card.series.gameIds.map(String), inGroup = new Set(groups.flatMap(g => g.gameIds.map(String)));
+        const rest = ids.filter(id => !inGroup.has(id));
+        const defs = [...groups, ...(rest.length ? [{ id: '_other', name: 'Other', gameIds: rest }] : [])]
+            .map(g => ({ ...g, gameIds: g.gameIds.map(String).filter(id => ids.includes(id)) }));
+        const subs = defs.map(g => ({ g, sc: buildSeriesCard({ id: `${card.series.id}/${g.id}`, name: g.name, gameIds: g.gameIds }, achProgress, perfectMap, beatenMap) }))
+            .filter(({ sc }) => sc.total > 0)
+            .map(({ g, sc }) => ({ ...sc, key: g.id, groupId: g.id, name: g.name,
+                icon: sc.games.find(x => x.id === sc.coverId)?.icon ?? null, done: sc.perfect, beaten: sc.beatenCount, doneLabel: 'perfect' }));
+        return subs.length ? { ...card, subs } : card;
+    });
+
+const buildSeriesCard = (series, achProgress, perfectMap, beatenMap) => {
+    let started = 0, beatenCount = 0, perfect = 0, achEarned = 0, achTotal = 0, minutes = 0, latest = null;
+    const games = series.gameIds.filter(id => achProgress[id]).map(id => {
+        const d = achProgress[id];
+        const hasAch = !!(d.hasAchievements && d.total > 0);
+        const isPerfect = hasAch && d.unlocked >= d.total;
+        const beaten = beatenMap.get(Number(id)) ?? null;
+        const isStarted = hasAch && d.unlocked > 0 && !isPerfect;
+        if (isPerfect) perfect++; else if (isStarted && beaten) beatenCount++; else if (isStarted) started++;
+        if (hasAch) { achEarned += d.unlocked; achTotal += d.total; }
+        minutes += d.playtimeForever ?? 0;
+        const unlockMs = d.lastUnlockedAt ? toMs(d.lastUnlockedAt) : 0;
+        if (unlockMs && (!latest || unlockMs > latest.ms)) latest = { ms: unlockMs, name: d.lastUnlockName, appId: Number(id), gameName: d.gameName, at: d.lastUnlockedAt, icon: (d.preview ?? []).find(a => a.displayName === d.lastUnlockName)?.iconUrl ?? null };
+        const lastMs = Math.max(unlockMs, d.lastPlayedTs ? toMs(d.lastPlayedTs) : 0);
         return {
-            series, games, total: games.length, tracked, started, beatenCount, perfect, achEarned, achTotal, minutes, latest, coverId,
-            lastMs: Math.max(0, ...games.map(x => x.lastMs)),
-            pct: achTotal > 0 ? (achEarned / achTotal) * 100 : 0,
+            id: Number(id), title: d.gameName ?? `App ${id}`, icon: d.iconUrl ?? null, hasAch, isPerfect, isStarted, beaten,
+            awarded: hasAch ? d.unlocked : 0, numAchs: hasAch ? d.total : 0, lastMs, perfectInfo: perfectMap.get(Number(id)) ?? null,
+            game: { appId: Number(id), name: d.gameName ?? `App ${id}`, storeUrl: `https://store.steampowered.com/app/${id}`, playtimeForever: d.playtimeForever ?? 0, playtime2Weeks: d.playtime2Weeks ?? 0, lastPlayedTs: d.lastPlayedTs ?? null },
+            data: d,
         };
-    })
-    .filter(c => c.total >= SERIES_MIN);
+    });
+    const tracked = games.filter(x => x.hasAch).length;
+    // Cover: your ★ pick (admin), else the game with the most achievements you've unlocked, else the first
+    // game that has achievements (nothing played yet), else the first game
+    const mostUnlocked = games.filter(x => x.awarded > 0).sort((a, b) => b.awarded - a.awarded)[0];
+    const coverId = games.some(x => x.id === Number(series.coverGameId)) ? Number(series.coverGameId)
+        : mostUnlocked?.id ?? games.find(x => x.hasAch)?.id ?? games[0]?.id;
+    return {
+        series, games, total: games.length, tracked, started, beatenCount, perfect, achEarned, achTotal, minutes, latest, coverId,
+        lastMs: Math.max(0, ...games.map(x => x.lastMs)),
+        pct: achTotal > 0 ? (achEarned / achTotal) * 100 : 0,
+    };
+};
 
 const seriesEdge = c => c.tracked > 0 && c.perfect === c.tracked ? '#e5b143' : c.started || c.beatenCount || c.perfect ? '#66c0f4' : '#323f4c';
 const pctLabel = p => p > 0 && p < 1 ? '<1%' : `${Math.floor(p)}%`;
@@ -851,7 +868,7 @@ const SeriesTab = ({ cards, onOpen }) => {
     const nameKey = n => /^[a-zA-Z]/.test(n) ? '2' + n.toLowerCase() : /^\d/.test(n) ? '1' + n.toLowerCase() : '0' + n.toLowerCase();
     const shown = cards
         .filter(c => filter === 'all' || (filter === 'started' ? isStarted(c) : !isStarted(c)))
-        .filter(c => !search || fold(c.series.name).includes(fold(search)) || c.games.some(x => fold(x.title).includes(fold(search))))
+        .filter(c => !search || fold(c.series.name).includes(fold(search)) || subsMatch(c.subs, fold(search), fold) || c.games.some(x => fold(x.title).includes(fold(search))))
         .sort((a, b) => sort === 'progress' ? (b.pct - a.pct) || nameKey(a.series.name).localeCompare(nameKey(b.series.name))
             : sort === 'recent' ? (b.lastMs - a.lastMs) || nameKey(a.series.name).localeCompare(nameKey(b.series.name))
             : sort === 'games' ? (b.total - a.total) || nameKey(a.series.name).localeCompare(nameKey(b.series.name))
@@ -881,7 +898,7 @@ const SeriesTab = ({ cards, onOpen }) => {
                 {shown.length === 0 && <div className="text-center py-10 text-[#546270] text-[12px]" style={{ gridColumn: '1 / -1' }}>No series match.</div>}
                 {shown.map(c => {
                     const icons = seriesIconOrder(c.games);
-                    return (
+                    const card = (
                         <button key={c.series.id} onClick={() => onOpen(c)} className="scard smooth" style={{ borderLeftColor: seriesEdge(c) }}>
                             <div className="scard-art"><img src={heroUrl(c.coverId)} alt="" loading="lazy" onError={heroFallback(c.coverId)} /></div>
                             <div className="scard-top">
@@ -905,6 +922,7 @@ const SeriesTab = ({ cards, onOpen }) => {
                             </div>
                         </button>
                     );
+                    return c.subs ? <SubFold key={c.series.id} subs={c.subs} onOpen={i => onOpen({ ...c, __sub: i })}>{card}</SubFold> : card;
                 })}
             </div>
         </div>
@@ -932,7 +950,11 @@ const PerfectRow = ({ x, onOpenGame }) => {
     );
 };
 
-const SeriesSheet = ({ card: c, onOpenGame, onClose }) => {
+// card.__sub: the sub-series picked (index into card.subs) or null for All; kept on the page's card, so a game
+// opened from a sub-series comes back to it
+const SeriesSheet = ({ card: series, onOpenGame, onClose, onScope }) => {
+    const sub = series.subs && series.__sub != null ? series.__sub : null;
+    const c = sub != null ? series.subs[sub] : series;
     const panelRef = useRef(null), rootRef = useRef(null), dragRef = useRef(null);
     useAnimatedHeight(panelRef);
     const close = useSheet({ panelRef, dragRef, rootRef, onClose });
@@ -954,7 +976,7 @@ const SeriesSheet = ({ card: c, onOpenGame, onClose }) => {
                     art={art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={art.loaded ? 'loaded' : ''} /></div>}
                     cover={<img src={headerUrl(c.coverId)} alt="" className="relative shrink-0 w-32 h-16 rounded-[2px] border border-[#101214] bg-[#2a475e] shadow-[0_6px_18px_rgba(0,0,0,0.55)] object-cover" onError={bannerError(c.coverId)} />}
                     title={c.series.name}
-                    meta={[<span className="inline-flex items-center gap-1 text-[#66c0f4]"><Layers size={11} />{c.total} games</span>]}
+                    meta={[sub != null && <button onClick={() => onScope(null)} className="inline-flex items-center gap-0.5 text-[#8f98a0] hover:text-[#c6d4df]"><ChevronLeft size={11} />{series.series.name}</button>, <span className="inline-flex items-center gap-1 text-[#66c0f4]"><Layers size={11} />{c.total} games</span>].filter(Boolean)}
                     tags={seriesTags({ done: c.perfect, doneLabel: 'Perfect', beaten: c.beatenCount, started: c.started })}
                     stats={[
                         { value: c.achEarned.toLocaleString(), total: c.achTotal.toLocaleString(), label: 'Achievements', color: '#66c0f4' },
@@ -963,8 +985,10 @@ const SeriesSheet = ({ card: c, onOpenGame, onClose }) => {
                     bar={c.achTotal > 0 ? { pct: c.pct, color: c.pct >= 100 ? '#e5b143' : '#66c0f4' } : null}
                     games={{ icon: <Layers size={11} />, items: c.games.map(x => ({ state: !x.hasAch ? 'noach' : x.isPerfect ? 'done' : x.isStarted && x.beaten ? 'beaten' : x.isStarted ? 'started' : 'none', pct: x.numAchs ? (x.awarded / x.numAchs) * 100 : 0 })) }}
                 />
-                <div className="sheet-scroll overflow-y-auto overscroll-contain flex-1 min-h-0 px-4 pt-3 flex flex-col gap-2 anim-fade">
-                    {L && <div className="ssheet-sec" style={{ '--c': '#e5b143' }}>Latest unlock</div>}
+                {series.subs && <SubChips subs={series.subs} total={series.total} allPct={series.pct} active={sub} onPick={onScope} />}
+                <div key={sub ?? 'all'} className="sheet-scroll overflow-y-auto overscroll-contain flex-1 min-h-0 px-4 pt-3 flex flex-col gap-2 anim-fade">
+                    {series.subs && sub == null && <SubStrip subs={series.subs} onPick={onScope} />}
+                    {L && <div className={`ssheet-sec ${series.subs && sub == null ? 'next' : ''}`} style={{ '--c': '#e5b143' }}>Latest unlock</div>}
                     {L && (
                         <div className="grow compact" style={{ borderLeftColor: '#e5b143' }} title="Latest unlock in this series">
                             {L.icon ? <img src={achIconUrl(L.appId, L.icon)} alt="" className="grow-icon" onError={e => { e.target.style.visibility = 'hidden'; }} /> : <img src={headerUrl(L.appId)} alt="" className="grow-banner" onError={bannerError(L.appId)} />}
@@ -974,7 +998,7 @@ const SeriesSheet = ({ card: c, onOpenGame, onClose }) => {
                             </div>
                         </div>
                     )}
-                    <div className={`ssheet-sec ${L ? 'next' : ''}`} style={{ '--c': '#66c0f4' }}>Games<span className="n">{c.total}</span></div>
+                    <div className={`ssheet-sec ${L || (series.subs && sub == null) ? 'next' : ''}`} style={{ '--c': '#66c0f4' }}>Games<span className="n">{c.total}</span></div>
                     {groups.map(gr => (
                         <React.Fragment key={gr.key}>
                             <div className="ssheet-group">{gr.label}<span className="n">{gr.games.length}</span></div>
@@ -1527,7 +1551,7 @@ const App = () => {
 
             {/* Series sheet: a game opened from it gets a way back */}
             {selectedSeries && (
-                <SeriesSheet card={selectedSeries} onClose={() => setSelectedSeries(null)}
+                <SeriesSheet card={selectedSeries} onClose={() => setSelectedSeries(null)} onScope={i => setSelectedSeries(s => s && { ...s, __sub: i })}
                     onOpenGame={arg => { setSeriesBack(selectedSeries); setSelectedSeries(null); handleViewDetails(arg); }} />
             )}
 

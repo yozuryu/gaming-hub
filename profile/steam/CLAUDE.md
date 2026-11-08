@@ -43,6 +43,7 @@ Recent Games and Completion Progress render `GameListRow` (full store banner, ti
 ## Series
 - `data/steam/series.json` (hand-made in the admin, Steam → Series; same shape as RA's: `{ id, name, gameIds, showProgress, coverGameId }`, ids are appIds). The tab only appears when a series has `SERIES_MIN` (3) of its games in `games/index.json`
 - `buildSeries()` → cards (`.scard`, store banner as `.scard-cover.banner`, hero art behind, `.smooth` = no pixelated scaling) and `SeriesSheet` (the shared `SheetHead` with status tags and the Games meter; hours played · achievements · %, latest unlock from the index's `lastUnlockName`, its icon from the index `preview` (which always holds the newest unlocks), groups In progress · Perfect · Beaten · Not started · No achievements). Beaten = the win-condition games (`beatenGames`). Perfect games use `PerfectRow` (`.smast` band: `perfectGames[].completedAt` and the last achievement unlocked, which is not the rarest). Opening a game sets `seriesBack`; `AchievementModal` then shows `.sheet-back`
+- **Sub-series** (`groups` on a series, see Shared Series in the root CLAUDE.md): `buildSeries()` builds each with `buildSeriesCard()` on its games (no 3-game minimum), plus Other; `SubFold` in the list, `SubChips` / `SubStrip` in the sheet, the picked one kept as `__sub` on the card, so `seriesBack` returns to it
 - Same code in the Xbox page (keep them in step), RA's version in `profile/ra/app.js`
 
 ## Activity tab
