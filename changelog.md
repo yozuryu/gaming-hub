@@ -2,7 +2,26 @@
 
 ## v26.11.08
 
-Analytics: Most days, Binged and Comebacks lists, idle games can be hidden, farms can be marked by hand; the admin gets a new look
+Profiles: new Completions and Game awards; Analytics: Most days, Binged and Comebacks lists, idle games can be hidden, farms can be marked by hand; the admin gets a new look
+
+### RetroAchievements
+
+- **Game awards** redesigned, the same section as Steam's and Xbox's Completions (one shared component), keeping RA's words:
+  - The counts are big: **Mastered** in gold and **Beaten** in silver, instead of 10px numbers in the corner.
+  - **Latest:** the newest award as a card with the game's art behind (the picked hero, else a screenshot), its date, console, playtime, and the rarest achievement (mastered) or the win condition (beaten) with its rarity.
+  - The other games as square icons, 4 per row, a showcase like before. The tier is a border: gold with a glow, or silver. Mastered come first, then Beaten, newest first in each.
+  - A **list** view, switched in the section header and remembered: one row per game with its name, console, tier and date. Before, the name and date were only in a hover tooltip, so a phone never showed them.
+  - Tapping a game opens its achievement sheet.
+  - Two rows folded. Show all opens a box that scrolls; with 9 awards everything fits, so there's no button.
+
+### Steam
+
+- **Completions** redesigned, the same section as RA's and Xbox's: **Perfect** / **Beaten** counts, a **Latest** card (hero art, playtime, the final achievement or the win condition with its rarity), then the other games as store banners, 3 per row, or as a list with name, final achievement or win condition, tier and date. The banners replace the last achievement's icon, which didn't show which game it was. Perfect first, then Beaten. Tapping a game opens its sheet. Show all opens a box 4 rows high that scrolls.
+
+### Xbox
+
+- **Completions** redesigned, the same section as RA's and Steam's: **Completed** / **Beaten** counts, a **Latest** card (hero art, gamerscore, win condition), then the games as posters, 4 per row, or as a list (square box art) with name, win condition, tier and date. Tapping a game opens its sheet. Show all opens a box 3 rows high (posters are tall) that scrolls. Xbox 360 posters come with a black band at the bottom of the image (about 9%); it's replaced by a blurred, enlarged copy of the cover, so every poster fills its frame.
+
 
 ### Hub
 

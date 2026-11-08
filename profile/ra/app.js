@@ -6,6 +6,7 @@ import { getMediaUrl, parseTitle, formatTimeAgo, raShot } from './utils/helpers.
 import { transformData } from './utils/transform.js';
 import { useSheet, useArtSrc, useAnimatedHeight, SheetHead, seriesTags } from '../../assets/sheet.js';
 import { useGameView, shortAgo } from '../../assets/game-view.js';
+import { CompletionsPanel } from '../../assets/completions.js';
 import { TabBar, useSwipeTabs, scrollToTabs } from '../../assets/tabs.js';
 import { computeStreak, useSummaryOpen, ActivitySummary, yearOf, DayHead, RunCard, RunCount, UnlockRow, ActivitySkeleton } from '../../assets/activity-ui.js';
 import { TZ, toMs, dayKey, addDays, keyToDate, fmtDate, fmtClock, buildHeatmap } from '../../assets/time.js';
@@ -24,23 +25,6 @@ const renderTildeTags = (tags) => {
       }}>{tag}</span>
     );
   });
-};
-
-// Column count of the sidebar icon grid (grid-cols-5 sm:grid-cols-8 lg:grid-cols-5),
-// tracked so the panel can show exactly two rows before "Show all"
-const useIconGridCols = () => {
-  const read = () =>
-    window.matchMedia('(min-width: 1024px)').matches ? 5
-    : window.matchMedia('(min-width: 640px)').matches ? 8
-    : 5;
-  const [cols, setCols] = useState(read);
-  useEffect(() => {
-    const queries = ['(min-width: 640px)', '(min-width: 1024px)'].map(q => window.matchMedia(q));
-    const onChange = () => setCols(read());
-    queries.forEach(mq => mq.addEventListener('change', onChange));
-    return () => queries.forEach(mq => mq.removeEventListener('change', onChange));
-  }, []);
-  return cols;
 };
 
 // --- Components ---
@@ -1188,9 +1172,6 @@ export default function App() {
   const [watchlistStatusFilter, setWatchlistStatusFilter] = useState('all');
   const [watchlistGrouping, setWatchlistGrouping] = useState('none');
   const [collapsedGroups, setCollapsedGroups] = useState(new Set());
-  const [awardsExpanded, setAwardsExpanded] = useState(false);
-  const iconGridCols = useIconGridCols();
-  const iconLimit = iconGridCols * 2;
   const [selectedGame, setSelectedGame] = useState(null);
   const [selectedSeries, setSelectedSeries] = useState(null);   // series sheet
   const [seriesBack, setSeriesBack] = useState(null);           // series to return to from a game opened in it
@@ -1342,6 +1323,19 @@ export default function App() {
     const u = new URL(location.href); u.searchParams.delete('game'); history.replaceState({}, '', u);
     if (g) openGame(g);
   }, [ALL_GAMES]);
+  // Game awards section (assets/completions.js): mastered and beaten games, tapping one opens its sheet
+  const awardItems = useMemo(() => (PROFILE_DATA?.gameAwards ?? []).map(a => {
+    const mastered = a.type === 'Mastery/Completion', hero = artData[a.gameId]?.hero?.url;
+    const fact = mastered ? (a.rarest && { label: a.rarest.name, pct: a.rarest.pct, icon: 'trophy' }) : (a.winCondition && { label: a.winCondition.name, pct: a.winCondition.pct });
+    return {
+      key: a.gameId ?? a.id, tier: mastered ? 'gold' : 'silver', at: a.awardedAt,
+      name: a.isSubset ? a.baseTitle : (a.baseTitle || a.title), title: a.title,
+      tags: a.isSubset ? <span className="ml-1.5 align-[1px] text-[8px] font-bold uppercase tracking-[0.07em] px-1.5 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b]">Subset</span> : (a.tags?.length ? <span className="ml-1">{renderTildeTags(a.tags)}</span> : null),
+      sub: a.console, minutes: a.playtime, fact: fact || null,
+      cover: a.icon, tile: a.icon, pixel: true, art: hero ?? a.shot ?? a.icon,
+      onOpen: () => { const g = ALL_GAMES.find(x => x.id === a.gameId); if (g) openGame(g); },
+    };
+  }), [PROFILE_DATA, artData, ALL_GAMES]);
   const masteryAwards = useMemo(() => new Map((PROFILE_DATA?.gameAwards ?? []).filter(a => a.type === 'Mastery/Completion').map(a => [a.gameId, a])), [PROFILE_DATA]);
 
   // Header background: the most recently played game's screenshot, or its icon when it has none
@@ -1584,78 +1578,7 @@ export default function App() {
                   </button>
                 </div>
 
-                <div className="bg-[#1b2838] border border-[#2a475e] rounded-[3px] shadow-sm h-fit">
-                  <div className="p-2.5 bg-[#172333] border-b border-[#2a475e] rounded-t-[2px] text-[#c6d4df] flex items-center gap-2">
-                    <span className="w-[2px] h-[12px] bg-[#e5b143] rounded-[1px] shrink-0"></span>
-                    <span className="text-[11px] uppercase tracking-wide font-semibold flex items-center gap-2 flex-1">
-                      <Star size={13} className="text-[#e5b143]" /> Game Awards
-                    </span>
-                    <div className="flex items-center gap-1.5">
-                      <Trophy size={9} className="text-[#e5b143]" />
-                      <span className="text-[10px] font-semibold text-[#e5b143]">{PROFILE_DATA.gameAwards.filter(a => a.type === 'Mastery/Completion').length}</span>
-                      <Medal size={9} className="text-[#b8c4ce]" />
-                      <span className="text-[10px] font-semibold text-[#b8c4ce]">{PROFILE_DATA.gameAwards.filter(a => a.type !== 'Mastery/Completion').length}</span>
-                    </div>
-                  </div>
-                  <div className="p-3 grid grid-cols-5 sm:grid-cols-8 lg:grid-cols-5 gap-2 min-h-[60px]">
-                    {PROFILE_DATA.gameAwards.length > 0 ? (awardsExpanded ? PROFILE_DATA.gameAwards : PROFILE_DATA.gameAwards.slice(0, iconLimit)).map(award => (
-                      <div key={award.id} className="relative group cursor-help anim-fade">
-                        <img
-                          src={award.icon}
-                          alt={award.title}
-                          className={`w-full aspect-square rounded-[2px] border transition-all duration-200 bg-black relative z-10 group-hover:scale-110 ${award.type === 'Mastery/Completion' ? 'border-2 border-[#e5b143]' : 'border border-[#b8c4ce]'}`}
-                        />
-
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[200px] bg-[#1b2838] border border-[#2a475e] rounded-[2px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100] shadow-xl pointer-events-none overflow-hidden">
-                          {/* Gold accent line */}
-                          <div className="h-[2px] bg-gradient-to-r from-[#e5b143] to-[#e5b143]/20"></div>
-                          {/* Header */}
-                          <div className="flex items-center gap-2 px-2.5 py-2 border-b border-[#2a475e] bg-[#172333]">
-                            <img src={award.icon} alt="" className="w-8 h-8 rounded-[2px] border border-[#e5b143]/30 bg-black shrink-0" />
-                            <div className="flex flex-col gap-0.5 min-w-0">
-                              <div className="flex items-center gap-1 flex-wrap">
-                                <span className="text-[11px] text-white font-semibold leading-tight">{award.baseTitle || award.title}</span>
-                                {award.isSubset && <span className="text-[8px] font-bold uppercase tracking-[0.07em] px-1.5 py-[1px] rounded-[2px] border border-[rgba(229,177,67,0.3)] bg-[rgba(229,177,67,0.1)] text-[#c8a84b] shrink-0">Subset</span>}
-                                {!award.isSubset && renderTildeTags(award.tags)}
-                              </div>
-                              {award.isSubset && award.subsetName && <span className="text-[9px] text-[#c8a84b] truncate">{award.subsetName}</span>}
-                            </div>
-                          </div>
-                          {/* Body */}
-                          <div className="px-2.5 py-2 flex flex-col gap-1.5">
-                            <div className="flex items-center justify-between">
-                              <span className="text-[11px] text-[#546270]">Console</span>
-                              <span className="text-[9px] text-[#66c0f4] font-medium">{award.console}</span>
-                            </div>
-                            <div className="h-px bg-[#2a475e]"></div>
-                            <div className="flex items-center justify-between">
-                              <span className="text-[11px] text-[#546270]">Award</span>
-                              {award.type === 'Mastery/Completion'
-                                ? <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px] bg-[#e5b143] text-[#101214]">Mastered</span>
-                                : <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px] bg-[#2a3440] text-[#c6d4df] border border-[#b8c4ce]/30">Beaten</span>
-                              }
-                            </div>
-                            <div className="flex items-center justify-between">
-                              <span className="text-[11px] text-[#546270]">Earned</span>
-                              <span className="text-[9px] text-[#c6d4df]">{award.date}</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )) : (
-                      <div className="col-span-full text-center text-[#546270] text-[10px] py-2">No game awards yet.</div>
-                    )}
-                  </div>
-                  {PROFILE_DATA.gameAwards.length > iconLimit && (
-                    <button
-                      onClick={() => setAwardsExpanded(v => !v)}
-                      className="w-full flex items-center justify-center gap-1 py-1.5 border-t border-[#2a475e] text-[11px] font-semibold text-[#546270] hover:text-[#c6d4df] hover:bg-[#202d39] transition-colors rounded-b-[2px] outline-none"
-                    >
-                      {awardsExpanded ? 'Show less' : `Show all ${PROFILE_DATA.gameAwards.length}`}
-                      <ChevronDown size={11} className={`transition-transform duration-200 ${awardsExpanded ? 'rotate-180' : ''}`} />
-                    </button>
-                  )}
-                </div>
+                <CompletionsPanel title="Game awards" labels={{ gold: 'Mastered', silver: 'Beaten' }} shape="sq" items={awardItems} />
 
               </div>
             </div>

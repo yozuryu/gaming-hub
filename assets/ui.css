@@ -715,3 +715,80 @@ img.art-icon {
    runs before the 2.3× scale, so these radii look the same as the real art's on screen */
 .art-bg.art-sheet img.art-icon { filter: blur(1.3px) brightness(0.45) saturate(0.8) !important; }
 .art-bg.art-header img.art-icon { filter: blur(2.6px) brightness(0.5) saturate(0.8) !important; }
+
+/* ── Completions / Game awards (assets/completions.js) ──────────────────────────
+   Tier as a border on every picture: gold (Mastered / Perfect / Completed) with a soft glow, silver (Beaten) plain */
+.cmp-h { display: flex; align-items: center; gap: 8px; padding-bottom: 6px; margin-bottom: 12px; border-bottom: 1px solid #2a475e; }
+.cmp-h-bar { width: 3px; height: 14px; background: #e5b143; border-radius: 1px; flex-shrink: 0; }
+.cmp-h-t { flex: 1; font-size: 13px; color: #fff; letter-spacing: 0.025em; text-transform: uppercase; font-weight: 500; }
+.cmp-h .vtoggle button { width: 28px; height: 22px; }
+.cmp-tiers { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+.cmp-tier { position: relative; display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: #1b2838; border: 1px solid #2a475e; border-radius: 3px; overflow: hidden; }
+.cmp-tier::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
+.cmp-tier.gold::before { background: #e5b143; } .cmp-tier.silver::before { background: #b8c4ce; }
+.cmp-tier-ic { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; }
+.cmp-tier.gold .cmp-tier-ic { background: rgba(229, 177, 67, 0.14); color: #e5b143; }
+.cmp-tier.silver .cmp-tier-ic { background: rgba(184, 196, 206, 0.12); color: #b8c4ce; }
+.cmp-tier b { display: block; font-size: 21px; line-height: 1; font-weight: 600; font-variant-numeric: tabular-nums; }
+.cmp-tier.gold b { color: #e5b143; } .cmp-tier.silver b { color: #b8c4ce; } .cmp-tier.zero b { color: #546270; }
+.cmp-tier small { display: block; font-size: 12px; color: #8f98a0; margin-top: 3px; }
+
+.cmp-latest { position: relative; display: block; width: 100%; text-align: left; overflow: hidden; margin-bottom: 12px; background: #1b2838; border: 1px solid #2a475e; border-radius: 3px; }
+.cmp-latest.gold { border-color: rgba(229, 177, 67, 0.55); }
+.cmp-latest-bg { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center 30%; opacity: 0.9; }
+.cmp-latest-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(19, 26, 34, 0.95) 0%, rgba(19, 26, 34, 0.88) 50%, rgba(19, 26, 34, 0.3) 100%); }
+.cmp-latest-in { position: relative; display: flex; align-items: center; gap: 12px; padding: 12px; }
+.cmp-cov { flex-shrink: 0; object-fit: cover; background: #000; border: 2px solid transparent; border-radius: 3px; }
+.cmp-cov.sq { width: 64px; height: 64px; } .cmp-cov.wd { width: 100px; height: 47px; } .cmp-cov.pt { width: 56px; height: 84px; }
+.cmp-cov.gold { border-color: #e5b143; box-shadow: 0 0 12px rgba(229, 177, 67, 0.35); } .cmp-cov.silver { border-color: #b8c4ce; }
+.cmp-latest-b { display: flex; flex-direction: column; min-width: 0; }
+.cmp-latest-k { display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #8f98a0; }
+.cmp-latest-n { font-size: 15px; font-weight: 600; color: #fff; line-height: 1.25; margin: 4px 0; }
+.cmp-latest-m { display: flex; flex-wrap: wrap; align-items: center; gap: 3px 10px; font-size: 12px; color: #8f98a0; margin-top: 2px; }
+.cmp-latest-m > span { display: inline-flex; align-items: center; gap: 4px; }
+.cmp-pct { color: #e5b143; white-space: pre; }
+.cmp-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 2px 6px; border-radius: 2px; }
+.cmp-tag.gold { background: #e5b143; color: #101214; } .cmp-tag.silver { background: #2a3440; color: #c6d4df; border: 1px solid rgba(184, 196, 206, 0.35); }
+
+.cmp-grid { display: grid; gap: 8px; }
+.cmp-grid.open { overflow-y: auto; overscroll-behavior: auto; scrollbar-width: thin; scrollbar-color: #2a475e transparent; padding-right: 2px; }
+.cmp-grid.open { --ft: #000; --fb: #000; -webkit-mask-image: linear-gradient(180deg, var(--ft) 0, #000 36px, #000 calc(100% - 40px), var(--fb) 100%); mask-image: linear-gradient(180deg, var(--ft) 0, #000 36px, #000 calc(100% - 40px), var(--fb) 100%); }
+.cmp-grid.open.fade-t { --ft: transparent; } .cmp-grid.open.fade-b { --fb: transparent; }
+.cmp-item { display: flex; flex-direction: column; min-width: 0; text-align: left; }
+.cmp-tile { position: relative; display: block; overflow: hidden; background: #000; border: 2px solid transparent; border-radius: 3px; transition: transform 150ms; }
+.cmp-item:hover .cmp-tile { transform: translateY(-2px); }
+.cmp-tile.sq { aspect-ratio: 1; } .cmp-tile.wd { aspect-ratio: 460 / 215; } .cmp-tile.pt { aspect-ratio: 2 / 3; }
+.cmp-tile img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cmp-tile.pixel img, .cmp-cov.pixel { image-rendering: pixelated; }
+.cmp-tile.gold { border-color: #e5b143; box-shadow: 0 0 10px rgba(229, 177, 67, 0.28); } .cmp-tile.silver { border-color: #b8c4ce; }
+.cmp-mk { position: absolute; top: 4px; right: 4px; width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; background: rgba(16, 18, 20, 0.85); }
+.cmp-tile.wd .cmp-mk { width: 16px; height: 16px; top: 3px; right: 3px; }
+.cmp-tile.wd .cmp-mk svg { width: 10px; height: 10px; }
+.cmp-tile.gold .cmp-mk { color: #e5b143; } .cmp-tile.silver .cmp-mk { color: #b8c4ce; }
+/* Xbox 360 posters: black padding at the bottom of the file, replaced by a blurred copy of the art */
+.ext { position: relative; display: block; overflow: hidden; }
+.ext .ext-bg, .ext .ext-fg { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: top; }
+.ext .ext-bg { transform: scale(1.35); transform-origin: 50% 0; filter: blur(8px) brightness(0.85); }
+.ext .ext-fg { -webkit-mask-image: linear-gradient(180deg, #000 85%, transparent 90.5%); mask-image: linear-gradient(180deg, #000 85%, transparent 90.5%); }
+.cmp-tile .cmp-pic { width: 100%; height: 100%; }
+.cmp-more { margin-top: 10px; width: 100%; height: 34px; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px; color: #8f98a0; background: #131a22; border: 1px solid #2a475e; border-radius: 3px; transition: color 150ms, border-color 150ms; }
+.cmp-more:hover { color: #c6d4df; border-color: #3d6a8a; }
+.cmp-more svg { transition: transform 200ms; } .cmp-more svg.rot { transform: rotate(180deg); }
+/* List view */
+.cmp-grid.list { gap: 0; border: 1px solid #2a475e; border-radius: 3px; }
+.cmp-row { position: relative; display: flex; align-items: center; gap: 10px; width: 100%; padding: 8px 10px 8px 12px; text-align: left; background: #1b2838; border-bottom: 1px solid #1a2535; transition: background-color 150ms; }
+.cmp-row:last-child { border-bottom: 0; }
+.cmp-row:hover { background: #202d39; }
+.cmp-row::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
+.cmp-row.gold::before { background: #e5b143; } .cmp-row.silver::before { background: #b8c4ce; }
+.cmp-rpic { flex-shrink: 0; object-fit: cover; background: #000; border: 2px solid transparent; border-radius: 2px; }
+.cmp-rpic.sq, .cmp-rpic.pt { width: 40px; height: 40px; } .cmp-rpic.wd { width: 74px; height: 35px; }
+.cmp-rpic.gold { border-color: #e5b143; box-shadow: 0 0 8px rgba(229, 177, 67, 0.28); } .cmp-rpic.silver { border-color: #b8c4ce; }
+.cmp-rpic.pixel { image-rendering: pixelated; }
+.cmp-row-b { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.cmp-row-n { font-size: 13px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cmp-row-s { font-size: 11px; color: #546270; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cmp-row-r { flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; font-size: 11px; color: #8f98a0; font-variant-numeric: tabular-nums; }
+.cmp-empty { font-size: 12px; color: #546270; padding: 6px 0 2px; }
+.cmp-sk-tier { height: 52px; border-radius: 3px; }
+.cmp-sk-latest { height: 90px; border-radius: 3px; margin-bottom: 12px; }

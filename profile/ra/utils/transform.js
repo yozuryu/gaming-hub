@@ -295,7 +295,10 @@ export const transformData = (data) => {
               date: formatDate(a.awardedAt),
               icon: getMediaUrl(a.imageIcon),
               gameId: a.awardData, awardedAt: a.awardedAt, hardcore: a.awardDataExtra === 1,
-              rarest: a.rarest ?? null   // { name, badge, pct }, added by the RA pipeline
+              rarest: a.rarest ?? null,  // { name, badge, pct }, added by the RA pipeline
+              shot: raShot(a.imageIngame, a.imageTitle) ? getMediaUrl(raShot(a.imageIngame, a.imageTitle)) : null,
+              playtime: a.playtime ?? null,          // minutes
+              winCondition: a.winCondition ?? null,  // { name, pct } of a beaten game's win condition
             }));
         })()
     },

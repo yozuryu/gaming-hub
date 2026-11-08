@@ -6,9 +6,9 @@
 - `../../data/steam/games/{appId}.json` — lazy-fetched per game when user opens achievement modal (`handleViewDetails`)
 - `../../data/steam/achievements/1–4.json` — all four fetched when Activity tab opens (the heatmap is built in the browser from these chunks, in the viewer's timezone); the timeline reveals them one at a time (`shownChunks`) via IntersectionObserver
 
-## Completions Panel (sidebar)
-- Perfect games (2px gold border) then beaten-only games (from win conditions, 1px silver border `#b8c4ce`)
-- Shows the first 2 rows of icons by default (perfect first, then beaten fill the remaining slots); "Show all N / Show less" button at the bottom reveals the rest. Row size follows the grid breakpoints via `useIconGridCols()` (5 / 8 at `sm` / 5 at `lg`).
+## Completions
+- The shared `CompletionsPanel` (`assets/completions.js`, see the root CLAUDE.md "Profile tabs"), `shape="wd"`: store banners (`header.jpg`), 3 per row; Latest's art is `library_hero.jpg`, falling back to the banner
+- `completionItems`: Perfect games (`profileData.perfectGames`, fact = the last achievement and its rarity) then beaten-only games (win conditions, fact = the win-condition achievement). Skeleton until the win-condition files are in (`beatenLoaded`). Tapping a game opens it through `openGameById` (the games index, like `?game=`)
 
 ## Tabs
 Five tabs: **Overview** (User, the default) · **Recent** (Clock) · **Progress** (BarChart2) · **Series** (Layers, only with a series of 3+ owned games) · **Activity** (Activity), in the shared `TabBar` (`assets/tabs.js`)

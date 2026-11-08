@@ -6,6 +6,7 @@ import { formatPlaytime, formatDate, formatTimeAgo, fmtDay, fmtTime, achIconUrl,
 import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap } from '../../assets/time.js';
 import { useSheet, useArtSrc, useAnimatedHeight, SheetHead, seriesTags } from '../../assets/sheet.js';
 import { useGameView, shortAgo } from '../../assets/game-view.js';
+import { CompletionsPanel } from '../../assets/completions.js';
 import { TabBar, useSwipeTabs, scrollToTabs } from '../../assets/tabs.js';
 import { computeStreak, useSummaryOpen, ActivitySummary, yearOf, DayHead, RunCard, RunCount, UnlockRow, ActivitySkeleton } from '../../assets/activity-ui.js';
 
@@ -779,23 +780,6 @@ const ProfileLoadingSkeleton = () => (
 
 // ── App ───────────────────────────────────────────────────────────────────────
 
-// Column count of the sidebar icon grid (grid-cols-5 sm:grid-cols-8 lg:grid-cols-5),
-// tracked so the panel can show exactly two rows before "Show all"
-const useIconGridCols = () => {
-    const read = () =>
-        window.matchMedia('(min-width: 1024px)').matches ? 5
-        : window.matchMedia('(min-width: 640px)').matches ? 8
-        : 5;
-    const [cols, setCols] = useState(read);
-    useEffect(() => {
-        const queries = ['(min-width: 640px)', '(min-width: 1024px)'].map(q => window.matchMedia(q));
-        const onChange = () => setCols(read());
-        queries.forEach(mq => mq.addEventListener('change', onChange));
-        return () => queries.forEach(mq => mq.removeEventListener('change', onChange));
-    }, []);
-    return cols;
-};
-
 // ── Series (data/steam/series.json, edited in the admin) ───────────────────────
 // Same cards and sheet as the RA Series tab (styles in assets/ui.css). A series shows once
 // SERIES_MIN of its games are in the library; Steam has no points, so the sheet counts hours.
@@ -1009,9 +993,6 @@ const SeriesSheet = ({ card: c, onOpenGame, onClose }) => {
 
 const App = () => {
     const [profileData,       setProfileData]       = useState(null);
-    const [completionsExpanded, setCompletionsExpanded] = useState(false);
-    const iconGridCols = useIconGridCols();
-    const iconLimit = iconGridCols * 2;
     const [gamesData,         setGamesData]         = useState(null);
     // All 4 chunks load together when Activity opens: the heatmap needs every unlock's
     // timestamp to group them into the viewer's local days. The timeline still reveals
@@ -1024,6 +1005,7 @@ const App = () => {
     const [selectedGame,     setSelectedGame]     = useState(null);
     const [gameDetails,       setGameDetails]       = useState({});
     const [beatenGames,       setBeatenGames]       = useState([]);
+    const [beatenLoaded,      setBeatenLoaded]      = useState(false);   // win-condition games fetched (Completions shows a skeleton until then)
     const [seriesData,        setSeriesData]        = useState([]);
     const [selectedSeries,    setSelectedSeries]    = useState(null);   // series sheet
     const [seriesBack,        setSeriesBack]        = useState(null);   // series to return to from a game opened in it
@@ -1126,7 +1108,8 @@ const App = () => {
                 );
                 setBeatenGames(results.filter(Boolean));
             })
-            .catch(() => {});
+            .catch(() => {})
+            .finally(() => setBeatenLoaded(true));
     }, []);
 
     // Load profile on mount
@@ -1220,6 +1203,26 @@ const App = () => {
         .filter(g => !perfectAppIds.has(g.appId))
         .sort((a, b) => new Date(b.beatenAt) - new Date(a.beatenAt));
     const beatenMap     = useMemo(() => new Map(beatenGames.map(g => [g.appId, g])), [beatenGames]);
+
+    // Completions section (assets/completions.js): perfect games, then beaten-only games from the win conditions
+    const openGameById = (id) => {
+        const d = gamesData?.achievementProgress?.[id];
+        if (!d) return;
+        handleViewDetails({
+            game: { appId: Number(id), name: d.gameName ?? `App ${id}`, storeUrl: `https://store.steampowered.com/app/${id}`, playtimeForever: d.playtimeForever ?? 0, playtime2Weeks: d.playtime2Weeks ?? 0, lastPlayedTs: d.lastPlayedTs ?? null },
+            achievementData: d, beatenInfo: beatenGames.find(g => String(g.appId) === String(id)) ?? null,
+        });
+    };
+    const completionItems = useMemo(() => {
+        const perfect = profileData?.perfectGames ?? [], ids = new Set(perfect.map(g => g.appId));
+        const art = (g) => ({ cover: headerUrl(g.appId), tile: headerUrl(g.appId), art: heroUrl(g.appId), artFallback: headerUrl(g.appId) });
+        return [
+            ...perfect.map(g => ({ key: g.appId, tier: 'gold', name: g.gameName, at: g.completedAt, minutes: g.playtimeForever,
+                fact: g.lastAchName ? { label: g.lastAchName.replace(/^"|"$/g, ''), pct: g.lastAchGlobalPct, icon: 'trophy' } : null, ...art(g) })),
+            ...beatenGames.filter(g => !ids.has(g.appId)).map(g => ({ key: g.appId, tier: 'silver', name: g.gameName, at: g.beatenAt, minutes: g.playtimeForever,
+                fact: g.winConditionName ? { label: g.winConditionName, pct: g.winCondGlobalPct } : null, ...art(g) })),
+        ].map(x => ({ ...x, onOpen: () => openGameById(x.key) }));
+    }, [profileData, beatenGames, gamesData]);
 
     if (loading) return <ProfileLoadingSkeleton />;
 
@@ -1428,143 +1431,7 @@ const App = () => {
                                 </h2>
                                 <StatTiles items={[...statsLeft, ...statsRight].filter(st => !['Total games', 'Hours played'].includes(st.label))} />
                             </div>
-                            <div className="bg-[#1b2838] border border-[#2a475e] rounded-[3px] shadow-sm h-fit">
-                                <div className="p-2.5 bg-[#172333] border-b border-[#2a475e] rounded-t-[2px] flex items-center gap-2">
-                                    <span className="w-[2px] h-[12px] bg-[#e5b143] rounded-[1px] shrink-0" />
-                                    <span className="text-[11px] uppercase tracking-wide font-semibold text-[#c6d4df] flex items-center gap-2 flex-1">
-                                        <Star size={13} className="text-[#e5b143]" /> Completions
-                                    </span>
-                                    <div className="flex items-center gap-1.5">
-                                        <Star size={9} className="text-[#e5b143]" />
-                                        <span className="text-[10px] font-semibold text-[#e5b143]">{perfectGames.length}</span>
-                                        <Medal size={9} className="text-[#b8c4ce]" />
-                                        <span className="text-[10px] font-semibold text-[#b8c4ce]">{beatenOnly.length}</span>
-                                    </div>
-                                </div>
-                                <div className="p-3 grid grid-cols-5 sm:grid-cols-8 lg:grid-cols-5 gap-2 min-h-[60px]">
-                                    {(completionsExpanded ? perfectGames : perfectGames.slice(0, iconLimit)).map(g => (
-                                        <div key={g.appId} className="relative group cursor-help anim-fade">
-                                            <a href={`https://store.steampowered.com/app/${g.appId}`} target="_blank" rel="noreferrer">
-                                                <img
-                                                    src={g.lastAchIconUrl || g.iconUrl || capsuleUrl(g.appId)}
-                                                    alt={g.gameName}
-                                                    className="w-full aspect-square object-cover rounded-[2px] border-2 border-[#e5b143] group-hover:scale-110 transition-all duration-200 bg-[#101214]"
-                                                    onError={e => { e.target.src = g.iconUrl || capsuleUrl(g.appId); }}
-                                                />
-                                            </a>
-                                            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[200px] bg-[#1b2838] border border-[#2a475e] rounded-[2px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100] shadow-xl pointer-events-none overflow-hidden">
-                                                <div className="h-[2px] bg-gradient-to-r from-[#e5b143] to-[#e5b143]/20" />
-                                                <div className="flex items-center gap-2 px-2.5 py-2 border-b border-[#2a475e] bg-[#172333]">
-                                                    <img src={g.lastAchIconUrl || g.iconUrl || capsuleUrl(g.appId)} alt=""
-                                                        className="w-8 h-8 rounded-[2px] border border-[#e5b143]/30 bg-black shrink-0 object-cover" />
-                                                    <div className="flex flex-col min-w-0">
-                                                        <span className="text-[11px] text-white font-semibold leading-tight line-clamp-2">{g.gameName}</span>
-                                                        {g.lastAchName && <span className="text-[9px] text-[#8f98a0] leading-tight truncate mt-0.5">{g.lastAchName}</span>}
-                                                    </div>
-                                                </div>
-                                                <div className="px-2.5 py-2 flex flex-col gap-1.5">
-                                                    <div className="flex items-center justify-between">
-                                                        <span className="text-[11px] text-[#546270]">Award</span>
-                                                        <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px] bg-[#e5b143] text-[#101214]">★ Perfect</span>
-                                                    </div>
-                                                    <div className="h-px bg-[#2a475e]" />
-                                                    <div className="flex items-center justify-between">
-                                                        <span className="text-[11px] text-[#546270]">Achievements</span>
-                                                        <span className="text-[9px] text-[#e5b143] font-medium">{g.total} / {g.total}</span>
-                                                    </div>
-                                                    {g.lastAchGlobalPct != null && (<>
-                                                        <div className="h-px bg-[#2a475e]" />
-                                                        <div className="flex items-center justify-between">
-                                                            <span className="text-[11px] text-[#546270]">Rarity</span>
-                                                            <span className="text-[9px] font-medium" style={{ color: rarityBorderColor(g.lastAchGlobalPct) }}>
-                                                                {rarityLabel(g.lastAchGlobalPct)} · {g.lastAchGlobalPct}%
-                                                            </span>
-                                                        </div>
-                                                    </>)}
-                                                    {g.playtimeForever > 0 && (<>
-                                                        <div className="h-px bg-[#2a475e]" />
-                                                        <div className="flex items-center justify-between">
-                                                            <span className="text-[11px] text-[#546270]">Playtime</span>
-                                                            <span className="text-[9px] text-[#c6d4df]">{formatPlaytime(g.playtimeForever)}</span>
-                                                        </div>
-                                                    </>)}
-                                                    {g.completedAt && (<>
-                                                        <div className="h-px bg-[#2a475e]" />
-                                                        <div className="flex items-center justify-between">
-                                                            <span className="text-[11px] text-[#546270]">Completed</span>
-                                                            <span className="text-[9px] text-[#c6d4df]">{formatDate(g.completedAt)}</span>
-                                                        </div>
-                                                    </>)}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                    {(completionsExpanded ? beatenOnly : beatenOnly.slice(0, Math.max(0, iconLimit - perfectGames.length))).map(g => (
-                                        <div key={g.appId} className="relative group cursor-help anim-fade">
-                                            <a href={`https://store.steampowered.com/app/${g.appId}`} target="_blank" rel="noreferrer">
-                                                <img
-                                                    src={achIconUrl(g.appId, g.winCondIconHash) || g.iconUrl || capsuleUrl(g.appId)}
-                                                    alt={g.gameName}
-                                                    className="w-full aspect-square object-cover rounded-[2px] border border-[#b8c4ce] group-hover:scale-110 transition-all duration-200 bg-[#101214]"
-                                                    onError={e => { e.target.src = g.iconUrl || capsuleUrl(g.appId); }}
-                                                />
-                                            </a>
-                                            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[200px] bg-[#1b2838] border border-[#2a475e] rounded-[2px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100] shadow-xl pointer-events-none overflow-hidden">
-                                                <div className="h-[2px] bg-gradient-to-r from-[#b8c4ce] to-[#b8c4ce]/20" />
-                                                <div className="flex items-center gap-2 px-2.5 py-2 border-b border-[#2a475e] bg-[#172333]">
-                                                    <img src={achIconUrl(g.appId, g.winCondIconHash) || g.iconUrl || capsuleUrl(g.appId)} alt=""
-                                                        className="w-8 h-8 rounded-[2px] border border-[#b8c4ce]/30 bg-black shrink-0 object-cover" />
-                                                    <div className="flex flex-col min-w-0">
-                                                        <span className="text-[11px] text-white font-semibold leading-tight line-clamp-2">{g.gameName}</span>
-                                                        {g.winConditionName && <span className="text-[9px] text-[#8f98a0] leading-tight truncate mt-0.5">{g.winConditionName}</span>}
-                                                    </div>
-                                                </div>
-                                                <div className="px-2.5 py-2 flex flex-col gap-1.5">
-                                                    <div className="flex items-center justify-between">
-                                                        <span className="text-[11px] text-[#546270]">Award</span>
-                                                        <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-[1px] rounded-[2px]" style={{ background: '#2a3440', color: '#c6d4df', border: '1px solid rgba(184,196,206,0.3)' }}>Beaten</span>
-                                                    </div>
-                                                    {g.winCondGlobalPct != null && (<>
-                                                        <div className="h-px bg-[#2a475e]" />
-                                                        <div className="flex items-center justify-between">
-                                                            <span className="text-[11px] text-[#546270]">Rarity</span>
-                                                            <span className="text-[9px] font-medium" style={{ color: rarityBorderColor(g.winCondGlobalPct) }}>
-                                                                {rarityLabel(g.winCondGlobalPct)} · {g.winCondGlobalPct}%
-                                                            </span>
-                                                        </div>
-                                                    </>)}
-                                                    {g.playtimeForever > 0 && (<>
-                                                        <div className="h-px bg-[#2a475e]" />
-                                                        <div className="flex items-center justify-between">
-                                                            <span className="text-[11px] text-[#546270]">Playtime</span>
-                                                            <span className="text-[9px] text-[#c6d4df]">{formatPlaytime(g.playtimeForever)}</span>
-                                                        </div>
-                                                    </>)}
-                                                    {g.beatenAt && (<>
-                                                        <div className="h-px bg-[#2a475e]" />
-                                                        <div className="flex items-center justify-between">
-                                                            <span className="text-[11px] text-[#546270]">Beaten</span>
-                                                            <span className="text-[9px] text-[#c6d4df]">{formatDate(g.beatenAt)}</span>
-                                                        </div>
-                                                    </>)}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                    {perfectGames.length === 0 && beatenOnly.length === 0 && (
-                                        <div className="col-span-full text-center text-[#546270] text-[10px] py-2">No completions yet.</div>
-                                    )}
-                                </div>
-                                {perfectGames.length + beatenOnly.length > iconLimit && (
-                                  <button
-                                    onClick={() => setCompletionsExpanded(v => !v)}
-                                    className="w-full flex items-center justify-center gap-1 py-1.5 border-t border-[#2a475e] text-[11px] font-semibold text-[#546270] hover:text-[#c6d4df] hover:bg-[#202d39] transition-colors rounded-b-[2px] outline-none anim-fade"
-                                  >
-                                    {completionsExpanded ? 'Show less' : `Show all ${perfectGames.length + beatenOnly.length}`}
-                                    <ChevronDown size={11} className={`transition-transform duration-200 ${completionsExpanded ? 'rotate-180' : ''}`} />
-                                  </button>
-                                )}
-                            </div>
+                            <CompletionsPanel title="Completions" labels={{ gold: 'Perfect', silver: 'Beaten' }} shape="wd" items={completionItems} loading={!beatenLoaded} />
                         </div>
 
                     </div>

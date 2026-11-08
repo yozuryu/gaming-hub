@@ -57,10 +57,10 @@ Recent Games and Completion Progress render `GameListRow` (icon, title, console,
 - Toggle button has class `sm:hidden` — only visible on mobile
 
 ## Game Awards
-- Sorted by type (Mastered first) then date desc
-- Deduplicated: if a game has both Beaten and Mastered, only Mastered is shown
-- Mastered icons: 2px solid gold border. Beaten: 1px solid silver border (`#b8c4ce`).
-- Shows the first 2 rows of icons by default; a "Show all N / Show less" button at the bottom (only when there are more) reveals the rest. Row size follows the grid breakpoints via `useIconGridCols()` (5 / 8 at `sm` / 5 at `lg`), so 2 rows = 10 or 16 icons.
+- The shared `CompletionsPanel` (`assets/completions.js`, see the root CLAUDE.md "Profile tabs"), `shape="sq"`: square icons (pixelated), `awardItems` built from `PROFILE_DATA.gameAwards`
+- Deduplicated: if a game has both Beaten and Mastered, only Mastered is shown (`transform.js`)
+- `transform.js` also carries each award's `shot` (in-game screenshot), `playtime` and `winCondition` (`{ name, pct }`, beaten games) from `pageAwards`; the Latest card uses the picked hero from `art.json`, else the screenshot. Its fact: the rarest achievement (mastered, `rarest`) or the win condition (beaten)
+- Tilde tags and Subset show after the name. Tapping a game opens it through `openGame` (from `ALL_GAMES`)
 
 ## RA Title Parsing
 Game titles use special syntax:
