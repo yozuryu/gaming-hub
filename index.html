@@ -1000,13 +1000,17 @@
           ...sessions.filter(s => s.platform === 'steam' && s.endMs >= prevMs - 86400000).map(s => s.gameId),
           ...unlocks.filter(u => u.platform === 'steam').map(u => u.gameId),
         ])];
-        const farms = new Set((await Promise.all(steamIds.map(async id => {
+        // plus the farms marked in the admin, minus the ones overruled there (data/hub/farm-games.json)
+        const farmMarks = (await fetchJsonOnce('./data/hub/farm-games.json')) ?? {};
+        const notFarm = new Set(farmMarks.notFarms ?? []);
+        const farms = new Set([...(await Promise.all(steamIds.map(async id => {
+          if (notFarm.has(`steam:${id}`)) return null;
           const g = await fetchJsonOnce(`./data/steam/games/${id}.json`);
-          return g && g.unlocked >= 10 && g.unlocked / Math.max((g.playtimeForever ?? 0) / 60, 0.1) > 15 ? id : null;
-        }))).filter(Boolean));
+          return g && g.unlocked >= 10 && g.unlocked / Math.max((g.playtimeForever ?? 0) / 60, 0.1) > 15 ? `steam:${id}` : null;
+        }))).filter(Boolean), ...(farmMarks.farms ?? [])]);
         // Idle games marked in the admin (data/hub/idle-games.json), hidden like Analytics' default view
         const idle = new Set((await fetchJsonOnce('./data/hub/idle-games.json'))?.games ?? []);
-        const keep = (x) => !(x.platform === 'steam' && farms.has(x.gameId)) && !idle.has(`${x.platform}:${x.gameId}`);
+        const keep = (x) => !farms.has(`${x.platform}:${x.gameId}`) && !idle.has(`${x.platform}:${x.gameId}`);
 
         // Session minutes spread over local days (hours, top game) and local hours (time of day),
         // like Analytics' sessionDays and hourGrid

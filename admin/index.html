@@ -1416,6 +1416,87 @@ function IdleGamesModule() {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
+// MODULE: Farm Games
+// Achievement farms are detected on Steam (FARM_* in analytics/utils.js: 10+ unlocks, more than 15 an
+// hour of playtime). Here: mark more by hand (any platform) or overrule a detected one. Analytics, the
+// hub's Analytics strip and Playing read data/hub/farm-games.json: { farms: [...], notFarms: [...] }
+// ═══════════════════════════════════════════════════════════════════════════════
+
+const FARM_PER_HOUR = 15, FARM_MIN_UNLOCKS = 10;   // keep in step with analytics/utils.js and assets/playing.js
+
+const GameFlagRow = ({ g, on, label, onClick, extra }) => (
+    <button onClick={onClick}
+        className={`flex items-center gap-2.5 px-2 py-1.5 rounded-[2px] text-left border ${on ? 'border-[#66c0f4]/50 bg-[#66c0f4]/10' : 'border-transparent hover:bg-[#202d39]'}`}>
+        {g.icon ? <img src={g.icon} alt="" className="w-7 h-7 rounded-[2px] shrink-0 object-cover" /> : <span className="w-7 h-7 shrink-0 bg-[#202d39] rounded-[2px]" />}
+        <span className="flex-1 min-w-0">
+            <span className="block text-[12px] text-[#c6d4df] truncate">{g.title}</span>
+            <span className="block text-[10px] text-[#546270]">{g.consoleName}{extra && <> · {extra}</>}</span>
+        </span>
+        <span className={`text-[10px] shrink-0 ${on ? 'text-[#66c0f4]' : 'text-[#546270]'}`}>{label}</span>
+    </button>
+);
+
+function FarmGamesModule() {
+    const { data, load, update, dirty, saving, saved, save } = useSaver('data/hub/farm-games.json');
+    const [games, setGames] = useState(null);
+    const [detected, setDetected] = useState(null);
+    const [search, setSearch] = useState('');
+
+    useEffect(() => {
+        apiData('data/hub/farm-games.json').catch(() => null).then(d => load({ farms: d?.farms ?? [], notFarms: d?.notFarms ?? [] }));
+        apiData('data/steam/games/index.json').catch(() => null).then(d => setDetected(Object.values(d?.achievementProgress ?? {})
+            .map(g => ({ ...g, rate: g.unlocked / Math.max((g.playtimeForever ?? 0) / 60, 0.1) }))
+            .filter(g => g.unlocked >= FARM_MIN_UNLOCKS && g.rate > FARM_PER_HOUR)
+            .sort((a, b) => b.rate - a.rate)
+            .map(g => ({ id: `steam:${g.appId}`, title: g.gameName ?? `App ${g.appId}`, icon: g.iconUrl, consoleName: 'Steam',
+                extra: `${g.unlocked} unlocks in ${Math.round((g.playtimeForever ?? 0) / 6) / 10}h · ${Math.round(g.rate)}/h` }))));
+        Promise.all(['ra', 'steam', 'xbox'].map(p => SERIES_CONFIGS[p].loadGames().catch(() => []).then(gs => gs.map(g => ({
+            ...g, id: `${p}:${g.id}`, consoleName: g.consoleName ? `${PLATFORM_LABEL[p]} · ${g.consoleName}` : PLATFORM_LABEL[p],
+        }))))).then(lists => setGames(lists.flat().sort((a, b) => a.title.localeCompare(b.title))));
+    }, []);
+
+    if (!data || !games || !detected) return <div className="p-6 text-[#546270] text-[11px]">Loading…</div>;
+    const marked = new Set(data.farms), overruled = new Set(data.notFarms), auto = new Set(detected.map(g => g.id));
+    const toggleList = (key, id) => update({ ...data, [key]: data[key].includes(id) ? data[key].filter(x => x !== id) : [...data[key], id] });
+    const byId = Object.fromEntries(games.map(g => [g.id, g]));
+    const q = search.trim().toLowerCase();
+    const found = q ? games.filter(g => g.title.toLowerCase().includes(q) && !auto.has(g.id)).slice(0, 60) : [];
+
+    return (
+        <div className="flex flex-col h-full">
+            <SaveBar dirty={dirty} saving={saving} saved={saved} onSave={save} />
+            <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-6 anim-in">
+                <div>
+                    <SectionHeader color="#66c0f4">Detected</SectionHeader>
+                    <div className="text-[11px] text-[#8f98a0] mb-2">Steam games with {FARM_MIN_UNLOCKS}+ unlocks earning more than {FARM_PER_HOUR} an hour. Tap one that isn't a farm.</div>
+                    <div className="flex flex-col gap-1">
+                        {detected.map(g => (
+                            <GameFlagRow key={g.id} g={g} extra={g.extra} on={!overruled.has(g.id)}
+                                label={overruled.has(g.id) ? 'Not a farm' : '✓ Farm'} onClick={() => toggleList('notFarms', g.id)} />
+                        ))}
+                    </div>
+                </div>
+                <div>
+                    <SectionHeader color="#66c0f4">Marked by hand</SectionHeader>
+                    <div className="flex flex-col gap-1 mb-3">
+                        {data.farms.length === 0 && <div className="text-[11px] text-[#546270]">None marked.</div>}
+                        {data.farms.map(id => (
+                            <GameFlagRow key={id} g={byId[id] ?? { title: id, consoleName: '' }} on label="✓ Farm" onClick={() => toggleList('farms', id)} />
+                        ))}
+                    </div>
+                    <input className="input" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search RA, Steam and Xbox games to mark" />
+                    <div key={q} className="flex flex-col gap-1 mt-2 anim-fade">
+                        {found.map(g => (
+                            <GameFlagRow key={g.id} g={g} on={marked.has(g.id)} label={marked.has(g.id) ? '✓ Farm' : '+ Mark'} onClick={() => toggleList('farms', g.id)} />
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
 // MODULE: RA Art (SteamGridDB)
 // Wide art for RA games, which only have a square icon and a screenshot: pick a banner grid
 // (thumb for rows and tiles) and optionally a hero (blurred behind sheet headers) per game.
@@ -1678,6 +1759,7 @@ const MODULES = [
     { id: 'data-diff',   label: 'Data Diff',    icon: '±',   group: 'General',          component: DataDiffModule },
     { id: 'hub-series',  label: 'Shared Series', icon: '🗂️', group: 'General',          component: HubSeriesModule },
     { id: 'idle-games',  label: 'Idle Games',   icon: '💤',  group: 'General',          component: IdleGamesModule },
+    { id: 'farm-games',  label: 'Farm Games',   icon: '🚜',  group: 'General',          component: FarmGamesModule },
     { id: 'ra-series',           label: 'Series',         icon: '🗂️',  group: 'RetroAchievements', component: RASeriesModule },
     { id: 'ra-art',              label: 'Art',            icon: '🖼️',  group: 'RetroAchievements', component: RAArtModule },
     { id: 'steam-win-conditions', label: 'Win Conditions', icon: '🏆',  group: 'Steam',             component: SteamWinConditionsModule },

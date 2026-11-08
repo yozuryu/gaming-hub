@@ -33,7 +33,8 @@ const groupOf = (ago, minutes) =>
     : ago <= PLAYING_ONHOLD_DAYS ? 'onhold'
     : ago <= PLAYING_WINDOW_DAYS ? 'drifting'
     : null;
-// Same rule as Analytics (FARM_* in analytics/utils.js): achievement farms aren't games in rotation
+// Same rule as Analytics (FARM_* in analytics/utils.js): achievement farms aren't games in rotation.
+// data/hub/farm-games.json (admin, General → Farm Games) adds games by hand (`farms`) and overrules the rule (`notFarms`)
 const FARM_PER_HOUR = 15;
 const FARM_MIN_UNLOCKS = 10;
 const RA_MEDIA = 'https://media.retroachievements.org';
@@ -126,8 +127,11 @@ export async function loadPlaying(fetchJson, base = './', now = Date.now()) {
     const raArt = (await fetchJson(`${base}data/ra/art.json`))?.games ?? {};
     // RA progress (unlocked / total) for every game with an unlock, from the same profile file
     const raProgress = Object.fromEntries((raProfile?.gameAwardsAndProgress?.results ?? []).map(r => [String(r.gameId), r]));
+    const farmMarks = (await fetchJson(`${base}data/hub/farm-games.json`)) ?? {};
+    const markedFarm = new Set(farmMarks.farms ?? []), notFarm = new Set(farmMarks.notFarms ?? []);
 
     const out = (await Promise.all(Object.values(games).map(async g => {
+        if (markedFarm.has(g.key)) return null;
         let beatenMs = 0, progress = null, cover = null, totalMinutes = null;
         if (g.platform === 'ra') {
             const d = raDone[g.gameId];
@@ -147,7 +151,7 @@ export async function loadPlaying(fetchJson, base = './', now = Date.now()) {
             if (file) {
                 const total = file.total ?? 0, unlocked = file.unlocked ?? 0;
                 if (total > 0 && unlocked >= total) return null;
-                if (unlocked >= FARM_MIN_UNLOCKS
+                if (!notFarm.has(g.key) && unlocked >= FARM_MIN_UNLOCKS
                     && unlocked / Math.max((file.playtimeForever ?? 0) / 60, 0.1) > FARM_PER_HOUR) return null;
                 g.name ??= file.gameName ?? null;
                 g.icon ??= file.iconUrl ?? null;

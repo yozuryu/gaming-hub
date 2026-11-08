@@ -670,10 +670,16 @@ async function loadAll() {
     for (const [id, g] of Object.entries(xboxIndex?.achievementProgress ?? {})) progress[`xbox-${id}`] = { unlocked: g.unlocked ?? 0, total: g.total ?? 0 };
     for (const g of raProgress) progress[`ra-${g.gameId}`] = { unlocked: g.numAwarded ?? 0, total: g.maxPossible ?? 0 };
 
-    // Achievement farms (Steam only: needs lifetime playtime per game)
-    const farms = new Set(Object.entries(steamIndex?.achievementProgress ?? {})
-        .filter(([, g]) => g.unlocked >= FARM_MIN_UNLOCKS && g.unlocked / Math.max((g.playtimeForever ?? 0) / 60, 0.1) > FARM_PER_HOUR)
-        .map(([id]) => `steam-${id}`));
+    // Achievement farms: detected on Steam (needs lifetime playtime per game), plus the games marked in the
+    // admin (General → Farm Games, any platform), minus the detected ones overruled there
+    const farmMarks = (await fetchJson('../data/hub/farm-games.json')) ?? {};
+    const notFarm = new Set((farmMarks.notFarms ?? []).map(id => String(id).replace(':', '-')));
+    const farms = new Set([
+        ...Object.entries(steamIndex?.achievementProgress ?? {})
+            .filter(([, g]) => g.unlocked >= FARM_MIN_UNLOCKS && g.unlocked / Math.max((g.playtimeForever ?? 0) / 60, 0.1) > FARM_PER_HOUR)
+            .map(([id]) => `steam-${id}`).filter(k => !notFarm.has(k)),
+        ...(farmMarks.farms ?? []).map(id => String(id).replace(':', '-')),
+    ]);
 
     return { unlocks, sessions, meta, completions, funnel, progress, farms, idle, raArt };
 }
@@ -1060,8 +1066,7 @@ const App = () => {
             hourMax: niceMax(Math.max(0, ...hourAvg.flatMap(r => [r.weekdays, r.weekends]))),
             topShare, topGame: topHours[0] ?? null, gamesPerWeek, newCount: newGames.length, newDone, newRows,
             droppedCount: dropped.length, droppedRows, comebackCount: comebacks.length, comebackRows,
-            // Farms are Steam games: the note only applies when Steam is in view
-            farmsHidden: hideFarms && (platform === 'all' || platform === 'steam') ? data.farms.size : 0,
+            farmsHidden: hideFarms ? [...data.farms].filter(k => platform === 'all' || k.startsWith(`${platform}-`)).length : 0,
             lengthBuckets, longest, sessionCount: periodSessions.length,
             medianSession: median(periodSessions.map(s => s.minutes)),
             rarity, rarest, periodCompletions, daysToComplete,
@@ -1441,7 +1446,7 @@ const App = () => {
                             ))}
                             <span className="fsep" />
                             <button onClick={toggleFarms} aria-pressed={hideFarms} className={`fchip ${hideFarms ? 'on' : ''}`}
-                                title={`Steam games with ${FARM_MIN_UNLOCKS}+ unlocks earning more than ${FARM_PER_HOUR} achievements per hour of playtime${data ? `:\n${[...data.farms].map(k => data.meta.steam[k.slice(6)]?.name ?? k).join(', ')}` : ''}`}>
+                                title={`Steam games with ${FARM_MIN_UNLOCKS}+ unlocks earning more than ${FARM_PER_HOUR} achievements per hour of playtime, and games marked in the admin${data ? `:\n${[...data.farms].map(k => { const [p, ...id] = k.split('-'); return data.meta[p]?.[id.join('-')]?.name ?? k; }).join(', ')}` : ''}`}>
                                 {hideFarms ? <Check size={12} /> : <Plus size={12} />}Hide farms{data && <span className="n anim-fade">{data.farms.size}</span>}
                             </button>
                             {data?.idle.size > 0 && (

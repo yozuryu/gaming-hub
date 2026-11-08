@@ -2,7 +2,7 @@
 
 ## v26.11.08
 
-Analytics: Most days, Binged and Comebacks lists, and idle games can be hidden
+Analytics: Most days, Binged and Comebacks lists, idle games can be hidden, and farms can be marked by hand
 
 ### Analytics
 
@@ -14,6 +14,7 @@ Analytics: Most days, Binged and Comebacks lists, and idle games can be hidden
 ### Admin
 
 - New **Idle Games** page (General): search RA and Steam games and mark the ones left running; saved to `data/hub/idle-games.json`
+- New **Farm Games** page (General): the Steam games the farm rule detects (unlocks, hours and rate per hour), each can be marked as not a farm, and any RA, Steam or Xbox game can be marked as a farm by hand; saved to `data/hub/farm-games.json`. Analytics' Hide farms, the hub's Analytics strip and Playing follow it. 8-Bit Bayonetta, Hell Girls and WayOut (21–51 unlocks an hour) are marked as not farms: they're real games the rule caught
 
 ## v26.11.07
 

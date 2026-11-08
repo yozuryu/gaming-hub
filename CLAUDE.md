@@ -45,7 +45,7 @@ gaming-hub/
 │
 ├── data/                           # JSON read by the browser. Pipeline output is NOT on main: it lives on the `data` branch
 │                                   #   (scripts/data-paths.json, gitignored here, `npm run data:pull` to get it locally).
-│                                   #   On main: hub/config.json, hub/idle-games.json, {ra,steam,xbox}/series.json, {steam,xbox}/win-conditions.json
+│                                   #   On main: hub/config.json, hub/idle-games.json, hub/farm-games.json, {ra,steam,xbox}/series.json, {steam,xbox}/win-conditions.json
 │   ├── hub/config.json             # Username, motto, tags, platform visibility flags
 │   ├── hub/series.json             # Shared series across platforms (admin: Shared Series); hub/series-games.json is built from it (gitignored, see Shared Series)
 │   ├── ra/
@@ -236,7 +236,7 @@ Games in rotation, so games played in parallel don't get lost. Computed in the b
 - **Window** 13 weeks (91 days), so the weekly strip and the session stats cover the same days. **Groups** by local days since the last session end or unlock: Playing ≤14, or ≤45 with 5h+ in the window (a long game you come back to); On hold ≤45; Drifting ≤91
 - **Counts only with real time:** 60+ minutes of sessions in the window (RA, Steam), 30 for a game touched in the last 14 days (one you just started). Drops tryouts, demos and RA hash checks
 - **Per game:** `sessions`, `minutes` and `weeks` (13 week cells of minutes, oldest first, 7-day blocks back from today) over the window; `progress` (Steam/Xbox per-game file, RA `gameAwardsAndProgress`); `totalMinutes` lifetime (Steam `playtimeForever`, RA `playtime` that the RA pipeline adds to each `gameAwardsAndProgress` entry); `cover` (Steam header from the CDN; RA: the banner from `data/ra/art.json` if picked, else none)
-- **Excluded:** Mastered/Completed/Perfect games, Steam achievement farms (same rule as Analytics). A **Beaten** game counts only activity more than 30 min after the beat (RA award date, or the win-condition unlock) and only in Playing: finishing it and moving on is not "drifting"
+- **Excluded:** Mastered/Completed/Perfect games, achievement farms (same rule as Analytics, plus the marks in `data/hub/farm-games.json`). A **Beaten** game counts only activity more than 30 min after the beat (RA award date, or the win-condition unlock) and only in Playing: finishing it and moving on is not "drifting"
 - Thresholds are the constants at the top of the file; check a change against real data before shipping it
 
 ### Unlock History (`scripts/lib/history.js`)
