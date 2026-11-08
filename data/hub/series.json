@@ -248,6 +248,41 @@
     ]
   },
   {
+    "id": "mw7xuwoc",
+    "name": "Dragon Slayer",
+    "gameIds": [
+      "ra:5142",
+      "ra:1795",
+      "ra:12889",
+      "ra:4345",
+      "ra:4706",
+      "steam:312560",
+      "steam:587260"
+    ],
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          "ra:5142",
+          "ra:1795",
+          "ra:12889",
+          "ra:4345"
+        ]
+      },
+      {
+        "id": "xanadu",
+        "name": "Xanadu",
+        "gameIds": [
+          "ra:4706",
+          "steam:312560",
+          "steam:587260"
+        ]
+      }
+    ]
+  },
+  {
     "id": "hbab9c4849",
     "name": "Drakengard / NieR",
     "gameIds": [
