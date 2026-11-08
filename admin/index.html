@@ -1363,6 +1363,59 @@ const SteamSeriesModule = () => <SeriesModule cfg={SERIES_CONFIGS.steam} />;
 const XboxSeriesModule  = () => <SeriesModule cfg={SERIES_CONFIGS.xbox} />;
 
 // ═══════════════════════════════════════════════════════════════════════════════
+// MODULE: Idle Games
+// Games left running (idle / clicker games): their playtime isn't play, so Analytics and the hub's
+// Analytics strip leave them out by default ("Hide idle"). RA and Steam only: Xbox has no playtime.
+// data/hub/idle-games.json: { games: ["ra:45053", "steam:123"] }
+// ═══════════════════════════════════════════════════════════════════════════════
+
+function IdleGamesModule() {
+    const { data, load, update, dirty, saving, saved, save } = useSaver('data/hub/idle-games.json');
+    const [games, setGames] = useState(null);
+    const [search, setSearch] = useState('');
+
+    useEffect(() => {
+        apiData('data/hub/idle-games.json').catch(() => null).then(d => load({ games: d?.games ?? [] }));
+        Promise.all(['ra', 'steam'].map(p => SERIES_CONFIGS[p].loadGames().catch(() => []).then(gs => gs.map(g => ({
+            ...g, id: `${p}:${g.id}`, consoleName: g.consoleName ? `${PLATFORM_LABEL[p]} · ${g.consoleName}` : PLATFORM_LABEL[p],
+        }))))).then(lists => setGames(lists.flat().sort((a, b) => a.title.localeCompare(b.title))));
+    }, []);
+
+    if (!data || !games) return <div className="p-6 text-[#546270] text-[11px]">Loading…</div>;
+    const marked = new Set(data.games);
+    const toggle = id => update({ ...data, games: marked.has(id) ? data.games.filter(x => x !== id) : [...data.games, id] });
+    const q = search.trim().toLowerCase();
+    const shown = q ? games.filter(g => g.title.toLowerCase().includes(q)).slice(0, 60) : games.filter(g => marked.has(g.id));
+
+    return (
+        <div className="flex flex-col h-full">
+            <SaveBar dirty={dirty} saving={saving} saved={saved} onSave={save} />
+            <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-4 anim-in">
+                <div>
+                    <SectionHeader color="#66c0f4">Idle Games</SectionHeader>
+                    <div className="text-[11px] text-[#8f98a0]">Left running, so their playtime isn't play. Analytics hides them by default.</div>
+                </div>
+                <input className="input" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search RA and Steam games to mark" />
+                {!q && shown.length === 0 && <div className="text-[11px] text-[#546270]">No idle games marked.</div>}
+                <div key={q ? 'search' : 'marked'} className="flex flex-col gap-1 anim-fade">
+                    {shown.map(g => (
+                        <button key={g.id} onClick={() => toggle(g.id)}
+                            className={`flex items-center gap-2.5 px-2 py-1.5 rounded-[2px] text-left border ${marked.has(g.id) ? 'border-[#66c0f4]/50 bg-[#66c0f4]/10' : 'border-transparent hover:bg-[#202d39]'}`}>
+                            {g.icon ? <img src={g.icon} alt="" className="w-7 h-7 rounded-[2px] shrink-0" /> : <span className="w-7 h-7 shrink-0 bg-[#202d39] rounded-[2px]" />}
+                            <span className="flex-1 min-w-0">
+                                <span className="block text-[12px] text-[#c6d4df] truncate">{g.title}</span>
+                                <span className="block text-[10px] text-[#546270]">{g.consoleName}</span>
+                            </span>
+                            <span className={`text-[10px] ${marked.has(g.id) ? 'text-[#66c0f4]' : 'text-[#546270]'}`}>{marked.has(g.id) ? '✓ Idle' : '+ Mark'}</span>
+                        </button>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
 // MODULE: RA Art (SteamGridDB)
 // Wide art for RA games, which only have a square icon and a screenshot: pick a banner grid
 // (thumb for rows and tiles) and optionally a hero (blurred behind sheet headers) per game.
@@ -1624,6 +1677,7 @@ const MODULES = [
     { id: 'pipelines',   label: 'Pipelines',    icon: '▶',   group: 'General',          component: PipelinesModule },
     { id: 'data-diff',   label: 'Data Diff',    icon: '±',   group: 'General',          component: DataDiffModule },
     { id: 'hub-series',  label: 'Shared Series', icon: '🗂️', group: 'General',          component: HubSeriesModule },
+    { id: 'idle-games',  label: 'Idle Games',   icon: '💤',  group: 'General',          component: IdleGamesModule },
     { id: 'ra-series',           label: 'Series',         icon: '🗂️',  group: 'RetroAchievements', component: RASeriesModule },
     { id: 'ra-art',              label: 'Art',            icon: '🖼️',  group: 'RetroAchievements', component: RAArtModule },
     { id: 'steam-win-conditions', label: 'Win Conditions', icon: '🏆',  group: 'Steam',             component: SteamWinConditionsModule },

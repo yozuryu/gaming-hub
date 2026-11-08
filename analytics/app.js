@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useMemo, useContext, createContext, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BarChart3, ChevronDown, ChevronRight, Table, Check, Plus, CalendarDays, ListChecks, Star, Trophy, Users, Gamepad2, LayoutDashboard, Clock, Sparkles, Gem, Timer } from 'lucide-react';
+import { BarChart3, ChevronDown, ChevronRight, Table, Check, Plus, CalendarDays, ListChecks, Star, Trophy, Users, Gamepad2, LayoutDashboard, Clock, Sparkles, Gem, CalendarCheck, RotateCcw, Timer, Moon } from 'lucide-react';
 import { TabBar, useSwipeTabs, scrollToTabs } from '../assets/tabs.js';
 import { TZ, dayKey, todayKey, addDays, keyToDate, splitByDay, fmtDayKey } from '../assets/time.js';
 import {
     RA_MEDIA, PLATFORMS, PLATFORM_COLOR, PLATFORM_LABEL, PLATFORM_SHORT, RARITY_TIERS, rarityTier, HEAT_RAMP,
     FARM_PER_HOUR, FARM_MIN_UNLOCKS, TILDE_TAG_COLORS, DAY_PARTS, DROPPED_MAX_MINUTES, DROPPED_IDLE_DAYS,
+    COMEBACK_GAP_DAYS, COMEBACK_MIN_MINUTES, COMEBACK_MIN_UNLOCKS, BINGE_MIN_DAYS, BINGE_MIN_MINUTES,
     fmtMinutes, fmtHours, fmtNum, parseTitle, xboxImg, gameUrl, niceMax, median,
 } from './utils.js';
 
@@ -409,7 +410,7 @@ const BarList = ({ rows, format, max: fixedMax, empty = 'Nothing in this period.
                                 ? <a href={r.href} target="_blank" rel="noreferrer" className="an-bname">{r.label}</a>
                                 : <span className="an-bname">{r.label}</span>}
                             {r.marks}
-                            <span className="ml-auto an-bval">{format(r.value)}</span>
+                            <span className="ml-auto an-bval">{r.text ?? format(r.value)}</span>
                         </div>
                         {r.sub && <div className="an-bsub">{r.sub}</div>}
                         <div className="an-btrack">
@@ -586,6 +587,9 @@ async function loadAll() {
     ]);
     // RA wide art picked in the admin (hero, else banner), behind the top game card
     const raArt = (await fetchJson('../data/ra/art.json'))?.games ?? {};
+    // Idle games (marked in the admin, General → Idle Games): left running, so their playtime isn't play.
+    // Ids are "ra:45053" in the file, "ra-45053" here like every other game key
+    const idle = new Set(((await fetchJson('../data/hub/idle-games.json'))?.games ?? []).map(id => String(id).replace(':', '-')));
 
     // Unlocks, all years listed in each history index
     const unlockFiles = await Promise.all(PLATFORMS.flatMap((p, i) =>
@@ -671,7 +675,7 @@ async function loadAll() {
         .filter(([, g]) => g.unlocked >= FARM_MIN_UNLOCKS && g.unlocked / Math.max((g.playtimeForever ?? 0) / 60, 0.1) > FARM_PER_HOUR)
         .map(([id]) => `steam-${id}`));
 
-    return { unlocks, sessions, meta, completions, funnel, progress, farms, raArt };
+    return { unlocks, sessions, meta, completions, funnel, progress, farms, idle, raArt };
 }
 
 // Session minutes split into local days: [{ key, minutes, s }]
@@ -720,6 +724,15 @@ const App = () => {
         setHideFarms(next);
         const url = new URL(location.href);
         if (next) url.searchParams.delete('farms'); else url.searchParams.set('farms', 'show');
+        history.replaceState(null, '', url);
+    };
+    // Hide idle games everywhere (default on); ?idle=show turns it off
+    const [hideIdle, setHideIdle] = useState(() => new URLSearchParams(location.search).get('idle') !== 'show');
+    const toggleIdle = () => {
+        const next = !hideIdle;
+        setHideIdle(next);
+        const url = new URL(location.href);
+        if (next) url.searchParams.delete('idle'); else url.searchParams.set('idle', 'show');
         history.replaceState(null, '', url);
     };
     // Platform filter: All or one platform, scopes every section like the farm filter; ?platform=
@@ -778,7 +791,12 @@ const App = () => {
         for (const s of data.sessions) touch(`${s.platform}-${s.gameId}`, s.startMs).minutes += s.minutes;
         for (const s of data.sessions) touch(`${s.platform}-${s.gameId}`, s.endMs);
         for (const u of data.unlocks) touch(`${u.platform}-${u.g}`, u.ms);
-        return { days, unlocks, completions, firstUnlockKey, trackingKey, firstUnlock, life };
+        // Per game, all time: every session start and unlock time, sorted (for comebacks)
+        const acts = {};
+        for (const s of data.sessions) (acts[`${s.platform}-${s.gameId}`] ??= []).push(s.startMs);
+        for (const u of data.unlocks) (acts[`${u.platform}-${u.g}`] ??= []).push(u.ms);
+        for (const a of Object.values(acts)) a.sort((x, y) => x - y);
+        return { days, unlocks, completions, firstUnlockKey, trackingKey, firstUnlock, life, acts };
     }, [data]);
 
     const range = useMemo(() => buildRange(period, base?.firstUnlockKey), [period, base]);
@@ -789,7 +807,7 @@ const App = () => {
         const { startKey, endKey, prevStartKey, prevEndKey } = range;
         const nameOf = (p, id) => data.meta[p][String(id)]?.name ?? `#${id}`;
         // The platform and farm filters scope every section below them
-        const keep = (p, id) => (platform === 'all' || p === platform) && (!hideFarms || !data.farms.has(`${p}-${id}`));
+        const keep = (p, id) => (platform === 'all' || p === platform) && (!hideFarms || !data.farms.has(`${p}-${id}`)) && (!hideIdle || !data.idle.has(`${p}-${id}`));
         const days = base.days.filter(x => keep(x.s.platform, x.s.gameId));
         const unlocks = base.unlocks.filter(u => keep(u.platform, u.g));
         const completions = base.completions.filter(c => keep(c.platform, c.gameId));
@@ -923,20 +941,22 @@ const App = () => {
             .map(x => ({ ...x, pct: Math.min(100, (x.unlocks / x.total) * 100) }))
             .sort((a, b) => b.pct - a.pct || b.total - a.total).slice(0, 8)
             .map(x => gameRow(x, x.pct, <>{x.unlocks} of {x.total}{doneInPeriod.has(`${x.platform}-${x.id}`) && <span className="text-[#e5b143]" title="Completed in this period"> ★</span>}</>));
-        // Almost complete: current progress of unfinished games touched in the period (played or
-        // unlocked something), fewest left first on ties. All time = every unfinished game.
-        const touched = new Set(games.filter(x => x.unlocks || x.minutes >= 1).map(x => `${x.platform}-${x.id}`));
-        const almostComplete = Object.entries(data.progress)
-            .map(([k, v]) => { const [platform, ...rest] = k.split('-'); return { platform, id: rest.join('-'), key: k, ...v }; })
-            .filter(x => keep(x.platform, x.id) && x.total >= 10 && x.unlocked > 0 && x.unlocked < x.total)
-            .filter(x => period === 'all' || touched.has(x.key))
-            .map(x => ({ ...x, pct: (x.unlocked / x.total) * 100 }))
-            .sort((a, b) => b.pct - a.pct || (a.total - a.unlocked) - (b.total - b.unlocked)).slice(0, 8)
-            .map(x => gameRow(x, x.pct, `${x.total - x.unlocked} left`));
-        // Hardest earned: most playtime per achievement, where each unlock took real play
-        const perAch = games.filter(x => x.unlocks >= 3 && x.minutes >= 30)
-            .map(x => ({ ...x, mpa: x.minutes / x.unlocks })).sort((a, b) => b.mpa - a.mpa).slice(0, 8)
-            .map(x => gameRow(x, x.mpa, `${x.unlocks} in ${fmtMinutes(x.minutes)}`));
+        // Most days: local days with a session or an unlock in each game, more hours first on ties.
+        // A habit vs a binge, which Most played can't show; Xbox counts its unlock days
+        const dayCount = {};
+        const dayOf = (p, id) => (dayCount[`${p}-${id}`] ??= { platform: p, id: String(id), days: new Set(), playDays: new Set(), minutes: 0, unlocks: 0 });
+        for (const x of days) if (inRange(x.key, startKey, endKey) && x.minutes > 0) {
+            const g = dayOf(x.s.platform, x.s.gameId);
+            g.days.add(x.key); g.playDays.add(x.key); g.minutes += x.minutes;
+        }
+        for (const u of periodUnlocks) { const g = dayOf(u.platform, u.g); g.days.add(u.key); g.unlocks++; }
+        const dayGames = Object.values(dayCount);
+        const mostDays = [...dayGames].sort((a, b) => b.days.size - a.days.size || b.minutes - a.minutes).slice(0, 8)
+            .map(x => gameRow(x, x.days.size, x.platform === 'xbox' ? `${x.unlocks} unlocks` : `${fmtMinutes(Math.round(x.minutes))} played`));
+        // Binged: hours per day played (days with a session), games played on 2+ days and 2h+ in the period
+        const binged = dayGames.filter(x => x.playDays.size >= BINGE_MIN_DAYS && x.minutes >= BINGE_MIN_MINUTES)
+            .map(x => ({ ...x, perDay: x.minutes / x.playDays.size })).sort((a, b) => b.perDay - a.perDay).slice(0, 8)
+            .map(x => gameRow(x, x.perDay, `${x.playDays.size} days · ${fmtMinutes(Math.round(x.minutes))}`));
 
         // ── Focus
         const topShare = cur.minutes && topHours.length ? Math.round((topHours[0].value / cur.minutes) * 100) : null;
@@ -960,6 +980,28 @@ const App = () => {
             .filter(x => x.platform !== 'xbox' && dayKey(new Date(x.first)) >= trackingKey && x.minutes < DROPPED_MAX_MINUTES && x.last < idleBefore)
             .sort((a, b) => b.last - a.last);
         const droppedRows = dropped.slice(0, 8).map(x => gameRow(x, x.minutes, `last ${fmtDayKey(dayKey(new Date(x.last)))}`));
+        // Comebacks: the first session or unlock in the period that follows COMEBACK_GAP_DAYS+ without
+        // either in that game (all time), with real play or unlocks since. Before playtime tracking only
+        // unlocks are known, so a gap that starts there can hide sessions without unlocks
+        const fromMs = keyToDate(startKey).getTime(), toMs = keyToDate(addDays(endKey, 1)).getTime();
+        const comebacks = [];
+        for (const [k, acts] of Object.entries(base.acts)) {
+            const [p, ...rest] = k.split('-'), id = rest.join('-');
+            if (!keep(p, id)) continue;
+            const i = acts.findIndex((ms, n) => ms >= fromMs && ms < toMs && n > 0 && ms - acts[n - 1] >= COMEBACK_GAP_DAYS * 86400000);
+            if (i < 0) continue;
+            const backKey = dayKey(new Date(acts[i]));
+            const minutes = days.reduce((a, x) => (x.s.platform === p && x.s.gameId === id && x.key >= backKey && inRange(x.key, startKey, endKey) ? a + x.minutes : a), 0);
+            const unl = periodUnlocks.reduce((a, u) => (u.platform === p && String(u.g) === id && u.key >= backKey ? a + 1 : a), 0);
+            if (minutes < COMEBACK_MIN_MINUTES && unl < COMEBACK_MIN_UNLOCKS) continue;
+            comebacks.push({ platform: p, id, minutes, unlocks: unl, gapDays: Math.round((acts[i] - acts[i - 1]) / 86400000) });
+        }
+        comebacks.sort((a, b) => b.minutes - a.minutes || b.unlocks - a.unlocks);
+        const awayFor = d => (d >= 365 ? `${(d / 365).toFixed(1)} years` : `${Math.round(d / 30)} months`);
+        const comebackRows = comebacks.slice(0, 8).map(x => ({
+            ...gameRow(x, x.minutes, `back after ${awayFor(x.gapDays)}${x.unlocks ? ` · ${x.unlocks} unlock${x.unlocks === 1 ? '' : 's'}` : ''}`),
+            ...(x.platform === 'xbox' && { text: `${x.unlocks} unlocks` }),
+        }));
 
         // ── Sessions
         // Sessions of 5 minutes or less aren't logged by the pipelines (launches, not play)
@@ -1012,12 +1054,12 @@ const App = () => {
             cur, prev, prevPlayTracked, playNote,
             playBuckets, unlockBuckets, playUnit, unit,
             unlockGrid, unlockTotals, topHours,
-            mostProgress, almostComplete, perAch,
+            mostProgress, mostDays, binged,
             peak, favDay: weekdayMinutes[favDay] ? favDay : null, favDayShare: share(weekdayMinutes[favDay]), weekendShare, lateShare,
             typicalStart, busiest, dayParts, playTotal, weekdayAvg, hourAvg, kindDays,
             hourMax: niceMax(Math.max(0, ...hourAvg.flatMap(r => [r.weekdays, r.weekends]))),
             topShare, topGame: topHours[0] ?? null, gamesPerWeek, newCount: newGames.length, newDone, newRows,
-            droppedCount: dropped.length, droppedRows,
+            droppedCount: dropped.length, droppedRows, comebackCount: comebacks.length, comebackRows,
             // Farms are Steam games: the note only applies when Steam is in view
             farmsHidden: hideFarms && (platform === 'all' || platform === 'steam') ? data.farms.size : 0,
             lengthBuckets, longest, sessionCount: periodSessions.length,
@@ -1027,7 +1069,7 @@ const App = () => {
             consoleHours: consoleRows('minutes'), consoleUnlocks: consoleRows('unlocks'),
             nameOf,
         };
-    }, [base, range, data, hideFarms, period, platform]);
+    }, [base, range, data, hideFarms, hideIdle, period, platform]);
 
     const d = (k, play) => (view?.prev && (!play || view.prevPlayTracked) ? pct(view.cur[k], view.prev[k]) : null);
 
@@ -1230,15 +1272,16 @@ const App = () => {
     const gamesTab = () => {
         const lists = [
             hasPlay && { id: 'played', label: 'Most played', rows: view.topHours, format: fmtMinutes },
+            { id: 'days', label: 'Most days', rows: view.mostDays, format: v => `${v} day${v === 1 ? '' : 's'}`,
+                rules: [{ icon: CalendarCheck, text: 'Days played or unlocked' }] },
             { id: 'progress', label: 'Progress', rows: view.mostProgress, format: v => `${Math.round(v)}%`, max: 100,
                 rules: [{ icon: ListChecks, text: <>Sets of <b>10+</b></> }, { icon: Star, text: 'Completed', gold: true }] },
-            { id: 'almost', label: 'Almost done', rows: view.almostComplete, format: v => `${Math.floor(v)}%`, max: 100,
-                empty: period === 'all' ? 'No unfinished games.' : 'No unfinished games played in this period.' },
-            hasPlay && { id: 'hardest', label: 'Hardest', rows: view.perAch, format: v => fmtMinutes(v),
-                rules: [{ icon: Timer, text: 'Time per unlock' }, { icon: Trophy, text: <><b>3+</b> unlocks · <b>30m+</b></> }], empty: 'No game with 3+ unlocks and 30m+ played.' },
+            hasPlay && { id: 'binged', label: 'Binged', rows: view.binged, format: v => `${fmtMinutes(Math.round(v))}`,
+                rules: [{ icon: Moon, text: 'Per day played' }, { icon: Timer, text: <><b>{BINGE_MIN_DAYS}+</b> days · <b>{BINGE_MIN_MINUTES / 60}h+</b></> }],
+                empty: `No game played on ${BINGE_MIN_DAYS}+ days for ${BINGE_MIN_MINUTES / 60}h+ in this period.` },
         ].filter(Boolean);
         const list = lists.find(l => l.id === topList) ?? lists[0];
-        const nl = hasPlay ? newList : 'new';
+        const nl = !hasPlay && newList === 'dropped' ? 'new' : newList;
         return (
             <div className="flex flex-col gap-3">
                 <div className="an-card">
@@ -1258,10 +1301,17 @@ const App = () => {
                         </div>
                     </ChartCard>
                     <ChartCard title="New games">
-                        {hasPlay && <Seg items={[['new', <>New <span className="n">{view.newCount}</span></>], ['dropped', <>Tried and dropped <span className="n">{view.droppedCount}</span></>]]} value={nl} onChange={setNewList} />}
+                        <Seg items={[
+                            ['new', <>New <span className="n">{view.newCount}</span></>],
+                            ['back', <>Comebacks <span className="n">{view.comebackCount}</span></>],
+                            hasPlay && ['dropped', <>Dropped <span className="n">{view.droppedCount}</span></>],
+                        ].filter(Boolean)} value={nl} onChange={setNewList} />
                         <div key={nl} className="anim-fade">
+                            {nl === 'back' && <div className="mb-2.5"><Crits items={[{ icon: RotateCcw, text: <>Back after <b>{COMEBACK_GAP_DAYS}+</b> days</> }]} /></div>}
                             {nl === 'new'
                                 ? <BarList rows={view.newRows} format={fmtMinutes} empty="No new games in this period." />
+                                : nl === 'back'
+                                ? <BarList rows={view.comebackRows} format={fmtMinutes} empty={`No game came back after ${COMEBACK_GAP_DAYS}+ days away in this period.`} />
                                 : <BarList rows={view.droppedRows} format={fmtMinutes} max={DROPPED_MAX_MINUTES}
                                     empty={period === '30d' ? `None yet: a game needs ${DROPPED_IDLE_DAYS} idle days to count.` : 'No dropped games in this period.'} />}
                         </div>
@@ -1394,6 +1444,12 @@ const App = () => {
                                 title={`Steam games with ${FARM_MIN_UNLOCKS}+ unlocks earning more than ${FARM_PER_HOUR} achievements per hour of playtime${data ? `:\n${[...data.farms].map(k => data.meta.steam[k.slice(6)]?.name ?? k).join(', ')}` : ''}`}>
                                 {hideFarms ? <Check size={12} /> : <Plus size={12} />}Hide farms{data && <span className="n anim-fade">{data.farms.size}</span>}
                             </button>
+                            {data?.idle.size > 0 && (
+                                <button onClick={toggleIdle} aria-pressed={hideIdle} className={`fchip anim-fade ${hideIdle ? 'on' : ''}`}
+                                    title={`Games left running, marked in the admin:\n${[...data.idle].map(k => { const [p, ...id] = k.split('-'); return data.meta[p]?.[id.join('-')]?.name ?? k; }).join(', ')}`}>
+                                    {hideIdle ? <Check size={12} /> : <Plus size={12} />}Hide idle<span className="n">{data.idle.size}</span>
+                                </button>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -1406,7 +1462,7 @@ const App = () => {
                     period, platform or farm change, so each fades in */}
                 <div ref={tabContentRef}>
                     {!view ? <Skeleton tab={tab} /> : (
-                        <div key={`${tab}-${period}-${platform}-${hideFarms}`} className={swipeDir === 'swipe' ? '' : 'anim-in'}>
+                        <div key={`${tab}-${period}-${platform}-${hideFarms}-${hideIdle}`} className={swipeDir === 'swipe' ? '' : 'anim-in'}>
                             {tab === 'overview' && overview()}
                             {tab === 'time' && timeTab()}
                             {tab === 'games' && gamesTab()}

@@ -1,5 +1,20 @@
 # Changelog
 
+## v26.11.08
+
+Analytics: Most days, Binged and Comebacks lists, and idle games can be hidden
+
+### Analytics
+
+- Top games: **Most days** replaces Hardest: the games you played or unlocked something in on the most days, which tells a habit from a binge (40h in one weekend vs an hour a day for a month). Hardest ranked playtime per unlock, so a game played for fun or an idle game left running came out "hardest"; rarity was tried instead and measured how far you got compared with other players, not difficulty
+- Top games: **Binged** replaces Almost done: hours per day played (games played on 2+ days, 2h+). Almost done showed current progress rather than the period's, and the profiles' Progress → Nearly there already lists it
+- New games: **Comebacks** between New and Dropped (Tried and dropped, shortened to fit): games you returned to after 60+ days without playing or unlocking anything, ranked by time played since, with how long you were away
+- **Hide idle** next to Hide farms, on by default: games marked as idle in the admin (left running, so their playtime isn't play) are left out of every number. Poring Clicker is the first one. The hub's Analytics strip leaves them out too
+
+### Admin
+
+- New **Idle Games** page (General): search RA and Steam games and mark the ones left running; saved to `data/hub/idle-games.json`
+
 ## v26.11.07
 
 The profile Activity tabs get the Activity page's design; Analytics is reworked into tabs, the hub's Analytics card gets real visuals, and the achievement sheets get a new header.

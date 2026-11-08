@@ -47,6 +47,11 @@ export const DAY_PARTS = [
 // Behaviour thresholds
 export const DROPPED_MAX_MINUTES = 60;   // tried and dropped: under an hour played in total…
 export const DROPPED_IDLE_DAYS = 30;     // …and not touched for this long
+export const COMEBACK_GAP_DAYS = 60;     // comeback: back to a game after this long without a session or unlock…
+export const COMEBACK_MIN_MINUTES = 30;  // …with this much play since (or COMEBACK_MIN_UNLOCKS unlocks)
+export const COMEBACK_MIN_UNLOCKS = 3;
+export const BINGE_MIN_DAYS = 2;         // binged: hours per day played, games played on 2+ days…
+export const BINGE_MIN_MINUTES = 120;    // …and 2h+ in the period
 
 // 45 → "45m", 135 → "2h 15m", 120 → "2h"
 export const fmtMinutes = (m) => {

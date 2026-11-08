@@ -20,6 +20,7 @@ const ALLOWED = [
     'data/ra/series.json',
     'data/ra/art.json',
     'data/hub/series.json',
+    'data/hub/idle-games.json',
     'data/steam/series.json',
     'data/xbox/series.json',
     'data/steam/games/index.json',

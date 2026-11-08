@@ -957,7 +957,7 @@
       }
     }
 
-    // Last 30 days, computed like the Analytics page's default view (30 days, farms hidden) in the
+    // Last 30 days, computed like the Analytics page's default view (30 days, farms and idle games hidden) in the
     // viewer's timezone: hours = session minutes split into local days; unlocks by local day;
     // time of day and top game from the same sessions. Achievement chunk 1 covers 91 days.
     async function loadAnalyticsStrip() {
@@ -1004,7 +1004,9 @@
           const g = await fetchJsonOnce(`./data/steam/games/${id}.json`);
           return g && g.unlocked >= 10 && g.unlocked / Math.max((g.playtimeForever ?? 0) / 60, 0.1) > 15 ? id : null;
         }))).filter(Boolean));
-        const keep = (x) => !(x.platform === 'steam' && farms.has(x.gameId));
+        // Idle games marked in the admin (data/hub/idle-games.json), hidden like Analytics' default view
+        const idle = new Set((await fetchJsonOnce('./data/hub/idle-games.json'))?.games ?? []);
+        const keep = (x) => !(x.platform === 'steam' && farms.has(x.gameId)) && !idle.has(`${x.platform}:${x.gameId}`);
 
         // Session minutes spread over local days (hours, top game) and local hours (time of day),
         // like Analytics' sessionDays and hourGrid
