@@ -159,7 +159,7 @@ export async function loadPlaying(fetchJson, base = './', now = Date.now()) {
                 totalMinutes = file.playtimeForever ?? null;
                 beatenMs = beatenAt(steamWc?.[g.gameId], file.achievements ?? []);
             }
-            cover = `https://cdn.akamai.steamstatic.com/steam/apps/${g.gameId}/header.jpg`;
+            cover = file?.headerUrl ?? `https://cdn.akamai.steamstatic.com/steam/apps/${g.gameId}/header.jpg`;   // headerUrl: banner Steam moved
         }
         // A beaten game only counts what happened after it was beaten
         const activity = beatenMs ? g.activity.filter(t => t > beatenMs + BEATEN_GRACE_MS) : g.activity;

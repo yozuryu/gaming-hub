@@ -205,6 +205,7 @@ Env vars: `STEAM_API_KEY`, `STEAM_USER_ID`.
 - `--refresh-games`: all owned games
 - `games/index.json` pre-computes `lastUnlockedAt`, `lastUnlockName`, `preview` (top 6 icon hashes) per game
 - `games/sentinel.json` tracks no-achievement games (pipeline-only, never fetched by frontend)
+- **Moved store banners:** newer games keep `header.jpg` only under a hashed path (`store_item_assets/steam/apps/<id>/<hash>/header.jpg`), so the fixed `/steam/apps/<id>/header.jpg` is a 404. `resolveHeaders()` HEAD-checks the fixed address (every game in midnight / full runs, only the fetched ones otherwise) and saves the store API's `header_image` as `headerUrl` on the game (index, game file, `perfectGames`). The site uses it wherever it builds a banner (Steam profile through `setMovedHeaders` + `headerUrl()`, Completions, Playing, `build-series.js`, the fallback mosaic); a banner that still fails tries the hero art (`bannerError`, the hub's `coverImg` fallback). 1 of 713 games on 2026-11-08 (SpongeBob: Titans of the Tide)
 - Outputs: `profile.json`, `games/index.json`, `games/{appId}.json`, `games/sentinel.json`, `achievements/1-4.json`
 
 ### Xbox Pipeline (`scripts/xbox-pipeline.js`)

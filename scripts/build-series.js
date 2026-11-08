@@ -92,7 +92,7 @@ function indexGames(platform) {
         const steam = platform === 'steam';
         out[id] = {
             title: d.gameName ?? id,
-            icon: steam ? `${STEAM_CDN}/${id}/header.jpg` : d.iconUrl ?? null,
+            icon: steam ? d.headerUrl ?? `${STEAM_CDN}/${id}/header.jpg` : d.iconUrl ?? null,   // headerUrl: banner Steam moved
             // Square game icon for the small icon strips (Steam's icon is the community one; the header is wide)
             ...(steam && d.iconUrl ? { square: d.iconUrl } : {}),
             art: steam ? `${STEAM_CDN}/${id}/library_hero.jpg` : d.heroUrl ?? null,

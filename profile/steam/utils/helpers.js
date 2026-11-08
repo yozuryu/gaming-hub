@@ -44,8 +44,19 @@ export const achIconUrl = (appId, hash) =>
 export const capsuleUrl = (appId) =>
     `https://cdn.akamai.steamstatic.com/steam/apps/${appId}/capsule_sm_120.jpg`;
 
+// Store banner. Newer games keep it under a hashed path only; the pipeline saves that as the
+// index's `headerUrl`, registered here when the games index loads (setMovedHeaders)
+const MOVED_HEADERS = new Map();
+export const setMovedHeaders = (progress) => {
+    for (const [id, d] of Object.entries(progress ?? {})) if (d.headerUrl) MOVED_HEADERS.set(String(id), d.headerUrl);
+};
 export const headerUrl = (appId) =>
-    `https://cdn.akamai.steamstatic.com/steam/apps/${appId}/header.jpg`;
+    MOVED_HEADERS.get(String(appId)) ?? `https://cdn.akamai.steamstatic.com/steam/apps/${appId}/header.jpg`;
+// <img onError> for a banner: try the hero art once, then hide
+export const bannerError = (appId) => (e) => {
+    const img = e.currentTarget, hero = heroUrl(appId);
+    if (img.src !== hero) img.src = hero; else img.style.visibility = 'hidden';
+};
 
 export const libraryPortraitUrl = (appId) =>
     `https://cdn.akamai.steamstatic.com/steam/apps/${appId}/library_600x900.jpg`;

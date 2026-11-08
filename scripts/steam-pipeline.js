@@ -415,7 +415,38 @@ async function executeGameExtraction(recentlyPlayed, owned) {
 
     if (failedCount > 0) log.fail(`${failedCount} game(s) failed after retries — cached data kept`);
 
+    // Store banners: midnight / full runs check every game, regular runs only the ones just fetched
+    await resolveHeaders(achievementProgress, cachedProgress,
+        REFRESH_GAMES || REFRESH_UNLOCKED_GAMES ? null : gamesToFetch.map(g => String(g.appId)));
+
     return { achievementProgress, sentinelCache };
+}
+
+// Newer Steam games keep their store banner only under a hashed path (store_item_assets/…/<hash>/header.jpg),
+// so the fixed /steam/apps/<id>/header.jpg the site builds is a 404 for them. For those, save the real
+// address from the store API as `headerUrl` (index + game file); the site uses it when present.
+// ids: the games to check (null = all). Everything else keeps what the cache had.
+async function resolveHeaders(progress, cached, ids) {
+    for (const [appId, g] of Object.entries(progress)) {
+        if (!('headerUrl' in g) && cached[appId]?.headerUrl) g.headerUrl = cached[appId].headerUrl;
+    }
+    const check = (ids ?? Object.keys(progress)).filter(id => progress[id]);
+    let found = 0, i = 0;
+    const worker = async () => {
+        while (i < check.length) {
+            const appId = check[i++], g = progress[appId];
+            try {
+                const r = await fetch(`https://cdn.akamai.steamstatic.com/steam/apps/${appId}/header.jpg`, { method: 'HEAD' });
+                if (r.ok) { delete g.headerUrl; continue; }
+                if (r.status !== 404) continue;   // CDN trouble: keep what we had
+                const d = await fetch(`https://store.steampowered.com/api/appdetails?appids=${appId}&filters=basic`).then(x => x.json());
+                const header = d?.[appId]?.data?.header_image;
+                if (header) { g.headerUrl = header.replace(/\?t=\d+$/, ''); found++; }
+            } catch { /* network: keep what we had */ }
+        }
+    };
+    await Promise.all(Array.from({ length: 12 }, worker));
+    if (check.length) log.ok(`Store banners: checked ${check.length}, ${found} moved to a new address`);
 }
 
 // =========================================================
@@ -526,6 +557,7 @@ function serializeLocally(payload, achievementProgress, sentinelCache, owned) {
                     : null,
                 lastAchGlobalPct:   lastAch?.globalPct ?? null,
                 iconUrl:            d.iconUrl ?? null,
+                ...(d.headerUrl ? { headerUrl: d.headerUrl } : {}),
             };
         })
         .sort((a, b) => (b.completedAt || '').localeCompare(a.completedAt || ''));

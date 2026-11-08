@@ -29,6 +29,9 @@ Five tabs: **Overview** (User, the default) · **Recent** (Clock) · **Progress*
 ## Game list: list / tiles
 Recent Games and Completion Progress render `GameListRow` (full store banner, title, playtime · last played, count + bar, hero art faded on the right, status stripe) or `GameTile` (banner uncropped on top, last played, title, bar, count + playtime, status colour on the bottom edge), switched by `ViewToggle` and `useGameView()` (`assets/game-view.js`, `localStorage['gh:gameView']`, shared with RA and Xbox). Styles are the `.glist/.grow/.gtiles/.gtile` classes in `assets/ui.css`. Both only need `games/index.json` fields; full achievement data loads when the sheet opens.
 
+## Store banners
+- `headerUrl(appId)` (`utils/helpers.js`) returns the moved address when the games index has one (`setMovedHeaders`, called when the index loads), else the fixed `header.jpg`; banner `<img>`s use `bannerError(appId)`, which tries the hero art once before hiding. See the root CLAUDE.md, Steam pipeline
+
 ## Achievement Modal
 - `handleViewDetails` checks `gameDetails[appId]` cache first
 - If not cached: opens the modal right away with `loading: true` (header from the card's index data, `ModalListSkeleton` in place of the filter bar + list), fetches `games/{appId}.json`, caches it, then fills the same modal (skipped if it was closed meanwhile). The panel height animates from the skeleton to the list (`useAnimatedHeight`)

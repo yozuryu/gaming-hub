@@ -52,7 +52,8 @@ const TildeTags = ({ tags }) => tags.map(tag => {
 // RA's "no image" placeholder (standalone games) counts as no screenshot
 const RA_NO_IMAGE = '/Images/000002.png';
 const raShotUrl = path => path && !path.endsWith(RA_NO_IMAGE) ? `${RA_MEDIA}${path}` : null;
-const steamHeader = appId => `https://cdn.akamai.steamstatic.com/steam/apps/${appId}/header.jpg`;
+// headerUrl: the store banner's real address when Steam moved it (newer games, saved by the pipeline)
+const steamHeader = (appId, headerUrl) => headerUrl ?? `https://cdn.akamai.steamstatic.com/steam/apps/${appId}/header.jpg`;
 
 const normalizeRA = (awards, showBeaten, totals = {}) =>
     awards
@@ -88,7 +89,7 @@ const normalizeSteam = perfectGames =>
         gameId: g.appId,
         gameName: g.gameName,
         iconUrl: g.lastAchIconUrl || g.iconUrl,
-        artUrl: steamHeader(g.appId),
+        artUrl: steamHeader(g.appId, g.headerUrl),
         total: g.total,
         lastAchName: g.lastAchName,
         lastAchGlobalPct: g.lastAchGlobalPct,
@@ -104,7 +105,7 @@ const normalizeSteamBeaten = beatenGames =>
         gameId: g.appId,
         gameName: g.gameName,
         iconUrl: achIconUrl(g.appId, g.winCondIconHash) || g.iconUrl,
-        artUrl: steamHeader(g.appId),
+        artUrl: steamHeader(g.appId, g.headerUrl),
         total: g.total,
         lastAchName: g.winConditionName,
         lastAchGlobalPct: g.winCondGlobalPct,
@@ -579,6 +580,7 @@ const App = () => {
                                 appId: game.appId,
                                 gameName: game.gameName,
                                 iconUrl: game.iconUrl,
+                                headerUrl: game.headerUrl ?? null,
                                 winCondIconHash: pick.iconUrl,
                                 winCondGlobalPct: pick.globalPct,
                                 total: game.total,

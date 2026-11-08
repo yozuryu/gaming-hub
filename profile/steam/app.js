@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 import { createRoot } from 'react-dom/client';
 import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Clock, X, Medal, List, LayoutGrid, Search, Check, Plus, User, Layers, ArrowDown, Hourglass } from 'lucide-react';
 import { STEAM_STATUS, PROGRESS_SORTS } from './utils/constants.js';
-import { formatPlaytime, formatDate, formatTimeAgo, fmtDay, fmtTime, achIconUrl, capsuleUrl, headerUrl, heroUrl, libraryPortraitUrl, rarityLabel, rarityBorderColor } from './utils/helpers.js';
+import { formatPlaytime, formatDate, formatTimeAgo, fmtDay, fmtTime, achIconUrl, capsuleUrl, headerUrl, heroUrl, setMovedHeaders, bannerError, libraryPortraitUrl, rarityLabel, rarityBorderColor } from './utils/helpers.js';
 import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap } from '../../assets/time.js';
 import { useSheet, useArtSrc, useAnimatedHeight, SheetHead, seriesTags } from '../../assets/sheet.js';
 import { useGameView, shortAgo } from '../../assets/game-view.js';
@@ -56,7 +56,7 @@ const GameListRow = ({ game, achievementData, onViewDetails, beatenInfo, extra =
     return (
         <Tag onClick={hasAch ? () => onViewDetails({ game, achievementData, beatenInfo }) : undefined} className="grow" style={{ borderLeftColor: color }}>
             <div className="grow-art"><img src={heroUrl(game.appId)} alt="" loading="lazy" onError={heroFallback(game.appId)} /></div>
-            <img src={headerUrl(game.appId)} alt="" loading="lazy" className="grow-banner" onError={e => { e.target.style.visibility = 'hidden'; }} />
+            <img src={headerUrl(game.appId)} alt="" loading="lazy" className="grow-banner" onError={bannerError(game.appId)} />
             <div className="grow-main">
                 <span className="grow-title">{game.name}</span>
                 <div className="grow-sub">
@@ -83,7 +83,7 @@ const GameTile = ({ game, achievementData, onViewDetails, beatenInfo }) => {
     return (
         <Tag onClick={hasAch ? () => onViewDetails({ game, achievementData, beatenInfo }) : undefined} className="gtile" style={{ borderBottomColor: color }}>
             <div className="gtile-art">
-                <img src={headerUrl(game.appId)} alt="" loading="lazy" className="banner" onError={e => { e.target.style.visibility = 'hidden'; }} />
+                <img src={headerUrl(game.appId)} alt="" loading="lazy" className="banner" onError={bannerError(game.appId)} />
                 {ago && <span className="gtile-ago">{ago}</span>}
             </div>
             <div className="gtile-body">
@@ -180,7 +180,7 @@ const AchievementModal = ({ game, achievementData, onClose, beatenInfo, loading 
                     cover={
                         <a href={game.storeUrl} target="_blank" rel="noreferrer"
                             className="relative shrink-0 w-32 h-16 rounded-[2px] overflow-hidden border border-[#101214] bg-[#2a475e] shadow-[0_6px_18px_rgba(0,0,0,0.55)] hover:scale-105 transition-transform">
-                            <img src={headerUrl(game.appId)} alt={game.name} className="w-full h-full object-cover" onError={e => { e.target.style.display = 'none'; }} />
+                            <img src={headerUrl(game.appId)} alt={game.name} className="w-full h-full object-cover" onError={bannerError(game.appId)} />
                         </a>
                     }
                     title={<a href={game.storeUrl} target="_blank" rel="noreferrer" className="transition-colors">{game.name}</a>}
@@ -885,7 +885,7 @@ const SeriesTab = ({ cards, onOpen }) => {
                         <button key={c.series.id} onClick={() => onOpen(c)} className="scard smooth" style={{ borderLeftColor: seriesEdge(c) }}>
                             <div className="scard-art"><img src={heroUrl(c.coverId)} alt="" loading="lazy" onError={heroFallback(c.coverId)} /></div>
                             <div className="scard-top">
-                                <img src={headerUrl(c.coverId)} alt="" loading="lazy" className="scard-cover banner" onError={e => { e.target.style.visibility = 'hidden'; }} />
+                                <img src={headerUrl(c.coverId)} alt="" loading="lazy" className="scard-cover banner" onError={bannerError(c.coverId)} />
                                 <div className="scard-main">
                                     <span className="scard-name">{c.series.name}</span>
                                     <span className="scard-sub">
@@ -954,7 +954,7 @@ const SeriesSheet = ({ card: c, onOpenGame, onClose }) => {
                 <button onClick={close} className="sheet-close" aria-label="Close"><X size={15} /></button>
                 <SheetHead dragRef={dragRef}
                     art={art.src && <div className="art-bg art-sheet"><img src={art.src} alt="" ref={art.ref} onLoad={art.onLoad} onError={art.onError} className={art.loaded ? 'loaded' : ''} /></div>}
-                    cover={<img src={headerUrl(c.coverId)} alt="" className="relative shrink-0 w-32 h-16 rounded-[2px] border border-[#101214] bg-[#2a475e] shadow-[0_6px_18px_rgba(0,0,0,0.55)] object-cover" onError={e => { e.target.style.visibility = 'hidden'; }} />}
+                    cover={<img src={headerUrl(c.coverId)} alt="" className="relative shrink-0 w-32 h-16 rounded-[2px] border border-[#101214] bg-[#2a475e] shadow-[0_6px_18px_rgba(0,0,0,0.55)] object-cover" onError={bannerError(c.coverId)} />}
                     title={c.series.name}
                     meta={[<span className="inline-flex items-center gap-1 text-[#66c0f4]"><Layers size={11} />{c.total} games</span>]}
                     tags={seriesTags({ done: c.perfect, doneLabel: 'Perfect', beaten: c.beatenCount, started: c.started })}
@@ -969,7 +969,7 @@ const SeriesSheet = ({ card: c, onOpenGame, onClose }) => {
                     {L && <div className="ssheet-sec" style={{ '--c': '#e5b143' }}>Latest unlock</div>}
                     {L && (
                         <div className="grow compact" style={{ borderLeftColor: '#e5b143' }} title="Latest unlock in this series">
-                            {L.icon ? <img src={achIconUrl(L.appId, L.icon)} alt="" className="grow-icon" onError={e => { e.target.style.visibility = 'hidden'; }} /> : <img src={headerUrl(L.appId)} alt="" className="grow-banner" onError={e => { e.target.style.visibility = 'hidden'; }} />}
+                            {L.icon ? <img src={achIconUrl(L.appId, L.icon)} alt="" className="grow-icon" onError={e => { e.target.style.visibility = 'hidden'; }} /> : <img src={headerUrl(L.appId)} alt="" className="grow-banner" onError={bannerError(L.appId)} />}
                             <div className="grow-main">
                                 <span className="grow-title" style={{ color: '#e5b143' }}><Trophy size={11} className="inline -mt-0.5 mr-1" />{L.name}</span>
                                 <div className="grow-sub"><span className="text-[#66c0f4] shrink">{L.gameName}</span><span>· {formatTimeAgo(L.at)}</span></div>
@@ -1146,7 +1146,7 @@ const App = () => {
         if (['overview', 'recent', 'progress', 'series', 'activity'].includes(activeTab) && profileData && !gamesData) {
             fetch('../../data/steam/games/index.json')
                 .then(r => r.json())
-                .then(setGamesData)
+                .then(d => { setMovedHeaders(d.achievementProgress); setGamesData(d); })
                 .catch(() => setGamesData({ achievementProgress: {} }));
         }
     }, [activeTab, profileData, gamesData]);

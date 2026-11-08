@@ -16,6 +16,7 @@ Profiles: new Completions and Game awards; Analytics: Most days, Binged and Come
 
 ### Steam
 
+- Store banners for newer games show again. Steam now keeps them at a new address the site didn't know (SpongeBob SquarePants: Titans of the Tide was blank); the pipeline saves that address and every page uses it, and a banner that still fails shows the game's hero art instead of nothing
 - **Completions** redesigned, the same section as RA's and Xbox's: **Perfect** / **Beaten** counts, a **Latest** card (hero art, playtime, the final achievement or the win condition with its rarity), then the other games as store banners, 3 per row, or as a list with name, final achievement or win condition, tier and date. The banners replace the last achievement's icon, which didn't show which game it was. Perfect first, then Beaten. Tapping a game opens its sheet. Show all opens a box 4 rows high that scrolls.
 
 ### Xbox

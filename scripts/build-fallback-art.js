@@ -41,7 +41,7 @@ function sources() {
   const xbox = Object.values(readJson('data/xbox/games/index.json').achievementProgress ?? {})
     .filter(g => g.unlocked > 0 && g.iconUrl).map(g => ({ kind: 'square', url: xboxIcon(g.iconUrl) }));
   const steam = Object.entries(readJson('data/steam/games/index.json').achievementProgress ?? {})
-    .filter(([, g]) => g.unlocked > 0).map(([id]) => ({ kind: 'wide', url: `https://cdn.akamai.steamstatic.com/steam/apps/${id}/header.jpg` }));
+    .filter(([, g]) => g.unlocked > 0).map(([id, g]) => ({ kind: 'wide', url: g.headerUrl ?? `https://cdn.akamai.steamstatic.com/steam/apps/${id}/header.jpg` }));
   console.log(`sources: ${ra.length} RA, ${xbox.length} Xbox (square), ${steam.length} Steam (wide)`);
   return { square: shuffle([...ra, ...xbox]), wide: shuffle(steam) };
 }

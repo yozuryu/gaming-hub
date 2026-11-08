@@ -553,8 +553,9 @@
       `<div><div class="stat-val" style="color:${color};">${val}</div><div class="stat-lbl">${label}</div></div>`).join('');
     const statError = '<div style="grid-column:span 3;font-size:11px;color:#546270;">Could not load stats</div>';
     const escAttr = str => String(str ?? '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
-    const coverImg = (src, title, cls = '') =>
-      `<img src="${src}" alt="" title="${escAttr(title)}" class="${cls}" loading="lazy" onerror="this.removeAttribute('src')" />`;
+    // fallback: tried once when src fails (Steam banners Steam moved: the hero art)
+    const coverImg = (src, title, cls = '', fallback = '') =>
+      `<img src="${src}" alt="" title="${escAttr(title)}" class="${cls}" loading="lazy"${fallback ? ` data-fb="${fallback}"` : ''} onerror="if(this.dataset.fb){this.src=this.dataset.fb;delete this.dataset.fb}else this.removeAttribute('src')" />`;
 
     async function loadRAStats() {
       try {
@@ -635,7 +636,7 @@
         ], false);
 
         document.getElementById('steam-recent').innerHTML = (d.recentlyPlayed ?? []).slice(0, 3)
-          .map(g => coverImg(`https://cdn.akamai.steamstatic.com/steam/apps/${g.appId}/header.jpg`, g.name)).join('');
+          .map(g => coverImg(`https://cdn.akamai.steamstatic.com/steam/apps/${g.appId}/header.jpg`, g.name, '', `https://cdn.akamai.steamstatic.com/steam/apps/${g.appId}/library_hero.jpg`)).join('');
 
       } catch (e) {
         reportHubTotals('steam', { minutes: 0, unlocks: 0, completed: 0 });
