@@ -4,8 +4,10 @@
 // row per sub-series. Inside, in the series sheet: a chip row (All + each sub-series) under the header, and on
 // All a strip (same look as the bar) that opens the rows. Picking a sub-series scopes the whole sheet to it.
 // Each page builds its own sub-series cards (the same builder as its series, on the sub-series' games) and hands
-// them in as { key, name, total, icon, px?, started, done, beaten, pct, other? }.
+// them in as { key, name, total, icon, px?, started, done, beaten, doneLabel?, pct }, games in none as a last
+// "Other", which shows and counts like the others.
 import { createElement as h, useState, useRef, useLayoutEffect } from 'react';
+import { statusPills } from './sheet.js';
 
 const ICON = {
   layers: [['polygon', { points: '12 2 2 7 12 12 22 7 12 2' }], ['polyline', { points: '2 17 12 22 22 17' }], ['polyline', { points: '2 12 12 17 22 12' }]],
@@ -19,11 +21,10 @@ const Icon = ({ name, size = 12, ...rest }) => h('svg', {
 const pctLabel = p => p > 0 && p < 1 ? '<1%' : `${Math.floor(p)}%`;
 // Same edge ladder as the series cards: gold all done, blue started, grey untouched
 const edgeOf = s => s.tracked > 0 && s.done === s.tracked ? '#e5b143' : s.started || s.beaten || s.done ? '#66c0f4' : '#323f4c';
-const named = subs => subs.filter(s => !s.other);
 
 // The sub-series' icons, overlapping, in the bar and the strip
 const Stack = ({ subs, small }) => h('span', { className: `sub-stack${small ? ' sm' : ''}` },
-  named(subs).map(s => s.icon
+  subs.map(s => s.icon
     ? h('img', { key: s.key, src: s.icon, alt: '', title: s.name, loading: 'lazy', className: s.px ? 'px' : '' })
     : h('span', { key: s.key })));
 
@@ -34,9 +35,7 @@ export const SubRow = ({ s, onClick }) => h('button', { className: 'subrow', onC
     h('span', { className: 'subrow-t' }, s.name),
     h('span', { className: 'subrow-s' },
       h('span', null, `${s.total} game${s.total === 1 ? '' : 's'}`),
-      s.started > 0 && h('span', { className: 'text-[#66c0f4]' }, `${s.started} started`),
-      s.done > 0 && h('span', { className: 'text-[#e5b143]' }, `★ ${s.done}`),
-      s.beaten > 0 && h('span', { className: 'text-[#b8c4ce]' }, `${s.beaten} beaten`))),
+      ...statusPills({ done: s.done, doneLabel: s.doneLabel, beaten: s.beaten, started: s.started }))),
   h('span', { className: 'subrow-e' },
     h('b', { style: { color: s.pct > 0 ? '#e5b143' : '#546270' } }, pctLabel(s.pct)),
     h('span', { className: 'gbar' }, h('i', { style: { width: `${s.pct}%`, background: '#e5b143' } }))));
@@ -48,7 +47,7 @@ export function SubFold({ subs, onOpen, children }) {
     children,
     h('button', { className: 'subbar', onClick: () => setOpen(o => !o), 'aria-expanded': open },
       h(Icon, { name: 'layers', className: 'text-[#66c0f4]' }),
-      h('b', null, `${named(subs).length} sub-series`),
+      h('b', null, `${subs.length} sub-series`),
       !open && h(Stack, { subs, small: true }),
       h(Icon, { name: 'chev', size: 14, className: 'sub-chev' })),
     open && h('div', { className: 'subtree anim-fade' }, subs.map((s, i) => h(SubRow, { key: s.key, s, onClick: () => onOpen(i) }))));
@@ -58,12 +57,12 @@ export function SubFold({ subs, onOpen, children }) {
 export function SubStrip({ subs, onPick }) {
   const [open, setOpen] = useState(false);
   if (!open) return h('button', { className: 'substrip anim-fade', onClick: () => setOpen(true), 'aria-expanded': false },
-    h('span', { className: 'lb' }, 'Sub-series'), h('span', { className: 'n' }, named(subs).length),
+    h('span', { className: 'lb' }, 'Sub-series'), h('span', { className: 'n' }, subs.length),
     h(Stack, { subs }),
     h(Icon, { name: 'chev', size: 14, className: 'sub-chev' }));
   return [
     h('button', { key: 'h', className: 'ssheet-sec sub-tog', style: { '--c': '#66c0f4' }, onClick: () => setOpen(false), 'aria-expanded': true },
-      'Sub-series', h('span', { className: 'n' }, named(subs).length), h(Icon, { name: 'chev', size: 14, className: 'sub-chev' })),
+      'Sub-series', h('span', { className: 'n' }, subs.length), h(Icon, { name: 'chev', size: 14, className: 'sub-chev' })),
     h('div', { key: 'r', className: 'flex flex-col gap-1.5 anim-fade' }, subs.map((s, i) => h(SubRow, { key: s.key, s, onClick: () => onPick(i) }))),
   ];
 }

@@ -836,3 +836,10 @@ img.art-icon {
 .sub-chips .fchip { position: relative; overflow: hidden; }
 .sub-chip-bar { position: absolute; left: 0; bottom: 0; height: 2px; background: #e5b143; }
 .sub-chip-bar.some { min-width: 4px; }
+/* Status pills (statusPills in sheet.js): completed / beaten / in progress counts in series cards and sub-series rows */
+.spill { display: inline-flex; align-items: center; gap: 3px; height: 18px; padding: 0 7px 0 6px; border-radius: 9px; font-size: 11px; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.spill svg { width: 11px; height: 11px; flex-shrink: 0; }
+.spill.done { color: #e5b143; background: rgba(229, 177, 67, 0.14); }
+.spill.beaten { color: #d2dae1; background: rgba(184, 196, 206, 0.14); }
+.spill.started { color: #66c0f4; background: rgba(102, 192, 244, 0.13); }
+.scard-sub:has(.spill), .subrow-s:has(.spill) { align-items: center; }

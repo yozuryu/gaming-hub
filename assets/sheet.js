@@ -212,6 +212,22 @@ export const seriesTags = ({ done, doneLabel, beaten, started }) => [
   started > 0 && h('span', { key: 's', className: `${TAG} text-[#66c0f4] border border-[#66c0f4]/30 bg-[#101214]/60` }, `${started} In progress`),
 ];
 
+// The same counts as compact pills for list rows (series cards, sub-series rows): icon + number in the
+// status colour, the words in the tooltip / label. ★ done (the platform's word), medal beaten, ▶ in progress
+const PILL_ICON = {
+  done:    [['path', { d: 'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z', fill: 'currentColor', stroke: 'none' }]],
+  beaten:  [['path', { d: 'M7.21 15 2.66 7.14a2 2 0 0 1 .13-2.2L4.4 2.8A2 2 0 0 1 6 2h12a2 2 0 0 1 1.6.8l1.6 2.14a2 2 0 0 1 .14 2.2L16.79 15' }], ['path', { d: 'M11 12 5.12 2.2' }], ['path', { d: 'm13 12 5.88-9.8' }], ['path', { d: 'M8 7h8' }], ['circle', { cx: 12, cy: 17, r: 5 }]],
+  started: [['path', { d: 'M6 4l14 8-14 8z', fill: 'currentColor', stroke: 'none' }]],
+};
+const pill = (kind, n, label) => h('span', { key: kind, className: `spill ${kind}`, title: label, 'aria-label': label },
+  h('svg', { viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2.4, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true },
+    ...PILL_ICON[kind].map(([tag, attrs], i) => h(tag, { key: i, ...attrs }))), n);
+export const statusPills = ({ done = 0, doneLabel = 'completed', beaten = 0, started = 0 }) => [
+  done > 0 && pill('done', done, `${done} ${doneLabel.toLowerCase()}`),
+  beaten > 0 && pill('beaten', beaten, `${beaten} beaten`),
+  started > 0 && pill('started', started, `${started} in progress`),
+].filter(Boolean);
+
 // Under 1% (shown as 0%) nothing is lit: no fill nub, no tint edge
 const lit = bar => !!bar && Math.floor(bar.pct) > 0;
 const Fill = ({ bar }) => lit(bar) && h('i', { style: { width: `max(${Math.min(100, bar.pct)}%, 8px)`, '--c': bar.color } });

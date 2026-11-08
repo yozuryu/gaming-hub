@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Layers, Search, X, Trophy, Star, ChevronLeft, Medal } from 'lucide-react';
-import { useSheet, useArtSrc, useAnimatedHeight, SheetHead, seriesTags } from '../assets/sheet.js';
+import { useSheet, useArtSrc, useAnimatedHeight, SheetHead, seriesTags, statusPills } from '../assets/sheet.js';
 import { shortAgo } from '../assets/game-view.js';
 import { SubFold, SubStrip, SubChips, subsMatch } from '../assets/subseries.js';
 
@@ -67,10 +67,10 @@ const buildCards = data => (data?.series ?? []).map(s => {
     // Games in no sub-series go to a last "Other" one
     const inGroup = new Set(s.groups.flatMap(g => g.keys));
     const rest = games.filter(x => !inGroup.has(x.key));
-    const defs = [...s.groups, ...(rest.length ? [{ id: '_other', name: 'Other', keys: rest.map(x => x.key), other: true }] : [])];
+    const defs = [...s.groups, ...(rest.length ? [{ id: '_other', name: 'Other', keys: rest.map(x => x.key) }] : [])];
     card.subs = defs.map(g => {
         const sub = buildCard({ id: `${s.id}/${g.id}`, name: g.name }, g.keys.map(k => games.find(x => x.key === k)).filter(Boolean));
-        return { ...sub, key: g.id, groupId: g.id, other: !!g.other, icon: sub.cover?.square ?? sub.cover?.icon, done: sub.done, started: sub.started, beaten: sub.beaten };
+        return { ...sub, key: g.id, groupId: g.id, icon: sub.cover?.square ?? sub.cover?.icon, done: sub.done, started: sub.started, beaten: sub.beaten };
     });
     return card;
 }).filter(c => c.total >= 3);
@@ -120,9 +120,7 @@ const SeriesCard = ({ c, onOpen }) => {
                     </span>
                     {(c.started > 0 || c.done > 0 || c.beaten > 0) && (
                         <span className="scard-sub">
-                            {c.started > 0 && <span className="text-[#66c0f4]">{c.started} started</span>}
-                            {c.done > 0 && <>{c.started > 0 && <i>·</i>}<span className="text-[#e5b143]">★ {c.done} completed</span></>}
-                            {c.beaten > 0 && <>{(c.started > 0 || c.done > 0) && <i>·</i>}<span className="text-[#b8c4ce]">{c.beaten} beaten</span></>}
+                            {statusPills({ done: c.done, beaten: c.beaten, started: c.started })}
                         </span>
                     )}
                 </div>

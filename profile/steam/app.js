@@ -4,7 +4,7 @@ import { Trophy, BarChart2, Activity, ChevronDown, Lock, Unlock, Star, Gem, Cloc
 import { STEAM_STATUS, PROGRESS_SORTS } from './utils/constants.js';
 import { formatPlaytime, formatDate, formatTimeAgo, fmtDay, fmtTime, achIconUrl, capsuleUrl, headerUrl, heroUrl, setMovedHeaders, bannerError, libraryPortraitUrl, rarityLabel, rarityBorderColor } from './utils/helpers.js';
 import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap } from '../../assets/time.js';
-import { useSheet, useArtSrc, useAnimatedHeight, SheetHead, seriesTags } from '../../assets/sheet.js';
+import { useSheet, useArtSrc, useAnimatedHeight, SheetHead, seriesTags, statusPills } from '../../assets/sheet.js';
 import { useGameView, shortAgo } from '../../assets/game-view.js';
 import { CompletionsPanel } from '../../assets/completions.js';
 import { TabBar, useSwipeTabs, scrollToTabs } from '../../assets/tabs.js';
@@ -890,9 +890,7 @@ const SeriesTab = ({ cards, onOpen }) => {
                                     <span className="scard-name">{c.series.name}</span>
                                     <span className="scard-sub">
                                         <span>{c.total} games</span>
-                                        {c.started > 0 && <><i>·</i><span className="text-[#66c0f4]">{c.started} started</span></>}
-                                        {c.perfect > 0 && <><i>·</i><span className="text-[#e5b143]">★ {c.perfect} perfect</span></>}
-                                        {c.beatenCount > 0 && <><i>·</i><span className="text-[#b8c4ce]">{c.beatenCount} beaten</span></>}
+                                        {statusPills({ done: c.perfect, doneLabel: 'perfect', beaten: c.beatenCount, started: c.started })}
                                     </span>
                                 </div>
                                 <span className="scard-end">

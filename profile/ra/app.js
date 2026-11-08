@@ -4,7 +4,7 @@ import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, T
 import { MEDIA_URL, SITE_URL, TILDE_TAG_COLORS } from './utils/constants.js';
 import { getMediaUrl, parseTitle, formatTimeAgo, raShot } from './utils/helpers.js';
 import { transformData } from './utils/transform.js';
-import { useSheet, useArtSrc, useAnimatedHeight, SheetHead, seriesTags } from '../../assets/sheet.js';
+import { useSheet, useArtSrc, useAnimatedHeight, SheetHead, seriesTags, statusPills } from '../../assets/sheet.js';
 import { useGameView, shortAgo } from '../../assets/game-view.js';
 import { CompletionsPanel } from '../../assets/completions.js';
 import { SubFold, SubStrip, SubChips, subsMatch } from '../../assets/subseries.js';
@@ -885,11 +885,11 @@ const buildSeries = (seriesData, gamesData, watchlistData, allGames, beatenIds =
     if (!groups.length) return card;
     const inGroup = new Set(groups.flatMap(g => g.gameIds));
     const rest = card.series.gameIds.filter(id => !inGroup.has(id));
-    const defs = [...groups, ...(rest.length ? [{ id: '_other', name: 'Other', gameIds: rest, other: true }] : [])]
+    const defs = [...groups, ...(rest.length ? [{ id: '_other', name: 'Other', gameIds: rest }] : [])]
       .map(g => ({ ...g, gameIds: g.gameIds.filter(id => card.series.gameIds.includes(id)) })).filter(g => g.gameIds.length);
     const subCards = buildSeriesCards(defs.map(g => ({ id: `${card.series.id}/${g.id}`, name: g.name, gameIds: g.gameIds })), gamesData, watchlistData, allGames, beatenIds);
-    return { ...card, subs: subCards.map((sc, i) => ({ ...sc, key: defs[i].id, groupId: defs[i].id, other: !!defs[i].other, name: defs[i].name,
-      icon: sc.coverIcon, px: true, done: sc.mastered, beaten: sc.beatenCount })) };
+    return { ...card, subs: subCards.map((sc, i) => ({ ...sc, key: defs[i].id, groupId: defs[i].id, name: defs[i].name,
+      icon: sc.coverIcon, px: true, done: sc.mastered, beaten: sc.beatenCount, doneLabel: 'mastered' })) };
   });
 };
 const buildSeriesCards = (seriesList, gamesData, watchlistData, allGames, beatenIds) => {
@@ -1031,9 +1031,7 @@ function SeriesProgressTab({ seriesData, gamesData, watchlistData, allGames, bea
                   <span className="scard-name">{c.series.name}</span>
                   <span className="scard-sub">
                     <span>{c.total} games</span>
-                    {c.started > 0 && <><i>·</i><span className="text-[#66c0f4]">{c.started} started</span></>}
-                    {c.mastered > 0 && <><i>·</i><span className="text-[#e5b143]">★ {c.mastered} mastered</span></>}
-                    {c.beatenCount > 0 && <><i>·</i><span className="text-[#b8c4ce]">{c.beatenCount} beaten</span></>}
+                    {statusPills({ done: c.mastered, doneLabel: 'mastered', beaten: c.beatenCount, started: c.started })}
                   </span>
                 </div>
                 <span className="scard-end">
