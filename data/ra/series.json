@@ -13,7 +13,28 @@
       19019
     ],
     "showProgress": true,
-    "coverGameId": 19021
+    "coverGameId": 19021,
+    "groups": [
+      {
+        "id": "imoq",
+        "name": "IMOQ",
+        "gameIds": [
+          19021,
+          19012,
+          19013,
+          19019
+        ]
+      },
+      {
+        "id": "g-u",
+        "name": "G.U.",
+        "gameIds": [
+          19015,
+          19016,
+          19017
+        ]
+      }
+    ]
   },
   {
     "id": "mnmlqtbm",
@@ -128,7 +149,8 @@
     "gameIds": [
       11258,
       319,
-      13049
+      13049,
+      11243
     ],
     "showProgress": true,
     "coverGameId": 11258
@@ -162,7 +184,33 @@
       3192,
       18161
     ],
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          22475,
+          10434,
+          10432,
+          10433,
+          19043,
+          16382,
+          18160,
+          18161
+        ]
+      },
+      {
+        "id": "party-game",
+        "name": "Party Game",
+        "gameIds": [
+          10907,
+          20852,
+          10438,
+          3192
+        ]
+      }
+    ]
   },
   {
     "id": "aae408fe",
@@ -229,7 +277,50 @@
       18366
     ],
     "coverGameId": 16152,
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "digimon-world",
+        "name": "Digimon World",
+        "gameIds": [
+          11327,
+          11360,
+          11328,
+          20649,
+          28265,
+          20648,
+          16154,
+          3935
+        ]
+      },
+      {
+        "id": "digimon-story",
+        "name": "Digimon Story",
+        "gameIds": [
+          16155,
+          9443,
+          16153,
+          16152
+        ]
+      },
+      {
+        "id": "rumble-arena",
+        "name": "Rumble Arena",
+        "gameIds": [
+          11379,
+          21436
+        ]
+      },
+      {
+        "id": "spinoff",
+        "name": "Spinoff",
+        "gameIds": [
+          18142,
+          11307,
+          18366
+        ]
+      }
+    ]
   },
   {
     "id": "aae40903",
@@ -327,14 +418,10 @@
     "name": "Final Fantasy",
     "gameIds": [
       1449,
-      2403,
-      11243,
       3885,
       16632,
       16244,
       34679,
-      2479,
-      700,
       4958,
       519,
       3236,
@@ -379,7 +466,92 @@
       11246
     ],
     "showProgress": true,
-    "coverGameId": 16244
+    "coverGameId": 16244,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          1449,
+          3215,
+          14435,
+          14434,
+          17526,
+          762,
+          259,
+          3822,
+          5527,
+          3216,
+          4663,
+          5553,
+          3528,
+          9994,
+          763,
+          3169,
+          11247,
+          11332,
+          1386,
+          764,
+          341,
+          765,
+          11242,
+          11270,
+          29090,
+          2779,
+          2778,
+          5802,
+          5803
+        ]
+      },
+      {
+        "id": "crystal-chronicles",
+        "name": "Crystal Chronicles",
+        "gameIds": [
+          3885,
+          16632,
+          16244,
+          34679,
+          112,
+          7741
+        ]
+      },
+      {
+        "id": "tactics",
+        "name": "Tactics",
+        "gameIds": [
+          4958,
+          519,
+          3236,
+          11246
+        ]
+      },
+      {
+        "id": "dissidia",
+        "name": "Dissidia",
+        "gameIds": [
+          3515,
+          3517
+        ]
+      },
+      {
+        "id": "ff7-universe",
+        "name": "FF7 Universe",
+        "gameIds": [
+          2713,
+          10387
+        ]
+      },
+      {
+        "id": "spinoff",
+        "name": "Spinoff",
+        "gameIds": [
+          3919,
+          14837,
+          16572,
+          909
+        ]
+      }
+    ]
   },
   {
     "id": "mnmlm638",
@@ -426,7 +598,59 @@
       4682,
       4957
     ],
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "archanea",
+        "name": "Archanea",
+        "gameIds": [
+          5236,
+          6388,
+          9240,
+          8572
+        ]
+      },
+      {
+        "id": "valentia",
+        "name": "Valentia",
+        "gameIds": [
+          5431,
+          4957
+        ]
+      },
+      {
+        "id": "jugdral",
+        "name": "Jugdral",
+        "gameIds": [
+          2878,
+          2879
+        ]
+      },
+      {
+        "id": "elibe",
+        "name": "Elibe",
+        "gameIds": [
+          4879,
+          554
+        ]
+      },
+      {
+        "id": "tellius",
+        "name": "Tellius",
+        "gameIds": [
+          8231,
+          38
+        ]
+      },
+      {
+        "id": "fates",
+        "name": "Fates",
+        "gameIds": [
+          4683,
+          4682
+        ]
+      }
+    ]
   },
   {
     "id": "mnnbxtzu",
@@ -470,9 +694,52 @@
       12700,
       12704,
       34776,
-      34707
+      34707,
+      11250,
+      4853,
+      19389,
+      19052,
+      8577,
+      11637,
+      12198,
+      14941,
+      24964,
+      34760,
+      34758,
+      3033
     ],
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "harvest-moon-story-of-seasons",
+        "name": "Harvest Moon / Story of Seasons",
+        "gameIds": [
+          2919,
+          11250,
+          4853,
+          19389,
+          19052,
+          8577,
+          11637,
+          12198,
+          14941,
+          24964,
+          34760,
+          34758
+        ]
+      },
+      {
+        "id": "rune-factory",
+        "name": "Rune Factory",
+        "gameIds": [
+          12705,
+          12700,
+          12704,
+          34776,
+          34707
+        ]
+      }
+    ]
   },
   {
     "id": "aae408f5",
@@ -500,7 +767,30 @@
       14828
     ],
     "coverGameId": 32650,
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          32650,
+          32564,
+          2781,
+          2780
+        ]
+      },
+      {
+        "id": "spinoff",
+        "name": "Spinoff",
+        "gameIds": [
+          2642,
+          3556,
+          768,
+          19290,
+          14828
+        ]
+      }
+    ]
   },
   {
     "id": "mnne3pkq",
@@ -579,7 +869,92 @@
       9818
     ],
     "coverGameId": 17729,
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "classic",
+        "name": "Classic",
+        "gameIds": [
+          3582
+        ]
+      },
+      {
+        "id": "mega-man-x",
+        "name": "Mega Man X",
+        "gameIds": [
+          3219,
+          30125,
+          5670,
+          637,
+          5679,
+          6928,
+          629,
+          624,
+          14738,
+          11353,
+          11335,
+          11382,
+          5673,
+          2680,
+          713,
+          4912
+        ]
+      },
+      {
+        "id": "zero-zx",
+        "name": "Zero / ZX",
+        "gameIds": [
+          8376,
+          8306,
+          782,
+          783,
+          625,
+          784,
+          9818
+        ]
+      },
+      {
+        "id": "battle-network",
+        "name": "Battle Network",
+        "gameIds": [
+          4909,
+          575,
+          773,
+          774,
+          775,
+          776,
+          777,
+          567,
+          23908,
+          778,
+          779,
+          780,
+          781,
+          25454
+        ]
+      },
+      {
+        "id": "star-force",
+        "name": "Star Force",
+        "gameIds": [
+          15656,
+          17895,
+          17729,
+          17896,
+          17890,
+          15334,
+          17894
+        ]
+      },
+      {
+        "id": "legends",
+        "name": "Legends",
+        "gameIds": [
+          11280,
+          11262
+        ]
+      }
+    ]
   },
   {
     "id": "mnndz5d5",
@@ -662,10 +1037,50 @@
       11244,
       10533,
       3589,
-      2355
+      2355,
+      1486,
+      520,
+      16559,
+      11322,
+      2787,
+      2831,
+      3535
     ],
     "showProgress": true,
-    "coverGameId": 3585
+    "coverGameId": 3585,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          11244,
+          10533,
+          1486,
+          16559,
+          2787,
+          2831,
+          3535
+        ]
+      },
+      {
+        "id": "acid",
+        "name": "Acid",
+        "gameIds": [
+          3585,
+          3940
+        ]
+      },
+      {
+        "id": "spinoff",
+        "name": "Spinoff",
+        "gameIds": [
+          3589,
+          2355,
+          520,
+          11322
+        ]
+      }
+    ]
   },
   {
     "id": "aae408f2",
@@ -738,7 +1153,30 @@
       18762,
       19096
     ],
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          9999,
+          1436,
+          1435,
+          50,
+          12883
+        ]
+      },
+      {
+        "id": "online",
+        "name": "Online",
+        "gameIds": [
+          15653,
+          3738,
+          18762,
+          19096
+        ]
+      }
+    ]
   },
   {
     "id": "mnnbyc6h",
@@ -777,7 +1215,64 @@
       16292
     ],
     "coverGameId": 668,
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          5853,
+          810,
+          668,
+          515,
+          11732,
+          16211,
+          723,
+          3887,
+          586,
+          9852,
+          576,
+          7212,
+          788,
+          25369,
+          724,
+          790,
+          722,
+          16197
+        ]
+      },
+      {
+        "id": "mystery-dungeon",
+        "name": "Mystery Dungeon",
+        "gameIds": [
+          17492,
+          14853,
+          2816,
+          16293,
+          16292
+        ]
+      },
+      {
+        "id": "ranger",
+        "name": "Ranger",
+        "gameIds": [
+          16295,
+          16163,
+          16296
+        ]
+      },
+      {
+        "id": "spinoff",
+        "name": "Spinoff",
+        "gameIds": [
+          17393,
+          16597,
+          14860,
+          789,
+          726
+        ]
+      }
+    ]
   },
   {
     "id": "mnnc8epg",
@@ -818,7 +1313,31 @@
       34703,
       16995
     ],
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          14013,
+          11346,
+          2995,
+          11334,
+          19115,
+          12934,
+          34703
+        ]
+      },
+      {
+        "id": "raving-rabbids",
+        "name": "Raving Rabbids",
+        "gameIds": [
+          8413,
+          19231,
+          34862
+        ]
+      }
+    ]
   },
   {
     "id": "mnmlqjfk",
@@ -844,7 +1363,50 @@
       19030
     ],
     "coverGameId": 11245,
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          11245,
+          11265,
+          2370,
+          12748,
+          29328,
+          2606,
+          34704,
+          1303,
+          16274,
+          11268
+        ]
+      },
+      {
+        "id": "gun-survivor",
+        "name": "Gun Survivor",
+        "gameIds": [
+          19022,
+          11419,
+          19030
+        ]
+      },
+      {
+        "id": "chronicles",
+        "name": "Chronicles",
+        "gameIds": [
+          97,
+          34766
+        ]
+      },
+      {
+        "id": "outbreak",
+        "name": "Outbreak",
+        "gameIds": [
+          5761,
+          5762
+        ]
+      }
+    ]
   },
   {
     "id": "aae408f0",
@@ -860,10 +1422,44 @@
       11349,
       11390,
       2478,
-      19075
+      19075,
+      2479,
+      700
     ],
     "showProgress": true,
-    "coverGameId": 3894
+    "coverGameId": 3894,
+    "groups": [
+      {
+        "id": "original",
+        "name": "Original",
+        "gameIds": [
+          14602,
+          3894,
+          3895,
+          2478,
+          2479,
+          700
+        ]
+      },
+      {
+        "id": "romancing-saga",
+        "name": "Romancing SaGa",
+        "gameIds": [
+          3423,
+          3424,
+          3425,
+          19066
+        ]
+      },
+      {
+        "id": "saga-frontier",
+        "name": "SaGa Frontier",
+        "gameIds": [
+          11349,
+          11390
+        ]
+      }
+    ]
   },
   {
     "id": "mnlzj17k",
@@ -875,7 +1471,8 @@
       11288,
       400,
       4206,
-      1391
+      1391,
+      2403
     ],
     "coverGameId": 9695,
     "showProgress": true
@@ -904,9 +1501,67 @@
       7285,
       3891,
       3737,
-      3164
+      3164,
+      4631,
+      4574,
+      2655,
+      11644,
+      4929,
+      5000,
+      5009,
+      6027
     ],
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          819,
+          3496,
+          4631,
+          4574,
+          2655,
+          5000,
+          5009
+        ]
+      },
+      {
+        "id": "persona",
+        "name": "Persona",
+        "gameIds": [
+          3736,
+          3891,
+          3737,
+          3164
+        ]
+      },
+      {
+        "id": "devil-survivor",
+        "name": "Devil Survivor",
+        "gameIds": [
+          9483,
+          7285
+        ]
+      },
+      {
+        "id": "digital-devil-saga",
+        "name": "Digital Devil Saga",
+        "gameIds": [
+          2646,
+          2652
+        ]
+      },
+      {
+        "id": "spinoff",
+        "name": "Spinoff",
+        "gameIds": [
+          3495,
+          11644,
+          4929
+        ]
+      }
+    ]
   },
   {
     "id": "mnnbws4f",
@@ -926,7 +1581,31 @@
       14545,
       14544
     ],
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "shining-force",
+        "name": "Shining Force",
+        "gameIds": [
+          65,
+          75,
+          14541,
+          4707,
+          12639,
+          10569,
+          19363,
+          12640
+        ]
+      },
+      {
+        "id": "shining-soul",
+        "name": "Shining Soul",
+        "gameIds": [
+          4703,
+          7095
+        ]
+      }
+    ]
   },
   {
     "id": "mnlzmcqc",
@@ -971,7 +1650,32 @@
       14371
     ],
     "coverGameId": 11255,
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          18320,
+          11255,
+          11241,
+          2609,
+          2617,
+          2621
+        ]
+      },
+      {
+        "id": "spinoff",
+        "name": "Spinoff",
+        "gameIds": [
+          2622,
+          9077,
+          3523,
+          14370,
+          14371
+        ]
+      }
+    ]
   },
   {
     "id": "mnlyqo7l",
@@ -984,10 +1688,46 @@
       2588,
       2589,
       9880,
-      9334
+      9334,
+      16475,
+      18471,
+      24978,
+      24979
     ],
     "coverGameId": 2589,
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          16474,
+          18472,
+          18473,
+          16475,
+          18471
+        ]
+      },
+      {
+        "id": "swordcraft-story",
+        "name": "Swordcraft Story",
+        "gameIds": [
+          2588,
+          2589,
+          9334
+        ]
+      },
+      {
+        "id": "spinoff",
+        "name": "Spinoff",
+        "gameIds": [
+          33764,
+          9880,
+          24978,
+          24979
+        ]
+      }
+    ]
   },
   {
     "id": "mnnc0pp8",
@@ -1022,7 +1762,38 @@
       18574
     ],
     "coverGameId": 11301,
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          11324,
+          19250,
+          19139,
+          11274,
+          5056,
+          19368,
+          11301,
+          20626,
+          3298,
+          5111,
+          2209,
+          6981
+        ]
+      },
+      {
+        "id": "spinoff",
+        "name": "Spinoff",
+        "gameIds": [
+          4130,
+          3179,
+          3259,
+          18582,
+          18574
+        ]
+      }
+    ]
   },
   {
     "id": "aae408f1",
@@ -1061,7 +1832,35 @@
       3999
     ],
     "coverGameId": 10479,
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "gagharv",
+        "name": "Gagharv",
+        "gameIds": [
+          3563,
+          3567,
+          3562
+        ]
+      },
+      {
+        "id": "liberl",
+        "name": "Liberl",
+        "gameIds": [
+          10479,
+          10481,
+          3568
+        ]
+      },
+      {
+        "id": "crossbell",
+        "name": "Crossbell",
+        "gameIds": [
+          10521,
+          10513
+        ]
+      }
+    ]
   },
   {
     "id": "mnnd0hta",

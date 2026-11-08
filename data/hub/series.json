@@ -1,5 +1,43 @@
 [
   {
+    "id": "mw7vfskg",
+    "name": ".hack",
+    "gameIds": [
+      "ra:19015",
+      "ra:19016",
+      "ra:19017",
+      "ra:19021",
+      "ra:3470",
+      "ra:19012",
+      "ra:19013",
+      "ra:19019",
+      "steam:525480"
+    ],
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "imoq",
+        "name": "IMOQ",
+        "gameIds": [
+          "ra:19021",
+          "ra:19012",
+          "ra:19013",
+          "ra:19019"
+        ]
+      },
+      {
+        "id": "g-u",
+        "name": "G.U.",
+        "gameIds": [
+          "ra:19015",
+          "ra:19016",
+          "ra:19017",
+          "steam:525480"
+        ]
+      }
+    ]
+  },
+  {
     "id": "hbab9c484c",
     "name": "Assassin's Creed",
     "gameIds": [
@@ -76,7 +114,34 @@
       "ra:18161",
       "steam:731490"
     ],
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          "ra:22475",
+          "ra:10434",
+          "ra:10432",
+          "ra:10433",
+          "ra:19043",
+          "ra:16382",
+          "ra:18160",
+          "ra:18161",
+          "steam:731490"
+        ]
+      },
+      {
+        "id": "party-game",
+        "name": "Party Game",
+        "gameIds": [
+          "ra:10907",
+          "ra:20852",
+          "ra:10438",
+          "ra:3192"
+        ]
+      }
+    ]
   },
   {
     "id": "hbab9c484b",
@@ -136,7 +201,51 @@
       "ra:18366",
       "steam:1042550"
     ],
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "digimon-world",
+        "name": "Digimon World",
+        "gameIds": [
+          "ra:11327",
+          "ra:11360",
+          "ra:11328",
+          "ra:20649",
+          "ra:28265",
+          "ra:20648",
+          "ra:16154",
+          "ra:3935"
+        ]
+      },
+      {
+        "id": "digimon-story",
+        "name": "Digimon Story",
+        "gameIds": [
+          "ra:16155",
+          "ra:9443",
+          "ra:16153",
+          "ra:16152",
+          "steam:1042550"
+        ]
+      },
+      {
+        "id": "rumble-arena",
+        "name": "Rumble Arena",
+        "gameIds": [
+          "ra:11379",
+          "ra:21436"
+        ]
+      },
+      {
+        "id": "spinoff",
+        "name": "Spinoff",
+        "gameIds": [
+          "ra:18142",
+          "ra:11307",
+          "ra:18366"
+        ]
+      }
+    ]
   },
   {
     "id": "hbab9c4849",
@@ -164,14 +273,10 @@
     "name": "Final Fantasy",
     "gameIds": [
       "ra:1449",
-      "ra:2403",
-      "ra:11243",
       "ra:3885",
       "ra:16632",
       "ra:16244",
       "ra:34679",
-      "ra:2479",
-      "ra:700",
       "ra:4958",
       "ra:519",
       "ra:3236",
@@ -229,7 +334,106 @@
       "xbox:2109344129",
       "xbox:2050520287"
     ],
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          "ra:1449",
+          "ra:3215",
+          "ra:14435",
+          "ra:14434",
+          "ra:17526",
+          "ra:762",
+          "ra:259",
+          "ra:3822",
+          "ra:5527",
+          "ra:3216",
+          "ra:4663",
+          "ra:5553",
+          "ra:3528",
+          "ra:9994",
+          "ra:763",
+          "ra:3169",
+          "ra:11247",
+          "ra:11332",
+          "ra:1386",
+          "ra:764",
+          "ra:341",
+          "ra:765",
+          "ra:11242",
+          "ra:11270",
+          "ra:29090",
+          "ra:2779",
+          "ra:2778",
+          "ra:5802",
+          "ra:5803",
+          "steam:239120",
+          "steam:312750",
+          "steam:346830",
+          "steam:377840",
+          "steam:359870",
+          "steam:595520",
+          "steam:292120",
+          "steam:2515020",
+          "xbox:1397819364",
+          "xbox:1855426799",
+          "xbox:2109344129"
+        ]
+      },
+      {
+        "id": "crystal-chronicles",
+        "name": "Crystal Chronicles",
+        "gameIds": [
+          "ra:3885",
+          "ra:16632",
+          "ra:16244",
+          "ra:34679",
+          "ra:112",
+          "ra:7741"
+        ]
+      },
+      {
+        "id": "tactics",
+        "name": "Tactics",
+        "gameIds": [
+          "ra:4958",
+          "ra:519",
+          "ra:3236",
+          "ra:11246"
+        ]
+      },
+      {
+        "id": "dissidia",
+        "name": "Dissidia",
+        "gameIds": [
+          "ra:3515",
+          "ra:3517"
+        ]
+      },
+      {
+        "id": "ff7-universe",
+        "name": "FF7 Universe",
+        "gameIds": [
+          "ra:2713",
+          "ra:10387"
+        ]
+      },
+      {
+        "id": "spinoff",
+        "name": "Spinoff",
+        "gameIds": [
+          "ra:3919",
+          "ra:14837",
+          "ra:16572",
+          "ra:909",
+          "steam:340170",
+          "xbox:1079518187",
+          "xbox:2050520287"
+        ]
+      }
+    ]
   },
   {
     "id": "hbab9c4838",
@@ -244,7 +448,29 @@
       "xbox:790047319",
       "xbox:1892245301"
     ],
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "armored-core",
+        "name": "Armored Core",
+        "gameIds": [
+          "ra:11348",
+          "ra:3316",
+          "ra:3308"
+        ]
+      },
+      {
+        "id": "souls",
+        "name": "Souls",
+        "gameIds": [
+          "steam:335300",
+          "steam:374320",
+          "steam:2622380",
+          "xbox:790047319",
+          "xbox:1892245301"
+        ]
+      }
+    ]
   },
   {
     "id": "hbab9c4841",
@@ -283,10 +509,54 @@
       "ra:12700",
       "ra:34776",
       "ra:34707",
-      "steam:978780"
+      "steam:978780",
+      "ra:11250",
+      "ra:4853",
+      "ra:19389",
+      "ra:19052",
+      "ra:8577",
+      "ra:11637",
+      "ra:12198",
+      "ra:14941",
+      "ra:24964",
+      "ra:34760",
+      "ra:34758",
+      "ra:3033"
     ],
     "showProgress": true,
-    "coverGameId": "ra:2919"
+    "coverGameId": "ra:2919",
+    "groups": [
+      {
+        "id": "harvest-moon-story-of-seasons",
+        "name": "Harvest Moon / Story of Seasons",
+        "gameIds": [
+          "ra:2919",
+          "steam:978780",
+          "ra:11250",
+          "ra:4853",
+          "ra:19389",
+          "ra:19052",
+          "ra:8577",
+          "ra:11637",
+          "ra:12198",
+          "ra:14941",
+          "ra:24964",
+          "ra:34760",
+          "ra:34758"
+        ]
+      },
+      {
+        "id": "rune-factory",
+        "name": "Rune Factory",
+        "gameIds": [
+          "ra:12704",
+          "ra:12705",
+          "ra:12700",
+          "ra:34776",
+          "ra:34707"
+        ]
+      }
+    ]
   },
   {
     "id": "hbab9c483d",
@@ -303,7 +573,31 @@
       "ra:14828",
       "xbox:1962559957"
     ],
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          "ra:32650",
+          "ra:32564",
+          "ra:2781",
+          "ra:2780",
+          "xbox:1962559957"
+        ]
+      },
+      {
+        "id": "spinoff",
+        "name": "Spinoff",
+        "gameIds": [
+          "ra:2642",
+          "ra:3556",
+          "ra:768",
+          "ra:19290",
+          "ra:14828"
+        ]
+      }
+    ]
   },
   {
     "id": "hbab9c4843",
@@ -388,7 +682,96 @@
       "steam:743890",
       "steam:999020"
     ],
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "classic",
+        "name": "Classic",
+        "gameIds": [
+          "ra:3582",
+          "steam:742300",
+          "steam:363440"
+        ]
+      },
+      {
+        "id": "mega-man-x",
+        "name": "Mega Man X",
+        "gameIds": [
+          "ra:3219",
+          "ra:30125",
+          "ra:5670",
+          "ra:637",
+          "ra:5679",
+          "ra:6928",
+          "ra:629",
+          "ra:624",
+          "ra:14738",
+          "ra:11353",
+          "ra:11335",
+          "ra:11382",
+          "ra:5673",
+          "ra:2680",
+          "ra:713",
+          "ra:4912",
+          "steam:743890"
+        ]
+      },
+      {
+        "id": "zero-zx",
+        "name": "Zero / ZX",
+        "gameIds": [
+          "ra:8376",
+          "ra:8306",
+          "ra:782",
+          "ra:783",
+          "ra:625",
+          "ra:784",
+          "ra:9818",
+          "steam:999020"
+        ]
+      },
+      {
+        "id": "battle-network",
+        "name": "Battle Network",
+        "gameIds": [
+          "ra:4909",
+          "ra:575",
+          "ra:773",
+          "ra:774",
+          "ra:775",
+          "ra:776",
+          "ra:777",
+          "ra:567",
+          "ra:23908",
+          "ra:778",
+          "ra:779",
+          "ra:780",
+          "ra:781",
+          "ra:25454"
+        ]
+      },
+      {
+        "id": "star-force",
+        "name": "Star Force",
+        "gameIds": [
+          "ra:15656",
+          "ra:17895",
+          "ra:17729",
+          "ra:17896",
+          "ra:17890",
+          "ra:15334",
+          "ra:17894"
+        ]
+      },
+      {
+        "id": "legends",
+        "name": "Legends",
+        "gameIds": [
+          "ra:11280",
+          "ra:11262"
+        ]
+      }
+    ]
   },
   {
     "id": "hbab9c4845",
@@ -409,7 +792,41 @@
       "ra:2831",
       "ra:3535"
     ],
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          "ra:11244",
+          "ra:10533",
+          "ra:1486",
+          "ra:16559",
+          "ra:2787",
+          "ra:2831",
+          "ra:3535"
+        ]
+      },
+      {
+        "id": "acid",
+        "name": "Acid",
+        "gameIds": [
+          "ra:3585",
+          "ra:3940"
+        ]
+      },
+      {
+        "id": "spinoff",
+        "name": "Spinoff",
+        "gameIds": [
+          "ra:3589",
+          "ra:2355",
+          "xbox:1263405066",
+          "ra:520",
+          "ra:11322"
+        ]
+      }
+    ]
   },
   {
     "id": "hbab9c4844",
@@ -480,7 +897,72 @@
       "steam:287290",
       "steam:390340"
     ],
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          "ra:11245",
+          "ra:11265",
+          "ra:2370",
+          "ra:12748",
+          "ra:29328",
+          "ra:2606",
+          "ra:34704",
+          "ra:1303",
+          "ra:16274",
+          "ra:11268",
+          "steam:304240",
+          "steam:339340",
+          "steam:254700",
+          "steam:21690",
+          "steam:221040",
+          "steam:418370"
+        ]
+      },
+      {
+        "id": "gun-survivor",
+        "name": "Gun Survivor",
+        "gameIds": [
+          "ra:19022",
+          "ra:11419",
+          "ra:19030"
+        ]
+      },
+      {
+        "id": "chronicles",
+        "name": "Chronicles",
+        "gameIds": [
+          "ra:97",
+          "ra:34766"
+        ]
+      },
+      {
+        "id": "outbreak",
+        "name": "Outbreak",
+        "gameIds": [
+          "ra:5761",
+          "ra:5762"
+        ]
+      },
+      {
+        "id": "revelations",
+        "name": "Revelations",
+        "gameIds": [
+          "steam:222480",
+          "steam:287290"
+        ]
+      },
+      {
+        "id": "spinoff",
+        "name": "Spinoff",
+        "gameIds": [
+          "ra:5133",
+          "steam:390340"
+        ]
+      }
+    ]
   },
   {
     "id": "hbab9c483e",
@@ -498,9 +980,76 @@
       "ra:3737",
       "ra:3164",
       "xbox:1670311038",
-      "xbox:2116209805"
+      "xbox:2116209805",
+      "ra:4631",
+      "ra:4574",
+      "ra:2655",
+      "ra:11644",
+      "ra:4929",
+      "ra:5000",
+      "ra:5009",
+      "ra:6027"
     ],
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          "ra:819",
+          "ra:3496",
+          "ra:4631",
+          "ra:4574",
+          "ra:2655",
+          "ra:5000",
+          "ra:5009"
+        ]
+      },
+      {
+        "id": "persona",
+        "name": "Persona",
+        "gameIds": [
+          "ra:3736",
+          "ra:3891",
+          "ra:3737",
+          "ra:3164",
+          "xbox:1670311038"
+        ]
+      },
+      {
+        "id": "devil-summoner",
+        "name": "Devil Summoner",
+        "gameIds": [
+          "xbox:2116209805",
+          "ra:6027"
+        ]
+      },
+      {
+        "id": "devil-survivor",
+        "name": "Devil Survivor",
+        "gameIds": [
+          "ra:9483",
+          "ra:7285"
+        ]
+      },
+      {
+        "id": "digital-devil-saga",
+        "name": "Digital Devil Saga",
+        "gameIds": [
+          "ra:2646",
+          "ra:2652"
+        ]
+      },
+      {
+        "id": "spinoff",
+        "name": "Spinoff",
+        "gameIds": [
+          "ra:3495",
+          "ra:11644",
+          "ra:4929"
+        ]
+      }
+    ]
   },
   {
     "id": "hbab9c4848",
@@ -595,7 +1144,44 @@
       "steam:351970",
       "xbox:1872765418"
     ],
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "mainline",
+        "name": "Mainline",
+        "gameIds": [
+          "ra:11324",
+          "ra:19250",
+          "ra:19139",
+          "ra:11274",
+          "ra:5056",
+          "ra:19368",
+          "ra:11301",
+          "ra:20626",
+          "ra:3298",
+          "ra:5111",
+          "ra:2209",
+          "ra:6981",
+          "steam:740130",
+          "steam:429660",
+          "steam:372360",
+          "steam:738540",
+          "steam:351970",
+          "xbox:1872765418"
+        ]
+      },
+      {
+        "id": "spinoff",
+        "name": "Spinoff",
+        "gameIds": [
+          "ra:4130",
+          "ra:3179",
+          "ra:3259",
+          "ra:18582",
+          "ra:18574"
+        ]
+      }
+    ]
   },
   {
     "id": "hbab9c4834",
@@ -620,7 +1206,50 @@
       "steam:1198090",
       "steam:1668520"
     ],
-    "showProgress": true
+    "showProgress": true,
+    "groups": [
+      {
+        "id": "gagharv",
+        "name": "Gagharv",
+        "gameIds": [
+          "ra:3563",
+          "ra:3567",
+          "ra:3562"
+        ]
+      },
+      {
+        "id": "liberl",
+        "name": "Liberl",
+        "gameIds": [
+          "ra:10479",
+          "ra:10481",
+          "ra:3568",
+          "steam:251150",
+          "steam:251290",
+          "steam:436670"
+        ]
+      },
+      {
+        "id": "crossbell",
+        "name": "Crossbell",
+        "gameIds": [
+          "ra:10521",
+          "ra:10513",
+          "steam:1668510",
+          "steam:1668520"
+        ]
+      },
+      {
+        "id": "erebonia",
+        "name": "Erebonia",
+        "gameIds": [
+          "steam:538680",
+          "steam:748490",
+          "steam:991270",
+          "steam:1198090"
+        ]
+      }
+    ]
   },
   {
     "id": "hbab9c4846",
