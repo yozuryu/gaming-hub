@@ -508,13 +508,24 @@ const server = http.createServer(async (req, res) => {
         return;
     }
 
-    // GET /api/git/show?sha= — one commit that isn't on GitHub yet, as per-file diffs
+    // GET /api/git/show?sha= — one commit that isn't on GitHub yet: per-file diffs (data), details only (code)
     if (method === 'GET' && pathname === '/api/git/show') {
         try {
             const sha = new URL(req.url, 'http://x').searchParams.get('sha') || '';
             const st = await publishStatus(false);
             const c = st.commits.find(x => x.sha === sha || x.full === sha);
             if (!c) { send(res, 404, { error: 'Not a commit waiting to be pushed' }); return; }
+            // Code commits (anything outside data/, which the admin can't commit) get their details only:
+            // message and per-file line counts, no diff
+            if (!c.files.every(f => f.startsWith('data/'))) {
+                const body = (await git(['log', '-1', '--format=%b', c.full])).trim();
+                const stat = (await git(['show', '--format=', '--numstat', c.full])).split('\n').filter(Boolean).map(l => {
+                    const [add, del, file] = l.split('\t');
+                    return { file, add: add === '-' ? null : +add, del: del === '-' ? null : +del };
+                });
+                send(res, 200, { ...c, code: true, body, stat });
+                return;
+            }
             const out = await git(['show', '--format=', c.full]);
             const files = []; let cur = null;
             for (const line of out.split('\n')) {

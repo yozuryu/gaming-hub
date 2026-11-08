@@ -1685,6 +1685,45 @@ function CommitView({ sha }) {
     useEffect(() => { setC(null); apiGet(`${API}/git/show?sha=${sha}`).then(setC).catch(e => setC({ error: e.message })); }, [sha]);
     if (!c) return <SkPage />;
     if (c.error) return <Empty icon={XCircle} title="Couldn't read the commit" hint={c.error} />;
+    // Code commits: made outside the admin, so the details only (message, files, line counts)
+    if (c.code) return (
+        <>
+            <div className="pane-h">
+                <GitCommit size={15} className="text-[#8f98a0] shrink-0" />
+                <span className="pane-t flex-1 truncate">{c.subject}</span>
+                <span className="chip shrink-0"><Terminal size={11} />Code</span>
+            </div>
+            <div className="flex-1 overflow-y-auto p-5">
+                <div className="max-w-[760px] flex flex-col gap-4">
+                    <div className="flex flex-wrap gap-x-5 gap-y-1 text-[12px]">
+                        <span className="text-[#8f98a0]">Commit <span className="mono text-[#c6d4df]">{c.sha}</span></span>
+                        <span className="text-[#8f98a0]">By <span className="text-[#c6d4df]">{c.author}</span></span>
+                        <span className="text-[#8f98a0]" title={c.date}>{ago(c.date)}</span>
+                    </div>
+                    <div className="card p-4">
+                        <div className="text-[14px] text-white font-medium mb-2">{c.subject}</div>
+                        {c.body && <div className="text-[12px] text-[#c6d4df] whitespace-pre-wrap leading-relaxed">{c.body}</div>}
+                    </div>
+                    <div className="card">
+                        <div className="flex items-center gap-2 px-4 py-2.5 border-b border-[#2a475e]">
+                            <span className="text-[11px] text-[#8f98a0] font-bold uppercase tracking-[0.07em] flex-1">Files</span>
+                            <span className="text-[11px] text-[#546270] tabular-nums">{c.stat.length}</span>
+                        </div>
+                        {c.stat.map(f => (
+                            <div key={f.file} className="flex items-center gap-2 px-4 py-2 border-b border-[#2a475e]/50 last:border-0">
+                                <FileJson size={13} className="text-[#546270] shrink-0" />
+                                <span className="mono text-[12px] text-[#c6d4df] flex-1 truncate">{f.file}</span>
+                                {f.add === null ? <span className="chip">binary</span> : <>
+                                    <span className="mono text-[11px] text-[#57cbde] tabular-nums">+{f.add}</span>
+                                    <span className="mono text-[11px] text-[#ff6b6b] tabular-nums w-12 text-right">−{f.del}</span>
+                                </>}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </>
+    );
     return (
         <>
             <div className="pane-h">

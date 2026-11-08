@@ -14,6 +14,7 @@ Analytics: Most days, Binged and Comebacks lists, idle games can be hidden, farm
 - Top games: **Binged** replaces Almost done: hours per day played (games played on 2+ days, 2h+). Almost done showed current progress rather than the period's, and the profiles' Progress → Nearly there already lists it
 - New games: **Comebacks** between New and Dropped (Tried and dropped, shortened to fit): games you returned to after 60+ days without playing or unlocking anything, ranked by time played since, with how long you were away
 - **Hide idle** next to Hide farms, on by default: games marked as idle in the admin (left running, so their playtime isn't play) are left out of every number. Poring Clicker is the first one. The hub's Analytics strip leaves them out too
+- One **Hide** chip instead of two: it opens a checklist with Achievement farms and Idle games, both ticked by default. Each option shows its count and names its first 3 games, then "+N more". The names are ordered by playtime in the selected period, then unlocks, so the games that would move the numbers most come first. The names were only in a tooltip before, so a phone couldn't see them. The chip counts the games hidden right now
 
 ### Admin
 
@@ -38,7 +39,7 @@ Analytics: Most days, Binged and Comebacks lists, idle games can be hidden, farm
 - **Data Diff:**
   - Three groups:
     - **Not committed:** hand-edited data files changed on this laptop.
-    - **Ready to push:** every commit GitHub's main doesn't have, data or code. Click one to see its diff, file by file.
+    - **Ready to push:** every commit GitHub's main doesn't have, data or code. A data commit opens its diff file by file. A code commit (anything outside `data/`, which the admin can't commit) opens its details only: message, author, and the files with their added and removed lines.
     - **Local only:** pipeline output from local runs, compared with the last pull; it's never published.
   - Three buttons:
     - **Commit:** the data files only (other uncommitted work is left alone), not pushed.

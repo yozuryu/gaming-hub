@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useContext, createContext, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BarChart3, ChevronDown, ChevronRight, Table, Check, Plus, CalendarDays, ListChecks, Star, Trophy, Users, Gamepad2, LayoutDashboard, Clock, Sparkles, Gem, CalendarCheck, RotateCcw, Timer, Moon } from 'lucide-react';
+import { BarChart3, ChevronDown, ChevronRight, Table, Check, Plus, EyeOff, CalendarDays, ListChecks, Star, Trophy, Users, Gamepad2, LayoutDashboard, Clock, Sparkles, Gem, CalendarCheck, RotateCcw, Timer, Moon } from 'lucide-react';
 import { TabBar, useSwipeTabs, scrollToTabs } from '../assets/tabs.js';
 import { TZ, dayKey, todayKey, addDays, keyToDate, splitByDay, fmtDayKey } from '../assets/time.js';
 import {
@@ -208,6 +208,67 @@ const ChartCard = ({ title, subtitle, pill, rules, legend, table, right, classNa
 };
 
 // Segmented switch inside a card (one list or chart at a time)
+// One "Hide" chip for the games left out of every section (farms, idle). Opens a checklist; the menu is
+// fixed to the screen because the chip row scrolls sideways and would clip it. Each option names its
+// first HIDE_NAMES games (the caller orders them by playtime in the period) and counts the rest
+const HIDE_NAMES = 3;
+const HideMenu = ({ options }) => {
+    const [open, setOpen] = useState(false);
+    const [pos, setPos] = useState(null);
+    const btnRef = useRef(null), menuRef = useRef(null);
+    const toggle = () => {
+        if (!open) {
+            const r = btnRef.current.getBoundingClientRect();
+            setPos({ top: r.bottom + 6, left: Math.max(12, Math.min(r.left, window.innerWidth - 272)) });
+        }
+        setOpen(!open);
+    };
+    useEffect(() => {
+        if (!open) return;
+        const close = (e) => { if (!menuRef.current?.contains(e.target) && !btnRef.current?.contains(e.target)) setOpen(false); };
+        const esc = (e) => { if (e.key === 'Escape') setOpen(false); };
+        const away = () => setOpen(false);
+        document.addEventListener('pointerdown', close);
+        document.addEventListener('keydown', esc);
+        window.addEventListener('scroll', away, { passive: true });
+        window.addEventListener('resize', away);
+        return () => {
+            document.removeEventListener('pointerdown', close);
+            document.removeEventListener('keydown', esc);
+            window.removeEventListener('scroll', away);
+            window.removeEventListener('resize', away);
+        };
+    }, [open]);
+    const hidden = options.filter(o => o.on).reduce((n, o) => n + (o.count ?? 0), 0);
+    const anyOn = options.some(o => o.on);
+    return (
+        <>
+            <button ref={btnRef} onClick={toggle} aria-haspopup="true" aria-expanded={open} className={`fchip ${anyOn ? 'on' : ''}`}>
+                <EyeOff size={13} />Hide{options.every(o => o.count != null) && <span className="n anim-fade">{hidden}</span>}
+                <ChevronDown size={12} className={`fmenu-caret ${open ? 'open' : ''}`} />
+            </button>
+            {open && pos && (
+                <div ref={menuRef} role="menu" className="fmenu anim-pop" style={{ top: pos.top, left: pos.left }}>
+                    {options.map(o => (
+                        <button key={o.id} role="menuitemcheckbox" aria-checked={o.on} onClick={o.toggle} className="fmenu-row">
+                            <span className={`fmenu-box ${o.on ? 'on' : ''}`}>{o.on && <Check size={11} strokeWidth={3} />}</span>
+                            <span className="fmenu-b">
+                                <span className="fmenu-t">{o.label}{o.count != null && <span className="n">{o.count}</span>}</span>
+                                {o.names?.length > 0 && (
+                                    <span className="fmenu-s">
+                                        {o.names.slice(0, HIDE_NAMES).join(', ')}
+                                        {o.names.length > HIDE_NAMES && <b> +{o.names.length - HIDE_NAMES} more</b>}
+                                    </span>
+                                )}
+                            </span>
+                        </button>
+                    ))}
+                </div>
+            )}
+        </>
+    );
+};
+
 const Seg = ({ items, value, onChange }) => (
     <div className="an-seg" role="tablist">
         {items.map(([id, label]) => (
@@ -806,6 +867,18 @@ const App = () => {
     }, [data]);
 
     const range = useMemo(() => buildRange(period, base?.firstUnlockKey), [period, base]);
+
+    // Hide menu: farms and idle games named by how much they'd move this period's numbers
+    // (playtime, then unlocks: Xbox has no playtime), so the few names shown are the ones that matter
+    const hideNames = useMemo(() => {
+        if (!base) return null;
+        const mins = {}, unl = {};
+        for (const x of base.days) if (inRange(x.key, range.startKey, range.endKey)) mins[`${x.s.platform}-${x.s.gameId}`] = (mins[`${x.s.platform}-${x.s.gameId}`] || 0) + x.minutes;
+        for (const u of base.unlocks) if (inRange(u.key, range.startKey, range.endKey)) unl[`${u.platform}-${u.g}`] = (unl[`${u.platform}-${u.g}`] || 0) + 1;
+        const name = (k) => { const [p, ...id] = k.split('-'); return data.meta[p]?.[id.join('-')]?.name ?? k; };
+        const order = (set) => [...set].sort((a, b) => (mins[b] || 0) - (mins[a] || 0) || (unl[b] || 0) - (unl[a] || 0)).map(name);
+        return { farms: order(data.farms), idle: order(data.idle) };
+    }, [base, range, data]);
 
     const view = useMemo(() => {
         if (!base) return null;
@@ -1445,16 +1518,10 @@ const App = () => {
                                     className={`fchip ${platform === id ? 'on' : ''}`}>{label}</button>
                             ))}
                             <span className="fsep" />
-                            <button onClick={toggleFarms} aria-pressed={hideFarms} className={`fchip ${hideFarms ? 'on' : ''}`}
-                                title={`Steam games with ${FARM_MIN_UNLOCKS}+ unlocks earning more than ${FARM_PER_HOUR} achievements per hour of playtime, and games marked in the admin${data ? `:\n${[...data.farms].map(k => { const [p, ...id] = k.split('-'); return data.meta[p]?.[id.join('-')]?.name ?? k; }).join(', ')}` : ''}`}>
-                                {hideFarms ? <Check size={12} /> : <Plus size={12} />}Hide farms{data && <span className="n anim-fade">{data.farms.size}</span>}
-                            </button>
-                            {data?.idle.size > 0 && (
-                                <button onClick={toggleIdle} aria-pressed={hideIdle} className={`fchip anim-fade ${hideIdle ? 'on' : ''}`}
-                                    title={`Games left running, marked in the admin:\n${[...data.idle].map(k => { const [p, ...id] = k.split('-'); return data.meta[p]?.[id.join('-')]?.name ?? k; }).join(', ')}`}>
-                                    {hideIdle ? <Check size={12} /> : <Plus size={12} />}Hide idle<span className="n">{data.idle.size}</span>
-                                </button>
-                            )}
+                            <HideMenu options={[
+                                { id: 'farms', label: 'Achievement farms', on: hideFarms, toggle: toggleFarms, count: data?.farms.size, names: hideNames?.farms },
+                                { id: 'idle',  label: 'Idle games',        on: hideIdle,  toggle: toggleIdle,  count: data?.idle.size,  names: hideNames?.idle },
+                            ]} />
                         </div>
                     </div>
                 </div>
