@@ -114,7 +114,7 @@ gaming-hub/
 
 Vanilla JS, no React. Reads `data/hub/config.json`, `data/ra/profile.json`, `data/steam/profile.json`.
 
-**Desktop layout (≥1024px):** main `lg:max-w-[79rem]`; `.hub-grid` puts `#playing-section` and `#activity-section` in the main column and `.hub-rail` (340px, spans both rows) on the right with the Platforms header, `.pstrip` stacked one cell per row, and the Completions and Analytics strips restyled as cards (CSS in `index.html`). DOM order is the phone order, so below 1024px it is one column as before
+**Desktop layout (≥1024px):** main `lg:max-w-[79rem]`; `.hub-grid` puts `#playing-section` and `#activity-section` in the main column and `.hub-rail` (340px, spans both rows) on the right with the Platforms header, `.pstrip` stacked as separate cards (8px apart, a 3px left edge in the platform colour: RA gold, Steam blue, Xbox green), and the Completions and Analytics strips restyled as cards (CSS in `index.html`). DOM order is the phone order, so below 1024px it is one column as before
 
 **Platform strip** (`.pstrip`, one `a.pcell` per platform): three headline numbers per platform. On mobile one row each (icon, numbers, chevron); on tablets three cells side by side with the name on top (stacked in the rail at ≥1024px) and the three most recently played covers below. A platform is hidden if `platforms[key].visible` is false in config.json (the strip then uses fewer columns). The other counts (rank, beaten, games…) are on the profiles.
 

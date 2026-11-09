@@ -185,8 +185,14 @@
       #activity-section > :first-child { margin-top: 0; }
       .hub-rail { grid-column: 2; grid-row: 1 / span 3; align-self: start; }
       /* Platforms stacked: name, numbers, latest covers */
-      .hub-rail .pstrip { grid-template-columns: 1fr !important; }
-      .hub-rail .pcell + .pcell { border-left: none; border-top: 1px solid #22344a; }
+      /* Platforms stacked as separate cards, each edged in its platform colour (one box blurred the three together) */
+      .hub-rail .pstrip { grid-template-columns: 1fr !important; gap: 8px; background: none; border: 0; overflow: visible; }
+      .hub-rail .pcell { background: #1b2838; border: 1px solid #2a475e; border-left: 3px solid var(--pc, #2a475e); border-radius: 2px; }
+      .hub-rail .pcell + .pcell { border-left: 3px solid var(--pc, #2a475e); border-top: 1px solid #2a475e; }
+      .hub-rail .pcell:hover { background: #202d39; }
+      .hub-rail #card-retroachievements { --pc: #e5b143; }
+      .hub-rail #card-steam { --pc: #66c0f4; }
+      .hub-rail #card-xbox { --pc: #52b043; }
       /* Completions and Analytics become cards: title row, then their lines */
       .hub-rail #completions-strip, .hub-rail #analytics-strip { flex-wrap: wrap; row-gap: 10px; margin-top: 12px; padding: 12px 14px; }
       .hub-rail #completions-strip > .w-px, .hub-rail #analytics-strip > .w-px { display: none !important; }

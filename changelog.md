@@ -1,5 +1,13 @@
 # Changelog
 
+## v26.11.09
+
+Platforms on the desktop hub are separate cards
+
+### Hub
+
+- **Platforms** in the desktop rail: RetroAchievements, Steam and Xbox are three cards with a gap between them and a left edge in the platform's colour (gold, blue, green), instead of one box split by a faint line. The phone keeps its compact rows
+
 ## v26.11.08
 
 Profiles: new Completions and Game awards; series get sub-series; Analytics: Most days, Binged and Comebacks lists, idle games can be hidden, farms can be marked by hand; the admin gets a new look
