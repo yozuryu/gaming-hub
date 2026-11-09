@@ -6,7 +6,7 @@ A clear way to Activity from the desktop hub
 
 ### Hub
 
-- **Recent activity** on desktop ends in a bar to the Activity page: the last 7 days as small squares (blue on days you played or unlocked something), the hours and unlocks of those days, and **Open Activity**. The only way there before was the small arrow in the section header, which stays. Phones don't get the bar: the bottom nav has Activity
+- **Recent activity** on desktop ends in a bar to the Activity page: the last 7 days as small squares (blue on days you played or unlocked something), the hours and unlocks of those days, and **All activity**. The only way there before was the small arrow in the section header, which stays. Phones don't get the bar: the bottom nav has Activity
 
 ## v26.11.09
 
