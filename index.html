@@ -175,6 +175,18 @@
       -webkit-tap-highlight-color: transparent;
     }
     #activity-toggle-btn:active { background: #202d39; }
+    /* Desktop: a bar under the feed to the Activity page, with the last 7 days (the header chevron was too easy to miss) */
+    #activity-more { display: none; }
+    @media (min-width: 768px) {
+      #activity-more.ready { display: flex; align-items: center; gap: 12px; padding: 9px 14px; background: #172333; border: 1px solid #2a475e; border-top: none; border-radius: 0 0 2px 2px; font-size: 11px; color: #546270; text-decoration: none; transition: background-color 0.15s; animation: motion-fade 220ms ease-out backwards; }
+      #activity-more:hover { background: #1b2838; }
+      #activity-more:hover .am-go { color: #c6d4df; }
+      #activity-more b { color: #c6d4df; font-weight: 600; font-variant-numeric: tabular-nums; }
+      .am-days { display: flex; gap: 3px; }
+      .am-days i { width: 10px; height: 10px; border-radius: 2px; background: #22344a; }
+      .am-days i.on { background: #66c0f4; }
+      .am-go { margin-left: auto; display: flex; align-items: center; gap: 4px; color: #66c0f4; font-weight: 600; transition: color 0.15s; }
+    }
 
     /* Wide screens: main column + rail */
     @media (min-width: 1024px) {
@@ -407,6 +419,7 @@
       </div>
       </span>
     </div>
+    <a id="activity-more" href="./activity/" aria-label="Open Activity"></a>
     <button id="activity-toggle-btn" onclick="toggleActivityFeed()">Show more</button>
     </div><!-- /activity-section -->
     </div><!-- /hub-grid -->
@@ -832,6 +845,17 @@
 
         document.getElementById('activity-feed').innerHTML = html ||
           '<div style="padding:16px;text-align:center;font-size:11px;color:#546270;">No recent activity</div>';
+
+        // Desktop bar to Activity: the last 7 local days (lit when you played or unlocked something), hours and unlocks
+        const week = Array.from({ length: 7 }, (_, i) => localKey(Date.now() - (6 - i) * 86400000));
+        const inWeek = [...groups.values()].filter(g => week.includes(g.day));
+        const active = new Set(inWeek.filter(g => g.minutes > 0 || g.unlocks.length).map(g => g.day));
+        const weekMin = inWeek.reduce((n, g) => n + g.minutes, 0), weekUnl = inWeek.reduce((n, g) => n + g.unlocks.length, 0);
+        const more = document.getElementById('activity-more');
+        more.innerHTML = `<span class="am-days" title="Last 7 days: ${active.size} active">${week.map(k => `<i class="${active.has(k) ? 'on' : ''}" title="${dayLabel(k)}"></i>`).join('')}</span>`
+          + `<span>Last 7 days · <b>${fmtMin(weekMin)}</b> played · <b>${weekUnl.toLocaleString()}</b> unlock${weekUnl === 1 ? '' : 's'}</span>`
+          + `<span class="am-go">Open Activity<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>`;
+        more.classList.add('ready');
 
         // Mobile collapse: hide rows 5+ and show toggle button
         if (window.innerWidth < 768 && rows.length > PHONE_ROWS) {
