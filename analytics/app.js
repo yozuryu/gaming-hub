@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BarChart3, ChevronDown, ChevronRight, Table, Check, Plus, EyeOff, CalendarDays, ListChecks, Star, Trophy, Users, Gamepad2, LayoutDashboard, Clock, Sparkles, Gem, CalendarCheck, RotateCcw, Timer, Moon } from 'lucide-react';
 import { TabBar, useSwipeTabs, scrollToTabs } from '../assets/tabs.js';
 import { TZ, dayKey, todayKey, addDays, keyToDate, splitByDay, fmtDayKey } from '../assets/time.js';
+import { raIcon } from '../assets/ra-icon.js';
 import {
     RA_MEDIA, PLATFORMS, PLATFORM_COLOR, PLATFORM_LABEL, PLATFORM_SHORT, RARITY_TIERS, rarityTier, HEAT_RAMP,
     FARM_PER_HOUR, FARM_MIN_UNLOCKS, TILDE_TAG_COLORS, DAY_PARTS, DROPPED_MAX_MINUTES, DROPPED_IDLE_DAYS,
@@ -676,6 +677,8 @@ async function loadAll() {
     for (const [id, g] of Object.entries(xboxIndex?.achievementProgress ?? {})) put('xbox', id, { name: g.gameName, icon: xboxImg(g.iconUrl, 64), art: xboxImg(g.heroUrl, 424) });
     const raGames = [...(raProfile?.gameAwardsAndProgress?.results ?? []), ...(raProfile?.recentlyPlayedGames ?? [])];
     for (const g of raGames) put('ra', g.gameId, { name: g.title, icon: g.imageIcon ? `${RA_MEDIA}${g.imageIcon}` : null, console: g.consoleName });
+    // RA's placeholder icon → the square picked in the admin (assets/ra-icon.js)
+    for (const [id, m] of Object.entries(meta.ra)) m.icon = raIcon(m.icon, id, raArt);
 
     // Completed games (gold): RA mastery, Steam perfect, Xbox 100%. Beaten is RA-only, used by the funnel.
     const awards = raProfile?.pageAwards?.visibleUserAwards ?? [];

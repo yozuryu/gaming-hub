@@ -7,6 +7,7 @@ import { normalizeRA, normalizeSteam, normalizeXbox, normalizeSession } from './
 import { TZ, toMs, dayKey, todayKey, addDays, keyToDate, buildHeatmap, splitByDay } from '../assets/time.js';
 import { loadPlaying, PLAYING_GROUPS } from '../assets/playing.js';
 import { SummarySkeleton, TimelineSkeleton } from '../assets/activity-ui.js';
+import { raIcon } from '../assets/ra-icon.js';
 
 // A day counts toward the playtime streak with at least this much play
 const PLAYTIME_STREAK_MIN = 15;
@@ -828,7 +829,8 @@ const App = () => {
 
     const withIcons = (list, icons) => list.map(a => icons[a.gameId] ? { ...a, gameIcon: icons[a.gameId] } : a);
     const shown = (platform) => chunks ? chunks[platform].slice(0, nextChunk - 1).flat() : [];
-    const raAchs    = useMemo(() => shown('ra'), [chunks, nextChunk]);
+    // RA's placeholder icon → the square picked in the admin (assets/ra-icon.js)
+    const raAchs    = useMemo(() => shown('ra').map(a => ({ ...a, gameIcon: raIcon(a.gameIcon, a.gameId, raArt) })), [chunks, nextChunk, raArt]);
     const steamAchs = useMemo(() => withIcons(shown('steam'), steamGameIcons), [chunks, nextChunk, steamGameIcons]);
     const xboxAchs  = useMemo(() => withIcons(shown('xbox'), xboxGameIcons), [chunks, nextChunk, xboxGameIcons]);
 
@@ -846,6 +848,7 @@ const App = () => {
             const unlocks = chunks ? chunks[platform].flat() : [];
             return playtime[platform].map(s => ({
                 ...s,
+                gameIcon: platform === 'ra' ? raIcon(s.gameIcon, s.gameId, raArt) : s.gameIcon,
                 unlocks: unlocks.filter(a => a.gameId === s.gameId && (() => {
                     const t = toMs(a.unlockedAt);
                     return t >= s.startMs - UNLOCK_GRACE_MS && t <= s.endMs + UNLOCK_GRACE_MS;
@@ -853,7 +856,7 @@ const App = () => {
             }));
         };
         return { ra: withUnlocks('ra'), steam: withUnlocks('steam') };
-    }, [playtime, chunks]);
+    }, [playtime, chunks, raArt]);
     const raPlayHeatmap    = useMemo(() => buildPlaytimeHeatmap(sessions.ra),    [sessions]);
     const steamPlayHeatmap = useMemo(() => buildPlaytimeHeatmap(sessions.steam), [sessions]);
 

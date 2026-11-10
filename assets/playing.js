@@ -6,6 +6,7 @@
 // unlocks would miss games played without unlocking anything).
 // Plain ES module (no JSX), imported by the Activity page and, via import(), by the hub.
 import { toMs, dayKey, addDays, keyToDate } from './time.js';
+import { raIcon } from './ra-icon.js';
 
 // 13 weeks, so the weekly play strip and the session stats cover the same days
 export const PLAYING_WEEKS = 13;
@@ -146,6 +147,7 @@ export async function loadPlaying(fetchJson, base = './', now = Date.now()) {
                 totalMinutes = r.playtime ?? null;
             }
             cover = raArt[g.gameId]?.grid?.thumb ?? null;
+            g.icon = raIcon(g.icon, g.gameId, raArt);   // RA's placeholder → the square picked in the admin
         } else {
             const file = await fetchJson(`${base}data/steam/games/${g.gameId}.json`);
             if (file) {

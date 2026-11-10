@@ -436,7 +436,7 @@ const server = http.createServer(async (req, res) => {
         return;
     }
 
-    // GET /api/sgdb/search?q=  ·  GET /api/sgdb/images?gameId=&kind=grid|hero
+    // GET /api/sgdb/search?q=  ·  GET /api/sgdb/images?gameId=&kind=grid|hero|square|icon
     // SteamGridDB lookups for the RA Art module (scripts/lib/steamgriddb.js). The key is read from .env
     // on every call, so a key saved in Credentials works at once; it never goes to the page.
     if (method === 'GET' && (pathname === '/api/sgdb/search' || pathname === '/api/sgdb/images')) {
@@ -450,7 +450,8 @@ const server = http.createServer(async (req, res) => {
                 send(res, 200, await sgdb.search(query.q));
             } else {
                 if (!/^\d+$/.test(query.gameId || '')) { send(res, 400, { error: 'Invalid gameId' }); return; }
-                send(res, 200, query.kind === 'hero' ? await sgdb.heroes(query.gameId) : await sgdb.grids(query.gameId));
+                const kinds = { grid: sgdb.grids, hero: sgdb.heroes, square: sgdb.squares, icon: sgdb.icons };
+                send(res, 200, await (kinds[query.kind] ?? sgdb.grids)(query.gameId));
             }
         } catch (e) {
             send(res, 502, { error: e.message });

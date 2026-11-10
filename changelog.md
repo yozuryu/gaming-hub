@@ -2,10 +2,12 @@
 
 ## v26.11.10
 
-An easier way to Activity on desktop, picked art on unstarted series, and an easier-to-read changelog
+An easier way to Activity on desktop, picked icons for RA games without one, picked art on unstarted series, and an easier-to-read changelog
 
 ### RetroAchievements
 
+- new: **Games without an icon on RA** can show a square picked in the admin
+  RA shows the same blank placeholder for every game without an icon, mostly want-to-play games with no set yet. A picked square stands in everywhere the icon shows, and RA's own icon takes over once it has one.
 - fix: **Series** tab shows the picked art for series you haven't started
   A series whose cover is only on the want-to-play list showed the library mosaic, even with a hero picked in the admin. Picks only reached games you had played.
 
@@ -15,15 +17,22 @@ An easier way to Activity on desktop, picked art on unstarted series, and an eas
   The last 7 days as squares (blue on days you played or unlocked something), their hours and unlocks, and a link to the Activity page. The small arrow in the section header stays; phones have the Activity tab instead.
 - improved: **Playing** and **Series** bars end in blue **All playing ›** and **All series ›**
   Instead of only a grey arrow. Series now says "36 series" on the left, so "All" isn't said twice.
+- improved: **Sub-series** bars on series cards and in series sheets have art behind them
+  The sub-series' icons, blurred and dimmed, like the art behind the series cards. On the Series page and the RA and Steam Series tabs.
 - fix: **Series** cards and the Series page show the picked art for want-to-play games
   The same fix as the RA Series tab, in `build-series.js`: the art behind the card and its sheet.
 
 ### Structure
 
 - new: **Changelog** is easier to skim
-  Releases show their date, summary and the areas they touched while folded, grouped by month. New entries have a kind (new, improved, fix) and a short headline; tap one for its details.
+  Releases show their date and summary while folded, grouped by month. New entries have a kind (new, improved, fix) and a short headline; tap one for its details.
 - fix: **Changelog** renders bold text and counts sub-points under their entry
   Bold showed as `**asterisks**`, and sub-points counted as separate changes (8 Nov said 68 changes for 33).
+
+### Admin
+
+- new: **RA Art** finds square icons for RA games without one
+  A **no icon** button in the list's footer shows them; each gets an Icon section with SteamGridDB's square art and icons. A pick is only used until RA adds its own icon, and the admin offers to remove it then.
 
 ## v26.11.09
 

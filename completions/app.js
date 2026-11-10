@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Star, Gem, ChevronDown, Flame, Feather, Check, Plus, Medal } from 'lucide-react';
 import { TZ, fmtDate, monthKey, yearOf, keyToDate } from '../assets/time.js';
+import { raIcon } from '../assets/ra-icon.js';
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -599,7 +600,8 @@ const App = () => {
     const pool = useMemo(() => {
         const raTotals     = Object.fromEntries((raProfile?.gameAwardsAndProgress?.results ?? []).map(g => [g.gameId, g.maxPossible]));
         const ra           = normalizeRA(raProfile?.pageAwards?.visibleUserAwards ?? [], showBeaten, raTotals)
-            .map(c => { const a = raArt[c.gameId]; return a?.grid ? { ...c, wideUrl: a.grid.thumb, wideArt: a.hero?.thumb ?? a.grid.thumb } : c; });
+            .map(c => { const a = raArt[c.gameId]; return a?.grid ? { ...c, wideUrl: a.grid.thumb, wideArt: a.hero?.thumb ?? a.grid.thumb } : c; })
+            .map(c => c.platform === 'ra' ? { ...c, iconUrl: raIcon(c.iconUrl, c.gameId, raArt) } : c);   // RA placeholder → picked icon
         const steamPerfect = normalizeSteam(steamProfile?.perfectGames ?? []);
         const steamBeaten  = showBeaten ? normalizeSteamBeaten(beatenSteamGames ?? []) : [];
         const xboxDone     = normalizeXbox(xboxProfile?.perfectGames ?? []);

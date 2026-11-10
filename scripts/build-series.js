@@ -32,10 +32,13 @@ function raGames() {
     const wideOf = id => wide[id]?.grid
         ? { art: wide[id].hero?.thumb ?? wide[id].grid.thumb, artFull: wide[id].hero?.url ?? wide[id].grid.url, wide: true }
         : null;
+    // RA's placeholder for games with no icon yet: the square picked in the admin stands in until RA adds one
+    // (same rule as assets/ra-icon.js)
+    const iconOf = (path, id) => (!path || path === '/Images/000001.png') && wide[id]?.icon ? wide[id].icon.thumb : path ? RA_MEDIA + path : null;
     const out = {};
     for (const w of watch) {
         // Want-to-play entries carry only an icon, so the picked hero is their only art
-        out[w.id] = { title: w.title, console: w.consoleName, icon: w.imageIcon ? RA_MEDIA + w.imageIcon : null, ...wideOf(w.id),
+        out[w.id] = { title: w.title, console: w.consoleName, icon: iconOf(w.imageIcon, w.id), ...wideOf(w.id),
             unlocked: 0, total: w.achievementsPublished ?? 0, lastMs: 0, url: `https://retroachievements.org/game/${w.id}` };
     }
     for (const d of Object.values(games)) {
@@ -43,7 +46,7 @@ function raGames() {
         const lastUnlock = d.summary ? ms(d.summary.lastUnlock?.date) : Math.max(0, ...achs.filter(a => a.dateEarned).map(a => ms(a.dateEarned)));
         const shot = [d.imageIngame, d.imageTitle].find(x => x && !x.endsWith('/000002.png'));
         out[d.id] = {
-            title: d.title, console: d.consoleName, icon: d.imageIcon ? RA_MEDIA + d.imageIcon : null,
+            title: d.title, console: d.consoleName, icon: iconOf(d.imageIcon, d.id),
             // Background: the hero picked in the admin, else the screenshot
             ...(wideOf(d.id) ?? { art: shot ? RA_MEDIA + shot : null }),
             unlocked: d.numAwardedToUser ?? 0, total: d.numAchievements ?? 0, minutes: Math.round((d.userTotalPlaytime ?? 0) / 60),

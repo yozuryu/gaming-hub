@@ -131,7 +131,7 @@ import { createPortal } from 'react-dom';
 import {
     Settings, KeyRound, Play, FileDiff, Layers, Hourglass, Sprout, Image as ImageIcon, Trophy, Save, RotateCw, Power,
     Search, X, Plus, Star, Eye, EyeOff, Lock, ExternalLink, ChevronLeft, Lightbulb, Inbox, Check, Terminal, RefreshCw,
-    Download, Bug, ListPlus, FileJson, Clock, Github, Smartphone, Monitor, DownloadCloud, Pause, Loader2, XCircle, CheckCircle2, MinusCircle, Maximize2, Trash2, Pencil, Tag, Globe, LayoutGrid, Server, Square, CircleSlash, Bookmark,
+    Download, Bug, ListPlus, FileJson, Clock, Github, Smartphone, Monitor, DownloadCloud, Pause, Loader2, XCircle, CheckCircle2, MinusCircle, Maximize2, Trash2, Pencil, Tag, Globe, LayoutGrid, Server, Square, CircleSlash, Bookmark, Gamepad2,
     UploadCloud, GitCommit, CalendarClock, AlertTriangle, ChevronUp, ChevronDown, FolderTree, Wand2,
 } from 'lucide-react';
 
@@ -2259,12 +2259,15 @@ function FarmGamesModule() {
 // MODULE: RA Art (SteamGridDB)
 // Wide art for RA games, which only have a square icon and a screenshot: pick a banner grid
 // (thumb for rows and tiles) and optionally a hero (blurred behind sheet headers) per game.
-// data/ra/art.json stores URLs only: { games: { [raId]: { sgdbGameId, sgdbName, grid, hero } } }.
+// data/ra/art.json stores URLs only: { games: { [raId]: { sgdbGameId, sgdbName, grid, hero, icon } } }.
+// icon: a square image for a game RA has no icon for yet (RA sends its placeholder, RA_NO_ICON); the site
+// shows it only while RA still does, so a real RA icon replaces it without anyone removing the pick.
 // Lookups go through the admin server (scripts/lib/steamgriddb.js); the key never reaches this page.
 // ═══════════════════════════════════════════════════════════════════════════════
 
 const raBaseTitle = t => (t ?? '').replace(/~[^~]+~\s*/g, '').replace(/\s*\[Subset[^\]]*\]\s*$/, '').trim();
 const pickImage = x => x && { id: x.id, url: x.url, thumb: x.thumb, width: x.width, height: x.height };
+const RA_NO_ICON = '/Images/000001.png';
 
 function RAArtModule() {
     const [games,   setGames]   = useState([]);
@@ -2281,6 +2284,8 @@ function RAArtModule() {
     const [sgGame,  setSgGame]  = useState(null);
     const [grids,   setGrids]   = useState(null);
     const [heroes,  setHeroes]  = useState(null);
+    const [squares, setSquares] = useState(null);   // square grids and icons, for games without an RA icon
+    const [icons,   setIcons]   = useState(null);
     const [error,   setError]   = useState(null);
     const [busy,    setBusy]    = useState(false);
     const [zoom,    setZoom]    = useState(null);   // { img, kind } shown full size in an overlay
@@ -2295,7 +2300,7 @@ function RAArtModule() {
     useEffect(() => {
         Promise.all([apiGet(`${API}/games/ra`), apiData('data/ra/art.json')]).then(([g, a]) => {
             // Played games first (they're on the profile lists), then want-to-play
-            setGames(g.map(x => ({ ...x, icon: `${RA_MEDIA}${x.imageIcon}`, url: `${RA_SITE}/game/${x.id}` }))
+            setGames(g.map(x => ({ ...x, icon: `${RA_MEDIA}${x.imageIcon}`, noIcon: !x.imageIcon || x.imageIcon === RA_NO_ICON, url: `${RA_SITE}/game/${x.id}` }))
                 .sort((x, y) => (!!y.played - !!x.played) || x.title.localeCompare(y.title)));
             setArt(a?.games ? a : { metadata: a?.metadata ?? {}, games: {} });
         });
@@ -2303,15 +2308,15 @@ function RAArtModule() {
 
     const sgdb = (p) => apiGet(`${API}/sgdb/${p}`).then(d => { if (d?.error) throw new Error(d.error); return d; });
     const loadImages = async (g) => {
-        setSgGame(g); setGrids(null); setHeroes(null); setError(null);
+        setSgGame(g); setGrids(null); setHeroes(null); setSquares(null); setIcons(null); setError(null);
         try {
-            const [gr, he] = await Promise.all([sgdb(`images?gameId=${g.id}&kind=grid`), sgdb(`images?gameId=${g.id}&kind=hero`)]);
-            setGrids(gr); setHeroes(he);
+            const [gr, he, sq, ic] = await Promise.all(['grid', 'hero', 'square', 'icon'].map(k => sgdb(`images?gameId=${g.id}&kind=${k}`)));
+            setGrids(gr); setHeroes(he); setSquares(sq); setIcons(ic);
         } catch (e) { setError(e.message); }
     };
     const runSearch = async (q) => {
         if (!q.trim()) return;
-        setBusy(true); setResults(null); setSgGame(null); setGrids(null); setHeroes(null); setError(null);
+        setBusy(true); setResults(null); setSgGame(null); setGrids(null); setHeroes(null); setSquares(null); setIcons(null); setError(null);
         try {
             const r = await sgdb(`search?q=${encodeURIComponent(q.trim())}`);
             setResults(r);
@@ -2335,7 +2340,7 @@ function RAArtModule() {
             const prev = a.games[selected.id] ?? {};
             const next = { ...prev, ...patch };
             const games = { ...a.games };
-            if (!next.grid && !next.hero) delete games[selected.id]; else games[selected.id] = next;
+            if (!next.grid && !next.hero && !next.icon) delete games[selected.id]; else games[selected.id] = next;
             return { ...a, games };
         });
         setDirty(true); setSaved(false);
@@ -2352,17 +2357,20 @@ function RAArtModule() {
 
     if (!art) return <SkSplit side={320} />;
 
-    const withArt = id => !!art.games[id];
+    // Art = a banner or hero; the icon is separate (its own filter)
+    const withArt = id => !!(art.games[id]?.grid || art.games[id]?.hero);
+    const iconOf = g => g.noIcon && art.games[g.id]?.icon ? art.games[g.id].icon.thumb : g.icon;
     // art.marked: games worth picking art for, with why (marked by Claude from the data, or by hand here)
     const marks = art.marked ?? {};
     const isMarked = id => !!marks[id];
     const list = games.filter(g =>
-        (filter === 'all' || (filter === 'with' ? withArt(g.id) : filter === 'marked' ? isMarked(g.id) : !withArt(g.id))) &&
+        (filter === 'all' || (filter === 'with' ? withArt(g.id) : filter === 'marked' ? isMarked(g.id) : filter === 'noicon' ? g.noIcon : !withArt(g.id))) &&
         (!search || g.title.toLowerCase().includes(search.toLowerCase())))
         // Marked: the ones still without art first
-        .sort((a, b) => filter === 'marked' ? (withArt(a.id) - withArt(b.id)) : 0);
+        .sort((a, b) => filter === 'marked' ? (withArt(a.id) - withArt(b.id)) : filter === 'noicon' ? (!!art.games[a.id]?.icon - !!art.games[b.id]?.icon) : 0);
     const counts = { all: games.length, with: games.filter(g => withArt(g.id)).length, marked: Object.keys(marks).length };
     counts.without = counts.all - counts.with;
+    const noIcon = games.filter(g => g.noIcon), noIconLeft = noIcon.filter(g => !art.games[g.id]?.icon).length;
     const markedLeft = Object.keys(marks).filter(id => !withArt(id)).length;
     // Clear the marks of games that already have art (they're done), and save at once: the Save button only
     // shows with a game selected. Saving writes the whole file, so unsaved picks are saved along with it
@@ -2389,7 +2397,7 @@ function RAArtModule() {
             <div className="relative group">
                 <button onClick={() => choose(kind, img)} title={`${img.width}×${img.height}${img.style ? ` · ${img.style}` : ''}${img.author ? ` · by ${img.author}` : ''}${img.score ? ` · ${img.score} votes` : ''}`}
                     className={`relative w-full rounded-[3px] overflow-hidden border-2 transition-colors ${on ? 'border-[#e5b143]' : 'border-transparent hover:border-[#66c0f4]'}`}
-                    style={{ aspectRatio: wide ? '1920 / 620' : '460 / 215' }}>
+                    style={{ aspectRatio: kind === 'icon' ? '1 / 1' : wide ? '1920 / 620' : '460 / 215' }}>
                     <img src={img.thumb} alt="" loading="lazy" className="w-full h-full object-cover bg-[#101214]" />
                     {on && <span className="absolute top-1.5 left-1.5 chip !h-[18px] !bg-[#e5b143] !text-[#101214] !border-[#e5b143] tag-up"><Check size={10} />Picked</span>}
                     <span className="absolute bottom-1.5 left-1.5 text-[10px] text-white bg-black/65 px-1.5 rounded-[2px] tabular-nums">{img.width}×{img.height}</span>
@@ -2410,7 +2418,7 @@ function RAArtModule() {
                     <img src={zoom.img.url} alt="" className="max-w-full max-h-[80vh] object-contain rounded-[3px] shadow-2xl anim-pop" onClick={e => e.stopPropagation()} />
                     <div className="flex items-center gap-3 text-[12px] text-[#c6d4df]" onClick={e => e.stopPropagation()}>
                         <span>{zoom.img.width}×{zoom.img.height}{zoom.img.style ? ` · ${zoom.img.style}` : ''}{zoom.img.author ? ` · by ${zoom.img.author}` : ''}</span>
-                        <button className="btn btn-primary btn-sm" onClick={() => { choose(zoom.kind, zoom.img); setZoom(null); }}><Check size={12} />{entry?.[zoom.kind]?.id === zoom.img.id ? 'Unpick' : `Pick as ${zoom.kind === 'grid' ? 'banner' : 'hero'}`}</button>
+                        <button className="btn btn-primary btn-sm" onClick={() => { choose(zoom.kind, zoom.img); setZoom(null); }}><Check size={12} />{entry?.[zoom.kind]?.id === zoom.img.id ? 'Unpick' : `Pick as ${{ grid: 'banner', hero: 'hero', icon: 'icon' }[zoom.kind]}`}</button>
                         <button className="btn btn-ghost btn-sm" onClick={() => setZoom(null)}><X size={12} />Close</button>
                     </div>
                 </div>
@@ -2431,7 +2439,7 @@ function RAArtModule() {
                     {list.length === 0 && <Empty icon={ImageIcon} title="No games here" />}
                     {list.map(g => (
                         <button key={g.id} onClick={() => setSelected(g)} className={`lrow ${selected?.id === g.id ? 'on' : ''}`}>
-                            <img src={g.icon} alt="" className="lrow-i" />
+                            <img src={iconOf(g)} alt="" className="lrow-i" />
                             <span className="lrow-b">
                                 <span className="lrow-t">{g.title}</span>
                                 <span className="lrow-s">{g.consoleName}{g.played ? '' : ' · want to play'}</span>
@@ -2443,17 +2451,21 @@ function RAArtModule() {
                 </div>
                 <div className="pane-f">
                     <ImageIcon size={12} /><span className="flex-1">{counts.with} games with art</span>
+                    {/* Games RA shows its placeholder icon for (RA's blank controller): pick a stand-in in the Icon section */}
+                    {noIcon.length > 0 && <button className={`btn btn-sm ${filter === 'noicon' ? 'chip-gold border' : 'btn-ghost'}`} aria-pressed={filter === 'noicon'}
+                        onClick={() => setFilter(f => f === 'noicon' ? 'marked' : 'noicon')} title={`RA games without an icon: ${noIconLeft} of ${noIcon.length} have none picked yet`}>
+                        <Gamepad2 size={12} />{noIconLeft} no icon</button>}
                     {markedDone > 0 && <button className="btn btn-ghost btn-sm" onClick={unmarkDone} title="Remove the mark from every game that already has art (saves at once)"><Check size={12} />Unmark {markedDone} done</button>}
                 </div>
             </div>
 
             {/* ── Right: the selected game ── */}
             {!selected ? (
-                <Empty icon={ImageIcon} title="Pick an RA game" hint="RA games only have a square icon and a screenshot. Pick a banner (rows, tiles, Playing) and optionally a hero (blurred behind sheet headers) from SteamGridDB." />
+                <Empty icon={ImageIcon} title="Pick an RA game" hint="RA games only have a square icon and a screenshot. Pick a banner (rows, tiles, Playing) and optionally a hero (blurred behind sheet headers) from SteamGridDB, and an icon for games RA has none for." />
             ) : (
                 <div key={selected.id} className="pane flex-1 anim-fade">
                     <div className="flex items-center gap-3 px-4 py-3 border-b border-[#2a475e]">
-                        <img src={selected.icon} alt="" className="w-11 h-11 rounded-[2px] border border-[#101214] object-cover" />
+                        <img src={iconOf(selected)} alt="" className="w-11 h-11 rounded-[2px] border border-[#101214] object-cover" />
                         <div className="flex flex-col min-w-0 flex-1">
                             <a href={selected.url} target="_blank" rel="noreferrer" className="text-[15px] text-white font-semibold truncate hover:text-[#66c0f4]">{selected.title}</a>
                             <span className="text-[12px] text-[#546270] truncate">{selected.consoleName}{entry?.sgdbName ? ` · SteamGridDB: ${entry.sgdbName}` : ''}</span>
@@ -2464,7 +2476,9 @@ function RAArtModule() {
                         <button className={`btn btn-sm ${isMarked(selected.id) ? 'chip-gold border' : 'btn-outline'}`} onClick={toggleMark} title={isMarked(selected.id) ? marks[selected.id].join(' · ') : 'Add to the Marked list'}>
                             <Bookmark size={12} fill={isMarked(selected.id) ? 'currentColor' : 'none'} />{isMarked(selected.id) ? 'Marked' : 'Mark'}
                         </button>
-                        {entry && <button className="icon-btn hover:!text-[#ff6b6b]" onClick={() => setEntry({ grid: null, hero: null })} title="Remove the picked art"><Trash2 size={14} /></button>}
+                        {/* An icon picked earlier for a game RA has since given an icon: it no longer shows anywhere */}
+                        {entry?.icon && !selected.noIcon && <button className="chip chip-gold" onClick={() => setEntry({ icon: null })} title="RA has its own icon for this game now, so the picked one isn't used. Remove it from art.json"><X size={11} />RA has an icon now · remove ours</button>}
+                        {entry && <button className="icon-btn hover:!text-[#ff6b6b]" onClick={() => setEntry({ grid: null, hero: null, icon: null })} title="Remove the picked art and icon"><Trash2 size={14} /></button>}
                     </div>
 
                     <div className="flex flex-1 overflow-hidden">
@@ -2495,6 +2509,15 @@ function RAArtModule() {
                             {!sgGame && !error && !busy && <Empty icon={ImageIcon} title="Pick a SteamGridDB match" />}
                             {sgGame && (
                                 <>
+                                    {/* Only for games RA has no icon for (or one picked before RA added theirs) */}
+                                    {(selected.noIcon || entry?.icon) && (
+                                        <div>
+                                            <SectionHeader color="#e5b143" right={<span className="hint">used until RA adds its own icon</span>}>Icon · {squares && icons ? squares.length + icons.length : '…'}</SectionHeader>
+                                            {!(squares && icons) && <div className="grid grid-cols-6 gap-2">{[0, 1, 2, 3].map(i => <div key={i} className="shimmer aspect-square" />)}</div>}
+                                            {squares && icons && squares.length + icons.length === 0 && <div className="hint">No square art or icons for this game.</div>}
+                                            <div className="grid grid-cols-6 gap-2">{[...(squares ?? []), ...(icons ?? [])].map(img => <Thumb key={img.id} img={img} kind="icon" />)}</div>
+                                        </div>
+                                    )}
                                     <div>
                                         <SectionHeader color="#66c0f4" right={<span className="hint">rows, tiles, Playing</span>}>Banner · {grids ? grids.length : '…'}</SectionHeader>
                                         {!grids && <div className="grid grid-cols-3 gap-2">{[0, 1, 2].map(i => <div key={i} className="shimmer" style={{ aspectRatio: '460 / 215' }} />)}</div>}
@@ -2535,7 +2558,7 @@ const MODULES = [
     { id: 'ra-series',            label: 'Series',         icon: Layers,    group: 'RetroAchievements', component: RASeriesModule,
       desc: 'Series on the RA profile', file: 'data/ra/series.json' },
     { id: 'ra-art',               label: 'Art',            icon: ImageIcon, group: 'RetroAchievements', component: RAArtModule,
-      desc: 'Wide art from SteamGridDB for RA games', file: 'data/ra/art.json' },
+      desc: 'Wide art and missing icons from SteamGridDB for RA games', file: 'data/ra/art.json' },
     { id: 'steam-win-conditions', label: 'Win Conditions', icon: Trophy,    group: 'Steam', component: SteamWinConditionsModule,
       desc: 'The achievements that mean a Steam game is beaten', file: 'data/steam/win-conditions.json' },
     { id: 'steam-series',         label: 'Series',         icon: Layers,    group: 'Steam', component: SteamSeriesModule,

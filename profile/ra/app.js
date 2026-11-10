@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { Gamepad2, Activity, BarChart2, Award, Star, ChevronDown, AlertCircle, Trophy, Crown, Lock, Unlock, AlertTriangle, Flame, Feather, Medal, ShieldOff, CircleDashed, X, Clock, Layers, List, LayoutGrid, Search, Check, Plus, User, Radio, ArrowDown, Hourglass, ChevronLeft } from 'lucide-react';
 import { MEDIA_URL, SITE_URL, TILDE_TAG_COLORS } from './utils/constants.js';
 import { getMediaUrl, parseTitle, formatTimeAgo, raShot } from './utils/helpers.js';
+import { raIcon } from '../../assets/ra-icon.js';
 import { transformData } from './utils/transform.js';
 import { useSheet, useArtSrc, useAnimatedHeight, SheetHead, seriesTags, statusPills } from '../../assets/sheet.js';
 import { useGameView, shortAgo } from '../../assets/game-view.js';
@@ -595,7 +596,7 @@ const ActivityTab = ({ achievements, refTime, heatmapData, artData, loadedChunks
             last.achievements.push(ach);
             if (ach.date > last.endTime) last.endTime = ach.date;
           } else {
-            sessions.push({ gameId: ach.gameId, gameTitle: ach.gameTitle, gameIcon: getMediaUrl(ach.gameIcon), consoleName: ach.consoleName, startTime: ach.date, endTime: ach.date, achievements: [ach] });
+            sessions.push({ gameId: ach.gameId, gameTitle: ach.gameTitle, gameIcon: raIcon(getMediaUrl(ach.gameIcon), ach.gameId, artData), consoleName: ach.consoleName, startTime: ach.date, endTime: ach.date, achievements: [ach] });
           }
         });
         sessions.reverse(); // newest session first within a day
@@ -930,7 +931,7 @@ const buildSeriesCards = (seriesList, gamesData, watchlistData, allGames, beaten
       const info = d ?? wl ?? null;
       return {
         id, g, hasAch: numAchs > 0, numAchs, awarded, isMastered, isStarted, beaten, lastMs, inWatchlist: !!wl,
-        title: info?.title ?? String(id), icon: info?.imageIcon ? getMediaUrl(info.imageIcon) : null,
+        title: info?.title ?? String(id), icon: raIcon(info?.imageIcon ? getMediaUrl(info.imageIcon) : null, id, artData),
         console: info?.consoleName ?? g?.console ?? '', points: wl?.pointsTotal ?? 0,
       };
     });
@@ -952,7 +953,7 @@ const buildSeriesCards = (seriesList, gamesData, watchlistData, allGames, beaten
     return {
       series, games, total: games.length, tracked, started, beatenCount, mastered, pointsEarned, pointsTotal, achEarned, achTotal, latestAch, lastMs,
       pct: achTotal > 0 ? (achEarned / achTotal) * 100 : 0,
-      coverIcon: cover?.imageIcon ? getMediaUrl(cover.imageIcon) : null,
+      coverIcon: raIcon(cover?.imageIcon ? getMediaUrl(cover.imageIcon) : null, coverId, artData),
       coverArt: shot ? getMediaUrl(shot) : cover?.imageIcon ? getMediaUrl(cover.imageIcon) : null, coverArtIsIcon: !shot,
       coverWide: wide,
     };
@@ -1330,13 +1331,17 @@ export default function App() {
     };
   }, [profileData, watchlistData, gamesData, gameFiles]);
 
-  const { profile: PROFILE_DATA, games: RAW_GAMES, backlog: BACKLOG } = useMemo(() => transformData(rawData), [rawData]);
+  const { profile: PROFILE_DATA, games: RAW_GAMES, backlog: RAW_BACKLOG } = useMemo(() => transformData(rawData), [rawData]);
   // Games with wide art (data/ra/art.json): banner = grid thumbnail (rows, tiles), art = hero thumbnail
-  // faded behind rows, header = full hero (or banner) blurred behind the sheet header
+  // faded behind rows, header = full hero (or banner) blurred behind the sheet header. A game RA has no icon
+  // for yet gets the square picked in the admin instead of RA's placeholder (assets/ra-icon.js)
+  const withIcon = g => { const icon = raIcon(g.icon, g.id, artData); return icon === g.icon ? g : { ...g, icon }; };
   const ALL_GAMES = useMemo(() => RAW_GAMES.map(g => {
     const wide = wideArt(artData[g.id]);
-    return wide ? { ...g, wide } : g;
+    const out = withIcon(g);
+    return wide ? { ...out, wide } : out;
   }), [RAW_GAMES, artData]);
+  const BACKLOG = useMemo(() => ({ ...RAW_BACKLOG, games: RAW_BACKLOG.games.map(withIcon) }), [RAW_BACKLOG, artData]);
   const beatenIds = useMemo(() => new Set((PROFILE_DATA?.gameAwards ?? []).filter(a => a.type === 'Game Beaten').map(a => a.gameId)), [PROFILE_DATA]);
   // ?game=<id> (from series/): open that game's sheet once the profile is in, then drop the parameter
   const deepGame = useRef(new URLSearchParams(location.search).get('game'));

@@ -603,16 +603,17 @@
         // Latest covers (desktop) — pipeline pre-sorts recentlyPlayedGames
         const MEDIA = 'https://media.retroachievements.org';
         const latestRA = (d.recentlyPlayedGames ?? [])[0];
+        const raArtGames = (await fetchJsonOnce('./data/ra/art.json'))?.games ?? {};
         if (latestRA) {
           // RA's "no image" placeholder counts as no screenshot: use the icon, zoomed and blurred
           const shot = [latestRA.imageIngame, latestRA.imageTitle].find(x => x && !x.endsWith('/Images/000002.png'));
           // Wide art picked in the admin (data/ra/art.json): its hero (else banner), like the RA profile header
-          const wide = (await fetchJsonOnce('./data/ra/art.json'))?.games?.[latestRA.gameId];
+          const wide = raArtGames[latestRA.gameId];
           if (wide?.grid) offerHeaderArt(latestRA.lastPlayed, [wide.hero?.url, wide.grid.url, shot && MEDIA + shot], false);
           else offerHeaderArt(latestRA.lastPlayed, [shot ? MEDIA + shot : MEDIA + latestRA.imageIcon], !shot);
         }
         document.getElementById('ra-recent').innerHTML = (d.recentlyPlayedGames ?? []).slice(0, 3)
-          .map(g => coverImg(`${MEDIA}${g.imageIcon}`, `${g.title} · ${g.consoleName}`, 'sq px')).join('');
+          .map(g => coverImg(raIcon(`${MEDIA}${g.imageIcon}`, g.gameId, raArtGames), `${g.title} · ${g.consoleName}`, 'sq px')).join('');
 
       } catch (e) {
         setText('hub-updated', 'unavailable');
@@ -697,6 +698,10 @@
       btn.textContent = _activityExpanded ? 'Show less' : 'Show more';
     }
 
+    // RA's placeholder icon for games with none yet: the square picked in the admin (data/ra/art.json `icon`)
+    // stands in until RA adds a real one. Same rule as assets/ra-icon.js
+    const raIcon = (url, id, artGames) => (!url || url.endsWith('/Images/000001.png')) && artGames?.[id]?.icon ? artGames[id].icon.thumb : url;
+
     async function loadActivityFeed() {
       const RA_MEDIA = 'https://media.retroachievements.org';
 
@@ -764,6 +769,7 @@
         const games = { ra: {}, steam: {}, xbox: {} };
         for (const { p, f } of playFiles) for (const [id, g] of Object.entries(f?.games ?? {})) games[p][id] = { ...games[p][id], name: g.name, icon: g.icon ? (p === 'ra' ? RA_MEDIA + g.icon : g.icon) : null };
 
+        const raArtGames = (await fetchJsonOnce('./data/ra/art.json'))?.games ?? {};
         const groups = new Map();
         const group = (platform, gameId, ms) => {
           const key = `${platform}:${gameId}:${localKey(ms)}`;
@@ -819,7 +825,7 @@
           const P = PLATFORM[r.platform];
           const info = games[r.platform][r.gameId] ?? {};
           const unlocks = r.unlocks.sort((a, b) => b.ms - a.ms);
-          const icon = info.icon || unlocks[0]?.icon || '';
+          const icon = (r.platform === 'ra' ? raIcon(info.icon, r.gameId, raArtGames) : info.icon) || unlocks[0]?.icon || '';
           let title = esc(info.name), tags = '';
           if (r.platform === 'ra') {
             const { baseTitle, subsetName, isSubset, tags: tt } = parseTitle(info.name);
