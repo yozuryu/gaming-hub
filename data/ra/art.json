@@ -1,7 +1,7 @@
 {
   "metadata": {
     "about": "Wide art for RA games from SteamGridDB, picked in the admin (RA Art). URLs only: thumb for rows and tiles, url behind sheet headers. `marked`: games worth picking art for, with why (admin filter); the site ignores it",
-    "updatedAt": "2026-11-10T14:14:52.327Z"
+    "updatedAt": "2026-11-10T15:39:25.469Z"
   },
   "games": {
     "449": {
@@ -238,6 +238,28 @@
         "height": 1240
       }
     },
+    "3540": {
+      "sgdbGameId": 5258631,
+      "sgdbName": "Gungnir",
+      "icon": {
+        "id": 21067,
+        "url": "https://cdn2.steamgriddb.com/icon/710049f9a52cd294d54b75d46ad3d2db.png",
+        "thumb": "https://cdn2.steamgriddb.com/icon_thumb/710049f9a52cd294d54b75d46ad3d2db.png",
+        "width": 256,
+        "height": 256
+      }
+    },
+    "3890": {
+      "sgdbGameId": 12894,
+      "sgdbName": "Riviera: The Promised Land",
+      "icon": {
+        "id": 1102,
+        "url": "https://cdn2.steamgriddb.com/icon/c667d53acd899a97a85de0c201ba99be.png",
+        "thumb": "https://cdn2.steamgriddb.com/icon_thumb/c667d53acd899a97a85de0c201ba99be.png",
+        "width": 128,
+        "height": 128
+      }
+    },
     "3908": {
       "sgdbGameId": 29412,
       "sgdbName": "Star Ocean: First Departure",
@@ -344,6 +366,28 @@
         "thumb": "https://cdn2.steamgriddb.com/hero_thumb/cec6c28df6aa3b387aa02f84699b4c81.jpg",
         "width": 1920,
         "height": 620
+      }
+    },
+    "5999": {
+      "sgdbGameId": 5252622,
+      "sgdbName": "Unchained Blades",
+      "icon": {
+        "id": 46400,
+        "url": "https://cdn2.steamgriddb.com/icon/2488294e5b8aa832810695a56cbeacdf.png",
+        "thumb": "https://cdn2.steamgriddb.com/icon_thumb/2488294e5b8aa832810695a56cbeacdf.png",
+        "width": 1024,
+        "height": 1024
+      }
+    },
+    "6061": {
+      "sgdbGameId": 35998,
+      "sgdbName": "Yggdra Union: We'll Never Fight Alone",
+      "icon": {
+        "id": 41065,
+        "url": "https://cdn2.steamgriddb.com/icon/0ace14f7dd3d8e29870664c6fa021440.png",
+        "thumb": "https://cdn2.steamgriddb.com/icon_thumb/0ace14f7dd3d8e29870664c6fa021440.png",
+        "width": 256,
+        "height": 256
       }
     },
     "8409": {
@@ -778,6 +822,17 @@
         "height": 620
       }
     },
+    "16475": {
+      "sgdbGameId": 36215,
+      "sgdbName": "Summon Night 2",
+      "icon": {
+        "id": 374881,
+        "url": "https://cdn2.steamgriddb.com/grid/a71a531e40bd50bcbd63dea2ece70072.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/a71a531e40bd50bcbd63dea2ece70072.jpg",
+        "width": 1024,
+        "height": 1024
+      }
+    },
     "18318": {
       "sgdbGameId": 5267013,
       "sgdbName": "7th Dragon 2020-II",
@@ -794,6 +849,17 @@
         "thumb": "https://cdn2.steamgriddb.com/hero_thumb/b158d85ad552b05f1410da163aa96d04.jpg",
         "width": 1920,
         "height": 620
+      }
+    },
+    "18471": {
+      "sgdbGameId": 5342529,
+      "sgdbName": "Summon Night 3",
+      "icon": {
+        "id": 375079,
+        "url": "https://cdn2.steamgriddb.com/grid/11be849f73acf81d2a8d0963e1ad600e.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/11be849f73acf81d2a8d0963e1ad600e.jpg",
+        "width": 1024,
+        "height": 1024
       }
     },
     "19021": {
@@ -848,6 +914,17 @@
         "thumb": "https://cdn2.steamgriddb.com/thumb/d2b36aae8e6dba855dd0ab395058a493.jpg",
         "width": 460,
         "height": 215
+      }
+    },
+    "19058": {
+      "sgdbGameId": 5258011,
+      "sgdbName": "Mana Khemia 2: Fall of Alchemy",
+      "icon": {
+        "id": 25480,
+        "url": "https://cdn2.steamgriddb.com/icon/b00c9bc00a66596d27993f029a692d5e.png",
+        "thumb": "https://cdn2.steamgriddb.com/icon_thumb/b00c9bc00a66596d27993f029a692d5e.png",
+        "width": 128,
+        "height": 128
       }
     },
     "19070": {
@@ -958,6 +1035,17 @@
         "height": 620
       }
     },
+    "33764": {
+      "sgdbGameId": 38584,
+      "sgdbName": "Summon Night X: Tears Crown",
+      "icon": {
+        "id": 375331,
+        "url": "https://cdn2.steamgriddb.com/grid/8e2f6d59cba6c8cdb19e35a8d2f1bdf1.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/8e2f6d59cba6c8cdb19e35a8d2f1bdf1.png",
+        "width": 1024,
+        "height": 1024
+      }
+    },
     "38014": {
       "sgdbGameId": 5517887,
       "sgdbName": "Walfie's Nonograms",
@@ -974,6 +1062,17 @@
         "thumb": "https://cdn2.steamgriddb.com/hero_thumb/41f64464b3e5b1a717cf9f9092af18cb.jpg",
         "width": 3840,
         "height": 1240
+      }
+    },
+    "40459": {
+      "sgdbGameId": 7268,
+      "sgdbName": "Zuma's Revenge!",
+      "icon": {
+        "id": 41133,
+        "url": "https://cdn2.steamgriddb.com/icon/e1a2719218ad9000036929229c99cd3a.png",
+        "thumb": "https://cdn2.steamgriddb.com/icon_thumb/e1a2719218ad9000036929229c99cd3a.png",
+        "width": 512,
+        "height": 512
       }
     }
   },
