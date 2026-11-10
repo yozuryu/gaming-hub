@@ -878,8 +878,11 @@ const GameCardSkeleton = () => (
 // Per series: its games (played ones are ALL_GAMES entries, so they open the achievement sheet),
 // counts, points and achievements, the latest unlock and the cover art. Styles in assets/ui.css.
 // Sub-series (admin, `groups`): each gets the same card from its own games, plus "Other" for games in none
-const buildSeries = (seriesData, gamesData, watchlistData, allGames, beatenIds = new Set()) => {
-  const cards = buildSeriesCards(seriesData.filter(s => s.showProgress), gamesData, watchlistData, allGames, beatenIds);
+// Wide art picked in the admin (an art.json entry): banner = grid thumbnail, art = hero thumbnail, header = full hero
+const wideArt = a => a?.grid ? { banner: a.grid.thumb, art: a.hero?.thumb ?? a.grid.thumb, header: a.hero?.url ?? a.grid.url } : null;
+
+const buildSeries = (seriesData, gamesData, watchlistData, allGames, beatenIds = new Set(), artData = {}) => {
+  const cards = buildSeriesCards(seriesData.filter(s => s.showProgress), gamesData, watchlistData, allGames, beatenIds, artData);
   return cards.map(card => {
     const groups = card.series.groups ?? [];
     if (!groups.length) return card;
@@ -887,12 +890,12 @@ const buildSeries = (seriesData, gamesData, watchlistData, allGames, beatenIds =
     const rest = card.series.gameIds.filter(id => !inGroup.has(id));
     const defs = [...groups, ...(rest.length ? [{ id: '_other', name: 'Other', gameIds: rest }] : [])]
       .map(g => ({ ...g, gameIds: g.gameIds.filter(id => card.series.gameIds.includes(id)) })).filter(g => g.gameIds.length);
-    const subCards = buildSeriesCards(defs.map(g => ({ id: `${card.series.id}/${g.id}`, name: g.name, gameIds: g.gameIds })), gamesData, watchlistData, allGames, beatenIds);
+    const subCards = buildSeriesCards(defs.map(g => ({ id: `${card.series.id}/${g.id}`, name: g.name, gameIds: g.gameIds })), gamesData, watchlistData, allGames, beatenIds, artData);
     return { ...card, subs: subCards.map((sc, i) => ({ ...sc, key: defs[i].id, groupId: defs[i].id, name: defs[i].name,
       icon: sc.coverIcon, px: true, done: sc.mastered, beaten: sc.beatenCount, doneLabel: 'mastered' })) };
   });
 };
-const buildSeriesCards = (seriesList, gamesData, watchlistData, allGames, beatenIds) => {
+const buildSeriesCards = (seriesList, gamesData, watchlistData, allGames, beatenIds, artData = {}) => {
   const gameProgress = gamesData?.detailedGameProgress ?? {};
   const wlMap = Object.fromEntries((watchlistData?.results ?? []).map(g => [g.id, g]));
   const byId = new Map(allGames.map(g => [g.id, g]));
@@ -942,7 +945,8 @@ const buildSeriesCards = (seriesList, gamesData, watchlistData, allGames, beaten
     const shot = shotOf(coverId) ?? [...games].sort((a, b) => b.lastMs - a.lastMs).map(x => shotOf(x.id)).find(Boolean) ?? null;
     // Wide art (data/ra/art.json) wins over the screenshot, in the same order: the cover, else the most
     // recently active series game that has it. { art: hero thumb (card), header: full hero (sheet) }
-    const wideOf = id => byId.get(id)?.wide ?? null;
+    // Want-to-play games aren't in allGames, so their pick comes straight from art.json
+    const wideOf = id => byId.get(id)?.wide ?? wideArt(artData[id]);
     const wide = wideOf(coverId) ?? [...games].sort((a, b) => b.lastMs - a.lastMs).map(x => wideOf(x.id)).find(Boolean) ?? null;
     const lastMs = Math.max(0, ...games.map(x => x.lastMs));
     return {
@@ -970,11 +974,11 @@ const SERIES_SORTS = [
   { value: 'games', label: 'Most games' },
 ];
 
-function SeriesProgressTab({ seriesData, gamesData, watchlistData, allGames, beatenIds, onOpen }) {
+function SeriesProgressTab({ seriesData, gamesData, watchlistData, allGames, beatenIds, artData, onOpen }) {
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState('name');
   const [filter, setFilter] = useState('all');
-  const cards = useMemo(() => buildSeries(seriesData, gamesData, watchlistData, allGames, beatenIds), [seriesData, gamesData, watchlistData, allGames, beatenIds]);
+  const cards = useMemo(() => buildSeries(seriesData, gamesData, watchlistData, allGames, beatenIds, artData), [seriesData, gamesData, watchlistData, allGames, beatenIds, artData]);
 
   if (cards.length === 0) {
     return (
@@ -1330,9 +1334,8 @@ export default function App() {
   // Games with wide art (data/ra/art.json): banner = grid thumbnail (rows, tiles), art = hero thumbnail
   // faded behind rows, header = full hero (or banner) blurred behind the sheet header
   const ALL_GAMES = useMemo(() => RAW_GAMES.map(g => {
-    const a = artData[g.id];
-    if (!a?.grid) return g;
-    return { ...g, wide: { banner: a.grid.thumb, art: a.hero?.thumb ?? a.grid.thumb, header: a.hero?.url ?? a.grid.url } };
+    const wide = wideArt(artData[g.id]);
+    return wide ? { ...g, wide } : g;
   }), [RAW_GAMES, artData]);
   const beatenIds = useMemo(() => new Set((PROFILE_DATA?.gameAwards ?? []).filter(a => a.type === 'Game Beaten').map(a => a.gameId)), [PROFILE_DATA]);
   // ?game=<id> (from series/): open that game's sheet once the profile is in, then drop the parameter
@@ -1606,7 +1609,7 @@ export default function App() {
           ) : activeTab === 'series' ? (
             !seriesLoaded || (!gamesData && !gamesFailed)
               ? <>{[...Array(3)].map((_, i) => <GameCardSkeleton key={i} />)}</>
-              : <SeriesProgressTab seriesData={seriesData} gamesData={gamesData} watchlistData={watchlistData} allGames={ALL_GAMES} beatenIds={beatenIds} onOpen={setSelectedSeries} />
+              : <SeriesProgressTab seriesData={seriesData} gamesData={gamesData} watchlistData={watchlistData} allGames={ALL_GAMES} beatenIds={beatenIds} artData={artData} onOpen={setSelectedSeries} />
           ) : activeTab === 'activity' ? (
             loadedChunkCount === 0 && loadingChunkIdx !== null
               ? <ActivitySkeleton />
