@@ -8,6 +8,10 @@ An easier way to Activity on desktop, picked icons for RA games without one, pic
 
 - new: **Games without an icon on RA** can show a square picked in the admin
   RA shows the same blank placeholder for every game without an icon, mostly want-to-play games with no set yet. A picked square stands in everywhere the icon shows, and RA's own icon takes over once it has one.
+- improved: **Mega Man** series (RA and shared) gets the twelve classic games just added to the want-to-play list
+  Mega Man 1 to 10, Rockman & Forte and Mega Man & Bass, all in the Classic sub-series (now 15 games in the shared series).
+- improved: **Drakengard / NieR** shared series adds Drakengard 2
+  RA has no Drakengard series: with 2 RA games it's under the 3-game minimum.
 - fix: **Series** tab shows the picked art for series you haven't started
   A series whose cover is only on the want-to-play list showed the library mosaic, even with a hero picked in the admin. Picks only reached games you had played.
 
