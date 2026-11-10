@@ -4,14 +4,16 @@
 Fetches `../changelog.md` as raw text and parses it client-side.
 
 ## Version Format
-Headers use `## vYY.MM.DD` (e.g. `## v26.04.11`). The `Release` component displays this string as-is — no date reformatting. Optionally followed by a label: `## v25.03.23 — Initial release`.
+Headers use `## vYY.MM.DD` (e.g. `## v26.04.11`), optionally followed by a label: `## v25.03.23 — Initial release`. The page shows the date ("10 Nov", `parseVersion`) with the version small beside it, under month headings (`groupByMonth`).
 
 ## Parser (`parseChangelog`)
-Splits markdown by newline and builds `[{ date, summary, sections: [{ title, entries[] }] }]`:
+Splits markdown by newline and builds `[{ date, summary, sections: [{ title, entries: [{ kind, text, detail[], subs[] }] }] }]`:
 - `## ...` → new release (the full string after `## ` is stored as `date`)
 - `### ...` → new section within current release
-- `- ...` → entry within current section
-- Any non-heading, non-list line after the `## ` but before the first `### ` → `summary`
+- `- ...` → entry; an optional `new: ` / `improved: ` / `fix: ` prefix is its `kind` (`KINDS`: a coloured tag; the folded release counts entries per kind, else "N changes")
+- Indented plain lines under an entry → `detail`, folded behind a tap on the entry (chevron)
+- Indented `- ` lines → `subs`, always shown under the entry (older releases use these; they are not counted as changes)
+- Any non-heading, non-list line after the `## ` but before the first `### ` → `summary`, shown on the folded release (two lines) and in full when open
 
 ## Section Order (`SECTION_ORDER`)
 RetroAchievements, Steam, Xbox, Hub, Completions, Activity, Analytics, Pipelines, Structure, Admin
@@ -31,7 +33,7 @@ Sections are sorted by this order regardless of their order in the markdown file
 - Admin: `#ff6b6b` (red)
 
 ## Inline Code
-Backtick spans `` `foo` `` are rendered as `<code>` with cyan text (`#57cbde`) and dark background.
+Backtick spans `` `foo` `` are rendered as `<code>` with cyan text (`#57cbde`) and dark background; `**bold**` as `<b>` in the primary text colour.
 
 ## Refresh App Button
 Header has a "Refresh app" button (`refreshApp`): deletes all Cache Storage entries, calls `serviceWorker.getRegistration().update()`, then reloads. Only app files are affected — data is always network-first. This is the mobile entry point (the hub footer copy is desktop-only).

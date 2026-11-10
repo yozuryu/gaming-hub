@@ -472,9 +472,18 @@ Rounded FAB: `w-10 h-10 rounded-full bg-[#131a22] border border-[#2a475e] active
 
 Version format: `## vYY.MM.DD` (e.g. `## v26.04.11`). **If an entry for today's date already exists, add to it — never create a second `## vYY.MM.DD` header for the same date.** Check the top of `changelog.md` before adding a new header.
 
-Structure:
-- One-line summary after the version
+Structure (parsed by `changelog/app.js`, see `changelog/CLAUDE.md`):
+- One-line summary after the version: what a reader gets from this release, shown while it's folded
 - `### SectionName` subsections matching the page changed
-- Bullet points per change, technical but readable
+- One entry per change: `- new: **Thing** short headline` (kind `new`, `improved` or `fix`), at most ~12 words, written for the person using the site
+- Optional detail on the indented line(s) below it, shown when the entry is tapped: one or two sentences on what it looks like or why. Implementation detail belongs in commit messages and CLAUDE.md, not here
+
+```md
+### Hub
+
+- new: **All activity** bar under Recent activity on desktop
+  The last 7 days as squares, their hours and unlocks, and a link to the Activity page.
+- fix: **Series** cards show the picked art for want-to-play games
+```
 
 Section order (matches `SECTION_ORDER` in `changelog/app.js`): RetroAchievements, Steam, Xbox, Hub, Completions, Activity, Analytics, Pipelines, Structure, Admin. Each section has its own heading color (`SECTION_COLORS`, see `changelog/CLAUDE.md`).

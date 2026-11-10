@@ -2,12 +2,28 @@
 
 ## v26.11.10
 
-A clear way to Activity from the desktop hub
+An easier way to Activity on desktop, picked art on unstarted series, and an easier-to-read changelog
+
+### RetroAchievements
+
+- fix: **Series** tab shows the picked art for series you haven't started
+  A series whose cover is only on the want-to-play list showed the library mosaic, even with a hero picked in the admin. Picks only reached games you had played.
 
 ### Hub
 
-- **Recent activity** on desktop ends in a bar to the Activity page: the last 7 days as small squares (blue on days you played or unlocked something), the hours and unlocks of those days, and **All activity**. The only way there before was the small arrow in the section header, which stays. Phones don't get the bar: the bottom nav has Activity
-- The **Playing** and **Series** bars end the same way, in blue **All playing ›** and **All series ›**, instead of only a grey arrow (Series now says "36 series" on the left, so "All" isn't said twice)
+- new: **All activity** bar under Recent activity on desktop
+  The last 7 days as squares (blue on days you played or unlocked something), their hours and unlocks, and a link to the Activity page. The small arrow in the section header stays; phones have the Activity tab instead.
+- improved: **Playing** and **Series** bars end in blue **All playing ›** and **All series ›**
+  Instead of only a grey arrow. Series now says "36 series" on the left, so "All" isn't said twice.
+- fix: **Series** cards and the Series page show the picked art for want-to-play games
+  The same fix as the RA Series tab, in `build-series.js`: the art behind the card and its sheet.
+
+### Structure
+
+- new: **Changelog** is easier to skim
+  Releases show their date, summary and the areas they touched while folded, grouped by month. New entries have a kind (new, improved, fix) and a short headline; tap one for its details.
+- fix: **Changelog** renders bold text and counts sub-points under their entry
+  Bold showed as `**asterisks**`, and sub-points counted as separate changes (8 Nov said 68 changes for 33).
 
 ## v26.11.09
 
