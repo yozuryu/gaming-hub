@@ -28,6 +28,11 @@ const Stack = ({ subs, small }) => h('span', { className: `sub-stack${small ? ' 
     ? h('img', { key: s.key, src: s.icon, alt: '', title: s.name, loading: 'lazy', className: s.px ? 'px' : '' })
     : h('span', { key: s.key })));
 
+// Art behind the bar and the strip: the sub-series' icons in a row, blurred and dimmed (like the series cards'
+// art), fading out to the left so the label stays clear
+const SubArt = ({ subs }) => h('span', { className: 'sub-art', 'aria-hidden': true },
+  subs.filter(s => s.icon).map(s => h('img', { key: s.key, src: s.icon, alt: '', loading: 'lazy' })));
+
 // One sub-series: icon, name, games and progress, % and bar
 export const SubRow = ({ s, onClick }) => h('button', { className: 'subrow', onClick, style: { borderLeftColor: edgeOf(s) } },
   s.icon ? h('img', { src: s.icon, alt: '', loading: 'lazy', className: s.px ? 'px' : '' }) : h('span', { className: 'subrow-i' }),
@@ -46,6 +51,7 @@ export function SubFold({ subs, onOpen, children }) {
   return h('div', { className: `subfold${open ? ' open' : ''}` },
     children,
     h('button', { className: 'subbar', onClick: () => setOpen(o => !o), 'aria-expanded': open },
+      h(SubArt, { subs }),
       h(Icon, { name: 'layers', className: 'text-[#66c0f4]' }),
       h('b', null, `${subs.length} sub-series`),
       !open && h(Stack, { subs, small: true }),
@@ -57,6 +63,7 @@ export function SubFold({ subs, onOpen, children }) {
 export function SubStrip({ subs, onPick }) {
   const [open, setOpen] = useState(false);
   if (!open) return h('button', { className: 'substrip anim-fade', onClick: () => setOpen(true), 'aria-expanded': false },
+    h(SubArt, { subs }),
     h('span', { className: 'lb' }, 'Sub-series'), h('span', { className: 'n' }, subs.length),
     h(Stack, { subs }),
     h(Icon, { name: 'chev', size: 14, className: 'sub-chev' }));
