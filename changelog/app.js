@@ -128,7 +128,9 @@ const KindTag = ({ kind }) => {
 const Entry = ({ entry }) => {
     const [open, setOpen] = useState(false);
     const { kind, text, detail, subs } = entry;
-    const hasDetail = detail.length > 0;
+    // New-style entries (with a kind) fold their sub-points away with the detail; older ones always show them
+    const foldSubs = !!kind && subs.length > 0;
+    const hasDetail = detail.length > 0 || foldSubs;
     const head = (
         <>
             {kind ? <KindTag kind={kind} /> : <span className="mt-[7px] w-[4px] h-[4px] rounded-full bg-[#2a475e] shrink-0" />}
@@ -143,11 +145,11 @@ const Entry = ({ entry }) => {
             {hasDetail
                 ? <button onClick={() => setOpen(o => !o)} aria-expanded={open} className="w-full text-left flex items-start gap-2 leading-relaxed outline-none">{head}</button>
                 : <div className="flex items-start gap-2 leading-relaxed">{head}</div>}
-            {hasDetail && open && (
+            {detail.length > 0 && open && (
                 <p className={`${kind ? 'ml-[66px]' : 'ml-3'} mt-1 text-[11px] text-[#8f98a0] leading-relaxed anim-fade`}>{renderText(detail.join(' '))}</p>
             )}
-            {subs.length > 0 && (
-                <ul className={`${kind ? 'ml-[66px]' : 'ml-3'} mt-1 flex flex-col gap-1`}>
+            {subs.length > 0 && (!foldSubs || open) && (
+                <ul className={`${kind ? 'ml-[66px]' : 'ml-3'} mt-1 flex flex-col gap-1${foldSubs ? ' anim-fade' : ''}`}>
                     {subs.map((t, i) => (
                         <li key={i} className="flex items-start gap-2 text-[11px] text-[#8f98a0] leading-relaxed">
                             <span className="mt-[7px] w-[3px] h-px bg-[#546270] shrink-0" />

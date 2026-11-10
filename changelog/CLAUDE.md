@@ -12,7 +12,7 @@ Splits markdown by newline and builds `[{ date, summary, sections: [{ title, ent
 - `### ...` → new section within current release
 - `- ...` → entry; an optional `new: ` / `improved: ` / `fix: ` prefix is its `kind` (`KINDS`: a coloured tag; the folded release counts entries per kind, else "N changes")
 - Indented plain lines under an entry → `detail`, folded behind a tap on the entry (chevron)
-- Indented `- ` lines → `subs`, always shown under the entry (older releases use these; they are not counted as changes)
+- Indented `- ` lines → `subs`, under the entry; folded with the detail when the entry has a kind, else always shown. Not counted as changes
 - Any non-heading, non-list line after the `## ` but before the first `### ` → `summary`, shown on the folded release (two lines) and in full when open
 
 ## Section Order (`SECTION_ORDER`)
