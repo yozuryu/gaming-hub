@@ -4,7 +4,7 @@
 // row per sub-series. Inside, in the series sheet: a chip row (All + each sub-series) under the header, and on
 // All a strip (same look as the bar) that opens the rows. Picking a sub-series scopes the whole sheet to it.
 // Each page builds its own sub-series cards (the same builder as its series, on the sub-series' games) and hands
-// them in as { key, name, total, icon, px?, started, done, beaten, doneLabel?, pct }, games in none as a last
+// them in as { key, name, total, icon, px?, art?, artIcon?, started, done, beaten, doneLabel?, pct }, games in none as a last
 // "Other", which shows and counts like the others.
 import { createElement as h, useState, useRef, useLayoutEffect } from 'react';
 import { statusPills } from './sheet.js';
@@ -28,13 +28,11 @@ const Stack = ({ subs, small }) => h('span', { className: `sub-stack${small ? ' 
     ? h('img', { key: s.key, src: s.icon, alt: '', title: s.name, loading: 'lazy', className: s.px ? 'px' : '' })
     : h('span', { key: s.key })));
 
-// Art behind the bar and the strip: the sub-series' icons in a row, blurred and dimmed (like the series cards'
-// art), fading out to the left so the label stays clear
-const SubArt = ({ subs }) => h('span', { className: 'sub-art', 'aria-hidden': true },
-  subs.filter(s => s.icon).map(s => h('img', { key: s.key, src: s.icon, alt: '', loading: 'lazy' })));
-
-// One sub-series: icon, name, games and progress, % and bar
+// One sub-series: icon, name, games and progress, % and bar; its cover game's art faded in from the right like the
+// series cards (s.art; s.artIcon = only an icon, shown as the library mosaic, .art-icon)
 export const SubRow = ({ s, onClick }) => h('button', { className: 'subrow', onClick, style: { borderLeftColor: edgeOf(s) } },
+  s.art && h('span', { className: 'subrow-art', 'aria-hidden': true },
+    h('img', { src: s.art, alt: '', loading: 'lazy', className: s.artIcon ? 'art-icon' : '', onError: e => { e.target.style.display = 'none'; } })),
   s.icon ? h('img', { src: s.icon, alt: '', loading: 'lazy', className: s.px ? 'px' : '' }) : h('span', { className: 'subrow-i' }),
   h('span', { className: 'subrow-b' },
     h('span', { className: 'subrow-t' }, s.name),
@@ -51,7 +49,6 @@ export function SubFold({ subs, onOpen, children }) {
   return h('div', { className: `subfold${open ? ' open' : ''}` },
     children,
     h('button', { className: 'subbar', onClick: () => setOpen(o => !o), 'aria-expanded': open },
-      h(SubArt, { subs }),
       h(Icon, { name: 'layers', className: 'text-[#66c0f4]' }),
       h('b', null, `${subs.length} sub-series`),
       !open && h(Stack, { subs, small: true }),
@@ -63,7 +60,6 @@ export function SubFold({ subs, onOpen, children }) {
 export function SubStrip({ subs, onPick }) {
   const [open, setOpen] = useState(false);
   if (!open) return h('button', { className: 'substrip anim-fade', onClick: () => setOpen(true), 'aria-expanded': false },
-    h(SubArt, { subs }),
     h('span', { className: 'lb' }, 'Sub-series'), h('span', { className: 'n' }, subs.length),
     h(Stack, { subs }),
     h(Icon, { name: 'chev', size: 14, className: 'sub-chev' }));

@@ -801,7 +801,8 @@ const buildSeries = (seriesData, achProgress, perfectMap, beatenMap) => seriesDa
         const subs = defs.map(g => ({ g, sc: buildSeriesCard({ id: `${card.series.id}/${g.id}`, name: g.name, gameIds: g.gameIds }, achProgress, perfectMap, beatenMap) }))
             .filter(({ sc }) => sc.total > 0)
             .map(({ g, sc }) => ({ ...sc, key: g.id, groupId: g.id, name: g.name,
-                icon: sc.games.find(x => x.id === sc.coverId)?.icon ?? null, done: sc.perfect, beaten: sc.beatenCount, doneLabel: 'perfect' }));
+                icon: sc.games.find(x => x.id === sc.coverId)?.icon ?? null, art: sc.coverId ? heroUrl(sc.coverId) : null,
+                done: sc.perfect, beaten: sc.beatenCount, doneLabel: 'perfect' }));
         return subs.length ? { ...card, subs } : card;
     });
 

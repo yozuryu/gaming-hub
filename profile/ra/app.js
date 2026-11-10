@@ -893,7 +893,8 @@ const buildSeries = (seriesData, gamesData, watchlistData, allGames, beatenIds =
       .map(g => ({ ...g, gameIds: g.gameIds.filter(id => card.series.gameIds.includes(id)) })).filter(g => g.gameIds.length);
     const subCards = buildSeriesCards(defs.map(g => ({ id: `${card.series.id}/${g.id}`, name: g.name, gameIds: g.gameIds })), gamesData, watchlistData, allGames, beatenIds, artData);
     return { ...card, subs: subCards.map((sc, i) => ({ ...sc, key: defs[i].id, groupId: defs[i].id, name: defs[i].name,
-      icon: sc.coverIcon, px: true, done: sc.mastered, beaten: sc.beatenCount, doneLabel: 'mastered' })) };
+      icon: sc.coverIcon, px: true, art: sc.coverWide?.art ?? sc.coverArt, artIcon: !sc.coverWide && sc.coverArtIsIcon,
+      done: sc.mastered, beaten: sc.beatenCount, doneLabel: 'mastered' })) };
   });
 };
 const buildSeriesCards = (seriesList, gamesData, watchlistData, allGames, beatenIds, artData = {}) => {

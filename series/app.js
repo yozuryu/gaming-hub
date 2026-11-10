@@ -70,7 +70,7 @@ const buildCards = data => (data?.series ?? []).map(s => {
     const defs = [...s.groups, ...(rest.length ? [{ id: '_other', name: 'Other', keys: rest.map(x => x.key) }] : [])];
     card.subs = defs.map(g => {
         const sub = buildCard({ id: `${s.id}/${g.id}`, name: g.name }, g.keys.map(k => games.find(x => x.key === k)).filter(Boolean));
-        return { ...sub, key: g.id, groupId: g.id, icon: sub.cover?.square ?? sub.cover?.icon, done: sub.done, started: sub.started, beaten: sub.beaten };
+        return { ...sub, key: g.id, groupId: g.id, icon: sub.cover?.square ?? sub.cover?.icon, art: sub.cover?.art ?? sub.cover?.icon, artIcon: !sub.cover?.art, done: sub.done, started: sub.started, beaten: sub.beaten };
     });
     return card;
 }).filter(c => c.total >= 3);

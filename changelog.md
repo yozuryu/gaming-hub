@@ -17,8 +17,8 @@ An easier way to Activity on desktop, picked icons for RA games without one, pic
   The last 7 days as squares (blue on days you played or unlocked something), their hours and unlocks, and a link to the Activity page. The small arrow in the section header stays; phones have the Activity tab instead.
 - improved: **Playing** and **Series** bars end in blue **All playing ›** and **All series ›**
   Instead of only a grey arrow. Series now says "36 series" on the left, so "All" isn't said twice.
-- improved: **Sub-series** bars on series cards and in series sheets have art behind them
-  The sub-series' icons, blurred and dimmed, like the art behind the series cards. On the Series page and the RA and Steam Series tabs.
+- improved: **Sub-series** rows have their cover game's art behind them
+  Faded in from the right like the series cards, in the list and in the series sheet. On the Series page and the RA and Steam Series tabs.
 - fix: **Series** cards and the Series page show the picked art for want-to-play games
   The same fix as the RA Series tab, in `build-series.js`: the art behind the card and its sheet.
 
