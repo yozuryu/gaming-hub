@@ -1,7 +1,7 @@
 {
   "metadata": {
     "about": "Wide art for RA games from SteamGridDB, picked in the admin (RA Art). URLs only: thumb for rows and tiles, url behind sheet headers. `marked`: games worth picking art for, with why (admin filter); the site ignores it",
-    "updatedAt": "2026-11-06T11:04:26.462Z"
+    "updatedAt": "2026-11-10T14:14:52.327Z"
   },
   "games": {
     "449": {
@@ -274,6 +274,42 @@
         "height": 1240
       }
     },
+    "3952": {
+      "sgdbGameId": 5248412,
+      "sgdbName": "7th Dragon",
+      "grid": {
+        "id": 369804,
+        "url": "https://cdn2.steamgriddb.com/grid/863ee0c52b1b3f616e6bc20d13b52ad1.jpg",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/863ee0c52b1b3f616e6bc20d13b52ad1.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 89224,
+        "url": "https://cdn2.steamgriddb.com/hero/61c4968a7b66b7eb9a7c572b909717f8.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/61c4968a7b66b7eb9a7c572b909717f8.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "5208": {
+      "sgdbGameId": 5263406,
+      "sgdbName": "7th Dragon III Code: VFD",
+      "grid": {
+        "id": 262756,
+        "url": "https://cdn2.steamgriddb.com/grid/e9c3d378bfbb7f3c8b34e1c78f09c855.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/e9c3d378bfbb7f3c8b34e1c78f09c855.jpg",
+        "width": 460,
+        "height": 215
+      },
+      "hero": {
+        "id": 63361,
+        "url": "https://cdn2.steamgriddb.com/hero/82dfcd1bdca30a1940602881fa042cb6.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/82dfcd1bdca30a1940602881fa042cb6.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
     "5228": {
       "sgdbGameId": 5328985,
       "sgdbName": "Star Ocean: Blue Sphere",
@@ -290,6 +326,42 @@
         "thumb": "https://cdn2.steamgriddb.com/hero_thumb/a698d7ec2529e34456b72fe14fbe0c5a.jpg",
         "width": 1920,
         "height": 620
+      }
+    },
+    "5512": {
+      "sgdbGameId": 12894,
+      "sgdbName": "Riviera: The Promised Land",
+      "grid": {
+        "id": 239613,
+        "url": "https://cdn2.steamgriddb.com/grid/4a02a0e8fb111a19d2525576774e4e31.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/4a02a0e8fb111a19d2525576774e4e31.jpg",
+        "width": 460,
+        "height": 215
+      },
+      "hero": {
+        "id": 124159,
+        "url": "https://cdn2.steamgriddb.com/hero/cec6c28df6aa3b387aa02f84699b4c81.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/cec6c28df6aa3b387aa02f84699b4c81.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "8409": {
+      "sgdbGameId": 35258,
+      "sgdbName": "Deception III: Dark Delusion",
+      "hero": {
+        "id": 152478,
+        "url": "https://cdn2.steamgriddb.com/hero/ade753fb168477486c23e7f0c2aa8ab8.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/ade753fb168477486c23e7f0c2aa8ab8.png",
+        "width": 1920,
+        "height": 620
+      },
+      "grid": {
+        "id": 29564,
+        "url": "https://cdn2.steamgriddb.com/grid/23a741fa2f45791cd3462521042150b2.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/23a741fa2f45791cd3462521042150b2.jpg",
+        "width": 920,
+        "height": 430
       }
     },
     "9334": {
@@ -398,6 +470,24 @@
         "thumb": "https://cdn2.steamgriddb.com/hero_thumb/6cf1744f31888c6216ce635b0270989a.jpg",
         "width": 3840,
         "height": 1240
+      }
+    },
+    "11283": {
+      "sgdbGameId": 36806,
+      "sgdbName": "Ape Escape",
+      "grid": {
+        "id": 264337,
+        "url": "https://cdn2.steamgriddb.com/grid/b9074f453f514942abaf532657355b87.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/b9074f453f514942abaf532657355b87.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 8347,
+        "url": "https://cdn2.steamgriddb.com/hero/a9cc6694dc40736d7a2ec018ea566113.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/a9cc6694dc40736d7a2ec018ea566113.jpg",
+        "width": 1920,
+        "height": 620
       }
     },
     "11290": {
@@ -544,6 +634,24 @@
         "height": 620
       }
     },
+    "11348": {
+      "sgdbGameId": 39059,
+      "sgdbName": "Armored Core",
+      "grid": {
+        "id": 28808,
+        "url": "https://cdn2.steamgriddb.com/grid/2a5f614fbd6b69fd6695ae213d63eef0.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/2a5f614fbd6b69fd6695ae213d63eef0.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 9480,
+        "url": "https://cdn2.steamgriddb.com/hero/6f4b7fd3eea0af87f9990faa8e3287f1.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/6f4b7fd3eea0af87f9990faa8e3287f1.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
     "11372": {
       "sgdbGameId": 38838,
       "sgdbName": "Thousand Arms",
@@ -670,6 +778,24 @@
         "height": 620
       }
     },
+    "18318": {
+      "sgdbGameId": 5267013,
+      "sgdbName": "7th Dragon 2020-II",
+      "grid": {
+        "id": 342494,
+        "url": "https://cdn2.steamgriddb.com/grid/0f524964bdd45462db9f938f3bdf301f.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/0f524964bdd45462db9f938f3bdf301f.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 49535,
+        "url": "https://cdn2.steamgriddb.com/hero/b158d85ad552b05f1410da163aa96d04.jpg",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/b158d85ad552b05f1410da163aa96d04.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
     "19021": {
       "sgdbGameId": 36175,
       "sgdbName": ".hack//Infection",
@@ -738,6 +864,24 @@
         "id": 147497,
         "url": "https://cdn2.steamgriddb.com/hero/cb605bcf2c880ac784cb1a694e5940e6.png",
         "thumb": "https://cdn2.steamgriddb.com/hero_thumb/cb605bcf2c880ac784cb1a694e5940e6.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "19227": {
+      "sgdbGameId": 35724,
+      "sgdbName": "Atelier Iris: Eternal Mana",
+      "grid": {
+        "id": 432476,
+        "url": "https://cdn2.steamgriddb.com/grid/7b31e0c771dade9c3b8734339d865e0f.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/7b31e0c771dade9c3b8734339d865e0f.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 66178,
+        "url": "https://cdn2.steamgriddb.com/hero/b45569825d3d2952b8016ea039d908d1.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/b45569825d3d2952b8016ea039d908d1.jpg",
         "width": 1920,
         "height": 620
       }
