@@ -201,7 +201,7 @@ function startJob(mode) {
 
 function send(res, status, body, type = 'application/json') {
     const payload = type === 'application/json' ? JSON.stringify(body) : body;
-    res.writeHead(status, { 'Content-Type': type, 'Access-Control-Allow-Origin': '*' });
+    res.writeHead(status, { 'Content-Type': type });
     res.end(payload);
 }
 
@@ -219,6 +219,9 @@ function resolveFile(fileParam) {
 }
 
 const server = http.createServer(async (req, res) => {
+    // Only answer to this machine's own names, so a web page can't reach the API by pointing a
+    // domain of its own at 127.0.0.1 (DNS rebinding)
+    if (!/^(localhost|127\.0\.0\.1|\[::1\]):\d+$/.test(req.headers.host ?? '')) { res.writeHead(403); res.end(); return; }
     const { method } = req;
     const { pathname, query } = parsePath(req.url);
     console.log(method, JSON.stringify(req.url), '->', JSON.stringify(pathname), JSON.stringify(query));
@@ -240,16 +243,11 @@ const server = http.createServer(async (req, res) => {
         return;
     }
 
-    // CORS preflight
-    if (method === 'OPTIONS') {
-        res.writeHead(204, {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET,PUT,POST',
-            'Access-Control-Allow-Headers': 'Content-Type',
-        });
-        res.end();
-        return;
-    }
+    // The page and its API share one origin, so no other site gets an answer: no CORS headers, and
+    // requests from another origin are refused (the API reads and writes your keys and can push)
+    if (method === 'OPTIONS') { res.writeHead(403); res.end(); return; }
+    const origin = req.headers.origin;
+    if (origin && origin !== `http://${req.headers.host}`) { res.writeHead(403); res.end(); return; }
 
     // GET /api/games/ra
     if (method === 'GET' && pathname === '/api/games/ra') {
@@ -360,7 +358,6 @@ const server = http.createServer(async (req, res) => {
             'Content-Type':  'text/event-stream',
             'Cache-Control': 'no-cache',
             'Connection':    'keep-alive',
-            'Access-Control-Allow-Origin': '*',
         });
 
         // Replay buffered lines

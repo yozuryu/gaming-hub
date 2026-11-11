@@ -1,5 +1,14 @@
 # Changelog
 
+## v26.11.12
+
+The admin panel no longer answers other websites
+
+### Admin
+
+- fix: **Other websites** can no longer read your keys from the admin while it runs
+  The admin used to let any page open in your browser read its replies, including your API keys. It now only answers its own page.
+
 ## v26.11.10
 
 An easier way to Activity on desktop, picked icons for RA games without one, picked art on unstarted series, and an easier-to-read changelog
