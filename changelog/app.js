@@ -274,9 +274,9 @@ const App = () => {
 
             {/* Topbar */}
             <div className="page-topbar sticky top-0 z-50 bg-[#131a22] border-b border-[#101214] px-4 md:px-8 py-1.5 flex items-center gap-2 text-[10px]">
-                <a href="../" className="text-[#546270] font-bold tracking-[0.15em] uppercase hover:text-[#8f98a0] transition-colors">Yozuryu</a>
+                <a href="../" className="sp-brand"><img src="../assets/favicon.svg" alt="" />Save<span>point</span></a>
                 <span className="text-[#2a475e]">›</span>
-                <a href="../" className="text-[#546270] hover:text-[#8f98a0] transition-colors">Gaming Hub</a>
+                <a href="../" className="text-[#546270] font-bold tracking-[0.15em] uppercase hover:text-[#8f98a0] transition-colors">Yozuryu</a>
                 <span className="text-[#2a475e]">›</span>
                 <span className="text-[#c6d4df]">Changelog</span>
             </div>
@@ -342,7 +342,7 @@ const App = () => {
             {/* Footer */}
             <footer className="bg-[#1b2838] border-t-2 border-[#2a475e] px-4 md:px-8 py-2.5 flex items-center gap-3 mt-auto">
                 <div className="w-[3px] h-[18px] rounded-[1px] bg-[#66c0f4] opacity-50 shrink-0" />
-                <p className="text-[10px] text-[#546270]">Personal gaming hub · Changelog</p>
+                <p className="text-[10px] text-[#546270]">Savepoint · Changelog</p>
                 <a href="../" className="ml-auto text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">← Back to hub</a>
             </footer>
 

@@ -2,7 +2,12 @@
 
 ## v26.11.12
 
-The admin panel no longer answers other websites
+The site is called Savepoint now, and the admin panel no longer answers other websites
+
+### Hub
+
+- improved: **Savepoint** name across the site, its wordmark first in the top bar
+  The desktop top bar reads Savepoint, then your name, then the page. Page footers, the browser tab and the installed app's name say Savepoint too.
 
 ### Admin
 

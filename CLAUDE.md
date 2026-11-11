@@ -146,7 +146,7 @@ Vanilla JS, no React. Reads `data/hub/config.json`, `data/ra/profile.json`, `dat
 ## Mobile / PWA
 
 ### Bottom navigation (`assets/mobile-nav.js`)
-Self-contained IIFE injected into every page via `<script src="...assets/mobile-nav.js">`. Visible only on screens < 768px.
+Self-contained IIFE injected into every page via `<script src="...assets/mobile-nav.js">`. Visible only on screens < 768px. It also styles the desktop top bar's wordmark on every page (`.sp-brand`: favicon, "Save" in white and "point" in the gold-blue-green gradient, Oxanium 800 loaded from Google Fonts here). Top bars read **Savepoint › Yozuryu › Page**: the display name is Savepoint (manifest, titles, footers, 404), while the repo and paths stay `gaming-hub` until it is renamed.
 
 - 5 tabs: Home, Profile (popup), Activity, Done (Completions), Stats (Analytics). New features join an existing tab (e.g. Playing is a view of Activity) rather than adding a sixth: five is what fits at 400px. The changelog has no tab: the hub header links to it on mobile; the desktop footer links it too; Analytics is reached from the hub's Analytics strip on desktop
 - **Profile tab** fetches `data/hub/config.json` and builds a vertical pill popup showing only `visible: true` platforms. Popup slides up/down via CSS transition (no JS animation). If only one platform, navigates directly.

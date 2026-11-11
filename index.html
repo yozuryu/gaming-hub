@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <link rel="manifest" href="./manifest.json" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title id="page-title">Gaming Hub</title>
+  <title id="page-title">Savepoint</title>
   <link rel="icon" href="./assets/favicon.ico" sizes="48x48">
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
   <link rel="apple-touch-icon" href="./assets/icon-192.png">
@@ -225,9 +225,9 @@
 
   <!-- Topbar -->
   <div class="page-topbar sticky top-0 z-50 bg-[#131a22] border-b border-[#101214] px-4 md:px-8 py-1.5 flex items-center gap-2 text-[10px]">
-    <span id="topbar-username" class="text-[#546270] font-bold tracking-[0.15em] uppercase"></span>
+    <a href="./" class="sp-brand"><img src="./assets/favicon.svg" alt="" />Save<span>point</span></a>
     <span class="text-[#2a475e]">›</span>
-    <span class="text-[#c6d4df]">Gaming Hub</span>
+    <span id="topbar-username" class="text-[#8f98a0] font-bold tracking-[0.15em] uppercase"></span>
   </div>
 
   <!-- Header -->
@@ -431,7 +431,7 @@
   <footer class="bg-[#1b2838] border-t-2 border-[#2a475e] px-4 md:px-8 py-2.5 flex items-center gap-3 mt-auto">
     <div class="w-[3px] h-[18px] rounded-[1px] bg-[#66c0f4] opacity-50 flex-shrink-0"></div>
     <p class="text-[10px] text-[#546270]">
-      Personal gaming hub ·
+      Savepoint · 
       <span id="footer-site-url" class="text-[#8f98a0]"></span>
     </p>
     <a href="./changelog/" class="ml-auto text-[10px] text-[#546270] hover:text-[#66c0f4] transition-colors">Changelog</a>
@@ -515,7 +515,7 @@
         const p = await res.json();
 
         const username = p.username ?? '';
-        document.title = `${username} · Gaming Hub`;
+        document.title = `${username} · Savepoint`;
         setText('topbar-username', username);
         setText('header-username', username);
         document.getElementById('avatar-img').alt = username;
