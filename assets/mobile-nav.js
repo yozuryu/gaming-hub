@@ -117,16 +117,15 @@
   // The wordmark font of the top bar (.sp-brand), loaded once for every page
   const font = document.createElement('link');
   font.rel = 'stylesheet';
-  font.href = 'https://fonts.googleapis.com/css2?family=Oxanium:wght@800&display=swap';
+  font.href = 'https://fonts.googleapis.com/css2?family=Oxanium:wght@700&display=swap';
   document.head.appendChild(font);
 
   // ── CSS ────────────────────────────────────────────────────────────────────
   const style = document.createElement('style');
   style.textContent = `
-    .sp-brand { display: inline-flex; align-items: center; font: 800 14px/1 Oxanium, 'Segoe UI', Arial, sans-serif; letter-spacing: .04em; color: #fff; text-transform: none; }
+    .sp-brand { display: inline-flex; align-items: center; gap: 6px; font: 700 13px/1 Oxanium, 'Segoe UI', Arial, sans-serif; letter-spacing: .04em; color: #fff; text-transform: none; }
     .sp-brand:hover { color: #fff; }
-    .sp-brand img { width: 16px; height: 16px; margin-right: 7px; }
-    .sp-brand span { background: linear-gradient(90deg, #f5d27a, #66c0f4 55%, #6cc85e); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .sp-brand img { width: 15px; height: 15px; }
     .mnav {
       display: none;
       position: fixed;
