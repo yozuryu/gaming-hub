@@ -1,7 +1,7 @@
 {
   "metadata": {
     "about": "Wide art for RA games from SteamGridDB, picked in the admin (RA Art). URLs only: thumb for rows and tiles, url behind sheet headers. `marked`: games worth picking art for, with why (admin filter); the site ignores it",
-    "updatedAt": "2026-11-10T15:39:25.469Z"
+    "updatedAt": "2026-11-11T13:26:32.399Z"
   },
   "games": {
     "449": {
@@ -995,6 +995,31 @@
         "id": 163288,
         "url": "https://cdn2.steamgriddb.com/hero/6663a64907d1a3758b5adf4c9660ae70.jpg",
         "thumb": "https://cdn2.steamgriddb.com/hero_thumb/6663a64907d1a3758b5adf4c9660ae70.jpg",
+        "width": 1920,
+        "height": 620
+      }
+    },
+    "24979": {
+      "sgdbGameId": 5209460,
+      "sgdbName": "Summon Night Gran-These: Horobi no Tsurugi to Yakusoku no Kishi",
+      "icon": {
+        "id": 375158,
+        "url": "https://cdn2.steamgriddb.com/grid/808dc776d9dbb5a11537c6352413612e.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/808dc776d9dbb5a11537c6352413612e.jpg",
+        "width": 1024,
+        "height": 1024
+      },
+      "grid": {
+        "id": 375150,
+        "url": "https://cdn2.steamgriddb.com/grid/33c3235af96f4db2c8837262c86fe4fc.png",
+        "thumb": "https://cdn2.steamgriddb.com/thumb/33c3235af96f4db2c8837262c86fe4fc.jpg",
+        "width": 920,
+        "height": 430
+      },
+      "hero": {
+        "id": 90518,
+        "url": "https://cdn2.steamgriddb.com/hero/1f93a5d50953fac07d7e6f54827ce9bc.png",
+        "thumb": "https://cdn2.steamgriddb.com/hero_thumb/1f93a5d50953fac07d7e6f54827ce9bc.jpg",
         "width": 1920,
         "height": 620
       }
