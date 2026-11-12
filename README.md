@@ -1,10 +1,10 @@
-# Gaming Hub
+# Savepoint
 
 A personal achievement dashboard that brings **RetroAchievements**, **Steam** and **Xbox** together in one place: profiles, completion progress, a year of unlock activity, and every game I've mastered or beaten.
 
-**Live site → [yozuryu.github.io/gaming-hub](https://yozuryu.github.io/gaming-hub/)**
+**Live site → [yozuryu.github.io/my-savepoint](https://yozuryu.github.io/my-savepoint/)**
 
-[![Data](https://github.com/yozuryu/gaming-hub/actions/workflows/fetch-data.yml/badge.svg)](https://github.com/yozuryu/gaming-hub/actions/workflows/fetch-data.yml)
+[![Data](https://github.com/yozuryu/my-savepoint/actions/workflows/fetch-data.yml/badge.svg)](https://github.com/yozuryu/my-savepoint/actions/workflows/fetch-data.yml)
 
 ![Gaming Hub home page with RetroAchievements, Steam and Xbox cards](docs/screenshots/hub.jpg)
 
@@ -102,7 +102,7 @@ Serve the site:
 npm start                 # serves the repo root with `npx serve`
 ```
 
-The service worker is scoped to `/gaming-hub/`, the GitHub Pages path. To test it locally too, serve the parent folder instead (for example `npx serve ..`) and open `/gaming-hub/`.
+The service worker is scoped to `/my-savepoint/`, the GitHub Pages path. To test it locally too, serve the parent folder instead (for example `npx serve ..`) and open the folder's path; it only matches when the folder is named `my-savepoint`.
 
 ### Admin panel
 

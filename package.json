@@ -1,14 +1,14 @@
 {
-  "name": "gaming-hub",
+  "name": "my-savepoint",
   "version": "1.0.0",
   "description": "Personal achievement dashboard for RetroAchievements, Steam and Xbox — static site fed by scheduled data pipelines",
-  "homepage": "https://yozuryu.github.io/gaming-hub/",
+  "homepage": "https://yozuryu.github.io/my-savepoint/",
   "bugs": {
-    "url": "https://github.com/yozuryu/gaming-hub/issues"
+    "url": "https://github.com/yozuryu/my-savepoint/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yozuryu/gaming-hub.git"
+    "url": "git+https://github.com/yozuryu/my-savepoint.git"
   },
   "license": "ISC",
   "author": "Yozuryu",

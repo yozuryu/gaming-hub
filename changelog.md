@@ -2,12 +2,17 @@
 
 ## v26.11.12
 
-The site is called Savepoint now, and the admin panel no longer answers other websites
+The site is called Savepoint now and lives at a new address, and the admin panel no longer answers other websites
 
 ### Hub
 
 - improved: **Savepoint** name across the site, its wordmark first in the top bar
   The desktop top bar reads Savepoint, then your name, then the page. Page footers, the browser tab and the installed app's name say Savepoint too.
+
+### Structure
+
+- improved: **New address** yozuryu.github.io/my-savepoint
+  The site moved from /gaming-hub/ along with the repository's new name. Reinstall the app from the new address; the old one no longer loads.
 
 ### Admin
 

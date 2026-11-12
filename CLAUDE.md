@@ -1,4 +1,4 @@
-# gaming-hub — Project Context for Claude
+# my-savepoint (Savepoint) — Project Context for Claude
 
 ## Working Style
 
@@ -20,7 +20,7 @@ Personal gaming statistics dashboard aggregating RetroAchievements (RA) and Stea
 ```
 gaming-hub/
 ├── index.html                      # Hub landing page (vanilla JS, no React)
-├── 404.html                        # Not-found page for /gaming-hub/* (menu style from the root site's /assets/noah-ui.css; absolute URLs only)
+├── 404.html                        # Not-found page for /my-savepoint/* (menu style from the root site's /assets/noah-ui.css; absolute URLs only)
 ├── manifest.json                   # PWA manifest
 ├── sw.js                           # Service worker (network-first data, stale-while-revalidate assets)
 ├── changelog.md                    # Project changelog (Markdown, parsed by changelog app)
@@ -146,11 +146,11 @@ Vanilla JS, no React. Reads `data/hub/config.json`, `data/ra/profile.json`, `dat
 ## Mobile / PWA
 
 ### Bottom navigation (`assets/mobile-nav.js`)
-Self-contained IIFE injected into every page via `<script src="...assets/mobile-nav.js">`. Visible only on screens < 768px. It also styles the desktop top bar's wordmark on every page (`.sp-brand`: favicon and a plain white "Savepoint" in Oxanium 700, loaded from Google Fonts here; the gradient is for promotion only, not the app). Top bars read **Savepoint › Yozuryu › Page**: the display name is Savepoint (manifest, titles, footers, 404), while the repo and paths stay `gaming-hub` until it is renamed.
+Self-contained IIFE injected into every page via `<script src="...assets/mobile-nav.js">`. Visible only on screens < 768px. It also styles the desktop top bar's wordmark on every page (`.sp-brand`: favicon and a plain white "Savepoint" in Oxanium 700, loaded from Google Fonts here; the gradient is for promotion only, not the app). Top bars read **Savepoint › Yozuryu › Page**: the display name is Savepoint (manifest, titles, footers, 404), and the repo and Pages path are `my-savepoint` (renamed from `gaming-hub` on 2026-11-12; the local folder is still `gaming-hub`). The public template it was cut from is `yozuryu/savepoint`.
 
 - 5 tabs: Home, Profile (popup), Activity, Done (Completions), Stats (Analytics). New features join an existing tab (e.g. Playing is a view of Activity) rather than adding a sixth: five is what fits at 400px. The changelog has no tab: the hub header links to it on mobile; the desktop footer links it too; Analytics is reached from the hub's Analytics strip on desktop
 - **Profile tab** fetches `data/hub/config.json` and builds a vertical pill popup showing only `visible: true` platforms. Popup slides up/down via CSS transition (no JS animation). If only one platform, navigates directly.
-- `BASE` is derived from `document.currentScript.src` — works on any host (GitHub Pages `/gaming-hub/`, local `/`, etc.)
+- `BASE` is derived from `document.currentScript.src` — works on any host (GitHub Pages `/my-savepoint/`, local `/`, etc.)
 - Mobile CSS injected via `<style>`: hides `.page-topbar` and `footer`, adds `padding-bottom` to body, repositions `.scroll-top-btn`
 - All pages must have `class="page-topbar"` on the breadcrumb topbar div
 - Safe area: `env(safe-area-inset-bottom)` used on nav, body padding, scroll-top button and floating pills; `env(safe-area-inset-top)` on the sticky profile tab bar

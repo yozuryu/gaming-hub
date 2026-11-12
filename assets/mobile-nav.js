@@ -5,12 +5,12 @@
  */
 (function () {
   // Derive the site root from the script's own URL so this works on any host
-  // (GitHub Pages at /gaming-hub/, local dev at /, etc.)
+  // (GitHub Pages at /my-savepoint/, local dev at /, etc.)
   const BASE = (document.currentScript.src || '')
     .replace(/\/assets\/mobile-nav\.js.*$/, '');
 
   const path = window.location.pathname;
-  const rootPath = BASE.replace(window.location.origin, ''); // e.g. '/gaming-hub' or ''
+  const rootPath = BASE.replace(window.location.origin, ''); // e.g. '/my-savepoint' or ''
 
   // ── Platform registry ──────────────────────────────────────────────────────
   // Maps config.json platform keys → display metadata + route

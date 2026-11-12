@@ -2,21 +2,21 @@
   "name": "Savepoint",
   "short_name": "Savepoint",
   "description": "Personal gaming statistics dashboard — RetroAchievements & Steam",
-  "start_url": "/gaming-hub/",
-  "scope": "/gaming-hub/",
+  "start_url": "/my-savepoint/",
+  "scope": "/my-savepoint/",
   "display": "standalone",
   "background_color": "#171a21",
   "theme_color": "#1b2838",
   "orientation": "any",
   "icons": [
     {
-      "src": "/gaming-hub/assets/icon-192.png",
+      "src": "/my-savepoint/assets/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/gaming-hub/assets/icon-512.png",
+      "src": "/my-savepoint/assets/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

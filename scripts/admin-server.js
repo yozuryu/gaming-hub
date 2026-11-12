@@ -50,7 +50,7 @@ const PIPELINES = {
 
 // GitHub Actions: the real data runs (fetch-data.yml). Reads and dispatches with GH_DISPATCH_TOKEN from .env,
 // the same token cron-job.org uses. Inputs are checked against the workflow's own choices.
-const GH_REPO     = 'yozuryu/gaming-hub';
+const GH_REPO     = 'yozuryu/my-savepoint';
 const GH_WORKFLOW = 'fetch-data.yml';
 const GH_MODES     = ['incremental', 'midnight', 'full-refresh', 'watchlist-only'];
 const GH_PLATFORMS = ['all', 'ra', 'steam', 'xbox'];
@@ -64,7 +64,7 @@ async function gh(pathPart, init = {}) {
     if (!token) throw new Error('GH_DISPATCH_TOKEN is not set (Credentials)');
     const r = await fetch(`https://api.github.com/repos/${GH_REPO}${pathPart}`, {
         ...init,
-        headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'gaming-hub-admin', ...(init.body ? { 'Content-Type': 'application/json' } : {}) },
+        headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'my-savepoint-admin', ...(init.body ? { 'Content-Type': 'application/json' } : {}) },
     });
     if (!r.ok) throw new Error(`GitHub ${r.status}: ${(await r.text()).slice(0, 200)}`);
     return r.status === 204 ? null : r.json();

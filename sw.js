@@ -1,47 +1,47 @@
-const CACHE_NAME = 'gaming-hub-v10';
+const CACHE_NAME = 'my-savepoint-v1';
 
 // Static assets — precached on install, then stale-while-revalidate
 const PRECACHE = [
-  '/gaming-hub/',
-  '/gaming-hub/index.html',
-  '/gaming-hub/profile/ra/index.html',
-  '/gaming-hub/profile/ra/app.js',
-  '/gaming-hub/profile/ra/utils/constants.js',
-  '/gaming-hub/profile/ra/utils/helpers.js',
-  '/gaming-hub/profile/ra/utils/transform.js',
-  '/gaming-hub/profile/steam/index.html',
-  '/gaming-hub/profile/steam/app.js',
-  '/gaming-hub/profile/steam/utils/constants.js',
-  '/gaming-hub/profile/steam/utils/helpers.js',
-  '/gaming-hub/profile/xbox/index.html',
-  '/gaming-hub/profile/xbox/app.js',
-  '/gaming-hub/profile/xbox/utils/constants.js',
-  '/gaming-hub/profile/xbox/utils/helpers.js',
-  '/gaming-hub/activity/index.html',
-  '/gaming-hub/activity/app.js',
-  '/gaming-hub/activity/utils/constants.js',
-  '/gaming-hub/activity/utils/helpers.js',
-  '/gaming-hub/activity/utils/normalizers.js',
-  '/gaming-hub/analytics/index.html',
-  '/gaming-hub/analytics/app.js',
-  '/gaming-hub/analytics/utils.js',
-  '/gaming-hub/completions/index.html',
-  '/gaming-hub/completions/app.js',
-  '/gaming-hub/changelog/index.html',
-  '/gaming-hub/changelog/app.js',
-  '/gaming-hub/assets/time.js',
-  '/gaming-hub/assets/playing.js',
-  '/gaming-hub/assets/motion.css',
-  '/gaming-hub/assets/ui.css',
-  '/gaming-hub/assets/sheet.js',
-  '/gaming-hub/assets/game-view.js',
-  '/gaming-hub/assets/tabs.js',
-  '/gaming-hub/assets/avatar.png',
-  '/gaming-hub/assets/icon-ra.png',
-  '/gaming-hub/assets/icon-steam.png',
-  '/gaming-hub/assets/icon-xbox.png',
-  '/gaming-hub/assets/icon-192.png',
-  '/gaming-hub/assets/icon-512.png',
+  '/my-savepoint/',
+  '/my-savepoint/index.html',
+  '/my-savepoint/profile/ra/index.html',
+  '/my-savepoint/profile/ra/app.js',
+  '/my-savepoint/profile/ra/utils/constants.js',
+  '/my-savepoint/profile/ra/utils/helpers.js',
+  '/my-savepoint/profile/ra/utils/transform.js',
+  '/my-savepoint/profile/steam/index.html',
+  '/my-savepoint/profile/steam/app.js',
+  '/my-savepoint/profile/steam/utils/constants.js',
+  '/my-savepoint/profile/steam/utils/helpers.js',
+  '/my-savepoint/profile/xbox/index.html',
+  '/my-savepoint/profile/xbox/app.js',
+  '/my-savepoint/profile/xbox/utils/constants.js',
+  '/my-savepoint/profile/xbox/utils/helpers.js',
+  '/my-savepoint/activity/index.html',
+  '/my-savepoint/activity/app.js',
+  '/my-savepoint/activity/utils/constants.js',
+  '/my-savepoint/activity/utils/helpers.js',
+  '/my-savepoint/activity/utils/normalizers.js',
+  '/my-savepoint/analytics/index.html',
+  '/my-savepoint/analytics/app.js',
+  '/my-savepoint/analytics/utils.js',
+  '/my-savepoint/completions/index.html',
+  '/my-savepoint/completions/app.js',
+  '/my-savepoint/changelog/index.html',
+  '/my-savepoint/changelog/app.js',
+  '/my-savepoint/assets/time.js',
+  '/my-savepoint/assets/playing.js',
+  '/my-savepoint/assets/motion.css',
+  '/my-savepoint/assets/ui.css',
+  '/my-savepoint/assets/sheet.js',
+  '/my-savepoint/assets/game-view.js',
+  '/my-savepoint/assets/tabs.js',
+  '/my-savepoint/assets/avatar.png',
+  '/my-savepoint/assets/icon-ra.png',
+  '/my-savepoint/assets/icon-steam.png',
+  '/my-savepoint/assets/icon-xbox.png',
+  '/my-savepoint/assets/icon-192.png',
+  '/my-savepoint/assets/icon-512.png',
 ];
 
 // Install — precache static assets
@@ -71,8 +71,8 @@ self.addEventListener('fetch', event => {
   // Only handle same-origin GET requests
   if (url.origin !== self.location.origin || event.request.method !== 'GET') return;
 
-  const isData = url.pathname.startsWith('/gaming-hub/data/') ||
-                 url.pathname.startsWith('/gaming-hub/changelog.md');
+  const isData = url.pathname.startsWith('/my-savepoint/data/') ||
+                 url.pathname.startsWith('/my-savepoint/changelog.md');
 
   if (isData) {
     // Network-first: always try fresh data, fall back to cache if offline

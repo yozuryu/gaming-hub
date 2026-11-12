@@ -1267,7 +1267,7 @@ function GitHubRuns({ runs, error, onRefresh, loading }) {
             <div className="pane-h">
                 <Github size={16} className="text-[#c6d4df]" />
                 <span className="pane-t flex-1">Data runs on GitHub <span className="text-[#546270] font-normal">· fetch-data.yml</span></span>
-                <a className="btn btn-ghost btn-sm" href="https://github.com/yozuryu/gaming-hub/actions/workflows/fetch-data.yml" target="_blank" rel="noreferrer"><ExternalLink size={12} />All runs</a>
+                <a className="btn btn-ghost btn-sm" href="https://github.com/yozuryu/my-savepoint/actions/workflows/fetch-data.yml" target="_blank" rel="noreferrer"><ExternalLink size={12} />All runs</a>
                 <button className="icon-btn" onClick={onRefresh} title="Refresh"><RotateCw size={14} className={loading ? 'animate-spin' : ''} /></button>
             </div>
             <div className="flex-1 overflow-y-auto">
@@ -1826,7 +1826,7 @@ function GitActions({ edits, st, onDone }) {
             )}
             {state?.ok && (state.action === 'commit'
                 ? <span className="chip chip-blue self-start anim-fade"><Check size={11} />Committed {state.commit} · not pushed</span>
-                : <a className="chip chip-blue self-start anim-fade" href="https://github.com/yozuryu/gaming-hub/actions/workflows/deploy.yml" target="_blank" rel="noreferrer">
+                : <a className="chip chip-blue self-start anim-fade" href="https://github.com/yozuryu/my-savepoint/actions/workflows/deploy.yml" target="_blank" rel="noreferrer">
                     <Check size={11} />Pushed {state.pushed} commit{state.pushed > 1 ? 's' : ''} · deploying<ExternalLink size={10} />
                   </a>)}
             {state?.error && <span className="chip chip-red !h-auto py-1 whitespace-normal anim-fade">{state.error}</span>}
@@ -2645,7 +2645,7 @@ export default function App() {
                         <span className="text-[14px] text-white font-semibold">Admin</span>
                         <span className="text-[11px] text-[#546270]">Savepoint</span>
                     </div>
-                    <a href="https://yozuryu.github.io/gaming-hub/" target="_blank" rel="noreferrer" className="icon-btn ml-auto" title="Open the live site"><ExternalLink size={14} /></a>
+                    <a href="https://yozuryu.github.io/my-savepoint/" target="_blank" rel="noreferrer" className="icon-btn ml-auto" title="Open the live site"><ExternalLink size={14} /></a>
                 </div>
                 <nav className="flex-1 overflow-y-auto px-2 pb-3 min-h-0">
                     {GROUPS.map(group => (
