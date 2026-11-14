@@ -11,7 +11,7 @@ Planned work, in priority order. Not published to the site (`backlog/` is exclud
 | 5 | [Remove pipeline data from `main`'s history](history-cleanup.md) | To do, not before 2026-11-08 | #4 running cleanly for a week |
 | 6 | [Playtime log, Activity views and Analytics page](playtime-and-analytics.md) | Done 2026-10-04 | — |
 | 7 | [Xbox Mythic Achievements](xbox-mythic.md) | Parked, revisit later | OpenXBL exposing it (Insider-only as of 2026-09) |
-| 8 | [Share card](share-card.md) (canvas share image: Showcase / Trophy / Dashboard; mockups and reference renders in `share-card/`) | Planned, mockups approved 2026-11-02 | — |
+| 8 | [Share card](share-card.md) (canvas share image: Showcase / Trophy / Dashboard; mockups and reference renders in `share-card/`; idea added 2026-11-14: [overlay stickers](share-card.md#idea-overlay-stickers-for-video-stories) for video stories, designed in `share-card/overlay/stickers.html`) | Planned, mockups approved 2026-11-02 | — |
 | 9 | [Design fold-in](fold-in.md) (swipe-up modal, Hub console strip, blurred profile header, list/tiles toggle, new Completions view; mockups and live captures in `fold-in/`) | Done 2026-11-03 | — |
 | 10 | [RA wide art from SteamGridDB](ra-art-steamgriddb.md) (pick a banner per RA game in the admin, used wherever Steam shows its store banner; fallback to today's design) | Planned | SteamGridDB API key |
 

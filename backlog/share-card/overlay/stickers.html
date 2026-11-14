@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Story stickers</title>
+<!--
+  Story stickers: the overlay idea from ../../share-card.md, designed.
+  Rule: square or a horizontal rectangle, never wider than 2:1. Long thin strips look stretched on a story.
+  Six shapes: stacked, square, cover, unlock, shelf, stub. Sizes are CSS px; renders are 3× (render-stickers.cjs).
+  No query string → the design sheet. ?shape=cover&game=rof9 → one sticker alone on a transparent page (what the renderer captures).
+  GAMES uses the card data shape from share-card.md, so the canvas renderer can read the same objects.
+-->
+<style>
+:root {
+  --base: #080c14;          /* sticker body */
+  --line: #1e2a35;          /* inner boxes */
+  --ink: #ffffff;
+  --ink-2: #c6d4df;
+  --ink-3: #8f98a0;
+  --gold: #e5b143;          /* mastered / perfect, and rarity under 10% */
+  --hc: #ff6b6b;
+  --page: #0d1218;          /* design sheet only */
+  --font: -apple-system, "SF Pro Text", "Segoe UI", Roboto, Arial, sans-serif;
+  /* progress colours (per share-card.md) live in RGB in the script: Steam 102,192,244 · RA 229,177,67 · Xbox 82,176,67 · silver 184,196,206 */
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: transparent; font-family: var(--font); color: var(--ink); -webkit-font-smoothing: antialiased; }
+body.sheet { background: var(--page); padding: 40px max(16px, 4vw) 64px; }
+
+/* ── shared pieces ─────────────────────────────────────────── */
+.st { position: relative; overflow: hidden; background: var(--base); box-shadow: 0 10px 28px -10px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.07); }
+.st.fin { box-shadow: 0 10px 28px -10px rgba(0,0,0,.8), 0 0 0 1.5px rgb(var(--c)), 0 0 22px -4px rgba(var(--c), .55); }
+.st.beat { box-shadow: 0 10px 28px -10px rgba(0,0,0,.8), 0 0 0 1px rgba(184,196,206,.6); }
+.bg { position: absolute; inset: -12px; background-position: center; background-size: cover; }
+.bg.px { image-rendering: pixelated; filter: blur(5px) saturate(1.1); }
+.bg.icon { filter: blur(14px) saturate(1.2); transform: scale(1.3); }
+.shade { position: absolute; inset: 0; }
+.pf { width: 10px; height: 10px; flex-shrink: 0; }
+.pf.round { border-radius: 50%; }
+.kick { display: flex; align-items: center; gap: 5px; font-size: 8px; font-weight: 700; letter-spacing: .12em; color: #9fb4c7; white-space: nowrap; text-transform: uppercase; }
+.kick .s { color: rgb(var(--c)); }
+.mode { font-size: 7px; font-weight: 800; letter-spacing: .1em; padding: 1px 4px; border-radius: 2px; border: 1px solid; }
+.mode.hc { color: var(--hc); border-color: rgba(255,107,107,.45); background: rgba(8,12,20,.7); }
+.mode.sc { color: var(--ink-2); border-color: rgba(143,152,160,.5); background: rgba(8,12,20,.7); }
+.bar { height: 4px; border-radius: 2px; background: rgba(255,255,255,.14); overflow: hidden; }
+.bar i { display: block; height: 100%; background: rgb(var(--c)); }
+.fin .bar i { box-shadow: 0 0 8px rgba(var(--c), .8); }
+.ach { border-radius: 4px; overflow: hidden; flex-shrink: 0; background: #111a24; box-shadow: 0 0 0 1.5px rgba(255,255,255,.22); }
+.ach.rare { box-shadow: 0 0 0 1.5px var(--gold); }
+.ach img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.px { image-rendering: pixelated; }
+.ring { border-radius: 50%; display: grid; place-items: center; flex-shrink: 0;
+  background: radial-gradient(closest-side, var(--base) 80%, transparent 81% 100%), conic-gradient(rgb(var(--c)) 0 calc(var(--p) * 1%), rgba(255,255,255,.15) 0); }
+.fin .ring { box-shadow: 0 0 16px -2px rgba(var(--c), .6); }
+.ring b { font-weight: 800; color: rgb(var(--c)); line-height: 1; letter-spacing: -.02em; }
+.ring b small { font-size: .5em; }
+h1 { font-weight: 800; letter-spacing: -.015em; line-height: 1.1; text-shadow: 0 2px 10px rgba(0,0,0,.6); }
+.chip { font-size: 8px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; padding: 3px 6px; border-radius: 2px; white-space: nowrap; display: inline-flex; align-items: center; gap: 4px; }
+.chip.plat { background: rgba(23,29,37,.9); color: var(--ink-2); border: 1px solid #2a475e; }
+.chip.progress { background: rgba(8,12,20,.88); color: rgb(var(--c)); border: 1px solid rgba(var(--c), .55); }
+.chip.fin { background: rgb(var(--c)); color: var(--base); }
+.chip.beaten { background: #2a3440; color: rgb(184,196,206); border: 1px solid rgba(184,196,206,.6); }
+.chips { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+.lab { font-size: 9.5px; color: #9fb0bf; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lab em { font-style: normal; color: var(--gold); font-weight: 600; }
+.clamp { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* ── stacked: 340 × ~300 ────────────────────────────────────── */
+.stack { width: 340px; border-radius: 14px; }
+.stack .band { position: relative; height: 116px; overflow: hidden; }
+.stack .band::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, var(--base) 0%, rgba(8,12,20,.55) 45%, rgba(8,12,20,.15) 75%, rgba(8,12,20,.4)); }
+.stack .top { position: absolute; left: 12px; right: 12px; top: 12px; display: flex; align-items: center; gap: 5px; z-index: 1; }
+.stack .top .av { margin-left: auto; width: 22px; height: 22px; border-radius: 50%; box-shadow: 0 0 0 1px rgb(var(--c)); }
+.stack .tt { position: absolute; left: 14px; right: 14px; bottom: 6px; display: flex; align-items: flex-end; gap: 10px; z-index: 1; }
+.stack .tt .icon { width: 64px; height: 64px; border-radius: 4px; box-shadow: 0 0 0 1.5px rgb(var(--c)), 0 8px 16px -6px #000; flex-shrink: 0; }
+.stack .tt .cover { width: 44px; height: 66px; border-radius: 3px; object-fit: cover; box-shadow: 0 0 0 1.5px rgb(var(--c)), 0 8px 16px -6px #000; flex-shrink: 0; }
+.stack h1 { font-size: 20px; -webkit-line-clamp: 2; }
+.stack .row { display: flex; align-items: center; gap: 16px; padding: 12px 14px; }
+.stack .row .ring { width: 54px; height: 54px; }
+.stack .row .ring b { font-size: 16px; } .stack .row .ring b.star { font-size: 22px; }
+.stack .stat b { display: block; font-size: 18px; font-weight: 800; line-height: 1; letter-spacing: -.01em; }
+.stack .stat b i { font-style: normal; font-size: .6em; color: var(--ink-3); }
+.stack .stat span { display: block; font-size: 9px; color: var(--ink-3); margin-top: 4px; }
+.stack .un { display: flex; align-items: center; gap: 9px; margin: 0 10px 10px; padding: 7px 9px; border-radius: 7px; background: rgba(255,255,255,.04); border: 1px solid var(--line); }
+.stack .un .ach { width: 32px; height: 32px; }
+.stack .un div { min-width: 0; }
+.stack .un b { display: block; font-size: 12px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ── square: 240 × 240, a small trophy ──────────────────────── */
+.square { width: 240px; height: 240px; border-radius: 16px; display: flex; flex-direction: column; align-items: center; padding: 12px 14px 14px; text-align: center; }
+.square .bg { opacity: .55; }
+.square .shade { background: radial-gradient(circle at 50% 42%, rgba(8,12,20,.35), rgba(8,12,20,.92) 70%); }
+.square .chips { position: relative; justify-content: center; }
+.square .trophy { position: relative; width: 116px; height: 116px; margin-top: 10px; display: grid; place-items: center; }
+.square .trophy .ring { position: absolute; inset: 0; background: conic-gradient(rgb(var(--c)) 0 calc(var(--p) * 1%), rgba(255,255,255,.15) 0); }
+.square .trophy .ring::after { content: ''; position: absolute; inset: 6px; border-radius: 50%; background: var(--base); }
+.square .trophy .face { position: relative; width: 96px; height: 96px; border-radius: 50%; overflow: hidden; z-index: 1; }
+.square .trophy .face img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; display: block; }
+.square .trophy .pct { position: absolute; bottom: -7px; left: 50%; transform: translateX(-50%); z-index: 2; font-size: 11px; font-weight: 800; padding: 2px 7px; border-radius: 10px; background: var(--base); color: rgb(var(--c)); box-shadow: 0 0 0 1.5px rgb(var(--c)); white-space: nowrap; }
+.square h1 { position: relative; font-size: 16px; -webkit-line-clamp: 2; margin-top: 14px; }
+.square .meta { position: relative; margin-top: auto; font-size: 10px; color: var(--ink-2); font-weight: 600; }
+.square .meta i { font-style: normal; color: var(--ink-3); }
+
+/* ── cover: 320 × 240 (4:3), cover beside the numbers ───────── */
+.cover { width: 320px; height: 240px; border-radius: 14px; display: flex; }
+.cover .left { position: relative; width: 140px; flex-shrink: 0; overflow: hidden; }
+.cover .left > img.c { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cover .left .icon { position: absolute; left: 50%; top: 50%; width: 96px; height: 96px; margin: -48px 0 0 -48px; border-radius: 6px; box-shadow: 0 0 0 1.5px rgb(var(--c)), 0 10px 20px -6px #000; }
+.cover .left::after { content: ''; position: absolute; inset: 0; box-shadow: inset -1px 0 0 rgba(var(--c), .6); }
+.cover .right { position: relative; flex: 1; min-width: 0; padding: 13px 14px 12px; display: flex; flex-direction: column; gap: 6px; }
+.cover h1 { font-size: 16px; -webkit-line-clamp: 3; }
+.cover .chips { gap: 4px; } .cover .chip { font-size: 7.5px; padding: 3px 5px; letter-spacing: .1em; }
+.cover .big { margin-top: auto; display: flex; align-items: baseline; gap: 6px; }
+.cover .big b { font-size: 30px; font-weight: 800; color: rgb(var(--c)); letter-spacing: -.03em; line-height: 1; }
+.cover .big b small { font-size: .5em; }
+.cover .big span { font-size: 10px; color: var(--ink-2); font-weight: 700; } .cover .big span i { font-style: normal; color: var(--ink-3); }
+.cover .sub { font-size: 9.5px; color: var(--ink-3); }
+.cover .last { display: flex; align-items: center; gap: 7px; padding-top: 8px; margin-top: 2px; border-top: 1px solid var(--line); min-width: 0; }
+.cover .last .ach { width: calc(64px / 3 * 1.5); height: calc(64px / 3 * 1.5); }
+.cover .last div { min-width: 0; }
+.cover .last b { display: block; font-size: 10.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cover .last .lab { display: block; font-size: 8.5px; }
+
+/* ── unlock: 300 × 200 (3:2), the moment itself ─────────────── */
+.unlock { width: 300px; height: 200px; border-radius: 14px; display: flex; flex-direction: column; }
+.unlock .bg { opacity: .3; }
+.unlock .shade { background: linear-gradient(160deg, rgba(8,12,20,.55), rgba(8,12,20,.92) 60%); }
+.unlock .head { position: relative; padding: 14px 16px 0; }
+.unlock .mid { position: relative; flex: 1; display: flex; align-items: center; gap: 14px; padding: 0 16px; min-height: 0; }
+.unlock .mid .ach { width: calc(256px / 3); height: calc(256px / 3); border-radius: 10px; }
+.unlock .mid .ach.rare { box-shadow: 0 0 0 2px var(--gold), 0 0 20px -4px rgba(229,177,67,.7); }
+.unlock .mid div { min-width: 0; }
+.unlock .mid b { font-size: 18px; font-weight: 800; line-height: 1.15; -webkit-line-clamp: 3; letter-spacing: -.01em; }
+.unlock .mid .lab { margin-top: 5px; font-size: 10px; white-space: normal; }
+.unlock .foot { position: relative; display: flex; align-items: center; gap: 10px; padding: 9px 16px; border-top: 1px solid var(--line); background: rgba(8,12,20,.6); }
+.unlock .foot .g { flex: 1; min-width: 0; font-size: 10.5px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.unlock .foot span { font-size: 10px; color: var(--ink-3); font-weight: 700; white-space: nowrap; }
+.unlock .foot .ring { width: 26px; height: 26px; } .unlock .foot .ring b { font-size: 8px; }
+
+/* ── shelf: 320 × 200 (16:10), the badges so far ────────────── */
+.shelf { width: 320px; height: 200px; border-radius: 14px; display: flex; flex-direction: column; padding: 12px 14px 12px; gap: 10px; }
+.shelf .bg { opacity: .28; }
+.shelf .shade { background: linear-gradient(180deg, rgba(8,12,20,.7), rgba(8,12,20,.94) 45%); }
+.shelf .head { position: relative; display: flex; align-items: center; gap: 10px; min-width: 0; }
+.shelf .head .art { width: 40px; height: 40px; border-radius: 4px; object-fit: cover; object-position: 50% 25%; box-shadow: 0 0 0 1.5px rgb(var(--c)); flex-shrink: 0; }
+.shelf .head div { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.shelf h1 { font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.shelf .grid6 { position: relative; display: grid; grid-template-columns: repeat(6, calc(128px / 3)); gap: 6px; justify-content: space-between; }
+.shelf .grid6 .ach { width: calc(128px / 3); height: calc(128px / 3); }
+.shelf .grid6 .empty { width: calc(128px / 3); height: calc(128px / 3); border-radius: 4px; border: 1px dashed rgba(255,255,255,.18); }
+.shelf .foot { position: relative; margin-top: auto; display: flex; align-items: center; gap: 10px; }
+.shelf .foot .bar { flex: 1; }
+.shelf .foot span { font-size: 10px; font-weight: 700; color: var(--ink-2); white-space: nowrap; } .shelf .foot span b { color: rgb(var(--c)); }
+
+/* ── stub: 320 × 170, one session as a ticket ───────────────── */
+.stubw { display: inline-block; filter: drop-shadow(0 10px 14px rgba(0,0,0,.55)); }
+.stub { width: 320px; height: 170px; border-radius: 12px; display: flex; box-shadow: none;
+  -webkit-mask: radial-gradient(circle at 236px 0, transparent 9px, #000 9.5px) top / 100% 51% no-repeat, radial-gradient(circle at 236px 100%, transparent 9px, #000 9.5px) bottom / 100% 51% no-repeat;
+          mask: radial-gradient(circle at 236px 0, transparent 9px, #000 9.5px) top / 100% 51% no-repeat, radial-gradient(circle at 236px 100%, transparent 9px, #000 9.5px) bottom / 100% 51% no-repeat; }
+.stub.fin { outline: 1.5px solid rgb(var(--c)); outline-offset: -1.5px; }
+.stub .bg { opacity: .3; }
+.stub .shade { background: linear-gradient(90deg, rgba(8,12,20,.75), rgba(8,12,20,.92) 60%); }
+.stub .main { position: relative; width: 236px; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; }
+.stub h1 { font-size: 16px; -webkit-line-clamp: 2; }
+.stub .big { margin-top: auto; font-size: 22px; font-weight: 800; color: rgb(var(--c)); letter-spacing: -.02em; line-height: 1; }
+.stub .big span { font-size: 10px; font-weight: 600; color: var(--ink-3); letter-spacing: 0; margin-left: 6px; }
+.stub .row { display: flex; gap: 5px; }
+.stub .row img { width: calc(64px / 3); height: calc(64px / 3); border-radius: 3px; box-shadow: 0 0 0 1px rgba(255,255,255,.18); object-fit: cover; }
+.stub .side { position: relative; flex: 1; border-left: 1.5px dashed rgba(255,255,255,.22); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+.stub .side .ring { width: 52px; height: 52px; } .stub .side .ring b { font-size: 14px; } .stub .side .ring b.star { font-size: 20px; }
+.stub .side span { font-size: 10px; font-weight: 700; color: var(--ink-2); } .stub .side span i { font-style: normal; color: var(--ink-3); }
+
+/* ── design sheet ───────────────────────────────────────────── */
+.sheet h2 { font-size: 22px; font-weight: 800; letter-spacing: -.01em; }
+.sheet .lead { max-width: 64ch; color: var(--ink-2); font-size: 14px; line-height: 1.55; margin-top: 8px; }
+.sheet section { margin-top: 40px; }
+.sheet h3 { font-size: 15px; font-weight: 700; color: var(--ink-2); margin-bottom: 14px; }
+.flow { display: flex; flex-wrap: wrap; gap: 24px 28px; align-items: flex-start; }
+.cell { display: flex; flex-direction: column; gap: 10px; min-width: 0; padding: 4px 4px 8px; }
+.cell p { font-size: 12px; color: var(--ink-3); max-width: 340px; }
+.cell p b { color: var(--ink-2); font-weight: 600; }
+.stories { display: flex; flex-wrap: wrap; gap: 28px; }
+.story { position: relative; width: 270px; height: 480px; border-radius: 14px; overflow: hidden; background-size: cover; background-position: center; flex-shrink: 0; }
+.story .safe { position: absolute; left: 0; right: 0; height: 62.5px; background: rgba(0,0,0,.35); border-bottom: 1px dashed rgba(255,255,255,.4); font-size: 9px; color: rgba(255,255,255,.7); padding: 6px 8px; }
+.story .safe.b { bottom: 0; border-bottom: 0; border-top: 1px dashed rgba(255,255,255,.4); display: flex; align-items: flex-end; }
+.story .put { position: absolute; transform-origin: 0 0; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const I = 'img/';
+const PLAT = {
+  steam: { name: 'Steam', icon: '<svg class="pf" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-9.96 9.04l5.35 2.21a2.83 2.83 0 0 1 1.6-.49h.15l2.38-3.45v-.05a3.77 3.77 0 1 1 3.77 3.77h-.09l-3.4 2.42v.13a2.83 2.83 0 0 1-5.62.5L2.4 14.6A10 10 0 1 0 12 2Zm-4.72 15.22-1.22-.5a2.13 2.13 0 1 0 1.17-2.9l1.27.52a1.57 1.57 0 1 1-1.22 2.88Zm9.6-7.49a2.51 2.51 0 1 0-2.5 2.51 2.51 2.51 0 0 0 2.5-2.5Zm-4.39 0a1.89 1.89 0 1 1 1.89 1.89 1.89 1.89 0 0 1-1.89-1.89Z"/></svg>' },
+  ra:    { name: 'RA', icon: `<img class="pf" src="${I}icon-ra.webp" alt="">` },
+  xbox:  { name: 'Xbox', icon: `<img class="pf round" src="${I}icon-xbox.png" alt="">` },
+};
+const RGB = { steam: '102,192,244', ra: '229,177,67', xbox: '82,176,67', gold: '229,177,67', silver: '184,196,206' };
+const E = 'st-1658290-', R = 'st-2238900-';
+
+// Card data (share-card.md § Card data), trimmed to what a sticker shows. Real numbers from the site's data files.
+const GAMES = [
+  { key: 'lego2k', platform: 'steam', title: 'LEGO® 2K Drive', status: 'progress', unlocked: 3, total: 38, played: '1h',
+    art: { hero: 'library_hero.jpg', cover: 'library_600x900_2x.jpg' },
+    unlock: { name: 'Higher Orbit', pct: 5.1, img: 'ach.jpg', label: 'Latest unlock' }, note: 'Steam · in progress' },
+  { key: 'so2', platform: 'steam', title: 'STAR OCEAN THE SECOND STORY R', status: 'perfect', unlocked: 51, total: 51, played: '53h 45m', days: '83 days', finish: 'Perfect 25 Sep 2024',
+    art: { hero: 'st-hero-2238900.jpg', cover: 'st-cover-2238900.jpg' },
+    unlock: { name: 'Master of the Star Ocean', pct: 3.4, img: R + 'e80700cb571478dff436fb13e210d0668068bad0.jpg', label: 'Rarest achievement' }, note: 'Steam · perfect' },
+  { key: 'legocity', platform: 'steam', title: 'LEGO City Undercover', status: 'beaten', unlocked: 20, total: 48, played: '73h',
+    art: { hero: 'st-hero-578330.jpg', cover: 'st-cover-578330.jpg' },
+    unlock: { name: 'Steel Surfer', pct: 13.9, img: 'st-578330-c1d6c4b44c19159f5c23da52638733b09caf4c95.jpg', label: 'Rarest achievement' }, note: 'Steam · beaten, still playing' },
+  { key: 'd7', platform: 'ra', console: 'PSP', mode: 'hc', title: '7th Dragon 2020', status: 'mastered', unlocked: 80, total: 80, played: '22h 49m', days: '5 days', finish: 'Mastered 8 Apr 2026',
+    art: { icon: 'ra-icon-16452.png', shot: 'ra-shot-16452.png' },
+    unlock: { name: 'The Dragoner', pct: 14.1, img: 'ra-649934.png', px: true, label: 'Rarest achievement' },
+    recent: ['ra-649924.png', 'ra-649925.png', 'ra-649927.png', 'ra-649928.png', 'ra-649929.png', 'ra-649930.png', 'ra-649933.png', 'ra-649934.png'], recentPx: true,
+    note: 'RA · mastered, hardcore' },
+  { key: 'd7sc', platform: 'ra', console: 'PSP', mode: 'sc', title: '7th Dragon 2020', status: 'completed', unlocked: 80, total: 80, played: '22h 49m', days: '5 days', finish: 'Completed 8 Apr 2026',
+    art: { icon: 'ra-icon-16452.png', shot: 'ra-shot-16452.png' },
+    unlock: { name: 'The Dragoner', pct: 14.1, img: 'ra-649934.png', px: true, label: 'Rarest achievement' }, note: 'RA · completed, softcore (example: 7th Dragon as if softcore)' },
+  { key: 'rof', platform: 'ra', console: 'DS', mode: 'hc', title: 'Final Fantasy Crystal Chronicles: Ring of Fates', status: 'progress', unlocked: 1, total: 76, played: '47m',
+    art: { icon: 'ra-icon-16244.png', shot: 'ra-shot-16244.png' },
+    unlock: { name: 'The Monster Next Door', pct: 78.2, img: 'ra-614928.png', px: true, label: 'First achievement' }, note: 'RA · just started: long title, portrait DS screenshot, 1 unlock' },
+  { key: 'poring', platform: 'ra', console: 'Standalone', mode: 'hc', title: 'Poring Clicker', status: 'progress', unlocked: 61, total: 156, played: '41h 33m',
+    art: { icon: 'ra-icon-45053.png', shot: null },
+    unlock: { name: 'Splash of Color', pct: 61, img: 'ra-734622.png', px: true, label: 'Latest unlock' }, note: 'RA · no screenshot: the icon, zoomed and blurred' },
+  { key: 'sh2', platform: 'xbox', title: 'Soul Hackers 2', status: 'progress', unlocked: 40, total: 47, gs: 660, gsTotal: 1000,
+    art: { hero: 'xb-hero-2116209805.jpg', cover: 'xb-poster-2116209805.jpg' },
+    unlock: { name: 'A Mitama Masquerade', pct: 1.3, img: 'xb-ach-39.png', label: 'Latest unlock' }, note: 'Xbox · no playtime, so gamerscore instead' },
+  // Data branch, 2026-11-14
+  { key: 'eiyuden', platform: 'steam', title: 'Eiyuden Chronicle: Rising', status: 'progress', unlocked: 6, total: 50, played: '2h 30m',
+    art: { hero: E + 'library_hero.jpg', cover: E + 'library_600x900_2x.jpg' },
+    unlock: { name: 'Partners?', pct: 60.8, img: E + 'f11f05dd5563baa760d0451753feeb410a70dd9d.jpg', label: 'Latest unlock' },
+    session: { date: '7 Nov', gained: 4, imgs: [E + '9d1799fe36b7ad45fe0fbe04093903db4f8a7bb3.jpg', E + '95601da0358307b95831f856f7a4bf0ffbcbf425.jpg', E + '698113d14201052b0919e671e6e7a7b5f48cb717.jpg', E + 'f11f05dd5563baa760d0451753feeb410a70dd9d.jpg'] },
+    recent: [E + 'e795de25f1ee60903ebcc66b28a3a79bdbb0fc84.jpg', E + '924d1737b63a1f77822da49a85c47189ecb963b5.jpg', E + '9d1799fe36b7ad45fe0fbe04093903db4f8a7bb3.jpg', E + '95601da0358307b95831f856f7a4bf0ffbcbf425.jpg', E + '698113d14201052b0919e671e6e7a7b5f48cb717.jpg', E + 'f11f05dd5563baa760d0451753feeb410a70dd9d.jpg'],
+    note: 'Steam · in progress (download set)' },
+  { key: 'rof9', platform: 'ra', console: 'DS', mode: 'hc', title: 'Final Fantasy Crystal Chronicles: Ring of Fates', status: 'progress', unlocked: 9, total: 76, played: '4h 18m',
+    art: { icon: 'ra-icon-16244.png', shot: 'ra-shot-16244.png' },
+    unlock: { name: 'Corrupted Companion Freed', pct: 35.8, img: 'ra-614934.png', px: true, label: 'Latest unlock' },
+    session: { date: '8 Nov', gained: 5, px: true, imgs: ['ra-614931.png', 'ra-614932.png', 'ra-614933.png', 'ra-614954.png', 'ra-614934.png'] },
+    recent: ['ra-614928.png', 'ra-614929.png', 'ra-614953.png', 'ra-614930.png', 'ra-614931.png', 'ra-614932.png', 'ra-614933.png', 'ra-614954.png', 'ra-614934.png'], recentPx: true,
+    note: 'RA · in progress, hardcore (download set)' },
+];
+
+const STATUS = {
+  progress:  { label: 'In progress' },
+  beaten:    { label: 'Beaten', c: 'silver' },
+  completed: { label: '★ Completed', c: 'silver', fin: true },
+  mastered:  { label: '★ Mastered', c: 'gold', fin: true },
+  perfect:   { label: '★ Perfect', c: 'gold', fin: true },
+};
+const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+const pctOf = g => Math.round(100 * g.unlocked / g.total);
+const pctTxt = g => g.unlocked && pctOf(g) === 0 ? '<1' : pctOf(g);
+const done = g => g.unlocked === g.total;
+const colour = g => RGB[STATUS[g.status].c || g.platform];
+const rarity = u => u.pct < 10 ? `<em>rare, ${u.pct}%</em>` : `${u.pct}% of players`;
+const second = g => g.platform === 'xbox' ? `${g.gs} G` : g.played;          // Xbox has no playtime
+const platName = g => g.platform === 'ra' ? esc(g.console) : PLAT[g.platform].name;
+const modeTag = (g, short) => g.mode ? `<span class="mode ${g.mode}">${short ? g.mode.toUpperCase() : g.mode === 'hc' ? 'Hardcore' : 'Softcore'}</span>` : '';
+const kick = g => `<span class="kick">${PLAT[g.platform].icon}${platName(g)} · <span class="s">${STATUS[g.status].label}</span>${modeTag(g)}</span>`;
+const chips = g => { const st = STATUS[g.status], k = st.fin ? 'fin' : g.status === 'beaten' ? 'beaten' : 'progress';
+  return `<span class="chip plat">${PLAT[g.platform].icon}${platName(g)}</span><span class="chip ${k}">${st.label}</span>${modeTag(g, true)}`; };
+const cls = g => `st ${STATUS[g.status].fin ? 'fin' : ''} ${g.status === 'beaten' ? 'beat' : ''}`;
+const vars = g => `--c:${colour(g)};--p:${pctOf(g)}`;
+const bg = g => g.art.hero ? `<div class="bg" style="background-image:url(${I}${g.art.hero})"></div>`
+  : g.art.shot ? `<div class="bg px" style="background-image:url(${I}${g.art.shot})"></div>`
+  : `<div class="bg icon px" style="background-image:url(${I}${g.art.icon})"></div>`;
+const img = (src, px, c = '') => `<img src="${I}${src}" alt="" class="${px ? 'px' : ''} ${c}">`;
+const ach = (u, c = '') => `<div class="ach ${u.pct < 10 ? 'rare' : ''} ${c}">${img(u.img, u.px)}</div>`;
+const face = g => g.art.icon ? img(g.art.icon, true) : img(g.art.cover);
+const ringVal = g => done(g) ? '<b class="star">★</b>' : `<b>${pctTxt(g)}<small>%</small></b>`;
+
+function stack(g) {
+  const s2 = g.platform === 'xbox' ? `<b>${g.gs}<i>/${g.gsTotal} G</i></b><span>gamerscore</span>`
+    : done(g) && g.days ? `<b>${g.played.split(' ')[0]}</b><span>played · ${g.days} to ${g.status === 'perfect' ? 'perfect' : 'finish'}</span>`
+    : `<b>${g.played}</b><span>played</span>`;
+  return `<div class="${cls(g)} stack" style="${vars(g)}">
+    <div class="band">${bg(g)}
+      <div class="top">${chips(g)}<img class="av" src="${I}avatar.jpg" alt=""></div>
+      <div class="tt">${g.art.icon ? img(g.art.icon, true, 'icon') : img(g.art.cover, false, 'cover')}<div style="min-width:0"><h1 class="clamp" data-fit="20,15">${esc(g.title)}</h1></div></div></div>
+    <div class="row"><div class="ring">${ringVal(g)}</div>
+      <div class="stat"><b>${g.unlocked}<i>/${g.total}</i></b><span>achievements</span></div><div class="stat">${s2}</div></div>
+    <div class="un">${ach(g.unlock)}<div><b>${esc(g.unlock.name)}</b><span class="lab">${g.unlock.label} · ${rarity(g.unlock)}</span></div></div></div>`;
+}
+
+// The art inside the completion ring, the percentage on a tab under it
+function square(g) {
+  return `<div class="${cls(g)} square" style="${vars(g)}">${bg(g)}<div class="shade"></div>
+    <div class="chips">${chips(g)}</div>
+    <div class="trophy"><div class="ring"></div><div class="face">${face(g)}</div><span class="pct">${done(g) ? STATUS[g.status].label : pctTxt(g) + '%'}</span></div>
+    <h1 class="clamp" data-fit="16,12">${esc(g.title)}</h1>
+    <span class="meta">${g.unlocked}<i>/${g.total}</i> · ${second(g)}</span></div>`;
+}
+
+function cover(g) {
+  const left = g.art.icon ? `${bg(g)}${img(g.art.icon, true, 'icon')}` : img(g.art.cover, false, 'c');
+  return `<div class="${cls(g)} cover" style="${vars(g)}"><div class="left">${left}</div>
+    <div class="right"><div class="chips">${chips(g)}</div><h1 class="clamp" data-fit="16,12">${esc(g.title)}</h1>
+      <div class="big"><b>${done(g) ? '★' : `${pctTxt(g)}<small>%</small>`}</b><span>${g.unlocked}<i>/${g.total}</i></span></div>
+      <div class="bar"><i style="width:${Math.max(pctOf(g), 2)}%"></i></div>
+      <span class="sub">${g.platform === 'xbox' ? `${g.gs}/${g.gsTotal} gamerscore` : `${g.played} played`}</span>
+      <div class="last">${ach(g.unlock)}<div><b>${esc(g.unlock.name)}</b><span class="lab">${g.unlock.label.split(' ')[0]} · ${g.unlock.pct < 10 ? `<em>rare, ${g.unlock.pct}%</em>` : g.unlock.pct + '%'}</span></div></div></div></div>`;
+}
+
+function unlock(g) {
+  return `<div class="${cls(g)} unlock" style="${vars(g)}">${bg(g)}<div class="shade"></div>
+    <div class="head"><span class="kick">${PLAT[g.platform].icon}<span class="s">${g.unlock.label === 'Rarest achievement' ? 'Rarest unlock' : 'Achievement unlocked'}</span>${modeTag(g)}</span></div>
+    <div class="mid">${ach(g.unlock)}<div><b class="clamp">${esc(g.unlock.name)}</b><div class="lab">${rarity(g.unlock)}</div></div></div>
+    <div class="foot"><span class="g">${esc(g.title)}</span><span>${g.unlocked}/${g.total}</span><div class="ring">${ringVal(g)}</div></div></div>`;
+}
+
+// Twelve slots, the latest unlocks in order; the rest wait as empty slots
+function shelf(g) {
+  const list = g.recent.slice(-12), slots = list.map(x => `<div class="ach">${img(x, g.recentPx)}</div>`);
+  while (slots.length < 12) slots.push('<div class="empty"></div>');
+  return `<div class="${cls(g)} shelf" style="${vars(g)}">${bg(g)}<div class="shade"></div>
+    <div class="head">${g.art.icon ? img(g.art.icon, true, 'art') : img(g.art.cover, false, 'art')}<div><h1 data-fit="14,11">${esc(g.title)}</h1>${kick(g)}</div></div>
+    <div class="grid6">${slots.join('')}</div>
+    <div class="foot"><div class="bar"><i style="width:${Math.max(pctOf(g), 2)}%"></i></div><span><b>${done(g) ? '★' : pctTxt(g) + '%'}</b> · ${g.unlocked}/${g.total}</span></div></div>`;
+}
+
+// One session: what you gained that day. Finished games show the finish instead.
+function stub(g) {
+  const s = g.session;
+  const big = s ? `+${s.gained}<span>achievements · ${s.date}</span>` : `${STATUS[g.status].label}<span>${esc(g.finish.replace(/^\S+\s/, ''))}</span>`;
+  const row = s ? s.imgs.map(x => img(x, s.px)).join('') : img(g.unlock.img, g.unlock.px);
+  return `<div class="stubw"><div class="${cls(g)} stub" style="${vars(g)}">${bg(g)}<div class="shade"></div>
+    <div class="main">${kick(g)}<h1 class="clamp" data-fit="16,13">${esc(g.title)}</h1><div class="big">${big}</div><div class="row">${row}</div></div>
+    <div class="side"><div class="ring">${ringVal(g)}</div><span>${g.unlocked}<i>/${g.total}</i></span></div></div></div>`;
+}
+
+// Long titles: shrink from the first size to the floor, then let the ellipsis / line clamp take over
+function fit(root) {
+  root.querySelectorAll('[data-fit]').forEach(el => {
+    const [max, min] = el.dataset.fit.split(',').map(Number);
+    for (let s = max; s >= min; s -= .5) { el.style.fontSize = s + 'px'; if (el.scrollWidth <= el.clientWidth + 1 && el.scrollHeight <= el.clientHeight + 1) break; }
+  });
+}
+
+const SHAPES = { stack, square, cover, unlock, shelf, stub };
+const SIZE = { stack: '340 × ~300 (≈ 1.1 : 1)', square: '240 × 240 (1 : 1)', cover: '320 × 240 (4 : 3)', unlock: '300 × 200 (3 : 2)', shelf: '320 × 200 (16 : 10)', stub: '320 × 170 (≈ 1.9 : 1)' };
+const CAN = (shape, g) => shape === 'stub' ? !!(g.session || g.finish) : shape === 'shelf' ? !!(g.recent && g.recent.length >= 3) : true;
+const MORE = ['eiyuden', 'rof9', 'd7', 'so2', 'sh2'];
+window.GAMES = GAMES; window.SHAPES = Object.keys(SHAPES); window.CAN = (s, k) => CAN(s, GAMES.find(g => g.key === k));
+
+const q = new URLSearchParams(location.search);
+const root = document.getElementById('root');
+const by = k => GAMES.find(g => g.key === k);
+if (q.get('shape')) {
+  root.innerHTML = `<div class="wrap" style="display:inline-block;padding:16px 18px 24px">${SHAPES[q.get('shape')](by(q.get('game')))}</div>`;
+} else {
+  document.body.className = 'sheet';
+  const cells = (fn, keys) => keys.map(by).filter(g => CAN(fn.name, g)).map(g => `<div class="cell">${fn(g)}<p><b>${g.key}</b> · ${esc(g.note)}</p></div>`).join('');
+  root.innerHTML = `<h2>Story stickers</h2>
+    <p class="lead">Small cards on a transparent background, put on top of a story, a Reel or a TikTok. Every shape is a square or a horizontal rectangle no wider than 2 : 1, so nothing looks stretched. Gold for mastered and perfect, silver for completed and beaten, the platform's own colour while in progress. Exported at 3×.</p>
+    <section><h3>On a story (1080 × 1920 shown at 25%; the dashed bands are where Instagram's own UI sits)</h3>
+      <div class="stories">
+        <figure class="story" style="background-image:url(${I}${E}library_hero.jpg)"><div class="safe">Instagram UI</div><div class="put" style="left:14px;top:290px;transform:scale(.6)">${cover(by('eiyuden'))}</div><div class="safe b">Instagram UI</div></figure>
+        <figure class="story" style="background-image:url(${I}ra-shot-16244.png);image-rendering:pixelated"><div class="safe">Instagram UI</div><div class="put" style="left:14px;top:76px;transform:scale(.6)">${unlock(by('rof9'))}</div><div class="safe b">Instagram UI</div></figure>
+        <figure class="story" style="background-image:url(${I}ra-shot-16452.png);image-rendering:pixelated"><div class="safe">Instagram UI</div><div class="put" style="left:120px;top:262px;transform:scale(.6)">${square(by('d7'))}</div><div class="safe b">Instagram UI</div></figure>
+      </div></section>
+    ${Object.keys(SHAPES).map(s => `<section><h3>${s === 'stack' ? 'Stacked' : s[0].toUpperCase() + s.slice(1)} · ${SIZE[s]}</h3><div class="flow">${cells(SHAPES[s], s === 'stack' ? GAMES.map(g => g.key) : MORE)}</div></section>`).join('')}`;
+}
+(document.fonts ? document.fonts.ready : Promise.resolve()).then(() => fit(root));
+</script>
+</body>
+</html>

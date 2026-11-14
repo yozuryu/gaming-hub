@@ -161,6 +161,55 @@ Vanilla DOM in the same module (`openShareSheet(data)`), so the React pages and 
 5. **States:** mastered, completed (softcore), perfect, beaten, in progress, 1 unlock ("First achievement"), no screenshot, DS (portrait screenshot), subsets and hacks (tilde tags, `[Subset - …]` titles), long titles, Steam without a tall cover, Xbox, a failed image.
 6. Changelog (Hub / profiles / Completions sections), `CLAUDE.md` (shared module, entry points), delete the `share-gamecard` branch once nothing is left to take from it.
 
+## Idea: overlay stickers for video stories
+
+**Status:** Idea, designed (six shapes, every state) · Added 2026-11-14 · Instagram keeps the PNG's transparency (checked on the phone, 2026-11-14)
+
+A fourth output next to the full cards: a small sticker that goes on top of a video, such as an Instagram story, a Reel, a TikTok or a clip edited in CapCut. A full card takes over the whole story, while a sticker shares the screen with the gameplay. Each one is a single rounded card on a **transparent background** with a soft shadow, exported at 3× so it stays sharp when it's pinched to size in the story editor.
+
+### Shape rule
+
+**Square, or a horizontal rectangle no wider than 2 : 1.** Long thin strips (pills, tickers, toasts), vertical towers and round coins were tried and dropped: on a story they look stretched. Keep it horizontal where there's a choice.
+
+### The six shapes
+
+The design source is [`share-card/overlay/stickers.html`](share-card/overlay/stickers.html): open it for the design sheet, or add `?shape=cover&game=rof9` for one sticker alone on a transparent page. Its `GAMES` array uses the [card data](#card-data) shape (trimmed), with real numbers from the site's data. [`overlay/stickers/`](share-card/overlay/stickers/) has the renders: `sheet.jpg` and a transparent 3× image per shape and game (`cover-rof9.png`, `stack-d7.webp`, …). The renderer writes PNGs; the committed copies are WebP (lossy, alpha kept) except the download set, to keep the repo small. `PUPPETEER=/path/to/node_modules/puppeteer node render-stickers.cjs` rebuilds them.
+
+| Shape | Size (CSS px, exported 3×) | Ratio | What it shows |
+|---|---|---|---|
+| **Cover** | 320 × 240 | 4 : 3 | Tall cover on the left (RA: blurred screenshot + icon at 96), then chips, title (3 lines), big `pct%` (★ when finished) + `x/y`, bar, time played, latest or rarest badge with a short label (`Latest · 35.8%`) |
+| **Stacked** | 340 × ~300 | ≈ 1.1 : 1 | Art band with chips and avatar, cover/icon + title, then ring · `x/y achievements` · played, then the achievement box |
+| **Square** | 240 × 240 | 1 : 1 | A small trophy: chips, the art inside the completion ring with the percentage on a tab under it (★ Mastered / ★ Perfect when finished), title, `x/y · played` |
+| **Unlock** | 300 × 200 | 3 : 2 | The moment itself: `Achievement unlocked` (finished: `Rarest unlock`), the badge big (85, RA at 4×) with a gold glow when rarer than 10%, its name and rarity, then a footer with the game, `x/y` and a small ring |
+| **Shelf** | 320 × 200 | 16 : 10 | The badges so far: title row, then 12 slots holding the latest unlocks in order (empty slots dashed), then the bar and `pct% · x/y`. Only offered with 3 or more unlocks |
+| **Stub** | 320 × 170 | ≈ 1.9 : 1 | One session as a ticket with a perforated side stub: `+5 achievements · 8 Nov` with that day's badges, ring + `x/y` on the stub. Finished games show `★ Mastered 8 Apr 2026` instead. Only offered when there's a session or a finish |
+
+Samples: the stacked card in every state (Steam in progress / perfect / beaten, RA mastered hardcore / completed softcore / just started with a long title and a portrait DS screenshot / no screenshot, Xbox), the other five for Eiyuden Chronicle: Rising, Ring of Fates (9/76), 7th Dragon 2020, STAR OCEAN 2 R and Soul Hackers 2.
+
+**States**, the same in every shape:
+
+| State | Colour | Frame | Chip / kicker |
+|---|---|---|---|
+| In progress | platform: Steam `#66c0f4`, RA `#e5b143`, Xbox `#52b043` | hairline | outlined, platform colour |
+| Beaten | silver `#b8c4ce` | silver hairline | dark with silver border |
+| Completed (RA softcore) | silver | silver 1.5 px + glow | solid silver, **★ Completed** |
+| Mastered (RA hardcore) / Perfect (Steam) | gold `#e5b143` | gold 1.5 px + glow | solid gold, **★ Mastered** / **★ Perfect** |
+
+- RA in progress and mastered share gold, as in the full cards. The frame, glow, solid chip and ★ are what set mastered apart, and they read at story size.
+- Xbox has no playtime, so gamerscore takes the time's place. `<1%` when one unlock rounds to 0.
+- Rarity under 10% is `rare, X%` in gold and rings the badge in gold.
+- RA icons and badges only at whole-number scales with smoothing off (64 → 2×, 3×, 4× at export).
+- **Over video:** everything that floats on footage has its own dark fill.
+- **Safe area:** Instagram's UI covers about the top and bottom 250 px of a 1080 × 1920 story; the sheet shows placements clear of both bands.
+- **Session data** (stub): the unlocks sharing the latest unlock's date (Eiyuden: 4 on 7 Nov; Ring of Fates: 5 on 8 Nov), `session: { date, gained, imgs }`. **Recent** (shelf): the latest 12 unlocked badges in order, `recent: [img]`. Both come from the achievement lists the adapters already read.
+- **Fit with the renderer:** a fourth format in `drawCard` (`format: 'sticker'`, `style: 'cover' | 'stacked' | 'square' | 'unlock' | 'shelf' | 'stub'`) that sizes the canvas to the sticker and draws on a cleared, transparent canvas. Export as PNG; JPEG would flatten the alpha to black. In the share sheet, a **Sticker** format next to Portrait, Story and Landscape, showing only the shapes the game can fill. The stub's notches are two `arc` cut-outs with `destination-out`; everything else is boxes, rings and text already in the plan.
+- **Download set:** `stickers/{shape}-eiyuden.png` and `{shape}-rof9.png` are real, current stickers for posting; `stickers/download-sheet.jpg` shows all twelve.
+- **Still open:** subsets and hacks (`[Subset - …]` and tilde tags in the title), a Steam game without a tall cover (Cover and Square would use the header, cropped).
+
+### First round (history)
+
+[`overlay/compact/`](share-card/overlay/compact/): the six first-round mockups for LEGO 2K Drive (`sheet.jpg`, renders committed as WebP), from before the shape rule. Four of them (original, poster, cover-ring, logo-bar, all about 2.8 : 1) and the pill (6.6 : 1) are wider than the rule allows; the stacked one became **Stacked** above. `python3 genc.py .` and `node renderc.cjs` in `overlay/` rebuild them.
+
 ## Open decisions
 
 - Keep Detailed/Clean as a switch, or ship one type. Recommended: keep the switch, landscape opens on Clean.
