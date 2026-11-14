@@ -1,0 +1,180 @@
+{
+    "appId": 602890,
+    "hasAchievements": true,
+    "total": 10,
+    "unlocked": 0,
+    "gameName": "hack_me 2",
+    "achievements": [
+        {
+            "apiName": "ACH_TUTORIAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "You're an amateur.",
+            "description": "Complete tutorial.",
+            "iconUrl": "f2c9c8c87d6848a43f0794ed730130280597bb82.jpg",
+            "iconGrayUrl": "abee558c1a1e30b9bd3975c04c301890b5f1a8cf.jpg",
+            "hidden": false,
+            "globalPct": 12.4
+        },
+        {
+            "apiName": "ACH_HELLOWORLD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hello, world.",
+            "description": "Create your first app with F33.",
+            "iconUrl": "ee6b33e99b5ea140374e155f8fab14d576254f70.jpg",
+            "iconGrayUrl": "cdf90f41de956daaeb2f3f935300e8b615e86ee1.jpg",
+            "hidden": false,
+            "globalPct": 10
+        },
+        {
+            "apiName": "ACH_ONEHOUR",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "3600000",
+            "description": "Spend one hour in game.",
+            "iconUrl": "3fb30e1e737a686f40e42ebfb06f475991de5859.jpg",
+            "iconGrayUrl": "fa84ae57a4a548b71f53e6d75edf5f01db5c0a32.jpg",
+            "hidden": false,
+            "globalPct": 8.4
+        },
+        {
+            "apiName": "ACH_AGAIN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Again.",
+            "description": "Start story again.",
+            "iconUrl": "f6434d09cf34e7826783d11a09b1b75aec140976.jpg",
+            "iconGrayUrl": "53fb4d451d6767ee4c18db77e39354b2c9220094.jpg",
+            "hidden": false,
+            "globalPct": 5.8
+        },
+        {
+            "apiName": "ACH_IMPOSSIBLE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "This is really impossible.",
+            "description": "Do something impossible...",
+            "iconUrl": "40463164eed058b645876a08533202bb80505f89.jpg",
+            "iconGrayUrl": "9a4b292456a2807be1181dcf3a0fc4f46b2d1bff.jpg",
+            "hidden": false,
+            "globalPct": 6.7
+        },
+        {
+            "apiName": "ACH_MUSIC",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Music lover.",
+            "description": "Upload user tracks.",
+            "iconUrl": "ae8046e3fbdad698feca371d16580c21417045ab.jpg",
+            "iconGrayUrl": "bbe1aa4a15ed75e5360f712b30be9a8260194a94.jpg",
+            "hidden": false,
+            "globalPct": 5.4
+        },
+        {
+            "apiName": "ACH_WALLPAPER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Don't like space?",
+            "description": "Change the backgound.",
+            "iconUrl": "cfe230060cb788e27c7cb34785804fc35c29dd37.jpg",
+            "iconGrayUrl": "79504bc289ce275d9ec630e8ac945ea5a1584a8a.jpg",
+            "hidden": false,
+            "globalPct": 8
+        },
+        {
+            "apiName": "ACH_COMPLETE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "</Story>",
+            "description": "Complete the story.",
+            "iconUrl": "186f1693d131cae5da40f08d4ec4dd72be8d881e.jpg",
+            "iconGrayUrl": "6dc8d663437e47081a8f267a6f40cdb83c85cb58.jpg",
+            "hidden": false,
+            "globalPct": 6.7
+        },
+        {
+            "apiName": "ACH_BIGBRO",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Big Brother is everywhere.",
+            "description": "Get info about MileWireCo",
+            "iconUrl": "b18383984665a5e04a457818391feb5e9ff4962c.jpg",
+            "iconGrayUrl": "06357c6ffc665e360e262b45528186134f86bb46.jpg",
+            "hidden": false,
+            "globalPct": 8.5
+        },
+        {
+            "apiName": "ACH_OUTSIDE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I forgot how the sun looks like",
+            "description": "Go outside.",
+            "iconUrl": "b1b9879003ce05b6e1ccfb6af850d74c5ca4df52.jpg",
+            "iconGrayUrl": "af7b81feee030451919d95b704edbf9260c2970d.jpg",
+            "hidden": false,
+            "globalPct": 10
+        }
+    ],
+    "playtimeForever": 258,
+    "lastPlayedTs": "2024-06-26T04:13:10.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/602890/40259bba6ba1e5e5ef1d6c15d756a9dd894cdac5.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACH_TUTORIAL",
+            "displayName": "You're an amateur.",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f2c9c8c87d6848a43f0794ed730130280597bb82.jpg",
+            "iconGrayUrl": "abee558c1a1e30b9bd3975c04c301890b5f1a8cf.jpg",
+            "globalPct": 12.4
+        },
+        {
+            "apiName": "ACH_HELLOWORLD",
+            "displayName": "Hello, world.",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "ee6b33e99b5ea140374e155f8fab14d576254f70.jpg",
+            "iconGrayUrl": "cdf90f41de956daaeb2f3f935300e8b615e86ee1.jpg",
+            "globalPct": 10
+        },
+        {
+            "apiName": "ACH_ONEHOUR",
+            "displayName": "3600000",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "3fb30e1e737a686f40e42ebfb06f475991de5859.jpg",
+            "iconGrayUrl": "fa84ae57a4a548b71f53e6d75edf5f01db5c0a32.jpg",
+            "globalPct": 8.4
+        },
+        {
+            "apiName": "ACH_AGAIN",
+            "displayName": "Again.",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f6434d09cf34e7826783d11a09b1b75aec140976.jpg",
+            "iconGrayUrl": "53fb4d451d6767ee4c18db77e39354b2c9220094.jpg",
+            "globalPct": 5.8
+        },
+        {
+            "apiName": "ACH_IMPOSSIBLE",
+            "displayName": "This is really impossible.",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "40463164eed058b645876a08533202bb80505f89.jpg",
+            "iconGrayUrl": "9a4b292456a2807be1181dcf3a0fc4f46b2d1bff.jpg",
+            "globalPct": 6.7
+        },
+        {
+            "apiName": "ACH_MUSIC",
+            "displayName": "Music lover.",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "ae8046e3fbdad698feca371d16580c21417045ab.jpg",
+            "iconGrayUrl": "bbe1aa4a15ed75e5360f712b30be9a8260194a94.jpg",
+            "globalPct": 5.4
+        }
+    ]
+}

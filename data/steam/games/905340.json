@@ -1,0 +1,323 @@
+{
+    "appId": 905340,
+    "hasAchievements": true,
+    "total": 23,
+    "unlocked": 0,
+    "gameName": "Heave Ho",
+    "achievements": [
+        {
+            "apiName": "NO_ONE_DIES_LEVEL_COOP",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Teamwork",
+            "description": "Finish a level in Coop mode without anyone dying",
+            "iconUrl": "611c5ce9e2930dd012298f310b9bfad609a3b59c.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 39
+        },
+        {
+            "apiName": "NO_ONE_DIES_LEVEL_SOLO",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "On my own",
+            "description": "Finish a level in Solo mode without dying",
+            "iconUrl": "36435b71241d0ff10df091877e7208dc1b798430.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 34.7
+        },
+        {
+            "apiName": "NO_ONE_DIES_RUN_SOLO",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Elite",
+            "description": "Finish a run in Solo mode without dying",
+            "iconUrl": "9b59fa24bbe4eca3fb758986e0454b07f7bd3a4d.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 11.6
+        },
+        {
+            "apiName": "NO_ONE_DIES_RUN_COOP",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dream team",
+            "description": "Finish a run in Coop mode without anyone dying",
+            "iconUrl": "8c88d8d42f497adabac973295a9d47fe6426f87b.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 2.3
+        },
+        {
+            "apiName": "FIRST_MINIGAME",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "On the road to a minigame!",
+            "description": "Grab the rope before it disappears",
+            "iconUrl": "52501952b1d7bb0c43211e19a75e21489986d8e3.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 38.6
+        },
+        {
+            "apiName": "FIRST_TOKEN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "One token for the machine!",
+            "description": "Collect a token",
+            "iconUrl": "985bc52ac431de4495c80726c24c1b414a112a76.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 43.5
+        },
+        {
+            "apiName": "FINISH_EASY_RUNS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Victory",
+            "description": "Finish all the standard runs",
+            "iconUrl": "c7171b712f5ac26a6e27669f5c762d765548cf13.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 11.5
+        },
+        {
+            "apiName": "FINISH_ALL_RUNS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Globe-trotter",
+            "description": "Finish all the runs",
+            "iconUrl": "36032c09777e781df629ac739fbe2c1c732dcff8.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 1.7
+        },
+        {
+            "apiName": "CLONE_RUN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Among the clones",
+            "description": "Finish a run while all wearing the same outfit",
+            "iconUrl": "3b8e73f41a0d1183314efe7bd4cf786516efea25.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 1.3
+        },
+        {
+            "apiName": "FINISH_ALL_FIT_IN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Snug",
+            "description": "Reach the last wave",
+            "iconUrl": "b898fbdf044376ec75532ac81ea67325df98ae2f.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 1.9
+        },
+        {
+            "apiName": "FINISH_BASKET",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "MVP",
+            "description": "Score all the points in a basketball game",
+            "iconUrl": "4cd41beffa0ea3b876fdc5556e44a40ae9ccbdae.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 3.3
+        },
+        {
+            "apiName": "SLAM_DUNK",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Slam Dunk",
+            "description": "Do a dunk while playing Basketball",
+            "iconUrl": "35326a59210405c06c7431a4b26830c6f35a2bfa.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 7.6
+        },
+        {
+            "apiName": "FINISH_LETS_DANCE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Rock Star",
+            "description": "Finish a dance routine without missing any moves",
+            "iconUrl": "b41d378b2e612e00c23be673d6fc20ee5607dab9.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 1.9
+        },
+        {
+            "apiName": "PASS_OBJECT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Quarterback",
+            "description": "Pass an object to another player",
+            "iconUrl": "f0ee940ca6844b9a781f0b5ba8639b2ab9ecda60.jpg",
+            "iconGrayUrl": "bcc343cb4fde83857ecfae1323914f33d329030f.jpg",
+            "hidden": false,
+            "globalPct": 27.4
+        },
+        {
+            "apiName": "FINISH_RUN_WITHOUT_GLOVES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Emancipated",
+            "description": "Finish a run without the beginners gloves",
+            "iconUrl": "5b54366d55659541b072870645e9ae635929cf79.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 25.2
+        },
+        {
+            "apiName": "JETPACK",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Love is in the air",
+            "description": "Survive an air-balloon trip for 30 seconds",
+            "iconUrl": "7face5cf31c27083bc871df28e2e30f107580c8c.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 20.8
+        },
+        {
+            "apiName": "FINISH_WHITE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Snow-white",
+            "description": "Finish the white run without dying",
+            "iconUrl": "fb96662fdfcb436cffae11026fcca981ce690e01.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 0.8
+        },
+        {
+            "apiName": "HELP_OBJECT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Don’t just stand there!",
+            "description": "Pull the assistance handle",
+            "iconUrl": "797d0d6422fc6b22543687ef38d96a56e0e80d84.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 38.7
+        },
+        {
+            "apiName": "HELP_PLATFORMS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Assistance device",
+            "description": "Discover the assistance device",
+            "iconUrl": "fcb015297b97d020f26ebf05a4feecb01d5ee7fc.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 34.2
+        },
+        {
+            "apiName": "ALL_PLAYERS_EMOTE_HAPPY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ode to joy",
+            "description": "Four players do a happy emote at the same time",
+            "iconUrl": "46ce64bc8adf778fa2297a78491dc0766d098c18.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 0.5
+        },
+        {
+            "apiName": "SPEND_TOKENS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Spendthrift",
+            "description": "Spend 100 tokens in the machine",
+            "iconUrl": "915815e705cf2a18fa3a4ca32e2f84efe0bc74e4.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 1
+        },
+        {
+            "apiName": "ALL_TOKEN_ALL_LEVELS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Collector",
+            "description": "Collect all the tokens from all levels",
+            "iconUrl": "2ac48d2d36ed5c954a4fff9197fe2b3cacf42e0d.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 0.7
+        },
+        {
+            "apiName": "UNLOCK_ALL_COSTUMES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Complete cloakroom",
+            "description": "Unlock all costumes",
+            "iconUrl": "5855131554aba519c0a7d4781a2fd1d474a4ccd0.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "hidden": false,
+            "globalPct": 0.8
+        }
+    ],
+    "playtimeForever": 214,
+    "lastPlayedTs": "2024-06-06T18:34:08.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/905340/40c4305497de0d0ea540632e82dac34987354be8.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "NO_ONE_DIES_LEVEL_COOP",
+            "displayName": "Teamwork",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "611c5ce9e2930dd012298f310b9bfad609a3b59c.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "globalPct": 39
+        },
+        {
+            "apiName": "NO_ONE_DIES_LEVEL_SOLO",
+            "displayName": "On my own",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "36435b71241d0ff10df091877e7208dc1b798430.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "globalPct": 34.7
+        },
+        {
+            "apiName": "NO_ONE_DIES_RUN_SOLO",
+            "displayName": "Elite",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9b59fa24bbe4eca3fb758986e0454b07f7bd3a4d.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "globalPct": 11.6
+        },
+        {
+            "apiName": "NO_ONE_DIES_RUN_COOP",
+            "displayName": "Dream team",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "8c88d8d42f497adabac973295a9d47fe6426f87b.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "globalPct": 2.3
+        },
+        {
+            "apiName": "FIRST_MINIGAME",
+            "displayName": "On the road to a minigame!",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "52501952b1d7bb0c43211e19a75e21489986d8e3.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "globalPct": 38.6
+        },
+        {
+            "apiName": "FIRST_TOKEN",
+            "displayName": "One token for the machine!",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "985bc52ac431de4495c80726c24c1b414a112a76.jpg",
+            "iconGrayUrl": "41c1175c21d7331ccc61cf946cf7a55ca82ab7b9.jpg",
+            "globalPct": 43.5
+        }
+    ]
+}

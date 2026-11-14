@@ -1,0 +1,136 @@
+{
+    "appId": 265890,
+    "hasAchievements": true,
+    "total": 6,
+    "unlocked": 6,
+    "gameName": "Hexcells",
+    "achievements": [
+        {
+            "apiName": "ACH_WORLD2",
+            "unlocked": true,
+            "unlockedAt": "2017-06-23T07:44:09.000Z",
+            "displayName": "World 2",
+            "description": "World 2 unlocked.",
+            "iconUrl": "2d27476221ce364e3f6fc7535c3f8b777ef9b184.jpg",
+            "iconGrayUrl": "31944924cabbcc6650ad7d92368e5a91ca88d590.jpg",
+            "hidden": false,
+            "globalPct": 87.7
+        },
+        {
+            "apiName": "ACH_WORLD3",
+            "unlocked": true,
+            "unlockedAt": "2017-06-23T07:55:57.000Z",
+            "displayName": "World 3",
+            "description": "World 3 unlocked.",
+            "iconUrl": "8aa07c0769e0e90422d5a9cc64c5e5749d69cbf9.jpg",
+            "iconGrayUrl": "c4bf81dc4314e75b66ddf0eb1113fb98200bf028.jpg",
+            "hidden": false,
+            "globalPct": 82.9
+        },
+        {
+            "apiName": "ACH_WORLD4",
+            "unlocked": true,
+            "unlockedAt": "2017-06-23T08:04:54.000Z",
+            "displayName": "World 4",
+            "description": "World 4 unlocked.",
+            "iconUrl": "f7a8f222369944dee03faf7d207b31b388e6caa4.jpg",
+            "iconGrayUrl": "dc4dc4476f8dc1ca004bef25aab2005e8994b2c1.jpg",
+            "hidden": false,
+            "globalPct": 79.3
+        },
+        {
+            "apiName": "ACH_WORLD5",
+            "unlocked": true,
+            "unlockedAt": "2017-06-23T08:26:26.000Z",
+            "displayName": "World 5",
+            "description": "World 5 unlocked.",
+            "iconUrl": "62ffa86974c202e3aa4a91a6c474426bbfb4dc6f.jpg",
+            "iconGrayUrl": "517f91289527ab579ddb41c0291707aa7bdd26a6.jpg",
+            "hidden": false,
+            "globalPct": 76.2
+        },
+        {
+            "apiName": "ACH_WORLD6",
+            "unlocked": true,
+            "unlockedAt": "2017-06-23T09:00:24.000Z",
+            "displayName": "World 6",
+            "description": "World 6 unlocked.",
+            "iconUrl": "4cad5e59e676987e96cc8c3187f440c328171a13.jpg",
+            "iconGrayUrl": "0924116e5856a0dc15caee7643761011273b9d5f.jpg",
+            "hidden": false,
+            "globalPct": 69.8
+        },
+        {
+            "apiName": "ACH_PERFECT",
+            "unlocked": true,
+            "unlockedAt": "2017-06-23T12:07:03.000Z",
+            "displayName": "Perfectionist",
+            "description": "Perfect every campaign level.",
+            "iconUrl": "c52c2679bd6e07ef62a9d2eae33ae052c9f3a216.jpg",
+            "iconGrayUrl": "bc80d2b8f4a800fc4caca23db206a2a368fae9ea.jpg",
+            "hidden": false,
+            "globalPct": 52.8
+        }
+    ],
+    "playtimeForever": 231,
+    "lastPlayedTs": "2017-06-23T12:07:13.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/265890/b10f170738dc96144b7ff59b745cf52f5dcb1ae4.jpg",
+    "lastUnlockedAt": "2017-06-23T12:07:03.000Z",
+    "lastUnlockName": "Perfectionist",
+    "preview": [
+        {
+            "apiName": "ACH_PERFECT",
+            "displayName": "Perfectionist",
+            "unlocked": true,
+            "unlockedAt": "2017-06-23T12:07:03.000Z",
+            "iconUrl": "c52c2679bd6e07ef62a9d2eae33ae052c9f3a216.jpg",
+            "iconGrayUrl": "bc80d2b8f4a800fc4caca23db206a2a368fae9ea.jpg",
+            "globalPct": 52.8
+        },
+        {
+            "apiName": "ACH_WORLD6",
+            "displayName": "World 6",
+            "unlocked": true,
+            "unlockedAt": "2017-06-23T09:00:24.000Z",
+            "iconUrl": "4cad5e59e676987e96cc8c3187f440c328171a13.jpg",
+            "iconGrayUrl": "0924116e5856a0dc15caee7643761011273b9d5f.jpg",
+            "globalPct": 69.8
+        },
+        {
+            "apiName": "ACH_WORLD5",
+            "displayName": "World 5",
+            "unlocked": true,
+            "unlockedAt": "2017-06-23T08:26:26.000Z",
+            "iconUrl": "62ffa86974c202e3aa4a91a6c474426bbfb4dc6f.jpg",
+            "iconGrayUrl": "517f91289527ab579ddb41c0291707aa7bdd26a6.jpg",
+            "globalPct": 76.2
+        },
+        {
+            "apiName": "ACH_WORLD4",
+            "displayName": "World 4",
+            "unlocked": true,
+            "unlockedAt": "2017-06-23T08:04:54.000Z",
+            "iconUrl": "f7a8f222369944dee03faf7d207b31b388e6caa4.jpg",
+            "iconGrayUrl": "dc4dc4476f8dc1ca004bef25aab2005e8994b2c1.jpg",
+            "globalPct": 79.3
+        },
+        {
+            "apiName": "ACH_WORLD3",
+            "displayName": "World 3",
+            "unlocked": true,
+            "unlockedAt": "2017-06-23T07:55:57.000Z",
+            "iconUrl": "8aa07c0769e0e90422d5a9cc64c5e5749d69cbf9.jpg",
+            "iconGrayUrl": "c4bf81dc4314e75b66ddf0eb1113fb98200bf028.jpg",
+            "globalPct": 82.9
+        },
+        {
+            "apiName": "ACH_WORLD2",
+            "displayName": "World 2",
+            "unlocked": true,
+            "unlockedAt": "2017-06-23T07:44:09.000Z",
+            "iconUrl": "2d27476221ce364e3f6fc7535c3f8b777ef9b184.jpg",
+            "iconGrayUrl": "31944924cabbcc6650ad7d92368e5a91ca88d590.jpg",
+            "globalPct": 87.7
+        }
+    ]
+}

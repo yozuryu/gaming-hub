@@ -1,0 +1,290 @@
+{
+    "appId": 403430,
+    "hasAchievements": true,
+    "total": 20,
+    "unlocked": 2,
+    "gameName": "ARCADE GAME SERIES: GALAGA",
+    "achievements": [
+        {
+            "apiName": "Achievement_0",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dragonfly",
+            "description": "Find the Dragonfly that appears in battle!",
+            "iconUrl": "1d3183f19f059335c4466672f9b4bd5c15934eee.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "hidden": false,
+            "globalPct": 15.3
+        },
+        {
+            "apiName": "Achievement_1",
+            "unlocked": true,
+            "unlockedAt": "2017-04-14T22:08:41.000Z",
+            "displayName": "Scorpion",
+            "description": "Find the Scorpion that appears in battle!",
+            "iconUrl": "ecede25f8f182297f84afb193ab5785cad7fd9bd.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "hidden": false,
+            "globalPct": 58.7
+        },
+        {
+            "apiName": "Achievement_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mosquito",
+            "description": "Find the Mosquito that appears in battle!",
+            "iconUrl": "acb79a75b2ea1e84808fc7030ad76cfe526c6ff9.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "hidden": false,
+            "globalPct": 4.2
+        },
+        {
+            "apiName": "Achievement_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stingray",
+            "description": "Find the stingray that appears in battle!",
+            "iconUrl": "19d3ac2c3519ac1707bc6ba8cd30268faab4b77d.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "hidden": false,
+            "globalPct": 32.9
+        },
+        {
+            "apiName": "Achievement_4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Galboss",
+            "description": "Find the Galboss that appears in battle!",
+            "iconUrl": "1587f1e08d9d3c4c7245d5abdf394a28e46a1cbd.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "hidden": false,
+            "globalPct": 14
+        },
+        {
+            "apiName": "Achievement_5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Blue Spaceship",
+            "description": "Find the Blue Spaceship that appears in battle!",
+            "iconUrl": "6f5601fac4e7b05a73e8d50fb219f80b1f72a9aa.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "hidden": false,
+            "globalPct": 2.2
+        },
+        {
+            "apiName": "Achievement_6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dual Fighter",
+            "description": "Form a Dual Fighter!",
+            "iconUrl": "d04980da3d33598c2d89d704e3a7fabb40a5300b.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "hidden": false,
+            "globalPct": 45.1
+        },
+        {
+            "apiName": "Achievement_7",
+            "unlocked": true,
+            "unlockedAt": "2017-04-14T22:07:24.000Z",
+            "displayName": "Enemy Fighter",
+            "description": "Shoot down a red captured Fighter!",
+            "iconUrl": "71c2ae76e6d26060d414501556c2293101c2b2f0.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "hidden": false,
+            "globalPct": 31.9
+        },
+        {
+            "apiName": "Achievement_8",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Escape Artist",
+            "description": "Escape from a Boss Galaga's tractor beam!",
+            "iconUrl": "8e7e29b221b3a1f45042a510f73c3e2706b92bba.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "hidden": false,
+            "globalPct": 11.2
+        },
+        {
+            "apiName": "Achievement_9",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ace Pilot",
+            "description": "Get a 70% or higher hit rate on Stage 10 or above!",
+            "iconUrl": "fcb8cef9290ff2eca8547ca6908799bb405229b2.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "hidden": false,
+            "globalPct": 4
+        },
+        {
+            "apiName": "Achievement_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stage 11 Perfect",
+            "description": "Get a Perfect Bonus on the Stage 11 Challenging Stage!",
+            "iconUrl": "9d9ae07e30734c2dd65605dbdb52712f6193c498.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "hidden": false,
+            "globalPct": 2.1
+        },
+        {
+            "apiName": "Achievement_11",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stage 15 Perfect",
+            "description": "Get a Perfect Bonus on the Stage 15 Challenging Stage!",
+            "iconUrl": "24f131f11d79a4c6205c9f914dd02ba6b568f4e5.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "hidden": false,
+            "globalPct": 3.2
+        },
+        {
+            "apiName": "Achievement_12",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stage 19 Perfect",
+            "description": "Get a Perfect Bonus on the Stage 19 Challenging Stage!",
+            "iconUrl": "b7892344c08f22a39171554a6124e84f5b818768.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "hidden": false,
+            "globalPct": 2.1
+        },
+        {
+            "apiName": "Achievement_13",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stage 23 Perfect",
+            "description": "Get a Perfect Bonus on the Stage 23 Challenging Stage!",
+            "iconUrl": "9fda4f9d0107ef963cb1ce2c96bf631513638c4e.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "hidden": false,
+            "globalPct": 1.5
+        },
+        {
+            "apiName": "Achievement_14",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stage 27 Perfect",
+            "description": "Get a Perfect Bonus on the Stage 27 Challenging Stage!",
+            "iconUrl": "cc8de1c30c8fa3f6ffbff19908ff3bc9f9f663ab.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "hidden": false,
+            "globalPct": 1.5
+        },
+        {
+            "apiName": "Achievement_15",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stage 31 Perfect",
+            "description": "Get a Perfect Bonus on the Stage 31 Challenging Stage!",
+            "iconUrl": "3374570c202dc7a3c82f9c0f3d2abc54e0fff26b.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "hidden": false,
+            "globalPct": 1.4
+        },
+        {
+            "apiName": "Achievement_16",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Single Perfect",
+            "description": "Without forming a Dual Fighter, get a Perfect Bonus on a certain Challenging Stage!",
+            "iconUrl": "44910e6c3e22444fa1339f0293f272c77060be69.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "hidden": false,
+            "globalPct": 1.8
+        },
+        {
+            "apiName": "Achievement_17",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stage 10 Reached",
+            "description": "Reach Stage 10 and view the stage emblem!",
+            "iconUrl": "baa87063cde9040c9504499a2b372b376b6df414.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "hidden": false,
+            "globalPct": 20.1
+        },
+        {
+            "apiName": "Achievement_18",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stage 20 Reached",
+            "description": "Reach Stage 20 and view the stage emblem!",
+            "iconUrl": "ee767724d679d664ae4e9bc22394f4a45bfa9944.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "hidden": false,
+            "globalPct": 4.2
+        },
+        {
+            "apiName": "Achievement_19",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stage 30 Reached",
+            "description": " Reach Stage 30 and view the stage emblem!",
+            "iconUrl": "9121410a76a0f40a8aacd5bcbd4b9d8092bd9343.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "hidden": false,
+            "globalPct": 2.3
+        }
+    ],
+    "playtimeForever": 15,
+    "lastPlayedTs": "2017-04-14T22:09:23.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/403430/850a5f0fa4c1c2fc93acd8dff49b158b672fb020.jpg",
+    "lastUnlockedAt": "2017-04-14T22:08:41.000Z",
+    "lastUnlockName": "Scorpion",
+    "preview": [
+        {
+            "apiName": "Achievement_1",
+            "displayName": "Scorpion",
+            "unlocked": true,
+            "unlockedAt": "2017-04-14T22:08:41.000Z",
+            "iconUrl": "ecede25f8f182297f84afb193ab5785cad7fd9bd.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "globalPct": 58.7
+        },
+        {
+            "apiName": "Achievement_7",
+            "displayName": "Enemy Fighter",
+            "unlocked": true,
+            "unlockedAt": "2017-04-14T22:07:24.000Z",
+            "iconUrl": "71c2ae76e6d26060d414501556c2293101c2b2f0.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "globalPct": 31.9
+        },
+        {
+            "apiName": "Achievement_0",
+            "displayName": "Dragonfly",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1d3183f19f059335c4466672f9b4bd5c15934eee.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "globalPct": 15.3
+        },
+        {
+            "apiName": "Achievement_2",
+            "displayName": "Mosquito",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "acb79a75b2ea1e84808fc7030ad76cfe526c6ff9.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "globalPct": 4.2
+        },
+        {
+            "apiName": "Achievement_3",
+            "displayName": "Stingray",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "19d3ac2c3519ac1707bc6ba8cd30268faab4b77d.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "globalPct": 32.9
+        },
+        {
+            "apiName": "Achievement_4",
+            "displayName": "Galboss",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1587f1e08d9d3c4c7245d5abdf394a28e46a1cbd.jpg",
+            "iconGrayUrl": "d921ddfe69ac04487a439e3e041fe85e1e4cf84f.jpg",
+            "globalPct": 14
+        }
+    ]
+}

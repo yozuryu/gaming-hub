@@ -1,0 +1,246 @@
+{
+    "appId": 556280,
+    "hasAchievements": true,
+    "total": 16,
+    "unlocked": 10,
+    "gameName": "Neon Prism",
+    "achievements": [
+        {
+            "apiName": "COLLECT_50_MEDALS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Collect 50 medals",
+            "description": "Collect 50 medals",
+            "iconUrl": "32ebf1744347467042d20a639812bb0890a51cf4.jpg",
+            "iconGrayUrl": "7a4c7f9d31bdb48ac7770e2bbd9539f770b78ef9.jpg",
+            "hidden": false,
+            "globalPct": 3
+        },
+        {
+            "apiName": "FINISH_LVL_1",
+            "unlocked": true,
+            "unlockedAt": "2017-07-21T11:45:05.000Z",
+            "displayName": "Finish first level",
+            "description": "Finish first level",
+            "iconUrl": "ff190878ad27408a92b0279ac0d23a60ce7311e4.jpg",
+            "iconGrayUrl": "8e8436e388862e9017cf65452fb058eaed8e1431.jpg",
+            "hidden": false,
+            "globalPct": 10.3
+        },
+        {
+            "apiName": "FINISH_THE_GAME",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Finish last level",
+            "description": "Finish last level",
+            "iconUrl": "267a11c84b4950c04438112a0c5ff8a2cb2dc473.jpg",
+            "iconGrayUrl": "4b4cffc7d15a8bc635586747d5e857781f83eb2a.jpg",
+            "hidden": false,
+            "globalPct": 3
+        },
+        {
+            "apiName": "GET_10_BRONZE_MEDALS",
+            "unlocked": true,
+            "unlockedAt": "2017-07-21T17:42:35.000Z",
+            "displayName": "Get 10 brozne medals",
+            "description": "Collect 10 medals, bronze or better.",
+            "iconUrl": "7aed3468b706d38db6dd0b9a96fa0f05e4954576.jpg",
+            "iconGrayUrl": "59ae408acb6b0d993cc9ea5307e9161bf090e801.jpg",
+            "hidden": false,
+            "globalPct": 4.5
+        },
+        {
+            "apiName": "GET_10_SILVER_MEDALS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Collect 10 silver medals",
+            "description": "Collect 10 silver and gold medals.",
+            "iconUrl": "a5fbdb9801e02d9b822c1230fc6aaebbafc07eaf.jpg",
+            "iconGrayUrl": "1d7743a3aa52b88c692ea1055c85cca8f24a081a.jpg",
+            "hidden": false,
+            "globalPct": 3.7
+        },
+        {
+            "apiName": "GET_10_GOLD_MEDALS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Collect 10 gold medals.",
+            "description": "Collect 10 gold medals.",
+            "iconUrl": "a8cbc22a9d78d8b61b7ffe7a6710a5d83b19daeb.jpg",
+            "iconGrayUrl": "59e5dd6313d677d86c41e017e498f79fd796945e.jpg",
+            "hidden": false,
+            "globalPct": 3.5
+        },
+        {
+            "apiName": "GET_ALL_GOLD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pure gold",
+            "description": "Get gold medal on every level.",
+            "iconUrl": "28e89b1d856f766dda8907653fc5f80aad4c5fe0.jpg",
+            "iconGrayUrl": "7fdf22597798410f1a9c058f571a3cf57526adf0.jpg",
+            "hidden": false,
+            "globalPct": 2.9
+        },
+        {
+            "apiName": "USE_BLINK",
+            "unlocked": true,
+            "unlockedAt": "2017-07-21T11:45:02.000Z",
+            "displayName": "Use blink",
+            "description": "Use blink for the first time.",
+            "iconUrl": "9fa7184f4d6cfbacb370de781edff7b02359242c.jpg",
+            "iconGrayUrl": "f50ea73857ca72cf546c6bb7f619112f7dced49c.jpg",
+            "hidden": false,
+            "globalPct": 9
+        },
+        {
+            "apiName": "USE_BLINK_X5",
+            "unlocked": true,
+            "unlockedAt": "2017-07-21T11:46:04.000Z",
+            "displayName": "Use blink 5 times",
+            "description": "Use blink 5 times.",
+            "iconUrl": "2db5e382d432326e6499e614c56bce5998f297d9.jpg",
+            "iconGrayUrl": "b45ab14970f171c54ee0883155002f11e6ef7945.jpg",
+            "hidden": false,
+            "globalPct": 7.5
+        },
+        {
+            "apiName": "USE_BLINK_X15",
+            "unlocked": true,
+            "unlockedAt": "2017-07-21T11:47:12.000Z",
+            "displayName": "Use blink 15 times",
+            "description": "Use blink 15 times.",
+            "iconUrl": "089a7f382c3704cdff972685dc6446e0a9e54bc2.jpg",
+            "iconGrayUrl": "d31f3405ed3e7124e4e83c13f00b4d49cc95982e.jpg",
+            "hidden": false,
+            "globalPct": 5.6
+        },
+        {
+            "apiName": "USE_BLINK_X50",
+            "unlocked": true,
+            "unlockedAt": "2017-07-21T17:38:55.000Z",
+            "displayName": "Use blink 50 times",
+            "description": "Use blink 50 times.",
+            "iconUrl": "7198a2741782471ba8ae00a49705c6132f4182d6.jpg",
+            "iconGrayUrl": "3dc5b50862f454a99825336f53b3ba08e4b4eea9.jpg",
+            "hidden": false,
+            "globalPct": 3.9
+        },
+        {
+            "apiName": "USE_SLOW",
+            "unlocked": true,
+            "unlockedAt": "2017-07-21T11:49:18.000Z",
+            "displayName": "Use slow",
+            "description": "Use slow.",
+            "iconUrl": "a5005130c9f4dbebb3ed39efc194e5ff5700b4a1.jpg",
+            "iconGrayUrl": "f064dd2d5365bc8add1032f981a3dcd9dfc61cef.jpg",
+            "hidden": false,
+            "globalPct": 7.9
+        },
+        {
+            "apiName": "USE_SLOW_X5",
+            "unlocked": true,
+            "unlockedAt": "2017-07-21T11:50:12.000Z",
+            "displayName": "Use slow 5 times",
+            "description": "Use slow 5 times.",
+            "iconUrl": "a439262ed8cf73718a46929bfe975d8010f01be6.jpg",
+            "iconGrayUrl": "12a982bb807aab9607136f17c7475526fb211dd8.jpg",
+            "hidden": false,
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "USE_SLOW_X15",
+            "unlocked": true,
+            "unlockedAt": "2017-07-21T17:39:28.000Z",
+            "displayName": "Use slow 15 times.",
+            "description": "Use slow 15 times.",
+            "iconUrl": "089a7f382c3704cdff972685dc6446e0a9e54bc2.jpg",
+            "iconGrayUrl": "4a0e07f27479949b451b6bf4e285f75614cd32d3.jpg",
+            "hidden": false,
+            "globalPct": 4
+        },
+        {
+            "apiName": "USE_SLOW_X50",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Use slow 50 times",
+            "description": "Use slow 50 times.",
+            "iconUrl": "68ec0c31ee2bdaa6ae95cd6ed20e1c750b405f66.jpg",
+            "iconGrayUrl": "3f50d2afa6097aa6166380962b05031011709888.jpg",
+            "hidden": false,
+            "globalPct": 3.3
+        },
+        {
+            "apiName": "FINISH_TUTORIAL",
+            "unlocked": true,
+            "unlockedAt": "2017-07-21T11:44:01.000Z",
+            "displayName": "Finish tutorial level",
+            "description": "Finish tutorial level",
+            "iconUrl": "1c910b4c45adbe15b2c4b9979b41f848e8c58007.jpg",
+            "iconGrayUrl": "35bc794d868a51f009d3951b4376bce42057bea7.jpg",
+            "hidden": false,
+            "globalPct": 9.7
+        }
+    ],
+    "playtimeForever": 240,
+    "lastPlayedTs": "2024-05-17T21:12:57.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/556280/79c06f6fd2a097beb041cb7103aa8500fc62ac55.jpg",
+    "lastUnlockedAt": "2017-07-21T17:42:35.000Z",
+    "lastUnlockName": "Get 10 brozne medals",
+    "preview": [
+        {
+            "apiName": "GET_10_BRONZE_MEDALS",
+            "displayName": "Get 10 brozne medals",
+            "unlocked": true,
+            "unlockedAt": "2017-07-21T17:42:35.000Z",
+            "iconUrl": "7aed3468b706d38db6dd0b9a96fa0f05e4954576.jpg",
+            "iconGrayUrl": "59ae408acb6b0d993cc9ea5307e9161bf090e801.jpg",
+            "globalPct": 4.5
+        },
+        {
+            "apiName": "USE_SLOW_X15",
+            "displayName": "Use slow 15 times.",
+            "unlocked": true,
+            "unlockedAt": "2017-07-21T17:39:28.000Z",
+            "iconUrl": "089a7f382c3704cdff972685dc6446e0a9e54bc2.jpg",
+            "iconGrayUrl": "4a0e07f27479949b451b6bf4e285f75614cd32d3.jpg",
+            "globalPct": 4
+        },
+        {
+            "apiName": "USE_BLINK_X50",
+            "displayName": "Use blink 50 times",
+            "unlocked": true,
+            "unlockedAt": "2017-07-21T17:38:55.000Z",
+            "iconUrl": "7198a2741782471ba8ae00a49705c6132f4182d6.jpg",
+            "iconGrayUrl": "3dc5b50862f454a99825336f53b3ba08e4b4eea9.jpg",
+            "globalPct": 3.9
+        },
+        {
+            "apiName": "USE_SLOW_X5",
+            "displayName": "Use slow 5 times",
+            "unlocked": true,
+            "unlockedAt": "2017-07-21T11:50:12.000Z",
+            "iconUrl": "a439262ed8cf73718a46929bfe975d8010f01be6.jpg",
+            "iconGrayUrl": "12a982bb807aab9607136f17c7475526fb211dd8.jpg",
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "USE_SLOW",
+            "displayName": "Use slow",
+            "unlocked": true,
+            "unlockedAt": "2017-07-21T11:49:18.000Z",
+            "iconUrl": "a5005130c9f4dbebb3ed39efc194e5ff5700b4a1.jpg",
+            "iconGrayUrl": "f064dd2d5365bc8add1032f981a3dcd9dfc61cef.jpg",
+            "globalPct": 7.9
+        },
+        {
+            "apiName": "USE_BLINK_X15",
+            "displayName": "Use blink 15 times",
+            "unlocked": true,
+            "unlockedAt": "2017-07-21T11:47:12.000Z",
+            "iconUrl": "089a7f382c3704cdff972685dc6446e0a9e54bc2.jpg",
+            "iconGrayUrl": "d31f3405ed3e7124e4e83c13f00b4d49cc95982e.jpg",
+            "globalPct": 5.6
+        }
+    ]
+}

@@ -1,0 +1,202 @@
+{
+    "appId": 225080,
+    "hasAchievements": true,
+    "total": 12,
+    "unlocked": 0,
+    "gameName": "Brothers - A Tale of Two Sons",
+    "achievements": [
+        {
+            "apiName": "Achievement_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Take a Break",
+            "description": "You took a break from adventuring.",
+            "iconUrl": "c8d0360a0f35d50d3f009d7bb55d83340c86d688.jpg",
+            "iconGrayUrl": "c4ea98166fc3e041eaf713b5a48e3abd236edd54.jpg",
+            "hidden": false,
+            "globalPct": 9.8
+        },
+        {
+            "apiName": "Achievement_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Wishing Well",
+            "description": "You threw someone's ball down a well… Shame on you.",
+            "iconUrl": "540b66f8a7d28763083a95031309f5373b6ba191.jpg",
+            "iconGrayUrl": "8e40b39755949d9165bed54852ed5d151d873b21.jpg",
+            "hidden": false,
+            "globalPct": 14.2
+        },
+        {
+            "apiName": "Achievement_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Black Sheep",
+            "description": "Every family's got one.",
+            "iconUrl": "e265b336f0edd80fd7f19f1e4cd2c5705721a8ea.jpg",
+            "iconGrayUrl": "4b4909e592d5739be75ae44bfa8944e1d387226d.jpg",
+            "hidden": false,
+            "globalPct": 10.7
+        },
+        {
+            "apiName": "Achievement_4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bunny Buddies",
+            "description": "You made the bunnies play nice.",
+            "iconUrl": "b5ecd5822c09c1c913c98060875a8bf4803b12ab.jpg",
+            "iconGrayUrl": "bf7aa5f7441a0f210ab4333065f325b44f6ee51f.jpg",
+            "hidden": false,
+            "globalPct": 24.6
+        },
+        {
+            "apiName": "Achievement_5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A sad tune",
+            "description": "You made someone feel better.",
+            "iconUrl": "18f572f2e9d6492517585ebefc3ff9d87938739d.jpg",
+            "iconGrayUrl": "eb7ec5dddc22e0e848ace129687e386f2927a77d.jpg",
+            "hidden": false,
+            "globalPct": 20.4
+        },
+        {
+            "apiName": "Achievement_6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Love Birds",
+            "description": "You re-united the two love birds.",
+            "iconUrl": "fcd376682b7fcef405c50f5d96ad78b30ba0af2a.jpg",
+            "iconGrayUrl": "34650053b354371a4bb24cff1b6d890f0eebf474.jpg",
+            "hidden": false,
+            "globalPct": 8.8
+        },
+        {
+            "apiName": "Achievement_7",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Windpipe",
+            "description": "You made the inventor dance.",
+            "iconUrl": "5a8477dd32a1a1742d9f062e5ef4b136011a0525.jpg",
+            "iconGrayUrl": "ec031e77fbb26fd45847f9737402c99d6985653d.jpg",
+            "hidden": false,
+            "globalPct": 20
+        },
+        {
+            "apiName": "Achievement_8",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Call of the giants",
+            "description": "You sounded a giant horn.",
+            "iconUrl": "3acb4a1a647d7400bf945ceab12ca5f4b2443420.jpg",
+            "iconGrayUrl": "09b3653f732af9a5522890b2478abb2f3ae5120c.jpg",
+            "hidden": false,
+            "globalPct": 33.7
+        },
+        {
+            "apiName": "Achievement_9",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Behind the Curtain",
+            "description": "You found a secret.",
+            "iconUrl": "39542bdc086dc27b8310f7719a0bff0eed746ab0.jpg",
+            "iconGrayUrl": "b67766ccf5ab2ba443af939aba0ca83b03f06c22.jpg",
+            "hidden": false,
+            "globalPct": 13
+        },
+        {
+            "apiName": "Achievement_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Turtle Soup",
+            "description": "You helped the turtles to the sea.",
+            "iconUrl": "4d61cf665a6988a1fa50258af258e6259f713d5a.jpg",
+            "iconGrayUrl": "c99271d367032998a7bb92a82895a15591c0e098.jpg",
+            "hidden": false,
+            "globalPct": 22.5
+        },
+        {
+            "apiName": "Achievement_11",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Whale Song",
+            "description": "You practised singing.",
+            "iconUrl": "d12efabec6d39328f0c480574565c4f6e0985d5e.jpg",
+            "iconGrayUrl": "5601a062a49f4bcbcf29bcf365c1bb3646210fae.jpg",
+            "hidden": false,
+            "globalPct": 14.3
+        },
+        {
+            "apiName": "Achievement_12",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Falling star",
+            "description": "Make a wish.",
+            "iconUrl": "98c6eb53de134ee7eb5fa2d1748d162f0a11a9f5.jpg",
+            "iconGrayUrl": "f8b64b2b8e0d9516e1cc92c142a77ffaf18e814d.jpg",
+            "hidden": false,
+            "globalPct": 12.2
+        }
+    ],
+    "playtimeForever": 249,
+    "lastPlayedTs": "2024-05-23T03:10:10.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/225080/9d6e8bcae597582734b382d8da93e5fa7b1c640b.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "Achievement_1",
+            "displayName": "Take a Break",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c8d0360a0f35d50d3f009d7bb55d83340c86d688.jpg",
+            "iconGrayUrl": "c4ea98166fc3e041eaf713b5a48e3abd236edd54.jpg",
+            "globalPct": 9.8
+        },
+        {
+            "apiName": "Achievement_2",
+            "displayName": "Wishing Well",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "540b66f8a7d28763083a95031309f5373b6ba191.jpg",
+            "iconGrayUrl": "8e40b39755949d9165bed54852ed5d151d873b21.jpg",
+            "globalPct": 14.2
+        },
+        {
+            "apiName": "Achievement_3",
+            "displayName": "Black Sheep",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "e265b336f0edd80fd7f19f1e4cd2c5705721a8ea.jpg",
+            "iconGrayUrl": "4b4909e592d5739be75ae44bfa8944e1d387226d.jpg",
+            "globalPct": 10.7
+        },
+        {
+            "apiName": "Achievement_4",
+            "displayName": "Bunny Buddies",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "b5ecd5822c09c1c913c98060875a8bf4803b12ab.jpg",
+            "iconGrayUrl": "bf7aa5f7441a0f210ab4333065f325b44f6ee51f.jpg",
+            "globalPct": 24.6
+        },
+        {
+            "apiName": "Achievement_5",
+            "displayName": "A sad tune",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "18f572f2e9d6492517585ebefc3ff9d87938739d.jpg",
+            "iconGrayUrl": "eb7ec5dddc22e0e848ace129687e386f2927a77d.jpg",
+            "globalPct": 20.4
+        },
+        {
+            "apiName": "Achievement_6",
+            "displayName": "Love Birds",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "fcd376682b7fcef405c50f5d96ad78b30ba0af2a.jpg",
+            "iconGrayUrl": "34650053b354371a4bb24cff1b6d890f0eebf474.jpg",
+            "globalPct": 8.8
+        }
+    ]
+}

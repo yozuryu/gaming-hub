@@ -1,0 +1,235 @@
+{
+    "appId": 278360,
+    "hasAchievements": true,
+    "total": 15,
+    "unlocked": 0,
+    "gameName": "A Story About My Uncle",
+    "achievements": [
+        {
+            "apiName": "MADDIE_CHALLENGE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Maddie's Challenge",
+            "description": "Complete Maddie's little game",
+            "iconUrl": "a6fa754f6e9b64e578b6be3040a66779206de607.jpg",
+            "iconGrayUrl": "d3407149f11f42ebbb37b6b037b6d4652a46b94d.jpg",
+            "hidden": false,
+            "globalPct": 14.7
+        },
+        {
+            "apiName": "SANCTUARY_GRAPPLE_CHALLENGE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sanctuary Grapple Challenge",
+            "description": "Complete Sanctuary using less than 23 Grapples",
+            "iconUrl": "d8a3f329bff09d6ad1dec5af4784139465b2e566.jpg",
+            "iconGrayUrl": "24c8c6e168ceaf9118940567928372627bbcb474.jpg",
+            "hidden": false,
+            "globalPct": 7.7
+        },
+        {
+            "apiName": "VILLAGE_GRAPPLE_CHALLENGE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Village Grapple Challenge",
+            "description": "Complete Village using less than 20 Grapples",
+            "iconUrl": "421748f016849a01f3dca4d6c6386ef22c0373cb.jpg",
+            "iconGrayUrl": "872ea3ba7c45ed5f3590a4ed1bd6a6a9356995fe.jpg",
+            "hidden": false,
+            "globalPct": 7.2
+        },
+        {
+            "apiName": "CHASMS_GRAPPLE_CHALLENGE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Chasms Grapple Challenge",
+            "description": "Complete Chasms using less than 34 Grapples",
+            "iconUrl": "66d7b85014dd743b54e052f03c31318e769c5569.jpg",
+            "iconGrayUrl": "2f3329318983e089deeb0bbba7c2b9e7c8323f90.jpg",
+            "hidden": false,
+            "globalPct": 7.2
+        },
+        {
+            "apiName": "STARHAVEN_GRAPPLE_CHALLENGE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Star Haven Grapple Challenge",
+            "description": "Complete Star Haven using less than 55 Grapples",
+            "iconUrl": "8fcf30f6f858b145c730d0050c83eea2101de2e6.jpg",
+            "iconGrayUrl": "a2a564d80d7a8be8eda2077c1081983578e0a8d5.jpg",
+            "hidden": false,
+            "globalPct": 7.1
+        },
+        {
+            "apiName": "ICECAVE_GRAPPLE_CHALLENGE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ice Cave Grapple Challenge",
+            "description": "Complete Ice Cave using less than 115 Grapples",
+            "iconUrl": "6c3db3ea736294daeaff9b3dc3e1f0a1d86d4405.jpg",
+            "iconGrayUrl": "3815c97aceec7dcf900ca039f605640908fadf5a.jpg",
+            "hidden": false,
+            "globalPct": 7.2
+        },
+        {
+            "apiName": "FLOOR_IS_LAVA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "\"If he could do it, I could do it too\"",
+            "description": "The floor is lava.. or well, ice.",
+            "iconUrl": "8908a1692f0e517d50695d120e555fccddd029e5.jpg",
+            "iconGrayUrl": "962b4b2f68f519c9f1070a6daf550dcfe22e573b.jpg",
+            "hidden": false,
+            "globalPct": 7.3
+        },
+        {
+            "apiName": "ALL_GOLD_MEDALS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "\"That's gold, Maddie! Gold!\"",
+            "description": "Earn Gold medals on all Time Trial levels",
+            "iconUrl": "b65370e53df13b068e7b7098b25cece3c61ac544.jpg",
+            "iconGrayUrl": "440ef6ed6b652b0f957718ab1a1d1fa344463c3f.jpg",
+            "hidden": false,
+            "globalPct": 7.1
+        },
+        {
+            "apiName": "ALL_COLLECTIBLES_FOUND",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "All Collectibles Found",
+            "description": "Find all 25 Collectables in the game",
+            "iconUrl": "35729dea4df66b94ab77b72b7985ace1a8e05e7f.jpg",
+            "iconGrayUrl": "95fee3b991164cba5d66d97e3c50e34a3ac242b4.jpg",
+            "hidden": false,
+            "globalPct": 7.4
+        },
+        {
+            "apiName": "SANCTUARY_NO_FAIL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sanctuary Perfect Run",
+            "description": "Complete Sanctuary without failing",
+            "iconUrl": "1e6f5a8419a914b170a83d44835fb15da42016d9.jpg",
+            "iconGrayUrl": "58d0a3a31859f4bc2b59c0d1dbff55bd907e5c4a.jpg",
+            "hidden": false,
+            "globalPct": 7.6
+        },
+        {
+            "apiName": "VILLAGE_NO_FAIL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Village Perfect Run",
+            "description": "Complete Village without failing",
+            "iconUrl": "23ddc66705f695f1cba25de9df52689f8c2218c2.jpg",
+            "iconGrayUrl": "610dcd74cbae00f787261d8c4028b42004e1a67c.jpg",
+            "hidden": false,
+            "globalPct": 7.6
+        },
+        {
+            "apiName": "CHASMS_NO_FAIL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Chasms Perfect Run",
+            "description": "Complete Chasms without failing",
+            "iconUrl": "f88536d09c00199f9fce280aa0fe77320e356f9f.jpg",
+            "iconGrayUrl": "5bb74daf9ee6a4ac02e3bf5f86dbe0d46187f5a2.jpg",
+            "hidden": false,
+            "globalPct": 7.3
+        },
+        {
+            "apiName": "STARHAVEN_NO_FAIL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Star Haven Perfect Run",
+            "description": "Complete Star Haven without failing",
+            "iconUrl": "f6137411b932613990aaf0ffd9c3888916feea0b.jpg",
+            "iconGrayUrl": "fee6a814300c0aa6f4132af3d938dbf1c0d947b0.jpg",
+            "hidden": false,
+            "globalPct": 7.1
+        },
+        {
+            "apiName": "ICECAVE_NO_FAIL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ice Cave Perfect Run",
+            "description": "Complete Ice Cave without failing",
+            "iconUrl": "b95e84f7e911301fc15773f62b9e11dc5a7ec6ad.jpg",
+            "iconGrayUrl": "1442070a5d79a27b82b0326da08f3a49fb907c26.jpg",
+            "hidden": false,
+            "globalPct": 7.1
+        },
+        {
+            "apiName": "INTERACT_ALL_STORY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Filled with Wanderlust",
+            "description": "Interact with all the optional story objects",
+            "iconUrl": "f6183d4e22589ea095e2c0e401d52bd9c10548dc.jpg",
+            "iconGrayUrl": "45009699c2a2e86c383e2fb044f7caf7438b6346.jpg",
+            "hidden": false,
+            "globalPct": 7.5
+        }
+    ],
+    "playtimeForever": 258,
+    "lastPlayedTs": "2024-05-18T05:30:40.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/278360/feb33a53334222c82aaf0545e00913bd92bcd3d9.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "MADDIE_CHALLENGE",
+            "displayName": "Maddie's Challenge",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a6fa754f6e9b64e578b6be3040a66779206de607.jpg",
+            "iconGrayUrl": "d3407149f11f42ebbb37b6b037b6d4652a46b94d.jpg",
+            "globalPct": 14.7
+        },
+        {
+            "apiName": "SANCTUARY_GRAPPLE_CHALLENGE",
+            "displayName": "Sanctuary Grapple Challenge",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d8a3f329bff09d6ad1dec5af4784139465b2e566.jpg",
+            "iconGrayUrl": "24c8c6e168ceaf9118940567928372627bbcb474.jpg",
+            "globalPct": 7.7
+        },
+        {
+            "apiName": "VILLAGE_GRAPPLE_CHALLENGE",
+            "displayName": "Village Grapple Challenge",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "421748f016849a01f3dca4d6c6386ef22c0373cb.jpg",
+            "iconGrayUrl": "872ea3ba7c45ed5f3590a4ed1bd6a6a9356995fe.jpg",
+            "globalPct": 7.2
+        },
+        {
+            "apiName": "CHASMS_GRAPPLE_CHALLENGE",
+            "displayName": "Chasms Grapple Challenge",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "66d7b85014dd743b54e052f03c31318e769c5569.jpg",
+            "iconGrayUrl": "2f3329318983e089deeb0bbba7c2b9e7c8323f90.jpg",
+            "globalPct": 7.2
+        },
+        {
+            "apiName": "STARHAVEN_GRAPPLE_CHALLENGE",
+            "displayName": "Star Haven Grapple Challenge",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "8fcf30f6f858b145c730d0050c83eea2101de2e6.jpg",
+            "iconGrayUrl": "a2a564d80d7a8be8eda2077c1081983578e0a8d5.jpg",
+            "globalPct": 7.1
+        },
+        {
+            "apiName": "ICECAVE_GRAPPLE_CHALLENGE",
+            "displayName": "Ice Cave Grapple Challenge",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "6c3db3ea736294daeaff9b3dc3e1f0a1d86d4405.jpg",
+            "iconGrayUrl": "3815c97aceec7dcf900ca039f605640908fadf5a.jpg",
+            "globalPct": 7.2
+        }
+    ]
+}

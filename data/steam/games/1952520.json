@@ -1,0 +1,301 @@
+{
+    "appId": 1952520,
+    "hasAchievements": true,
+    "total": 21,
+    "unlocked": 18,
+    "gameName": "PAW Patrol World",
+    "achievements": [
+        {
+            "apiName": "ACHIEVEMENT_00",
+            "unlocked": true,
+            "unlockedAt": "2024-07-09T12:54:58.000Z",
+            "displayName": "Smile!",
+            "description": "Use a pup Emote",
+            "iconUrl": "0a8a21d735125c21ef376c6ed0985af031f6d10e.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 80.7
+        },
+        {
+            "apiName": "ACHIEVEMENT_01",
+            "unlocked": true,
+            "unlockedAt": "2024-07-09T13:12:17.000Z",
+            "displayName": "Stick it",
+            "description": "Customise one of your postcards",
+            "iconUrl": "70766685bd85049415e12316b573a2702ed7e52f.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 37.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_02",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mail time",
+            "description": "Collect all postcards",
+            "iconUrl": "821be49a8999a6a84fa6142abe9b48ced5dd3ada.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 5.3
+        },
+        {
+            "apiName": "ACHIEVEMENT_03",
+            "unlocked": true,
+            "unlockedAt": "2024-07-09T11:55:15.000Z",
+            "displayName": "Express yourself",
+            "description": "Customise your pup",
+            "iconUrl": "e7ad3d1839727bfd1115770841439336f5d996fe.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 76.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_04",
+            "unlocked": true,
+            "unlockedAt": "2025-01-18T08:07:30.000Z",
+            "displayName": "Always a different suit",
+            "description": "Collect all Pup Treat unlocks",
+            "iconUrl": "4869afa5aa34321b76ff44d518a3d65b31cecad0.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 13.4
+        },
+        {
+            "apiName": "ACHIEVEMENT_05",
+            "unlocked": true,
+            "unlockedAt": "2024-07-18T13:36:53.000Z",
+            "displayName": "King of Seas",
+            "description": "Y'argh, wear the Pirate Costume",
+            "iconUrl": "05f4b002daa28eb0adeac8ff953380dcd2f9517b.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 16.7
+        },
+        {
+            "apiName": "ACHIEVEMENT_06",
+            "unlocked": true,
+            "unlockedAt": "2024-07-09T12:04:12.000Z",
+            "displayName": "That's how it works",
+            "description": "Play with an object",
+            "iconUrl": "83411cffb3b1efffdb75c3e1765d4f1ccc37032f.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 84.9
+        },
+        {
+            "apiName": "ACHIEVEMENT_07",
+            "unlocked": true,
+            "unlockedAt": "2024-07-10T13:40:50.000Z",
+            "displayName": "Have fun",
+            "description": "Play with 15 objects",
+            "iconUrl": "59c70b43423a9caa5e2b67b886cc8fe1f6737a0b.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 53.5
+        },
+        {
+            "apiName": "ACHIEVEMENT_08",
+            "unlocked": true,
+            "unlockedAt": "2024-07-13T10:58:29.000Z",
+            "displayName": "Playground",
+            "description": "Play with 40 objects",
+            "iconUrl": "ee4c515d4f3df8de1cf630ea726777a0671880a9.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 30.7
+        },
+        {
+            "apiName": "ACHIEVEMENT_09",
+            "unlocked": true,
+            "unlockedAt": "2024-07-19T13:27:22.000Z",
+            "displayName": "Flashback",
+            "description": "Jump into the past and complete a flashback mission",
+            "iconUrl": "a5a3baf474824440ab5ab60327c21849a2187dd8.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 18.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_10",
+            "unlocked": true,
+            "unlockedAt": "2024-07-21T06:06:01.000Z",
+            "displayName": "Time flies",
+            "description": "Jump into the past and complete all flashback missions",
+            "iconUrl": "403a0bc70f1fba0f747e124230be19cc855f3f91.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 12.3
+        },
+        {
+            "apiName": "ACHIEVEMENT_11",
+            "unlocked": true,
+            "unlockedAt": "2024-07-09T12:09:15.000Z",
+            "displayName": "On a roll!",
+            "description": "Complete a help request",
+            "iconUrl": "851a5d9a727308ffc2bea996f5fd38225c7d795f.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 73.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_12",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "No job is too big",
+            "description": "Complete all help requests",
+            "iconUrl": "2522bfff058f60876cc3f5de9ad41e5e10518e66.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 2
+        },
+        {
+            "apiName": "ACHIEVEMENT_13",
+            "unlocked": true,
+            "unlockedAt": "2024-07-09T12:05:51.000Z",
+            "displayName": "Snack time",
+            "description": "Collect 100 pup treats",
+            "iconUrl": "090c3ab1a1d852b49a6261160ca78fbc9a273ba6.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 84
+        },
+        {
+            "apiName": "ACHIEVEMENT_14",
+            "unlocked": true,
+            "unlockedAt": "2024-07-13T09:47:41.000Z",
+            "displayName": "Hungry pup",
+            "description": "Collect 1000 pup treats",
+            "iconUrl": "1588ed5a2f4a104c382f111e4d796e8a1b06e2d7.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 39.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_15",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ready for action",
+            "description": "Collect all Pup Tags",
+            "iconUrl": "98785e5c555e2da40541ebc2988cbd4d338779da.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 4.4
+        },
+        {
+            "apiName": "ACHIEVEMENT_16",
+            "unlocked": true,
+            "unlockedAt": "2024-07-09T11:44:04.000Z",
+            "displayName": "Adventure Bay calls",
+            "description": "Complete the Tutorial",
+            "iconUrl": "e1114aa1798561135c5fba8d8a592afb2be95026.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 94.9
+        },
+        {
+            "apiName": "ACHIEVEMENT_17",
+            "unlocked": true,
+            "unlockedAt": "2024-07-12T14:00:32.000Z",
+            "displayName": "Adventure Bay Showdown",
+            "description": "Face Mayor Humdinger's blimp in Adventure Bay",
+            "iconUrl": "faefcbd5fdfa5fe27580fac9b2b6b6e1c5c9bc54.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 44.2
+        },
+        {
+            "apiName": "ACHIEVEMENT_18",
+            "unlocked": true,
+            "unlockedAt": "2024-07-15T12:11:44.000Z",
+            "displayName": "Rumble in the Jungle",
+            "description": "Face Mayor Humdinger's blimp in the Jungle",
+            "iconUrl": "c79d0251fe460a46cff58bfec8b0b1dcec37e115.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 31.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_19",
+            "unlocked": true,
+            "unlockedAt": "2024-07-16T13:30:33.000Z",
+            "displayName": "Mountain Madness",
+            "description": "Face Mayor Humdinger's blimp in the Mountain",
+            "iconUrl": "69f33288ad6982fb474747eee8c2846c07b57cc3.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 24.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_20",
+            "unlocked": true,
+            "unlockedAt": "2024-07-19T13:06:24.000Z",
+            "displayName": "Happy PAW Patrol Day!",
+            "description": "Face Mayor Humdinger's blimp for the last time",
+            "iconUrl": "2cc9afa561c8e707f626c22c72f209cc660a5994.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "hidden": false,
+            "globalPct": 19.9
+        }
+    ],
+    "playtimeForever": 2090,
+    "lastPlayedTs": "2026-05-30T13:06:55.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1952520/142c61fb8b234665494cd459d72000fd3642dc12.jpg",
+    "lastUnlockedAt": "2025-01-18T08:07:30.000Z",
+    "lastUnlockName": "Always a different suit",
+    "preview": [
+        {
+            "apiName": "ACHIEVEMENT_04",
+            "displayName": "Always a different suit",
+            "unlocked": true,
+            "unlockedAt": "2025-01-18T08:07:30.000Z",
+            "iconUrl": "4869afa5aa34321b76ff44d518a3d65b31cecad0.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "globalPct": 13.4
+        },
+        {
+            "apiName": "ACHIEVEMENT_10",
+            "displayName": "Time flies",
+            "unlocked": true,
+            "unlockedAt": "2024-07-21T06:06:01.000Z",
+            "iconUrl": "403a0bc70f1fba0f747e124230be19cc855f3f91.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "globalPct": 12.3
+        },
+        {
+            "apiName": "ACHIEVEMENT_09",
+            "displayName": "Flashback",
+            "unlocked": true,
+            "unlockedAt": "2024-07-19T13:27:22.000Z",
+            "iconUrl": "a5a3baf474824440ab5ab60327c21849a2187dd8.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "globalPct": 18.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_20",
+            "displayName": "Happy PAW Patrol Day!",
+            "unlocked": true,
+            "unlockedAt": "2024-07-19T13:06:24.000Z",
+            "iconUrl": "2cc9afa561c8e707f626c22c72f209cc660a5994.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "globalPct": 19.9
+        },
+        {
+            "apiName": "ACHIEVEMENT_05",
+            "displayName": "King of Seas",
+            "unlocked": true,
+            "unlockedAt": "2024-07-18T13:36:53.000Z",
+            "iconUrl": "05f4b002daa28eb0adeac8ff953380dcd2f9517b.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "globalPct": 16.7
+        },
+        {
+            "apiName": "ACHIEVEMENT_19",
+            "displayName": "Mountain Madness",
+            "unlocked": true,
+            "unlockedAt": "2024-07-16T13:30:33.000Z",
+            "iconUrl": "69f33288ad6982fb474747eee8c2846c07b57cc3.jpg",
+            "iconGrayUrl": "55bd07c139101b15a18e7f014f630f1cbaac1f63.jpg",
+            "globalPct": 24.6
+        }
+    ]
+}

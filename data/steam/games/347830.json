@@ -1,0 +1,389 @@
+{
+    "appId": 347830,
+    "hasAchievements": true,
+    "total": 29,
+    "unlocked": 14,
+    "gameName": "Fairy Fencer F",
+    "achievements": [
+        {
+            "apiName": "ACHIEVEMENT_00",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ultimate Fencer",
+            "description": "Obtained every trophy. \"Thank you... I love you.\"",
+            "iconUrl": "0e122303076651d6c3a9d96b3bf57168ce365e46.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 2.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_01",
+            "unlocked": true,
+            "unlockedAt": "2015-08-07T14:22:07.000Z",
+            "displayName": "The Journey Begins",
+            "description": "You became Eryn's Fencer. \"Nice to meet you, Fang.\"",
+            "iconUrl": "932d48f71c9517c32981a9834eb9eb3c183500d7.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 79.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_02",
+            "unlocked": true,
+            "unlockedAt": "2015-08-09T09:21:49.000Z",
+            "displayName": "Where...Are We?",
+            "description": "You got sent to an unknown place. \"Eryn, wake up! Where are we!?\"",
+            "iconUrl": "b4f1da856e2eac93d00497c644c2db8d9f6d7a55.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 29.4
+        },
+        {
+            "apiName": "ACHIEVEMENT_03",
+            "unlocked": true,
+            "unlockedAt": "2015-08-09T14:46:50.000Z",
+            "displayName": "Evolving Power",
+            "description": "Eryn powered up. \"If I decide to get serious, I'm capable of all kinds of things.\"",
+            "iconUrl": "cbc5f27e4d8f532444b09f9d6793f804ca624e27.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 28.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_04",
+            "unlocked": true,
+            "unlockedAt": "2015-08-11T19:28:33.000Z",
+            "displayName": "Ending: Tiara",
+            "description": "You saw Tiara's ending. \"You have changed everything for me.\"",
+            "iconUrl": "330e6154afcffeef5bb4dd931e64ed429e2489e1.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 16.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_05",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ending: Eryn",
+            "description": "You saw Eryn's ending. \"I'm hungry, too!\"",
+            "iconUrl": "6dcab55b4c97a0171fe527558e6580947af87dbd.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 6.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_06",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ending: Normal",
+            "description": "You saw the normal ending. \"Yeah... Take care.\"",
+            "iconUrl": "2687ece6fe7edbe47358bbcbfc0382708b655545.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 8.3
+        },
+        {
+            "apiName": "ACHIEVEMENT_07",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Unsealed Deities",
+            "description": "Pulled every sword from the Vile God and Goddess. \"It took a long time but we're finally finished!\"",
+            "iconUrl": "fe736085e23ccd6da3e71c1322cd40320f780b2c.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 4.9
+        },
+        {
+            "apiName": "ACHIEVEMENT_08",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Berserker",
+            "description": "Defeated 10,000 enemies. \"There's no way I can stop!\"",
+            "iconUrl": "7b3f2aa457ca5fddcb198a69e99d1e82661b2aa6.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 2.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_09",
+            "unlocked": true,
+            "unlockedAt": "2015-08-11T15:25:40.000Z",
+            "displayName": "Tenser Fencer",
+            "description": "Maxed your tension 300 times. \"I'm fired up!\"",
+            "iconUrl": "e1f1297470bb11311d1b3a7f20445d6472d12dbb.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 16
+        },
+        {
+            "apiName": "ACHIEVEMENT_10",
+            "unlocked": true,
+            "unlockedAt": "2015-08-10T18:26:16.000Z",
+            "displayName": "Surging Waves of Fury",
+            "description": "Performed 250 Hits. \"I'll...cut you...to shreds!\"",
+            "iconUrl": "6bfb09a898924f33b97ffe60bcb71d592826b532.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 9.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_11",
+            "unlocked": true,
+            "unlockedAt": "2015-08-10T15:15:29.000Z",
+            "displayName": "A Lengthy Relationship",
+            "description": "Accumulated 20 hours of playtime. \"That sounds like it'll take forever.\"",
+            "iconUrl": "253083df24690619895f0cb378a490c06fe9499a.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 22.5
+        },
+        {
+            "apiName": "ACHIEVEMENT_12",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Wherever My Sword Takes Me",
+            "description": "Apollonius joined the party. \"I'll become your overseer.\"",
+            "iconUrl": "e6f9009a214a03efa2612e0655f1c618e95bcf71.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 13.4
+        },
+        {
+            "apiName": "ACHIEVEMENT_13",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The World's Money is Not Enough",
+            "description": "Lola joined the party. \"Despite my appearance, I'm actually a fairy.\"",
+            "iconUrl": "671c5b3ececc84608b8ba1a7d8e1010ccb38f3b2.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 7.4
+        },
+        {
+            "apiName": "ACHIEVEMENT_14",
+            "unlocked": true,
+            "unlockedAt": "2015-08-09T17:41:30.000Z",
+            "displayName": "Avalanche Master",
+            "description": "Performed 100 Avalanche Attacks. \"We're invincible!\"",
+            "iconUrl": "d3ac28f4dbfbd452dbf7c6334d0479ce054b5bfa.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 20.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_15",
+            "unlocked": true,
+            "unlockedAt": "2015-08-08T16:38:54.000Z",
+            "displayName": "Air Master",
+            "description": "Performed 100 Air Combos. \"There!\"",
+            "iconUrl": "f13e4d5168acf8ffafba70aed34faf1dea9aad77.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 15.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_16",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Maximum Firepower",
+            "description": "Dealt 100,000 damage. \"With this one blow!\"",
+            "iconUrl": "d3188246b696e8af09a5f8d084be5315adabebd6.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 7.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_17",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The World's Strongest",
+            "description": "Reached level 99 with a character. \"My coolness is about to reach godly levels.\"",
+            "iconUrl": "9f8a55a08de1110f74329d73c0be8302efd27754.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 6.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_18",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fencer Elites",
+            "description": "Reached level 99 with every character. \"They're calling themselves a hero's adventuring party...\"",
+            "iconUrl": "89c59844c43a254e6f4c7d3e27f0d7c106e2bb3b.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 4.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_19",
+            "unlocked": true,
+            "unlockedAt": "2015-08-07T17:38:56.000Z",
+            "displayName": "Gimme a Boost",
+            "description": "Boosted your weapon for the first time. \"This is simply the first step.\"",
+            "iconUrl": "e82805b39e73f6ea14b293feebcf9fa89055ba2c.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 58.2
+        },
+        {
+            "apiName": "ACHIEVEMENT_20",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fury Meister",
+            "description": "Boosted one of your weapons to its max. \"With this, your combat strength has increased drastically!\"",
+            "iconUrl": "5150be9c8257eff53441adf9ee38d76c73cbcc1f.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 4.5
+        },
+        {
+            "apiName": "ACHIEVEMENT_21",
+            "unlocked": true,
+            "unlockedAt": "2015-08-09T09:50:38.000Z",
+            "displayName": "Bond with Fairy",
+            "description": "Reached level 10 with one of your fairies. \"There's still much we don't know about fairies.\"",
+            "iconUrl": "34934ade4a5aef171f3be5e3094adf9c47c7652f.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 28.2
+        },
+        {
+            "apiName": "ACHIEVEMENT_22",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Shukesoo's Eviction",
+            "description": "Cleared all 40 floors of Shukesoo's Tower. \"Mwahahahaha!!\"",
+            "iconUrl": "5489cfe901b9432c02c3bc486fdbab495acf26ce.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 4.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_23",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Diligent Worker",
+            "description": "Achieved a Quest Rank of S. \"...I shall continue counting on you.\"",
+            "iconUrl": "05352de15763ba9c2c7a55f6dd8ba9c806249048.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 5.5
+        },
+        {
+            "apiName": "ACHIEVEMENT_24",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "We're In The Money!",
+            "description": "Accumulated 100 million G. \"As usual, I smell the fragrant aroma of money coming from you today!\"",
+            "iconUrl": "03780f982bdc5d6ec42410203996920498d18456.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 4.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_25",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Vile God Resealed",
+            "description": "Sealed the Vile God using Godly Revival. \"Time to seal you away for good!\"",
+            "iconUrl": "d966ff3a741f85810a421e2c73eff6656a86bfe0.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 5.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_26",
+            "unlocked": true,
+            "unlockedAt": "2015-08-07T19:05:33.000Z",
+            "displayName": "Amateur",
+            "description": "Fought 50 battles. \"This is nothing!\"",
+            "iconUrl": "b11ca3ec67cc57d1a355812fc763356fc0303242.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 49.3
+        },
+        {
+            "apiName": "ACHIEVEMENT_27",
+            "unlocked": true,
+            "unlockedAt": "2015-08-08T12:20:19.000Z",
+            "displayName": "Veteran",
+            "description": "Fought 200 battles. \"I didn't realize I was so strong.\"",
+            "iconUrl": "40785405a19df9c30c654ef15f72c8f50482d1fd.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 33.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_28",
+            "unlocked": true,
+            "unlockedAt": "2015-08-10T16:01:10.000Z",
+            "displayName": "Professional",
+            "description": "Fought 500 battles. \"Fwoooooosh!\"",
+            "iconUrl": "fcc28811435c27bd10565e2c02d136d3ab8f2f83.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "hidden": false,
+            "globalPct": 20.7
+        }
+    ],
+    "playtimeForever": 1959,
+    "lastPlayedTs": "2017-04-30T14:48:59.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/347830/1da23c4abde426dcf9e0eeef4aebd46fd494c8c5.jpg",
+    "lastUnlockedAt": "2015-08-11T19:28:33.000Z",
+    "lastUnlockName": "Ending: Tiara",
+    "preview": [
+        {
+            "apiName": "ACHIEVEMENT_04",
+            "displayName": "Ending: Tiara",
+            "unlocked": true,
+            "unlockedAt": "2015-08-11T19:28:33.000Z",
+            "iconUrl": "330e6154afcffeef5bb4dd931e64ed429e2489e1.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "globalPct": 16.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_09",
+            "displayName": "Tenser Fencer",
+            "unlocked": true,
+            "unlockedAt": "2015-08-11T15:25:40.000Z",
+            "iconUrl": "e1f1297470bb11311d1b3a7f20445d6472d12dbb.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "globalPct": 16
+        },
+        {
+            "apiName": "ACHIEVEMENT_10",
+            "displayName": "Surging Waves of Fury",
+            "unlocked": true,
+            "unlockedAt": "2015-08-10T18:26:16.000Z",
+            "iconUrl": "6bfb09a898924f33b97ffe60bcb71d592826b532.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "globalPct": 9.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_28",
+            "displayName": "Professional",
+            "unlocked": true,
+            "unlockedAt": "2015-08-10T16:01:10.000Z",
+            "iconUrl": "fcc28811435c27bd10565e2c02d136d3ab8f2f83.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "globalPct": 20.7
+        },
+        {
+            "apiName": "ACHIEVEMENT_11",
+            "displayName": "A Lengthy Relationship",
+            "unlocked": true,
+            "unlockedAt": "2015-08-10T15:15:29.000Z",
+            "iconUrl": "253083df24690619895f0cb378a490c06fe9499a.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "globalPct": 22.5
+        },
+        {
+            "apiName": "ACHIEVEMENT_14",
+            "displayName": "Avalanche Master",
+            "unlocked": true,
+            "unlockedAt": "2015-08-09T17:41:30.000Z",
+            "iconUrl": "d3ac28f4dbfbd452dbf7c6334d0479ce054b5bfa.jpg",
+            "iconGrayUrl": "a09b410adda9cff90bedf233762fafef5b55f1b9.jpg",
+            "globalPct": 20.8
+        }
+    ]
+}

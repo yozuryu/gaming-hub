@@ -1,0 +1,422 @@
+{
+    "appId": 358830,
+    "hasAchievements": true,
+    "total": 32,
+    "unlocked": 0,
+    "gameName": "Good Robot",
+    "achievements": [
+        {
+            "apiName": "ach_kill_500",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Initializing",
+            "description": "Kill 500 robots in a single game",
+            "iconUrl": "15dd32349ca8c6387ad45ea280a779c5b8bf8ee8.jpg",
+            "iconGrayUrl": "c10e88f90ca1a7cd819138314a93ad7c4f90b3fd.jpg",
+            "hidden": false,
+            "globalPct": 13.2
+        },
+        {
+            "apiName": "ach_kill_1000",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Kill Module",
+            "description": "Kill 1000 robots in a single game",
+            "iconUrl": "9287305df11c30cd43d1f8a68fc8dd3dd34387dc.jpg",
+            "iconGrayUrl": "2382804c6592f8f8823eeb58beeb241e90241f1d.jpg",
+            "hidden": false,
+            "globalPct": 8.8
+        },
+        {
+            "apiName": "ach_kill_2000",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ethically Sound",
+            "description": "Kill 2000 robots in a single game",
+            "iconUrl": "91b22789302256007c9df300119ba08fa29ad3bd.jpg",
+            "iconGrayUrl": "94a795f1767e96f802eb56ef565ebfbf537fbb3a.jpg",
+            "hidden": false,
+            "globalPct": 4.4
+        },
+        {
+            "apiName": "ach_score_10k",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Scoring",
+            "description": "Get a score of 10,000 or more in a single game",
+            "iconUrl": "0e2bd45498bb5e47fc763b8c5e93788239d5b3e3.jpg",
+            "iconGrayUrl": "1688ced1bbfbefe064de4d40b07fd1af0a7d7a5f.jpg",
+            "hidden": false,
+            "globalPct": 27.1
+        },
+        {
+            "apiName": "ach_score_100k",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Very Large Number",
+            "description": "Get a score of 100,000 or more in a single game",
+            "iconUrl": "44b01685e300626a5f4c2b0c4a67d67d17b3db17.jpg",
+            "iconGrayUrl": "dbfe2b5159daae66a2a68b1c8c711924ada77cb3.jpg",
+            "hidden": false,
+            "globalPct": 8
+        },
+        {
+            "apiName": "ach_lv_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fresh off the assembly line",
+            "description": "Clear level 1",
+            "iconUrl": "ddfe328e088d04b9001cc8fa347e596517b6d388.jpg",
+            "iconGrayUrl": "c65105cc5ecb4e5fdcfc5118b0cf8fa96b70c832.jpg",
+            "hidden": false,
+            "globalPct": 26.4
+        },
+        {
+            "apiName": "ach_lv_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Spiders everywhere",
+            "description": "Clear level 2",
+            "iconUrl": "afe7b7ad3ca961a83669f9cf6a3ab5d4828de8c9.jpg",
+            "iconGrayUrl": "b0abd00a2af55a92201245294a67c41de7da24b6.jpg",
+            "hidden": false,
+            "globalPct": 15.9
+        },
+        {
+            "apiName": "ach_lv_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Straight outta Jaipur",
+            "description": "Clear level 3",
+            "iconUrl": "45161aad22fbc1373fe8e613c3957551206ae07e.jpg",
+            "iconGrayUrl": "c19fc63641ecfba734e283c94ae21a6fe62fd168.jpg",
+            "hidden": false,
+            "globalPct": 10.7
+        },
+        {
+            "apiName": "ach_lv_4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fire Fire Fire",
+            "description": "Clear level 4",
+            "iconUrl": "0ec3d7c15ca967382fcc51d19b6f98a19f53cd24.jpg",
+            "iconGrayUrl": "41a942d55236d8c54ea51da42bc8ea90489d7bc6.jpg",
+            "hidden": false,
+            "globalPct": 8.3
+        },
+        {
+            "apiName": "ach_lv_5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fishing Time",
+            "description": "Clear level 5",
+            "iconUrl": "159ad82c0dfa00186a98eb3ef9ebe241db9c8add.jpg",
+            "iconGrayUrl": "0956e7bd87df1efa040880f7f693db7fe6c9099c.jpg",
+            "hidden": false,
+            "globalPct": 6.7
+        },
+        {
+            "apiName": "ach_lv_6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Botany Degree Unlocked",
+            "description": "Clear level 6",
+            "iconUrl": "1e73bbcf71202b45bad31a853ea094525cbe9835.jpg",
+            "iconGrayUrl": "9dd0b845a8c7ea786d5c628d486ecef31dc01dde.jpg",
+            "hidden": false,
+            "globalPct": 5.1
+        },
+        {
+            "apiName": "ach_lv_7",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Legal Immunity",
+            "description": "Complete the game",
+            "iconUrl": "11276469a9a0c21e3b4b99051e926b6b722a1d90.jpg",
+            "iconGrayUrl": "b2b61fc6cb43a657695162389392f0269fb1f3a0.jpg",
+            "hidden": false,
+            "globalPct": 4.3
+        },
+        {
+            "apiName": "ach_weapon_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Capitalism",
+            "description": "Buy a weapon",
+            "iconUrl": "c747d7ce76c42238d44c55337b3fa0684a471c0f.jpg",
+            "iconGrayUrl": "3a0001e0a19267b13ef12ad7a8c375daeea6bea7.jpg",
+            "hidden": false,
+            "globalPct": 25.3
+        },
+        {
+            "apiName": "ach_weapon_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "XTREME Capitalizm",
+            "description": "Buy 10 weapons in a single game",
+            "iconUrl": "e254a2171296ae09474fe722727efe81b45b4c25.jpg",
+            "iconGrayUrl": "47febfe92f70ab05f434b73949cf3f05e02447f7.jpg",
+            "hidden": false,
+            "globalPct": 2.9
+        },
+        {
+            "apiName": "ach_upgrade_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Self improvement",
+            "description": "Buy an upgrade",
+            "iconUrl": "76feda72e4190f32d8f3f30ae634ae0fb36f388b.jpg",
+            "iconGrayUrl": "a8357333da6957cf857e3de219eee5eb030d59aa.jpg",
+            "hidden": false,
+            "globalPct": 39
+        },
+        {
+            "apiName": "ach_upgrade_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fitness Regime",
+            "description": "Buy 10 upgrades in a single game",
+            "iconUrl": "5185d81a90669d2f7b83234f4dc72a04bb1b216a.jpg",
+            "iconGrayUrl": "c42910323ec9ee3e4b77ce0d0fbf21039e01e56a.jpg",
+            "hidden": false,
+            "globalPct": 8
+        },
+        {
+            "apiName": "ach_upgrade_all",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Specialist",
+            "description": "Buy all upgrades in a single category",
+            "iconUrl": "1214ef783e8bc798f4995a06cfc69a94d1963a1f.jpg",
+            "iconGrayUrl": "9abcaefc4bd3426d180ba5227e6218a4456bfe0e.jpg",
+            "hidden": false,
+            "globalPct": 7.4
+        },
+        {
+            "apiName": "ach_warranty_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fully Insured",
+            "description": "Buy a warranty",
+            "iconUrl": "068a584fe4057f364cfa2a2f4f344f58ca6de322.jpg",
+            "iconGrayUrl": "6e7f286d19544ae8927203a4a8b8fcdd9d193865.jpg",
+            "hidden": false,
+            "globalPct": 23
+        },
+        {
+            "apiName": "ach_warranty_5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Consider Another Line of Work",
+            "description": "Buy a warranty 5 times in a single game",
+            "iconUrl": "e5bc81c9ea4d2c074695d85c7abbfad8e604bdfb.jpg",
+            "iconGrayUrl": "210ff7df6a7df19f139a21780a5aed49b466bb6f.jpg",
+            "hidden": false,
+            "globalPct": 4
+        },
+        {
+            "apiName": "ach_repair_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Like New",
+            "description": "Repair yourself",
+            "iconUrl": "fc8a124ce8cab0b38b322ba442536e0702119860.jpg",
+            "iconGrayUrl": "22c0dcbc1707e316527a58e02437b730ca8e54de.jpg",
+            "hidden": false,
+            "globalPct": 27.4
+        },
+        {
+            "apiName": "ach_repair_5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Always 100%",
+            "description": "Repair yourself 5 times in a single game",
+            "iconUrl": "db2f5fe9ee17adeebe1df2127665027482807062.jpg",
+            "iconGrayUrl": "d9738a16ceccfa0af89c6d795311fee60ea483a8.jpg",
+            "hidden": false,
+            "globalPct": 12.5
+        },
+        {
+            "apiName": "ach_news_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "We're Checking if Anyone Looks At The Story",
+            "description": "Read the news",
+            "iconUrl": "14b726ad74aa957928992e7d1a292a1861b176f0.jpg",
+            "iconGrayUrl": "76ac9a8c4e3cb07a3fffd70079d7b61c07f47d93.jpg",
+            "hidden": false,
+            "globalPct": 21.6
+        },
+        {
+            "apiName": "ach_opt_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Adjustments Necessary",
+            "description": "Open the options menu",
+            "iconUrl": "40bdccd5d6b95f22566372b7baed261e1f120003.jpg",
+            "iconGrayUrl": "13061e47d05a3e731ddf9c1495cc5f6a66c296be.jpg",
+            "hidden": false,
+            "globalPct": 42.8
+        },
+        {
+            "apiName": "ach_money_10k",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Minimum Wage",
+            "description": "Earn $10,000 in a single game",
+            "iconUrl": "fab328e6bb3bee005745323eef26837cc7ff39a1.jpg",
+            "iconGrayUrl": "c967eed178fb15d48199ce696299a0139c49eca0.jpg",
+            "hidden": false,
+            "globalPct": 28.2
+        },
+        {
+            "apiName": "ach_money_100k",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Going Places",
+            "description": "Earn $100,000 in a single game",
+            "iconUrl": "fc93654a52930e281ea049e25cd3d44f2f2915d4.jpg",
+            "iconGrayUrl": "b4541c5be0b77a03516b66bd81d4a37af0eba793.jpg",
+            "hidden": false,
+            "globalPct": 8
+        },
+        {
+            "apiName": "ach_hardest_hat",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hardest Hat",
+            "description": "Buy a hat at the start of the game, then complete the entire game without losing the hat.",
+            "iconUrl": "494b8efdb6025905801f43fdb37dacd8acc3141b.jpg",
+            "iconGrayUrl": "3d11f89989c2c096c5db149af3f420c10de1235a.jpg",
+            "hidden": false,
+            "globalPct": 2
+        },
+        {
+            "apiName": "ach_hattiquette",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hattiquette",
+            "description": "Buy a hat at the start of any level, then complete the entire level without losing the hat.",
+            "iconUrl": "cd0df349393c45ee36f4ab7633420ef665e6cf01.jpg",
+            "iconGrayUrl": "e04afa9bf63e2efe740d2cac5d79a739cb6c677e.jpg",
+            "hidden": false,
+            "globalPct": 2.9
+        },
+        {
+            "apiName": "ach_watch_the_hat",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Watch The Hat!",
+            "description": "Complete a zone without losing your hat.",
+            "iconUrl": "d8892bd72ebd020666567ba2d3dc93d96710be03.jpg",
+            "iconGrayUrl": "364bafd6544be1f107ee91ef1c3cf5b7bb305615.jpg",
+            "hidden": false,
+            "globalPct": 27.7
+        },
+        {
+            "apiName": "ach_hat_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Intro to Hats",
+            "description": "Buy a hat",
+            "iconUrl": "43632f78f5c9fb8ec59dfc8f3ba9714c968fdbe2.jpg",
+            "iconGrayUrl": "16abfe0db792299b1da371d3c5cf0a371c4e18e1.jpg",
+            "hidden": false,
+            "globalPct": 41.6
+        },
+        {
+            "apiName": "ach_hat_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hat Aficionado",
+            "description": "Buy 10 hats in a single game",
+            "iconUrl": "dfbd22aef42548872534f1bca35244640ae41b11.jpg",
+            "iconGrayUrl": "d4572033e8a21029ae4e78e0eca0b07d631a8a2f.jpg",
+            "hidden": false,
+            "globalPct": 24.5
+        },
+        {
+            "apiName": "ach_tutorial_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Eager to Learn",
+            "description": "View tutorial messages",
+            "iconUrl": "4a1180cb5d58f53fe1b67b23aab83fad29ab3c67.jpg",
+            "iconGrayUrl": "e23347d17c466f5eeb43866f16712a4346e60691.jpg",
+            "hidden": false,
+            "globalPct": 20.9
+        },
+        {
+            "apiName": "ach_elite_hat",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Elite Hat",
+            "description": "Buy a hat at the start of any level, then complete three levels without losing the hat.",
+            "iconUrl": "22639b2bdf54ee9fc120e7d48be71295b50fa781.jpg",
+            "iconGrayUrl": "d98428057945abca5ef96226f37b72730ae25ae1.jpg",
+            "hidden": false,
+            "globalPct": 2.2
+        }
+    ],
+    "playtimeForever": 246,
+    "lastPlayedTs": "2024-06-04T08:16:03.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/358830/687d70aa92d294cb70322ca305aa1846eb92879b.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ach_kill_500",
+            "displayName": "Initializing",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "15dd32349ca8c6387ad45ea280a779c5b8bf8ee8.jpg",
+            "iconGrayUrl": "c10e88f90ca1a7cd819138314a93ad7c4f90b3fd.jpg",
+            "globalPct": 13.2
+        },
+        {
+            "apiName": "ach_kill_1000",
+            "displayName": "Kill Module",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9287305df11c30cd43d1f8a68fc8dd3dd34387dc.jpg",
+            "iconGrayUrl": "2382804c6592f8f8823eeb58beeb241e90241f1d.jpg",
+            "globalPct": 8.8
+        },
+        {
+            "apiName": "ach_kill_2000",
+            "displayName": "Ethically Sound",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "91b22789302256007c9df300119ba08fa29ad3bd.jpg",
+            "iconGrayUrl": "94a795f1767e96f802eb56ef565ebfbf537fbb3a.jpg",
+            "globalPct": 4.4
+        },
+        {
+            "apiName": "ach_score_10k",
+            "displayName": "Scoring",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "0e2bd45498bb5e47fc763b8c5e93788239d5b3e3.jpg",
+            "iconGrayUrl": "1688ced1bbfbefe064de4d40b07fd1af0a7d7a5f.jpg",
+            "globalPct": 27.1
+        },
+        {
+            "apiName": "ach_score_100k",
+            "displayName": "A Very Large Number",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "44b01685e300626a5f4c2b0c4a67d67d17b3db17.jpg",
+            "iconGrayUrl": "dbfe2b5159daae66a2a68b1c8c711924ada77cb3.jpg",
+            "globalPct": 8
+        },
+        {
+            "apiName": "ach_lv_1",
+            "displayName": "Fresh off the assembly line",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "ddfe328e088d04b9001cc8fa347e596517b6d388.jpg",
+            "iconGrayUrl": "c65105cc5ecb4e5fdcfc5118b0cf8fa96b70c832.jpg",
+            "globalPct": 26.4
+        }
+    ]
+}

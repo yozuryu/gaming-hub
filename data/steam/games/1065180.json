@@ -1,0 +1,345 @@
+{
+    "appId": 1065180,
+    "hasAchievements": true,
+    "total": 25,
+    "unlocked": 2,
+    "gameName": "Azure Striker Gunvolt 2",
+    "achievements": [
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_0",
+            "unlocked": true,
+            "unlockedAt": "2020-06-24T16:50:59.000Z",
+            "displayName": "Just What Is She...?",
+            "description": "",
+            "iconUrl": "0035ca796c7835a88abde149a95438942a99901c.jpg",
+            "iconGrayUrl": "bf0bbd49d8f7469604e1f8b7e1c3136d36af7807.jpg",
+            "hidden": true,
+            "globalPct": 74.3
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Let Me Lend You My Wings",
+            "description": "Cleared Seraph Interior as Gunvolt with a rank of S or higher.",
+            "iconUrl": "6a88a1360c9b47065b9b7d60baf8a7a0d24c22e6.jpg",
+            "iconGrayUrl": "d6d46f4e17d273959fb5214fcef889dcbf8f9b6b.jpg",
+            "hidden": false,
+            "globalPct": 41
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Finally, My Time to Shine!",
+            "description": "Cleared Downtown as Copen with a rank of S or higher.",
+            "iconUrl": "8619fcf58055bbb6fb844d738d6f5c79fc818138.jpg",
+            "iconGrayUrl": "c7a02ed8d0349554b9bf4b0e00d036f633e9f8b6.jpg",
+            "hidden": false,
+            "globalPct": 28.5
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Even Like This, I Still Look Good!",
+            "description": "Cleared Downtown as Gunvolt with a rank of S or higher.",
+            "iconUrl": "d9e2bd0d23d609124fdb97380413be88f30722b9.jpg",
+            "iconGrayUrl": "a40496a80d4f06504e0c454efe96ff4c4dc04923.jpg",
+            "hidden": false,
+            "globalPct": 33.2
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Are You Some Kind of Pervert?",
+            "description": "Cleared Mysterious Manor as Gunvolt with a rank of S or higher.",
+            "iconUrl": "09ec25bd49f7aa35f40c49df6e917ebffcdb618b.jpg",
+            "iconGrayUrl": "c8128af143c5c706255423de844b2fedc643fbc8.jpg",
+            "hidden": false,
+            "globalPct": 26.8
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_5",
+            "unlocked": true,
+            "unlockedAt": "2020-06-30T15:10:39.000Z",
+            "displayName": "You're Nobody, Gunvolt",
+            "description": "Cleared Sewers as Gunvolt with a rank of S or higher.",
+            "iconUrl": "4c449b3bcbacd0798d12633cabb23b2105641d9d.jpg",
+            "iconGrayUrl": "83bd57e90d8b06ecd36980870d8d5200b8e60861.jpg",
+            "hidden": false,
+            "globalPct": 41.2
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "It's Super Teseo Time! lololol",
+            "description": "Cleared Data Facility as Gunvolt with a rank of S or higher.",
+            "iconUrl": "751c00401088e6d5fc5cfd47b219589bc3483303.jpg",
+            "iconGrayUrl": "fb4c43b4d4734630e4a97ef971db2f2731961302.jpg",
+            "hidden": false,
+            "globalPct": 28.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_7",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Truly Narrow Escape",
+            "description": "Cleared Frozen City as Gunvolt with a rank of S or higher.",
+            "iconUrl": "1ea85b964e5f100a3ff60998963c4d3ce13502a5.jpg",
+            "iconGrayUrl": "089eb5eb695bcaf757d4c769dfe05c8b78a6ce64.jpg",
+            "hidden": false,
+            "globalPct": 29.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_8",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Whole Year's Worth of Hair?!",
+            "description": "Cleared Babel as Copen with a rank of S or higher.",
+            "iconUrl": "26cccb00b9a399bd38d533e317f580c8e85f553c.jpg",
+            "iconGrayUrl": "27de97030cb4161398ffbbb6f14a77d23b86226d.jpg",
+            "hidden": false,
+            "globalPct": 22.4
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_9",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sit Still and Wait for Dinner",
+            "description": "Cleared Isle of Dreams as Copen with a rank of S or higher.",
+            "iconUrl": "4a2203d8f6fd69572c4eb4bddfbcf0c40060721c.jpg",
+            "iconGrayUrl": "afbf6c1cf1b2ef55069dec6ea71e966db62c234c.jpg",
+            "hidden": false,
+            "globalPct": 28.4
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Turn Up the Beat!",
+            "description": "Cleared Highway as Copen with a rank of S or higher.",
+            "iconUrl": "400743b87e170714ef6564497111f80c321ff45b.jpg",
+            "iconGrayUrl": "f138f99a46afcf1cc9175b897d292118ea86f263.jpg",
+            "hidden": false,
+            "globalPct": 25.4
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_11",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Survival of the Fittest! Justice is With Us!",
+            "description": "Cleared Frozen City as Copen with a rank of S or higher.",
+            "iconUrl": "abbe0e5181ea3bce889a291452c34e7c69341cc8.jpg",
+            "iconGrayUrl": "090afd8870b795b26163683196c6add812520909.jpg",
+            "hidden": false,
+            "globalPct": 21.1
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_12",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I Must Take Responsibility...",
+            "description": "Cleared Highway as Gunvolt with a rank of S or higher.",
+            "iconUrl": "38dd39e5f12a42180af9eb0eace556f0191c54f1.jpg",
+            "iconGrayUrl": "a3ebf4300fb17de28bb64cc7acaa5be1f5434658.jpg",
+            "hidden": false,
+            "globalPct": 25.4
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_13",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Get Out of Here, Kid!!",
+            "description": "Cleared Sewers as Copen with a rank of S or higher.",
+            "iconUrl": "69dedd7c4b2c63e44b262a91df8799e44892a36f.jpg",
+            "iconGrayUrl": "c0b14f122203dfbdaadda5132c7be21ddd444f99.jpg",
+            "hidden": false,
+            "globalPct": 22.7
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_14",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Just Don't Look Down",
+            "description": "Cleared The Garden 1 as Gunvolt with a rank of S or higher.",
+            "iconUrl": "787cc81c66b8b075b060206f5e42287fa8eeb5e0.jpg",
+            "iconGrayUrl": "d6389eb286ead8ca3ad9be6698bf6641869ea8a6.jpg",
+            "hidden": false,
+            "globalPct": 32.1
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_15",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "All Targets, Locked On!",
+            "description": "Cleared The Garden 2 as Gunvolt with a rank of S or higher.",
+            "iconUrl": "3a83bdb5a68169104168eaca2c20ccc9df409915.jpg",
+            "iconGrayUrl": "0d6876e24c5acbd1638da638a73b8afc9df353e5.jpg",
+            "hidden": false,
+            "globalPct": 26.6
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_16",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Song is Inside You!",
+            "description": "Cleared The Garden 3 as Gunvolt with a rank of S or higher.",
+            "iconUrl": "116f2f6373e6fb6a16c16d967f53cfaebef8eb02.jpg",
+            "iconGrayUrl": "e34685288ca7ee8bd583459338fec9aad296d8f7.jpg",
+            "hidden": false,
+            "globalPct": 12
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_17",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Please Be Safe, Mytyl!",
+            "description": "Cleared The Garden 1 as Copen with a rank of S or higher.",
+            "iconUrl": "64c9faf6628d3a141336baca1de9f17429e7ade2.jpg",
+            "iconGrayUrl": "d0265145b9a179749d0b846d5006593ae947bb9c.jpg",
+            "hidden": false,
+            "globalPct": 20.3
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_18",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bullit Dash Without Fear!",
+            "description": "Cleared The Garden 2 as Copen with a rank of S or higher.",
+            "iconUrl": "33df10f26b0e919712de3a1f5590d712a228126b.jpg",
+            "iconGrayUrl": "ee3bfd8b4259772c870dbe5503876fe6233c80ec.jpg",
+            "hidden": false,
+            "globalPct": 29.7
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_19",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I'll Fix Your Faulty Ideals Myself!",
+            "description": "Cleared The Garden 3 as Copen with a rank of S or higher.",
+            "iconUrl": "4190593ec420d053a9237453703455e6af29cec2.jpg",
+            "iconGrayUrl": "56747699b8c40a206e24045f6c0f0bd1e95a946f.jpg",
+            "hidden": false,
+            "globalPct": 30.4
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_20",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Are You an Angel?",
+            "description": "",
+            "iconUrl": "81b2e6f73494b969152aac6848aa74f44bbe655d.jpg",
+            "iconGrayUrl": "ac3338506ac7b6db0ae1d34e9c9bc9fc090640a7.jpg",
+            "hidden": true,
+            "globalPct": 29.7
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_21",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "...Let's Go, Lola.",
+            "description": "",
+            "iconUrl": "50a7b51e943888d3c0e4219e93685d65ea9f2087.jpg",
+            "iconGrayUrl": "d0bd8110c584962f2453d51d97d12bcb85c0d197.jpg",
+            "hidden": true,
+            "globalPct": 29.2
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_22",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I'm Happy Like This",
+            "description": "",
+            "iconUrl": "67b1fdd0ddba2964010bf6d7b39c38c6537b253e.jpg",
+            "iconGrayUrl": "3bf8fe44eb62a718b707a31f2d819356b5870000.jpg",
+            "hidden": true,
+            "globalPct": 7.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_23",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "This is My Stage!",
+            "description": "Listened to all of the songs.",
+            "iconUrl": "a93d80936fc6be2d208d8afa503a927a710ec2c7.jpg",
+            "iconGrayUrl": "4cce53f2d30b16b0b38cbbda75f57d634e919272.jpg",
+            "hidden": false,
+            "globalPct": 5.4
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_24",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Lightning Strikes Twice",
+            "description": "Complete all of the Achievements",
+            "iconUrl": "aeb1eb5dfa18829843756ac4fce1a3285ddb722f.jpg",
+            "iconGrayUrl": "f0731f759ccb6bed67201162edf5446e0c35affc.jpg",
+            "hidden": false,
+            "globalPct": 5.1
+        }
+    ],
+    "playtimeForever": 315,
+    "lastPlayedTs": "2024-05-18T21:10:42.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1065180/1147509b254de5858220ba3c802caa79ecb65816.jpg",
+    "lastUnlockedAt": "2020-06-30T15:10:39.000Z",
+    "lastUnlockName": "You're Nobody, Gunvolt",
+    "preview": [
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_5",
+            "displayName": "You're Nobody, Gunvolt",
+            "unlocked": true,
+            "unlockedAt": "2020-06-30T15:10:39.000Z",
+            "iconUrl": "4c449b3bcbacd0798d12633cabb23b2105641d9d.jpg",
+            "iconGrayUrl": "83bd57e90d8b06ecd36980870d8d5200b8e60861.jpg",
+            "globalPct": 41.2
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_0",
+            "displayName": "Just What Is She...?",
+            "unlocked": true,
+            "unlockedAt": "2020-06-24T16:50:59.000Z",
+            "iconUrl": "0035ca796c7835a88abde149a95438942a99901c.jpg",
+            "iconGrayUrl": "bf0bbd49d8f7469604e1f8b7e1c3136d36af7807.jpg",
+            "globalPct": 74.3
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_1",
+            "displayName": "Let Me Lend You My Wings",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "6a88a1360c9b47065b9b7d60baf8a7a0d24c22e6.jpg",
+            "iconGrayUrl": "d6d46f4e17d273959fb5214fcef889dcbf8f9b6b.jpg",
+            "globalPct": 41
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_2",
+            "displayName": "Finally, My Time to Shine!",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "8619fcf58055bbb6fb844d738d6f5c79fc818138.jpg",
+            "iconGrayUrl": "c7a02ed8d0349554b9bf4b0e00d036f633e9f8b6.jpg",
+            "globalPct": 28.5
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_3",
+            "displayName": "Even Like This, I Still Look Good!",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d9e2bd0d23d609124fdb97380413be88f30722b9.jpg",
+            "iconGrayUrl": "a40496a80d4f06504e0c454efe96ff4c4dc04923.jpg",
+            "globalPct": 33.2
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_2_4",
+            "displayName": "Are You Some Kind of Pervert?",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "09ec25bd49f7aa35f40c49df6e917ebffcdb618b.jpg",
+            "iconGrayUrl": "c8128af143c5c706255423de844b2fedc643fbc8.jpg",
+            "globalPct": 26.8
+        }
+    ]
+}

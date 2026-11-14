@@ -1,0 +1,312 @@
+{
+    "appId": 427680,
+    "hasAchievements": true,
+    "total": 22,
+    "unlocked": 0,
+    "gameName": "Zwei: The Arges Adventure",
+    "achievements": [
+        {
+            "apiName": "ACH_BUY_15",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fourteen, Buyin' Up Fifteen",
+            "description": "Buy out the full stock of any one item in any shop.",
+            "iconUrl": "90c2dae55b8b699de29bcd2a58d52174c60bf795.jpg",
+            "iconGrayUrl": "15917a416e95b59e85d632aaedc55612c021adff.jpg",
+            "hidden": false,
+            "globalPct": 7.3
+        },
+        {
+            "apiName": "ACH_SHEPHARD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Shepherd of the Weak",
+            "description": "Relocate three animals in Puck Village to their new home across the bridge.",
+            "iconUrl": "b7dd76878b0964ed606dd8d8c7618873aa041fd3.jpg",
+            "iconGrayUrl": "93b3194b3a69ba0459c2d6907d47bd19a815288a.jpg",
+            "hidden": false,
+            "globalPct": 3.3
+        },
+        {
+            "apiName": "ACH_RIFLING",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Rifling Through Alleyways",
+            "description": "",
+            "iconUrl": "896a64f9cbb0fb807cb1c8db01cca3ccb49bbd22.jpg",
+            "iconGrayUrl": "ea574bfcb7e9e8bd2f0a42b62595c31b46905d62.jpg",
+            "hidden": true,
+            "globalPct": 6
+        },
+        {
+            "apiName": "ACH_CHERRY_TOPPER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cherry Topper",
+            "description": "Fill out all three facts for every character in the Character Memo.",
+            "iconUrl": "6be3946c4f3ecd1990f48f6c2bff2e9529f0db4b.jpg",
+            "iconGrayUrl": "5488508aad87b7a20d6115a71e68f1e419921d0b.jpg",
+            "hidden": false,
+            "globalPct": 2
+        },
+        {
+            "apiName": "ACH_LOST",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Lost and Fauna'd",
+            "description": "Completely fill out the Bestiary.",
+            "iconUrl": "47225443e65afe7e67d550a5e5515151101a3d8f.jpg",
+            "iconGrayUrl": "856ede0a73c434a18a3da1ab6400f8e15fc0d60b.jpg",
+            "hidden": false,
+            "globalPct": 1.8
+        },
+        {
+            "apiName": "ACH_CRAYON",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Crayon Level: Six-Year-Old",
+            "description": "Completely fill out Pokkle and Pipiro's picture diary.",
+            "iconUrl": "be9379a95d3fa2cfd98f626b5b229e3db421f635.jpg",
+            "iconGrayUrl": "99eb921daf03b8f512f37b0a2b84563965617870.jpg",
+            "hidden": false,
+            "globalPct": 1.9
+        },
+        {
+            "apiName": "ACH_TIME",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Futility of Time",
+            "description": "Collect the clock widget and make full use of its alarm feature.",
+            "iconUrl": "e4e3e275308e62c30eca5777c9fe80ba10ee0f1f.jpg",
+            "iconGrayUrl": "406770acb408bd904ff5599d1d2764cc0286f3c1.jpg",
+            "hidden": false,
+            "globalPct": 3.4
+        },
+        {
+            "apiName": "ACH_BROMIDES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ironically, a Gold Star Story",
+            "description": "Collect all character bromides.",
+            "iconUrl": "63cba3604f89a152098a7cb09b61ee8d69e5fe01.jpg",
+            "iconGrayUrl": "865975c251e812f7a595cbb5415080682a342fc6.jpg",
+            "hidden": false,
+            "globalPct": 1.6
+        },
+        {
+            "apiName": "ACH_PHONOGRAPHY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Phonography",
+            "description": "Collect all music CDs.",
+            "iconUrl": "ffb8f91fa90d77a49c409508fd5f94bb7865b53c.jpg",
+            "iconGrayUrl": "d17dbedeb8fe2ac050afd70dd1f8bcda8454888c.jpg",
+            "hidden": false,
+            "globalPct": 1.7
+        },
+        {
+            "apiName": "ACH_PHOENIX_DOWN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "But You Still Can't Revive Aeris",
+            "description": "Obtain a Phoenix Down.",
+            "iconUrl": "3666b439490ebcc39c3cdd85ba8da712f4a7ee8f.jpg",
+            "iconGrayUrl": "70c950aa25cca4e7a47317172cd8e5628f36934e.jpg",
+            "hidden": false,
+            "globalPct": 5.4
+        },
+        {
+            "apiName": "ACH_SANTA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Covers Your Ho-Ho-Whole Body",
+            "description": "Equip a full set of Santa armor.",
+            "iconUrl": "34edcf3a4a1607730053ba33fb331c54ba1e01ed.jpg",
+            "iconGrayUrl": "ecc48239329e2ff9ad32610b0c963d1a0f0a8f7b.jpg",
+            "hidden": false,
+            "globalPct": 4.3
+        },
+        {
+            "apiName": "ACH_CAN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "You CAN Do It",
+            "description": "Equip a full set of Aluminum armor.",
+            "iconUrl": "4471a469437d95931a13b5a1963516972780524b.jpg",
+            "iconGrayUrl": "e5f6c1f89511fb2fd634cc779528ea8357b7060b.jpg",
+            "hidden": false,
+            "globalPct": 2.1
+        },
+        {
+            "apiName": "ACH_NAGA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Naga'nna Lie, This is Impressive",
+            "description": "Equip a full set of Naga armor.",
+            "iconUrl": "7334c4022129c4b362c78dab7d16ddefb0a87607.jpg",
+            "iconGrayUrl": "66048b4ddf61b8324303e99c4d1e5b9a83cd85cc.jpg",
+            "hidden": false,
+            "globalPct": 2.6
+        },
+        {
+            "apiName": "ACH_SHOOT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Well, Shoot!",
+            "description": "Complete \"Zwei Shooting\" on Hard mode.",
+            "iconUrl": "5ffe9ec80cf4efd041b1622578e79a7c8cc293e7.jpg",
+            "iconGrayUrl": "ab5d02897c2ddb5caa209ff5a52a363db943f6b4.jpg",
+            "hidden": false,
+            "globalPct": 1.7
+        },
+        {
+            "apiName": "ACH_YS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ys-y Games Are Just My Type",
+            "description": "Complete \"The Typing of Ys\" on Hard mode.",
+            "iconUrl": "adc5b7408c23f6cb3c3139687ff35a357a89019a.jpg",
+            "iconGrayUrl": "c3e53af0574646f0c5bf2adc205a483bb89e0e4d.jpg",
+            "hidden": false,
+            "globalPct": 1.7
+        },
+        {
+            "apiName": "ACH_MONA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Somebunny Worked Hard For This",
+            "description": "Complete \"Mona, Mona\" on Hard mode.",
+            "iconUrl": "94ec5d53eb3730a30bccaa3ae9df2a31cd9f0cd4.jpg",
+            "iconGrayUrl": "a48014c5c4eb1f90aa9b3d3137335210106db698.jpg",
+            "hidden": false,
+            "globalPct": 1.7
+        },
+        {
+            "apiName": "ACH_FAIRY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Now You've Done It",
+            "description": "",
+            "iconUrl": "ffb4279fafe2db2e180834a2863912318bcf5155.jpg",
+            "iconGrayUrl": "66f3663da3f01ffd92d785be4f88d9d606ea4289.jpg",
+            "hidden": true,
+            "globalPct": 8.3
+        },
+        {
+            "apiName": "ACH_GARBAGE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Spring Cleaning",
+            "description": "",
+            "iconUrl": "01c8dd43e3ae300257a5248efc2cf88434f6603d.jpg",
+            "iconGrayUrl": "50ac45f7bd207554ee9dbde0c508271f9ef684f3.jpg",
+            "hidden": true,
+            "globalPct": 1.7
+        },
+        {
+            "apiName": "ACH_STRUTTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dungeon Strutter",
+            "description": "Conquer the Fantasyscapes.",
+            "iconUrl": "456f36aeb7420807cfbc2a7b5b568fba00e8fe0e.jpg",
+            "iconGrayUrl": "c7d27fade1f4f39e7a77cd577b03d857241abed6.jpg",
+            "hidden": false,
+            "globalPct": 1.9
+        },
+        {
+            "apiName": "ACH_LEVEL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Phat Kids",
+            "description": "Level Pokkle and Pipiro up to 30.",
+            "iconUrl": "3457fab87c22ff7b4a91a09da191ced492c4a0f1.jpg",
+            "iconGrayUrl": "e4c6432c5c1b2d93e7b4feb14e226f965e61ca4d.jpg",
+            "hidden": false,
+            "globalPct": 3.1
+        },
+        {
+            "apiName": "ACH_COMPLETE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Arges Adventurer",
+            "description": "Complete the game.",
+            "iconUrl": "ba39a24a16f3d16ad01c369b81fde82b329b62ae.jpg",
+            "iconGrayUrl": "ba9d625f5edf9769c1cca4b35dd23e2ced4e8077.jpg",
+            "hidden": false,
+            "globalPct": 6.3
+        },
+        {
+            "apiName": "ACH_TREASURE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "True Treasure Hunter",
+            "description": "Obtain every other achievement.",
+            "iconUrl": "34b45dbe97a20e25306905aa6113e3fa5d0f40ac.jpg",
+            "iconGrayUrl": "697f5a785cdf25fdb400c3118de6e7d870d82871.jpg",
+            "hidden": false,
+            "globalPct": 1.5
+        }
+    ],
+    "playtimeForever": 306,
+    "lastPlayedTs": "2024-06-26T00:11:08.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/427680/b0e740acc3fc02f9047b8481fb130186dca44142.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACH_BUY_15",
+            "displayName": "Fourteen, Buyin' Up Fifteen",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "90c2dae55b8b699de29bcd2a58d52174c60bf795.jpg",
+            "iconGrayUrl": "15917a416e95b59e85d632aaedc55612c021adff.jpg",
+            "globalPct": 7.3
+        },
+        {
+            "apiName": "ACH_SHEPHARD",
+            "displayName": "Shepherd of the Weak",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "b7dd76878b0964ed606dd8d8c7618873aa041fd3.jpg",
+            "iconGrayUrl": "93b3194b3a69ba0459c2d6907d47bd19a815288a.jpg",
+            "globalPct": 3.3
+        },
+        {
+            "apiName": "ACH_RIFLING",
+            "displayName": "Rifling Through Alleyways",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "896a64f9cbb0fb807cb1c8db01cca3ccb49bbd22.jpg",
+            "iconGrayUrl": "ea574bfcb7e9e8bd2f0a42b62595c31b46905d62.jpg",
+            "globalPct": 6
+        },
+        {
+            "apiName": "ACH_CHERRY_TOPPER",
+            "displayName": "Cherry Topper",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "6be3946c4f3ecd1990f48f6c2bff2e9529f0db4b.jpg",
+            "iconGrayUrl": "5488508aad87b7a20d6115a71e68f1e419921d0b.jpg",
+            "globalPct": 2
+        },
+        {
+            "apiName": "ACH_LOST",
+            "displayName": "Lost and Fauna'd",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "47225443e65afe7e67d550a5e5515151101a3d8f.jpg",
+            "iconGrayUrl": "856ede0a73c434a18a3da1ab6400f8e15fc0d60b.jpg",
+            "globalPct": 1.8
+        },
+        {
+            "apiName": "ACH_CRAYON",
+            "displayName": "Crayon Level: Six-Year-Old",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "be9379a95d3fa2cfd98f626b5b229e3db421f635.jpg",
+            "iconGrayUrl": "99eb921daf03b8f512f37b0a2b84563965617870.jpg",
+            "globalPct": 1.9
+        }
+    ]
+}

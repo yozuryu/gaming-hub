@@ -1,0 +1,279 @@
+{
+    "appId": 1488200,
+    "hasAchievements": true,
+    "total": 19,
+    "unlocked": 0,
+    "gameName": "Symphony of War: The Nephilim Saga",
+    "achievements": [
+        {
+            "apiName": "ACH_GRADUATION",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Graduation",
+            "description": "Class change to Tier 2.",
+            "iconUrl": "a14d80a2788846ab127338630b7825b8be55c9d9.jpg",
+            "iconGrayUrl": "b14996b2fb62f587856156aea2db3db316f3a013.jpg",
+            "hidden": false,
+            "globalPct": 65.5
+        },
+        {
+            "apiName": "ACH_SPECIALIST",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Specialist",
+            "description": "Class change to Tier 3.",
+            "iconUrl": "f3f514ffd0f06a7277d10a001d80aba4256d63c2.jpg",
+            "iconGrayUrl": "3778fea2fefd5f8a877ba4a1f7f807d8237b7bef.jpg",
+            "hidden": false,
+            "globalPct": 51.7
+        },
+        {
+            "apiName": "ACH_GILDED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Gilded",
+            "description": "Use a Proof of Merit on a Unit.",
+            "iconUrl": "672e05ad11bca70596a9328995cf04a2bbb12222.jpg",
+            "iconGrayUrl": "14a0ea44808f89e35e6fb8984481ab24e6f37be8.jpg",
+            "hidden": false,
+            "globalPct": 42.1
+        },
+        {
+            "apiName": "ACH_NOTEWORTHY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Noteworthy",
+            "description": "Reach Faction Rank 4.",
+            "iconUrl": "ed94cc277d8d1c5b34b67c52b0c26aac99bc60c7.jpg",
+            "iconGrayUrl": "076d6f659f65308985918406f0004dea4bf400b9.jpg",
+            "hidden": false,
+            "globalPct": 66
+        },
+        {
+            "apiName": "ACH_FAMED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Famed",
+            "description": "Reach Faction Rank 9.",
+            "iconUrl": "206f4b1fc637093a59d77f2097ce36cfcf625b10.jpg",
+            "iconGrayUrl": "9c01a2301a87380cb3edd49a27868efa0b603b28.jpg",
+            "hidden": false,
+            "globalPct": 41.9
+        },
+        {
+            "apiName": "ACH_ILLUSTRIOUS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Illustrious",
+            "description": "Reach Max Faction Rank.",
+            "iconUrl": "731fec6b00465a9d5a31766e907c2ae6bcc435e4.jpg",
+            "iconGrayUrl": "e0f567b749be280be530794cb1e2bf2402656a0a.jpg",
+            "hidden": false,
+            "globalPct": 26
+        },
+        {
+            "apiName": "ACH_LEARNEDCOMMANDER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Learned Commander",
+            "description": "Unlock all Techs in a single playthrough.",
+            "iconUrl": "fba30f41c5ff3fd4c771350e6812ef235d7d8900.jpg",
+            "iconGrayUrl": "8de766be94d23e1638b0c91db31b7bcdcabf937a.jpg",
+            "hidden": false,
+            "globalPct": 25.3
+        },
+        {
+            "apiName": "ACH_GRANARMEE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Gran Armee",
+            "description": "Army size reaches 150 Units.",
+            "iconUrl": "7434cd7a48b9f05d789a28c21cec13aafaf36d6b.jpg",
+            "iconGrayUrl": "88a6694d63a4052a9b2e0ec0ae1a6225ecf10bf1.jpg",
+            "hidden": false,
+            "globalPct": 15.5
+        },
+        {
+            "apiName": "ACH_DEATHBALL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Death Ball",
+            "description": "Have 9 Units in one Squad.",
+            "iconUrl": "392ce2653e25bacb0b6031b5fc7fc54b6ad4e6b9.jpg",
+            "iconGrayUrl": "4c802b70186dae1df3830f621aef8e04a7816597.jpg",
+            "hidden": false,
+            "globalPct": 29.9
+        },
+        {
+            "apiName": "ACH_MONEY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "If it's Money you want...",
+            "description": "Hire a Unique Mercenary.",
+            "iconUrl": "3351d08036393938a2fc97c727609bb08f76c5ce.jpg",
+            "iconGrayUrl": "d6b71b65d1a05911023dfe7fde4ad59d8531639b.jpg",
+            "hidden": false,
+            "globalPct": 48.7
+        },
+        {
+            "apiName": "ACH_TREASUREHUNTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Treasure Hunter",
+            "description": "Find or purchase an Artifact of Legendary rarity.",
+            "iconUrl": "9fa7f69c8e2e16b5c17b56721c9c0c67382f4e0c.jpg",
+            "iconGrayUrl": "9c8d7204009634f011a8ffbb8d4f87987c26b0d2.jpg",
+            "hidden": false,
+            "globalPct": 60
+        },
+        {
+            "apiName": "ACH_PEACE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Peace in our time",
+            "description": "Complete the main story on Captain difficulty.",
+            "iconUrl": "9636fbbe3eaa8e107c5d857881f7996da21db081.jpg",
+            "iconGrayUrl": "6a1fe292daca4ecb4ed69d2fddbb22862a64decc.jpg",
+            "hidden": false,
+            "globalPct": 22.5
+        },
+        {
+            "apiName": "ACH_LEGENDARY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Legendary",
+            "description": "Complete the main story on Warlord difficulty.",
+            "iconUrl": "eea319ca94e887e83f78c41472ef43ec4dce01c7.jpg",
+            "iconGrayUrl": "7fc87d3a9f6cc9bdb1622ff1944fc5dca116345e.jpg",
+            "hidden": false,
+            "globalPct": 5.5
+        },
+        {
+            "apiName": "ACH_MERCIFUL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Merciful",
+            "description": "Surrender 200 enemy Units in a single playthrough.",
+            "iconUrl": "84c2e93a239445fb6a9f35d06d820fa57bc428e9.jpg",
+            "iconGrayUrl": "9954c81edcbbcbe2fe8826e475acc625ebfffe39.jpg",
+            "hidden": false,
+            "globalPct": 32.5
+        },
+        {
+            "apiName": "ACH_MATCHMAKER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Matchmaker",
+            "description": "Form a Bond relationship.",
+            "iconUrl": "fc1aeb515d7da85f4a7ac85896e70bd50427ac28.jpg",
+            "iconGrayUrl": "b370d7be5568a9202fa95ff20d40a194a4944cd3.jpg",
+            "hidden": false,
+            "globalPct": 41.2
+        },
+        {
+            "apiName": "ACH_RECONCILIATION",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Reconciliation",
+            "description": "Surrender all the Imperial Squads in Chapter 27.",
+            "iconUrl": "3b377d139ef2105ed11fa040efb46907439d3b7c.jpg",
+            "iconGrayUrl": "41700a7e687c4274094eeca54abeef63a90d3113.jpg",
+            "hidden": false,
+            "globalPct": 15.6
+        },
+        {
+            "apiName": "ACH_CARETAKER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Caretaker",
+            "description": "Rescue all 4 children in Chapter 15.",
+            "iconUrl": "c86c530348720369c3ba8095d7779e913ae87f0e.jpg",
+            "iconGrayUrl": "7fe03e9f1831f7ad840aeb7c8ed2ed7a81fd60ae.jpg",
+            "hidden": false,
+            "globalPct": 22.2
+        },
+        {
+            "apiName": "ACH_HOW",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "...How?",
+            "description": "Defeat all enemies in Chapter 12.",
+            "iconUrl": "be34b6d349f5571b589d4d1976c1c8d78b005b36.jpg",
+            "iconGrayUrl": "6090a05d5fb59ebb0c20eec9ef40ed5815e7781a.jpg",
+            "hidden": false,
+            "globalPct": 7.5
+        },
+        {
+            "apiName": "ACH_HAUGHTY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Haughty No More",
+            "description": "Defeat Beatrix in Chapter 11.",
+            "iconUrl": "eaaeff063f9edd47e99220a9a031ba7cd1f4d884.jpg",
+            "iconGrayUrl": "c91dd6066dcc25fe3e44d42234e57a6775320c08.jpg",
+            "hidden": false,
+            "globalPct": 26.2
+        }
+    ],
+    "playtimeForever": 343,
+    "lastPlayedTs": "2024-07-03T01:06:08.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1488200/35809511a6c2a0a36d8daec5436ea2864271094a.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACH_GRADUATION",
+            "displayName": "Graduation",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a14d80a2788846ab127338630b7825b8be55c9d9.jpg",
+            "iconGrayUrl": "b14996b2fb62f587856156aea2db3db316f3a013.jpg",
+            "globalPct": 65.5
+        },
+        {
+            "apiName": "ACH_SPECIALIST",
+            "displayName": "Specialist",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f3f514ffd0f06a7277d10a001d80aba4256d63c2.jpg",
+            "iconGrayUrl": "3778fea2fefd5f8a877ba4a1f7f807d8237b7bef.jpg",
+            "globalPct": 51.7
+        },
+        {
+            "apiName": "ACH_GILDED",
+            "displayName": "Gilded",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "672e05ad11bca70596a9328995cf04a2bbb12222.jpg",
+            "iconGrayUrl": "14a0ea44808f89e35e6fb8984481ab24e6f37be8.jpg",
+            "globalPct": 42.1
+        },
+        {
+            "apiName": "ACH_NOTEWORTHY",
+            "displayName": "Noteworthy",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "ed94cc277d8d1c5b34b67c52b0c26aac99bc60c7.jpg",
+            "iconGrayUrl": "076d6f659f65308985918406f0004dea4bf400b9.jpg",
+            "globalPct": 66
+        },
+        {
+            "apiName": "ACH_FAMED",
+            "displayName": "Famed",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "206f4b1fc637093a59d77f2097ce36cfcf625b10.jpg",
+            "iconGrayUrl": "9c01a2301a87380cb3edd49a27868efa0b603b28.jpg",
+            "globalPct": 41.9
+        },
+        {
+            "apiName": "ACH_ILLUSTRIOUS",
+            "displayName": "Illustrious",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "731fec6b00465a9d5a31766e907c2ae6bcc435e4.jpg",
+            "iconGrayUrl": "e0f567b749be280be530794cb1e2bf2402656a0a.jpg",
+            "globalPct": 26
+        }
+    ]
+}

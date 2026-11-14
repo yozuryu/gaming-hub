@@ -1,0 +1,400 @@
+{
+    "appId": 373770,
+    "hasAchievements": true,
+    "total": 30,
+    "unlocked": 30,
+    "gameName": "LiEat",
+    "achievements": [
+        {
+            "apiName": "TO_THE_FLAME",
+            "unlocked": true,
+            "unlockedAt": "2026-02-08T15:16:04.000Z",
+            "displayName": "To the Flame!",
+            "description": "Defeat a Red Moth",
+            "iconUrl": "c72d4cddc80e0780c521bb61e30e29d46f4a7911.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 14.1
+        },
+        {
+            "apiName": "YOU_HAVE_CHOSEN",
+            "unlocked": true,
+            "unlockedAt": "2026-02-08T15:20:48.000Z",
+            "displayName": "You have Chosen...Poorly",
+            "description": "Get Bad Ending from Wolf Encounter",
+            "iconUrl": "22190decdf700cee7538c440b9225739f6e8ffc0.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 22.4
+        },
+        {
+            "apiName": "PANTS_ON_FIRE",
+            "unlocked": true,
+            "unlockedAt": "2026-02-08T14:20:51.000Z",
+            "displayName": "Pants on Fire",
+            "description": "Find Big Liar Equipment",
+            "iconUrl": "07cd228f8bc7c6925d8be2fe470391579d4b81b2.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 49.2
+        },
+        {
+            "apiName": "HAVE_YOU_NO_SHAME",
+            "unlocked": true,
+            "unlockedAt": "2026-02-08T14:23:57.000Z",
+            "displayName": "Have you no Shame?",
+            "description": "Steal the Candy from Keith and Rachel's House",
+            "iconUrl": "bc931b76d47b892fa380d5d8dbbf7d009be9c0c7.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 47.3
+        },
+        {
+            "apiName": "HAPPOSAI",
+            "unlocked": true,
+            "unlockedAt": "2026-02-08T14:44:37.000Z",
+            "displayName": "Happosai",
+            "description": "Put Panties on your Head",
+            "iconUrl": "16eca5e7995ef336b13c6877ad0538dd94ebec70.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 32.7
+        },
+        {
+            "apiName": "YOURE_LOOKING_BUFF",
+            "unlocked": true,
+            "unlockedAt": "2026-02-08T15:58:15.000Z",
+            "displayName": "You're Looking Buff",
+            "description": "Get Efi to Level 10",
+            "iconUrl": "d0bb7539e15112c4918f31b772c96ccfbdbf9be9.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 32.2
+        },
+        {
+            "apiName": "SERIOUS_SWEET_TOOTH",
+            "unlocked": true,
+            "unlockedAt": "2026-02-09T14:49:20.000Z",
+            "displayName": "Serious Sweet Tooth",
+            "description": "Eat 15 Cookies",
+            "iconUrl": "f44977e58bf06b24d29feb907dd2f6e71b34c11a.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 18.2
+        },
+        {
+            "apiName": "HARD_KNOCK_LIFE",
+            "unlocked": true,
+            "unlockedAt": "2026-02-08T16:02:53.000Z",
+            "displayName": "Hard Knock Life",
+            "description": "Get Bad Ending from Losing Boss Battle",
+            "iconUrl": "9869d08d6710201cb5e78b1407906459a4fd1df2.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 16.1
+        },
+        {
+            "apiName": "ONTO_NEXT_ADVENTURE",
+            "unlocked": true,
+            "unlockedAt": "2026-02-09T14:56:13.000Z",
+            "displayName": "Onto the Next Adventure!",
+            "description": "Finish LiEat 1",
+            "iconUrl": "c941f3d23906e0d1e68c0da7ca3e23c6595f5d1e.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 37
+        },
+        {
+            "apiName": "SATANIC_MESSAGES",
+            "unlocked": true,
+            "unlockedAt": "2026-02-09T14:56:52.000Z",
+            "displayName": "Satanic Messages!",
+            "description": "Play Liar (music track) at the Slowest Speed in Post-game",
+            "iconUrl": "f1ce827329b11436f05556d7fca0097677d90894.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 14.5
+        },
+        {
+            "apiName": "FOR_ORPHANS",
+            "unlocked": true,
+            "unlockedAt": "2026-02-14T12:41:46.000Z",
+            "displayName": "That was for Orphans!",
+            "description": "Steal the Money from the Bookshelf",
+            "iconUrl": "8c183ffcc3c0c6f46dc7bd2caf1cdd1367dda1a1.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 25.5
+        },
+        {
+            "apiName": "CMON_MAN",
+            "unlocked": true,
+            "unlockedAt": "2026-02-14T12:59:19.000Z",
+            "displayName": "C'mon, Man",
+            "description": "Fight the \"I'm not drunk!\" Lie",
+            "iconUrl": "ed87198099bd628dd15eebe9f78e642c63deb10b.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 21.2
+        },
+        {
+            "apiName": "APPLE_CARE",
+            "unlocked": true,
+            "unlockedAt": "2026-02-14T12:50:28.000Z",
+            "displayName": "Shoulda Gotten Apple Care",
+            "description": "Find out about Hal's Cracked Phone",
+            "iconUrl": "ea3e3e3d1519404d5ec1c2726b540b93bfc61ab1.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 14.8
+        },
+        {
+            "apiName": "BUSTED",
+            "unlocked": true,
+            "unlockedAt": "2026-02-14T13:02:05.000Z",
+            "displayName": "BUSTED!",
+            "description": "Fight the Girlfriend Lie",
+            "iconUrl": "12640e5e37091ebd408f7ac870daa7acaf4a484f.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 23
+        },
+        {
+            "apiName": "PIED_PIPER",
+            "unlocked": true,
+            "unlockedAt": "2026-02-14T13:04:17.000Z",
+            "displayName": "Pied Piper",
+            "description": "Fight Three Blue Rats",
+            "iconUrl": "26d2170451c72a42d82598de831dc6d8d353bc30.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 16.8
+        },
+        {
+            "apiName": "FIVE_MORE_MINUTES",
+            "unlocked": true,
+            "unlockedAt": "2026-02-14T12:50:47.000Z",
+            "displayName": "Five More Minutes",
+            "description": "Rest Two Times in a Row",
+            "iconUrl": "fd4900f3263da7a5ac183f47d14c08cc42f1b5f3.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 11.9
+        },
+        {
+            "apiName": "GOOD_APOLLO",
+            "unlocked": true,
+            "unlockedAt": "2026-02-14T13:06:05.000Z",
+            "displayName": "Good Apollo",
+            "description": "Poke Efi Three Times While Sleeping",
+            "iconUrl": "2fee7ec07c301d6903b84c89de813002fff894f1.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 11.9
+        },
+        {
+            "apiName": "FIVE_SECOND_RULE",
+            "unlocked": true,
+            "unlockedAt": "2026-02-15T12:19:14.000Z",
+            "displayName": "Five Second Rule",
+            "description": "Find the Cherry Candy in the Trash",
+            "iconUrl": "aaad17d9bce8474ebe7136f86d3b16e788afd09d.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 19.1
+        },
+        {
+            "apiName": "GUY_PIERCE",
+            "unlocked": true,
+            "unlockedAt": "2026-02-15T12:31:06.000Z",
+            "displayName": "Guy Pierce",
+            "description": "Bad Ending, Lose to William",
+            "iconUrl": "e9f38a6d53aa25ae8788addf66866928858e1cf6.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 10.5
+        },
+        {
+            "apiName": "LEARNED_NOTHING",
+            "unlocked": true,
+            "unlockedAt": "2026-02-15T12:38:22.000Z",
+            "displayName": "And We've Learned NOTHING!",
+            "description": "Good Ending",
+            "iconUrl": "98828146bade8ee996b00cc846388937b6c5b0f2.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 25.3
+        },
+        {
+            "apiName": "DUCK_SOUP",
+            "unlocked": true,
+            "unlockedAt": "2026-02-18T15:12:01.000Z",
+            "displayName": "Duck Soup",
+            "description": "Find the Funny Glasses",
+            "iconUrl": "cf706deb7c26b6cb5450e86bd0d0ab33c5dc2f2a.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 17.2
+        },
+        {
+            "apiName": "FIRST_IMPRESSION",
+            "unlocked": true,
+            "unlockedAt": "2026-02-18T15:21:08.000Z",
+            "displayName": "Amazing First Impression",
+            "description": "Have Iris Analyze You",
+            "iconUrl": "03b6460c5f616666b43552e74f41a777506e03fb.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 24.3
+        },
+        {
+            "apiName": "TIME_FOR_DREAMS",
+            "unlocked": true,
+            "unlockedAt": "2026-02-18T15:36:10.000Z",
+            "displayName": "Always Time for Dreams",
+            "description": "Sleep in the Bed During the Maid Investigation",
+            "iconUrl": "4288ea90a63d54db88f3e6b0a42a9a54abb67ff4.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 19.1
+        },
+        {
+            "apiName": "IDDQD",
+            "unlocked": true,
+            "unlockedAt": "2026-02-18T15:29:42.000Z",
+            "displayName": "IDDQD",
+            "description": "Find the Legendary Knife and Cookie",
+            "iconUrl": "62f80cef6f23db79ca0a4f0068d9c1ac60abbaf6.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 21.1
+        },
+        {
+            "apiName": "IRIS_UP",
+            "unlocked": true,
+            "unlockedAt": "2026-02-21T05:35:27.000Z",
+            "displayName": "Iris Up Your Coffee?",
+            "description": "Pair up with Iris",
+            "iconUrl": "5b6f39b44ad9e395da1eaf4e881f5c244f284c3c.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 21.5
+        },
+        {
+            "apiName": "ME_AND_NEILY",
+            "unlocked": true,
+            "unlockedAt": "2026-02-21T05:25:19.000Z",
+            "displayName": "Me and Neily McGee",
+            "description": "Pair up with Neil",
+            "iconUrl": "b92e7cbd76b162b4ee88eb95ce42b3bbd93652cf.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 21
+        },
+        {
+            "apiName": "BRETT_AND_BUTTER",
+            "unlocked": true,
+            "unlockedAt": "2026-02-21T05:25:46.000Z",
+            "displayName": "Brett and Butter",
+            "description": "Pair up with Brett",
+            "iconUrl": "2762ca9d7190ff093cc479b9ee4b4dec95bc7d67.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 21.5
+        },
+        {
+            "apiName": "BONNIE_AND_CLYDE",
+            "unlocked": true,
+            "unlockedAt": "2026-02-21T05:46:06.000Z",
+            "displayName": "Bonnie and Clyde",
+            "description": "Bad Ending",
+            "iconUrl": "de6c76ae3f6c9d65c844f67e0ec20ff064f27111.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 20.8
+        },
+        {
+            "apiName": "ALONE_AGAIN",
+            "unlocked": true,
+            "unlockedAt": "2026-02-21T05:54:47.000Z",
+            "displayName": "Alone Again, Naturally",
+            "description": "Neutral Ending",
+            "iconUrl": "1e87156b037ad8f9836383d4077eeadb5eba83f9.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 17.6
+        },
+        {
+            "apiName": "LETS_GO",
+            "unlocked": true,
+            "unlockedAt": "2026-02-21T06:07:21.000Z",
+            "displayName": "Let's Go Exploring!",
+            "description": "Good Ending",
+            "iconUrl": "a2e783ee4d8b6b3adafbcf9d5cc40f05d0903163.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "hidden": false,
+            "globalPct": 19.5
+        }
+    ],
+    "playtimeForever": 530,
+    "lastPlayedTs": "2026-02-21T06:07:55.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/373770/2e532469a6b4ca0162b141c1d2452983cf313949.jpg",
+    "lastUnlockedAt": "2026-02-21T06:07:21.000Z",
+    "lastUnlockName": "Let's Go Exploring!",
+    "preview": [
+        {
+            "apiName": "LETS_GO",
+            "displayName": "Let's Go Exploring!",
+            "unlocked": true,
+            "unlockedAt": "2026-02-21T06:07:21.000Z",
+            "iconUrl": "a2e783ee4d8b6b3adafbcf9d5cc40f05d0903163.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "globalPct": 19.5
+        },
+        {
+            "apiName": "ALONE_AGAIN",
+            "displayName": "Alone Again, Naturally",
+            "unlocked": true,
+            "unlockedAt": "2026-02-21T05:54:47.000Z",
+            "iconUrl": "1e87156b037ad8f9836383d4077eeadb5eba83f9.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "globalPct": 17.6
+        },
+        {
+            "apiName": "BONNIE_AND_CLYDE",
+            "displayName": "Bonnie and Clyde",
+            "unlocked": true,
+            "unlockedAt": "2026-02-21T05:46:06.000Z",
+            "iconUrl": "de6c76ae3f6c9d65c844f67e0ec20ff064f27111.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "globalPct": 20.8
+        },
+        {
+            "apiName": "IRIS_UP",
+            "displayName": "Iris Up Your Coffee?",
+            "unlocked": true,
+            "unlockedAt": "2026-02-21T05:35:27.000Z",
+            "iconUrl": "5b6f39b44ad9e395da1eaf4e881f5c244f284c3c.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "globalPct": 21.5
+        },
+        {
+            "apiName": "BRETT_AND_BUTTER",
+            "displayName": "Brett and Butter",
+            "unlocked": true,
+            "unlockedAt": "2026-02-21T05:25:46.000Z",
+            "iconUrl": "2762ca9d7190ff093cc479b9ee4b4dec95bc7d67.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "globalPct": 21.5
+        },
+        {
+            "apiName": "ME_AND_NEILY",
+            "displayName": "Me and Neily McGee",
+            "unlocked": true,
+            "unlockedAt": "2026-02-21T05:25:19.000Z",
+            "iconUrl": "b92e7cbd76b162b4ee88eb95ce42b3bbd93652cf.jpg",
+            "iconGrayUrl": "846c3398f4db34542c33ed473deae4a192a67f07.jpg",
+            "globalPct": 21
+        }
+    ]
+}

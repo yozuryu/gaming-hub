@@ -1,0 +1,56 @@
+{
+    "appId": 720280,
+    "hasAchievements": true,
+    "total": 2,
+    "unlocked": 0,
+    "gameName": "Fox Hime",
+    "achievements": [
+        {
+            "apiName": "NEW_ACHIEVEMENT_3_0",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The beginning",
+            "description": "It's the first time you start this game",
+            "iconUrl": "96d94f9ae2020573c539ee0bcb9da60ed77131d1.jpg",
+            "iconGrayUrl": "b2122c9fd02f9c018d2688b65ca7b717966da92f.jpg",
+            "hidden": false,
+            "globalPct": 65.2
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_3_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The end",
+            "description": "You reach the end of the story, Thanks for playing",
+            "iconUrl": "e111febdd8ae70c13d9dd106a89be842bab1addf.jpg",
+            "iconGrayUrl": "5de6cbc2bbba81f563d499d31fecb6bd04b4a366.jpg",
+            "hidden": false,
+            "globalPct": 34.4
+        }
+    ],
+    "playtimeForever": 165,
+    "lastPlayedTs": "2017-12-31T22:38:11.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/720280/b7c1bdade2da384bf9bcb48228f39053319160e1.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "NEW_ACHIEVEMENT_3_0",
+            "displayName": "The beginning",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "96d94f9ae2020573c539ee0bcb9da60ed77131d1.jpg",
+            "iconGrayUrl": "b2122c9fd02f9c018d2688b65ca7b717966da92f.jpg",
+            "globalPct": 65.2
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_3_1",
+            "displayName": "The end",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "e111febdd8ae70c13d9dd106a89be842bab1addf.jpg",
+            "iconGrayUrl": "5de6cbc2bbba81f563d499d31fecb6bd04b4a366.jpg",
+            "globalPct": 34.4
+        }
+    ]
+}

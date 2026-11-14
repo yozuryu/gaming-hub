@@ -1,0 +1,367 @@
+{
+    "appId": 275850,
+    "hasAchievements": true,
+    "total": 27,
+    "unlocked": 1,
+    "gameName": "No Man's Sky",
+    "achievements": [
+        {
+            "apiName": "NATURALIST",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Scanner Darkly",
+            "description": "Attain ‘Naturalist’ status in Planet Zoology Scanned",
+            "iconUrl": "28dcbf78426409acadb58a9a44d8138f392cb44e.jpg",
+            "iconGrayUrl": "26073e4adeebc0e8861425bcc0ffe5c13fc77e41.jpg",
+            "hidden": false,
+            "globalPct": 13.8
+        },
+        {
+            "apiName": "TRAILBLAZER",
+            "unlocked": true,
+            "unlockedAt": "2025-06-27T11:57:57.000Z",
+            "displayName": "The Stars, Like Dust",
+            "description": "Attain 'Trailblazer' status in Space Exploration",
+            "iconUrl": "e0150cea4966e9e1fd258d8bce049351301197e4.jpg",
+            "iconGrayUrl": "4096cf7b50855353a6070830fb31510b2b268718.jpg",
+            "hidden": false,
+            "globalPct": 44.8
+        },
+        {
+            "apiName": "LIMITEDFUNDS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Foundation",
+            "description": "Attain ‘Entrepreneur’ status in Most Units Accrued",
+            "iconUrl": "19042a7f38333541ae531f9696e5565222f0a107.jpg",
+            "iconGrayUrl": "eb69d4b2aea0c1a80eb254f240bd7983e666a269.jpg",
+            "hidden": false,
+            "globalPct": 60.7
+        },
+        {
+            "apiName": "CONFUSED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Babel-17",
+            "description": "Attain ‘Confused’ status in Words Collected",
+            "iconUrl": "a95f991caace28102b096b311220c37c2db845b6.jpg",
+            "iconGrayUrl": "d1acf02f54b4be4b4d702d0803c358042f0f1663.jpg",
+            "hidden": false,
+            "globalPct": 54.9
+        },
+        {
+            "apiName": "TAXONOMIST",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Contact",
+            "description": "Attain ‘Known’ status in Alien Colonist Encounters",
+            "iconUrl": "e6914dde493d614f8ddcf0dc2da8ebdff1e6840f.jpg",
+            "iconGrayUrl": "a5b4731e78ce2002418037559e9898de1f36c86c.jpg",
+            "hidden": false,
+            "globalPct": 53.4
+        },
+        {
+            "apiName": "THUG",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Use of Weapons",
+            "description": "Attain ‘Novice’ status in Ships Destroyed",
+            "iconUrl": "a113fa5a9fdc43a4bfc3c8e9eefed7dd3d83d512.jpg",
+            "iconGrayUrl": "3438f2a4df449d1e9479de8fc18c7b06547eb5e4.jpg",
+            "hidden": false,
+            "globalPct": 50.8
+        },
+        {
+            "apiName": "CLASSIFIER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Star Beast",
+            "description": "Attain ‘Archivist’ status in Planet Zoology Scanned",
+            "iconUrl": "0a15960049f3f135c43cbf56e011fee48ddf8b97.jpg",
+            "iconGrayUrl": "26073e4adeebc0e8861425bcc0ffe5c13fc77e41.jpg",
+            "hidden": false,
+            "globalPct": 4
+        },
+        {
+            "apiName": "PIONEER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Longest Voyage",
+            "description": "Attain 'Pioneer' status in Space Exploration",
+            "iconUrl": "495cfdeb808de4301f1f1b6927fb507dda58de9b.jpg",
+            "iconGrayUrl": "4096cf7b50855353a6070830fb31510b2b268718.jpg",
+            "hidden": false,
+            "globalPct": 21.4
+        },
+        {
+            "apiName": "SPACETRUCKER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Space Merchants",
+            "description": "Attain ‘Trader’ status in Most Units Accrued",
+            "iconUrl": "a7db82f9cf031d2c8650699620a141a8ec047aad.jpg",
+            "iconGrayUrl": "eb69d4b2aea0c1a80eb254f240bd7983e666a269.jpg",
+            "hidden": false,
+            "globalPct": 50.1
+        },
+        {
+            "apiName": "ALMOSTTHERE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Languages of Pao",
+            "description": "Attain ‘Interpreter’ status in Words Collected",
+            "iconUrl": "6fa137c0196416513b602dcab218dcd645bdc5ad.jpg",
+            "iconGrayUrl": "d1acf02f54b4be4b4d702d0803c358042f0f1663.jpg",
+            "hidden": false,
+            "globalPct": 35.2
+        },
+        {
+            "apiName": "ARCHIVIST",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Who Goes There?",
+            "description": "Attain ‘Diplomat’ status in Alien Colonist Encounters",
+            "iconUrl": "60469c813cb1163b667273072733d6b01a77cd5b.jpg",
+            "iconGrayUrl": "a5b4731e78ce2002418037559e9898de1f36c86c.jpg",
+            "hidden": false,
+            "globalPct": 30.6
+        },
+        {
+            "apiName": "WARCRIME",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pattern for Conquest",
+            "description": "Attain ‘Notorious’ status in Ships Destroyed",
+            "iconUrl": "1f1f1ab0eec5bb66088eb3fe5e3152ecae54cf88.jpg",
+            "iconGrayUrl": "3438f2a4df449d1e9479de8fc18c7b06547eb5e4.jpg",
+            "hidden": false,
+            "globalPct": 28.3
+        },
+        {
+            "apiName": "GETTINGON",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stranger in a Strange Land",
+            "description": "Attain ‘Robust’ status in Extreme Survival",
+            "iconUrl": "ad6ee2bc4cacc230e86b2a34a2056874b8bcb058.jpg",
+            "iconGrayUrl": "3e2d9b418cecde1299ef803df3198ca2bbb31811.jpg",
+            "hidden": false,
+            "globalPct": 2.9
+        },
+        {
+            "apiName": "PIONEER2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Symphony For A Lost Traveler",
+            "description": "Attain ‘Nomad’ status in On-foot Exploration",
+            "iconUrl": "074c86480501f3b8e6df1356a76f69d6bdd59714.jpg",
+            "iconGrayUrl": "1462168952dea039a1e8a8005d628d238aff7035.jpg",
+            "hidden": false,
+            "globalPct": 48
+        },
+        {
+            "apiName": "ENCYCLOPAEDIA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Galapagos",
+            "description": "Attain ‘Encyclopedia’ status in Planet Zoology Scanned",
+            "iconUrl": "3ec83fb4201e7101f1d5825ce01d23464d8371a8.jpg",
+            "iconGrayUrl": "26073e4adeebc0e8861425bcc0ffe5c13fc77e41.jpg",
+            "hidden": false,
+            "globalPct": 3.1
+        },
+        {
+            "apiName": "DISCOVERER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Space Odyssey",
+            "description": "Attain ‘Discoverer’ status in Space Exploration",
+            "iconUrl": "abdd69a585070d4bfc36b8f18cba043554857e13.jpg",
+            "iconGrayUrl": "4096cf7b50855353a6070830fb31510b2b268718.jpg",
+            "hidden": false,
+            "globalPct": 13.7
+        },
+        {
+            "apiName": "SHIPPINGMAGNATE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Diamond Age",
+            "description": "Attain ‘Magnate’ status in Most Units Accrued",
+            "iconUrl": "f5456fe4e62808ebea8744119d14493b3377c56d.jpg",
+            "iconGrayUrl": "eb69d4b2aea0c1a80eb254f240bd7983e666a269.jpg",
+            "hidden": false,
+            "globalPct": 46.3
+        },
+        {
+            "apiName": "BABELFISH",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Citizen of the Galaxy",
+            "description": "Attain ‘Babelfish’ status in Words Collected",
+            "iconUrl": "ad9a20dc8085b9ea68ec10ee7699d65c44049cf3.jpg",
+            "iconGrayUrl": "d1acf02f54b4be4b4d702d0803c358042f0f1663.jpg",
+            "hidden": false,
+            "globalPct": 19.2
+        },
+        {
+            "apiName": "ATTENBORG",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "What Mad Universe",
+            "description": "Attain ‘Ambassador’ status in Alien Colonist Encounters",
+            "iconUrl": "a42180c0978f839cb27545b9c05559975d217af5.jpg",
+            "iconGrayUrl": "a5b4731e78ce2002418037559e9898de1f36c86c.jpg",
+            "hidden": false,
+            "globalPct": 21.9
+        },
+        {
+            "apiName": "GENOCIDAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Forever War",
+            "description": "Attain ‘Legend’ status in Ships Destroyed",
+            "iconUrl": "dc5ddaf982342455a426f0496624d864751c9105.jpg",
+            "iconGrayUrl": "3438f2a4df449d1e9479de8fc18c7b06547eb5e4.jpg",
+            "hidden": false,
+            "globalPct": 21.6
+        },
+        {
+            "apiName": "METHUSELAH",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Sentinel",
+            "description": "Attain ‘Everlasting’ status in Extreme Survival",
+            "iconUrl": "7a0f63211f6eaa7c0adb73c074a34e3e66cd44ee.jpg",
+            "iconGrayUrl": "3e2d9b418cecde1299ef803df3198ca2bbb31811.jpg",
+            "hidden": false,
+            "globalPct": 1.7
+        },
+        {
+            "apiName": "THEEVERLASTING",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Have Spacesuit - Will Travel",
+            "description": "Attain ‘Adventurer’ status in On-foot Exploration",
+            "iconUrl": "f47ab90c7901b9cffdd7cf42a68f9d32841f815b.jpg",
+            "iconGrayUrl": "1462168952dea039a1e8a8005d628d238aff7035.jpg",
+            "hidden": false,
+            "globalPct": 31.1
+        },
+        {
+            "apiName": "CRADLE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cradle",
+            "description": "Claim a Base or Buy a Freighter",
+            "iconUrl": "3afe76084baa3dd92aae0b65a571debc294c7496.jpg",
+            "iconGrayUrl": "7ac131700041e87e46f1b0422648a94a81495f69.jpg",
+            "hidden": false,
+            "globalPct": 73.2
+        },
+        {
+            "apiName": "NAVIGATORS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Navigators",
+            "description": "Build an Exocraft",
+            "iconUrl": "1974ae21eb7c029066e2f551e7776509a8d7f49d.jpg",
+            "iconGrayUrl": "81fe59885f65d9bfa2609d02799ed1a9f3841dbe.jpg",
+            "hidden": false,
+            "globalPct": 31.1
+        },
+        {
+            "apiName": "REUNION",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Reunion",
+            "description": "Visit another Player's Base",
+            "iconUrl": "39681b3ee235013da1fbbe02cef1ff588f81c996.jpg",
+            "iconGrayUrl": "7460a96a4f8991c556327a5c6dceeba8ecbafb9d.jpg",
+            "hidden": false,
+            "globalPct": 20.8
+        },
+        {
+            "apiName": "TAKEADEEPBREATH",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Take a Deep Breath",
+            "description": "Reach the Centre of the Galaxy in Survival Mode",
+            "iconUrl": "80e37dcdf88e84e5285ff8e885a9cd8b3cb94419.jpg",
+            "iconGrayUrl": "7956ef8ffcb3c126f103f9b7c1952b595e648e7b.jpg",
+            "hidden": false,
+            "globalPct": 1.3
+        },
+        {
+            "apiName": "TOLIVEFOREVER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "To Live Forever",
+            "description": "Reach the Centre of the Galaxy in Permadeath Mode",
+            "iconUrl": "8e9490176f97027824b35b491c916eb3b47214fa.jpg",
+            "iconGrayUrl": "746f88b45db5ec59da47100e3300fdba1f23cec5.jpg",
+            "hidden": false,
+            "globalPct": 0.8
+        }
+    ],
+    "playtimeForever": 1334,
+    "lastPlayedTs": "2026-03-24T13:47:19.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/275850/fccb20f309ac5ae05b3cb4576a8a3357edf86f2e.jpg",
+    "lastUnlockedAt": "2025-06-27T11:57:57.000Z",
+    "lastUnlockName": "The Stars, Like Dust",
+    "preview": [
+        {
+            "apiName": "TRAILBLAZER",
+            "displayName": "The Stars, Like Dust",
+            "unlocked": true,
+            "unlockedAt": "2025-06-27T11:57:57.000Z",
+            "iconUrl": "e0150cea4966e9e1fd258d8bce049351301197e4.jpg",
+            "iconGrayUrl": "4096cf7b50855353a6070830fb31510b2b268718.jpg",
+            "globalPct": 44.8
+        },
+        {
+            "apiName": "NATURALIST",
+            "displayName": "A Scanner Darkly",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "28dcbf78426409acadb58a9a44d8138f392cb44e.jpg",
+            "iconGrayUrl": "26073e4adeebc0e8861425bcc0ffe5c13fc77e41.jpg",
+            "globalPct": 13.8
+        },
+        {
+            "apiName": "LIMITEDFUNDS",
+            "displayName": "Foundation",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "19042a7f38333541ae531f9696e5565222f0a107.jpg",
+            "iconGrayUrl": "eb69d4b2aea0c1a80eb254f240bd7983e666a269.jpg",
+            "globalPct": 60.7
+        },
+        {
+            "apiName": "CONFUSED",
+            "displayName": "Babel-17",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a95f991caace28102b096b311220c37c2db845b6.jpg",
+            "iconGrayUrl": "d1acf02f54b4be4b4d702d0803c358042f0f1663.jpg",
+            "globalPct": 54.9
+        },
+        {
+            "apiName": "TAXONOMIST",
+            "displayName": "Contact",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "e6914dde493d614f8ddcf0dc2da8ebdff1e6840f.jpg",
+            "iconGrayUrl": "a5b4731e78ce2002418037559e9898de1f36c86c.jpg",
+            "globalPct": 53.4
+        },
+        {
+            "apiName": "THUG",
+            "displayName": "Use of Weapons",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a113fa5a9fdc43a4bfc3c8e9eefed7dd3d83d512.jpg",
+            "iconGrayUrl": "3438f2a4df449d1e9479de8fc18c7b06547eb5e4.jpg",
+            "globalPct": 50.8
+        }
+    ]
+}

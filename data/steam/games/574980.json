@@ -1,0 +1,378 @@
+{
+    "appId": 574980,
+    "hasAchievements": true,
+    "total": 28,
+    "unlocked": 0,
+    "gameName": "Them's Fightin' Herds",
+    "achievements": [
+        {
+            "apiName": "COMPLETE_ARCADE_ARIZONA_GREENHORN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Kickin' 'n Stompin'",
+            "description": "Complete Arcade mode with Arizona on Greenhorn or higher difficulty.",
+            "iconUrl": "f230b02230d8be2a371aee4210532bb7cd2b8cf1.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 0.9
+        },
+        {
+            "apiName": "COMPLETE_ARCADE_VELVET_GREENHORN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ice Queen",
+            "description": "Complete Arcade mode with Velvet on Greenhorn or higher difficulty.",
+            "iconUrl": "badcba04704df66dd419f9cde259c6f6026009df.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 0.7
+        },
+        {
+            "apiName": "COMPLETE_ARCADE_OLEANDER_GREENHORN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dark Magic",
+            "description": "Complete Arcade mode with Oleander on Greenhorn or higher difficulty.",
+            "iconUrl": "1dad36977796534eb9af27223bd28d77ed149674.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 0.7
+        },
+        {
+            "apiName": "COMPLETE_ARCADE_PAPRIKA_GREENHORN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I Love You This Much",
+            "description": "Complete Arcade mode with Paprika on Greenhorn or higher difficulty.",
+            "iconUrl": "1159349aa0acd887d7af2bd601572f2602de171c.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 0.6
+        },
+        {
+            "apiName": "COMPLETE_ARCADE_POM_GREENHORN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Who Let The Dogs Out?",
+            "description": "Complete Arcade mode with Pom on Greenhorn or higher difficulty.",
+            "iconUrl": "7652873cb1c19833f5479d22475850356a9f73e6.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 0.5
+        },
+        {
+            "apiName": "COMPLETE_ARCADE_TIANHUO_GREENHORN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Honor For All",
+            "description": "Complete Arcade mode with Tianhuo on Greenhorn or higher difficulty.",
+            "iconUrl": "75ae7a0cfab6f8adfb131be4efa1917cb9582242.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 0.6
+        },
+        {
+            "apiName": "COMPLETE_ARCADE_SHANTY_GREENHORN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The GOAT",
+            "description": "Complete Arcade mode with Shanty on Greenhorn or higher difficulty.",
+            "iconUrl": "30f28c0e7043cbb97d7b3be2aeb52e7194a376c8.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 0.6
+        },
+        {
+            "apiName": "COMPLETE_ARCADE_STARTING_6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Key To Victory",
+            "description": "Complete Arcade mode with all \"starting 6\" characters on Greenhorn or higher difficulty.",
+            "iconUrl": "c11518cadc47af06f6a5cac5bdc85b1261329b4d.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 0.4
+        },
+        {
+            "apiName": "WIN_1_ONLINE_MATCH",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Worthy Opponent",
+            "description": "Win 1 online match.",
+            "iconUrl": "c034466d78dedf2af5f911f431595882f17cd847.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 10.9
+        },
+        {
+            "apiName": "WIN_10_ONLINE_MATCHES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Makin' Bacon",
+            "description": "Win 10 online matches.",
+            "iconUrl": "f8877fa6c8636fdc7115112b0744a64b83d4537d.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 6.1
+        },
+        {
+            "apiName": "WIN_25_ONLINE_MATCHES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Come At Me!",
+            "description": "Win 25 online matches.",
+            "iconUrl": "168115f55d96c570782a3dcf62e0b8d23321b23c.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 3.6
+        },
+        {
+            "apiName": "PLAY_1_ONLINE_MATCH",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Be Gentle...",
+            "description": "Play 1 online match.",
+            "iconUrl": "9b7393ec68ab95e8b6a07900193118808e495b5c.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 12.6
+        },
+        {
+            "apiName": "PLAY_25_ONLINE_MATCHES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Tenderhoof",
+            "description": "Play 25 online matches.",
+            "iconUrl": "5785dd18546c110fbcc32d01de20e1bd4d20d616.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 6
+        },
+        {
+            "apiName": "BEGIN_STORY_MODE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Once upon a time...",
+            "description": "Begin Story Mode.",
+            "iconUrl": "671d2fe413417df6c1532180efebe8f5f3fe1d1b.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 10.5
+        },
+        {
+            "apiName": "COMPLETE_THE_STORY_MODE_PROLOGUE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "... in the magical land of Foenum...",
+            "description": "Complete the Story Mode prologue.",
+            "iconUrl": "95af9409e339481e6a920526f5085742d4029375.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 10.6
+        },
+        {
+            "apiName": "COMPLETE_ARIZONAS_STORY_MODE_CHAPTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Champ'een of The Praire",
+            "description": "Complete Arizona's Story Mode chapter.",
+            "iconUrl": "d6650afa7a80518580865299bd2eea1aa523b7f3.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 2
+        },
+        {
+            "apiName": "OBTAIN_100_PERCENT_OF_COLLECTIBLES_ARIZONA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Doohickeys",
+            "description": "Obtain 100% of collectibles in Arizona's Story Mode chapter.",
+            "iconUrl": "12d549e5d4fbb6932829fc2b126c746071bd9948.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 0.8
+        },
+        {
+            "apiName": "STOMP_SON_OF_DEER_PAINTING",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sin'er Man",
+            "description": "",
+            "iconUrl": "0bfcdb2b15a77eb539512256ecfe34a44300ead6.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": true,
+            "globalPct": 0.7
+        },
+        {
+            "apiName": "STOMP_PAPRIKA_INTO_ORBIT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Alpaca Space Program",
+            "description": "",
+            "iconUrl": "c651be9b0062ac44d46cab312ad4d4a5c120d038.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": true,
+            "globalPct": 0.6
+        },
+        {
+            "apiName": "ALL_COMBO_ARIZONA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Well-Done",
+            "description": "Complete all combo trials for Arizona.",
+            "iconUrl": "5a9e8cdab971a6de5b5ce36066675a1f0519db8e.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 0.4
+        },
+        {
+            "apiName": "ALL_COMBO_VELVET",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Iced Out",
+            "description": "Complete all combo trials for Velvet.",
+            "iconUrl": "398752f2e78fd09608bbfd717a26c575fc83dd92.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 0.4
+        },
+        {
+            "apiName": "ALL_COMBO_OLEANDER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Valedictorian",
+            "description": "Complete all combo trials for Oleander.",
+            "iconUrl": "2fe71cc4fd0dc4d17890b8a5b9804dba71ef7292.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 0.4
+        },
+        {
+            "apiName": "ALL_COMBO_PAPRIKA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Love is a Battlefield",
+            "description": "Complete all combo trials for Paprika.",
+            "iconUrl": "b8a4bf7b952fc5205408550a4895b96c87bef12b.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 0.4
+        },
+        {
+            "apiName": "ALL_COMBO_POM",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "That'll Do",
+            "description": "Complete all combo trials for Pom.",
+            "iconUrl": "9cd147850bbee4b9a3570dc574b95146918c303d.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 0.3
+        },
+        {
+            "apiName": "ALL_COMBO_TIANHUO",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Way of the Dragon",
+            "description": "Complete all combo trials for Tianhuo.",
+            "iconUrl": "aa6dfddd9d020f801100803b0b8010fa2ed0010e.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 0.4
+        },
+        {
+            "apiName": "ALL_COMBO_SHANTY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Swashbuckle'd",
+            "description": "Complete all combo trials for Shanty.",
+            "iconUrl": "de34eeaa95507d30beb73f8bd616e6ca2edc71e4.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 0.4
+        },
+        {
+            "apiName": "ALL_COMBO_STARTING_6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "School of Hard Knocks",
+            "description": "Complete all combo trials for every \"starting 6\" character.",
+            "iconUrl": "6a2c119dc6a89e18cbde7e53e361565297ad9598.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 0.3
+        },
+        {
+            "apiName": "UNLOCK_ALL_TROPHIES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "High Priestess",
+            "description": "Unlock all other achievements.",
+            "iconUrl": "dcbfd7031c4c9b61fbf2f68ef0a0b7fbd49980dd.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "hidden": false,
+            "globalPct": 0.3
+        }
+    ],
+    "playtimeForever": 223,
+    "lastPlayedTs": "2024-07-04T01:19:10.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/574980/265c807b34b54f9417b83878093dce649a7a8e8e.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "COMPLETE_ARCADE_ARIZONA_GREENHORN",
+            "displayName": "Kickin' 'n Stompin'",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f230b02230d8be2a371aee4210532bb7cd2b8cf1.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "globalPct": 0.9
+        },
+        {
+            "apiName": "COMPLETE_ARCADE_VELVET_GREENHORN",
+            "displayName": "Ice Queen",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "badcba04704df66dd419f9cde259c6f6026009df.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "globalPct": 0.7
+        },
+        {
+            "apiName": "COMPLETE_ARCADE_OLEANDER_GREENHORN",
+            "displayName": "Dark Magic",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1dad36977796534eb9af27223bd28d77ed149674.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "globalPct": 0.7
+        },
+        {
+            "apiName": "COMPLETE_ARCADE_PAPRIKA_GREENHORN",
+            "displayName": "I Love You This Much",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1159349aa0acd887d7af2bd601572f2602de171c.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "globalPct": 0.6
+        },
+        {
+            "apiName": "COMPLETE_ARCADE_POM_GREENHORN",
+            "displayName": "Who Let The Dogs Out?",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "7652873cb1c19833f5479d22475850356a9f73e6.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "globalPct": 0.5
+        },
+        {
+            "apiName": "COMPLETE_ARCADE_TIANHUO_GREENHORN",
+            "displayName": "Honor For All",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "75ae7a0cfab6f8adfb131be4efa1917cb9582242.jpg",
+            "iconGrayUrl": "59e3008602ff429c37b58d81ebca16b4e4b2d321.jpg",
+            "globalPct": 0.6
+        }
+    ]
+}

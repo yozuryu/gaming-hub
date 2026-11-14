@@ -1,0 +1,323 @@
+{
+    "appId": 427700,
+    "hasAchievements": true,
+    "total": 23,
+    "unlocked": 18,
+    "gameName": "Zwei: The Ilvard Insurrection",
+    "achievements": [
+        {
+            "apiName": "BEATBOSS_1",
+            "unlocked": true,
+            "unlockedAt": "2018-08-27T18:18:41.000Z",
+            "displayName": "Mine-r Setbacks",
+            "description": "",
+            "iconUrl": "6a67c1147b080730228eb06752e94049305122c4.jpg",
+            "iconGrayUrl": "b59d079712514b0e5589092ebb46b881035d9d1b.jpg",
+            "hidden": true,
+            "globalPct": 23.1
+        },
+        {
+            "apiName": "BEATBOSS_2",
+            "unlocked": true,
+            "unlockedAt": "2018-08-27T23:25:58.000Z",
+            "displayName": "Wet Work",
+            "description": "",
+            "iconUrl": "94208ccd11bd23960f723a0653f2b69e7c8a5e6a.jpg",
+            "iconGrayUrl": "d086f276cd377ed462737c8f4f086daa52a663ac.jpg",
+            "hidden": true,
+            "globalPct": 18.8
+        },
+        {
+            "apiName": "BEATBOSS_3",
+            "unlocked": true,
+            "unlockedAt": "2018-08-29T23:00:31.000Z",
+            "displayName": "Adventures in Gardening",
+            "description": "",
+            "iconUrl": "f4afb2adb46f702ecbeca0d32cec049f962a4f70.jpg",
+            "iconGrayUrl": "f8e426dd8d67e9d60bd184a5eeee37d84f2a996c.jpg",
+            "hidden": true,
+            "globalPct": 15.5
+        },
+        {
+            "apiName": "BEATBOSS_4",
+            "unlocked": true,
+            "unlockedAt": "2018-08-30T22:44:14.000Z",
+            "displayName": "Flame Broiled",
+            "description": "",
+            "iconUrl": "2f6e76e48fb53b706e3902235b64729898408d49.jpg",
+            "iconGrayUrl": "14d605c8b0e5ada9377188467a97b60cfc10f82b.jpg",
+            "hidden": true,
+            "globalPct": 14.6
+        },
+        {
+            "apiName": "BEATBOSS_5",
+            "unlocked": true,
+            "unlockedAt": "2018-12-30T14:35:48.000Z",
+            "displayName": "Home Sweet Home",
+            "description": "",
+            "iconUrl": "1e05bd9dd13990efb3b0d9374058b0b97e77154d.jpg",
+            "iconGrayUrl": "35899376224d645b9d804b3566cc4dd91c6ebb43.jpg",
+            "hidden": true,
+            "globalPct": 13.1
+        },
+        {
+            "apiName": "BEATBOSS_6",
+            "unlocked": true,
+            "unlockedAt": "2018-12-30T18:27:37.000Z",
+            "displayName": "King of the Mountain",
+            "description": "",
+            "iconUrl": "fd03a749b3a1c3954b01150a539ae9dd23fd1545.jpg",
+            "iconGrayUrl": "852764cf15a80c555107cd73c4ccd8f42ea2f795.jpg",
+            "hidden": true,
+            "globalPct": 12.3
+        },
+        {
+            "apiName": "BEATBOSS_7",
+            "unlocked": true,
+            "unlockedAt": "2019-01-01T11:50:23.000Z",
+            "displayName": "Vampire Killer",
+            "description": "",
+            "iconUrl": "e60e23fd6fd4909cce093bfb3600475aa3942c65.jpg",
+            "iconGrayUrl": "ac279b1c9e19b7ae4d21c28fc2841a0f86b40a73.jpg",
+            "hidden": true,
+            "globalPct": 11.7
+        },
+        {
+            "apiName": "BEATBOSS_8",
+            "unlocked": true,
+            "unlockedAt": "2019-01-08T14:54:20.000Z",
+            "displayName": "The Storm Rages",
+            "description": "",
+            "iconUrl": "53a0cfd102aa36db6c5c7588d6fcd54cf6c796db.jpg",
+            "iconGrayUrl": "d79854abe467c5971fba7d8881c9750f53528916.jpg",
+            "hidden": true,
+            "globalPct": 10.7
+        },
+        {
+            "apiName": "BEATBOSS_9",
+            "unlocked": true,
+            "unlockedAt": "2019-01-10T14:10:33.000Z",
+            "displayName": "More Precious than Gold",
+            "description": "",
+            "iconUrl": "ae9f44f6ab6a919fb3246ff11535deacd81f2faa.jpg",
+            "iconGrayUrl": "5b4c9dd08c60c83c24abd330adf312ba42501bdd.jpg",
+            "hidden": true,
+            "globalPct": 10.3
+        },
+        {
+            "apiName": "ALLARMOR_RAGNA",
+            "unlocked": true,
+            "unlockedAt": "2019-01-08T14:38:52.000Z",
+            "displayName": "Fundergarments",
+            "description": "Collect all armors for Ragna.",
+            "iconUrl": "a4528d4bd4992c4cf49c796b7e4e296cd335eb97.jpg",
+            "iconGrayUrl": "4bc0da040acdbf5a2217677eb756b4e1bc4f5b19.jpg",
+            "hidden": false,
+            "globalPct": 5.9
+        },
+        {
+            "apiName": "ALLARMOR_ALWEN",
+            "unlocked": true,
+            "unlockedAt": "2019-01-08T13:58:56.000Z",
+            "displayName": "Wondergarments",
+            "description": "Collect all armors for Alwen.",
+            "iconUrl": "904e67fc7a1ec41db789cd52822f907bc11aab86.jpg",
+            "iconGrayUrl": "5b422466e4c4500474d0b8c06634ff61f1383fc6.jpg",
+            "hidden": false,
+            "globalPct": 5.7
+        },
+        {
+            "apiName": "ALLACCESSORIES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Trendsetter",
+            "description": "Collect all accessories.",
+            "iconUrl": "b61cea80802de2948a27963a7052c9a05c764222.jpg",
+            "iconGrayUrl": "fc75319977c5d242d47ce8e2d073c6727a333906.jpg",
+            "hidden": false,
+            "globalPct": 3.9
+        },
+        {
+            "apiName": "ALLWIDGETS",
+            "unlocked": true,
+            "unlockedAt": "2019-01-07T14:08:09.000Z",
+            "displayName": "There's a Widget for That",
+            "description": "Collect all widgets.",
+            "iconUrl": "6c35afcaf398c6644c372123250681ebe1d45fb5.jpg",
+            "iconGrayUrl": "522f60b9303187b7ae0d10335a4145968a2ce0d4.jpg",
+            "hidden": false,
+            "globalPct": 5.8
+        },
+        {
+            "apiName": "ALLFOODS",
+            "unlocked": true,
+            "unlockedAt": "2019-01-01T13:09:09.000Z",
+            "displayName": "Hungry Hungry Hit Points",
+            "description": "Obtain every type of food at least once.",
+            "iconUrl": "382d91051b5f559deb9483892e2c555ec44c504b.jpg",
+            "iconGrayUrl": "d04798cfda20eba728e3891683002f96a0427f2d.jpg",
+            "hidden": false,
+            "globalPct": 8.2
+        },
+        {
+            "apiName": "GOTSPIRALGEAR",
+            "unlocked": true,
+            "unlockedAt": "2019-01-06T16:25:20.000Z",
+            "displayName": "Drawn Into the Spiral",
+            "description": "Complete the trading sequence and obtain Ragna's Spiral Gear.",
+            "iconUrl": "0961bfbb38c9a796c5b0f9d4b902bcf4b4a7448c.jpg",
+            "iconGrayUrl": "379dda8e79f9a644adf580220f96a4bbb1e0cf0a.jpg",
+            "hidden": false,
+            "globalPct": 7.6
+        },
+        {
+            "apiName": "ALLARCANUMS",
+            "unlocked": true,
+            "unlockedAt": "2019-01-07T13:44:20.000Z",
+            "displayName": "With Our Powers Combined!",
+            "description": "Learn all of the Arcanum combo skills.",
+            "iconUrl": "e1028a3ec19fc9210af56145d53794a87030e65b.jpg",
+            "iconGrayUrl": "e907df7ec1dfe160461e74669ee25033bb9528d9.jpg",
+            "hidden": false,
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "CASHMONIES",
+            "unlocked": true,
+            "unlockedAt": "2019-01-06T05:20:13.000Z",
+            "displayName": "Penne For Your Thoughts",
+            "description": "Earn a cumulative total of 500,000 penne.",
+            "iconUrl": "0b273fe0abbd6629cd53dad817ab399fcff12e48.jpg",
+            "iconGrayUrl": "309aa8b0668669508f70a2321354b48e6469b002.jpg",
+            "hidden": false,
+            "globalPct": 8.1
+        },
+        {
+            "apiName": "ALLPETSLEVELLED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Heavy Petting",
+            "description": "Raise all pets to level 9.",
+            "iconUrl": "093761022f38818527ec7a66133a1ce2266a7639.jpg",
+            "iconGrayUrl": "f2ab7cde8ef7972eb7e245e29b81f8faa39a78e2.jpg",
+            "hidden": false,
+            "globalPct": 5
+        },
+        {
+            "apiName": "ALLCHARAINFO",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Nosiest Neighbor",
+            "description": "Discover all three pieces of info about every character.",
+            "iconUrl": "68f6cc69c514a9943623f7d48e374aeacf00ddaf.jpg",
+            "iconGrayUrl": "499c577f787ce3d34039c12a2c057946a826e4ed.jpg",
+            "hidden": false,
+            "globalPct": 3.3
+        },
+        {
+            "apiName": "BEATARENABOSS",
+            "unlocked": true,
+            "unlockedAt": "2019-01-05T12:30:56.000Z",
+            "displayName": "A Winner is You",
+            "description": "Defeat the mightiest challenger in the G-Colisseum.",
+            "iconUrl": "41ceb051f434dbe402336b605eb31b0057da2792.jpg",
+            "iconGrayUrl": "0032d8932238429d2f034272bbd8cda9401435db.jpg",
+            "hidden": false,
+            "globalPct": 6.8
+        },
+        {
+            "apiName": "BONUSDUNGEON",
+            "unlocked": true,
+            "unlockedAt": "2019-01-08T13:58:51.000Z",
+            "displayName": "Uncharted Territory",
+            "description": "Conquer the Illusory Labyrinth.",
+            "iconUrl": "3eae5065b838182c053b105857b716e99f8a18d7.jpg",
+            "iconGrayUrl": "fb559646fb0e3ce82a63b76aeb3455240b76ad49.jpg",
+            "hidden": false,
+            "globalPct": 5.9
+        },
+        {
+            "apiName": "MAXHUNTERRANK",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "High Flier",
+            "description": "Earn the \"Ace Hunter\" Treasure Hunter rank.",
+            "iconUrl": "13f61e346f98e3a68bde69cfc2d92c370622d721.jpg",
+            "iconGrayUrl": "dbe19aee5ba4c1a4cb06377ed686471dafd6e941.jpg",
+            "hidden": false,
+            "globalPct": 4
+        },
+        {
+            "apiName": "ALLHOTSPRINGS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Getting Steamy in Here...",
+            "description": "",
+            "iconUrl": "e46f46e569cc503cef888f4cd4d1bce3ef698a9f.jpg",
+            "iconGrayUrl": "226280e8f0e40dd9f336be69f48469bcff9d9eee.jpg",
+            "hidden": true,
+            "globalPct": 3.7
+        }
+    ],
+    "playtimeForever": 2373,
+    "lastPlayedTs": "2019-01-10T14:41:05.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/427700/50a28d084534c4edf3b26ca6d9692abea1b10ec6.jpg",
+    "lastUnlockedAt": "2019-01-10T14:10:33.000Z",
+    "lastUnlockName": "More Precious than Gold",
+    "preview": [
+        {
+            "apiName": "BEATBOSS_9",
+            "displayName": "More Precious than Gold",
+            "unlocked": true,
+            "unlockedAt": "2019-01-10T14:10:33.000Z",
+            "iconUrl": "ae9f44f6ab6a919fb3246ff11535deacd81f2faa.jpg",
+            "iconGrayUrl": "5b4c9dd08c60c83c24abd330adf312ba42501bdd.jpg",
+            "globalPct": 10.3
+        },
+        {
+            "apiName": "BEATBOSS_8",
+            "displayName": "The Storm Rages",
+            "unlocked": true,
+            "unlockedAt": "2019-01-08T14:54:20.000Z",
+            "iconUrl": "53a0cfd102aa36db6c5c7588d6fcd54cf6c796db.jpg",
+            "iconGrayUrl": "d79854abe467c5971fba7d8881c9750f53528916.jpg",
+            "globalPct": 10.7
+        },
+        {
+            "apiName": "ALLARMOR_RAGNA",
+            "displayName": "Fundergarments",
+            "unlocked": true,
+            "unlockedAt": "2019-01-08T14:38:52.000Z",
+            "iconUrl": "a4528d4bd4992c4cf49c796b7e4e296cd335eb97.jpg",
+            "iconGrayUrl": "4bc0da040acdbf5a2217677eb756b4e1bc4f5b19.jpg",
+            "globalPct": 5.9
+        },
+        {
+            "apiName": "ALLARMOR_ALWEN",
+            "displayName": "Wondergarments",
+            "unlocked": true,
+            "unlockedAt": "2019-01-08T13:58:56.000Z",
+            "iconUrl": "904e67fc7a1ec41db789cd52822f907bc11aab86.jpg",
+            "iconGrayUrl": "5b422466e4c4500474d0b8c06634ff61f1383fc6.jpg",
+            "globalPct": 5.7
+        },
+        {
+            "apiName": "BONUSDUNGEON",
+            "displayName": "Uncharted Territory",
+            "unlocked": true,
+            "unlockedAt": "2019-01-08T13:58:51.000Z",
+            "iconUrl": "3eae5065b838182c053b105857b716e99f8a18d7.jpg",
+            "iconGrayUrl": "fb559646fb0e3ce82a63b76aeb3455240b76ad49.jpg",
+            "globalPct": 5.9
+        },
+        {
+            "apiName": "ALLWIDGETS",
+            "displayName": "There's a Widget for That",
+            "unlocked": true,
+            "unlockedAt": "2019-01-07T14:08:09.000Z",
+            "iconUrl": "6c35afcaf398c6644c372123250681ebe1d45fb5.jpg",
+            "iconGrayUrl": "522f60b9303187b7ae0d10335a4145968a2ce0d4.jpg",
+            "globalPct": 5.8
+        }
+    ]
+}

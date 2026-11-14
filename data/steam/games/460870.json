@@ -1,0 +1,433 @@
+{
+    "appId": 460870,
+    "hasAchievements": true,
+    "total": 33,
+    "unlocked": 3,
+    "gameName": "GOD EATER RESURRECTION",
+    "achievements": [
+        {
+            "apiName": "TROPHY_ID_PLATINUM",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Legend Begins",
+            "description": "Collect all trophies.",
+            "iconUrl": "b37bf16a261cf9be8a690678478f1a3a174209bc.jpg",
+            "iconGrayUrl": "9030cb3c0abdcb7f50641387007d920860b4c441.jpg",
+            "hidden": false,
+            "globalPct": 1.9
+        },
+        {
+            "apiName": "TROPHY_ID_StoryDemo_01",
+            "unlocked": true,
+            "unlockedAt": "2017-09-17T19:46:44.000Z",
+            "displayName": "God Arc Compatible",
+            "description": "Pass the aptitude test.",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "hidden": false,
+            "globalPct": 82.9
+        },
+        {
+            "apiName": "TROPHY_ID_StoryDemo_02",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Resonance",
+            "description": "Perform a resonance between New-Type God Eaters.",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "hidden": false,
+            "globalPct": 28.6
+        },
+        {
+            "apiName": "TROPHY_ID_StoryDemo_03",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A New Leader",
+            "description": "Assume the role of 1st Unit Leader.",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "hidden": false,
+            "globalPct": 24.4
+        },
+        {
+            "apiName": "TROPHY_ID_StoryDemo_04",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Edge of Truth",
+            "description": "Vanquish Dyaus Pita and avenge your comrade.",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "hidden": false,
+            "globalPct": 16.1
+        },
+        {
+            "apiName": "TROPHY_ID_StoryDemo_05",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Blue Moon",
+            "description": "Thwart Schicksal's ambitions and succeed in preventing the Devouring Apocalypse.",
+            "iconUrl": "ea3327300ba9ea11a6ff4957e7e43c644002fbbe.jpg",
+            "iconGrayUrl": "cffad16c5d088dc68511d4f081dba83e6487d208.jpg",
+            "hidden": false,
+            "globalPct": 14.2
+        },
+        {
+            "apiName": "TROPHY_ID_StoryDemo_06",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Guardian of the Far East",
+            "description": "Wade into danger to rescue the Far East Branch from its predicament.",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "hidden": false,
+            "globalPct": 12.8
+        },
+        {
+            "apiName": "TROPHY_ID_StoryDemo_07",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Don't Run Away From Living",
+            "description": "Confront all hazards head-on and succeed in rescuing your comrades.",
+            "iconUrl": "ea3327300ba9ea11a6ff4957e7e43c644002fbbe.jpg",
+            "iconGrayUrl": "cffad16c5d088dc68511d4f081dba83e6487d208.jpg",
+            "hidden": false,
+            "globalPct": 10.2
+        },
+        {
+            "apiName": "TROPHY_ID_StoryDemo_08",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Beacon for Retaliation",
+            "description": "Overcome adversity and succeed in reinstating the 1st Unit.",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "hidden": false,
+            "globalPct": 8.6
+        },
+        {
+            "apiName": "TROPHY_ID_StoryDemo_09",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Until We Meet Again",
+            "description": "Unite with your comrades and settle your grudges.",
+            "iconUrl": "4c255ed92f7f8049db46213696a83e85d1a14d0c.jpg",
+            "iconGrayUrl": "37b101a033d66d14e12641ff75e9d70577a2bddf.jpg",
+            "hidden": false,
+            "globalPct": 8
+        },
+        {
+            "apiName": "TROPHY_ID_NpcAbility",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Camaraderie",
+            "description": "Teach an ally a new ability.",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "hidden": false,
+            "globalPct": 35.7
+        },
+        {
+            "apiName": "TROPHY_ID_AttributeCritical",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Exploiting Weakness",
+            "description": "Use a typed attack to devastate an enemy.",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "hidden": false,
+            "globalPct": 38.7
+        },
+        {
+            "apiName": "TROPHY_ID_EatAragami",
+            "unlocked": true,
+            "unlockedAt": "2018-03-30T19:56:36.000Z",
+            "displayName": "Divine Fodder",
+            "description": "Gain strength by devouring an Aragami.",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "hidden": false,
+            "globalPct": 58.6
+        },
+        {
+            "apiName": "TROPHY_ID_LinkAid",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Brink of Death",
+            "description": "Perform link aid on an ally.",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "hidden": false,
+            "globalPct": 26.3
+        },
+        {
+            "apiName": "TROPHY_ID_LinkBurst",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Shared Power",
+            "description": "Successfully use a Link Burst.",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "hidden": false,
+            "globalPct": 39.6
+        },
+        {
+            "apiName": "TROPHY_ID_PaSkillFirst",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Power Unleashed",
+            "description": "Activate a Control Unit's effect for the first time.",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "hidden": false,
+            "globalPct": 24.6
+        },
+        {
+            "apiName": "TROPHY_ID_EquipReinforce",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "God Arc Tuning",
+            "description": "Upgrade equipment for the first time.",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "hidden": false,
+            "globalPct": 44.1
+        },
+        {
+            "apiName": "TROPHY_ID_EquipComp",
+            "unlocked": true,
+            "unlockedAt": "2018-03-30T19:48:00.000Z",
+            "displayName": "New Gear",
+            "description": "Craft non-clothing equipment for the first time.",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "hidden": false,
+            "globalPct": 45.9
+        },
+        {
+            "apiName": "TROPHY_ID_ClearRareMission",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Urgent Mission Accomplished",
+            "description": "Clear an urgent mission for the first time.",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "hidden": false,
+            "globalPct": 37.1
+        },
+        {
+            "apiName": "TROPHY_ID_EnemyRegionBreak",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Broken Bond",
+            "description": "Break your first enemy bond.",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "hidden": false,
+            "globalPct": 51.4
+        },
+        {
+            "apiName": "TROPHY_ID_PaSkillAll",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Master Predator",
+            "description": "Activate five types of Control Unit effects at the same time.",
+            "iconUrl": "4c255ed92f7f8049db46213696a83e85d1a14d0c.jpg",
+            "iconGrayUrl": "37b101a033d66d14e12641ff75e9d70577a2bddf.jpg",
+            "hidden": false,
+            "globalPct": 7.3
+        },
+        {
+            "apiName": "TROPHY_ID_ClearRareMission_50",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Elite Unit",
+            "description": "Clear 50 urgent missions.",
+            "iconUrl": "ea3327300ba9ea11a6ff4957e7e43c644002fbbe.jpg",
+            "iconGrayUrl": "cffad16c5d088dc68511d4f081dba83e6487d208.jpg",
+            "hidden": false,
+            "globalPct": 2.7
+        },
+        {
+            "apiName": "TROPHY_ID_ClearRareMission_100",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Legendary Unit",
+            "description": "Clear 100 urgent missions.",
+            "iconUrl": "4c255ed92f7f8049db46213696a83e85d1a14d0c.jpg",
+            "iconGrayUrl": "37b101a033d66d14e12641ff75e9d70577a2bddf.jpg",
+            "hidden": false,
+            "globalPct": 2
+        },
+        {
+            "apiName": "TROPHY_ID_EquipRank_Max",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Real Treasure",
+            "description": "Obtain your first piece of rank 14 equipment.",
+            "iconUrl": "ea3327300ba9ea11a6ff4957e7e43c644002fbbe.jpg",
+            "iconGrayUrl": "cffad16c5d088dc68511d4f081dba83e6487d208.jpg",
+            "hidden": false,
+            "globalPct": 5.3
+        },
+        {
+            "apiName": "TROPHY_ID_EquipAllRank_Max",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Unstoppable Armament",
+            "description": "Obtain a complete set of rank 14 equipment.",
+            "iconUrl": "4c255ed92f7f8049db46213696a83e85d1a14d0c.jpg",
+            "iconGrayUrl": "37b101a033d66d14e12641ff75e9d70577a2bddf.jpg",
+            "hidden": false,
+            "globalPct": 2.5
+        },
+        {
+            "apiName": "TROPHY_ID_RareSkillSeed",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Jackpot",
+            "description": "Discover a rare Abandoned God Arc.",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "hidden": false,
+            "globalPct": 24
+        },
+        {
+            "apiName": "TROPHY_ID_SkillEffectKind_25",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Skill Master",
+            "description": "Activate 25 or more skill effects simultaneously.",
+            "iconUrl": "ea3327300ba9ea11a6ff4957e7e43c644002fbbe.jpg",
+            "iconGrayUrl": "cffad16c5d088dc68511d4f081dba83e6487d208.jpg",
+            "hidden": false,
+            "globalPct": 5.3
+        },
+        {
+            "apiName": "TROPHY_ID_OpenNpcRen",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Enigmatic God Eater",
+            "description": "Complete the Challenge Mission that unlocks Ren.",
+            "iconUrl": "ea3327300ba9ea11a6ff4957e7e43c644002fbbe.jpg",
+            "iconGrayUrl": "cffad16c5d088dc68511d4f081dba83e6487d208.jpg",
+            "hidden": false,
+            "globalPct": 4.5
+        },
+        {
+            "apiName": "TROPHY_ID_OpenNpcMaskOgre",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mysterious Masked Aristocrat",
+            "description": "Complete the Challenge Mission that unlocks Masked Ogre.",
+            "iconUrl": "4c255ed92f7f8049db46213696a83e85d1a14d0c.jpg",
+            "iconGrayUrl": "37b101a033d66d14e12641ff75e9d70577a2bddf.jpg",
+            "hidden": false,
+            "globalPct": 3.5
+        },
+        {
+            "apiName": "TROPHY_ID_MissionAddDifficulty",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Visions of Dread",
+            "description": "Clear a Perilous Challenge mission.",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "hidden": false,
+            "globalPct": 4.6
+        },
+        {
+            "apiName": "TROPHY_ID_SoroSurvivalDifficulty_Max",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Proud Survivor",
+            "description": "Clear a survival mission on the highest difficulty alone.",
+            "iconUrl": "4c255ed92f7f8049db46213696a83e85d1a14d0c.jpg",
+            "iconGrayUrl": "37b101a033d66d14e12641ff75e9d70577a2bddf.jpg",
+            "hidden": false,
+            "globalPct": 2.6
+        },
+        {
+            "apiName": "TROPHY_ID_EquipTypeUse_500",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Most Trusted Ally",
+            "description": "Use one type of equipment for 500 missions.",
+            "iconUrl": "ea3327300ba9ea11a6ff4957e7e43c644002fbbe.jpg",
+            "iconGrayUrl": "cffad16c5d088dc68511d4f081dba83e6487d208.jpg",
+            "hidden": false,
+            "globalPct": 2.1
+        },
+        {
+            "apiName": "TROPHY_ID_EnemyRegionBreak_100",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Destroyer",
+            "description": "Break 100 bonds.",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "hidden": false,
+            "globalPct": 22.1
+        }
+    ],
+    "playtimeForever": 220,
+    "lastPlayedTs": "2018-03-30T20:05:18.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/460870/0b3a9c5f24bbc389654d2f189093cafe3cad6e7a.jpg",
+    "lastUnlockedAt": "2018-03-30T19:56:36.000Z",
+    "lastUnlockName": "Divine Fodder",
+    "preview": [
+        {
+            "apiName": "TROPHY_ID_EatAragami",
+            "displayName": "Divine Fodder",
+            "unlocked": true,
+            "unlockedAt": "2018-03-30T19:56:36.000Z",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "globalPct": 58.6
+        },
+        {
+            "apiName": "TROPHY_ID_EquipComp",
+            "displayName": "New Gear",
+            "unlocked": true,
+            "unlockedAt": "2018-03-30T19:48:00.000Z",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "globalPct": 45.9
+        },
+        {
+            "apiName": "TROPHY_ID_StoryDemo_01",
+            "displayName": "God Arc Compatible",
+            "unlocked": true,
+            "unlockedAt": "2017-09-17T19:46:44.000Z",
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "globalPct": 82.9
+        },
+        {
+            "apiName": "TROPHY_ID_PLATINUM",
+            "displayName": "The Legend Begins",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "b37bf16a261cf9be8a690678478f1a3a174209bc.jpg",
+            "iconGrayUrl": "9030cb3c0abdcb7f50641387007d920860b4c441.jpg",
+            "globalPct": 1.9
+        },
+        {
+            "apiName": "TROPHY_ID_StoryDemo_02",
+            "displayName": "Resonance",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "globalPct": 28.6
+        },
+        {
+            "apiName": "TROPHY_ID_StoryDemo_03",
+            "displayName": "A New Leader",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9f64e852e26cf75c5f2f365a99dea5a074fcf669.jpg",
+            "iconGrayUrl": "6fe60150e9f8a0d11079689a6ba92993e9234acf.jpg",
+            "globalPct": 24.4
+        }
+    ]
+}

@@ -1,0 +1,389 @@
+{
+    "appId": 539330,
+    "hasAchievements": true,
+    "total": 29,
+    "unlocked": 15,
+    "gameName": "Light Fairytale Episode 1",
+    "achievements": [
+        {
+            "apiName": "achievement_ep1_dreamy_boy",
+            "unlocked": true,
+            "unlockedAt": "2026-04-03T14:25:32.000Z",
+            "displayName": "Dreamer boy",
+            "description": "",
+            "iconUrl": "2a5c913af5b4fe0b73fb8d12933cc0d3a561c3aa.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 30.7
+        },
+        {
+            "apiName": "achievement_ep1_hidden_miyu",
+            "unlocked": true,
+            "unlockedAt": "2026-04-03T14:32:32.000Z",
+            "displayName": "B-Bomb?!",
+            "description": "",
+            "iconUrl": "b4da5ec9cd2b943f8891a001c71deef1a46c803b.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 27
+        },
+        {
+            "apiName": "achievement_ep1_sneaky",
+            "unlocked": true,
+            "unlockedAt": "2018-11-14T15:51:45.000Z",
+            "displayName": "Sneaky",
+            "description": "",
+            "iconUrl": "2a5c913af5b4fe0b73fb8d12933cc0d3a561c3aa.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 57.4
+        },
+        {
+            "apiName": "achievement_ep1_cliff",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "That was close!",
+            "description": "",
+            "iconUrl": "2a5c913af5b4fe0b73fb8d12933cc0d3a561c3aa.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 34
+        },
+        {
+            "apiName": "achievement_ep1_home",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Welcome home!",
+            "description": "",
+            "iconUrl": "2a5c913af5b4fe0b73fb8d12933cc0d3a561c3aa.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 52.6
+        },
+        {
+            "apiName": "achievement_ep1_hiding_kuroko",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "There you are!",
+            "description": "",
+            "iconUrl": "2a5c913af5b4fe0b73fb8d12933cc0d3a561c3aa.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 29.1
+        },
+        {
+            "apiName": "achievement_ep1_station",
+            "unlocked": true,
+            "unlockedAt": "2018-11-14T16:06:26.000Z",
+            "displayName": "Ruled by these guys?!",
+            "description": "",
+            "iconUrl": "2a5c913af5b4fe0b73fb8d12933cc0d3a561c3aa.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 41.4
+        },
+        {
+            "apiName": "achievement_ep1_sprinter",
+            "unlocked": true,
+            "unlockedAt": "2018-11-14T15:56:57.000Z",
+            "displayName": "Out of my way!",
+            "description": "",
+            "iconUrl": "2a5c913af5b4fe0b73fb8d12933cc0d3a561c3aa.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 57.6
+        },
+        {
+            "apiName": "achievement_ep1_smile",
+            "unlocked": true,
+            "unlockedAt": "2018-11-14T16:04:23.000Z",
+            "displayName": "Scary smile...",
+            "description": "",
+            "iconUrl": "2a5c913af5b4fe0b73fb8d12933cc0d3a561c3aa.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 52.3
+        },
+        {
+            "apiName": "achievement_ep1_1st_win",
+            "unlocked": true,
+            "unlockedAt": "2018-11-14T16:14:23.000Z",
+            "displayName": "1st win!",
+            "description": "",
+            "iconUrl": "2a5c913af5b4fe0b73fb8d12933cc0d3a561c3aa.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 53.2
+        },
+        {
+            "apiName": "achievement_ep1_ar_beginner",
+            "unlocked": true,
+            "unlockedAt": "2018-11-14T16:14:42.000Z",
+            "displayName": "A.R. beginner",
+            "description": "",
+            "iconUrl": "2a5c913af5b4fe0b73fb8d12933cc0d3a561c3aa.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 38.9
+        },
+        {
+            "apiName": "achievement_ep1_fizzle_maniac",
+            "unlocked": true,
+            "unlockedAt": "2018-11-14T16:26:25.000Z",
+            "displayName": "Fizzle maniac",
+            "description": "",
+            "iconUrl": "ba27067e37fc5fe077fcb9066bb1dfc110bbf10b.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 39.9
+        },
+        {
+            "apiName": "achievement_ep1_precious",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "My precious...",
+            "description": "",
+            "iconUrl": "2a5c913af5b4fe0b73fb8d12933cc0d3a561c3aa.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 8
+        },
+        {
+            "apiName": "achievement_ep1_calculating",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Calculating guy",
+            "description": "",
+            "iconUrl": "ba27067e37fc5fe077fcb9066bb1dfc110bbf10b.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 29
+        },
+        {
+            "apiName": "achievement_ep1_stealth_caught",
+            "unlocked": true,
+            "unlockedAt": "2018-11-14T16:57:44.000Z",
+            "displayName": "\"Haru? Haru! Haruuu!\"",
+            "description": "",
+            "iconUrl": "2a5c913af5b4fe0b73fb8d12933cc0d3a561c3aa.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 31.6
+        },
+        {
+            "apiName": "achievement_ep1_high_scorer_club",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "High scorers club",
+            "description": "",
+            "iconUrl": "ba27067e37fc5fe077fcb9066bb1dfc110bbf10b.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 13.8
+        },
+        {
+            "apiName": "achievement_ep1_number_one",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Number one",
+            "description": "",
+            "iconUrl": "b4da5ec9cd2b943f8891a001c71deef1a46c803b.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 12.9
+        },
+        {
+            "apiName": "achievement_ep1_ex_number_one",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ex-number one",
+            "description": "",
+            "iconUrl": "b4da5ec9cd2b943f8891a001c71deef1a46c803b.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 10
+        },
+        {
+            "apiName": "achievement_ep1_kept_materials",
+            "unlocked": true,
+            "unlockedAt": "2018-11-15T12:58:26.000Z",
+            "displayName": "Materialist",
+            "description": "",
+            "iconUrl": "ba27067e37fc5fe077fcb9066bb1dfc110bbf10b.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 21
+        },
+        {
+            "apiName": "achievement_ep1_fury",
+            "unlocked": true,
+            "unlockedAt": "2018-11-14T16:18:12.000Z",
+            "displayName": "Don't anger me",
+            "description": "",
+            "iconUrl": "2a5c913af5b4fe0b73fb8d12933cc0d3a561c3aa.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 49.5
+        },
+        {
+            "apiName": "achievement_ep1_damage_100",
+            "unlocked": true,
+            "unlockedAt": "2018-11-14T16:15:05.000Z",
+            "displayName": "100+ HP damage",
+            "description": "",
+            "iconUrl": "2a5c913af5b4fe0b73fb8d12933cc0d3a561c3aa.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 49.2
+        },
+        {
+            "apiName": "achievement_ep1_damage_250",
+            "unlocked": true,
+            "unlockedAt": "2018-11-14T16:19:21.000Z",
+            "displayName": "250+ HP damage",
+            "description": "",
+            "iconUrl": "ba27067e37fc5fe077fcb9066bb1dfc110bbf10b.jpg",
+            "iconGrayUrl": "3b95419d13352ee35deadb5c98e722145af7485f.jpg",
+            "hidden": true,
+            "globalPct": 27.4
+        },
+        {
+            "apiName": "achievement_ep1_clear",
+            "unlocked": true,
+            "unlockedAt": "2018-11-15T13:29:31.000Z",
+            "displayName": "The journey begins",
+            "description": "Complete Haru's story.",
+            "iconUrl": "b4da5ec9cd2b943f8891a001c71deef1a46c803b.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": false,
+            "globalPct": 26
+        },
+        {
+            "apiName": "achievement_ep1_friends",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Childhood friends",
+            "description": "",
+            "iconUrl": "ba27067e37fc5fe077fcb9066bb1dfc110bbf10b.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 43.1
+        },
+        {
+            "apiName": "achievement_ep1_nightrider",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Night rider!",
+            "description": "",
+            "iconUrl": "106744ad5cc7116e164e268cff58803cfd2ccbe7.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 28.5
+        },
+        {
+            "apiName": "achievement_ep1_glasses",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Glasses...",
+            "description": "",
+            "iconUrl": "106744ad5cc7116e164e268cff58803cfd2ccbe7.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 18.6
+        },
+        {
+            "apiName": "achievement_ep1_freebie",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Freebie",
+            "description": "",
+            "iconUrl": "ba27067e37fc5fe077fcb9066bb1dfc110bbf10b.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": true,
+            "globalPct": 8.3
+        },
+        {
+            "apiName": "achievement_ep1_clear_p2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Alternate journey",
+            "description": "Complete Kuroko's story.",
+            "iconUrl": "ba27067e37fc5fe077fcb9066bb1dfc110bbf10b.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": false,
+            "globalPct": 11
+        },
+        {
+            "apiName": "achievement_ep1_allcleared",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Achievements cleared!",
+            "description": "",
+            "iconUrl": "4934b1b3323c0d553d7d8403a5349b3febb67416.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "hidden": false,
+            "globalPct": 4.6
+        }
+    ],
+    "playtimeForever": 193,
+    "lastPlayedTs": "2026-04-03T14:36:40.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/539330/fede24802944d93c6453e75e6a1263d738abf347.jpg",
+    "lastUnlockedAt": "2026-04-03T14:32:32.000Z",
+    "lastUnlockName": "B-Bomb?!",
+    "preview": [
+        {
+            "apiName": "achievement_ep1_hidden_miyu",
+            "displayName": "B-Bomb?!",
+            "unlocked": true,
+            "unlockedAt": "2026-04-03T14:32:32.000Z",
+            "iconUrl": "b4da5ec9cd2b943f8891a001c71deef1a46c803b.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "globalPct": 27
+        },
+        {
+            "apiName": "achievement_ep1_dreamy_boy",
+            "displayName": "Dreamer boy",
+            "unlocked": true,
+            "unlockedAt": "2026-04-03T14:25:32.000Z",
+            "iconUrl": "2a5c913af5b4fe0b73fb8d12933cc0d3a561c3aa.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "globalPct": 30.7
+        },
+        {
+            "apiName": "achievement_ep1_clear",
+            "displayName": "The journey begins",
+            "unlocked": true,
+            "unlockedAt": "2018-11-15T13:29:31.000Z",
+            "iconUrl": "b4da5ec9cd2b943f8891a001c71deef1a46c803b.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "globalPct": 26
+        },
+        {
+            "apiName": "achievement_ep1_kept_materials",
+            "displayName": "Materialist",
+            "unlocked": true,
+            "unlockedAt": "2018-11-15T12:58:26.000Z",
+            "iconUrl": "ba27067e37fc5fe077fcb9066bb1dfc110bbf10b.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "globalPct": 21
+        },
+        {
+            "apiName": "achievement_ep1_stealth_caught",
+            "displayName": "\"Haru? Haru! Haruuu!\"",
+            "unlocked": true,
+            "unlockedAt": "2018-11-14T16:57:44.000Z",
+            "iconUrl": "2a5c913af5b4fe0b73fb8d12933cc0d3a561c3aa.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "globalPct": 31.6
+        },
+        {
+            "apiName": "achievement_ep1_fizzle_maniac",
+            "displayName": "Fizzle maniac",
+            "unlocked": true,
+            "unlockedAt": "2018-11-14T16:26:25.000Z",
+            "iconUrl": "ba27067e37fc5fe077fcb9066bb1dfc110bbf10b.jpg",
+            "iconGrayUrl": "39e17f77077d630f393d03d4dfcf652fc8c93460.jpg",
+            "globalPct": 39.9
+        }
+    ]
+}

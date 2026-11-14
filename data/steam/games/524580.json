@@ -1,0 +1,400 @@
+{
+    "appId": 524580,
+    "hasAchievements": true,
+    "total": 30,
+    "unlocked": 0,
+    "gameName": "Fairy Fencer F Advent Dark Force",
+    "achievements": [
+        {
+            "apiName": "ACHIEVEMENT_00",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ultimate Fencer",
+            "description": "Obtained all the trophies. \"No one decides my fate except me!\"",
+            "iconUrl": "bd501341c1a3fa1dea832fb15aaa9c4b402743cf.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": false,
+            "globalPct": 2.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_01",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Journey Begins",
+            "description": "",
+            "iconUrl": "034bd9ab9605b49291b0bc9f6d2a93275476238e.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 70
+        },
+        {
+            "apiName": "ACHIEVEMENT_02",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Where… Are We?",
+            "description": "",
+            "iconUrl": "75fd5a19802108b03285d7da3eee96f42711b42f.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 27.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_03",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Goddess Story Cleared",
+            "description": "",
+            "iconUrl": "06f6bb8548356c633106bcb79825b5861dbe64df.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 18.2
+        },
+        {
+            "apiName": "ACHIEVEMENT_04",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Vile God Story Cleared",
+            "description": "",
+            "iconUrl": "2b89444a6baca475e5291ea862f0e38dab874e28.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 8.4
+        },
+        {
+            "apiName": "ACHIEVEMENT_05",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Evil Goddess Story Cleared",
+            "description": "",
+            "iconUrl": "ff3933189e7522f928889e0a2f32d16bade9b14d.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 7.7
+        },
+        {
+            "apiName": "ACHIEVEMENT_06",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Unsealed Deities",
+            "description": "",
+            "iconUrl": "3d5c7ac998bdf7f3b230aa15d7986b983ca2cbcd.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 6.2
+        },
+        {
+            "apiName": "ACHIEVEMENT_07",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Berserker",
+            "description": "",
+            "iconUrl": "cdc1fe7e8f2d7f32c78205777c517f3979316fc2.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 3.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_08",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Tenser Fencer",
+            "description": "",
+            "iconUrl": "03fa93a704b9187e65bffd8dc21e779506d48f02.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 16
+        },
+        {
+            "apiName": "ACHIEVEMENT_09",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Surging Waves of Fury",
+            "description": "",
+            "iconUrl": "37a98f9c3b0f586297a8114ad50b7fa6c1ba0e6b.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 12.3
+        },
+        {
+            "apiName": "ACHIEVEMENT_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Lengthy Relationship",
+            "description": "",
+            "iconUrl": "38c97405f1753ad3bd6eba3687bfecf93950206b.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 9.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_11",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Avalanche Master",
+            "description": "",
+            "iconUrl": "63d303fb67a78f8abff2877d308b52b0f02892fb.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 5.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_12",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Air Master",
+            "description": "",
+            "iconUrl": "9c5f2525e276def443473bec44118b7781ceb89e.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 15
+        },
+        {
+            "apiName": "ACHIEVEMENT_13",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Maximum Firepower",
+            "description": "",
+            "iconUrl": "aaa7acefb698b41047e8d86d7418d69ea331dac2.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 19.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_14",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The World's Strongest",
+            "description": "",
+            "iconUrl": "f86a26be7a5e962a2c0f0f38677be787278d7f14.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 11.5
+        },
+        {
+            "apiName": "ACHIEVEMENT_15",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Gimme a Boost",
+            "description": "",
+            "iconUrl": "ef4656d95cff08b89d3238a6bb3e8e735fe2c226.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 56.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_16",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fury Meister",
+            "description": "",
+            "iconUrl": "1a1b61350f592439b2a4d1e402dd3c288550bcf2.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 6.2
+        },
+        {
+            "apiName": "ACHIEVEMENT_17",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bond with Fairy",
+            "description": "",
+            "iconUrl": "d91371d8b64cde0f9e5450df5963927ecb1f2fb9.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 27.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_18",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Shukesoo's Eviction",
+            "description": "",
+            "iconUrl": "3f58e38ad2a670eab0f53b3f35597c23bacda7d9.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 5.7
+        },
+        {
+            "apiName": "ACHIEVEMENT_19",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Diligent Worker",
+            "description": "",
+            "iconUrl": "5f2fed2781459aaf6296d157d7c5f4d15ecb6e34.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 8.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_20",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "We're In The Money!",
+            "description": "",
+            "iconUrl": "1639b5372acf9f4263180f8fef1ea30c71b3fca0.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 7.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_21",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Amateur",
+            "description": "",
+            "iconUrl": "e9a60d5ab8e3bda8337272281c3ae6b7e8d62167.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 51.4
+        },
+        {
+            "apiName": "ACHIEVEMENT_22",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Veteran",
+            "description": "",
+            "iconUrl": "9f94b00e095f80e0f8159336e240b7d0d07bea5b.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 33.2
+        },
+        {
+            "apiName": "ACHIEVEMENT_23",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Professional",
+            "description": "",
+            "iconUrl": "39581684f296dfd306970c12104ed8cb5d8ad054.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 20.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_24",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Road of Thorns",
+            "description": "Finished the game on HARD without changing the difficulty. \"Your only redeeming trait was how you would never give up. Am I wrong?\"",
+            "iconUrl": "77e06b0b9254f9e09cd1c185e49a93e9c9f6ae4b.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": false,
+            "globalPct": 7.9
+        },
+        {
+            "apiName": "ACHIEVEMENT_25",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Peaceful Resolution",
+            "description": "",
+            "iconUrl": "4a5d470ad2a070529d593ca293bc3ea0bded5694.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": true,
+            "globalPct": 3.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_26",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Crusher",
+            "description": "Defeated the enemies Devilkin, Iris, and EX Harariel within Shukesoo's Tower only after destroying all of their parts. \"I adore shattering human emotions into pieces!\"",
+            "iconUrl": "612f9d8a9a6b17821ef096cedd34a084268519c2.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": false,
+            "globalPct": 3.5
+        },
+        {
+            "apiName": "ACHIEVEMENT_27",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Male Bonding!?",
+            "description": "Defeated the Imperial Gold Dragon with only a party of 3 or more men (Pippin excluded). \"I have absolutely no interest in the female body.\"",
+            "iconUrl": "c52ca11a79eac90ee9dcd332968afafb29332dff.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": false,
+            "globalPct": 4
+        },
+        {
+            "apiName": "ACHIEVEMENT_28",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Woman's Garden",
+            "description": "Defeated Artemis with only a party of 3 or more women (Pippin excluded). \"I don't think we should let the boys see this.\"",
+            "iconUrl": "bb2212b401fde665fcc3d9bb71e27c08cf0e7f00.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": false,
+            "globalPct": 3.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_29",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Blue Gale",
+            "description": "Continued a Boost Dash for 30 seconds. \"The Azure Gale!?\"",
+            "iconUrl": "f7754321ed9b2ae45c23d100802ab41fb7c2f407.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "hidden": false,
+            "globalPct": 5.7
+        }
+    ],
+    "playtimeForever": 349,
+    "lastPlayedTs": "2025-02-12T14:24:36.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/524580/cc41a898533cb54d384cc4a6cf59db488fa30afd.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACHIEVEMENT_00",
+            "displayName": "Ultimate Fencer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "bd501341c1a3fa1dea832fb15aaa9c4b402743cf.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "globalPct": 2.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_01",
+            "displayName": "The Journey Begins",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "034bd9ab9605b49291b0bc9f6d2a93275476238e.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "globalPct": 70
+        },
+        {
+            "apiName": "ACHIEVEMENT_02",
+            "displayName": "Where… Are We?",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "75fd5a19802108b03285d7da3eee96f42711b42f.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "globalPct": 27.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_03",
+            "displayName": "Goddess Story Cleared",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "06f6bb8548356c633106bcb79825b5861dbe64df.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "globalPct": 18.2
+        },
+        {
+            "apiName": "ACHIEVEMENT_04",
+            "displayName": "Vile God Story Cleared",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "2b89444a6baca475e5291ea862f0e38dab874e28.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "globalPct": 8.4
+        },
+        {
+            "apiName": "ACHIEVEMENT_05",
+            "displayName": "Evil Goddess Story Cleared",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "ff3933189e7522f928889e0a2f32d16bade9b14d.jpg",
+            "iconGrayUrl": "54e79ba81319522cfe0ba8f4badfb7e286f034bf.jpg",
+            "globalPct": 7.7
+        }
+    ]
+}

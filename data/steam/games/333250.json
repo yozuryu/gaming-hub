@@ -1,0 +1,202 @@
+{
+    "appId": 333250,
+    "hasAchievements": true,
+    "total": 12,
+    "unlocked": 0,
+    "gameName": "Forward to the Sky",
+    "achievements": [
+        {
+            "apiName": "CLEAR_STAGE_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "1st Level",
+            "description": "1st Level explored",
+            "iconUrl": "48dc6c38e6943862dd3b5543a7fd7a94ae008e2a.jpg",
+            "iconGrayUrl": "ef0cf228c8367e51b596703016c9e52077f86e50.jpg",
+            "hidden": false,
+            "globalPct": 52.1
+        },
+        {
+            "apiName": "CLEAR_STAGE_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "2nd Level",
+            "description": "2nd Level explored",
+            "iconUrl": "c78017d6c1d9585be9ce15afb46b3dda5627ce3a.jpg",
+            "iconGrayUrl": "d05afca56cbdac3122192de04ebfb62790b229fd.jpg",
+            "hidden": false,
+            "globalPct": 33
+        },
+        {
+            "apiName": "CLEAR_STAGE_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "3rd Level",
+            "description": "3rd Level explored",
+            "iconUrl": "e74a7d95aae739c92b774d9cef7b2a5f3c23f2ea.jpg",
+            "iconGrayUrl": "19e78dc54f923aec9f82f915b9ada812afaf38ea.jpg",
+            "hidden": false,
+            "globalPct": 27.6
+        },
+        {
+            "apiName": "CLEAR_STAGE_4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "4th Level",
+            "description": "4th Level explored",
+            "iconUrl": "612506f308b829e8ec94ae4f2bf564fdc0456fcc.jpg",
+            "iconGrayUrl": "f24f542931759264a20bcadedf9baa2e0d0af2ae.jpg",
+            "hidden": false,
+            "globalPct": 22
+        },
+        {
+            "apiName": "CLEAR_STAGE_5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "5th Level",
+            "description": "5th Level explored",
+            "iconUrl": "5d259a7cd0fb595ae933fd8ad619188caf338fb3.jpg",
+            "iconGrayUrl": "133356b980a6ec4fff8b350bd2e37d3ae43c2d94.jpg",
+            "hidden": false,
+            "globalPct": 20.5
+        },
+        {
+            "apiName": "CLEAR_STAGE_6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Final Level",
+            "description": "Sky Tower explored",
+            "iconUrl": "cdc731606ec0b345f84c5c321c4c111f3c92e57d.jpg",
+            "iconGrayUrl": "783aa04f77c2a5794bdb99c6e0f6adff49692b0d.jpg",
+            "hidden": false,
+            "globalPct": 20.2
+        },
+        {
+            "apiName": "CLEAR_STAGE_1_FULL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Chapter 1",
+            "description": "Chapter 1 story revealed",
+            "iconUrl": "7f3193bd46398068de5ec6ad667ddc57fc7cdf5c.jpg",
+            "iconGrayUrl": "3e49db1e9180db3579c8037c5a8563fa6de9f3da.jpg",
+            "hidden": false,
+            "globalPct": 40
+        },
+        {
+            "apiName": "CLEAR_STAGE_2_FULL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Chapter 2",
+            "description": "Chapter 2 story revealed",
+            "iconUrl": "693cfa3869f3814b30fdd64488b9aa93f9f31c09.jpg",
+            "iconGrayUrl": "b55d5af6aed28da9cf83e9e24c4ad280826c4237.jpg",
+            "hidden": false,
+            "globalPct": 20.8
+        },
+        {
+            "apiName": "CLEAR_STAGE_3_FULL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Chapter 3",
+            "description": "Chapter 3 story revealed",
+            "iconUrl": "dcfa9fdda7ca4db0f1576640dfbb22c8f3297a45.jpg",
+            "iconGrayUrl": "d73d7a04b15ed1607ce34a84c032ae954f8467d9.jpg",
+            "hidden": false,
+            "globalPct": 19.1
+        },
+        {
+            "apiName": "CLEAR_STAGE_4_FULL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Chapter 4",
+            "description": "Chapter 4 story revealed",
+            "iconUrl": "52b234d93617bb5842bcc828017ecba3b46dc262.jpg",
+            "iconGrayUrl": "147b73337d702ab2c2b12ca2f7714f0b61cbcf71.jpg",
+            "hidden": false,
+            "globalPct": 17.4
+        },
+        {
+            "apiName": "CLEAR_STAGE_5_FULL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Chapter 5",
+            "description": "Chapter 5 story revealed",
+            "iconUrl": "ae11d019e7f33a55e4a04115acaeb7e4eb1b27c7.jpg",
+            "iconGrayUrl": "e31ec01f50bed42a4b107f7c6aa50cdf37b326ba.jpg",
+            "hidden": false,
+            "globalPct": 16.3
+        },
+        {
+            "apiName": "CLEAR_STAGE_6_FULL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Final Chapter",
+            "description": "Final Chapter story revealed",
+            "iconUrl": "48b74efde85d31c47762d1e7ec021b9f8265fb2e.jpg",
+            "iconGrayUrl": "f24ef183d74de8fdea3a3b5ec5e111168e9864dd.jpg",
+            "hidden": false,
+            "globalPct": 20
+        }
+    ],
+    "playtimeForever": 200,
+    "lastPlayedTs": "2024-05-31T23:02:34.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/333250/9fa49247457798d52780cd7c3e47069b939ef7ea.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "CLEAR_STAGE_1",
+            "displayName": "1st Level",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "48dc6c38e6943862dd3b5543a7fd7a94ae008e2a.jpg",
+            "iconGrayUrl": "ef0cf228c8367e51b596703016c9e52077f86e50.jpg",
+            "globalPct": 52.1
+        },
+        {
+            "apiName": "CLEAR_STAGE_2",
+            "displayName": "2nd Level",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c78017d6c1d9585be9ce15afb46b3dda5627ce3a.jpg",
+            "iconGrayUrl": "d05afca56cbdac3122192de04ebfb62790b229fd.jpg",
+            "globalPct": 33
+        },
+        {
+            "apiName": "CLEAR_STAGE_3",
+            "displayName": "3rd Level",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "e74a7d95aae739c92b774d9cef7b2a5f3c23f2ea.jpg",
+            "iconGrayUrl": "19e78dc54f923aec9f82f915b9ada812afaf38ea.jpg",
+            "globalPct": 27.6
+        },
+        {
+            "apiName": "CLEAR_STAGE_4",
+            "displayName": "4th Level",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "612506f308b829e8ec94ae4f2bf564fdc0456fcc.jpg",
+            "iconGrayUrl": "f24f542931759264a20bcadedf9baa2e0d0af2ae.jpg",
+            "globalPct": 22
+        },
+        {
+            "apiName": "CLEAR_STAGE_5",
+            "displayName": "5th Level",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "5d259a7cd0fb595ae933fd8ad619188caf338fb3.jpg",
+            "iconGrayUrl": "133356b980a6ec4fff8b350bd2e37d3ae43c2d94.jpg",
+            "globalPct": 20.5
+        },
+        {
+            "apiName": "CLEAR_STAGE_6",
+            "displayName": "Final Level",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "cdc731606ec0b345f84c5c321c4c111f3c92e57d.jpg",
+            "iconGrayUrl": "783aa04f77c2a5794bdb99c6e0f6adff49692b0d.jpg",
+            "globalPct": 20.2
+        }
+    ]
+}

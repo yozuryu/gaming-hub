@@ -1,0 +1,312 @@
+{
+    "appId": 424840,
+    "hasAchievements": true,
+    "total": 22,
+    "unlocked": 0,
+    "gameName": "Little Nightmares",
+    "achievements": [
+        {
+            "apiName": "LittleLostThings",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Little Lost Things",
+            "description": "Kindness will be your undoing!",
+            "iconUrl": "2db89ed8020ab7a16715a9da8bb13d4aa377362b.jpg",
+            "iconGrayUrl": "9e63a1139b068d2b8dfbc7fc711f744af6951901.jpg",
+            "hidden": false,
+            "globalPct": 2.7
+        },
+        {
+            "apiName": "KitchenHand",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Kitchen Hand",
+            "description": "",
+            "iconUrl": "c38cd433ab0da4286ed46469848d23d713a683d3.jpg",
+            "iconGrayUrl": "f1dce0255cad24a9ee4030912e2d30a80034cedf.jpg",
+            "hidden": true,
+            "globalPct": 3.2
+        },
+        {
+            "apiName": "HighlySprung",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Highly Sprung",
+            "description": "",
+            "iconUrl": "9ee4e9e87137337ba577e65cfdf9ae93352be052.jpg",
+            "iconGrayUrl": "4d2318130a0a58e4d8eb68532c15d95d28b9610c.jpg",
+            "hidden": true,
+            "globalPct": 36.4
+        },
+        {
+            "apiName": "Rascal",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Rascal",
+            "description": "",
+            "iconUrl": "b1816b4d3d62b3ecdb51e084560dd6769ad6fcbf.jpg",
+            "iconGrayUrl": "9c1fa6c3280c1bec41d805c210a433e2cee3c2be.jpg",
+            "hidden": true,
+            "globalPct": 3.2
+        },
+        {
+            "apiName": "LightUpYourLife",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Light Up Your Life",
+            "description": "Not all lights can be trusted, but these should be quite safe!",
+            "iconUrl": "20f23da299c25e98b1fa8dbc8fefa5d05be467ef.jpg",
+            "iconGrayUrl": "ebd2ed1322f3ce4f044d4bdfdebdf2d01851c768.jpg",
+            "hidden": false,
+            "globalPct": 10.4
+        },
+        {
+            "apiName": "ThePrison",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Prison",
+            "description": "Look how the canary has flown its cage!",
+            "iconUrl": "28353a41c818fa0d905c12d84ae2e3e1bb5c0d9f.jpg",
+            "iconGrayUrl": "965f31900be52057689eece3586f3bd4a7cfa006.jpg",
+            "hidden": false,
+            "globalPct": 51.3
+        },
+        {
+            "apiName": "TheLair",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Lair",
+            "description": "Little lost things sometimes find their way home.",
+            "iconUrl": "852034c21dd269c8af8bea087b4c2654012be7aa.jpg",
+            "iconGrayUrl": "c8cbc031eace07069c8403ba7a5e3438c13bfd37.jpg",
+            "hidden": false,
+            "globalPct": 36.7
+        },
+        {
+            "apiName": "TheKitchen",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Kitchen",
+            "description": "The Chefs will miss you!",
+            "iconUrl": "1b42737e96c13204b504eb8f2c29841292e3b68d.jpg",
+            "iconGrayUrl": "122d13b8ea3a07403baa354031119d15bb212d14.jpg",
+            "hidden": false,
+            "globalPct": 32.1
+        },
+        {
+            "apiName": "TheGuestArea",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Guest Area",
+            "description": "Little fox among hungry wolves!",
+            "iconUrl": "7cd9b93aa76075f22fc7cf3db10f2e8a53819349.jpg",
+            "iconGrayUrl": "33074d57694e4c4ffe58b488f0738b49f8fd0203.jpg",
+            "hidden": false,
+            "globalPct": 30.6
+        },
+        {
+            "apiName": "TheLadysQuarters",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Lady's Quarters",
+            "description": "A storm is coming. That coat should come in useful.",
+            "iconUrl": "f838ce2088c7426ba5a0f2372dce51c94ac62d96.jpg",
+            "iconGrayUrl": "d0fb9b219e0bc43afe3d0603d764e6707d38d94d.jpg",
+            "hidden": false,
+            "globalPct": 30
+        },
+        {
+            "apiName": "Elusive",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Elusive",
+            "description": "",
+            "iconUrl": "e62c7dbe8ca52200d566cbc9653aace161666563.jpg",
+            "iconGrayUrl": "2a20bfa38cb6276e20cec9565cef0178649ee8ca.jpg",
+            "hidden": true,
+            "globalPct": 23.2
+        },
+        {
+            "apiName": "Glissando",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Six's Song",
+            "description": "",
+            "iconUrl": "4b6a37eeefe5c86eff0dc348974b75268657647d.jpg",
+            "iconGrayUrl": "5f8ecea2445f247fa25523ff2be444656171a543.jpg",
+            "hidden": true,
+            "globalPct": 4.8
+        },
+        {
+            "apiName": "HardToTheCore",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hard to the Core",
+            "description": "What’s different about you? Why are you so brave?",
+            "iconUrl": "22fa7ad777ad3c1ab87ed1fb40ecbfe99e5af5f5.jpg",
+            "iconGrayUrl": "e5887231bdeacf228f26f17871634a3fdf1be49f.jpg",
+            "hidden": false,
+            "globalPct": 1.6
+        },
+        {
+            "apiName": "SoClose",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "So Close",
+            "description": "You'll do better next time.",
+            "iconUrl": "a0c70bba2099cce6bf78aa184c1a5d4121eb5ccf.jpg",
+            "iconGrayUrl": "7f07f18836572de6063bc83fb1caef83cd943235.jpg",
+            "hidden": false,
+            "globalPct": 6
+        },
+        {
+            "apiName": "NotAlone",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Not Alone",
+            "description": "What's new with you?",
+            "iconUrl": "c7db33d5aaba2e268e9fbae83e015c8209b33c51.jpg",
+            "iconGrayUrl": "12c9962d257bc28524f8753ec705a62cd537febf.jpg",
+            "hidden": false,
+            "globalPct": 2.1
+        },
+        {
+            "apiName": "FunAndGamesAhead",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fun & Games Ahead",
+            "description": "",
+            "iconUrl": "c2b720b10b4aa7dc7b9e60227b3e9f4a0ec85887.jpg",
+            "iconGrayUrl": "0f2d1906bc5fc3fb2797bcf9c0426e816dd922f1.jpg",
+            "hidden": true,
+            "globalPct": 2.5
+        },
+        {
+            "apiName": "EndInSight",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "End in Sight",
+            "description": "The final stretch will be largely uneventful.",
+            "iconUrl": "7f5188f88852ab6178037c9997d18159d930ac66.jpg",
+            "iconGrayUrl": "6f6c030d3e1285f6c7fd3a37bebf4a049ba15fb6.jpg",
+            "hidden": false,
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "IsAnybodyOutThere",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Is Anybody Out There?",
+            "description": "I wish I could visit you there.",
+            "iconUrl": "267d9d54b3c37dfb8a33154fe28e1675f98d2d89.jpg",
+            "iconGrayUrl": "3ee7c2552e38c9e772ae08c0e9618f7c84cffe75.jpg",
+            "hidden": false,
+            "globalPct": 2
+        },
+        {
+            "apiName": "AshesInTheMaw",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ashes in The Maw",
+            "description": "",
+            "iconUrl": "ea3703cef4eb9de35bd838cd78ed2423d7b52c5d.jpg",
+            "iconGrayUrl": "9d423ca0b2f30d7856c470d41e05f3831a992a53.jpg",
+            "hidden": true,
+            "globalPct": 2.1
+        },
+        {
+            "apiName": "WellMeetAgain",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": " We'll Meet Again",
+            "description": "",
+            "iconUrl": "6da238756da99ad76f38665f1e3b3a618d15ca89.jpg",
+            "iconGrayUrl": "78f80792ae636b5e25111f38dd726b1d72d0c929.jpg",
+            "hidden": true,
+            "globalPct": 4.7
+        },
+        {
+            "apiName": "AshesToAshes",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ashes to Ashes",
+            "description": "",
+            "iconUrl": "59c5e01e76c8741c496893f6c5c416fd00395f0f.jpg",
+            "iconGrayUrl": "34ea4e9153976971a95e762c572ccd308ec55d53.jpg",
+            "hidden": true,
+            "globalPct": 2.4
+        },
+        {
+            "apiName": "ImLosingYou",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I'm Losing You",
+            "description": "",
+            "iconUrl": "89d625616f2464b90de855d2c9e7bfece8e3eef9.jpg",
+            "iconGrayUrl": "a7b920e52ef0a5d35b1d380b2b525b04d809490a.jpg",
+            "hidden": true,
+            "globalPct": 2.2
+        }
+    ],
+    "playtimeForever": 289,
+    "lastPlayedTs": "2024-06-12T20:20:55.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/424840/1904c041f963b5e2cb22b56c370444517cc4e288.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "LittleLostThings",
+            "displayName": "Little Lost Things",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "2db89ed8020ab7a16715a9da8bb13d4aa377362b.jpg",
+            "iconGrayUrl": "9e63a1139b068d2b8dfbc7fc711f744af6951901.jpg",
+            "globalPct": 2.7
+        },
+        {
+            "apiName": "KitchenHand",
+            "displayName": "Kitchen Hand",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c38cd433ab0da4286ed46469848d23d713a683d3.jpg",
+            "iconGrayUrl": "f1dce0255cad24a9ee4030912e2d30a80034cedf.jpg",
+            "globalPct": 3.2
+        },
+        {
+            "apiName": "HighlySprung",
+            "displayName": "Highly Sprung",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9ee4e9e87137337ba577e65cfdf9ae93352be052.jpg",
+            "iconGrayUrl": "4d2318130a0a58e4d8eb68532c15d95d28b9610c.jpg",
+            "globalPct": 36.4
+        },
+        {
+            "apiName": "Rascal",
+            "displayName": "Rascal",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "b1816b4d3d62b3ecdb51e084560dd6769ad6fcbf.jpg",
+            "iconGrayUrl": "9c1fa6c3280c1bec41d805c210a433e2cee3c2be.jpg",
+            "globalPct": 3.2
+        },
+        {
+            "apiName": "LightUpYourLife",
+            "displayName": "Light Up Your Life",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "20f23da299c25e98b1fa8dbc8fefa5d05be467ef.jpg",
+            "iconGrayUrl": "ebd2ed1322f3ce4f044d4bdfdebdf2d01851c768.jpg",
+            "globalPct": 10.4
+        },
+        {
+            "apiName": "ThePrison",
+            "displayName": "The Prison",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "28353a41c818fa0d905c12d84ae2e3e1bb5c0d9f.jpg",
+            "iconGrayUrl": "965f31900be52057689eece3586f3bd4a7cfa006.jpg",
+            "globalPct": 51.3
+        }
+    ]
+}

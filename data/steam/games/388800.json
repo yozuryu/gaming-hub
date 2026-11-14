@@ -1,0 +1,345 @@
+{
+    "appId": 388800,
+    "hasAchievements": true,
+    "total": 25,
+    "unlocked": 7,
+    "gameName": "Azure Striker Gunvolt",
+    "achievements": [
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_0",
+            "unlocked": true,
+            "unlockedAt": "2015-09-06T12:00:53.000Z",
+            "displayName": "It's My Hobby!!",
+            "description": "",
+            "iconUrl": "3b3f4749170247c42486877345c9c5eb60210fc6.jpg",
+            "iconGrayUrl": "f41ea55b4173f5ad1145a40bed50d60030c766b8.jpg",
+            "hidden": true,
+            "globalPct": 84.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mantis, Move Out!",
+            "description": "Obtain a S+ Rank on the 1st Sumeragi Stage",
+            "iconUrl": "10c0ac457da4a4c9fb6dc57584bee69d982d1532.jpg",
+            "iconGrayUrl": "9cfe865791ceb15e9057006a124a93a0f11e2469.jpg",
+            "hidden": false,
+            "globalPct": 4.7
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Lamest of Lame...",
+            "description": "Obtain a S+ Rank on the Subaquatic Base Stage",
+            "iconUrl": "eb77d7e0d39f98103b5f85106936c4f4f487842f.jpg",
+            "iconGrayUrl": "2749827ad6e8af07bb81e1abba03988ff80f5793.jpg",
+            "hidden": false,
+            "globalPct": 2.5
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Waaay Too Slow!",
+            "description": "Obtain a S+ Rank on the Media Tower Stage",
+            "iconUrl": "ae33f194df5d9aee5d8a6746ca3424f8e035e527.jpg",
+            "iconGrayUrl": "2762f3bda0786d0dab392054ad4fffce4517acf2.jpg",
+            "hidden": false,
+            "globalPct": 2.3
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Go Straight to Hell!",
+            "description": "Obtain a S+ Rank on the Biochem Plant Stage",
+            "iconUrl": "6c6276127a4bd47b5afb9616fb0ea07d604e6b1e.jpg",
+            "iconGrayUrl": "d7b605797d97137cbb823612bf6de6dcc15ed236.jpg",
+            "hidden": false,
+            "globalPct": 2.1
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pure Euphoria!",
+            "description": "Obtain a S+ Rank on the Datastore Stage",
+            "iconUrl": "d0cefcfbcd213054d46e302e9fb7b15d97256820.jpg",
+            "iconGrayUrl": "973680ecbb950667489d7415364b122b598f3d4e.jpg",
+            "hidden": false,
+            "globalPct": 2.1
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "You're Gonna Be My New Plaything",
+            "description": "Obtain a S+ Rank on the Stratacombs Stage",
+            "iconUrl": "1c54f3a550f91e2f5268fb2e95b559187c54741f.jpg",
+            "iconGrayUrl": "177fe425903c072f1ffc5b75d14f875c58a3e89d.jpg",
+            "hidden": false,
+            "globalPct": 2
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_7",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "FEED MEEE!!",
+            "description": "Obtain a S+ Rank on the Pharma Lab Stage",
+            "iconUrl": "1e8293f223d94c746189602bb22e2f7de50f341b.jpg",
+            "iconGrayUrl": "39862714f2fa8cfa8633f58d79bea8d881b3d2d3.jpg",
+            "hidden": false,
+            "globalPct": 1.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_8",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "It's My Secret Love Technique!!",
+            "description": "Obtain a S+ Rank on the Sinner's Row Stage",
+            "iconUrl": "a1934811601c5c97e427b76dc0d8eb031cb60579.jpg",
+            "iconGrayUrl": "9d4aafe6b0d415cf3582f3c416aa4dc23774ea28.jpg",
+            "hidden": false,
+            "globalPct": 2
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_9",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Tanks Aren't Supposed to Jump!!",
+            "description": "Obtain a S+ Rank on the Urban Run Stage",
+            "iconUrl": "15c22299edb3a0b3fb5c6c81ab284302aa2216dd.jpg",
+            "iconGrayUrl": "44c52f0889084b11afabd0c55d81b9f12ac09b01.jpg",
+            "hidden": false,
+            "globalPct": 5
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Why Don't You Take a Snooze...Forever!",
+            "description": "Obtain a S+ Rank on the Eridu Stage",
+            "iconUrl": "e64b4447cd90cf6080dd140c069f3129ae1a4e6a.jpg",
+            "iconGrayUrl": "961151ac7f84c6a625d643ce9c86d93200017b7a.jpg",
+            "hidden": false,
+            "globalPct": 1.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_11",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Begone You Monster!",
+            "description": "Obtain a S+ Rank on the Babel Stage",
+            "iconUrl": "59ef96bfb4c2825c2b0e2a270a8512b7f652fccf.jpg",
+            "iconGrayUrl": "c13a53f23a0d4a354a807bf58159436aa20a417e.jpg",
+            "hidden": false,
+            "globalPct": 2.1
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_12",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "My Will is Already Written in the Stars!",
+            "description": "Obtain a S+ Rank on the Firmament Stage",
+            "iconUrl": "8cd326fad0abc58f776651756cbed5eb7c99398d.jpg",
+            "iconGrayUrl": "5f963c46fdc52749b9e146b7066417255efc0e59.jpg",
+            "hidden": false,
+            "globalPct": 2.4
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_13",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Surmount the Insurmountable",
+            "description": "",
+            "iconUrl": "c53a098082ad25c63c6a0477b3b24bcd60cfef99.jpg",
+            "iconGrayUrl": "0711dd3d3883d891fc50bd46690022f607c9d4bc.jpg",
+            "hidden": true,
+            "globalPct": 1.4
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_14",
+            "unlocked": true,
+            "unlockedAt": "2018-06-09T05:29:10.000Z",
+            "displayName": "Hasta La Vista",
+            "description": "",
+            "iconUrl": "7d8d46886d6a6bb71410be6af95ff12711bc9501.jpg",
+            "iconGrayUrl": "983bff609fa7643e2aca38cc1e71ca578d016c56.jpg",
+            "hidden": true,
+            "globalPct": 23.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_15",
+            "unlocked": true,
+            "unlockedAt": "2018-06-09T07:53:41.000Z",
+            "displayName": "My Songs Will Be Your Wings",
+            "description": "",
+            "iconUrl": "5f6fb600b622980698bc4eb4a51abcda68d4caf3.jpg",
+            "iconGrayUrl": "f5c725671fd2267f028ac74484feb79b573bd462.jpg",
+            "hidden": true,
+            "globalPct": 16.7
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_16",
+            "unlocked": true,
+            "unlockedAt": "2016-12-18T17:27:22.000Z",
+            "displayName": "Big Bad Electro Middle Schooler",
+            "description": "Use over 100,000,000kw worth of electricity",
+            "iconUrl": "7f100fa02e75dedbfac1aba10073921fbd0188dd.jpg",
+            "iconGrayUrl": "f73e89509203e9aa1a7826ff33110e0d226c3ec9.jpg",
+            "hidden": false,
+            "globalPct": 38.1
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_17",
+            "unlocked": true,
+            "unlockedAt": "2015-09-06T22:31:17.000Z",
+            "displayName": "Sumeragi Run",
+            "description": "Move a total distance of 42 kilometers",
+            "iconUrl": "feb250789731188c23e5a4d95aa1ec0103b5b450.jpg",
+            "iconGrayUrl": "46b6b1e5a65c3ec095b2c96aa537b90503db509d.jpg",
+            "hidden": false,
+            "globalPct": 72.1
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_18",
+            "unlocked": true,
+            "unlockedAt": "2015-09-06T23:22:01.000Z",
+            "displayName": "Together With Joule",
+            "description": "Talk with Joule 10 times",
+            "iconUrl": "bf293af6e8e1e6a82ef037e24533ca3b4bbf9b0d.jpg",
+            "iconGrayUrl": "b772644b5e153c0f3e3ef79e123d42c4760a2d2f.jpg",
+            "hidden": false,
+            "globalPct": 32.3
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_19",
+            "unlocked": true,
+            "unlockedAt": "2015-09-06T23:36:26.000Z",
+            "displayName": "One With the Lightning",
+            "description": "Clear a stage without taking damage",
+            "iconUrl": "ad25fe5fa320106f134ef824fc4eb280108c3a89.jpg",
+            "iconGrayUrl": "08f03eea4bd595da0173443bd0dac02b95511ce1.jpg",
+            "hidden": false,
+            "globalPct": 21.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_20",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Master of the 7 Dragons",
+            "description": "Acquire all of the weapons in the game",
+            "iconUrl": "e1ffefd7d2de394260817b93abf17399efdb77ad.jpg",
+            "iconGrayUrl": "bc01d13d06ea3006044bfa6ba6c9464bd32c0e27.jpg",
+            "hidden": false,
+            "globalPct": 3.7
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_21",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Oversurge! Azure Striker!",
+            "description": "Learn all of the skills in the game",
+            "iconUrl": "96af6ad9ed910e978adc4b0fa1ca69959cc26f2a.jpg",
+            "iconGrayUrl": "ceefc1951d40be4c6b1692ebcd3198847b0c7a28.jpg",
+            "hidden": false,
+            "globalPct": 3.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_22",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Muse's Voice",
+            "description": "Listen to all of the songs in the game",
+            "iconUrl": "3b83237d47597df099ab53ea361a2d2348d4e43b.jpg",
+            "iconGrayUrl": "31e2eafa42f1dec175a87c48671de0380deea72e.jpg",
+            "hidden": false,
+            "globalPct": 4.2
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_23",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Seeker in Blue",
+            "description": "Complete all the Challenges in the game",
+            "iconUrl": "cfd4ca208c77fa74747b20639b3514c6b4243080.jpg",
+            "iconGrayUrl": "34ad0702dd35f0bee58a8a3082227b93d1f9a35e.jpg",
+            "hidden": false,
+            "globalPct": 1.5
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_24",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Bolt Out of the Blue",
+            "description": "Complete all of the Achievements",
+            "iconUrl": "9df1833185e5ead2ff01b97754276c520847f787.jpg",
+            "iconGrayUrl": "fd89ba1dd49b174b9f2f6246d43526b97873fe48.jpg",
+            "hidden": false,
+            "globalPct": 1.3
+        }
+    ],
+    "playtimeForever": 820,
+    "lastPlayedTs": "2018-06-09T07:59:46.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/388800/6ef8c57390d20e09a05639c20b95abed411ed1f3.jpg",
+    "lastUnlockedAt": "2018-06-09T07:53:41.000Z",
+    "lastUnlockName": "My Songs Will Be Your Wings",
+    "preview": [
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_15",
+            "displayName": "My Songs Will Be Your Wings",
+            "unlocked": true,
+            "unlockedAt": "2018-06-09T07:53:41.000Z",
+            "iconUrl": "5f6fb600b622980698bc4eb4a51abcda68d4caf3.jpg",
+            "iconGrayUrl": "f5c725671fd2267f028ac74484feb79b573bd462.jpg",
+            "globalPct": 16.7
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_14",
+            "displayName": "Hasta La Vista",
+            "unlocked": true,
+            "unlockedAt": "2018-06-09T05:29:10.000Z",
+            "iconUrl": "7d8d46886d6a6bb71410be6af95ff12711bc9501.jpg",
+            "iconGrayUrl": "983bff609fa7643e2aca38cc1e71ca578d016c56.jpg",
+            "globalPct": 23.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_16",
+            "displayName": "Big Bad Electro Middle Schooler",
+            "unlocked": true,
+            "unlockedAt": "2016-12-18T17:27:22.000Z",
+            "iconUrl": "7f100fa02e75dedbfac1aba10073921fbd0188dd.jpg",
+            "iconGrayUrl": "f73e89509203e9aa1a7826ff33110e0d226c3ec9.jpg",
+            "globalPct": 38.1
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_19",
+            "displayName": "One With the Lightning",
+            "unlocked": true,
+            "unlockedAt": "2015-09-06T23:36:26.000Z",
+            "iconUrl": "ad25fe5fa320106f134ef824fc4eb280108c3a89.jpg",
+            "iconGrayUrl": "08f03eea4bd595da0173443bd0dac02b95511ce1.jpg",
+            "globalPct": 21.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_18",
+            "displayName": "Together With Joule",
+            "unlocked": true,
+            "unlockedAt": "2015-09-06T23:22:01.000Z",
+            "iconUrl": "bf293af6e8e1e6a82ef037e24533ca3b4bbf9b0d.jpg",
+            "iconGrayUrl": "b772644b5e153c0f3e3ef79e123d42c4760a2d2f.jpg",
+            "globalPct": 32.3
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_17",
+            "displayName": "Sumeragi Run",
+            "unlocked": true,
+            "unlockedAt": "2015-09-06T22:31:17.000Z",
+            "iconUrl": "feb250789731188c23e5a4d95aa1ec0103b5b450.jpg",
+            "iconGrayUrl": "46b6b1e5a65c3ec095b2c96aa537b90503db509d.jpg",
+            "globalPct": 72.1
+        }
+    ]
+}

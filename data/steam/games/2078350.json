@@ -1,0 +1,312 @@
+{
+    "appId": 2078350,
+    "hasAchievements": true,
+    "total": 22,
+    "unlocked": 17,
+    "gameName": "Bluey: The Videogame",
+    "achievements": [
+        {
+            "apiName": "2",
+            "unlocked": true,
+            "unlockedAt": "2025-11-15T02:46:16.000Z",
+            "displayName": "It's like a zoo down here!",
+            "description": "Round up all the Animals",
+            "iconUrl": "5edd219d10e4c7cea1391b616088d4efd9c5de07.jpg",
+            "iconGrayUrl": "91dd7a9f9817ca6a72ccc9052cbcf8a9b731bc7f.jpg",
+            "hidden": false,
+            "globalPct": 93.5
+        },
+        {
+            "apiName": "3",
+            "unlocked": true,
+            "unlockedAt": "2025-11-15T03:08:26.000Z",
+            "displayName": "Flamingo Queen",
+            "description": "Rescue Muffin",
+            "iconUrl": "4431099c85de7a38da90f499ecae1148133a5d78.jpg",
+            "iconGrayUrl": "5dbcf286ef2e907ef20602ebe16336fb040a0db2.jpg",
+            "hidden": false,
+            "globalPct": 75
+        },
+        {
+            "apiName": "4",
+            "unlocked": true,
+            "unlockedAt": "2025-11-15T03:21:56.000Z",
+            "displayName": "Give me squeaky!",
+            "description": "Feed Chattermax",
+            "iconUrl": "7dc420d9bfddbbe46ab62115b1fc32730462d296.jpg",
+            "iconGrayUrl": "8a161d7b7cc8ba6b7638c58efd21ce3b3937dcc6.jpg",
+            "hidden": false,
+            "globalPct": 64.2
+        },
+        {
+            "apiName": "5",
+            "unlocked": true,
+            "unlockedAt": "2025-11-15T03:58:50.000Z",
+            "displayName": "Freeze!",
+            "description": "Freeze Mort Two Times",
+            "iconUrl": "1cc0cf9db5971360c77f47eff723240edc0d729f.jpg",
+            "iconGrayUrl": "5f1a5d32cacf5cd833adff83db607333abb1df78.jpg",
+            "hidden": false,
+            "globalPct": 57.8
+        },
+        {
+            "apiName": "6",
+            "unlocked": true,
+            "unlockedAt": "2025-11-15T02:51:26.000Z",
+            "displayName": "Gone With The Wind",
+            "description": "Finish Episode 1",
+            "iconUrl": "7a23845d8a5eea6695cb278fd8c2825a54797276.jpg",
+            "iconGrayUrl": "e00987c1444f6354df0e43d64a1261427946ffcb.jpg",
+            "hidden": false,
+            "globalPct": 90.9
+        },
+        {
+            "apiName": "7",
+            "unlocked": true,
+            "unlockedAt": "2025-11-15T03:08:51.000Z",
+            "displayName": "Classic Stripe",
+            "description": "Finish Episode 2",
+            "iconUrl": "a595c192635eb0f23ee55d73805c1365f3e9f1c9.jpg",
+            "iconGrayUrl": "017121987a63b56077173aa891005a1c437c87ee.jpg",
+            "hidden": false,
+            "globalPct": 74.9
+        },
+        {
+            "apiName": "8",
+            "unlocked": true,
+            "unlockedAt": "2025-11-15T03:30:20.000Z",
+            "displayName": "Gotcha",
+            "description": "Finish Episode 3",
+            "iconUrl": "ec950d973c96c8e4163058e4dc398c0a51c60220.jpg",
+            "iconGrayUrl": "f2af2e71dec0ef3989b95c5c4d531e3871e14cb0.jpg",
+            "hidden": false,
+            "globalPct": 62.8
+        },
+        {
+            "apiName": "9",
+            "unlocked": true,
+            "unlockedAt": "2025-11-15T04:19:15.000Z",
+            "displayName": "The Creek is beautiful!",
+            "description": "Finish Episode 4",
+            "iconUrl": "0f4bc8acc6f3b4119d2e60b3dd5371216171394e.jpg",
+            "iconGrayUrl": "cc3135475510bcfc0540021c2d2486f6b8ea0ec8.jpg",
+            "hidden": false,
+            "globalPct": 55
+        },
+        {
+            "apiName": "10",
+            "unlocked": true,
+            "unlockedAt": "2025-11-28T12:36:25.000Z",
+            "displayName": "Family matters",
+            "description": "Play as all four members of the Heeler Family",
+            "iconUrl": "bf45c6c6439cbdfb72be400b30e5a2a4f2f27d51.jpg",
+            "iconGrayUrl": "b546b93487e1e0e488141dbbf2a8b85544295fe1.jpg",
+            "hidden": false,
+            "globalPct": 47.7
+        },
+        {
+            "apiName": "11",
+            "unlocked": true,
+            "unlockedAt": "2025-11-22T09:24:56.000Z",
+            "displayName": "Pretty cool leaves",
+            "description": "",
+            "iconUrl": "656fd01c5e0f4fab6889ca94d02e1d85b04d8207.jpg",
+            "iconGrayUrl": "e641567ade316a38aaccee92cf76f690222a653a.jpg",
+            "hidden": true,
+            "globalPct": 32.3
+        },
+        {
+            "apiName": "12",
+            "unlocked": true,
+            "unlockedAt": "2025-11-15T03:35:23.000Z",
+            "displayName": "Bouncy house",
+            "description": "",
+            "iconUrl": "8f6eb1dd0071411a4da4574a2374263766ce9e0d.jpg",
+            "iconGrayUrl": "a7806a63c4a95ec887bfd14232ebfdeb13927b80.jpg",
+            "hidden": true,
+            "globalPct": 52.8
+        },
+        {
+            "apiName": "13",
+            "unlocked": true,
+            "unlockedAt": "2025-11-15T03:37:37.000Z",
+            "displayName": "Toast is ready",
+            "description": "",
+            "iconUrl": "9fc95e2e28e6aa214f4308ce68dbf3e32ef11d5c.jpg",
+            "iconGrayUrl": "a86da7f23b27e7e5a395e2c81b32c62d6c09ef3b.jpg",
+            "hidden": true,
+            "globalPct": 50.5
+        },
+        {
+            "apiName": "14",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Slide, Slide, Slide",
+            "description": "",
+            "iconUrl": "8ddccea46b79ab3d66e3ed726c5c30d42bee4a21.jpg",
+            "iconGrayUrl": "724f0d26eef5605d73989208ed11b590f4b2ee86.jpg",
+            "hidden": true,
+            "globalPct": 5.4
+        },
+        {
+            "apiName": "15",
+            "unlocked": true,
+            "unlockedAt": "2025-12-26T12:16:01.000Z",
+            "displayName": "Hattrick",
+            "description": "",
+            "iconUrl": "411e68952461662f80fbf53103fff68cca7abd9a.jpg",
+            "iconGrayUrl": "1a178cbc5b94f7e9547cf4637edfd0e67f9b42bd.jpg",
+            "hidden": true,
+            "globalPct": 16.5
+        },
+        {
+            "apiName": "16",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "All the things!",
+            "description": "Unlock all the puzzle pieces from the first page of the Sticker Book",
+            "iconUrl": "0cf33cf672213ef5c014d40a1152e5ee9b5703c8.jpg",
+            "iconGrayUrl": "46e358a7cbeee632ba4b7a908d13c01541eab8a5.jpg",
+            "hidden": false,
+            "globalPct": 19.7
+        },
+        {
+            "apiName": "17",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sticky Situation",
+            "description": "Collect all the Stickers in the first page of the Sticker Book",
+            "iconUrl": "9dd9c7555b3fccdc1408222f3a73366baf3bebce.jpg",
+            "iconGrayUrl": "d63043f6ab93440de06cea2a3037f73a24ad1d43.jpg",
+            "hidden": false,
+            "globalPct": 9.2
+        },
+        {
+            "apiName": "18",
+            "unlocked": true,
+            "unlockedAt": "2025-11-21T13:03:09.000Z",
+            "displayName": "Fancy ladies!",
+            "description": "Unlock the first 34 Costumes",
+            "iconUrl": "60afe4b16c45c77d5a9006a3fd97a359690774de.jpg",
+            "iconGrayUrl": "d1fdc7820cb85df913c18ffc54d0e69e40ed6317.jpg",
+            "hidden": false,
+            "globalPct": 34.8
+        },
+        {
+            "apiName": "19",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Holidays!",
+            "description": "Complete the first page of the Sticker Book",
+            "iconUrl": "d8eec6db9c31353949048a764bbd60a5cdb78d60.jpg",
+            "iconGrayUrl": "90d954a1b86e0de033b32b47062cc3c1bc470e29.jpg",
+            "hidden": false,
+            "globalPct": 9
+        },
+        {
+            "apiName": "20",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Keepie Uppie Expert",
+            "description": "Hit the balloon 25 times before it hits the ground",
+            "iconUrl": "4ce77571637497ebabc50bb9959eb9c253534ad8.jpg",
+            "iconGrayUrl": "97e70198ee33540b4347585857b5fdb15e4a111b.jpg",
+            "hidden": false,
+            "globalPct": 40.8
+        },
+        {
+            "apiName": "21",
+            "unlocked": true,
+            "unlockedAt": "2025-11-22T09:47:34.000Z",
+            "displayName": "The only way to travel on lava",
+            "description": "Win 5 games of Ground is Lava",
+            "iconUrl": "81ad85cb3349f27ac78309b83d9eb1e3f6211a4a.jpg",
+            "iconGrayUrl": "84e78470cb7e870ba17bd96cbd4187a1064d80ba.jpg",
+            "hidden": false,
+            "globalPct": 24.2
+        },
+        {
+            "apiName": "22",
+            "unlocked": true,
+            "unlockedAt": "2025-11-21T12:16:10.000Z",
+            "displayName": "Don't Let Go",
+            "description": "Win 5 games of Chattermax Chase",
+            "iconUrl": "67cb29385e197ab15453ddc234af84d105fa1b9b.jpg",
+            "iconGrayUrl": "202f3a09d0a2493bbea0f2414384ad131af70def.jpg",
+            "hidden": false,
+            "globalPct": 17.9
+        },
+        {
+            "apiName": "23",
+            "unlocked": true,
+            "unlockedAt": "2025-11-22T08:45:50.000Z",
+            "displayName": "Island Rhythms!",
+            "description": "Freeze Everyone in less than 30 seconds",
+            "iconUrl": "0ac04dd1044bc87b92fb8d4a9366fe51eb50fce8.jpg",
+            "iconGrayUrl": "c80a8545eb9bc9cda1569259de1c31d64c545486.jpg",
+            "hidden": false,
+            "globalPct": 26.9
+        }
+    ],
+    "playtimeForever": 1003,
+    "lastPlayedTs": "2026-05-28T12:48:17.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2078350/725ce61379c9e1d3e2edc56e1852cd779febd67b.jpg",
+    "lastUnlockedAt": "2025-12-26T12:16:01.000Z",
+    "lastUnlockName": "Hattrick",
+    "preview": [
+        {
+            "apiName": "15",
+            "displayName": "Hattrick",
+            "unlocked": true,
+            "unlockedAt": "2025-12-26T12:16:01.000Z",
+            "iconUrl": "411e68952461662f80fbf53103fff68cca7abd9a.jpg",
+            "iconGrayUrl": "1a178cbc5b94f7e9547cf4637edfd0e67f9b42bd.jpg",
+            "globalPct": 16.5
+        },
+        {
+            "apiName": "10",
+            "displayName": "Family matters",
+            "unlocked": true,
+            "unlockedAt": "2025-11-28T12:36:25.000Z",
+            "iconUrl": "bf45c6c6439cbdfb72be400b30e5a2a4f2f27d51.jpg",
+            "iconGrayUrl": "b546b93487e1e0e488141dbbf2a8b85544295fe1.jpg",
+            "globalPct": 47.7
+        },
+        {
+            "apiName": "21",
+            "displayName": "The only way to travel on lava",
+            "unlocked": true,
+            "unlockedAt": "2025-11-22T09:47:34.000Z",
+            "iconUrl": "81ad85cb3349f27ac78309b83d9eb1e3f6211a4a.jpg",
+            "iconGrayUrl": "84e78470cb7e870ba17bd96cbd4187a1064d80ba.jpg",
+            "globalPct": 24.2
+        },
+        {
+            "apiName": "11",
+            "displayName": "Pretty cool leaves",
+            "unlocked": true,
+            "unlockedAt": "2025-11-22T09:24:56.000Z",
+            "iconUrl": "656fd01c5e0f4fab6889ca94d02e1d85b04d8207.jpg",
+            "iconGrayUrl": "e641567ade316a38aaccee92cf76f690222a653a.jpg",
+            "globalPct": 32.3
+        },
+        {
+            "apiName": "23",
+            "displayName": "Island Rhythms!",
+            "unlocked": true,
+            "unlockedAt": "2025-11-22T08:45:50.000Z",
+            "iconUrl": "0ac04dd1044bc87b92fb8d4a9366fe51eb50fce8.jpg",
+            "iconGrayUrl": "c80a8545eb9bc9cda1569259de1c31d64c545486.jpg",
+            "globalPct": 26.9
+        },
+        {
+            "apiName": "18",
+            "displayName": "Fancy ladies!",
+            "unlocked": true,
+            "unlockedAt": "2025-11-21T13:03:09.000Z",
+            "iconUrl": "60afe4b16c45c77d5a9006a3fd97a359690774de.jpg",
+            "iconGrayUrl": "d1fdc7820cb85df913c18ffc54d0e69e40ed6317.jpg",
+            "globalPct": 34.8
+        }
+    ]
+}

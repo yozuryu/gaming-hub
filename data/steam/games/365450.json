@@ -1,0 +1,191 @@
+{
+    "appId": 365450,
+    "hasAchievements": true,
+    "total": 11,
+    "unlocked": 0,
+    "gameName": "Hacknet",
+    "achievements": [
+        {
+            "apiName": "kill_tutorial",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Quickdraw",
+            "description": "Complete the tutorial earlier than normal",
+            "iconUrl": "908ed2a59fb165dcc9c6830e73cc8c263aa57e53.jpg",
+            "iconGrayUrl": "6d1c066f33c34279c6224ecfe4cb1dc6759fa18b.jpg",
+            "hidden": false,
+            "globalPct": 8.4
+        },
+        {
+            "apiName": "rude_response",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Rude",
+            "description": "That's just impolite",
+            "iconUrl": "fb047a4666cd44ddfc0c936013d9d2081c1fb24f.jpg",
+            "iconGrayUrl": "26ef6b43c9c79ca4e67d318eddc850aeadcf0fa0.jpg",
+            "hidden": false,
+            "globalPct": 7
+        },
+        {
+            "apiName": "progress_complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hacknet",
+            "description": "Complete Bit's final request",
+            "iconUrl": "908ed2a59fb165dcc9c6830e73cc8c263aa57e53.jpg",
+            "iconGrayUrl": "6d1c066f33c34279c6224ecfe4cb1dc6759fa18b.jpg",
+            "hidden": false,
+            "globalPct": 9.9
+        },
+        {
+            "apiName": "progress_csec",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "CSEC",
+            "description": "Be granted an account within CSEC",
+            "iconUrl": "ab55f17901da853fee72f03b7be862522b3f5dd6.jpg",
+            "iconGrayUrl": "4fb6776eb2b9dc43a2841fdf78ce6c91786ec614.jpg",
+            "hidden": false,
+            "globalPct": 19.9
+        },
+        {
+            "apiName": "progress_entropy",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Entropy",
+            "description": "Be granted an account within Entropy",
+            "iconUrl": "f8efc52503876eac7b059b849938e77af8ccf4ee.jpg",
+            "iconGrayUrl": "574c25e182780cdf8f31c1fd015fbe873b023c09.jpg",
+            "hidden": false,
+            "globalPct": 31.7
+        },
+        {
+            "apiName": "pointclicker_basic",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "PointClicker",
+            "description": "Purchase the final PointClicker upgrade",
+            "iconUrl": "4374104b16075586059ba8f73606cc8860490033.jpg",
+            "iconGrayUrl": "7609d3b0fb9bc599e97dda73e4830a7438932ed0.jpg",
+            "hidden": false,
+            "globalPct": 10.1
+        },
+        {
+            "apiName": "pointclicker_expert",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "You better not have clicked for those...",
+            "description": "Have a truly absurd number of pointclicker points",
+            "iconUrl": "4c0471f9dff1189d486d2ff809e978a445fbfd97.jpg",
+            "iconGrayUrl": "b24136834b1fff59d6a2633e8aa46539952a59f4.jpg",
+            "hidden": false,
+            "globalPct": 8.9
+        },
+        {
+            "apiName": "clock_run",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "TRUE ULTIMATE POWER",
+            "description": "Run Clock.exe",
+            "iconUrl": "908ed2a59fb165dcc9c6830e73cc8c263aa57e53.jpg",
+            "iconGrayUrl": "6d1c066f33c34279c6224ecfe4cb1dc6759fa18b.jpg",
+            "hidden": false,
+            "globalPct": 6.5
+        },
+        {
+            "apiName": "themeswitch_run",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Makeover!",
+            "description": "Run ThemeSwitcher",
+            "iconUrl": "908ed2a59fb165dcc9c6830e73cc8c263aa57e53.jpg",
+            "iconGrayUrl": "6d1c066f33c34279c6224ecfe4cb1dc6759fa18b.jpg",
+            "hidden": false,
+            "globalPct": 15.9
+        },
+        {
+            "apiName": "trace_close",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "To the Wire",
+            "description": "Disconnect from a traced system with less than half a second to spare",
+            "iconUrl": "908ed2a59fb165dcc9c6830e73cc8c263aa57e53.jpg",
+            "iconGrayUrl": "6d1c066f33c34279c6224ecfe4cb1dc6759fa18b.jpg",
+            "hidden": false,
+            "globalPct": 12.3
+        },
+        {
+            "apiName": "secret_path_complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "/el Sec Champion",
+            "description": "Master of /el's friendly community",
+            "iconUrl": "ab55f17901da853fee72f03b7be862522b3f5dd6.jpg",
+            "iconGrayUrl": "4fb6776eb2b9dc43a2841fdf78ce6c91786ec614.jpg",
+            "hidden": false,
+            "globalPct": 7.1
+        }
+    ],
+    "playtimeForever": 264,
+    "lastPlayedTs": "2024-05-17T23:45:36.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/365450/2445c4ead6ee47784a326922271ec1c0b41d64e2.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "kill_tutorial",
+            "displayName": "Quickdraw",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "908ed2a59fb165dcc9c6830e73cc8c263aa57e53.jpg",
+            "iconGrayUrl": "6d1c066f33c34279c6224ecfe4cb1dc6759fa18b.jpg",
+            "globalPct": 8.4
+        },
+        {
+            "apiName": "rude_response",
+            "displayName": "Rude",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "fb047a4666cd44ddfc0c936013d9d2081c1fb24f.jpg",
+            "iconGrayUrl": "26ef6b43c9c79ca4e67d318eddc850aeadcf0fa0.jpg",
+            "globalPct": 7
+        },
+        {
+            "apiName": "progress_complete",
+            "displayName": "Hacknet",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "908ed2a59fb165dcc9c6830e73cc8c263aa57e53.jpg",
+            "iconGrayUrl": "6d1c066f33c34279c6224ecfe4cb1dc6759fa18b.jpg",
+            "globalPct": 9.9
+        },
+        {
+            "apiName": "progress_csec",
+            "displayName": "CSEC",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "ab55f17901da853fee72f03b7be862522b3f5dd6.jpg",
+            "iconGrayUrl": "4fb6776eb2b9dc43a2841fdf78ce6c91786ec614.jpg",
+            "globalPct": 19.9
+        },
+        {
+            "apiName": "progress_entropy",
+            "displayName": "Entropy",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f8efc52503876eac7b059b849938e77af8ccf4ee.jpg",
+            "iconGrayUrl": "574c25e182780cdf8f31c1fd015fbe873b023c09.jpg",
+            "globalPct": 31.7
+        },
+        {
+            "apiName": "pointclicker_basic",
+            "displayName": "PointClicker",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "4374104b16075586059ba8f73606cc8860490033.jpg",
+            "iconGrayUrl": "7609d3b0fb9bc599e97dda73e4830a7438932ed0.jpg",
+            "globalPct": 10.1
+        }
+    ]
+}

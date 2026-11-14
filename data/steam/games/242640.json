@@ -1,0 +1,433 @@
+{
+    "appId": 242640,
+    "hasAchievements": true,
+    "total": 33,
+    "unlocked": 0,
+    "gameName": "Styx: Master of Shadows",
+    "achievements": [
+        {
+            "apiName": "ACH_MissionFinished0",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Reminiscences",
+            "description": "Finish the introduction",
+            "iconUrl": "3b1330f70368d0b9f0e60d14090e863a83968e2d.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 42.8
+        },
+        {
+            "apiName": "ACH_MissionFinished1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Akenash's Atrium",
+            "description": "Finished mission 1",
+            "iconUrl": "2bec9a0b5e4231384794d06091eaf59932f52b53.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 27
+        },
+        {
+            "apiName": "ACH_MissionFinished2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Master key",
+            "description": "Finished mission 2",
+            "iconUrl": "d2beac3eccd9e8510def9b7be44f50238690b147.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 19.7
+        },
+        {
+            "apiName": "ACH_MissionFinished3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Deliverance",
+            "description": "Finished mission 3",
+            "iconUrl": "878976761ab082941248556ebf871d715a361f3f.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 16.4
+        },
+        {
+            "apiName": "ACH_MissionFinished4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The creator",
+            "description": "Finished mission 4",
+            "iconUrl": "d23578f4591214bc946f0ad28a81d4f739414bd8.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 14.9
+        },
+        {
+            "apiName": "ACH_MissionFinished5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The architect",
+            "description": "Finished mission 5",
+            "iconUrl": "07a880a19ee03d207a739f8905ac0cd58500fcf9.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 13.6
+        },
+        {
+            "apiName": "ACH_MissionFinished6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Conflagration",
+            "description": "Finished mission 6",
+            "iconUrl": "7b486d789bc5ee1a2a1fca3453d6695b1c15a729.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 12.3
+        },
+        {
+            "apiName": "ACH_MissionFinished7",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Renaissance",
+            "description": "",
+            "iconUrl": "6c59910cc209b2d7fb30dfce23b60d0ce5307bbd.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": true,
+            "globalPct": 10.7
+        },
+        {
+            "apiName": "ACH_ToxicSaliva",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Indigestion",
+            "description": "Kill an enemy by poisoning the food",
+            "iconUrl": "948de609cbff9ba2d6354c5a28fd794f6efe0a9f.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 24.7
+        },
+        {
+            "apiName": "ACH_CunningGoblin",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Goblin snack",
+            "description": "Give an orc one of your clones to eat",
+            "iconUrl": "7ef2edbd52308e9ed2ecafa657a50ec4059ec5df.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 13.2
+        },
+        {
+            "apiName": "ACH_ChandeliersRain",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Watch out below! ",
+            "description": "Kill two or more enemies by making a chandelier drop on them",
+            "iconUrl": "bcef6d6c73c40dada62b8756dfa414af14bbe85c.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 27.4
+        },
+        {
+            "apiName": "ACH_ViciousGobelin",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Like looking through a wall",
+            "description": "Manage to disable three guards, or more, inside a clone's smoke bomb",
+            "iconUrl": "0ce69400f55704ff313fef954f9be019f4834b66.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 3.2
+        },
+        {
+            "apiName": "ACH_SeasonedGobelin",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Great power...",
+            "description": "Unlock all skills",
+            "iconUrl": "9640e9697a27dfe34013c1d7d4fea3886c531c0a.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 3.6
+        },
+        {
+            "apiName": "ACH_AirKill",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Goblin-tossing",
+            "description": "Kill an enemy with an aerial kill",
+            "iconUrl": "07e6d4a75c5e6ee9365ba85ce565f070413b7dee.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 17.5
+        },
+        {
+            "apiName": "ACH_CoverKill",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Wrong turn",
+            "description": "Kill an enemy with a covered kill",
+            "iconUrl": "59fcc9e41db1ec78658f889054bb4b0c5124d739.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 25
+        },
+        {
+            "apiName": "ACH_CoopKill",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dodge this",
+            "description": "Kill an enemy who was bound by a clone",
+            "iconUrl": "a9248ca86d270906eeac60ebe27ccfe0a26829b3.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 9.6
+        },
+        {
+            "apiName": "ACH_MischievousGobelin",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Suicide mission",
+            "description": "Eliminate a guard with a booby trapped clone",
+            "iconUrl": "bb0b4ff7503fd2a12293e9183f9ebfeff7d3231d.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 7.4
+        },
+        {
+            "apiName": "ACH_Cupidity",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "My precious",
+            "description": "Gather all the treasures",
+            "iconUrl": "29b1f94b021103b04c5bf6000380eeabbb6510d7.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 4.3
+        },
+        {
+            "apiName": "ACH_Fearless",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dose of his own medicine",
+            "description": "",
+            "iconUrl": "5d5dc04b8284e5f51f0c20a8224998653ffd0d81.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": true,
+            "globalPct": 7.2
+        },
+        {
+            "apiName": "ACH_Methodical",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Tidy up your room!",
+            "description": "No body found during a mission",
+            "iconUrl": "45c135666c49ebaae8abbe2f7600f55fd2346a8d.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 16.8
+        },
+        {
+            "apiName": "ACH_MasterOfParades",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Outstanding duelist",
+            "description": "",
+            "iconUrl": "3b6dfc4a066a870deaf8bdef05687ae477968f58.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": true,
+            "globalPct": 24.5
+        },
+        {
+            "apiName": "ACH_Pilferer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sticky-fingered",
+            "description": "Pick pocket 15 guards",
+            "iconUrl": "4706378887973043bfe4604130630e5113af005b.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 14.8
+        },
+        {
+            "apiName": "ACH_CloneArmy",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Army of clones",
+            "description": "Create 30 clones",
+            "iconUrl": "eeff53bb95500895fcecbdb1b0b42da1829053be.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 20.1
+        },
+        {
+            "apiName": "ACH_Sharpshooter",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sharpshooter",
+            "description": "",
+            "iconUrl": "864a56671a3c875eeffb51313d9d0aa56e17c60a.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": true,
+            "globalPct": 13.3
+        },
+        {
+            "apiName": "ACH_Passkey",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Passkey",
+            "description": "Unlock 20 doors",
+            "iconUrl": "9d91783a575239d674ac3d93f2b1e0c278af53bd.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 30.3
+        },
+        {
+            "apiName": "ACH_AmberAddicted",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Unquenched thirst",
+            "description": "Drink 20 vials of amber",
+            "iconUrl": "152a3e8ac7d46cf758d6ca9462c74355d9e09330.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 17.2
+        },
+        {
+            "apiName": "ACH_SelfConceit",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pretentious",
+            "description": "Do not use any item during a mission",
+            "iconUrl": "74ebf6807c1ed7d18d9b6a9ec4acc876adb1e14c.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 4
+        },
+        {
+            "apiName": "ACH_DarknessIsMyWeapon",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Born in the shadow",
+            "description": "Extinguish 30 torches",
+            "iconUrl": "549b0623b6029b672c7681078d0e0d52a791ef1e.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 49.9
+        },
+        {
+            "apiName": "ACH_DiscreetlyMurder",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sudden silence…",
+            "description": "",
+            "iconUrl": "ff7804c179b0247dae8b22f9befda88553953be4.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": true,
+            "globalPct": 31.7
+        },
+        {
+            "apiName": "ACH_CloneKebab",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Expendable",
+            "description": "Let 15 clones die",
+            "iconUrl": "f4f7afdd7ae0c91f46d74a6b0deb7362519510c6.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 18.3
+        },
+        {
+            "apiName": "ACH_TowerAssassin",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Serial killer",
+            "description": "",
+            "iconUrl": "c66c0c342a4fadef04b224e1155c9dd12403340e.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": true,
+            "globalPct": 22.3
+        },
+        {
+            "apiName": "ACH_TowerGhost",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Unseen, unknown",
+            "description": "Unlock the Insignia of the Shadow for each mission",
+            "iconUrl": "585a5f7dc38d52738f96db4e1f891e256a42d27b.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": false,
+            "globalPct": 2.8
+        },
+        {
+            "apiName": "ACH_Melomane",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Music Lover",
+            "description": "",
+            "iconUrl": "0fd11348dcab32462282f701cbd27a36cdcce235.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "hidden": true,
+            "globalPct": 3.7
+        }
+    ],
+    "playtimeForever": 268,
+    "lastPlayedTs": "2025-02-20T01:52:31.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/242640/674a59002023382bb99865793c1f04c7b76f520e.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACH_MissionFinished0",
+            "displayName": "Reminiscences",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "3b1330f70368d0b9f0e60d14090e863a83968e2d.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "globalPct": 42.8
+        },
+        {
+            "apiName": "ACH_MissionFinished1",
+            "displayName": "Akenash's Atrium",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "2bec9a0b5e4231384794d06091eaf59932f52b53.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "globalPct": 27
+        },
+        {
+            "apiName": "ACH_MissionFinished2",
+            "displayName": "Master key",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d2beac3eccd9e8510def9b7be44f50238690b147.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "globalPct": 19.7
+        },
+        {
+            "apiName": "ACH_MissionFinished3",
+            "displayName": "Deliverance",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "878976761ab082941248556ebf871d715a361f3f.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "globalPct": 16.4
+        },
+        {
+            "apiName": "ACH_MissionFinished4",
+            "displayName": "The creator",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d23578f4591214bc946f0ad28a81d4f739414bd8.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "globalPct": 14.9
+        },
+        {
+            "apiName": "ACH_MissionFinished5",
+            "displayName": "The architect",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "07a880a19ee03d207a739f8905ac0cd58500fcf9.jpg",
+            "iconGrayUrl": "ad50d7dc7d6abfc78006bdd692a06f792e8c851d.jpg",
+            "globalPct": 13.6
+        }
+    ]
+}

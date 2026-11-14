@@ -1,0 +1,202 @@
+{
+    "appId": 593280,
+    "hasAchievements": true,
+    "total": 12,
+    "unlocked": 0,
+    "gameName": "Cat Quest",
+    "achievements": [
+        {
+            "apiName": "com.thegentlebros.catquest.level_03",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Super Catventurer",
+            "description": "Reached level 99",
+            "iconUrl": "12abc28d549df2792c51ca86a032907df7c22938.jpg",
+            "iconGrayUrl": "5ad821e4e53a3ecb2e534a07939a6d05aa366636.jpg",
+            "hidden": false,
+            "globalPct": 17.1
+        },
+        {
+            "apiName": "com.thegentlebros.catquest.dungeon_03",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dungeon Master",
+            "description": "Cleared all 52 dungeons",
+            "iconUrl": "1cb6422fedae75264557834c0a179c532557f767.jpg",
+            "iconGrayUrl": "78515b3de6a09300d6e6f7dec0a1a7e64da887ef.jpg",
+            "hidden": false,
+            "globalPct": 18.5
+        },
+        {
+            "apiName": "com.thegentlebros.catquest.mainquest_02",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Felingard Loremaster",
+            "description": "Completed the main quest",
+            "iconUrl": "cab3161b109c3971d542ed634b8bd3d6d2fd4bdf.jpg",
+            "iconGrayUrl": "ce4e4bf6a46b26eba4e8417f851a70be4c39fa65.jpg",
+            "hidden": false,
+            "globalPct": 45.1
+        },
+        {
+            "apiName": "com.thegentlebros.catquest.sidequest_03",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Saviour of the Cats",
+            "description": "Completed all 62 side quests",
+            "iconUrl": "2d4f5b3e12c8ec881d3b7d4668c31c125abd6a58.jpg",
+            "iconGrayUrl": "fb351594626aa094d4bc1a4e9a64f82e38fe7021.jpg",
+            "hidden": false,
+            "globalPct": 32.9
+        },
+        {
+            "apiName": "com.thegentlebros.catquest.skill_01",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Power of the Arcane",
+            "description": "Obtained all seven skills",
+            "iconUrl": "5885b8345d6a28b0582f5a8b4a845c159695c709.jpg",
+            "iconGrayUrl": "caaba50ead32d29c7d9bdbeea37412365332a923.jpg",
+            "hidden": false,
+            "globalPct": 42.6
+        },
+        {
+            "apiName": "com.thegentlebros.catquest.equipment_01",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fashionista Lion",
+            "description": "Obtained all 66 armors and weapons",
+            "iconUrl": "bda571bf02296ff5d7bc42fb5e21a5df30f86799.jpg",
+            "iconGrayUrl": "67771245081bd0e35cded1b6d9b6cbb11e540c8d.jpg",
+            "hidden": false,
+            "globalPct": 23.7
+        },
+        {
+            "apiName": "com.thegentlebros.catquest.mew_00",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Furry Armored",
+            "description": "Beat Mew Game with the Furry Armored modifier",
+            "iconUrl": "38070fe4161267df24009277ef5e471821e74b35.jpg",
+            "iconGrayUrl": "e92427260c900285b923a621ac5c8ea33ed8cc6d.jpg",
+            "hidden": false,
+            "globalPct": 7.1
+        },
+        {
+            "apiName": "com.thegentlebros.catquest.mew_01",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Level One",
+            "description": "Beat Mew Game with the Level One modifier",
+            "iconUrl": "023300c0c63ad3b5d3bdef592782df0f48fb677a.jpg",
+            "iconGrayUrl": "fed43e6a8e300d6713eb220c61f1f41364bfad42.jpg",
+            "hidden": false,
+            "globalPct": 5.4
+        },
+        {
+            "apiName": "com.thegentlebros.catquest.mew_02",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Naked Cat",
+            "description": "Beat Mew Game with the Naked Cat modifier",
+            "iconUrl": "09afdbf97b07e67ed0cb43199d3584f8642ee981.jpg",
+            "iconGrayUrl": "201d2448c376efbffba5ad17e2d53e1aa6058d1a.jpg",
+            "hidden": false,
+            "globalPct": 5.5
+        },
+        {
+            "apiName": "com.thegentlebros.catquest.mew_03",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Nine Lives",
+            "description": "Beat Mew Game with the Nine Lives modifier",
+            "iconUrl": "7931357e52c4ef7ee8dceff3d074f7344ba0420d.jpg",
+            "iconGrayUrl": "e79ae608ba9144cdb3cb8e9cf28d10f3511c258c.jpg",
+            "hidden": false,
+            "globalPct": 5.9
+        },
+        {
+            "apiName": "com.thegentlebros.catquest.mew_04",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stronger Enemies",
+            "description": "Beat Mew Game with the Stronger Enemies modifier",
+            "iconUrl": "b79a8e66b81218903085aaa7305fd431b3f9df4a.jpg",
+            "iconGrayUrl": "3b5add1f0b0c509b4ae49021c689d38071911077.jpg",
+            "hidden": false,
+            "globalPct": 6.2
+        },
+        {
+            "apiName": "com.thegentlebros.catquest.mew_05",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Old Master",
+            "description": "Obtain the complete Old Master Set",
+            "iconUrl": "cbf91118b1ccd0e9cfb8f0c8146808013a1e4532.jpg",
+            "iconGrayUrl": "57190d4e77eeaf4ad987a1c9be93166430ffb643.jpg",
+            "hidden": false,
+            "globalPct": 4.7
+        }
+    ],
+    "playtimeForever": 262,
+    "lastPlayedTs": "2026-01-16T13:31:46.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/593280/8cdb631e4334e79e61f33e0c1d37d26507f06712.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "com.thegentlebros.catquest.level_03",
+            "displayName": "Super Catventurer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "12abc28d549df2792c51ca86a032907df7c22938.jpg",
+            "iconGrayUrl": "5ad821e4e53a3ecb2e534a07939a6d05aa366636.jpg",
+            "globalPct": 17.1
+        },
+        {
+            "apiName": "com.thegentlebros.catquest.dungeon_03",
+            "displayName": "Dungeon Master",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1cb6422fedae75264557834c0a179c532557f767.jpg",
+            "iconGrayUrl": "78515b3de6a09300d6e6f7dec0a1a7e64da887ef.jpg",
+            "globalPct": 18.5
+        },
+        {
+            "apiName": "com.thegentlebros.catquest.mainquest_02",
+            "displayName": "Felingard Loremaster",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "cab3161b109c3971d542ed634b8bd3d6d2fd4bdf.jpg",
+            "iconGrayUrl": "ce4e4bf6a46b26eba4e8417f851a70be4c39fa65.jpg",
+            "globalPct": 45.1
+        },
+        {
+            "apiName": "com.thegentlebros.catquest.sidequest_03",
+            "displayName": "Saviour of the Cats",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "2d4f5b3e12c8ec881d3b7d4668c31c125abd6a58.jpg",
+            "iconGrayUrl": "fb351594626aa094d4bc1a4e9a64f82e38fe7021.jpg",
+            "globalPct": 32.9
+        },
+        {
+            "apiName": "com.thegentlebros.catquest.skill_01",
+            "displayName": "Power of the Arcane",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "5885b8345d6a28b0582f5a8b4a845c159695c709.jpg",
+            "iconGrayUrl": "caaba50ead32d29c7d9bdbeea37412365332a923.jpg",
+            "globalPct": 42.6
+        },
+        {
+            "apiName": "com.thegentlebros.catquest.equipment_01",
+            "displayName": "Fashionista Lion",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "bda571bf02296ff5d7bc42fb5e21a5df30f86799.jpg",
+            "iconGrayUrl": "67771245081bd0e35cded1b6d9b6cbb11e540c8d.jpg",
+            "globalPct": 23.7
+        }
+    ]
+}

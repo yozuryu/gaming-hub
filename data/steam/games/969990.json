@@ -1,0 +1,422 @@
+{
+    "appId": 969990,
+    "hasAchievements": true,
+    "total": 32,
+    "unlocked": 1,
+    "gameName": "SpongeBob SquarePants: Battle for Bikini Bottom - Rehydrated",
+    "achievements": [
+        {
+            "apiName": "ACH_JELLYFISH_JAM",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Jellyfish Jam",
+            "description": "Defeat Jellyfish King.",
+            "iconUrl": "7aeff685bb90d621fc46da3344c18bc40aaedd53.jpg",
+            "iconGrayUrl": "af96171e0418902afeb08fe613108a63ce6e007e.jpg",
+            "hidden": false,
+            "globalPct": 51.4
+        },
+        {
+            "apiName": "ACH_TIME_FOR_TUTORIAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Time For Tutorial",
+            "description": "Collect everything in SpongeBob's House.",
+            "iconUrl": "64000636f1698e22af4aa60bffbf43af8c35e475.jpg",
+            "iconGrayUrl": "d192e22e617b5eb16e4928383687bd3e55d57b46.jpg",
+            "hidden": false,
+            "globalPct": 39.2
+        },
+        {
+            "apiName": "ACH_STAT_SPATULA_SEEKER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Spatula Seeker",
+            "description": "Collect 10 Golden Spatulas",
+            "iconUrl": "4289ba72f157a7d7e27c5cb7db800fba4684dc94.jpg",
+            "iconGrayUrl": "d871aae09efdb861a89aa81d7fd25c8af0d76561.jpg",
+            "hidden": false,
+            "globalPct": 49.7
+        },
+        {
+            "apiName": "ACH_STAT_SQUIRREL_SMASHER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Squirrel Smasher",
+            "description": "Defeat 100 robots as Sandy in the campaign.",
+            "iconUrl": "5b779656d8c004e029f13c87e78fb56e9e65c46b.jpg",
+            "iconGrayUrl": "3d3c0ea5e01218c034900dba41177f5c7d21504d.jpg",
+            "hidden": false,
+            "globalPct": 27.4
+        },
+        {
+            "apiName": "ACH_STAT_STAR_SMASHER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Star Smasher",
+            "description": "Defeat 100 robots as Patrick in the campaign.",
+            "iconUrl": "fd83872238afa737be4409645625720115a892bd.jpg",
+            "iconGrayUrl": "1d7e31d71c68c841a064310206745997a855c9ad.jpg",
+            "hidden": false,
+            "globalPct": 33.5
+        },
+        {
+            "apiName": "ACH_STAT_SPONGE_SMASHER",
+            "unlocked": true,
+            "unlockedAt": "2025-08-17T13:23:27.000Z",
+            "displayName": "Sponge Smasher",
+            "description": "Defeat 100 robots as SpongeBob in the campaign.",
+            "iconUrl": "01d9da32b6a0d12dafbbdf68c01919285625c879.jpg",
+            "iconGrayUrl": "9ee77411e4156b3dbcf864c03c9a0c2268c6605c.jpg",
+            "hidden": false,
+            "globalPct": 46.7
+        },
+        {
+            "apiName": "ACH_DONT_EAT_THE_SAND",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Life's as extreme as you wanna make it!",
+            "description": "Clear all the Ski slopes in Sand Mountain",
+            "iconUrl": "e9930dcde35a1c4e60d9a3b9d6156f309fe7fab7.jpg",
+            "iconGrayUrl": "a724ce4831690cc127b9e421aebaea7052009e06.jpg",
+            "hidden": false,
+            "globalPct": 24.6
+        },
+        {
+            "apiName": "ACH_FIND_BB_SPATULAS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hello, Bikini Bottom",
+            "description": "Find all the hidden Golden Spatulas in Bikini Bottom.",
+            "iconUrl": "350db866148702a7fe3a339240b974737af04487.jpg",
+            "iconGrayUrl": "0e37762c3d62a45ab0182737b97229c4cc7a9e97.jpg",
+            "hidden": false,
+            "globalPct": 22.1
+        },
+        {
+            "apiName": "ACH_STAT_COLLECT_SOCKS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sock Getter",
+            "description": "Find 15 of Patrick's Socks",
+            "iconUrl": "60467efbecbb534b611247f2df160dafe792de1e.jpg",
+            "iconGrayUrl": "2cc1e86c2ad9f910aed62005db110f69e35d8707.jpg",
+            "hidden": false,
+            "globalPct": 38.2
+        },
+        {
+            "apiName": "ACH_SURFS_UP",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Surf's Up!",
+            "description": "Finish the main missions of Goo Lagoon",
+            "iconUrl": "8c7e22f908bc47220369f92b3d54eaf649661c14.jpg",
+            "iconGrayUrl": "3af0671179f55f592760019729f025a3d643ed5b.jpg",
+            "hidden": false,
+            "globalPct": 31.6
+        },
+        {
+            "apiName": "ACH_JELLYFISHING",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Jellyfishing",
+            "description": "Complete Squidward's Mission in Jellyfish Fields",
+            "iconUrl": "8bbd3554f13a5c4f033ca8cf7dc865fba4011c4b.jpg",
+            "iconGrayUrl": "f5f1bd9b17be7ef5a6d9a70e8ed2360b4ba884ba.jpg",
+            "hidden": false,
+            "globalPct": 45
+        },
+        {
+            "apiName": "ACH_DOWN_TOWN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Uptown and Downtown",
+            "description": "Complete Mrs Puff's Mission in Downtown Bikini Bottom",
+            "iconUrl": "be0298b036db8431bae2fb1d76bf61b5441c0707.jpg",
+            "iconGrayUrl": "61cf9ddd56b9aa671af368cfed4e15e34523baf1.jpg",
+            "hidden": false,
+            "globalPct": 31.7
+        },
+        {
+            "apiName": "ACH_ROCK_BOTTOM",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hit Rock Bottom",
+            "description": "Finish the main missions of Rock Bottom",
+            "iconUrl": "224531057c4dfc0d4c461cccc0d2443e40bc6098.jpg",
+            "iconGrayUrl": "69d2825eddfd621405a42840c3b6d7cc6ab912b5.jpg",
+            "hidden": false,
+            "globalPct": 24.7
+        },
+        {
+            "apiName": "ACH_MERMALAIR",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Keep it Rolling",
+            "description": "Complete the Rolling Ball Puzzle in Mermalair",
+            "iconUrl": "23791159fd2140001ed53cc3aadc64b8a63a41f5.jpg",
+            "iconGrayUrl": "aad536aa4653f255823ecdc1191cd84ed0789446.jpg",
+            "hidden": false,
+            "globalPct": 23.6
+        },
+        {
+            "apiName": "ACH_KELP_FOREST",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Kelp Forest of Fear",
+            "description": "Find all the Lost Campers in Kelp Forest",
+            "iconUrl": "2c9d5e0c2f5803e840cba4d5f05907d2e298233a.jpg",
+            "iconGrayUrl": "e7b62486d268eb868dd1c0f4d51a7d78da3abeea.jpg",
+            "hidden": false,
+            "globalPct": 16.3
+        },
+        {
+            "apiName": "ACH_FD_GRAVEYARD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ship Shape",
+            "description": "Reclaim the Flying Dutchman's ship in the Flying Dutchman's Graveyard",
+            "iconUrl": "43fe1c2c747d63a20ae3516ccafd2589caa18464.jpg",
+            "iconGrayUrl": "f2933190ab21fe14316571af67645c64e60fa6f2.jpg",
+            "hidden": false,
+            "globalPct": 17.9
+        },
+        {
+            "apiName": "ACH_SLEEPY_TIME",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sleepy Time",
+            "description": "Get All Golden Spatulas in the SpongeBob's Dream level",
+            "iconUrl": "184342411d7629dd6a0b9232b539c37467ad40f2.jpg",
+            "iconGrayUrl": "3c18f6feacc616571d4e598dc7896595b81adda1.jpg",
+            "hidden": false,
+            "globalPct": 16.3
+        },
+        {
+            "apiName": "ACH_PRAWN_BOSS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Shrimp Catcher",
+            "description": "Defeat Prawn in the Mermalair",
+            "iconUrl": "0712271cf6e77bae91a470b7aaa7e41d76f221f7.jpg",
+            "iconGrayUrl": "16782452f47d4487a3113cc945ff14a7eaea68fa.jpg",
+            "hidden": false,
+            "globalPct": 25.1
+        },
+        {
+            "apiName": "ACH_FLYING_DUTCHMAN_BOSS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Shanghaied",
+            "description": "Defeat the Flying Dutchman",
+            "iconUrl": "c99eb59caeb47833f894d7bfdd9c45541be657b1.jpg",
+            "iconGrayUrl": "23c1a4f3102b2c69dfcbfbbfd848bea321254f81.jpg",
+            "hidden": false,
+            "globalPct": 17.6
+        },
+        {
+            "apiName": "ACH_ARE_YOU_READY_NOW",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Are you ready now?",
+            "description": "",
+            "iconUrl": "59c7187856df743955830e25362c2b00a473bc4b.jpg",
+            "iconGrayUrl": "bf3ce525aaf31582c2852540d3a35472495d592a.jpg",
+            "hidden": true,
+            "globalPct": 23.7
+        },
+        {
+            "apiName": "ACH_SOCK_CONCERT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sock Concert",
+            "description": "Find half (40) of Patrick's Socks",
+            "iconUrl": "ab98db46d5a8adde4e0b796f0d8196c9a318da31.jpg",
+            "iconGrayUrl": "6c958a203453103456ef7d4bb9d884175c00efb1.jpg",
+            "hidden": false,
+            "globalPct": 20.3
+        },
+        {
+            "apiName": "ACH_SOCK_OPERA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sock Opera",
+            "description": "Find all (80) of Patrick's Socks",
+            "iconUrl": "60d4142e361271763605d4ba2d7b03a3f69e1932.jpg",
+            "iconGrayUrl": "2287c4cbb8c418e8a0dbd59c716c507b9d6a000c.jpg",
+            "hidden": false,
+            "globalPct": 9.5
+        },
+        {
+            "apiName": "ACH_CHUM_BUCKET_BRAIN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Small Does Not Rule",
+            "description": "Defeat Robo-Plankton and neutralize SpongeBot SteelPants' Brain.",
+            "iconUrl": "036510cb50831f2748ff94dc8430d8ac27567fc1.jpg",
+            "iconGrayUrl": "cfef04c5a1a4debf4f6faab06b55f9455c5198b3.jpg",
+            "hidden": false,
+            "globalPct": 17.5
+        },
+        {
+            "apiName": "ACH_ROBO_SANDY_BOSS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sweet Victory",
+            "description": "Defeat Robo-Sandy in the Poseidome",
+            "iconUrl": "e1ce01b92e3e30df6b91c7bc97d743ffcc99d199.jpg",
+            "iconGrayUrl": "d0b4e4b978cc10484abade7930f4654a58356866.jpg",
+            "hidden": false,
+            "globalPct": 35.3
+        },
+        {
+            "apiName": "ACH_ROBO_PATRICK_BOSS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Toxic Terror",
+            "description": "Defeat Robo-Patrick in the Industrial Park",
+            "iconUrl": "25bf3d5f46c2cd996adc925d4a3eacbf153b8635.jpg",
+            "iconGrayUrl": "9ac8fbd14927864896023247f6992e84f96a5405.jpg",
+            "hidden": false,
+            "globalPct": 25.5
+        },
+        {
+            "apiName": "ACH_ROBO_SB_BOSS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "SpongeBob vs SpongeBob!",
+            "description": "Defeat SpongeBot SteelPants in the Chum Bucket Lab",
+            "iconUrl": "3dfa8f38d5acb3acf2b712ed48c92a99f94be073.jpg",
+            "iconGrayUrl": "a374ebc2b06d6f00080b2a0fc606a2210866e139.jpg",
+            "hidden": false,
+            "globalPct": 17.7
+        },
+        {
+            "apiName": "ACH_ALL_ROBOTS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Robot encyclopedia",
+            "description": "Destroy at least one type of every robot in the game. Bosses don't count",
+            "iconUrl": "19ddc21d9712577558b0f3e723b66ece95cb1e7c.jpg",
+            "iconGrayUrl": "0c0be30afd46d33f9befa0f9476777db4a97ad36.jpg",
+            "hidden": false,
+            "globalPct": 21.5
+        },
+        {
+            "apiName": "ACH_COMPLETION",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "100% SpongeBob",
+            "description": "Get 100% completion. All golden spatulas and all socks",
+            "iconUrl": "09110c2380717de655bc83373e256ca3f6e77729.jpg",
+            "iconGrayUrl": "00c94dbeac77a18669453658cc9d6fc30f73025c.jpg",
+            "hidden": false,
+            "globalPct": 10.3
+        },
+        {
+            "apiName": "ACH_STAT_25_SPATULA_SEEKER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Super Spatula Seeker",
+            "description": "Get 25 Golden Spatulas",
+            "iconUrl": "c8d527f5cc9cf267d6bfcea35c65bb273a438baf.jpg",
+            "iconGrayUrl": "7b0b9a801c45203b8611b4d5a625b7908ebf8e54.jpg",
+            "hidden": false,
+            "globalPct": 34.2
+        },
+        {
+            "apiName": "ACH_STAT_50_SPATULA_SEEKER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ultra Spatula Seeker",
+            "description": "Get 50 Golden Spatulas",
+            "iconUrl": "aefb0a7b1c8298edf0a754b85a52b7cc8b303132.jpg",
+            "iconGrayUrl": "03318cc3d8330494c4b67b04e938d47232415eeb.jpg",
+            "hidden": false,
+            "globalPct": 25.1
+        },
+        {
+            "apiName": "ACH_STAT_75_SPATULA_SEEKER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mega Spatula Seeker",
+            "description": "Get 75 Golden Spatulas",
+            "iconUrl": "bcc83e2e32a8b93d39c2ba210690a2e90ea6ba4c.jpg",
+            "iconGrayUrl": "9eab91db9f9a6a6b96f9cb018d25ec3d50b3db3b.jpg",
+            "hidden": false,
+            "globalPct": 19.1
+        },
+        {
+            "apiName": "ACH_STAT_100_SPATULA_SEEKER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Super Ultra Mega Spatula Seeker",
+            "description": "Get all 100 Golden Spatulas",
+            "iconUrl": "561dc937456e33583b18a82a62223b95ad111de8.jpg",
+            "iconGrayUrl": "889fc8c8ece4de56aa6e919713a669f439a7c249.jpg",
+            "hidden": false,
+            "globalPct": 10.4
+        }
+    ],
+    "playtimeForever": 169,
+    "lastPlayedTs": "2026-01-16T09:18:10.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/969990/8bf99a995dd152cab12a6363261a2d9ba7604f4f.jpg",
+    "lastUnlockedAt": "2025-08-17T13:23:27.000Z",
+    "lastUnlockName": "Sponge Smasher",
+    "preview": [
+        {
+            "apiName": "ACH_STAT_SPONGE_SMASHER",
+            "displayName": "Sponge Smasher",
+            "unlocked": true,
+            "unlockedAt": "2025-08-17T13:23:27.000Z",
+            "iconUrl": "01d9da32b6a0d12dafbbdf68c01919285625c879.jpg",
+            "iconGrayUrl": "9ee77411e4156b3dbcf864c03c9a0c2268c6605c.jpg",
+            "globalPct": 46.7
+        },
+        {
+            "apiName": "ACH_JELLYFISH_JAM",
+            "displayName": "Jellyfish Jam",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "7aeff685bb90d621fc46da3344c18bc40aaedd53.jpg",
+            "iconGrayUrl": "af96171e0418902afeb08fe613108a63ce6e007e.jpg",
+            "globalPct": 51.4
+        },
+        {
+            "apiName": "ACH_TIME_FOR_TUTORIAL",
+            "displayName": "Time For Tutorial",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "64000636f1698e22af4aa60bffbf43af8c35e475.jpg",
+            "iconGrayUrl": "d192e22e617b5eb16e4928383687bd3e55d57b46.jpg",
+            "globalPct": 39.2
+        },
+        {
+            "apiName": "ACH_STAT_SPATULA_SEEKER",
+            "displayName": "Spatula Seeker",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "4289ba72f157a7d7e27c5cb7db800fba4684dc94.jpg",
+            "iconGrayUrl": "d871aae09efdb861a89aa81d7fd25c8af0d76561.jpg",
+            "globalPct": 49.7
+        },
+        {
+            "apiName": "ACH_STAT_SQUIRREL_SMASHER",
+            "displayName": "Squirrel Smasher",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "5b779656d8c004e029f13c87e78fb56e9e65c46b.jpg",
+            "iconGrayUrl": "3d3c0ea5e01218c034900dba41177f5c7d21504d.jpg",
+            "globalPct": 27.4
+        },
+        {
+            "apiName": "ACH_STAT_STAR_SMASHER",
+            "displayName": "Star Smasher",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "fd83872238afa737be4409645625720115a892bd.jpg",
+            "iconGrayUrl": "1d7e31d71c68c841a064310206745997a855c9ad.jpg",
+            "globalPct": 33.5
+        }
+    ]
+}

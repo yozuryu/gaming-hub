@@ -1,0 +1,290 @@
+{
+    "appId": 343710,
+    "hasAchievements": true,
+    "total": 20,
+    "unlocked": 0,
+    "gameName": "KHOLAT",
+    "achievements": [
+        {
+            "apiName": "E_KHA_001",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dawn of the Bone God",
+            "description": "",
+            "iconUrl": "b3bc3ffd4080743b3042bc7c564cce97680f6b1d.jpg",
+            "iconGrayUrl": "02a6cf95133cd0ed68fc1d9b46cc7137633966b2.jpg",
+            "hidden": true,
+            "globalPct": 11.8
+        },
+        {
+            "apiName": "E_KHA_002",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Strange lights in the sky",
+            "description": "",
+            "iconUrl": "d5899247ad9be21ea84ae9a466f2c974ae13e017.jpg",
+            "iconGrayUrl": "727eb6565ba7d194ae15f373c2dea8256344f628.jpg",
+            "hidden": true,
+            "globalPct": 12.1
+        },
+        {
+            "apiName": "E_KHA_003",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Suffering for no reason",
+            "description": "",
+            "iconUrl": "6ca4714ff9cf2f061fd6ed6c9380c6d30af1e10b.jpg",
+            "iconGrayUrl": "47f6ad5a82ce9ac8f70c925a33ccc805639f52bf.jpg",
+            "hidden": true,
+            "globalPct": 11.3
+        },
+        {
+            "apiName": "E_KHA_004",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "…and there will be nothing",
+            "description": "",
+            "iconUrl": "12ee5da963db62376095e2057d0377e32324276f.jpg",
+            "iconGrayUrl": "19d5c683f43dacac4ae15b8d873f151ec3218e54.jpg",
+            "hidden": true,
+            "globalPct": 11.3
+        },
+        {
+            "apiName": "E_KHA_005",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "There is no hope",
+            "description": "",
+            "iconUrl": "3ee8bb09215c0da1e025bf73d42b1b9e981a9609.jpg",
+            "iconGrayUrl": "8469ba2163cc424ab032535a69fbad2740df479d.jpg",
+            "hidden": true,
+            "globalPct": 12.8
+        },
+        {
+            "apiName": "E_KHA_006",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The most dangerous game",
+            "description": "",
+            "iconUrl": "dcbafc4633700adb67811737e8014ba6921a2a8c.jpg",
+            "iconGrayUrl": "f71f17d525d856e30a3be2e4d36c3ae311d1b0b4.jpg",
+            "hidden": true,
+            "globalPct": 11.6
+        },
+        {
+            "apiName": "E_KHA_007",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sacrificed",
+            "description": "",
+            "iconUrl": "ba03f0914590dfdb226fc545ed614e641512e0a5.jpg",
+            "iconGrayUrl": "52a02318bb4576241c4c707b17fecbb5599358b7.jpg",
+            "hidden": true,
+            "globalPct": 12.7
+        },
+        {
+            "apiName": "E_KHA_008",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Circle of life",
+            "description": "",
+            "iconUrl": "54619655773e0caed106bc1e62c80f3139f18df9.jpg",
+            "iconGrayUrl": "b7e10a3536f27ff0c2127c492c6ca4179cf6ee4f.jpg",
+            "hidden": true,
+            "globalPct": 23.5
+        },
+        {
+            "apiName": "E_KHA_009",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "In the name of the Father",
+            "description": "",
+            "iconUrl": "2078658cd42c45144a00601e7135a7f89c0f2d01.jpg",
+            "iconGrayUrl": "8070e33c8a31f6ec48f0c1b8b3beaf71ed42a074.jpg",
+            "hidden": true,
+            "globalPct": 12.3
+        },
+        {
+            "apiName": "E_KHA_010",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Incident",
+            "description": "You've reached the tent.",
+            "iconUrl": "11741bee5381e5b42e952fd60dc89c56b32f9b3e.jpg",
+            "iconGrayUrl": "e572d54b5bbe4cb500c8314fee3fa574c056cdbc.jpg",
+            "hidden": false,
+            "globalPct": 10.7
+        },
+        {
+            "apiName": "E_KHA_011",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "What is he?",
+            "description": "You've encountered the anomaly.",
+            "iconUrl": "c9f7ed742d536613c40853ab6976ca9cff45284d.jpg",
+            "iconGrayUrl": "ab19012cbc1ad14515218e4807eb409c8a556cc9.jpg",
+            "hidden": false,
+            "globalPct": 14.8
+        },
+        {
+            "apiName": "E_KHA_012",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The end of all things",
+            "description": "",
+            "iconUrl": "ffdfd89ac8471b8a88fac45e9a4f117d7af8f1e7.jpg",
+            "iconGrayUrl": "a3f1e4601dd572076dbe034fc058071f84a93835.jpg",
+            "hidden": true,
+            "globalPct": 9.4
+        },
+        {
+            "apiName": "E_KHA_013",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The runner",
+            "description": "",
+            "iconUrl": "661f3556e639408f644a634b0bb0c021c9953f59.jpg",
+            "iconGrayUrl": "5c28dc592f85b2d04b30b0ab76be7d71e6394b44.jpg",
+            "hidden": true,
+            "globalPct": 13.8
+        },
+        {
+            "apiName": "E_KHA_014",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The truth is out there",
+            "description": "You've collected all reports.",
+            "iconUrl": "51c58b5b387322df2f29d0fc06de057a3e50c8ab.jpg",
+            "iconGrayUrl": "b7851823cc32d34431ebec4217aad640c5de2d10.jpg",
+            "hidden": false,
+            "globalPct": 9.4
+        },
+        {
+            "apiName": "E_KHA_015",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Pulitzer",
+            "description": "You've collected all articles.",
+            "iconUrl": "10f26a638ee3586e18efff77035c5593fc02e051.jpg",
+            "iconGrayUrl": "f501a7cd4fa603304fd0996487710a47489dd0ed.jpg",
+            "hidden": false,
+            "globalPct": 9.4
+        },
+        {
+            "apiName": "E_KHA_016",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Witness",
+            "description": "You've collected all journal pages.",
+            "iconUrl": "fc3e099f9077907ea85afeae811cdff72c2d88e1.jpg",
+            "iconGrayUrl": "2841a4015260ed12c3830c9c817fe8c1df33741a.jpg",
+            "hidden": false,
+            "globalPct": 9.3
+        },
+        {
+            "apiName": "E_KHA_017",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Speleologist",
+            "description": "",
+            "iconUrl": "9b6a336a69a59cd0b5e79f5daa4f2be3e42b2545.jpg",
+            "iconGrayUrl": "8df73cb5a814d2689ed01f0689b6a34f01b1fb52.jpg",
+            "hidden": true,
+            "globalPct": 9.9
+        },
+        {
+            "apiName": "E_KHA_019",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Is it madness?",
+            "description": "",
+            "iconUrl": "adb226fb210fe899da94e57d63fa07f6420afb8d.jpg",
+            "iconGrayUrl": "33b9bb594e85965a61ab3bff69b648b75f0a565c.jpg",
+            "hidden": true,
+            "globalPct": 10.4
+        },
+        {
+            "apiName": "E_KHA_020",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Globetrotter",
+            "description": "You've unlocked all safe spots.",
+            "iconUrl": "7ab101b4481baa6e83854215e4cffad8f4b186e4.jpg",
+            "iconGrayUrl": "d7ecb55c3dbd22dcc53868ba49169f127c298a12.jpg",
+            "hidden": false,
+            "globalPct": 9.8
+        },
+        {
+            "apiName": "E_KHA_021",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Survivalist",
+            "description": "",
+            "iconUrl": "7d9d63ea34ddd4634829b248f7426fed51128eca.jpg",
+            "iconGrayUrl": "e299955e436c07f777a028e93184d38f14477b14.jpg",
+            "hidden": true,
+            "globalPct": 9
+        }
+    ],
+    "playtimeForever": 336,
+    "lastPlayedTs": "2024-06-11T10:54:17.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/343710/77c0fe5a1f94460962d547716a1391bb0ad8264e.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "E_KHA_001",
+            "displayName": "Dawn of the Bone God",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "b3bc3ffd4080743b3042bc7c564cce97680f6b1d.jpg",
+            "iconGrayUrl": "02a6cf95133cd0ed68fc1d9b46cc7137633966b2.jpg",
+            "globalPct": 11.8
+        },
+        {
+            "apiName": "E_KHA_002",
+            "displayName": "Strange lights in the sky",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d5899247ad9be21ea84ae9a466f2c974ae13e017.jpg",
+            "iconGrayUrl": "727eb6565ba7d194ae15f373c2dea8256344f628.jpg",
+            "globalPct": 12.1
+        },
+        {
+            "apiName": "E_KHA_003",
+            "displayName": "Suffering for no reason",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "6ca4714ff9cf2f061fd6ed6c9380c6d30af1e10b.jpg",
+            "iconGrayUrl": "47f6ad5a82ce9ac8f70c925a33ccc805639f52bf.jpg",
+            "globalPct": 11.3
+        },
+        {
+            "apiName": "E_KHA_004",
+            "displayName": "…and there will be nothing",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "12ee5da963db62376095e2057d0377e32324276f.jpg",
+            "iconGrayUrl": "19d5c683f43dacac4ae15b8d873f151ec3218e54.jpg",
+            "globalPct": 11.3
+        },
+        {
+            "apiName": "E_KHA_005",
+            "displayName": "There is no hope",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "3ee8bb09215c0da1e025bf73d42b1b9e981a9609.jpg",
+            "iconGrayUrl": "8469ba2163cc424ab032535a69fbad2740df479d.jpg",
+            "globalPct": 12.8
+        },
+        {
+            "apiName": "E_KHA_006",
+            "displayName": "The most dangerous game",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "dcbafc4633700adb67811737e8014ba6921a2a8c.jpg",
+            "iconGrayUrl": "f71f17d525d856e30a3be2e4d36c3ae311d1b0b4.jpg",
+            "globalPct": 11.6
+        }
+    ]
+}

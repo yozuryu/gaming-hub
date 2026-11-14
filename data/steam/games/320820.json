@@ -1,0 +1,202 @@
+{
+    "appId": 320820,
+    "hasAchievements": true,
+    "total": 12,
+    "unlocked": 0,
+    "gameName": "Toren",
+    "achievements": [
+        {
+            "apiName": "ENLIGHTENMENT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Enlightenment",
+            "description": "Complete the tree of life",
+            "iconUrl": "5d547055572665195cff4e73dbd491778305335d.jpg",
+            "iconGrayUrl": "017e4102788699a326d38adaeddc71e1d13b288b.jpg",
+            "hidden": false,
+            "globalPct": 9.5
+        },
+        {
+            "apiName": "LITTLE_MONK",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Little Monk",
+            "description": "Get the Mask",
+            "iconUrl": "7280b15389f4abc060d6d724f15d431fb70491a9.jpg",
+            "iconGrayUrl": "8c8b9a0438f9dfcfa99d6e1f846734269e8f8c22.jpg",
+            "hidden": false,
+            "globalPct": 11
+        },
+        {
+            "apiName": "LITTLE_WARRIOR",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Little Warrior",
+            "description": "Get the Chainmail",
+            "iconUrl": "4cba5842fc425b2e0c39c73e6ba8cb11c1ab82d4.jpg",
+            "iconGrayUrl": "e0f346af70e0f923df3bc156cb8b65909292f23b.jpg",
+            "hidden": false,
+            "globalPct": 38.9
+        },
+        {
+            "apiName": "LITTLE_KNIGHT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Little Knight",
+            "description": "Get the Sword",
+            "iconUrl": "b9169963aa1f11b46b624403280d6cbf925e94c9.jpg",
+            "iconGrayUrl": "d80a6a0014df2c130271c268eebc644f0cf68bf0.jpg",
+            "hidden": false,
+            "globalPct": 35
+        },
+        {
+            "apiName": "DARK_KNIGHT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dark Knight",
+            "description": "Get Stronger",
+            "iconUrl": "5e3aa484f88dfa2ed06a9843257a38e316cb33cf.jpg",
+            "iconGrayUrl": "b6d66fc4f6a5985dd376790ca9583b9b9615d72f.jpg",
+            "hidden": false,
+            "globalPct": 11.3
+        },
+        {
+            "apiName": "RISE_AND_SHINE_CHILD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Rise and Shine Little One",
+            "description": "Grow into Childhood",
+            "iconUrl": "5f433b8aa7f1a6d8c9a7ada5b836bf2c1233b7ab.jpg",
+            "iconGrayUrl": "69c69f72022d8b06fd42124d0fb5b7cb8ae37119.jpg",
+            "hidden": false,
+            "globalPct": 35.1
+        },
+        {
+            "apiName": "WAY_TO_GO_YOUNGSTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "You are growing so quickly",
+            "description": "Become a Teenager",
+            "iconUrl": "01652098b3df6e7bf936e8479734c561186bcfbb.jpg",
+            "iconGrayUrl": "35f05867c674a85b30bea9f6b9d2ac94b534bbee.jpg",
+            "hidden": false,
+            "globalPct": 27.7
+        },
+        {
+            "apiName": "TO_THE_TOP_BIG_ONE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Welcome to adulthood",
+            "description": "Become an Adult",
+            "iconUrl": "e040d0c8bd01336105e2c533e6350f26b9b91a09.jpg",
+            "iconGrayUrl": "bd4e16ccd9df5ec44abda2a1b57b3f93048020c5.jpg",
+            "hidden": false,
+            "globalPct": 24.5
+        },
+        {
+            "apiName": "A_TRUE_WARRIOR",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A True Warrior",
+            "description": "Become a Warrior",
+            "iconUrl": "932510d101bbc917e3976879462b3c8568f83447.jpg",
+            "iconGrayUrl": "d9a8b8ccde59f89c84b3d7a8db66f061a75fce66.jpg",
+            "hidden": false,
+            "globalPct": 25.9
+        },
+        {
+            "apiName": "REINCARNATION",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Reincarnation",
+            "description": "Experience the cycle of life",
+            "iconUrl": "daf8c820f6991584917b0fbdfc7736d6330540a5.jpg",
+            "iconGrayUrl": "d64c1d43a7ec013c922aa60ae607441b36c944e6.jpg",
+            "hidden": false,
+            "globalPct": 46.6
+        },
+        {
+            "apiName": "JUMP_TO_THE_VOID",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Into the void",
+            "description": "Know darkness",
+            "iconUrl": "978154a8a997703900b66bb43630a4df7e39c85a.jpg",
+            "iconGrayUrl": "7aa7e60ffe1d09707fdca17675137252193a1b16.jpg",
+            "hidden": false,
+            "globalPct": 22.9
+        },
+        {
+            "apiName": "HELP_ALL_MANKIND",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Save Humanity",
+            "description": "Fulfill your Destiny",
+            "iconUrl": "2e1fbc6fbd86d5d97968097905b2f32354b9dfea.jpg",
+            "iconGrayUrl": "d4e888dfa33ccfe2928e9b686403f1933c7ae8d1.jpg",
+            "hidden": false,
+            "globalPct": 21.3
+        }
+    ],
+    "playtimeForever": 324,
+    "lastPlayedTs": "2024-07-04T05:42:50.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/320820/c09f6945870a8d8c95b92d4054823d68d5712e9e.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ENLIGHTENMENT",
+            "displayName": "Enlightenment",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "5d547055572665195cff4e73dbd491778305335d.jpg",
+            "iconGrayUrl": "017e4102788699a326d38adaeddc71e1d13b288b.jpg",
+            "globalPct": 9.5
+        },
+        {
+            "apiName": "LITTLE_MONK",
+            "displayName": "Little Monk",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "7280b15389f4abc060d6d724f15d431fb70491a9.jpg",
+            "iconGrayUrl": "8c8b9a0438f9dfcfa99d6e1f846734269e8f8c22.jpg",
+            "globalPct": 11
+        },
+        {
+            "apiName": "LITTLE_WARRIOR",
+            "displayName": "Little Warrior",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "4cba5842fc425b2e0c39c73e6ba8cb11c1ab82d4.jpg",
+            "iconGrayUrl": "e0f346af70e0f923df3bc156cb8b65909292f23b.jpg",
+            "globalPct": 38.9
+        },
+        {
+            "apiName": "LITTLE_KNIGHT",
+            "displayName": "Little Knight",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "b9169963aa1f11b46b624403280d6cbf925e94c9.jpg",
+            "iconGrayUrl": "d80a6a0014df2c130271c268eebc644f0cf68bf0.jpg",
+            "globalPct": 35
+        },
+        {
+            "apiName": "DARK_KNIGHT",
+            "displayName": "Dark Knight",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "5e3aa484f88dfa2ed06a9843257a38e316cb33cf.jpg",
+            "iconGrayUrl": "b6d66fc4f6a5985dd376790ca9583b9b9615d72f.jpg",
+            "globalPct": 11.3
+        },
+        {
+            "apiName": "RISE_AND_SHINE_CHILD",
+            "displayName": "Rise and Shine Little One",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "5f433b8aa7f1a6d8c9a7ada5b836bf2c1233b7ab.jpg",
+            "iconGrayUrl": "69c69f72022d8b06fd42124d0fb5b7cb8ae37119.jpg",
+            "globalPct": 35.1
+        }
+    ]
+}

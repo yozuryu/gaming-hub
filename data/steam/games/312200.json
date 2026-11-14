@@ -1,0 +1,290 @@
+{
+    "appId": 312200,
+    "hasAchievements": true,
+    "total": 20,
+    "unlocked": 0,
+    "gameName": "Chasm",
+    "achievements": [
+        {
+            "apiName": "ACH_KILL_100",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Warrior",
+            "description": "Defeat 100 enemies.",
+            "iconUrl": "7148c980688180cbcda9eb5c3e43a344761563ee.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "hidden": false,
+            "globalPct": 59.7
+        },
+        {
+            "apiName": "ACH_KILL_1000",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Monster Slayer",
+            "description": "Defeat 1,000 enemies.",
+            "iconUrl": "09b7307193f6afa7f28474d93621d9d23665c4d8.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "hidden": false,
+            "globalPct": 26.5
+        },
+        {
+            "apiName": "ACH_BOSS_WEN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Wendigo",
+            "description": "",
+            "iconUrl": "a4408f149767bfc036ba3aa80699b1656e5d65d2.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "hidden": true,
+            "globalPct": 45.1
+        },
+        {
+            "apiName": "ACH_BOSS_CATA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bone Worm",
+            "description": "",
+            "iconUrl": "d81283ee47dbb93db66e95508be56eaa170d9fe7.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "hidden": true,
+            "globalPct": 33.8
+        },
+        {
+            "apiName": "ACH_BOSS_GOL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Titan",
+            "description": "",
+            "iconUrl": "a26d17c32a3d2dac79e30be32a22cad41d62d968.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "hidden": true,
+            "globalPct": 25.4
+        },
+        {
+            "apiName": "ACH_BOSS_KING",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "King Trell",
+            "description": "",
+            "iconUrl": "a3db9065d010834e1ef5f989e998840bd102f218.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "hidden": true,
+            "globalPct": 20.6
+        },
+        {
+            "apiName": "ACH_BOSS_SHA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Shaman",
+            "description": "",
+            "iconUrl": "a61c268e68c36e3e0406131e52890c3690e050ec.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "hidden": true,
+            "globalPct": 17.5
+        },
+        {
+            "apiName": "ACH_BOSS_ULAK",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ulak",
+            "description": "",
+            "iconUrl": "1acc74fd781efe2175d40a8d59c5b5eb932a6406.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "hidden": true,
+            "globalPct": 14.7
+        },
+        {
+            "apiName": "ACH_SPEND_5000",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Big Spender",
+            "description": "Spend 5,000 gold.",
+            "iconUrl": "2f6f73d7bad900a30037149dc61b07e4d54b9412.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "hidden": false,
+            "globalPct": 20
+        },
+        {
+            "apiName": "ACH_100_JOURNAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bookworm",
+            "description": "Find all the Journal Entries in the game.",
+            "iconUrl": "2b380ba98cb70c51df77b1fe5469bc3e664b146b.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "hidden": false,
+            "globalPct": 13.3
+        },
+        {
+            "apiName": "ACH_100_POWER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Superhero",
+            "description": "Find all the Powerups in the game.",
+            "iconUrl": "70ba4337b6885552eaa34995d0203f5b95d7b425.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "hidden": false,
+            "globalPct": 16.7
+        },
+        {
+            "apiName": "ACH_100_CRATE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Crate Buster",
+            "description": "Break all the crates in the game.",
+            "iconUrl": "c3d25e3b78bba96b714f12ab05cac4517a8b5546.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "hidden": false,
+            "globalPct": 12.8
+        },
+        {
+            "apiName": "ACH_100_NPC",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Socialite",
+            "description": "Rescue all the missing villagers.",
+            "iconUrl": "0ff941a890885453d7358283180788eb58e5665e.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "hidden": false,
+            "globalPct": 16
+        },
+        {
+            "apiName": "ACH_100_SIDE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Good Samaritan",
+            "description": "Complete all villager sidequests.",
+            "iconUrl": "93ef15a5e8117a3323356526dfc9789f109999ab.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "hidden": false,
+            "globalPct": 6.8
+        },
+        {
+            "apiName": "ACH_100_MAP",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Explorer",
+            "description": "Explore 100% of the map.",
+            "iconUrl": "428ce484f373b7b767a1f595793ab74cdcf3c79a.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "hidden": false,
+            "globalPct": 7.1
+        },
+        {
+            "apiName": "ACH_100_BESTIARY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Zoologist",
+            "description": "Unlock all the Bestiary entries.",
+            "iconUrl": "f220ec3f418c5a5174eaf9cd35ec8fb93e69b739.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "hidden": false,
+            "globalPct": 4
+        },
+        {
+            "apiName": "ACH_100_BOSSDROP",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Prizefighter",
+            "description": "Defeat a boss without getting hit.",
+            "iconUrl": "fa8e8c1889152209c8ab908190d7d745e3847ec7.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "hidden": false,
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "ACH_BEAT_HARD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Guildean Knight",
+            "description": "Complete the game on Hard difficulty.",
+            "iconUrl": "d2c6eadf049c4a525b65b374950966b7d76f4b93.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "hidden": false,
+            "globalPct": 3.2
+        },
+        {
+            "apiName": "ACH_BEAT_MORTAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mere Mortal",
+            "description": "Complete the game as a Mortal.",
+            "iconUrl": "e4be2138406da970e8394fa337b054b54b42caef.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "hidden": false,
+            "globalPct": 2.1
+        },
+        {
+            "apiName": "ACH_GLADIATOR",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Gladiator",
+            "description": "Become the Arena champion.",
+            "iconUrl": "77595a68246cd6e82e2919da23d05a7c15f843e0.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "hidden": false,
+            "globalPct": 17.6
+        }
+    ],
+    "playtimeForever": 397,
+    "lastPlayedTs": "2024-05-24T13:39:56.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/312200/3b2549ea1344ab9680c2a7d7283057c2e5890638.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACH_KILL_100",
+            "displayName": "Warrior",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "7148c980688180cbcda9eb5c3e43a344761563ee.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "globalPct": 59.7
+        },
+        {
+            "apiName": "ACH_KILL_1000",
+            "displayName": "Monster Slayer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "09b7307193f6afa7f28474d93621d9d23665c4d8.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "globalPct": 26.5
+        },
+        {
+            "apiName": "ACH_BOSS_WEN",
+            "displayName": "Wendigo",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a4408f149767bfc036ba3aa80699b1656e5d65d2.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "globalPct": 45.1
+        },
+        {
+            "apiName": "ACH_BOSS_CATA",
+            "displayName": "Bone Worm",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d81283ee47dbb93db66e95508be56eaa170d9fe7.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "globalPct": 33.8
+        },
+        {
+            "apiName": "ACH_BOSS_GOL",
+            "displayName": "Titan",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a26d17c32a3d2dac79e30be32a22cad41d62d968.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "globalPct": 25.4
+        },
+        {
+            "apiName": "ACH_BOSS_KING",
+            "displayName": "King Trell",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a3db9065d010834e1ef5f989e998840bd102f218.jpg",
+            "iconGrayUrl": "a83b78c55776a4626473fdfe09702dc382beaa17.jpg",
+            "globalPct": 20.6
+        }
+    ]
+}

@@ -1,0 +1,378 @@
+{
+    "appId": 427290,
+    "hasAchievements": true,
+    "total": 28,
+    "unlocked": 0,
+    "gameName": "Vampyr",
+    "achievements": [
+        {
+            "apiName": "ACH_SHELTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "From here to eternity",
+            "description": "",
+            "iconUrl": "af48d79165380308ce076bddf3bf633cf7719bef.jpg",
+            "iconGrayUrl": "a7da4c85df7284463a220e135eb37ef9912840ec.jpg",
+            "hidden": true,
+            "globalPct": 90.5
+        },
+        {
+            "apiName": "ACH_BEGINNING",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "At dawn we row",
+            "description": "",
+            "iconUrl": "4f3a5cac7006898c5419cbb1ca5f0e98da4ffee7.jpg",
+            "iconGrayUrl": "4b93ba6be308c96525aa6445606f7a036634893b.jpg",
+            "hidden": true,
+            "globalPct": 75.9
+        },
+        {
+            "apiName": "ACH_MEAT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Just take a bite",
+            "description": "",
+            "iconUrl": "0f7d0fa4bfa8c46d6018be8fd067c5bc290ba859.jpg",
+            "iconGrayUrl": "8a324092d25ff6d57ab14e7e5f490a2e73440f17.jpg",
+            "hidden": true,
+            "globalPct": 33.4
+        },
+        {
+            "apiName": "ACH_DONTNOD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Merciful release",
+            "description": "",
+            "iconUrl": "60654121ec02b7fd3e9250a39f66f5e3c999c2c4.jpg",
+            "iconGrayUrl": "b9dfbbcc24168f423b347172ce933b1b2478e170.jpg",
+            "hidden": true,
+            "globalPct": 49.6
+        },
+        {
+            "apiName": "ACH_RATS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pest control",
+            "description": "Eat 10 rats",
+            "iconUrl": "fe3e870b4f13e4ce28f33cdf859db530ee889c77.jpg",
+            "iconGrayUrl": "f9f44d37557d82708226d7aff3fb3823e4916a3f.jpg",
+            "hidden": false,
+            "globalPct": 43.7
+        },
+        {
+            "apiName": "ACH_STRANGE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Unlife is strange",
+            "description": "Save this poor plant with water",
+            "iconUrl": "1c1d218d4281d000b4a138c0b945325b6f09e72d.jpg",
+            "iconGrayUrl": "973f7e8a97e7adc55b6d61668f38f8647931e311.jpg",
+            "hidden": false,
+            "globalPct": 5.6
+        },
+        {
+            "apiName": "ACH_MORTAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The tools of the profession",
+            "description": "Find all melee weapons",
+            "iconUrl": "99071def36e80005249f6868981f6421dd208209.jpg",
+            "iconGrayUrl": "3c49ce10aa0a07bc51c3754ffd909ed297468546.jpg",
+            "hidden": false,
+            "globalPct": 2
+        },
+        {
+            "apiName": "ACH_HUNTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Keep your distance",
+            "description": "Find all ranged weapons",
+            "iconUrl": "e4be669f299bef822602cb4a8a9eb56c5a0cda23.jpg",
+            "iconGrayUrl": "115d3bb49ea4e7b33cd44c6c05064f31d396256d.jpg",
+            "hidden": false,
+            "globalPct": 2.1
+        },
+        {
+            "apiName": "ACH_EXTRA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Weapons of choice",
+            "description": "Find all off-hand weapons",
+            "iconUrl": "118378d1250d3d207814e6b8cdb92901d80ad620.jpg",
+            "iconGrayUrl": "5f0361e89ba7cbb1c92bae29c1258088b1c958dd.jpg",
+            "hidden": false,
+            "globalPct": 2.3
+        },
+        {
+            "apiName": "ACH_ELEMENTARY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bloody roots",
+            "description": "",
+            "iconUrl": "186d640f846a39f58b9647bfefdfce7c4774ccfe.jpg",
+            "iconGrayUrl": "d8d4e90d692500a2a3ef7e37305e4bbe953ec5d2.jpg",
+            "hidden": true,
+            "globalPct": 5.5
+        },
+        {
+            "apiName": "ACH_GATHERER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Lore keeper",
+            "description": "Gather all collectibles",
+            "iconUrl": "a080ab35a40dfe2e604d145e57b96e72ce232de6.jpg",
+            "iconGrayUrl": "ea42071205ed8127748afc4611c642c901bcd5f2.jpg",
+            "hidden": false,
+            "globalPct": 2.9
+        },
+        {
+            "apiName": "ACH_HYPOCRITICAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hippocratic oath",
+            "description": "Heal 10 citizens",
+            "iconUrl": "0fcfe848f6316b4815f45f8e1de138336f83c02b.jpg",
+            "iconGrayUrl": "9c366b36c9ba457de685b0c2385d899324c489a1.jpg",
+            "hidden": false,
+            "globalPct": 35
+        },
+        {
+            "apiName": "ACH_MECHANICAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "That's better",
+            "description": "Upgrade a weapon with a module",
+            "iconUrl": "95bbae90638ef1bf68b0a8ea855aaeb2ae1e84d1.jpg",
+            "iconGrayUrl": "28047ad6ae4da338a40389963e41cf2b6f499a1b.jpg",
+            "hidden": false,
+            "globalPct": 52.3
+        },
+        {
+            "apiName": "ACH_MASTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Work in progress",
+            "description": "Upgrade a weapon",
+            "iconUrl": "49ead81302e4c297c222cb36afb673a8c401e0ca.jpg",
+            "iconGrayUrl": "65a5749e0f9d621510646ab2612ac98a7d5106e2.jpg",
+            "hidden": false,
+            "globalPct": 63.7
+        },
+        {
+            "apiName": "ACH_DEADLY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Solid metal gear",
+            "description": "Upgrade a weapon to level 5",
+            "iconUrl": "8c54b74c26d4e05f3285f7dfc241db4e71741b2d.jpg",
+            "iconGrayUrl": "df1c9a90adfc10463ef969b5f6f3103ebaaecd5f.jpg",
+            "hidden": false,
+            "globalPct": 25.1
+        },
+        {
+            "apiName": "ACH_DEAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Interview with the vampire",
+            "description": "",
+            "iconUrl": "14dcc141a830d86a4d08976238b645b7f6715ce5.jpg",
+            "iconGrayUrl": "59bfeec5144a504e57849dc8dc7263a4c0726d4a.jpg",
+            "hidden": true,
+            "globalPct": 44.4
+        },
+        {
+            "apiName": "ACH_VENGEANCE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sacrificial lamb",
+            "description": "",
+            "iconUrl": "ff2ca501111c83636ea90ab477fe3cd6cc2c689c.jpg",
+            "iconGrayUrl": "3b1ddfd602a5f2dca8cbded2833b54f5949e0891.jpg",
+            "hidden": true,
+            "globalPct": 33.2
+        },
+        {
+            "apiName": "ACH_POLITICS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Prepare to die",
+            "description": "",
+            "iconUrl": "f96895af470572e0efb591667b241444328dcf93.jpg",
+            "iconGrayUrl": "f279f8d02f1c0738d7bc2cd6df937163d1036e76.jpg",
+            "hidden": true,
+            "globalPct": 22.7
+        },
+        {
+            "apiName": "ACH_MERCY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Dying Swansea",
+            "description": "",
+            "iconUrl": "d83e9ed7981c9f1f69431777ccb9fa671eefd222.jpg",
+            "iconGrayUrl": "f8344e855de653fdaaee4dd33bcad7b698b9a620.jpg",
+            "hidden": true,
+            "globalPct": 21.7
+        },
+        {
+            "apiName": "ACH_ANARCHY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Anarchy in the UK",
+            "description": "Turn a district to hostile status",
+            "iconUrl": "4aa3274a9df7bf383b0c4f10c193ee306c09addf.jpg",
+            "iconGrayUrl": "8ac549777b748d8d431e1bb77cf1374022056b1c.jpg",
+            "hidden": false,
+            "globalPct": 11.3
+        },
+        {
+            "apiName": "ACH_EVIL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A taste for blood",
+            "description": "",
+            "iconUrl": "d44be90e7d4df86d7536797e87aa16bfcd3bf277.jpg",
+            "iconGrayUrl": "eb8d1cde560830cf1f84517bab3e14289ce8abd9.jpg",
+            "hidden": true,
+            "globalPct": 19.3
+        },
+        {
+            "apiName": "ACH_HUMAN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Not even once",
+            "description": "",
+            "iconUrl": "1e984f357bf3577b9952feb8a64dde24013866ae.jpg",
+            "iconGrayUrl": "aa0110814f3c157517e8445699d84d1439716d9b.jpg",
+            "hidden": true,
+            "globalPct": 6.8
+        },
+        {
+            "apiName": "ACH_FERGAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Defeat the beast",
+            "description": "",
+            "iconUrl": "fce91881c6d22a9a06b7397d4589ecd0689ca446.jpg",
+            "iconGrayUrl": "a1c0058b1dbfa7134bcf8358bec8990caf104492.jpg",
+            "hidden": true,
+            "globalPct": 33.7
+        },
+        {
+            "apiName": "ACH_MARY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hail Mary",
+            "description": "",
+            "iconUrl": "5950aad59532c55aa8d937b914b2b8ebf75a1569.jpg",
+            "iconGrayUrl": "7e3a244926ca9776603a26f11499db96c740159f.jpg",
+            "hidden": true,
+            "globalPct": 30.6
+        },
+        {
+            "apiName": "ACH_DORIS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Death on stage",
+            "description": "",
+            "iconUrl": "346d1a0827d99fa96c2bcc553a4861d69bab9334.jpg",
+            "iconGrayUrl": "b3cc56c9f462a7d20f6aaffac0b5f4175b35f4b2.jpg",
+            "hidden": true,
+            "globalPct": 24.1
+        },
+        {
+            "apiName": "ACH_MACCULLUM",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bury the hatchet",
+            "description": "",
+            "iconUrl": "12af95c39705bed9467d8c21c80979002ad15d3a.jpg",
+            "iconGrayUrl": "5a4b0b5617fdd838f27d4dd3196a16d3a5f6223d.jpg",
+            "hidden": true,
+            "globalPct": 22
+        },
+        {
+            "apiName": "ACH_DISASTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Unnatural Disaster",
+            "description": "",
+            "iconUrl": "7995a6795fc6f41cf4164c195126ef2fab800059.jpg",
+            "iconGrayUrl": "71de18d5b72dfe8c9b11e982b1de617d7aef5879.jpg",
+            "hidden": true,
+            "globalPct": 19.4
+        },
+        {
+            "apiName": "ACH_LONDON",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "London's burning",
+            "description": "",
+            "iconUrl": "d16a017a615886f37d5327f4d27762a0c179e677.jpg",
+            "iconGrayUrl": "181744cbd0bf4eb959ff10e50c71a915919f5a63.jpg",
+            "hidden": true,
+            "globalPct": 3.6
+        }
+    ],
+    "playtimeForever": 304,
+    "lastPlayedTs": "2024-06-22T16:04:24.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/427290/7409221b743e6c9acb89ebe94a79ce1f5fa5ac26.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACH_SHELTER",
+            "displayName": "From here to eternity",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "af48d79165380308ce076bddf3bf633cf7719bef.jpg",
+            "iconGrayUrl": "a7da4c85df7284463a220e135eb37ef9912840ec.jpg",
+            "globalPct": 90.5
+        },
+        {
+            "apiName": "ACH_BEGINNING",
+            "displayName": "At dawn we row",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "4f3a5cac7006898c5419cbb1ca5f0e98da4ffee7.jpg",
+            "iconGrayUrl": "4b93ba6be308c96525aa6445606f7a036634893b.jpg",
+            "globalPct": 75.9
+        },
+        {
+            "apiName": "ACH_MEAT",
+            "displayName": "Just take a bite",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "0f7d0fa4bfa8c46d6018be8fd067c5bc290ba859.jpg",
+            "iconGrayUrl": "8a324092d25ff6d57ab14e7e5f490a2e73440f17.jpg",
+            "globalPct": 33.4
+        },
+        {
+            "apiName": "ACH_DONTNOD",
+            "displayName": "Merciful release",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "60654121ec02b7fd3e9250a39f66f5e3c999c2c4.jpg",
+            "iconGrayUrl": "b9dfbbcc24168f423b347172ce933b1b2478e170.jpg",
+            "globalPct": 49.6
+        },
+        {
+            "apiName": "ACH_RATS",
+            "displayName": "Pest control",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "fe3e870b4f13e4ce28f33cdf859db530ee889c77.jpg",
+            "iconGrayUrl": "f9f44d37557d82708226d7aff3fb3823e4916a3f.jpg",
+            "globalPct": 43.7
+        },
+        {
+            "apiName": "ACH_STRANGE",
+            "displayName": "Unlife is strange",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1c1d218d4281d000b4a138c0b945325b6f09e72d.jpg",
+            "iconGrayUrl": "973f7e8a97e7adc55b6d61668f38f8647931e311.jpg",
+            "globalPct": 5.6
+        }
+    ]
+}

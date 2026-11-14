@@ -1,0 +1,147 @@
+{
+    "appId": 429470,
+    "hasAchievements": true,
+    "total": 7,
+    "unlocked": 0,
+    "gameName": "Space Pilgrim Episode I: Alpha Centauri",
+    "achievements": [
+        {
+            "apiName": "ACH_PROLOGUE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Boarding Complete",
+            "description": "Complete the prologue of Episode One.",
+            "iconUrl": "15e10377b0319cda6b1227c55e12341627e46a37.jpg",
+            "iconGrayUrl": "f61ca116b14e33eb4734dc0d67e3a7a7ef24169f.jpg",
+            "hidden": false,
+            "globalPct": 11.9
+        },
+        {
+            "apiName": "ACH_DAD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dear Old Dad",
+            "description": "Listen to the message from Gail's father.",
+            "iconUrl": "a8af24767dad378fa36f7932a7742b2bea0a1730.jpg",
+            "iconGrayUrl": "fc760ffce4dc43038ef89f5bbce4329f154657e1.jpg",
+            "hidden": false,
+            "globalPct": 11.1
+        },
+        {
+            "apiName": "ACH_ACT1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Crisis Averted",
+            "description": "Complete act one of Episode One.",
+            "iconUrl": "d980274aae3f3c264dd982d9eaed8e8d3f173563.jpg",
+            "iconGrayUrl": "0d38bf127e8013f55a4bfb32729f0dbb390cc6cb.jpg",
+            "hidden": false,
+            "globalPct": 9.1
+        },
+        {
+            "apiName": "ACH_MARX",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Proletarians Unite!",
+            "description": "Read the worker's book.",
+            "iconUrl": "241414f516d71b5b1ab55bacf7ab87f1a279f6ce.jpg",
+            "iconGrayUrl": "da7aebe3e8260698638bef389bedf172d3e99ba7.jpg",
+            "hidden": false,
+            "globalPct": 8.4
+        },
+        {
+            "apiName": "ACH_ACT2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A New Heroine",
+            "description": "Complete act two of Episode One.",
+            "iconUrl": "af7e01d7dd6dd9c7396fdf88a5513c6b9f4544b2.jpg",
+            "iconGrayUrl": "4d9c83c45604cd4c3b4b2f432d59c462e549eac4.jpg",
+            "hidden": false,
+            "globalPct": 8.1
+        },
+        {
+            "apiName": "ACH_ROBOT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pesky Human",
+            "description": "Successfully annoy a robot.",
+            "iconUrl": "97e042599db674210b6dd700b48a2fedcbbe86f9.jpg",
+            "iconGrayUrl": "48e0432ff067bf8ac23ea009f4bd1d1c6806e379.jpg",
+            "hidden": false,
+            "globalPct": 7.6
+        },
+        {
+            "apiName": "ACH_ACT3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "All is Well",
+            "description": "Complete Episode One.",
+            "iconUrl": "ce5f09f3a0bed6d952e743770774559b6cc7b879.jpg",
+            "iconGrayUrl": "7aa263a6201be5c32239f1d25f634e283e53c021.jpg",
+            "hidden": false,
+            "globalPct": 8
+        }
+    ],
+    "playtimeForever": 275,
+    "lastPlayedTs": "2024-06-30T05:35:55.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/429470/69fc5e4be28774becc36534599f2b956ba87e343.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACH_PROLOGUE",
+            "displayName": "Boarding Complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "15e10377b0319cda6b1227c55e12341627e46a37.jpg",
+            "iconGrayUrl": "f61ca116b14e33eb4734dc0d67e3a7a7ef24169f.jpg",
+            "globalPct": 11.9
+        },
+        {
+            "apiName": "ACH_DAD",
+            "displayName": "Dear Old Dad",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a8af24767dad378fa36f7932a7742b2bea0a1730.jpg",
+            "iconGrayUrl": "fc760ffce4dc43038ef89f5bbce4329f154657e1.jpg",
+            "globalPct": 11.1
+        },
+        {
+            "apiName": "ACH_ACT1",
+            "displayName": "Crisis Averted",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d980274aae3f3c264dd982d9eaed8e8d3f173563.jpg",
+            "iconGrayUrl": "0d38bf127e8013f55a4bfb32729f0dbb390cc6cb.jpg",
+            "globalPct": 9.1
+        },
+        {
+            "apiName": "ACH_MARX",
+            "displayName": "Proletarians Unite!",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "241414f516d71b5b1ab55bacf7ab87f1a279f6ce.jpg",
+            "iconGrayUrl": "da7aebe3e8260698638bef389bedf172d3e99ba7.jpg",
+            "globalPct": 8.4
+        },
+        {
+            "apiName": "ACH_ACT2",
+            "displayName": "A New Heroine",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "af7e01d7dd6dd9c7396fdf88a5513c6b9f4544b2.jpg",
+            "iconGrayUrl": "4d9c83c45604cd4c3b4b2f432d59c462e549eac4.jpg",
+            "globalPct": 8.1
+        },
+        {
+            "apiName": "ACH_ROBOT",
+            "displayName": "Pesky Human",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "97e042599db674210b6dd700b48a2fedcbbe86f9.jpg",
+            "iconGrayUrl": "48e0432ff067bf8ac23ea009f4bd1d1c6806e379.jpg",
+            "globalPct": 7.6
+        }
+    ]
+}

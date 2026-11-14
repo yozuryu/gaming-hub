@@ -1,0 +1,290 @@
+{
+    "appId": 2001120,
+    "hasAchievements": true,
+    "total": 20,
+    "unlocked": 4,
+    "gameName": "Split Fiction",
+    "achievements": [
+        {
+            "apiName": "CompleteGame",
+            "unlocked": true,
+            "unlockedAt": "2025-05-02T15:55:37.000Z",
+            "displayName": "BFF's",
+            "description": "Finally published",
+            "iconUrl": "992478d94bb0eaa026d014e6376e009c9f95c120.jpg",
+            "iconGrayUrl": "2993fb271787f33b3acbb752f7054026baf36473.jpg",
+            "hidden": false,
+            "globalPct": 28.1
+        },
+        {
+            "apiName": "CompleteSideStories",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bookworms",
+            "description": "Complete all side stories",
+            "iconUrl": "65951e081239cc1e6caf39b7e5cb22d7f8a54cf3.jpg",
+            "iconGrayUrl": "f2941ed955a5c0e0d464ef032e9c17ff6f3971b5.jpg",
+            "hidden": false,
+            "globalPct": 18.3
+        },
+        {
+            "apiName": "AllCauldronForms",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Potion Chef",
+            "description": "I need your strongest potions",
+            "iconUrl": "5db43e13925c4b2da5fa383dc043c51a5a78908a.jpg",
+            "iconGrayUrl": "52547b57dc59f9a8109fb23066fdb1c2a8100052.jpg",
+            "hidden": false,
+            "globalPct": 15.2
+        },
+        {
+            "apiName": "PlayerChair",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Chair the Load",
+            "description": "Get off me...",
+            "iconUrl": "5be108fa02e7e78ddfe91e252f1190bea0cab684.jpg",
+            "iconGrayUrl": "df19697c7bdb7aa2ce03a9976c933b711faf1c8b.jpg",
+            "hidden": false,
+            "globalPct": 12.5
+        },
+        {
+            "apiName": "CaptchaCompleted",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "You Are Not a Robot",
+            "description": "Completely Automated Public Turing test to tell Computers and Humans Apart",
+            "iconUrl": "412493d24b0f978c2cbdbc34c87d04f119d0d157.jpg",
+            "iconGrayUrl": "5c28034088dc5ce12030b11b3362c432df09e5ed.jpg",
+            "hidden": false,
+            "globalPct": 3.3
+        },
+        {
+            "apiName": "FindAllBenches",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sisters: A Tale Of Two Besties",
+            "description": "Relax on all 6 benches",
+            "iconUrl": "3429231d1e876916d7f1462583ba6f1ba7b86b37.jpg",
+            "iconGrayUrl": "5be851cc612289526c781480c6310c43a51a6641.jpg",
+            "hidden": false,
+            "globalPct": 3.6
+        },
+        {
+            "apiName": "ThrowStones",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "One Bird, Three Stones",
+            "description": "You couldn't have known",
+            "iconUrl": "8dac06ec101bebe58199b0f0b7bcf0fe3c0ad5a3.jpg",
+            "iconGrayUrl": "75430ee242fe237ac3449d49b906b54d7bfa7a5e.jpg",
+            "hidden": false,
+            "globalPct": 10.2
+        },
+        {
+            "apiName": "GameshowNoExplosion",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cold Potato",
+            "description": "Complete the Gameshow without the bomb exploding",
+            "iconUrl": "705998ebe231a3863ca21735c27a9d7f93addf6a.jpg",
+            "iconGrayUrl": "c38f3fa1bf2624b7ba45ad3d612f065cd59f9598.jpg",
+            "hidden": false,
+            "globalPct": 1.8
+        },
+        {
+            "apiName": "TazerBotKill",
+            "unlocked": true,
+            "unlockedAt": "2025-05-01T13:38:18.000Z",
+            "displayName": "Tazed and Confused",
+            "description": "Adding insult to injury",
+            "iconUrl": "a3ccf0b121f44e013ddea011749c99754854ca94.jpg",
+            "iconGrayUrl": "57a62a7d74971dee85a383e1221acd3bcada2aa1.jpg",
+            "hidden": false,
+            "globalPct": 17.4
+        },
+        {
+            "apiName": "LockedInCell",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Locked Up",
+            "description": "No way out",
+            "iconUrl": "1eddfa157020c91234f79d7e866ff93dd437aa10.jpg",
+            "iconGrayUrl": "cf182e30179ddff25509a319cc456d2747a3af5e.jpg",
+            "hidden": false,
+            "globalPct": 17.6
+        },
+        {
+            "apiName": "BrickHouse",
+            "unlocked": true,
+            "unlockedAt": "2025-04-04T15:48:12.000Z",
+            "displayName": "Huffing and Puffing",
+            "description": "It's not the big bad wolf you have to worry about",
+            "iconUrl": "a2b34b8f3ba6f7ca09cbd42c0648127055d341b0.jpg",
+            "iconGrayUrl": "b3aeabaee9be1e54ace41ed87eda8a379218add1.jpg",
+            "hidden": false,
+            "globalPct": 26.2
+        },
+        {
+            "apiName": "KilledByReceptionist",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Robot Revolution",
+            "description": "Hasta la vista, baby",
+            "iconUrl": "07a00b8b7176fd9d6c55a316d4ec63cca67d73fd.jpg",
+            "iconGrayUrl": "ab2275d526d760eaf100619164c4689dd14f1e27.jpg",
+            "hidden": false,
+            "globalPct": 29
+        },
+        {
+            "apiName": "FeedBabyDragon",
+            "unlocked": true,
+            "unlockedAt": "2025-04-19T16:28:29.000Z",
+            "displayName": "Feed Me",
+            "description": "Take a snack",
+            "iconUrl": "ebda2d9d9d665f1e825d68271a022bf984ec0be6.jpg",
+            "iconGrayUrl": "bdc8acba7316cc08699751170b2ebec85f8c9da8.jpg",
+            "hidden": false,
+            "globalPct": 32.2
+        },
+        {
+            "apiName": "PunchedOnSwing",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Friendly Push",
+            "description": "Monkey strong",
+            "iconUrl": "e7d91f1e3f07f518a88ba8a016cee451fbee7a5c.jpg",
+            "iconGrayUrl": "3d44b4891dfe42d6a99a15322efc52d13bad0283.jpg",
+            "hidden": false,
+            "globalPct": 6.6
+        },
+        {
+            "apiName": "WhipEars",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Rose's Best Friend",
+            "description": "",
+            "iconUrl": "29cebb4acb3ac2edd202e4b16a5109b8caa77b36.jpg",
+            "iconGrayUrl": "d9c599a51a508964a33e7eba972361509d49bb48.jpg",
+            "hidden": true,
+            "globalPct": 17.2
+        },
+        {
+            "apiName": "SharkDeath",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "We're Gonna Need a Bigger Boat",
+            "description": "Duuuun dun… duuuun dun…",
+            "iconUrl": "f107a872fa10cf1c4bffb12cd03d48d1ba832534.jpg",
+            "iconGrayUrl": "de06b12241bae20de46ba00bbe09b27b11c53261.jpg",
+            "hidden": false,
+            "globalPct": 3.7
+        },
+        {
+            "apiName": "Antihero",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Are We the Baddies?",
+            "description": "No worries, it's just a simulation",
+            "iconUrl": "d0cb249f5807120bbbb4b53d9f99fb30969d84bc.jpg",
+            "iconGrayUrl": "36fde63d66fbe7d964729ebe5297ede5b9dce5e6.jpg",
+            "hidden": false,
+            "globalPct": 7.7
+        },
+        {
+            "apiName": "FindCakeRoom",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Cake is Not a Lie",
+            "description": "",
+            "iconUrl": "e268b4218f6ca63e743c9dbff303b5438fa0717e.jpg",
+            "iconGrayUrl": "01797b379c25d7fda1d2348cb9c08ee588bf2eb5.jpg",
+            "hidden": true,
+            "globalPct": 3.1
+        },
+        {
+            "apiName": "ShootCardboardBox",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Snaaaaaaaaake",
+            "description": "",
+            "iconUrl": "f59fc7ee992c01d6435c17d709850002038d56d7.jpg",
+            "iconGrayUrl": "143df683564dfc718ec8926c02295db73970f9b6.jpg",
+            "hidden": true,
+            "globalPct": 2.5
+        },
+        {
+            "apiName": "BigGas",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Goin' Whole Hog",
+            "description": "Let it rip",
+            "iconUrl": "267eda72328a1a7e475647ace8c032d9bb41ba3f.jpg",
+            "iconGrayUrl": "d2a1d58a74804fb1d3f8103dd32f76fac0351edf.jpg",
+            "hidden": false,
+            "globalPct": 8.2
+        }
+    ],
+    "playtimeForever": 771,
+    "lastPlayedTs": "2025-05-02T15:56:02.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2001120/a01dc6ea47db8c74964d581fe9f1f8039e0e4f33.jpg",
+    "lastUnlockedAt": "2025-05-02T15:55:37.000Z",
+    "lastUnlockName": "BFF's",
+    "preview": [
+        {
+            "apiName": "CompleteGame",
+            "displayName": "BFF's",
+            "unlocked": true,
+            "unlockedAt": "2025-05-02T15:55:37.000Z",
+            "iconUrl": "992478d94bb0eaa026d014e6376e009c9f95c120.jpg",
+            "iconGrayUrl": "2993fb271787f33b3acbb752f7054026baf36473.jpg",
+            "globalPct": 28.1
+        },
+        {
+            "apiName": "TazerBotKill",
+            "displayName": "Tazed and Confused",
+            "unlocked": true,
+            "unlockedAt": "2025-05-01T13:38:18.000Z",
+            "iconUrl": "a3ccf0b121f44e013ddea011749c99754854ca94.jpg",
+            "iconGrayUrl": "57a62a7d74971dee85a383e1221acd3bcada2aa1.jpg",
+            "globalPct": 17.4
+        },
+        {
+            "apiName": "FeedBabyDragon",
+            "displayName": "Feed Me",
+            "unlocked": true,
+            "unlockedAt": "2025-04-19T16:28:29.000Z",
+            "iconUrl": "ebda2d9d9d665f1e825d68271a022bf984ec0be6.jpg",
+            "iconGrayUrl": "bdc8acba7316cc08699751170b2ebec85f8c9da8.jpg",
+            "globalPct": 32.2
+        },
+        {
+            "apiName": "BrickHouse",
+            "displayName": "Huffing and Puffing",
+            "unlocked": true,
+            "unlockedAt": "2025-04-04T15:48:12.000Z",
+            "iconUrl": "a2b34b8f3ba6f7ca09cbd42c0648127055d341b0.jpg",
+            "iconGrayUrl": "b3aeabaee9be1e54ace41ed87eda8a379218add1.jpg",
+            "globalPct": 26.2
+        },
+        {
+            "apiName": "CompleteSideStories",
+            "displayName": "Bookworms",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "65951e081239cc1e6caf39b7e5cb22d7f8a54cf3.jpg",
+            "iconGrayUrl": "f2941ed955a5c0e0d464ef032e9c17ff6f3971b5.jpg",
+            "globalPct": 18.3
+        },
+        {
+            "apiName": "AllCauldronForms",
+            "displayName": "Potion Chef",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "5db43e13925c4b2da5fa383dc043c51a5a78908a.jpg",
+            "iconGrayUrl": "52547b57dc59f9a8109fb23066fdb1c2a8100052.jpg",
+            "globalPct": 15.2
+        }
+    ]
+}

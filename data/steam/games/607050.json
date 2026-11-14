@@ -1,0 +1,323 @@
+{
+    "appId": 607050,
+    "hasAchievements": true,
+    "total": 23,
+    "unlocked": 0,
+    "gameName": "Wargroove",
+    "achievements": [
+        {
+            "apiName": "complete_prologue",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Revenant of Regicide",
+            "description": "Complete the prologue.",
+            "iconUrl": "2636951e1d625f2f9bdb351cbf4d20c27e212855.jpg",
+            "iconGrayUrl": "aaaec2aa4c4743ee2112d8d32f45dbf9549a2eda.jpg",
+            "hidden": false,
+            "globalPct": 80.6
+        },
+        {
+            "apiName": "complete_puzzle",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Puzzle Practitioner",
+            "description": "Complete a puzzle.",
+            "iconUrl": "e22f59c8f8b22738e93abbc10b7584203405ba74.jpg",
+            "iconGrayUrl": "61e3998754aa03e6f1dd01c33d81d7b3edf2a436.jpg",
+            "hidden": false,
+            "globalPct": 8.3
+        },
+        {
+            "apiName": "complete_arcade",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Arcade Apprentice",
+            "description": "Complete an arcade run.",
+            "iconUrl": "4f2210a6af5da891082b0e097a426f4fb1abaad1.jpg",
+            "iconGrayUrl": "e34331410696c6232555324d920b63ec7fc6aefe.jpg",
+            "hidden": false,
+            "globalPct": 8.2
+        },
+        {
+            "apiName": "use_groove",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Gregarious Groover",
+            "description": "Use a Groove.",
+            "iconUrl": "a133b8ade8440eb9275ecf914abedd3a8ccffe32.jpg",
+            "iconGrayUrl": "e16bf44970e1f1fb9d8061a6d197b3080e6da2fb.jpg",
+            "hidden": false,
+            "globalPct": 60.6
+        },
+        {
+            "apiName": "create_custom_map",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Creative Cartographer",
+            "description": "Create a custom map.",
+            "iconUrl": "a35cc425ef111a355c1f4cdf5f0e03f814874e31.jpg",
+            "iconGrayUrl": "71bf1f4a585c4de440dbff8622d7eca5f5c79fb3.jpg",
+            "hidden": false,
+            "globalPct": 12.4
+        },
+        {
+            "apiName": "win_skirmish",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cordial Commander",
+            "description": "Win a skirmish game.",
+            "iconUrl": "91eeaadafaa911791ad94f4b8d9315cf06fad649.jpg",
+            "iconGrayUrl": "492388e12905df793e5575b232b36049d3110881.jpg",
+            "hidden": false,
+            "globalPct": 19.5
+        },
+        {
+            "apiName": "win_quickplay",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Worldly Warrior",
+            "description": "Win an online match in Quick Play.",
+            "iconUrl": "6b68f094716f0524146662efac8f1c015c57e730.jpg",
+            "iconGrayUrl": "78b96a839eb933705c3ae7a70c75f9682532f5a2.jpg",
+            "hidden": false,
+            "globalPct": 13.4
+        },
+        {
+            "apiName": "play_downloaded_map",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Diligent Downloader",
+            "description": "Play a downloaded map.",
+            "iconUrl": "1c44aef67aabddd5513c1fc9defb710bb2011801.jpg",
+            "iconGrayUrl": "6d7ef4e75789de539f41db48a44ed71b6c777c44.jpg",
+            "hidden": false,
+            "globalPct": 7.9
+        },
+        {
+            "apiName": "complete_act_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Rookie Regent",
+            "description": "",
+            "iconUrl": "b1e31a00edf96b976c7b467ac16218be98dc0eaa.jpg",
+            "iconGrayUrl": "1bb23dc9cfa158bb06ae43eee7e6d06e34109ddb.jpg",
+            "hidden": true,
+            "globalPct": 51.4
+        },
+        {
+            "apiName": "complete_act_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Warring Woodsman",
+            "description": "",
+            "iconUrl": "c0e74a40a25a4b569810253c90194edab407c082.jpg",
+            "iconGrayUrl": "a6f106ae132685b6f303f42895487ea26b8fbb7e.jpg",
+            "hidden": true,
+            "globalPct": 21.9
+        },
+        {
+            "apiName": "complete_act_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mystic Messenger",
+            "description": "",
+            "iconUrl": "336a83435573fdee3e959983845e6fb5832b7cba.jpg",
+            "iconGrayUrl": "cac57c122cab01859f05d81e68c7fb60076bb28b.jpg",
+            "hidden": true,
+            "globalPct": 11.4
+        },
+        {
+            "apiName": "complete_act_4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Desert Duelist",
+            "description": "",
+            "iconUrl": "e97a306ae137e6bd275a61f58f2cd28cbf194fcd.jpg",
+            "iconGrayUrl": "62f5f424b1a860dd6668964ac744eb00d1b4bf5f.jpg",
+            "hidden": true,
+            "globalPct": 9.6
+        },
+        {
+            "apiName": "complete_act_5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Courageous Captain",
+            "description": "",
+            "iconUrl": "bbd67777c86f1f014c8c8c5dc27e5c9ad84c6726.jpg",
+            "iconGrayUrl": "abffde0122cc8f8f8fb9e893b1d28764eccb570b.jpg",
+            "hidden": true,
+            "globalPct": 6.3
+        },
+        {
+            "apiName": "complete_act_6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Decisive Diplomat",
+            "description": "",
+            "iconUrl": "aef19e599749325055e095234e67bfb4a101570a.jpg",
+            "iconGrayUrl": "a5bf047a8b66964f5aba32d456c462e8a8c6c4b8.jpg",
+            "hidden": true,
+            "globalPct": 5.3
+        },
+        {
+            "apiName": "use_every_groove",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Grand Groover",
+            "description": "Use every Groove once.",
+            "iconUrl": "68f4d5979ca890414ca2812404c6513f51fe72b2.jpg",
+            "iconGrayUrl": "9453328b42237113cb014658888b73d0616f3cab.jpg",
+            "hidden": false,
+            "globalPct": 5.1
+        },
+        {
+            "apiName": "complete_arcade_hard",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Quarter Queen",
+            "description": "Complete an Arcade in hard difficulty.",
+            "iconUrl": "0826c4ac44394e151b86b257a6e5765f00556978.jpg",
+            "iconGrayUrl": "6a6947a53a42c9de875060f604f83036d84587d4.jpg",
+            "hidden": false,
+            "globalPct": 2.6
+        },
+        {
+            "apiName": "complete_ancient_adversary",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Magnificent Martyr",
+            "description": "",
+            "iconUrl": "8a1c9e1d3d2a6febb68988ca29439651f4efb2b6.jpg",
+            "iconGrayUrl": "8265bea94a1379dfdee4959ad1fcd7db8498d1c8.jpg",
+            "hidden": true,
+            "globalPct": 6.3
+        },
+        {
+            "apiName": "complete_enemy_within",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Steadfast Spirit",
+            "description": "",
+            "iconUrl": "00c620193bd332637da4f9f809ccfdcf3f5aaa95.jpg",
+            "iconGrayUrl": "41eb39d09d4dd8a11e5007363d63b90882317e23.jpg",
+            "hidden": true,
+            "globalPct": 2.6
+        },
+        {
+            "apiName": "collect_all_stars",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Twinkling Tactician",
+            "description": "Collect 200 stars.",
+            "iconUrl": "6e0a01a15387cd2e766765e7bfbf3957656f3281.jpg",
+            "iconGrayUrl": "139fbed7aee7dc75538f2c5e6a7ee1283e2a76f8.jpg",
+            "hidden": false,
+            "globalPct": 0.9
+        },
+        {
+            "apiName": "srank_every_mission",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Super Strategist",
+            "description": "Obtain an S-Rank on every campaign mission.",
+            "iconUrl": "dad10c2bd8dcda6c4b67ca9c9d90fde1844664fe.jpg",
+            "iconGrayUrl": "e07a1fd3830c84c735e9bbd7e092c28c9e15d416.jpg",
+            "hidden": false,
+            "globalPct": 0.9
+        },
+        {
+            "apiName": "complete_all_arcades",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Joystick Jostler",
+            "description": "Complete all arcade runs.",
+            "iconUrl": "b547f9d0df3a205a0a94e0945f9649d9036c7600.jpg",
+            "iconGrayUrl": "5558b930d3210533d6235e11cebcbbbdaa383b7a.jpg",
+            "hidden": false,
+            "globalPct": 0.9
+        },
+        {
+            "apiName": "complete_all_puzzles",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Puzzle Professor",
+            "description": "Complete all puzzles.",
+            "iconUrl": "0b5c8e243b1b9b40dca787664faec86827299d6c.jpg",
+            "iconGrayUrl": "8fb0fd5a80b0075db459db3856746f5b595bb57b.jpg",
+            "hidden": false,
+            "globalPct": 1.8
+        },
+        {
+            "apiName": "unlock_all_gallery",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Art Aficionado",
+            "description": "Unlock every item in the gallery.",
+            "iconUrl": "03a7dda2df1e382228e7a7dfc3e4b698a594a7f0.jpg",
+            "iconGrayUrl": "d51e8906aae34ddfb89882716565d02e0253a01c.jpg",
+            "hidden": false,
+            "globalPct": 0.9
+        }
+    ],
+    "playtimeForever": 337,
+    "lastPlayedTs": "2024-06-23T14:21:01.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/607050/5d9f9be7eea6816578e46f07629a4dae8cec3b59.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "complete_prologue",
+            "displayName": "Revenant of Regicide",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "2636951e1d625f2f9bdb351cbf4d20c27e212855.jpg",
+            "iconGrayUrl": "aaaec2aa4c4743ee2112d8d32f45dbf9549a2eda.jpg",
+            "globalPct": 80.6
+        },
+        {
+            "apiName": "complete_puzzle",
+            "displayName": "Puzzle Practitioner",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "e22f59c8f8b22738e93abbc10b7584203405ba74.jpg",
+            "iconGrayUrl": "61e3998754aa03e6f1dd01c33d81d7b3edf2a436.jpg",
+            "globalPct": 8.3
+        },
+        {
+            "apiName": "complete_arcade",
+            "displayName": "Arcade Apprentice",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "4f2210a6af5da891082b0e097a426f4fb1abaad1.jpg",
+            "iconGrayUrl": "e34331410696c6232555324d920b63ec7fc6aefe.jpg",
+            "globalPct": 8.2
+        },
+        {
+            "apiName": "use_groove",
+            "displayName": "Gregarious Groover",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a133b8ade8440eb9275ecf914abedd3a8ccffe32.jpg",
+            "iconGrayUrl": "e16bf44970e1f1fb9d8061a6d197b3080e6da2fb.jpg",
+            "globalPct": 60.6
+        },
+        {
+            "apiName": "create_custom_map",
+            "displayName": "Creative Cartographer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a35cc425ef111a355c1f4cdf5f0e03f814874e31.jpg",
+            "iconGrayUrl": "71bf1f4a585c4de440dbff8622d7eca5f5c79fb3.jpg",
+            "globalPct": 12.4
+        },
+        {
+            "apiName": "win_skirmish",
+            "displayName": "Cordial Commander",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "91eeaadafaa911791ad94f4b8d9315cf06fad649.jpg",
+            "iconGrayUrl": "492388e12905df793e5575b232b36049d3110881.jpg",
+            "globalPct": 19.5
+        }
+    ]
+}

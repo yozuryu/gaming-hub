@@ -1,0 +1,147 @@
+{
+    "appId": 431710,
+    "hasAchievements": true,
+    "total": 7,
+    "unlocked": 0,
+    "gameName": "Space Pilgrim Episode II: Epsilon Indi",
+    "achievements": [
+        {
+            "apiName": "ACH_HOSP",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Space Opera",
+            "description": "Watch an episode of \"Galactic Hospital.\"",
+            "iconUrl": "654e39ba7b4bafa8a0f08fd04dea10a3a7bda538.jpg",
+            "iconGrayUrl": "4f0f157464e23b87cd7c1aa68872fc34b29c3b74.jpg",
+            "hidden": false,
+            "globalPct": 7.4
+        },
+        {
+            "apiName": "ACH_ACT1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Checkpoint",
+            "description": "Complete Act 1 of Episode Two.",
+            "iconUrl": "f1a9a5afcf039fab2205141ee29cc9b0ed4ffab5.jpg",
+            "iconGrayUrl": "1f480c3e27d038d18dc2e821728886f55f21da06.jpg",
+            "hidden": false,
+            "globalPct": 7
+        },
+        {
+            "apiName": "ACH_DARKSIDE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Dark Side",
+            "description": "Attempt to torture a prisoner.",
+            "iconUrl": "0f657599132ef07dffafa84e4e2353086ec6b0d0.jpg",
+            "iconGrayUrl": "77a6dfc894857106bac7dba1557b85cf9572798c.jpg",
+            "hidden": false,
+            "globalPct": 6.1
+        },
+        {
+            "apiName": "ACH_ACT2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Creator",
+            "description": "Complete Act 2 of Episode Two.",
+            "iconUrl": "b21fe326b2622a904948c6957f30e1975e720b5d.jpg",
+            "iconGrayUrl": "f142781222f173f612d113f386067313d4c3deb5.jpg",
+            "hidden": false,
+            "globalPct": 6.8
+        },
+        {
+            "apiName": "ACH_TOPMARKS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Top Marks",
+            "description": "Evade all three droids in the evaluation.",
+            "iconUrl": "0ac373716c285aadbf3c51484a0b21b510c672bb.jpg",
+            "iconGrayUrl": "705fed4e7ae07e82a669f723a589d107322db9ca.jpg",
+            "hidden": false,
+            "globalPct": 4.4
+        },
+        {
+            "apiName": "ACH_BOOBY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Booby Trap",
+            "description": "Stick your nose where it doesn't belong.",
+            "iconUrl": "e35e2a1a98fede58d9d8abbceb15c8464bad6ed7.jpg",
+            "iconGrayUrl": "6b5c8133748667be69dfc471965e167e0ee6b768.jpg",
+            "hidden": false,
+            "globalPct": 5
+        },
+        {
+            "apiName": "ACH_ACT3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fugitive",
+            "description": "Complete Act 3 of Episode Two.",
+            "iconUrl": "f7a6595c7b31ded89f7200d872ac817ccdb5ce1c.jpg",
+            "iconGrayUrl": "575c339dcc9fe6371d882b89ac93789be5e1d630.jpg",
+            "hidden": false,
+            "globalPct": 5.1
+        }
+    ],
+    "playtimeForever": 274,
+    "lastPlayedTs": "2024-06-30T07:06:11.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/431710/0f522f5ab91944db924bfae08d0fa76bcea026de.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACH_HOSP",
+            "displayName": "Space Opera",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "654e39ba7b4bafa8a0f08fd04dea10a3a7bda538.jpg",
+            "iconGrayUrl": "4f0f157464e23b87cd7c1aa68872fc34b29c3b74.jpg",
+            "globalPct": 7.4
+        },
+        {
+            "apiName": "ACH_ACT1",
+            "displayName": "Checkpoint",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f1a9a5afcf039fab2205141ee29cc9b0ed4ffab5.jpg",
+            "iconGrayUrl": "1f480c3e27d038d18dc2e821728886f55f21da06.jpg",
+            "globalPct": 7
+        },
+        {
+            "apiName": "ACH_DARKSIDE",
+            "displayName": "The Dark Side",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "0f657599132ef07dffafa84e4e2353086ec6b0d0.jpg",
+            "iconGrayUrl": "77a6dfc894857106bac7dba1557b85cf9572798c.jpg",
+            "globalPct": 6.1
+        },
+        {
+            "apiName": "ACH_ACT2",
+            "displayName": "Creator",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "b21fe326b2622a904948c6957f30e1975e720b5d.jpg",
+            "iconGrayUrl": "f142781222f173f612d113f386067313d4c3deb5.jpg",
+            "globalPct": 6.8
+        },
+        {
+            "apiName": "ACH_TOPMARKS",
+            "displayName": "Top Marks",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "0ac373716c285aadbf3c51484a0b21b510c672bb.jpg",
+            "iconGrayUrl": "705fed4e7ae07e82a669f723a589d107322db9ca.jpg",
+            "globalPct": 4.4
+        },
+        {
+            "apiName": "ACH_BOOBY",
+            "displayName": "Booby Trap",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "e35e2a1a98fede58d9d8abbceb15c8464bad6ed7.jpg",
+            "iconGrayUrl": "6b5c8133748667be69dfc471965e167e0ee6b768.jpg",
+            "globalPct": 5
+        }
+    ]
+}

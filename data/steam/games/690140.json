@@ -1,0 +1,202 @@
+{
+    "appId": 690140,
+    "hasAchievements": true,
+    "total": 12,
+    "unlocked": 0,
+    "gameName": "Sword Legacy Omen",
+    "achievements": [
+        {
+            "apiName": "GameOpen",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Once Upon a Time",
+            "description": "Broken Britannia awaits you!",
+            "iconUrl": "ca2c4c5380c547dbccd1ba5f776f6b6fd68a4734.jpg",
+            "iconGrayUrl": "07bb08b5902c5045fd8ac7756ae24a74c1b35ed7.jpg",
+            "hidden": false,
+            "globalPct": 53.5
+        },
+        {
+            "apiName": "TheEscape",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Failed Vows",
+            "description": "Complete Act 1: Chapter 1.",
+            "iconUrl": "574b4fa3492c2242cd67d208714bcf5ed9a33466.jpg",
+            "iconGrayUrl": "235404a328babc88d91e158393e1e016fe7de3c4.jpg",
+            "hidden": false,
+            "globalPct": 38.2
+        },
+        {
+            "apiName": "AWarmReception",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Warm Welcome",
+            "description": "Complete Act 1: Chapter 2.",
+            "iconUrl": "1a35f434d443f596e98049b7575b5e092f359c16.jpg",
+            "iconGrayUrl": "5fc2538c070d3014f31c745ea9658095b5c25739.jpg",
+            "hidden": false,
+            "globalPct": 21.1
+        },
+        {
+            "apiName": "BesetCitadel",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Death Siege",
+            "description": "Complete Act 1: Chapter 3.",
+            "iconUrl": "6261c305878b08530a4019e024562852001dab6c.jpg",
+            "iconGrayUrl": "44b5a31342346739b5d8ddffe380d67fd327d49a.jpg",
+            "hidden": false,
+            "globalPct": 16.9
+        },
+        {
+            "apiName": "TouchOfEvil",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Touch of Evil",
+            "description": "Complete Act 2: Chapter 1.",
+            "iconUrl": "795ecdcc0767a673f63fab16853b15ee710f50a1.jpg",
+            "iconGrayUrl": "6a9cc520dfdae900b8ffadc4345ca53dad40842e.jpg",
+            "hidden": false,
+            "globalPct": 13.4
+        },
+        {
+            "apiName": "TheSlaughterHouse",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The House of Penance",
+            "description": "Complete Act 2: Chapter 2.",
+            "iconUrl": "d6b72ad4310b8c8ffe9241b50592f1407d007658.jpg",
+            "iconGrayUrl": "a07d275df4d3a1234e6171866dd283aed1af698c.jpg",
+            "hidden": false,
+            "globalPct": 11.4
+        },
+        {
+            "apiName": "TheKentStrip",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "On the Edge",
+            "description": "Complete Act 2: Chapter 3.",
+            "iconUrl": "99a8765b7eb6777461d3348161315483c94cd1a7.jpg",
+            "iconGrayUrl": "029bac9ba19949a4250f36585531375bc4a0009e.jpg",
+            "hidden": false,
+            "globalPct": 9.4
+        },
+        {
+            "apiName": "TheCaliburnOmen",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Caliburn Omen",
+            "description": "Complete Act 2: Chapter 4.",
+            "iconUrl": "9f159a6e4760fb9be4e7d562e0aa34f79dae310c.jpg",
+            "iconGrayUrl": "b12ae3236df6a9e3906cbc48dbc335c00658f33c.jpg",
+            "hidden": false,
+            "globalPct": 8.5
+        },
+        {
+            "apiName": "AMothsFlame",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Moth's Flame",
+            "description": "Complete Act 3: Chapter 1.",
+            "iconUrl": "c347dde4057746916e1cc03be8450d9412f8edb5.jpg",
+            "iconGrayUrl": "6c312abc8ad75b96b42427393575c96128ee6a5a.jpg",
+            "hidden": false,
+            "globalPct": 7.9
+        },
+        {
+            "apiName": "InnerDemons",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Inner Demons",
+            "description": "Complete Act 3: Chapter 2.",
+            "iconUrl": "029d285f23a297efddeb043fc264bb076f30236b.jpg",
+            "iconGrayUrl": "e5f2f73f775221e609e5b2fe6b33c529949d1fef.jpg",
+            "hidden": false,
+            "globalPct": 7.2
+        },
+        {
+            "apiName": "ABloodyReclamation",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Into the Fire",
+            "description": "Complete Act 3: Chapter 3.",
+            "iconUrl": "68057958df8fbb61fb889f34b96860673727fbdf.jpg",
+            "iconGrayUrl": "c3345055169409d197f7999f25e93672f58e4030.jpg",
+            "hidden": false,
+            "globalPct": 6.9
+        },
+        {
+            "apiName": "LastRites",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Last Rites",
+            "description": "Complete Act 3: Chapter 4.",
+            "iconUrl": "e5e0e6e28113043c5cae43e3f6508369fb432920.jpg",
+            "iconGrayUrl": "16957d05685f4a4a3e874ad9d181bc6bdafcf4f7.jpg",
+            "hidden": false,
+            "globalPct": 6.6
+        }
+    ],
+    "playtimeForever": 283,
+    "lastPlayedTs": "2024-07-02T18:32:21.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/690140/3667789786bcc1f8e0af33197ba5e807866eaae9.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "GameOpen",
+            "displayName": "Once Upon a Time",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "ca2c4c5380c547dbccd1ba5f776f6b6fd68a4734.jpg",
+            "iconGrayUrl": "07bb08b5902c5045fd8ac7756ae24a74c1b35ed7.jpg",
+            "globalPct": 53.5
+        },
+        {
+            "apiName": "TheEscape",
+            "displayName": "Failed Vows",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "574b4fa3492c2242cd67d208714bcf5ed9a33466.jpg",
+            "iconGrayUrl": "235404a328babc88d91e158393e1e016fe7de3c4.jpg",
+            "globalPct": 38.2
+        },
+        {
+            "apiName": "AWarmReception",
+            "displayName": "A Warm Welcome",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1a35f434d443f596e98049b7575b5e092f359c16.jpg",
+            "iconGrayUrl": "5fc2538c070d3014f31c745ea9658095b5c25739.jpg",
+            "globalPct": 21.1
+        },
+        {
+            "apiName": "BesetCitadel",
+            "displayName": "Death Siege",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "6261c305878b08530a4019e024562852001dab6c.jpg",
+            "iconGrayUrl": "44b5a31342346739b5d8ddffe380d67fd327d49a.jpg",
+            "globalPct": 16.9
+        },
+        {
+            "apiName": "TouchOfEvil",
+            "displayName": "A Touch of Evil",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "795ecdcc0767a673f63fab16853b15ee710f50a1.jpg",
+            "iconGrayUrl": "6a9cc520dfdae900b8ffadc4345ca53dad40842e.jpg",
+            "globalPct": 13.4
+        },
+        {
+            "apiName": "TheSlaughterHouse",
+            "displayName": "The House of Penance",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d6b72ad4310b8c8ffe9241b50592f1407d007658.jpg",
+            "iconGrayUrl": "a07d275df4d3a1234e6171866dd283aed1af698c.jpg",
+            "globalPct": 11.4
+        }
+    ]
+}

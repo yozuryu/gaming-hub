@@ -1,0 +1,224 @@
+{
+    "appId": 238320,
+    "hasAchievements": true,
+    "total": 14,
+    "unlocked": 0,
+    "gameName": "Outlast",
+    "achievements": [
+        {
+            "apiName": "Achievement_0",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "ILLUMINATED",
+            "description": "",
+            "iconUrl": "79e16611e0a3d5c3ca7e616353b999d188cc12d6.jpg",
+            "iconGrayUrl": "c472037157bc126ee80f65f79b86de79f2b73591.jpg",
+            "hidden": true,
+            "globalPct": 49.5
+        },
+        {
+            "apiName": "Achievement_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "FLUSHED",
+            "description": "",
+            "iconUrl": "acbe4b399c5ec7114acd450ef0222f63f11be2d3.jpg",
+            "iconGrayUrl": "ed4796fbd132e0e9f431687f41cb8177f6e7bfd7.jpg",
+            "hidden": true,
+            "globalPct": 38.5
+        },
+        {
+            "apiName": "Achievement_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "SOAKED",
+            "description": "",
+            "iconUrl": "4334f02468090d50ced2a9ea9753d7ad6891cbdb.jpg",
+            "iconGrayUrl": "5c58fceadd121ce5497a587874383f6b8fc96459.jpg",
+            "hidden": true,
+            "globalPct": 30.6
+        },
+        {
+            "apiName": "Achievement_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "EMANCIPATED",
+            "description": "",
+            "iconUrl": "a6af039af4722b37c5fd6a372e47a16a4dadaf7a.jpg",
+            "iconGrayUrl": "7f7fdbb33cb3a02e3879e729aaaf5757528d5a95.jpg",
+            "hidden": true,
+            "globalPct": 27
+        },
+        {
+            "apiName": "Achievement_4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "EDUCATED",
+            "description": "Collect 15 documents and complete 15 recordings",
+            "iconUrl": "672491c95e200c50364cfb07d6d54b4c219d3e70.jpg",
+            "iconGrayUrl": "950c603f0890702404ebc636194471991419a503.jpg",
+            "hidden": false,
+            "globalPct": 11.8
+        },
+        {
+            "apiName": "Achievement_5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "PUNISHED",
+            "description": "Finish the game",
+            "iconUrl": "ba87792781917e925e94030e42d0c4bd91ca928b.jpg",
+            "iconGrayUrl": "91171972ec59e027b9f0e15ae1e3c9491ea0c212.jpg",
+            "hidden": false,
+            "globalPct": 25.2
+        },
+        {
+            "apiName": "Achievement_6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "PULITZER",
+            "description": "Collect all documents and complete all recordings",
+            "iconUrl": "5583cdc7c539173562c59e7c58191ebcfa54be3f.jpg",
+            "iconGrayUrl": "b0f5cdc11fcf9fc3579857a4ce6f70cc79e95730.jpg",
+            "hidden": false,
+            "globalPct": 3.1
+        },
+        {
+            "apiName": "Achievement_7",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "LUNATIC",
+            "description": "Finish the game in Insane mode",
+            "iconUrl": "f73f26c4509629f5f4b402515e3cc0681a4dffc5.jpg",
+            "iconGrayUrl": "f62e9ee142ddd3fabd9550281c20966c54e2ec3f.jpg",
+            "hidden": false,
+            "globalPct": 2.9
+        },
+        {
+            "apiName": "Achievement_8",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "GAS LEAKER",
+            "description": "",
+            "iconUrl": "b74e0ad5f9f57deae275c1b269e4346a07429d76.jpg",
+            "iconGrayUrl": "065e4afe33284955966f9d228e038c2f82fa9397.jpg",
+            "hidden": true,
+            "globalPct": 13.6
+        },
+        {
+            "apiName": "Achievement_9",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "SHOCKER",
+            "description": "",
+            "iconUrl": "48da05a1e81ec7525568287f73b7c1fc86d5f4c1.jpg",
+            "iconGrayUrl": "07e4f355fd593e46c221f2aac66725eede8fba66.jpg",
+            "hidden": true,
+            "globalPct": 13
+        },
+        {
+            "apiName": "Achievement_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "WHISTLEBLOWER",
+            "description": "Finish the Whistleblower DLC",
+            "iconUrl": "43a6fb44f91bc460fd17ac2da025c2f95ce9e816.jpg",
+            "iconGrayUrl": "86a49fa8da04cad68e3e16441c979b58cc080bdd.jpg",
+            "hidden": false,
+            "globalPct": 12.1
+        },
+        {
+            "apiName": "Achievement_11",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "BOWELWHISTLER",
+            "description": "Finish the DLC in Insane mode",
+            "iconUrl": "a9ebeb91730237d4a6e792ec48ed085c6d5f245a.jpg",
+            "iconGrayUrl": "86a49fa8da04cad68e3e16441c979b58cc080bdd.jpg",
+            "hidden": false,
+            "globalPct": 2.8
+        },
+        {
+            "apiName": "Achievement_12",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "ARCHIVIST",
+            "description": "Collect all documents",
+            "iconUrl": "543d5f5d6bb649f1e6f454e2a679788c9c34e029.jpg",
+            "iconGrayUrl": "634fbf005ab6e49d41727bf7a893acd0b5cc040b.jpg",
+            "hidden": false,
+            "globalPct": 3.2
+        },
+        {
+            "apiName": "Achievement_13",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "LEGACY",
+            "description": "Complete all recordings",
+            "iconUrl": "d078b58c66f95d3d743b5f031eaf8e085790536b.jpg",
+            "iconGrayUrl": "de2c3abda23b780baa35f0ee0313f351a3c127c5.jpg",
+            "hidden": false,
+            "globalPct": 2.9
+        }
+    ],
+    "playtimeForever": 259,
+    "lastPlayedTs": "2024-06-18T07:55:15.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/238320/46bd3df92d4693d3b2af113bf8f31c2cbdadb20a.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "Achievement_0",
+            "displayName": "ILLUMINATED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "79e16611e0a3d5c3ca7e616353b999d188cc12d6.jpg",
+            "iconGrayUrl": "c472037157bc126ee80f65f79b86de79f2b73591.jpg",
+            "globalPct": 49.5
+        },
+        {
+            "apiName": "Achievement_1",
+            "displayName": "FLUSHED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "acbe4b399c5ec7114acd450ef0222f63f11be2d3.jpg",
+            "iconGrayUrl": "ed4796fbd132e0e9f431687f41cb8177f6e7bfd7.jpg",
+            "globalPct": 38.5
+        },
+        {
+            "apiName": "Achievement_2",
+            "displayName": "SOAKED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "4334f02468090d50ced2a9ea9753d7ad6891cbdb.jpg",
+            "iconGrayUrl": "5c58fceadd121ce5497a587874383f6b8fc96459.jpg",
+            "globalPct": 30.6
+        },
+        {
+            "apiName": "Achievement_3",
+            "displayName": "EMANCIPATED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a6af039af4722b37c5fd6a372e47a16a4dadaf7a.jpg",
+            "iconGrayUrl": "7f7fdbb33cb3a02e3879e729aaaf5757528d5a95.jpg",
+            "globalPct": 27
+        },
+        {
+            "apiName": "Achievement_4",
+            "displayName": "EDUCATED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "672491c95e200c50364cfb07d6d54b4c219d3e70.jpg",
+            "iconGrayUrl": "950c603f0890702404ebc636194471991419a503.jpg",
+            "globalPct": 11.8
+        },
+        {
+            "apiName": "Achievement_5",
+            "displayName": "PUNISHED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "ba87792781917e925e94030e42d0c4bd91ca928b.jpg",
+            "iconGrayUrl": "91171972ec59e027b9f0e15ae1e3c9491ea0c212.jpg",
+            "globalPct": 25.2
+        }
+    ]
+}

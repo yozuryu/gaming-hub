@@ -1,0 +1,257 @@
+{
+    "appId": 274270,
+    "hasAchievements": true,
+    "total": 17,
+    "unlocked": 0,
+    "gameName": "NOT A HERO",
+    "achievements": [
+        {
+            "apiName": "MAYOR",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "KEY TO THE CITY",
+            "description": "MAKE BUNNYLORD MAYOR OF ENGLAND",
+            "iconUrl": "42e68d0ea2ba1710652d1d241b9ab46c27f225e2.jpg",
+            "iconGrayUrl": "b0eec0815579fed6569e77e98c74877cee14b541.jpg",
+            "hidden": false,
+            "globalPct": 7.7
+        },
+        {
+            "apiName": "PRIMINISTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "HEAD OF STATE",
+            "description": "MAKE BUNNYLORD PRIMINISTER",
+            "iconUrl": "8bd36f24e05a3c9a734e381985cd539e0c0efea2.jpg",
+            "iconGrayUrl": "d5c31f9f178fd0f259ce8c427e0a5124fe5ad6dd.jpg",
+            "hidden": false,
+            "globalPct": 6
+        },
+        {
+            "apiName": "KING_OF_ENGLAND",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I'M THE KING",
+            "description": "MAKE BUNNYLORD KING OF BRITAIN",
+            "iconUrl": "de0f1b9a80e74dd8374634f31e7af14c418d0b04.jpg",
+            "iconGrayUrl": "718be1eb1f46999c6f5b645a4c7cbd4ff942a5ca.jpg",
+            "hidden": false,
+            "globalPct": 5
+        },
+        {
+            "apiName": "MEGALORD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "MEGALORD",
+            "description": "MAKE BUNNYLORD GLOBAL MEGALORD",
+            "iconUrl": "c8d80243e3a1c1276ed0708746fc7ab149658432.jpg",
+            "iconGrayUrl": "90a3eee8660320565b5a9a353caed142bfdc6564.jpg",
+            "hidden": false,
+            "globalPct": 4.3
+        },
+        {
+            "apiName": "MYSTERY_DOOR",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "MYSTERY DOOR",
+            "description": "FIND THE SECRET DOOR IN VODKAVILLE",
+            "iconUrl": "0b65ba4270b79508583130b38aaedfb82e93c342.jpg",
+            "iconGrayUrl": "e47f217f0dca1e4beffe1df2a611de678f00e085.jpg",
+            "hidden": false,
+            "globalPct": 8.4
+        },
+        {
+            "apiName": "YIPPEE_KAI_AY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "YIPPEE-KAI-AY",
+            "description": "FIND THE SECRET DOOR IN BREDRIN PARK",
+            "iconUrl": "0b65ba4270b79508583130b38aaedfb82e93c342.jpg",
+            "iconGrayUrl": "e47f217f0dca1e4beffe1df2a611de678f00e085.jpg",
+            "hidden": false,
+            "globalPct": 9.1
+        },
+        {
+            "apiName": "EASTERN_PROMISE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "EASTERN PROMISE",
+            "description": "FIND THE SECRET DOOR IN SUSHI CENTRAL",
+            "iconUrl": "0b65ba4270b79508583130b38aaedfb82e93c342.jpg",
+            "iconGrayUrl": "e47f217f0dca1e4beffe1df2a611de678f00e085.jpg",
+            "hidden": false,
+            "globalPct": 4.1
+        },
+        {
+            "apiName": "EXECUTIONER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "EXECUTIONER",
+            "description": "DO A TOTAL OF 300 EXECUTIONS",
+            "iconUrl": "0b65ba4270b79508583130b38aaedfb82e93c342.jpg",
+            "iconGrayUrl": "e47f217f0dca1e4beffe1df2a611de678f00e085.jpg",
+            "hidden": false,
+            "globalPct": 17.2
+        },
+        {
+            "apiName": "DEAD_EYE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "DEAD EYE",
+            "description": "GET A TOTAL OF 300 CRITICAL HITS",
+            "iconUrl": "0b65ba4270b79508583130b38aaedfb82e93c342.jpg",
+            "iconGrayUrl": "e47f217f0dca1e4beffe1df2a611de678f00e085.jpg",
+            "hidden": false,
+            "globalPct": 14.8
+        },
+        {
+            "apiName": "KILL_BOGDAN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "OVERKILL",
+            "description": "KILL BOGDAN",
+            "iconUrl": "0b65ba4270b79508583130b38aaedfb82e93c342.jpg",
+            "iconGrayUrl": "e47f217f0dca1e4beffe1df2a611de678f00e085.jpg",
+            "hidden": false,
+            "globalPct": 38.4
+        },
+        {
+            "apiName": "KILL_UPGRAYDD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "BARE CARDIO",
+            "description": "KILL UPGRAYDD",
+            "iconUrl": "0b65ba4270b79508583130b38aaedfb82e93c342.jpg",
+            "iconGrayUrl": "e47f217f0dca1e4beffe1df2a611de678f00e085.jpg",
+            "hidden": false,
+            "globalPct": 14.8
+        },
+        {
+            "apiName": "GET_THE_CHOPPA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "GET THE CHOPPA!",
+            "description": "KILL THE HELICOPTER",
+            "iconUrl": "9435e51d72a79dce2bfaefb3565b02d1ddc171d8.jpg",
+            "iconGrayUrl": "1048f92334b2d3279bc6bae7805b2d74bf267bdc.jpg",
+            "hidden": false,
+            "globalPct": 8.2
+        },
+        {
+            "apiName": "SELF_HELP_101",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "SELF-HELP 101",
+            "description": "REACH THE END OF THE \"ME, MYSELF & BUNNYLORD\" CAMPAIGN",
+            "iconUrl": "9435e51d72a79dce2bfaefb3565b02d1ddc171d8.jpg",
+            "iconGrayUrl": "1048f92334b2d3279bc6bae7805b2d74bf267bdc.jpg",
+            "hidden": false,
+            "globalPct": 3
+        },
+        {
+            "apiName": "SELF_HELP_DIPLOMA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "SELF-HELP DIPLOMA",
+            "description": "COMPLETE ALL OBJECTIVES IN THE \"ME, MYSELF & BUNNYLORD\" CAMPAIGN",
+            "iconUrl": "cf099638912f657174505717181bc7c76e476402.jpg",
+            "iconGrayUrl": "5638795ca57f6c65c7ac4fdd1c7a8dca283a8258.jpg",
+            "hidden": false,
+            "globalPct": 2.2
+        },
+        {
+            "apiName": "PACIFISTING",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "PACIFISTING",
+            "description": "FINISH \"MILKSHAKE SHAKEDOWN\" WITHOUT KILLING ANYONE",
+            "iconUrl": "0b65ba4270b79508583130b38aaedfb82e93c342.jpg",
+            "iconGrayUrl": "e47f217f0dca1e4beffe1df2a611de678f00e085.jpg",
+            "hidden": false,
+            "globalPct": 2.3
+        },
+        {
+            "apiName": "LIKE_A_BOSS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "LIKE A BOSS",
+            "description": "KILL THE GANG BOSS IN \"TODAYS NEWS YESTERDAY\"",
+            "iconUrl": "0b65ba4270b79508583130b38aaedfb82e93c342.jpg",
+            "iconGrayUrl": "e47f217f0dca1e4beffe1df2a611de678f00e085.jpg",
+            "hidden": false,
+            "globalPct": 3.9
+        },
+        {
+            "apiName": "RABBIT_RAMPAGE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "RABBIT RAMPAGE",
+            "description": "KILL EVERYONE (EXCEPT THE KILLINATOR) IN \"TO KILL A KILLINATOR\"",
+            "iconUrl": "9435e51d72a79dce2bfaefb3565b02d1ddc171d8.jpg",
+            "iconGrayUrl": "1048f92334b2d3279bc6bae7805b2d74bf267bdc.jpg",
+            "hidden": false,
+            "globalPct": 2.1
+        }
+    ],
+    "playtimeForever": 306,
+    "lastPlayedTs": "2024-06-16T15:58:51.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/274270/f67cfd982237b07179a3c0fb0ca35077411e87ab.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "MAYOR",
+            "displayName": "KEY TO THE CITY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "42e68d0ea2ba1710652d1d241b9ab46c27f225e2.jpg",
+            "iconGrayUrl": "b0eec0815579fed6569e77e98c74877cee14b541.jpg",
+            "globalPct": 7.7
+        },
+        {
+            "apiName": "PRIMINISTER",
+            "displayName": "HEAD OF STATE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "8bd36f24e05a3c9a734e381985cd539e0c0efea2.jpg",
+            "iconGrayUrl": "d5c31f9f178fd0f259ce8c427e0a5124fe5ad6dd.jpg",
+            "globalPct": 6
+        },
+        {
+            "apiName": "KING_OF_ENGLAND",
+            "displayName": "I'M THE KING",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "de0f1b9a80e74dd8374634f31e7af14c418d0b04.jpg",
+            "iconGrayUrl": "718be1eb1f46999c6f5b645a4c7cbd4ff942a5ca.jpg",
+            "globalPct": 5
+        },
+        {
+            "apiName": "MEGALORD",
+            "displayName": "MEGALORD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c8d80243e3a1c1276ed0708746fc7ab149658432.jpg",
+            "iconGrayUrl": "90a3eee8660320565b5a9a353caed142bfdc6564.jpg",
+            "globalPct": 4.3
+        },
+        {
+            "apiName": "MYSTERY_DOOR",
+            "displayName": "MYSTERY DOOR",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "0b65ba4270b79508583130b38aaedfb82e93c342.jpg",
+            "iconGrayUrl": "e47f217f0dca1e4beffe1df2a611de678f00e085.jpg",
+            "globalPct": 8.4
+        },
+        {
+            "apiName": "YIPPEE_KAI_AY",
+            "displayName": "YIPPEE-KAI-AY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "0b65ba4270b79508583130b38aaedfb82e93c342.jpg",
+            "iconGrayUrl": "e47f217f0dca1e4beffe1df2a611de678f00e085.jpg",
+            "globalPct": 9.1
+        }
+    ]
+}

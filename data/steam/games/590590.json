@@ -1,0 +1,312 @@
+{
+    "appId": 590590,
+    "hasAchievements": true,
+    "total": 22,
+    "unlocked": 0,
+    "gameName": "Remnants of Naezith",
+    "achievements": [
+        {
+            "apiName": "CUSTOMIZE_LOOK",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Looking good",
+            "description": "Customize your appearance",
+            "iconUrl": "f73aa347306cd6b444a69200c093a1c5daea3bf3.jpg",
+            "iconGrayUrl": "7570de1a233eda9a667fe812cbbfeaf4a50a2725.jpg",
+            "hidden": false,
+            "globalPct": 13.5
+        },
+        {
+            "apiName": "WATCH_REPLAY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Watch and learn",
+            "description": "Watch a replay",
+            "iconUrl": "413a143c0c1a767995f77ac87abc99a05c512a51.jpg",
+            "iconGrayUrl": "e8d9a274e290b804966b19c5fd8be2bc7157fb3c.jpg",
+            "hidden": false,
+            "globalPct": 22.9
+        },
+        {
+            "apiName": "INSPECT_PRO",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Idol",
+            "description": "Inspect a top player",
+            "iconUrl": "4fc36388c807c35aef8d54800fc6d66bfb7451fb.jpg",
+            "iconGrayUrl": "9053311ea40784a6d9024781cac8b415bf0bd719.jpg",
+            "hidden": false,
+            "globalPct": 6
+        },
+        {
+            "apiName": "IMPROVE_TIME",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Getting good",
+            "description": "Improve your time",
+            "iconUrl": "3b907ffd05d5c9ab5b3e7e27ecaa56be1709f8d3.jpg",
+            "iconGrayUrl": "0776cb2e6715e0cbba3d10b906206bd9f97b293c.jpg",
+            "hidden": false,
+            "globalPct": 34.8
+        },
+        {
+            "apiName": "COMPLETION_JADE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Jade Completion",
+            "description": "Complete the Jade chapter",
+            "iconUrl": "e513536af699248c9c11cce21686b67457bcb97d.jpg",
+            "iconGrayUrl": "44e7748a8ef8ef91505b5fb9158394a44d8b268d.jpg",
+            "hidden": false,
+            "globalPct": 12.4
+        },
+        {
+            "apiName": "COMPLETION_SAND",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sand Completion",
+            "description": "Complete the Sand chapter",
+            "iconUrl": "c618ad7102581a3020f60c43d4378911b135f21c.jpg",
+            "iconGrayUrl": "f85659e5cb84d0cab34a53da6d1c5df3cb234c73.jpg",
+            "hidden": false,
+            "globalPct": 5.4
+        },
+        {
+            "apiName": "COMPLETION_METAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Metal Completion",
+            "description": "Complete the Metal chapter",
+            "iconUrl": "d1eead4fdc2a67ae4fdfa41f62fe68d7aed315c7.jpg",
+            "iconGrayUrl": "ad432499acef4a7f4df46ffe8e629bcf90a14463.jpg",
+            "hidden": false,
+            "globalPct": 3.1
+        },
+        {
+            "apiName": "COMPLETION_CRYSTAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Crystal Completion",
+            "description": "Complete the Crystal chapter",
+            "iconUrl": "2568a9601aec5cf627f1ca5c5bf87aaf3741cafa.jpg",
+            "iconGrayUrl": "4fe414c93bd9a5b4cb20282d802986b5cef9ec27.jpg",
+            "hidden": false,
+            "globalPct": 2.3
+        },
+        {
+            "apiName": "COMPLETION_ALL_CH",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "All Chapters Completion",
+            "description": "Complete all the chapters",
+            "iconUrl": "6426bf18938ec01bd932d990adb914ac105d7d36.jpg",
+            "iconGrayUrl": "f8ed1863b81f9930814af6680b449ace882dc173.jpg",
+            "hidden": false,
+            "globalPct": 2.3
+        },
+        {
+            "apiName": "MASTERY_JADE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Jade Mastery",
+            "description": "Master the Jade chapter",
+            "iconUrl": "e3a899437f83422d6ce913be3d50ef0a19cb5c81.jpg",
+            "iconGrayUrl": "66947a09f764290c9f357da6c5ca0307b935df3c.jpg",
+            "hidden": false,
+            "globalPct": 3.2
+        },
+        {
+            "apiName": "MASTERY_SAND",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sand Mastery",
+            "description": "Master the Sand chapter",
+            "iconUrl": "848d81cd272b74ba9a3537ecbdaaf0c00f93c7c5.jpg",
+            "iconGrayUrl": "e09d28f652ddae6f42866c941d60ac259cf9d8dc.jpg",
+            "hidden": false,
+            "globalPct": 2.4
+        },
+        {
+            "apiName": "MASTERY_METAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Metal Mastery",
+            "description": "Master the Metal chapter",
+            "iconUrl": "885547b6201b58282e028a160a3aeeac36b90c1f.jpg",
+            "iconGrayUrl": "41dcd609c28eccc49d5d90397e9864fbbe18b4f7.jpg",
+            "hidden": false,
+            "globalPct": 1.9
+        },
+        {
+            "apiName": "MASTERY_CRYSTAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Crystal Mastery",
+            "description": "Master the Crystal chapter",
+            "iconUrl": "0986720f71aa41c2cbeea53da94f3371db6e4530.jpg",
+            "iconGrayUrl": "26cb2dd9a8e35ae40bc2990b4c3c4d7e97af2904.jpg",
+            "hidden": false,
+            "globalPct": 1.7
+        },
+        {
+            "apiName": "MASTERY_ALL_CH",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "All Chapters Mastery",
+            "description": "Master all the chapters",
+            "iconUrl": "20309048a2a6592a9a0751d7c1386b4aee820a06.jpg",
+            "iconGrayUrl": "9d3ee91edf83d32b59d737de6d20abc6328da835.jpg",
+            "hidden": false,
+            "globalPct": 1.7
+        },
+        {
+            "apiName": "SPEEDRUN_JADE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Jade Speedrun",
+            "description": "Speedrun the Jade chapter",
+            "iconUrl": "c351596058aa676cba95d1ac525b723c4b2de96a.jpg",
+            "iconGrayUrl": "51ab9264dab4a0e6a37b1967ac2deac9693b7fcf.jpg",
+            "hidden": false,
+            "globalPct": 2.9
+        },
+        {
+            "apiName": "SPEEDRUN_SAND",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sand Speedrun",
+            "description": "Speedrun the Sand chapter",
+            "iconUrl": "d46395746f22eedcb12d61dfcadda7a7bea14789.jpg",
+            "iconGrayUrl": "df8defaa07885bf295e98c1375ad8ebe03c1c2cf.jpg",
+            "hidden": false,
+            "globalPct": 2.1
+        },
+        {
+            "apiName": "SPEEDRUN_METAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Metal Speedrun",
+            "description": "Speedrun the Metal chapter",
+            "iconUrl": "a9626ebbc4b68e50b7d07ec2f5ca048a80087ab0.jpg",
+            "iconGrayUrl": "781256a8f9d8ddf5188aa8154c5ed02277f10e53.jpg",
+            "hidden": false,
+            "globalPct": 1.8
+        },
+        {
+            "apiName": "SPEEDRUN_CRYSTAL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Crystal Speedrun",
+            "description": "Speedrun the Crystal chapter",
+            "iconUrl": "77c67e685a8ef7b0a41cba7b03e7972157aa4c14.jpg",
+            "iconGrayUrl": "a97c2d9d72cbf76ffea80e0c11ecbd84907494c1.jpg",
+            "hidden": false,
+            "globalPct": 1.7
+        },
+        {
+            "apiName": "SPEEDRUN_ALL_CH",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "All Chapters Speedrun",
+            "description": "Speedrun all the chapters",
+            "iconUrl": "f6db5f215e1824d33d9e49cb1a02a324c76451e2.jpg",
+            "iconGrayUrl": "d2685c92bcba1873033ab392efb17426b47b64a8.jpg",
+            "hidden": false,
+            "globalPct": 1.7
+        },
+        {
+            "apiName": "PLAY_CUSTOM_LEVEL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Explorer",
+            "description": "Play a Custom Level",
+            "iconUrl": "83b747638a18eff261aa98bbae9720029e836551.jpg",
+            "iconGrayUrl": "b701c17f978c931bd3a599e48b618dc9c2270403.jpg",
+            "hidden": false,
+            "globalPct": 5.4
+        },
+        {
+            "apiName": "FIND_SECRET",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "What's that?",
+            "description": "Find a secret",
+            "iconUrl": "1b9f8bae3d437be597c54a638a7d009c5c4616f5.jpg",
+            "iconGrayUrl": "d2d5ef92dacfc4b7196a22a95df7bd92a0b928a8.jpg",
+            "hidden": false,
+            "globalPct": 2.6
+        },
+        {
+            "apiName": "FIND_ALL_SECRETS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Detective",
+            "description": "Find all the secrets",
+            "iconUrl": "af652021c863506fcf7f754456a69a64a86d7cbc.jpg",
+            "iconGrayUrl": "f7158f4c809cc0d51c57fb3e6c7250cf912f147f.jpg",
+            "hidden": false,
+            "globalPct": 1.7
+        }
+    ],
+    "playtimeForever": 261,
+    "lastPlayedTs": "2024-06-07T03:42:51.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/590590/ca9022ca6a387384f81f12e61280208574111f98.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "CUSTOMIZE_LOOK",
+            "displayName": "Looking good",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f73aa347306cd6b444a69200c093a1c5daea3bf3.jpg",
+            "iconGrayUrl": "7570de1a233eda9a667fe812cbbfeaf4a50a2725.jpg",
+            "globalPct": 13.5
+        },
+        {
+            "apiName": "WATCH_REPLAY",
+            "displayName": "Watch and learn",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "413a143c0c1a767995f77ac87abc99a05c512a51.jpg",
+            "iconGrayUrl": "e8d9a274e290b804966b19c5fd8be2bc7157fb3c.jpg",
+            "globalPct": 22.9
+        },
+        {
+            "apiName": "INSPECT_PRO",
+            "displayName": "Idol",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "4fc36388c807c35aef8d54800fc6d66bfb7451fb.jpg",
+            "iconGrayUrl": "9053311ea40784a6d9024781cac8b415bf0bd719.jpg",
+            "globalPct": 6
+        },
+        {
+            "apiName": "IMPROVE_TIME",
+            "displayName": "Getting good",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "3b907ffd05d5c9ab5b3e7e27ecaa56be1709f8d3.jpg",
+            "iconGrayUrl": "0776cb2e6715e0cbba3d10b906206bd9f97b293c.jpg",
+            "globalPct": 34.8
+        },
+        {
+            "apiName": "COMPLETION_JADE",
+            "displayName": "Jade Completion",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "e513536af699248c9c11cce21686b67457bcb97d.jpg",
+            "iconGrayUrl": "44e7748a8ef8ef91505b5fb9158394a44d8b268d.jpg",
+            "globalPct": 12.4
+        },
+        {
+            "apiName": "COMPLETION_SAND",
+            "displayName": "Sand Completion",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c618ad7102581a3020f60c43d4378911b135f21c.jpg",
+            "iconGrayUrl": "f85659e5cb84d0cab34a53da6d1c5df3cb234c73.jpg",
+            "globalPct": 5.4
+        }
+    ]
+}

@@ -1,0 +1,356 @@
+{
+    "appId": 1243890,
+    "hasAchievements": true,
+    "total": 26,
+    "unlocked": 0,
+    "gameName": "Sword of the Necromancer",
+    "achievements": [
+        {
+            "apiName": "ACHIEVEMENT_00",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sword of the Necromancer",
+            "description": "",
+            "iconUrl": "55800a61d7d975d9496505993bc48ab42b531bec.jpg",
+            "iconGrayUrl": "a65239a9c8fc3e433dc7ef31ef516c57d3ea1097.jpg",
+            "hidden": true,
+            "globalPct": 1
+        },
+        {
+            "apiName": "ACHIEVEMENT_01",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Let's end this… Together!",
+            "description": "",
+            "iconUrl": "e21f3632e91e8ced782f0a0f101187ff8ebf9d04.jpg",
+            "iconGrayUrl": "650fa4556c02ad982643c2f92d27b814275ec10b.jpg",
+            "hidden": true,
+            "globalPct": 4.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_02",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "No matter the cost",
+            "description": "Resurrect Koko",
+            "iconUrl": "1e8581000050a809a5e857dbcd677244bff65c15.jpg",
+            "iconGrayUrl": "2de368c86691baee59f68bc628f4fa82b0fda43d.jpg",
+            "hidden": false,
+            "globalPct": 7.2
+        },
+        {
+            "apiName": "ACHIEVEMENT_03",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "This is our story",
+            "description": "",
+            "iconUrl": "39b9f0dc956f03a32e06b9cd62e0daaac2b30aa6.jpg",
+            "iconGrayUrl": "e2dd666d1d098cd3d04998513c6810a58af51e3e.jpg",
+            "hidden": true,
+            "globalPct": 4.5
+        },
+        {
+            "apiName": "ACHIEVEMENT_04",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "To catch them is my real test",
+            "description": "",
+            "iconUrl": "8792ea6d7720e886e584719be9f973277e5daf22.jpg",
+            "iconGrayUrl": "81ff90f3cf35d3aa414139e8cc7bb523687c01f7.jpg",
+            "hidden": true,
+            "globalPct": 1.5
+        },
+        {
+            "apiName": "ACHIEVEMENT_05",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "To train them is my cause",
+            "description": "Get 5 different types of monsters to max rank",
+            "iconUrl": "12481dc63b14d926d121f6623a151d5df54663d5.jpg",
+            "iconGrayUrl": "ac68df9d9aacfea0f1c9ebc4e12ffa0c329ecc0c.jpg",
+            "hidden": false,
+            "globalPct": 1.5
+        },
+        {
+            "apiName": "ACHIEVEMENT_06",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The powers of Necromancy are mine",
+            "description": "Get the Sword of the Necromancer",
+            "iconUrl": "07cc7217ba134999e383fca49c23a47c69884c76.jpg",
+            "iconGrayUrl": "cf77bbab229b8889764d248b8a8277dd6d53ba70.jpg",
+            "hidden": false,
+            "globalPct": 75.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_07",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I reject this cursed power",
+            "description": "",
+            "iconUrl": "9eec43e38c98d40c6d839ff6889b51bc5ba63bde.jpg",
+            "iconGrayUrl": "d917c258561300c76da698d4c974f58e92d66d9f.jpg",
+            "hidden": true,
+            "globalPct": 5
+        },
+        {
+            "apiName": "ACHIEVEMENT_08",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Weapon Master",
+            "description": "Kill enemies with every type of weapon",
+            "iconUrl": "224bfb7b79cb63a91562f5ded1f925ef7aa60f93.jpg",
+            "iconGrayUrl": "5ca303fa25d92341d2a426de2636a8686af2be97.jpg",
+            "hidden": false,
+            "globalPct": 1.3
+        },
+        {
+            "apiName": "ACHIEVEMENT_09",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Weapon Collector",
+            "description": "Get every type of weapon",
+            "iconUrl": "0f0c4287ec973f15ba8a51de75bef8ce5d8211de.jpg",
+            "iconGrayUrl": "3f35ee399923d9c29b77cb9a3466ea0f15bdd751.jpg",
+            "hidden": false,
+            "globalPct": 1.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Max Power",
+            "description": "Get the character to level 20",
+            "iconUrl": "d0c9284c468f681d3c8b34d436225da640286e86.jpg",
+            "iconGrayUrl": "01f076cda823a50e8370cffe3095a7d1fa1a674f.jpg",
+            "hidden": false,
+            "globalPct": 2.5
+        },
+        {
+            "apiName": "ACHIEVEMENT_11",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Tonight we dine in hell!",
+            "description": "Kill 300 enemies",
+            "iconUrl": "7a9a629dea8e558fa17111b48330ead00921be31.jpg",
+            "iconGrayUrl": "d4edc5f59209f9e421076cc365f83826b16723c7.jpg",
+            "hidden": false,
+            "globalPct": 16.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_12",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Monster Slayer",
+            "description": "Kill 100 enemies",
+            "iconUrl": "49559eda74ad4381400d44186b107f78bad85407.jpg",
+            "iconGrayUrl": "4be5f8f1eb55bab01fe5525d8b044973b5e8f205.jpg",
+            "hidden": false,
+            "globalPct": 37.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_13",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Army of One",
+            "description": "",
+            "iconUrl": "3d4c5bb5c4c596243a4b284562015dc62a1e822c.jpg",
+            "iconGrayUrl": "ea40fd58a4c0ee063b8757a160f794113c3734d8.jpg",
+            "hidden": true,
+            "globalPct": 15.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_14",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Army of Dead",
+            "description": "Have 3 monsters summoned at the same time",
+            "iconUrl": "56a6e561c1d92c6a362847e718e01a4f552b2d5f.jpg",
+            "iconGrayUrl": "64eea909f5cc84affb7ff6df49fb3940dc7b8b47.jpg",
+            "hidden": false,
+            "globalPct": 41.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_15",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Gilgamesh",
+            "description": "Have 4 different types of weapons equipped at once",
+            "iconUrl": "151db95949610d693ea56dc807a0d016cad77688.jpg",
+            "iconGrayUrl": "a4433bf45e16f2d444fe5cb43f4c2f0b85de861b.jpg",
+            "hidden": false,
+            "globalPct": 9.7
+        },
+        {
+            "apiName": "ACHIEVEMENT_16",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Relic Hunter",
+            "description": "Have 3 different relics equipped at once",
+            "iconUrl": "60f71c1b97b7b288a525145e8f8364efdff1f185.jpg",
+            "iconGrayUrl": "ac596a87e5463bedc38024db32346d2cff813d40.jpg",
+            "hidden": false,
+            "globalPct": 6.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_17",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Can't touch this",
+            "description": "Clear a dungeon floor without taking damage",
+            "iconUrl": "7485cb37434f53b9c48c7c88c2c7b764c2ea5138.jpg",
+            "iconGrayUrl": "cc46b6baa585798508dac3170098a0bb31cbc236.jpg",
+            "hidden": false,
+            "globalPct": 8.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_18",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Take this!",
+            "description": "Perform a Critical Attack",
+            "iconUrl": "ed5a42c3b336c3e5dc110380733b667b0f477f99.jpg",
+            "iconGrayUrl": "530c7ba05fe9f999b18a5684864b0f9fdb60df55.jpg",
+            "hidden": false,
+            "globalPct": 64
+        },
+        {
+            "apiName": "ACHIEVEMENT_19",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "With all your might",
+            "description": "Perform a Charged Attack",
+            "iconUrl": "ec9f45d00748083490b19f2763daec46fcf013f9.jpg",
+            "iconGrayUrl": "3158cb8be2aab5789cea45a6673e052da88f9841.jpg",
+            "hidden": false,
+            "globalPct": 71.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_20",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dwarf in the Flask",
+            "description": "Use the Flask of Homunculus",
+            "iconUrl": "92fc9f95b73335ed044184bd06ba2d51f23cd60d.jpg",
+            "iconGrayUrl": "61c47443112246198f35401a3f59e2fd107782bd.jpg",
+            "hidden": false,
+            "globalPct": 7.4
+        },
+        {
+            "apiName": "ACHIEVEMENT_21",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "This won't hurt me",
+            "description": "Deflect a magic attack",
+            "iconUrl": "7ab04e45da11a865bc37f330949151b080e39fbd.jpg",
+            "iconGrayUrl": "8449f4e9f568a381881950932a768502dfd085b3.jpg",
+            "hidden": false,
+            "globalPct": 5.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_22",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Useless! Useless!",
+            "description": "Evade an enemy attack with a dodge",
+            "iconUrl": "e4122e7e35937ad85865e3285ba67fb559dbdf17.jpg",
+            "iconGrayUrl": "931b185db12602687e49c07399d259daa81f041c.jpg",
+            "hidden": false,
+            "globalPct": 6.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_23",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hoarder",
+            "description": "Fill the Inventory Chest",
+            "iconUrl": "7b0224540c0fab4bc946273186797102c94ed1a2.jpg",
+            "iconGrayUrl": "12ae49dd72853b2b2b5627da02de8e1e6ecc1a50.jpg",
+            "hidden": false,
+            "globalPct": 6.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_24",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Overkill",
+            "description": "Kill an enemy with a single blow",
+            "iconUrl": "a908312f288a521d421982ce0238e7848e6dfe8f.jpg",
+            "iconGrayUrl": "031d3613f9a3b26ca42799b954a4e25dd717febf.jpg",
+            "hidden": false,
+            "globalPct": 54.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_25",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "It is all written",
+            "description": "",
+            "iconUrl": "2fbe6d8dd9042d0915a3326e539e7621a9e57565.jpg",
+            "iconGrayUrl": "050b45a48411441484c2b889304cdfc6be55767b.jpg",
+            "hidden": true,
+            "globalPct": 1.9
+        }
+    ],
+    "playtimeForever": 313,
+    "lastPlayedTs": "2025-02-20T15:00:42.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1243890/c389ae0f33f0c77745e35201a62650a043d82ba1.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACHIEVEMENT_00",
+            "displayName": "Sword of the Necromancer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "55800a61d7d975d9496505993bc48ab42b531bec.jpg",
+            "iconGrayUrl": "a65239a9c8fc3e433dc7ef31ef516c57d3ea1097.jpg",
+            "globalPct": 1
+        },
+        {
+            "apiName": "ACHIEVEMENT_01",
+            "displayName": "Let's end this… Together!",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "e21f3632e91e8ced782f0a0f101187ff8ebf9d04.jpg",
+            "iconGrayUrl": "650fa4556c02ad982643c2f92d27b814275ec10b.jpg",
+            "globalPct": 4.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_02",
+            "displayName": "No matter the cost",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1e8581000050a809a5e857dbcd677244bff65c15.jpg",
+            "iconGrayUrl": "2de368c86691baee59f68bc628f4fa82b0fda43d.jpg",
+            "globalPct": 7.2
+        },
+        {
+            "apiName": "ACHIEVEMENT_03",
+            "displayName": "This is our story",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "39b9f0dc956f03a32e06b9cd62e0daaac2b30aa6.jpg",
+            "iconGrayUrl": "e2dd666d1d098cd3d04998513c6810a58af51e3e.jpg",
+            "globalPct": 4.5
+        },
+        {
+            "apiName": "ACHIEVEMENT_04",
+            "displayName": "To catch them is my real test",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "8792ea6d7720e886e584719be9f973277e5daf22.jpg",
+            "iconGrayUrl": "81ff90f3cf35d3aa414139e8cc7bb523687c01f7.jpg",
+            "globalPct": 1.5
+        },
+        {
+            "apiName": "ACHIEVEMENT_05",
+            "displayName": "To train them is my cause",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "12481dc63b14d926d121f6623a151d5df54663d5.jpg",
+            "iconGrayUrl": "ac68df9d9aacfea0f1c9ebc4e12ffa0c329ecc0c.jpg",
+            "globalPct": 1.5
+        }
+    ]
+}

@@ -1,0 +1,422 @@
+{
+    "appId": 406970,
+    "hasAchievements": true,
+    "total": 32,
+    "unlocked": 0,
+    "gameName": "The Uncertain: Last Quiet Day",
+    "achievements": [
+        {
+            "apiName": "WALKING_ROBOT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Walking Robot Among Us",
+            "description": "",
+            "iconUrl": "186b800d771618c88afeacccb6ff244e4aa79c67.jpg",
+            "iconGrayUrl": "c2e3c055928341a0eec36f70dd7a4c1cbf04d4ca.jpg",
+            "hidden": true,
+            "globalPct": 28.5
+        },
+        {
+            "apiName": "ACE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ace",
+            "description": "",
+            "iconUrl": "0829f52841f6baee61aac2d680e863263a7089dc.jpg",
+            "iconGrayUrl": "4940b8a622e2a4aadd6daa3b3153bb7f373235f2.jpg",
+            "hidden": true,
+            "globalPct": 27.7
+        },
+        {
+            "apiName": "CONCRETE_PAINTING",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Concrete painting",
+            "description": "",
+            "iconUrl": "0e17f840596978ed6b3e0ea32aa4c0ffb85695e8.jpg",
+            "iconGrayUrl": "7dd8006c8b1ed23bd9ba9d3f987526673014879a.jpg",
+            "hidden": true,
+            "globalPct": 25.7
+        },
+        {
+            "apiName": "QUICK_CHARGE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Quick charge",
+            "description": "Use the dock-station",
+            "iconUrl": "9e9d638fae0898286519cf078d0fc8d2c5fe5437.jpg",
+            "iconGrayUrl": "c9e143b8b08e507891767ab7191e5c9bd5a38cf5.jpg",
+            "hidden": false,
+            "globalPct": 50.4
+        },
+        {
+            "apiName": "EVERY_LITTLE_HELPS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Every little helps",
+            "description": "",
+            "iconUrl": "7cf910533aad01de5a1cfb9f0526301bf0e37001.jpg",
+            "iconGrayUrl": "a8427bcbeb6c36e51ae41e6b9ab3d136f0c24b4a.jpg",
+            "hidden": true,
+            "globalPct": 17.8
+        },
+        {
+            "apiName": "EVERYBODY_LIES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Everybody lies",
+            "description": "",
+            "iconUrl": "59a6a3435f2979a95900135e116c1c59647141be.jpg",
+            "iconGrayUrl": "f7f1ecbce3fcc09b6d51d8073d505f9e7f92a266.jpg",
+            "hidden": true,
+            "globalPct": 35.7
+        },
+        {
+            "apiName": "METICULOUS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Meticulous",
+            "description": "Read all notes",
+            "iconUrl": "4f4c17555a21fef150722c8f679650170a8ce781.jpg",
+            "iconGrayUrl": "38d99583ad9aff02943f393d533e692f2381d726.jpg",
+            "hidden": false,
+            "globalPct": 14.8
+        },
+        {
+            "apiName": "SHORT_CIRCUIT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Short circuit",
+            "description": "",
+            "iconUrl": "ef3b707c1832e4b9b746f270214d682973232774.jpg",
+            "iconGrayUrl": "1c58f38a67b1bad3de814b9ac523081845b0620c.jpg",
+            "hidden": true,
+            "globalPct": 46.3
+        },
+        {
+            "apiName": "CURIOUS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Curious",
+            "description": "Check the contents of the data disk",
+            "iconUrl": "80b43edf595eb0b858d988f8a93bc24d592d45c2.jpg",
+            "iconGrayUrl": "902cb84dc0c1ca9a8110338f350a5d42adfbb2c5.jpg",
+            "hidden": false,
+            "globalPct": 38.9
+        },
+        {
+            "apiName": "SILENT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Silent",
+            "description": "",
+            "iconUrl": "87199049621b9a36cb7d93fb1a333b84d2f81e23.jpg",
+            "iconGrayUrl": "a7144259fd422951e8f5be38ef9b6af9c22545dc.jpg",
+            "hidden": true,
+            "globalPct": 9.3
+        },
+        {
+            "apiName": "THERE_IS_ANOTHER_WAY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "There is another way",
+            "description": "",
+            "iconUrl": "bd91d6331e89570df283aa3a636c4883be0b7963.jpg",
+            "iconGrayUrl": "50e97ee0a4ea1ff415da9a3bae023a97f00f0e27.jpg",
+            "hidden": true,
+            "globalPct": 31.1
+        },
+        {
+            "apiName": "ANNOYING",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Annoying",
+            "description": "",
+            "iconUrl": "cb8fdb63b793f938f381c681e363ec1e15fd6d23.jpg",
+            "iconGrayUrl": "47716979b5ff66045b359e0d9e666d8dfc87ef10.jpg",
+            "hidden": true,
+            "globalPct": 28.1
+        },
+        {
+            "apiName": "FOUND_IT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Found it!",
+            "description": "",
+            "iconUrl": "f21e3b9d95fd4147f7343e2e5f82672ff3dc7921.jpg",
+            "iconGrayUrl": "d6e0bb0ed27ec977286921ad1ea1f6d6fa03472b.jpg",
+            "hidden": true,
+            "globalPct": 26.8
+        },
+        {
+            "apiName": "NOT_WHAT_IT_SEEMS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Not what it seems",
+            "description": "",
+            "iconUrl": "f51019157a8dad24abebb140ea41b2f2afb181d4.jpg",
+            "iconGrayUrl": "dbb5e74ea947c9f516da9a3fcd504f3e90de73c1.jpg",
+            "hidden": true,
+            "globalPct": 26.2
+        },
+        {
+            "apiName": "HE_IS_JUST_A_CHILD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "He is just a child",
+            "description": "",
+            "iconUrl": "0ea9aafa94f401d47beed06b86df3c1a11d49312.jpg",
+            "iconGrayUrl": "1c52e1145ff22126e3e753cb9932f0942f81751a.jpg",
+            "hidden": true,
+            "globalPct": 27.4
+        },
+        {
+            "apiName": "BUCKLE_UP",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Buckle up",
+            "description": "",
+            "iconUrl": "ea4d0d21133ac3749cc0fa566b4902a4d2a2a28d.jpg",
+            "iconGrayUrl": "b5a45488e3a11ee7931e93eee6ed5faa8a5d57a2.jpg",
+            "hidden": true,
+            "globalPct": 49.9
+        },
+        {
+            "apiName": "HANDS_UP",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hands up!",
+            "description": "",
+            "iconUrl": "0a62fb99f3abfd074db9fb2f9943a7686725f913.jpg",
+            "iconGrayUrl": "e9e4174db52a2e1bb4b53defa90e20555f1df80d.jpg",
+            "hidden": true,
+            "globalPct": 46.4
+        },
+        {
+            "apiName": "UNCERTAIN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Uncertain",
+            "description": "",
+            "iconUrl": "dca4ee35031f51f09b2bc23f44ec8bd92aab1b7e.jpg",
+            "iconGrayUrl": "2b85094a0415ec14cd7ef0712a888d3df897d7fd.jpg",
+            "hidden": true,
+            "globalPct": 21.4
+        },
+        {
+            "apiName": "THAT'S_MUCH_BETTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "That's much better!",
+            "description": "Start generators",
+            "iconUrl": "2992e7181e670e1784eaf3fc9cdd62cae7fba4dc.jpg",
+            "iconGrayUrl": "31253acf4f6544a89cad6c4198560fcae7ce8ba2.jpg",
+            "hidden": false,
+            "globalPct": 25.6
+        },
+        {
+            "apiName": "HACKER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hacker",
+            "description": "",
+            "iconUrl": "5cd5ebecaa7bd21e7e8d1c5636cf9a45151e2c65.jpg",
+            "iconGrayUrl": "83e04e9d9d4c0b6c3f190e715fd6cc861e3a2589.jpg",
+            "hidden": true,
+            "globalPct": 30.5
+        },
+        {
+            "apiName": "GOODY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Goody",
+            "description": "",
+            "iconUrl": "d2e9c148c9d030f943bd974ad36f479285a50ae8.jpg",
+            "iconGrayUrl": "b4310de1a00f2ae490cc7ee4bf3fcb90822ddb6d.jpg",
+            "hidden": true,
+            "globalPct": 25.8
+        },
+        {
+            "apiName": "I_CAN_DO_A_THING_OR_TWO",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I can do a thing or two",
+            "description": "",
+            "iconUrl": "2f589ddb4881f59e48946fa3539b66b89e262bc0.jpg",
+            "iconGrayUrl": "f74dc681ffe06d58e7bafa7c12ad79b5d7c5b969.jpg",
+            "hidden": true,
+            "globalPct": 51.5
+        },
+        {
+            "apiName": "NOT_CLUMSY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Not as clumsy or random",
+            "description": "",
+            "iconUrl": "8e77fa7cbf8e17b777475ab748392146f8095cc8.jpg",
+            "iconGrayUrl": "1d91802db4ad95606edb024466b94b66ff37de82.jpg",
+            "hidden": true,
+            "globalPct": 22.2
+        },
+        {
+            "apiName": "HIPSTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hipster",
+            "description": "",
+            "iconUrl": "e58c20de9bde31cee6160b213d59c5a592fe984c.jpg",
+            "iconGrayUrl": "cb28a863140d78daf60647a71214d15928e10e65.jpg",
+            "hidden": true,
+            "globalPct": 23
+        },
+        {
+            "apiName": "SYSADMIN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sysadmin",
+            "description": "",
+            "iconUrl": "d353f1b1b0f4e2282b1e92a281b9438a332d7ecf.jpg",
+            "iconGrayUrl": "3e8042b85d624283139f7aff45856f9e7bdde687.jpg",
+            "hidden": true,
+            "globalPct": 36.2
+        },
+        {
+            "apiName": "PLEASE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Please oh pleeease!",
+            "description": "",
+            "iconUrl": "2f918b63f403e21a6f29d4ed6550f3c182c00030.jpg",
+            "iconGrayUrl": "893fe605c74e67c109eecbdc73e00e56b71848f8.jpg",
+            "hidden": true,
+            "globalPct": 23.2
+        },
+        {
+            "apiName": "NOW_YOU_KNOW",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Now you know",
+            "description": "",
+            "iconUrl": "9dbb95d7e299b698fe5b33dfeb5c4dbd72faf404.jpg",
+            "iconGrayUrl": "4c6c291f90ec53a267f72b14fffaaf803d557748.jpg",
+            "hidden": true,
+            "globalPct": 46.6
+        },
+        {
+            "apiName": "PERFECT_HEARING",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Perfect hearing",
+            "description": "",
+            "iconUrl": "749df25e9f05956e74a988dc51a728e96c4ece77.jpg",
+            "iconGrayUrl": "e2306fc7dcf4f61da359a7087183c21080e71793.jpg",
+            "hidden": true,
+            "globalPct": 15.4
+        },
+        {
+            "apiName": "BLADE_RUNNER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Blade Runner",
+            "description": "Escape the fire from the turrets by yourself",
+            "iconUrl": "b818dbc51d09c429878fa5845945c99417bbf788.jpg",
+            "iconGrayUrl": "8f3d4fa272a3cd2b89e323afce3dc4849f8c6e65.jpg",
+            "hidden": false,
+            "globalPct": 16.3
+        },
+        {
+            "apiName": "LUCKY_DOG",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Lucky dog",
+            "description": "",
+            "iconUrl": "9fdc4c6675c157e3a73ee5955b1cf9bb03a38e3b.jpg",
+            "iconGrayUrl": "e333bdccdaf2266a5844e8ec70e33c1262c31243.jpg",
+            "hidden": true,
+            "globalPct": 11.1
+        },
+        {
+            "apiName": "HAPPY_HALLOWEEN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Trick or Treat?",
+            "description": "",
+            "iconUrl": "645647afb8201a71669973997efee519489d38f8.jpg",
+            "iconGrayUrl": "6b2c1b2f745b5c1bab28ed565a39ce6bc271e410.jpg",
+            "hidden": true,
+            "globalPct": 29.6
+        },
+        {
+            "apiName": "POOL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Accurate",
+            "description": "",
+            "iconUrl": "932c281b132e72f946aef829578a4ecdb2b75207.jpg",
+            "iconGrayUrl": "b66e5d2a5d349f64a1fe166517237872539fcad7.jpg",
+            "hidden": true,
+            "globalPct": 11.9
+        }
+    ],
+    "playtimeForever": 214,
+    "lastPlayedTs": "2024-06-03T15:21:13.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/406970/e93fd61da0af4423b57e9dd92e27597c9b78183f.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "WALKING_ROBOT",
+            "displayName": "The Walking Robot Among Us",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "186b800d771618c88afeacccb6ff244e4aa79c67.jpg",
+            "iconGrayUrl": "c2e3c055928341a0eec36f70dd7a4c1cbf04d4ca.jpg",
+            "globalPct": 28.5
+        },
+        {
+            "apiName": "ACE",
+            "displayName": "Ace",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "0829f52841f6baee61aac2d680e863263a7089dc.jpg",
+            "iconGrayUrl": "4940b8a622e2a4aadd6daa3b3153bb7f373235f2.jpg",
+            "globalPct": 27.7
+        },
+        {
+            "apiName": "CONCRETE_PAINTING",
+            "displayName": "Concrete painting",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "0e17f840596978ed6b3e0ea32aa4c0ffb85695e8.jpg",
+            "iconGrayUrl": "7dd8006c8b1ed23bd9ba9d3f987526673014879a.jpg",
+            "globalPct": 25.7
+        },
+        {
+            "apiName": "QUICK_CHARGE",
+            "displayName": "Quick charge",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9e9d638fae0898286519cf078d0fc8d2c5fe5437.jpg",
+            "iconGrayUrl": "c9e143b8b08e507891767ab7191e5c9bd5a38cf5.jpg",
+            "globalPct": 50.4
+        },
+        {
+            "apiName": "EVERY_LITTLE_HELPS",
+            "displayName": "Every little helps",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "7cf910533aad01de5a1cfb9f0526301bf0e37001.jpg",
+            "iconGrayUrl": "a8427bcbeb6c36e51ae41e6b9ab3d136f0c24b4a.jpg",
+            "globalPct": 17.8
+        },
+        {
+            "apiName": "EVERYBODY_LIES",
+            "displayName": "Everybody lies",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "59a6a3435f2979a95900135e116c1c59647141be.jpg",
+            "iconGrayUrl": "f7f1ecbce3fcc09b6d51d8073d505f9e7f92a266.jpg",
+            "globalPct": 35.7
+        }
+    ]
+}

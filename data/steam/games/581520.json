@@ -1,0 +1,235 @@
+{
+    "appId": 581520,
+    "hasAchievements": true,
+    "total": 15,
+    "unlocked": 0,
+    "gameName": "Sakura Magical Girls",
+    "achievements": [
+        {
+            "apiName": "first_day",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "First day on the job",
+            "description": "Finally reach the end of your first day.",
+            "iconUrl": "d5a63e73ea313d512491827a6f142a0ef49c07b4.jpg",
+            "iconGrayUrl": "234aaa3c849de3ffffb253cbf44928ac31b1237f.jpg",
+            "hidden": false,
+            "globalPct": 46.6
+        },
+        {
+            "apiName": "protector_of_love",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Protector of Love",
+            "description": "Unlock all of Yuki's CG scenes.",
+            "iconUrl": "43cc97ca9f79d88084ff3fd3734cfabc35d791c5.jpg",
+            "iconGrayUrl": "52e49995f19132243f24405e86956bfd66d88d66.jpg",
+            "hidden": false,
+            "globalPct": 34.8
+        },
+        {
+            "apiName": "destroyer_of_sorrow",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Destroyer of Sorrow",
+            "description": "Unlock all of Hikari's CG scenes.",
+            "iconUrl": "52cb6f56fd62af2e63364d8acbd70a3e4641b38c.jpg",
+            "iconGrayUrl": "01782a6eb455aca521e265838a9d2cd489a0f3a8.jpg",
+            "hidden": false,
+            "globalPct": 34.6
+        },
+        {
+            "apiName": "the_outcast",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Outcast",
+            "description": "Unlock all of Ayame's CG scenes.",
+            "iconUrl": "9693a26c450b208eedcd2dadbcecf12bd773ab1e.jpg",
+            "iconGrayUrl": "2c7b873002b15883693508fc9429c453b61bcd2d.jpg",
+            "hidden": false,
+            "globalPct": 45
+        },
+        {
+            "apiName": "full_album",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Full Album",
+            "description": "Unlock all of the CG scenes in the game.",
+            "iconUrl": "1fe757e135ecc6f16268700b9a78c09839ce35ea.jpg",
+            "iconGrayUrl": "0ecb4c67780293c7e7dd13e8cafb39c926ad3b50.jpg",
+            "hidden": false,
+            "globalPct": 32.8
+        },
+        {
+            "apiName": "potential",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Potential",
+            "description": "Acquire your own wand.",
+            "iconUrl": "32cfad459b8f76bd12f6f7958d30e2e9eb37a241.jpg",
+            "iconGrayUrl": "8e7af43b8c2fd53c5833d371a422a6ddef6377dc.jpg",
+            "hidden": false,
+            "globalPct": 42.9
+        },
+        {
+            "apiName": "not_funny",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Not funny",
+            "description": "Put an end to a forest sprite's pranks.",
+            "iconUrl": "0c48ed8c83491dbf0bee70392eabad6fe789a01c.jpg",
+            "iconGrayUrl": "c3cf1c5e25c670aeb649d5c6228c496457837a2a.jpg",
+            "hidden": false,
+            "globalPct": 41
+        },
+        {
+            "apiName": "destroyed_by_love",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Destroyed by love",
+            "description": "Witness the full power of the love laser.",
+            "iconUrl": "05ad09a24e5c03e1cce03b98934d9afe776869a3.jpg",
+            "iconGrayUrl": "f94818de148aa189cf7cac76aecb16d9dc8bd7ad.jpg",
+            "hidden": false,
+            "globalPct": 38.9
+        },
+        {
+            "apiName": "stars_are_not_right",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The stars are not right",
+            "description": "Defeat an ancient evil.",
+            "iconUrl": "d2522ac77f5600871b2a6ec6e8f4a7f391d93047.jpg",
+            "iconGrayUrl": "d31d4358306fb89a4e1f505b23016e2c9f89e22a.jpg",
+            "hidden": false,
+            "globalPct": 39.4
+        },
+        {
+            "apiName": "the_end",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The end...?",
+            "description": "",
+            "iconUrl": "c2268aaf1d29a3b7be327bd41368a0588c18e688.jpg",
+            "iconGrayUrl": "a55d43616275cfb58dd1eed525695522aa4e7245.jpg",
+            "hidden": true,
+            "globalPct": 39.3
+        },
+        {
+            "apiName": "channeling",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Channeling",
+            "description": "Use negative karma.",
+            "iconUrl": "bbd26bbdf0a58a05c207819e9fad62a72d6edb98.jpg",
+            "iconGrayUrl": "f0794f478b47e1e5967864f47b62dffa08a17136.jpg",
+            "hidden": false,
+            "globalPct": 41.7
+        },
+        {
+            "apiName": "choiceschoices",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Choices, choices",
+            "description": "Make every available choice in the game.",
+            "iconUrl": "d46bd3f858a411048d0028a97ab7f7a21b217867.jpg",
+            "iconGrayUrl": "d59beef65b7a123e844efb4f9c0a1d97d0d5ddc6.jpg",
+            "hidden": false,
+            "globalPct": 31
+        },
+        {
+            "apiName": "peaceful_cruise",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A peaceful cruise",
+            "description": "Enjoy a peaceful cruise with the girls.",
+            "iconUrl": "eb88ccc99df747ef63d319908c244ab3eefc835a.jpg",
+            "iconGrayUrl": "f85930060fbb5309ebf4fbaee667d28486b7b19a.jpg",
+            "hidden": false,
+            "globalPct": 42
+        },
+        {
+            "apiName": "embarrassment_and_profit",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Embarrassment and Profit",
+            "description": "See Yuki while she’s doing promotion work.",
+            "iconUrl": "a1bf0132a5c2f54516526afa7e44f51ed043c47a.jpg",
+            "iconGrayUrl": "a363ba40ad7816d680dbc7a417628b8cba5e5c1d.jpg",
+            "hidden": false,
+            "globalPct": 41.5
+        },
+        {
+            "apiName": "love_lost",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Love lost",
+            "description": "Learn of Ayame’s past. ",
+            "iconUrl": "e0a1b8ebeceb2065757436699704cc4ac84528fb.jpg",
+            "iconGrayUrl": "598d9d92cf9c37271e69fd26d39809b11e8ab7d1.jpg",
+            "hidden": false,
+            "globalPct": 41.4
+        }
+    ],
+    "playtimeForever": 125,
+    "lastPlayedTs": "2018-01-14T03:55:22.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/581520/f3bf6175631cd2fef3a4de1a0e8b4a1430b3d9e7.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "first_day",
+            "displayName": "First day on the job",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d5a63e73ea313d512491827a6f142a0ef49c07b4.jpg",
+            "iconGrayUrl": "234aaa3c849de3ffffb253cbf44928ac31b1237f.jpg",
+            "globalPct": 46.6
+        },
+        {
+            "apiName": "protector_of_love",
+            "displayName": "Protector of Love",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "43cc97ca9f79d88084ff3fd3734cfabc35d791c5.jpg",
+            "iconGrayUrl": "52e49995f19132243f24405e86956bfd66d88d66.jpg",
+            "globalPct": 34.8
+        },
+        {
+            "apiName": "destroyer_of_sorrow",
+            "displayName": "Destroyer of Sorrow",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "52cb6f56fd62af2e63364d8acbd70a3e4641b38c.jpg",
+            "iconGrayUrl": "01782a6eb455aca521e265838a9d2cd489a0f3a8.jpg",
+            "globalPct": 34.6
+        },
+        {
+            "apiName": "the_outcast",
+            "displayName": "The Outcast",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9693a26c450b208eedcd2dadbcecf12bd773ab1e.jpg",
+            "iconGrayUrl": "2c7b873002b15883693508fc9429c453b61bcd2d.jpg",
+            "globalPct": 45
+        },
+        {
+            "apiName": "full_album",
+            "displayName": "Full Album",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1fe757e135ecc6f16268700b9a78c09839ce35ea.jpg",
+            "iconGrayUrl": "0ecb4c67780293c7e7dd13e8cafb39c926ad3b50.jpg",
+            "globalPct": 32.8
+        },
+        {
+            "apiName": "potential",
+            "displayName": "Potential",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "32cfad459b8f76bd12f6f7958d30e2e9eb37a241.jpg",
+            "iconGrayUrl": "8e7af43b8c2fd53c5833d371a422a6ddef6377dc.jpg",
+            "globalPct": 42.9
+        }
+    ]
+}

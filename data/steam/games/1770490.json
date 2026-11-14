@@ -1,0 +1,235 @@
+{
+    "appId": 1770490,
+    "hasAchievements": true,
+    "total": 15,
+    "unlocked": 4,
+    "gameName": "PAW Patrol: Grand Prix",
+    "achievements": [
+        {
+            "apiName": "ACHIEVEMENT_00",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Unstoppable",
+            "description": "Win 10 Races",
+            "iconUrl": "381dc38af81b25bc52b658a91d90d694d3bcf3c5.jpg",
+            "iconGrayUrl": "5d8563e3c12df28ca971e9834d78648b1757cdae.jpg",
+            "hidden": false,
+            "globalPct": 48.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_01",
+            "unlocked": true,
+            "unlockedAt": "2024-07-20T06:24:24.000Z",
+            "displayName": "First Victory",
+            "description": "First Race Win",
+            "iconUrl": "bf5ec5592558ac269287562b46e8b00ea93cbd41.jpg",
+            "iconGrayUrl": "16d672a826d8255f877ef4646fe9d7b29ffcd60f.jpg",
+            "hidden": false,
+            "globalPct": 88.9
+        },
+        {
+            "apiName": "ACHIEVEMENT_02",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Every pup is the best pup",
+            "description": "Unlock all characters",
+            "iconUrl": "f224a969cb28e0d6ce58af5d150ee3d1e8e85855.jpg",
+            "iconGrayUrl": "a5be3425a8a4849995eb06b4a00d43c8d7f6e47b.jpg",
+            "hidden": false,
+            "globalPct": 30.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_03",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Let’s do it!",
+            "description": "Win 30 Races",
+            "iconUrl": "4535b8ff08604bc4c2af2f073428c4e98d1cdfe6.jpg",
+            "iconGrayUrl": "ad2b1a9ced4113a8043d5d1c6274f26cfbe5230b.jpg",
+            "hidden": false,
+            "globalPct": 21.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_04",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Challenger",
+            "description": "Win a race in split-screen",
+            "iconUrl": "db3cc488f72f4cae8e76f52cb6935fc571935b92.jpg",
+            "iconGrayUrl": "97eec619c26c3ac7490770fc3885238ea8b8153c.jpg",
+            "hidden": false,
+            "globalPct": 34.9
+        },
+        {
+            "apiName": "ACHIEVEMENT_05",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Win with Friends",
+            "description": "Win a 4 player split-screen race",
+            "iconUrl": "03177d016e8be11f196155311cea777fbd4f6f21.jpg",
+            "iconGrayUrl": "3e91255eed134df27d6c91e6595406899cd84e9f.jpg",
+            "hidden": false,
+            "globalPct": 3.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_06",
+            "unlocked": true,
+            "unlockedAt": "2024-07-20T06:35:48.000Z",
+            "displayName": "Booster",
+            "description": "Step on a boost pad 30 times",
+            "iconUrl": "783daf5d9ec982c391dea89fbaeab729f442cccc.jpg",
+            "iconGrayUrl": "be8557e91a6a1cc30dac02e65b994787144c3794.jpg",
+            "hidden": false,
+            "globalPct": 83.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_07",
+            "unlocked": true,
+            "unlockedAt": "2024-07-20T06:16:58.000Z",
+            "displayName": "A different Strategy",
+            "description": "Use a Skill for the first time",
+            "iconUrl": "5a4b92f6230b2cabcb1a1a02a7be5f30673fe573.jpg",
+            "iconGrayUrl": "3a8383e576f7062c883866296111d59b22b93803.jpg",
+            "hidden": false,
+            "globalPct": 95.3
+        },
+        {
+            "apiName": "ACHIEVEMENT_08",
+            "unlocked": true,
+            "unlockedAt": "2024-07-20T06:18:56.000Z",
+            "displayName": "A new driver",
+            "description": "Finish The Tutorial",
+            "iconUrl": "d9a9c61ee7657e43f2aa2a566aa94fc9cb3f5184.jpg",
+            "iconGrayUrl": "b6775557439a1a368be22faa966e8fc1dd9116a6.jpg",
+            "hidden": false,
+            "globalPct": 58.9
+        },
+        {
+            "apiName": "ACHIEVEMENT_09",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Master",
+            "description": "Use all skills",
+            "iconUrl": "0f3fcd728a71651102d13b07177f5c65642a0adb.jpg",
+            "iconGrayUrl": "f2862499ef05f46fac87174c86fa27f9e9bf589e.jpg",
+            "hidden": false,
+            "globalPct": 9.5
+        },
+        {
+            "apiName": "ACHIEVEMENT_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Just getting started",
+            "description": "Win the first adventure race in first position",
+            "iconUrl": "13f2ab4927c0072a59fac0e6cc7b2f4a3abbb865.jpg",
+            "iconGrayUrl": "a50de76fc8ea4bbc9724d98d070331305a4ce5d3.jpg",
+            "hidden": false,
+            "globalPct": 66.9
+        },
+        {
+            "apiName": "ACHIEVEMENT_11",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A sky full of stars",
+            "description": "Win the adventure with all pups",
+            "iconUrl": "eac636eb01e8b0a4adc6dbdd915760951ed7c1fd.jpg",
+            "iconGrayUrl": "ce0cb3844e9d270ed5c3661a881ac5f37a8721d3.jpg",
+            "hidden": false,
+            "globalPct": 1.9
+        },
+        {
+            "apiName": "ACHIEVEMENT_12",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Unbeatable",
+            "description": "Win all the adventure races in the first position",
+            "iconUrl": "c9ea8bf44c51d4bdd5ec81de0e5905809134f6d6.jpg",
+            "iconGrayUrl": "04346d1c302ef345c8b91d6e01c1327095bac4d9.jpg",
+            "hidden": false,
+            "globalPct": 6.7
+        },
+        {
+            "apiName": "ACHIEVEMENT_13",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hero's journey",
+            "description": "Finish the Adventure",
+            "iconUrl": "bf5b602a3a420b74206f0678e98aa57c16b47265.jpg",
+            "iconGrayUrl": "ce0cb3844e9d270ed5c3661a881ac5f37a8721d3.jpg",
+            "hidden": false,
+            "globalPct": 19
+        },
+        {
+            "apiName": "ACHIEVEMENT_14",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Collector",
+            "description": "Unlock All Esthetics Items",
+            "iconUrl": "59b92512c354bf32b47a4f49765cd72d88310dc5.jpg",
+            "iconGrayUrl": "8859f60b6cd548f056fcd9b0b72d2ded9d620b70.jpg",
+            "hidden": false,
+            "globalPct": 2.1
+        }
+    ],
+    "playtimeForever": 276,
+    "lastPlayedTs": "2024-09-29T12:01:50.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1770490/6b79a5534b630fd2077b465be143f82fba1f28ac.jpg",
+    "lastUnlockedAt": "2024-07-20T06:35:48.000Z",
+    "lastUnlockName": "Booster",
+    "preview": [
+        {
+            "apiName": "ACHIEVEMENT_06",
+            "displayName": "Booster",
+            "unlocked": true,
+            "unlockedAt": "2024-07-20T06:35:48.000Z",
+            "iconUrl": "783daf5d9ec982c391dea89fbaeab729f442cccc.jpg",
+            "iconGrayUrl": "be8557e91a6a1cc30dac02e65b994787144c3794.jpg",
+            "globalPct": 83.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_01",
+            "displayName": "First Victory",
+            "unlocked": true,
+            "unlockedAt": "2024-07-20T06:24:24.000Z",
+            "iconUrl": "bf5ec5592558ac269287562b46e8b00ea93cbd41.jpg",
+            "iconGrayUrl": "16d672a826d8255f877ef4646fe9d7b29ffcd60f.jpg",
+            "globalPct": 88.9
+        },
+        {
+            "apiName": "ACHIEVEMENT_08",
+            "displayName": "A new driver",
+            "unlocked": true,
+            "unlockedAt": "2024-07-20T06:18:56.000Z",
+            "iconUrl": "d9a9c61ee7657e43f2aa2a566aa94fc9cb3f5184.jpg",
+            "iconGrayUrl": "b6775557439a1a368be22faa966e8fc1dd9116a6.jpg",
+            "globalPct": 58.9
+        },
+        {
+            "apiName": "ACHIEVEMENT_07",
+            "displayName": "A different Strategy",
+            "unlocked": true,
+            "unlockedAt": "2024-07-20T06:16:58.000Z",
+            "iconUrl": "5a4b92f6230b2cabcb1a1a02a7be5f30673fe573.jpg",
+            "iconGrayUrl": "3a8383e576f7062c883866296111d59b22b93803.jpg",
+            "globalPct": 95.3
+        },
+        {
+            "apiName": "ACHIEVEMENT_00",
+            "displayName": "Unstoppable",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "381dc38af81b25bc52b658a91d90d694d3bcf3c5.jpg",
+            "iconGrayUrl": "5d8563e3c12df28ca971e9834d78648b1757cdae.jpg",
+            "globalPct": 48.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_02",
+            "displayName": "Every pup is the best pup",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f224a969cb28e0d6ce58af5d150ee3d1e8e85855.jpg",
+            "iconGrayUrl": "a5be3425a8a4849995eb06b4a00d43c8d7f6e47b.jpg",
+            "globalPct": 30.6
+        }
+    ]
+}

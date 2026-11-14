@@ -1,0 +1,235 @@
+{
+    "appId": 415030,
+    "hasAchievements": true,
+    "total": 15,
+    "unlocked": 0,
+    "gameName": "One More Dungeon",
+    "achievements": [
+        {
+            "apiName": "FirstLevel",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "First Step",
+            "description": "Сomplete the first level",
+            "iconUrl": "5ae18c59724f08099699a7316e08ad3da71b075c.jpg",
+            "iconGrayUrl": "745067b7d3a769392c56991415ee80e248b31a63.jpg",
+            "hidden": false,
+            "globalPct": 46
+        },
+        {
+            "apiName": "HalfLevels",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Half way",
+            "description": "Сomplete five levels",
+            "iconUrl": "c98c13a6389b2378d8302bc0a488d7bdfa1ba01f.jpg",
+            "iconGrayUrl": "489a3b20ffe1eee910c507dbdf18f5401369e0f4.jpg",
+            "hidden": false,
+            "globalPct": 8.4
+        },
+        {
+            "apiName": "EightLevels",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Сonclusion",
+            "description": "Сomplete eight levels",
+            "iconUrl": "36d2cf35e97f8fbdc3e9eea08d8cade3bca5ebf6.jpg",
+            "iconGrayUrl": "1fa2984cd3cc3cff794fc1e0af7c5aa39990504d.jpg",
+            "hidden": false,
+            "globalPct": 4.2
+        },
+        {
+            "apiName": "GameComplete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Finish the game",
+            "description": "Сomplete the game",
+            "iconUrl": "fe4262051181f0bc648270e3e740de8f365f14f0.jpg",
+            "iconGrayUrl": "c705470766b108864c0c3426edd8201934e63ff6.jpg",
+            "hidden": false,
+            "globalPct": 4
+        },
+        {
+            "apiName": "GameWithMutator",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Changes the rules",
+            "description": "Start the game with any mutator",
+            "iconUrl": "1a4618346b79e58b46f555686e5b207ac3089533.jpg",
+            "iconGrayUrl": "5c41a3a17f6e48cdcb2ccfe8d1a45f5d2bb0f0d6.jpg",
+            "hidden": false,
+            "globalPct": 34.4
+        },
+        {
+            "apiName": "AllMutators",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Full set",
+            "description": "Buy all the mutators",
+            "iconUrl": "865f2fc61026dc3f8688e1514e5e6e8318316785.jpg",
+            "iconGrayUrl": "46e3b01318f94d15aaddfd9724f2b4c307f85261.jpg",
+            "hidden": false,
+            "globalPct": 3.4
+        },
+        {
+            "apiName": "CompleteFog",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I can't see anything!",
+            "description": "Сomplete the game with \"Fog\" or \"Broken cartridge\" mutator",
+            "iconUrl": "83da1fa14ec7b3c16e189dc28e821819aae42009.jpg",
+            "iconGrayUrl": "00cd9b4d50638d06dfa334ee18dd8f1f70f3233c.jpg",
+            "hidden": false,
+            "globalPct": 1.9
+        },
+        {
+            "apiName": "CompleteMinHealth",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bring 'em on!",
+            "description": "Сomplete the game with \"No margin for error\" or \"Curse\" mutator",
+            "iconUrl": "5b7fb7c8bf26d9c7092f599e052723ec7bfaf32b.jpg",
+            "iconGrayUrl": "d39e8f7ba988d0820f4f225f8c724943776e0870.jpg",
+            "hidden": false,
+            "globalPct": 1.7
+        },
+        {
+            "apiName": "Beatles",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Insects must die!",
+            "description": "Squash 25 bugs",
+            "iconUrl": "dce0fbbef4c368a94bc85095b3dee9f82dbebaac.jpg",
+            "iconGrayUrl": "e9e2cc456e07255e228425c0899a58992e389d8a.jpg",
+            "hidden": false,
+            "globalPct": 3.7
+        },
+        {
+            "apiName": "SpeedRun",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Time is money",
+            "description": "Finish the level in under 2 minutes",
+            "iconUrl": "b3d7a199870f31adcc163336bed5a4537467f3bc.jpg",
+            "iconGrayUrl": "3046c8f0a8ea78187f6626f2130c2c86bbdac1ef.jpg",
+            "hidden": false,
+            "globalPct": 3.9
+        },
+        {
+            "apiName": "Suicide",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Drink me",
+            "description": "Die after drinking the poison",
+            "iconUrl": "7fae6116c3563b2aa2edcf2f01cbe05fcfd8f39f.jpg",
+            "iconGrayUrl": "9eb539eb805f8ae7d27445f203a038b7035a4555.jpg",
+            "hidden": false,
+            "globalPct": 11.5
+        },
+        {
+            "apiName": "NecroBoss",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ancient Necromancer",
+            "description": "Kill the Ancient Necromancer",
+            "iconUrl": "f9e7b16191ad0db2eadf0049253eda11d94a6b51.jpg",
+            "iconGrayUrl": "58cdddcef340c672d746101666219f71c4521b1d.jpg",
+            "hidden": false,
+            "globalPct": 7.8
+        },
+        {
+            "apiName": "ElderFlower",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Elder Flower",
+            "description": "Kill the Elder Flower",
+            "iconUrl": "cf05ecdd7c49046d93d50b3ad45a35881000d6bc.jpg",
+            "iconGrayUrl": "fea479fb555565b05a6fa01f1cfd9e63d7e3f21b.jpg",
+            "hidden": false,
+            "globalPct": 19.5
+        },
+        {
+            "apiName": "Coins",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Trader",
+            "description": "Spend 50 coins",
+            "iconUrl": "0df53f254c21fb87a439b3fa44435608ff6b71c4.jpg",
+            "iconGrayUrl": "65ddd48dda746eeb7a2f0ec5b35ffd9e19069551.jpg",
+            "hidden": false,
+            "globalPct": 2.5
+        },
+        {
+            "apiName": "AllSlots",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Full equipment",
+            "description": "Put the items in all the inventory slots",
+            "iconUrl": "f24d928607d8a4cfaea6cb4762ca321b29433b19.jpg",
+            "iconGrayUrl": "bb77e569e75a668014b39fe2bed3e2bd7c5a6915.jpg",
+            "hidden": false,
+            "globalPct": 2.8
+        }
+    ],
+    "playtimeForever": 275,
+    "lastPlayedTs": "2024-06-17T21:19:07.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/415030/c6c1750f6f33a4a9278c5095b645d6bb8b4e6e7e.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "FirstLevel",
+            "displayName": "First Step",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "5ae18c59724f08099699a7316e08ad3da71b075c.jpg",
+            "iconGrayUrl": "745067b7d3a769392c56991415ee80e248b31a63.jpg",
+            "globalPct": 46
+        },
+        {
+            "apiName": "HalfLevels",
+            "displayName": "Half way",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c98c13a6389b2378d8302bc0a488d7bdfa1ba01f.jpg",
+            "iconGrayUrl": "489a3b20ffe1eee910c507dbdf18f5401369e0f4.jpg",
+            "globalPct": 8.4
+        },
+        {
+            "apiName": "EightLevels",
+            "displayName": "Сonclusion",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "36d2cf35e97f8fbdc3e9eea08d8cade3bca5ebf6.jpg",
+            "iconGrayUrl": "1fa2984cd3cc3cff794fc1e0af7c5aa39990504d.jpg",
+            "globalPct": 4.2
+        },
+        {
+            "apiName": "GameComplete",
+            "displayName": "Finish the game",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "fe4262051181f0bc648270e3e740de8f365f14f0.jpg",
+            "iconGrayUrl": "c705470766b108864c0c3426edd8201934e63ff6.jpg",
+            "globalPct": 4
+        },
+        {
+            "apiName": "GameWithMutator",
+            "displayName": "Changes the rules",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1a4618346b79e58b46f555686e5b207ac3089533.jpg",
+            "iconGrayUrl": "5c41a3a17f6e48cdcb2ccfe8d1a45f5d2bb0f0d6.jpg",
+            "globalPct": 34.4
+        },
+        {
+            "apiName": "AllMutators",
+            "displayName": "Full set",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "865f2fc61026dc3f8688e1514e5e6e8318316785.jpg",
+            "iconGrayUrl": "46e3b01318f94d15aaddfd9724f2b4c307f85261.jpg",
+            "globalPct": 3.4
+        }
+    ]
+}

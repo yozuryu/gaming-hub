@@ -1,0 +1,180 @@
+{
+    "appId": 418950,
+    "hasAchievements": true,
+    "total": 10,
+    "unlocked": 0,
+    "gameName": "DreadOut: Keepers of The Dark",
+    "achievements": [
+        {
+            "apiName": "CARDS_UNLOCKED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cards Unlocked",
+            "description": "Play KOTD for 2 hours",
+            "iconUrl": "8d827b2afaa206eb99ded64676773b6fe1bc8cf4.jpg",
+            "iconGrayUrl": "3e89b69b569fd295d561f0e1f20b944b4f29c1b1.jpg",
+            "hidden": false,
+            "globalPct": 21.5
+        },
+        {
+            "apiName": "HEAVEN_DOOR",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Knockin' on Heaven's Door",
+            "description": "",
+            "iconUrl": "a10d3279030de28b7ff29320b73e8d82be15444a.jpg",
+            "iconGrayUrl": "46ed4efb9108e79dfa5022591aa6ce12d0a7947d.jpg",
+            "hidden": true,
+            "globalPct": 13.3
+        },
+        {
+            "apiName": "ASTRAL_SHOWREEL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Astral Showreel",
+            "description": "View All Linda's Past Projections in Limbo",
+            "iconUrl": "30edf16f3631bc2f23239c6a186aaca8bc16603a.jpg",
+            "iconGrayUrl": "3e89b69b569fd295d561f0e1f20b944b4f29c1b1.jpg",
+            "hidden": false,
+            "globalPct": 11.4
+        },
+        {
+            "apiName": "BANISH_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Beginner Banisher",
+            "description": "Banish 1st Keeper",
+            "iconUrl": "c1a05ebc6355f96ed6d74b898cc5698edd310a96.jpg",
+            "iconGrayUrl": "3e89b69b569fd295d561f0e1f20b944b4f29c1b1.jpg",
+            "hidden": false,
+            "globalPct": 23.3
+        },
+        {
+            "apiName": "BANISH_4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Halfway to Sanity",
+            "description": "Banish 4 Keepers",
+            "iconUrl": "8457a2e6fb905f04a09377248f9785571f1a050e.jpg",
+            "iconGrayUrl": "3e89b69b569fd295d561f0e1f20b944b4f29c1b1.jpg",
+            "hidden": false,
+            "globalPct": 16.4
+        },
+        {
+            "apiName": "BANISH_8",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I Spit on Their Graves",
+            "description": "Banish 8 Keepers",
+            "iconUrl": "35636f6c7a3ef7fa80da49e7e835f52844a02641.jpg",
+            "iconGrayUrl": "3e89b69b569fd295d561f0e1f20b944b4f29c1b1.jpg",
+            "hidden": false,
+            "globalPct": 13.7
+        },
+        {
+            "apiName": "BANISH_ALL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Enjoy The Silence",
+            "description": "Banish all Keepers",
+            "iconUrl": "5d93377aec0fae15b22a04b0a422c99f39dccd26.jpg",
+            "iconGrayUrl": "3e89b69b569fd295d561f0e1f20b944b4f29c1b1.jpg",
+            "hidden": false,
+            "globalPct": 11.8
+        },
+        {
+            "apiName": "CERAMIC_WOMAN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sharpshooter",
+            "description": "Defeat 'Ceramic Woman' without damaging her decoys",
+            "iconUrl": "e132b22aba7e12b340f550cd9d83b75b74ebe911.jpg",
+            "iconGrayUrl": "3e89b69b569fd295d561f0e1f20b944b4f29c1b1.jpg",
+            "hidden": false,
+            "globalPct": 6.3
+        },
+        {
+            "apiName": "SUSUK_LADY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pinned Down",
+            "description": "Defeat 'Susuk Lady' with 10 'Susuk Needles' or less",
+            "iconUrl": "6f19a51f86252ef930d08917fd22e5663aec2c7a.jpg",
+            "iconGrayUrl": "3e89b69b569fd295d561f0e1f20b944b4f29c1b1.jpg",
+            "hidden": false,
+            "globalPct": 8.7
+        },
+        {
+            "apiName": "LOST_CHAPTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "There's a Light in the End of the Tunnels",
+            "description": "",
+            "iconUrl": "15c58e076cc1aa71d01345bb6118118806aab10b.jpg",
+            "iconGrayUrl": "46ed4efb9108e79dfa5022591aa6ce12d0a7947d.jpg",
+            "hidden": true,
+            "globalPct": 12.9
+        }
+    ],
+    "playtimeForever": 306,
+    "lastPlayedTs": "2024-05-29T08:53:50.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/418950/65fe96c038b3fd7d6a3cca3faa174b60da4214c9.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "CARDS_UNLOCKED",
+            "displayName": "Cards Unlocked",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "8d827b2afaa206eb99ded64676773b6fe1bc8cf4.jpg",
+            "iconGrayUrl": "3e89b69b569fd295d561f0e1f20b944b4f29c1b1.jpg",
+            "globalPct": 21.5
+        },
+        {
+            "apiName": "HEAVEN_DOOR",
+            "displayName": "Knockin' on Heaven's Door",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a10d3279030de28b7ff29320b73e8d82be15444a.jpg",
+            "iconGrayUrl": "46ed4efb9108e79dfa5022591aa6ce12d0a7947d.jpg",
+            "globalPct": 13.3
+        },
+        {
+            "apiName": "ASTRAL_SHOWREEL",
+            "displayName": "Astral Showreel",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "30edf16f3631bc2f23239c6a186aaca8bc16603a.jpg",
+            "iconGrayUrl": "3e89b69b569fd295d561f0e1f20b944b4f29c1b1.jpg",
+            "globalPct": 11.4
+        },
+        {
+            "apiName": "BANISH_1",
+            "displayName": "Beginner Banisher",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c1a05ebc6355f96ed6d74b898cc5698edd310a96.jpg",
+            "iconGrayUrl": "3e89b69b569fd295d561f0e1f20b944b4f29c1b1.jpg",
+            "globalPct": 23.3
+        },
+        {
+            "apiName": "BANISH_4",
+            "displayName": "Halfway to Sanity",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "8457a2e6fb905f04a09377248f9785571f1a050e.jpg",
+            "iconGrayUrl": "3e89b69b569fd295d561f0e1f20b944b4f29c1b1.jpg",
+            "globalPct": 16.4
+        },
+        {
+            "apiName": "BANISH_8",
+            "displayName": "I Spit on Their Graves",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "35636f6c7a3ef7fa80da49e7e835f52844a02641.jpg",
+            "iconGrayUrl": "3e89b69b569fd295d561f0e1f20b944b4f29c1b1.jpg",
+            "globalPct": 13.7
+        }
+    ]
+}

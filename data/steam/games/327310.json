@@ -1,0 +1,279 @@
+{
+    "appId": 327310,
+    "hasAchievements": true,
+    "total": 19,
+    "unlocked": 0,
+    "gameName": "The Marvellous Miss Take",
+    "achievements": [
+        {
+            "apiName": "thief-complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Grand Opening",
+            "description": "Completed the game",
+            "iconUrl": "f95cfcb47877e1aa56215ba797b0116b118fc52a.jpg",
+            "iconGrayUrl": "b4e727c5bf8cac0fc9f3faa9e5a50058f598472d.jpg",
+            "hidden": false,
+            "globalPct": 4
+        },
+        {
+            "apiName": "thief-bonus",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "If it isn't nailed down",
+            "description": "Collect all bonus loot as Sophia",
+            "iconUrl": "af2569b1dc877099ef39309ca668031fbc33cee0.jpg",
+            "iconGrayUrl": "a79ae20c4e7ddb4e600cc0e02eb4bc4ba33d3e2c.jpg",
+            "hidden": false,
+            "globalPct": 2.8
+        },
+        {
+            "apiName": "thief-par",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Greased Lighting",
+            "description": "Beat all par times as Sophia",
+            "iconUrl": "3e708c3d8f7676a68fc01ec89531b02cdd05b3dd.jpg",
+            "iconGrayUrl": "5130dabb44ed7e38bad30d99a873af7410983836.jpg",
+            "hidden": false,
+            "globalPct": 2.1
+        },
+        {
+            "apiName": "thief-ghost",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The pupil surpasses the teacher",
+            "description": "Ghost Trafalgar Square as Sophia",
+            "iconUrl": "70fd0774e7c3100ae58c807079eebf2afe159a70.jpg",
+            "iconGrayUrl": "2b669e55a44c6ae919a07df4515181eb7a11ad2b.jpg",
+            "hidden": false,
+            "globalPct": 5
+        },
+        {
+            "apiName": "unlock-master",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Enter the Fox",
+            "description": "Unlock Harry",
+            "iconUrl": "9bdfc25ab74a2f42dd4a7d2560eeb676e0783ca0.jpg",
+            "iconGrayUrl": "1ea1286c80d1ccb3f8db3e4dd182df0f786867d0.jpg",
+            "hidden": false,
+            "globalPct": 30.7
+        },
+        {
+            "apiName": "master-complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Solid Fox",
+            "description": "Complete all levels as Harry",
+            "iconUrl": "7381c7d2dd0b188ccc7d4729849de2ae250aa904.jpg",
+            "iconGrayUrl": "7066d93e129b1ceca30f67406037bebf65228b6e.jpg",
+            "hidden": false,
+            "globalPct": 2.9
+        },
+        {
+            "apiName": "master-ghost",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Artful Dodger",
+            "description": "Ghost all levels as Harry",
+            "iconUrl": "983050be1267b5abe394cbc68f4dfeb7a5688996.jpg",
+            "iconGrayUrl": "1a991af463b95a60a66b9741bbd1773432f6c96f.jpg",
+            "hidden": false,
+            "globalPct": 2.1
+        },
+        {
+            "apiName": "master-par",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "More speed less haste",
+            "description": "Beat Harry's Par Time at Trafalgar Square",
+            "iconUrl": "0cb8d1681213206ce4428c8c5c974e8a3d961224.jpg",
+            "iconGrayUrl": "db7bff900daf13146a82e45eefc1da9c3bdd3369.jpg",
+            "hidden": false,
+            "globalPct": 6.6
+        },
+        {
+            "apiName": "unlock-pickpocket",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Pickpocket",
+            "description": "Unlock Daisy",
+            "iconUrl": "68590cb3b0e471d1ffe59fbf30b40ec73340fed5.jpg",
+            "iconGrayUrl": "ef4878c69277bb5f05c7d78731a767ffbc61b733.jpg",
+            "hidden": false,
+            "globalPct": 13.1
+        },
+        {
+            "apiName": "pickpocket-complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Weapons Grade Pickpocket",
+            "description": "Complete all levels as Daisy",
+            "iconUrl": "74ef915eebf2fd49e2b20727a287a65991711c9e.jpg",
+            "iconGrayUrl": "268c945afc5fa009180bad083373514ba8fc20b6.jpg",
+            "hidden": false,
+            "globalPct": 2.7
+        },
+        {
+            "apiName": "pickpocket-par",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Weapons Upgrade Pickpocket",
+            "description": "Beat all par times as Daisy",
+            "iconUrl": "42aae6b841010fb79144b2f68d1e87e6243e5b4f.jpg",
+            "iconGrayUrl": "ea88780bdae5b9e6e7533deec937916c7ae4fcd4.jpg",
+            "hidden": false,
+            "globalPct": 2
+        },
+        {
+            "apiName": "pickpocket-ghost",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "You two are amateurs",
+            "description": "Ghost Silk Street as Daisy",
+            "iconUrl": "ec32b1a27ffc992ffe82754fce6cec35dda5f1e6.jpg",
+            "iconGrayUrl": "eb99de40190d8f65f38318966f77eb2b0cb78e21.jpg",
+            "hidden": false,
+            "globalPct": 2.1
+        },
+        {
+            "apiName": "completionist",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Completionist",
+            "description": "Collect all pieces of artwork in the home gallery",
+            "iconUrl": "1f03a3d5da0ba20659579ecb9e9cf4392a16781c.jpg",
+            "iconGrayUrl": "699c1c861691ac708a635f1c13fc98189b2bd722.jpg",
+            "hidden": false,
+            "globalPct": 2
+        },
+        {
+            "apiName": "escape",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Escape",
+            "description": "Escape from an angry guard",
+            "iconUrl": "c6bcdd4cb1f655ecb2894248e3d51800a20110ab.jpg",
+            "iconGrayUrl": "f428bf633862d2e35fd928d7235d7261ebb99b18.jpg",
+            "hidden": false,
+            "globalPct": 41.7
+        },
+        {
+            "apiName": "escape-multi",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Great Escape",
+            "description": "Escape from more than one angry guard",
+            "iconUrl": "9d5f88cf8cac4ccee81ab0a7ace93f043d32df2f.jpg",
+            "iconGrayUrl": "8ebc0653bbdbb00613a70553a843d6b8754d4c92.jpg",
+            "hidden": false,
+            "globalPct": 16.4
+        },
+        {
+            "apiName": "escape-teleport",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Where did she go?",
+            "description": "Teleport away from under a guard’s nose",
+            "iconUrl": "2a5b38d1c3956895b90ff373de8feaa54d79a568.jpg",
+            "iconGrayUrl": "b2512f3119fffce2f926f0751fcfda9e7e14d321.jpg",
+            "hidden": false,
+            "globalPct": 20.8
+        },
+        {
+            "apiName": "dog-multi",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Unleash the hounds",
+            "description": "Be followed by three dogs at once",
+            "iconUrl": "e6a1896a9434a08916d364b6312828677847dbc4.jpg",
+            "iconGrayUrl": "70a0d0f1037394a273927039efa79b0e416b7761.jpg",
+            "hidden": false,
+            "globalPct": 13
+        },
+        {
+            "apiName": "lift",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Musak makes the world go round",
+            "description": "Spend 1 minute in a lift",
+            "iconUrl": "6f89e17ecb282fb0cdb715c8705d05906b815325.jpg",
+            "iconGrayUrl": "f4197cbebead1e1119290672b5e6458f77becd87.jpg",
+            "hidden": false,
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "suspicious",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "She is round here somewhere",
+            "description": "Keep a guard suspicious for 1 minute",
+            "iconUrl": "48edb31d91ac29e670520a52a463c1754f98cbf1.jpg",
+            "iconGrayUrl": "ff4742fe9161963590ed6def47d70db1f3ba8961.jpg",
+            "hidden": false,
+            "globalPct": 3.2
+        }
+    ],
+    "playtimeForever": 245,
+    "lastPlayedTs": "2024-06-03T00:11:39.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/327310/9d52f162fc22a7952e5b08ce7610f49aa3dc3572.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "thief-complete",
+            "displayName": "Grand Opening",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f95cfcb47877e1aa56215ba797b0116b118fc52a.jpg",
+            "iconGrayUrl": "b4e727c5bf8cac0fc9f3faa9e5a50058f598472d.jpg",
+            "globalPct": 4
+        },
+        {
+            "apiName": "thief-bonus",
+            "displayName": "If it isn't nailed down",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "af2569b1dc877099ef39309ca668031fbc33cee0.jpg",
+            "iconGrayUrl": "a79ae20c4e7ddb4e600cc0e02eb4bc4ba33d3e2c.jpg",
+            "globalPct": 2.8
+        },
+        {
+            "apiName": "thief-par",
+            "displayName": "Greased Lighting",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "3e708c3d8f7676a68fc01ec89531b02cdd05b3dd.jpg",
+            "iconGrayUrl": "5130dabb44ed7e38bad30d99a873af7410983836.jpg",
+            "globalPct": 2.1
+        },
+        {
+            "apiName": "thief-ghost",
+            "displayName": "The pupil surpasses the teacher",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "70fd0774e7c3100ae58c807079eebf2afe159a70.jpg",
+            "iconGrayUrl": "2b669e55a44c6ae919a07df4515181eb7a11ad2b.jpg",
+            "globalPct": 5
+        },
+        {
+            "apiName": "unlock-master",
+            "displayName": "Enter the Fox",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9bdfc25ab74a2f42dd4a7d2560eeb676e0783ca0.jpg",
+            "iconGrayUrl": "1ea1286c80d1ccb3f8db3e4dd182df0f786867d0.jpg",
+            "globalPct": 30.7
+        },
+        {
+            "apiName": "master-complete",
+            "displayName": "Solid Fox",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "7381c7d2dd0b188ccc7d4729849de2ae250aa904.jpg",
+            "iconGrayUrl": "7066d93e129b1ceca30f67406037bebf65228b6e.jpg",
+            "globalPct": 2.9
+        }
+    ]
+}

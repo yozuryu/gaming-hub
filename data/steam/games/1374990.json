@@ -1,0 +1,400 @@
+{
+    "appId": 1374990,
+    "hasAchievements": true,
+    "total": 30,
+    "unlocked": 13,
+    "gameName": "PAW Patrol Mighty Pups  Save Adventure Bay",
+    "achievements": [
+        {
+            "apiName": "1",
+            "unlocked": true,
+            "unlockedAt": "2025-09-13T09:05:51.000Z",
+            "displayName": "Mighty Powers",
+            "description": "Complete Rescue mission “The meteor”",
+            "iconUrl": "c939cfa1cc97f8433e480f8fa32d739c53ae7fdd.jpg",
+            "iconGrayUrl": "e612246a26408c8304c6e8cb78baa58d3c7ea253.jpg",
+            "hidden": false,
+            "globalPct": 85.6
+        },
+        {
+            "apiName": "2",
+            "unlocked": true,
+            "unlockedAt": "2025-09-13T09:29:52.000Z",
+            "displayName": "Grand Re-Opening",
+            "description": "Complete Rescue Mission “Jake’s Resort”",
+            "iconUrl": "597202e7c5a2ae76e7078012841356c1475ac7b3.jpg",
+            "iconGrayUrl": "379e0a530166c576a96c494e9503ff46df5bf5ad.jpg",
+            "hidden": false,
+            "globalPct": 76.4
+        },
+        {
+            "apiName": "3",
+            "unlocked": true,
+            "unlockedAt": "2025-09-13T09:56:15.000Z",
+            "displayName": "Summer Day",
+            "description": "Complete Rescue Mission “Find Chickaletta”",
+            "iconUrl": "119fdae8d87e9b9846802866bacf7acca5a8a4db.jpg",
+            "iconGrayUrl": "66c7ef14af566d5aab559516812e1e49fe4f29ca.jpg",
+            "hidden": false,
+            "globalPct": 68.9
+        },
+        {
+            "apiName": "4",
+            "unlocked": true,
+            "unlockedAt": "2025-09-13T10:28:58.000Z",
+            "displayName": "Risky Rescue",
+            "description": "Complete Rescue Mission “Jake’s Mountain”",
+            "iconUrl": "4856916eb9deda068346734e77d805a3adbf9a9d.jpg",
+            "iconGrayUrl": "e757d139af6955c1a7f6e222600ed3fd9a3ce568.jpg",
+            "hidden": false,
+            "globalPct": 62.2
+        },
+        {
+            "apiName": "5",
+            "unlocked": true,
+            "unlockedAt": "2025-09-13T10:53:45.000Z",
+            "displayName": "Carlos Is Tangled",
+            "description": "Complete Rescue Mission “Save Carlos”",
+            "iconUrl": "86f7190a874482d71bf0b02ca1e4b39dbe51bca9.jpg",
+            "iconGrayUrl": "aeffefee6f0a785c3828da65e130536e87892dfe.jpg",
+            "hidden": false,
+            "globalPct": 57.3
+        },
+        {
+            "apiName": "6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mandy Family",
+            "description": "Complete Rescue Mission “Save Mandy”",
+            "iconUrl": "4b814fe7c2e9c470cd7ff8ff660efdc977f74350.jpg",
+            "iconGrayUrl": "e7b5efb90f997abf3e65f63a88b4ee60aae53fcf.jpg",
+            "hidden": false,
+            "globalPct": 53.1
+        },
+        {
+            "apiName": "7",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Robot Out of Control",
+            "description": "Complete Rescue Mission “Runaway Robot”",
+            "iconUrl": "1666f1a834e472464b91348d1c83c34f977a7005.jpg",
+            "iconGrayUrl": "f327102b4090c6da5f67db2c035aef51d97ec216.jpg",
+            "hidden": false,
+            "globalPct": 49.9
+        },
+        {
+            "apiName": "8",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Don’t Miss Any",
+            "description": "Get all pup treats and collectables for Rescue mission “The meteor”",
+            "iconUrl": "720cf4c884ffa52237c13535b403ed67cd3618f8.jpg",
+            "iconGrayUrl": "ac60c4ef40e83a5e276783930da516ac0adbbca7.jpg",
+            "hidden": false,
+            "globalPct": 30.5
+        },
+        {
+            "apiName": "9",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mountain and Ice",
+            "description": "Get all pup treats and collectables for Rescue Mission “Jake’s Resort”",
+            "iconUrl": "6862d747a5ef81b4899f76c3b341e29e61c3e821.jpg",
+            "iconGrayUrl": "9e0f413e570bc7542d8d6a895cc7d230ded3dbdb.jpg",
+            "hidden": false,
+            "globalPct": 29.4
+        },
+        {
+            "apiName": "10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Adventure Bay’s Citizen",
+            "description": "Get all pup treats and collectables for Rescue Mission “Find Chickaletta”",
+            "iconUrl": "d1ec1a84fdfa002bec629534b381423b18be184e.jpg",
+            "iconGrayUrl": "d29acb17d44cf087ff14e789861e1e7687297ab7.jpg",
+            "hidden": false,
+            "globalPct": 34.1
+        },
+        {
+            "apiName": "11",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "King of the Mountain",
+            "description": "Get all pup treats and collectables for Rescue Mission “Jake’s Mountain”",
+            "iconUrl": "3a75765f7e8f0495afd1f6b7abc3e38cb5399812.jpg",
+            "iconGrayUrl": "d4328bff93967e6969dac7f70f0122c293144aa8.jpg",
+            "hidden": false,
+            "globalPct": 12.5
+        },
+        {
+            "apiName": "12",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Great Explorer",
+            "description": "Get all pup treats and collectables for Rescue Mission “Save Carlos”",
+            "iconUrl": "3c65137b2fae6e35f20b2071a4728957a5cf0e3a.jpg",
+            "iconGrayUrl": "1b2d4aa358ad0f43542eef77b6a9e18a22a68a14.jpg",
+            "hidden": false,
+            "globalPct": 10.2
+        },
+        {
+            "apiName": "13",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Nothing Can Stop You",
+            "description": "Get all pup treats and collectables for Rescue Mission “Save Mandy”",
+            "iconUrl": "76d4cd0154de3b042736503d8f431d21c15d1632.jpg",
+            "iconGrayUrl": "7cb4ca1228539127938f2a33badd1f0f0c758ded.jpg",
+            "hidden": false,
+            "globalPct": 17.3
+        },
+        {
+            "apiName": "14",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Everything Under Control",
+            "description": "Get all pup treats and collectables for Rescue Mission “Runaway Robot”",
+            "iconUrl": "d7055ae7d089170999ba34570bd0add5b4717fac.jpg",
+            "iconGrayUrl": "a0825a2be70b09bee9ffa44df54a8a23890455f7.jpg",
+            "hidden": false,
+            "globalPct": 24.8
+        },
+        {
+            "apiName": "15",
+            "unlocked": true,
+            "unlockedAt": "2025-09-13T10:35:23.000Z",
+            "displayName": "Pup Pup Boogie",
+            "description": "Play the “Pup Pup Boogie” minigame",
+            "iconUrl": "f377784d0a575c885f18440c9b93776b057bca0b.jpg",
+            "iconGrayUrl": "7428e7b0b9bc74c6ec6368c23590ac933bdfb1ab.jpg",
+            "hidden": false,
+            "globalPct": 71.6
+        },
+        {
+            "apiName": "16",
+            "unlocked": true,
+            "unlockedAt": "2025-09-13T09:36:22.000Z",
+            "displayName": "Mr. Porter",
+            "description": "Play the “Mr. Porter’s Feast” minigame",
+            "iconUrl": "b2a0195070131049710d503f611a652154715107.jpg",
+            "iconGrayUrl": "31915d3a014e91e9cefd26e214d3bd0f24cbcf23.jpg",
+            "hidden": false,
+            "globalPct": 60.9
+        },
+        {
+            "apiName": "17",
+            "unlocked": true,
+            "unlockedAt": "2026-02-15T10:03:37.000Z",
+            "displayName": "Break Time",
+            "description": "Play the “Jump rope” minigame",
+            "iconUrl": "81b850c6acdebcfc44ceec9f26ddbad40a481ed2.jpg",
+            "iconGrayUrl": "75b6a871e85df493d259aa01ab6e45f47ff2e8be.jpg",
+            "hidden": false,
+            "globalPct": 48.8
+        },
+        {
+            "apiName": "18",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Master of the Rope",
+            "description": "Achieve 10 consecutive jumps in “Jump rope” minigame",
+            "iconUrl": "f1b3a4a8b3dac4661375f389e6f09e24b1c68cb5.jpg",
+            "iconGrayUrl": "e436f8a1fbec57a93f483b21e7f7b91074b09c08.jpg",
+            "hidden": false,
+            "globalPct": 47.1
+        },
+        {
+            "apiName": "19",
+            "unlocked": true,
+            "unlockedAt": "2025-11-08T12:24:20.000Z",
+            "displayName": "Training Day",
+            "description": "Complete the “Obstacle Course” minigame the first time",
+            "iconUrl": "7bcbdb008c23a579eda163585bd7fa4363312f55.jpg",
+            "iconGrayUrl": "e0a320d99b6c454fd115fd8c4844667920d65329.jpg",
+            "hidden": false,
+            "globalPct": 44.1
+        },
+        {
+            "apiName": "20",
+            "unlocked": true,
+            "unlockedAt": "2025-11-08T12:24:09.000Z",
+            "displayName": "The Fastest",
+            "description": "Complete the “Obstacle Course” minigame in 45 seconds or less",
+            "iconUrl": "6890a3732250e2ff19c97c32670803b459549d6c.jpg",
+            "iconGrayUrl": "07cd94a3fd054db45211be2f9eaa29321028a83d.jpg",
+            "hidden": false,
+            "globalPct": 33.7
+        },
+        {
+            "apiName": "21",
+            "unlocked": true,
+            "unlockedAt": "2025-09-13T10:32:53.000Z",
+            "displayName": "In the Air",
+            "description": "Complete the “Take to the Skye!” minigame the first time",
+            "iconUrl": "94e080a1f6e3646dd8277665286ac56d198e5a96.jpg",
+            "iconGrayUrl": "d551b09a9eba9dc29b372c9720ae33abd303939d.jpg",
+            "hidden": false,
+            "globalPct": 41.7
+        },
+        {
+            "apiName": "22",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Air Ace",
+            "description": "Get all the pup treats in every “Take to the Skye!” minigame",
+            "iconUrl": "9e4579c1e792e126701072930a0f681611d4a964.jpg",
+            "iconGrayUrl": "bda810dce4f0a9c88b19e9f356cf797b5ed9955c.jpg",
+            "hidden": false,
+            "globalPct": 10.1
+        },
+        {
+            "apiName": "23",
+            "unlocked": true,
+            "unlockedAt": "2025-09-13T09:33:03.000Z",
+            "displayName": "Clear the Road",
+            "description": "Complete the “Everest's Snowy Adventure” minigame the first time",
+            "iconUrl": "6cc9cf3beb1cf20a561d6dc535951e3d4c0fb24f.jpg",
+            "iconGrayUrl": "031373abd842184c57dfcf1b0c1549f642d62c35.jpg",
+            "hidden": false,
+            "globalPct": 57.1
+        },
+        {
+            "apiName": "24",
+            "unlocked": true,
+            "unlockedAt": "2025-09-13T10:02:21.000Z",
+            "displayName": "Never Miss",
+            "description": "Complete the “Dive In with Zuma” minigame the first time",
+            "iconUrl": "28cfcf0da4ca26598bc1ba85433e556be2ffb73a.jpg",
+            "iconGrayUrl": "1b2d2a15d10787b8037b293ae8c57fe3ffde6550.jpg",
+            "hidden": false,
+            "globalPct": 52.5
+        },
+        {
+            "apiName": "25",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "You Know Them All",
+            "description": "Unlock all the character collectables",
+            "iconUrl": "dd7b6a25ba6863d1f0187971eb0e0a612b398be7.jpg",
+            "iconGrayUrl": "6992a2eb8e2ecc5ef4d723245eda5aab2ed4b759.jpg",
+            "hidden": false,
+            "globalPct": 6.9
+        },
+        {
+            "apiName": "26",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "You Have Been Everywhere",
+            "description": "Unlock all the location collectables",
+            "iconUrl": "34bb18d96077dec570b16663bee9829f14f04806.jpg",
+            "iconGrayUrl": "01b4005054f809081233cae1fc0091ff3dc7f0de.jpg",
+            "hidden": false,
+            "globalPct": 29.8
+        },
+        {
+            "apiName": "27",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Animal Sighting",
+            "description": "Unlock all the animal collectables",
+            "iconUrl": "169b1429e8990f4a312fff514d83bbc2fae842fa.jpg",
+            "iconGrayUrl": "01b4005054f809081233cae1fc0091ff3dc7f0de.jpg",
+            "hidden": false,
+            "globalPct": 28.3
+        },
+        {
+            "apiName": "28",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Collector",
+            "description": "Get every collectable in the game",
+            "iconUrl": "310ca5329561766432bc373777d51c2e23120e49.jpg",
+            "iconGrayUrl": "6bf0d430554f4f83bc5f7c913748ceb471573e47.jpg",
+            "hidden": false,
+            "globalPct": 6.9
+        },
+        {
+            "apiName": "29",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pup Treat Master",
+            "description": "Get all the pup treats",
+            "iconUrl": "cb7d74b9b1f2bbf555bf91753dab2235ac691325.jpg",
+            "iconGrayUrl": "84faa79124f28ab91e604c6c98714b3b22e55842.jpg",
+            "hidden": false,
+            "globalPct": 7
+        },
+        {
+            "apiName": "30",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Paw patrol member",
+            "description": "Complete the game",
+            "iconUrl": "169de73837e8c4aa9bbdcf4ec90cd5d9670c0a20.jpg",
+            "iconGrayUrl": "1c52a3fe0de6789529dbf1f0502da8a17cba0b38.jpg",
+            "hidden": false,
+            "globalPct": 49.9
+        }
+    ],
+    "playtimeForever": 302,
+    "lastPlayedTs": "2026-02-15T10:19:11.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1374990/644057b750d73cf7dbeb3db4fec56fc48f01063b.jpg",
+    "lastUnlockedAt": "2026-02-15T10:03:37.000Z",
+    "lastUnlockName": "Break Time",
+    "preview": [
+        {
+            "apiName": "17",
+            "displayName": "Break Time",
+            "unlocked": true,
+            "unlockedAt": "2026-02-15T10:03:37.000Z",
+            "iconUrl": "81b850c6acdebcfc44ceec9f26ddbad40a481ed2.jpg",
+            "iconGrayUrl": "75b6a871e85df493d259aa01ab6e45f47ff2e8be.jpg",
+            "globalPct": 48.8
+        },
+        {
+            "apiName": "19",
+            "displayName": "Training Day",
+            "unlocked": true,
+            "unlockedAt": "2025-11-08T12:24:20.000Z",
+            "iconUrl": "7bcbdb008c23a579eda163585bd7fa4363312f55.jpg",
+            "iconGrayUrl": "e0a320d99b6c454fd115fd8c4844667920d65329.jpg",
+            "globalPct": 44.1
+        },
+        {
+            "apiName": "20",
+            "displayName": "The Fastest",
+            "unlocked": true,
+            "unlockedAt": "2025-11-08T12:24:09.000Z",
+            "iconUrl": "6890a3732250e2ff19c97c32670803b459549d6c.jpg",
+            "iconGrayUrl": "07cd94a3fd054db45211be2f9eaa29321028a83d.jpg",
+            "globalPct": 33.7
+        },
+        {
+            "apiName": "5",
+            "displayName": "Carlos Is Tangled",
+            "unlocked": true,
+            "unlockedAt": "2025-09-13T10:53:45.000Z",
+            "iconUrl": "86f7190a874482d71bf0b02ca1e4b39dbe51bca9.jpg",
+            "iconGrayUrl": "aeffefee6f0a785c3828da65e130536e87892dfe.jpg",
+            "globalPct": 57.3
+        },
+        {
+            "apiName": "15",
+            "displayName": "Pup Pup Boogie",
+            "unlocked": true,
+            "unlockedAt": "2025-09-13T10:35:23.000Z",
+            "iconUrl": "f377784d0a575c885f18440c9b93776b057bca0b.jpg",
+            "iconGrayUrl": "7428e7b0b9bc74c6ec6368c23590ac933bdfb1ab.jpg",
+            "globalPct": 71.6
+        },
+        {
+            "apiName": "21",
+            "displayName": "In the Air",
+            "unlocked": true,
+            "unlockedAt": "2025-09-13T10:32:53.000Z",
+            "iconUrl": "94e080a1f6e3646dd8277665286ac56d198e5a96.jpg",
+            "iconGrayUrl": "d551b09a9eba9dc29b372c9720ae33abd303939d.jpg",
+            "globalPct": 41.7
+        }
+    ]
+}

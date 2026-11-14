@@ -1,0 +1,191 @@
+{
+    "appId": 984800,
+    "hasAchievements": true,
+    "total": 11,
+    "unlocked": 0,
+    "gameName": "Automachef",
+    "achievements": [
+        {
+            "apiName": "achievement-ml",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Machine Learning",
+            "description": "Complete all 5 tutorial levels",
+            "iconUrl": "3106d782ec91e078167f85936c026fd1224a4969.jpg",
+            "iconGrayUrl": "8a8bc0ed0fdadf55dc3c101ea4dec2fa608e5ae9.jpg",
+            "hidden": false,
+            "globalPct": 5.9
+        },
+        {
+            "apiName": "achievement-cc",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Code Complete",
+            "description": "Complete all campaign levels",
+            "iconUrl": "efb3e723c4ab44de14d9651c064007839f293faa.jpg",
+            "iconGrayUrl": "1cbdc83e32e60e5b9f6e3ecb0e5ccee84ba39c79.jpg",
+            "hidden": false,
+            "globalPct": 1.5
+        },
+        {
+            "apiName": "achievement-ts",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Trusted Source",
+            "description": "Reach 100% reputation in Contracts Mode",
+            "iconUrl": "14ef990a0367c732a8c5df1fc31094d26da1b50c.jpg",
+            "iconGrayUrl": "36a6c77ec05d5f194c541d6a07a264278d76e79d.jpg",
+            "hidden": false,
+            "globalPct": 2.4
+        },
+        {
+            "apiName": "achievement-ef",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Experimental Feature",
+            "description": "Create a Test Site kitchen",
+            "iconUrl": "14ef990a0367c732a8c5df1fc31094d26da1b50c.jpg",
+            "iconGrayUrl": "0e1ccdb0dd762c95ce79fac717fbe0648cdcdb1f.jpg",
+            "hidden": false,
+            "globalPct": 14.7
+        },
+        {
+            "apiName": "achievement-nmc",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Native Machine Code",
+            "description": "Achieve 90% efficiency when successfully completing a campaign level",
+            "iconUrl": "480a2469ca7ccdf0581551654552094feeb3c898.jpg",
+            "iconGrayUrl": "5ef5479ca2dfea12673a85cd1f26fbfc9a345751.jpg",
+            "hidden": false,
+            "globalPct": 63.5
+        },
+        {
+            "apiName": "achievement-cap",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Commit and Push",
+            "description": "Publish a custom scenario to the Steam Workshop",
+            "iconUrl": "c27b3c608693de4770263ae36d7153a6d8d57ff3.jpg",
+            "iconGrayUrl": "fcb9ba07a61d09136ab3d655177d5fe4b55b74ef.jpg",
+            "hidden": false,
+            "globalPct": 1.8
+        },
+        {
+            "apiName": "achievement-mas",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Making a Statement",
+            "description": "Complete 5 contracts on hard difficulty",
+            "iconUrl": "a2bf31f4ef31cdcf558dc7a4a50de182d54fc8b0.jpg",
+            "iconGrayUrl": "082dd86eae3978165de3bc703f2de94b3bf1fe92.jpg",
+            "hidden": false,
+            "globalPct": 2.7
+        },
+        {
+            "apiName": "achievement-oc",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Overclocked",
+            "description": "Have a machine on fire",
+            "iconUrl": "0f0c19c3233951d034bbce1d7a482f4051d95049.jpg",
+            "iconGrayUrl": "2895317f48c0fc4bf7c9da0fff7d9aa448d2816d.jpg",
+            "hidden": false,
+            "globalPct": 9
+        },
+        {
+            "apiName": "achievement-bf",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bug Fixing",
+            "description": "Eradicate an insect infestation",
+            "iconUrl": "62a277abd929bc335c7f645c0e34e855ad33da9a.jpg",
+            "iconGrayUrl": "b7a6eb1ca2c16c8e8e980416da3c56260492b94e.jpg",
+            "hidden": false,
+            "globalPct": 2.7
+        },
+        {
+            "apiName": "achievement-mw",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Malware",
+            "description": "Deliver a dish with salmonella",
+            "iconUrl": "da8b062aecb761a19f61e4f7a26dd1cace24698d.jpg",
+            "iconGrayUrl": "7e9852b2ca858123131448dcf5d276215659f39f.jpg",
+            "hidden": false,
+            "globalPct": 3.8
+        },
+        {
+            "apiName": "achievement-dc",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Data Centre",
+            "description": "Successfully complete a campaign level using at least one Order Reader, one Counting Machine and one Repeater",
+            "iconUrl": "83388d86aabca01db9fbe8885cbabfd495ac80c3.jpg",
+            "iconGrayUrl": "eaab5c89cbbe869c30c91d7ca15a045dcb47ce9b.jpg",
+            "hidden": false,
+            "globalPct": 2.4
+        }
+    ],
+    "playtimeForever": 458,
+    "lastPlayedTs": "2025-02-12T14:24:33.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/984800/636874c154a7be2f87cb1538d01f0d3ecb1a3bc9.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "achievement-ml",
+            "displayName": "Machine Learning",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "3106d782ec91e078167f85936c026fd1224a4969.jpg",
+            "iconGrayUrl": "8a8bc0ed0fdadf55dc3c101ea4dec2fa608e5ae9.jpg",
+            "globalPct": 5.9
+        },
+        {
+            "apiName": "achievement-cc",
+            "displayName": "Code Complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "efb3e723c4ab44de14d9651c064007839f293faa.jpg",
+            "iconGrayUrl": "1cbdc83e32e60e5b9f6e3ecb0e5ccee84ba39c79.jpg",
+            "globalPct": 1.5
+        },
+        {
+            "apiName": "achievement-ts",
+            "displayName": "Trusted Source",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "14ef990a0367c732a8c5df1fc31094d26da1b50c.jpg",
+            "iconGrayUrl": "36a6c77ec05d5f194c541d6a07a264278d76e79d.jpg",
+            "globalPct": 2.4
+        },
+        {
+            "apiName": "achievement-ef",
+            "displayName": "Experimental Feature",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "14ef990a0367c732a8c5df1fc31094d26da1b50c.jpg",
+            "iconGrayUrl": "0e1ccdb0dd762c95ce79fac717fbe0648cdcdb1f.jpg",
+            "globalPct": 14.7
+        },
+        {
+            "apiName": "achievement-nmc",
+            "displayName": "Native Machine Code",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "480a2469ca7ccdf0581551654552094feeb3c898.jpg",
+            "iconGrayUrl": "5ef5479ca2dfea12673a85cd1f26fbfc9a345751.jpg",
+            "globalPct": 63.5
+        },
+        {
+            "apiName": "achievement-cap",
+            "displayName": "Commit and Push",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c27b3c608693de4770263ae36d7153a6d8d57ff3.jpg",
+            "iconGrayUrl": "fcb9ba07a61d09136ab3d655177d5fe4b55b74ef.jpg",
+            "globalPct": 1.8
+        }
+    ]
+}

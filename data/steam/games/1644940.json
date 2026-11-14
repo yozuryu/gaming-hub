@@ -1,0 +1,323 @@
+{
+    "appId": 1644940,
+    "hasAchievements": true,
+    "total": 23,
+    "unlocked": 0,
+    "gameName": "Loddlenaut",
+    "achievements": [
+        {
+            "apiName": "HOME_COVE_DONE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Learning the Ropes",
+            "description": "Complete the Home Cove tutorial.",
+            "iconUrl": "25024e7c7d2762504f121604dca00290d1b91467.jpg",
+            "iconGrayUrl": "20befc9f620d2d3280c21ab24db9b3c12ab422a8.jpg",
+            "hidden": false,
+            "globalPct": 86.1
+        },
+        {
+            "apiName": "LODDLE_MET",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A New Friend",
+            "description": "Meet a loddle for the first time.",
+            "iconUrl": "f08f4c974b2c5f91b89940a3e40e152719d0fde3.jpg",
+            "iconGrayUrl": "50b1e672b3e61d94e98f10c2800f90c7d04e2576.jpg",
+            "hidden": false,
+            "globalPct": 75.9
+        },
+        {
+            "apiName": "LODDLE_CLEANED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Squeaky Clean",
+            "description": "Clean up a goopy loddle.",
+            "iconUrl": "252b8a1818068893e7b618395b36b9fca4c6f8cd.jpg",
+            "iconGrayUrl": "8fa7749ad2fd54d109460bcc35f2db82fbdea863.jpg",
+            "hidden": false,
+            "globalPct": 74.9
+        },
+        {
+            "apiName": "LODDLE_EVOLVED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "All Grown Up",
+            "description": "Evolve a baby loddle into an adult.",
+            "iconUrl": "30cd33c1489ce9b5cc2463c350cba524ea46694c.jpg",
+            "iconGrayUrl": "5d39b86805ebb2bb480e599e5fdc6cb965b162ac.jpg",
+            "hidden": false,
+            "globalPct": 67.7
+        },
+        {
+            "apiName": "LODDLE_PET",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Loddle Lover",
+            "description": "Pet a loddle.",
+            "iconUrl": "73c1e2e9f8641ddbd39ba09c7cef0013481a1798.jpg",
+            "iconGrayUrl": "be77cd2b676f133b1a62f7f51a82832a945d6f87.jpg",
+            "hidden": false,
+            "globalPct": 39.4
+        },
+        {
+            "apiName": "BIOME_FULLY_CLEAN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cleanliness is next to Loddliness",
+            "description": "Clean a biome to 100%.",
+            "iconUrl": "c0966e105629ac408bc74d96c7a3fc352bf19839.jpg",
+            "iconGrayUrl": "fae7feb8df9521a8a6d0ce3eaa9a03c3e08f004c.jpg",
+            "hidden": false,
+            "globalPct": 72
+        },
+        {
+            "apiName": "ALL_BIOMES_FULLY_CLEAN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Job Well Done",
+            "description": "Clean all biomes on GUP-14.",
+            "iconUrl": "9721629f88551f6d674ab0ed0f160305ad611479.jpg",
+            "iconGrayUrl": "5fe65505714a2c8a7eefdad53169da7a17b1a2b7.jpg",
+            "hidden": false,
+            "globalPct": 39.9
+        },
+        {
+            "apiName": "LODDLE_BIOME_CAPACITY_REACHED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Packed Like Sardines",
+            "description": "Reach the maximum loddle capacity in a biome.",
+            "iconUrl": "f5a1232bd0abadabbeb4d7a2ab699199c7285857.jpg",
+            "iconGrayUrl": "c9a93998381e7b97057629e9fd39542d4fc76673.jpg",
+            "hidden": false,
+            "globalPct": 50.2
+        },
+        {
+            "apiName": "LODDLE_WORLD_CAPACITY_REACHED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Loddles Rule the World",
+            "description": "Reach the maximum loddle capacity in all biomes.",
+            "iconUrl": "206b916959e8115afc385798a4edcced5d40d584.jpg",
+            "iconGrayUrl": "0edee8cfea61c35228d4ad746d2966109bb8d66c.jpg",
+            "hidden": false,
+            "globalPct": 12.2
+        },
+        {
+            "apiName": "CEO_OFFICE_FOUND",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "In Deep Water",
+            "description": "",
+            "iconUrl": "855c86386ad0e052d9e78584f65dcd0a7f03ac1c.jpg",
+            "iconGrayUrl": "6dfe5cff011a305e60e544b9cea673103bf5a8ac.jpg",
+            "hidden": true,
+            "globalPct": 46.6
+        },
+        {
+            "apiName": "GUP14_LEFT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "So long, and thanks for all the trash!",
+            "description": "",
+            "iconUrl": "c38cc38002dd092faac691a92cdb7bc537de75f2.jpg",
+            "iconGrayUrl": "15a37cfae36b69b68248fc6591372b017628d05a.jpg",
+            "hidden": true,
+            "globalPct": 37.8
+        },
+        {
+            "apiName": "HOLOBADGE_FOUND",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Lost and Found",
+            "description": "Find a Holo-Badge.",
+            "iconUrl": "b6647411559a3d57cf67a7e211ac40a75045b625.jpg",
+            "iconGrayUrl": "a7f9fc381e5167b22e6059227ab7ffa320289049.jpg",
+            "hidden": false,
+            "globalPct": 70
+        },
+        {
+            "apiName": "ALL_HOLOBADGES_FOUND",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Employee of the Month",
+            "description": "Find all Holo-Badges.",
+            "iconUrl": "6bec5dcfdd8609090386074579c347429ee14312.jpg",
+            "iconGrayUrl": "83ffc6352f5bd21fb0b1e8f306804b7347e2354c.jpg",
+            "hidden": false,
+            "globalPct": 34.4
+        },
+        {
+            "apiName": "SNACK_CRAFTED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Snack Time",
+            "description": "Cook a loddle snack.",
+            "iconUrl": "f35d75dbd11c8878c5a77c14279bd3c781ee0ff8.jpg",
+            "iconGrayUrl": "86e3ef41cffaf7054ebfe2d755bc521bdfea451b.jpg",
+            "hidden": false,
+            "globalPct": 50
+        },
+        {
+            "apiName": "ALL_CRATES_DESTROYED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Crate Crusher",
+            "description": "Destroy 80 crates.",
+            "iconUrl": "e7c9fe364e28f9e8db70dec20158f80489dedaa0.jpg",
+            "iconGrayUrl": "c295d8de273403ed62f69422c281bdc2f36d5a75.jpg",
+            "hidden": false,
+            "globalPct": 42.2
+        },
+        {
+            "apiName": "500_LITTER_COLLECTED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Taking Out the Trash",
+            "description": "Collect 500 pieces of litter.",
+            "iconUrl": "98e8d1ede4380970bcebcbfd50ca2a744b081b5f.jpg",
+            "iconGrayUrl": "fba47ffead519a68fd8cdd9b7b005bc730404990.jpg",
+            "hidden": false,
+            "globalPct": 58.7
+        },
+        {
+            "apiName": "10_OXYGEN_DEPLETED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Who needs oxygen?",
+            "description": "Run out of oxygen for the first time.",
+            "iconUrl": "c5124ea7972dba07c08348f6d5ba8d6e1980971f.jpg",
+            "iconGrayUrl": "45cf20be3b997c7a4959b50a77dc23a4b088ca30.jpg",
+            "hidden": false,
+            "globalPct": 41.2
+        },
+        {
+            "apiName": "LODDLE_RELEASED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Farewell, Friend",
+            "description": "Release a loddle into the open ocean.",
+            "iconUrl": "1cf387ca5b298127ec6a7761d1f9bd05a0215cdb.jpg",
+            "iconGrayUrl": "648a884e7cffb6a211541a9397786d0756babce9.jpg",
+            "hidden": false,
+            "globalPct": 29.1
+        },
+        {
+            "apiName": "ALL_LODDLE_EVOS_FOUND",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Loddle Possibilities",
+            "description": "Encounter all loddle evolutions.",
+            "iconUrl": "52536a8462373fe41e4dd2541976dc2555d422ab.jpg",
+            "iconGrayUrl": "34ea36651226a7392b9d2749b74916bc421d19cb.jpg",
+            "hidden": false,
+            "globalPct": 13.8
+        },
+        {
+            "apiName": "PUDDLE_SCRUBBER_ACQUIRED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Vroom Vroom",
+            "description": "Unlock the Puddle Scrubber.",
+            "iconUrl": "fd707e67fddaec2964abdd1edae6f00762dc1866.jpg",
+            "iconGrayUrl": "c7f4d9c7474741ae730c217e3915c3a16c583a03.jpg",
+            "hidden": false,
+            "globalPct": 53.4
+        },
+        {
+            "apiName": "MAX_LODDLES_FOLLOWING",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Loddle Squad",
+            "description": "Have the maximum number of loddles following you.",
+            "iconUrl": "118e5d7e56398e3f90cdef48ec287e86b887f695.jpg",
+            "iconGrayUrl": "5ead12738c83cb927f641359fbb2217237cac65d.jpg",
+            "hidden": false,
+            "globalPct": 32.1
+        },
+        {
+            "apiName": "METZI_TRENCH_FOUND",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Rock Bottom",
+            "description": "Enter Metzi Trench.",
+            "iconUrl": "79c99a09f2a5abe714f815cbbc98606a13a70f88.jpg",
+            "iconGrayUrl": "4e3ea8d0e524ea40ddcd869152b7c769c1c34caf.jpg",
+            "hidden": false,
+            "globalPct": 50.9
+        },
+        {
+            "apiName": "FAV_FOOD_FOUND",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Picky Feeder",
+            "description": "Discover a loddle’s favorite food.",
+            "iconUrl": "8bbff2b925cd6d227f1e27741a983c7765b7f2fa.jpg",
+            "iconGrayUrl": "3adff19b04b67836fea53c227411d85024dbce40.jpg",
+            "hidden": false,
+            "globalPct": 65.4
+        }
+    ],
+    "playtimeForever": 214,
+    "lastPlayedTs": "2024-06-12T22:52:44.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1644940/ce66808de696424644282ad3e466d44ea8305485.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "HOME_COVE_DONE",
+            "displayName": "Learning the Ropes",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "25024e7c7d2762504f121604dca00290d1b91467.jpg",
+            "iconGrayUrl": "20befc9f620d2d3280c21ab24db9b3c12ab422a8.jpg",
+            "globalPct": 86.1
+        },
+        {
+            "apiName": "LODDLE_MET",
+            "displayName": "A New Friend",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f08f4c974b2c5f91b89940a3e40e152719d0fde3.jpg",
+            "iconGrayUrl": "50b1e672b3e61d94e98f10c2800f90c7d04e2576.jpg",
+            "globalPct": 75.9
+        },
+        {
+            "apiName": "LODDLE_CLEANED",
+            "displayName": "Squeaky Clean",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "252b8a1818068893e7b618395b36b9fca4c6f8cd.jpg",
+            "iconGrayUrl": "8fa7749ad2fd54d109460bcc35f2db82fbdea863.jpg",
+            "globalPct": 74.9
+        },
+        {
+            "apiName": "LODDLE_EVOLVED",
+            "displayName": "All Grown Up",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "30cd33c1489ce9b5cc2463c350cba524ea46694c.jpg",
+            "iconGrayUrl": "5d39b86805ebb2bb480e599e5fdc6cb965b162ac.jpg",
+            "globalPct": 67.7
+        },
+        {
+            "apiName": "LODDLE_PET",
+            "displayName": "Loddle Lover",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "73c1e2e9f8641ddbd39ba09c7cef0013481a1798.jpg",
+            "iconGrayUrl": "be77cd2b676f133b1a62f7f51a82832a945d6f87.jpg",
+            "globalPct": 39.4
+        },
+        {
+            "apiName": "BIOME_FULLY_CLEAN",
+            "displayName": "Cleanliness is next to Loddliness",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c0966e105629ac408bc74d96c7a3fc352bf19839.jpg",
+            "iconGrayUrl": "fae7feb8df9521a8a6d0ce3eaa9a03c3e08f004c.jpg",
+            "globalPct": 72
+        }
+    ]
+}

@@ -1,0 +1,224 @@
+{
+    "appId": 260160,
+    "hasAchievements": true,
+    "total": 14,
+    "unlocked": 0,
+    "gameName": "The Last Tinker: City of Colors",
+    "achievements": [
+        {
+            "apiName": "Palace",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sneaky Like a Ninja",
+            "description": "Reach the Tower Gallery.",
+            "iconUrl": "b224061b540a335fe08f9a785b1ce415db6373ed.jpg",
+            "iconGrayUrl": "8a276607c7ac7aaeeef4bc723dc8e5ae50c5583b.jpg",
+            "hidden": false,
+            "globalPct": 9.3
+        },
+        {
+            "apiName": "Windmill",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "High Five the Sun",
+            "description": "Reach the highest point of the Great Windmill.",
+            "iconUrl": "7e1829bffe56d2177b4807e4a14c60ccb0fde714.jpg",
+            "iconGrayUrl": "e465794645b0eab1ab75e7206dd63ff51e6771b0.jpg",
+            "hidden": false,
+            "globalPct": 6.5
+        },
+        {
+            "apiName": "BlueBoss",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Moby Bleak",
+            "description": "Defeat the Boss at Blue Harbor.",
+            "iconUrl": "faa5e3acc4bedfc12ace5b390da897bcb8c496a0.jpg",
+            "iconGrayUrl": "7f714edee956e42c2bff4603bf2fa0ce386de32a.jpg",
+            "hidden": false,
+            "globalPct": 6.2
+        },
+        {
+            "apiName": "Detective",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sherlock Blues",
+            "description": "Solve the crime at Blue Creek.",
+            "iconUrl": "c9bc00e132e67ee6024b73d12f21b39bb925541f.jpg",
+            "iconGrayUrl": "0976bef725d35323f8ada876352f03ed43cb8bf8.jpg",
+            "hidden": false,
+            "globalPct": 6.1
+        },
+        {
+            "apiName": "FinalBoss",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Unity",
+            "description": "Defeat the Final Boss.",
+            "iconUrl": "1eface2078db05c68dc05013782ab3c76f334b3b.jpg",
+            "iconGrayUrl": "4892145f08c3d8d6fbe275a3c9eb70bd443feb18.jpg",
+            "hidden": false,
+            "globalPct": 5.8
+        },
+        {
+            "apiName": "Moon",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hey, Wake Up!",
+            "description": "Shoot the moon at Blue Harbor.",
+            "iconUrl": "c895074a863cdb199b22749ed7aceedd180ff4a9.jpg",
+            "iconGrayUrl": "4910824d3f0b54e4d6082e435361d22c4cf55879.jpg",
+            "hidden": false,
+            "globalPct": 4.5
+        },
+        {
+            "apiName": "Turtle",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Your Highness",
+            "description": "Find the hermit living in the turtle cave.",
+            "iconUrl": "587b52d3a0164b74ff9f9e5e122411ef8d535058.jpg",
+            "iconGrayUrl": "834f8a1ebec4ae4a24499db81448014c2a0b9f61.jpg",
+            "hidden": false,
+            "globalPct": 4.2
+        },
+        {
+            "apiName": "Paintings",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Not Forgotten",
+            "description": "Colorize all the Purple paintings in Purple's dream world.",
+            "iconUrl": "e9398ab866b099c9e9bfd123d2efa9de70c0470b.jpg",
+            "iconGrayUrl": "440721949ce365059a21e9f06baee0398e5436a5.jpg",
+            "hidden": false,
+            "globalPct": 4.1
+        },
+        {
+            "apiName": "Market",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "To Infinity!",
+            "description": "Send one of the Greens flying in the Market District.",
+            "iconUrl": "b313feeee6285c95ee2be13d3d802ca0890ab6d8.jpg",
+            "iconGrayUrl": "ab6ffb489b4162cd229d30b0ce21335f3263d778.jpg",
+            "hidden": false,
+            "globalPct": 4.2
+        },
+        {
+            "apiName": "Security",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Surveillance Camera?!",
+            "description": "Punch a very special crate.",
+            "iconUrl": "7960e7a901d2a3a8dec1c330fde02b043787a8c9.jpg",
+            "iconGrayUrl": "a9a6cbf9627c27971d2d6f7e1e96d11c952e9305.jpg",
+            "hidden": false,
+            "globalPct": 3.7
+        },
+        {
+            "apiName": "Orchestra",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Tinker Music",
+            "description": "Conduct the orchestra without making a mistake.",
+            "iconUrl": "c1ab27afae052674d5a8b7ab60ac3c7728e0fbb1.jpg",
+            "iconGrayUrl": "1c52f1df6ff55e56e1b1a492ed6e1e65a75dae44.jpg",
+            "hidden": false,
+            "globalPct": 1.6
+        },
+        {
+            "apiName": "Shopaholic",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Shopaholic",
+            "description": "Buy every combat move in the Dojo.",
+            "iconUrl": "a9824f057870661f7b62bdc1831c980b20505961.jpg",
+            "iconGrayUrl": "31a3bd44c2aa03ae271ae402d1db97f1b1453b8f.jpg",
+            "hidden": false,
+            "globalPct": 1.9
+        },
+        {
+            "apiName": "RobBoss",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Leonardo daWindci",
+            "description": "Collect every Floaty Brush in the game.",
+            "iconUrl": "604fc068a0b7933cf1f25548e3b38ef99a931db9.jpg",
+            "iconGrayUrl": "fb6398ad681be487b59ada936cb3d9c1950e3f28.jpg",
+            "hidden": false,
+            "globalPct": 1.7
+        },
+        {
+            "apiName": "Psychedelic",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Psychedelic",
+            "description": "Give your eyes a hard time.",
+            "iconUrl": "25270a389fb2e421e68fe72275c10519602f0aea.jpg",
+            "iconGrayUrl": "39e4787563eb5171af59608604086924fc010df9.jpg",
+            "hidden": false,
+            "globalPct": 1.7
+        }
+    ],
+    "playtimeForever": 396,
+    "lastPlayedTs": "2024-06-01T23:33:00.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/260160/311534e966c73979270e92d99c85487f164300c1.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "Palace",
+            "displayName": "Sneaky Like a Ninja",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "b224061b540a335fe08f9a785b1ce415db6373ed.jpg",
+            "iconGrayUrl": "8a276607c7ac7aaeeef4bc723dc8e5ae50c5583b.jpg",
+            "globalPct": 9.3
+        },
+        {
+            "apiName": "Windmill",
+            "displayName": "High Five the Sun",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "7e1829bffe56d2177b4807e4a14c60ccb0fde714.jpg",
+            "iconGrayUrl": "e465794645b0eab1ab75e7206dd63ff51e6771b0.jpg",
+            "globalPct": 6.5
+        },
+        {
+            "apiName": "BlueBoss",
+            "displayName": "Moby Bleak",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "faa5e3acc4bedfc12ace5b390da897bcb8c496a0.jpg",
+            "iconGrayUrl": "7f714edee956e42c2bff4603bf2fa0ce386de32a.jpg",
+            "globalPct": 6.2
+        },
+        {
+            "apiName": "Detective",
+            "displayName": "Sherlock Blues",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c9bc00e132e67ee6024b73d12f21b39bb925541f.jpg",
+            "iconGrayUrl": "0976bef725d35323f8ada876352f03ed43cb8bf8.jpg",
+            "globalPct": 6.1
+        },
+        {
+            "apiName": "FinalBoss",
+            "displayName": "Unity",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1eface2078db05c68dc05013782ab3c76f334b3b.jpg",
+            "iconGrayUrl": "4892145f08c3d8d6fbe275a3c9eb70bd443feb18.jpg",
+            "globalPct": 5.8
+        },
+        {
+            "apiName": "Moon",
+            "displayName": "Hey, Wake Up!",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c895074a863cdb199b22749ed7aceedd180ff4a9.jpg",
+            "iconGrayUrl": "4910824d3f0b54e4d6082e435361d22c4cf55879.jpg",
+            "globalPct": 4.5
+        }
+    ]
+}

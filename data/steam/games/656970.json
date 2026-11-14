@@ -1,0 +1,334 @@
+{
+    "appId": 656970,
+    "hasAchievements": true,
+    "total": 24,
+    "unlocked": 0,
+    "gameName": "MagiCat",
+    "achievements": [
+        {
+            "apiName": "gem1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "GEM - WORLD 1",
+            "description": "Obtain all 27 Gems from World 1",
+            "iconUrl": "89ae1c659ec1b23f4c722b1baff1325dfc74888d.jpg",
+            "iconGrayUrl": "0d81129bb5adece042967048a4f5f8934c6a4c64.jpg",
+            "hidden": false,
+            "globalPct": 6.4
+        },
+        {
+            "apiName": "gem2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "GEM - WORLD 2",
+            "description": "Obtain all 27 Gems from World 2",
+            "iconUrl": "06545fa5d340be4cff4fe3416ea32a7a8ba9fceb.jpg",
+            "iconGrayUrl": "13daff6e42e622f6d752aea7b9be26aec288ef14.jpg",
+            "hidden": false,
+            "globalPct": 7.7
+        },
+        {
+            "apiName": "gem3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "GEM - WORLD 3",
+            "description": "Obtain all 27 Gems from World 3",
+            "iconUrl": "f617ce7b1a5307bf32c3e21fde2b09f8332c9f30.jpg",
+            "iconGrayUrl": "b9662e4adbc7224f0f7e8f78ab2496d7b68e8c9f.jpg",
+            "hidden": false,
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "gem4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "GEM - WORLD 4",
+            "description": "Obtain all 27 Gems from World 4",
+            "iconUrl": "fc69de81806f77f981b18d2bc5f7a1b0d402e185.jpg",
+            "iconGrayUrl": "75311920f1edad0b755c21daedd26c2eb9075902.jpg",
+            "hidden": false,
+            "globalPct": 4.7
+        },
+        {
+            "apiName": "gem5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "GEM - WORLD 5",
+            "description": "Obtain all 27 Gems from World 5",
+            "iconUrl": "f1f7de88f0b4df6ffa7a062788a941eedbd8a038.jpg",
+            "iconGrayUrl": "008028aa9b50370a19596feab575b37834631679.jpg",
+            "hidden": false,
+            "globalPct": 4.2
+        },
+        {
+            "apiName": "gem6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "GEM - WORLD 6",
+            "description": "Obtain all 27 Gems from World 6",
+            "iconUrl": "3959e49ce105849a832b0f37beb4f18fe765f016.jpg",
+            "iconGrayUrl": "8a1fd09a11a24a05987725a7272b2975c4bf35bf.jpg",
+            "hidden": false,
+            "globalPct": 3.8
+        },
+        {
+            "apiName": "gem7",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "GEM - WORLD 7",
+            "description": "Obtain all 24 Gems from World 7",
+            "iconUrl": "6fe0a571ed7004a78fe0bc54870ae64de544e7ea.jpg",
+            "iconGrayUrl": "3f977669e597d90b0437447266d253b261c8f846.jpg",
+            "hidden": false,
+            "globalPct": 3.7
+        },
+        {
+            "apiName": "end1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "END GAME",
+            "description": "Complete the game",
+            "iconUrl": "fcceeb7a767bb052a7e3fdd554f5946fae12776f.jpg",
+            "iconGrayUrl": "27cb2d601575e7eb76ed1c45fd739a9e1b33f3a5.jpg",
+            "hidden": false,
+            "globalPct": 5.5
+        },
+        {
+            "apiName": "sped1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "TIME ATTACK - WORLD 1",
+            "description": "Finish all 9 Time Attacks in World 1 ",
+            "iconUrl": "c7cadbba2057cbbe260236bbf07954b706647e1e.jpg",
+            "iconGrayUrl": "31228c14bace6b68de67be3ea03ca085c0b331f7.jpg",
+            "hidden": false,
+            "globalPct": 4.5
+        },
+        {
+            "apiName": "sped2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "TIME ATTACK - WORLD 2",
+            "description": "Finish all 9 Time Attacks in World 2",
+            "iconUrl": "295ebde467e405d200c4b99a0d2ffc4fd8703708.jpg",
+            "iconGrayUrl": "2c942230849006a261a3c173ca27b88fbfd9cdcd.jpg",
+            "hidden": false,
+            "globalPct": 4.5
+        },
+        {
+            "apiName": "sped3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "TIME ATTACK - WORLD 3",
+            "description": "Finish all 9 Time Attacks in World 3",
+            "iconUrl": "e7644e315fa251bd1caaaf26ddadbd7b051fc5ce.jpg",
+            "iconGrayUrl": "49db23dd43f2824521b26573e472734ddebdf51a.jpg",
+            "hidden": false,
+            "globalPct": 3.9
+        },
+        {
+            "apiName": "sped4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "TIME ATTACK - WORLD 4",
+            "description": "Finish all 9 Time Attacks in World 4",
+            "iconUrl": "1868c7144eff16f1dd2fa201ac8e9f63b267c4e6.jpg",
+            "iconGrayUrl": "760d57db9f5c29adaf77e7beed3ddfc0d571d28b.jpg",
+            "hidden": false,
+            "globalPct": 3.7
+        },
+        {
+            "apiName": "sped5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "TIME ATTACK - WORLD 5",
+            "description": "Finish all 9 Time Attacks in World 5",
+            "iconUrl": "346ae4ec592c6139b3d5638332c22d57d7bbb094.jpg",
+            "iconGrayUrl": "3d5533db8c3684f98f0ea6d390d6e0b4eb29c536.jpg",
+            "hidden": false,
+            "globalPct": 3.5
+        },
+        {
+            "apiName": "sped6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "TIME ATTACK - WORLD 6",
+            "description": "Finish all 9 Time Attacks in World 6",
+            "iconUrl": "6edfbbd0b8447ff60564b55d8f9798569ca636b1.jpg",
+            "iconGrayUrl": "6d915e583ef5a877a399784e10788d0179802e38.jpg",
+            "hidden": false,
+            "globalPct": 3.4
+        },
+        {
+            "apiName": "sped7",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "TIME ATTACK - WORLD 7",
+            "description": "Finish all 8 Time Attacks in World 7",
+            "iconUrl": "c2bb10a21e00184757fc3cee09e3fd03044ac5f6.jpg",
+            "iconGrayUrl": "c07481efe541ec374af4a573b23c083554593331.jpg",
+            "hidden": false,
+            "globalPct": 3.3
+        },
+        {
+            "apiName": "end2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "TRUE END GAME",
+            "description": "Complete the game by beating the True Boss",
+            "iconUrl": "7d724482404cc92c2375d41e765ac95525fc0c06.jpg",
+            "iconGrayUrl": "25c44b8506a147d5e2a0c2b490205e8736cedef9.jpg",
+            "hidden": false,
+            "globalPct": 4.2
+        },
+        {
+            "apiName": "color1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "ORANGE CAT",
+            "description": "Dip MagiCat in the Orange Pond",
+            "iconUrl": "9aacf2b1fdf5ae7e023fe5f96f3ea194860ac3dd.jpg",
+            "iconGrayUrl": "5db130c59676f446f3afdf7c037dd929a1555020.jpg",
+            "hidden": false,
+            "globalPct": 10.9
+        },
+        {
+            "apiName": "color2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "PINK CAT",
+            "description": "Dip MagiCat in the Pink Pond",
+            "iconUrl": "1ef7a9b4f89ead7b02f158919fbf460b2daa2d58.jpg",
+            "iconGrayUrl": "5db130c59676f446f3afdf7c037dd929a1555020.jpg",
+            "hidden": false,
+            "globalPct": 8.6
+        },
+        {
+            "apiName": "color3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "CYAN CAT",
+            "description": "Dip MagiCat in the Cyan Pond",
+            "iconUrl": "cc4b62aae80d3fcc2a5e60b6e29c12a56937b274.jpg",
+            "iconGrayUrl": "5db130c59676f446f3afdf7c037dd929a1555020.jpg",
+            "hidden": false,
+            "globalPct": 15
+        },
+        {
+            "apiName": "color4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "YELLOW CAT",
+            "description": "Dip MagiCat in the Yellow Pond",
+            "iconUrl": "4b2c121cb47d589b57f7bb3ada9fcbecfa5692f2.jpg",
+            "iconGrayUrl": "5db130c59676f446f3afdf7c037dd929a1555020.jpg",
+            "hidden": false,
+            "globalPct": 10.2
+        },
+        {
+            "apiName": "color5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "BLUE CAT",
+            "description": "Dip MagiCat in the Blue Pond",
+            "iconUrl": "06ac9c5a6b1eb1ecc925208c8aa847a5bbbae027.jpg",
+            "iconGrayUrl": "5db130c59676f446f3afdf7c037dd929a1555020.jpg",
+            "hidden": false,
+            "globalPct": 7.2
+        },
+        {
+            "apiName": "color6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "GREEN CAT",
+            "description": "Dip MagiCat in the Green Pond",
+            "iconUrl": "2e4f9039b5e0a405be1e4a53f81709b21b3ecc98.jpg",
+            "iconGrayUrl": "5db130c59676f446f3afdf7c037dd929a1555020.jpg",
+            "hidden": false,
+            "globalPct": 8
+        },
+        {
+            "apiName": "color7",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "PURPLE CAT",
+            "description": "Dip MagiCat in the Purple Pond",
+            "iconUrl": "5b673bdd6be5e88064da7b765443df6c986fa589.jpg",
+            "iconGrayUrl": "5db130c59676f446f3afdf7c037dd929a1555020.jpg",
+            "hidden": false,
+            "globalPct": 5.8
+        },
+        {
+            "apiName": "color8",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "RED CAT",
+            "description": "Dip MagiCat in the Red Pond",
+            "iconUrl": "a261e23223218d98f0120f7decd9bdc0536012ac.jpg",
+            "iconGrayUrl": "5db130c59676f446f3afdf7c037dd929a1555020.jpg",
+            "hidden": false,
+            "globalPct": 5.2
+        }
+    ],
+    "playtimeForever": 261,
+    "lastPlayedTs": "2024-06-13T05:11:55.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/656970/5a378f1ea10938bc33d907de8980e0ce3d242484.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "gem1",
+            "displayName": "GEM - WORLD 1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "89ae1c659ec1b23f4c722b1baff1325dfc74888d.jpg",
+            "iconGrayUrl": "0d81129bb5adece042967048a4f5f8934c6a4c64.jpg",
+            "globalPct": 6.4
+        },
+        {
+            "apiName": "gem2",
+            "displayName": "GEM - WORLD 2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "06545fa5d340be4cff4fe3416ea32a7a8ba9fceb.jpg",
+            "iconGrayUrl": "13daff6e42e622f6d752aea7b9be26aec288ef14.jpg",
+            "globalPct": 7.7
+        },
+        {
+            "apiName": "gem3",
+            "displayName": "GEM - WORLD 3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f617ce7b1a5307bf32c3e21fde2b09f8332c9f30.jpg",
+            "iconGrayUrl": "b9662e4adbc7224f0f7e8f78ab2496d7b68e8c9f.jpg",
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "gem4",
+            "displayName": "GEM - WORLD 4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "fc69de81806f77f981b18d2bc5f7a1b0d402e185.jpg",
+            "iconGrayUrl": "75311920f1edad0b755c21daedd26c2eb9075902.jpg",
+            "globalPct": 4.7
+        },
+        {
+            "apiName": "gem5",
+            "displayName": "GEM - WORLD 5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f1f7de88f0b4df6ffa7a062788a941eedbd8a038.jpg",
+            "iconGrayUrl": "008028aa9b50370a19596feab575b37834631679.jpg",
+            "globalPct": 4.2
+        },
+        {
+            "apiName": "gem6",
+            "displayName": "GEM - WORLD 6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "3959e49ce105849a832b0f37beb4f18fe765f016.jpg",
+            "iconGrayUrl": "8a1fd09a11a24a05987725a7272b2975c4bf35bf.jpg",
+            "globalPct": 3.8
+        }
+    ]
+}

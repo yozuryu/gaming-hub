@@ -1,0 +1,411 @@
+{
+    "appId": 774651,
+    "hasAchievements": true,
+    "total": 31,
+    "unlocked": 0,
+    "gameName": "Mighty Gunvolt Burst",
+    "achievements": [
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_0",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "WELCOME TO THE VR WORLD",
+            "description": "Clear the opening stage",
+            "iconUrl": "a7b8084860fbe26150df5344863e09732d2c0361.jpg",
+            "iconGrayUrl": "f9232ffdc4b13a97909167427d076a6c87272bf2.jpg",
+            "hidden": false,
+            "globalPct": 74.7
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "THE MIGHTIEST OF ALL",
+            "description": "Defeat all 8 of the Mighty Numbers",
+            "iconUrl": "91d479d4092d8084c289a6b1b7c409c2f95346d6.jpg",
+            "iconGrayUrl": "667f28809dfb126d24bdf4b2621d3beabaeaad34.jpg",
+            "hidden": false,
+            "globalPct": 30
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "WE ARE MIGHTY",
+            "description": "Clear the game as Beck",
+            "iconUrl": "2ffb5474010ca8d54372ad760c322219fb4dbdf8.jpg",
+            "iconGrayUrl": "a28c3d6b9e4968221f602947e2d63f85614293f9.jpg",
+            "hidden": false,
+            "globalPct": 15.1
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "OVERSURGE",
+            "description": "Clear the game as Gunvolt",
+            "iconUrl": "c935d6d8475ff8a457406b41f6f53f831f15c10c.jpg",
+            "iconGrayUrl": "44c0a2fd42caa85c99d497d33088e0f601e82837.jpg",
+            "hidden": false,
+            "globalPct": 13.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "ELITE ANGEL",
+            "description": "Clear the game as Ekoro",
+            "iconUrl": "6b2f057aff35ca63ce64a3e17895744052c709cd.jpg",
+            "iconGrayUrl": "712bb0b2d88b26f7c19d0403d28f3c8186b01e5a.jpg",
+            "hidden": false,
+            "globalPct": 9.3
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "UP THE ANTE",
+            "description": "",
+            "iconUrl": "d1f6556795e99599f5429a5151f2065cbd0670af.jpg",
+            "iconGrayUrl": "61a9a3aae155c23f109b24152bd6154066607a8b.jpg",
+            "hidden": true,
+            "globalPct": 6.4
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "SUPER SPRINTER",
+            "description": "Clear the game in under 1 hour",
+            "iconUrl": "50f068cac97dd31fe9fa27e6ceeae71f26dac07c.jpg",
+            "iconGrayUrl": "2d178c2ce68ab49ddf43dabbc0e967f3bed3b5fa.jpg",
+            "hidden": false,
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_7",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "UP CLOSE AND PERSONAL",
+            "description": "Defeat a boss using Burst",
+            "iconUrl": "ef72877197446403d01dad76c44c746db610c6bb.jpg",
+            "iconGrayUrl": "992610d110542b3a6940223f47fe2977afbf8193.jpg",
+            "hidden": false,
+            "globalPct": 52.4
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_8",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "IN YOUR ELEMENT",
+            "description": "Beat all bosses using their weaknesses",
+            "iconUrl": "d921fbe64508a270e509e12069af976b64624da1.jpg",
+            "iconGrayUrl": "fbbbe5b8c5fe5025bb3dc397feaa0debf82bcf3a.jpg",
+            "hidden": false,
+            "globalPct": 6.2
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_9",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "NOT EVEN A SCRATCH",
+            "description": "Clear a stage without taking any damage",
+            "iconUrl": "71bb27bacbfc7cffeb46f03aa8d77dedd96838fa.jpg",
+            "iconGrayUrl": "4b4d1a6acddab318d0bf35d197eaaa7c467697e1.jpg",
+            "hidden": false,
+            "globalPct": 9.6
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "FULL MARKS",
+            "description": "Clear a stage with an 'S' rank",
+            "iconUrl": "7577ab2a7caeae59e8a55abfb22a3d51be8d8eae.jpg",
+            "iconGrayUrl": "eb1da5b23847640f4ac620b7947614dba5889471.jpg",
+            "hidden": false,
+            "globalPct": 36.4
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_11",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "ELATION",
+            "description": "Get a Burst Combo of 10+ & clear a stage",
+            "iconUrl": "eb7025c977c27fd9ba65c7af4a4f80f77220e0f5.jpg",
+            "iconGrayUrl": "bb839563ac99748abc4e95067f42b606b302dc30.jpg",
+            "hidden": false,
+            "globalPct": 37.3
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_12",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "EUPHORIA",
+            "description": "",
+            "iconUrl": "e1cb53823e3bd9e2722905cc098da5e11c305e5b.jpg",
+            "iconGrayUrl": "c20183bab87cf9ab16091ea41447512dddc5f169.jpg",
+            "hidden": true,
+            "globalPct": 11.7
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_13",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "TRANCE",
+            "description": "",
+            "iconUrl": "a1400d6ec030ed9ba717d954a98a49453186ed44.jpg",
+            "iconGrayUrl": "df45b96eb7edba592557cdbaa62043be509d473b.jpg",
+            "hidden": true,
+            "globalPct": 7.4
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_14",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "PARADOX",
+            "description": "Clear a stage without using any Bursts",
+            "iconUrl": "1119434596d42977e1f34339b7958672b4ef02f0.jpg",
+            "iconGrayUrl": "7f8de4f7e8883b6e00d61b085d14d5093a4d3e83.jpg",
+            "hidden": false,
+            "globalPct": 13
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_15",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "PRIMED AND READY",
+            "description": "Clear a stage with 1500+ CP of equipment",
+            "iconUrl": "bdac7c60b4f6e771f55c79f281d8daf43f2b0a8b.jpg",
+            "iconGrayUrl": "90853cf6783f6868bdcd1da1b3054a79fcdcc9bd.jpg",
+            "hidden": false,
+            "globalPct": 38.2
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_16",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "GEARED UP",
+            "description": "",
+            "iconUrl": "e46590efe787f4ac02588f34703302f9c6ea7a6e.jpg",
+            "iconGrayUrl": "bfbce5d4afcab8a932858a2f2172f6772c844ec5.jpg",
+            "hidden": true,
+            "globalPct": 33.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_17",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "GET EQUIPPED",
+            "description": "",
+            "iconUrl": "96e2b72b1993c617a570c797725ec90961e5c7db.jpg",
+            "iconGrayUrl": "05a2f5959216b3e9ca8c68d22ddb0c1910199fbf.jpg",
+            "hidden": true,
+            "globalPct": 24.6
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_18",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "FULLY DECKED OUT",
+            "description": "",
+            "iconUrl": "19739333b4b7f885f7064fddaf6b2ac7b2a8877b.jpg",
+            "iconGrayUrl": "959185bd77f9d263faaefb99e0145ec6e23ad394.jpg",
+            "hidden": true,
+            "globalPct": 18.3
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_19",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "STICKING WITH IT",
+            "description": "Clear all stages using Custom Slot No. 1",
+            "iconUrl": "d4ddbd2215557800fc93e02ecdc63159b902c6fd.jpg",
+            "iconGrayUrl": "f70ca2d57dab4c076a04922397f2f13e444f7b6b.jpg",
+            "hidden": false,
+            "globalPct": 5.6
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_20",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "THE LARGE CITY",
+            "description": "Clear the stage under certain conditions",
+            "iconUrl": "e44acb386dce1d0918ec7f62e108ab3aeba9224b.jpg",
+            "iconGrayUrl": "33c059a32d5cb51ed73b3cb858226e1eff32c84e.jpg",
+            "hidden": false,
+            "globalPct": 9.1
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_21",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "WAVES OF OIL",
+            "description": "Clear the stage under certain conditions",
+            "iconUrl": "06da4ae321d1d134dca45e081eac813781bab963.jpg",
+            "iconGrayUrl": "4395106f87f0076dd2b3d0a5c53c354987354097.jpg",
+            "hidden": false,
+            "globalPct": 8.3
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_22",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "IN CHARGE OF THE BUREAU",
+            "description": "Clear the stage under certain conditions",
+            "iconUrl": "0da34555e7947c42d7641dc74f77d0d4208a8bf9.jpg",
+            "iconGrayUrl": "5250449a3eb3c0bee9851bd80bc2b6db690163c1.jpg",
+            "hidden": false,
+            "globalPct": 6.2
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_23",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "ELECTRIC VELOCITY",
+            "description": "Clear the stage under certain conditions",
+            "iconUrl": "da7bb554501629f64bd79116d6170536440b8400.jpg",
+            "iconGrayUrl": "6f43684061f8ad8a2793166fad81d97c3b603c96.jpg",
+            "hidden": false,
+            "globalPct": 7.2
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_24",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "CURVING THROUGH THE MINE",
+            "description": "Clear the stage under certain conditions",
+            "iconUrl": "07c788121ea56d935a32d2b9eb797581dc2be3a1.jpg",
+            "iconGrayUrl": "1cba424d91b8aa9d7fb5d7c41aed9d4f00df0975.jpg",
+            "hidden": false,
+            "globalPct": 7.4
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_25",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "MEAGER BASE INFILTRATION",
+            "description": "Clear the stage under certain conditions",
+            "iconUrl": "7f4c261e3ebd519e134fd4f6f86b3d07279f84b3.jpg",
+            "iconGrayUrl": "90da5fb2ef6d31e3418f21326da43e70d595fe85.jpg",
+            "hidden": false,
+            "globalPct": 6
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_26",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "BOUNCIN' OFF THE TOWER",
+            "description": "Clear the stage under certain conditions",
+            "iconUrl": "38eb23613cdd812bf5e2173dae6b24fb20cf0488.jpg",
+            "iconGrayUrl": "7e8a5ad6d45a5ab701d643f9070d82b1e0cd12e5.jpg",
+            "hidden": false,
+            "globalPct": 9.8
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_27",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "HUNGRY HIGHWAY",
+            "description": "Clear the stage under certain conditions",
+            "iconUrl": "fd867497b1d36f6a02a65153fcd5ed204ba043ab.jpg",
+            "iconGrayUrl": "9f0c2b9e3c5cc87301ff3b77176f8668b3921d8d.jpg",
+            "hidden": false,
+            "globalPct": 15.1
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_28",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "SPREAD ACROSS THE CAPITOL",
+            "description": "Clear the stage under certain conditions",
+            "iconUrl": "9ecd37686905142436b75a17394e1a40be99ec64.jpg",
+            "iconGrayUrl": "01053b0eab78e14f6e415ffc336925c73578ffb4.jpg",
+            "hidden": false,
+            "globalPct": 8.8
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_29",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "NO TIME WASTED",
+            "description": "",
+            "iconUrl": "d141f2f1d7b532823a8d1e98b880f669441f1a5b.jpg",
+            "iconGrayUrl": "8c483089ddd255f8463645bc74a9be89bf53ae96.jpg",
+            "hidden": true,
+            "globalPct": 15.6
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_30",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "CREDIT WHERE CREDIT'S DUE",
+            "description": "",
+            "iconUrl": "660ed9d1c40925ed9064a6be34be7bf82a69279f.jpg",
+            "iconGrayUrl": "258c1bc7f2ae4022675a4bee6255f264389b7628.jpg",
+            "hidden": true,
+            "globalPct": 17.8
+        }
+    ],
+    "playtimeForever": 366,
+    "lastPlayedTs": "2024-06-15T02:36:16.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/774651/e7ee81728c894c8419eb9c288191446bf179390b.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_0",
+            "displayName": "WELCOME TO THE VR WORLD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a7b8084860fbe26150df5344863e09732d2c0361.jpg",
+            "iconGrayUrl": "f9232ffdc4b13a97909167427d076a6c87272bf2.jpg",
+            "globalPct": 74.7
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_1",
+            "displayName": "THE MIGHTIEST OF ALL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "91d479d4092d8084c289a6b1b7c409c2f95346d6.jpg",
+            "iconGrayUrl": "667f28809dfb126d24bdf4b2621d3beabaeaad34.jpg",
+            "globalPct": 30
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_2",
+            "displayName": "WE ARE MIGHTY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "2ffb5474010ca8d54372ad760c322219fb4dbdf8.jpg",
+            "iconGrayUrl": "a28c3d6b9e4968221f602947e2d63f85614293f9.jpg",
+            "globalPct": 15.1
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_3",
+            "displayName": "OVERSURGE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c935d6d8475ff8a457406b41f6f53f831f15c10c.jpg",
+            "iconGrayUrl": "44c0a2fd42caa85c99d497d33088e0f601e82837.jpg",
+            "globalPct": 13.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_4",
+            "displayName": "ELITE ANGEL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "6b2f057aff35ca63ce64a3e17895744052c709cd.jpg",
+            "iconGrayUrl": "712bb0b2d88b26f7c19d0403d28f3c8186b01e5a.jpg",
+            "globalPct": 9.3
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_5",
+            "displayName": "UP THE ANTE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d1f6556795e99599f5429a5151f2065cbd0670af.jpg",
+            "iconGrayUrl": "61a9a3aae155c23f109b24152bd6154066607a8b.jpg",
+            "globalPct": 6.4
+        }
+    ]
+}

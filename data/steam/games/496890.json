@@ -1,0 +1,158 @@
+{
+    "appId": 496890,
+    "hasAchievements": true,
+    "total": 8,
+    "unlocked": 0,
+    "gameName": "Replica",
+    "achievements": [
+        {
+            "apiName": "PeepingTom",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Peeping Tom",
+            "description": "Stick to breaking the password.",
+            "iconUrl": "b57c3386133b7b9d09d7d116465aabab2262cc82.jpg",
+            "iconGrayUrl": "776290e54e606026f3dccbe118724795990a8cda.jpg",
+            "hidden": false,
+            "globalPct": 54.4
+        },
+        {
+            "apiName": "Emergency",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Emergency Call",
+            "description": "They are all on the same team.",
+            "iconUrl": "4094f25c7ebc837a8772f6822eb0cd2784e0f6a0.jpg",
+            "iconGrayUrl": "35332f627e6d67876a310f59d8ec1bed3e8ab50b.jpg",
+            "hidden": false,
+            "globalPct": 68.8
+        },
+        {
+            "apiName": "Room430",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Stanley",
+            "description": "Door 430",
+            "iconUrl": "33fca66bef7149c4581b92d56b8eb6f81cd73ab1.jpg",
+            "iconGrayUrl": "184bf0ddfc9fc43e640bbc288fe84bf453741f9b.jpg",
+            "hidden": false,
+            "globalPct": 42.9
+        },
+        {
+            "apiName": "Medal",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Patriotism Medal",
+            "description": "Leak the secret.",
+            "iconUrl": "5c7d8b634640db896f177aa8ca7db4e8c6adfdf5.jpg",
+            "iconGrayUrl": "2d76f6f201d3871fe8c3d32a214045500a1c1f12.jpg",
+            "hidden": false,
+            "globalPct": 25.5
+        },
+        {
+            "apiName": "SpeedUp",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Busy, busy, busy",
+            "description": "Speed up.",
+            "iconUrl": "e421bdc77b4279f049070138289891d8b65f63ff.jpg",
+            "iconGrayUrl": "02c237b5bab81cb8e8fb421a67377aa8ecadecd3.jpg",
+            "hidden": false,
+            "globalPct": 24.3
+        },
+        {
+            "apiName": "Resist",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Non-Violence",
+            "description": "Resist with all your might.",
+            "iconUrl": "d9d01f98420c211e0d72ca7b65e545bebdbdf2d7.jpg",
+            "iconGrayUrl": "94153def5fd982d5cc65d46e484451606aaa50e3.jpg",
+            "hidden": false,
+            "globalPct": 21.2
+        },
+        {
+            "apiName": "HuntingDog",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A blood hound",
+            "description": "Help Dickey to spend the rest of his life locked up.",
+            "iconUrl": "0bdb778c2a646a9d88dbc04b9ed0b1ea1e574ca9.jpg",
+            "iconGrayUrl": "2d76f6f201d3871fe8c3d32a214045500a1c1f12.jpg",
+            "hidden": false,
+            "globalPct": 28.6
+        },
+        {
+            "apiName": "Button",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Please, Don't Touch Anything",
+            "description": "Find the activation button for the terror attack.",
+            "iconUrl": "b43755be9181038cd3b7b9c057721bef609d0155.jpg",
+            "iconGrayUrl": "b288cd0a094d5dd65ac7a977b9b12fc5f5eb6dc2.jpg",
+            "hidden": false,
+            "globalPct": 43
+        }
+    ],
+    "playtimeForever": 186,
+    "lastPlayedTs": "2024-06-07T03:58:43.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/496890/5102ef345e895ea1c1c20575e98d461ab400e43a.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "PeepingTom",
+            "displayName": "Peeping Tom",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "b57c3386133b7b9d09d7d116465aabab2262cc82.jpg",
+            "iconGrayUrl": "776290e54e606026f3dccbe118724795990a8cda.jpg",
+            "globalPct": 54.4
+        },
+        {
+            "apiName": "Emergency",
+            "displayName": "Emergency Call",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "4094f25c7ebc837a8772f6822eb0cd2784e0f6a0.jpg",
+            "iconGrayUrl": "35332f627e6d67876a310f59d8ec1bed3e8ab50b.jpg",
+            "globalPct": 68.8
+        },
+        {
+            "apiName": "Room430",
+            "displayName": "Stanley",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "33fca66bef7149c4581b92d56b8eb6f81cd73ab1.jpg",
+            "iconGrayUrl": "184bf0ddfc9fc43e640bbc288fe84bf453741f9b.jpg",
+            "globalPct": 42.9
+        },
+        {
+            "apiName": "Medal",
+            "displayName": "Patriotism Medal",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "5c7d8b634640db896f177aa8ca7db4e8c6adfdf5.jpg",
+            "iconGrayUrl": "2d76f6f201d3871fe8c3d32a214045500a1c1f12.jpg",
+            "globalPct": 25.5
+        },
+        {
+            "apiName": "SpeedUp",
+            "displayName": "Busy, busy, busy",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "e421bdc77b4279f049070138289891d8b65f63ff.jpg",
+            "iconGrayUrl": "02c237b5bab81cb8e8fb421a67377aa8ecadecd3.jpg",
+            "globalPct": 24.3
+        },
+        {
+            "apiName": "Resist",
+            "displayName": "Non-Violence",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d9d01f98420c211e0d72ca7b65e545bebdbdf2d7.jpg",
+            "iconGrayUrl": "94153def5fd982d5cc65d46e484451606aaa50e3.jpg",
+            "globalPct": 21.2
+        }
+    ]
+}

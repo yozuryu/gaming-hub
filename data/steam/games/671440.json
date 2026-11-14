@@ -1,0 +1,367 @@
+{
+    "appId": 671440,
+    "hasAchievements": true,
+    "total": 27,
+    "unlocked": 0,
+    "gameName": "Rise of Industry",
+    "achievements": [
+        {
+            "apiName": "ach_complete_tutorials",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Well educated",
+            "description": "Complete the Tutorial",
+            "iconUrl": "ff94cf722cccfe6cc68efcbbefcc3a14ebfd454c.jpg",
+            "iconGrayUrl": "f6fe8f4472293119b51e9bf3eb037374e0b3595c.jpg",
+            "hidden": false,
+            "globalPct": 47.4
+        },
+        {
+            "apiName": "ach_place_buildings",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hard working",
+            "description": "Place 1,000 Buildings across all playthoughs",
+            "iconUrl": "3fcbd8958d5fe524290b9aab3dc93d74917a12f0.jpg",
+            "iconGrayUrl": "5bfeb3ef35b38004d38ea0623599c713cce5027b.jpg",
+            "hidden": false,
+            "globalPct": 1.1
+        },
+        {
+            "apiName": "ach_place_all_buildngs",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Master Builder",
+            "description": "Place every Building once across all playthoughs",
+            "iconUrl": "a10306c7bd296b50dcbd972ea8f906b019574be1.jpg",
+            "iconGrayUrl": "b49ba1ae02a509c713896d6e149c5ae5f4f433a9.jpg",
+            "hidden": false,
+            "globalPct": 47.9
+        },
+        {
+            "apiName": "ach_warehouse_clients",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "City Planner",
+            "description": "Place 10 Buildings within range of a single Warehouse",
+            "iconUrl": "eaffa955e46873d61675692ae6bfba70d7873aa3.jpg",
+            "iconGrayUrl": "abbfd80310a925c1ea940644e146164fbe94a975.jpg",
+            "hidden": false,
+            "globalPct": 43.5
+        },
+        {
+            "apiName": "ach_complete_contracts",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Freelancer",
+            "description": "Complete 50 Contracts across all playthoughs",
+            "iconUrl": "d37ce6bbb76464d925a80f9089662967d9650766.jpg",
+            "iconGrayUrl": "55bf310f9e5af228338a4fd8bb167fb5ceb10f52.jpg",
+            "hidden": false,
+            "globalPct": 0.9
+        },
+        {
+            "apiName": "ach_raise_money",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Billionaire",
+            "description": "Raise $1,000,000,000 in one playthrough",
+            "iconUrl": "878bdbf7b7e95973751f9bfaf5f945ced36b9c9c.jpg",
+            "iconGrayUrl": "e5564375083d7de16b6f46c68be3f038ddb20dec.jpg",
+            "hidden": false,
+            "globalPct": 2.4
+        },
+        {
+            "apiName": "ach_place_first_building",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Entrepreneur",
+            "description": "Place your first Production or Logistic building",
+            "iconUrl": "7774969bc9add43bf11e98b9464768bd4168676c.jpg",
+            "iconGrayUrl": "1a53c54e6144276dbd2f115a8467e990c18abf23.jpg",
+            "hidden": false,
+            "globalPct": 70.5
+        },
+        {
+            "apiName": "ach_build_bridge",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Engineer",
+            "description": "Build a Bridge of at least 25 tiles long",
+            "iconUrl": "64f0a307b4a3b75f3b7e3ea4e1d1f196bd9ae1b0.jpg",
+            "iconGrayUrl": "95901cc9f1535cc5fe7b1da3a56b5eecfbb3c556.jpg",
+            "hidden": false,
+            "globalPct": 11
+        },
+        {
+            "apiName": "ach_build_tunnel",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Excavator",
+            "description": "Build a Tunnel of at least 25 tiles long",
+            "iconUrl": "feab43bc220735c175983865f3d758905d94fd5c.jpg",
+            "iconGrayUrl": "4226fa098ff446fd042f8260415b299da30cc92d.jpg",
+            "hidden": false,
+            "globalPct": 3
+        },
+        {
+            "apiName": "ach_use_terraforming",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Landscaper",
+            "description": "Use Terraforming for the first time",
+            "iconUrl": "f956be584f11b829f8d8c0422b0c58e30d410a75.jpg",
+            "iconGrayUrl": "b7c507fe20b8dcef267d436747d2a5045b7c36f7.jpg",
+            "hidden": false,
+            "globalPct": 35.2
+        },
+        {
+            "apiName": "ach_free_cam_mode",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Director",
+            "description": "Spend 5 minutes in the Free-Cam mode",
+            "iconUrl": "0d39bd89402abe04e878e67e741dbb1eb3dae88f.jpg",
+            "iconGrayUrl": "e38239a59dd40fdc2b104010aabb3db01732debb.jpg",
+            "hidden": false,
+            "globalPct": 1.8
+        },
+        {
+            "apiName": "ach_sell_to_state",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Exporter",
+            "description": "Sell to the State",
+            "iconUrl": "a988993683d74fdcaec77167858b8ad88b157b0e.jpg",
+            "iconGrayUrl": "8f3fbc1b067cf223fe550f0603fd3cda58bdc074.jpg",
+            "hidden": false,
+            "globalPct": 36.6
+        },
+        {
+            "apiName": "ach_max_loan",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Loan Ranger",
+            "description": "Take out a Loan that is over 25m",
+            "iconUrl": "75ad514c282da944c724a6cfb8c3c480cf37c193.jpg",
+            "iconGrayUrl": "12fcfcd6f927d0c0f83687c84fe0c516be17a1ab.jpg",
+            "hidden": false,
+            "globalPct": 3.6
+        },
+        {
+            "apiName": "ach_demolish_trees",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Deforester",
+            "description": "Demolish 50 Tiles of Trees",
+            "iconUrl": "ebfdce030cd44eed5e3f6152920f67bd9ab3fe49.jpg",
+            "iconGrayUrl": "837bdaf217913b629179d174ce8052a112cd85b9.jpg",
+            "hidden": false,
+            "globalPct": 34.4
+        },
+        {
+            "apiName": "ach_max_profit",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Massive Gains",
+            "description": "Make 1 million dollars in net income in a month.",
+            "iconUrl": "7faf24638287e5ada55833c3180d4ce01d3957a6.jpg",
+            "iconGrayUrl": "79c676ffc31590a3034fff096e73c30ae2b405b6.jpg",
+            "hidden": false,
+            "globalPct": 25.6
+        },
+        {
+            "apiName": "ach_sell_tier3_product",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Salesman",
+            "description": "Sell a Tier 3 Product",
+            "iconUrl": "792174b75ae80b3f223e4d614f8e459737b68c00.jpg",
+            "iconGrayUrl": "97bab2b19298b67bb3721a2149e91615bd7ae3ca.jpg",
+            "hidden": false,
+            "globalPct": 11.9
+        },
+        {
+            "apiName": "ach_bankruptcy",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Penniless",
+            "description": "Lose the game through Bankruptcy",
+            "iconUrl": "0a738a43117e27da791fc2405e29b5b33de70c52.jpg",
+            "iconGrayUrl": "a0fd3f1356688588abf0ea1fd6d7af46549b0947.jpg",
+            "hidden": false,
+            "globalPct": 24.1
+        },
+        {
+            "apiName": "ach_car_prototype",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Vroom Vroom",
+            "description": "Completed the Car Prototype",
+            "iconUrl": "b6eaa4cb4de96a008805fbfa287b84e30e132cde.jpg",
+            "iconGrayUrl": "9356218e0226993b5aa3a6746884a6a490dfb37d.jpg",
+            "hidden": false,
+            "globalPct": 2.3
+        },
+        {
+            "apiName": "ach_produced",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Apprentice Manufacturer",
+            "description": "Generate 1,000 Products across all playthoughs",
+            "iconUrl": "7a70fb1139f2cecd899522279ebaee8b37a01842.jpg",
+            "iconGrayUrl": "83a77b25ff843a12e99c8cbef0a3a1eb68796565.jpg",
+            "hidden": false,
+            "globalPct": 39.1
+        },
+        {
+            "apiName": "ach_products_moved",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Big Hauling",
+            "description": "Transport 25,000 Units of Products across all playthoughs",
+            "iconUrl": "1fa14019b69f67346540be343c425c9fd1bceaa5.jpg",
+            "iconGrayUrl": "f70dc854e350c6a4d52d65aa48250c06fb3447ba.jpg",
+            "hidden": false,
+            "globalPct": 43.7
+        },
+        {
+            "apiName": "ach_setup_route_zepplin",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "High Flyer",
+            "description": "Setup a Zeppelin Trade Route",
+            "iconUrl": "6a4637ba221976f44bf4974581154bf8bb05459c.jpg",
+            "iconGrayUrl": "de8c2e1d2e3ee7d8b432be7709ea8dfbf7d8fc54.jpg",
+            "hidden": false,
+            "globalPct": 7.6
+        },
+        {
+            "apiName": "ach_setup_route_train",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Railwayman",
+            "description": "Setup a Train Trade Route",
+            "iconUrl": "625403b91d0510148e01ecbc29804f9d1d5dbfeb.jpg",
+            "iconGrayUrl": "8bdcb218b73720c6609d3e67dddf9da40cf03f6b.jpg",
+            "hidden": false,
+            "globalPct": 23.6
+        },
+        {
+            "apiName": "ach_setup_route_boat",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Captain",
+            "description": "Setup a Boat Trade Route",
+            "iconUrl": "01ebbcc84a836abc48de85b173c0d3c2bbbb5085.jpg",
+            "iconGrayUrl": "e4f75e3fd480d9fa96e4082652a408665b0e1169.jpg",
+            "hidden": false,
+            "globalPct": 4.9
+        },
+        {
+            "apiName": "ach_max_truck_distance",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I would drive 500 tiles...",
+            "description": "Set a Dispatch Truck to travel over 500 tiles.",
+            "iconUrl": "4519b3b5a8fbeee30c01cf44d2522ec42b1da489.jpg",
+            "iconGrayUrl": "b79e2156c45429a39b1e1a257658d88575a3a997.jpg",
+            "hidden": false,
+            "globalPct": 26.6
+        },
+        {
+            "apiName": "ach_2130_region_cleaned2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "[2130] Nature Lover",
+            "description": "Completely clean a Region of Pollution",
+            "iconUrl": "752c77c9cf5a3285a436826daec6210857131596.jpg",
+            "iconGrayUrl": "f3c7b49f01fd703cc8d87c77262d06fdf9d4ad9a.jpg",
+            "hidden": false,
+            "globalPct": 1.1
+        },
+        {
+            "apiName": "ach_2130_settlement_death_end2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "[2130] No Quarter Given. ",
+            "description": "Lose all Settlements to Pollution",
+            "iconUrl": "57f877ad8a72232ca6c5df05e2eed65746d83947.jpg",
+            "iconGrayUrl": "113e9971bef08d6912cfb8fef87257b4f77068be.jpg",
+            "hidden": false,
+            "globalPct": 0.8
+        },
+        {
+            "apiName": "ach_2130_steel_production2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "[2130] Dumpster Diving",
+            "description": "Collect 1000 units of Steel from a map in a single game. ",
+            "iconUrl": "0267f638a1383dec6e6e49724350c69936aa6af7.jpg",
+            "iconGrayUrl": "6ce7cd762993b6e780f1081140b71a5210528764.jpg",
+            "hidden": false,
+            "globalPct": 2
+        }
+    ],
+    "playtimeForever": 441,
+    "lastPlayedTs": "2024-06-23T18:53:18.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/671440/7ed3e2ef36f3519ee0c829ddf394c4a9af64c644.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ach_complete_tutorials",
+            "displayName": "Well educated",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "ff94cf722cccfe6cc68efcbbefcc3a14ebfd454c.jpg",
+            "iconGrayUrl": "f6fe8f4472293119b51e9bf3eb037374e0b3595c.jpg",
+            "globalPct": 47.4
+        },
+        {
+            "apiName": "ach_place_buildings",
+            "displayName": "Hard working",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "3fcbd8958d5fe524290b9aab3dc93d74917a12f0.jpg",
+            "iconGrayUrl": "5bfeb3ef35b38004d38ea0623599c713cce5027b.jpg",
+            "globalPct": 1.1
+        },
+        {
+            "apiName": "ach_place_all_buildngs",
+            "displayName": "Master Builder",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a10306c7bd296b50dcbd972ea8f906b019574be1.jpg",
+            "iconGrayUrl": "b49ba1ae02a509c713896d6e149c5ae5f4f433a9.jpg",
+            "globalPct": 47.9
+        },
+        {
+            "apiName": "ach_warehouse_clients",
+            "displayName": "City Planner",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "eaffa955e46873d61675692ae6bfba70d7873aa3.jpg",
+            "iconGrayUrl": "abbfd80310a925c1ea940644e146164fbe94a975.jpg",
+            "globalPct": 43.5
+        },
+        {
+            "apiName": "ach_complete_contracts",
+            "displayName": "Freelancer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d37ce6bbb76464d925a80f9089662967d9650766.jpg",
+            "iconGrayUrl": "55bf310f9e5af228338a4fd8bb167fb5ceb10f52.jpg",
+            "globalPct": 0.9
+        },
+        {
+            "apiName": "ach_raise_money",
+            "displayName": "Billionaire",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "878bdbf7b7e95973751f9bfaf5f945ced36b9c9c.jpg",
+            "iconGrayUrl": "e5564375083d7de16b6f46c68be3f038ddb20dec.jpg",
+            "globalPct": 2.4
+        }
+    ]
+}

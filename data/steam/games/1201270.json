@@ -1,0 +1,345 @@
+{
+    "appId": 1201270,
+    "hasAchievements": true,
+    "total": 25,
+    "unlocked": 0,
+    "gameName": "A Space for the Unbound",
+    "achievements": [
+        {
+            "apiName": "ACH_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Look, Atma. It's you!",
+            "description": "",
+            "iconUrl": "e4c76475f859f34c0425078b43b15bdfcbd5b488.jpg",
+            "iconGrayUrl": "12ce2576f06574eb676dc68652aaef5ea5ee224f.jpg",
+            "hidden": true,
+            "globalPct": 78.8
+        },
+        {
+            "apiName": "ACH_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "So, how's the movie Atma?",
+            "description": "",
+            "iconUrl": "0b7a4367cfe4ab4d0d8973845b36c5ebe748c126.jpg",
+            "iconGrayUrl": "31d186cee9a7705de042de13c48f23a3ffa46d0f.jpg",
+            "hidden": true,
+            "globalPct": 61.5
+        },
+        {
+            "apiName": "ACH_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "At least have a bite. It's a delicious cake!",
+            "description": "",
+            "iconUrl": "1b857c53f3778eb9869ad60a9747d29399f3d5fd.jpg",
+            "iconGrayUrl": "16124ccccbd47de7e7ee2f4f96bb6a8a57087e55.jpg",
+            "hidden": true,
+            "globalPct": 49.5
+        },
+        {
+            "apiName": "ACH_4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fireworks sparkling beautifully, us together on a bridge, isn't it perfect?",
+            "description": "",
+            "iconUrl": "16a9321d26a5fe11aeec8e1090fb733468871511.jpg",
+            "iconGrayUrl": "ac4f9f5ddc7db43f5febbf2fdf108f840d8d9a9b.jpg",
+            "hidden": true,
+            "globalPct": 40.5
+        },
+        {
+            "apiName": "ACH_5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "This festival is indeed one big party. Are you having fun, Atma?",
+            "description": "",
+            "iconUrl": "6ba22dc2c55b3f2a7052dab1e394e8135dd59be0.jpg",
+            "iconGrayUrl": "0156824508880c437d0b0e2b3af1b0d3ed7c8d95.jpg",
+            "hidden": true,
+            "globalPct": 36
+        },
+        {
+            "apiName": "ACH_6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The precious treasure... is my memories of you.",
+            "description": "",
+            "iconUrl": "5ad02c7aef8e437b60337b31a648a18613962a63.jpg",
+            "iconGrayUrl": "8fdd32d46327baed18dbad44bdf1d364918c7b11.jpg",
+            "hidden": true,
+            "globalPct": 35
+        },
+        {
+            "apiName": "ACH_7",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Atma, are you seeing this? The sky looks so beautiful right now.",
+            "description": "",
+            "iconUrl": "ce18c497eb9f00b7ba6aaa4ae2f1565c489402ec.jpg",
+            "iconGrayUrl": "3baed3becd41bcce089962bc067157a949a0c628.jpg",
+            "hidden": true,
+            "globalPct": 34
+        },
+        {
+            "apiName": "ACH_8",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I'm okay now. I'm moving forward.",
+            "description": "",
+            "iconUrl": "f7d8a19cbbbe2d532319b1dba50fe99917a234e3.jpg",
+            "iconGrayUrl": "15e4b1d502c825807a5daf5616a3fa13c706d43b.jpg",
+            "hidden": true,
+            "globalPct": 7.2
+        },
+        {
+            "apiName": "ACH_9",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Every animal in town is talking about you!",
+            "description": "Pet the fluffiest animal known to man.",
+            "iconUrl": "ad8add672a14d4d2eee5b375bd838afad3271bd9.jpg",
+            "iconGrayUrl": "af1e5f16cc340a92c25b785ab2539f4b172b5c01.jpg",
+            "hidden": false,
+            "globalPct": 9.4
+        },
+        {
+            "apiName": "ACH_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "All colorful and shiny!",
+            "description": "Collect twenty bottle caps.",
+            "iconUrl": "e7a4dc638665e4b2308d8f65757ebc360946b136.jpg",
+            "iconGrayUrl": "e9713b4853f6e0194a9432e34c6e8fc4c49a1de1.jpg",
+            "hidden": false,
+            "globalPct": 26.7
+        },
+        {
+            "apiName": "ACH_11",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The thrill is in collecting the letters, right?",
+            "description": "Collect all five letters of YOMAN.",
+            "iconUrl": "9b18608bd01f3d157dea21e7e39acc7788b7cc7b.jpg",
+            "iconGrayUrl": "76f48a8abe7b9550c04137307d8da3a7e5f0bcc6.jpg",
+            "hidden": false,
+            "globalPct": 18.2
+        },
+        {
+            "apiName": "ACH_12",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Thank you, Mr. Setiawan.",
+            "description": "Listen to music and bawl your eyes out.",
+            "iconUrl": "30998540ebe92d96a0bb865c7b1ccdc259756ead.jpg",
+            "iconGrayUrl": "772fb5285def54eeb4da43ff4c21ff0d06e561cf.jpg",
+            "hidden": false,
+            "globalPct": 13.7
+        },
+        {
+            "apiName": "ACH_13",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "You're the number 1 fighter in town!",
+            "description": "Beat the Future Fighter high score.",
+            "iconUrl": "ef1f3007d0579162239ad285b6d2a69c3ec5cae0.jpg",
+            "iconGrayUrl": "85c40d54fff00ace0d1913bc991217c533bd7254.jpg",
+            "hidden": false,
+            "globalPct": 39.8
+        },
+        {
+            "apiName": "ACH_14",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hehe.",
+            "description": "Knock the Kentongan.",
+            "iconUrl": "3af6cb34c19c500d8e7f2c258e184c6d76f906bd.jpg",
+            "iconGrayUrl": "76b5389fdb6a535c07f8250fd749b9a5e210ce69.jpg",
+            "hidden": false,
+            "globalPct": 46.4
+        },
+        {
+            "apiName": "ACH_15",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "You did it on purpose, didn't you?",
+            "description": "Accidentally hold Raya's hand.",
+            "iconUrl": "bde2542e8c9be12b004ed27e7a1a219ede697b32.jpg",
+            "iconGrayUrl": "56a3af7c2f812e1a0734b31a8360e86be469928a.jpg",
+            "hidden": false,
+            "globalPct": 64.1
+        },
+        {
+            "apiName": "ACH_16",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "That's a lot of juggling.",
+            "description": "Juggle the ball 70 times.",
+            "iconUrl": "1b00e05d7c8a4e289d08044893f89543bd8ae0cf.jpg",
+            "iconGrayUrl": "23ee8253c71039e6e868197e787718f7e8ecd5c2.jpg",
+            "hidden": false,
+            "globalPct": 19.5
+        },
+        {
+            "apiName": "ACH_17",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Playing games all day and no studying? Tut, tut, tut.",
+            "description": "Reach 1700 points in Future Fighter.",
+            "iconUrl": "0100a266224aa5e5f447c3e8fdf6ab8fed3433bb.jpg",
+            "iconGrayUrl": "c5d82ecab12d64fda2d52d22d6d485cd2fc3947a.jpg",
+            "hidden": false,
+            "globalPct": 16.7
+        },
+        {
+            "apiName": "ACH_18",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Are you hiding a cheat sheet in your pocket, Atma?",
+            "description": "Answer Quiz Trio's quizzes.",
+            "iconUrl": "65d194b9350353cbab5f215a49e2865465683065.jpg",
+            "iconGrayUrl": "d49738b5abbad86722de897cc261483a81bf4d85.jpg",
+            "hidden": false,
+            "globalPct": 36.3
+        },
+        {
+            "apiName": "ACH_19",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "We'll try philately next, right, Atma?",
+            "description": "A stamp for an O.",
+            "iconUrl": "84f3803171e4b2ec0bd7483ac07e0e2cb578a7eb.jpg",
+            "iconGrayUrl": "6701324aa68fe677c8c31aa1386ab00e44b66223.jpg",
+            "hidden": false,
+            "globalPct": 65.8
+        },
+        {
+            "apiName": "ACH_20",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "It seems you became friends with the ball!",
+            "description": "Juggle the ball 50 times.",
+            "iconUrl": "20cb370435d113eea7c2fa34f99863a1ae70a82f.jpg",
+            "iconGrayUrl": "ffc7e612723f4631e5b5b49c985406584d697495.jpg",
+            "hidden": false,
+            "globalPct": 29
+        },
+        {
+            "apiName": "ACH_21",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Did you get prize tickets without playing any games? What a hack!",
+            "description": "Collect 14 arcade tickets for an A.",
+            "iconUrl": "d7a284c46a07348bfaaab8edad9cabdece94814e.jpg",
+            "iconGrayUrl": "688290340f2b3d05203cfd5899e4230bcd470d98.jpg",
+            "hidden": false,
+            "globalPct": 41.5
+        },
+        {
+            "apiName": "ACH_22",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Careful Atma, it's no good watching TV all day.",
+            "description": "Watch TV.",
+            "iconUrl": "c84fd5b5ea11cf88a8ca5c33d9b498c763b65f78.jpg",
+            "iconGrayUrl": "6f92a784698552b4244f1713373e194ba8fc697d.jpg",
+            "hidden": false,
+            "globalPct": 62.3
+        },
+        {
+            "apiName": "ACH_23",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "You've found what once was lost.",
+            "description": "Pet the lost duck.",
+            "iconUrl": "c4d7eaf6902a98286a56a4fbfc3e6ed8cdc1cfe1.jpg",
+            "iconGrayUrl": "8b6cca185c746b41b68a0d925dddadb67c8404ae.jpg",
+            "hidden": false,
+            "globalPct": 32.6
+        },
+        {
+            "apiName": "ACH_24",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Taming even the unfriendliest of all, that's Atma for you!",
+            "description": "Pet the unfriendly cat.",
+            "iconUrl": "099b4378bcd82e1224df0a8fa3205732c28dd013.jpg",
+            "iconGrayUrl": "76d5918315ae53580d4086c0c1b1b7969967537c.jpg",
+            "hidden": false,
+            "globalPct": 34.6
+        },
+        {
+            "apiName": "ACH_25",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "It feels like opening a box of presents, doesn't it?",
+            "description": "Find out what's inside the box the dog barks at.",
+            "iconUrl": "03d93bfe29f11e28574dfe394fb51f2ca6f20b9b.jpg",
+            "iconGrayUrl": "e10a1f2b95558f2536792991f2cca78c74c712e7.jpg",
+            "hidden": false,
+            "globalPct": 31.4
+        }
+    ],
+    "playtimeForever": 235,
+    "lastPlayedTs": "2025-02-17T23:52:48.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1201270/e267de500ad0a05566020f2ae7b219fc709b8d70.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACH_1",
+            "displayName": "Look, Atma. It's you!",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "e4c76475f859f34c0425078b43b15bdfcbd5b488.jpg",
+            "iconGrayUrl": "12ce2576f06574eb676dc68652aaef5ea5ee224f.jpg",
+            "globalPct": 78.8
+        },
+        {
+            "apiName": "ACH_2",
+            "displayName": "So, how's the movie Atma?",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "0b7a4367cfe4ab4d0d8973845b36c5ebe748c126.jpg",
+            "iconGrayUrl": "31d186cee9a7705de042de13c48f23a3ffa46d0f.jpg",
+            "globalPct": 61.5
+        },
+        {
+            "apiName": "ACH_3",
+            "displayName": "At least have a bite. It's a delicious cake!",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1b857c53f3778eb9869ad60a9747d29399f3d5fd.jpg",
+            "iconGrayUrl": "16124ccccbd47de7e7ee2f4f96bb6a8a57087e55.jpg",
+            "globalPct": 49.5
+        },
+        {
+            "apiName": "ACH_4",
+            "displayName": "Fireworks sparkling beautifully, us together on a bridge, isn't it perfect?",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "16a9321d26a5fe11aeec8e1090fb733468871511.jpg",
+            "iconGrayUrl": "ac4f9f5ddc7db43f5febbf2fdf108f840d8d9a9b.jpg",
+            "globalPct": 40.5
+        },
+        {
+            "apiName": "ACH_5",
+            "displayName": "This festival is indeed one big party. Are you having fun, Atma?",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "6ba22dc2c55b3f2a7052dab1e394e8135dd59be0.jpg",
+            "iconGrayUrl": "0156824508880c437d0b0e2b3af1b0d3ed7c8d95.jpg",
+            "globalPct": 36
+        },
+        {
+            "apiName": "ACH_6",
+            "displayName": "The precious treasure... is my memories of you.",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "5ad02c7aef8e437b60337b31a648a18613962a63.jpg",
+            "iconGrayUrl": "8fdd32d46327baed18dbad44bdf1d364918c7b11.jpg",
+            "globalPct": 35
+        }
+    ]
+}

@@ -1,0 +1,202 @@
+{
+    "appId": 254700,
+    "hasAchievements": true,
+    "total": 12,
+    "unlocked": 0,
+    "gameName": "Resident Evil 4 (2005)",
+    "achievements": [
+        {
+            "apiName": "ACHIEVEMENT_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "It Begins With a Ring",
+            "description": "Ring the mysterious bell. What happens after that, is up to you.",
+            "iconUrl": "6876868f9fd77810e44c6a3a1f8df8c87a07f6c8.jpg",
+            "iconGrayUrl": "81b0f799d7c62f4bdea2bc2c9400bc534b9d72ea.jpg",
+            "hidden": false,
+            "globalPct": 70.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Do Not Shoot the Water!",
+            "description": "Summon the master of the lake. Don't rock the boat.",
+            "iconUrl": "544ee87d1d54eca009048694b735b0f01751f611.jpg",
+            "iconGrayUrl": "210f54579cb8e95d822bf175feb35be3869bd713.jpg",
+            "hidden": false,
+            "globalPct": 19.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Rock and a Hard Place",
+            "description": "Outmaneuver the rampaging beast, El Gigante.",
+            "iconUrl": "222e606d8133205f98d2b4709559a7ae0e683a54.jpg",
+            "iconGrayUrl": "9762dfc13329b7a6ad99bab0344c18512fba3081.jpg",
+            "hidden": false,
+            "globalPct": 50.2
+        },
+        {
+            "apiName": "ACHIEVEMENT_4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Secure the Ballistics",
+            "description": "Rescue the president's daughter, Ashley. Afterwards, the real fun begins.",
+            "iconUrl": "47b8f351ab4587433723f718fe2a09245149bb57.jpg",
+            "iconGrayUrl": "6c5be97f98c59c7a15fb45c3d5514132129e0c8b.jpg",
+            "hidden": false,
+            "globalPct": 49.7
+        },
+        {
+            "apiName": "ACHIEVEMENT_5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Bloodline Severed",
+            "description": "Defeat the village chief in battle. ",
+            "iconUrl": "cfd2e9dd70302c22c9e30ee620cb061d55fcf338.jpg",
+            "iconGrayUrl": "2280622877060d7da8e2fb107377b9aee1e7d57e.jpg",
+            "hidden": false,
+            "globalPct": 45.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Terrifying Assassin",
+            "description": "Turn the tables on Verdugo, the right hand of Salazar.",
+            "iconUrl": "d535a386cae1754986b4e65eb4f5117f0a44e2bf.jpg",
+            "iconGrayUrl": "718d3d1615eef1e09133b90f5cae4acfce62d9e9.jpg",
+            "hidden": false,
+            "globalPct": 30.9
+        },
+        {
+            "apiName": "ACHIEVEMENT_7",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Castellan Falls",
+            "description": "Defeat Salazar, and make your escape from the castle.",
+            "iconUrl": "575ddd64da5865192854eb482674a3452666dc53.jpg",
+            "iconGrayUrl": "be8849ad29e8a792c12e621aad9d37dfdc1c9502.jpg",
+            "hidden": false,
+            "globalPct": 36.7
+        },
+        {
+            "apiName": "ACHIEVEMENT_8",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Ties That Bind",
+            "description": "Defeat Krauser, your former partner, in battle. ",
+            "iconUrl": "453600b596f2e772647f880abb3bb885c7310277.jpg",
+            "iconGrayUrl": "3a4d0de9d4013e6f8d82272cb0c2ce645ab4c15e.jpg",
+            "hidden": false,
+            "globalPct": 34.6
+        },
+        {
+            "apiName": "ACHIEVEMENT_9",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "We're Going Home",
+            "description": "Defeat Saddler in battle, and escape from the nightmare.",
+            "iconUrl": "26151f284478f3f072779d148034ac9095ce53c0.jpg",
+            "iconGrayUrl": "8f15d00e3c1710f0fa1749345e27d9b35dcc4494.jpg",
+            "hidden": false,
+            "globalPct": 34.2
+        },
+        {
+            "apiName": "ACHIEVEMENT_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "A Heart of Steel",
+            "description": "Clear the game on the highest difficulty.",
+            "iconUrl": "c0d108be3dbb9d9b74d8beeec12612e7e00cd39f.jpg",
+            "iconGrayUrl": "b70c578da53cb356a1359e65fc00aae0afa12e1b.jpg",
+            "hidden": false,
+            "globalPct": 11.9
+        },
+        {
+            "apiName": "ACHIEVEMENT_11",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "What Are They Worth?",
+            "description": "Acquire all of the bottle caps in the game.",
+            "iconUrl": "2d33a3cfab8ef05afa0a20114d0f52d2c39de2fe.jpg",
+            "iconGrayUrl": "faa114155c29656ecd287443024bde6e1dd4c330.jpg",
+            "hidden": false,
+            "globalPct": 15.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_12",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The S Stands for Stylish!!",
+            "description": "Acquire all of the costumes in the game.",
+            "iconUrl": "bde9e0381a03ee7e7f141283a22f0841d3e24c8b.jpg",
+            "iconGrayUrl": "eb620ab3319dec1f9cebd58223d339e3fa0d9fcd.jpg",
+            "hidden": false,
+            "globalPct": 17.6
+        }
+    ],
+    "playtimeForever": 202,
+    "lastPlayedTs": "2024-06-07T04:29:42.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/254700/535bfea3332662271f1e3a972832bc0b4aba5a38.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "ACHIEVEMENT_1",
+            "displayName": "It Begins With a Ring",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "6876868f9fd77810e44c6a3a1f8df8c87a07f6c8.jpg",
+            "iconGrayUrl": "81b0f799d7c62f4bdea2bc2c9400bc534b9d72ea.jpg",
+            "globalPct": 70.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_2",
+            "displayName": "Do Not Shoot the Water!",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "544ee87d1d54eca009048694b735b0f01751f611.jpg",
+            "iconGrayUrl": "210f54579cb8e95d822bf175feb35be3869bd713.jpg",
+            "globalPct": 19.8
+        },
+        {
+            "apiName": "ACHIEVEMENT_3",
+            "displayName": "A Rock and a Hard Place",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "222e606d8133205f98d2b4709559a7ae0e683a54.jpg",
+            "iconGrayUrl": "9762dfc13329b7a6ad99bab0344c18512fba3081.jpg",
+            "globalPct": 50.2
+        },
+        {
+            "apiName": "ACHIEVEMENT_4",
+            "displayName": "Secure the Ballistics",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "47b8f351ab4587433723f718fe2a09245149bb57.jpg",
+            "iconGrayUrl": "6c5be97f98c59c7a15fb45c3d5514132129e0c8b.jpg",
+            "globalPct": 49.7
+        },
+        {
+            "apiName": "ACHIEVEMENT_5",
+            "displayName": "A Bloodline Severed",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "cfd2e9dd70302c22c9e30ee620cb061d55fcf338.jpg",
+            "iconGrayUrl": "2280622877060d7da8e2fb107377b9aee1e7d57e.jpg",
+            "globalPct": 45.1
+        },
+        {
+            "apiName": "ACHIEVEMENT_6",
+            "displayName": "A Terrifying Assassin",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d535a386cae1754986b4e65eb4f5117f0a44e2bf.jpg",
+            "iconGrayUrl": "718d3d1615eef1e09133b90f5cae4acfce62d9e9.jpg",
+            "globalPct": 30.9
+        }
+    ]
+}

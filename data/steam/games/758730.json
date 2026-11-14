@@ -1,0 +1,224 @@
+{
+    "appId": 758730,
+    "hasAchievements": true,
+    "total": 14,
+    "unlocked": 8,
+    "gameName": "Paw Patrol: On A Roll",
+    "achievements": [
+        {
+            "apiName": "To the Lookout",
+            "unlocked": true,
+            "unlockedAt": "2025-09-11T12:03:57.000Z",
+            "displayName": "To the Lookout",
+            "description": "Complete one rescue mission.",
+            "iconUrl": "bdf92b937cc0b955ac2156a52948731c97703619.jpg",
+            "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+            "hidden": false,
+            "globalPct": 93.4
+        },
+        {
+            "apiName": "No Job is too Big",
+            "unlocked": true,
+            "unlockedAt": "2025-09-11T13:08:41.000Z",
+            "displayName": "No Job is too Big",
+            "description": "Complete five rescue missions.",
+            "iconUrl": "e60b06976407a2cc5739a8d6be629ee83fb3e919.jpg",
+            "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+            "hidden": false,
+            "globalPct": 72.8
+        },
+        {
+            "apiName": "Pups to the Rescue",
+            "unlocked": true,
+            "unlockedAt": "2026-05-27T13:07:00.000Z",
+            "displayName": "Pups to the Rescue",
+            "description": "Complete ten rescue missions.",
+            "iconUrl": "48b9321c88d4415ce1a9c60c08519a8514fd5f54.jpg",
+            "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+            "hidden": false,
+            "globalPct": 56.9
+        },
+        {
+            "apiName": "Adventure Bay Hero",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Adventure Bay Hero",
+            "description": "Complete all rescue missions.",
+            "iconUrl": "85bddd417ca7b439ed2ae27183e0968b2ecef5e5.jpg",
+            "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+            "hidden": false,
+            "globalPct": 42.5
+        },
+        {
+            "apiName": "Ryder Needs Us",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ryder Needs Us",
+            "description": "Save the day with all the pups of the PAW Patrol.",
+            "iconUrl": "8da03b4b83021245b827f7fca78d7ec3b22db1d9.jpg",
+            "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+            "hidden": false,
+            "globalPct": 45.5
+        },
+        {
+            "apiName": "PAWs of Gold",
+            "unlocked": true,
+            "unlockedAt": "2025-09-11T12:03:57.000Z",
+            "displayName": "PAWs of Gold",
+            "description": "Collect a Golden Paw Print and finish a rescue mission.",
+            "iconUrl": "26c700f494918adf6853ab10d6550f367f15433d.jpg",
+            "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+            "hidden": false,
+            "globalPct": 93
+        },
+        {
+            "apiName": "PAWsome Paw Prints",
+            "unlocked": true,
+            "unlockedAt": "2025-09-11T12:03:57.000Z",
+            "displayName": "PAWsome Paw Prints",
+            "description": "Collect all five Golden Paw Prints in one rescue mission.",
+            "iconUrl": "67b3a1fc02c0cfd1f3823a069407b9983e7af6e4.jpg",
+            "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+            "hidden": false,
+            "globalPct": 90.4
+        },
+        {
+            "apiName": "All That Glitters",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "All That Glitters",
+            "description": "Collect every Golden Paw Print and finish a rescue mission.",
+            "iconUrl": "e2b518f6283a3b2303a366ec05b11b8947fbabc5.jpg",
+            "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+            "hidden": false,
+            "globalPct": 16.8
+        },
+        {
+            "apiName": "Bronze Pup Treat",
+            "unlocked": true,
+            "unlockedAt": "2025-09-11T12:03:57.000Z",
+            "displayName": "Bronze Pup Treat",
+            "description": "Earn a Bronze Pup treat on any rescue mission.",
+            "iconUrl": "f16e198b619833cd87617c2cab9640f1ce98333f.jpg",
+            "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+            "hidden": false,
+            "globalPct": 93.2
+        },
+        {
+            "apiName": "Silver Pup Treat",
+            "unlocked": true,
+            "unlockedAt": "2025-09-11T12:03:57.000Z",
+            "displayName": "Silver Pup Treat",
+            "description": "Earn a Silver Pup Treat on any rescue mission.",
+            "iconUrl": "3fbe2c2ef487fea7636f9958ec8db21d729552fc.jpg",
+            "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+            "hidden": false,
+            "globalPct": 93.2
+        },
+        {
+            "apiName": "Go Pups Go",
+            "unlocked": true,
+            "unlockedAt": "2026-05-27T13:07:00.000Z",
+            "displayName": "Go Pups Go",
+            "description": "Earn a Golden pup Treat on ten different rescue missions.",
+            "iconUrl": "5014117e31a0fadd166611278f6fb9a672ba0e09.jpg",
+            "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+            "hidden": false,
+            "globalPct": 58.1
+        },
+        {
+            "apiName": "Platinum Pup Treat",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Platinum Pup Treat",
+            "description": "Earn a Platinum Pup Treat on any rescue mission.",
+            "iconUrl": "f510d0479d3ba14caa7d755f8ded628c6ef8f790.jpg",
+            "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+            "hidden": false,
+            "globalPct": 45.3
+        },
+        {
+            "apiName": "PAWfect Platinum",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "PAWfect Platinum",
+            "description": "Earn a Platinum Pup Treat on ten different rescue missions.",
+            "iconUrl": "3e36430deb539cfe6774fc052464432a3a441998.jpg",
+            "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+            "hidden": false,
+            "globalPct": 6.9
+        },
+        {
+            "apiName": "No Pup is too Small",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "No Pup is too Small",
+            "description": "Earn a Platinum Pup Treat on every rescue mission in the game.",
+            "iconUrl": "b43e2ced6c9736c70a4831536a05dac1a8e9db41.jpg",
+            "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+            "hidden": false,
+            "globalPct": 3.5
+        }
+    ],
+    "playtimeForever": 169,
+    "lastPlayedTs": "2026-05-27T13:09:08.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/758730/60f80ab9be49220d165ec78f27fe5311180e87ae.jpg",
+    "lastUnlockedAt": "2026-05-27T13:07:00.000Z",
+    "lastUnlockName": "Pups to the Rescue",
+    "preview": [
+        {
+            "apiName": "Pups to the Rescue",
+            "displayName": "Pups to the Rescue",
+            "unlocked": true,
+            "unlockedAt": "2026-05-27T13:07:00.000Z",
+            "iconUrl": "48b9321c88d4415ce1a9c60c08519a8514fd5f54.jpg",
+            "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+            "globalPct": 56.9
+        },
+        {
+            "apiName": "Go Pups Go",
+            "displayName": "Go Pups Go",
+            "unlocked": true,
+            "unlockedAt": "2026-05-27T13:07:00.000Z",
+            "iconUrl": "5014117e31a0fadd166611278f6fb9a672ba0e09.jpg",
+            "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+            "globalPct": 58.1
+        },
+        {
+            "apiName": "No Job is too Big",
+            "displayName": "No Job is too Big",
+            "unlocked": true,
+            "unlockedAt": "2025-09-11T13:08:41.000Z",
+            "iconUrl": "e60b06976407a2cc5739a8d6be629ee83fb3e919.jpg",
+            "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+            "globalPct": 72.8
+        },
+        {
+            "apiName": "To the Lookout",
+            "displayName": "To the Lookout",
+            "unlocked": true,
+            "unlockedAt": "2025-09-11T12:03:57.000Z",
+            "iconUrl": "bdf92b937cc0b955ac2156a52948731c97703619.jpg",
+            "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+            "globalPct": 93.4
+        },
+        {
+            "apiName": "PAWs of Gold",
+            "displayName": "PAWs of Gold",
+            "unlocked": true,
+            "unlockedAt": "2025-09-11T12:03:57.000Z",
+            "iconUrl": "26c700f494918adf6853ab10d6550f367f15433d.jpg",
+            "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+            "globalPct": 93
+        },
+        {
+            "apiName": "PAWsome Paw Prints",
+            "displayName": "PAWsome Paw Prints",
+            "unlocked": true,
+            "unlockedAt": "2025-09-11T12:03:57.000Z",
+            "iconUrl": "67b3a1fc02c0cfd1f3823a069407b9983e7af6e4.jpg",
+            "iconGrayUrl": "9160cd8f092610abd37e627eda2dd60838f73d12.jpg",
+            "globalPct": 90.4
+        }
+    ]
+}

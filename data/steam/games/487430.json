@@ -1,0 +1,147 @@
+{
+    "appId": 487430,
+    "hasAchievements": true,
+    "total": 7,
+    "unlocked": 4,
+    "gameName": "KARAKARA",
+    "achievements": [
+        {
+            "apiName": "first_play",
+            "unlocked": true,
+            "unlockedAt": "2017-09-19T20:12:32.000Z",
+            "displayName": "First time running the game.",
+            "description": "最初の起動",
+            "iconUrl": "592812977391d2b63b1fb5e21444c7ccd0995c92.jpg",
+            "iconGrayUrl": "9d51b1adc2c7bab53bc4c51504ced2792f252176.jpg",
+            "hidden": false,
+            "globalPct": 62.3
+        },
+        {
+            "apiName": "english_play",
+            "unlocked": true,
+            "unlockedAt": "2017-09-19T20:12:35.000Z",
+            "displayName": "Play it in English.",
+            "description": "英語でプレイ",
+            "iconUrl": "488f728785df894915f393064b49d355a4cba081.jpg",
+            "iconGrayUrl": "97f44eb89a444e3ff91d6cfd85a9286958c37ec5.jpg",
+            "hidden": false,
+            "globalPct": 49.7
+        },
+        {
+            "apiName": "japanese_play",
+            "unlocked": true,
+            "unlockedAt": "2017-09-19T20:12:58.000Z",
+            "displayName": "Play it in Japanese.",
+            "description": "日本語でプレイ",
+            "iconUrl": "ff723d78f55cc030b71286c98432384243473994.jpg",
+            "iconGrayUrl": "9d79d6f2bc57e19660b0eeb1d29b1708469c5365.jpg",
+            "hidden": false,
+            "globalPct": 29.2
+        },
+        {
+            "apiName": "chapter1_complete",
+            "unlocked": true,
+            "unlockedAt": "2017-09-20T22:00:31.000Z",
+            "displayName": "Clear Chapter 1",
+            "description": "１章クリア",
+            "iconUrl": "1253470d855f2a94799d0bd4756564c67b5a9a9a.jpg",
+            "iconGrayUrl": "cc34293b885f5ea893c80e8ec28ffbbf09a6c0ce.jpg",
+            "hidden": false,
+            "globalPct": 39
+        },
+        {
+            "apiName": "chapter2_complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Clear Chapter 2",
+            "description": "２章クリア",
+            "iconUrl": "a126a8c39a169230a1762a14db55e58f59ee11e3.jpg",
+            "iconGrayUrl": "42d5bef569d4aafe71222a582a5d90956b6569ed.jpg",
+            "hidden": false,
+            "globalPct": 32.3
+        },
+        {
+            "apiName": "cg_complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "CG Gallery Complete",
+            "description": "ＣＧギャラリーコンプリート",
+            "iconUrl": "c50b71b3bc8459a58c9938cc8db991ba49c89f65.jpg",
+            "iconGrayUrl": "39c37cb2e1c609da4dcedd1eb53421c6d5e199d4.jpg",
+            "hidden": false,
+            "globalPct": 32.3
+        },
+        {
+            "apiName": "sound_complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sound Gallery Complete",
+            "description": "サウンドギャラリーコンプリート",
+            "iconUrl": "449131f4468e7e7262b15ae5cf0e75e02082fefa.jpg",
+            "iconGrayUrl": "c1c1597b95cb7a4d9c75d418b43f0631d40ddaa2.jpg",
+            "hidden": false,
+            "globalPct": 32.3
+        }
+    ],
+    "playtimeForever": 393,
+    "lastPlayedTs": "2018-12-29T13:45:15.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/487430/c42c012b79058d38a7f60b2bf644671b379e76e7.jpg",
+    "lastUnlockedAt": "2017-09-20T22:00:31.000Z",
+    "lastUnlockName": "Clear Chapter 1",
+    "preview": [
+        {
+            "apiName": "chapter1_complete",
+            "displayName": "Clear Chapter 1",
+            "unlocked": true,
+            "unlockedAt": "2017-09-20T22:00:31.000Z",
+            "iconUrl": "1253470d855f2a94799d0bd4756564c67b5a9a9a.jpg",
+            "iconGrayUrl": "cc34293b885f5ea893c80e8ec28ffbbf09a6c0ce.jpg",
+            "globalPct": 39
+        },
+        {
+            "apiName": "japanese_play",
+            "displayName": "Play it in Japanese.",
+            "unlocked": true,
+            "unlockedAt": "2017-09-19T20:12:58.000Z",
+            "iconUrl": "ff723d78f55cc030b71286c98432384243473994.jpg",
+            "iconGrayUrl": "9d79d6f2bc57e19660b0eeb1d29b1708469c5365.jpg",
+            "globalPct": 29.2
+        },
+        {
+            "apiName": "english_play",
+            "displayName": "Play it in English.",
+            "unlocked": true,
+            "unlockedAt": "2017-09-19T20:12:35.000Z",
+            "iconUrl": "488f728785df894915f393064b49d355a4cba081.jpg",
+            "iconGrayUrl": "97f44eb89a444e3ff91d6cfd85a9286958c37ec5.jpg",
+            "globalPct": 49.7
+        },
+        {
+            "apiName": "first_play",
+            "displayName": "First time running the game.",
+            "unlocked": true,
+            "unlockedAt": "2017-09-19T20:12:32.000Z",
+            "iconUrl": "592812977391d2b63b1fb5e21444c7ccd0995c92.jpg",
+            "iconGrayUrl": "9d51b1adc2c7bab53bc4c51504ced2792f252176.jpg",
+            "globalPct": 62.3
+        },
+        {
+            "apiName": "chapter2_complete",
+            "displayName": "Clear Chapter 2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a126a8c39a169230a1762a14db55e58f59ee11e3.jpg",
+            "iconGrayUrl": "42d5bef569d4aafe71222a582a5d90956b6569ed.jpg",
+            "globalPct": 32.3
+        },
+        {
+            "apiName": "cg_complete",
+            "displayName": "CG Gallery Complete",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c50b71b3bc8459a58c9938cc8db991ba49c89f65.jpg",
+            "iconGrayUrl": "39c37cb2e1c609da4dcedd1eb53421c6d5e199d4.jpg",
+            "globalPct": 32.3
+        }
+    ]
+}

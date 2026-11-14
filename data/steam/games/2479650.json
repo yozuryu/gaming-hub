@@ -1,0 +1,368 @@
+{
+    "appId": 2479650,
+    "hasAchievements": true,
+    "total": 27,
+    "unlocked": 0,
+    "gameName": "SpongeBob SquarePants: Titans of the Tide",
+    "achievements": [
+        {
+            "apiName": "BestFriendsForever",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Best Friends Forever",
+            "description": "",
+            "iconUrl": "36a4273e4004f0846a146137f0e208a010e7f28b.jpg",
+            "iconGrayUrl": "de0ee6792613ca54d406734d997f64c06bd38c99.jpg",
+            "hidden": true,
+            "globalPct": 87.6
+        },
+        {
+            "apiName": "NotAllGoldThatShimmers",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Not all Gold that glitters",
+            "description": "",
+            "iconUrl": "844e26379f2329001a4e7becce7064f57bfd9c41.jpg",
+            "iconGrayUrl": "a130ec9c9e203aa64a9a1988d044f806eb972814.jpg",
+            "hidden": true,
+            "globalPct": 64.3
+        },
+        {
+            "apiName": "ShinyMuscularAndDeadly",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Shiny, muscular and deadly",
+            "description": "",
+            "iconUrl": "c511183ed90bde9e31421e0f24784caebd0ffc1d.jpg",
+            "iconGrayUrl": "043ea4540ff2620ec322517776e1fb8bc6ee8cd5.jpg",
+            "hidden": true,
+            "globalPct": 48.2
+        },
+        {
+            "apiName": "DefeatHibernationSandy",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Survival of the Idiots",
+            "description": "",
+            "iconUrl": "b6d55da4834ca70897f53e01378a10b37c2cb488.jpg",
+            "iconGrayUrl": "21dc5dde373e9f7da18b361def601ad32664ee79.jpg",
+            "hidden": true,
+            "globalPct": 43.7
+        },
+        {
+            "apiName": "GetTheGoldenSpatula",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "“Only a fry cook who is worthy…”",
+            "description": "",
+            "iconUrl": "10e78b64d5dfdf186b3580fd41c19b96503ee4b1.jpg",
+            "iconGrayUrl": "9c034e43cc82f380d7d4d0dfae412b977eadf3d9.jpg",
+            "hidden": true,
+            "globalPct": 41
+        },
+        {
+            "apiName": "SocksNTails",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Socks’n’Tails",
+            "description": "",
+            "iconUrl": "0a5e17c3803e135638bf740267caeab0c5af7bfd.jpg",
+            "iconGrayUrl": "773e901b54f8e160df408508057fbb6df241ca7b.jpg",
+            "hidden": true,
+            "globalPct": 40.7
+        },
+        {
+            "apiName": "BummerVacation",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bummer Vacation",
+            "description": "",
+            "iconUrl": "4b6f480cda43ca89f575bea111438a167979bbfe.jpg",
+            "iconGrayUrl": "3c9ebac05825b4a4a6f168278e4c7ce5c843dcdc.jpg",
+            "hidden": true,
+            "globalPct": 29.2
+        },
+        {
+            "apiName": "ExquisiteShenanigans",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Exquisite Shenanigans",
+            "description": "",
+            "iconUrl": "80a8b0c3a9c3985d8a7ba9f4913e88012bca583f.jpg",
+            "iconGrayUrl": "b1311490f702cd6a5819b211a4688bffab49eef3.jpg",
+            "hidden": true,
+            "globalPct": 22.2
+        },
+        {
+            "apiName": "FromDungeonToCrawler",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "From Dungeon to Crawler",
+            "description": "",
+            "iconUrl": "d1c0f691b8c1fbe4c9f1af1ccdd9e76dc4b774b6.jpg",
+            "iconGrayUrl": "75ae14a46a2cfb7f2c82bf44111dec463654d7ac.jpg",
+            "hidden": true,
+            "globalPct": 19.7
+        },
+        {
+            "apiName": "CatchItIfYouCan",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Catch it if you can!",
+            "description": "Defeat an Ol' Boomer Ghost with its own Cannonballs 5 times",
+            "iconUrl": "98d5247bd9c3ff2525548829e0f3a36ebea9554f.jpg",
+            "iconGrayUrl": "66c3b17cf3e8e6db79968287468615e9e0b199c5.jpg",
+            "hidden": false,
+            "globalPct": 42
+        },
+        {
+            "apiName": "ChefsKiss",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Chef’s Kiss",
+            "description": "Reach the score 999 making Krabby Patties",
+            "iconUrl": "b8c5f0822a9ffa7cebde61e305b26a34dbfc3494.jpg",
+            "iconGrayUrl": "5ca82b05d015c8073f6ba874bcfb5eabebbbec7e.jpg",
+            "hidden": false,
+            "globalPct": 19.4
+        },
+        {
+            "apiName": "KeepOnDiggin",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Keep Digging",
+            "description": "Burrow out the stuck citizens of Goldfish Island and Bikini Bottom",
+            "iconUrl": "b19c2c9d5cf51432a03288c8802395eb76c3357c.jpg",
+            "iconGrayUrl": "faaf874f762ace852def96a4a99a9c86621b5e44.jpg",
+            "hidden": false,
+            "globalPct": 26
+        },
+        {
+            "apiName": "FirmlyGraspIt",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "“FIRMLY GRASP IT!”",
+            "description": "Catch 100 pink Jellyfish",
+            "iconUrl": "6b3261329b723d3c7a0b14303c592cac06947b53.jpg",
+            "iconGrayUrl": "5ddbe35b22a938d109098b1482d5fad59a3868b5.jpg",
+            "hidden": false,
+            "globalPct": 28.5
+        },
+        {
+            "apiName": "AllMaxedOut",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "All maxed out!",
+            "description": "Collect 16 Underpant Pieces",
+            "iconUrl": "62aa9c0b898131f56844eceec4b1ccf149f15eae.jpg",
+            "iconGrayUrl": "d1cd0ef2309988d1b968a38006afb776d6e5a8a3.jpg",
+            "hidden": false,
+            "globalPct": 10.8
+        },
+        {
+            "apiName": "MakeMrKrabsRich",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Make Mr. Krabs rich",
+            "description": "Purchase all items from Pearl's shop",
+            "iconUrl": "f5b3a26b87d0b3418aa7f46032bcf614533754d1.jpg",
+            "iconGrayUrl": "96590e95ee9419518d152e601a7b004fd9ce3a91.jpg",
+            "hidden": false,
+            "globalPct": 8.6
+        },
+        {
+            "apiName": "SoMuchDestruction",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "So much destruction",
+            "description": "Destroy 500 objects",
+            "iconUrl": "349a84cce41e54e0dad294f1e9d84abc15cc7e0a.jpg",
+            "iconGrayUrl": "c7da12ae631b679da18596951493480fa1aca247.jpg",
+            "hidden": false,
+            "globalPct": 50.3
+        },
+        {
+            "apiName": "DashingFashion",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dashing Fashion",
+            "description": "Unlock all Costumes",
+            "iconUrl": "93147ceab061f13d805e7804145b5fcd02167ccf.jpg",
+            "iconGrayUrl": "304665f54962e869e80621be096600f30ddfe8bd.jpg",
+            "hidden": false,
+            "globalPct": 9.5
+        },
+        {
+            "apiName": "Hoarder",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hoarder",
+            "description": "Open the treasure chests found in each location of the main story.",
+            "iconUrl": "7efaa0dc993dded3ee20605c1732cb4e681b6b88.jpg",
+            "iconGrayUrl": "683051a85f438afe701728171bbf9378862fe2a4.jpg",
+            "hidden": false,
+            "globalPct": 9.4
+        },
+        {
+            "apiName": "IDidEverything",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "I did EVERYTHING!",
+            "description": "100% everything in the game",
+            "iconUrl": "37f9d631d7139ffe964e5200380b642b27527afb.jpg",
+            "iconGrayUrl": "57b66dd44fefd52e304307248393f9cbe5764c74.jpg",
+            "hidden": false,
+            "globalPct": 8.2
+        },
+        {
+            "apiName": "DidAllThoseThings",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Did all those things",
+            "description": "Complete all of Plankton's Challenges",
+            "iconUrl": "824427cf7c1f00b63ecad9f58ea39bfdc748e116.jpg",
+            "iconGrayUrl": "ced3ba4d91ef2ac876edc6fcab1dffcb7a5d3c1a.jpg",
+            "hidden": false,
+            "globalPct": 9.2
+        },
+        {
+            "apiName": "Woooohooo",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Woooohooo!",
+            "description": "Travel 2000 meters with the Ghostboard",
+            "iconUrl": "1b18a14dc06bd61a757be2dae047d779833c34bb.jpg",
+            "iconGrayUrl": "216558f556cebb3dc9f9c4c4c1668841c0d79c4e.jpg",
+            "hidden": false,
+            "globalPct": 72.3
+        },
+        {
+            "apiName": "AgentOfChaos",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Agent of Chaos",
+            "description": "Hit 100 NPCs",
+            "iconUrl": "4d262eb197c70bca66444dac9e13ad012fd2056b.jpg",
+            "iconGrayUrl": "62b0f277f8233dfc2da3827c1548704515855729.jpg",
+            "hidden": false,
+            "globalPct": 37.6
+        },
+        {
+            "apiName": "CompleteAllRaces",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "“The most totally awesome perfect race”",
+            "description": "Complete all races",
+            "iconUrl": "6a9d38bdb6543eddacd6da9e54a035c7da9ade05.jpg",
+            "iconGrayUrl": "49804070fc940eb46a589873a579b4b84f56f67b.jpg",
+            "hidden": false,
+            "globalPct": 11.2
+        },
+        {
+            "apiName": "HelpSandy",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "\"They don't call me Cheeks for nothin'!\"",
+            "description": "",
+            "iconUrl": "c84e0169c062c56ce7cb173979fe60b20befb071.jpg",
+            "iconGrayUrl": "4e301b303061c56195c9dc60ff8e79c11525746b.jpg",
+            "hidden": true,
+            "globalPct": 21.5
+        },
+        {
+            "apiName": "CoolThemOff",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cool them off",
+            "description": "Throw 20 ghosts into Goo",
+            "iconUrl": "3f8aeeb12582b960c8db43fac88b4d42ba4bda89.jpg",
+            "iconGrayUrl": "7bd52cc562e933c3be0dc19e9d03160e0201a1a8.jpg",
+            "hidden": false,
+            "globalPct": 9.7
+        },
+        {
+            "apiName": "TheWisdom",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "THE wisdom",
+            "description": "Find all secret wisdoms and watch the TV in the secret shrine",
+            "iconUrl": "31fd957ecf8139a4634b4148fd892982129ee795.jpg",
+            "iconGrayUrl": "e5ffec68cfc86a3ebc30da451869a8331c1b1f20.jpg",
+            "hidden": false,
+            "globalPct": 11.2
+        },
+        {
+            "apiName": "Cheeeeze",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "CHEEEEZE!",
+            "description": "Take 1 photo in photomode",
+            "iconUrl": "5dd660b9caf657b6ee612a3f8b00806b9b723376.jpg",
+            "iconGrayUrl": "d06091a22c49b932a48f5f4548375c37ba044d54.jpg",
+            "hidden": false,
+            "globalPct": 47.7
+        }
+    ],
+    "headerUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2479650/f8d8218dfd7c0e2012459a0580cd908a8938a267/header.jpg",
+    "playtimeForever": 9,
+    "lastPlayedTs": "2026-11-08T05:46:06.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2479650/768c0e9ca8162891d0fead8d7a28fb2f9b0d2658.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "BestFriendsForever",
+            "displayName": "Best Friends Forever",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "36a4273e4004f0846a146137f0e208a010e7f28b.jpg",
+            "iconGrayUrl": "de0ee6792613ca54d406734d997f64c06bd38c99.jpg",
+            "globalPct": 87.6
+        },
+        {
+            "apiName": "NotAllGoldThatShimmers",
+            "displayName": "Not all Gold that glitters",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "844e26379f2329001a4e7becce7064f57bfd9c41.jpg",
+            "iconGrayUrl": "a130ec9c9e203aa64a9a1988d044f806eb972814.jpg",
+            "globalPct": 64.3
+        },
+        {
+            "apiName": "ShinyMuscularAndDeadly",
+            "displayName": "Shiny, muscular and deadly",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "c511183ed90bde9e31421e0f24784caebd0ffc1d.jpg",
+            "iconGrayUrl": "043ea4540ff2620ec322517776e1fb8bc6ee8cd5.jpg",
+            "globalPct": 48.2
+        },
+        {
+            "apiName": "DefeatHibernationSandy",
+            "displayName": "Survival of the Idiots",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "b6d55da4834ca70897f53e01378a10b37c2cb488.jpg",
+            "iconGrayUrl": "21dc5dde373e9f7da18b361def601ad32664ee79.jpg",
+            "globalPct": 43.7
+        },
+        {
+            "apiName": "GetTheGoldenSpatula",
+            "displayName": "“Only a fry cook who is worthy…”",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "10e78b64d5dfdf186b3580fd41c19b96503ee4b1.jpg",
+            "iconGrayUrl": "9c034e43cc82f380d7d4d0dfae412b977eadf3d9.jpg",
+            "globalPct": 41
+        },
+        {
+            "apiName": "SocksNTails",
+            "displayName": "Socks’n’Tails",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "0a5e17c3803e135638bf740267caeab0c5af7bfd.jpg",
+            "iconGrayUrl": "773e901b54f8e160df408508057fbb6df241ca7b.jpg",
+            "globalPct": 40.7
+        }
+    ]
+}

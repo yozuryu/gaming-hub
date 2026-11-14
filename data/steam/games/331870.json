@@ -1,0 +1,290 @@
+{
+    "appId": 331870,
+    "hasAchievements": true,
+    "total": 20,
+    "unlocked": 2,
+    "gameName": "AER Memories of Old",
+    "achievements": [
+        {
+            "apiName": "INTRO_FINISHED",
+            "unlocked": true,
+            "unlockedAt": "2018-09-08T08:58:53.000Z",
+            "displayName": "Light at the end of the tunnel",
+            "description": "Escape the collapsing cave.",
+            "iconUrl": "5344b31c8e94002087ba2c943cfcc219f7d01262.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "hidden": false,
+            "globalPct": 75.8
+        },
+        {
+            "apiName": "WEST_FINISHED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "People's Haven",
+            "description": "Complete the Eventide Sanctuary.",
+            "iconUrl": "d2c279ac63231addfc19d37571f5ed4dcaaba68c.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "hidden": false,
+            "globalPct": 27.9
+        },
+        {
+            "apiName": "EAST_FINISHED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Knowledge for Power",
+            "description": "Complete the Archives.",
+            "iconUrl": "f1c7b598469189e0d4cffa69f6d7a00e52a5f623.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "hidden": false,
+            "globalPct": 22.9
+        },
+        {
+            "apiName": "NORTH_FINISHED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mausoleum of Ice",
+            "description": "Complete the Monastery.",
+            "iconUrl": "4409ba095f1059f0f6bd15025e1221ff951edac5.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "hidden": false,
+            "globalPct": 22.1
+        },
+        {
+            "apiName": "GAME_FINISHED",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Equilibrium",
+            "description": "Completed the game.",
+            "iconUrl": "79353f365b4558807aa61e6ec2df0cb23a4ce6fe.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "hidden": false,
+            "globalPct": 20.5
+        },
+        {
+            "apiName": "FOUND_MAMBA",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Baa from the past",
+            "description": "Find the Ancient Llamba.",
+            "iconUrl": "f11a2eede5dea140ed4b54f03ec9b260a72c3b12.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "hidden": false,
+            "globalPct": 13.8
+        },
+        {
+            "apiName": "TALK_TO_SPIRIT_ANIMALS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Talk to all the spirit animals",
+            "description": "Speak to all of the spirit animals.",
+            "iconUrl": "3713e4f8a25bb93e3c3a85b9b3a9c887d945c05f.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "hidden": false,
+            "globalPct": 14.1
+        },
+        {
+            "apiName": "COMPLETED_MAP",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cartographer",
+            "description": "Discover all areas of the map.",
+            "iconUrl": "00ed79592d680e2dfebb194f094b6cbf0d0605a2.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "hidden": false,
+            "globalPct": 23.9
+        },
+        {
+            "apiName": "LAMBABY_LOVE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mama?",
+            "description": "Get some Lambaby love.",
+            "iconUrl": "54f06bf9db3f84ea3fd2244fdf448ca1919562a9.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "hidden": false,
+            "globalPct": 37.3
+        },
+        {
+            "apiName": "FOUND_ERIN",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hide and Seek",
+            "description": "Find Erin when she's gone.",
+            "iconUrl": "b4fff076e5c0036f8c6ef340abb2e1c5b60ea4e7.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "hidden": false,
+            "globalPct": 11.7
+        },
+        {
+            "apiName": "FOUND_CRAB_ISLAND",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "An uninvited guest",
+            "description": "Find the Crab Island.",
+            "iconUrl": "d62f78d8d80f5b9e9bb71b8e5414a0dd6f091646.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "hidden": false,
+            "globalPct": 15.9
+        },
+        {
+            "apiName": "FOUND_BIG_SKELETON",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "In the belly of the beast",
+            "description": "Find the bones of an old beast.",
+            "iconUrl": "ac74a4a3e5cc6b860bb6ed9995b3738c45c4a2c3.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "hidden": false,
+            "globalPct": 20.1
+        },
+        {
+            "apiName": "FOUND_RIFT_CAVE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Gaze into the abyss",
+            "description": "Find the dwellings of the rift cult.",
+            "iconUrl": "da206d6e1f8a0edfd4e63c53a209f9360f4d7daa.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "hidden": false,
+            "globalPct": 21.5
+        },
+        {
+            "apiName": "FOUND_BATTLEFIELD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Memorial",
+            "description": "Find the ancient battlefield.",
+            "iconUrl": "192ec136d9a1efdb042e42123dfe664f12144519.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "hidden": false,
+            "globalPct": 17
+        },
+        {
+            "apiName": "FOUND_STONE_MAP",
+            "unlocked": true,
+            "unlockedAt": "2018-09-08T09:36:14.000Z",
+            "displayName": "Written in stone",
+            "description": "Find the chiseled stone map.",
+            "iconUrl": "0db5e96a0012eee98142708040117192e960a3de.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "hidden": false,
+            "globalPct": 14.4
+        },
+        {
+            "apiName": "FOUND_BIRDSHRINE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Condor condo",
+            "description": "Find the giant birdshrine.",
+            "iconUrl": "7869c9fd18a063d7ec0de35509c3f2332a7d846c.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "hidden": false,
+            "globalPct": 18.4
+        },
+        {
+            "apiName": "FOUND_FOX_STATUE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Tails of Stone",
+            "description": "Find the statue of the fox.",
+            "iconUrl": "38ea08b179f147a0bc853f48e7b7329a8c996df3.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "hidden": false,
+            "globalPct": 14.8
+        },
+        {
+            "apiName": "FOUND_DEER_STATUE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Antlers of Stone",
+            "description": "Find the statue of the deer.",
+            "iconUrl": "ad82750604a2120af17cf1d110c5877b8636635b.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "hidden": false,
+            "globalPct": 22.8
+        },
+        {
+            "apiName": "FOUND_CRANE_STATUE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Wings of Stone",
+            "description": "Find the statue of crane.",
+            "iconUrl": "72dad073d1ecd6acbe9796648f53b934f8d927d0.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "hidden": false,
+            "globalPct": 21
+        },
+        {
+            "apiName": "DOWN_THE_WELL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ripples on the surface",
+            "description": "Step into the well.",
+            "iconUrl": "18ec6ddf5bf726b21b17f79e731b124eb137b0b0.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "hidden": false,
+            "globalPct": 13.4
+        }
+    ],
+    "playtimeForever": 269,
+    "lastPlayedTs": "2024-08-07T13:07:22.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/331870/a08489f03db66c46ec657411d0e25e1ae2006b2b.jpg",
+    "lastUnlockedAt": "2018-09-08T09:36:14.000Z",
+    "lastUnlockName": "Written in stone",
+    "preview": [
+        {
+            "apiName": "FOUND_STONE_MAP",
+            "displayName": "Written in stone",
+            "unlocked": true,
+            "unlockedAt": "2018-09-08T09:36:14.000Z",
+            "iconUrl": "0db5e96a0012eee98142708040117192e960a3de.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "globalPct": 14.4
+        },
+        {
+            "apiName": "INTRO_FINISHED",
+            "displayName": "Light at the end of the tunnel",
+            "unlocked": true,
+            "unlockedAt": "2018-09-08T08:58:53.000Z",
+            "iconUrl": "5344b31c8e94002087ba2c943cfcc219f7d01262.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "globalPct": 75.8
+        },
+        {
+            "apiName": "WEST_FINISHED",
+            "displayName": "People's Haven",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d2c279ac63231addfc19d37571f5ed4dcaaba68c.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "globalPct": 27.9
+        },
+        {
+            "apiName": "EAST_FINISHED",
+            "displayName": "Knowledge for Power",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f1c7b598469189e0d4cffa69f6d7a00e52a5f623.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "globalPct": 22.9
+        },
+        {
+            "apiName": "NORTH_FINISHED",
+            "displayName": "Mausoleum of Ice",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "4409ba095f1059f0f6bd15025e1221ff951edac5.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "globalPct": 22.1
+        },
+        {
+            "apiName": "GAME_FINISHED",
+            "displayName": "Equilibrium",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "79353f365b4558807aa61e6ec2df0cb23a4ce6fe.jpg",
+            "iconGrayUrl": "dde3a1ae713f7f6b23d2124ccdb3dc3e989bc924.jpg",
+            "globalPct": 20.5
+        }
+    ]
+}

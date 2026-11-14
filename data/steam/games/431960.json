@@ -1,0 +1,257 @@
+{
+    "appId": 431960,
+    "hasAchievements": true,
+    "total": 17,
+    "unlocked": 2,
+    "gameName": "Wallpaper Engine",
+    "achievements": [
+        {
+            "apiName": "POST_SCENE_WALLPAPER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "High aspirations",
+            "description": "Post a scene wallpaper to the Workshop.",
+            "iconUrl": "7aaf59fd3b8eaecdaea8077b57fbabc07bbec1fe.jpg",
+            "iconGrayUrl": "51a1d954a69f4401a45842971d8daa5dbee3e631.jpg",
+            "hidden": false,
+            "globalPct": 2.3
+        },
+        {
+            "apiName": "POST_VIDEO_WALLPAPER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Video makers",
+            "description": "Post a video wallpaper to the Workshop.",
+            "iconUrl": "8dcf7978482f1f876e10df9eea85cc6065157118.jpg",
+            "iconGrayUrl": "db104329cb8404c97fc7873fa642a4b7be2b33bd.jpg",
+            "hidden": false,
+            "globalPct": 2
+        },
+        {
+            "apiName": "POST_WEB_WALLPAPER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The internet on a disk",
+            "description": "Post a web wallpaper to the Workshop.",
+            "iconUrl": "d59c9b544a728f228d5df90908af2f655d9acc67.jpg",
+            "iconGrayUrl": "4164f86e88f0b1ff16598d07317fb7c030a7fe62.jpg",
+            "hidden": false,
+            "globalPct": 1
+        },
+        {
+            "apiName": "POST_APP_WALLPAPER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Press any key",
+            "description": "Create a local application-type wallpaper.",
+            "iconUrl": "72d89124d705f27fb7c4dca0cc7e534f1cc6396c.jpg",
+            "iconGrayUrl": "a22f92a198829e7803d4fe1216ee9a174d81fa10.jpg",
+            "hidden": false,
+            "globalPct": 1
+        },
+        {
+            "apiName": "USE_TEMPLATE_2D",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Creativity according to instructions",
+            "description": "Use a 2D scene template.",
+            "iconUrl": "67fa04833f1c94ee1a1d967cec39c67a9b0f4cee.jpg",
+            "iconGrayUrl": "da64b28daccef85627a8d62989d769b7367f72a4.jpg",
+            "hidden": false,
+            "globalPct": 6
+        },
+        {
+            "apiName": "USE_TEMPLATE_3D",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Working with 3D models",
+            "description": "Use a 3D scene template.",
+            "iconUrl": "e26fc45fc1f5959bdf1cd91e386881b6eb3b8009.jpg",
+            "iconGrayUrl": "22f96b108185ba8d8c831ca851c3696bbf48009b.jpg",
+            "hidden": false,
+            "globalPct": 3.7
+        },
+        {
+            "apiName": "SCREENSHOT_WITH_WORKSHOP_WALLPAPER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sharing is caring",
+            "description": "Post a Steam screenshot with a Workshop wallpaper open.",
+            "iconUrl": "96e1eabf52d8b57aa6276ccaed8d23ab97bff45b.jpg",
+            "iconGrayUrl": "8005860193ffb8c50f98c7762f4e6188c2ec1d95.jpg",
+            "hidden": false,
+            "globalPct": 7.1
+        },
+        {
+            "apiName": "SUBSCRIBE_10_WALLPAPERS",
+            "unlocked": true,
+            "unlockedAt": "2021-03-12T16:35:15.000Z",
+            "displayName": "Trying something new",
+            "description": "Use 10 different wallpapers from the Workshop.",
+            "iconUrl": "1c2250cab3953159e542b9ff4bd5be9ec75c9f61.jpg",
+            "iconGrayUrl": "fe22ac219153d4d40f1e68a0b505bafcdce967ee.jpg",
+            "hidden": false,
+            "globalPct": 83.8
+        },
+        {
+            "apiName": "FAVORITE_10_WALLPAPERS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Keeping an eye on this one",
+            "description": "Favorite 10 different wallpapers from the Workshop.",
+            "iconUrl": "dafacb580ba40cf8ef509ff9861f3ade9057397f.jpg",
+            "iconGrayUrl": "b92fe6e839dc9c94a25845558f009ef5e804412a.jpg",
+            "hidden": false,
+            "globalPct": 10
+        },
+        {
+            "apiName": "PEST",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Pest",
+            "description": "Cause 1 fatal error or trigger 128 warnings in the editor.",
+            "iconUrl": "1f519ad16689ebdd4860d548f0979ada9e739ef5.jpg",
+            "iconGrayUrl": "9d3197d3807c6714fe5c7d3ecc5ae45a779ec6d4.jpg",
+            "hidden": false,
+            "globalPct": 33.3
+        },
+        {
+            "apiName": "KON_CODE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "k0n4m1",
+            "description": "30 lives",
+            "iconUrl": "f9aa5e3dd5e28e9e1275369ecfea3961f449f53c.jpg",
+            "iconGrayUrl": "3c89c4575a841ad3d8156d66c13e30e6e7beb18d.jpg",
+            "hidden": false,
+            "globalPct": 5.4
+        },
+        {
+            "apiName": "SUBSCRIBE_25_WALLPAPERS",
+            "unlocked": true,
+            "unlockedAt": "2021-04-04T00:26:41.000Z",
+            "displayName": "Getting the hang of it",
+            "description": "Use 25 different wallpapers from the Workshop.",
+            "iconUrl": "4f48b4262e14e6b25f09d7df1e00392b8c65d0f2.jpg",
+            "iconGrayUrl": "54f4eea940cd7bf3fdf89b219d72067322c1306c.jpg",
+            "hidden": false,
+            "globalPct": 68.8
+        },
+        {
+            "apiName": "SUBSCRIBE_50_WALLPAPERS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Hard to pick just one",
+            "description": "Use 50 different wallpapers from the Workshop.",
+            "iconUrl": "09f51531c6243518225293fcdc81c8894ba7def6.jpg",
+            "iconGrayUrl": "9649e1a766570230f9bee944bce6f2eb4df50969.jpg",
+            "hidden": false,
+            "globalPct": 54.7
+        },
+        {
+            "apiName": "SUBSCRIBE_100_WALLPAPERS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Out of disk space",
+            "description": "Use 100 different wallpapers from the Workshop.",
+            "iconUrl": "53c2189431308f46ef77d0c5eb1ecac697d703a6.jpg",
+            "iconGrayUrl": "6c857181c311c81ee498c0281dbdf5837e9f03d0.jpg",
+            "hidden": false,
+            "globalPct": 40
+        },
+        {
+            "apiName": "FAVORITE_25_WALLPAPERS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Found some good ones",
+            "description": "Favorite 20 different Workshop wallpapers.",
+            "iconUrl": "b94c0f896de24c4bb8fc3a040f5e62a6df69d8d0.jpg",
+            "iconGrayUrl": "c5fe16c3e1d52e5c0423d4f1332fdea401c894b1.jpg",
+            "hidden": false,
+            "globalPct": 6.8
+        },
+        {
+            "apiName": "FAVORITE_50_WALLPAPERS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fair collection",
+            "description": "Favorite 30 different Workshop wallpapers.",
+            "iconUrl": "893e157fe5efed6fb37e012e80079b2b07e902ef.jpg",
+            "iconGrayUrl": "4655d1976efb1595e403a970b48f7f0948a63916.jpg",
+            "hidden": false,
+            "globalPct": 5.4
+        },
+        {
+            "apiName": "FAVORITE_100_WALLPAPERS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Wallpaper Connoisseur",
+            "description": "Favorite 50 different Workshop wallpapers.",
+            "iconUrl": "8e56c301216c03a675b4441942fa143ced7c9ee8.jpg",
+            "iconGrayUrl": "8a2f3d123328935a8c155e08765c9d91881a1fb2.jpg",
+            "hidden": false,
+            "globalPct": 4.1
+        }
+    ],
+    "playtimeForever": 114,
+    "lastPlayedTs": "2026-09-11T13:23:01.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/431960/72edaed9d748c6cf7397ffb1c83f0b837b9ebd9d.jpg",
+    "lastUnlockedAt": "2021-04-04T00:26:41.000Z",
+    "lastUnlockName": "Getting the hang of it",
+    "preview": [
+        {
+            "apiName": "SUBSCRIBE_25_WALLPAPERS",
+            "displayName": "Getting the hang of it",
+            "unlocked": true,
+            "unlockedAt": "2021-04-04T00:26:41.000Z",
+            "iconUrl": "4f48b4262e14e6b25f09d7df1e00392b8c65d0f2.jpg",
+            "iconGrayUrl": "54f4eea940cd7bf3fdf89b219d72067322c1306c.jpg",
+            "globalPct": 68.8
+        },
+        {
+            "apiName": "SUBSCRIBE_10_WALLPAPERS",
+            "displayName": "Trying something new",
+            "unlocked": true,
+            "unlockedAt": "2021-03-12T16:35:15.000Z",
+            "iconUrl": "1c2250cab3953159e542b9ff4bd5be9ec75c9f61.jpg",
+            "iconGrayUrl": "fe22ac219153d4d40f1e68a0b505bafcdce967ee.jpg",
+            "globalPct": 83.8
+        },
+        {
+            "apiName": "POST_SCENE_WALLPAPER",
+            "displayName": "High aspirations",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "7aaf59fd3b8eaecdaea8077b57fbabc07bbec1fe.jpg",
+            "iconGrayUrl": "51a1d954a69f4401a45842971d8daa5dbee3e631.jpg",
+            "globalPct": 2.3
+        },
+        {
+            "apiName": "POST_VIDEO_WALLPAPER",
+            "displayName": "Video makers",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "8dcf7978482f1f876e10df9eea85cc6065157118.jpg",
+            "iconGrayUrl": "db104329cb8404c97fc7873fa642a4b7be2b33bd.jpg",
+            "globalPct": 2
+        },
+        {
+            "apiName": "POST_WEB_WALLPAPER",
+            "displayName": "The internet on a disk",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d59c9b544a728f228d5df90908af2f655d9acc67.jpg",
+            "iconGrayUrl": "4164f86e88f0b1ff16598d07317fb7c030a7fe62.jpg",
+            "globalPct": 1
+        },
+        {
+            "apiName": "POST_APP_WALLPAPER",
+            "displayName": "Press any key",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "72d89124d705f27fb7c4dca0cc7e534f1cc6396c.jpg",
+            "iconGrayUrl": "a22f92a198829e7803d4fe1216ee9a174d81fa10.jpg",
+            "globalPct": 1
+        }
+    ]
+}

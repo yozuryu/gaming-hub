@@ -1,0 +1,422 @@
+{
+    "appId": 506510,
+    "hasAchievements": true,
+    "total": 32,
+    "unlocked": 2,
+    "gameName": "Shadows of Adam",
+    "achievements": [
+        {
+            "apiName": "reach_level_10",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Lifting Weights",
+            "description": "Reach Level 10",
+            "iconUrl": "35e3dc1f0a33579a2b95c91d07e9ab58a8b49941.jpg",
+            "iconGrayUrl": "59084dba89bf1a0a7ff49da2c6f2289e88233dfd.jpg",
+            "hidden": false,
+            "globalPct": 41.6
+        },
+        {
+            "apiName": "reach_level_25",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Reaching Toward the Light",
+            "description": "Reach Level 25",
+            "iconUrl": "a1d035c1de7afc677cc622557f9c1dca02b34233.jpg",
+            "iconGrayUrl": "261d02bd6b3877eb436edc09c3bb9d09ddc32fc4.jpg",
+            "hidden": false,
+            "globalPct": 23.8
+        },
+        {
+            "apiName": "reach_level_40",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Power Leveler!",
+            "description": "Reach Level 40",
+            "iconUrl": "7369a1555791ab12947a6dc1b5c5a9abc1dcb745.jpg",
+            "iconGrayUrl": "46453cf6774560ec4784e830a740f37253ddc864.jpg",
+            "hidden": false,
+            "globalPct": 6.2
+        },
+        {
+            "apiName": "kellan_finallight",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The One Who Bears The Light",
+            "description": "Learn Final Light",
+            "iconUrl": "dd4ddce8bc4331ec6fe65520647df90657865a30.jpg",
+            "iconGrayUrl": "0420b3d9562b52785a236e0dc351de567ce07c54.jpg",
+            "hidden": false,
+            "globalPct": 24.3
+        },
+        {
+            "apiName": "azzy_wraithstorm",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Master of the Abyss",
+            "description": "Learn Wraithstorm",
+            "iconUrl": "54d4af9e03c6840dcda745e2a7a80551ed96ee7f.jpg",
+            "iconGrayUrl": "2af43a3de51f92633f3872cd1dcf895ef7f60838.jpg",
+            "hidden": false,
+            "globalPct": 21.1
+        },
+        {
+            "apiName": "curtis_ascension",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Exalted Guardian",
+            "description": "Learn Ascension",
+            "iconUrl": "731e1ffed6b2ea0261e275db12cfd4c404c7a9b4.jpg",
+            "iconGrayUrl": "898e4d4947aa9ace4586c42084be7563f0b98e09.jpg",
+            "hidden": false,
+            "globalPct": 23.1
+        },
+        {
+            "apiName": "talon_anteup",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Lucky One",
+            "description": "Learn Ante Up",
+            "iconUrl": "0734df16b726ba94e0a727b7a8f8f2871ba4c26e.jpg",
+            "iconGrayUrl": "49d8c1955ade7f7422544e24e0c44646610981d7.jpg",
+            "hidden": false,
+            "globalPct": 25.1
+        },
+        {
+            "apiName": "defeat_tangle_boss",
+            "unlocked": true,
+            "unlockedAt": "2017-09-15T18:56:56.000Z",
+            "displayName": "Green Thumb, or Black?",
+            "description": "Defeat Deathflower",
+            "iconUrl": "a7f028ca6be9b9ef8a14a053ff9af20fb8e42e13.jpg",
+            "iconGrayUrl": "1264b71497fb2cc16a00fbfa5c385228e458cf4b.jpg",
+            "hidden": false,
+            "globalPct": 71.9
+        },
+        {
+            "apiName": "defeat_headhunter",
+            "unlocked": true,
+            "unlockedAt": "2017-09-23T19:06:00.000Z",
+            "displayName": "Who sent you?",
+            "description": "Defeat Headhunter",
+            "iconUrl": "dd6e9311f7e5892ce3d1e45e30cbc5445032b3a2.jpg",
+            "iconGrayUrl": "c3d5a158bea034dc3e6adc8dc97b45fc6a50be6a.jpg",
+            "hidden": false,
+            "globalPct": 52.1
+        },
+        {
+            "apiName": "defeat_wind_guardian",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Wind Walker",
+            "description": "Defeat Wind Guardian",
+            "iconUrl": "c6a22f500fcd0b9478fd1049b8565e5ff2869dff.jpg",
+            "iconGrayUrl": "cd922dde030f4e248b67fc54e6b7cdfee8360125.jpg",
+            "hidden": false,
+            "globalPct": 41
+        },
+        {
+            "apiName": "defeat_pirate_trio",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Yo Ho Ho!",
+            "description": "Defeat the Pirate Trio",
+            "iconUrl": "9c54c59d546eb68dbae1ecf60c4f8086f890ad17.jpg",
+            "iconGrayUrl": "527a29553c2514a110ad6ccb6d15710ca664131b.jpg",
+            "hidden": false,
+            "globalPct": 37.2
+        },
+        {
+            "apiName": "defeat_water_wraith",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Watering the Garden",
+            "description": "Defeat Moraga, the water wraith",
+            "iconUrl": "64ef6a3e1e8f90e6b1c21b428b51798ea1a97d58.jpg",
+            "iconGrayUrl": "e9aeb41792d75e3afceae8970c0f24bb15da7c56.jpg",
+            "hidden": false,
+            "globalPct": 29.5
+        },
+        {
+            "apiName": "escape_malvil",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Lost Land",
+            "description": "Escape Malvil",
+            "iconUrl": "ab81b3528fdf87d916c85de4e3d95d22c116f324.jpg",
+            "iconGrayUrl": "dc30c4e18bcd89ee412ac3aa0eb3082e70763eda.jpg",
+            "hidden": false,
+            "globalPct": 24.9
+        },
+        {
+            "apiName": "defeat_fire_guardian",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fire Extinguiser",
+            "description": "Defeat Adhain",
+            "iconUrl": "770a2ea6f5197e1e075cec81ae4c52ce01bf8801.jpg",
+            "iconGrayUrl": "851825fd36c5f01a50703d255002dd82ba59a816.jpg",
+            "hidden": false,
+            "globalPct": 25.3
+        },
+        {
+            "apiName": "get_airship",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sky Pirates!",
+            "description": "Find the Airship",
+            "iconUrl": "866f3bd67572b4fe1502dc98a5c024b2771dd00c.jpg",
+            "iconGrayUrl": "153596e06d80c40aa972f2e71862dbd669925786.jpg",
+            "hidden": false,
+            "globalPct": 24.7
+        },
+        {
+            "apiName": "defeat_malvil",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Sparkles!",
+            "description": "Defeat Malvil",
+            "iconUrl": "4468d2a9a7bb4eb0de80887d75453bfa2724403e.jpg",
+            "iconGrayUrl": "6c9a04bd5512cc3d665d90d900eba26c2a832997.jpg",
+            "hidden": false,
+            "globalPct": 23.2
+        },
+        {
+            "apiName": "open_wraith_door",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Some Doors Should Stay Closed",
+            "description": "Open the Wraith Door",
+            "iconUrl": "5a4dfb3cb4dc5d91e602e38697eabadfa0056180.jpg",
+            "iconGrayUrl": "2575f3f5f0e7fed1f5961ea9cff7ae30fcdf5939.jpg",
+            "hidden": false,
+            "globalPct": 18
+        },
+        {
+            "apiName": "defeat_pendragos",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Luck of the Fae",
+            "description": "Defeat Pendragos",
+            "iconUrl": "c60268c549554c46d9ba7eb0a2291c48163d15c9.jpg",
+            "iconGrayUrl": "96d7d3a80c9b3f563e2fc52c3d9a4b6903e5d5ab.jpg",
+            "hidden": false,
+            "globalPct": 15.1
+        },
+        {
+            "apiName": "find_lost_cave",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Archaeologist",
+            "description": "Find the Lost Cave",
+            "iconUrl": "073037aab001acb0db79552b494a42ba020f04d0.jpg",
+            "iconGrayUrl": "7fc9078d4178a3adbed4230b1659f8886b6974f0.jpg",
+            "hidden": false,
+            "globalPct": 19.3
+        },
+        {
+            "apiName": "defeat_disaster_cake",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Trick...or treat?",
+            "description": "Defeat Disaster Cake",
+            "iconUrl": "14367ccd970f2831bdbd0cec5b6ae39e22d8af10.jpg",
+            "iconGrayUrl": "5a839e1b8c8a92b8daf03b8bcc38fbdb48dce581.jpg",
+            "hidden": false,
+            "globalPct": 11.6
+        },
+        {
+            "apiName": "find_all_purple_chests",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Legendary Treasure Hunter",
+            "description": "Find all purple chests",
+            "iconUrl": "169772565d465e88c49a1f3c1674c3425f0de334.jpg",
+            "iconGrayUrl": "682b3182e445786064ce04b189c34e8d2fa7e67e.jpg",
+            "hidden": false,
+            "globalPct": 5.3
+        },
+        {
+            "apiName": "dlc_reach_level_50",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "The Highest Power (DLC)",
+            "description": "Reach level 50",
+            "iconUrl": "6cf16d34896abad200dcdb1ad10bfe9643a6d95a.jpg",
+            "iconGrayUrl": "14d223aa1cdcc884489fff127ab3e6eda80ba812.jpg",
+            "hidden": false,
+            "globalPct": 3.6
+        },
+        {
+            "apiName": "dlc_beat_battle_arena",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ultimate Warrior (DLC)",
+            "description": "Complete the Battle Arena",
+            "iconUrl": "f7eb90de0b7350375b46ec59cba1feb0f52f1db2.jpg",
+            "iconGrayUrl": "3914b6cd1144489af1a3d0ffa2c2e1ca850fc160.jpg",
+            "hidden": false,
+            "globalPct": 7.4
+        },
+        {
+            "apiName": "dlc_join_guild",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "New Member (DLC)",
+            "description": "Join the Artifact Guild",
+            "iconUrl": "ff2e011632734477e0f2e04c87bed42b70e9e803.jpg",
+            "iconGrayUrl": "92ade0c331dd07fb9f7129bf93d483fbc6ca4f76.jpg",
+            "hidden": false,
+            "globalPct": 19.1
+        },
+        {
+            "apiName": "dlc_find_mystic_caverns",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mystic Adventurer (DLC)",
+            "description": "Find the Mystic Caverns",
+            "iconUrl": "c4ea7b9a0a826275983efa6b06ddd7fae25eeac9.jpg",
+            "iconGrayUrl": "616b36f230a8d412ad6655a0d98bd2ae144fcea6.jpg",
+            "hidden": false,
+            "globalPct": 6.1
+        },
+        {
+            "apiName": "dlc_find_40_juices",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Juice Master",
+            "description": "Find 40 juiceboxes",
+            "iconUrl": "3ff0672c541aa0dd1222acd02f3cc5a23e80b352.jpg",
+            "iconGrayUrl": "9c3ad9c6cfdab0b4bdb981a68ad765a1c70fd90f.jpg",
+            "hidden": false,
+            "globalPct": 5.3
+        },
+        {
+            "apiName": "dlc_beat_ngp",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Proven Hero (DLC)",
+            "description": "Finish NGP+",
+            "iconUrl": "bb37542e08787eb840b349745dc7404ef5225936.jpg",
+            "iconGrayUrl": "eb7e47eec48723be67127f0751c73b325cc06eac.jpg",
+            "hidden": false,
+            "globalPct": 1.8
+        },
+        {
+            "apiName": "find_knights_mane",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mane of a Knight (DLC)",
+            "description": "Find Knights Mane Reliquary",
+            "iconUrl": "3f3f666c496f7c4e1fa4595fe75bf20cc6e8acef.jpg",
+            "iconGrayUrl": "533605a97048d820c7747cad24aae36df575b822.jpg",
+            "hidden": false,
+            "globalPct": 17.5
+        },
+        {
+            "apiName": "find_hand_of_storms",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Controller of Storms (DLC)",
+            "description": "Find Hand of Storms",
+            "iconUrl": "1ea2b9466c46547205998c43ce4532d543ddb967.jpg",
+            "iconGrayUrl": "67dc61e0286799b059641fcc1de739e7f5fe2f8a.jpg",
+            "hidden": false,
+            "globalPct": 6.8
+        },
+        {
+            "apiName": "find_karma_root",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Root of Karma (DLC)",
+            "description": "Find Karma Root",
+            "iconUrl": "0aeaa56d589b30c433569f9f5bbffbfc7fd66bac.jpg",
+            "iconGrayUrl": "955859b3c5b4a822341d316a95dd332ba8dc1980.jpg",
+            "hidden": false,
+            "globalPct": 6
+        },
+        {
+            "apiName": "find_cosmo_mantle",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mantle of Heaven (DLC)",
+            "description": "Find Cosmo Mantle",
+            "iconUrl": "d10a36386b65e2b84163656ae6f7e014a6a3c1a7.jpg",
+            "iconGrayUrl": "00833fe1ce4950d8ea48fa53f74a9b08daf553b3.jpg",
+            "hidden": false,
+            "globalPct": 5
+        },
+        {
+            "apiName": "find_all_essence",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Essence Hunter (DLC)",
+            "description": "Find all Essence items",
+            "iconUrl": "8cc160fd98888e8fb2fafdbc0c7f34ae66f35bdd.jpg",
+            "iconGrayUrl": "a62cab5f4dc8d2af5c1231a1542828a57f6ed8ea.jpg",
+            "hidden": false,
+            "globalPct": 4.6
+        }
+    ],
+    "playtimeForever": 129,
+    "lastPlayedTs": "2018-01-27T09:14:21.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/506510/e08754b247c501914d66deb394f57fd43d4b9e2a.jpg",
+    "lastUnlockedAt": "2017-09-23T19:06:00.000Z",
+    "lastUnlockName": "Who sent you?",
+    "preview": [
+        {
+            "apiName": "defeat_headhunter",
+            "displayName": "Who sent you?",
+            "unlocked": true,
+            "unlockedAt": "2017-09-23T19:06:00.000Z",
+            "iconUrl": "dd6e9311f7e5892ce3d1e45e30cbc5445032b3a2.jpg",
+            "iconGrayUrl": "c3d5a158bea034dc3e6adc8dc97b45fc6a50be6a.jpg",
+            "globalPct": 52.1
+        },
+        {
+            "apiName": "defeat_tangle_boss",
+            "displayName": "Green Thumb, or Black?",
+            "unlocked": true,
+            "unlockedAt": "2017-09-15T18:56:56.000Z",
+            "iconUrl": "a7f028ca6be9b9ef8a14a053ff9af20fb8e42e13.jpg",
+            "iconGrayUrl": "1264b71497fb2cc16a00fbfa5c385228e458cf4b.jpg",
+            "globalPct": 71.9
+        },
+        {
+            "apiName": "reach_level_10",
+            "displayName": "Lifting Weights",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "35e3dc1f0a33579a2b95c91d07e9ab58a8b49941.jpg",
+            "iconGrayUrl": "59084dba89bf1a0a7ff49da2c6f2289e88233dfd.jpg",
+            "globalPct": 41.6
+        },
+        {
+            "apiName": "reach_level_25",
+            "displayName": "Reaching Toward the Light",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "a1d035c1de7afc677cc622557f9c1dca02b34233.jpg",
+            "iconGrayUrl": "261d02bd6b3877eb436edc09c3bb9d09ddc32fc4.jpg",
+            "globalPct": 23.8
+        },
+        {
+            "apiName": "reach_level_40",
+            "displayName": "Power Leveler!",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "7369a1555791ab12947a6dc1b5c5a9abc1dcb745.jpg",
+            "iconGrayUrl": "46453cf6774560ec4784e830a740f37253ddc864.jpg",
+            "globalPct": 6.2
+        },
+        {
+            "apiName": "kellan_finallight",
+            "displayName": "The One Who Bears The Light",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "dd4ddce8bc4331ec6fe65520647df90657865a30.jpg",
+            "iconGrayUrl": "0420b3d9562b52785a236e0dc351de567ce07c54.jpg",
+            "globalPct": 24.3
+        }
+    ]
+}

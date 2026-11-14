@@ -1,0 +1,389 @@
+{
+    "appId": 4000,
+    "hasAchievements": true,
+    "total": 29,
+    "unlocked": 0,
+    "gameName": "Garry's Mod",
+    "achievements": [
+        {
+            "apiName": "GMA_PLAY_SINGLEPLAYER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Play Singleplayer",
+            "description": "Play singleplayer at least once",
+            "iconUrl": "b8ce64f366e8a8a1c2aef231cca8ec82f3115d63.jpg",
+            "iconGrayUrl": "3c63a78d87f394b3de8811e0d2c62abd4b50f7e1.jpg",
+            "hidden": false,
+            "globalPct": 78.8
+        },
+        {
+            "apiName": "GMA_PLAY_MULTIPLAYER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Play Multiplayer",
+            "description": "Play multiplayer at least once",
+            "iconUrl": "d6b5b7ac882b0865415218642cb21bfb5a5fca77.jpg",
+            "iconGrayUrl": "b555b48ef0aef905d8c7eb5c7f23be0379d29ebf.jpg",
+            "hidden": false,
+            "globalPct": 84.4
+        },
+        {
+            "apiName": "GMA_X_STARTUPS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Startup Millenium",
+            "description": "Start Garry's Mod 1000 times",
+            "iconUrl": "f4bc0f96a846eeaa63a9ea92d11757b342376374.jpg",
+            "iconGrayUrl": "37b184622e1bf4b7c9647c19ead7a4764d325d9b.jpg",
+            "hidden": false,
+            "globalPct": 3.7
+        },
+        {
+            "apiName": "GMA_SAY_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Secret Phrase",
+            "description": "Say the secret phrase",
+            "iconUrl": "f331d3e21b7fc96c8f117787fe3e2d5e26b9952e.jpg",
+            "iconGrayUrl": "9d4598b5f05eac041d6335ee2d8e916f9dcd45b2.jpg",
+            "hidden": false,
+            "globalPct": 6.5
+        },
+        {
+            "apiName": "GMA_X_MINUTES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Addict",
+            "description": "You have wasted a year of your life playing GMod!",
+            "iconUrl": "9d99453c08ea180230b5ad24f904c0749e6ce139.jpg",
+            "iconGrayUrl": "880d7e39f7f6fbdf7cb6015963776ea5928e4b6a.jpg",
+            "hidden": false,
+            "globalPct": 2.3
+        },
+        {
+            "apiName": "GMA_X_MAPS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Map Loader",
+            "description": "Play 20 different maps",
+            "iconUrl": "7cb317f7a953204e79a3fc2923aad8eb77df74bd.jpg",
+            "iconGrayUrl": "0868fb3f4c815db070fcc2a5e9c04b9675ba32ac.jpg",
+            "hidden": false,
+            "globalPct": 38.2
+        },
+        {
+            "apiName": "GMA_NOT_SANDBOX",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Play Around",
+            "description": "Play a gamemode that isn't sandbox",
+            "iconUrl": "c1421b7d9609b03bca96bae9abde44da628d20a1.jpg",
+            "iconGrayUrl": "a3364808fe33f7604b9d7142a6f50a854f6345e1.jpg",
+            "hidden": false,
+            "globalPct": 74.3
+        },
+        {
+            "apiName": "GMA_BADDIES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "War Zone",
+            "description": "Killed 1000 Baddies",
+            "iconUrl": "88f7f6f51232d0792f70683599a55974b14086d1.jpg",
+            "iconGrayUrl": "3c57e8838eccef4caf4b2c67c7f7cf27b9e21e99.jpg",
+            "hidden": false,
+            "globalPct": 12.1
+        },
+        {
+            "apiName": "GMA_FRIENDS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Friendly",
+            "description": "Play with 10 friends",
+            "iconUrl": "14f07b40867ab5ceb305fa99fc1b112fc96abb14.jpg",
+            "iconGrayUrl": "989d524e77d1d1a4ebaad5f1f36933b15789b1ce.jpg",
+            "hidden": false,
+            "globalPct": 2.9
+        },
+        {
+            "apiName": "GMA_PLAYWITH_GARRY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Yes, I am the real garry!",
+            "description": "Play on the same server as garry",
+            "iconUrl": "b018137e2177a4a1ac63460f8b20757d4e7ef2da.jpg",
+            "iconGrayUrl": "725230a05dc1cc0fbba9be46233d77b34ca9f685.jpg",
+            "hidden": false,
+            "globalPct": 2.8
+        },
+        {
+            "apiName": "GMA_MARATHON",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Marathon",
+            "description": "Play on the same server & map for 8 hours",
+            "iconUrl": "82ee06b6fb3a0aed698dfa33303526d58340f2c1.jpg",
+            "iconGrayUrl": "c53ccab35ffc01712b9a3cf8c73f88f693f8e000.jpg",
+            "hidden": false,
+            "globalPct": 10.8
+        },
+        {
+            "apiName": "GMA_HALFMARATHON",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Half Marathon",
+            "description": "Play on the same server & map for 4 hours",
+            "iconUrl": "814409f41a371a1029d4dda336f3d6958c558548.jpg",
+            "iconGrayUrl": "814409f41a371a1029d4dda336f3d6958c558548.jpg",
+            "hidden": false,
+            "globalPct": 17.6
+        },
+        {
+            "apiName": "GMA_DAY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "One Day",
+            "description": "24 hours of your life wasted",
+            "iconUrl": "a200f9a8cc7327f9885218ff2e1a9317ce711459.jpg",
+            "iconGrayUrl": "bbce3c1ccc79c6be57b1e74548e2a32f651b486c.jpg",
+            "hidden": false,
+            "globalPct": 29.7
+        },
+        {
+            "apiName": "GMA_WEEK",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "One Week",
+            "description": "One whole week of your life wasted",
+            "iconUrl": "9d608f3ad483370e261da7991aece5c135432098.jpg",
+            "iconGrayUrl": "bbce3c1ccc79c6be57b1e74548e2a32f651b486c.jpg",
+            "hidden": false,
+            "globalPct": 10.5
+        },
+        {
+            "apiName": "GMA_MONTH",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "One Month",
+            "description": "One whole month of your life wasted",
+            "iconUrl": "812c6a24eb1997d7784e7bc6ab381899ae6b0753.jpg",
+            "iconGrayUrl": "5adbd20b5a544dc04e9768380e44607f024b75ce.jpg",
+            "hidden": false,
+            "globalPct": 4.4
+        },
+        {
+            "apiName": "GMA_BYSTANDER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Innocent Bystander",
+            "description": "Kill 1000 innocent animals",
+            "iconUrl": "33309ff1fc671bd3bf7f74dfd29df688429d2943.jpg",
+            "iconGrayUrl": "8b57860d89712b82e8357104f53b9033afdd9038.jpg",
+            "hidden": false,
+            "globalPct": 6.4
+        },
+        {
+            "apiName": "GMA_BALLEATER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ball Eater",
+            "description": "Eat 200 balls",
+            "iconUrl": "0352bbe5511ea372e24108680a70929e559c3dcc.jpg",
+            "iconGrayUrl": "07d2f98cd8819bb9bf72be94a0e706d069b1faff.jpg",
+            "hidden": false,
+            "globalPct": 12.7
+        },
+        {
+            "apiName": "GMA_PROPSPAWNER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Creator",
+            "description": "Spawn 5000 props",
+            "iconUrl": "c45ed5c18d9b92d68ea034d13fe0ee537110753f.jpg",
+            "iconGrayUrl": "9858c946b3657994bcf562f2f6283362a31716bd.jpg",
+            "hidden": false,
+            "globalPct": 5.2
+        },
+        {
+            "apiName": "GMA_BALLOONPOPPER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Popper",
+            "description": "Burst 1000 balloons",
+            "iconUrl": "1ce84afb8118aafc4e2aa5c007b97f8d7330bbf8.jpg",
+            "iconGrayUrl": "b32fcc782bab344540ec33e47e6ae60ea7c047f4.jpg",
+            "hidden": false,
+            "globalPct": 3.9
+        },
+        {
+            "apiName": "GMA_REMOVER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Destroyer",
+            "description": "Remove 5000 things",
+            "iconUrl": "8fbefdee3a3f2ac51a51aa7cd2d5f7116165aad8.jpg",
+            "iconGrayUrl": "8fbefdee3a3f2ac51a51aa7cd2d5f7116165aad8.jpg",
+            "hidden": false,
+            "globalPct": 3
+        },
+        {
+            "apiName": "GMA_SPAWNMENUER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Menu User",
+            "description": "Open the spawnmenu 100,000 times",
+            "iconUrl": "5dd0d4a1bcd15561860a06ea76969dfce4ff6b76.jpg",
+            "iconGrayUrl": "58757c5318ef691fc309c7072e7d34e7f2b65367.jpg",
+            "hidden": false,
+            "globalPct": 3.1
+        },
+        {
+            "apiName": "GMA_BADCODER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bad Coder",
+            "description": "Experience 500 Lua programming errors",
+            "iconUrl": "ab6158930869f33717e4aa55122973ffd8d3d364.jpg",
+            "iconGrayUrl": "9b9278328e23bbaf61c3d9aecf1c62574592053a.jpg",
+            "hidden": false,
+            "globalPct": 48.5
+        },
+        {
+            "apiName": "GMA_NPCSPAWNER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Procreator",
+            "description": "Spawn 1000 NPCs",
+            "iconUrl": "e2e840130db8efd5e34f12087a0ccddb7b04f40e.jpg",
+            "iconGrayUrl": "0753041b96cce5f6e165e9501d3917c1b03ad4a0.jpg",
+            "hidden": false,
+            "globalPct": 22.6
+        },
+        {
+            "apiName": "GMA_RAGDOLLSPAWNER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Dollhouse",
+            "description": "Spawn 2000 ragdolls",
+            "iconUrl": "de22904018d342008bb6d94087190a0c2493689f.jpg",
+            "iconGrayUrl": "bc8688731603f8c3d5dd042222f6d31cca7fb8b9.jpg",
+            "hidden": false,
+            "globalPct": 3.5
+        },
+        {
+            "apiName": "GMA_GOODIES",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Bad Friend",
+            "description": "Kill 1000 friendly NPCs",
+            "iconUrl": "040ae0e4fef44e23609b2cd2b545d3f41c782dd0.jpg",
+            "iconGrayUrl": "2901d1aead0e64ee62d5b432e468548f03cd6700.jpg",
+            "hidden": false,
+            "globalPct": 6.9
+        },
+        {
+            "apiName": "GMA_SMALLTHUMB",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "10 Thumbs",
+            "description": "Your Workshop uploads got 10 thumbs",
+            "iconUrl": "1c5bef9615a260ae3177c26ad8ac86f5dc192ead.jpg",
+            "iconGrayUrl": "6ca7cd490126fcaaa3296c22c2cc186fc936acad.jpg",
+            "hidden": false,
+            "globalPct": 2.6
+        },
+        {
+            "apiName": "GMA_MEDIUMTHUMB",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "100 Thumbs",
+            "description": "Your workshop uploads got 100 thumbs",
+            "iconUrl": "0afc0d332af9c5e779302bb7a70d29b15fdec263.jpg",
+            "iconGrayUrl": "6ca7cd490126fcaaa3296c22c2cc186fc936acad.jpg",
+            "hidden": false,
+            "globalPct": 2.4
+        },
+        {
+            "apiName": "GMA_HUGETHUMB",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "1000 Thumbs",
+            "description": "Your Workshop uploads got 1000 thumbs",
+            "iconUrl": "f0b8f66a9f445a80fcf7897d8b07c634ae26a469.jpg",
+            "iconGrayUrl": "6ca7cd490126fcaaa3296c22c2cc186fc936acad.jpg",
+            "hidden": false,
+            "globalPct": 2.3
+        },
+        {
+            "apiName": "GMA_MEGAUPLOAD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Mega Upload",
+            "description": "Get 1000 thumbs on a single upload (then go to jail)",
+            "iconUrl": "75b1b16c2b67b893d35d3b8c79de90dcb14dfd4b.jpg",
+            "iconGrayUrl": "73320251cf85de0c5e00189da96e7c3463ae9693.jpg",
+            "hidden": false,
+            "globalPct": 2.3
+        }
+    ],
+    "playtimeForever": 231,
+    "lastPlayedTs": "2024-06-01T01:35:27.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/4000/4a6f25cfa2426445d0d9d6e233408de4d371ce8b.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "GMA_PLAY_SINGLEPLAYER",
+            "displayName": "Play Singleplayer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "b8ce64f366e8a8a1c2aef231cca8ec82f3115d63.jpg",
+            "iconGrayUrl": "3c63a78d87f394b3de8811e0d2c62abd4b50f7e1.jpg",
+            "globalPct": 78.8
+        },
+        {
+            "apiName": "GMA_PLAY_MULTIPLAYER",
+            "displayName": "Play Multiplayer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "d6b5b7ac882b0865415218642cb21bfb5a5fca77.jpg",
+            "iconGrayUrl": "b555b48ef0aef905d8c7eb5c7f23be0379d29ebf.jpg",
+            "globalPct": 84.4
+        },
+        {
+            "apiName": "GMA_X_STARTUPS",
+            "displayName": "Startup Millenium",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f4bc0f96a846eeaa63a9ea92d11757b342376374.jpg",
+            "iconGrayUrl": "37b184622e1bf4b7c9647c19ead7a4764d325d9b.jpg",
+            "globalPct": 3.7
+        },
+        {
+            "apiName": "GMA_SAY_1",
+            "displayName": "Secret Phrase",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f331d3e21b7fc96c8f117787fe3e2d5e26b9952e.jpg",
+            "iconGrayUrl": "9d4598b5f05eac041d6335ee2d8e916f9dcd45b2.jpg",
+            "globalPct": 6.5
+        },
+        {
+            "apiName": "GMA_X_MINUTES",
+            "displayName": "Addict",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9d99453c08ea180230b5ad24f904c0749e6ce139.jpg",
+            "iconGrayUrl": "880d7e39f7f6fbdf7cb6015963776ea5928e4b6a.jpg",
+            "globalPct": 2.3
+        },
+        {
+            "apiName": "GMA_X_MAPS",
+            "displayName": "Map Loader",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "7cb317f7a953204e79a3fc2923aad8eb77df74bd.jpg",
+            "iconGrayUrl": "0868fb3f4c815db070fcc2a5e9c04b9675ba32ac.jpg",
+            "globalPct": 38.2
+        }
+    ]
+}

@@ -1,0 +1,290 @@
+{
+    "appId": 92800,
+    "hasAchievements": true,
+    "total": 20,
+    "unlocked": 2,
+    "gameName": "SpaceChem",
+    "achievements": [
+        {
+            "apiName": "SPACECHEM_01",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Chief Executive Officer",
+            "description": "Beat the game!",
+            "iconUrl": "14f0256181bbca3553821f2aa524c9310bb0b5fb.jpg",
+            "iconGrayUrl": "ef05f646fdd1d6424b50219107a71d0c2df159ef.jpg",
+            "hidden": false,
+            "globalPct": 6.2
+        },
+        {
+            "apiName": "SPACECHEM_02",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Junior Permutation Technician",
+            "description": "Beat the assignment \"Challenge: In-Place Swap\".",
+            "iconUrl": "601335fe766e8b6e6196102530b734ddf87549bc.jpg",
+            "iconGrayUrl": "055202b66395929a8133cff2aa8bef8f05d42a16.jpg",
+            "hidden": false,
+            "globalPct": 15.8
+        },
+        {
+            "apiName": "SPACECHEM_03",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Environmental Engineer",
+            "description": "Beat the assignment \"Challenge: Going Green\".",
+            "iconUrl": "9423d8fa0e97a91cfb7da6a75189103c249d393c.jpg",
+            "iconGrayUrl": "5b9c22f3548894a05a76f328d4ec662d7b9d6e40.jpg",
+            "hidden": false,
+            "globalPct": 9.9
+        },
+        {
+            "apiName": "SPACECHEM_04",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Industrial Physicist",
+            "description": "Beat the assignment \"Challenge: Applied Fusion\".",
+            "iconUrl": "8ab6ae71fa7c1bee57c8b6d7c51a4c258799694b.jpg",
+            "iconGrayUrl": "059623af38c147d84a6b8c82560ffce9303fc130.jpg",
+            "hidden": false,
+            "globalPct": 8.3
+        },
+        {
+            "apiName": "SPACECHEM_05",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Materials Engineer of the People",
+            "description": "Beat the assignment \"Challenge: KOHCTPYKTOP\".",
+            "iconUrl": "14f0256181bbca3553821f2aa524c9310bb0b5fb.jpg",
+            "iconGrayUrl": "ef05f646fdd1d6424b50219107a71d0c2df159ef.jpg",
+            "hidden": false,
+            "globalPct": 7.2
+        },
+        {
+            "apiName": "SPACECHEM_06b",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Junior Performance Specialist",
+            "description": "Beat the assignment \"Nothing Works\" in under 1000 cycles.",
+            "iconUrl": "601335fe766e8b6e6196102530b734ddf87549bc.jpg",
+            "iconGrayUrl": "055202b66395929a8133cff2aa8bef8f05d42a16.jpg",
+            "hidden": false,
+            "globalPct": 10.5
+        },
+        {
+            "apiName": "SPACECHEM_07",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Performance Specialist",
+            "description": "Beat the assignment \"No Thanks Necessary\" in under 2200 cycles.",
+            "iconUrl": "9423d8fa0e97a91cfb7da6a75189103c249d393c.jpg",
+            "iconGrayUrl": "5b9c22f3548894a05a76f328d4ec662d7b9d6e40.jpg",
+            "hidden": false,
+            "globalPct": 7.9
+        },
+        {
+            "apiName": "SPACECHEM_08",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Performance Specialist II",
+            "description": "Beat the assignment \"Gas Works Park\" in under 2700 cycles.",
+            "iconUrl": "8ab6ae71fa7c1bee57c8b6d7c51a4c258799694b.jpg",
+            "iconGrayUrl": "059623af38c147d84a6b8c82560ffce9303fc130.jpg",
+            "hidden": false,
+            "globalPct": 8
+        },
+        {
+            "apiName": "SPACECHEM_09",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Senior Performance Specialist",
+            "description": "Beat the assignment \"Σ-Ethylene\" in under 6000 cycles.",
+            "iconUrl": "14f0256181bbca3553821f2aa524c9310bb0b5fb.jpg",
+            "iconGrayUrl": "ef05f646fdd1d6424b50219107a71d0c2df159ef.jpg",
+            "hidden": false,
+            "globalPct": 6.6
+        },
+        {
+            "apiName": "SPACECHEM_10",
+            "unlocked": true,
+            "unlockedAt": "2017-05-05T09:01:58.000Z",
+            "displayName": "Efficiency Specialist",
+            "description": "Beat the assignment \"No Ordinary Headache\" using only one reactor.",
+            "iconUrl": "9423d8fa0e97a91cfb7da6a75189103c249d393c.jpg",
+            "iconGrayUrl": "5b9c22f3548894a05a76f328d4ec662d7b9d6e40.jpg",
+            "hidden": false,
+            "globalPct": 8.8
+        },
+        {
+            "apiName": "SPACECHEM_11",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cost Control Specialist",
+            "description": "Beat the assignment \"Falling\" using two or fewer reactors.",
+            "iconUrl": "8ab6ae71fa7c1bee57c8b6d7c51a4c258799694b.jpg",
+            "iconGrayUrl": "059623af38c147d84a6b8c82560ffce9303fc130.jpg",
+            "hidden": false,
+            "globalPct": 6.9
+        },
+        {
+            "apiName": "SPACECHEM_12",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Senior Efficiency Specialist",
+            "description": "Beat the assignment \"Molecular Foundry\" using two or fewer reactors.",
+            "iconUrl": "14f0256181bbca3553821f2aa524c9310bb0b5fb.jpg",
+            "iconGrayUrl": "ef05f646fdd1d6424b50219107a71d0c2df159ef.jpg",
+            "hidden": false,
+            "globalPct": 6.4
+        },
+        {
+            "apiName": "SPACECHEM_TF2_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Moustache Research Assistant",
+            "description": "Beat the assignment \"Moustachium 602\".",
+            "iconUrl": "f20272affa91de29eb848b7c54c349d520013102.jpg",
+            "iconGrayUrl": "4e650404c20e53756cfc948c01be6f7a4192e8e9.jpg",
+            "hidden": false,
+            "globalPct": 16.6
+        },
+        {
+            "apiName": "SPACECHEM_TF2_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Moustache Scientist",
+            "description": "Beat the assignment \"Moustachium 604\".",
+            "iconUrl": "f20272affa91de29eb848b7c54c349d520013102.jpg",
+            "iconGrayUrl": "4e650404c20e53756cfc948c01be6f7a4192e8e9.jpg",
+            "hidden": false,
+            "globalPct": 14.6
+        },
+        {
+            "apiName": "SPACECHEM_TF2_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Director of Moustache Research",
+            "description": "Beat the assignment \"Moustachium 608\".",
+            "iconUrl": "f20272affa91de29eb848b7c54c349d520013102.jpg",
+            "iconGrayUrl": "4e650404c20e53756cfc948c01be6f7a4192e8e9.jpg",
+            "hidden": false,
+            "globalPct": 11.7
+        },
+        {
+            "apiName": "SPACECHEM_RN_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Science is an Indoor Activity",
+            "description": "Beat 3 published ResearchNet assignments.",
+            "iconUrl": "c12318dfcd2c41c3f6bcb17f16d1828a9285d573.jpg",
+            "iconGrayUrl": "8669a5669fb3eb768a0fdb72cb54d40801c83b4b.jpg",
+            "hidden": false,
+            "globalPct": 8.1
+        },
+        {
+            "apiName": "SPACECHEM_RN_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Junior Publication Reviewer",
+            "description": "Beat 10 published ResearchNet assignments.",
+            "iconUrl": "c1eba1758f9815844e5789f290b7db5f4751f07a.jpg",
+            "iconGrayUrl": "9fa45ebbe4780660d9913bec11701af6d0dce567.jpg",
+            "hidden": false,
+            "globalPct": 6.2
+        },
+        {
+            "apiName": "SPACECHEM_RN_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Distinguished Publication Reviewer",
+            "description": "Beat 20 published ResearchNet assignments.",
+            "iconUrl": "182e03386ceb1dd90a14c3b04e2b10683582cc3b.jpg",
+            "iconGrayUrl": "8c2e48a7bc42468e873245710daaa72d028279fb.jpg",
+            "hidden": false,
+            "globalPct": 5.9
+        },
+        {
+            "apiName": "SPACECHEM_13",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Interstellar Transportation Specialist",
+            "description": "Beat the assignment \"Collapsar\" in the 63 Corvi campaign.",
+            "iconUrl": "63c6384127076dccb165bd55524c9f3f11779ce8.jpg",
+            "iconGrayUrl": "76ca79cce44d42c6a9c6b3fd3bd3771dd99de965.jpg",
+            "hidden": false,
+            "globalPct": 5.7
+        },
+        {
+            "apiName": "SPACECHEM_14",
+            "unlocked": true,
+            "unlockedAt": "2016-12-09T13:23:12.000Z",
+            "displayName": "Polar Expedition",
+            "description": "Reach the south pole of Sernimir IV.",
+            "iconUrl": "57799d94684e78eb3a3dd059b050c3c531a33ee1.jpg",
+            "iconGrayUrl": "cc2fae95c502ae24a1813eca233c9e37e9c5a985.jpg",
+            "hidden": false,
+            "globalPct": 35.9
+        }
+    ],
+    "playtimeForever": 374,
+    "lastPlayedTs": "2017-07-21T09:08:43.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/92800/29b26fc0eb22ebbeeeed1e4658dcbc6b837279c7.jpg",
+    "lastUnlockedAt": "2017-05-05T09:01:58.000Z",
+    "lastUnlockName": "Efficiency Specialist",
+    "preview": [
+        {
+            "apiName": "SPACECHEM_10",
+            "displayName": "Efficiency Specialist",
+            "unlocked": true,
+            "unlockedAt": "2017-05-05T09:01:58.000Z",
+            "iconUrl": "9423d8fa0e97a91cfb7da6a75189103c249d393c.jpg",
+            "iconGrayUrl": "5b9c22f3548894a05a76f328d4ec662d7b9d6e40.jpg",
+            "globalPct": 8.8
+        },
+        {
+            "apiName": "SPACECHEM_14",
+            "displayName": "Polar Expedition",
+            "unlocked": true,
+            "unlockedAt": "2016-12-09T13:23:12.000Z",
+            "iconUrl": "57799d94684e78eb3a3dd059b050c3c531a33ee1.jpg",
+            "iconGrayUrl": "cc2fae95c502ae24a1813eca233c9e37e9c5a985.jpg",
+            "globalPct": 35.9
+        },
+        {
+            "apiName": "SPACECHEM_01",
+            "displayName": "Chief Executive Officer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "14f0256181bbca3553821f2aa524c9310bb0b5fb.jpg",
+            "iconGrayUrl": "ef05f646fdd1d6424b50219107a71d0c2df159ef.jpg",
+            "globalPct": 6.2
+        },
+        {
+            "apiName": "SPACECHEM_02",
+            "displayName": "Junior Permutation Technician",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "601335fe766e8b6e6196102530b734ddf87549bc.jpg",
+            "iconGrayUrl": "055202b66395929a8133cff2aa8bef8f05d42a16.jpg",
+            "globalPct": 15.8
+        },
+        {
+            "apiName": "SPACECHEM_03",
+            "displayName": "Environmental Engineer",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "9423d8fa0e97a91cfb7da6a75189103c249d393c.jpg",
+            "iconGrayUrl": "5b9c22f3548894a05a76f328d4ec662d7b9d6e40.jpg",
+            "globalPct": 9.9
+        },
+        {
+            "apiName": "SPACECHEM_04",
+            "displayName": "Industrial Physicist",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "8ab6ae71fa7c1bee57c8b6d7c51a4c258799694b.jpg",
+            "iconGrayUrl": "059623af38c147d84a6b8c82560ffce9303fc130.jpg",
+            "globalPct": 8.3
+        }
+    ]
+}

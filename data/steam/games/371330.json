@@ -1,0 +1,213 @@
+{
+    "appId": 371330,
+    "hasAchievements": true,
+    "total": 13,
+    "unlocked": 0,
+    "gameName": "Two Digits",
+    "achievements": [
+        {
+            "apiName": "FIRST_STEPS",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "First Steps",
+            "description": "Complete the First Steps pack.",
+            "iconUrl": "f32d92d966601d9e11d5c5f36c5034dd505b277f.jpg",
+            "iconGrayUrl": "3813ccfcb15d3caf129dd64c77a16a0471b09404.jpg",
+            "hidden": false,
+            "globalPct": 12.4
+        },
+        {
+            "apiName": "MOVING_UP",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Moving Up",
+            "description": "Complete the Moving Up pack.",
+            "iconUrl": "1b2e88fe47c07f93c8eff87ab08670e5c764a7ef.jpg",
+            "iconGrayUrl": "3392f4b94356b6fff34f8a55d3e18a1f4cacc455.jpg",
+            "hidden": false,
+            "globalPct": 11
+        },
+        {
+            "apiName": "THREE_QUARTER",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Three Quarter",
+            "description": "Complete the Three Quarter pack.",
+            "iconUrl": "128738ca36449f73ac9f6fd6bf00dd761cf6b2ae.jpg",
+            "iconGrayUrl": "08469d71cc0b2dc9db9798ca329e121ab93e17fb.jpg",
+            "hidden": false,
+            "globalPct": 8.8
+        },
+        {
+            "apiName": "FULL_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Full #1",
+            "description": "Complete the Full #1 pack.",
+            "iconUrl": "f414e3504125f0ed2e5bec6a559ddfc7c55602c8.jpg",
+            "iconGrayUrl": "f4c9f5bdf30cbe04d15f254975015a8801b1edc6.jpg",
+            "hidden": false,
+            "globalPct": 6.6
+        },
+        {
+            "apiName": "PRIMARY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Primary",
+            "description": "Complete the Primary pack.",
+            "iconUrl": "3881753f43cda8f4670be87b611e51aa18924ddd.jpg",
+            "iconGrayUrl": "526ac864c7b6d99fb10fb7b14786bdab4e1dc7d1.jpg",
+            "hidden": false,
+            "globalPct": 6.5
+        },
+        {
+            "apiName": "NINETY_PERCENT",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ninety Percent",
+            "description": "Complete the Ninety Percent pack.",
+            "iconUrl": "5cdaf67d91d1d20d49b1f1fd87ab2d90b79a182e.jpg",
+            "iconGrayUrl": "350d05f3c26bbbce0681cdb851ce52a12f9fc010.jpg",
+            "hidden": false,
+            "globalPct": 6.2
+        },
+        {
+            "apiName": "FULL_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Full #2",
+            "description": "Complete the Full #2 pack.",
+            "iconUrl": "9fb3ce3778082395390a736a8a51bd1efafc0868.jpg",
+            "iconGrayUrl": "4e91c39bfeeab5a5ab16a79bf7737394349d9e29.jpg",
+            "hidden": false,
+            "globalPct": 5.9
+        },
+        {
+            "apiName": "ODD",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Odd",
+            "description": "Complete the Odd pack.",
+            "iconUrl": "79c4b85ef2d4a5b02caaa4d41612602d3d2cd6ee.jpg",
+            "iconGrayUrl": "da091be22023f620e469d9c4aff83af90755951b.jpg",
+            "hidden": false,
+            "globalPct": 5.6
+        },
+        {
+            "apiName": "TWO_DIGITS_ONLY",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Two Digits Only",
+            "description": "Complete the Two Digits Only pack.",
+            "iconUrl": "e19f4d079d4ab3276f1369827c0b3e5e0907f43d.jpg",
+            "iconGrayUrl": "80f4a90c1fd0e0cf25918e788a7a68099b468efc.jpg",
+            "hidden": false,
+            "globalPct": 5.4
+        },
+        {
+            "apiName": "FULL_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Full #3",
+            "description": "Complete the Full #3 pack.",
+            "iconUrl": "db94e2a49db3ee36def6a433d52b4a703f84e1e5.jpg",
+            "iconGrayUrl": "6cde1307bd7133abf07c36bbc96115601199e539.jpg",
+            "hidden": false,
+            "globalPct": 5.4
+        },
+        {
+            "apiName": "ULTIMATE_LEVEL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Ultimate Level",
+            "description": "Complete the Ultimate Level.",
+            "iconUrl": "d7d69207fd79700426891db429c124b9363254a4.jpg",
+            "iconGrayUrl": "74884d1dc32dee9fc75c7932a74d7b5404ccade1.jpg",
+            "hidden": false,
+            "globalPct": 5.4
+        },
+        {
+            "apiName": "USE_EM_ALL",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Use 'em all",
+            "description": "",
+            "iconUrl": "af649a0109c3579d6a1cbd4eae3014cf3f5a9770.jpg",
+            "iconGrayUrl": "1228b46ad09f730c87b3c668af23e18edbec4829.jpg",
+            "hidden": true,
+            "globalPct": 7.2
+        },
+        {
+            "apiName": "THREE",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Three",
+            "description": "Complete the Three pack.",
+            "iconUrl": "5a9fe8b8db26a95a287324beea8a1c3b698792c5.jpg",
+            "iconGrayUrl": "ba94ed2a87ab5d5090ca43918940f78737619f01.jpg",
+            "hidden": false,
+            "globalPct": 5.4
+        }
+    ],
+    "playtimeForever": 262,
+    "lastPlayedTs": "2024-06-20T00:39:34.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/371330/662a29bef50fcdca41ae531240fbd3a8a04742d3.jpg",
+    "lastUnlockedAt": null,
+    "lastUnlockName": null,
+    "preview": [
+        {
+            "apiName": "FIRST_STEPS",
+            "displayName": "First Steps",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f32d92d966601d9e11d5c5f36c5034dd505b277f.jpg",
+            "iconGrayUrl": "3813ccfcb15d3caf129dd64c77a16a0471b09404.jpg",
+            "globalPct": 12.4
+        },
+        {
+            "apiName": "MOVING_UP",
+            "displayName": "Moving Up",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "1b2e88fe47c07f93c8eff87ab08670e5c764a7ef.jpg",
+            "iconGrayUrl": "3392f4b94356b6fff34f8a55d3e18a1f4cacc455.jpg",
+            "globalPct": 11
+        },
+        {
+            "apiName": "THREE_QUARTER",
+            "displayName": "Three Quarter",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "128738ca36449f73ac9f6fd6bf00dd761cf6b2ae.jpg",
+            "iconGrayUrl": "08469d71cc0b2dc9db9798ca329e121ab93e17fb.jpg",
+            "globalPct": 8.8
+        },
+        {
+            "apiName": "FULL_1",
+            "displayName": "Full #1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "f414e3504125f0ed2e5bec6a559ddfc7c55602c8.jpg",
+            "iconGrayUrl": "f4c9f5bdf30cbe04d15f254975015a8801b1edc6.jpg",
+            "globalPct": 6.6
+        },
+        {
+            "apiName": "PRIMARY",
+            "displayName": "Primary",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "3881753f43cda8f4670be87b611e51aa18924ddd.jpg",
+            "iconGrayUrl": "526ac864c7b6d99fb10fb7b14786bdab4e1dc7d1.jpg",
+            "globalPct": 6.5
+        },
+        {
+            "apiName": "NINETY_PERCENT",
+            "displayName": "Ninety Percent",
+            "unlocked": false,
+            "unlockedAt": null,
+            "iconUrl": "5cdaf67d91d1d20d49b1f1fd87ab2d90b79a182e.jpg",
+            "iconGrayUrl": "350d05f3c26bbbce0681cdb851ce52a12f9fc010.jpg",
+            "globalPct": 6.2
+        }
+    ]
+}

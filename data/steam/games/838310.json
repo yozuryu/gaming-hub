@@ -1,0 +1,235 @@
+{
+    "appId": 838310,
+    "hasAchievements": true,
+    "total": 15,
+    "unlocked": 6,
+    "gameName": "Bloodstained: Curse of the Moon",
+    "achievements": [
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_0",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Nightmare's End",
+            "description": "",
+            "iconUrl": "381b217b3651ef5dd13bfeb3c2fd544f39cb7dc2.jpg",
+            "iconGrayUrl": "f33ec2680d44bcab86427c98f885b57c418f234e.jpg",
+            "hidden": true,
+            "globalPct": 8.6
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_1",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Those Left Behind",
+            "description": "",
+            "iconUrl": "4e538d50891f2ea217d64a0965b3e86aed02445f.jpg",
+            "iconGrayUrl": "99bf7f1e0034bf2386b2dc7929c754ce07088884.jpg",
+            "hidden": true,
+            "globalPct": 37.6
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_2",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Fallen Moon's Requiem",
+            "description": "",
+            "iconUrl": "e0701ed70db21bfb6187537d991d7a67ab0b5927.jpg",
+            "iconGrayUrl": "12184c079d4b1fa2642aec76fe42dbec1705a4f2.jpg",
+            "hidden": true,
+            "globalPct": 18.2
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_3",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Emperor of Darkness",
+            "description": "",
+            "iconUrl": "786627f54d1aaf608de969bd73284cbf2255abca.jpg",
+            "iconGrayUrl": "d8793579970d9abd9323bd1033c95c7718e44ae8.jpg",
+            "hidden": true,
+            "globalPct": 14.1
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_4",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Blade Gleaming at Sunrise",
+            "description": "",
+            "iconUrl": "d16932de357f69bebbab3c652ab050133e94f558.jpg",
+            "iconGrayUrl": "edd5909194f2f0b83d3e5a88a84f223d78953e3e.jpg",
+            "hidden": true,
+            "globalPct": 7.8
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_5",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "That Man, Zangetsu",
+            "description": "",
+            "iconUrl": "99e1020de7cb45f4902e78581234a4bcb81e10da.jpg",
+            "iconGrayUrl": "5260692f32a785466d79012ce612c56d98b01d64.jpg",
+            "hidden": true,
+            "globalPct": 6.6
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_6",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Big Game Hunting!",
+            "description": "",
+            "iconUrl": "7585d349ee869d3840ef973c617acebdb02d57f9.jpg",
+            "iconGrayUrl": "fea11280bbea7ccc06f9efd52dbfd1ffffc23f63.jpg",
+            "hidden": true,
+            "globalPct": 6.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_7",
+            "unlocked": true,
+            "unlockedAt": "2018-06-06T21:08:35.000Z",
+            "displayName": "Moonlight Temptation",
+            "description": "Finish Stage 1 for the first time.",
+            "iconUrl": "44f3af6f5e6228cea1f27926f900d1886ca5f3e7.jpg",
+            "iconGrayUrl": "022311461195df82a215d6ee42a7f8c5e4c0fc95.jpg",
+            "hidden": false,
+            "globalPct": 81.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_8",
+            "unlocked": true,
+            "unlockedAt": "2018-06-06T21:28:50.000Z",
+            "displayName": "Frigid Hell\t\t\t\t\t\t\t",
+            "description": "",
+            "iconUrl": "c8229b3ea9f00d2d78ffc8a5acc67c36c89f93db.jpg",
+            "iconGrayUrl": "2a03996996970feb6509c7373ef3d81915c8d71f.jpg",
+            "hidden": true,
+            "globalPct": 66.3
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_9",
+            "unlocked": true,
+            "unlockedAt": "2018-06-06T22:13:55.000Z",
+            "displayName": "The Brilliant Void",
+            "description": "",
+            "iconUrl": "e20682aab29006f4f77ee522191207274242b26e.jpg",
+            "iconGrayUrl": "da0dee60d8052c643b5ce575acf05f721e6f7399.jpg",
+            "hidden": true,
+            "globalPct": 58.5
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_10",
+            "unlocked": true,
+            "unlockedAt": "2018-06-08T22:33:40.000Z",
+            "displayName": "Blasphemy unto Heaven",
+            "description": "",
+            "iconUrl": "51ffff0a75dd1d054d1646b4459c16245772d422.jpg",
+            "iconGrayUrl": "3e8681ba3a6f1df5e7b58b0a32707727bae42b2c.jpg",
+            "hidden": true,
+            "globalPct": 54.6
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_11",
+            "unlocked": true,
+            "unlockedAt": "2018-06-08T22:49:45.000Z",
+            "displayName": "Sunder the Night",
+            "description": "",
+            "iconUrl": "6442aa90ae0e56cb774f9adb2eb731a5d38c1669.jpg",
+            "iconGrayUrl": "6aaae9318f2fc26db9703975391a9edebff6a1f9.jpg",
+            "hidden": true,
+            "globalPct": 49.1
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_12",
+            "unlocked": true,
+            "unlockedAt": "2018-06-08T23:05:35.000Z",
+            "displayName": "Tragedy of Slaughter",
+            "description": "",
+            "iconUrl": "a6a3959baaa0f4343f5772452c93b5f3125bae29.jpg",
+            "iconGrayUrl": "ac98cfa1930ea675624eb1ca7658b1eb6fce193e.jpg",
+            "hidden": true,
+            "globalPct": 44.7
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_13",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Defiler of Taboos",
+            "description": "",
+            "iconUrl": "03d9596f9266f4e1c7698f7bad60da063806e1d7.jpg",
+            "iconGrayUrl": "54900d8cb2dc14719413cd05bb73464c06b67e4a.jpg",
+            "hidden": true,
+            "globalPct": 40.9
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_14",
+            "unlocked": false,
+            "unlockedAt": null,
+            "displayName": "Cleave the Moon",
+            "description": "",
+            "iconUrl": "bfe5ca7559a45fc83f6db0c11735dc043fa8909e.jpg",
+            "iconGrayUrl": "b9a7be3a2f930877981f2029681036e69f3e4928.jpg",
+            "hidden": true,
+            "globalPct": 38
+        }
+    ],
+    "playtimeForever": 170,
+    "lastPlayedTs": "2025-02-10T14:53:24.000Z",
+    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/838310/aff67ca3a627b1cfceee2ab9f35b1e876cabf331.jpg",
+    "lastUnlockedAt": "2018-06-08T23:05:35.000Z",
+    "lastUnlockName": "Tragedy of Slaughter",
+    "preview": [
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_12",
+            "displayName": "Tragedy of Slaughter",
+            "unlocked": true,
+            "unlockedAt": "2018-06-08T23:05:35.000Z",
+            "iconUrl": "a6a3959baaa0f4343f5772452c93b5f3125bae29.jpg",
+            "iconGrayUrl": "ac98cfa1930ea675624eb1ca7658b1eb6fce193e.jpg",
+            "globalPct": 44.7
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_11",
+            "displayName": "Sunder the Night",
+            "unlocked": true,
+            "unlockedAt": "2018-06-08T22:49:45.000Z",
+            "iconUrl": "6442aa90ae0e56cb774f9adb2eb731a5d38c1669.jpg",
+            "iconGrayUrl": "6aaae9318f2fc26db9703975391a9edebff6a1f9.jpg",
+            "globalPct": 49.1
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_10",
+            "displayName": "Blasphemy unto Heaven",
+            "unlocked": true,
+            "unlockedAt": "2018-06-08T22:33:40.000Z",
+            "iconUrl": "51ffff0a75dd1d054d1646b4459c16245772d422.jpg",
+            "iconGrayUrl": "3e8681ba3a6f1df5e7b58b0a32707727bae42b2c.jpg",
+            "globalPct": 54.6
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_9",
+            "displayName": "The Brilliant Void",
+            "unlocked": true,
+            "unlockedAt": "2018-06-06T22:13:55.000Z",
+            "iconUrl": "e20682aab29006f4f77ee522191207274242b26e.jpg",
+            "iconGrayUrl": "da0dee60d8052c643b5ce575acf05f721e6f7399.jpg",
+            "globalPct": 58.5
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_8",
+            "displayName": "Frigid Hell\t\t\t\t\t\t\t",
+            "unlocked": true,
+            "unlockedAt": "2018-06-06T21:28:50.000Z",
+            "iconUrl": "c8229b3ea9f00d2d78ffc8a5acc67c36c89f93db.jpg",
+            "iconGrayUrl": "2a03996996970feb6509c7373ef3d81915c8d71f.jpg",
+            "globalPct": 66.3
+        },
+        {
+            "apiName": "NEW_ACHIEVEMENT_1_7",
+            "displayName": "Moonlight Temptation",
+            "unlocked": true,
+            "unlockedAt": "2018-06-06T21:08:35.000Z",
+            "iconUrl": "44f3af6f5e6228cea1f27926f900d1886ca5f3e7.jpg",
+            "iconGrayUrl": "022311461195df82a215d6ee42a7f8c5e4c0fc95.jpg",
+            "globalPct": 81.9
+        }
+    ]
+}
