@@ -108,7 +108,7 @@ function indexGames(platform) {
             // Latest unlock: its name and date from the index, its icon from the preview (which always holds the newest unlocks)
             last: d.lastUnlockedAt ? (() => {
                 const pv = (d.preview ?? []).find(a => a.displayName === d.lastUnlockName);
-                const icon = pv?.iconUrl ? (steam ? `https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/${id}/${pv.iconUrl}` : pv.iconUrl) : null;
+                const icon = pv?.iconUrl ? (steam ? `https://shared.akamai.steamstatic.com/community_assets/images/apps/${id}/${pv.iconUrl}` : pv.iconUrl) : null;
                 return { name: d.lastUnlockName, icon, at: d.lastUnlockedAt };
             })() : null,
             lastMs: Math.max(ms(d.lastUnlockedAt), ms(d.lastPlayedTs)),

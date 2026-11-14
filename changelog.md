@@ -2,7 +2,7 @@
 
 ## v26.11.14
 
-A LEGO series on the RA and Steam profiles, and LEGO 2K Drive as the face of the shared one
+A LEGO series on the RA and Steam profiles, LEGO 2K Drive as the face of the shared one, games from a Steam Family library in your play log, and Steam icons that load again
 
 ### RetroAchievements
 
@@ -12,6 +12,10 @@ A LEGO series on the RA and Steam profiles, and LEGO 2K Drive as the face of the
 ### Steam
 
 - new: **LEGO** series: City Undercover, The LEGO NINJAGO Movie Video Game and LEGO 2K Drive
+- fix: **Icons** for newer games and achievements load again
+  Steam stopped serving newer icons from the address the site used; every Steam icon now comes from Steam's current one.
+- fix: **Steam Family games** show up in your play log and recently played
+  Games you play from someone else's library never appeared, because Steam leaves them out of your own games. Their session times are approximate, to the half hour, because Steam doesn't say when they were last played.
 
 ### Hub
 
