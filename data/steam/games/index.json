@@ -38181,14 +38181,23 @@
             "appId": 1658290,
             "hasAchievements": true,
             "total": 50,
-            "unlocked": 6,
+            "unlocked": 7,
             "gameName": "Eiyuden Chronicle: Rising",
             "playtimeForever": 150,
-            "lastPlayedTs": "2026-11-14T11:13:59.000Z",
+            "lastPlayedTs": "2026-11-14T15:23:08.000Z",
             "iconUrl": "https://shared.akamai.steamstatic.com/community_assets/images/apps/1658290/449ec8f09bf72c9f8e00c113c1e12a7c70a86de4.jpg",
-            "lastUnlockedAt": "2026-11-07T15:03:44.000Z",
-            "lastUnlockName": "Partners?",
+            "lastUnlockedAt": "2026-11-14T15:34:22.000Z",
+            "lastUnlockName": "Magical Mineral Golem",
             "preview": [
+                {
+                    "apiName": "ACHIEVEMENT005",
+                    "displayName": "Magical Mineral Golem",
+                    "unlocked": true,
+                    "unlockedAt": "2026-11-14T15:34:22.000Z",
+                    "iconUrl": "05c7846bef15486bfd5d86531139998aa8244f8e.jpg",
+                    "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
+                    "globalPct": 53.7
+                },
                 {
                     "apiName": "ACHIEVEMENT002",
                     "displayName": "Partners?",
@@ -38233,15 +38242,6 @@
                     "iconUrl": "924d1737b63a1f77822da49a85c47189ecb963b5.jpg",
                     "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
                     "globalPct": 70.5
-                },
-                {
-                    "apiName": "ACHIEVEMENT001",
-                    "displayName": "Plenty More to Go",
-                    "unlocked": true,
-                    "unlockedAt": "2026-10-03T16:06:46.000Z",
-                    "iconUrl": "e795de25f1ee60903ebcc66b28a3a79bdbb0fc84.jpg",
-                    "iconGrayUrl": "c52f0941e8a0fa43a6e36a9bbb333928d9d03acc.jpg",
-                    "globalPct": 80.4
                 }
             ]
         },
@@ -39637,7 +39637,7 @@
                     "unlockedAt": "2026-11-08T10:28:13.000Z",
                     "iconUrl": "b245962141c9669bb20a21ba27555345f47a561b.jpg",
                     "iconGrayUrl": "f2bf8289ba403366ce0d5bbf859d9898eb73315e.jpg",
-                    "globalPct": 39
+                    "globalPct": 38.9
                 },
                 {
                     "apiName": "ach018",
@@ -39646,7 +39646,7 @@
                     "unlockedAt": "2026-11-08T09:14:51.000Z",
                     "iconUrl": "a639220b40c5915d50085b5aa33e491a15b37333.jpg",
                     "iconGrayUrl": "86898118201b8d641831e11ce26a2f5f4939f35c.jpg",
-                    "globalPct": 26.9
+                    "globalPct": 26.8
                 },
                 {
                     "apiName": "ach017",
@@ -39724,7 +39724,7 @@
                     "unlockedAt": null,
                     "iconUrl": "c511183ed90bde9e31421e0f24784caebd0ffc1d.jpg",
                     "iconGrayUrl": "043ea4540ff2620ec322517776e1fb8bc6ee8cd5.jpg",
-                    "globalPct": 48.1
+                    "globalPct": 48.2
                 },
                 {
                     "apiName": "DefeatHibernationSandy",
@@ -39733,7 +39733,7 @@
                     "unlockedAt": null,
                     "iconUrl": "b6d55da4834ca70897f53e01378a10b37c2cb488.jpg",
                     "iconGrayUrl": "21dc5dde373e9f7da18b361def601ad32664ee79.jpg",
-                    "globalPct": 43.6
+                    "globalPct": 43.7
                 },
                 {
                     "apiName": "GetTheGoldenSpatula",

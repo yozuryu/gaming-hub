@@ -2,7 +2,7 @@
     "appId": 1658290,
     "hasAchievements": true,
     "total": 50,
-    "unlocked": 6,
+    "unlocked": 7,
     "gameName": "Eiyuden Chronicle: Rising",
     "achievements": [
         {
@@ -36,7 +36,7 @@
             "iconUrl": "5ef5bbbf3d1de10a39c0b40ffd4371bb417c7ea8.jpg",
             "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
             "hidden": true,
-            "globalPct": 46.4
+            "globalPct": 46.3
         },
         {
             "apiName": "ACHIEVEMENT004",
@@ -51,8 +51,8 @@
         },
         {
             "apiName": "ACHIEVEMENT005",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-11-14T15:34:22.000Z",
             "displayName": "Magical Mineral Golem",
             "description": "",
             "iconUrl": "05c7846bef15486bfd5d86531139998aa8244f8e.jpg",
@@ -113,7 +113,7 @@
             "iconUrl": "02c46f555907f3ffb6a8cd8fcf09731012761588.jpg",
             "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
             "hidden": false,
-            "globalPct": 21.6
+            "globalPct": 21.5
         },
         {
             "apiName": "ACHIEVEMENT011",
@@ -557,11 +557,20 @@
         }
     ],
     "playtimeForever": 150,
-    "lastPlayedTs": "2026-11-14T11:13:59.000Z",
+    "lastPlayedTs": "2026-11-14T15:23:08.000Z",
     "iconUrl": "https://shared.akamai.steamstatic.com/community_assets/images/apps/1658290/449ec8f09bf72c9f8e00c113c1e12a7c70a86de4.jpg",
-    "lastUnlockedAt": "2026-11-07T15:03:44.000Z",
-    "lastUnlockName": "Partners?",
+    "lastUnlockedAt": "2026-11-14T15:34:22.000Z",
+    "lastUnlockName": "Magical Mineral Golem",
     "preview": [
+        {
+            "apiName": "ACHIEVEMENT005",
+            "displayName": "Magical Mineral Golem",
+            "unlocked": true,
+            "unlockedAt": "2026-11-14T15:34:22.000Z",
+            "iconUrl": "05c7846bef15486bfd5d86531139998aa8244f8e.jpg",
+            "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
+            "globalPct": 53.7
+        },
         {
             "apiName": "ACHIEVEMENT002",
             "displayName": "Partners?",
@@ -606,15 +615,6 @@
             "iconUrl": "924d1737b63a1f77822da49a85c47189ecb963b5.jpg",
             "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
             "globalPct": 70.5
-        },
-        {
-            "apiName": "ACHIEVEMENT001",
-            "displayName": "Plenty More to Go",
-            "unlocked": true,
-            "unlockedAt": "2026-10-03T16:06:46.000Z",
-            "iconUrl": "e795de25f1ee60903ebcc66b28a3a79bdbb0fc84.jpg",
-            "iconGrayUrl": "c52f0941e8a0fa43a6e36a9bbb333928d9d03acc.jpg",
-            "globalPct": 80.4
         }
     ]
 }
