@@ -2,7 +2,7 @@
     "appId": 1451810,
     "hasAchievements": true,
     "total": 38,
-    "unlocked": 2,
+    "unlocked": 3,
     "gameName": "LEGO® 2K Drive",
     "achievements": [
         {
@@ -168,7 +168,7 @@
             "iconUrl": "fc2d1bf62042f963f70ddfe35291de8ce7018003.jpg",
             "iconGrayUrl": "eed6924d586644403c686192c3a09b37112774e1.jpg",
             "hidden": false,
-            "globalPct": 8.9
+            "globalPct": 8.8
         },
         {
             "apiName": "ACH_JACK_ALL_TRADES",
@@ -392,8 +392,8 @@
         },
         {
             "apiName": "ACH_STUNTMAN",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-11-14T03:25:53.000Z",
             "displayName": "Higher Orbit",
             "description": "Spin 1080 degrees in the air without using a jetpack",
             "iconUrl": "5026e77fe20acefcf9410f4f00c222f7f6345366.jpg",
@@ -424,12 +424,21 @@
             "globalPct": 1.9
         }
     ],
-    "playtimeForever": 30,
-    "lastPlayedTs": "2026-11-14T02:57:59.000Z",
+    "playtimeForever": 60,
+    "lastPlayedTs": "2026-11-14T03:27:59.000Z",
     "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1451810/8310e788a7972d6ae815c157a58207b5bb50f369.jpg",
-    "lastUnlockedAt": "2026-11-14T02:57:39.000Z",
-    "lastUnlockName": "A Charismatic Mentor",
+    "lastUnlockedAt": "2026-11-14T03:25:53.000Z",
+    "lastUnlockName": "Higher Orbit",
     "preview": [
+        {
+            "apiName": "ACH_STUNTMAN",
+            "displayName": "Higher Orbit",
+            "unlocked": true,
+            "unlockedAt": "2026-11-14T03:25:53.000Z",
+            "iconUrl": "5026e77fe20acefcf9410f4f00c222f7f6345366.jpg",
+            "iconGrayUrl": "be7bbb1cc25f7a9931388026b5207a48605b635e.jpg",
+            "globalPct": 5.1
+        },
         {
             "apiName": "ACH_CLUTCHS_PUPIL",
             "displayName": "A Charismatic Mentor",
@@ -474,15 +483,6 @@
             "iconUrl": "9e4bd9fd814de95a9b52c0416ee4a318bdd0087f.jpg",
             "iconGrayUrl": "82dcc5904f8e6ec6214540323175bdda80530e6a.jpg",
             "globalPct": 10.9
-        },
-        {
-            "apiName": "ACH_CHALLENGER",
-            "displayName": "New Challengers",
-            "unlocked": false,
-            "unlockedAt": null,
-            "iconUrl": "6fc2ee43abd7f60b9ffa47d0b53001aa9d046cea.jpg",
-            "iconGrayUrl": "55f7708c96ae04801b4a2a1dc448608029055f4e.jpg",
-            "globalPct": 3.6
         }
     ]
 }

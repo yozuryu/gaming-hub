@@ -33520,7 +33520,7 @@
                     "unlockedAt": null,
                     "iconUrl": "2f5917feb40bd711b1236215467f9bc94236b34b.jpg",
                     "iconGrayUrl": "f725611c1cfaed2d2d9b812fab07a30aaa040ce8.jpg",
-                    "globalPct": 28.4
+                    "globalPct": 28.6
                 },
                 {
                     "apiName": "A02_TotemOcean",
@@ -33529,7 +33529,7 @@
                     "unlockedAt": null,
                     "iconUrl": "4a334413079e9ece22dc00f40bb3df84359ee7a0.jpg",
                     "iconGrayUrl": "041da3feb7e5dce30c00551f5e3c65d5c85fd186.jpg",
-                    "globalPct": 30.4
+                    "globalPct": 30.5
                 },
                 {
                     "apiName": "A03_TotemJungle",
@@ -33538,7 +33538,7 @@
                     "unlockedAt": null,
                     "iconUrl": "3f11809705f6e57072e3e1dc9308aecd0f127d28.jpg",
                     "iconGrayUrl": "66e04d28136ef011f08b96431f768f31e6970f50.jpg",
-                    "globalPct": 24.3
+                    "globalPct": 24.4
                 },
                 {
                     "apiName": "A04_TotemDesert",
@@ -33547,7 +33547,7 @@
                     "unlockedAt": null,
                     "iconUrl": "891cc116879295431117397954d32eec4f491f9f.jpg",
                     "iconGrayUrl": "1bf2423baea762b168ef2f983dd448e062999fb5.jpg",
-                    "globalPct": 23.1
+                    "globalPct": 23.2
                 },
                 {
                     "apiName": "A05_TotemClouds",
@@ -33556,7 +33556,7 @@
                     "unlockedAt": null,
                     "iconUrl": "8708fa274b447e8cea7d0801aab710e45b8dc599.jpg",
                     "iconGrayUrl": "909698dc418d2a5bd809513dd4063550cff394a3.jpg",
-                    "globalPct": 20.4
+                    "globalPct": 20.5
                 },
                 {
                     "apiName": "A06_TotemMaster",
@@ -33565,7 +33565,7 @@
                     "unlockedAt": null,
                     "iconUrl": "93f731e4f258ae63d852e104d9af764b4d854965.jpg",
                     "iconGrayUrl": "49b48d6327d3f261a23eb7d2700b01639d47297b.jpg",
-                    "globalPct": 17.9
+                    "globalPct": 18.1
                 }
             ]
         },
@@ -37977,14 +37977,23 @@
             "appId": 1451810,
             "hasAchievements": true,
             "total": 38,
-            "unlocked": 2,
+            "unlocked": 3,
             "gameName": "LEGO® 2K Drive",
-            "playtimeForever": 30,
-            "lastPlayedTs": "2026-11-14T02:57:59.000Z",
+            "playtimeForever": 60,
+            "lastPlayedTs": "2026-11-14T03:27:59.000Z",
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1451810/8310e788a7972d6ae815c157a58207b5bb50f369.jpg",
-            "lastUnlockedAt": "2026-11-14T02:57:39.000Z",
-            "lastUnlockName": "A Charismatic Mentor",
+            "lastUnlockedAt": "2026-11-14T03:25:53.000Z",
+            "lastUnlockName": "Higher Orbit",
             "preview": [
+                {
+                    "apiName": "ACH_STUNTMAN",
+                    "displayName": "Higher Orbit",
+                    "unlocked": true,
+                    "unlockedAt": "2026-11-14T03:25:53.000Z",
+                    "iconUrl": "5026e77fe20acefcf9410f4f00c222f7f6345366.jpg",
+                    "iconGrayUrl": "be7bbb1cc25f7a9931388026b5207a48605b635e.jpg",
+                    "globalPct": 5.1
+                },
                 {
                     "apiName": "ACH_CLUTCHS_PUPIL",
                     "displayName": "A Charismatic Mentor",
@@ -38029,15 +38038,6 @@
                     "iconUrl": "9e4bd9fd814de95a9b52c0416ee4a318bdd0087f.jpg",
                     "iconGrayUrl": "82dcc5904f8e6ec6214540323175bdda80530e6a.jpg",
                     "globalPct": 10.9
-                },
-                {
-                    "apiName": "ACH_CHALLENGER",
-                    "displayName": "New Challengers",
-                    "unlocked": false,
-                    "unlockedAt": null,
-                    "iconUrl": "6fc2ee43abd7f60b9ffa47d0b53001aa9d046cea.jpg",
-                    "iconGrayUrl": "55f7708c96ae04801b4a2a1dc448608029055f4e.jpg",
-                    "globalPct": 3.6
                 }
             ]
         },
@@ -39646,7 +39646,7 @@
                     "unlockedAt": "2026-11-08T09:14:51.000Z",
                     "iconUrl": "a639220b40c5915d50085b5aa33e491a15b37333.jpg",
                     "iconGrayUrl": "86898118201b8d641831e11ce26a2f5f4939f35c.jpg",
-                    "globalPct": 26.8
+                    "globalPct": 26.9
                 },
                 {
                     "apiName": "ach017",
@@ -39664,7 +39664,7 @@
                     "unlockedAt": "2026-11-08T05:05:26.000Z",
                     "iconUrl": "f7ed43ebaffa7609f7161e2acae4cd3415f1967c.jpg",
                     "iconGrayUrl": "27fb3f587ff5db0f90bca6117beb1b2163ae3445.jpg",
-                    "globalPct": 79
+                    "globalPct": 79.1
                 },
                 {
                     "apiName": "ach002",
@@ -39724,7 +39724,7 @@
                     "unlockedAt": null,
                     "iconUrl": "c511183ed90bde9e31421e0f24784caebd0ffc1d.jpg",
                     "iconGrayUrl": "043ea4540ff2620ec322517776e1fb8bc6ee8cd5.jpg",
-                    "globalPct": 48.2
+                    "globalPct": 48.1
                 },
                 {
                     "apiName": "DefeatHibernationSandy",
@@ -39733,7 +39733,7 @@
                     "unlockedAt": null,
                     "iconUrl": "b6d55da4834ca70897f53e01378a10b37c2cb488.jpg",
                     "iconGrayUrl": "21dc5dde373e9f7da18b361def601ad32664ee79.jpg",
-                    "globalPct": 43.7
+                    "globalPct": 43.6
                 },
                 {
                     "apiName": "GetTheGoldenSpatula",
@@ -39751,7 +39751,7 @@
                     "unlockedAt": null,
                     "iconUrl": "0a5e17c3803e135638bf740267caeab0c5af7bfd.jpg",
                     "iconGrayUrl": "773e901b54f8e160df408508057fbb6df241ca7b.jpg",
-                    "globalPct": 40.7
+                    "globalPct": 40.6
                 }
             ]
         },

@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-11-14T03:16:53.250Z"
+        "extractionTimestamp": "2026-11-14T03:46:53.133Z"
     },
     "profile": {
         "steamId": "76561198188939413",
@@ -13,11 +13,11 @@
     },
     "stats": {
         "totalGames": 1295,
-        "totalPlaytimeMin": 351637,
+        "totalPlaytimeMin": 351667,
         "totalPlaytimeHrs": 5861,
         "gamesWithPlaytime": 823,
         "totalAchievements": 10250,
-        "unlockedAchievements": 2867,
+        "unlockedAchievements": 2868,
         "gamesWithAchievements": 174,
         "perfectCount": 17,
         "completionPct": 27,
@@ -27,12 +27,12 @@
         {
             "appId": 1451810,
             "name": "LEGO® 2K Drive",
-            "playtime2Weeks": 30,
-            "playtimeForever": 30,
+            "playtime2Weeks": 60,
+            "playtimeForever": 60,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1451810/8310e788a7972d6ae815c157a58207b5bb50f369.jpg",
             "storeUrl": "https://store.steampowered.com/app/1451810",
-            "lastPlayedTs": "2026-11-14T02:57:59.000Z",
-            "achUnlocked": 2,
+            "lastPlayedTs": "2026-11-14T03:27:59.000Z",
+            "achUnlocked": 3,
             "achTotal": 38
         },
         {
@@ -105,21 +105,21 @@
     "mostRecentGame": {
         "appId": 1451810,
         "name": "LEGO® 2K Drive",
-        "playtime2Weeks": 30,
-        "playtimeForever": 30,
+        "playtime2Weeks": 60,
+        "playtimeForever": 60,
         "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1451810/8310e788a7972d6ae815c157a58207b5bb50f369.jpg",
         "storeUrl": "https://store.steampowered.com/app/1451810",
-        "lastPlayedTs": "2026-11-14T02:57:59.000Z"
+        "lastPlayedTs": "2026-11-14T03:27:59.000Z"
     },
     "mostRecentUnlock": {
         "appId": 1451810,
         "gameName": "LEGO® 2K Drive",
-        "apiName": "ACH_CLUTCHS_PUPIL",
-        "displayName": "A Charismatic Mentor",
-        "description": "Receive your first Checkered Flag in Story mode",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/1451810/249e96d7f1074b1045038ec7e0bfc030e9731c14.jpg",
-        "unlockedAt": "2026-11-14T02:57:39.000Z",
-        "globalPct": 70.2
+        "apiName": "ACH_STUNTMAN",
+        "displayName": "Higher Orbit",
+        "description": "Spin 1080 degrees in the air without using a jetpack",
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/1451810/5026e77fe20acefcf9410f4f00c222f7f6345366.jpg",
+        "unlockedAt": "2026-11-14T03:25:53.000Z",
+        "globalPct": 5.1
     },
     "perfectGames": [
         {
