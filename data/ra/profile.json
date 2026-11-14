@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-11-14T12:15:53.314Z"
+        "extractionTimestamp": "2026-11-14T12:45:56.394Z"
     },
     "username": "Yozuryu",
     "coreProfile": {
@@ -8,8 +8,8 @@
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
         "memberSince": "2023-08-19 04:53:06",
-        "richPresenceMsg": "Sliding numbers! [Score: 0]",
-        "lastGameId": 22555,
+        "richPresenceMsg": "Playing Cut the Rope",
+        "lastGameId": 22343,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 3570,
@@ -33,9 +33,9 @@
             "data": null,
             "data2": null
         },
-        "richPresenceMsg": "Sliding numbers! [Score: 0]",
-        "richPresenceMsgDate": "2026-11-14 03:21:33",
-        "lastGameId": 22555,
+        "richPresenceMsg": "Playing Cut the Rope",
+        "richPresenceMsgDate": "2026-11-14 12:24:40",
+        "lastGameId": 22343,
         "contribCount": 0,
         "contribYield": 0,
         "totalPoints": 3570,
@@ -51,7 +51,7 @@
         "recentlyPlayed": [],
         "ulid": "01H8627JHT1CFHY27EYKD6K59D",
         "userPic": "/UserPic/Yozuryu.png",
-        "totalRanked": 172988,
+        "totalRanked": 172992,
         "awarded": {},
         "recentAchievements": {},
         "status": "Offline"
@@ -279,6 +279,24 @@
     },
     "recentlyPlayedGames": [
         {
+            "gameId": 22343,
+            "consoleId": 78,
+            "consoleName": "Nintendo DSi",
+            "title": "Cut the Rope",
+            "imageIcon": "/Images/072509.png",
+            "imageTitle": "/Images/140699.png",
+            "imageIngame": "/Images/140700.png",
+            "imageBoxArt": "/Images/072462.png",
+            "lastPlayed": "2026-11-14 12:24:40",
+            "achievementsTotal": 15,
+            "numPossibleAchievements": 15,
+            "possibleScore": 80,
+            "numAchieved": 4,
+            "scoreAchieved": 13,
+            "numAchievedHardcore": 4,
+            "scoreAchievedHardcore": 13
+        },
+        {
             "gameId": 22555,
             "consoleId": 11,
             "consoleName": "Master System",
@@ -475,24 +493,6 @@
             "scoreAchieved": 1,
             "numAchievedHardcore": 1,
             "scoreAchievedHardcore": 1
-        },
-        {
-            "gameId": 22343,
-            "consoleId": 78,
-            "consoleName": "Nintendo DSi",
-            "title": "Cut the Rope",
-            "imageIcon": "/Images/072509.png",
-            "imageTitle": "/Images/140699.png",
-            "imageIngame": "/Images/140700.png",
-            "imageBoxArt": "/Images/072462.png",
-            "lastPlayed": "2026-10-01 09:49:58",
-            "achievementsTotal": 15,
-            "numPossibleAchievements": 15,
-            "possibleScore": 80,
-            "numAchieved": 4,
-            "scoreAchieved": 13,
-            "numAchievedHardcore": 4,
-            "scoreAchievedHardcore": 13
         },
         {
             "gameId": 40459,
@@ -1794,22 +1794,22 @@
         "gameUrl": "/game/16244"
     },
     "mostRecentGame": {
-        "gameId": 22555,
-        "consoleId": 11,
-        "consoleName": "Master System",
-        "title": "~Homebrew~ 2048",
-        "imageIcon": "/Images/068522.png",
-        "imageTitle": "/Images/068449.png",
-        "imageIngame": "/Images/068450.png",
-        "imageBoxArt": "/Images/068523.png",
-        "lastPlayed": "2026-11-14 03:21:33",
-        "achievementsTotal": 11,
-        "numPossibleAchievements": 11,
-        "possibleScore": 251,
-        "numAchieved": 0,
-        "scoreAchieved": 0,
-        "numAchievedHardcore": 0,
-        "scoreAchievedHardcore": 0
+        "gameId": 22343,
+        "consoleId": 78,
+        "consoleName": "Nintendo DSi",
+        "title": "Cut the Rope",
+        "imageIcon": "/Images/072509.png",
+        "imageTitle": "/Images/140699.png",
+        "imageIngame": "/Images/140700.png",
+        "imageBoxArt": "/Images/072462.png",
+        "lastPlayed": "2026-11-14 12:24:40",
+        "achievementsTotal": 15,
+        "numPossibleAchievements": 15,
+        "possibleScore": 80,
+        "numAchieved": 4,
+        "scoreAchieved": 13,
+        "numAchievedHardcore": 4,
+        "scoreAchievedHardcore": 13
     },
     "points7Days": 26,
     "points30Days": 183
