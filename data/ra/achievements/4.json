@@ -1,25 +1,6 @@
 {
     "recentAchievements": [
         {
-            "date": "2026-02-14 10:11:24",
-            "hardcoreMode": true,
-            "achievementId": 577356,
-            "title": "NG+ Warning",
-            "description": "Progression must be done on a New Game only!",
-            "badgeName": "654917",
-            "points": 0,
-            "trueRatio": 0,
-            "type": null,
-            "author": "solidification",
-            "authorUlid": "01DHQQA7B9Y988HPETD1BDKRKP",
-            "gameTitle": "Threads of Fate",
-            "gameIcon": "/Images/097437.png",
-            "gameId": 11340,
-            "consoleName": "PlayStation",
-            "badgeUrl": "/Badge/654917.png",
-            "gameUrl": "/game/11340"
-        },
-        {
             "date": "2025-11-16 16:07:07",
             "hardcoreMode": true,
             "achievementId": 306194,
@@ -1139,6 +1120,25 @@
             "consoleName": "Game Boy Advance",
             "badgeUrl": "/Badge/383487.png",
             "gameUrl": "/game/24186"
+        },
+        {
+            "date": "2026-02-14 10:11:24",
+            "hardcoreMode": true,
+            "achievementId": 577356,
+            "title": "NG+ Warning",
+            "description": "Progression must be done on a New Game only!",
+            "badgeName": "654917",
+            "points": 0,
+            "trueRatio": 0,
+            "type": null,
+            "author": "solidification",
+            "authorUlid": "01DHQQA7B9Y988HPETD1BDKRKP",
+            "gameTitle": "Threads of Fate",
+            "gameIcon": "/Images/097437.png",
+            "gameId": 11340,
+            "consoleName": "PlayStation",
+            "badgeUrl": "/Badge/654917.png",
+            "gameUrl": "/game/11340"
         }
     ]
 }
