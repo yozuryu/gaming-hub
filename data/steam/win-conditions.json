@@ -1,4 +1,14 @@
 {
+  "550": {
+    "mode": "and",
+    "achievements": [
+      "ACH_SURVIVE_MALL",
+      "ACH_SURVIVE_ROAD",
+      "ACH_SURVIVE_SWAMP",
+      "ACH_SURVIVE_TOWN",
+      "ACH_SURVIVE_BRIDGE"
+    ]
+  },
   "620": {
     "mode": "or",
     "achievements": [
@@ -72,6 +82,12 @@
     "mode": "or",
     "achievements": [
       "Achievement_19"
+    ]
+  },
+  "105600": {
+    "mode": "or",
+    "achievements": [
+      "CHAMPION_OF_TERRARIA"
     ]
   },
   "107100": {
@@ -162,6 +178,12 @@
     "mode": "or",
     "achievements": [
       "fated"
+    ]
+  },
+  "220240": {
+    "mode": "or",
+    "achievements": [
+      "FarCry3_Ach_12"
     ]
   },
   "220440": {
@@ -798,6 +820,13 @@
       "ACHIEVEMENT_16_GAME_CLEAR"
     ]
   },
+  "413150": {
+    "mode": "or",
+    "achievements": [
+      "Achievement_LocalLegend",
+      "Achievement_Joja"
+    ]
+  },
   "414340": {
     "mode": "or",
     "achievements": [
@@ -1164,6 +1193,12 @@
       "ACHIEVE_CLEAR_GAME"
     ]
   },
+  "648800": {
+    "mode": "or",
+    "achievements": [
+      "ach_finalCutscene"
+    ]
+  },
   "678960": {
     "mode": "or",
     "achievements": [
@@ -1248,6 +1283,21 @@
     "mode": "or",
     "achievements": [
       "NEW_ACHIEVEMENT_1_6"
+    ]
+  },
+  "809890": {
+    "mode": "or",
+    "achievements": [
+      "tr_chapter_clear_8"
+    ]
+  },
+  "814380": {
+    "mode": "or",
+    "achievements": [
+      "ACH09",
+      "ACH10",
+      "ACH11",
+      "ACH12"
     ]
   },
   "834530": {
@@ -1415,6 +1465,12 @@
       "30"
     ]
   },
+  "1446780": {
+    "mode": "or",
+    "achievements": [
+      "GC_Award_N_06"
+    ]
+  },
   "1668510": {
     "mode": "or",
     "achievements": [
@@ -1546,6 +1602,12 @@
     "achievements": [
       "ACHIEVEMENT_2",
       "ACHIEVEMENT_42"
+    ]
+  },
+  "3678970": {
+    "mode": "or",
+    "achievements": [
+      "STEAM_ACHIEVEMENT_100004"
     ]
   }
 }
