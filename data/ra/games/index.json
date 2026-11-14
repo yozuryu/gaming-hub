@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-11-14T02:45:59.162Z"
+        "extractionTimestamp": "2026-11-14T03:15:55.609Z"
     },
     "games": {
         "449": {
@@ -213,8 +213,8 @@
             "consoleId": 5,
             "consoleName": "Game Boy Advance",
             "parentGameId": null,
-            "numDistinctPlayersCasual": 4617,
-            "numDistinctPlayersHardcore": 4617,
+            "numDistinctPlayersCasual": 4618,
+            "numDistinctPlayersHardcore": 4618,
             "numAchievements": 49,
             "numAwardedToUser": 0,
             "numAwardedToUserHardcore": 0,
@@ -2833,6 +2833,35 @@
                 }
             }
         },
+        "22555": {
+            "id": 22555,
+            "title": "~Homebrew~ 2048",
+            "consoleId": 11,
+            "consoleName": "Master System",
+            "parentGameId": null,
+            "numDistinctPlayersCasual": 410,
+            "numDistinctPlayersHardcore": 410,
+            "numAchievements": 11,
+            "numAwardedToUser": 0,
+            "numAwardedToUserHardcore": 0,
+            "userTotalPlaytime": 420,
+            "imageIcon": "/Images/068522.png",
+            "imageTitle": "/Images/068449.png",
+            "imageIngame": "/Images/068450.png",
+            "publisher": "Grz",
+            "developer": "Grz",
+            "genre": "Sliding Puzzle",
+            "released": "2014-03-27",
+            "summary": {
+                "count": 11,
+                "earned": 0,
+                "points": 251,
+                "pointsEarned": 0,
+                "prog": 9,
+                "progEarned": 0,
+                "lastUnlock": null
+            }
+        },
         "22693": {
             "id": 22693,
             "title": "Pokémon SoulSilver Version [Subset - Professor Oak Challenge (SoulSilver)]",
@@ -3310,8 +3339,8 @@
             "consoleId": 102,
             "consoleName": "Standalone",
             "parentGameId": null,
-            "numDistinctPlayersCasual": 3187,
-            "numDistinctPlayersHardcore": 3187,
+            "numDistinctPlayersCasual": 3188,
+            "numDistinctPlayersHardcore": 3188,
             "numAchievements": 156,
             "numAwardedToUser": 61,
             "numAwardedToUserHardcore": 61,
