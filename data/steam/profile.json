@@ -1,19 +1,19 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-11-14T10:16:46.022Z"
+        "extractionTimestamp": "2026-11-14T11:16:51.931Z"
     },
     "profile": {
         "steamId": "76561198188939413",
         "displayName": "Yozuryu",
         "avatar": "https://avatars.steamstatic.com/3f5e9daea59216d7fe13df4e031d3537580e5e21_full.jpg",
         "profileUrl": "https://steamcommunity.com/id/yozuryu/",
-        "status": 3,
-        "lastOnline": "2026-11-14T05:42:02.000Z",
+        "status": 1,
+        "lastOnline": "2026-11-14T10:45:48.000Z",
         "countryCode": "ID"
     },
     "stats": {
         "totalGames": 1295,
-        "totalPlaytimeMin": 352000,
+        "totalPlaytimeMin": 352027,
         "totalPlaytimeHrs": 5867,
         "gamesWithPlaytime": 823,
         "totalAchievements": 10250,
@@ -24,6 +24,17 @@
         "avgPlaytimeMin": 427
     },
     "recentlyPlayed": [
+        {
+            "appId": 1658290,
+            "name": "Eiyuden Chronicle: Rising",
+            "playtime2Weeks": 131,
+            "playtimeForever": 150,
+            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1658290/449ec8f09bf72c9f8e00c113c1e12a7c70a86de4.jpg",
+            "storeUrl": "https://store.steampowered.com/app/1658290",
+            "lastPlayedTs": "2026-11-14T11:13:59.000Z",
+            "achUnlocked": 6,
+            "achTotal": 50
+        },
         {
             "appId": 1451810,
             "name": "LEGO® 2K Drive",
@@ -69,47 +80,25 @@
             "achTotal": 48
         },
         {
-            "appId": 1658290,
-            "name": "Eiyuden Chronicle: Rising",
-            "playtime2Weeks": 104,
-            "playtimeForever": 123,
-            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1658290/449ec8f09bf72c9f8e00c113c1e12a7c70a86de4.jpg",
-            "storeUrl": "https://store.steampowered.com/app/1658290",
-            "lastPlayedTs": "2026-11-07T15:44:44.000Z",
-            "achUnlocked": 6,
-            "achTotal": 50
-        },
-        {
             "appId": 1883260,
             "name": "Little Noah: Scion of Paradise",
-            "playtime2Weeks": 64,
+            "playtime2Weeks": 24,
             "playtimeForever": 392,
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1883260/5fb49ba38199e7e9295156b4e849a8857b5c0a68.jpg",
             "storeUrl": "https://store.steampowered.com/app/1883260",
             "lastPlayedTs": "2026-10-31T11:41:21.000Z",
             "achUnlocked": 11,
             "achTotal": 39
-        },
-        {
-            "appId": 785890,
-            "name": "Hexologic",
-            "playtime2Weeks": 4,
-            "playtimeForever": 4,
-            "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/785890/7bedc0ef6e2d0fba292e2cad90d0166fb670319c.jpg",
-            "storeUrl": "https://store.steampowered.com/app/785890",
-            "lastPlayedTs": "2026-10-31T10:36:33.000Z",
-            "achUnlocked": 0,
-            "achTotal": 11
         }
     ],
     "mostRecentGame": {
-        "appId": 1451810,
-        "name": "LEGO® 2K Drive",
-        "playtime2Weeks": 393,
-        "playtimeForever": 393,
-        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1451810/8310e788a7972d6ae815c157a58207b5bb50f369.jpg",
-        "storeUrl": "https://store.steampowered.com/app/1451810",
-        "lastPlayedTs": "2026-11-14T09:57:17.000Z"
+        "appId": 1658290,
+        "name": "Eiyuden Chronicle: Rising",
+        "playtime2Weeks": 131,
+        "playtimeForever": 150,
+        "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1658290/449ec8f09bf72c9f8e00c113c1e12a7c70a86de4.jpg",
+        "storeUrl": "https://store.steampowered.com/app/1658290",
+        "lastPlayedTs": "2026-11-14T11:13:59.000Z"
     },
     "mostRecentUnlock": {
         "appId": 1451810,
