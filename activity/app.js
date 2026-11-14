@@ -808,7 +808,7 @@ const App = () => {
         fetch('../data/steam/games/index.json')
             .then(r => r.json())
             .then(d => setSteamGameIcons(Object.fromEntries(
-                Object.entries(d.achievementProgress ?? {}).map(([id, g]) => [id, g.iconUrl ?? g.headerUrl]).filter(([, u]) => u)
+                Object.entries(d.achievementProgress ?? {}).map(([id, g]) => [id, g.iconUrl])
             )))
             .catch(() => {});
 

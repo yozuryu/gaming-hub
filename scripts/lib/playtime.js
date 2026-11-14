@@ -41,12 +41,9 @@ const iso = (ms) => new Date(ms).toISOString().slice(0, 19) + 'Z';
  * Compares a snapshot with the baseline and returns the sessions it implies.
  *
  * @param state     previous state.json content, or null on the first run
- * @param snapshot  [{ id, total, lastPlayed, noLastPlayed? }] for every game the platform reports
+ * @param snapshot  [{ id, total, lastPlayed }] for every game the platform reports
  *                  (total in raw units, lastPlayed as ISO / RA string / ms / null,
- *                  or undefined when the source doesn't say). noLastPlayed: the platform
- *                  never gives this game a last-played time (Steam Family games played
- *                  from someone else's library), so growth alone is new play and the
- *                  session ends at asOf, marked approx
+ *                  or undefined when the source doesn't say)
  * @param opts.unitsPerMinute  1 for Steam (minutes), 60 for RA (seconds)
  * @param opts.asOf            time of the snapshot (ms); sessions never end after it
  * @returns { state, sessions, seeded }
@@ -90,8 +87,7 @@ function diffPlaytime(state, snapshot, { unitsPerMinute, asOf }) {
         }
 
         // Negative, or playtime moved without any new play: a server-side correction
-        // (a game with no last-played time at all can only show play through its total)
-        if (delta < 0 || (lastPlayed === prev.lastPlayed && !g.noLastPlayed)) {
+        if (delta < 0 || lastPlayed === prev.lastPlayed) {
             games[g.id] = { ...prev, total, lastPlayed };
             continue;
         }
@@ -209,7 +205,7 @@ function updatePlaytimeLog(dir, snapshot, { unitsPerMinute, asOf, dryRun = false
 
     if (seeded) log(`baseline seeded (${snapshot.length} games), no sessions logged`);
     else log(`${sessions.length} new session(s)${sessions.length ? ': ' + sessions.map(s => `${meta[s.gameId]?.name ?? s.gameId} ${s.minutes}m${s.continues ? ' (continued)' : s.minutes <= MIN_SESSION_MINUTES ? ' (launch, not logged)' : ''}`).join(', ') : ''}${dryRun ? '  (dry run)' : ''}`);
-    return { state, sessions, seeded, written };
+    return { sessions, seeded, written };
 }
 
 module.exports = { diffPlaytime, writePlaytimeFiles, updatePlaytimeLog, toMs, iso, MIN_SESSION_MINUTES };

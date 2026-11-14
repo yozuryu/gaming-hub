@@ -5,16 +5,8 @@ const https = require('https');
 const { updatePlaytimeLog, toMs, iso } = require('./lib/playtime');
 const { writeUnlockHistory } = require('./lib/history');
 
-// Game and achievement icons. The old hosts (steamcdn-a.akamaihd.net, media.steampowered.com)
-// 404 for newer icons; this one serves old and new hashes alike.
-const COMMUNITY_IMG = 'https://shared.akamai.steamstatic.com/community_assets/images/apps';
-const OLD_COMMUNITY_IMG = [
-    'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps',
-    'https://media.steampowered.com/steamcommunity/public/images/apps',
-];
-
 // Extract just the filename from a Steam CDN achievement icon URL.
-// Full URL: ${COMMUNITY_IMG}/{appId}/{hash}.jpg
+// Full URL: https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/{appId}/{hash}.jpg
 // Stored as: {hash}.jpg  — saves ~72 chars per URL, ~1.4MB across all achievements in games.json.
 const achIconHash = url => (url ? url.split('/').pop() : null);
 
@@ -205,7 +197,7 @@ async function executeProfileExtraction() {
             playtime2Weeks:    g.playtime_2weeks   ?? 0,
             playtimeForever:   g.playtime_forever  ?? 0,
             iconUrl:           g.img_icon_url
-                ? `${COMMUNITY_IMG}/${g.appid}/${g.img_icon_url}.jpg`
+                ? `https://media.steampowered.com/steamcommunity/public/images/apps/${g.appid}/${g.img_icon_url}.jpg`
                 : null,
             storeUrl:          `https://store.steampowered.com/app/${g.appid}`,
             lastPlayedTs:      lastPlayedMap[g.appid] ?? null,
@@ -215,17 +207,7 @@ async function executeProfileExtraction() {
     log.done(`${payload.recentlyPlayed.length} games`);
     await sleep(1000);
 
-    // Steam Family: games played from someone else's library are in recently played but never
-    // in owned games, and Steam gives them no last-played time. Shaped like owned entries so the
-    // activity check and the playtime log can count them. An empty owned list (private profile,
-    // API hiccup) would make every recent game look borrowed, so none are then.
-    const ownedIds = new Set(owned.map(g => g.appid));
-    const borrowed = owned.length === 0 ? [] : recent
-        .filter(g => !ownedIds.has(g.appid))
-        .map(g => ({ appid: g.appid, name: g.name, playtime_forever: g.playtime_forever ?? 0, img_icon_url: g.img_icon_url, borrowed: true }));
-    if (borrowed.length) log.ok(`${borrowed.length} recent game(s) from a family library: ${borrowed.map(g => g.name).join(', ')}`);
-
-    return { payload, owned, borrowed };
+    return { payload, owned };
 }
 
 // =========================================================
@@ -521,7 +503,7 @@ function serializeLocally(payload, achievementProgress, sentinelCache, owned) {
                 displayName: ach.displayName,
                 description: ach.description,
                 iconUrl:     ach.iconUrl
-                    ? `${COMMUNITY_IMG}/${appId}/${ach.iconUrl}`
+                    ? `https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/${appId}/${ach.iconUrl}`
                     : null,
                 unlockedAt:  ach.unlockedAt,
                 globalPct:   ach.globalPct ?? null,
@@ -530,8 +512,7 @@ function serializeLocally(payload, achievementProgress, sentinelCache, owned) {
     }
     recentAchievements.sort((a, b) => new Date(b.unlockedAt) - new Date(a.unlockedAt));
 
-    // Build playtime/last-played/icon map from owned games (already fetched in Phase 2),
-    // plus family library games (their last-played time comes from the playtime log)
+    // Build playtime/last-played/icon map from owned games (already fetched in Phase 2)
     const ownedMap = {};
     (owned || []).forEach(g => {
         ownedMap[g.appid] = {
@@ -540,7 +521,7 @@ function serializeLocally(payload, achievementProgress, sentinelCache, owned) {
                 ? new Date(g.rtime_last_played * 1000).toISOString()
                 : null,
             iconUrl: g.img_icon_url
-                ? `${COMMUNITY_IMG}/${g.appid}/${g.img_icon_url}.jpg`
+                ? `https://media.steampowered.com/steamcommunity/public/images/apps/${g.appid}/${g.img_icon_url}.jpg`
                 : null,
         };
     });
@@ -572,7 +553,7 @@ function serializeLocally(payload, achievementProgress, sentinelCache, owned) {
                 completedAt:        lastAch?.unlockedAt ?? null,
                 lastAchName:        lastAch?.displayName ?? null,
                 lastAchIconUrl:     lastAch?.iconUrl
-                    ? `${COMMUNITY_IMG}/${appId}/${lastAch.iconUrl}`
+                    ? `https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/${appId}/${lastAch.iconUrl}`
                     : null,
                 lastAchGlobalPct:   lastAch?.globalPct ?? null,
                 iconUrl:            d.iconUrl ?? null,
@@ -705,7 +686,7 @@ const sameIgnoringMetadata = (filePath, data) => {
 // Returns a short reason if you played or unlocked anything since the last written
 // files, otherwise null. Playtime is checked against the playtime log baseline,
 // unlocks against games/index.json.
-function detectActivity(owned, borrowed, achievementProgress) {
+function detectActivity(owned, achievementProgress) {
     const dir   = path.join(__dirname, '..', 'data', 'steam');
     const state = readJsonFile(path.join(dir, 'playtime', 'state.json'));
     const index = readJsonFile(path.join(dir, 'games', 'index.json'))?.achievementProgress;
@@ -722,11 +703,6 @@ function detectActivity(owned, borrowed, achievementProgress) {
         }
         if (prev.total !== total || prev.lastPlayed !== lastPlayed) return `played ${g.name}`;
     }
-    // Family library games: no last-played time, so a new game or a grown total is the only sign
-    for (const g of borrowed) {
-        const prev = state.games?.[g.appid];
-        if (!prev ? g.playtime_forever > 0 : prev.total !== g.playtime_forever) return `played ${g.name} (family library)`;
-    }
 
     for (const [appId, game] of Object.entries(achievementProgress)) {
         if ((index[appId]?.unlocked ?? 0) !== (game.unlocked ?? 0)) return `unlock in ${game.gameName ?? appId}`;
@@ -734,38 +710,17 @@ function detectActivity(owned, borrowed, achievementProgress) {
     return null;
 }
 
-// Rewrites icon addresses on the old hosts in the saved data (game files, recent unlocks,
-// playtime year files), which only change when a run touches them. Idempotent: once
-// nothing on disk uses an old host, it writes nothing.
-function moveOldIconHosts() {
-    const dir = path.join(__dirname, '..', 'data', 'steam');
-    const walk = d => (fs.existsSync(d) ? fs.readdirSync(d, { withFileTypes: true }) : [])
-        .flatMap(e => e.isDirectory() ? walk(path.join(d, e.name)) : e.name.endsWith('.json') ? [path.join(d, e.name)] : []);
-    let moved = 0;
-    for (const file of walk(dir)) {
-        const text = fs.readFileSync(file, 'utf8');
-        let next = text;
-        for (const old of OLD_COMMUNITY_IMG) next = next.split(old).join(COMMUNITY_IMG);
-        if (next === text) continue;
-        if (!DEBUG) fs.writeFileSync(file, next, 'utf8');
-        moved++;
-    }
-    if (moved) log.ok(`Icon addresses moved to the new host in ${moved} file(s)${DEBUG ? '  (dry run)' : ''}`);
-}
-
 // =========================================================
 // Phase 3a: Playtime Log
 // =========================================================
 
-// Turns lifetime playtime from GetOwnedGames into sessions (scripts/lib/playtime.js).
-// Family library games come from recently played instead, with no last-played time.
-// Returns the new playtime state (null when skipped).
-function logPlaytime(owned, borrowed) {
+// Turns lifetime playtime from GetOwnedGames into sessions (scripts/lib/playtime.js)
+function logPlaytime(owned) {
     log.section('Phase 3a — Playtime Log');
     // An empty list (private profile, API hiccup) would read as every game going to zero
     if (owned.length === 0) {
         log.skip('No owned games returned, playtime log skipped');
-        return null;
+        return;
     }
     const snapshot = owned.map(g => ({
         id:         g.appid,
@@ -773,25 +728,15 @@ function logPlaytime(owned, borrowed) {
         lastPlayed: g.rtime_last_played ? g.rtime_last_played * 1000 : null,
         name:       g.name,
         icon:       g.img_icon_url
-            ? `${COMMUNITY_IMG}/${g.appid}/${g.img_icon_url}.jpg`
+            ? `https://media.steampowered.com/steamcommunity/public/images/apps/${g.appid}/${g.img_icon_url}.jpg`
             : null,
     }));
-    for (const g of borrowed) {
-        snapshot.push({
-            id:           g.appid,
-            total:        g.playtime_forever ?? 0,
-            lastPlayed:   null,
-            noLastPlayed: true,
-            name:         g.name,
-            icon:         g.img_icon_url ? `${COMMUNITY_IMG}/${g.appid}/${g.img_icon_url}.jpg` : null,
-        });
-    }
-    return updatePlaytimeLog(path.join(__dirname, '..', 'data', 'steam', 'playtime'), snapshot, {
+    updatePlaytimeLog(path.join(__dirname, '..', 'data', 'steam', 'playtime'), snapshot, {
         unitsPerMinute: 1,
         asOf:           Date.now(),
         dryRun:         DEBUG,
         log:            log.ok,
-    }).state;
+    });
 }
 
 // =========================================================
@@ -819,14 +764,13 @@ function logHistory(achievementProgress) {
 
 async function runPipeline() {
     try {
-        moveOldIconHosts();
-        const { payload, owned, borrowed } = await executeProfileExtraction();
+        const { payload, owned } = await executeProfileExtraction();
         const { achievementProgress, sentinelCache } = await executeGameExtraction(payload.recentlyPlayed, owned);
 
         // Regular runs only write when you did something; everything else
         // (rarity, presence, 2-week playtime) refreshes in the daily midnight run
         if (!REFRESH_GAMES && !REFRESH_UNLOCKED_GAMES) {
-            const activity = detectActivity(owned, borrowed, achievementProgress);
+            const activity = detectActivity(owned, achievementProgress);
             if (!activity) {
                 log.section('No activity since the last run');
                 log.skip('No new unlocks or playtime, nothing written');
@@ -836,19 +780,8 @@ async function runPipeline() {
             log.ok(`Activity: ${activity}`);
         }
 
-        // The playtime log runs first: a family library game's last logged session end is the
-        // closest thing to a last-played time it has (approximate, to the run)
-        const playtimeState = logPlaytime(owned, borrowed);
-        const library = [...owned, ...borrowed.map(g => {
-            const end = playtimeState?.games?.[g.appid]?.lastEnd;
-            return end ? { ...g, rtime_last_played: Math.floor(end / 1000) } : g;
-        })];
-        for (const g of payload.recentlyPlayed) {
-            const b = library.find(x => x.borrowed && x.appid === g.appId);
-            if (b?.rtime_last_played) g.lastPlayedTs = new Date(b.rtime_last_played * 1000).toISOString();
-        }
-        payload.recentlyPlayed.sort((a, b) => (b.lastPlayedTs || '').localeCompare(a.lastPlayedTs || ''));
-        serializeLocally(payload, achievementProgress, sentinelCache, library);
+        serializeLocally(payload, achievementProgress, sentinelCache, owned);
+        logPlaytime(owned);
         logHistory(achievementProgress);
 
         log.section('Pipeline Complete');

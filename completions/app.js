@@ -8,7 +8,7 @@ import { raIcon } from '../assets/ra-icon.js';
 
 const RA_MEDIA  = 'https://media.retroachievements.org';
 const RA_SITE   = 'https://retroachievements.org';
-const achIconUrl = (appId, hash) => hash ? `https://shared.akamai.steamstatic.com/community_assets/images/apps/${appId}/${hash}` : null;
+const achIconUrl = (appId, hash) => hash ? `https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/${appId}/${hash}` : null;
 
 const formatPlaytime = mins => {
     if (!mins) return null;

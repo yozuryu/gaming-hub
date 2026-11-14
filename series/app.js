@@ -184,7 +184,7 @@ const normalize = (p, id, d) => {
         }));
     }
     const steam = p === 'steam';
-    const cdn = h => h ? `https://shared.akamai.steamstatic.com/community_assets/images/apps/${id}/${h}` : null;
+    const cdn = h => h ? `https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/${id}/${h}` : null;
     return (d.achievements ?? []).map((a, i) => ({
         key: a.apiName ?? i, name: a.displayName, desc: a.description, unlocked: !!a.unlocked, at: a.unlockedAt,
         icon: steam ? (a.unlocked ? cdn(a.iconUrl) : cdn(a.iconGrayUrl) || cdn(a.iconUrl)) : xboxImg(a.iconUrl, 128),

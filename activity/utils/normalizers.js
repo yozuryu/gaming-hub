@@ -42,8 +42,7 @@ export const normalizeSteam = (a) => ({
     achievementIcon: a.iconUrl,
     gameName: a.gameName,
     gameId: a.appId,
-    // Until the games index arrives (then its icon). Newer games have no capsule_184x69.jpg; header.jpg is there for nearly all
-    gameIcon: `https://cdn.akamai.steamstatic.com/steam/apps/${a.appId}/header.jpg`,
+    gameIcon: `https://cdn.akamai.steamstatic.com/steam/apps/${a.appId}/capsule_184x69.jpg`,
     gameUrl: `https://store.steampowered.com/app/${a.appId}`,
     rarity: a.globalPct,
     unlockedAt: a.unlockedAt,
