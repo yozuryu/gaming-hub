@@ -102,7 +102,7 @@
             "iconUrl": "f174e574ccc855662d10335c1577d98129254cf3.jpg",
             "iconGrayUrl": "2046eb3b1eb369ac1e65b3155a4d8c45abcb6bc8.jpg",
             "hidden": false,
-            "globalPct": 56.7
+            "globalPct": 56.6
         },
         {
             "apiName": "ACH_WINCOMBAT_LESSTHAN_5_HEALTH",
@@ -113,7 +113,7 @@
             "iconUrl": "f174e574ccc855662d10335c1577d98129254cf3.jpg",
             "iconGrayUrl": "2046eb3b1eb369ac1e65b3155a4d8c45abcb6bc8.jpg",
             "hidden": false,
-            "globalPct": 33.3
+            "globalPct": 33.2
         },
         {
             "apiName": "ACH_STARTCOMBAT_LESSTHAN_5_HEALTH",
@@ -142,7 +142,7 @@
             "unlocked": false,
             "unlockedAt": null,
             "displayName": "Slayer",
-            "description": "Perform 2 prone attacks in a row.",
+            "description": "Perform 5 finishers on prone enemies in a single combat.",
             "iconUrl": "f174e574ccc855662d10335c1577d98129254cf3.jpg",
             "iconGrayUrl": "2046eb3b1eb369ac1e65b3155a4d8c45abcb6bc8.jpg",
             "hidden": false,
@@ -190,7 +190,7 @@
             "iconUrl": "a7e1aec40b90ba7b8b4b71b5519ee65d8ef0d11e.jpg",
             "iconGrayUrl": "731610a2335a045ae1b9a0ba3c430c99531f0ddd.jpg",
             "hidden": false,
-            "globalPct": 5.3
+            "globalPct": 5.2
         },
         {
             "apiName": "ACH_UNLOCK_ALL_ENCOUNTERS",
@@ -399,7 +399,7 @@
             "iconUrl": "1c81c5074831786c1d4654372e99a461800640cb.jpg",
             "iconGrayUrl": "cd67342b0c5d131024dd9ce2c0f2670c6fd1aaff.jpg",
             "hidden": false,
-            "globalPct": 1.1
+            "globalPct": 1.2
         },
         {
             "apiName": "ACH_COMPLETE_ALL_COWARD",
@@ -410,7 +410,7 @@
             "iconUrl": "1c81c5074831786c1d4654372e99a461800640cb.jpg",
             "iconGrayUrl": "cd67342b0c5d131024dd9ce2c0f2670c6fd1aaff.jpg",
             "hidden": false,
-            "globalPct": 1.2
+            "globalPct": 1.3
         },
         {
             "apiName": "ACH_COMPLETE_ALL_CURSEOFTHELIONPRINCE",
@@ -591,7 +591,7 @@
     ],
     "playtimeForever": 260,
     "lastPlayedTs": "2024-06-06T16:03:00.000Z",
-    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/266510/28c3fe65c79dd16ddff8c7207bc96631004fb50a.jpg",
+    "iconUrl": "https://shared.akamai.steamstatic.com/community_assets/images/apps/266510/28c3fe65c79dd16ddff8c7207bc96631004fb50a.jpg",
     "lastUnlockedAt": null,
     "lastUnlockName": null,
     "preview": [

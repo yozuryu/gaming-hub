@@ -4,8 +4,8 @@
     "consoleId": 12,
     "consoleName": "PlayStation",
     "parentGameId": null,
-    "numDistinctPlayersCasual": 4016,
-    "numDistinctPlayersHardcore": 4016,
+    "numDistinctPlayersCasual": 4017,
+    "numDistinctPlayersHardcore": 4017,
     "numAchievements": 44,
     "numAwardedToUser": 5,
     "numAwardedToUserHardcore": 5,
@@ -236,8 +236,8 @@
             "trueRatio": 15,
             "type": null,
             "badgeName": "148182",
-            "numAwarded": 392,
-            "numAwardedHardcore": 294,
+            "numAwarded": 393,
+            "numAwardedHardcore": 295,
             "displayOrder": 20
         },
         "90979": {
@@ -248,7 +248,7 @@
             "trueRatio": 5,
             "type": null,
             "badgeName": "148197",
-            "numAwarded": 3431,
+            "numAwarded": 3432,
             "numAwardedHardcore": 1590,
             "displayOrder": 58,
             "dateEarned": "2025-03-01 14:58:57",
@@ -358,8 +358,8 @@
             "trueRatio": 11,
             "type": "progression",
             "badgeName": "148177",
-            "numAwarded": 766,
-            "numAwardedHardcore": 449,
+            "numAwarded": 767,
+            "numAwardedHardcore": 450,
             "displayOrder": 9
         },
         "133877": {
@@ -367,11 +367,11 @@
             "title": "Vortex of Souls",
             "description": "Finish Level 10 on Medium difficulty or higher",
             "points": 10,
-            "trueRatio": 22,
+            "trueRatio": 21,
             "type": "win_condition",
             "badgeName": "148181",
-            "numAwarded": 763,
-            "numAwardedHardcore": 450,
+            "numAwarded": 764,
+            "numAwardedHardcore": 451,
             "displayOrder": 10
         },
         "133878": {

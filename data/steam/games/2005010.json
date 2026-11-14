@@ -14,7 +14,7 @@
             "iconUrl": "bb0c2d72bb34c5bece54db16f4c9918667f0f620.jpg",
             "iconGrayUrl": "97846eb68ecd326c99efac9b9f8692b73fe41e12.jpg",
             "hidden": false,
-            "globalPct": 31
+            "globalPct": 31.1
         },
         {
             "apiName": "ach_chapter_complete_2",
@@ -25,7 +25,7 @@
             "iconUrl": "58469f89ef817eb8a089fe5ee1393ec04d65db95.jpg",
             "iconGrayUrl": "4a842b68cb70250ba08718f9a9eec6f10c35a3ca.jpg",
             "hidden": false,
-            "globalPct": 16.3
+            "globalPct": 16.4
         },
         {
             "apiName": "ach_chapter_complete_3",
@@ -36,7 +36,7 @@
             "iconUrl": "84045f565639b1899d1b23f72870ae9fa6340b63.jpg",
             "iconGrayUrl": "aec88fc854029aa11f1ff49bbf7971efeb7caf38.jpg",
             "hidden": false,
-            "globalPct": 12.3
+            "globalPct": 12.4
         },
         {
             "apiName": "ach_complete_difficulty_easy",
@@ -47,7 +47,7 @@
             "iconUrl": "f0aa411780f425a7ca8c867f372c230635afcf1a.jpg",
             "iconGrayUrl": "9c5264f8517feb0e7a666fa993d47a94b5cab58d.jpg",
             "hidden": false,
-            "globalPct": 12.3
+            "globalPct": 12.4
         },
         {
             "apiName": "ach_complete_difficulty_medium",
@@ -58,7 +58,7 @@
             "iconUrl": "91e88d8c62f839593869f9b69c974dcdfe39040d.jpg",
             "iconGrayUrl": "d549b61db4029e4057bd133bc144fd6a6e626beb.jpg",
             "hidden": false,
-            "globalPct": 10.5
+            "globalPct": 10.6
         },
         {
             "apiName": "ach_complete_difficulty_hard",
@@ -69,7 +69,7 @@
             "iconUrl": "efc726d2bce91a89f6c332bab4627fe8789a275f.jpg",
             "iconGrayUrl": "b569e4ce047eb7ebd9d8b21940594e86048319cb.jpg",
             "hidden": false,
-            "globalPct": 4.8
+            "globalPct": 4.9
         },
         {
             "apiName": "ach_complete_difficulty_extreme",
@@ -91,7 +91,7 @@
             "iconUrl": "857fb2bcc4448625fdae2566de0e92af504187b8.jpg",
             "iconGrayUrl": "4a3c018ee44bd3bdc5278b4f5674eced0ffa465d.jpg",
             "hidden": false,
-            "globalPct": 36.1
+            "globalPct": 36.2
         },
         {
             "apiName": "ach_defeat_great_unclean_one",
@@ -102,7 +102,7 @@
             "iconUrl": "56b080e7bca45e19633b4d6e6688a83b682119b7.jpg",
             "iconGrayUrl": "0c856d22b64730fd363e772046a2ccc622e68c87.jpg",
             "hidden": false,
-            "globalPct": 20.6
+            "globalPct": 20.7
         },
         {
             "apiName": "ach_find_all_secrets_c1",
@@ -135,7 +135,7 @@
             "iconUrl": "ad5e57813d9862ce9a570971a4e8d6e6c54da5b5.jpg",
             "iconGrayUrl": "919ce26fc6247e1be43d34c658481c1149cdf3e3.jpg",
             "hidden": false,
-            "globalPct": 1.1
+            "globalPct": 1.2
         },
         {
             "apiName": "ach_chapter_complete_4_easy",
@@ -146,7 +146,7 @@
             "iconUrl": "de0a22c01eff5ff7faafc1b8bb609163d9c1b9e8.jpg",
             "iconGrayUrl": "279059c5027557a4561a707c62aa5d2bdf90814a.jpg",
             "hidden": false,
-            "globalPct": 3.7
+            "globalPct": 3.8
         },
         {
             "apiName": "ach_chapter_complete_4_medium",
@@ -157,7 +157,7 @@
             "iconUrl": "20afdd9da6715ce8d20676deeeac42944f28dceb.jpg",
             "iconGrayUrl": "f79b9ca716e9938925492a2b90aee315759ddfc5.jpg",
             "hidden": false,
-            "globalPct": 3.2
+            "globalPct": 3.3
         },
         {
             "apiName": "ach_chapter_complete_4_hard",
@@ -168,7 +168,7 @@
             "iconUrl": "6f7a317c6482149df8ec6d8bc37569344be64f3f.jpg",
             "iconGrayUrl": "82226e744120441e157f47963c4c54073f42722e.jpg",
             "hidden": false,
-            "globalPct": 1.9
+            "globalPct": 2
         },
         {
             "apiName": "ach_chapter_complete_4_extreme",
@@ -190,7 +190,7 @@
             "iconUrl": "1b6141ea64da3a65a3f075efbd732bd4500fd348.jpg",
             "iconGrayUrl": "b3b42720687066812601ab4ef2018b6297dced3b.jpg",
             "hidden": false,
-            "globalPct": 4.8
+            "globalPct": 4.9
         },
         {
             "apiName": "ach_find_all_secrets_c4",
@@ -234,12 +234,12 @@
             "iconUrl": "52a5c3de680a951c2f91cf5debaa65bb6a5a5c77.jpg",
             "iconGrayUrl": "acb1d120b43dda39b31038ac74ae7b78e99bb113.jpg",
             "hidden": false,
-            "globalPct": 1
+            "globalPct": 1.1
         }
     ],
     "playtimeForever": 151,
     "lastPlayedTs": "2025-11-09T14:35:26.000Z",
-    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/2005010/2ffcd2f993a8dac66c8523fb579234ffa2c83bdf.jpg",
+    "iconUrl": "https://shared.akamai.steamstatic.com/community_assets/images/apps/2005010/2ffcd2f993a8dac66c8523fb579234ffa2c83bdf.jpg",
     "lastUnlockedAt": null,
     "lastUnlockName": null,
     "preview": [
@@ -250,7 +250,7 @@
             "unlockedAt": null,
             "iconUrl": "bb0c2d72bb34c5bece54db16f4c9918667f0f620.jpg",
             "iconGrayUrl": "97846eb68ecd326c99efac9b9f8692b73fe41e12.jpg",
-            "globalPct": 31
+            "globalPct": 31.1
         },
         {
             "apiName": "ach_chapter_complete_2",
@@ -259,7 +259,7 @@
             "unlockedAt": null,
             "iconUrl": "58469f89ef817eb8a089fe5ee1393ec04d65db95.jpg",
             "iconGrayUrl": "4a842b68cb70250ba08718f9a9eec6f10c35a3ca.jpg",
-            "globalPct": 16.3
+            "globalPct": 16.4
         },
         {
             "apiName": "ach_chapter_complete_3",
@@ -268,7 +268,7 @@
             "unlockedAt": null,
             "iconUrl": "84045f565639b1899d1b23f72870ae9fa6340b63.jpg",
             "iconGrayUrl": "aec88fc854029aa11f1ff49bbf7971efeb7caf38.jpg",
-            "globalPct": 12.3
+            "globalPct": 12.4
         },
         {
             "apiName": "ach_complete_difficulty_easy",
@@ -277,7 +277,7 @@
             "unlockedAt": null,
             "iconUrl": "f0aa411780f425a7ca8c867f372c230635afcf1a.jpg",
             "iconGrayUrl": "9c5264f8517feb0e7a666fa993d47a94b5cab58d.jpg",
-            "globalPct": 12.3
+            "globalPct": 12.4
         },
         {
             "apiName": "ach_complete_difficulty_medium",
@@ -286,7 +286,7 @@
             "unlockedAt": null,
             "iconUrl": "91e88d8c62f839593869f9b69c974dcdfe39040d.jpg",
             "iconGrayUrl": "d549b61db4029e4057bd133bc144fd6a6e626beb.jpg",
-            "globalPct": 10.5
+            "globalPct": 10.6
         },
         {
             "apiName": "ach_complete_difficulty_hard",
@@ -295,7 +295,7 @@
             "unlockedAt": null,
             "iconUrl": "efc726d2bce91a89f6c332bab4627fe8789a275f.jpg",
             "iconGrayUrl": "b569e4ce047eb7ebd9d8b21940594e86048319cb.jpg",
-            "globalPct": 4.8
+            "globalPct": 4.9
         }
     ]
 }

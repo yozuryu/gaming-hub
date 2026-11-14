@@ -47,7 +47,7 @@
             "iconUrl": "463a070d4fe30ed745fe67c325f00f83db31749e.jpg",
             "iconGrayUrl": "1a1ed1ac81dec320084f69ae1f13825566eac2e1.jpg",
             "hidden": true,
-            "globalPct": 61.2
+            "globalPct": 61.1
         },
         {
             "apiName": "ACH_CH3_GET_NECKLACE",
@@ -58,7 +58,7 @@
             "iconUrl": "dd734d6ca96484a04858cdb2824c0ede2ea6c1f2.jpg",
             "iconGrayUrl": "e85b1f8d1cfccae70aada99f14edea29036969fa.jpg",
             "hidden": true,
-            "globalPct": 50.4
+            "globalPct": 50.3
         },
         {
             "apiName": "ACH_CH4_FIRST_CHANGE",
@@ -69,7 +69,7 @@
             "iconUrl": "9c744382cd2f9d3b3676075865e24abd93969df6.jpg",
             "iconGrayUrl": "8649a55970f33fe65e801bd83d168bb64154d417.jpg",
             "hidden": true,
-            "globalPct": 50
+            "globalPct": 49.9
         },
         {
             "apiName": "ACH_ENDING_2",
@@ -96,7 +96,7 @@
     ],
     "playtimeForever": 245,
     "lastPlayedTs": "2024-05-28T14:14:00.000Z",
-    "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/555220/b10a1243ef3d405cfb0f3b037e3fef9a330b7fe9.jpg",
+    "iconUrl": "https://shared.akamai.steamstatic.com/community_assets/images/apps/555220/b10a1243ef3d405cfb0f3b037e3fef9a330b7fe9.jpg",
     "lastUnlockedAt": null,
     "lastUnlockName": null,
     "preview": [
@@ -134,7 +134,7 @@
             "unlockedAt": null,
             "iconUrl": "463a070d4fe30ed745fe67c325f00f83db31749e.jpg",
             "iconGrayUrl": "1a1ed1ac81dec320084f69ae1f13825566eac2e1.jpg",
-            "globalPct": 61.2
+            "globalPct": 61.1
         },
         {
             "apiName": "ACH_CH3_GET_NECKLACE",
@@ -143,7 +143,7 @@
             "unlockedAt": null,
             "iconUrl": "dd734d6ca96484a04858cdb2824c0ede2ea6c1f2.jpg",
             "iconGrayUrl": "e85b1f8d1cfccae70aada99f14edea29036969fa.jpg",
-            "globalPct": 50.4
+            "globalPct": 50.3
         },
         {
             "apiName": "ACH_CH4_FIRST_CHANGE",
@@ -152,7 +152,7 @@
             "unlockedAt": null,
             "iconUrl": "9c744382cd2f9d3b3676075865e24abd93969df6.jpg",
             "iconGrayUrl": "8649a55970f33fe65e801bd83d168bb64154d417.jpg",
-            "globalPct": 50
+            "globalPct": 49.9
         }
     ]
 }
