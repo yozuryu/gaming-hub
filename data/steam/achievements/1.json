@@ -3,6 +3,36 @@
         {
             "appId": 1658290,
             "gameName": "Eiyuden Chronicle: Rising",
+            "apiName": "ACHIEVEMENT011",
+            "displayName": "A Girl About the Town",
+            "description": "Completed the silver stamp card",
+            "iconUrl": "https://shared.akamai.steamstatic.com/community_assets/images/apps/1658290/bc11c15166e008e553b0479f2bb9216443b564e7.jpg",
+            "unlockedAt": "2026-11-14T16:16:35.000Z",
+            "globalPct": 49.7
+        },
+        {
+            "appId": 1658290,
+            "gameName": "Eiyuden Chronicle: Rising",
+            "apiName": "ACHIEVEMENT036",
+            "displayName": "First Time Hunting",
+            "description": "Trapped a beast for the first time",
+            "iconUrl": "https://shared.akamai.steamstatic.com/community_assets/images/apps/1658290/b7385ca669141c4f3445b9c79366cdb95ea74a2c.jpg",
+            "unlockedAt": "2026-11-14T16:01:18.000Z",
+            "globalPct": 49
+        },
+        {
+            "appId": 1658290,
+            "gameName": "Eiyuden Chronicle: Rising",
+            "apiName": "ACHIEVEMENT035",
+            "displayName": "First Time Fishing",
+            "description": "Caught a fish for the first time",
+            "iconUrl": "https://shared.akamai.steamstatic.com/community_assets/images/apps/1658290/55990d1f367515f8324b79e2e5f1e20a753ca23c.jpg",
+            "unlockedAt": "2026-11-14T15:59:49.000Z",
+            "globalPct": 50.9
+        },
+        {
+            "appId": 1658290,
+            "gameName": "Eiyuden Chronicle: Rising",
             "apiName": "ACHIEVEMENT005",
             "displayName": "Magical Mineral Golem",
             "description": "",
@@ -88,7 +118,7 @@
             "description": "Play with Gary at the park",
             "iconUrl": "https://shared.akamai.steamstatic.com/community_assets/images/apps/2322380/f7ed43ebaffa7609f7161e2acae4cd3415f1967c.jpg",
             "unlockedAt": "2026-11-08T05:05:26.000Z",
-            "globalPct": 78.9
+            "globalPct": 79
         },
         {
             "appId": 1658290,

@@ -38181,14 +38181,41 @@
             "appId": 1658290,
             "hasAchievements": true,
             "total": 50,
-            "unlocked": 7,
+            "unlocked": 10,
             "gameName": "Eiyuden Chronicle: Rising",
-            "playtimeForever": 150,
-            "lastPlayedTs": "2026-11-14T15:23:08.000Z",
+            "playtimeForever": 180,
+            "lastPlayedTs": "2026-11-14T15:53:09.000Z",
             "iconUrl": "https://shared.akamai.steamstatic.com/community_assets/images/apps/1658290/449ec8f09bf72c9f8e00c113c1e12a7c70a86de4.jpg",
-            "lastUnlockedAt": "2026-11-14T15:34:22.000Z",
-            "lastUnlockName": "Magical Mineral Golem",
+            "lastUnlockedAt": "2026-11-14T16:16:35.000Z",
+            "lastUnlockName": "A Girl About the Town",
             "preview": [
+                {
+                    "apiName": "ACHIEVEMENT011",
+                    "displayName": "A Girl About the Town",
+                    "unlocked": true,
+                    "unlockedAt": "2026-11-14T16:16:35.000Z",
+                    "iconUrl": "bc11c15166e008e553b0479f2bb9216443b564e7.jpg",
+                    "iconGrayUrl": "c52f0941e8a0fa43a6e36a9bbb333928d9d03acc.jpg",
+                    "globalPct": 49.7
+                },
+                {
+                    "apiName": "ACHIEVEMENT036",
+                    "displayName": "First Time Hunting",
+                    "unlocked": true,
+                    "unlockedAt": "2026-11-14T16:01:18.000Z",
+                    "iconUrl": "b7385ca669141c4f3445b9c79366cdb95ea74a2c.jpg",
+                    "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
+                    "globalPct": 49
+                },
+                {
+                    "apiName": "ACHIEVEMENT035",
+                    "displayName": "First Time Fishing",
+                    "unlocked": true,
+                    "unlockedAt": "2026-11-14T15:59:49.000Z",
+                    "iconUrl": "55990d1f367515f8324b79e2e5f1e20a753ca23c.jpg",
+                    "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
+                    "globalPct": 50.9
+                },
                 {
                     "apiName": "ACHIEVEMENT005",
                     "displayName": "Magical Mineral Golem",
@@ -38215,33 +38242,6 @@
                     "iconUrl": "698113d14201052b0919e671e6e7a7b5f48cb717.jpg",
                     "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
                     "globalPct": 61.3
-                },
-                {
-                    "apiName": "ACHIEVEMENT024",
-                    "displayName": "Amateur Adventurer",
-                    "unlocked": true,
-                    "unlockedAt": "2026-11-07T14:53:56.000Z",
-                    "iconUrl": "95601da0358307b95831f856f7a4bf0ffbcbf425.jpg",
-                    "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
-                    "globalPct": 61.6
-                },
-                {
-                    "apiName": "ACHIEVEMENT025",
-                    "displayName": "Hopeful Hunter",
-                    "unlocked": true,
-                    "unlockedAt": "2026-11-07T14:52:18.000Z",
-                    "iconUrl": "9d1799fe36b7ad45fe0fbe04093903db4f8a7bb3.jpg",
-                    "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
-                    "globalPct": 63.3
-                },
-                {
-                    "apiName": "ACHIEVEMENT004",
-                    "displayName": "All Bark, No Bite",
-                    "unlocked": true,
-                    "unlockedAt": "2026-11-01T10:08:58.000Z",
-                    "iconUrl": "924d1737b63a1f77822da49a85c47189ecb963b5.jpg",
-                    "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
-                    "globalPct": 70.5
                 }
             ]
         },
@@ -39664,7 +39664,7 @@
                     "unlockedAt": "2026-11-08T05:05:26.000Z",
                     "iconUrl": "f7ed43ebaffa7609f7161e2acae4cd3415f1967c.jpg",
                     "iconGrayUrl": "27fb3f587ff5db0f90bca6117beb1b2163ae3445.jpg",
-                    "globalPct": 78.9
+                    "globalPct": 79
                 },
                 {
                     "apiName": "ach002",
@@ -39724,7 +39724,7 @@
                     "unlockedAt": null,
                     "iconUrl": "c511183ed90bde9e31421e0f24784caebd0ffc1d.jpg",
                     "iconGrayUrl": "043ea4540ff2620ec322517776e1fb8bc6ee8cd5.jpg",
-                    "globalPct": 48.2
+                    "globalPct": 48.1
                 },
                 {
                     "apiName": "DefeatHibernationSandy",
@@ -39733,7 +39733,7 @@
                     "unlockedAt": null,
                     "iconUrl": "b6d55da4834ca70897f53e01378a10b37c2cb488.jpg",
                     "iconGrayUrl": "21dc5dde373e9f7da18b361def601ad32664ee79.jpg",
-                    "globalPct": 43.7
+                    "globalPct": 43.6
                 },
                 {
                     "apiName": "GetTheGoldenSpatula",

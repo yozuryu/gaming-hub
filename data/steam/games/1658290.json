@@ -2,7 +2,7 @@
     "appId": 1658290,
     "hasAchievements": true,
     "total": 50,
-    "unlocked": 7,
+    "unlocked": 10,
     "gameName": "Eiyuden Chronicle: Rising",
     "achievements": [
         {
@@ -36,7 +36,7 @@
             "iconUrl": "5ef5bbbf3d1de10a39c0b40ffd4371bb417c7ea8.jpg",
             "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
             "hidden": true,
-            "globalPct": 46.3
+            "globalPct": 46.4
         },
         {
             "apiName": "ACHIEVEMENT004",
@@ -117,8 +117,8 @@
         },
         {
             "apiName": "ACHIEVEMENT011",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-11-14T16:16:35.000Z",
             "displayName": "A Girl About the Town",
             "description": "Completed the silver stamp card",
             "iconUrl": "bc11c15166e008e553b0479f2bb9216443b564e7.jpg",
@@ -381,8 +381,8 @@
         },
         {
             "apiName": "ACHIEVEMENT035",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-11-14T15:59:49.000Z",
             "displayName": "First Time Fishing",
             "description": "Caught a fish for the first time",
             "iconUrl": "55990d1f367515f8324b79e2e5f1e20a753ca23c.jpg",
@@ -392,8 +392,8 @@
         },
         {
             "apiName": "ACHIEVEMENT036",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-11-14T16:01:18.000Z",
             "displayName": "First Time Hunting",
             "description": "Trapped a beast for the first time",
             "iconUrl": "b7385ca669141c4f3445b9c79366cdb95ea74a2c.jpg",
@@ -556,12 +556,39 @@
             "globalPct": 14
         }
     ],
-    "playtimeForever": 150,
-    "lastPlayedTs": "2026-11-14T15:23:08.000Z",
+    "playtimeForever": 180,
+    "lastPlayedTs": "2026-11-14T15:53:09.000Z",
     "iconUrl": "https://shared.akamai.steamstatic.com/community_assets/images/apps/1658290/449ec8f09bf72c9f8e00c113c1e12a7c70a86de4.jpg",
-    "lastUnlockedAt": "2026-11-14T15:34:22.000Z",
-    "lastUnlockName": "Magical Mineral Golem",
+    "lastUnlockedAt": "2026-11-14T16:16:35.000Z",
+    "lastUnlockName": "A Girl About the Town",
     "preview": [
+        {
+            "apiName": "ACHIEVEMENT011",
+            "displayName": "A Girl About the Town",
+            "unlocked": true,
+            "unlockedAt": "2026-11-14T16:16:35.000Z",
+            "iconUrl": "bc11c15166e008e553b0479f2bb9216443b564e7.jpg",
+            "iconGrayUrl": "c52f0941e8a0fa43a6e36a9bbb333928d9d03acc.jpg",
+            "globalPct": 49.7
+        },
+        {
+            "apiName": "ACHIEVEMENT036",
+            "displayName": "First Time Hunting",
+            "unlocked": true,
+            "unlockedAt": "2026-11-14T16:01:18.000Z",
+            "iconUrl": "b7385ca669141c4f3445b9c79366cdb95ea74a2c.jpg",
+            "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
+            "globalPct": 49
+        },
+        {
+            "apiName": "ACHIEVEMENT035",
+            "displayName": "First Time Fishing",
+            "unlocked": true,
+            "unlockedAt": "2026-11-14T15:59:49.000Z",
+            "iconUrl": "55990d1f367515f8324b79e2e5f1e20a753ca23c.jpg",
+            "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
+            "globalPct": 50.9
+        },
         {
             "apiName": "ACHIEVEMENT005",
             "displayName": "Magical Mineral Golem",
@@ -588,33 +615,6 @@
             "iconUrl": "698113d14201052b0919e671e6e7a7b5f48cb717.jpg",
             "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
             "globalPct": 61.3
-        },
-        {
-            "apiName": "ACHIEVEMENT024",
-            "displayName": "Amateur Adventurer",
-            "unlocked": true,
-            "unlockedAt": "2026-11-07T14:53:56.000Z",
-            "iconUrl": "95601da0358307b95831f856f7a4bf0ffbcbf425.jpg",
-            "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
-            "globalPct": 61.6
-        },
-        {
-            "apiName": "ACHIEVEMENT025",
-            "displayName": "Hopeful Hunter",
-            "unlocked": true,
-            "unlockedAt": "2026-11-07T14:52:18.000Z",
-            "iconUrl": "9d1799fe36b7ad45fe0fbe04093903db4f8a7bb3.jpg",
-            "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
-            "globalPct": 63.3
-        },
-        {
-            "apiName": "ACHIEVEMENT004",
-            "displayName": "All Bark, No Bite",
-            "unlocked": true,
-            "unlockedAt": "2026-11-01T10:08:58.000Z",
-            "iconUrl": "924d1737b63a1f77822da49a85c47189ecb963b5.jpg",
-            "iconGrayUrl": "fd43889618933cf736186c5a823daf9080908446.jpg",
-            "globalPct": 70.5
         }
     ]
 }

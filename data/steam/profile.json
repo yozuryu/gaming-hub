@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-11-14T15:35:19.063Z"
+        "extractionTimestamp": "2026-11-14T16:16:50.017Z"
     },
     "profile": {
         "steamId": "76561198188939413",
@@ -13,11 +13,11 @@
     },
     "stats": {
         "totalGames": 1295,
-        "totalPlaytimeMin": 352027,
-        "totalPlaytimeHrs": 5867,
+        "totalPlaytimeMin": 352057,
+        "totalPlaytimeHrs": 5868,
         "gamesWithPlaytime": 823,
         "totalAchievements": 10250,
-        "unlockedAchievements": 2870,
+        "unlockedAchievements": 2873,
         "gamesWithAchievements": 174,
         "perfectCount": 17,
         "completionPct": 28,
@@ -27,12 +27,12 @@
         {
             "appId": 1658290,
             "name": "Eiyuden Chronicle: Rising",
-            "playtime2Weeks": 131,
-            "playtimeForever": 150,
+            "playtime2Weeks": 161,
+            "playtimeForever": 180,
             "iconUrl": "https://shared.akamai.steamstatic.com/community_assets/images/apps/1658290/449ec8f09bf72c9f8e00c113c1e12a7c70a86de4.jpg",
             "storeUrl": "https://store.steampowered.com/app/1658290",
-            "lastPlayedTs": "2026-11-14T15:23:08.000Z",
-            "achUnlocked": 7,
+            "lastPlayedTs": "2026-11-14T15:53:09.000Z",
+            "achUnlocked": 10,
             "achTotal": 50
         },
         {
@@ -83,21 +83,21 @@
     "mostRecentGame": {
         "appId": 1658290,
         "name": "Eiyuden Chronicle: Rising",
-        "playtime2Weeks": 131,
-        "playtimeForever": 150,
+        "playtime2Weeks": 161,
+        "playtimeForever": 180,
         "iconUrl": "https://shared.akamai.steamstatic.com/community_assets/images/apps/1658290/449ec8f09bf72c9f8e00c113c1e12a7c70a86de4.jpg",
         "storeUrl": "https://store.steampowered.com/app/1658290",
-        "lastPlayedTs": "2026-11-14T15:23:08.000Z"
+        "lastPlayedTs": "2026-11-14T15:53:09.000Z"
     },
     "mostRecentUnlock": {
         "appId": 1658290,
         "gameName": "Eiyuden Chronicle: Rising",
-        "apiName": "ACHIEVEMENT005",
-        "displayName": "Magical Mineral Golem",
-        "description": "",
-        "iconUrl": "https://shared.akamai.steamstatic.com/community_assets/images/apps/1658290/05c7846bef15486bfd5d86531139998aa8244f8e.jpg",
-        "unlockedAt": "2026-11-14T15:34:22.000Z",
-        "globalPct": 53.7
+        "apiName": "ACHIEVEMENT011",
+        "displayName": "A Girl About the Town",
+        "description": "Completed the silver stamp card",
+        "iconUrl": "https://shared.akamai.steamstatic.com/community_assets/images/apps/1658290/bc11c15166e008e553b0479f2bb9216443b564e7.jpg",
+        "unlockedAt": "2026-11-14T16:16:35.000Z",
+        "globalPct": 49.7
     },
     "perfectGames": [
         {
