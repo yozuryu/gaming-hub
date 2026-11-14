@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "extractionTimestamp": "2026-11-14T07:03:21.494Z"
+        "extractionTimestamp": "2026-11-14T07:16:50.348Z"
     },
     "profile": {
         "steamId": "76561198188939413",
@@ -17,7 +17,7 @@
         "totalPlaytimeHrs": 5864,
         "gamesWithPlaytime": 823,
         "totalAchievements": 10250,
-        "unlockedAchievements": 2868,
+        "unlockedAchievements": 2869,
         "gamesWithAchievements": 174,
         "perfectCount": 17,
         "completionPct": 27,
@@ -32,7 +32,7 @@
             "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1451810/8310e788a7972d6ae815c157a58207b5bb50f369.jpg",
             "storeUrl": "https://store.steampowered.com/app/1451810",
             "lastPlayedTs": "2026-11-14T06:58:52.000Z",
-            "achUnlocked": 3,
+            "achUnlocked": 4,
             "achTotal": 38
         },
         {
@@ -114,12 +114,12 @@
     "mostRecentUnlock": {
         "appId": 1451810,
         "gameName": "LEGO® 2K Drive",
-        "apiName": "ACH_STUNTMAN",
-        "displayName": "Higher Orbit",
-        "description": "Spin 1080 degrees in the air without using a jetpack",
-        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/1451810/5026e77fe20acefcf9410f4f00c222f7f6345366.jpg",
-        "unlockedAt": "2026-11-14T03:25:53.000Z",
-        "globalPct": 5.1
+        "apiName": "ACH_DESTRUCTION_ENTHUSIAST",
+        "displayName": "Brick Separator",
+        "description": "Destroy 1000 objects",
+        "iconUrl": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/1451810/1fcd3f23352ea5bc09a553175c915c8a1e62231f.jpg",
+        "unlockedAt": "2026-11-14T07:07:32.000Z",
+        "globalPct": 42.4
     },
     "perfectGames": [
         {

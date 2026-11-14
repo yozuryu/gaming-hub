@@ -2,7 +2,7 @@
     "appId": 1451810,
     "hasAchievements": true,
     "total": 38,
-    "unlocked": 3,
+    "unlocked": 4,
     "gameName": "LEGO® 2K Drive",
     "achievements": [
         {
@@ -117,8 +117,8 @@
         },
         {
             "apiName": "ACH_DESTRUCTION_ENTHUSIAST",
-            "unlocked": false,
-            "unlockedAt": null,
+            "unlocked": true,
+            "unlockedAt": "2026-11-14T07:07:32.000Z",
             "displayName": "Brick Separator",
             "description": "Destroy 1000 objects",
             "iconUrl": "1fcd3f23352ea5bc09a553175c915c8a1e62231f.jpg",
@@ -168,7 +168,7 @@
             "iconUrl": "fc2d1bf62042f963f70ddfe35291de8ce7018003.jpg",
             "iconGrayUrl": "eed6924d586644403c686192c3a09b37112774e1.jpg",
             "hidden": false,
-            "globalPct": 8.8
+            "globalPct": 8.9
         },
         {
             "apiName": "ACH_JACK_ALL_TRADES",
@@ -333,7 +333,7 @@
             "iconUrl": "0602ff183fb6506a0f04c204d0406577fae64649.jpg",
             "iconGrayUrl": "d53dca5dd24ec60108a113830034b9fdc8cf80ed.jpg",
             "hidden": false,
-            "globalPct": 1.1
+            "globalPct": 1.2
         },
         {
             "apiName": "ACH_GOLD_OTG",
@@ -427,9 +427,18 @@
     "playtimeForever": 214,
     "lastPlayedTs": "2026-11-14T06:58:52.000Z",
     "iconUrl": "https://media.steampowered.com/steamcommunity/public/images/apps/1451810/8310e788a7972d6ae815c157a58207b5bb50f369.jpg",
-    "lastUnlockedAt": "2026-11-14T03:25:53.000Z",
-    "lastUnlockName": "Higher Orbit",
+    "lastUnlockedAt": "2026-11-14T07:07:32.000Z",
+    "lastUnlockName": "Brick Separator",
     "preview": [
+        {
+            "apiName": "ACH_DESTRUCTION_ENTHUSIAST",
+            "displayName": "Brick Separator",
+            "unlocked": true,
+            "unlockedAt": "2026-11-14T07:07:32.000Z",
+            "iconUrl": "1fcd3f23352ea5bc09a553175c915c8a1e62231f.jpg",
+            "iconGrayUrl": "df72aa80d973580365fd36e4120dbe8c57b3cfcb.jpg",
+            "globalPct": 42.4
+        },
         {
             "apiName": "ACH_STUNTMAN",
             "displayName": "Higher Orbit",
@@ -474,15 +483,6 @@
             "iconUrl": "c6d5cfafc10567dadca12e28a91c55b14e2276bc.jpg",
             "iconGrayUrl": "d31cdd7b6cc721d8f6c9b892ce16c83ff70ba53d.jpg",
             "globalPct": 26.8
-        },
-        {
-            "apiName": "ACH_WELCOME_HV",
-            "displayName": "Cruising Hauntsborough",
-            "unlocked": false,
-            "unlockedAt": null,
-            "iconUrl": "9e4bd9fd814de95a9b52c0416ee4a318bdd0087f.jpg",
-            "iconGrayUrl": "82dcc5904f8e6ec6214540323175bdda80530e6a.jpg",
-            "globalPct": 10.9
         }
     ]
 }
