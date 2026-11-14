@@ -1,5 +1,23 @@
 # Changelog
 
+## v26.11.14
+
+A LEGO series on the RA and Steam profiles, and LEGO 2K Drive as the face of the shared one
+
+### RetroAchievements
+
+- new: **LEGO** series with the five LEGO games on the want-to-play list
+  LEGO Island 2 on Game Boy Advance, Game Boy Color and PlayStation, and LEGO Harry Potter Years 1-4 and 5-7 on PSP.
+
+### Steam
+
+- new: **LEGO** series: City Undercover, The LEGO NINJAGO Movie Video Game and LEGO 2K Drive
+
+### Hub
+
+- improved: **LEGO** shared series adds LEGO 2K Drive and uses it as the cover
+  Its card and sheet show the 2K Drive art. Xbox has no LEGO games, so it gets no LEGO series.
+
 ## v26.11.12
 
 The site is called Savepoint now and lives at a new address, and the admin panel no longer answers other websites
